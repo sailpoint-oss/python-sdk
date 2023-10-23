@@ -1,0 +1,4 @@
+templateDir: ./sdk-resources/resources
+packageName: beta
+packageVersion: 1.0.0
+generateSourceCodeOnly: true
