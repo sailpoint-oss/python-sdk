@@ -22,8 +22,8 @@ class Paginator:
         
         # If the total result limit is not provided, set a default of 1000 records to fetch.
         result_limit = result_limit if result_limit else 1000
-        increment = kwargs['limit'] if hasattr(kwargs, 'limit') is not None else 250
-        kwargs['offset'] = kwargs['offset'] if hasattr(kwargs, 'offset') is not None else 0
+        increment = kwargs.get('limit') if kwargs.get('limit') is not None else 250
+        kwargs['offset'] = kwargs.get('offset') if kwargs.get('offset') is not None else 0
 
         modified = []
         while True:
