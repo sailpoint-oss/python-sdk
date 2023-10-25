@@ -5,9 +5,12 @@ from sailpoint.configuration import Configuration
 from sailpoint.v3.models.transform_read import TransformRead
 from sailpoint.v3.rest import ApiException
 from pprint import pprint
+from sailpoint.cc.api_client import ApiClient
+from sailpoint.cc.api.accounts_api import AccountsApi
+from sailpoint.cc.api.connectors_api import ConnectorsApi
 
 configuration = Configuration()
-
+    
 # Enter a context with an instance of the API client
 with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -24,12 +27,12 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
     api_instance = sailpoint.v3.AccessProfilesApi(api_client)
 
-    try:
-        api_response = api_instance.list_access_profiles()
-        print("The response of AccessProfilesApi->list_access_profiles:\n")
-        for access_profile in api_response:
-            pprint(access_profile.name)
-    except Exception as e:
-        print(
-            "Exception when calling AccessProfilesApi->list_access_profiles: %s\n" % e
-        )
+#     try:
+#         api_response = api_instance.list_access_profiles()
+#         print("The response of AccessProfilesApi->list_access_profiles:\n")
+#         for access_profile in api_response:
+#             pprint(access_profile.name)
+#     except Exception as e:
+#         print(
+#             "Exception when calling AccessProfilesApi->list_access_profiles: %s\n" % e
+#         )

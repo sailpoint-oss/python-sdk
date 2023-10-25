@@ -1,4 +1,5 @@
 templateDir: ./sdk-resources/resources
 packageName: beta
 packageVersion: 1.0.0
+apiVersion: beta
 generateSourceCodeOnly: true

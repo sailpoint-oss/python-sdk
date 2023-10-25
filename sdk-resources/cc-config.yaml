@@ -1,5 +1,4 @@
 templateDir: ./sdk-resources/resources
-packageName: v3
+packageName: cc
 packageVersion: 1.0.0
-apiVersion: v3
 generateSourceCodeOnly: true

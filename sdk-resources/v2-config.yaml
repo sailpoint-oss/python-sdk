@@ -1,5 +1,5 @@
 templateDir: ./sdk-resources/resources
-packageName: v3
+packageName: v2
 packageVersion: 1.0.0
-apiVersion: v3
+apiVersion: v2
 generateSourceCodeOnly: true
