@@ -24,14 +24,14 @@ class FormUsedBy(BaseModel):
     """
     FormUsedBy
     """
-    id: Optional[StrictStr] = Field(None,
-                                    description="ID is a unique identifier")
     type: Optional[StrictStr] = Field(
         None,
         description=
-        "Type is a FormUsedByType value WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource"
+        "FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource"
     )
-    __properties = ["id", "type"]
+    id: Optional[StrictStr] = Field(
+        None, description="Unique identifier of the system using the form.")
+    __properties = ["type", "id"]
 
     @validator('type')
     def type_validate_enum(cls, value):
@@ -77,7 +77,7 @@ class FormUsedBy(BaseModel):
             return FormUsedBy.parse_obj(obj)
 
         _obj = FormUsedBy.parse_obj({
-            "id": obj.get("id"),
-            "type": obj.get("type")
+            "type": obj.get("type"),
+            "id": obj.get("id")
         })
         return _obj

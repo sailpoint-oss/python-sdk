@@ -26,10 +26,9 @@ class ListFormDefinitionsByTenantResponse(BaseModel):
     ListFormDefinitionsByTenantResponse
     """
     count: Optional[StrictInt] = Field(None,
-                                       description="Count number of Results")
+                                       description="Count number of results.")
     results: Optional[conlist(FormDefinitionResponse)] = Field(
-        None,
-        description="Results holds a list of FormDefinitionResponse items")
+        None, description="List of FormDefinitionResponse items.")
     __properties = ["count", "results"]
 
     class Config:

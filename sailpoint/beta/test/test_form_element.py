@@ -36,9 +36,9 @@ class TestFormElement(unittest.TestCase):
         model = FormElement()  # noqa: E501
         if include_optional:
             return FormElement(
-                config = {label=Department},
-                element_type = 'TEXT',
                 id = '00000000-0000-0000-0000-000000000000',
+                element_type = 'TEXT',
+                config = {label=Department},
                 key = 'department',
                 validations = [{validationType=REQUIRED}]
             )

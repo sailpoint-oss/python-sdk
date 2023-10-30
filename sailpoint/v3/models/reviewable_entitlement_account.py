@@ -31,10 +31,11 @@ class ReviewableEntitlementAccount(BaseModel):
         alias="nativeIdentity",
         description="The native identity for this account")
     disabled: Optional[StrictBool] = Field(
-        None,
+        False,
         description="Indicates whether this account is currently disabled")
     locked: Optional[StrictBool] = Field(
-        None, description="Indicates whether this account is currently locked")
+        False,
+        description="Indicates whether this account is currently locked")
     type: Optional[DtoType] = None
     id: Optional[StrictStr] = Field(
         None, description="The id associated with the account")
@@ -104,9 +105,9 @@ class ReviewableEntitlementAccount(BaseModel):
             "native_identity":
             obj.get("nativeIdentity"),
             "disabled":
-            obj.get("disabled"),
+            obj.get("disabled") if obj.get("disabled") is not None else False,
             "locked":
-            obj.get("locked"),
+            obj.get("locked") if obj.get("locked") is not None else False,
             "type":
             obj.get("type"),
             "id":

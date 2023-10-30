@@ -24,19 +24,17 @@ class FormDefinitionInput(BaseModel):
     """
     FormDefinitionInput
     """
-    description: Optional[StrictStr] = Field(
-        None,
-        description="Description is the description for this form input value")
-    id: Optional[StrictStr] = Field(None,
-                                    description="ID is a unique identifier")
-    label: Optional[StrictStr] = Field(
-        None, description="Label is the name for this form input value")
+    id: Optional[StrictStr] = Field(
+        None, description="Unique identifier for the form input.")
     type: Optional[StrictStr] = Field(
         None,
         description=
-        "Type is a FormDefinitionInputType value STRING FormDefinitionInputTypeString"
-    )
-    __properties = ["description", "id", "label", "type"]
+        "FormDefinitionInputType value. STRING FormDefinitionInputTypeString")
+    label: Optional[StrictStr] = Field(None,
+                                       description="Name for the form input.")
+    description: Optional[StrictStr] = Field(
+        None, description="Form input's description.")
+    __properties = ["id", "type", "label", "description"]
 
     @validator('type')
     def type_validate_enum(cls, value):
@@ -81,13 +79,13 @@ class FormDefinitionInput(BaseModel):
             return FormDefinitionInput.parse_obj(obj)
 
         _obj = FormDefinitionInput.parse_obj({
-            "description":
-            obj.get("description"),
             "id":
             obj.get("id"),
+            "type":
+            obj.get("type"),
             "label":
             obj.get("label"),
-            "type":
-            obj.get("type")
+            "description":
+            obj.get("description")
         })
         return _obj

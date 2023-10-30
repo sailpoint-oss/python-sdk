@@ -685,6 +685,7 @@ Class | Method | HTTP request | Description
  - [CompletedApprovalState](beta/docs/CompletedApprovalState.md)
  - [CompletionStatus](beta/docs/CompletionStatus.md)
  - [ConditionEffect](beta/docs/ConditionEffect.md)
+ - [ConditionEffectConfig](beta/docs/ConditionEffectConfig.md)
  - [ConditionRule](beta/docs/ConditionRule.md)
  - [ConfigObject](beta/docs/ConfigObject.md)
  - [ConfigType](beta/docs/ConfigType.md)

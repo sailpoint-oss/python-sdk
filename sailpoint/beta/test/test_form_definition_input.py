@@ -36,10 +36,10 @@ class TestFormDefinitionInput(unittest.TestCase):
         model = FormDefinitionInput()  # noqa: E501
         if include_optional:
             return FormDefinitionInput(
-                description = 'A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic',
                 id = '00000000-0000-0000-0000-000000000000',
+                type = 'STRING',
                 label = 'input1',
-                type = 'STRING'
+                description = 'A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic'
             )
         else:
             return FormDefinitionInput(

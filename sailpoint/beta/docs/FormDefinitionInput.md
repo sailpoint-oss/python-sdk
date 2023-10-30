@@ -4,10 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** | Description is the description for this form input value | [optional] 
-**id** | **str** | ID is a unique identifier | [optional] 
-**label** | **str** | Label is the name for this form input value | [optional] 
-**type** | **str** | Type is a FormDefinitionInputType value STRING FormDefinitionInputTypeString | [optional] 
+**id** | **str** | Unique identifier for the form input. | [optional] 
+**type** | **str** | FormDefinitionInputType value. STRING FormDefinitionInputTypeString | [optional] 
+**label** | **str** | Name for the form input. | [optional] 
+**description** | **str** | Form input&#39;s description. | [optional] 
 
 ## Example
 

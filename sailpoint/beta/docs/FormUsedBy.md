@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | ID is a unique identifier | [optional] 
-**type** | **str** | Type is a FormUsedByType value WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource | [optional] 
+**type** | **str** | FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource | [optional] 
+**id** | **str** | Unique identifier of the system using the form. | [optional] 
 
 ## Example
 

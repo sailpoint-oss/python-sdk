@@ -190,6 +190,10 @@ from v3.models.create_personal_access_token_response import CreatePersonalAccess
 from v3.models.create_saved_search_request import CreateSavedSearchRequest
 from v3.models.create_scheduled_search_request import CreateScheduledSearchRequest
 from v3.models.criteria_type import CriteriaType
+from v3.models.data_access import DataAccess
+from v3.models.data_access_categories_inner import DataAccessCategoriesInner
+from v3.models.data_access_impact_score import DataAccessImpactScore
+from v3.models.data_access_policies_inner import DataAccessPoliciesInner
 from v3.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 from v3.models.delete_source202_response import DeleteSource202Response
 from v3.models.display_reference import DisplayReference

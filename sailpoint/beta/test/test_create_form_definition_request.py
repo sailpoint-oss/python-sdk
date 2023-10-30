@@ -39,52 +39,54 @@ class TestCreateFormDefinitionRequest(unittest.TestCase):
                 description = 'My form description',
                 form_conditions = [
                     beta.models.form_condition.FormCondition(
-                        effects = [
-                            beta.models.condition_effect.ConditionEffect(
-                                config = {}, 
-                                effect_type = 'HIDE', )
-                            ], 
                         rule_operator = 'AND', 
                         rules = [
                             beta.models.condition_rule.ConditionRule(
-                                operator = 'EQ', 
-                                source = 'department', 
                                 source_type = 'ELEMENT', 
-                                value = Engineering, 
-                                value_type = 'STRING', )
+                                source = 'department', 
+                                operator = 'EQ', 
+                                value_type = 'STRING', 
+                                value = Engineering, )
+                            ], 
+                        effects = [
+                            beta.models.condition_effect.ConditionEffect(
+                                effect_type = 'HIDE', 
+                                config = beta.models.condition_effect_config.ConditionEffect_config(
+                                    default_value_label = 'Access to Remove', 
+                                    element = '8110662963316867', ), )
                             ], )
                     ],
                 form_elements = [
                     beta.models.form_element.FormElement(
-                        config = {label=Department}, 
-                        element_type = 'TEXT', 
                         id = '00000000-0000-0000-0000-000000000000', 
+                        element_type = 'TEXT', 
+                        config = {label=Department}, 
                         key = 'department', 
                         validations = [{validationType=REQUIRED}], )
                     ],
                 form_input = [
                     beta.models.form_definition_input.FormDefinitionInput(
-                        description = 'A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic', 
                         id = '00000000-0000-0000-0000-000000000000', 
+                        type = 'STRING', 
                         label = 'input1', 
-                        type = 'STRING', )
+                        description = 'A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic', )
                     ],
                 name = 'My form',
                 owner = beta.models.form_owner.FormOwner(
-                    id = '00000000-0000-0000-0000-000000000000', 
-                    type = 'IDENTITY', ),
+                    type = 'IDENTITY', 
+                    id = '00000000-0000-0000-0000-000000000000', ),
                 used_by = [
                     beta.models.form_used_by.FormUsedBy(
-                        id = '00000000-0000-0000-0000-000000000000', 
-                        type = 'WORKFLOW', )
+                        type = 'WORKFLOW', 
+                        id = '00000000-0000-0000-0000-000000000000', )
                     ]
             )
         else:
             return CreateFormDefinitionRequest(
                 name = 'My form',
                 owner = beta.models.form_owner.FormOwner(
-                    id = '00000000-0000-0000-0000-000000000000', 
-                    type = 'IDENTITY', ),
+                    type = 'IDENTITY', 
+                    id = '00000000-0000-0000-0000-000000000000', ),
         )
         """
 

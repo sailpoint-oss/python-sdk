@@ -4,11 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**config** | **Dict[str, object]** | Config is a config object | [optional] 
-**element_type** | **str** | ElementType is a FormElementType value TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns | [optional] 
-**id** | **str** | ID is a form element identifier | [optional] 
-**key** | **str** | Key is the technical key | [optional] 
-**validations** | **object** | FormElementValidationsSet is a set of FormElementValidation items | [optional] 
+**id** | **str** | Form element identifier. | [optional] 
+**element_type** | **str** | FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns | [optional] 
+**config** | **Dict[str, object]** | Config object. | [optional] 
+**key** | **str** | Technical key. | [optional] 
+**validations** | **object** | Set of FormElementValidation items. | [optional] 
 
 ## Example
 

@@ -251,6 +251,7 @@ from beta.models.completed_approval import CompletedApproval
 from beta.models.completed_approval_state import CompletedApprovalState
 from beta.models.completion_status import CompletionStatus
 from beta.models.condition_effect import ConditionEffect
+from beta.models.condition_effect_config import ConditionEffectConfig
 from beta.models.condition_rule import ConditionRule
 from beta.models.config_object import ConfigObject
 from beta.models.config_type import ConfigType

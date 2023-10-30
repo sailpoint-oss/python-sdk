@@ -36,11 +36,11 @@ class TestConditionRule(unittest.TestCase):
         model = ConditionRule()  # noqa: E501
         if include_optional:
             return ConditionRule(
-                operator = 'EQ',
-                source = 'department',
                 source_type = 'ELEMENT',
-                value = Engineering,
-                value_type = 'STRING'
+                source = 'department',
+                operator = 'EQ',
+                value_type = 'STRING',
+                value = Engineering
             )
         else:
             return ConditionRule(

@@ -210,7 +210,7 @@ class ApiClient:
 
         # request url
         if _host is None:
-            url = self.configuration.host + '/beta' + resource_path
+            url = self.configuration.base_url + '/beta' + resource_path
         else:
             # use server/host defined in path or operation instead
             url = _host + resource_path

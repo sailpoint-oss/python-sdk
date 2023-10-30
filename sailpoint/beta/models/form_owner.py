@@ -24,13 +24,12 @@ class FormOwner(BaseModel):
     """
     FormOwner
     """
-    id: Optional[StrictStr] = Field(None,
-                                    description="ID is a unique identifier")
     type: Optional[StrictStr] = Field(
         None,
-        description=
-        "Type is a FormOwnerType value IDENTITY FormOwnerTypeIdentity")
-    __properties = ["id", "type"]
+        description="FormOwnerType value. IDENTITY FormOwnerTypeIdentity")
+    id: Optional[StrictStr] = Field(
+        None, description="Unique identifier of the form's owner.")
+    __properties = ["type", "id"]
 
     @validator('type')
     def type_validate_enum(cls, value):
@@ -75,7 +74,7 @@ class FormOwner(BaseModel):
             return FormOwner.parse_obj(obj)
 
         _obj = FormOwner.parse_obj({
-            "id": obj.get("id"),
-            "type": obj.get("type")
+            "type": obj.get("type"),
+            "id": obj.get("id")
         })
         return _obj

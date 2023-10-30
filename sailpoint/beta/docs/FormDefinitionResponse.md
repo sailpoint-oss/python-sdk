@@ -4,16 +4,16 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created** | **datetime** | Created is the date the form definition was created | [optional] 
-**description** | **str** | Description is the form definition description | [optional] 
-**form_conditions** | [**List[FormCondition]**](FormCondition.md) | FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form | [optional] 
-**form_elements** | [**List[FormElement]**](FormElement.md) | FormElements is a list of nested form elements | [optional] 
-**form_input** | [**List[FormDefinitionInput]**](FormDefinitionInput.md) | FormInput is a list of form inputs that are required when creating a form-instance object | [optional] 
-**id** | **str** | FormDefinitionID is a unique guid identifying this form definition | [optional] 
-**modified** | **datetime** | Modified is the last date the form definition was modified | [optional] 
-**name** | **str** | Name is the form definition name | [optional] 
+**id** | **str** | Unique guid identifying the form definition. | [optional] 
+**name** | **str** | Name of the form definition. | [optional] 
+**description** | **str** | Form definition&#39;s description. | [optional] 
 **owner** | [**FormOwner**](FormOwner.md) |  | [optional] 
-**used_by** | [**List[FormUsedBy]**](FormUsedBy.md) | UsedBy is a list of objects where when any system uses a particular form it reaches out to the form service to record it is currently being used | [optional] 
+**used_by** | [**List[FormUsedBy]**](FormUsedBy.md) | List of objects using the form definition. Whenever a system uses a form, the API reaches out to the form service to record that the system is currently using it. | [optional] 
+**form_input** | [**List[FormDefinitionInput]**](FormDefinitionInput.md) | List of form inputs required to create a form-instance object. | [optional] 
+**form_elements** | [**List[FormElement]**](FormElement.md) | List of nested form elements. | [optional] 
+**form_conditions** | [**List[FormCondition]**](FormCondition.md) | Conditional logic that can dynamically modify the form as the recipient is interacting with it. | [optional] 
+**created** | **datetime** | Created is the date the form definition was created | [optional] 
+**modified** | **datetime** | Modified is the last date the form definition was modified | [optional] 
 
 ## Example
 

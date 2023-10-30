@@ -1,13 +1,13 @@
 # FormCondition
 
-FormCondition represent a form conditional
+Represent a form conditional.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**effects** | [**List[ConditionEffect]**](ConditionEffect.md) | Effects is a list of effects | [optional] 
-**rule_operator** | **str** | RuleOperator is a ConditionRuleLogicalOperatorType value AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr | [optional] 
-**rules** | [**List[ConditionRule]**](ConditionRule.md) | Rules is a list of rules | [optional] 
+**rule_operator** | **str** | ConditionRuleLogicalOperatorType value. AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr | [optional] 
+**rules** | [**List[ConditionRule]**](ConditionRule.md) | List of rules. | [optional] 
+**effects** | [**List[ConditionEffect]**](ConditionEffect.md) | List of effects. | [optional] 
 
 ## Example
 

@@ -30,47 +30,44 @@ class FormDefinitionResponse(BaseModel):
     """
     FormDefinitionResponse
     """
-    created: Optional[datetime] = Field(
-        None,
-        description="Created is the date the form definition was created")
-    description: Optional[StrictStr] = Field(
-        None, description="Description is the form definition description")
-    form_conditions: Optional[conlist(FormCondition)] = Field(
-        None,
-        alias="formConditions",
-        description=
-        "FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form"
-    )
-    form_elements: Optional[conlist(FormElement)] = Field(
-        None,
-        alias="formElements",
-        description="FormElements is a list of nested form elements")
-    form_input: Optional[conlist(FormDefinitionInput)] = Field(
-        None,
-        alias="formInput",
-        description=
-        "FormInput is a list of form inputs that are required when creating a form-instance object"
-    )
     id: Optional[StrictStr] = Field(
-        None,
-        description=
-        "FormDefinitionID is a unique guid identifying this form definition")
-    modified: Optional[datetime] = Field(
-        None,
-        description="Modified is the last date the form definition was modified"
-    )
+        None, description="Unique guid identifying the form definition.")
     name: Optional[StrictStr] = Field(
-        None, description="Name is the form definition name")
+        None, description="Name of the form definition.")
+    description: Optional[StrictStr] = Field(
+        None, description="Form definition's description.")
     owner: Optional[FormOwner] = None
     used_by: Optional[conlist(FormUsedBy)] = Field(
         None,
         alias="usedBy",
         description=
-        "UsedBy is a list of objects where when any system uses a particular form it reaches out to the form service to record it is currently being used"
+        "List of objects using the form definition. Whenever a system uses a form, the API reaches out to the form service to record that the system is currently using it."
+    )
+    form_input: Optional[conlist(FormDefinitionInput)] = Field(
+        None,
+        alias="formInput",
+        description=
+        "List of form inputs required to create a form-instance object.")
+    form_elements: Optional[conlist(FormElement)] = Field(
+        None,
+        alias="formElements",
+        description="List of nested form elements.")
+    form_conditions: Optional[conlist(FormCondition)] = Field(
+        None,
+        alias="formConditions",
+        description=
+        "Conditional logic that can dynamically modify the form as the recipient is interacting with it."
+    )
+    created: Optional[datetime] = Field(
+        None,
+        description="Created is the date the form definition was created")
+    modified: Optional[datetime] = Field(
+        None,
+        description="Modified is the last date the form definition was modified"
     )
     __properties = [
-        "created", "description", "formConditions", "formElements",
-        "formInput", "id", "modified", "name", "owner", "usedBy"
+        "id", "name", "description", "owner", "usedBy", "formInput",
+        "formElements", "formConditions", "created", "modified"
     ]
 
     class Config:
@@ -94,27 +91,6 @@ class FormDefinitionResponse(BaseModel):
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in form_conditions (list)
-        _items = []
-        if self.form_conditions:
-            for _item in self.form_conditions:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['formConditions'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in form_elements (list)
-        _items = []
-        if self.form_elements:
-            for _item in self.form_elements:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['formElements'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in form_input (list)
-        _items = []
-        if self.form_input:
-            for _item in self.form_input:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['formInput'] = _items
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -125,6 +101,27 @@ class FormDefinitionResponse(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['usedBy'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in form_input (list)
+        _items = []
+        if self.form_input:
+            for _item in self.form_input:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['formInput'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in form_elements (list)
+        _items = []
+        if self.form_elements:
+            for _item in self.form_elements:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['formElements'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in form_conditions (list)
+        _items = []
+        if self.form_conditions:
+            for _item in self.form_conditions:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['formConditions'] = _items
         return _dict
 
     @classmethod
@@ -137,33 +134,33 @@ class FormDefinitionResponse(BaseModel):
             return FormDefinitionResponse.parse_obj(obj)
 
         _obj = FormDefinitionResponse.parse_obj({
-            "created":
-            obj.get("created"),
-            "description":
-            obj.get("description"),
-            "form_conditions": [
-                FormCondition.from_dict(_item)
-                for _item in obj.get("formConditions")
-            ] if obj.get("formConditions") is not None else None,
-            "form_elements": [
-                FormElement.from_dict(_item)
-                for _item in obj.get("formElements")
-            ] if obj.get("formElements") is not None else None,
-            "form_input": [
-                FormDefinitionInput.from_dict(_item)
-                for _item in obj.get("formInput")
-            ] if obj.get("formInput") is not None else None,
             "id":
             obj.get("id"),
-            "modified":
-            obj.get("modified"),
             "name":
             obj.get("name"),
+            "description":
+            obj.get("description"),
             "owner":
             FormOwner.from_dict(obj.get("owner"))
             if obj.get("owner") is not None else None,
             "used_by":
             [FormUsedBy.from_dict(_item) for _item in obj.get("usedBy")]
-            if obj.get("usedBy") is not None else None
+            if obj.get("usedBy") is not None else None,
+            "form_input": [
+                FormDefinitionInput.from_dict(_item)
+                for _item in obj.get("formInput")
+            ] if obj.get("formInput") is not None else None,
+            "form_elements": [
+                FormElement.from_dict(_item)
+                for _item in obj.get("formElements")
+            ] if obj.get("formElements") is not None else None,
+            "form_conditions": [
+                FormCondition.from_dict(_item)
+                for _item in obj.get("formConditions")
+            ] if obj.get("formConditions") is not None else None,
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified")
         })
         return _obj

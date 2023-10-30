@@ -43,28 +43,30 @@ class TestFormInstanceResponse(unittest.TestCase):
                 expire = '2023-08-12T20:14:57.74486Z',
                 form_conditions = [
                     beta.models.form_condition.FormCondition(
-                        effects = [
-                            beta.models.condition_effect.ConditionEffect(
-                                config = {}, 
-                                effect_type = 'HIDE', )
-                            ], 
                         rule_operator = 'AND', 
                         rules = [
                             beta.models.condition_rule.ConditionRule(
-                                operator = 'EQ', 
-                                source = 'department', 
                                 source_type = 'ELEMENT', 
-                                value = Engineering, 
-                                value_type = 'STRING', )
+                                source = 'department', 
+                                operator = 'EQ', 
+                                value_type = 'STRING', 
+                                value = Engineering, )
+                            ], 
+                        effects = [
+                            beta.models.condition_effect.ConditionEffect(
+                                effect_type = 'HIDE', 
+                                config = beta.models.condition_effect_config.ConditionEffect_config(
+                                    default_value_label = 'Access to Remove', 
+                                    element = '8110662963316867', ), )
                             ], )
                     ],
                 form_data = {department=Engineering},
                 form_definition_id = '00000000-0000-0000-0000-000000000000',
                 form_elements = [
                     beta.models.form_element.FormElement(
-                        config = {label=Department}, 
-                        element_type = 'TEXT', 
                         id = '00000000-0000-0000-0000-000000000000', 
+                        element_type = 'TEXT', 
+                        config = {label=Department}, 
                         key = 'department', 
                         validations = [{validationType=REQUIRED}], )
                     ],

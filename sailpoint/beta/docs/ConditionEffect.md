@@ -1,12 +1,12 @@
 # ConditionEffect
 
-ConditionEffect is the effect produced by a condition
+Effect produced by a condition.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**config** | **Dict[str, object]** | Config is a arbitrary map that holds a configuration based on EffectType | [optional] 
-**effect_type** | **str** | EffectType is the type of effect to perform when the conditions are evaluated for this logic block HIDE ConditionEffectTypeHide  ConditionEffectTypeHide disables validations SHOW ConditionEffectTypeShow  ConditionEffectTypeShow enables validations DISABLE ConditionEffectTypeDisable  ConditionEffectTypeDisable disables validations ENABLE ConditionEffectTypeEnable  ConditionEffectTypeEnable enables validations REQUIRE ConditionEffectTypeRequire OPTIONAL ConditionEffectTypeOptional SUBMIT_MESSAGE ConditionEffectTypeSubmitMessage SUBMIT_NOTIFICATION ConditionEffectTypeSubmitNotification SET_DEFAULT_VALUE ConditionEffectTypeSetDefaultValue  ConditionEffectTypeSetDefaultValue is ignored on purpose | [optional] 
+**effect_type** | **str** | Type of effect to perform when the conditions are evaluated for this logic block. HIDE ConditionEffectTypeHide  Disables validations. SHOW ConditionEffectTypeShow  Enables validations. DISABLE ConditionEffectTypeDisable  Disables validations. ENABLE ConditionEffectTypeEnable  Enables validations. REQUIRE ConditionEffectTypeRequire OPTIONAL ConditionEffectTypeOptional SUBMIT_MESSAGE ConditionEffectTypeSubmitMessage SUBMIT_NOTIFICATION ConditionEffectTypeSubmitNotification SET_DEFAULT_VALUE ConditionEffectTypeSetDefaultValue  This value is ignored on purpose. | [optional] 
+**config** | [**ConditionEffectConfig**](ConditionEffectConfig.md) |  | [optional] 
 
 ## Example
 

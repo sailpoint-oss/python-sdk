@@ -36,8 +36,10 @@ class TestConditionEffect(unittest.TestCase):
         model = ConditionEffect()  # noqa: E501
         if include_optional:
             return ConditionEffect(
-                config = {},
-                effect_type = 'HIDE'
+                effect_type = 'HIDE',
+                config = beta.models.condition_effect_config.ConditionEffect_config(
+                    default_value_label = 'Access to Remove', 
+                    element = '8110662963316867', )
             )
         else:
             return ConditionEffect(

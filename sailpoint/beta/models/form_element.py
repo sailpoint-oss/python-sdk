@@ -24,23 +24,22 @@ class FormElement(BaseModel):
     """
     FormElement
     """
-    config: Optional[Dict[str, Dict[str, Any]]] = Field(
-        None, description="Config is a config object")
+    id: Optional[StrictStr] = Field(None,
+                                    description="Form element identifier.")
     element_type: Optional[StrictStr] = Field(
         None,
         alias="elementType",
         description=
-        "ElementType is a FormElementType value TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns"
+        "FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns"
     )
-    id: Optional[StrictStr] = Field(
-        None, description="ID is a form element identifier")
-    key: Optional[StrictStr] = Field(None,
-                                     description="Key is the technical key")
+    config: Optional[Dict[str,
+                          Dict[str,
+                               Any]]] = Field(None,
+                                              description="Config object.")
+    key: Optional[StrictStr] = Field(None, description="Technical key.")
     validations: Optional[Dict[str, Any]] = Field(
-        None,
-        description=
-        "FormElementValidationsSet is a set of FormElementValidation items")
-    __properties = ["config", "elementType", "id", "key", "validations"]
+        None, description="Set of FormElementValidation items.")
+    __properties = ["id", "elementType", "config", "key", "validations"]
 
     @validator('element_type')
     def element_type_validate_enum(cls, value):
@@ -88,9 +87,9 @@ class FormElement(BaseModel):
             return FormElement.parse_obj(obj)
 
         _obj = FormElement.parse_obj({
-            "config": obj.get("config"),
-            "element_type": obj.get("elementType"),
             "id": obj.get("id"),
+            "element_type": obj.get("elementType"),
+            "config": obj.get("config"),
             "key": obj.get("key"),
             "validations": obj.get("validations")
         })

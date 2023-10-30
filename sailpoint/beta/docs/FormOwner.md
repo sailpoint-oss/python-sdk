@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | ID is a unique identifier | [optional] 
-**type** | **str** | Type is a FormOwnerType value IDENTITY FormOwnerTypeIdentity | [optional] 
+**type** | **str** | FormOwnerType value. IDENTITY FormOwnerTypeIdentity | [optional] 
+**id** | **str** | Unique identifier of the form&#39;s owner. | [optional] 
 
 ## Example
 

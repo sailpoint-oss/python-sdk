@@ -16,26 +16,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, Optional
+from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+from beta.models.condition_effect_config import ConditionEffectConfig
 
 
 class ConditionEffect(BaseModel):
     """
-    ConditionEffect is the effect produced by a condition  # noqa: E501
+    Effect produced by a condition.  # noqa: E501
     """
-    config: Optional[Dict[str, Dict[str, Any]]] = Field(
-        None,
-        description=
-        "Config is a arbitrary map that holds a configuration based on EffectType"
-    )
     effect_type: Optional[StrictStr] = Field(
         None,
         alias="effectType",
         description=
-        "EffectType is the type of effect to perform when the conditions are evaluated for this logic block HIDE ConditionEffectTypeHide  ConditionEffectTypeHide disables validations SHOW ConditionEffectTypeShow  ConditionEffectTypeShow enables validations DISABLE ConditionEffectTypeDisable  ConditionEffectTypeDisable disables validations ENABLE ConditionEffectTypeEnable  ConditionEffectTypeEnable enables validations REQUIRE ConditionEffectTypeRequire OPTIONAL ConditionEffectTypeOptional SUBMIT_MESSAGE ConditionEffectTypeSubmitMessage SUBMIT_NOTIFICATION ConditionEffectTypeSubmitNotification SET_DEFAULT_VALUE ConditionEffectTypeSetDefaultValue  ConditionEffectTypeSetDefaultValue is ignored on purpose"
+        "Type of effect to perform when the conditions are evaluated for this logic block. HIDE ConditionEffectTypeHide  Disables validations. SHOW ConditionEffectTypeShow  Enables validations. DISABLE ConditionEffectTypeDisable  Disables validations. ENABLE ConditionEffectTypeEnable  Enables validations. REQUIRE ConditionEffectTypeRequire OPTIONAL ConditionEffectTypeOptional SUBMIT_MESSAGE ConditionEffectTypeSubmitMessage SUBMIT_NOTIFICATION ConditionEffectTypeSubmitNotification SET_DEFAULT_VALUE ConditionEffectTypeSetDefaultValue  This value is ignored on purpose."
     )
-    __properties = ["config", "effectType"]
+    config: Optional[ConditionEffectConfig] = None
+    __properties = ["effectType", "config"]
 
     @validator('effect_type')
     def effect_type_validate_enum(cls, value):
@@ -72,6 +69,9 @@ class ConditionEffect(BaseModel):
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of config
+        if self.config:
+            _dict['config'] = self.config.to_dict()
         return _dict
 
     @classmethod
@@ -84,7 +84,10 @@ class ConditionEffect(BaseModel):
             return ConditionEffect.parse_obj(obj)
 
         _obj = ConditionEffect.parse_obj({
-            "config": obj.get("config"),
-            "effect_type": obj.get("effectType")
+            "effect_type":
+            obj.get("effectType"),
+            "config":
+            ConditionEffectConfig.from_dict(obj.get("config"))
+            if obj.get("config") is not None else None
         })
         return _obj

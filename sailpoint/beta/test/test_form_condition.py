@@ -36,19 +36,21 @@ class TestFormCondition(unittest.TestCase):
         model = FormCondition()  # noqa: E501
         if include_optional:
             return FormCondition(
-                effects = [
-                    beta.models.condition_effect.ConditionEffect(
-                        config = {}, 
-                        effect_type = 'HIDE', )
-                    ],
                 rule_operator = 'AND',
                 rules = [
                     beta.models.condition_rule.ConditionRule(
-                        operator = 'EQ', 
-                        source = 'department', 
                         source_type = 'ELEMENT', 
-                        value = Engineering, 
-                        value_type = 'STRING', )
+                        source = 'department', 
+                        operator = 'EQ', 
+                        value_type = 'STRING', 
+                        value = Engineering, )
+                    ],
+                effects = [
+                    beta.models.condition_effect.ConditionEffect(
+                        effect_type = 'HIDE', 
+                        config = beta.models.condition_effect_config.ConditionEffect_config(
+                            default_value_label = 'Access to Remove', 
+                            element = '8110662963316867', ), )
                     ]
             )
         else:

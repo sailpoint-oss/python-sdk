@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | **int** | Count number of Results | [optional] 
-**results** | [**List[FormDefinitionResponse]**](FormDefinitionResponse.md) | Results holds a list of FormDefinitionResponse items | [optional] 
+**count** | **int** | Count number of results. | [optional] 
+**results** | [**List[FormDefinitionResponse]**](FormDefinitionResponse.md) | List of FormDefinitionResponse items. | [optional] 
 
 ## Example
 

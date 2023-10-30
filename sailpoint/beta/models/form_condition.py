@@ -24,19 +24,19 @@ from beta.models.condition_rule import ConditionRule
 
 class FormCondition(BaseModel):
     """
-    FormCondition represent a form conditional  # noqa: E501
+    Represent a form conditional.  # noqa: E501
     """
-    effects: Optional[conlist(ConditionEffect)] = Field(
-        None, description="Effects is a list of effects")
     rule_operator: Optional[StrictStr] = Field(
         None,
         alias="ruleOperator",
         description=
-        "RuleOperator is a ConditionRuleLogicalOperatorType value AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr"
+        "ConditionRuleLogicalOperatorType value. AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr"
     )
     rules: Optional[conlist(ConditionRule)] = Field(
-        None, description="Rules is a list of rules")
-    __properties = ["effects", "ruleOperator", "rules"]
+        None, description="List of rules.")
+    effects: Optional[conlist(ConditionEffect)] = Field(
+        None, description="List of effects.")
+    __properties = ["ruleOperator", "rules", "effects"]
 
     @validator('rule_operator')
     def rule_operator_validate_enum(cls, value):
@@ -69,13 +69,6 @@ class FormCondition(BaseModel):
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of each item in effects (list)
-        _items = []
-        if self.effects:
-            for _item in self.effects:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['effects'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in rules (list)
         _items = []
         if self.rules:
@@ -83,6 +76,13 @@ class FormCondition(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['rules'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in effects (list)
+        _items = []
+        if self.effects:
+            for _item in self.effects:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['effects'] = _items
         return _dict
 
     @classmethod
@@ -95,13 +95,13 @@ class FormCondition(BaseModel):
             return FormCondition.parse_obj(obj)
 
         _obj = FormCondition.parse_obj({
-            "effects":
-            [ConditionEffect.from_dict(_item) for _item in obj.get("effects")]
-            if obj.get("effects") is not None else None,
             "rule_operator":
             obj.get("ruleOperator"),
             "rules":
             [ConditionRule.from_dict(_item) for _item in obj.get("rules")]
-            if obj.get("rules") is not None else None
+            if obj.get("rules") is not None else None,
+            "effects":
+            [ConditionEffect.from_dict(_item) for _item in obj.get("effects")]
+            if obj.get("effects") is not None else None
         })
         return _obj

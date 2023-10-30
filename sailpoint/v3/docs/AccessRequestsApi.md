@@ -255,7 +255,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_access_request_status**
-> List[RequestedItemStatus] list_access_request_status(requested_for=requested_for, requested_by=requested_by, regarding_identity=regarding_identity, count=count, limit=limit, offset=offset, filters=filters, sorters=sorters)
+> List[RequestedItemStatus] list_access_request_status(requested_for=requested_for, requested_by=requested_by, regarding_identity=regarding_identity, assigned_to=assigned_to, count=count, limit=limit, offset=offset, filters=filters, sorters=sorters)
 
 Access Request Status
 
@@ -295,6 +295,7 @@ with v3.ApiClient(configuration) as api_client:
     requested_for = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     requested_by = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     regarding_identity = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional)
+    assigned_to = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user. (optional)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored. (optional) (default to False)
     limit = 250 # int | Max number of results to return. (optional) (default to 250)
     offset = 10 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
@@ -303,7 +304,7 @@ with v3.ApiClient(configuration) as api_client:
 
     try:
         # Access Request Status
-        api_response = api_instance.list_access_request_status(requested_for=requested_for, requested_by=requested_by, regarding_identity=regarding_identity, count=count, limit=limit, offset=offset, filters=filters, sorters=sorters)
+        api_response = api_instance.list_access_request_status(requested_for=requested_for, requested_by=requested_by, regarding_identity=regarding_identity, assigned_to=assigned_to, count=count, limit=limit, offset=offset, filters=filters, sorters=sorters)
         print("The response of AccessRequestsApi->list_access_request_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -319,6 +320,7 @@ Name | Type | Description  | Notes
  **requested_for** | **str**| Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*. | [optional] 
  **requested_by** | **str**| Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. | [optional] 
  **regarding_identity** | **str**| Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. | [optional] 
+ **assigned_to** | **str**| Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user. | [optional] 
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored. | [optional] [default to False]
  **limit** | **int**| Max number of results to return. | [optional] [default to 250]
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. | [optional] 

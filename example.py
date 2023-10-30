@@ -1,15 +1,10 @@
-import time
-import os
 import sailpoint
+import sailpoint.v3
+import sailpoint.beta
 from sailpoint.configuration import Configuration
-from sailpoint.v3.models.transform_read import TransformRead
-from sailpoint.v3.rest import ApiException
-from pprint import pprint
-from sailpoint.cc.api_client import ApiClient
-from sailpoint.cc.api.accounts_api import AccountsApi
-from sailpoint.cc.api.connectors_api import ConnectorsApi
 from sailpoint.paginator import Paginator
 from sailpoint.v3.models.search import Search
+from pprint import pprint
 
 configuration = Configuration()
     

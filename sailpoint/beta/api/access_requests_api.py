@@ -645,6 +645,13 @@ class AccessRequestsApi:
                 description=
                 "Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*."
             )] = None,
+            assigned_to:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user."
+            )] = None,
             count:
         Annotated[
             Optional[StrictBool],
@@ -683,7 +690,7 @@ class AccessRequestsApi:
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_access_request_status(requested_for, requested_by, regarding_identity, count, limit, offset, filters, sorters, async_req=True)
+        >>> thread = api.list_access_request_status(requested_for, requested_by, regarding_identity, assigned_to, count, limit, offset, filters, sorters, async_req=True)
         >>> result = thread.get()
 
         :param requested_for: Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
@@ -692,6 +699,8 @@ class AccessRequestsApi:
         :type requested_by: str
         :param regarding_identity: Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
         :type regarding_identity: str
+        :param assigned_to: Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user.
+        :type assigned_to: str
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
         :type count: bool
         :param limit: Max number of results to return.
@@ -718,8 +727,8 @@ class AccessRequestsApi:
             message = "Error! Please call the list_access_request_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
         return self.list_access_request_status_with_http_info(
-            requested_for, requested_by, regarding_identity, count, limit,
-            offset, filters, sorters, **kwargs)  # noqa: E501
+            requested_for, requested_by, regarding_identity, assigned_to,
+            count, limit, offset, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
     def list_access_request_status_with_http_info(
@@ -744,6 +753,13 @@ class AccessRequestsApi:
             Field(
                 description=
                 "Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*."
+            )] = None,
+            assigned_to:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user."
             )] = None,
             count:
         Annotated[
@@ -783,7 +799,7 @@ class AccessRequestsApi:
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_access_request_status_with_http_info(requested_for, requested_by, regarding_identity, count, limit, offset, filters, sorters, async_req=True)
+        >>> thread = api.list_access_request_status_with_http_info(requested_for, requested_by, regarding_identity, assigned_to, count, limit, offset, filters, sorters, async_req=True)
         >>> result = thread.get()
 
         :param requested_for: Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*.
@@ -792,6 +808,8 @@ class AccessRequestsApi:
         :type requested_by: str
         :param regarding_identity: Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.
         :type regarding_identity: str
+        :param assigned_to: Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user.
+        :type assigned_to: str
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
         :type count: bool
         :param limit: Max number of results to return.
@@ -830,8 +848,8 @@ class AccessRequestsApi:
         _params = locals()
 
         _all_params = [
-            'requested_for', 'requested_by', 'regarding_identity', 'count',
-            'limit', 'offset', 'filters', 'sorters'
+            'requested_for', 'requested_by', 'regarding_identity',
+            'assigned_to', 'count', 'limit', 'offset', 'filters', 'sorters'
         ]
         _all_params.extend([
             'async_req', '_return_http_data_only', '_preload_content',
@@ -863,6 +881,9 @@ class AccessRequestsApi:
         if _params.get('regarding_identity') is not None:  # noqa: E501
             _query_params.append(
                 ('regarding-identity', _params['regarding_identity']))
+
+        if _params.get('assigned_to') is not None:  # noqa: E501
+            _query_params.append(('assigned-to', _params['assigned_to']))
 
         if _params.get('count') is not None:  # noqa: E501
             _query_params.append(('count', _params['count']))

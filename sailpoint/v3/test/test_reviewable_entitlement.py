@@ -54,6 +54,19 @@ class TestReviewableEntitlement(unittest.TestCase):
                 is_permission = False,
                 revocable = True,
                 cloud_governed = False,
+                contains_data_access = True,
+                data_access = v3.models.data_access.DataAccess(
+                    policies = [
+                        v3.models.data_access_policies_inner.DataAccess_policies_inner(
+                            value = 'GDPR-20', )
+                        ], 
+                    categories = [
+                        v3.models.data_access_categories_inner.DataAccess_categories_inner(
+                            value = 'email-7', 
+                            match_count = 10, )
+                        ], 
+                    impact_score = v3.models.data_access_impact_score.DataAccess_impactScore(
+                        value = 'Medium', ), ),
                 account = v3.models.reviewable_entitlement_account.ReviewableEntitlement_account(
                     native_identity = 'CN=Alison Ferguso', 
                     disabled = False, 

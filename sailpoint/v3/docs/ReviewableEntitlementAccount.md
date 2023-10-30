@@ -6,8 +6,8 @@ Information about the status of the entitlement
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **native_identity** | **str** | The native identity for this account | [optional] 
-**disabled** | **bool** | Indicates whether this account is currently disabled | [optional] 
-**locked** | **bool** | Indicates whether this account is currently locked | [optional] 
+**disabled** | **bool** | Indicates whether this account is currently disabled | [optional] [default to False]
+**locked** | **bool** | Indicates whether this account is currently locked | [optional] [default to False]
 **type** | [**DtoType**](DtoType.md) |  | [optional] 
 **id** | **str** | The id associated with the account | [optional] 
 **name** | **str** | The account name | [optional] 

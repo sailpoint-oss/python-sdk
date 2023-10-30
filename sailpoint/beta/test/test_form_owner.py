@@ -36,8 +36,8 @@ class TestFormOwner(unittest.TestCase):
         model = FormOwner()  # noqa: E501
         if include_optional:
             return FormOwner(
-                id = '00000000-0000-0000-0000-000000000000',
-                type = 'IDENTITY'
+                type = 'IDENTITY',
+                id = '00000000-0000-0000-0000-000000000000'
             )
         else:
             return FormOwner(
