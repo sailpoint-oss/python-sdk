@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identity** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**identity** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **preview_attributes** | [**List[IdentityAttributePreview]**](IdentityAttributePreview.md) |  | [optional] 
 
 ## Example

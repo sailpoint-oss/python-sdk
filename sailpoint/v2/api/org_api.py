@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -26,7 +27,9 @@ from v2.models.update_org_settings_request import UpdateOrgSettingsRequest
 from v2.api_client import ApiClient
 from v2.api_response import ApiResponse
 from v2.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class OrgApi:
@@ -42,8 +45,7 @@ class OrgApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_org_settings(self,
-                         **kwargs) -> GetOrgSettings200Response:  # noqa: E501
+    def get_org_settings(self, **kwargs) -> GetOrgSettings200Response:  # noqa: E501
         """Retrieves your org settings.  # noqa: E501
 
         Retrieves information and operational settings for your org (as determined by the URL domain).  # noqa: E501
@@ -71,8 +73,7 @@ class OrgApi:
         return self.get_org_settings_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_org_settings_with_http_info(self,
-                                        **kwargs) -> ApiResponse:  # noqa: E501
+    def get_org_settings_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieves your org settings.  # noqa: E501
 
         Retrieves information and operational settings for your org (as determined by the URL domain).  # noqa: E501
@@ -109,17 +110,27 @@ class OrgApi:
 
         _params = locals()
 
-        _all_params = []
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_org_settings" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_org_settings" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -149,8 +160,7 @@ class OrgApi:
         }
 
         return self.api_client.call_api(
-            '/org',
-            'GET',
+            '/org', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -160,19 +170,14 @@ class OrgApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_org_settings(
-            self, update_org_settings_request: Annotated[
-                UpdateOrgSettingsRequest,
-                Field(..., description="Org settings to update.")],
-            **kwargs) -> GetOrgSettings200Response:  # noqa: E501
+    def update_org_settings(self, update_org_settings_request : Annotated[UpdateOrgSettingsRequest, Field(..., description="Org settings to update.")], **kwargs) -> GetOrgSettings200Response:  # noqa: E501
         """Updates one or more org attributes.  # noqa: E501
 
         Updates one or more attributes for your org.  # noqa: E501
@@ -199,15 +204,10 @@ class OrgApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_org_settings_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_org_settings_with_http_info(
-            update_org_settings_request, **kwargs)  # noqa: E501
+        return self.update_org_settings_with_http_info(update_org_settings_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_org_settings_with_http_info(
-            self, update_org_settings_request: Annotated[
-                UpdateOrgSettingsRequest,
-                Field(..., description="Org settings to update.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def update_org_settings_with_http_info(self, update_org_settings_request : Annotated[UpdateOrgSettingsRequest, Field(..., description="Org settings to update.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Updates one or more org attributes.  # noqa: E501
 
         Updates one or more attributes for your org.  # noqa: E501
@@ -246,17 +246,28 @@ class OrgApi:
 
         _params = locals()
 
-        _all_params = ['update_org_settings_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'update_org_settings_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_org_settings" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_org_settings" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -282,11 +293,11 @@ class OrgApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = []  # noqa: E501
@@ -296,8 +307,7 @@ class OrgApi:
         }
 
         return self.api_client.call_api(
-            '/org',
-            'PATCH',
+            '/org', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -307,8 +317,7 @@ class OrgApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

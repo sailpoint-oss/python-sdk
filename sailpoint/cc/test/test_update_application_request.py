@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from cc.models.update_application_request import UpdateApplicationRequest  # noqa: E501
-
 
 class TestUpdateApplicationRequest(unittest.TestCase):
     """UpdateApplicationRequest unit test stubs"""
@@ -47,7 +47,6 @@ class TestUpdateApplicationRequest(unittest.TestCase):
         """Test UpdateApplicationRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

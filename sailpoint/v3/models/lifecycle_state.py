@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -22,49 +23,22 @@ from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 from v3.models.account_action import AccountAction
 from v3.models.email_notification_option import EmailNotificationOption
 
-
 class LifecycleState(BaseModel):
     """
     LifecycleState
     """
-    id: Optional[StrictStr] = Field(
-        None, description="System-generated unique ID of the Object")
+    id: Optional[StrictStr] = Field(None, description="System-generated unique ID of the Object")
     name: StrictStr = Field(..., description="Name of the Object")
-    created: Optional[datetime] = Field(
-        None, description="Creation date of the Object")
-    modified: Optional[datetime] = Field(
-        None, description="Last modification date of the Object")
-    enabled: Optional[StrictBool] = Field(
-        None,
-        description="Whether the lifecycle state is enabled or disabled.")
-    technical_name: StrictStr = Field(
-        ...,
-        alias="technicalName",
-        description=
-        "The technical name for lifecycle state. This is for internal use.")
-    description: Optional[StrictStr] = Field(
-        None, description="Lifecycle state description.")
-    identity_count: Optional[StrictInt] = Field(
-        None,
-        alias="identityCount",
-        description="Number of identities that have the lifecycle state.")
-    email_notification_option: Optional[EmailNotificationOption] = Field(
-        None, alias="emailNotificationOption")
-    account_actions: Optional[conlist(AccountAction)] = Field(
-        None, alias="accountActions")
-    access_profile_ids: Optional[conlist(
-        StrictStr, unique_items=True
-    )] = Field(
-        None,
-        alias="accessProfileIds",
-        description=
-        "List of unique access-profile IDs that are associated with the lifecycle state."
-    )
-    __properties = [
-        "id", "name", "created", "modified", "enabled", "technicalName",
-        "description", "identityCount", "emailNotificationOption",
-        "accountActions", "accessProfileIds"
-    ]
+    created: Optional[datetime] = Field(None, description="Creation date of the Object")
+    modified: Optional[datetime] = Field(None, description="Last modification date of the Object")
+    enabled: Optional[StrictBool] = Field(None, description="Whether the lifecycle state is enabled or disabled.")
+    technical_name: StrictStr = Field(..., alias="technicalName", description="The technical name for lifecycle state. This is for internal use.")
+    description: Optional[StrictStr] = Field(None, description="Lifecycle state description.")
+    identity_count: Optional[StrictInt] = Field(None, alias="identityCount", description="Number of identities that have the lifecycle state.")
+    email_notification_option: Optional[EmailNotificationOption] = Field(None, alias="emailNotificationOption")
+    account_actions: Optional[conlist(AccountAction)] = Field(None, alias="accountActions")
+    access_profile_ids: Optional[conlist(StrictStr, unique_items=True)] = Field(None, alias="accessProfileIds", description="List of unique access-profile IDs that are associated with the lifecycle state.")
+    __properties = ["id", "name", "created", "modified", "enabled", "technicalName", "description", "identityCount", "emailNotificationOption", "accountActions", "accessProfileIds"]
 
     class Config:
         """Pydantic configuration"""
@@ -88,17 +62,15 @@ class LifecycleState(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "id",
-                              "created",
-                              "modified",
-                              "identity_count",
+                            "id",
+                            "created",
+                            "modified",
+                            "identity_count",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of email_notification_option
         if self.email_notification_option:
-            _dict[
-                'emailNotificationOption'] = self.email_notification_option.to_dict(
-                )
+            _dict['emailNotificationOption'] = self.email_notification_option.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in account_actions (list)
         _items = []
         if self.account_actions:
@@ -118,31 +90,18 @@ class LifecycleState(BaseModel):
             return LifecycleState.parse_obj(obj)
 
         _obj = LifecycleState.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "enabled":
-            obj.get("enabled"),
-            "technical_name":
-            obj.get("technicalName"),
-            "description":
-            obj.get("description"),
-            "identity_count":
-            obj.get("identityCount"),
-            "email_notification_option":
-            EmailNotificationOption.from_dict(
-                obj.get("emailNotificationOption"))
-            if obj.get("emailNotificationOption") is not None else None,
-            "account_actions": [
-                AccountAction.from_dict(_item)
-                for _item in obj.get("accountActions")
-            ] if obj.get("accountActions") is not None else None,
-            "access_profile_ids":
-            obj.get("accessProfileIds")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "enabled": obj.get("enabled"),
+            "technical_name": obj.get("technicalName"),
+            "description": obj.get("description"),
+            "identity_count": obj.get("identityCount"),
+            "email_notification_option": EmailNotificationOption.from_dict(obj.get("emailNotificationOption")) if obj.get("emailNotificationOption") is not None else None,
+            "account_actions": [AccountAction.from_dict(_item) for _item in obj.get("accountActions")] if obj.get("accountActions") is not None else None,
+            "access_profile_ids": obj.get("accessProfileIds")
         })
         return _obj
+
+

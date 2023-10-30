@@ -11,27 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List
 from pydantic import BaseModel, Field, conlist
 from beta.models.identity_attributes_changed_changes_inner import IdentityAttributesChangedChangesInner
 from beta.models.identity_attributes_changed_identity import IdentityAttributesChangedIdentity
 
-
 class IdentityAttributesChanged(BaseModel):
     """
     IdentityAttributesChanged
     """
     identity: IdentityAttributesChangedIdentity = Field(...)
-    changes: conlist(IdentityAttributesChangedChangesInner) = Field(
-        ...,
-        description=
-        "A list of one or more identity attributes that changed on the identity."
-    )
+    changes: conlist(IdentityAttributesChangedChangesInner) = Field(..., description="A list of one or more identity attributes that changed on the identity.")
     __properties = ["identity", "changes"]
 
     class Config:
@@ -54,7 +51,10 @@ class IdentityAttributesChanged(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of identity
         if self.identity:
             _dict['identity'] = self.identity.to_dict()
@@ -77,12 +77,9 @@ class IdentityAttributesChanged(BaseModel):
             return IdentityAttributesChanged.parse_obj(obj)
 
         _obj = IdentityAttributesChanged.parse_obj({
-            "identity":
-            IdentityAttributesChangedIdentity.from_dict(obj.get("identity"))
-            if obj.get("identity") is not None else None,
-            "changes": [
-                IdentityAttributesChangedChangesInner.from_dict(_item)
-                for _item in obj.get("changes")
-            ] if obj.get("changes") is not None else None
+            "identity": IdentityAttributesChangedIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
+            "changes": [IdentityAttributesChangedChangesInner.from_dict(_item) for _item in obj.get("changes")] if obj.get("changes") is not None else None
         })
         return _obj
+
+

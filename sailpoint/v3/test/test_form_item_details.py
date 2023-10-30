@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.form_item_details import FormItemDetails  # noqa: E501
-
 
 class TestFormItemDetails(unittest.TestCase):
     """FormItemDetails unit test stubs"""
@@ -47,7 +47,6 @@ class TestFormItemDetails(unittest.TestCase):
         """Test FormItemDetails"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

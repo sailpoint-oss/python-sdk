@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class DeleteNonEmployeeRecordInBulkRequest(BaseModel):
     """
     DeleteNonEmployeeRecordInBulkRequest
     """
-    ids: conlist(StrictStr) = Field(...,
-                                    description="List of non-employee ids.")
+    ids: conlist(StrictStr) = Field(..., description="List of non-employee ids.")
     __properties = ["ids"]
 
     class Config:
@@ -48,7 +48,10 @@ class DeleteNonEmployeeRecordInBulkRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -60,6 +63,9 @@ class DeleteNonEmployeeRecordInBulkRequest(BaseModel):
         if not isinstance(obj, dict):
             return DeleteNonEmployeeRecordInBulkRequest.parse_obj(obj)
 
-        _obj = DeleteNonEmployeeRecordInBulkRequest.parse_obj(
-            {"ids": obj.get("ids")})
+        _obj = DeleteNonEmployeeRecordInBulkRequest.parse_obj({
+            "ids": obj.get("ids")
+        })
         return _obj
+
+

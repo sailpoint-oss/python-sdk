@@ -11,23 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
-
 
 class ManagedClusterRedis(BaseModel):
     """
     Managed Cluster Redis Configuration  # noqa: E501
     """
-    redis_host: Optional[StrictStr] = Field(
-        None, alias="redisHost", description="ManagedCluster redisHost")
-    redis_port: Optional[StrictInt] = Field(
-        None, alias="redisPort", description="ManagedCluster redisPort")
+    redis_host: Optional[StrictStr] = Field(None, alias="redisHost", description="ManagedCluster redisHost")
+    redis_port: Optional[StrictInt] = Field(None, alias="redisPort", description="ManagedCluster redisPort")
     __properties = ["redisHost", "redisPort"]
 
     class Config:
@@ -50,7 +49,10 @@ class ManagedClusterRedis(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,3 +69,5 @@ class ManagedClusterRedis(BaseModel):
             "redis_port": obj.get("redisPort")
         })
         return _obj
+
+

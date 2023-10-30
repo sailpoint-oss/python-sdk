@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.account_source import AccountSource  # noqa: E501
-
 
 class TestAccountSource(unittest.TestCase):
     """AccountSource unit test stubs"""
@@ -49,7 +49,6 @@ class TestAccountSource(unittest.TestCase):
         """Test AccountSource"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,20 +22,15 @@ from datetime import datetime
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.source_updated_actor import SourceUpdatedActor
 
-
 class SourceUpdated(BaseModel):
     """
     SourceUpdated
     """
     id: StrictStr = Field(..., description="The unique ID of the source.")
-    name: StrictStr = Field(
-        ..., description="The user friendly name of the source.")
-    type: StrictStr = Field(...,
-                            description="The connection type of the source.")
-    modified: datetime = Field(
-        ..., description="The date and time the source was modified.")
-    connector: StrictStr = Field(
-        ..., description="The connector type used to connect to the source.")
+    name: StrictStr = Field(..., description="The user friendly name of the source.")
+    type: StrictStr = Field(..., description="The connection type of the source.")
+    modified: datetime = Field(..., description="The date and time the source was modified.")
+    connector: StrictStr = Field(..., description="The connector type used to connect to the source.")
     actor: SourceUpdatedActor = Field(...)
     __properties = ["id", "name", "type", "modified", "connector", "actor"]
 
@@ -58,7 +54,10 @@ class SourceUpdated(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of actor
         if self.actor:
             _dict['actor'] = self.actor.to_dict()
@@ -74,18 +73,13 @@ class SourceUpdated(BaseModel):
             return SourceUpdated.parse_obj(obj)
 
         _obj = SourceUpdated.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("type"),
-            "modified":
-            obj.get("modified"),
-            "connector":
-            obj.get("connector"),
-            "actor":
-            SourceUpdatedActor.from_dict(obj.get("actor"))
-            if obj.get("actor") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "modified": obj.get("modified"),
+            "connector": obj.get("connector"),
+            "actor": SourceUpdatedActor.from_dict(obj.get("actor")) if obj.get("actor") is not None else None
         })
         return _obj
+
+

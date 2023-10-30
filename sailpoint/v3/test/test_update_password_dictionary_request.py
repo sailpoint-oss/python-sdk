@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.update_password_dictionary_request import UpdatePasswordDictionaryRequest  # noqa: E501
-
 
 class TestUpdatePasswordDictionaryRequest(unittest.TestCase):
     """UpdatePasswordDictionaryRequest unit test stubs"""
@@ -26,8 +26,7 @@ class TestUpdatePasswordDictionaryRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> UpdatePasswordDictionaryRequest:
+    def make_instance(self, include_optional) -> UpdatePasswordDictionaryRequest:
         """Test UpdatePasswordDictionaryRequest
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -48,7 +47,6 @@ class TestUpdatePasswordDictionaryRequest(unittest.TestCase):
         """Test UpdatePasswordDictionaryRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

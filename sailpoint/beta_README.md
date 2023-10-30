@@ -213,18 +213,22 @@ Class | Method | HTTP request | Description
 *IAIRoleMiningApi* | [**export_role_mining_potential_role**](beta/docs/IAIRoleMiningApi.md#export_role_mining_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export | Export (download) details for a potential role in a role mining session
 *IAIRoleMiningApi* | [**export_role_mining_potential_role_async**](beta/docs/IAIRoleMiningApi.md#export_role_mining_potential_role_async) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async | Asynchronously export details for a potential role in a role mining session and upload to S3
 *IAIRoleMiningApi* | [**export_role_mining_potential_role_status**](beta/docs/IAIRoleMiningApi.md#export_role_mining_potential_role_status) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId} | Retrieve status of a potential role export job
+*IAIRoleMiningApi* | [**get_all_potential_role_summaries**](beta/docs/IAIRoleMiningApi.md#get_all_potential_role_summaries) | **GET** /role-mining-potential-roles | Retrieves all potential role summaries
 *IAIRoleMiningApi* | [**get_entitlement_distribution_potential_role**](beta/docs/IAIRoleMiningApi.md#get_entitlement_distribution_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularity-distribution | Retrieves entitlement popularity distribution for a potential role in a role mining session
 *IAIRoleMiningApi* | [**get_entitlements_potential_role**](beta/docs/IAIRoleMiningApi.md#get_entitlements_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities | Retrieves entitlements for a potential role in a role mining session
 *IAIRoleMiningApi* | [**get_excluded_entitlements_potential_role**](beta/docs/IAIRoleMiningApi.md#get_excluded_entitlements_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements | Retrieves excluded entitlements for a potential role in a role mining session
 *IAIRoleMiningApi* | [**get_identities_potential_role**](beta/docs/IAIRoleMiningApi.md#get_identities_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
 *IAIRoleMiningApi* | [**get_potential_role**](beta/docs/IAIRoleMiningApi.md#get_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
 *IAIRoleMiningApi* | [**get_potential_role_applications**](beta/docs/IAIRoleMiningApi.md#get_potential_role_applications) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
+*IAIRoleMiningApi* | [**get_potential_role_source_identity_usage**](beta/docs/IAIRoleMiningApi.md#get_potential_role_source_identity_usage) | **GET** /role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage | Retrieves potential role source usage
 *IAIRoleMiningApi* | [**get_potential_role_summaries**](beta/docs/IAIRoleMiningApi.md#get_potential_role_summaries) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
+*IAIRoleMiningApi* | [**get_role_mining_potential_role**](beta/docs/IAIRoleMiningApi.md#get_role_mining_potential_role) | **GET** /role-mining-potential-roles/{potentialRoleId} | Retrieves a specific potential role
 *IAIRoleMiningApi* | [**get_role_mining_session**](beta/docs/IAIRoleMiningApi.md#get_role_mining_session) | **GET** /role-mining-sessions/{sessionId} | Get a role mining session
 *IAIRoleMiningApi* | [**get_role_mining_session_status**](beta/docs/IAIRoleMiningApi.md#get_role_mining_session_status) | **GET** /role-mining-sessions/{sessionId}/status | Get role mining session status state
 *IAIRoleMiningApi* | [**get_role_mining_sessions**](beta/docs/IAIRoleMiningApi.md#get_role_mining_sessions) | **GET** /role-mining-sessions | Retrieves all role mining sessions
-*IAIRoleMiningApi* | [**get_saved_roles**](beta/docs/IAIRoleMiningApi.md#get_saved_roles) | **GET** /role-mining-sessions/{sessionId}/potential-roles/draft-roles | Retrieves all draft roles
+*IAIRoleMiningApi* | [**get_saved_potential_roles**](beta/docs/IAIRoleMiningApi.md#get_saved_potential_roles) | **GET** /role-mining-potential-roles/saved | Retrieves all saved potential roles
 *IAIRoleMiningApi* | [**patch_potential_role**](beta/docs/IAIRoleMiningApi.md#patch_potential_role) | **PATCH** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
+*IAIRoleMiningApi* | [**patch_potential_role_0**](beta/docs/IAIRoleMiningApi.md#patch_potential_role_0) | **PATCH** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
 *IAIRoleMiningApi* | [**patch_role_mining_session**](beta/docs/IAIRoleMiningApi.md#patch_role_mining_session) | **PATCH** /role-mining-sessions/{sessionId} | Patch a role mining session
 *IAIRoleMiningApi* | [**update_entitlements_potential_role**](beta/docs/IAIRoleMiningApi.md#update_entitlements_potential_role) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 *IdentitiesApi* | [**delete_identity**](beta/docs/IdentitiesApi.md#delete_identity) | **DELETE** /identities/{id} | Deletes an identity.
@@ -263,8 +267,11 @@ Class | Method | HTTP request | Description
 *IdentityProfilesApi* | [**update_identity_profile**](beta/docs/IdentityProfilesApi.md#update_identity_profile) | **PATCH** /identity-profiles/{identity-profile-id} | Update the Identity Profile
 *LifecycleStatesApi* | [**list_lifecycle_states**](beta/docs/LifecycleStatesApi.md#list_lifecycle_states) | **GET** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Lifecycle State
 *LifecycleStatesApi* | [**update_lifecycle_states**](beta/docs/LifecycleStatesApi.md#update_lifecycle_states) | **PATCH** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
-*MFAConfigurationApi* | [**get_mfa_config**](beta/docs/MFAConfigurationApi.md#get_mfa_config) | **GET** /mfa/{method}/config | Configuration of a MFA method
-*MFAConfigurationApi* | [**set_mfa_config**](beta/docs/MFAConfigurationApi.md#set_mfa_config) | **PUT** /mfa/{method}/config | Set MFA method configuration
+*MFAConfigurationApi* | [**delete_mfa_config**](beta/docs/MFAConfigurationApi.md#delete_mfa_config) | **DELETE** /mfa/{method}/delete | Delete MFA method configuration
+*MFAConfigurationApi* | [**get_mfa_duo_config**](beta/docs/MFAConfigurationApi.md#get_mfa_duo_config) | **GET** /mfa/duo-web/config | Configuration of Duo MFA method
+*MFAConfigurationApi* | [**get_mfa_okta_config**](beta/docs/MFAConfigurationApi.md#get_mfa_okta_config) | **GET** /mfa/okta-verify/config | Configuration of Okta MFA method
+*MFAConfigurationApi* | [**set_mfa_duo_config**](beta/docs/MFAConfigurationApi.md#set_mfa_duo_config) | **PUT** /mfa/duo-web/config | Set Duo MFA configuration
+*MFAConfigurationApi* | [**set_mfa_okta_config**](beta/docs/MFAConfigurationApi.md#set_mfa_okta_config) | **PUT** /mfa/okta-verify/config | Set Okta MFA configuration
 *MFAConfigurationApi* | [**test_mfa_config**](beta/docs/MFAConfigurationApi.md#test_mfa_config) | **GET** /mfa/{method}/test | MFA method&#39;s test configuration
 *ManagedClientsApi* | [**get_managed_client_status**](beta/docs/ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Specified Managed Client Status.
 *ManagedClientsApi* | [**update_managed_client_status**](beta/docs/ManagedClientsApi.md#update_managed_client_status) | **POST** /managed-clients/{id}/status | Handle status request from client
@@ -886,8 +893,9 @@ Class | Method | HTTP request | Description
  - [Medium](beta/docs/Medium.md)
  - [MessageCatalogDto](beta/docs/MessageCatalogDto.md)
  - [MetricResponse](beta/docs/MetricResponse.md)
- - [MfaConfig](beta/docs/MfaConfig.md)
  - [MfaConfigTestResponse](beta/docs/MfaConfigTestResponse.md)
+ - [MfaDuoConfig](beta/docs/MfaDuoConfig.md)
+ - [MfaOktaConfig](beta/docs/MfaOktaConfig.md)
  - [ModelSchema](beta/docs/ModelSchema.md)
  - [MultiPolicyRequest](beta/docs/MultiPolicyRequest.md)
  - [NativeChangeDetectionConfig](beta/docs/NativeChangeDetectionConfig.md)
@@ -1036,14 +1044,17 @@ Class | Method | HTTP request | Description
  - [RoleMiningPotentialRoleProvisionRequest](beta/docs/RoleMiningPotentialRoleProvisionRequest.md)
  - [RoleMiningPotentialRoleProvisionState](beta/docs/RoleMiningPotentialRoleProvisionState.md)
  - [RoleMiningPotentialRoleRef](beta/docs/RoleMiningPotentialRoleRef.md)
+ - [RoleMiningPotentialRoleSourceUsage](beta/docs/RoleMiningPotentialRoleSourceUsage.md)
  - [RoleMiningPotentialRoleSummary](beta/docs/RoleMiningPotentialRoleSummary.md)
  - [RoleMiningRoleType](beta/docs/RoleMiningRoleType.md)
  - [RoleMiningSessionDraftRoleDto](beta/docs/RoleMiningSessionDraftRoleDto.md)
  - [RoleMiningSessionDto](beta/docs/RoleMiningSessionDto.md)
+ - [RoleMiningSessionDtoCreatedBy](beta/docs/RoleMiningSessionDtoCreatedBy.md)
  - [RoleMiningSessionParametersDto](beta/docs/RoleMiningSessionParametersDto.md)
  - [RoleMiningSessionResponse](beta/docs/RoleMiningSessionResponse.md)
  - [RoleMiningSessionScope](beta/docs/RoleMiningSessionScope.md)
  - [RoleMiningSessionScopingMethod](beta/docs/RoleMiningSessionScopingMethod.md)
+ - [RoleMiningSessionState](beta/docs/RoleMiningSessionState.md)
  - [RoleMiningSessionStatus](beta/docs/RoleMiningSessionStatus.md)
  - [SavedSearchComplete](beta/docs/SavedSearchComplete.md)
  - [SavedSearchCompleteSearchResults](beta/docs/SavedSearchCompleteSearchResults.md)
@@ -1131,6 +1142,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionPutRequest](beta/docs/SubscriptionPutRequest.md)
  - [SubscriptionType](beta/docs/SubscriptionType.md)
  - [TaggedObject](beta/docs/TaggedObject.md)
+ - [TaskResultResponse](beta/docs/TaskResultResponse.md)
  - [TaskResultSimplified](beta/docs/TaskResultSimplified.md)
  - [TaskReturnDetails](beta/docs/TaskReturnDetails.md)
  - [TaskStatus](beta/docs/TaskStatus.md)

@@ -11,47 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class MailFromAttributes(BaseModel):
     """
     MAIL FROM attributes for a domain / identity  # noqa: E501
     """
-    identity: Optional[StrictStr] = Field(None,
-                                          description="The email identity")
-    mail_from_domain: Optional[StrictStr] = Field(
-        None,
-        alias="mailFromDomain",
-        description=
-        "The name of a domain that an email identity uses as a custom MAIL FROM domain"
-    )
-    mx_record: Optional[StrictStr] = Field(
-        None,
-        alias="mxRecord",
-        description=
-        "MX record that is required in customer's DNS to allow the domain to receive bounce and complaint notifications that email providers send you"
-    )
-    txt_record: Optional[StrictStr] = Field(
-        None,
-        alias="txtRecord",
-        description=
-        "TXT record that is required in customer's DNS in order to prove that Amazon SES is authorized to send email from your domain"
-    )
-    mail_from_domain_status: Optional[StrictStr] = Field(
-        None,
-        alias="mailFromDomainStatus",
-        description="The current status of the MAIL FROM verification")
-    __properties = [
-        "identity", "mailFromDomain", "mxRecord", "txtRecord",
-        "mailFromDomainStatus"
-    ]
+    identity: Optional[StrictStr] = Field(None, description="The email identity")
+    mail_from_domain: Optional[StrictStr] = Field(None, alias="mailFromDomain", description="The name of a domain that an email identity uses as a custom MAIL FROM domain")
+    mx_record: Optional[StrictStr] = Field(None, alias="mxRecord", description="MX record that is required in customer's DNS to allow the domain to receive bounce and complaint notifications that email providers send you")
+    txt_record: Optional[StrictStr] = Field(None, alias="txtRecord", description="TXT record that is required in customer's DNS in order to prove that Amazon SES is authorized to send email from your domain")
+    mail_from_domain_status: Optional[StrictStr] = Field(None, alias="mailFromDomainStatus", description="The current status of the MAIL FROM verification")
+    __properties = ["identity", "mailFromDomain", "mxRecord", "txtRecord", "mailFromDomainStatus"]
 
     @validator('mail_from_domain_status')
     def mail_from_domain_status_validate_enum(cls, value):
@@ -60,8 +39,7 @@ class MailFromAttributes(BaseModel):
             return value
 
         if value not in ('PENDING', 'SUCCESS', 'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('PENDING', 'SUCCESS', 'FAILED')")
+            raise ValueError("must be one of enum values ('PENDING', 'SUCCESS', 'FAILED')")
         return value
 
     class Config:
@@ -84,7 +62,10 @@ class MailFromAttributes(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -97,15 +78,12 @@ class MailFromAttributes(BaseModel):
             return MailFromAttributes.parse_obj(obj)
 
         _obj = MailFromAttributes.parse_obj({
-            "identity":
-            obj.get("identity"),
-            "mail_from_domain":
-            obj.get("mailFromDomain"),
-            "mx_record":
-            obj.get("mxRecord"),
-            "txt_record":
-            obj.get("txtRecord"),
-            "mail_from_domain_status":
-            obj.get("mailFromDomainStatus")
+            "identity": obj.get("identity"),
+            "mail_from_domain": obj.get("mailFromDomain"),
+            "mx_record": obj.get("mxRecord"),
+            "txt_record": obj.get("txtRecord"),
+            "mail_from_domain_status": obj.get("mailFromDomainStatus")
         })
         return _obj
+
+

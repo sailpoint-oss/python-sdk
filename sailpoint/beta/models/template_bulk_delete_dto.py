@@ -11,14 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class TemplateBulkDeleteDto(BaseModel):
     """
@@ -26,9 +27,7 @@ class TemplateBulkDeleteDto(BaseModel):
     """
     key: StrictStr = Field(...)
     medium: Optional[StrictStr] = None
-    locale: Optional[StrictStr] = Field(
-        None,
-        description="The locale for the message text, a BCP 47 language tag.")
+    locale: Optional[StrictStr] = Field(None, description="The locale for the message text, a BCP 47 language tag.")
     __properties = ["key", "medium", "locale"]
 
     @validator('medium')
@@ -38,8 +37,7 @@ class TemplateBulkDeleteDto(BaseModel):
             return value
 
         if value not in ('EMAIL', 'PHONE', 'SMS'):
-            raise ValueError(
-                "must be one of enum values ('EMAIL', 'PHONE', 'SMS')")
+            raise ValueError("must be one of enum values ('EMAIL', 'PHONE', 'SMS')")
         return value
 
     class Config:
@@ -62,7 +60,10 @@ class TemplateBulkDeleteDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -80,3 +81,5 @@ class TemplateBulkDeleteDto(BaseModel):
             "locale": obj.get("locale")
         })
         return _obj
+
+

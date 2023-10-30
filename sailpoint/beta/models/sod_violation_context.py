@@ -11,25 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field
-from beta.models.base_reference_dto1 import BaseReferenceDto1
+from beta.models.base_reference_dto import BaseReferenceDto
 from beta.models.sod_violation_context_conflicting_access_criteria import SodViolationContextConflictingAccessCriteria
-
 
 class SodViolationContext(BaseModel):
     """
     The contextual information of the violated criteria  # noqa: E501
     """
-    policy: Optional[BaseReferenceDto1] = None
-    conflicting_access_criteria: Optional[
-        SodViolationContextConflictingAccessCriteria] = Field(
-            None, alias="conflictingAccessCriteria")
+    policy: Optional[BaseReferenceDto] = None
+    conflicting_access_criteria: Optional[SodViolationContextConflictingAccessCriteria] = Field(None, alias="conflictingAccessCriteria")
     __properties = ["policy", "conflictingAccessCriteria"]
 
     class Config:
@@ -52,15 +51,16 @@ class SodViolationContext(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of policy
         if self.policy:
             _dict['policy'] = self.policy.to_dict()
         # override the default output from pydantic by calling `to_dict()` of conflicting_access_criteria
         if self.conflicting_access_criteria:
-            _dict[
-                'conflictingAccessCriteria'] = self.conflicting_access_criteria.to_dict(
-                )
+            _dict['conflictingAccessCriteria'] = self.conflicting_access_criteria.to_dict()
         return _dict
 
     @classmethod
@@ -73,12 +73,9 @@ class SodViolationContext(BaseModel):
             return SodViolationContext.parse_obj(obj)
 
         _obj = SodViolationContext.parse_obj({
-            "policy":
-            BaseReferenceDto1.from_dict(obj.get("policy"))
-            if obj.get("policy") is not None else None,
-            "conflicting_access_criteria":
-            SodViolationContextConflictingAccessCriteria.from_dict(
-                obj.get("conflictingAccessCriteria"))
-            if obj.get("conflictingAccessCriteria") is not None else None
+            "policy": BaseReferenceDto.from_dict(obj.get("policy")) if obj.get("policy") is not None else None,
+            "conflicting_access_criteria": SodViolationContextConflictingAccessCriteria.from_dict(obj.get("conflictingAccessCriteria")) if obj.get("conflictingAccessCriteria") is not None else None
         })
         return _obj
+
+

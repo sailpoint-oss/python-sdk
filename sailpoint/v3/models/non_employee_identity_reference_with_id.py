@@ -11,15 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from v3.models.non_employee_identity_dto_type import NonEmployeeIdentityDtoType
-
 
 class NonEmployeeIdentityReferenceWithId(BaseModel):
     """
@@ -49,7 +50,10 @@ class NonEmployeeIdentityReferenceWithId(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -62,9 +66,9 @@ class NonEmployeeIdentityReferenceWithId(BaseModel):
             return NonEmployeeIdentityReferenceWithId.parse_obj(obj)
 
         _obj = NonEmployeeIdentityReferenceWithId.parse_obj({
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id")
+            "type": obj.get("type"),
+            "id": obj.get("id")
         })
         return _obj
+
+

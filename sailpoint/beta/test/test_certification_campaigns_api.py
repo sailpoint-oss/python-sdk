@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.certification_campaigns_api import CertificationCampaignsApi  # noqa: E501

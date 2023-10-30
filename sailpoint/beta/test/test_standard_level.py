@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.standard_level import StandardLevel  # noqa: E501
-
 
 class TestStandardLevel(unittest.TestCase):
     """StandardLevel unit test stubs"""
@@ -29,7 +29,6 @@ class TestStandardLevel(unittest.TestCase):
     def testStandardLevel(self):
         """Test StandardLevel"""
         # inst = StandardLevel()
-
 
 if __name__ == '__main__':
     unittest.main()

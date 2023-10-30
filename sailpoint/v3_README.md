@@ -109,9 +109,11 @@ Class | Method | HTTP request | Description
 *AuthUserApi* | [**patch_auth_user**](v3/docs/AuthUserApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth User Update
 *CertificationCampaignFiltersApi* | [**create_campaign_filter**](v3/docs/CertificationCampaignFiltersApi.md#create_campaign_filter) | **POST** /campaign-filters | Create a Campaign Filter
 *CertificationCampaignFiltersApi* | [**get_campaign_filter_by_id**](v3/docs/CertificationCampaignFiltersApi.md#get_campaign_filter_by_id) | **GET** /campaign-filters/{id} | Get Campaign Filter by ID
+*CertificationCampaignFiltersApi* | [**update_campaign_filter**](v3/docs/CertificationCampaignFiltersApi.md#update_campaign_filter) | **POST** /campaign-filters/{id} | Updates a Campaign Filter
 *CertificationCampaignsApi* | [**complete_campaign**](v3/docs/CertificationCampaignsApi.md#complete_campaign) | **POST** /campaigns/{id}/complete | Complete a Campaign
 *CertificationCampaignsApi* | [**create_campaign**](v3/docs/CertificationCampaignsApi.md#create_campaign) | **POST** /campaigns | Create a campaign
 *CertificationCampaignsApi* | [**create_campaign_template**](v3/docs/CertificationCampaignsApi.md#create_campaign_template) | **POST** /campaign-templates | Create a Campaign Template
+*CertificationCampaignsApi* | [**delete_campaign_template**](v3/docs/CertificationCampaignsApi.md#delete_campaign_template) | **DELETE** /campaign-templates/{id} | Delete a Campaign Template
 *CertificationCampaignsApi* | [**delete_campaigns**](v3/docs/CertificationCampaignsApi.md#delete_campaigns) | **POST** /campaigns/delete | Deletes Campaigns
 *CertificationCampaignsApi* | [**get_active_campaigns**](v3/docs/CertificationCampaignsApi.md#get_active_campaigns) | **GET** /campaigns | List Campaigns
 *CertificationCampaignsApi* | [**get_campaign**](v3/docs/CertificationCampaignsApi.md#get_campaign) | **GET** /campaigns/{id} | Get a campaign
@@ -123,6 +125,7 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**move**](v3/docs/CertificationCampaignsApi.md#move) | **POST** /campaigns/{id}/reassign | Reassign Certifications
 *CertificationCampaignsApi* | [**patch_campaign_template**](v3/docs/CertificationCampaignsApi.md#patch_campaign_template) | **PATCH** /campaign-templates/{id} | Update a Campaign Template
 *CertificationCampaignsApi* | [**set_campaign_reports_config**](v3/docs/CertificationCampaignsApi.md#set_campaign_reports_config) | **PUT** /campaigns/reports-configuration | Set Campaign Reports Configuration
+*CertificationCampaignsApi* | [**set_campaign_template_schedule**](v3/docs/CertificationCampaignsApi.md#set_campaign_template_schedule) | **PUT** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
 *CertificationCampaignsApi* | [**start_campaign**](v3/docs/CertificationCampaignsApi.md#start_campaign) | **POST** /campaigns/{id}/activate | Activate a Campaign
 *CertificationCampaignsApi* | [**start_campaign_remediation_scan**](v3/docs/CertificationCampaignsApi.md#start_campaign_remediation_scan) | **POST** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
 *CertificationCampaignsApi* | [**start_campaign_report**](v3/docs/CertificationCampaignsApi.md#start_campaign_report) | **POST** /campaigns/{id}/run-report/{type} | Run Campaign Report

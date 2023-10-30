@@ -11,23 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class RoleMiningPotentialRoleRef(BaseModel):
     """
     RoleMiningPotentialRoleRef
     """
-    id: Optional[StrictStr] = Field(None,
-                                    description="Id of the potential role")
-    name: Optional[StrictStr] = Field(None,
-                                      description="Name of the potential role")
+    id: Optional[StrictStr] = Field(None, description="Id of the potential role")
+    name: Optional[StrictStr] = Field(None, description="Name of the potential role")
     __properties = ["id", "name"]
 
     class Config:
@@ -50,7 +49,10 @@ class RoleMiningPotentialRoleRef(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,3 +69,5 @@ class RoleMiningPotentialRoleRef(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

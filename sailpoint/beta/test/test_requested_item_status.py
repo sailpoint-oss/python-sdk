@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.requested_item_status import RequestedItemStatus  # noqa: E501
-
 
 class TestRequestedItemStatus(unittest.TestCase):
     """RequestedItemStatus unit test stubs"""
@@ -40,7 +40,7 @@ class TestRequestedItemStatus(unittest.TestCase):
                 type = 'ACCESS_PROFILE',
                 cancelled_request_details = beta.models.cancelled_request_details.CancelledRequestDetails(
                     comment = 'Nisl quis ipsum quam quisque condimentum nunc ut dolor nunc.', 
-                    owner = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                    owner = beta.models.base_reference_dto.BaseReferenceDto(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'William Wilson', ), 
@@ -57,11 +57,11 @@ class TestRequestedItemStatus(unittest.TestCase):
                 approval_details = [
                     beta.models.approval_status_dto.ApprovalStatusDto(
                         forwarded = False, 
-                        original_owner = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                        original_owner = beta.models.base_reference_dto.BaseReferenceDto(
                             type = 'IDENTITY', 
                             id = '2c91808568c529c60168cca6f90c1313', 
                             name = 'William Wilson', ), 
-                        current_owner = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                        current_owner = beta.models.base_reference_dto.BaseReferenceDto(
                             id = '2c91808568c529c60168cca6f90c1313', 
                             name = 'William Wilson', ), 
                         reviewed_by = , 
@@ -80,11 +80,11 @@ class TestRequestedItemStatus(unittest.TestCase):
                 manual_work_item_details = [
                     beta.models.manual_work_item_details.ManualWorkItemDetails(
                         forwarded = True, 
-                        original_owner = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                        original_owner = beta.models.base_reference_dto.BaseReferenceDto(
                             type = 'IDENTITY', 
                             id = '2c91808568c529c60168cca6f90c1313', 
                             name = 'William Wilson', ), 
-                        current_owner = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                        current_owner = beta.models.base_reference_dto.BaseReferenceDto(
                             id = '2c91808568c529c60168cca6f90c1313', 
                             name = 'William Wilson', ), 
                         modified = '2019-08-23T18:52:57.398Z', 
@@ -103,11 +103,11 @@ class TestRequestedItemStatus(unittest.TestCase):
                 request_type = 'GRANT_ACCESS',
                 modified = '2019-08-23T18:52:59.162Z',
                 created = '2019-08-23T18:40:35.772Z',
-                requester = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                requester = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
-                requested_for = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                requested_for = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
@@ -129,7 +129,7 @@ class TestRequestedItemStatus(unittest.TestCase):
                         client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}, 
                         violation_contexts = [
                             beta.models.sod_violation_context.SodViolationContext(
-                                policy = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                                policy = beta.models.base_reference_dto.BaseReferenceDto(
                                     type = 'IDENTITY', 
                                     id = '2c91808568c529c60168cca6f90c1313', 
                                     name = 'William Wilson', ), 
@@ -144,7 +144,7 @@ class TestRequestedItemStatus(unittest.TestCase):
                                     right_criteria = beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(), ), )
                             ], 
                         violated_policies = [
-                            beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                            beta.models.base_reference_dto.BaseReferenceDto(
                                 id = '2c91808568c529c60168cca6f90c1313', 
                                 name = 'William Wilson', )
                             ], ), ),
@@ -178,7 +178,6 @@ class TestRequestedItemStatus(unittest.TestCase):
         """Test RequestedItemStatus"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **forwarded** | **bool** | True if the request for this item was forwarded from one owner to another. | [optional] 
-**original_owner** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
-**current_owner** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
-**reviewed_by** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**original_owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**current_owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**reviewed_by** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **modified** | **datetime** | Time at which item was modified. | [optional] 
 **status** | [**ManualWorkItemState**](ManualWorkItemState.md) |  | [optional] 
 **scheme** | [**ApprovalScheme**](ApprovalScheme.md) |  | [optional] 

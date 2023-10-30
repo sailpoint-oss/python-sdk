@@ -11,14 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
+
 from pydantic import BaseModel, Field
 from v3.models.account_attributes_create_attributes import AccountAttributesCreateAttributes
-
 
 class AccountAttributesCreate(BaseModel):
     """
@@ -47,7 +49,10 @@ class AccountAttributesCreate(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of attributes
         if self.attributes:
             _dict['attributes'] = self.attributes.to_dict()
@@ -63,8 +68,8 @@ class AccountAttributesCreate(BaseModel):
             return AccountAttributesCreate.parse_obj(obj)
 
         _obj = AccountAttributesCreate.parse_obj({
-            "attributes":
-            AccountAttributesCreateAttributes.from_dict(obj.get("attributes"))
-            if obj.get("attributes") is not None else None
+            "attributes": AccountAttributesCreateAttributes.from_dict(obj.get("attributes")) if obj.get("attributes") is not None else None
         })
         return _obj
+
+

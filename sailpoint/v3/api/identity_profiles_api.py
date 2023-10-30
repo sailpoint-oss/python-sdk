@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -31,7 +32,9 @@ from v3.models.task_result_simplified import TaskResultSimplified
 from v3.api_client import ApiClient
 from v3.api_response import ApiResponse
 from v3.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class IdentityProfilesApi:
@@ -47,11 +50,7 @@ class IdentityProfilesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def delete_identity_profile(
-            self, identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="The Identity Profile ID.")],
-            **kwargs) -> TaskResultSimplified:  # noqa: E501
+    def delete_identity_profile(self, identity_profile_id : Annotated[StrictStr, Field(..., description="The Identity Profile ID.")], **kwargs) -> TaskResultSimplified:  # noqa: E501
         """Delete an Identity Profile  # noqa: E501
 
         This deletes an Identity Profile based on ID.  On success, this endpoint will return a reference to the bulk delete task result.  A token with ORG_ADMIN authority is required to call this API.  The following rights are required to access this endpoint: idn:identity-profile:delete  # noqa: E501
@@ -78,15 +77,10 @@ class IdentityProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_identity_profile_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_identity_profile_with_http_info(
-            identity_profile_id, **kwargs)  # noqa: E501
+        return self.delete_identity_profile_with_http_info(identity_profile_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_identity_profile_with_http_info(
-            self, identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="The Identity Profile ID.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_identity_profile_with_http_info(self, identity_profile_id : Annotated[StrictStr, Field(..., description="The Identity Profile ID.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete an Identity Profile  # noqa: E501
 
         This deletes an Identity Profile based on ID.  On success, this endpoint will return a reference to the bulk delete task result.  A token with ORG_ADMIN authority is required to call this API.  The following rights are required to access this endpoint: idn:identity-profile:delete  # noqa: E501
@@ -125,17 +119,28 @@ class IdentityProfilesApi:
 
         _params = locals()
 
-        _all_params = ['identity_profile_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'identity_profile_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_identity_profile" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_identity_profile" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -144,8 +149,8 @@ class IdentityProfilesApi:
         # process the path parameters
         _path_params = {}
         if _params['identity_profile_id']:
-            _path_params['identity-profile-id'] = _params[
-                'identity_profile_id']
+            _path_params['identity-profile-id'] = _params['identity_profile_id']
+
 
         # process the query parameters
         _query_params = []
@@ -174,8 +179,7 @@ class IdentityProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-profiles/{identity-profile-id}',
-            'DELETE',
+            '/identity-profiles/{identity-profile-id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -185,19 +189,14 @@ class IdentityProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_identity_profiles(self, request_body: Annotated[
-        conlist(StrictStr),
-        Field(..., description="Identity Profile bulk delete request body.")],
-                                 **kwargs
-                                 ) -> TaskResultSimplified:  # noqa: E501
+    def delete_identity_profiles(self, request_body : Annotated[conlist(StrictStr), Field(..., description="Identity Profile bulk delete request body.")], **kwargs) -> TaskResultSimplified:  # noqa: E501
         """Delete Identity Profiles  # noqa: E501
 
         This deletes multiple Identity Profiles via a list of supplied IDs.  On success, this endpoint will return a reference to the bulk delete task result.  A token with ORG_ADMIN authority is required to call this API.  The following rights are required to access this endpoint: idn:identity-profile:delete  # noqa: E501
@@ -224,15 +223,10 @@ class IdentityProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_identity_profiles_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_identity_profiles_with_http_info(
-            request_body, **kwargs)  # noqa: E501
+        return self.delete_identity_profiles_with_http_info(request_body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_identity_profiles_with_http_info(self, request_body: Annotated[
-        conlist(StrictStr),
-        Field(..., description="Identity Profile bulk delete request body.")],
-                                                **kwargs
-                                                ) -> ApiResponse:  # noqa: E501
+    def delete_identity_profiles_with_http_info(self, request_body : Annotated[conlist(StrictStr), Field(..., description="Identity Profile bulk delete request body.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Identity Profiles  # noqa: E501
 
         This deletes multiple Identity Profiles via a list of supplied IDs.  On success, this endpoint will return a reference to the bulk delete task result.  A token with ORG_ADMIN authority is required to call this API.  The following rights are required to access this endpoint: idn:identity-profile:delete  # noqa: E501
@@ -271,18 +265,28 @@ class IdentityProfilesApi:
 
         _params = locals()
 
-        _all_params = ['request_body']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'request_body'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_identity_profiles" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_identity_profiles" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -308,11 +312,11 @@ class IdentityProfilesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -327,8 +331,7 @@ class IdentityProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-profiles/bulk-delete',
-            'POST',
+            '/identity-profiles/bulk-delete', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -338,52 +341,14 @@ class IdentityProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def export_identity_profiles(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **priority**"
-            )] = None,
-            **kwargs) -> List[IdentityProfileExportedObject]:  # noqa: E501
+    def export_identity_profiles(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **priority**")] = None, **kwargs) -> List[IdentityProfileExportedObject]:  # noqa: E501
         """Export Identity Profiles  # noqa: E501
 
         This exports existing identity profiles in the format specified by the sp-config service.  # noqa: E501
@@ -418,48 +383,10 @@ class IdentityProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the export_identity_profiles_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.export_identity_profiles_with_http_info(
-            limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.export_identity_profiles_with_http_info(limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def export_identity_profiles_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **priority**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def export_identity_profiles_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **priority**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Export Identity Profiles  # noqa: E501
 
         This exports existing identity profiles in the format specified by the sp-config service.  # noqa: E501
@@ -506,18 +433,32 @@ class IdentityProfilesApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'count', 'filters', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method export_identity_profiles" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method export_identity_profiles" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -567,8 +508,7 @@ class IdentityProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-profiles/export',
-            'GET',
+            '/identity-profiles/export', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -578,19 +518,14 @@ class IdentityProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_default_identity_attribute_config(
-            self, identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="The Identity Profile ID.")],
-            **kwargs) -> IdentityAttributeConfig:  # noqa: E501
+    def get_default_identity_attribute_config(self, identity_profile_id : Annotated[StrictStr, Field(..., description="The Identity Profile ID.")], **kwargs) -> IdentityAttributeConfig:  # noqa: E501
         """Get default Identity Attribute Config  # noqa: E501
 
         This returns the default identity attribute config. A token with ORG_ADMIN authority is required to call this API to get the default identity attribute config.  # noqa: E501
@@ -617,15 +552,10 @@ class IdentityProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_default_identity_attribute_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_default_identity_attribute_config_with_http_info(
-            identity_profile_id, **kwargs)  # noqa: E501
+        return self.get_default_identity_attribute_config_with_http_info(identity_profile_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_default_identity_attribute_config_with_http_info(
-            self, identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="The Identity Profile ID.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_default_identity_attribute_config_with_http_info(self, identity_profile_id : Annotated[StrictStr, Field(..., description="The Identity Profile ID.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get default Identity Attribute Config  # noqa: E501
 
         This returns the default identity attribute config. A token with ORG_ADMIN authority is required to call this API to get the default identity attribute config.  # noqa: E501
@@ -664,18 +594,28 @@ class IdentityProfilesApi:
 
         _params = locals()
 
-        _all_params = ['identity_profile_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'identity_profile_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_default_identity_attribute_config" % _key)
+                    " to method get_default_identity_attribute_config" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -684,8 +624,8 @@ class IdentityProfilesApi:
         # process the path parameters
         _path_params = {}
         if _params['identity_profile_id']:
-            _path_params['identity-profile-id'] = _params[
-                'identity_profile_id']
+            _path_params['identity-profile-id'] = _params['identity_profile_id']
+
 
         # process the query parameters
         _query_params = []
@@ -714,8 +654,7 @@ class IdentityProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-profiles/{identity-profile-id}/default-identity-attribute-config',
-            'GET',
+            '/identity-profiles/{identity-profile-id}/default-identity-attribute-config', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -725,18 +664,14 @@ class IdentityProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identity_profile(self, identity_profile_id: Annotated[
-        StrictStr,
-        Field(..., description="The Identity Profile ID.")],
-                             **kwargs) -> IdentityProfile:  # noqa: E501
+    def get_identity_profile(self, identity_profile_id : Annotated[StrictStr, Field(..., description="The Identity Profile ID.")], **kwargs) -> IdentityProfile:  # noqa: E501
         """Get single Identity Profile  # noqa: E501
 
         This returns a single Identity Profile based on ID. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -763,15 +698,10 @@ class IdentityProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_profile_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_profile_with_http_info(
-            identity_profile_id, **kwargs)  # noqa: E501
+        return self.get_identity_profile_with_http_info(identity_profile_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_profile_with_http_info(
-            self, identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="The Identity Profile ID.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_profile_with_http_info(self, identity_profile_id : Annotated[StrictStr, Field(..., description="The Identity Profile ID.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get single Identity Profile  # noqa: E501
 
         This returns a single Identity Profile based on ID. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -810,17 +740,28 @@ class IdentityProfilesApi:
 
         _params = locals()
 
-        _all_params = ['identity_profile_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'identity_profile_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_identity_profile" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_identity_profile" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -829,8 +770,8 @@ class IdentityProfilesApi:
         # process the path parameters
         _path_params = {}
         if _params['identity_profile_id']:
-            _path_params['identity-profile-id'] = _params[
-                'identity_profile_id']
+            _path_params['identity-profile-id'] = _params['identity_profile_id']
+
 
         # process the query parameters
         _query_params = []
@@ -859,8 +800,7 @@ class IdentityProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-profiles/{identity-profile-id}',
-            'GET',
+            '/identity-profiles/{identity-profile-id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -870,20 +810,14 @@ class IdentityProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def import_identity_profiles(
-            self, identity_profile_exported_object: Annotated[
-                conlist(IdentityProfileExportedObject),
-                Field(...,
-                      description="Previously exported Identity Profiles.")],
-            **kwargs) -> ObjectImportResult:  # noqa: E501
+    def import_identity_profiles(self, identity_profile_exported_object : Annotated[conlist(IdentityProfileExportedObject), Field(..., description="Previously exported Identity Profiles.")], **kwargs) -> ObjectImportResult:  # noqa: E501
         """Import Identity Profiles  # noqa: E501
 
         This imports previously exported identity profiles.  # noqa: E501
@@ -910,16 +844,10 @@ class IdentityProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the import_identity_profiles_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.import_identity_profiles_with_http_info(
-            identity_profile_exported_object, **kwargs)  # noqa: E501
+        return self.import_identity_profiles_with_http_info(identity_profile_exported_object, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def import_identity_profiles_with_http_info(
-            self, identity_profile_exported_object: Annotated[
-                conlist(IdentityProfileExportedObject),
-                Field(...,
-                      description="Previously exported Identity Profiles.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def import_identity_profiles_with_http_info(self, identity_profile_exported_object : Annotated[conlist(IdentityProfileExportedObject), Field(..., description="Previously exported Identity Profiles.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Import Identity Profiles  # noqa: E501
 
         This imports previously exported identity profiles.  # noqa: E501
@@ -958,18 +886,28 @@ class IdentityProfilesApi:
 
         _params = locals()
 
-        _all_params = ['identity_profile_exported_object']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'identity_profile_exported_object'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method import_identity_profiles" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method import_identity_profiles" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -995,11 +933,11 @@ class IdentityProfilesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1014,8 +952,7 @@ class IdentityProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-profiles/import',
-            'POST',
+            '/identity-profiles/import', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1025,52 +962,14 @@ class IdentityProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_identity_profiles(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **priority**"
-            )] = None,
-            **kwargs) -> List[IdentityProfile]:  # noqa: E501
+    def list_identity_profiles(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **priority**")] = None, **kwargs) -> List[IdentityProfile]:  # noqa: E501
         """Identity Profiles List  # noqa: E501
 
         This returns a list of Identity Profiles based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.  # noqa: E501
@@ -1105,48 +1004,10 @@ class IdentityProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_identity_profiles_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_identity_profiles_with_http_info(
-            limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.list_identity_profiles_with_http_info(limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_identity_profiles_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **priority**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_identity_profiles_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **priority**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Identity Profiles List  # noqa: E501
 
         This returns a list of Identity Profiles based on the specified query parameters. A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.  # noqa: E501
@@ -1193,17 +1054,32 @@ class IdentityProfilesApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'count', 'filters', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_identity_profiles" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_identity_profiles" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1253,8 +1129,7 @@ class IdentityProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-profiles',
-            'GET',
+            '/identity-profiles', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1264,18 +1139,14 @@ class IdentityProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def sync_identity_profile(self, identity_profile_id: Annotated[
-        StrictStr,
-        Field(..., description="The Identity Profile ID to be processed")],
-                              **kwargs) -> object:  # noqa: E501
+    def sync_identity_profile(self, identity_profile_id : Annotated[StrictStr, Field(..., description="The Identity Profile ID to be processed")], **kwargs) -> object:  # noqa: E501
         """Process identities under profile  # noqa: E501
 
         Process identities under the profile  A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -1302,16 +1173,10 @@ class IdentityProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the sync_identity_profile_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.sync_identity_profile_with_http_info(
-            identity_profile_id, **kwargs)  # noqa: E501
+        return self.sync_identity_profile_with_http_info(identity_profile_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def sync_identity_profile_with_http_info(
-            self, identity_profile_id: Annotated[
-                StrictStr,
-                Field(...,
-                      description="The Identity Profile ID to be processed")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def sync_identity_profile_with_http_info(self, identity_profile_id : Annotated[StrictStr, Field(..., description="The Identity Profile ID to be processed")], **kwargs) -> ApiResponse:  # noqa: E501
         """Process identities under profile  # noqa: E501
 
         Process identities under the profile  A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -1350,17 +1215,28 @@ class IdentityProfilesApi:
 
         _params = locals()
 
-        _all_params = ['identity_profile_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'identity_profile_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method sync_identity_profile" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method sync_identity_profile" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1369,8 +1245,8 @@ class IdentityProfilesApi:
         # process the path parameters
         _path_params = {}
         if _params['identity_profile_id']:
-            _path_params['identity-profile-id'] = _params[
-                'identity_profile_id']
+            _path_params['identity-profile-id'] = _params['identity_profile_id']
+
 
         # process the query parameters
         _query_params = []
@@ -1399,8 +1275,7 @@ class IdentityProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-profiles/{identity-profile-id}/process-identities',
-            'POST',
+            '/identity-profiles/{identity-profile-id}/process-identities', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1410,8 +1285,7 @@ class IdentityProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

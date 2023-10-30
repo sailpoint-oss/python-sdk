@@ -11,31 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from v3.models.provisioning_criteria_operation import ProvisioningCriteriaOperation
-
 
 class ProvisioningCriteriaLevel3(BaseModel):
     """
     Defines matching criteria for an Account to be provisioned with a specific Access Profile  # noqa: E501
     """
     operation: Optional[ProvisioningCriteriaOperation] = None
-    attribute: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Name of the Account attribute to be tested. If **operation** is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required. Otherwise, specifying it is an error."
-    )
-    value: Optional[StrictStr] = Field(
-        None,
-        description=
-        "String value to test the Account attribute w/r/t the specified operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS, this field is required. Otherwise, specifying it is an error. If the Attribute is not String-typed, it will be converted to the appropriate type."
-    )
+    attribute: Optional[StrictStr] = Field(None, description="Name of the Account attribute to be tested. If **operation** is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required. Otherwise, specifying it is an error.")
+    value: Optional[StrictStr] = Field(None, description="String value to test the Account attribute w/r/t the specified operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS, this field is required. Otherwise, specifying it is an error. If the Attribute is not String-typed, it will be converted to the appropriate type.")
     __properties = ["operation", "attribute", "value"]
 
     class Config:
@@ -58,7 +51,10 @@ class ProvisioningCriteriaLevel3(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if attribute (nullable) is None
         # and __fields_set__ contains the field
         if self.attribute is None and "attribute" in self.__fields_set__:
@@ -76,11 +72,10 @@ class ProvisioningCriteriaLevel3(BaseModel):
             return ProvisioningCriteriaLevel3.parse_obj(obj)
 
         _obj = ProvisioningCriteriaLevel3.parse_obj({
-            "operation":
-            obj.get("operation"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value")
+            "operation": obj.get("operation"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value")
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v2.models.get_org_settings200_response_system_notification_config import GetOrgSettings200ResponseSystemNotificationConfig  # noqa: E501
-
 
 class TestGetOrgSettings200ResponseSystemNotificationConfig(unittest.TestCase):
     """GetOrgSettings200ResponseSystemNotificationConfig unit test stubs"""
@@ -26,9 +26,7 @@ class TestGetOrgSettings200ResponseSystemNotificationConfig(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self, include_optional
-    ) -> GetOrgSettings200ResponseSystemNotificationConfig:
+    def make_instance(self, include_optional) -> GetOrgSettings200ResponseSystemNotificationConfig:
         """Test GetOrgSettings200ResponseSystemNotificationConfig
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -57,7 +55,6 @@ class TestGetOrgSettings200ResponseSystemNotificationConfig(unittest.TestCase):
         """Test GetOrgSettings200ResponseSystemNotificationConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

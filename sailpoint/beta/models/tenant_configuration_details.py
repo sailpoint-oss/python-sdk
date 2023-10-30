@@ -11,24 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool
-
 
 class TenantConfigurationDetails(BaseModel):
     """
     Details of any tenant-wide Reassignment Configurations (eg. enabled/disabled)  # noqa: E501
     """
-    disabled: Optional[StrictBool] = Field(
-        False,
-        description=
-        "Flag to determine if Reassignment Configuration is enabled or disabled for a tenant.  When this flag is set to true, Reassignment Configuration is disabled."
-    )
+    disabled: Optional[StrictBool] = Field(False, description="Flag to determine if Reassignment Configuration is enabled or disabled for a tenant.  When this flag is set to true, Reassignment Configuration is disabled.")
     __properties = ["disabled"]
 
     class Config:
@@ -51,7 +48,10 @@ class TenantConfigurationDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if disabled (nullable) is None
         # and __fields_set__ contains the field
         if self.disabled is None and "disabled" in self.__fields_set__:
@@ -69,7 +69,8 @@ class TenantConfigurationDetails(BaseModel):
             return TenantConfigurationDetails.parse_obj(obj)
 
         _obj = TenantConfigurationDetails.parse_obj({
-            "disabled":
-            obj.get("disabled") if obj.get("disabled") is not None else False
+            "disabled": obj.get("disabled") if obj.get("disabled") is not None else False
         })
         return _obj
+
+

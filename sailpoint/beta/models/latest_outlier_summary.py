@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,36 +21,16 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, validator
 
-
 class LatestOutlierSummary(BaseModel):
     """
     LatestOutlierSummary
     """
-    type: Optional[StrictStr] = Field(
-        None, description="The type of outlier summary")
-    snapshot_date: Optional[datetime] = Field(
-        None,
-        alias="snapshotDate",
-        description=
-        "The date the bulk outlier detection ran/snapshot was created")
-    total_outliers: Optional[StrictInt] = Field(
-        None,
-        alias="totalOutliers",
-        description=
-        "Total number of outliers for the customer making the request")
-    total_identities: Optional[StrictInt] = Field(
-        None,
-        alias="totalIdentities",
-        description=
-        "Total number of identities for the customer making the request")
-    total_ignored: Optional[StrictInt] = Field(
-        None,
-        alias="totalIgnored",
-        description="Total number of ignored outliers")
-    __properties = [
-        "type", "snapshotDate", "totalOutliers", "totalIdentities",
-        "totalIgnored"
-    ]
+    type: Optional[StrictStr] = Field(None, description="The type of outlier summary")
+    snapshot_date: Optional[datetime] = Field(None, alias="snapshotDate", description="The date the bulk outlier detection ran/snapshot was created")
+    total_outliers: Optional[StrictInt] = Field(None, alias="totalOutliers", description="Total number of outliers for the customer making the request")
+    total_identities: Optional[StrictInt] = Field(None, alias="totalIdentities", description="Total number of identities for the customer making the request")
+    total_ignored: Optional[StrictInt] = Field(None, alias="totalIgnored", description="Total number of ignored outliers")
+    __properties = ["type", "snapshotDate", "totalOutliers", "totalIdentities", "totalIgnored"]
 
     @validator('type')
     def type_validate_enum(cls, value):
@@ -58,8 +39,7 @@ class LatestOutlierSummary(BaseModel):
             return value
 
         if value not in ('LOW_SIMILARITY', 'STRUCTURAL'):
-            raise ValueError(
-                "must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
+            raise ValueError("must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
         return value
 
     class Config:
@@ -82,7 +62,10 @@ class LatestOutlierSummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -95,15 +78,12 @@ class LatestOutlierSummary(BaseModel):
             return LatestOutlierSummary.parse_obj(obj)
 
         _obj = LatestOutlierSummary.parse_obj({
-            "type":
-            obj.get("type"),
-            "snapshot_date":
-            obj.get("snapshotDate"),
-            "total_outliers":
-            obj.get("totalOutliers"),
-            "total_identities":
-            obj.get("totalIdentities"),
-            "total_ignored":
-            obj.get("totalIgnored")
+            "type": obj.get("type"),
+            "snapshot_date": obj.get("snapshotDate"),
+            "total_outliers": obj.get("totalOutliers"),
+            "total_identities": obj.get("totalIdentities"),
+            "total_ignored": obj.get("totalIgnored")
         })
         return _obj
+
+

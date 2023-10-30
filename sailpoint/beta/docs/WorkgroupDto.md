@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**owner** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **id** | **str** | ID of the object to which this reference applies | [optional] [readonly] 
 **name** | **str** | Name of the Governance Group | [optional] 
 **description** | **str** | Description of the Governance Group | [optional] 

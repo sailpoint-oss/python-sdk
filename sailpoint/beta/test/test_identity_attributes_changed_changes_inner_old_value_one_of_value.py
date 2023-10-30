@@ -11,14 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.identity_attributes_changed_changes_inner_old_value_one_of_value import IdentityAttributesChangedChangesInnerOldValueOneOfValue  # noqa: E501
 
-
-class TestIdentityAttributesChangedChangesInnerOldValueOneOfValue(
-        unittest.TestCase):
+class TestIdentityAttributesChangedChangesInnerOldValueOneOfValue(unittest.TestCase):
     """IdentityAttributesChangedChangesInnerOldValueOneOfValue unit test stubs"""
 
     def setUp(self):
@@ -27,9 +26,7 @@ class TestIdentityAttributesChangedChangesInnerOldValueOneOfValue(
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> IdentityAttributesChangedChangesInnerOldValueOneOfValue:
+    def make_instance(self, include_optional) -> IdentityAttributesChangedChangesInnerOldValueOneOfValue:
         """Test IdentityAttributesChangedChangesInnerOldValueOneOfValue
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -49,7 +46,6 @@ class TestIdentityAttributesChangedChangesInnerOldValueOneOfValue(
         """Test IdentityAttributesChangedChangesInnerOldValueOneOfValue"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

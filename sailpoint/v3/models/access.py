@@ -11,24 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from v3.models.dto_type import DtoType
-
 
 class Access(BaseModel):
     """
     Access
     """
-    id: Optional[StrictStr] = Field(
-        None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(
-        None, description="The human readable name of the referenced object.")
+    id: Optional[StrictStr] = Field(None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(None, description="The human readable name of the referenced object.")
     display_name: Optional[StrictStr] = Field(None, alias="displayName")
     type: Optional[DtoType] = None
     description: Optional[StrictStr] = None
@@ -54,7 +53,10 @@ class Access(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -79,3 +81,5 @@ class Access(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+

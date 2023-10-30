@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.outlier_feature_summary import OutlierFeatureSummary  # noqa: E501
-
 
 class TestOutlierFeatureSummary(unittest.TestCase):
     """OutlierFeatureSummary unit test stubs"""
@@ -59,7 +59,6 @@ class TestOutlierFeatureSummary(unittest.TestCase):
         """Test OutlierFeatureSummary"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

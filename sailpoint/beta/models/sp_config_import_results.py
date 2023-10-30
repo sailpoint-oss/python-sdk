@@ -11,28 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.object_import_result import ObjectImportResult
-
 
 class SpConfigImportResults(BaseModel):
     """
     Response Body for Config Import command.  # noqa: E501
     """
-    results: Dict[str, ObjectImportResult] = Field(
-        ..., description="The results of an object configuration import job.")
-    export_job_id: Optional[StrictStr] = Field(
-        None,
-        alias="exportJobId",
-        description=
-        "If a backup was performed before the import, this will contain the jobId of the backup job. This id can be used to retrieve the json file of the backup export."
-    )
+    results: Dict[str, ObjectImportResult] = Field(..., description="The results of an object configuration import job.")
+    export_job_id: Optional[StrictStr] = Field(None, alias="exportJobId", description="If a backup was performed before the import, this will contain the jobId of the backup job. This id can be used to retrieve the json file of the backup export.")
     __properties = ["results", "exportJobId"]
 
     class Config:
@@ -55,7 +50,10 @@ class SpConfigImportResults(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each value in results (dict)
         _field_dict = {}
         if self.results:
@@ -75,11 +73,14 @@ class SpConfigImportResults(BaseModel):
             return SpConfigImportResults.parse_obj(obj)
 
         _obj = SpConfigImportResults.parse_obj({
-            "results":
-            dict((_k, ObjectImportResult.from_dict(_v))
-                 for _k, _v in obj.get("results").items())
-            if obj.get("results") is not None else None,
-            "export_job_id":
-            obj.get("exportJobId")
+            "results": dict(
+                (_k, ObjectImportResult.from_dict(_v))
+                for _k, _v in obj.get("results").items()
+            )
+            if obj.get("results") is not None
+            else None,
+            "export_job_id": obj.get("exportJobId")
         })
         return _obj
+
+

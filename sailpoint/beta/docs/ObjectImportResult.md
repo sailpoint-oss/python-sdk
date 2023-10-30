@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **infos** | [**List[SpConfigMessage]**](SpConfigMessage.md) | Informational messages returned from the target service on import. | 
 **warnings** | [**List[SpConfigMessage]**](SpConfigMessage.md) | Warning messages returned from the target service on import. | 
 **errors** | [**List[SpConfigMessage]**](SpConfigMessage.md) | Error messages returned from the target service on import. | 
-**imported_objects** | [**List[BaseReferenceDto1]**](BaseReferenceDto1.md) | References to objects that were created or updated by the import. | 
+**imported_objects** | [**List[BaseReferenceDto]**](BaseReferenceDto.md) | References to objects that were created or updated by the import. | 
 
 ## Example
 

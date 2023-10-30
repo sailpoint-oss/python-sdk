@@ -11,48 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class AccessItemAccessProfileResponse(BaseModel):
     """
     AccessItemAccessProfileResponse
     """
-    access_type: Optional[StrictStr] = Field(
-        None,
-        alias="accessType",
-        description="the access item type. accessProfile in this case")
+    access_type: Optional[StrictStr] = Field(None, alias="accessType", description="the access item type. accessProfile in this case")
     id: Optional[StrictStr] = Field(None, description="the access item id")
-    name: Optional[StrictStr] = Field(None,
-                                      description="the access profile name")
-    source_name: Optional[StrictStr] = Field(
-        None, alias="sourceName", description="the name of the source")
-    source_id: Optional[StrictStr] = Field(None,
-                                           alias="sourceId",
-                                           description="the id of the source")
-    description: Optional[StrictStr] = Field(
-        None, description="the description for the access profile")
-    display_name: Optional[StrictStr] = Field(
-        None,
-        alias="displayName",
-        description="the display name of the identity")
-    entitlement_count: Optional[StrictStr] = Field(
-        None,
-        alias="entitlementCount",
-        description="the number of entitlements the access profile will create"
-    )
-    app_display_name: Optional[StrictStr] = Field(
-        None, alias="appDisplayName", description="the name of app")
-    __properties = [
-        "accessType", "id", "name", "sourceName", "sourceId", "description",
-        "displayName", "entitlementCount", "appDisplayName"
-    ]
+    name: Optional[StrictStr] = Field(None, description="the access profile name")
+    source_name: Optional[StrictStr] = Field(None, alias="sourceName", description="the name of the source")
+    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="the id of the source")
+    description: Optional[StrictStr] = Field(None, description="the description for the access profile")
+    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="the display name of the identity")
+    entitlement_count: Optional[StrictStr] = Field(None, alias="entitlementCount", description="the number of entitlements the access profile will create")
+    app_display_name: Optional[StrictStr] = Field(None, alias="appDisplayName", description="the name of app")
+    __properties = ["accessType", "id", "name", "sourceName", "sourceId", "description", "displayName", "entitlementCount", "appDisplayName"]
 
     class Config:
         """Pydantic configuration"""
@@ -74,7 +56,10 @@ class AccessItemAccessProfileResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -87,23 +72,16 @@ class AccessItemAccessProfileResponse(BaseModel):
             return AccessItemAccessProfileResponse.parse_obj(obj)
 
         _obj = AccessItemAccessProfileResponse.parse_obj({
-            "access_type":
-            obj.get("accessType"),
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "source_name":
-            obj.get("sourceName"),
-            "source_id":
-            obj.get("sourceId"),
-            "description":
-            obj.get("description"),
-            "display_name":
-            obj.get("displayName"),
-            "entitlement_count":
-            obj.get("entitlementCount"),
-            "app_display_name":
-            obj.get("appDisplayName")
+            "access_type": obj.get("accessType"),
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "source_name": obj.get("sourceName"),
+            "source_id": obj.get("sourceId"),
+            "description": obj.get("description"),
+            "display_name": obj.get("displayName"),
+            "entitlement_count": obj.get("entitlementCount"),
+            "app_display_name": obj.get("appDisplayName")
         })
         return _obj
+
+

@@ -11,27 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class CreateDomainDkim405Response(BaseModel):
     """
     CreateDomainDkim405Response
     """
-    error_name: Optional[Dict[str, Any]] = Field(
-        None, alias="errorName", description="A message describing the error")
-    error_message: Optional[Dict[str, Any]] = Field(
-        None, alias="errorMessage", description="Description of the error")
-    tracking_id: Optional[StrictStr] = Field(
-        None,
-        alias="trackingId",
-        description="Unique tracking id for the error.")
+    error_name: Optional[Dict[str, Any]] = Field(None, alias="errorName", description="A message describing the error")
+    error_message: Optional[Dict[str, Any]] = Field(None, alias="errorMessage", description="Description of the error")
+    tracking_id: Optional[StrictStr] = Field(None, alias="trackingId", description="Unique tracking id for the error.")
     __properties = ["errorName", "errorMessage", "trackingId"]
 
     class Config:
@@ -54,7 +50,10 @@ class CreateDomainDkim405Response(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,11 +66,10 @@ class CreateDomainDkim405Response(BaseModel):
             return CreateDomainDkim405Response.parse_obj(obj)
 
         _obj = CreateDomainDkim405Response.parse_obj({
-            "error_name":
-            obj.get("errorName"),
-            "error_message":
-            obj.get("errorMessage"),
-            "tracking_id":
-            obj.get("trackingId")
+            "error_name": obj.get("errorName"),
+            "error_message": obj.get("errorMessage"),
+            "tracking_id": obj.get("trackingId")
         })
         return _obj
+
+

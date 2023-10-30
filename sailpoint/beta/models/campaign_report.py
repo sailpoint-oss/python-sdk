@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -22,25 +23,16 @@ from pydantic import BaseModel, Field, StrictStr, validator
 from beta.models.dto_type import DtoType
 from beta.models.report_type import ReportType
 
-
 class CampaignReport(BaseModel):
     """
     CampaignReport
     """
     type: Optional[DtoType] = None
-    id: Optional[StrictStr] = Field(
-        None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human-readable display name of the object to which this reference applies"
-    )
+    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object to which this reference applies")
     status: Optional[StrictStr] = None
     report_type: ReportType = Field(..., alias="reportType")
-    last_run_at: Optional[datetime] = Field(
-        None,
-        alias="lastRunAt",
-        description="The most recent date and time this report was run")
+    last_run_at: Optional[datetime] = Field(None, alias="lastRunAt", description="The most recent date and time this report was run")
     __properties = ["type", "id", "name", "status", "reportType", "lastRunAt"]
 
     @validator('status')
@@ -49,11 +41,8 @@ class CampaignReport(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED',
-                         'TEMP_ERROR', 'PENDING'):
-            raise ValueError(
-                "must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING')"
-            )
+        if value not in ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING'):
+            raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING')")
         return value
 
     class Config:
@@ -78,7 +67,7 @@ class CampaignReport(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "last_run_at",
+                            "last_run_at",
                           },
                           exclude_none=True)
         return _dict
@@ -101,3 +90,5 @@ class CampaignReport(BaseModel):
             "last_run_at": obj.get("lastRunAt")
         })
         return _obj
+
+

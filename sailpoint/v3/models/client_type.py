@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class ClientType(str, Enum):
     """
     Type of an API Client indicating public or confidentials use
     """
+
     """
     allowed enum values
     """
@@ -31,3 +36,5 @@ class ClientType(str, Enum):
     def from_json(cls, json_str: str) -> ClientType:
         """Create an instance of ClientType from a JSON string"""
         return ClientType(json.loads(json_str))
+
+

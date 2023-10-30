@@ -11,27 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class SourceAccountCorrelationConfig(BaseModel):
     """
     Reference to an Account Correlation Config object  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(
-        None, description="The type of object being referenced")
-    id: Optional[StrictStr] = Field(
-        None, description="ID of the account correlation config")
-    name: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human-readable display name of the account correlation config")
+    type: Optional[StrictStr] = Field(None, description="The type of object being referenced")
+    id: Optional[StrictStr] = Field(None, description="ID of the account correlation config")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the account correlation config")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -41,8 +37,7 @@ class SourceAccountCorrelationConfig(BaseModel):
             return value
 
         if value not in ('ACCOUNT_CORRELATION_CONFIG'):
-            raise ValueError(
-                "must be one of enum values ('ACCOUNT_CORRELATION_CONFIG')")
+            raise ValueError("must be one of enum values ('ACCOUNT_CORRELATION_CONFIG')")
         return value
 
     class Config:
@@ -65,7 +60,10 @@ class SourceAccountCorrelationConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -83,3 +81,5 @@ class SourceAccountCorrelationConfig(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

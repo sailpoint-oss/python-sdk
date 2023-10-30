@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt
-
 
 class WorkItemsCount(BaseModel):
     """
     WorkItemsCount
     """
-    count: Optional[StrictInt] = Field(None,
-                                       description="The count of work items")
+    count: Optional[StrictInt] = Field(None, description="The count of work items")
     __properties = ["count"]
 
     class Config:
@@ -48,7 +48,10 @@ class WorkItemsCount(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -60,5 +63,9 @@ class WorkItemsCount(BaseModel):
         if not isinstance(obj, dict):
             return WorkItemsCount.parse_obj(obj)
 
-        _obj = WorkItemsCount.parse_obj({"count": obj.get("count")})
+        _obj = WorkItemsCount.parse_obj({
+            "count": obj.get("count")
+        })
         return _obj
+
+

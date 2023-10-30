@@ -8,8 +8,11 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the entitlement | [optional] 
 **application_name** | **str** | Application name of the entitlement | [optional] 
 **identity_count** | **int** | The number of identities with this entitlement in a role. | [optional] 
-**popularity** | **int** | The % popularity of this entitlement in a role. | [optional] 
-**popularity_in_org** | **int** | TThe % popularity of this entitlement in the org. | [optional] 
+**popularity** | **float** | The % popularity of this entitlement in a role. | [optional] 
+**popularity_in_org** | **float** | The % popularity of this entitlement in the org. | [optional] 
+**source_id** | **str** | The ID of the source/application. | [optional] 
+**activity_source_state** | **str** | The status of activity data for the source.   Value is complete or notComplete. | [optional] 
+**source_usage_percent** | **float** | The percentage of identities in the potential role that have usage of the source/application of this entitlement. | [optional] 
 
 ## Example
 

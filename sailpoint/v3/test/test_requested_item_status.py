@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.requested_item_status import RequestedItemStatus  # noqa: E501
-
 
 class TestRequestedItemStatus(unittest.TestCase):
     """RequestedItemStatus unit test stubs"""
@@ -178,7 +178,6 @@ class TestRequestedItemStatus(unittest.TestCase):
         """Test RequestedItemStatus"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

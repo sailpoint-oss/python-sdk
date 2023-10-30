@@ -11,14 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
+
 from pydantic import BaseModel, Field, StrictStr
 from v3.models.document_type import DocumentType
-
 
 class BaseDocument(BaseModel):
     """
@@ -49,7 +51,10 @@ class BaseDocument(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,3 +72,5 @@ class BaseDocument(BaseModel):
             "type": obj.get("_type")
         })
         return _obj
+
+

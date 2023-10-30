@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -28,11 +29,7 @@ from beta.models.identity_certified import IdentityCertified
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-GETHISTORICALIDENTITYEVENTS200RESPONSEINNER_ANY_OF_SCHEMAS = [
-    "AccessItemAssociated", "AccessItemRemoved", "AccessRequested",
-    "AccountStatusChanged", "AttributesChanged", "IdentityCertified"
-]
-
+GETHISTORICALIDENTITYEVENTS200RESPONSEINNER_ANY_OF_SCHEMAS = ["AccessItemAssociated", "AccessItemRemoved", "AccessRequested", "AccountStatusChanged", "AttributesChanged", "IdentityCertified"]
 
 class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
     """
@@ -52,13 +49,10 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
     # data type: AccountStatusChanged
     anyof_schema_6_validator: Optional[AccountStatusChanged] = None
     if TYPE_CHECKING:
-        actual_instance: Union[AccessItemAssociated, AccessItemRemoved,
-                               AccessRequested, AccountStatusChanged,
-                               AttributesChanged, IdentityCertified]
+        actual_instance: Union[AccessItemAssociated, AccessItemRemoved, AccessRequested, AccountStatusChanged, AttributesChanged, IdentityCertified]
     else:
         actual_instance: Any
-    any_of_schemas: List[str] = Field(
-        GETHISTORICALIDENTITYEVENTS200RESPONSEINNER_ANY_OF_SCHEMAS, const=True)
+    any_of_schemas: List[str] = Field(GETHISTORICALIDENTITYEVENTS200RESPONSEINNER_ANY_OF_SCHEMAS, const=True)
 
     class Config:
         validate_assignment = True
@@ -66,13 +60,9 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -83,62 +73,52 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
         error_messages = []
         # validate data type: AccessItemAssociated
         if not isinstance(v, AccessItemAssociated):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessItemAssociated`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemAssociated`")
         else:
             return v
 
         # validate data type: AccessItemRemoved
         if not isinstance(v, AccessItemRemoved):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessItemRemoved`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemRemoved`")
         else:
             return v
 
         # validate data type: AttributesChanged
         if not isinstance(v, AttributesChanged):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AttributesChanged`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AttributesChanged`")
         else:
             return v
 
         # validate data type: AccessRequested
         if not isinstance(v, AccessRequested):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessRequested`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessRequested`")
         else:
             return v
 
         # validate data type: IdentityCertified
         if not isinstance(v, IdentityCertified):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `IdentityCertified`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `IdentityCertified`")
         else:
             return v
 
         # validate data type: AccountStatusChanged
         if not isinstance(v, AccountStatusChanged):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccountStatusChanged`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccountStatusChanged`")
         else:
             return v
 
         if error_messages:
             # no match
-            raise ValueError(
-                "No match found when setting the actual_instance in GetHistoricalIdentityEvents200ResponseInner with anyOf schemas: AccessItemAssociated, AccessItemRemoved, AccessRequested, AccountStatusChanged, AttributesChanged, IdentityCertified. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in GetHistoricalIdentityEvents200ResponseInner with anyOf schemas: AccessItemAssociated, AccessItemRemoved, AccessRequested, AccountStatusChanged, AttributesChanged, IdentityCertified. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls,
-                  obj: dict) -> GetHistoricalIdentityEvents200ResponseInner:
+    def from_dict(cls, obj: dict) -> GetHistoricalIdentityEvents200ResponseInner:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(
-            cls, json_str: str) -> GetHistoricalIdentityEvents200ResponseInner:
+    def from_json(cls, json_str: str) -> GetHistoricalIdentityEvents200ResponseInner:
         """Returns the object represented by the json string"""
         instance = GetHistoricalIdentityEvents200ResponseInner.construct()
         error_messages = []
@@ -147,43 +127,41 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
             instance.actual_instance = AccessItemAssociated.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+             error_messages.append(str(e))
         # anyof_schema_2_validator: Optional[AccessItemRemoved] = None
         try:
             instance.actual_instance = AccessItemRemoved.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+             error_messages.append(str(e))
         # anyof_schema_3_validator: Optional[AttributesChanged] = None
         try:
             instance.actual_instance = AttributesChanged.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+             error_messages.append(str(e))
         # anyof_schema_4_validator: Optional[AccessRequested] = None
         try:
             instance.actual_instance = AccessRequested.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+             error_messages.append(str(e))
         # anyof_schema_5_validator: Optional[IdentityCertified] = None
         try:
             instance.actual_instance = IdentityCertified.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+             error_messages.append(str(e))
         # anyof_schema_6_validator: Optional[AccountStatusChanged] = None
         try:
             instance.actual_instance = AccountStatusChanged.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+             error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into GetHistoricalIdentityEvents200ResponseInner with anyOf schemas: AccessItemAssociated, AccessItemRemoved, AccessRequested, AccountStatusChanged, AttributesChanged, IdentityCertified. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into GetHistoricalIdentityEvents200ResponseInner with anyOf schemas: AccessItemAssociated, AccessItemRemoved, AccessRequested, AccountStatusChanged, AttributesChanged, IdentityCertified. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -212,3 +190,5 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.dict())
+
+

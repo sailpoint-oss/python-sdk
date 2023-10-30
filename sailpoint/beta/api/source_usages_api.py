@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -28,7 +29,9 @@ from beta.models.source_usage_status import SourceUsageStatus
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class SourceUsagesApi:
@@ -44,9 +47,7 @@ class SourceUsagesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_status_by_source_id(self, source_id: Annotated[
-        StrictStr, Field(..., description="ID of IDN source")],
-                                **kwargs) -> SourceUsageStatus:  # noqa: E501
+    def get_status_by_source_id(self, source_id : Annotated[StrictStr, Field(..., description="ID of IDN source")], **kwargs) -> SourceUsageStatus:  # noqa: E501
         """Finds status of source usage  # noqa: E501
 
         This API returns the status of the source usage insights setup by IDN source ID.  # noqa: E501
@@ -73,15 +74,10 @@ class SourceUsagesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_status_by_source_id_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_status_by_source_id_with_http_info(
-            source_id, **kwargs)  # noqa: E501
+        return self.get_status_by_source_id_with_http_info(source_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_status_by_source_id_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="ID of IDN source")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_status_by_source_id_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="ID of IDN source")], **kwargs) -> ApiResponse:  # noqa: E501
         """Finds status of source usage  # noqa: E501
 
         This API returns the status of the source usage insights setup by IDN source ID.  # noqa: E501
@@ -120,17 +116,28 @@ class SourceUsagesApi:
 
         _params = locals()
 
-        _all_params = ['source_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_status_by_source_id" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_status_by_source_id" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -140,6 +147,7 @@ class SourceUsagesApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
+
 
         # process the query parameters
         _query_params = []
@@ -167,8 +175,7 @@ class SourceUsagesApi:
         }
 
         return self.api_client.call_api(
-            '/source-usages/{sourceId}/status',
-            'GET',
+            '/source-usages/{sourceId}/status', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -178,47 +185,14 @@ class SourceUsagesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_usages_by_source_id(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="ID of IDN source")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **date**"
-            )] = None,
-            **kwargs) -> List[SourceUsage]:  # noqa: E501
+    def get_usages_by_source_id(self, source_id : Annotated[StrictStr, Field(..., description="ID of IDN source")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **date**")] = None, **kwargs) -> List[SourceUsage]:  # noqa: E501
         """Returns source usage insights  # noqa: E501
 
         This API returns a summary of source usage insights for past 12 months.  # noqa: E501
@@ -253,43 +227,10 @@ class SourceUsagesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_usages_by_source_id_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_usages_by_source_id_with_http_info(
-            source_id, limit, offset, count, sorters, **kwargs)  # noqa: E501
+        return self.get_usages_by_source_id_with_http_info(source_id, limit, offset, count, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_usages_by_source_id_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="ID of IDN source")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **date**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_usages_by_source_id_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="ID of IDN source")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **date**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Returns source usage insights  # noqa: E501
 
         This API returns a summary of source usage insights for past 12 months.  # noqa: E501
@@ -336,17 +277,32 @@ class SourceUsagesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'limit', 'offset', 'count', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'limit',
+            'offset',
+            'count',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_usages_by_source_id" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_usages_by_source_id" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -356,6 +312,7 @@ class SourceUsagesApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
+
 
         # process the query parameters
         _query_params = []
@@ -395,8 +352,7 @@ class SourceUsagesApi:
         }
 
         return self.api_client.call_api(
-            '/source-usages/{sourceId}/summaries',
-            'GET',
+            '/source-usages/{sourceId}/summaries', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -406,8 +362,7 @@ class SourceUsagesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

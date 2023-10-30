@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -28,7 +29,9 @@ from beta.models.task_status import TaskStatus
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class TaskManagementApi:
@@ -44,34 +47,7 @@ class TaskManagementApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_pending_task_headers(
-            self,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters: Annotated[Optional[StrictStr],
-                               Field(description="sort criteria")] = None,
-            filters: Annotated[Optional[StrictStr],
-                               Field(description="filter criteria")] = None,
-            **kwargs) -> None:  # noqa: E501
+    def get_pending_task_headers(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="sort criteria")] = None, filters : Annotated[Optional[StrictStr], Field(description="filter criteria")] = None, **kwargs) -> None:  # noqa: E501
         """Retrieve headers only for pending task list.  # noqa: E501
 
         Retrieve headers for a list of TaskStatus for pending tasks.  # noqa: E501
@@ -106,38 +82,10 @@ class TaskManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_pending_task_headers_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_pending_task_headers_with_http_info(
-            offset, limit, count, sorters, filters, **kwargs)  # noqa: E501
+        return self.get_pending_task_headers_with_http_info(offset, limit, count, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_pending_task_headers_with_http_info(
-            self,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters: Annotated[Optional[StrictStr],
-                               Field(description="sort criteria")] = None,
-            filters: Annotated[Optional[StrictStr],
-                               Field(description="filter criteria")] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_pending_task_headers_with_http_info(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="sort criteria")] = None, filters : Annotated[Optional[StrictStr], Field(description="filter criteria")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieve headers only for pending task list.  # noqa: E501
 
         Retrieve headers for a list of TaskStatus for pending tasks.  # noqa: E501
@@ -184,18 +132,32 @@ class TaskManagementApi:
 
         _params = locals()
 
-        _all_params = ['offset', 'limit', 'count', 'sorters', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'offset',
+            'limit',
+            'count',
+            'sorters',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_pending_task_headers" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_pending_task_headers" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -238,8 +200,7 @@ class TaskManagementApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/task-status/pending-tasks',
-            'HEAD',
+            '/task-status/pending-tasks', 'HEAD',
             _path_params,
             _query_params,
             _header_params,
@@ -249,42 +210,14 @@ class TaskManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_pending_tasks(
-            self,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters: Annotated[Optional[StrictStr],
-                               Field(description="sort criteria")] = None,
-            filters: Annotated[Optional[StrictStr],
-                               Field(description="filter criteria")] = None,
-            **kwargs) -> List[TaskStatus]:  # noqa: E501
+    def get_pending_tasks(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="sort criteria")] = None, filters : Annotated[Optional[StrictStr], Field(description="filter criteria")] = None, **kwargs) -> List[TaskStatus]:  # noqa: E501
         """Retrieve a pending task list.  # noqa: E501
 
         Retrieve a list of TaskStatus for pending tasks.  # noqa: E501
@@ -319,39 +252,10 @@ class TaskManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_pending_tasks_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_pending_tasks_with_http_info(offset, limit, count,
-                                                     sorters, filters,
-                                                     **kwargs)  # noqa: E501
+        return self.get_pending_tasks_with_http_info(offset, limit, count, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_pending_tasks_with_http_info(
-            self,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters: Annotated[Optional[StrictStr],
-                               Field(description="sort criteria")] = None,
-            filters: Annotated[Optional[StrictStr],
-                               Field(description="filter criteria")] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_pending_tasks_with_http_info(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="sort criteria")] = None, filters : Annotated[Optional[StrictStr], Field(description="filter criteria")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieve a pending task list.  # noqa: E501
 
         Retrieve a list of TaskStatus for pending tasks.  # noqa: E501
@@ -398,17 +302,32 @@ class TaskManagementApi:
 
         _params = locals()
 
-        _all_params = ['offset', 'limit', 'count', 'sorters', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'offset',
+            'limit',
+            'count',
+            'sorters',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_pending_tasks" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_pending_tasks" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -456,8 +375,7 @@ class TaskManagementApi:
         }
 
         return self.api_client.call_api(
-            '/task-status/pending-tasks',
-            'GET',
+            '/task-status/pending-tasks', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -467,18 +385,14 @@ class TaskManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_task_status(self, id: Annotated[
-        StrictStr,
-        Field(..., description="Task ID of the TaskStatus to get")],
-                        **kwargs) -> TaskStatus:  # noqa: E501
+    def get_task_status(self, id : Annotated[StrictStr, Field(..., description="Task ID of the TaskStatus to get")], **kwargs) -> TaskStatus:  # noqa: E501
         """Get task status by ID.  # noqa: E501
 
         Get a TaskStatus for a task by task ID.  # noqa: E501
@@ -508,10 +422,7 @@ class TaskManagementApi:
         return self.get_task_status_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_task_status_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="Task ID of the TaskStatus to get")],
-                                       **kwargs) -> ApiResponse:  # noqa: E501
+    def get_task_status_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Task ID of the TaskStatus to get")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get task status by ID.  # noqa: E501
 
         Get a TaskStatus for a task by task ID.  # noqa: E501
@@ -550,17 +461,28 @@ class TaskManagementApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_task_status" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_task_status" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -570,6 +492,7 @@ class TaskManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -598,8 +521,7 @@ class TaskManagementApi:
         }
 
         return self.api_client.call_api(
-            '/task-status/{id}',
-            'GET',
+            '/task-status/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -609,52 +531,14 @@ class TaskManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_task_status_list(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **sourceId**: *eq, in*   **completionStatus**: *eq, in*   **type**: *eq, in* \"CLOUD_ACCOUNT_AGGREGATION\", \"CLOUD_GROUP_AGGREGATION\", \"CLOUD_PROCESS_UNCORRELATED_ACCOUNTS\" or \"CLOUD_REFRESH_ROLE\""
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **created**"
-            )] = None,
-            **kwargs) -> List[TaskStatus]:  # noqa: E501
+    def get_task_status_list(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **sourceId**: *eq, in*   **completionStatus**: *eq, in*   **type**: *eq, in* \"CLOUD_ACCOUNT_AGGREGATION\", \"CLOUD_GROUP_AGGREGATION\", \"CLOUD_PROCESS_UNCORRELATED_ACCOUNTS\" or \"CLOUD_REFRESH_ROLE\"")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **created**")] = None, **kwargs) -> List[TaskStatus]:  # noqa: E501
         """Retrieve a task status list.  # noqa: E501
 
         Get a TaskStatus list.  # noqa: E501
@@ -689,48 +573,10 @@ class TaskManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_task_status_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_task_status_list_with_http_info(
-            limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.get_task_status_list_with_http_info(limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_task_status_list_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **sourceId**: *eq, in*   **completionStatus**: *eq, in*   **type**: *eq, in* \"CLOUD_ACCOUNT_AGGREGATION\", \"CLOUD_GROUP_AGGREGATION\", \"CLOUD_PROCESS_UNCORRELATED_ACCOUNTS\" or \"CLOUD_REFRESH_ROLE\""
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **created**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_task_status_list_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **sourceId**: *eq, in*   **completionStatus**: *eq, in*   **type**: *eq, in* \"CLOUD_ACCOUNT_AGGREGATION\", \"CLOUD_GROUP_AGGREGATION\", \"CLOUD_PROCESS_UNCORRELATED_ACCOUNTS\" or \"CLOUD_REFRESH_ROLE\"")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **created**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieve a task status list.  # noqa: E501
 
         Get a TaskStatus list.  # noqa: E501
@@ -777,17 +623,32 @@ class TaskManagementApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'count', 'filters', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_task_status_list" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_task_status_list" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -838,8 +699,7 @@ class TaskManagementApi:
         }
 
         return self.api_client.call_api(
-            '/task-status',
-            'GET',
+            '/task-status', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -849,20 +709,14 @@ class TaskManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_task_status(self, id: Annotated[
-        StrictStr,
-        Field(...,
-              description="Task ID of the task whose TaskStatus to update")],
-                           json_patch: JsonPatch,
-                           **kwargs) -> TaskStatus:  # noqa: E501
+    def update_task_status(self, id : Annotated[StrictStr, Field(..., description="Task ID of the task whose TaskStatus to update")], json_patch : JsonPatch, **kwargs) -> TaskStatus:  # noqa: E501
         """Update task status by ID  # noqa: E501
 
         Update a current TaskStatus for a task by task ID.  # noqa: E501
@@ -891,16 +745,10 @@ class TaskManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_task_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_task_status_with_http_info(id, json_patch,
-                                                      **kwargs)  # noqa: E501
+        return self.update_task_status_with_http_info(id, json_patch, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_task_status_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(...,
-              description="Task ID of the task whose TaskStatus to update")],
-                                          json_patch: JsonPatch, **kwargs
-                                          ) -> ApiResponse:  # noqa: E501
+    def update_task_status_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Task ID of the task whose TaskStatus to update")], json_patch : JsonPatch, **kwargs) -> ApiResponse:  # noqa: E501
         """Update task status by ID  # noqa: E501
 
         Update a current TaskStatus for a task by task ID.  # noqa: E501
@@ -941,17 +789,29 @@ class TaskManagementApi:
 
         _params = locals()
 
-        _all_params = ['id', 'json_patch']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'json_patch'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_task_status" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_task_status" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -961,6 +821,7 @@ class TaskManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -979,12 +840,11 @@ class TaskManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1000,8 +860,7 @@ class TaskManagementApi:
         }
 
         return self.api_client.call_api(
-            '/task-status/{id}',
-            'PATCH',
+            '/task-status/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -1011,8 +870,7 @@ class TaskManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

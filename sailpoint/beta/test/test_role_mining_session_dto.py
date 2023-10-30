@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.role_mining_session_dto import RoleMiningSessionDto  # noqa: E501
-
 
 class TestRoleMiningSessionDto(unittest.TestCase):
     """RoleMiningSessionDto unit test stubs"""
@@ -49,9 +49,7 @@ class TestRoleMiningSessionDto(unittest.TestCase):
                     state = 'CREATED', ),
                 type = 'SPECIALIZED',
                 email_recipient_id = '2c918090761a5aac0176215c46a62d58',
-                created_by = beta.models.entity_created_by_dto.EntityCreatedByDTO(
-                    id = '2c918090761a5aac0176215c46a62d58', 
-                    display_name = 'Ashley.Pierce', ),
+                created_by = None,
                 identity_count = 0,
                 saved = True,
                 name = 'Saved RM Session - 07/10'
@@ -65,7 +63,6 @@ class TestRoleMiningSessionDto(unittest.TestCase):
         """Test RoleMiningSessionDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

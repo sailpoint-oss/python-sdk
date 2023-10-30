@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List
 from pydantic import BaseModel, Field, conlist
@@ -23,7 +25,6 @@ from beta.models.account_attributes_changed_changes_inner import AccountAttribut
 from beta.models.account_attributes_changed_identity import AccountAttributesChangedIdentity
 from beta.models.account_attributes_changed_source import AccountAttributesChangedSource
 
-
 class AccountAttributesChanged(BaseModel):
     """
     AccountAttributesChanged
@@ -31,8 +32,7 @@ class AccountAttributesChanged(BaseModel):
     identity: AccountAttributesChangedIdentity = Field(...)
     source: AccountAttributesChangedSource = Field(...)
     account: AccountAttributesChangedAccount = Field(...)
-    changes: conlist(AccountAttributesChangedChangesInner) = Field(
-        ..., description="A list of attributes that changed.")
+    changes: conlist(AccountAttributesChangedChangesInner) = Field(..., description="A list of attributes that changed.")
     __properties = ["identity", "source", "account", "changes"]
 
     class Config:
@@ -55,7 +55,10 @@ class AccountAttributesChanged(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of identity
         if self.identity:
             _dict['identity'] = self.identity.to_dict()
@@ -84,18 +87,11 @@ class AccountAttributesChanged(BaseModel):
             return AccountAttributesChanged.parse_obj(obj)
 
         _obj = AccountAttributesChanged.parse_obj({
-            "identity":
-            AccountAttributesChangedIdentity.from_dict(obj.get("identity"))
-            if obj.get("identity") is not None else None,
-            "source":
-            AccountAttributesChangedSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "account":
-            AccountAttributesChangedAccount.from_dict(obj.get("account"))
-            if obj.get("account") is not None else None,
-            "changes": [
-                AccountAttributesChangedChangesInner.from_dict(_item)
-                for _item in obj.get("changes")
-            ] if obj.get("changes") is not None else None
+            "identity": AccountAttributesChangedIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
+            "source": AccountAttributesChangedSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "account": AccountAttributesChangedAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None,
+            "changes": [AccountAttributesChangedChangesInner.from_dict(_item) for _item in obj.get("changes")] if obj.get("changes") is not None else None
         })
         return _obj
+
+

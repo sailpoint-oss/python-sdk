@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
@@ -22,33 +24,16 @@ from beta.models.recommendation_request import RecommendationRequest
 from beta.models.recommender_calculations import RecommenderCalculations
 from beta.models.translation_message import TranslationMessage
 
-
 class RecommendationResponse(BaseModel):
     """
     RecommendationResponse
     """
     request: Optional[RecommendationRequest] = None
-    recommendation: Optional[StrictStr] = Field(
-        None,
-        description=
-        "The recommendation - YES if the access is recommended, NO if not recommended, MAYBE if there is not enough information to make a recommendation, NOT_FOUND if the identity is not found in the system"
-    )
-    interpretations: Optional[conlist(StrictStr)] = Field(
-        None,
-        description=
-        "The list of interpretations explaining the recommendation. The array is empty if includeInterpretations is false or not present in the request. e.g. - [ \"Not approved in the last 6 months.\" ]. Interpretations will be translated using the client's locale as found in the Accept-Language header. If a translation for the client's locale cannot be found, the US English translation will be returned."
-    )
-    translation_messages: Optional[conlist(TranslationMessage)] = Field(
-        None,
-        alias="translationMessages",
-        description=
-        "The list of translation messages, if they have been requested.")
-    recommender_calculations: Optional[RecommenderCalculations] = Field(
-        None, alias="recommenderCalculations")
-    __properties = [
-        "request", "recommendation", "interpretations", "translationMessages",
-        "recommenderCalculations"
-    ]
+    recommendation: Optional[StrictStr] = Field(None, description="The recommendation - YES if the access is recommended, NO if not recommended, MAYBE if there is not enough information to make a recommendation, NOT_FOUND if the identity is not found in the system")
+    interpretations: Optional[conlist(StrictStr)] = Field(None, description="The list of interpretations explaining the recommendation. The array is empty if includeInterpretations is false or not present in the request. e.g. - [ \"Not approved in the last 6 months.\" ]. Interpretations will be translated using the client's locale as found in the Accept-Language header. If a translation for the client's locale cannot be found, the US English translation will be returned.")
+    translation_messages: Optional[conlist(TranslationMessage)] = Field(None, alias="translationMessages", description="The list of translation messages, if they have been requested.")
+    recommender_calculations: Optional[RecommenderCalculations] = Field(None, alias="recommenderCalculations")
+    __properties = ["request", "recommendation", "interpretations", "translationMessages", "recommenderCalculations"]
 
     @validator('recommendation')
     def recommendation_validate_enum(cls, value):
@@ -57,9 +42,7 @@ class RecommendationResponse(BaseModel):
             return value
 
         if value not in ('true', 'false', 'MAYBE', 'NOT_FOUND'):
-            raise ValueError(
-                "must be one of enum values ('true', 'false', 'MAYBE', 'NOT_FOUND')"
-            )
+            raise ValueError("must be one of enum values ('true', 'false', 'MAYBE', 'NOT_FOUND')")
         return value
 
     class Config:
@@ -82,7 +65,10 @@ class RecommendationResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of request
         if self.request:
             _dict['request'] = self.request.to_dict()
@@ -95,9 +81,7 @@ class RecommendationResponse(BaseModel):
             _dict['translationMessages'] = _items
         # override the default output from pydantic by calling `to_dict()` of recommender_calculations
         if self.recommender_calculations:
-            _dict[
-                'recommenderCalculations'] = self.recommender_calculations.to_dict(
-                )
+            _dict['recommenderCalculations'] = self.recommender_calculations.to_dict()
         return _dict
 
     @classmethod
@@ -110,20 +94,12 @@ class RecommendationResponse(BaseModel):
             return RecommendationResponse.parse_obj(obj)
 
         _obj = RecommendationResponse.parse_obj({
-            "request":
-            RecommendationRequest.from_dict(obj.get("request"))
-            if obj.get("request") is not None else None,
-            "recommendation":
-            obj.get("recommendation"),
-            "interpretations":
-            obj.get("interpretations"),
-            "translation_messages": [
-                TranslationMessage.from_dict(_item)
-                for _item in obj.get("translationMessages")
-            ] if obj.get("translationMessages") is not None else None,
-            "recommender_calculations":
-            RecommenderCalculations.from_dict(
-                obj.get("recommenderCalculations"))
-            if obj.get("recommenderCalculations") is not None else None
+            "request": RecommendationRequest.from_dict(obj.get("request")) if obj.get("request") is not None else None,
+            "recommendation": obj.get("recommendation"),
+            "interpretations": obj.get("interpretations"),
+            "translation_messages": [TranslationMessage.from_dict(_item) for _item in obj.get("translationMessages")] if obj.get("translationMessages") is not None else None,
+            "recommender_calculations": RecommenderCalculations.from_dict(obj.get("recommenderCalculations")) if obj.get("recommenderCalculations") is not None else None
         })
         return _obj
+
+

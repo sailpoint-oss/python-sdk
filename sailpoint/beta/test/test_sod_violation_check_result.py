@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.sod_violation_check_result import SodViolationCheckResult  # noqa: E501
-
 
 class TestSodViolationCheckResult(unittest.TestCase):
     """SodViolationCheckResult unit test stubs"""
@@ -43,7 +43,7 @@ class TestSodViolationCheckResult(unittest.TestCase):
                 client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1},
                 violation_contexts = [
                     beta.models.sod_violation_context.SodViolationContext(
-                        policy = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                        policy = beta.models.base_reference_dto.BaseReferenceDto(
                             type = 'IDENTITY', 
                             id = '2c91808568c529c60168cca6f90c1313', 
                             name = 'William Wilson', ), 
@@ -58,7 +58,7 @@ class TestSodViolationCheckResult(unittest.TestCase):
                             right_criteria = beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(), ), )
                     ],
                 violated_policies = [
-                    beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                    beta.models.base_reference_dto.BaseReferenceDto(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'William Wilson', )
@@ -73,7 +73,6 @@ class TestSodViolationCheckResult(unittest.TestCase):
         """Test SodViolationCheckResult"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

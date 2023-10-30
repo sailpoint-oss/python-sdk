@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
 from v3.models.error_message_dto import ErrorMessageDto
-
 
 class CampaignAlert(BaseModel):
     """
     CampaignAlert
     """
-    level: Optional[StrictStr] = Field(
-        None, description="Denotes the level of the message")
+    level: Optional[StrictStr] = Field(None, description="Denotes the level of the message")
     localizations: Optional[conlist(ErrorMessageDto)] = None
     __properties = ["level", "localizations"]
 
@@ -37,8 +37,7 @@ class CampaignAlert(BaseModel):
             return value
 
         if value not in ('ERROR', 'WARN', 'INFO'):
-            raise ValueError(
-                "must be one of enum values ('ERROR', 'WARN', 'INFO')")
+            raise ValueError("must be one of enum values ('ERROR', 'WARN', 'INFO')")
         return value
 
     class Config:
@@ -61,7 +60,10 @@ class CampaignAlert(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in localizations (list)
         _items = []
         if self.localizations:
@@ -81,11 +83,9 @@ class CampaignAlert(BaseModel):
             return CampaignAlert.parse_obj(obj)
 
         _obj = CampaignAlert.parse_obj({
-            "level":
-            obj.get("level"),
-            "localizations": [
-                ErrorMessageDto.from_dict(_item)
-                for _item in obj.get("localizations")
-            ] if obj.get("localizations") is not None else None
+            "level": obj.get("level"),
+            "localizations": [ErrorMessageDto.from_dict(_item) for _item in obj.get("localizations")] if obj.get("localizations") is not None else None
         })
         return _obj
+
+

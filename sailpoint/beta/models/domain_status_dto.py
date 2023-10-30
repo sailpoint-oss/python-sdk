@@ -11,37 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class DomainStatusDto(BaseModel):
     """
     Domain status DTO containing everything required to verify via DKIM  # noqa: E501
     """
-    id: Optional[StrictStr] = Field(
-        None, description="New UUID associated with domain to be verified")
+    id: Optional[StrictStr] = Field(None, description="New UUID associated with domain to be verified")
     domain: Optional[StrictStr] = Field(None, description="A domain address")
-    dkim_enabled: Optional[Dict[str, Any]] = Field(
-        None,
-        alias="dkimEnabled",
-        description="DKIM is enabled for this domain")
-    dkim_tokens: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="dkimTokens",
-        description="DKIM tokens required for authentication")
-    dkim_verification_status: Optional[StrictStr] = Field(
-        None,
-        alias="dkimVerificationStatus",
-        description="Status of DKIM authentication")
-    __properties = [
-        "id", "domain", "dkimEnabled", "dkimTokens", "dkimVerificationStatus"
-    ]
+    dkim_enabled: Optional[Dict[str, Any]] = Field(None, alias="dkimEnabled", description="DKIM is enabled for this domain")
+    dkim_tokens: Optional[conlist(StrictStr)] = Field(None, alias="dkimTokens", description="DKIM tokens required for authentication")
+    dkim_verification_status: Optional[StrictStr] = Field(None, alias="dkimVerificationStatus", description="Status of DKIM authentication")
+    __properties = ["id", "domain", "dkimEnabled", "dkimTokens", "dkimVerificationStatus"]
 
     class Config:
         """Pydantic configuration"""
@@ -63,7 +52,10 @@ class DomainStatusDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,15 +68,12 @@ class DomainStatusDto(BaseModel):
             return DomainStatusDto.parse_obj(obj)
 
         _obj = DomainStatusDto.parse_obj({
-            "id":
-            obj.get("id"),
-            "domain":
-            obj.get("domain"),
-            "dkim_enabled":
-            obj.get("dkimEnabled"),
-            "dkim_tokens":
-            obj.get("dkimTokens"),
-            "dkim_verification_status":
-            obj.get("dkimVerificationStatus")
+            "id": obj.get("id"),
+            "domain": obj.get("domain"),
+            "dkim_enabled": obj.get("dkimEnabled"),
+            "dkim_tokens": obj.get("dkimTokens"),
+            "dkim_verification_status": obj.get("dkimVerificationStatus")
         })
         return _obj
+
+

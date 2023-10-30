@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -28,7 +29,9 @@ from v3.models.tagged_object import TaggedObject
 from v3.api_client import ApiClient
 from v3.api_response import ApiResponse
 from v3.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class TaggedObjectsApi:
@@ -44,14 +47,7 @@ class TaggedObjectsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def delete_tagged_object(self, type: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The type of tagged object to delete."
-        )], id: Annotated[
-            StrictStr,
-            Field(..., description="The ID of the object reference to delete."
-                  )], **kwargs) -> None:  # noqa: E501
+    def delete_tagged_object(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to delete.")], id : Annotated[StrictStr, Field(..., description="The ID of the object reference to delete.")], **kwargs) -> None:  # noqa: E501
         """Delete Tagged Object  # noqa: E501
 
         This deletes a tagged object for the specified type.  # noqa: E501
@@ -80,20 +76,10 @@ class TaggedObjectsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_tagged_object_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_tagged_object_with_http_info(type, id,
-                                                        **kwargs)  # noqa: E501
+        return self.delete_tagged_object_with_http_info(type, id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_tagged_object_with_http_info(
-            self, type: Annotated[
-                StrictStr,
-                Field(..., description="The type of tagged object to delete."
-                      )],
-            id: Annotated[
-                StrictStr,
-                Field(...,
-                      description="The ID of the object reference to delete."
-                      )], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_tagged_object_with_http_info(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to delete.")], id : Annotated[StrictStr, Field(..., description="The ID of the object reference to delete.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Tagged Object  # noqa: E501
 
         This deletes a tagged object for the specified type.  # noqa: E501
@@ -134,17 +120,29 @@ class TaggedObjectsApi:
 
         _params = locals()
 
-        _all_params = ['type', 'id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'type',
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_tagged_object" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_tagged_object" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -157,6 +155,7 @@ class TaggedObjectsApi:
 
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -177,8 +176,7 @@ class TaggedObjectsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/tagged-objects/{type}/{id}',
-            'DELETE',
+            '/tagged-objects/{type}/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -188,21 +186,14 @@ class TaggedObjectsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_tags_to_many_object(self, bulk_tagged_object: Annotated[
-        BulkTaggedObject,
-        Field(
-            ...,
-            description=
-            "Supported object types are ROLE, IDENTITY and SOD_POLICY.")],
-                                   **kwargs) -> None:  # noqa: E501
+    def delete_tags_to_many_object(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ROLE, IDENTITY and SOD_POLICY.")], **kwargs) -> None:  # noqa: E501
         """Remove Tags from Multiple Objects  # noqa: E501
 
         This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -229,18 +220,10 @@ class TaggedObjectsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_tags_to_many_object_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_tags_to_many_object_with_http_info(
-            bulk_tagged_object, **kwargs)  # noqa: E501
+        return self.delete_tags_to_many_object_with_http_info(bulk_tagged_object, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_tags_to_many_object_with_http_info(
-            self, bulk_tagged_object: Annotated[
-                BulkTaggedObject,
-                Field(
-                    ...,
-                    description=
-                    "Supported object types are ROLE, IDENTITY and SOD_POLICY."
-                )], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_tags_to_many_object_with_http_info(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ROLE, IDENTITY and SOD_POLICY.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Remove Tags from Multiple Objects  # noqa: E501
 
         This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -279,18 +262,28 @@ class TaggedObjectsApi:
 
         _params = locals()
 
-        _all_params = ['bulk_tagged_object']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'bulk_tagged_object'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_tags_to_many_object" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_tags_to_many_object" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -316,11 +309,11 @@ class TaggedObjectsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -328,8 +321,7 @@ class TaggedObjectsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/tagged-objects/bulk-remove',
-            'POST',
+            '/tagged-objects/bulk-remove', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -339,23 +331,14 @@ class TaggedObjectsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_tagged_object(self, type: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The type of tagged object to retrieve."
-        )], id: Annotated[
-            StrictStr,
-            Field(...,
-                  description="The ID of the object reference to retrieve.")],
-                          **kwargs) -> TaggedObject:  # noqa: E501
+    def get_tagged_object(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to retrieve.")], id : Annotated[StrictStr, Field(..., description="The ID of the object reference to retrieve.")], **kwargs) -> TaggedObject:  # noqa: E501
         """Get Tagged Object  # noqa: E501
 
         This gets a tagged object for the specified type.  # noqa: E501
@@ -384,20 +367,10 @@ class TaggedObjectsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_tagged_object_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_tagged_object_with_http_info(type, id,
-                                                     **kwargs)  # noqa: E501
+        return self.get_tagged_object_with_http_info(type, id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_tagged_object_with_http_info(self, type: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The type of tagged object to retrieve."
-        )], id: Annotated[
-            StrictStr,
-            Field(...,
-                  description="The ID of the object reference to retrieve.")],
-                                         **kwargs
-                                         ) -> ApiResponse:  # noqa: E501
+    def get_tagged_object_with_http_info(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to retrieve.")], id : Annotated[StrictStr, Field(..., description="The ID of the object reference to retrieve.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Tagged Object  # noqa: E501
 
         This gets a tagged object for the specified type.  # noqa: E501
@@ -438,17 +411,29 @@ class TaggedObjectsApi:
 
         _params = locals()
 
-        _all_params = ['type', 'id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'type',
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_tagged_object" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_tagged_object" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -461,6 +446,7 @@ class TaggedObjectsApi:
 
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -488,8 +474,7 @@ class TaggedObjectsApi:
         }
 
         return self.api_client.call_api(
-            '/tagged-objects/{type}/{id}',
-            'GET',
+            '/tagged-objects/{type}/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -499,45 +484,14 @@ class TaggedObjectsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_tagged_objects(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq, in*  **objectRef.type**: *eq, in*  **tagName**: *eq, in*"
-            )] = None,
-            **kwargs) -> List[TaggedObject]:  # noqa: E501
+    def list_tagged_objects(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq, in*  **objectRef.type**: *eq, in*  **tagName**: *eq, in*")] = None, **kwargs) -> List[TaggedObject]:  # noqa: E501
         """List Tagged Objects  # noqa: E501
 
         This API returns a list of all tagged objects.  Any authenticated token may be used to call this API.  # noqa: E501
@@ -570,42 +524,10 @@ class TaggedObjectsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_tagged_objects_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_tagged_objects_with_http_info(limit, offset, count,
-                                                       filters,
-                                                       **kwargs)  # noqa: E501
+        return self.list_tagged_objects_with_http_info(limit, offset, count, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_tagged_objects_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq, in*  **objectRef.type**: *eq, in*  **tagName**: *eq, in*"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_tagged_objects_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq, in*  **objectRef.type**: *eq, in*  **tagName**: *eq, in*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Tagged Objects  # noqa: E501
 
         This API returns a list of all tagged objects.  Any authenticated token may be used to call this API.  # noqa: E501
@@ -650,17 +572,31 @@ class TaggedObjectsApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'count', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'count',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_tagged_objects" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_tagged_objects" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -707,8 +643,7 @@ class TaggedObjectsApi:
         }
 
         return self.api_client.call_api(
-            '/tagged-objects',
-            'GET',
+            '/tagged-objects', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -718,49 +653,14 @@ class TaggedObjectsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_tagged_objects_by_type(
-            self,
-            type: Annotated[
-                StrictStr,
-                Field(...,
-                      description="The type of tagged object to retrieve.")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq*  **objectRef.type**: *eq*"
-            )] = None,
-            **kwargs) -> List[TaggedObject]:  # noqa: E501
+    def list_tagged_objects_by_type(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to retrieve.")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq*  **objectRef.type**: *eq*")] = None, **kwargs) -> List[TaggedObject]:  # noqa: E501
         """List Tagged Objects  # noqa: E501
 
         This API returns a list of all tagged objects by type.  Any authenticated token may be used to call this API.  # noqa: E501
@@ -795,45 +695,10 @@ class TaggedObjectsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_tagged_objects_by_type_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_tagged_objects_by_type_with_http_info(
-            type, limit, offset, count, filters, **kwargs)  # noqa: E501
+        return self.list_tagged_objects_by_type_with_http_info(type, limit, offset, count, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_tagged_objects_by_type_with_http_info(
-            self,
-            type: Annotated[
-                StrictStr,
-                Field(...,
-                      description="The type of tagged object to retrieve.")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq*  **objectRef.type**: *eq*"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_tagged_objects_by_type_with_http_info(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to retrieve.")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq*  **objectRef.type**: *eq*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Tagged Objects  # noqa: E501
 
         This API returns a list of all tagged objects by type.  Any authenticated token may be used to call this API.  # noqa: E501
@@ -880,18 +745,32 @@ class TaggedObjectsApi:
 
         _params = locals()
 
-        _all_params = ['type', 'limit', 'offset', 'count', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'type',
+            'limit',
+            'offset',
+            'count',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_tagged_objects_by_type" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_tagged_objects_by_type" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -901,6 +780,7 @@ class TaggedObjectsApi:
         _path_params = {}
         if _params['type']:
             _path_params['type'] = _params['type']
+
 
         # process the query parameters
         _query_params = []
@@ -940,8 +820,7 @@ class TaggedObjectsApi:
         }
 
         return self.api_client.call_api(
-            '/tagged-objects/{type}',
-            'GET',
+            '/tagged-objects/{type}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -951,23 +830,14 @@ class TaggedObjectsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_tagged_object(self, type: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The type of tagged object to update."
-        )], id: Annotated[
-            StrictStr,
-            Field(..., description="The ID of the object reference to update."
-                  )], tagged_object: TaggedObject,
-                          **kwargs) -> TaggedObject:  # noqa: E501
+    def put_tagged_object(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to update.")], id : Annotated[StrictStr, Field(..., description="The ID of the object reference to update.")], tagged_object : TaggedObject, **kwargs) -> TaggedObject:  # noqa: E501
         """Update Tagged Object  # noqa: E501
 
         This updates a tagged object for the specified type.  # noqa: E501
@@ -998,21 +868,10 @@ class TaggedObjectsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_tagged_object_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_tagged_object_with_http_info(type, id, tagged_object,
-                                                     **kwargs)  # noqa: E501
+        return self.put_tagged_object_with_http_info(type, id, tagged_object, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_tagged_object_with_http_info(
-            self, type: Annotated[
-                StrictStr,
-                Field(..., description="The type of tagged object to update."
-                      )],
-            id: Annotated[
-                StrictStr,
-                Field(...,
-                      description="The ID of the object reference to update."
-                      )], tagged_object: TaggedObject,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def put_tagged_object_with_http_info(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to update.")], id : Annotated[StrictStr, Field(..., description="The ID of the object reference to update.")], tagged_object : TaggedObject, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Tagged Object  # noqa: E501
 
         This updates a tagged object for the specified type.  # noqa: E501
@@ -1055,17 +914,30 @@ class TaggedObjectsApi:
 
         _params = locals()
 
-        _all_params = ['type', 'id', 'tagged_object']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'type',
+            'id',
+            'tagged_object'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method put_tagged_object" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_tagged_object" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1078,6 +950,7 @@ class TaggedObjectsApi:
 
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1096,11 +969,11 @@ class TaggedObjectsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1115,8 +988,7 @@ class TaggedObjectsApi:
         }
 
         return self.api_client.call_api(
-            '/tagged-objects/{type}/{id}',
-            'PUT',
+            '/tagged-objects/{type}/{id}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -1126,16 +998,14 @@ class TaggedObjectsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def set_tag_to_object(self, tagged_object: TaggedObject,
-                          **kwargs) -> None:  # noqa: E501
+    def set_tag_to_object(self, tagged_object : TaggedObject, **kwargs) -> None:  # noqa: E501
         """Add Tag to Object  # noqa: E501
 
         This adds a tag to an object.  Any authenticated token may be used to call this API.  # noqa: E501
@@ -1162,13 +1032,10 @@ class TaggedObjectsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the set_tag_to_object_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.set_tag_to_object_with_http_info(tagged_object,
-                                                     **kwargs)  # noqa: E501
+        return self.set_tag_to_object_with_http_info(tagged_object, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def set_tag_to_object_with_http_info(
-            self, tagged_object: TaggedObject,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def set_tag_to_object_with_http_info(self, tagged_object : TaggedObject, **kwargs) -> ApiResponse:  # noqa: E501
         """Add Tag to Object  # noqa: E501
 
         This adds a tag to an object.  Any authenticated token may be used to call this API.  # noqa: E501
@@ -1207,17 +1074,28 @@ class TaggedObjectsApi:
 
         _params = locals()
 
-        _all_params = ['tagged_object']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'tagged_object'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method set_tag_to_object" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_tag_to_object" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1243,11 +1121,11 @@ class TaggedObjectsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1255,8 +1133,7 @@ class TaggedObjectsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/tagged-objects',
-            'POST',
+            '/tagged-objects', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1266,21 +1143,14 @@ class TaggedObjectsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def set_tags_to_many_objects(self, bulk_tagged_object: Annotated[
-        BulkTaggedObject,
-        Field(
-            ...,
-            description=
-            "Supported object types are ROLE, IDENTITY and SOD_POLICY.")],
-                                 **kwargs) -> BulkTaggedObject:  # noqa: E501
+    def set_tags_to_many_objects(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ROLE, IDENTITY and SOD_POLICY.")], **kwargs) -> BulkTaggedObject:  # noqa: E501
         """Tag Multiple Objects  # noqa: E501
 
         This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -1307,18 +1177,10 @@ class TaggedObjectsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the set_tags_to_many_objects_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.set_tags_to_many_objects_with_http_info(
-            bulk_tagged_object, **kwargs)  # noqa: E501
+        return self.set_tags_to_many_objects_with_http_info(bulk_tagged_object, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def set_tags_to_many_objects_with_http_info(
-            self, bulk_tagged_object: Annotated[
-                BulkTaggedObject,
-                Field(
-                    ...,
-                    description=
-                    "Supported object types are ROLE, IDENTITY and SOD_POLICY."
-                )], **kwargs) -> ApiResponse:  # noqa: E501
+    def set_tags_to_many_objects_with_http_info(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ROLE, IDENTITY and SOD_POLICY.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Tag Multiple Objects  # noqa: E501
 
         This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -1357,18 +1219,28 @@ class TaggedObjectsApi:
 
         _params = locals()
 
-        _all_params = ['bulk_tagged_object']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'bulk_tagged_object'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method set_tags_to_many_objects" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_tags_to_many_objects" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1394,11 +1266,11 @@ class TaggedObjectsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1413,8 +1285,7 @@ class TaggedObjectsApi:
         }
 
         return self.api_client.call_api(
-            '/tagged-objects/bulk-add',
-            'POST',
+            '/tagged-objects/bulk-add', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1424,8 +1295,7 @@ class TaggedObjectsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

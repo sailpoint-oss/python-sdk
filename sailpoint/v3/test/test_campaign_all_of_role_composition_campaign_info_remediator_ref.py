@@ -11,14 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.campaign_all_of_role_composition_campaign_info_remediator_ref import CampaignAllOfRoleCompositionCampaignInfoRemediatorRef  # noqa: E501
 
-
-class TestCampaignAllOfRoleCompositionCampaignInfoRemediatorRef(
-        unittest.TestCase):
+class TestCampaignAllOfRoleCompositionCampaignInfoRemediatorRef(unittest.TestCase):
     """CampaignAllOfRoleCompositionCampaignInfoRemediatorRef unit test stubs"""
 
     def setUp(self):
@@ -27,9 +26,7 @@ class TestCampaignAllOfRoleCompositionCampaignInfoRemediatorRef(
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> CampaignAllOfRoleCompositionCampaignInfoRemediatorRef:
+    def make_instance(self, include_optional) -> CampaignAllOfRoleCompositionCampaignInfoRemediatorRef:
         """Test CampaignAllOfRoleCompositionCampaignInfoRemediatorRef
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -54,7 +51,6 @@ class TestCampaignAllOfRoleCompositionCampaignInfoRemediatorRef(
         """Test CampaignAllOfRoleCompositionCampaignInfoRemediatorRef"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

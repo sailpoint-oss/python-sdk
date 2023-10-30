@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -30,7 +31,9 @@ from beta.models.message_catalog_dto import MessageCatalogDto
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class IAIAccessRequestRecommendationsApi:
@@ -46,15 +49,7 @@ class IAIAccessRequestRecommendationsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def add_access_request_recommendations_ignored_item(
-        self, access_request_recommendation_action_item_dto: Annotated[
-            AccessRequestRecommendationActionItemDto,
-            Field(
-                ...,
-                description=
-                "The recommended access item to ignore for an identity.")],
-        **kwargs
-    ) -> AccessRequestRecommendationActionItemResponseDto:  # noqa: E501
+    def add_access_request_recommendations_ignored_item(self, access_request_recommendation_action_item_dto : Annotated[AccessRequestRecommendationActionItemDto, Field(..., description="The recommended access item to ignore for an identity.")], **kwargs) -> AccessRequestRecommendationActionItemResponseDto:  # noqa: E501
         """Notification of Ignored Access Request Recommendations  # noqa: E501
 
         This API ignores a recommended access request item. Once an item is ignored, it will be marked as ignored=true if it is still a recommended item. The consumer can decide to hide ignored recommendations.  # noqa: E501
@@ -81,19 +76,10 @@ class IAIAccessRequestRecommendationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the add_access_request_recommendations_ignored_item_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.add_access_request_recommendations_ignored_item_with_http_info(
-            access_request_recommendation_action_item_dto,
-            **kwargs)  # noqa: E501
+        return self.add_access_request_recommendations_ignored_item_with_http_info(access_request_recommendation_action_item_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def add_access_request_recommendations_ignored_item_with_http_info(
-            self, access_request_recommendation_action_item_dto: Annotated[
-                AccessRequestRecommendationActionItemDto,
-                Field(
-                    ...,
-                    description=
-                    "The recommended access item to ignore for an identity.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def add_access_request_recommendations_ignored_item_with_http_info(self, access_request_recommendation_action_item_dto : Annotated[AccessRequestRecommendationActionItemDto, Field(..., description="The recommended access item to ignore for an identity.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Notification of Ignored Access Request Recommendations  # noqa: E501
 
         This API ignores a recommended access request item. Once an item is ignored, it will be marked as ignored=true if it is still a recommended item. The consumer can decide to hide ignored recommendations.  # noqa: E501
@@ -132,19 +118,28 @@ class IAIAccessRequestRecommendationsApi:
 
         _params = locals()
 
-        _all_params = ['access_request_recommendation_action_item_dto']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'access_request_recommendation_action_item_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method add_access_request_recommendations_ignored_item"
-                    % _key)
+                    " to method add_access_request_recommendations_ignored_item" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -162,21 +157,19 @@ class IAIAccessRequestRecommendationsApi:
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params[
-                'access_request_recommendation_action_item_dto'] is not None:
-            _body_params = _params[
-                'access_request_recommendation_action_item_dto']
+        if _params['access_request_recommendation_action_item_dto'] is not None:
+            _body_params = _params['access_request_recommendation_action_item_dto']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -191,8 +184,7 @@ class IAIAccessRequestRecommendationsApi:
         }
 
         return self.api_client.call_api(
-            '/ai-access-request-recommendations/ignored-items',
-            'POST',
+            '/ai-access-request-recommendations/ignored-items', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -202,23 +194,14 @@ class IAIAccessRequestRecommendationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def add_access_request_recommendations_requested_item(
-        self, access_request_recommendation_action_item_dto: Annotated[
-            AccessRequestRecommendationActionItemDto,
-            Field(
-                ...,
-                description=
-                "The recommended access item that was requested for an identity."
-            )], **kwargs
-    ) -> AccessRequestRecommendationActionItemResponseDto:  # noqa: E501
+    def add_access_request_recommendations_requested_item(self, access_request_recommendation_action_item_dto : Annotated[AccessRequestRecommendationActionItemDto, Field(..., description="The recommended access item that was requested for an identity.")], **kwargs) -> AccessRequestRecommendationActionItemResponseDto:  # noqa: E501
         """Notification of Requested Access Request Recommendations  # noqa: E501
 
         This API consumes a notification that a recommended access request item was requested. This API does not actually make the request, it is just a notification. This will help provide feedback in order to improve our recommendations.  # noqa: E501
@@ -245,20 +228,10 @@ class IAIAccessRequestRecommendationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the add_access_request_recommendations_requested_item_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.add_access_request_recommendations_requested_item_with_http_info(
-            access_request_recommendation_action_item_dto,
-            **kwargs)  # noqa: E501
+        return self.add_access_request_recommendations_requested_item_with_http_info(access_request_recommendation_action_item_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def add_access_request_recommendations_requested_item_with_http_info(
-            self, access_request_recommendation_action_item_dto:
-        Annotated[
-            AccessRequestRecommendationActionItemDto,
-            Field(
-                ...,
-                description=
-                "The recommended access item that was requested for an identity."
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_access_request_recommendations_requested_item_with_http_info(self, access_request_recommendation_action_item_dto : Annotated[AccessRequestRecommendationActionItemDto, Field(..., description="The recommended access item that was requested for an identity.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Notification of Requested Access Request Recommendations  # noqa: E501
 
         This API consumes a notification that a recommended access request item was requested. This API does not actually make the request, it is just a notification. This will help provide feedback in order to improve our recommendations.  # noqa: E501
@@ -297,19 +270,28 @@ class IAIAccessRequestRecommendationsApi:
 
         _params = locals()
 
-        _all_params = ['access_request_recommendation_action_item_dto']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'access_request_recommendation_action_item_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method add_access_request_recommendations_requested_item"
-                    % _key)
+                    " to method add_access_request_recommendations_requested_item" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -327,21 +309,19 @@ class IAIAccessRequestRecommendationsApi:
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params[
-                'access_request_recommendation_action_item_dto'] is not None:
-            _body_params = _params[
-                'access_request_recommendation_action_item_dto']
+        if _params['access_request_recommendation_action_item_dto'] is not None:
+            _body_params = _params['access_request_recommendation_action_item_dto']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -356,8 +336,7 @@ class IAIAccessRequestRecommendationsApi:
         }
 
         return self.api_client.call_api(
-            '/ai-access-request-recommendations/requested-items',
-            'POST',
+            '/ai-access-request-recommendations/requested-items', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -367,23 +346,14 @@ class IAIAccessRequestRecommendationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def add_access_request_recommendations_viewed_item(
-        self, access_request_recommendation_action_item_dto: Annotated[
-            AccessRequestRecommendationActionItemDto,
-            Field(
-                ...,
-                description=
-                "The recommended access that was viewed for an identity.")],
-        **kwargs
-    ) -> AccessRequestRecommendationActionItemResponseDto:  # noqa: E501
+    def add_access_request_recommendations_viewed_item(self, access_request_recommendation_action_item_dto : Annotated[AccessRequestRecommendationActionItemDto, Field(..., description="The recommended access that was viewed for an identity.")], **kwargs) -> AccessRequestRecommendationActionItemResponseDto:  # noqa: E501
         """Notification of Viewed Access Request Recommendations  # noqa: E501
 
         This API consumes a notification that a recommended access request item was viewed. Future recommendations with this item will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.  # noqa: E501
@@ -410,19 +380,10 @@ class IAIAccessRequestRecommendationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the add_access_request_recommendations_viewed_item_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.add_access_request_recommendations_viewed_item_with_http_info(
-            access_request_recommendation_action_item_dto,
-            **kwargs)  # noqa: E501
+        return self.add_access_request_recommendations_viewed_item_with_http_info(access_request_recommendation_action_item_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def add_access_request_recommendations_viewed_item_with_http_info(
-            self, access_request_recommendation_action_item_dto: Annotated[
-                AccessRequestRecommendationActionItemDto,
-                Field(
-                    ...,
-                    description=
-                    "The recommended access that was viewed for an identity."
-                )], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_access_request_recommendations_viewed_item_with_http_info(self, access_request_recommendation_action_item_dto : Annotated[AccessRequestRecommendationActionItemDto, Field(..., description="The recommended access that was viewed for an identity.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Notification of Viewed Access Request Recommendations  # noqa: E501
 
         This API consumes a notification that a recommended access request item was viewed. Future recommendations with this item will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.  # noqa: E501
@@ -461,19 +422,28 @@ class IAIAccessRequestRecommendationsApi:
 
         _params = locals()
 
-        _all_params = ['access_request_recommendation_action_item_dto']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'access_request_recommendation_action_item_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method add_access_request_recommendations_viewed_item"
-                    % _key)
+                    " to method add_access_request_recommendations_viewed_item" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -491,21 +461,19 @@ class IAIAccessRequestRecommendationsApi:
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params[
-                'access_request_recommendation_action_item_dto'] is not None:
-            _body_params = _params[
-                'access_request_recommendation_action_item_dto']
+        if _params['access_request_recommendation_action_item_dto'] is not None:
+            _body_params = _params['access_request_recommendation_action_item_dto']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -520,8 +488,7 @@ class IAIAccessRequestRecommendationsApi:
         }
 
         return self.api_client.call_api(
-            '/ai-access-request-recommendations/viewed-items',
-            'POST',
+            '/ai-access-request-recommendations/viewed-items', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -531,23 +498,14 @@ class IAIAccessRequestRecommendationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def add_access_request_recommendations_viewed_items(
-        self, access_request_recommendation_action_item_dto: Annotated[
-            conlist(AccessRequestRecommendationActionItemDto),
-            Field(
-                ...,
-                description=
-                "The recommended access items that were viewed for an identity."
-            )], **kwargs
-    ) -> List[AccessRequestRecommendationActionItemResponseDto]:  # noqa: E501
+    def add_access_request_recommendations_viewed_items(self, access_request_recommendation_action_item_dto : Annotated[conlist(AccessRequestRecommendationActionItemDto), Field(..., description="The recommended access items that were viewed for an identity.")], **kwargs) -> List[AccessRequestRecommendationActionItemResponseDto]:  # noqa: E501
         """Notification of Viewed Access Request Recommendations in Bulk  # noqa: E501
 
         This API consumes a notification that a set of recommended access request item were viewed. Future recommendations with these items will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.  # noqa: E501
@@ -574,20 +532,10 @@ class IAIAccessRequestRecommendationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the add_access_request_recommendations_viewed_items_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.add_access_request_recommendations_viewed_items_with_http_info(
-            access_request_recommendation_action_item_dto,
-            **kwargs)  # noqa: E501
+        return self.add_access_request_recommendations_viewed_items_with_http_info(access_request_recommendation_action_item_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def add_access_request_recommendations_viewed_items_with_http_info(
-            self, access_request_recommendation_action_item_dto:
-        Annotated[
-            conlist(AccessRequestRecommendationActionItemDto),
-            Field(
-                ...,
-                description=
-                "The recommended access items that were viewed for an identity."
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def add_access_request_recommendations_viewed_items_with_http_info(self, access_request_recommendation_action_item_dto : Annotated[conlist(AccessRequestRecommendationActionItemDto), Field(..., description="The recommended access items that were viewed for an identity.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Notification of Viewed Access Request Recommendations in Bulk  # noqa: E501
 
         This API consumes a notification that a set of recommended access request item were viewed. Future recommendations with these items will be marked with viewed=true. This can be useful for the consumer to determine if there are any new/unviewed recommendations.  # noqa: E501
@@ -626,19 +574,28 @@ class IAIAccessRequestRecommendationsApi:
 
         _params = locals()
 
-        _all_params = ['access_request_recommendation_action_item_dto']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'access_request_recommendation_action_item_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method add_access_request_recommendations_viewed_items"
-                    % _key)
+                    " to method add_access_request_recommendations_viewed_items" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -656,21 +613,19 @@ class IAIAccessRequestRecommendationsApi:
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params[
-                'access_request_recommendation_action_item_dto'] is not None:
-            _body_params = _params[
-                'access_request_recommendation_action_item_dto']
+        if _params['access_request_recommendation_action_item_dto'] is not None:
+            _body_params = _params['access_request_recommendation_action_item_dto']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -685,8 +640,7 @@ class IAIAccessRequestRecommendationsApi:
         }
 
         return self.api_client.call_api(
-            '/ai-access-request-recommendations/viewed-items/bulk-create',
-            'POST',
+            '/ai-access-request-recommendations/viewed-items/bulk-create', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -696,63 +650,14 @@ class IAIAccessRequestRecommendationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_access_request_recommendations(
-            self,
-            identity_id:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Get access request recommendations for an identityId. *me* indicates the current user."
-            )] = None,
-            limit: Annotated[
-                Optional[conint(strict=True, le=15, ge=0)],
-                Field(description="Max number of results to return.")] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            include_translation_messages:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate a list of translation messages in the response."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.name**: *co*  **access.type**: *eq, in*  **access.description**: *co*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, access.type**  By default the recommendations are sorted by highest confidence first."
-            )] = None,
-            **kwargs
-    ) -> List[AccessRequestRecommendationItemDetail]:  # noqa: E501
+    def get_access_request_recommendations(self, identity_id : Annotated[Optional[StrictStr], Field(description="Get access request recommendations for an identityId. *me* indicates the current user.")] = None, limit : Annotated[Optional[conint(strict=True, le=15, ge=0)], Field(description="Max number of results to return.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, include_translation_messages : Annotated[Optional[StrictBool], Field(description="If *true* it will populate a list of translation messages in the response.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.name**: *co*  **access.type**: *eq, in*  **access.description**: *co*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, access.type**  By default the recommendations are sorted by highest confidence first.")] = None, **kwargs) -> List[AccessRequestRecommendationItemDetail]:  # noqa: E501
         """Identity Access Request Recommendations  # noqa: E501
 
         This API returns the access request recommendations for the specified identity. The default identity is *me* which indicates the current user.  # noqa: E501
@@ -791,59 +696,10 @@ class IAIAccessRequestRecommendationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_access_request_recommendations_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_access_request_recommendations_with_http_info(
-            identity_id, limit, offset, count, include_translation_messages,
-            filters, sorters, **kwargs)  # noqa: E501
+        return self.get_access_request_recommendations_with_http_info(identity_id, limit, offset, count, include_translation_messages, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_access_request_recommendations_with_http_info(
-            self,
-            identity_id:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Get access request recommendations for an identityId. *me* indicates the current user."
-            )] = None,
-            limit: Annotated[
-                Optional[conint(strict=True, le=15, ge=0)],
-                Field(description="Max number of results to return.")] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            include_translation_messages:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate a list of translation messages in the response."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.name**: *co*  **access.type**: *eq, in*  **access.description**: *co*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, access.type**  By default the recommendations are sorted by highest confidence first."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_access_request_recommendations_with_http_info(self, identity_id : Annotated[Optional[StrictStr], Field(description="Get access request recommendations for an identityId. *me* indicates the current user.")] = None, limit : Annotated[Optional[conint(strict=True, le=15, ge=0)], Field(description="Max number of results to return.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, include_translation_messages : Annotated[Optional[StrictBool], Field(description="If *true* it will populate a list of translation messages in the response.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.name**: *co*  **access.type**: *eq, in*  **access.description**: *co*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, access.type**  By default the recommendations are sorted by highest confidence first.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Identity Access Request Recommendations  # noqa: E501
 
         This API returns the access request recommendations for the specified identity. The default identity is *me* which indicates the current user.  # noqa: E501
@@ -895,20 +751,33 @@ class IAIAccessRequestRecommendationsApi:
         _params = locals()
 
         _all_params = [
-            'identity_id', 'limit', 'offset', 'count',
-            'include_translation_messages', 'filters', 'sorters'
+            'identity_id',
+            'limit',
+            'offset',
+            'count',
+            'include_translation_messages',
+            'filters',
+            'sorters'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_access_request_recommendations" % _key)
+                    " to method get_access_request_recommendations" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -931,10 +800,8 @@ class IAIAccessRequestRecommendationsApi:
         if _params.get('count') is not None:  # noqa: E501
             _query_params.append(('count', _params['count']))
 
-        if _params.get(
-                'include_translation_messages') is not None:  # noqa: E501
-            _query_params.append(('include-translation-messages',
-                                  _params['include_translation_messages']))
+        if _params.get('include_translation_messages') is not None:  # noqa: E501
+            _query_params.append(('include-translation-messages', _params['include_translation_messages']))
 
         if _params.get('filters') is not None:  # noqa: E501
             _query_params.append(('filters', _params['filters']))
@@ -966,8 +833,7 @@ class IAIAccessRequestRecommendationsApi:
         }
 
         return self.api_client.call_api(
-            '/ai-access-request-recommendations',
-            'GET',
+            '/ai-access-request-recommendations', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -977,48 +843,14 @@ class IAIAccessRequestRecommendationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_access_request_recommendations_ignored_items(
-        self,
-        limit: Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        filters: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*"
-            )] = None,
-        sorters: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**"
-            )] = None,
-        **kwargs
-    ) -> List[AccessRequestRecommendationActionItemResponseDto]:  # noqa: E501
+    def get_access_request_recommendations_ignored_items(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**")] = None, **kwargs) -> List[AccessRequestRecommendationActionItemResponseDto]:  # noqa: E501
         """List of Ignored Access Request Recommendations  # noqa: E501
 
         This API returns the list of ignored access request recommendations.  # noqa: E501
@@ -1053,48 +885,10 @@ class IAIAccessRequestRecommendationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_access_request_recommendations_ignored_items_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_access_request_recommendations_ignored_items_with_http_info(
-            limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.get_access_request_recommendations_ignored_items_with_http_info(limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_access_request_recommendations_ignored_items_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_access_request_recommendations_ignored_items_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List of Ignored Access Request Recommendations  # noqa: E501
 
         This API returns the list of ignored access request recommendations.  # noqa: E501
@@ -1141,19 +935,32 @@ class IAIAccessRequestRecommendationsApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'count', 'filters', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_access_request_recommendations_ignored_items"
-                    % _key)
+                    " to method get_access_request_recommendations_ignored_items" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1203,8 +1010,7 @@ class IAIAccessRequestRecommendationsApi:
         }
 
         return self.api_client.call_api(
-            '/ai-access-request-recommendations/ignored-items',
-            'GET',
+            '/ai-access-request-recommendations/ignored-items', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1214,48 +1020,14 @@ class IAIAccessRequestRecommendationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_access_request_recommendations_requested_items(
-        self,
-        limit: Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        filters: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*"
-            )] = None,
-        sorters: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**"
-            )] = None,
-        **kwargs
-    ) -> List[AccessRequestRecommendationActionItemResponseDto]:  # noqa: E501
+    def get_access_request_recommendations_requested_items(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**")] = None, **kwargs) -> List[AccessRequestRecommendationActionItemResponseDto]:  # noqa: E501
         """List of Requested Access Request Recommendations  # noqa: E501
 
         This API returns a list of requested access request recommendations.  # noqa: E501
@@ -1290,48 +1062,10 @@ class IAIAccessRequestRecommendationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_access_request_recommendations_requested_items_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_access_request_recommendations_requested_items_with_http_info(
-            limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.get_access_request_recommendations_requested_items_with_http_info(limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_access_request_recommendations_requested_items_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_access_request_recommendations_requested_items_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List of Requested Access Request Recommendations  # noqa: E501
 
         This API returns a list of requested access request recommendations.  # noqa: E501
@@ -1378,19 +1112,32 @@ class IAIAccessRequestRecommendationsApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'count', 'filters', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_access_request_recommendations_requested_items"
-                    % _key)
+                    " to method get_access_request_recommendations_requested_items" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1440,8 +1187,7 @@ class IAIAccessRequestRecommendationsApi:
         }
 
         return self.api_client.call_api(
-            '/ai-access-request-recommendations/requested-items',
-            'GET',
+            '/ai-access-request-recommendations/requested-items', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1451,48 +1197,14 @@ class IAIAccessRequestRecommendationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_access_request_recommendations_viewed_items(
-        self,
-        limit: Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        count: Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        filters: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*"
-            )] = None,
-        sorters: Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**"
-            )] = None,
-        **kwargs
-    ) -> List[AccessRequestRecommendationActionItemResponseDto]:  # noqa: E501
+    def get_access_request_recommendations_viewed_items(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**")] = None, **kwargs) -> List[AccessRequestRecommendationActionItemResponseDto]:  # noqa: E501
         """List of Viewed Access Request Recommendations  # noqa: E501
 
         This API returns the list of viewed access request recommendations.  # noqa: E501
@@ -1527,48 +1239,10 @@ class IAIAccessRequestRecommendationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_access_request_recommendations_viewed_items_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_access_request_recommendations_viewed_items_with_http_info(
-            limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.get_access_request_recommendations_viewed_items_with_http_info(limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_access_request_recommendations_viewed_items_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_access_request_recommendations_viewed_items_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.id, access.type, identityId, timestamp**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List of Viewed Access Request Recommendations  # noqa: E501
 
         This API returns the list of viewed access request recommendations.  # noqa: E501
@@ -1615,19 +1289,32 @@ class IAIAccessRequestRecommendationsApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'count', 'filters', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_access_request_recommendations_viewed_items"
-                    % _key)
+                    " to method get_access_request_recommendations_viewed_items" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1677,8 +1364,7 @@ class IAIAccessRequestRecommendationsApi:
         }
 
         return self.api_client.call_api(
-            '/ai-access-request-recommendations/viewed-items',
-            'GET',
+            '/ai-access-request-recommendations/viewed-items', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1688,19 +1374,14 @@ class IAIAccessRequestRecommendationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_message_catalogs(
-            self, catalog_id: Annotated[
-                StrictStr,
-                Field(..., description="The ID of the message catalog.")],
-            **kwargs) -> List[MessageCatalogDto]:  # noqa: E501
+    def get_message_catalogs(self, catalog_id : Annotated[StrictStr, Field(..., description="The ID of the message catalog.")], **kwargs) -> List[MessageCatalogDto]:  # noqa: E501
         """Get Message catalogs  # noqa: E501
 
         The getMessageCatalogs API returns message catalog based on the language headers in the requested object.  # noqa: E501
@@ -1727,15 +1408,10 @@ class IAIAccessRequestRecommendationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_message_catalogs_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_message_catalogs_with_http_info(catalog_id,
-                                                        **kwargs)  # noqa: E501
+        return self.get_message_catalogs_with_http_info(catalog_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_message_catalogs_with_http_info(
-            self, catalog_id: Annotated[
-                StrictStr,
-                Field(..., description="The ID of the message catalog.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_message_catalogs_with_http_info(self, catalog_id : Annotated[StrictStr, Field(..., description="The ID of the message catalog.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Message catalogs  # noqa: E501
 
         The getMessageCatalogs API returns message catalog based on the language headers in the requested object.  # noqa: E501
@@ -1774,17 +1450,28 @@ class IAIAccessRequestRecommendationsApi:
 
         _params = locals()
 
-        _all_params = ['catalog_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'catalog_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_message_catalogs" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_message_catalogs" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1794,6 +1481,7 @@ class IAIAccessRequestRecommendationsApi:
         _path_params = {}
         if _params['catalog_id']:
             _path_params['catalog-id'] = _params['catalog_id']
+
 
         # process the query parameters
         _query_params = []
@@ -1821,8 +1509,7 @@ class IAIAccessRequestRecommendationsApi:
         }
 
         return self.api_client.call_api(
-            '/translation-catalogs/{catalog-id}',
-            'GET',
+            '/translation-catalogs/{catalog-id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1832,8 +1519,7 @@ class IAIAccessRequestRecommendationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

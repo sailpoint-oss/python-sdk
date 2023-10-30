@@ -11,40 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional, Union
 from pydantic import BaseModel, Field, StrictFloat, StrictInt
-
 
 class NonEmployeeRequestSummary(BaseModel):
     """
     NonEmployeeRequestSummary
     """
-    approved: Optional[Union[StrictFloat, StrictInt]] = Field(
-        None,
-        description=
-        "The number of approved non-employee requests on all sources that *requested-for* user manages."
-    )
-    rejected: Optional[Union[StrictFloat, StrictInt]] = Field(
-        None,
-        description=
-        "The number of rejected non-employee requests on all sources that *requested-for* user manages."
-    )
-    pending: Optional[Union[StrictFloat, StrictInt]] = Field(
-        None,
-        description=
-        "The number of pending non-employee requests on all sources that *requested-for* user manages."
-    )
-    non_employee_count: Optional[Union[StrictFloat, StrictInt]] = Field(
-        None,
-        alias="nonEmployeeCount",
-        description=
-        "The number of non-employee records on all sources that *requested-for* user manages."
-    )
+    approved: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="The number of approved non-employee requests on all sources that *requested-for* user manages.")
+    rejected: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="The number of rejected non-employee requests on all sources that *requested-for* user manages.")
+    pending: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="The number of pending non-employee requests on all sources that *requested-for* user manages.")
+    non_employee_count: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="nonEmployeeCount", description="The number of non-employee records on all sources that *requested-for* user manages.")
     __properties = ["approved", "rejected", "pending", "nonEmployeeCount"]
 
     class Config:
@@ -67,7 +51,10 @@ class NonEmployeeRequestSummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -80,13 +67,11 @@ class NonEmployeeRequestSummary(BaseModel):
             return NonEmployeeRequestSummary.parse_obj(obj)
 
         _obj = NonEmployeeRequestSummary.parse_obj({
-            "approved":
-            obj.get("approved"),
-            "rejected":
-            obj.get("rejected"),
-            "pending":
-            obj.get("pending"),
-            "non_employee_count":
-            obj.get("nonEmployeeCount")
+            "approved": obj.get("approved"),
+            "rejected": obj.get("rejected"),
+            "pending": obj.get("pending"),
+            "non_employee_count": obj.get("nonEmployeeCount")
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.access_request_post_approval_requested_for import AccessRequestPostApprovalRequestedFor  # noqa: E501
-
 
 class TestAccessRequestPostApprovalRequestedFor(unittest.TestCase):
     """AccessRequestPostApprovalRequestedFor unit test stubs"""
@@ -26,8 +26,7 @@ class TestAccessRequestPostApprovalRequestedFor(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self, include_optional) -> AccessRequestPostApprovalRequestedFor:
+    def make_instance(self, include_optional) -> AccessRequestPostApprovalRequestedFor:
         """Test AccessRequestPostApprovalRequestedFor
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -53,7 +52,6 @@ class TestAccessRequestPostApprovalRequestedFor(unittest.TestCase):
         """Test AccessRequestPostApprovalRequestedFor"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -32,6 +33,7 @@ from beta.models.role_mining_potential_role_edit_entitlements import RoleMiningP
 from beta.models.role_mining_potential_role_export_request import RoleMiningPotentialRoleExportRequest
 from beta.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
 from beta.models.role_mining_potential_role_provision_request import RoleMiningPotentialRoleProvisionRequest
+from beta.models.role_mining_potential_role_source_usage import RoleMiningPotentialRoleSourceUsage
 from beta.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
 from beta.models.role_mining_session_draft_role_dto import RoleMiningSessionDraftRoleDto
 from beta.models.role_mining_session_dto import RoleMiningSessionDto
@@ -41,7 +43,9 @@ from beta.models.role_mining_session_status import RoleMiningSessionStatus
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class IAIRoleMiningApi:
@@ -57,36 +61,7 @@ class IAIRoleMiningApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_potential_role_provision_request(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            min_entitlement_popularity:
-        Annotated[
-            Optional[conint(strict=True, le=100, ge=0)],
-            Field(
-                description=
-                "Minimum popularity required for an entitlement to be included in the provisioned role."
-            )] = None,
-            include_common_access:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Boolean determining whether common access entitlements will be included in the provisioned role."
-            )] = None,
-            role_mining_potential_role_provision_request: Annotated[
-                Optional[RoleMiningPotentialRoleProvisionRequest],
-                Field(description="Required information to create a new role"
-                      )] = None,
-            **kwargs) -> RoleMiningPotentialRoleSummary:  # noqa: E501
+    def create_potential_role_provision_request(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], min_entitlement_popularity : Annotated[Optional[conint(strict=True, le=100, ge=0)], Field(description="Minimum popularity required for an entitlement to be included in the provisioned role.")] = None, include_common_access : Annotated[Optional[StrictBool], Field(description="Boolean determining whether common access entitlements will be included in the provisioned role.")] = None, role_mining_potential_role_provision_request : Annotated[Optional[RoleMiningPotentialRoleProvisionRequest], Field(description="Required information to create a new role")] = None, **kwargs) -> RoleMiningPotentialRoleSummary:  # noqa: E501
         """Create request to provision a potential role into an actual role.  # noqa: E501
 
         This method starts a job to provision a potential role  # noqa: E501
@@ -121,43 +96,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_potential_role_provision_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_potential_role_provision_request_with_http_info(
-            session_id, potential_role_id, min_entitlement_popularity,
-            include_common_access,
-            role_mining_potential_role_provision_request,
-            **kwargs)  # noqa: E501
+        return self.create_potential_role_provision_request_with_http_info(session_id, potential_role_id, min_entitlement_popularity, include_common_access, role_mining_potential_role_provision_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_potential_role_provision_request_with_http_info(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            min_entitlement_popularity:
-        Annotated[
-            Optional[conint(strict=True, le=100, ge=0)],
-            Field(
-                description=
-                "Minimum popularity required for an entitlement to be included in the provisioned role."
-            )] = None,
-            include_common_access:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Boolean determining whether common access entitlements will be included in the provisioned role."
-            )] = None,
-            role_mining_potential_role_provision_request: Annotated[
-                Optional[RoleMiningPotentialRoleProvisionRequest],
-                Field(description="Required information to create a new role"
-                      )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_potential_role_provision_request_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], min_entitlement_popularity : Annotated[Optional[conint(strict=True, le=100, ge=0)], Field(description="Minimum popularity required for an entitlement to be included in the provisioned role.")] = None, include_common_access : Annotated[Optional[StrictBool], Field(description="Boolean determining whether common access entitlements will be included in the provisioned role.")] = None, role_mining_potential_role_provision_request : Annotated[Optional[RoleMiningPotentialRoleProvisionRequest], Field(description="Required information to create a new role")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Create request to provision a potential role into an actual role.  # noqa: E501
 
         This method starts a job to provision a potential role  # noqa: E501
@@ -205,22 +147,31 @@ class IAIRoleMiningApi:
         _params = locals()
 
         _all_params = [
-            'session_id', 'potential_role_id', 'min_entitlement_popularity',
+            'session_id',
+            'potential_role_id',
+            'min_entitlement_popularity',
             'include_common_access',
             'role_mining_potential_role_provision_request'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_potential_role_provision_request" %
-                    _key)
+                    " to method create_potential_role_provision_request" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -234,15 +185,14 @@ class IAIRoleMiningApi:
         if _params['potential_role_id']:
             _path_params['potentialRoleId'] = _params['potential_role_id']
 
+
         # process the query parameters
         _query_params = []
         if _params.get('min_entitlement_popularity') is not None:  # noqa: E501
-            _query_params.append(('min-entitlement-popularity',
-                                  _params['min_entitlement_popularity']))
+            _query_params.append(('min-entitlement-popularity', _params['min_entitlement_popularity']))
 
         if _params.get('include_common_access') is not None:  # noqa: E501
-            _query_params.append(
-                ('include-common-access', _params['include_common_access']))
+            _query_params.append(('include-common-access', _params['include_common_access']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -252,19 +202,18 @@ class IAIRoleMiningApi:
         # process the body parameter
         _body_params = None
         if _params['role_mining_potential_role_provision_request'] is not None:
-            _body_params = _params[
-                'role_mining_potential_role_provision_request']
+            _body_params = _params['role_mining_potential_role_provision_request']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -279,8 +228,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/provision',
-            'POST',
+            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/provision', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -290,19 +238,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_role_mining_sessions(
-            self, role_mining_session_dto: Annotated[
-                RoleMiningSessionDto,
-                Field(..., description="Role mining session parameters")],
-            **kwargs) -> RoleMiningSessionResponse:  # noqa: E501
+    def create_role_mining_sessions(self, role_mining_session_dto : Annotated[RoleMiningSessionDto, Field(..., description="Role mining session parameters")], **kwargs) -> RoleMiningSessionResponse:  # noqa: E501
         """Create a role mining session  # noqa: E501
 
         This submits a create role mining session request to the role mining application.  # noqa: E501
@@ -329,15 +272,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_role_mining_sessions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_role_mining_sessions_with_http_info(
-            role_mining_session_dto, **kwargs)  # noqa: E501
+        return self.create_role_mining_sessions_with_http_info(role_mining_session_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_role_mining_sessions_with_http_info(
-            self, role_mining_session_dto: Annotated[
-                RoleMiningSessionDto,
-                Field(..., description="Role mining session parameters")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_role_mining_sessions_with_http_info(self, role_mining_session_dto : Annotated[RoleMiningSessionDto, Field(..., description="Role mining session parameters")], **kwargs) -> ApiResponse:  # noqa: E501
         """Create a role mining session  # noqa: E501
 
         This submits a create role mining session request to the role mining application.  # noqa: E501
@@ -376,18 +314,28 @@ class IAIRoleMiningApi:
 
         _params = locals()
 
-        _all_params = ['role_mining_session_dto']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'role_mining_session_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_role_mining_sessions" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_role_mining_sessions" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -413,11 +361,11 @@ class IAIRoleMiningApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -432,8 +380,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions',
-            'POST',
+            '/role-mining-sessions', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -443,31 +390,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def download_role_mining_potential_role_zip(
-            self, session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )], export_id:
-        Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description=
-                "The id of a previously run export job for this potential role"
-            )], **kwargs) -> bytearray:  # noqa: E501
+    def download_role_mining_potential_role_zip(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], export_id : Annotated[StrictStr, Field(..., description="The id of a previously run export job for this potential role")], **kwargs) -> bytearray:  # noqa: E501
         """Export (download) details for a potential role in a role mining session  # noqa: E501
 
         This endpoint downloads a completed export of information for a potential role in a role mining session.  # noqa: E501
@@ -498,27 +428,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the download_role_mining_potential_role_zip_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.download_role_mining_potential_role_zip_with_http_info(
-            session_id, potential_role_id, export_id, **kwargs)  # noqa: E501
+        return self.download_role_mining_potential_role_zip_with_http_info(session_id, potential_role_id, export_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def download_role_mining_potential_role_zip_with_http_info(
-            self, session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )], export_id:
-        Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description=
-                "The id of a previously run export job for this potential role"
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def download_role_mining_potential_role_zip_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], export_id : Annotated[StrictStr, Field(..., description="The id of a previously run export job for this potential role")], **kwargs) -> ApiResponse:  # noqa: E501
         """Export (download) details for a potential role in a role mining session  # noqa: E501
 
         This endpoint downloads a completed export of information for a potential role in a role mining session.  # noqa: E501
@@ -561,19 +474,30 @@ class IAIRoleMiningApi:
 
         _params = locals()
 
-        _all_params = ['session_id', 'potential_role_id', 'export_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'session_id',
+            'potential_role_id',
+            'export_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method download_role_mining_potential_role_zip" %
-                    _key)
+                    " to method download_role_mining_potential_role_zip" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -589,6 +513,7 @@ class IAIRoleMiningApi:
 
         if _params['export_id']:
             _path_params['exportId'] = _params['export_id']
+
 
         # process the query parameters
         _query_params = []
@@ -615,8 +540,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId}/download',
-            'GET',
+            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId}/download', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -626,23 +550,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def export_role_mining_potential_role(self, session_id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The role mining session id"
-        )], potential_role_id: Annotated[
-            StrictStr,
-            Field(...,
-                  description="A potential role id in a role mining session")],
-                                          **kwargs) -> bytearray:  # noqa: E501
+    def export_role_mining_potential_role(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], **kwargs) -> bytearray:  # noqa: E501
         """Export (download) details for a potential role in a role mining session  # noqa: E501
 
         This endpoint downloads all the information for a potential role in a role mining session. Includes identities and entitlements in the potential role.  # noqa: E501
@@ -671,20 +586,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the export_role_mining_potential_role_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.export_role_mining_potential_role_with_http_info(
-            session_id, potential_role_id, **kwargs)  # noqa: E501
+        return self.export_role_mining_potential_role_with_http_info(session_id, potential_role_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def export_role_mining_potential_role_with_http_info(
-            self, session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )], **kwargs) -> ApiResponse:  # noqa: E501
+    def export_role_mining_potential_role_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], **kwargs) -> ApiResponse:  # noqa: E501
         """Export (download) details for a potential role in a role mining session  # noqa: E501
 
         This endpoint downloads all the information for a potential role in a role mining session. Includes identities and entitlements in the potential role.  # noqa: E501
@@ -725,18 +630,29 @@ class IAIRoleMiningApi:
 
         _params = locals()
 
-        _all_params = ['session_id', 'potential_role_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'session_id',
+            'potential_role_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method export_role_mining_potential_role" % _key)
+                    " to method export_role_mining_potential_role" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -749,6 +665,7 @@ class IAIRoleMiningApi:
 
         if _params['potential_role_id']:
             _path_params['potentialRoleId'] = _params['potential_role_id']
+
 
         # process the query parameters
         _query_params = []
@@ -775,8 +692,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export',
-            'GET',
+            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -786,28 +702,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def export_role_mining_potential_role_async(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            role_mining_potential_role_export_request: Optional[
-                RoleMiningPotentialRoleExportRequest] = None,
-            **kwargs) -> RoleMiningPotentialRoleExportResponse:  # noqa: E501
+    def export_role_mining_potential_role_async(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], role_mining_potential_role_export_request : Optional[RoleMiningPotentialRoleExportRequest] = None, **kwargs) -> RoleMiningPotentialRoleExportResponse:  # noqa: E501
         """Asynchronously export details for a potential role in a role mining session and upload to S3  # noqa: E501
 
         This endpoint uploads all the information for a potential role in a role mining session to S3 as a downloadable zip archive.  Includes identities and entitlements in the potential role.  # noqa: E501
@@ -838,25 +740,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the export_role_mining_potential_role_async_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.export_role_mining_potential_role_async_with_http_info(
-            session_id, potential_role_id,
-            role_mining_potential_role_export_request, **kwargs)  # noqa: E501
+        return self.export_role_mining_potential_role_async_with_http_info(session_id, potential_role_id, role_mining_potential_role_export_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def export_role_mining_potential_role_async_with_http_info(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            role_mining_potential_role_export_request: Optional[
-                RoleMiningPotentialRoleExportRequest] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def export_role_mining_potential_role_async_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], role_mining_potential_role_export_request : Optional[RoleMiningPotentialRoleExportRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Asynchronously export details for a potential role in a role mining session and upload to S3  # noqa: E501
 
         This endpoint uploads all the information for a potential role in a role mining session to S3 as a downloadable zip archive.  Includes identities and entitlements in the potential role.  # noqa: E501
@@ -900,21 +787,29 @@ class IAIRoleMiningApi:
         _params = locals()
 
         _all_params = [
-            'session_id', 'potential_role_id',
+            'session_id',
+            'potential_role_id',
             'role_mining_potential_role_export_request'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method export_role_mining_potential_role_async" %
-                    _key)
+                    " to method export_role_mining_potential_role_async" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -927,6 +822,7 @@ class IAIRoleMiningApi:
 
         if _params['potential_role_id']:
             _path_params['potentialRoleId'] = _params['potential_role_id']
+
 
         # process the query parameters
         _query_params = []
@@ -945,11 +841,11 @@ class IAIRoleMiningApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -963,8 +859,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async',
-            'POST',
+            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -974,32 +869,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def export_role_mining_potential_role_status(
-            self, session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )], export_id:
-        Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description=
-                "The id of a previously run export job for this potential role"
-            )],
-            **kwargs) -> RoleMiningPotentialRoleExportResponse:  # noqa: E501
+    def export_role_mining_potential_role_status(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], export_id : Annotated[StrictStr, Field(..., description="The id of a previously run export job for this potential role")], **kwargs) -> RoleMiningPotentialRoleExportResponse:  # noqa: E501
         """Retrieve status of a potential role export job  # noqa: E501
 
         This endpoint retrieves information about the current status of a potential role export.  # noqa: E501
@@ -1030,27 +907,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the export_role_mining_potential_role_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.export_role_mining_potential_role_status_with_http_info(
-            session_id, potential_role_id, export_id, **kwargs)  # noqa: E501
+        return self.export_role_mining_potential_role_status_with_http_info(session_id, potential_role_id, export_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def export_role_mining_potential_role_status_with_http_info(
-            self, session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )], export_id:
-        Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description=
-                "The id of a previously run export job for this potential role"
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def export_role_mining_potential_role_status_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], export_id : Annotated[StrictStr, Field(..., description="The id of a previously run export job for this potential role")], **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieve status of a potential role export job  # noqa: E501
 
         This endpoint retrieves information about the current status of a potential role export.  # noqa: E501
@@ -1093,19 +953,30 @@ class IAIRoleMiningApi:
 
         _params = locals()
 
-        _all_params = ['session_id', 'potential_role_id', 'export_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'session_id',
+            'potential_role_id',
+            'export_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method export_role_mining_potential_role_status" %
-                    _key)
+                    " to method export_role_mining_potential_role_status" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1121,6 +992,7 @@ class IAIRoleMiningApi:
 
         if _params['export_id']:
             _path_params['exportId'] = _params['export_id']
+
 
         # process the query parameters
         _query_params = []
@@ -1147,8 +1019,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId}',
-            'GET',
+            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1158,33 +1029,191 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_entitlement_distribution_potential_role(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            include_common_access:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Boolean determining whether common access entitlements will be included or not"
-            )] = None,
-            **kwargs) -> Dict[str, int]:  # noqa: E501
+    def get_all_potential_role_summaries(self, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq* **scopingMethod**: *eq* **sessionState**: *eq* **identityAttribute**: *co*")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[RoleMiningPotentialRoleSummary]:  # noqa: E501
+        """Retrieves all potential role summaries  # noqa: E501
+
+        Returns all potential role summaries that match the query parameters  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_all_potential_role_summaries(sorters, filters, offset, limit, count, async_req=True)
+        >>> result = thread.get()
+
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate**
+        :type sorters: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq* **scopingMethod**: *eq* **sessionState**: *eq* **identityAttribute**: *co*
+        :type filters: str
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: List[RoleMiningPotentialRoleSummary]
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the get_all_potential_role_summaries_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.get_all_potential_role_summaries_with_http_info(sorters, filters, offset, limit, count, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def get_all_potential_role_summaries_with_http_info(self, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq* **scopingMethod**: *eq* **sessionState**: *eq* **identityAttribute**: *co*")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Retrieves all potential role summaries  # noqa: E501
+
+        Returns all potential role summaries that match the query parameters  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_all_potential_role_summaries_with_http_info(sorters, filters, offset, limit, count, async_req=True)
+        >>> result = thread.get()
+
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate**
+        :type sorters: str
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq* **scopingMethod**: *eq* **sessionState**: *eq* **identityAttribute**: *co*
+        :type filters: str
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(List[RoleMiningPotentialRoleSummary], status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'sorters',
+            'filters',
+            'offset',
+            'limit',
+            'count'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_all_potential_role_summaries" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        if _params.get('sorters') is not None:  # noqa: E501
+            _query_params.append(('sorters', _params['sorters']))
+
+        if _params.get('filters') is not None:  # noqa: E501
+            _query_params.append(('filters', _params['filters']))
+
+        if _params.get('offset') is not None:  # noqa: E501
+            _query_params.append(('offset', _params['offset']))
+
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        if _params.get('count') is not None:  # noqa: E501
+            _query_params.append(('count', _params['count']))
+
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "List[RoleMiningPotentialRoleSummary]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+
+        return self.api_client.call_api(
+            '/role-mining-potential-roles', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def get_entitlement_distribution_potential_role(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], include_common_access : Annotated[Optional[StrictBool], Field(description="Boolean determining whether common access entitlements will be included or not")] = None, **kwargs) -> Dict[str, int]:  # noqa: E501
         """Retrieves entitlement popularity distribution for a potential role in a role mining session  # noqa: E501
 
         This method returns entitlement popularity distribution for a potential role in a role mining session.  # noqa: E501
@@ -1215,30 +1244,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_entitlement_distribution_potential_role_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_entitlement_distribution_potential_role_with_http_info(
-            session_id, potential_role_id, include_common_access,
-            **kwargs)  # noqa: E501
+        return self.get_entitlement_distribution_potential_role_with_http_info(session_id, potential_role_id, include_common_access, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_entitlement_distribution_potential_role_with_http_info(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            include_common_access:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Boolean determining whether common access entitlements will be included or not"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_entitlement_distribution_potential_role_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], include_common_access : Annotated[Optional[StrictBool], Field(description="Boolean determining whether common access entitlements will be included or not")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieves entitlement popularity distribution for a potential role in a role mining session  # noqa: E501
 
         This method returns entitlement popularity distribution for a potential role in a role mining session.  # noqa: E501
@@ -1282,20 +1291,29 @@ class IAIRoleMiningApi:
         _params = locals()
 
         _all_params = [
-            'session_id', 'potential_role_id', 'include_common_access'
+            'session_id',
+            'potential_role_id',
+            'include_common_access'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_entitlement_distribution_potential_role" %
-                    _key)
+                    " to method get_entitlement_distribution_potential_role" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1309,11 +1327,11 @@ class IAIRoleMiningApi:
         if _params['potential_role_id']:
             _path_params['potentialRoleId'] = _params['potential_role_id']
 
+
         # process the query parameters
         _query_params = []
         if _params.get('include_common_access') is not None:  # noqa: E501
-            _query_params.append(
-                ('includeCommonAccess', _params['include_common_access']))
+            _query_params.append(('includeCommonAccess', _params['include_common_access']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -1338,8 +1356,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularity-distribution',
-            'GET',
+            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularity-distribution', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1349,66 +1366,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_entitlements_potential_role(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            include_common_access:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Boolean determining whether common access entitlements will be included or not"
-            )] = None,
-            sorters: Annotated[
-                Optional[StrictStr],
-                Field(
-                    description="sort by popularity, default order descending"
-                )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter parameter by \"starts with\" for the applicationName and entitlementRef.name."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> List[RoleMiningEntitlement]:  # noqa: E501
+    def get_entitlements_potential_role(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], include_common_access : Annotated[Optional[StrictBool], Field(description="Boolean determining whether common access entitlements will be included or not")] = None, sorters : Annotated[Optional[StrictStr], Field(description="sort by popularity, default order descending")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter by \"starts with\" for the applicationName and entitlementRef.name.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[RoleMiningEntitlement]:  # noqa: E501
         """Retrieves entitlements for a potential role in a role mining session  # noqa: E501
 
         This method returns entitlements for a potential role in a role mining session.  # noqa: E501
@@ -1449,63 +1414,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_entitlements_potential_role_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_entitlements_potential_role_with_http_info(
-            session_id, potential_role_id, include_common_access, sorters,
-            filters, offset, limit, count, **kwargs)  # noqa: E501
+        return self.get_entitlements_potential_role_with_http_info(session_id, potential_role_id, include_common_access, sorters, filters, offset, limit, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_entitlements_potential_role_with_http_info(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            include_common_access:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Boolean determining whether common access entitlements will be included or not"
-            )] = None,
-            sorters: Annotated[
-                Optional[StrictStr],
-                Field(
-                    description="sort by popularity, default order descending"
-                )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter parameter by \"starts with\" for the applicationName and entitlementRef.name."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_entitlements_potential_role_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], include_common_access : Annotated[Optional[StrictBool], Field(description="Boolean determining whether common access entitlements will be included or not")] = None, sorters : Annotated[Optional[StrictStr], Field(description="sort by popularity, default order descending")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter by \"starts with\" for the applicationName and entitlementRef.name.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieves entitlements for a potential role in a role mining session  # noqa: E501
 
         This method returns entitlements for a potential role in a role mining session.  # noqa: E501
@@ -1559,20 +1471,34 @@ class IAIRoleMiningApi:
         _params = locals()
 
         _all_params = [
-            'session_id', 'potential_role_id', 'include_common_access',
-            'sorters', 'filters', 'offset', 'limit', 'count'
+            'session_id',
+            'potential_role_id',
+            'include_common_access',
+            'sorters',
+            'filters',
+            'offset',
+            'limit',
+            'count'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_entitlements_potential_role" % _key)
+                    " to method get_entitlements_potential_role" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1586,11 +1512,11 @@ class IAIRoleMiningApi:
         if _params['potential_role_id']:
             _path_params['potentialRoleId'] = _params['potential_role_id']
 
+
         # process the query parameters
         _query_params = []
         if _params.get('include_common_access') is not None:  # noqa: E501
-            _query_params.append(
-                ('includeCommonAccess', _params['include_common_access']))
+            _query_params.append(('includeCommonAccess', _params['include_common_access']))
 
         if _params.get('sorters') is not None:  # noqa: E501
             _query_params.append(('sorters', _params['sorters']))
@@ -1630,8 +1556,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities',
-            'GET',
+            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1641,59 +1566,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_excluded_entitlements_potential_role(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            sorters: Annotated[
-                Optional[StrictStr],
-                Field(
-                    description="sort by popularity, default order descending"
-                )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter parameter by \"starts with\" for the applicationName and entitlementRef.name."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> List[RoleMiningEntitlement]:  # noqa: E501
+    def get_excluded_entitlements_potential_role(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], sorters : Annotated[Optional[StrictStr], Field(description="sort by popularity, default order descending")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter by \"starts with\" for the applicationName and entitlementRef.name.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[RoleMiningEntitlement]:  # noqa: E501
         """Retrieves excluded entitlements for a potential role in a role mining session  # noqa: E501
 
         This method returns excluded entitlements for a potential role in a role mining session.  # noqa: E501
@@ -1732,56 +1612,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_excluded_entitlements_potential_role_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_excluded_entitlements_potential_role_with_http_info(
-            session_id, potential_role_id, sorters, filters, offset, limit,
-            count, **kwargs)  # noqa: E501
+        return self.get_excluded_entitlements_potential_role_with_http_info(session_id, potential_role_id, sorters, filters, offset, limit, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_excluded_entitlements_potential_role_with_http_info(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            sorters: Annotated[
-                Optional[StrictStr],
-                Field(
-                    description="sort by popularity, default order descending"
-                )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter parameter by \"starts with\" for the applicationName and entitlementRef.name."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_excluded_entitlements_potential_role_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], sorters : Annotated[Optional[StrictStr], Field(description="sort by popularity, default order descending")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter by \"starts with\" for the applicationName and entitlementRef.name.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieves excluded entitlements for a potential role in a role mining session  # noqa: E501
 
         This method returns excluded entitlements for a potential role in a role mining session.  # noqa: E501
@@ -1833,21 +1667,33 @@ class IAIRoleMiningApi:
         _params = locals()
 
         _all_params = [
-            'session_id', 'potential_role_id', 'sorters', 'filters', 'offset',
-            'limit', 'count'
+            'session_id',
+            'potential_role_id',
+            'sorters',
+            'filters',
+            'offset',
+            'limit',
+            'count'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_excluded_entitlements_potential_role" %
-                    _key)
+                    " to method get_excluded_entitlements_potential_role" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1860,6 +1706,7 @@ class IAIRoleMiningApi:
 
         if _params['potential_role_id']:
             _path_params['potentialRoleId'] = _params['potential_role_id']
+
 
         # process the query parameters
         _query_params = []
@@ -1901,8 +1748,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements',
-            'GET',
+            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1912,56 +1758,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identities_potential_role(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            sorters: Annotated[
-                Optional[StrictStr],
-                Field(description="sort by name, default order ascending"
-                      )] = None,
-            filters: Annotated[
-                Optional[StrictStr],
-                Field(description=
-                      "Filter parameter by \"starts with\" for the name."
-                      )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> List[RoleMiningIdentity]:  # noqa: E501
+    def get_identities_potential_role(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], sorters : Annotated[Optional[StrictStr], Field(description="sort by name, default order ascending")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter by \"starts with\" for the name.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[RoleMiningIdentity]:  # noqa: E501
         """Retrieves identities for a potential role in a role mining session  # noqa: E501
 
         This method returns identities for a potential role in a role mining session.  # noqa: E501
@@ -2000,53 +1804,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identities_potential_role_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identities_potential_role_with_http_info(
-            session_id, potential_role_id, sorters, filters, offset, limit,
-            count, **kwargs)  # noqa: E501
+        return self.get_identities_potential_role_with_http_info(session_id, potential_role_id, sorters, filters, offset, limit, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identities_potential_role_with_http_info(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            sorters: Annotated[
-                Optional[StrictStr],
-                Field(description="sort by name, default order ascending"
-                      )] = None,
-            filters: Annotated[
-                Optional[StrictStr],
-                Field(description=
-                      "Filter parameter by \"starts with\" for the name."
-                      )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identities_potential_role_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], sorters : Annotated[Optional[StrictStr], Field(description="sort by name, default order ascending")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter by \"starts with\" for the name.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieves identities for a potential role in a role mining session  # noqa: E501
 
         This method returns identities for a potential role in a role mining session.  # noqa: E501
@@ -2098,20 +1859,33 @@ class IAIRoleMiningApi:
         _params = locals()
 
         _all_params = [
-            'session_id', 'potential_role_id', 'sorters', 'filters', 'offset',
-            'limit', 'count'
+            'session_id',
+            'potential_role_id',
+            'sorters',
+            'filters',
+            'offset',
+            'limit',
+            'count'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_identities_potential_role" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_identities_potential_role" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2124,6 +1898,7 @@ class IAIRoleMiningApi:
 
         if _params['potential_role_id']:
             _path_params['potentialRoleId'] = _params['potential_role_id']
+
 
         # process the query parameters
         _query_params = []
@@ -2165,8 +1940,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities',
-            'GET',
+            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2176,23 +1950,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_potential_role(self, session_id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The role mining session id"
-        )], potential_role_id: Annotated[
-            StrictStr,
-            Field(...,
-                  description="A potential role id in a role mining session")],
-                           **kwargs) -> RoleMiningPotentialRole:  # noqa: E501
+    def get_potential_role(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], **kwargs) -> RoleMiningPotentialRole:  # noqa: E501
         """Retrieves a specific potential role  # noqa: E501
 
         This method returns a specific potential role for a role mining session.  # noqa: E501
@@ -2221,21 +1986,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_potential_role_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_potential_role_with_http_info(session_id,
-                                                      potential_role_id,
-                                                      **kwargs)  # noqa: E501
+        return self.get_potential_role_with_http_info(session_id, potential_role_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_potential_role_with_http_info(
-            self, session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_potential_role_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieves a specific potential role  # noqa: E501
 
         This method returns a specific potential role for a role mining session.  # noqa: E501
@@ -2276,17 +2030,29 @@ class IAIRoleMiningApi:
 
         _params = locals()
 
-        _all_params = ['session_id', 'potential_role_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'session_id',
+            'potential_role_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_potential_role" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_potential_role" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2299,6 +2065,7 @@ class IAIRoleMiningApi:
 
         if _params['potential_role_id']:
             _path_params['potentialRoleId'] = _params['potential_role_id']
+
 
         # process the query parameters
         _query_params = []
@@ -2326,8 +2093,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}',
-            'GET',
+            '/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2337,48 +2103,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_potential_role_applications(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs
-    ) -> List[RoleMiningPotentialRoleApplication]:  # noqa: E501
+    def get_potential_role_applications(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[RoleMiningPotentialRoleApplication]:  # noqa: E501
         """Retrieves the applications of a potential role for a role mining session  # noqa: E501
 
         This method returns the applications of a potential role for a role mining session.  # noqa: E501
@@ -2413,44 +2145,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_potential_role_applications_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_potential_role_applications_with_http_info(
-            session_id, potential_role_id, offset, limit, count,
-            **kwargs)  # noqa: E501
+        return self.get_potential_role_applications_with_http_info(session_id, potential_role_id, offset, limit, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_potential_role_applications_with_http_info(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )],
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_potential_role_applications_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieves the applications of a potential role for a role mining session  # noqa: E501
 
         This method returns the applications of a potential role for a role mining session.  # noqa: E501
@@ -2498,19 +2196,31 @@ class IAIRoleMiningApi:
         _params = locals()
 
         _all_params = [
-            'session_id', 'potential_role_id', 'offset', 'limit', 'count'
+            'session_id',
+            'potential_role_id',
+            'offset',
+            'limit',
+            'count'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_potential_role_applications" % _key)
+                    " to method get_potential_role_applications" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2523,6 +2233,7 @@ class IAIRoleMiningApi:
 
         if _params['potential_role_id']:
             _path_params['potentialRoleId'] = _params['potential_role_id']
+
 
         # process the query parameters
         _query_params = []
@@ -2558,8 +2269,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications',
-            'GET',
+            '/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2569,55 +2279,199 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_potential_role_summaries(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq*"
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> List[RoleMiningPotentialRoleSummary]:  # noqa: E501
+    def get_potential_role_source_identity_usage(self, potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id")], source_id : Annotated[StrictStr, Field(..., description="A source id")], sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **displayName, email, usageCount**")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[RoleMiningPotentialRoleSourceUsage]:  # noqa: E501
+        """Retrieves potential role source usage  # noqa: E501
+
+        This method returns source usageCount (as number of days in the last 90 days) for each identity in a potential role.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_potential_role_source_identity_usage(potential_role_id, source_id, sorters, offset, limit, count, async_req=True)
+        >>> result = thread.get()
+
+        :param potential_role_id: A potential role id (required)
+        :type potential_role_id: str
+        :param source_id: A source id (required)
+        :type source_id: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **displayName, email, usageCount**
+        :type sorters: str
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: List[RoleMiningPotentialRoleSourceUsage]
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the get_potential_role_source_identity_usage_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.get_potential_role_source_identity_usage_with_http_info(potential_role_id, source_id, sorters, offset, limit, count, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def get_potential_role_source_identity_usage_with_http_info(self, potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id")], source_id : Annotated[StrictStr, Field(..., description="A source id")], sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **displayName, email, usageCount**")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Retrieves potential role source usage  # noqa: E501
+
+        This method returns source usageCount (as number of days in the last 90 days) for each identity in a potential role.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_potential_role_source_identity_usage_with_http_info(potential_role_id, source_id, sorters, offset, limit, count, async_req=True)
+        >>> result = thread.get()
+
+        :param potential_role_id: A potential role id (required)
+        :type potential_role_id: str
+        :param source_id: A source id (required)
+        :type source_id: str
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **displayName, email, usageCount**
+        :type sorters: str
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(List[RoleMiningPotentialRoleSourceUsage], status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'potential_role_id',
+            'source_id',
+            'sorters',
+            'offset',
+            'limit',
+            'count'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_potential_role_source_identity_usage" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['potential_role_id']:
+            _path_params['potentialRoleId'] = _params['potential_role_id']
+
+        if _params['source_id']:
+            _path_params['sourceId'] = _params['source_id']
+
+
+        # process the query parameters
+        _query_params = []
+        if _params.get('sorters') is not None:  # noqa: E501
+            _query_params.append(('sorters', _params['sorters']))
+
+        if _params.get('offset') is not None:  # noqa: E501
+            _query_params.append(('offset', _params['offset']))
+
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        if _params.get('count') is not None:  # noqa: E501
+            _query_params.append(('count', _params['count']))
+
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "List[RoleMiningPotentialRoleSourceUsage]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+
+        return self.api_client.call_api(
+            '/role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def get_potential_role_summaries(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq*")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[RoleMiningPotentialRoleSummary]:  # noqa: E501
         """Retrieves all potential role summaries  # noqa: E501
 
         This method returns the potential role summaries for a role mining session.  # noqa: E501
@@ -2654,52 +2508,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_potential_role_summaries_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_potential_role_summaries_with_http_info(
-            session_id, sorters, filters, offset, limit, count,
-            **kwargs)  # noqa: E501
+        return self.get_potential_role_summaries_with_http_info(session_id, sorters, filters, offset, limit, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_potential_role_summaries_with_http_info(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq*"
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_potential_role_summaries_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq*")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieves all potential role summaries  # noqa: E501
 
         This method returns the potential role summaries for a role mining session.  # noqa: E501
@@ -2749,19 +2561,32 @@ class IAIRoleMiningApi:
         _params = locals()
 
         _all_params = [
-            'session_id', 'sorters', 'filters', 'offset', 'limit', 'count'
+            'session_id',
+            'sorters',
+            'filters',
+            'offset',
+            'limit',
+            'count'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_potential_role_summaries" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_potential_role_summaries" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2771,6 +2596,7 @@ class IAIRoleMiningApi:
         _path_params = {}
         if _params['session_id']:
             _path_params['sessionId'] = _params['session_id']
+
 
         # process the query parameters
         _query_params = []
@@ -2813,8 +2639,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-role-summaries',
-            'GET',
+            '/role-mining-sessions/{sessionId}/potential-role-summaries', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2824,19 +2649,159 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_mining_session(self, session_id: Annotated[
-        StrictStr,
-        Field(..., description="The role mining session id to be retrieved.")],
-                                **kwargs
-                                ) -> RoleMiningSessionResponse:  # noqa: E501
+    def get_role_mining_potential_role(self, potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id")], **kwargs) -> RoleMiningPotentialRole:  # noqa: E501
+        """Retrieves a specific potential role  # noqa: E501
+
+        This method returns a specific potential role.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_role_mining_potential_role(potential_role_id, async_req=True)
+        >>> result = thread.get()
+
+        :param potential_role_id: A potential role id (required)
+        :type potential_role_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: RoleMiningPotentialRole
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the get_role_mining_potential_role_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.get_role_mining_potential_role_with_http_info(potential_role_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def get_role_mining_potential_role_with_http_info(self, potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id")], **kwargs) -> ApiResponse:  # noqa: E501
+        """Retrieves a specific potential role  # noqa: E501
+
+        This method returns a specific potential role.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_role_mining_potential_role_with_http_info(potential_role_id, async_req=True)
+        >>> result = thread.get()
+
+        :param potential_role_id: A potential role id (required)
+        :type potential_role_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(RoleMiningPotentialRole, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'potential_role_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_role_mining_potential_role" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['potential_role_id']:
+            _path_params['potentialRoleId'] = _params['potential_role_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "RoleMiningPotentialRole",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+
+        return self.api_client.call_api(
+            '/role-mining-potential-roles/{potentialRoleId}', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def get_role_mining_session(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id to be retrieved.")], **kwargs) -> RoleMiningSessionResponse:  # noqa: E501
         """Get a role mining session  # noqa: E501
 
         The method retrieves a role mining session.  # noqa: E501
@@ -2863,15 +2828,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_role_mining_session_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_role_mining_session_with_http_info(
-            session_id, **kwargs)  # noqa: E501
+        return self.get_role_mining_session_with_http_info(session_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_mining_session_with_http_info(self, session_id: Annotated[
-        StrictStr,
-        Field(..., description="The role mining session id to be retrieved.")],
-                                               **kwargs
-                                               ) -> ApiResponse:  # noqa: E501
+    def get_role_mining_session_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id to be retrieved.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get a role mining session  # noqa: E501
 
         The method retrieves a role mining session.  # noqa: E501
@@ -2910,17 +2870,28 @@ class IAIRoleMiningApi:
 
         _params = locals()
 
-        _all_params = ['session_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'session_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_role_mining_session" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_role_mining_session" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2930,6 +2901,7 @@ class IAIRoleMiningApi:
         _path_params = {}
         if _params['session_id']:
             _path_params['sessionId'] = _params['session_id']
+
 
         # process the query parameters
         _query_params = []
@@ -2958,8 +2930,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}',
-            'GET',
+            '/role-mining-sessions/{sessionId}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2969,19 +2940,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_mining_session_status(
-            self, session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            **kwargs) -> RoleMiningSessionStatus:  # noqa: E501
+    def get_role_mining_session_status(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], **kwargs) -> RoleMiningSessionStatus:  # noqa: E501
         """Get role mining session status state  # noqa: E501
 
         This method returns a role mining session status for a customer.  # noqa: E501
@@ -3008,15 +2974,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_role_mining_session_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_role_mining_session_status_with_http_info(
-            session_id, **kwargs)  # noqa: E501
+        return self.get_role_mining_session_status_with_http_info(session_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_mining_session_status_with_http_info(
-            self, session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_mining_session_status_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get role mining session status state  # noqa: E501
 
         This method returns a role mining session status for a customer.  # noqa: E501
@@ -3055,18 +3016,28 @@ class IAIRoleMiningApi:
 
         _params = locals()
 
-        _all_params = ['session_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'session_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_role_mining_session_status" % _key)
+                    " to method get_role_mining_session_status" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3076,6 +3047,7 @@ class IAIRoleMiningApi:
         _path_params = {}
         if _params['session_id']:
             _path_params['sessionId'] = _params['session_id']
+
 
         # process the query parameters
         _query_params = []
@@ -3102,8 +3074,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/status',
-            'GET',
+            '/role-mining-sessions/{sessionId}/status', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -3113,52 +3084,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_mining_sessions(
-            self,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **saved**: *eq* \"true\" or \"false\" **name**: *eq, sw*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **createdBy, createdDate**"
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> List[RoleMiningSessionDto]:  # noqa: E501
+    def get_role_mining_sessions(self, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **saved**: *eq* \"true\" or \"false\" **name**: *eq, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **createdBy, createdDate**")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[RoleMiningSessionDto]:  # noqa: E501
         """Retrieves all role mining sessions  # noqa: E501
 
         Returns all role mining sessions that match the query parameters  # noqa: E501
@@ -3193,48 +3126,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_role_mining_sessions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_role_mining_sessions_with_http_info(
-            filters, sorters, offset, limit, count, **kwargs)  # noqa: E501
+        return self.get_role_mining_sessions_with_http_info(filters, sorters, offset, limit, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_mining_sessions_with_http_info(
-            self,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **saved**: *eq* \"true\" or \"false\" **name**: *eq, sw*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **createdBy, createdDate**"
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_mining_sessions_with_http_info(self, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **saved**: *eq* \"true\" or \"false\" **name**: *eq, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **createdBy, createdDate**")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieves all role mining sessions  # noqa: E501
 
         Returns all role mining sessions that match the query parameters  # noqa: E501
@@ -3281,18 +3176,32 @@ class IAIRoleMiningApi:
 
         _params = locals()
 
-        _all_params = ['filters', 'sorters', 'offset', 'limit', 'count']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'filters',
+            'sorters',
+            'offset',
+            'limit',
+            'count'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_role_mining_sessions" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_role_mining_sessions" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3342,8 +3251,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions',
-            'GET',
+            '/role-mining-sessions', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -3353,70 +3261,25 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_saved_roles(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **description**: *sw, co* **name**: *eq, sw, co* **type**: *eq*"
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> List[RoleMiningSessionDraftRoleDto]:  # noqa: E501
-        """Retrieves all draft roles  # noqa: E501
+    def get_saved_potential_roles(self, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified**")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[RoleMiningSessionDraftRoleDto]:  # noqa: E501
+        """Retrieves all saved potential roles  # noqa: E501
 
-        This method returns all saved potential roles (draft roles) for a role mining session.  # noqa: E501
+        This method returns all saved potential roles (draft roles).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_saved_roles(session_id, sorters, filters, offset, limit, count, async_req=True)
+        >>> thread = api.get_saved_potential_roles(sorters, offset, limit, count, async_req=True)
         >>> result = thread.get()
 
-        :param session_id: The role mining session id (required)
-        :type session_id: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified**
         :type sorters: str
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **description**: *sw, co* **name**: *eq, sw, co* **type**: *eq*
-        :type filters: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -3436,70 +3299,23 @@ class IAIRoleMiningApi:
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            message = "Error! Please call the get_saved_roles_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            message = "Error! Please call the get_saved_potential_roles_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_saved_roles_with_http_info(session_id, sorters,
-                                                   filters, offset, limit,
-                                                   count,
-                                                   **kwargs)  # noqa: E501
+        return self.get_saved_potential_roles_with_http_info(sorters, offset, limit, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_saved_roles_with_http_info(
-            self,
-            session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **description**: *sw, co* **name**: *eq, sw, co* **type**: *eq*"
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
-        """Retrieves all draft roles  # noqa: E501
+    def get_saved_potential_roles_with_http_info(self, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified**")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Retrieves all saved potential roles  # noqa: E501
 
-        This method returns all saved potential roles (draft roles) for a role mining session.  # noqa: E501
+        This method returns all saved potential roles (draft roles).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_saved_roles_with_http_info(session_id, sorters, filters, offset, limit, count, async_req=True)
+        >>> thread = api.get_saved_potential_roles_with_http_info(sorters, offset, limit, count, async_req=True)
         >>> result = thread.get()
 
-        :param session_id: The role mining session id (required)
-        :type session_id: str
         :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified**
         :type sorters: str
-        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **description**: *sw, co* **name**: *eq, sw, co* **type**: *eq*
-        :type filters: str
         :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type offset: int
         :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -3534,18 +3350,30 @@ class IAIRoleMiningApi:
         _params = locals()
 
         _all_params = [
-            'session_id', 'sorters', 'filters', 'offset', 'limit', 'count'
+            'sorters',
+            'offset',
+            'limit',
+            'count'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_saved_roles" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_saved_potential_roles" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3553,16 +3381,11 @@ class IAIRoleMiningApi:
 
         # process the path parameters
         _path_params = {}
-        if _params['session_id']:
-            _path_params['sessionId'] = _params['session_id']
 
         # process the query parameters
         _query_params = []
         if _params.get('sorters') is not None:  # noqa: E501
             _query_params.append(('sorters', _params['sorters']))
-
-        if _params.get('filters') is not None:  # noqa: E501
-            _query_params.append(('filters', _params['filters']))
 
         if _params.get('offset') is not None:  # noqa: E501
             _query_params.append(('offset', _params['offset']))
@@ -3597,8 +3420,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-roles/draft-roles',
-            'GET',
+            '/role-mining-potential-roles/saved', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -3608,24 +3430,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_potential_role(
-            self, session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(..., description="The potential role summary id")],
-            patch_potential_role_request_inner: conlist(
-                PatchPotentialRoleRequestInner),
-            **kwargs) -> object:  # noqa: E501
+    def patch_potential_role(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="The potential role summary id")], patch_potential_role_request_inner : conlist(PatchPotentialRoleRequestInner), **kwargs) -> object:  # noqa: E501
         """Update a potential role  # noqa: E501
 
         The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.**   # noqa: E501
@@ -3656,21 +3468,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_potential_role_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_potential_role_with_http_info(
-            session_id, potential_role_id, patch_potential_role_request_inner,
-            **kwargs)  # noqa: E501
+        return self.patch_potential_role_with_http_info(session_id, potential_role_id, patch_potential_role_request_inner, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_potential_role_with_http_info(
-            self, session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(..., description="The potential role summary id")],
-            patch_potential_role_request_inner: conlist(
-                PatchPotentialRoleRequestInner),
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_potential_role_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="The potential role summary id")], patch_potential_role_request_inner : conlist(PatchPotentialRoleRequestInner), **kwargs) -> ApiResponse:  # noqa: E501
         """Update a potential role  # noqa: E501
 
         The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.**   # noqa: E501
@@ -3714,19 +3515,29 @@ class IAIRoleMiningApi:
         _params = locals()
 
         _all_params = [
-            'session_id', 'potential_role_id',
+            'session_id',
+            'potential_role_id',
             'patch_potential_role_request_inner'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method patch_potential_role" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_potential_role" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3739,6 +3550,7 @@ class IAIRoleMiningApi:
 
         if _params['potential_role_id']:
             _path_params['potentialRoleId'] = _params['potential_role_id']
+
 
         # process the query parameters
         _query_params = []
@@ -3757,12 +3569,11 @@ class IAIRoleMiningApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -3778,8 +3589,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}',
-            'PATCH',
+            '/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -3789,25 +3599,183 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_role_mining_session(self, session_id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The role mining session id to be patched"
-        )], json_patch_operation: Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session."
-            )], **kwargs) -> object:  # noqa: E501
+    def patch_potential_role_0(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="The potential role summary id")], patch_potential_role_request_inner : conlist(PatchPotentialRoleRequestInner), **kwargs) -> object:  # noqa: E501
+        """Update a potential role  # noqa: E501
+
+        The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.**   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.patch_potential_role_0(session_id, potential_role_id, patch_potential_role_request_inner, async_req=True)
+        >>> result = thread.get()
+
+        :param session_id: The role mining session id (required)
+        :type session_id: str
+        :param potential_role_id: The potential role summary id (required)
+        :type potential_role_id: str
+        :param patch_potential_role_request_inner: (required)
+        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: object
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the patch_potential_role_0_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.patch_potential_role_0_with_http_info(session_id, potential_role_id, patch_potential_role_request_inner, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def patch_potential_role_0_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="The potential role summary id")], patch_potential_role_request_inner : conlist(PatchPotentialRoleRequestInner), **kwargs) -> ApiResponse:  # noqa: E501
+        """Update a potential role  # noqa: E501
+
+        The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.**   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.patch_potential_role_0_with_http_info(session_id, potential_role_id, patch_potential_role_request_inner, async_req=True)
+        >>> result = thread.get()
+
+        :param session_id: The role mining session id (required)
+        :type session_id: str
+        :param potential_role_id: The potential role summary id (required)
+        :type potential_role_id: str
+        :param patch_potential_role_request_inner: (required)
+        :type patch_potential_role_request_inner: List[PatchPotentialRoleRequestInner]
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'session_id',
+            'potential_role_id',
+            'patch_potential_role_request_inner'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_potential_role_0" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['session_id']:
+            _path_params['sessionId'] = _params['session_id']
+
+        if _params['potential_role_id']:
+            _path_params['potentialRoleId'] = _params['potential_role_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['patch_potential_role_request_inner'] is not None:
+            _body_params = _params['patch_potential_role_request_inner']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json-patch+json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "object",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
+
+        return self.api_client.call_api(
+            '/role-mining-potential-roles/{potentialRoleId}', 'PATCH',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def patch_role_mining_session(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id to be patched")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.")], **kwargs) -> object:  # noqa: E501
         """Patch a role mining session  # noqa: E501
 
         The  method updates an existing role mining session using PATCH. Supports op in {\"replace\"} and changes to pruneThreshold and/or minNumIdentitiesInPotentialRole. The potential roles in this role mining session is then re-calculated.  # noqa: E501
@@ -3836,21 +3804,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_role_mining_session_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_role_mining_session_with_http_info(
-            session_id, json_patch_operation, **kwargs)  # noqa: E501
+        return self.patch_role_mining_session_with_http_info(session_id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_role_mining_session_with_http_info(self, session_id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The role mining session id to be patched"
-        )], json_patch_operation: Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session."
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_role_mining_session_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id to be patched")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Patch a role mining session  # noqa: E501
 
         The  method updates an existing role mining session using PATCH. Supports op in {\"replace\"} and changes to pruneThreshold and/or minNumIdentitiesInPotentialRole. The potential roles in this role mining session is then re-calculated.  # noqa: E501
@@ -3891,18 +3848,29 @@ class IAIRoleMiningApi:
 
         _params = locals()
 
-        _all_params = ['session_id', 'json_patch_operation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'session_id',
+            'json_patch_operation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method patch_role_mining_session" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_role_mining_session" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3912,6 +3880,7 @@ class IAIRoleMiningApi:
         _path_params = {}
         if _params['session_id']:
             _path_params['sessionId'] = _params['session_id']
+
 
         # process the query parameters
         _query_params = []
@@ -3930,12 +3899,11 @@ class IAIRoleMiningApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -3951,8 +3919,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}',
-            'PATCH',
+            '/role-mining-sessions/{sessionId}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -3962,27 +3929,14 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_entitlements_potential_role(
-            self, session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )], role_mining_potential_role_edit_entitlements: Annotated[
-                    RoleMiningPotentialRoleEditEntitlements,
-                    Field(..., description="Role mining session parameters")],
-            **kwargs) -> RoleMiningPotentialRole:  # noqa: E501
+    def update_entitlements_potential_role(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], role_mining_potential_role_edit_entitlements : Annotated[RoleMiningPotentialRoleEditEntitlements, Field(..., description="Role mining session parameters")], **kwargs) -> RoleMiningPotentialRole:  # noqa: E501
         """Edit entitlements for a potential role to exclude some entitlements  # noqa: E501
 
         This endpoint adds or removes entitlements from an exclusion list for a potential role.  # noqa: E501
@@ -4013,25 +3967,10 @@ class IAIRoleMiningApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_entitlements_potential_role_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_entitlements_potential_role_with_http_info(
-            session_id, potential_role_id,
-            role_mining_potential_role_edit_entitlements,
-            **kwargs)  # noqa: E501
+        return self.update_entitlements_potential_role_with_http_info(session_id, potential_role_id, role_mining_potential_role_edit_entitlements, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_entitlements_potential_role_with_http_info(
-            self, session_id: Annotated[
-                StrictStr,
-                Field(..., description="The role mining session id")],
-            potential_role_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description="A potential role id in a role mining session"
-                )], role_mining_potential_role_edit_entitlements: Annotated[
-                    RoleMiningPotentialRoleEditEntitlements,
-                    Field(..., description="Role mining session parameters")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def update_entitlements_potential_role_with_http_info(self, session_id : Annotated[StrictStr, Field(..., description="The role mining session id")], potential_role_id : Annotated[StrictStr, Field(..., description="A potential role id in a role mining session")], role_mining_potential_role_edit_entitlements : Annotated[RoleMiningPotentialRoleEditEntitlements, Field(..., description="Role mining session parameters")], **kwargs) -> ApiResponse:  # noqa: E501
         """Edit entitlements for a potential role to exclude some entitlements  # noqa: E501
 
         This endpoint adds or removes entitlements from an exclusion list for a potential role.  # noqa: E501
@@ -4075,20 +4014,29 @@ class IAIRoleMiningApi:
         _params = locals()
 
         _all_params = [
-            'session_id', 'potential_role_id',
+            'session_id',
+            'potential_role_id',
             'role_mining_potential_role_edit_entitlements'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update_entitlements_potential_role" % _key)
+                    " to method update_entitlements_potential_role" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -4102,6 +4050,7 @@ class IAIRoleMiningApi:
         if _params['potential_role_id']:
             _path_params['potentialRoleId'] = _params['potential_role_id']
 
+
         # process the query parameters
         _query_params = []
         # process the header parameters
@@ -4112,19 +4061,18 @@ class IAIRoleMiningApi:
         # process the body parameter
         _body_params = None
         if _params['role_mining_potential_role_edit_entitlements'] is not None:
-            _body_params = _params[
-                'role_mining_potential_role_edit_entitlements']
+            _body_params = _params['role_mining_potential_role_edit_entitlements']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -4138,8 +4086,7 @@ class IAIRoleMiningApi:
         }
 
         return self.api_client.call_api(
-            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements',
-            'POST',
+            '/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -4149,8 +4096,7 @@ class IAIRoleMiningApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

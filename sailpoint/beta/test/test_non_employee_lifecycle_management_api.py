@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi  # noqa: E501

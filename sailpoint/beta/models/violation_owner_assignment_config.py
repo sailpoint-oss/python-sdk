@@ -11,28 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 from beta.models.violation_owner_assignment_config_owner_ref import ViolationOwnerAssignmentConfigOwnerRef
-
 
 class ViolationOwnerAssignmentConfig(BaseModel):
     """
     ViolationOwnerAssignmentConfig
     """
-    assignment_rule: Optional[StrictStr] = Field(
-        None,
-        alias="assignmentRule",
-        description=
-        "Details about the violations owner. MANAGER - identity's manager STATIC - Governance Group or Identity"
-    )
-    owner_ref: Optional[ViolationOwnerAssignmentConfigOwnerRef] = Field(
-        None, alias="ownerRef")
+    assignment_rule: Optional[StrictStr] = Field(None, alias="assignmentRule", description="Details about the violations owner. MANAGER - identity's manager STATIC - Governance Group or Identity")
+    owner_ref: Optional[ViolationOwnerAssignmentConfigOwnerRef] = Field(None, alias="ownerRef")
     __properties = ["assignmentRule", "ownerRef"]
 
     @validator('assignment_rule')
@@ -42,8 +37,7 @@ class ViolationOwnerAssignmentConfig(BaseModel):
             return value
 
         if value not in ('MANAGER', 'STATIC', 'null'):
-            raise ValueError(
-                "must be one of enum values ('MANAGER', 'STATIC', 'null')")
+            raise ValueError("must be one of enum values ('MANAGER', 'STATIC', 'null')")
         return value
 
     class Config:
@@ -66,7 +60,10 @@ class ViolationOwnerAssignmentConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner_ref
         if self.owner_ref:
             _dict['ownerRef'] = self.owner_ref.to_dict()
@@ -87,11 +84,9 @@ class ViolationOwnerAssignmentConfig(BaseModel):
             return ViolationOwnerAssignmentConfig.parse_obj(obj)
 
         _obj = ViolationOwnerAssignmentConfig.parse_obj({
-            "assignment_rule":
-            obj.get("assignmentRule"),
-            "owner_ref":
-            ViolationOwnerAssignmentConfigOwnerRef.from_dict(
-                obj.get("ownerRef"))
-            if obj.get("ownerRef") is not None else None
+            "assignment_rule": obj.get("assignmentRule"),
+            "owner_ref": ViolationOwnerAssignmentConfigOwnerRef.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None
         })
         return _obj
+
+

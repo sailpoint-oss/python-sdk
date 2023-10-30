@@ -11,39 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, Field, conint
 
+
+from pydantic import BaseModel, Field, conint
 
 class AccountAggregationCompletedStats(BaseModel):
     """
     Overall statistics about the account aggregation.  # noqa: E501
     """
-    scanned: conint(strict=True, le=2147483647, ge=0) = Field(
-        ...,
-        description="The number of accounts which were scanned / iterated over."
-    )
-    unchanged: conint(strict=True, le=2147483647, ge=0) = Field(
-        ...,
-        description=
-        "The number of accounts which existed before, but had no changes.")
-    changed: conint(strict=True, le=2147483647, ge=0) = Field(
-        ...,
-        description=
-        "The number of accounts which existed before, but had changes.")
-    added: conint(strict=True, le=2147483647, ge=0) = Field(
-        ...,
-        description=
-        "The number of accounts which are new - have not existed before.")
-    removed: conint(strict=True, le=2147483647, ge=0) = Field(
-        ...,
-        description=
-        "The number accounts which existed before, but no longer exist (thus getting removed)."
-    )
+    scanned: conint(strict=True, le=2147483647, ge=0) = Field(..., description="The number of accounts which were scanned / iterated over.")
+    unchanged: conint(strict=True, le=2147483647, ge=0) = Field(..., description="The number of accounts which existed before, but had no changes.")
+    changed: conint(strict=True, le=2147483647, ge=0) = Field(..., description="The number of accounts which existed before, but had changes.")
+    added: conint(strict=True, le=2147483647, ge=0) = Field(..., description="The number of accounts which are new - have not existed before.")
+    removed: conint(strict=True, le=2147483647, ge=0) = Field(..., description="The number accounts which existed before, but no longer exist (thus getting removed).")
     __properties = ["scanned", "unchanged", "changed", "added", "removed"]
 
     class Config:
@@ -66,7 +52,10 @@ class AccountAggregationCompletedStats(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -79,15 +68,12 @@ class AccountAggregationCompletedStats(BaseModel):
             return AccountAggregationCompletedStats.parse_obj(obj)
 
         _obj = AccountAggregationCompletedStats.parse_obj({
-            "scanned":
-            obj.get("scanned"),
-            "unchanged":
-            obj.get("unchanged"),
-            "changed":
-            obj.get("changed"),
-            "added":
-            obj.get("added"),
-            "removed":
-            obj.get("removed")
+            "scanned": obj.get("scanned"),
+            "unchanged": obj.get("unchanged"),
+            "changed": obj.get("changed"),
+            "added": obj.get("added"),
+            "removed": obj.get("removed")
         })
         return _obj
+
+

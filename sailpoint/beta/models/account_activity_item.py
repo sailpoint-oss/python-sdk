@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,59 +27,27 @@ from beta.models.identity_summary import IdentitySummary
 from beta.models.provisioning_state import ProvisioningState
 from beta.models.work_item_state import WorkItemState
 
-
 class AccountActivityItem(BaseModel):
     """
     AccountActivityItem
     """
     id: Optional[StrictStr] = Field(None, description="Item id")
-    name: Optional[StrictStr] = Field(
-        None, description="Human-readable display name of item")
-    requested: Optional[datetime] = Field(
-        None, description="Date and time item was requested")
-    approval_status: Optional[WorkItemState] = Field(None,
-                                                     alias="approvalStatus")
-    provisioning_status: Optional[ProvisioningState] = Field(
-        None, alias="provisioningStatus")
-    requester_comment: Optional[Comment] = Field(None,
-                                                 alias="requesterComment")
-    reviewer_identity_summary: Optional[IdentitySummary] = Field(
-        None, alias="reviewerIdentitySummary")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of item")
+    requested: Optional[datetime] = Field(None, description="Date and time item was requested")
+    approval_status: Optional[WorkItemState] = Field(None, alias="approvalStatus")
+    provisioning_status: Optional[ProvisioningState] = Field(None, alias="provisioningStatus")
+    requester_comment: Optional[Comment] = Field(None, alias="requesterComment")
+    reviewer_identity_summary: Optional[IdentitySummary] = Field(None, alias="reviewerIdentitySummary")
     reviewer_comment: Optional[Comment] = Field(None, alias="reviewerComment")
     operation: Optional[AccountActivityItemOperation] = None
-    attribute: Optional[StrictStr] = Field(
-        None, description="Attribute to which account activity applies")
+    attribute: Optional[StrictStr] = Field(None, description="Attribute to which account activity applies")
     value: Optional[StrictStr] = Field(None, description="Value of attribute")
-    native_identity: Optional[StrictStr] = Field(
-        None,
-        alias="nativeIdentity",
-        description=
-        "Native identity in the target system to which the account activity applies"
-    )
-    source_id: Optional[StrictStr] = Field(
-        None,
-        alias="sourceId",
-        description="Id of Source to which account activity applies")
-    account_request_info: Optional[AccountRequestInfo] = Field(
-        None, alias="accountRequestInfo")
-    client_metadata: Optional[Dict[str, StrictStr]] = Field(
-        None,
-        alias="clientMetadata",
-        description=
-        "Arbitrary key-value pairs, if any were included in the corresponding access request item"
-    )
-    remove_date: Optional[datetime] = Field(
-        None,
-        alias="removeDate",
-        description=
-        "The date the role or access profile is no longer assigned to the specified identity."
-    )
-    __properties = [
-        "id", "name", "requested", "approvalStatus", "provisioningStatus",
-        "requesterComment", "reviewerIdentitySummary", "reviewerComment",
-        "operation", "attribute", "value", "nativeIdentity", "sourceId",
-        "accountRequestInfo", "clientMetadata", "removeDate"
-    ]
+    native_identity: Optional[StrictStr] = Field(None, alias="nativeIdentity", description="Native identity in the target system to which the account activity applies")
+    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="Id of Source to which account activity applies")
+    account_request_info: Optional[AccountRequestInfo] = Field(None, alias="accountRequestInfo")
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(None, alias="clientMetadata", description="Arbitrary key-value pairs, if any were included in the corresponding access request item")
+    remove_date: Optional[datetime] = Field(None, alias="removeDate", description="The date the role or access profile is no longer assigned to the specified identity.")
+    __properties = ["id", "name", "requested", "approvalStatus", "provisioningStatus", "requesterComment", "reviewerIdentitySummary", "reviewerComment", "operation", "attribute", "value", "nativeIdentity", "sourceId", "accountRequestInfo", "clientMetadata", "removeDate"]
 
     class Config:
         """Pydantic configuration"""
@@ -100,15 +69,16 @@ class AccountActivityItem(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of requester_comment
         if self.requester_comment:
             _dict['requesterComment'] = self.requester_comment.to_dict()
         # override the default output from pydantic by calling `to_dict()` of reviewer_identity_summary
         if self.reviewer_identity_summary:
-            _dict[
-                'reviewerIdentitySummary'] = self.reviewer_identity_summary.to_dict(
-                )
+            _dict['reviewerIdentitySummary'] = self.reviewer_identity_summary.to_dict()
         # override the default output from pydantic by calling `to_dict()` of reviewer_comment
         if self.reviewer_comment:
             _dict['reviewerComment'] = self.reviewer_comment.to_dict()
@@ -172,41 +142,23 @@ class AccountActivityItem(BaseModel):
             return AccountActivityItem.parse_obj(obj)
 
         _obj = AccountActivityItem.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "requested":
-            obj.get("requested"),
-            "approval_status":
-            obj.get("approvalStatus"),
-            "provisioning_status":
-            obj.get("provisioningStatus"),
-            "requester_comment":
-            Comment.from_dict(obj.get("requesterComment"))
-            if obj.get("requesterComment") is not None else None,
-            "reviewer_identity_summary":
-            IdentitySummary.from_dict(obj.get("reviewerIdentitySummary"))
-            if obj.get("reviewerIdentitySummary") is not None else None,
-            "reviewer_comment":
-            Comment.from_dict(obj.get("reviewerComment"))
-            if obj.get("reviewerComment") is not None else None,
-            "operation":
-            obj.get("operation"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value"),
-            "native_identity":
-            obj.get("nativeIdentity"),
-            "source_id":
-            obj.get("sourceId"),
-            "account_request_info":
-            AccountRequestInfo.from_dict(obj.get("accountRequestInfo"))
-            if obj.get("accountRequestInfo") is not None else None,
-            "client_metadata":
-            obj.get("clientMetadata"),
-            "remove_date":
-            obj.get("removeDate")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "requested": obj.get("requested"),
+            "approval_status": obj.get("approvalStatus"),
+            "provisioning_status": obj.get("provisioningStatus"),
+            "requester_comment": Comment.from_dict(obj.get("requesterComment")) if obj.get("requesterComment") is not None else None,
+            "reviewer_identity_summary": IdentitySummary.from_dict(obj.get("reviewerIdentitySummary")) if obj.get("reviewerIdentitySummary") is not None else None,
+            "reviewer_comment": Comment.from_dict(obj.get("reviewerComment")) if obj.get("reviewerComment") is not None else None,
+            "operation": obj.get("operation"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value"),
+            "native_identity": obj.get("nativeIdentity"),
+            "source_id": obj.get("sourceId"),
+            "account_request_info": AccountRequestInfo.from_dict(obj.get("accountRequestInfo")) if obj.get("accountRequestInfo") is not None else None,
+            "client_metadata": obj.get("clientMetadata"),
+            "remove_date": obj.get("removeDate")
         })
         return _obj
+
+

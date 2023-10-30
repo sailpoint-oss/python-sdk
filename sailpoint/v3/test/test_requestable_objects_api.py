@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from v3.api.requestable_objects_api import RequestableObjectsApi  # noqa: E501

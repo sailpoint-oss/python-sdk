@@ -11,49 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictStr, confloat, conint, conlist
-
 
 class RecommendationConfigDto(BaseModel):
     """
     RecommendationConfigDto
     """
-    recommender_features: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="recommenderFeatures",
-        description=
-        "List of identity attributes to use for calculating certification recommendations"
-    )
-    peer_group_percentage_threshold: Optional[Union[confloat(
-        le=1.0, ge=0.0, strict=True
-    ), conint(le=1, ge=0, strict=True)]] = Field(
-        None,
-        alias="peerGroupPercentageThreshold",
-        description=
-        "The percent value that the recommendation calculation must surpass to produce a YES recommendation"
-    )
-    run_auto_select_once: Optional[StrictBool] = Field(
-        False,
-        alias="runAutoSelectOnce",
-        description=
-        "If true, rulesRecommenderConfig will be refreshed with new programatically selected attribute and threshold values on the next pipeline run"
-    )
-    only_tune_threshold: Optional[StrictBool] = Field(
-        False,
-        alias="onlyTuneThreshold",
-        description=
-        "If true, rulesRecommenderConfig will be refreshed with new programatically selected threshold values on the next pipeline run"
-    )
-    __properties = [
-        "recommenderFeatures", "peerGroupPercentageThreshold",
-        "runAutoSelectOnce", "onlyTuneThreshold"
-    ]
+    recommender_features: Optional[conlist(StrictStr)] = Field(None, alias="recommenderFeatures", description="List of identity attributes to use for calculating certification recommendations")
+    peer_group_percentage_threshold: Optional[Union[confloat(le=1.0, ge=0.0, strict=True), conint(le=1, ge=0, strict=True)]] = Field(None, alias="peerGroupPercentageThreshold", description="The percent value that the recommendation calculation must surpass to produce a YES recommendation")
+    run_auto_select_once: Optional[StrictBool] = Field(False, alias="runAutoSelectOnce", description="If true, rulesRecommenderConfig will be refreshed with new programatically selected attribute and threshold values on the next pipeline run")
+    only_tune_threshold: Optional[StrictBool] = Field(False, alias="onlyTuneThreshold", description="If true, rulesRecommenderConfig will be refreshed with new programatically selected threshold values on the next pipeline run")
+    __properties = ["recommenderFeatures", "peerGroupPercentageThreshold", "runAutoSelectOnce", "onlyTuneThreshold"]
 
     class Config:
         """Pydantic configuration"""
@@ -75,7 +51,10 @@ class RecommendationConfigDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -88,15 +67,11 @@ class RecommendationConfigDto(BaseModel):
             return RecommendationConfigDto.parse_obj(obj)
 
         _obj = RecommendationConfigDto.parse_obj({
-            "recommender_features":
-            obj.get("recommenderFeatures"),
-            "peer_group_percentage_threshold":
-            obj.get("peerGroupPercentageThreshold"),
-            "run_auto_select_once":
-            obj.get("runAutoSelectOnce")
-            if obj.get("runAutoSelectOnce") is not None else False,
-            "only_tune_threshold":
-            obj.get("onlyTuneThreshold")
-            if obj.get("onlyTuneThreshold") is not None else False
+            "recommender_features": obj.get("recommenderFeatures"),
+            "peer_group_percentage_threshold": obj.get("peerGroupPercentageThreshold"),
+            "run_auto_select_once": obj.get("runAutoSelectOnce") if obj.get("runAutoSelectOnce") is not None else False,
+            "only_tune_threshold": obj.get("onlyTuneThreshold") if obj.get("onlyTuneThreshold") is not None else False
         })
         return _obj
+
+

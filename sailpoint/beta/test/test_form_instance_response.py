@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.form_instance_response import FormInstanceResponse  # noqa: E501
-
 
 class TestFormInstanceResponse(unittest.TestCase):
     """FormInstanceResponse unit test stubs"""
@@ -102,7 +102,6 @@ class TestFormInstanceResponse(unittest.TestCase):
         """Test FormInstanceResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,26 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class EntitlementRef(BaseModel):
     """
     EntitlementRef
     """
-    id: Optional[StrictStr] = Field(None,
-                                    description="The ID of the Entitlement")
-    type: Optional[StrictStr] = Field(
-        None,
-        description="The type of the Entitlement, will always be ENTITLEMENT")
-    name: Optional[StrictStr] = Field(
-        None, description="The display name of the Entitlement")
+    id: Optional[StrictStr] = Field(None, description="The ID of the Entitlement")
+    type: Optional[StrictStr] = Field(None, description="The type of the Entitlement, will always be ENTITLEMENT")
+    name: Optional[StrictStr] = Field(None, description="The display name of the Entitlement")
     __properties = ["id", "type", "name"]
 
     @validator('type')
@@ -63,7 +60,10 @@ class EntitlementRef(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,3 +81,5 @@ class EntitlementRef(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

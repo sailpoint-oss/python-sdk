@@ -11,25 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
-
 
 class ConnectorRuleValidationResponseDetailsInner(BaseModel):
     """
     CodeErrorDetail  # noqa: E501
     """
-    line: StrictInt = Field(
-        ..., description="The line number where the issue occurred")
-    column: StrictInt = Field(
-        ..., description="the column number where the issue occurred")
-    messsage: Optional[StrictStr] = Field(
-        None, description="a description of the issue in the code")
+    line: StrictInt = Field(..., description="The line number where the issue occurred")
+    column: StrictInt = Field(..., description="the column number where the issue occurred")
+    messsage: Optional[StrictStr] = Field(None, description="a description of the issue in the code")
     __properties = ["line", "column", "messsage"]
 
     class Config:
@@ -46,19 +44,20 @@ class ConnectorRuleValidationResponseDetailsInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-            cls, json_str: str) -> ConnectorRuleValidationResponseDetailsInner:
+    def from_json(cls, json_str: str) -> ConnectorRuleValidationResponseDetailsInner:
         """Create an instance of ConnectorRuleValidationResponseDetailsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls,
-                  obj: dict) -> ConnectorRuleValidationResponseDetailsInner:
+    def from_dict(cls, obj: dict) -> ConnectorRuleValidationResponseDetailsInner:
         """Create an instance of ConnectorRuleValidationResponseDetailsInner from a dict"""
         if obj is None:
             return None
@@ -67,11 +66,10 @@ class ConnectorRuleValidationResponseDetailsInner(BaseModel):
             return ConnectorRuleValidationResponseDetailsInner.parse_obj(obj)
 
         _obj = ConnectorRuleValidationResponseDetailsInner.parse_obj({
-            "line":
-            obj.get("line"),
-            "column":
-            obj.get("column"),
-            "messsage":
-            obj.get("messsage")
+            "line": obj.get("line"),
+            "column": obj.get("column"),
+            "messsage": obj.get("messsage")
         })
         return _obj
+
+

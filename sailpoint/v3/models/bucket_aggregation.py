@@ -11,36 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 from v3.models.bucket_type import BucketType
-
 
 class BucketAggregation(BaseModel):
     """
     The bucket to group the results of the aggregation query by.  # noqa: E501
     """
-    name: StrictStr = Field(
-        ...,
-        description=
-        "The name of the bucket aggregate to be included in the result.")
+    name: StrictStr = Field(..., description="The name of the bucket aggregate to be included in the result.")
     type: Optional[BucketType] = None
-    field: StrictStr = Field(
-        ...,
-        description=
-        "The field to bucket on. Prefix the field name with '@' to reference a nested object."
-    )
-    size: Optional[StrictInt] = Field(
-        None, description="Maximum number of buckets to include.")
-    min_doc_count: Optional[StrictInt] = Field(
-        None,
-        alias="minDocCount",
-        description="Minimum number of documents a bucket should have.")
+    field: StrictStr = Field(..., description="The field to bucket on. Prefix the field name with '@' to reference a nested object.")
+    size: Optional[StrictInt] = Field(None, description="Maximum number of buckets to include.")
+    min_doc_count: Optional[StrictInt] = Field(None, alias="minDocCount", description="Minimum number of documents a bucket should have.")
     __properties = ["name", "type", "field", "size", "minDocCount"]
 
     class Config:
@@ -63,7 +53,10 @@ class BucketAggregation(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,15 +69,12 @@ class BucketAggregation(BaseModel):
             return BucketAggregation.parse_obj(obj)
 
         _obj = BucketAggregation.parse_obj({
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("type"),
-            "field":
-            obj.get("field"),
-            "size":
-            obj.get("size"),
-            "min_doc_count":
-            obj.get("minDocCount")
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "field": obj.get("field"),
+            "size": obj.get("size"),
+            "min_doc_count": obj.get("minDocCount")
         })
         return _obj
+
+

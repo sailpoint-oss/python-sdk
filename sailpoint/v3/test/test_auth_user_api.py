@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from v3.api.auth_user_api import AuthUserApi  # noqa: E501

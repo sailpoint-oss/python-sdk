@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.source_deleted_actor import SourceDeletedActor  # noqa: E501
-
 
 class TestSourceDeletedActor(unittest.TestCase):
     """SourceDeletedActor unit test stubs"""
@@ -52,7 +52,6 @@ class TestSourceDeletedActor(unittest.TestCase):
         """Test SourceDeletedActor"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

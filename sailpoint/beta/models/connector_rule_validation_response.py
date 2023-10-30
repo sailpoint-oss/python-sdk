@@ -11,15 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
 from beta.models.connector_rule_validation_response_details_inner import ConnectorRuleValidationResponseDetailsInner
-
 
 class ConnectorRuleValidationResponse(BaseModel):
     """
@@ -56,7 +57,10 @@ class ConnectorRuleValidationResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in details (list)
         _items = []
         if self.details:
@@ -76,11 +80,9 @@ class ConnectorRuleValidationResponse(BaseModel):
             return ConnectorRuleValidationResponse.parse_obj(obj)
 
         _obj = ConnectorRuleValidationResponse.parse_obj({
-            "state":
-            obj.get("state"),
-            "details": [
-                ConnectorRuleValidationResponseDetailsInner.from_dict(_item)
-                for _item in obj.get("details")
-            ] if obj.get("details") is not None else None
+            "state": obj.get("state"),
+            "details": [ConnectorRuleValidationResponseDetailsInner.from_dict(_item) for _item in obj.get("details")] if obj.get("details") is not None else None
         })
         return _obj
+
+

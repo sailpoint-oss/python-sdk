@@ -11,24 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class SourceUsageStatus(BaseModel):
     """
     SourceUsageStatus
     """
-    status: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Source Usage Status. Acceptable values are:   - COMPLETE       - This status means that an activity data source has been setup and usage insights are available for the source.   - INCOMPLETE       - This status means that an activity data source has not been setup and usage insights are not available for the source."
-    )
+    status: Optional[StrictStr] = Field(None, description="Source Usage Status. Acceptable values are:   - COMPLETE       - This status means that an activity data source has been setup and usage insights are available for the source.   - INCOMPLETE       - This status means that an activity data source has not been setup and usage insights are not available for the source.")
     __properties = ["status"]
 
     @validator('status')
@@ -38,8 +35,7 @@ class SourceUsageStatus(BaseModel):
             return value
 
         if value not in ('COMPLETE', 'INCOMPLETE'):
-            raise ValueError(
-                "must be one of enum values ('COMPLETE', 'INCOMPLETE')")
+            raise ValueError("must be one of enum values ('COMPLETE', 'INCOMPLETE')")
         return value
 
     class Config:
@@ -62,7 +58,10 @@ class SourceUsageStatus(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -74,5 +73,9 @@ class SourceUsageStatus(BaseModel):
         if not isinstance(obj, dict):
             return SourceUsageStatus.parse_obj(obj)
 
-        _obj = SourceUsageStatus.parse_obj({"status": obj.get("status")})
+        _obj = SourceUsageStatus.parse_obj({
+            "status": obj.get("status")
+        })
         return _obj
+
+

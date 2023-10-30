@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.cancelled_request_details import CancelledRequestDetails  # noqa: E501
-
 
 class TestCancelledRequestDetails(unittest.TestCase):
     """CancelledRequestDetails unit test stubs"""
@@ -37,7 +37,7 @@ class TestCancelledRequestDetails(unittest.TestCase):
         if include_optional:
             return CancelledRequestDetails(
                 comment = 'Nisl quis ipsum quam quisque condimentum nunc ut dolor nunc.',
-                owner = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                owner = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
@@ -52,7 +52,6 @@ class TestCancelledRequestDetails(unittest.TestCase):
         """Test CancelledRequestDetails"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

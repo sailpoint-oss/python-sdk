@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.transform_definition1 import TransformDefinition1  # noqa: E501
-
 
 class TestTransformDefinition1(unittest.TestCase):
     """TransformDefinition1 unit test stubs"""
@@ -48,7 +48,6 @@ class TestTransformDefinition1(unittest.TestCase):
         """Test TransformDefinition1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

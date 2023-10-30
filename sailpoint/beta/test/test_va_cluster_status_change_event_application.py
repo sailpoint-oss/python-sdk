@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.va_cluster_status_change_event_application import VAClusterStatusChangeEventApplication  # noqa: E501
-
 
 class TestVAClusterStatusChangeEventApplication(unittest.TestCase):
     """VAClusterStatusChangeEventApplication unit test stubs"""
@@ -26,8 +26,7 @@ class TestVAClusterStatusChangeEventApplication(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self, include_optional) -> VAClusterStatusChangeEventApplication:
+    def make_instance(self, include_optional) -> VAClusterStatusChangeEventApplication:
         """Test VAClusterStatusChangeEventApplication
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -53,7 +52,6 @@ class TestVAClusterStatusChangeEventApplication(unittest.TestCase):
         """Test VAClusterStatusChangeEventApplication"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

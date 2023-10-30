@@ -11,42 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
-
 
 class RoleInsightsInsight(BaseModel):
     """
     RoleInsightsInsight
     """
-    type: Optional[StrictStr] = Field(
-        None,
-        description=
-        "The number of identities in this role with the entitlement.")
-    identities_with_access: Optional[StrictInt] = Field(
-        None,
-        alias="identitiesWithAccess",
-        description=
-        "The number of identities in this role with the entitlement.")
-    identities_impacted: Optional[StrictInt] = Field(
-        None,
-        alias="identitiesImpacted",
-        description=
-        "The number of identities in this role that do not have the specified entitlement."
-    )
-    total_number_of_identities: Optional[StrictInt] = Field(
-        None,
-        alias="totalNumberOfIdentities",
-        description="The total number of identities.")
-    __properties = [
-        "type", "identitiesWithAccess", "identitiesImpacted",
-        "totalNumberOfIdentities"
-    ]
+    type: Optional[StrictStr] = Field(None, description="The number of identities in this role with the entitlement.")
+    identities_with_access: Optional[StrictInt] = Field(None, alias="identitiesWithAccess", description="The number of identities in this role with the entitlement.")
+    identities_impacted: Optional[StrictInt] = Field(None, alias="identitiesImpacted", description="The number of identities in this role that do not have the specified entitlement.")
+    total_number_of_identities: Optional[StrictInt] = Field(None, alias="totalNumberOfIdentities", description="The total number of identities.")
+    __properties = ["type", "identitiesWithAccess", "identitiesImpacted", "totalNumberOfIdentities"]
 
     class Config:
         """Pydantic configuration"""
@@ -68,7 +51,10 @@ class RoleInsightsInsight(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,13 +67,11 @@ class RoleInsightsInsight(BaseModel):
             return RoleInsightsInsight.parse_obj(obj)
 
         _obj = RoleInsightsInsight.parse_obj({
-            "type":
-            obj.get("type"),
-            "identities_with_access":
-            obj.get("identitiesWithAccess"),
-            "identities_impacted":
-            obj.get("identitiesImpacted"),
-            "total_number_of_identities":
-            obj.get("totalNumberOfIdentities")
+            "type": obj.get("type"),
+            "identities_with_access": obj.get("identitiesWithAccess"),
+            "identities_impacted": obj.get("identitiesImpacted"),
+            "total_number_of_identities": obj.get("totalNumberOfIdentities")
         })
         return _obj
+
+

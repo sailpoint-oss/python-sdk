@@ -11,33 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool
-
 
 class RequestOnBehalfOfConfig(BaseModel):
     """
     RequestOnBehalfOfConfig
     """
-    allow_request_on_behalf_of_anyone_by_anyone: Optional[StrictBool] = Field(
-        None,
-        alias="allowRequestOnBehalfOfAnyoneByAnyone",
-        description="If anyone can request access for anyone.")
-    allow_request_on_behalf_of_employee_by_manager: Optional[
-        StrictBool] = Field(
-            None,
-            alias="allowRequestOnBehalfOfEmployeeByManager",
-            description=
-            "If a manager can request access for his/her direct reports.")
-    __properties = [
-        "allowRequestOnBehalfOfAnyoneByAnyone",
-        "allowRequestOnBehalfOfEmployeeByManager"
-    ]
+    allow_request_on_behalf_of_anyone_by_anyone: Optional[StrictBool] = Field(None, alias="allowRequestOnBehalfOfAnyoneByAnyone", description="If anyone can request access for anyone.")
+    allow_request_on_behalf_of_employee_by_manager: Optional[StrictBool] = Field(None, alias="allowRequestOnBehalfOfEmployeeByManager", description="If a manager can request access for his/her direct reports.")
+    __properties = ["allowRequestOnBehalfOfAnyoneByAnyone", "allowRequestOnBehalfOfEmployeeByManager"]
 
     class Config:
         """Pydantic configuration"""
@@ -59,7 +49,10 @@ class RequestOnBehalfOfConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -72,9 +65,9 @@ class RequestOnBehalfOfConfig(BaseModel):
             return RequestOnBehalfOfConfig.parse_obj(obj)
 
         _obj = RequestOnBehalfOfConfig.parse_obj({
-            "allow_request_on_behalf_of_anyone_by_anyone":
-            obj.get("allowRequestOnBehalfOfAnyoneByAnyone"),
-            "allow_request_on_behalf_of_employee_by_manager":
-            obj.get("allowRequestOnBehalfOfEmployeeByManager")
+            "allow_request_on_behalf_of_anyone_by_anyone": obj.get("allowRequestOnBehalfOfAnyoneByAnyone"),
+            "allow_request_on_behalf_of_employee_by_manager": obj.get("allowRequestOnBehalfOfEmployeeByManager")
         })
         return _obj
+
+

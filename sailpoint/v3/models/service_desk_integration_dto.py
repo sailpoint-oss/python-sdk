@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -24,54 +25,24 @@ from v3.models.service_desk_integration_dto_all_of_before_provisioning_rule impo
 from v3.models.service_desk_integration_dto_all_of_cluster_ref import ServiceDeskIntegrationDtoAllOfClusterRef
 from v3.models.service_desk_integration_dto_all_of_owner_ref import ServiceDeskIntegrationDtoAllOfOwnerRef
 
-
 class ServiceDeskIntegrationDto(BaseModel):
     """
     ServiceDeskIntegrationDto
     """
-    id: Optional[StrictStr] = Field(
-        None, description="System-generated unique ID of the Object")
+    id: Optional[StrictStr] = Field(None, description="System-generated unique ID of the Object")
     name: StrictStr = Field(..., description="Name of the Object")
-    created: Optional[datetime] = Field(
-        None, description="Creation date of the Object")
-    modified: Optional[datetime] = Field(
-        None, description="Last modification date of the Object")
-    description: StrictStr = Field(
-        ..., description="Description of the Service Desk integration")
-    type: StrictStr = Field(
-        ...,
-        description=
-        "Service Desk integration types  - ServiceNowSDIM - ServiceNow ")
-    owner_ref: Optional[ServiceDeskIntegrationDtoAllOfOwnerRef] = Field(
-        None, alias="ownerRef")
-    cluster_ref: Optional[ServiceDeskIntegrationDtoAllOfClusterRef] = Field(
-        None, alias="clusterRef")
-    cluster: Optional[StrictStr] = Field(
-        None,
-        description=
-        "ID of the cluster for the Service Desk integration (replaced by clusterRef, retained for backward compatibility)"
-    )
-    managed_sources: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="managedSources",
-        description=
-        "Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs, but retained here for backward compatibility)"
-    )
-    provisioning_config: Optional[ProvisioningConfig] = Field(
-        None, alias="provisioningConfig")
-    attributes: Dict[str, Any] = Field(
-        ...,
-        description=
-        "Attributes of the Service Desk integration.  Validation constraints enforced by the implementation."
-    )
-    before_provisioning_rule: Optional[
-        ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule] = Field(
-            None, alias="beforeProvisioningRule")
-    __properties = [
-        "id", "name", "created", "modified", "description", "type", "ownerRef",
-        "clusterRef", "cluster", "managedSources", "provisioningConfig",
-        "attributes", "beforeProvisioningRule"
-    ]
+    created: Optional[datetime] = Field(None, description="Creation date of the Object")
+    modified: Optional[datetime] = Field(None, description="Last modification date of the Object")
+    description: StrictStr = Field(..., description="Description of the Service Desk integration")
+    type: StrictStr = Field(..., description="Service Desk integration types  - ServiceNowSDIM - ServiceNow ")
+    owner_ref: Optional[ServiceDeskIntegrationDtoAllOfOwnerRef] = Field(None, alias="ownerRef")
+    cluster_ref: Optional[ServiceDeskIntegrationDtoAllOfClusterRef] = Field(None, alias="clusterRef")
+    cluster: Optional[StrictStr] = Field(None, description="ID of the cluster for the Service Desk integration (replaced by clusterRef, retained for backward compatibility)")
+    managed_sources: Optional[conlist(StrictStr)] = Field(None, alias="managedSources", description="Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs, but retained here for backward compatibility)")
+    provisioning_config: Optional[ProvisioningConfig] = Field(None, alias="provisioningConfig")
+    attributes: Dict[str, Any] = Field(..., description="Attributes of the Service Desk integration.  Validation constraints enforced by the implementation.")
+    before_provisioning_rule: Optional[ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule] = Field(None, alias="beforeProvisioningRule")
+    __properties = ["id", "name", "created", "modified", "description", "type", "ownerRef", "clusterRef", "cluster", "managedSources", "provisioningConfig", "attributes", "beforeProvisioningRule"]
 
     class Config:
         """Pydantic configuration"""
@@ -95,9 +66,9 @@ class ServiceDeskIntegrationDto(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "id",
-                              "created",
-                              "modified",
+                            "id",
+                            "created",
+                            "modified",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner_ref
@@ -111,9 +82,7 @@ class ServiceDeskIntegrationDto(BaseModel):
             _dict['provisioningConfig'] = self.provisioning_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of before_provisioning_rule
         if self.before_provisioning_rule:
-            _dict[
-                'beforeProvisioningRule'] = self.before_provisioning_rule.to_dict(
-                )
+            _dict['beforeProvisioningRule'] = self.before_provisioning_rule.to_dict()
         return _dict
 
     @classmethod
@@ -126,39 +95,20 @@ class ServiceDeskIntegrationDto(BaseModel):
             return ServiceDeskIntegrationDto.parse_obj(obj)
 
         _obj = ServiceDeskIntegrationDto.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "description":
-            obj.get("description"),
-            "type":
-            obj.get("type")
-            if obj.get("type") is not None else 'ServiceNowSDIM',
-            "owner_ref":
-            ServiceDeskIntegrationDtoAllOfOwnerRef.from_dict(
-                obj.get("ownerRef"))
-            if obj.get("ownerRef") is not None else None,
-            "cluster_ref":
-            ServiceDeskIntegrationDtoAllOfClusterRef.from_dict(
-                obj.get("clusterRef"))
-            if obj.get("clusterRef") is not None else None,
-            "cluster":
-            obj.get("cluster"),
-            "managed_sources":
-            obj.get("managedSources"),
-            "provisioning_config":
-            ProvisioningConfig.from_dict(obj.get("provisioningConfig"))
-            if obj.get("provisioningConfig") is not None else None,
-            "attributes":
-            obj.get("attributes"),
-            "before_provisioning_rule":
-            ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.from_dict(
-                obj.get("beforeProvisioningRule"))
-            if obj.get("beforeProvisioningRule") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "description": obj.get("description"),
+            "type": obj.get("type") if obj.get("type") is not None else 'ServiceNowSDIM',
+            "owner_ref": ServiceDeskIntegrationDtoAllOfOwnerRef.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
+            "cluster_ref": ServiceDeskIntegrationDtoAllOfClusterRef.from_dict(obj.get("clusterRef")) if obj.get("clusterRef") is not None else None,
+            "cluster": obj.get("cluster"),
+            "managed_sources": obj.get("managedSources"),
+            "provisioning_config": ProvisioningConfig.from_dict(obj.get("provisioningConfig")) if obj.get("provisioningConfig") is not None else None,
+            "attributes": obj.get("attributes"),
+            "before_provisioning_rule": ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.from_dict(obj.get("beforeProvisioningRule")) if obj.get("beforeProvisioningRule") is not None else None
         })
         return _obj
+
+

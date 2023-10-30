@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.requestable_object_type import RequestableObjectType  # noqa: E501
-
 
 class TestRequestableObjectType(unittest.TestCase):
     """RequestableObjectType unit test stubs"""
@@ -29,7 +29,6 @@ class TestRequestableObjectType(unittest.TestCase):
     def testRequestableObjectType(self):
         """Test RequestableObjectType"""
         # inst = RequestableObjectType()
-
 
 if __name__ == '__main__':
     unittest.main()

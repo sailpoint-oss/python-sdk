@@ -11,30 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from beta.models.error_message_dto import ErrorMessageDto
-
 
 class IdentityAttributePreview(BaseModel):
     """
     IdentityAttributePreview
     """
-    name: Optional[StrictStr] = Field(
-        None, description="Name of the attribute that is being previewed.")
-    value: Optional[Dict[str, Any]] = Field(
-        None, description="Value that was derived during the preview.")
-    previous_value: Optional[Dict[str, Any]] = Field(
-        None,
-        alias="previousValue",
-        description="The value of the attribute before the preview.")
-    error_messages: Optional[conlist(ErrorMessageDto)] = Field(
-        None, alias="errorMessages")
+    name: Optional[StrictStr] = Field(None, description="Name of the attribute that is being previewed.")
+    value: Optional[Dict[str, Any]] = Field(None, description="Value that was derived during the preview.")
+    previous_value: Optional[Dict[str, Any]] = Field(None, alias="previousValue", description="The value of the attribute before the preview.")
+    error_messages: Optional[conlist(ErrorMessageDto)] = Field(None, alias="errorMessages")
     __properties = ["name", "value", "previousValue", "errorMessages"]
 
     class Config:
@@ -57,7 +52,10 @@ class IdentityAttributePreview(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in error_messages (list)
         _items = []
         if self.error_messages:
@@ -77,15 +75,11 @@ class IdentityAttributePreview(BaseModel):
             return IdentityAttributePreview.parse_obj(obj)
 
         _obj = IdentityAttributePreview.parse_obj({
-            "name":
-            obj.get("name"),
-            "value":
-            obj.get("value"),
-            "previous_value":
-            obj.get("previousValue"),
-            "error_messages": [
-                ErrorMessageDto.from_dict(_item)
-                for _item in obj.get("errorMessages")
-            ] if obj.get("errorMessages") is not None else None
+            "name": obj.get("name"),
+            "value": obj.get("value"),
+            "previous_value": obj.get("previousValue"),
+            "error_messages": [ErrorMessageDto.from_dict(_item) for _item in obj.get("errorMessages")] if obj.get("errorMessages") is not None else None
         })
         return _obj
+
+

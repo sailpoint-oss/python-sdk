@@ -11,24 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from beta.models.resource_bundle_message import ResourceBundleMessage
-
 
 class MessageCatalogDto(BaseModel):
     """
     MessageCatalogDto
     """
-    locale: Optional[StrictStr] = Field(
-        None, description="The language in which the messages are returned")
-    messages: Optional[conlist(ResourceBundleMessage)] = Field(
-        None, description="The list of message with their keys and formats")
+    locale: Optional[StrictStr] = Field(None, description="The language in which the messages are returned")
+    messages: Optional[conlist(ResourceBundleMessage)] = Field(None, description="The list of message with their keys and formats")
     __properties = ["locale", "messages"]
 
     class Config:
@@ -51,7 +50,10 @@ class MessageCatalogDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
@@ -71,11 +73,9 @@ class MessageCatalogDto(BaseModel):
             return MessageCatalogDto.parse_obj(obj)
 
         _obj = MessageCatalogDto.parse_obj({
-            "locale":
-            obj.get("locale"),
-            "messages": [
-                ResourceBundleMessage.from_dict(_item)
-                for _item in obj.get("messages")
-            ] if obj.get("messages") is not None else None
+            "locale": obj.get("locale"),
+            "messages": [ResourceBundleMessage.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None
         })
         return _obj
+
+

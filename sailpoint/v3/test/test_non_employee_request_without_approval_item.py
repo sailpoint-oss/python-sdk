@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.non_employee_request_without_approval_item import NonEmployeeRequestWithoutApprovalItem  # noqa: E501
-
 
 class TestNonEmployeeRequestWithoutApprovalItem(unittest.TestCase):
     """NonEmployeeRequestWithoutApprovalItem unit test stubs"""
@@ -26,8 +26,7 @@ class TestNonEmployeeRequestWithoutApprovalItem(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self, include_optional) -> NonEmployeeRequestWithoutApprovalItem:
+    def make_instance(self, include_optional) -> NonEmployeeRequestWithoutApprovalItem:
         """Test NonEmployeeRequestWithoutApprovalItem
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -52,8 +51,8 @@ class TestNonEmployeeRequestWithoutApprovalItem(unittest.TestCase):
                 approval_status = 'APPROVED',
                 comment = 'approved',
                 completion_date = '2020-03-24T11:11:41.139-05:00',
-                start_date = 'Mon Mar 23 20:00:00 EDT 2020',
-                end_date = 'Wed Mar 24 20:00:00 EDT 2021',
+                start_date = 'Tue Mar 24 00:00:00 UTC 2020',
+                end_date = 'Thu Mar 25 00:00:00 UTC 2021',
                 modified = '2020-03-24T11:11:41.139-05:00',
                 created = '2020-03-24T11:11:41.139-05:00'
             )
@@ -66,7 +65,6 @@ class TestNonEmployeeRequestWithoutApprovalItem(unittest.TestCase):
         """Test NonEmployeeRequestWithoutApprovalItem"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

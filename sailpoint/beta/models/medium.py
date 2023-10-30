@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class Medium(str, Enum):
     """
     Medium
     """
+
     """
     allowed enum values
     """
@@ -34,3 +39,5 @@ class Medium(str, Enum):
     def from_json(cls, json_str: str) -> Medium:
         """Create an instance of Medium from a JSON string"""
         return Medium(json.loads(json_str))
+
+

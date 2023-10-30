@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.governance_groups_api import GovernanceGroupsApi  # noqa: E501

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Optional
 from pydantic import BaseModel, Field
@@ -22,17 +24,13 @@ from beta.models.saved_search_complete_search_results_account import SavedSearch
 from beta.models.saved_search_complete_search_results_entitlement import SavedSearchCompleteSearchResultsEntitlement
 from beta.models.saved_search_complete_search_results_identity import SavedSearchCompleteSearchResultsIdentity
 
-
 class SavedSearchCompleteSearchResults(BaseModel):
     """
     A preview of the search results for each object type. This includes a count as well as headers, and the first several rows of data, per object type.  # noqa: E501
     """
-    account: Optional[SavedSearchCompleteSearchResultsAccount] = Field(
-        None, alias="Account")
-    entitlement: Optional[SavedSearchCompleteSearchResultsEntitlement] = Field(
-        None, alias="Entitlement")
-    identity: Optional[SavedSearchCompleteSearchResultsIdentity] = Field(
-        None, alias="Identity")
+    account: Optional[SavedSearchCompleteSearchResultsAccount] = Field(None, alias="Account")
+    entitlement: Optional[SavedSearchCompleteSearchResultsEntitlement] = Field(None, alias="Entitlement")
+    identity: Optional[SavedSearchCompleteSearchResultsIdentity] = Field(None, alias="Identity")
     __properties = ["Account", "Entitlement", "Identity"]
 
     class Config:
@@ -55,7 +53,10 @@ class SavedSearchCompleteSearchResults(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of account
         if self.account:
             _dict['Account'] = self.account.to_dict()
@@ -92,17 +93,10 @@ class SavedSearchCompleteSearchResults(BaseModel):
             return SavedSearchCompleteSearchResults.parse_obj(obj)
 
         _obj = SavedSearchCompleteSearchResults.parse_obj({
-            "account":
-            SavedSearchCompleteSearchResultsAccount.from_dict(
-                obj.get("Account"))
-            if obj.get("Account") is not None else None,
-            "entitlement":
-            SavedSearchCompleteSearchResultsEntitlement.from_dict(
-                obj.get("Entitlement"))
-            if obj.get("Entitlement") is not None else None,
-            "identity":
-            SavedSearchCompleteSearchResultsIdentity.from_dict(
-                obj.get("Identity"))
-            if obj.get("Identity") is not None else None
+            "account": SavedSearchCompleteSearchResultsAccount.from_dict(obj.get("Account")) if obj.get("Account") is not None else None,
+            "entitlement": SavedSearchCompleteSearchResultsEntitlement.from_dict(obj.get("Entitlement")) if obj.get("Entitlement") is not None else None,
+            "identity": SavedSearchCompleteSearchResultsIdentity.from_dict(obj.get("Identity")) if obj.get("Identity") is not None else None
         })
         return _obj
+
+

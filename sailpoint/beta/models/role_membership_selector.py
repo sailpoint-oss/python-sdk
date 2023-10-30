@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
@@ -22,18 +24,13 @@ from beta.models.role_criteria_level1 import RoleCriteriaLevel1
 from beta.models.role_membership_identity import RoleMembershipIdentity
 from beta.models.role_membership_selector_type import RoleMembershipSelectorType
 
-
 class RoleMembershipSelector(BaseModel):
     """
     When present, specifies that the Role is to be granted to Identities which either satisfy specific criteria or which are members of a given list of Identities.  # noqa: E501
     """
     type: Optional[RoleMembershipSelectorType] = None
     criteria: Optional[RoleCriteriaLevel1] = None
-    identities: Optional[conlist(RoleMembershipIdentity)] = Field(
-        None,
-        description=
-        "Defines role membership as being exclusive to the specified Identities, when type is IDENTITY_LIST."
-    )
+    identities: Optional[conlist(RoleMembershipIdentity)] = Field(None, description="Defines role membership as being exclusive to the specified Identities, when type is IDENTITY_LIST.")
     __properties = ["type", "criteria", "identities"]
 
     class Config:
@@ -56,7 +53,10 @@ class RoleMembershipSelector(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of criteria
         if self.criteria:
             _dict['criteria'] = self.criteria.to_dict()
@@ -89,14 +89,10 @@ class RoleMembershipSelector(BaseModel):
             return RoleMembershipSelector.parse_obj(obj)
 
         _obj = RoleMembershipSelector.parse_obj({
-            "type":
-            obj.get("type"),
-            "criteria":
-            RoleCriteriaLevel1.from_dict(obj.get("criteria"))
-            if obj.get("criteria") is not None else None,
-            "identities": [
-                RoleMembershipIdentity.from_dict(_item)
-                for _item in obj.get("identities")
-            ] if obj.get("identities") is not None else None
+            "type": obj.get("type"),
+            "criteria": RoleCriteriaLevel1.from_dict(obj.get("criteria")) if obj.get("criteria") is not None else None,
+            "identities": [RoleMembershipIdentity.from_dict(_item) for _item in obj.get("identities")] if obj.get("identities") is not None else None
         })
         return _obj
+
+

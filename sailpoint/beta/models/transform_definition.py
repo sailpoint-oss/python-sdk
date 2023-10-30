@@ -11,25 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class TransformDefinition(BaseModel):
     """
     TransformDefinition
     """
-    type: Optional[StrictStr] = Field(
-        None, description="The type of the transform definition.")
-    attributes: Optional[Dict[str, Any]] = Field(
-        None,
-        description=
-        "Arbitrary key-value pairs to store any metadata for the object")
+    type: Optional[StrictStr] = Field(None, description="The type of the transform definition.")
+    attributes: Optional[Dict[str, Any]] = Field(None, description="Arbitrary key-value pairs to store any metadata for the object")
     __properties = ["type", "attributes"]
 
     class Config:
@@ -52,7 +49,10 @@ class TransformDefinition(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if attributes (nullable) is None
         # and __fields_set__ contains the field
         if self.attributes is None and "attributes" in self.__fields_set__:
@@ -70,9 +70,9 @@ class TransformDefinition(BaseModel):
             return TransformDefinition.parse_obj(obj)
 
         _obj = TransformDefinition.parse_obj({
-            "type":
-            obj.get("type"),
-            "attributes":
-            obj.get("attributes")
+            "type": obj.get("type"),
+            "attributes": obj.get("attributes")
         })
         return _obj
+
+

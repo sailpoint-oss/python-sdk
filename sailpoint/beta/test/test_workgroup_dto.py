@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.workgroup_dto import WorkgroupDto  # noqa: E501
-
 
 class TestWorkgroupDto(unittest.TestCase):
     """WorkgroupDto unit test stubs"""
@@ -36,7 +36,7 @@ class TestWorkgroupDto(unittest.TestCase):
         model = WorkgroupDto()  # noqa: E501
         if include_optional:
             return WorkgroupDto(
-                owner = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                owner = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
@@ -55,7 +55,6 @@ class TestWorkgroupDto(unittest.TestCase):
         """Test WorkgroupDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

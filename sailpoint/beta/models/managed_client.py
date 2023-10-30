@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,67 +22,28 @@ from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 from beta.models.managed_client_status_enum import ManagedClientStatusEnum
 
-
 class ManagedClient(BaseModel):
     """
     Managed Client  # noqa: E501
     """
     id: Optional[StrictStr] = Field(None, description="ManagedClient ID")
-    alert_key: Optional[StrictStr] = Field(
-        None, alias="alertKey", description="ManagedClient alert key")
-    api_gateway_base_url: Optional[StrictStr] = Field(
-        None,
-        alias="apiGatewayBaseUrl",
-        description="ManagedClient gateway base url")
-    cc_id: Optional[StrictInt] = Field(
-        None,
-        alias="ccId",
-        description=
-        "Previous CC ID to be used in data migration. (This field will be deleted after CC migration!)"
-    )
-    client_id: StrictStr = Field(
-        ...,
-        alias="clientId",
-        description="The client ID used in API management")
-    cluster_id: StrictStr = Field(
-        ...,
-        alias="clusterId",
-        description="Cluster ID that the ManagedClient is linked to")
+    alert_key: Optional[StrictStr] = Field(None, alias="alertKey", description="ManagedClient alert key")
+    api_gateway_base_url: Optional[StrictStr] = Field(None, alias="apiGatewayBaseUrl", description="ManagedClient gateway base url")
+    cc_id: Optional[StrictInt] = Field(None, alias="ccId", description="Previous CC ID to be used in data migration. (This field will be deleted after CC migration!)")
+    client_id: StrictStr = Field(..., alias="clientId", description="The client ID used in API management")
+    cluster_id: StrictStr = Field(..., alias="clusterId", description="Cluster ID that the ManagedClient is linked to")
     cookbook: Optional[StrictStr] = Field(None, description="VA cookbook")
-    description: StrictStr = Field(...,
-                                   description="ManagedClient description")
-    ip_address: Optional[StrictStr] = Field(
-        None,
-        alias="ipAddress",
-        description="The public IP address of the ManagedClient")
-    last_seen: Optional[datetime] = Field(
-        None,
-        alias="lastSeen",
-        description="When the ManagedClient was last seen by the server")
+    description: StrictStr = Field(..., description="ManagedClient description")
+    ip_address: Optional[StrictStr] = Field(None, alias="ipAddress", description="The public IP address of the ManagedClient")
+    last_seen: Optional[datetime] = Field(None, alias="lastSeen", description="When the ManagedClient was last seen by the server")
     name: Optional[StrictStr] = Field(None, description="ManagedClient name")
-    since_last_seen: Optional[StrictStr] = Field(
-        None,
-        alias="sinceLastSeen",
-        description="Milliseconds since the ManagedClient has polled the server"
-    )
+    since_last_seen: Optional[StrictStr] = Field(None, alias="sinceLastSeen", description="Milliseconds since the ManagedClient has polled the server")
     status: Optional[ManagedClientStatusEnum] = None
-    type: StrictStr = Field(...,
-                            description="Type of the ManagedClient (VA, CCG)")
-    va_download_url: Optional[StrictStr] = Field(
-        None,
-        alias="vaDownloadUrl",
-        description="ManagedClient VA download URL")
-    va_version: Optional[StrictStr] = Field(
-        None,
-        alias="vaVersion",
-        description="Version that the ManagedClient's VA is running")
+    type: StrictStr = Field(..., description="Type of the ManagedClient (VA, CCG)")
+    va_download_url: Optional[StrictStr] = Field(None, alias="vaDownloadUrl", description="ManagedClient VA download URL")
+    va_version: Optional[StrictStr] = Field(None, alias="vaVersion", description="Version that the ManagedClient's VA is running")
     secret: Optional[StrictStr] = Field(None, description="Client's apiKey")
-    __properties = [
-        "id", "alertKey", "apiGatewayBaseUrl", "ccId", "clientId", "clusterId",
-        "cookbook", "description", "ipAddress", "lastSeen", "name",
-        "sinceLastSeen", "status", "type", "vaDownloadUrl", "vaVersion",
-        "secret"
-    ]
+    __properties = ["id", "alertKey", "apiGatewayBaseUrl", "ccId", "clientId", "clusterId", "cookbook", "description", "ipAddress", "lastSeen", "name", "sinceLastSeen", "status", "type", "vaDownloadUrl", "vaVersion", "secret"]
 
     class Config:
         """Pydantic configuration"""
@@ -105,16 +67,16 @@ class ManagedClient(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "id",
-                              "alert_key",
-                              "api_gateway_base_url",
-                              "cookbook",
-                              "ip_address",
-                              "last_seen",
-                              "since_last_seen",
-                              "status",
-                              "va_download_url",
-                              "va_version",
+                            "id",
+                            "alert_key",
+                            "api_gateway_base_url",
+                            "cookbook",
+                            "ip_address",
+                            "last_seen",
+                            "since_last_seen",
+                            "status",
+                            "va_download_url",
+                            "va_version",
                           },
                           exclude_none=True)
         return _dict
@@ -129,39 +91,24 @@ class ManagedClient(BaseModel):
             return ManagedClient.parse_obj(obj)
 
         _obj = ManagedClient.parse_obj({
-            "id":
-            obj.get("id"),
-            "alert_key":
-            obj.get("alertKey"),
-            "api_gateway_base_url":
-            obj.get("apiGatewayBaseUrl"),
-            "cc_id":
-            obj.get("ccId"),
-            "client_id":
-            obj.get("clientId"),
-            "cluster_id":
-            obj.get("clusterId"),
-            "cookbook":
-            obj.get("cookbook"),
-            "description":
-            obj.get("description"),
-            "ip_address":
-            obj.get("ipAddress"),
-            "last_seen":
-            obj.get("lastSeen"),
-            "name":
-            obj.get("name"),
-            "since_last_seen":
-            obj.get("sinceLastSeen"),
-            "status":
-            obj.get("status"),
-            "type":
-            obj.get("type"),
-            "va_download_url":
-            obj.get("vaDownloadUrl"),
-            "va_version":
-            obj.get("vaVersion"),
-            "secret":
-            obj.get("secret")
+            "id": obj.get("id"),
+            "alert_key": obj.get("alertKey"),
+            "api_gateway_base_url": obj.get("apiGatewayBaseUrl"),
+            "cc_id": obj.get("ccId"),
+            "client_id": obj.get("clientId"),
+            "cluster_id": obj.get("clusterId"),
+            "cookbook": obj.get("cookbook"),
+            "description": obj.get("description"),
+            "ip_address": obj.get("ipAddress"),
+            "last_seen": obj.get("lastSeen"),
+            "name": obj.get("name"),
+            "since_last_seen": obj.get("sinceLastSeen"),
+            "status": obj.get("status"),
+            "type": obj.get("type"),
+            "va_download_url": obj.get("vaDownloadUrl"),
+            "va_version": obj.get("vaVersion"),
+            "secret": obj.get("secret")
         })
         return _obj
+
+

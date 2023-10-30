@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
 from v3.models.sod_exempt_criteria import SodExemptCriteria
-
 
 class SodViolationContextConflictingAccessCriteriaLeftCriteria(BaseModel):
     """
     SodViolationContextConflictingAccessCriteriaLeftCriteria
     """
-    criteria_list: Optional[conlist(SodExemptCriteria)] = Field(
-        None, alias="criteriaList")
+    criteria_list: Optional[conlist(SodExemptCriteria)] = Field(None, alias="criteriaList")
     __properties = ["criteriaList"]
 
     class Config:
@@ -43,15 +43,16 @@ class SodViolationContextConflictingAccessCriteriaLeftCriteria(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> SodViolationContextConflictingAccessCriteriaLeftCriteria:
+    def from_json(cls, json_str: str) -> SodViolationContextConflictingAccessCriteriaLeftCriteria:
         """Create an instance of SodViolationContextConflictingAccessCriteriaLeftCriteria from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in criteria_list (list)
         _items = []
         if self.criteria_list:
@@ -62,22 +63,17 @@ class SodViolationContextConflictingAccessCriteriaLeftCriteria(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(
-            cls, obj: dict
-    ) -> SodViolationContextConflictingAccessCriteriaLeftCriteria:
+    def from_dict(cls, obj: dict) -> SodViolationContextConflictingAccessCriteriaLeftCriteria:
         """Create an instance of SodViolationContextConflictingAccessCriteriaLeftCriteria from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SodViolationContextConflictingAccessCriteriaLeftCriteria.parse_obj(
-                obj)
+            return SodViolationContextConflictingAccessCriteriaLeftCriteria.parse_obj(obj)
 
-        _obj = SodViolationContextConflictingAccessCriteriaLeftCriteria.parse_obj(
-            {
-                "criteria_list": [
-                    SodExemptCriteria.from_dict(_item)
-                    for _item in obj.get("criteriaList")
-                ] if obj.get("criteriaList") is not None else None
-            })
+        _obj = SodViolationContextConflictingAccessCriteriaLeftCriteria.parse_obj({
+            "criteria_list": [SodExemptCriteria.from_dict(_item) for _item in obj.get("criteriaList")] if obj.get("criteriaList") is not None else None
+        })
         return _obj
+
+

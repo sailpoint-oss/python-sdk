@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,46 +26,27 @@ from beta.models.completion_status import CompletionStatus
 from beta.models.execution_status import ExecutionStatus
 from beta.models.identity_summary import IdentitySummary
 
-
 class CancelableAccountActivity(BaseModel):
     """
     CancelableAccountActivity
     """
-    id: Optional[StrictStr] = Field(
-        None, description="ID of the account activity itself")
+    id: Optional[StrictStr] = Field(None, description="ID of the account activity itself")
     name: Optional[StrictStr] = None
     created: Optional[datetime] = None
     modified: Optional[datetime] = None
     completed: Optional[datetime] = None
-    completion_status: Optional[CompletionStatus] = Field(
-        None, alias="completionStatus")
+    completion_status: Optional[CompletionStatus] = Field(None, alias="completionStatus")
     type: Optional[StrictStr] = None
-    requester_identity_summary: Optional[IdentitySummary] = Field(
-        None, alias="requesterIdentitySummary")
-    target_identity_summary: Optional[IdentitySummary] = Field(
-        None, alias="targetIdentitySummary")
+    requester_identity_summary: Optional[IdentitySummary] = Field(None, alias="requesterIdentitySummary")
+    target_identity_summary: Optional[IdentitySummary] = Field(None, alias="targetIdentitySummary")
     errors: Optional[conlist(StrictStr)] = None
     warnings: Optional[conlist(StrictStr)] = None
     items: Optional[conlist(AccountActivityItem)] = None
-    execution_status: Optional[ExecutionStatus] = Field(
-        None, alias="executionStatus")
-    client_metadata: Optional[Dict[str, StrictStr]] = Field(
-        None,
-        alias="clientMetadata",
-        description=
-        "Arbitrary key-value pairs, if any were included in the corresponding access request"
-    )
-    cancelable: Optional[StrictBool] = Field(
-        None,
-        description=
-        "Whether the account activity can be canceled before completion")
+    execution_status: Optional[ExecutionStatus] = Field(None, alias="executionStatus")
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(None, alias="clientMetadata", description="Arbitrary key-value pairs, if any were included in the corresponding access request")
+    cancelable: Optional[StrictBool] = Field(None, description="Whether the account activity can be canceled before completion")
     cancel_comment: Optional[Comment] = Field(None, alias="cancelComment")
-    __properties = [
-        "id", "name", "created", "modified", "completed", "completionStatus",
-        "type", "requesterIdentitySummary", "targetIdentitySummary", "errors",
-        "warnings", "items", "executionStatus", "clientMetadata", "cancelable",
-        "cancelComment"
-    ]
+    __properties = ["id", "name", "created", "modified", "completed", "completionStatus", "type", "requesterIdentitySummary", "targetIdentitySummary", "errors", "warnings", "items", "executionStatus", "clientMetadata", "cancelable", "cancelComment"]
 
     class Config:
         """Pydantic configuration"""
@@ -86,17 +68,16 @@ class CancelableAccountActivity(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of requester_identity_summary
         if self.requester_identity_summary:
-            _dict[
-                'requesterIdentitySummary'] = self.requester_identity_summary.to_dict(
-                )
+            _dict['requesterIdentitySummary'] = self.requester_identity_summary.to_dict()
         # override the default output from pydantic by calling `to_dict()` of target_identity_summary
         if self.target_identity_summary:
-            _dict[
-                'targetIdentitySummary'] = self.target_identity_summary.to_dict(
-                )
+            _dict['targetIdentitySummary'] = self.target_identity_summary.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in items (list)
         _items = []
         if self.items:
@@ -139,42 +120,23 @@ class CancelableAccountActivity(BaseModel):
             return CancelableAccountActivity.parse_obj(obj)
 
         _obj = CancelableAccountActivity.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "completed":
-            obj.get("completed"),
-            "completion_status":
-            obj.get("completionStatus"),
-            "type":
-            obj.get("type"),
-            "requester_identity_summary":
-            IdentitySummary.from_dict(obj.get("requesterIdentitySummary"))
-            if obj.get("requesterIdentitySummary") is not None else None,
-            "target_identity_summary":
-            IdentitySummary.from_dict(obj.get("targetIdentitySummary"))
-            if obj.get("targetIdentitySummary") is not None else None,
-            "errors":
-            obj.get("errors"),
-            "warnings":
-            obj.get("warnings"),
-            "items": [
-                AccountActivityItem.from_dict(_item)
-                for _item in obj.get("items")
-            ] if obj.get("items") is not None else None,
-            "execution_status":
-            obj.get("executionStatus"),
-            "client_metadata":
-            obj.get("clientMetadata"),
-            "cancelable":
-            obj.get("cancelable"),
-            "cancel_comment":
-            Comment.from_dict(obj.get("cancelComment"))
-            if obj.get("cancelComment") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "completed": obj.get("completed"),
+            "completion_status": obj.get("completionStatus"),
+            "type": obj.get("type"),
+            "requester_identity_summary": IdentitySummary.from_dict(obj.get("requesterIdentitySummary")) if obj.get("requesterIdentitySummary") is not None else None,
+            "target_identity_summary": IdentitySummary.from_dict(obj.get("targetIdentitySummary")) if obj.get("targetIdentitySummary") is not None else None,
+            "errors": obj.get("errors"),
+            "warnings": obj.get("warnings"),
+            "items": [AccountActivityItem.from_dict(_item) for _item in obj.get("items")] if obj.get("items") is not None else None,
+            "execution_status": obj.get("executionStatus"),
+            "client_metadata": obj.get("clientMetadata"),
+            "cancelable": obj.get("cancelable"),
+            "cancel_comment": Comment.from_dict(obj.get("cancelComment")) if obj.get("cancelComment") is not None else None
         })
         return _obj
+
+

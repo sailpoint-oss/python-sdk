@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class AggregationType(str, Enum):
     """
     Enum representing the currently available query languages for aggregations, which are used to perform calculations or groupings on search results.  Additional values may be added in the future without notice. 
     """
+
     """
     allowed enum values
     """
@@ -31,3 +36,5 @@ class AggregationType(str, Enum):
     def from_json(cls, json_str: str) -> AggregationType:
         """Create an instance of AggregationType from a JSON string"""
         return AggregationType(json.loads(json_str))
+
+

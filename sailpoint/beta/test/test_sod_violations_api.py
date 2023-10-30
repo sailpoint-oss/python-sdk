@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.sod_violations_api import SODViolationsApi  # noqa: E501

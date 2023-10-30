@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.saved_search_complete import SavedSearchComplete  # noqa: E501
-
 
 class TestSavedSearchComplete(unittest.TestCase):
     """SavedSearchComplete unit test stubs"""
@@ -96,7 +96,6 @@ class TestSavedSearchComplete(unittest.TestCase):
         """Test SavedSearchComplete"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,35 +22,17 @@ from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from v3.models.reassignment_type import ReassignmentType
 
-
 class ApprovalForwardHistory(BaseModel):
     """
     ApprovalForwardHistory
     """
-    old_approver_name: Optional[StrictStr] = Field(
-        None,
-        alias="oldApproverName",
-        description=
-        "Display name of approver from whom the approval was forwarded.")
-    new_approver_name: Optional[StrictStr] = Field(
-        None,
-        alias="newApproverName",
-        description=
-        "Display name of approver to whom the approval was forwarded.")
-    comment: Optional[StrictStr] = Field(
-        None, description="Comment made while forwarding.")
-    modified: Optional[datetime] = Field(
-        None, description="Time at which approval was forwarded.")
-    forwarder_name: Optional[StrictStr] = Field(
-        None,
-        alias="forwarderName",
-        description="Display name of forwarder who forwarded the approval.")
-    reassignment_type: Optional[ReassignmentType] = Field(
-        None, alias="reassignmentType")
-    __properties = [
-        "oldApproverName", "newApproverName", "comment", "modified",
-        "forwarderName", "reassignmentType"
-    ]
+    old_approver_name: Optional[StrictStr] = Field(None, alias="oldApproverName", description="Display name of approver from whom the approval was forwarded.")
+    new_approver_name: Optional[StrictStr] = Field(None, alias="newApproverName", description="Display name of approver to whom the approval was forwarded.")
+    comment: Optional[StrictStr] = Field(None, description="Comment made while forwarding.")
+    modified: Optional[datetime] = Field(None, description="Time at which approval was forwarded.")
+    forwarder_name: Optional[StrictStr] = Field(None, alias="forwarderName", description="Display name of forwarder who forwarded the approval.")
+    reassignment_type: Optional[ReassignmentType] = Field(None, alias="reassignmentType")
+    __properties = ["oldApproverName", "newApproverName", "comment", "modified", "forwarderName", "reassignmentType"]
 
     class Config:
         """Pydantic configuration"""
@@ -71,7 +54,10 @@ class ApprovalForwardHistory(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if comment (nullable) is None
         # and __fields_set__ contains the field
         if self.comment is None and "comment" in self.__fields_set__:
@@ -94,17 +80,13 @@ class ApprovalForwardHistory(BaseModel):
             return ApprovalForwardHistory.parse_obj(obj)
 
         _obj = ApprovalForwardHistory.parse_obj({
-            "old_approver_name":
-            obj.get("oldApproverName"),
-            "new_approver_name":
-            obj.get("newApproverName"),
-            "comment":
-            obj.get("comment"),
-            "modified":
-            obj.get("modified"),
-            "forwarder_name":
-            obj.get("forwarderName"),
-            "reassignment_type":
-            obj.get("reassignmentType")
+            "old_approver_name": obj.get("oldApproverName"),
+            "new_approver_name": obj.get("newApproverName"),
+            "comment": obj.get("comment"),
+            "modified": obj.get("modified"),
+            "forwarder_name": obj.get("forwarderName"),
+            "reassignment_type": obj.get("reassignmentType")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -29,7 +30,9 @@ from v3.models.identity_cert_decision_summary import IdentityCertDecisionSummary
 from v3.api_client import ApiClient
 from v3.api_response import ApiResponse
 from v3.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class CertificationSummariesApi:
@@ -45,55 +48,7 @@ class CertificationSummariesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_identity_access_summaries(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(...,
-                      description="The identity campaign certification ID")],
-            type: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description=
-                    "The type of access review item to retrieve summaries for"
-                )],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **completed**: *eq, ne*  **access.id**: *eq, in*  **access.name**: *eq, sw*  **entitlement.sourceName**: *eq, sw*  **accessProfile.sourceName**: *eq, sw*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name**"
-            )] = None,
-            **kwargs) -> List[AccessSummary]:  # noqa: E501
+    def get_identity_access_summaries(self, id : Annotated[StrictStr, Field(..., description="The identity campaign certification ID")], type : Annotated[StrictStr, Field(..., description="The type of access review item to retrieve summaries for")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **completed**: *eq, ne*  **access.id**: *eq, in*  **access.name**: *eq, sw*  **entitlement.sourceName**: *eq, sw*  **accessProfile.sourceName**: *eq, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name**")] = None, **kwargs) -> List[AccessSummary]:  # noqa: E501
         """Access Summaries  # noqa: E501
 
         This API returns a list of access summaries for the specified identity campaign certification and type. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -132,60 +87,10 @@ class CertificationSummariesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_access_summaries_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_access_summaries_with_http_info(
-            id, type, limit, offset, count, filters, sorters,
-            **kwargs)  # noqa: E501
+        return self.get_identity_access_summaries_with_http_info(id, type, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_access_summaries_with_http_info(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(...,
-                      description="The identity campaign certification ID")],
-            type: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description=
-                    "The type of access review item to retrieve summaries for"
-                )],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **completed**: *eq, ne*  **access.id**: *eq, in*  **access.name**: *eq, sw*  **entitlement.sourceName**: *eq, sw*  **accessProfile.sourceName**: *eq, sw*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_access_summaries_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity campaign certification ID")], type : Annotated[StrictStr, Field(..., description="The type of access review item to retrieve summaries for")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **completed**: *eq, ne*  **access.id**: *eq, in*  **access.name**: *eq, sw*  **entitlement.sourceName**: *eq, sw*  **accessProfile.sourceName**: *eq, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Access Summaries  # noqa: E501
 
         This API returns a list of access summaries for the specified identity campaign certification and type. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -237,19 +142,33 @@ class CertificationSummariesApi:
         _params = locals()
 
         _all_params = [
-            'id', 'type', 'limit', 'offset', 'count', 'filters', 'sorters'
+            'id',
+            'type',
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_identity_access_summaries" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_identity_access_summaries" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -262,6 +181,7 @@ class CertificationSummariesApi:
 
         if _params['type']:
             _path_params['type'] = _params['type']
+
 
         # process the query parameters
         _query_params = []
@@ -305,8 +225,7 @@ class CertificationSummariesApi:
         }
 
         return self.api_client.call_api(
-            '/certifications/{id}/access-summaries/{type}',
-            'GET',
+            '/certifications/{id}/access-summaries/{type}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -316,26 +235,14 @@ class CertificationSummariesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identity_decision_summary(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The certification ID")],
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identitySummary.id**: *eq, in*"
-            )] = None,
-            **kwargs) -> IdentityCertDecisionSummary:  # noqa: E501
+    def get_identity_decision_summary(self, id : Annotated[StrictStr, Field(..., description="The certification ID")], filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identitySummary.id**: *eq, in*")] = None, **kwargs) -> IdentityCertDecisionSummary:  # noqa: E501
         """Summary of Certification Decisions  # noqa: E501
 
         This API returns a summary of the decisions made on an identity campaign certification. The decisions are summarized by type. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -364,22 +271,10 @@ class CertificationSummariesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_decision_summary_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_decision_summary_with_http_info(
-            id, filters, **kwargs)  # noqa: E501
+        return self.get_identity_decision_summary_with_http_info(id, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_decision_summary_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The certification ID")],
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identitySummary.id**: *eq, in*"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_decision_summary_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The certification ID")], filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identitySummary.id**: *eq, in*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Summary of Certification Decisions  # noqa: E501
 
         This API returns a summary of the decisions made on an identity campaign certification. The decisions are summarized by type. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -420,18 +315,29 @@ class CertificationSummariesApi:
 
         _params = locals()
 
-        _all_params = ['id', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_identity_decision_summary" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_identity_decision_summary" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -441,6 +347,7 @@ class CertificationSummariesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -472,8 +379,7 @@ class CertificationSummariesApi:
         }
 
         return self.api_client.call_api(
-            '/certifications/{id}/decision-summary',
-            'GET',
+            '/certifications/{id}/decision-summary', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -483,56 +389,14 @@ class CertificationSummariesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identity_summaries(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(...,
-                      description="The identity campaign certification ID")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **completed**: *eq, ne*  **name**: *eq, sw*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**"
-            )] = None,
-            **kwargs) -> List[CertificationIdentitySummary]:  # noqa: E501
+    def get_identity_summaries(self, id : Annotated[StrictStr, Field(..., description="The identity campaign certification ID")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **completed**: *eq, ne*  **name**: *eq, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**")] = None, **kwargs) -> List[CertificationIdentitySummary]:  # noqa: E501
         """Identity Summaries for Campaign Certification  # noqa: E501
 
         This API returns a list of the identity summaries for a specific identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -569,52 +433,10 @@ class CertificationSummariesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_summaries_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_summaries_with_http_info(
-            id, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.get_identity_summaries_with_http_info(id, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_summaries_with_http_info(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(...,
-                      description="The identity campaign certification ID")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **completed**: *eq, ne*  **name**: *eq, sw*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_summaries_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity campaign certification ID")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **completed**: *eq, ne*  **name**: *eq, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Identity Summaries for Campaign Certification  # noqa: E501
 
         This API returns a list of the identity summaries for a specific identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -663,17 +485,33 @@ class CertificationSummariesApi:
 
         _params = locals()
 
-        _all_params = ['id', 'limit', 'offset', 'count', 'filters', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_identity_summaries" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_identity_summaries" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -683,6 +521,7 @@ class CertificationSummariesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -726,8 +565,7 @@ class CertificationSummariesApi:
         }
 
         return self.api_client.call_api(
-            '/certifications/{id}/identity-summaries',
-            'GET',
+            '/certifications/{id}/identity-summaries', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -737,21 +575,14 @@ class CertificationSummariesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identity_summary(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The identity campaign certification ID"
-              )], identity_summary_id: Annotated[
-                  StrictStr,
-                  Field(..., description="The identity summary ID")], **kwargs
-                             ) -> CertificationIdentitySummary:  # noqa: E501
+    def get_identity_summary(self, id : Annotated[StrictStr, Field(..., description="The identity campaign certification ID")], identity_summary_id : Annotated[StrictStr, Field(..., description="The identity summary ID")], **kwargs) -> CertificationIdentitySummary:  # noqa: E501
         """Summary for Identity  # noqa: E501
 
         This API returns the summary for an identity on a specified identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -780,17 +611,10 @@ class CertificationSummariesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_summary_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_summary_with_http_info(
-            id, identity_summary_id, **kwargs)  # noqa: E501
+        return self.get_identity_summary_with_http_info(id, identity_summary_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_summary_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The identity campaign certification ID"
-              )], identity_summary_id: Annotated[
-                  StrictStr,
-                  Field(..., description="The identity summary ID")], **kwargs
-                                            ) -> ApiResponse:  # noqa: E501
+    def get_identity_summary_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity campaign certification ID")], identity_summary_id : Annotated[StrictStr, Field(..., description="The identity summary ID")], **kwargs) -> ApiResponse:  # noqa: E501
         """Summary for Identity  # noqa: E501
 
         This API returns the summary for an identity on a specified identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -831,17 +655,29 @@ class CertificationSummariesApi:
 
         _params = locals()
 
-        _all_params = ['id', 'identity_summary_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'identity_summary_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_identity_summary" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_identity_summary" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -854,6 +690,7 @@ class CertificationSummariesApi:
 
         if _params['identity_summary_id']:
             _path_params['identitySummaryId'] = _params['identity_summary_id']
+
 
         # process the query parameters
         _query_params = []
@@ -882,8 +719,7 @@ class CertificationSummariesApi:
         }
 
         return self.api_client.call_api(
-            '/certifications/{id}/identity-summaries/{identitySummaryId}',
-            'GET',
+            '/certifications/{id}/identity-summaries/{identitySummaryId}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -893,8 +729,7 @@ class CertificationSummariesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

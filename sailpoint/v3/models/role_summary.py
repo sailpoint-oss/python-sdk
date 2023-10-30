@@ -11,35 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
 from v3.models.display_reference import DisplayReference
 from v3.models.dto_type import DtoType
 
-
 class RoleSummary(BaseModel):
     """
     Role  # noqa: E501
     """
-    id: Optional[StrictStr] = Field(
-        None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(
-        None, description="The human readable name of the referenced object.")
+    id: Optional[StrictStr] = Field(None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(None, description="The human readable name of the referenced object.")
     display_name: Optional[StrictStr] = Field(None, alias="displayName")
     type: Optional[DtoType] = None
     description: Optional[StrictStr] = None
     owner: Optional[DisplayReference] = None
     disabled: Optional[StrictBool] = None
     revocable: Optional[StrictBool] = None
-    __properties = [
-        "id", "name", "displayName", "type", "description", "owner",
-        "disabled", "revocable"
-    ]
+    __properties = ["id", "name", "displayName", "type", "description", "owner", "disabled", "revocable"]
 
     class Config:
         """Pydantic configuration"""
@@ -61,7 +57,10 @@ class RoleSummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -82,22 +81,15 @@ class RoleSummary(BaseModel):
             return RoleSummary.parse_obj(obj)
 
         _obj = RoleSummary.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "display_name":
-            obj.get("displayName"),
-            "type":
-            obj.get("type"),
-            "description":
-            obj.get("description"),
-            "owner":
-            DisplayReference.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "disabled":
-            obj.get("disabled"),
-            "revocable":
-            obj.get("revocable")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "display_name": obj.get("displayName"),
+            "type": obj.get("type"),
+            "description": obj.get("description"),
+            "owner": DisplayReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "disabled": obj.get("disabled"),
+            "revocable": obj.get("revocable")
         })
         return _obj
+
+

@@ -11,26 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class UpdateUserPermissionsRequest(BaseModel):
     """
     UpdateUserPermissionsRequest
     """
     ids: Optional[StrictStr] = None
-    is_admin: Optional[StrictStr] = Field(
-        None,
-        alias="isAdmin",
-        description=
-        "Indicates if user should be an IDN Admin.  \"0\" for false, \"1\" for true."
-    )
+    is_admin: Optional[StrictStr] = Field(None, alias="isAdmin", description="Indicates if user should be an IDN Admin.  \"0\" for false, \"1\" for true.")
     admin_type: Optional[StrictStr] = Field(None, alias="adminType")
     __properties = ["ids", "isAdmin", "adminType"]
 
@@ -40,12 +36,8 @@ class UpdateUserPermissionsRequest(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ADMIN', 'CERT_ADMIN', 'HELPDESK', 'REPORT_ADMIN',
-                         'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SOURCE_ADMIN',
-                         'SOURCE_SUBADMIN'):
-            raise ValueError(
-                "must be one of enum values ('ADMIN', 'CERT_ADMIN', 'HELPDESK', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN')"
-            )
+        if value not in ('ADMIN', 'CERT_ADMIN', 'HELPDESK', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN'):
+            raise ValueError("must be one of enum values ('ADMIN', 'CERT_ADMIN', 'HELPDESK', 'REPORT_ADMIN', 'ROLE_ADMIN', 'ROLE_SUBADMIN', 'SOURCE_ADMIN', 'SOURCE_SUBADMIN')")
         return value
 
     class Config:
@@ -68,7 +60,10 @@ class UpdateUserPermissionsRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,11 +76,10 @@ class UpdateUserPermissionsRequest(BaseModel):
             return UpdateUserPermissionsRequest.parse_obj(obj)
 
         _obj = UpdateUserPermissionsRequest.parse_obj({
-            "ids":
-            obj.get("ids"),
-            "is_admin":
-            obj.get("isAdmin"),
-            "admin_type":
-            obj.get("adminType")
+            "ids": obj.get("ids"),
+            "is_admin": obj.get("isAdmin"),
+            "admin_type": obj.get("adminType")
         })
         return _obj
+
+

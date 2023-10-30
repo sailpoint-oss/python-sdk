@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -23,11 +24,7 @@ from beta.models.identity_attributes_changed_changes_inner_old_value_one_of_valu
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-IDENTITYATTRIBUTESCHANGEDCHANGESINNEROLDVALUE_ONE_OF_SCHEMAS = [
-    "Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue]",
-    "List[str]", "bool", "str"
-]
-
+IDENTITYATTRIBUTESCHANGEDCHANGESINNEROLDVALUE_ONE_OF_SCHEMAS = ["Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue]", "List[str]", "bool", "str"]
 
 class IdentityAttributesChangedChangesInnerOldValue(BaseModel):
     """
@@ -40,17 +37,12 @@ class IdentityAttributesChangedChangesInnerOldValue(BaseModel):
     # data type: List[str]
     oneof_schema_3_validator: Optional[conlist(StrictStr)] = None
     # data type: Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue]
-    oneof_schema_4_validator: Optional[Dict[
-        str, IdentityAttributesChangedChangesInnerOldValueOneOfValue]] = None
+    oneof_schema_4_validator: Optional[Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue]] = None
     if TYPE_CHECKING:
-        actual_instance: Union[Dict[
-            str, IdentityAttributesChangedChangesInnerOldValueOneOfValue],
-                               List[str], bool, str]
+        actual_instance: Union[Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue], List[str], bool, str]
     else:
         actual_instance: Any
-    one_of_schemas: List[str] = Field(
-        IDENTITYATTRIBUTESCHANGEDCHANGESINNEROLDVALUE_ONE_OF_SCHEMAS,
-        const=True)
+    one_of_schemas: List[str] = Field(IDENTITYATTRIBUTESCHANGEDCHANGESINNEROLDVALUE_ONE_OF_SCHEMAS, const=True)
 
     class Config:
         validate_assignment = True
@@ -58,13 +50,9 @@ class IdentityAttributesChangedChangesInnerOldValue(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -103,26 +91,19 @@ class IdentityAttributesChangedChangesInnerOldValue(BaseModel):
             error_messages.append(str(e))
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when setting `actual_instance` in IdentityAttributesChangedChangesInnerOldValue with oneOf schemas: Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue], List[str], bool, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in IdentityAttributesChangedChangesInnerOldValue with oneOf schemas: Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue], List[str], bool, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when setting `actual_instance` in IdentityAttributesChangedChangesInnerOldValue with oneOf schemas: Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue], List[str], bool, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in IdentityAttributesChangedChangesInnerOldValue with oneOf schemas: Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue], List[str], bool, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls,
-                  obj: dict) -> IdentityAttributesChangedChangesInnerOldValue:
+    def from_dict(cls, obj: dict) -> IdentityAttributesChangedChangesInnerOldValue:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(
-            cls,
-            json_str: str) -> IdentityAttributesChangedChangesInnerOldValue:
+    def from_json(cls, json_str: str) -> IdentityAttributesChangedChangesInnerOldValue:
         """Returns the object represented by the json string"""
         instance = IdentityAttributesChangedChangesInnerOldValue.construct()
         if json_str is None:
@@ -170,14 +151,10 @@ class IdentityAttributesChangedChangesInnerOldValue(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when deserializing the JSON string into IdentityAttributesChangedChangesInnerOldValue with oneOf schemas: Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue], List[str], bool, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into IdentityAttributesChangedChangesInnerOldValue with oneOf schemas: Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue], List[str], bool, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into IdentityAttributesChangedChangesInnerOldValue with oneOf schemas: Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue], List[str], bool, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into IdentityAttributesChangedChangesInnerOldValue with oneOf schemas: Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue], List[str], bool, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -207,3 +184,5 @@ class IdentityAttributesChangedChangesInnerOldValue(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.dict())
+
+

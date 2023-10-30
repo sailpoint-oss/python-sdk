@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.access_request_recommendation_item_type import AccessRequestRecommendationItemType  # noqa: E501
-
 
 class TestAccessRequestRecommendationItemType(unittest.TestCase):
     """AccessRequestRecommendationItemType unit test stubs"""
@@ -29,7 +29,6 @@ class TestAccessRequestRecommendationItemType(unittest.TestCase):
     def testAccessRequestRecommendationItemType(self):
         """Test AccessRequestRecommendationItemType"""
         # inst = AccessRequestRecommendationItemType()
-
 
 if __name__ == '__main__':
     unittest.main()

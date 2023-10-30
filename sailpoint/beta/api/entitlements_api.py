@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -30,7 +31,9 @@ from beta.models.json_patch_operation import JsonPatchOperation
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class EntitlementsApi:
@@ -46,9 +49,7 @@ class EntitlementsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_entitlement(self, id: Annotated[
-        StrictStr, Field(..., description="The entitlement ID")],
-                        **kwargs) -> Entitlement:  # noqa: E501
+    def get_entitlement(self, id : Annotated[StrictStr, Field(..., description="The entitlement ID")], **kwargs) -> Entitlement:  # noqa: E501
         """Get an entitlement  # noqa: E501
 
         This API returns an entitlement by its ID.  # noqa: E501
@@ -78,9 +79,7 @@ class EntitlementsApi:
         return self.get_entitlement_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_entitlement_with_http_info(self, id: Annotated[
-        StrictStr, Field(..., description="The entitlement ID")],
-                                       **kwargs) -> ApiResponse:  # noqa: E501
+    def get_entitlement_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The entitlement ID")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get an entitlement  # noqa: E501
 
         This API returns an entitlement by its ID.  # noqa: E501
@@ -119,17 +118,28 @@ class EntitlementsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_entitlement" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_entitlement" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -139,6 +149,7 @@ class EntitlementsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -167,8 +178,7 @@ class EntitlementsApi:
         }
 
         return self.api_client.call_api(
-            '/entitlements/{id}',
-            'GET',
+            '/entitlements/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -178,18 +188,14 @@ class EntitlementsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_entitlement_request_config(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="Entitlement Id")],
-            **kwargs) -> EntitlementRequestConfig:  # noqa: E501
+    def get_entitlement_request_config(self, id : Annotated[StrictStr, Field(..., description="Entitlement Id")], **kwargs) -> EntitlementRequestConfig:  # noqa: E501
         """Get Entitlement Request Config  # noqa: E501
 
         This API returns the entitlement request config for a specified entitlement.  # noqa: E501
@@ -216,14 +222,10 @@ class EntitlementsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_entitlement_request_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_entitlement_request_config_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.get_entitlement_request_config_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_entitlement_request_config_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="Entitlement Id")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_entitlement_request_config_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Entitlement Id")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Entitlement Request Config  # noqa: E501
 
         This API returns the entitlement request config for a specified entitlement.  # noqa: E501
@@ -262,18 +264,28 @@ class EntitlementsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_entitlement_request_config" % _key)
+                    " to method get_entitlement_request_config" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -283,6 +295,7 @@ class EntitlementsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -311,8 +324,7 @@ class EntitlementsApi:
         }
 
         return self.api_client.call_api(
-            '/entitlements/{id}/entitlement-request-config',
-            'GET',
+            '/entitlements/{id}/entitlement-request-config', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -322,54 +334,14 @@ class EntitlementsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_entitlement_children(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="Entitlement Id")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*"
-            )] = None,
-            **kwargs) -> List[Entitlement]:  # noqa: E501
+    def list_entitlement_children(self, id : Annotated[StrictStr, Field(..., description="Entitlement Id")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*")] = None, **kwargs) -> List[Entitlement]:  # noqa: E501
         """List of entitlements children  # noqa: E501
 
         This API returns a list of all child entitlements of a given entitlement.  # noqa: E501
@@ -406,50 +378,10 @@ class EntitlementsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_entitlement_children_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_entitlement_children_with_http_info(
-            id, limit, offset, count, sorters, filters, **kwargs)  # noqa: E501
+        return self.list_entitlement_children_with_http_info(id, limit, offset, count, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_entitlement_children_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="Entitlement Id")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_entitlement_children_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Entitlement Id")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List of entitlements children  # noqa: E501
 
         This API returns a list of all child entitlements of a given entitlement.  # noqa: E501
@@ -498,18 +430,33 @@ class EntitlementsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'limit', 'offset', 'count', 'sorters', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'limit',
+            'offset',
+            'count',
+            'sorters',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_entitlement_children" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_entitlement_children" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -519,6 +466,7 @@ class EntitlementsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -562,8 +510,7 @@ class EntitlementsApi:
         }
 
         return self.api_client.call_api(
-            '/entitlements/{id}/children',
-            'GET',
+            '/entitlements/{id}/children', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -573,54 +520,14 @@ class EntitlementsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_entitlement_parents(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="Entitlement Id")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*"
-            )] = None,
-            **kwargs) -> List[Entitlement]:  # noqa: E501
+    def list_entitlement_parents(self, id : Annotated[StrictStr, Field(..., description="Entitlement Id")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*")] = None, **kwargs) -> List[Entitlement]:  # noqa: E501
         """List of entitlements parents  # noqa: E501
 
         This API returns a list of all parent entitlements of a given entitlement.  # noqa: E501
@@ -657,50 +564,10 @@ class EntitlementsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_entitlement_parents_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_entitlement_parents_with_http_info(
-            id, limit, offset, count, sorters, filters, **kwargs)  # noqa: E501
+        return self.list_entitlement_parents_with_http_info(id, limit, offset, count, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_entitlement_parents_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="Entitlement Id")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_entitlement_parents_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Entitlement Id")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List of entitlements parents  # noqa: E501
 
         This API returns a list of all parent entitlements of a given entitlement.  # noqa: E501
@@ -749,18 +616,33 @@ class EntitlementsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'limit', 'offset', 'count', 'sorters', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'limit',
+            'offset',
+            'count',
+            'sorters',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_entitlement_parents" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_entitlement_parents" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -770,6 +652,7 @@ class EntitlementsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -813,8 +696,7 @@ class EntitlementsApi:
         }
 
         return self.api_client.call_api(
-            '/entitlements/{id}/parents',
-            'GET',
+            '/entitlements/{id}/parents', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -824,80 +706,14 @@ class EntitlementsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_entitlements(
-            self,
-            account_id:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s)."
-            )] = None,
-            segmented_for_identity:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. By convention, the value **me** can stand in for the current user's Identity ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity."
-            )] = None,
-            for_segment_ids:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s)."
-            )] = None,
-            include_unsegmented:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*"
-            )] = None,
-            **kwargs) -> List[Entitlement]:  # noqa: E501
+    def list_entitlements(self, account_id : Annotated[Optional[StrictStr], Field(description="The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).")] = None, segmented_for_identity : Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. By convention, the value **me** can stand in for the current user's Identity ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.")] = None, for_segment_ids : Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s).")] = None, include_unsegmented : Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*")] = None, **kwargs) -> List[Entitlement]:  # noqa: E501
         """Gets a list of entitlements.  # noqa: E501
 
         This API returns a list of entitlements.  This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).  Any authenticated token can call this API.  # noqa: E501
@@ -940,78 +756,10 @@ class EntitlementsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_entitlements_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_entitlements_with_http_info(
-            account_id, segmented_for_identity, for_segment_ids,
-            include_unsegmented, offset, limit, count, sorters, filters,
-            **kwargs)  # noqa: E501
+        return self.list_entitlements_with_http_info(account_id, segmented_for_identity, for_segment_ids, include_unsegmented, offset, limit, count, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_entitlements_with_http_info(
-            self,
-            account_id:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s)."
-            )] = None,
-            segmented_for_identity:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. By convention, the value **me** can stand in for the current user's Identity ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity."
-            )] = None,
-            for_segment_ids:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s)."
-            )] = None,
-            include_unsegmented:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_entitlements_with_http_info(self, account_id : Annotated[Optional[StrictStr], Field(description="The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).")] = None, segmented_for_identity : Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. By convention, the value **me** can stand in for the current user's Identity ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity.")] = None, for_segment_ids : Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s).")] = None, include_unsegmented : Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Entitlements. If **for-segment-ids** and **segmented-for-identity** are both absent or empty, specifying **include-unsegmented=false** results in an error.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Gets a list of entitlements.  # noqa: E501
 
         This API returns a list of entitlements.  This API can be used in one of the two following ways: either getting entitlements for a specific **account-id**, or getting via use of **filters** (those two options are exclusive).  Any authenticated token can call this API.  # noqa: E501
@@ -1067,20 +815,35 @@ class EntitlementsApi:
         _params = locals()
 
         _all_params = [
-            'account_id', 'segmented_for_identity', 'for_segment_ids',
-            'include_unsegmented', 'offset', 'limit', 'count', 'sorters',
+            'account_id',
+            'segmented_for_identity',
+            'for_segment_ids',
+            'include_unsegmented',
+            'offset',
+            'limit',
+            'count',
+            'sorters',
             'filters'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_entitlements" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_entitlements" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1095,16 +858,13 @@ class EntitlementsApi:
             _query_params.append(('account-id', _params['account_id']))
 
         if _params.get('segmented_for_identity') is not None:  # noqa: E501
-            _query_params.append(
-                ('segmented-for-identity', _params['segmented_for_identity']))
+            _query_params.append(('segmented-for-identity', _params['segmented_for_identity']))
 
         if _params.get('for_segment_ids') is not None:  # noqa: E501
-            _query_params.append(
-                ('for-segment-ids', _params['for_segment_ids']))
+            _query_params.append(('for-segment-ids', _params['for_segment_ids']))
 
         if _params.get('include_unsegmented') is not None:  # noqa: E501
-            _query_params.append(
-                ('include-unsegmented', _params['include_unsegmented']))
+            _query_params.append(('include-unsegmented', _params['include_unsegmented']))
 
         if _params.get('offset') is not None:  # noqa: E501
             _query_params.append(('offset', _params['offset']))
@@ -1145,8 +905,7 @@ class EntitlementsApi:
         }
 
         return self.api_client.call_api(
-            '/entitlements',
-            'GET',
+            '/entitlements', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1156,21 +915,14 @@ class EntitlementsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_entitlement(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the entitlement to patch")],
-            json_patch_operation: Optional[conlist(JsonPatchOperation)] = None,
-            **kwargs) -> Entitlement:  # noqa: E501
+    def patch_entitlement(self, id : Annotated[StrictStr, Field(..., description="ID of the entitlement to patch")], json_patch_operation : Optional[conlist(JsonPatchOperation)] = None, **kwargs) -> Entitlement:  # noqa: E501
         """Patch an entitlement  # noqa: E501
 
         This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**, **name**, **description**.  When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.  A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.  # noqa: E501
@@ -1199,17 +951,10 @@ class EntitlementsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_entitlement_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_entitlement_with_http_info(id, json_patch_operation,
-                                                     **kwargs)  # noqa: E501
+        return self.patch_entitlement_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_entitlement_with_http_info(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the entitlement to patch")],
-            json_patch_operation: Optional[conlist(JsonPatchOperation)] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_entitlement_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the entitlement to patch")], json_patch_operation : Optional[conlist(JsonPatchOperation)] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Patch an entitlement  # noqa: E501
 
         This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**, **name**, **description**.  When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.  A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.  # noqa: E501
@@ -1250,17 +995,29 @@ class EntitlementsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'json_patch_operation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'json_patch_operation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method patch_entitlement" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_entitlement" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1270,6 +1027,7 @@ class EntitlementsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1288,12 +1046,11 @@ class EntitlementsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1309,8 +1066,7 @@ class EntitlementsApi:
         }
 
         return self.api_client.call_api(
-            '/entitlements/{id}',
-            'PATCH',
+            '/entitlements/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -1320,19 +1076,14 @@ class EntitlementsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_entitlement_request_config(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="Entitlement ID")],
-            entitlement_request_config: EntitlementRequestConfig,
-            **kwargs) -> EntitlementRequestConfig:  # noqa: E501
+    def put_entitlement_request_config(self, id : Annotated[StrictStr, Field(..., description="Entitlement ID")], entitlement_request_config : EntitlementRequestConfig, **kwargs) -> EntitlementRequestConfig:  # noqa: E501
         """Replace Entitlement Request Config  # noqa: E501
 
         This API replaces the entitlement request config for a specified entitlement.  # noqa: E501
@@ -1361,15 +1112,10 @@ class EntitlementsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_entitlement_request_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_entitlement_request_config_with_http_info(
-            id, entitlement_request_config, **kwargs)  # noqa: E501
+        return self.put_entitlement_request_config_with_http_info(id, entitlement_request_config, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_entitlement_request_config_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="Entitlement ID")],
-            entitlement_request_config: EntitlementRequestConfig,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def put_entitlement_request_config_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Entitlement ID")], entitlement_request_config : EntitlementRequestConfig, **kwargs) -> ApiResponse:  # noqa: E501
         """Replace Entitlement Request Config  # noqa: E501
 
         This API replaces the entitlement request config for a specified entitlement.  # noqa: E501
@@ -1410,18 +1156,29 @@ class EntitlementsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'entitlement_request_config']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'entitlement_request_config'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method put_entitlement_request_config" % _key)
+                    " to method put_entitlement_request_config" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1431,6 +1188,7 @@ class EntitlementsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1449,11 +1207,11 @@ class EntitlementsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1469,8 +1227,7 @@ class EntitlementsApi:
         }
 
         return self.api_client.call_api(
-            '/entitlements/{id}/entitlement-request-config',
-            'PUT',
+            '/entitlements/{id}/entitlement-request-config', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -1480,18 +1237,14 @@ class EntitlementsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_entitlements_in_bulk(
-            self,
-            entitlement_bulk_update_request: EntitlementBulkUpdateRequest,
-            **kwargs) -> None:  # noqa: E501
+    def update_entitlements_in_bulk(self, entitlement_bulk_update_request : EntitlementBulkUpdateRequest, **kwargs) -> None:  # noqa: E501
         """Bulk update an entitlement list  # noqa: E501
 
         This API applies an update to every entitlement of the list.  The number of entitlements to update is limited to 50 items maximum.  The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. allowed operations : **{ \"op\": \"replace\", \"path\": \"/privileged\", \"value\": boolean }**  **{ \"op\": \"replace\", \"path\": \"/requestable\",\"value\": boolean }**   A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -1518,14 +1271,10 @@ class EntitlementsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_entitlements_in_bulk_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_entitlements_in_bulk_with_http_info(
-            entitlement_bulk_update_request, **kwargs)  # noqa: E501
+        return self.update_entitlements_in_bulk_with_http_info(entitlement_bulk_update_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_entitlements_in_bulk_with_http_info(
-            self,
-            entitlement_bulk_update_request: EntitlementBulkUpdateRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def update_entitlements_in_bulk_with_http_info(self, entitlement_bulk_update_request : EntitlementBulkUpdateRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Bulk update an entitlement list  # noqa: E501
 
         This API applies an update to every entitlement of the list.  The number of entitlements to update is limited to 50 items maximum.  The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. allowed operations : **{ \"op\": \"replace\", \"path\": \"/privileged\", \"value\": boolean }**  **{ \"op\": \"replace\", \"path\": \"/requestable\",\"value\": boolean }**   A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -1564,18 +1313,28 @@ class EntitlementsApi:
 
         _params = locals()
 
-        _all_params = ['entitlement_bulk_update_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'entitlement_bulk_update_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_entitlements_in_bulk" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_entitlements_in_bulk" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1601,11 +1360,11 @@ class EntitlementsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1613,8 +1372,7 @@ class EntitlementsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/entitlements/bulk-update',
-            'POST',
+            '/entitlements/bulk-update', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1624,8 +1382,7 @@ class EntitlementsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

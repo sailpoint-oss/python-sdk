@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -41,7 +42,9 @@ from v3.models.slim_campaign import SlimCampaign
 from v3.api_client import ApiClient
 from v3.api_response import ApiResponse
 from v3.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class CertificationCampaignsApi:
@@ -57,18 +60,7 @@ class CertificationCampaignsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def complete_campaign(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The campaign id")],
-            campaign_complete_options:
-        Annotated[
-            Optional[CampaignCompleteOptions],
-            Field(
-                description=
-                "Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE"
-            )] = None,
-            **kwargs) -> object:  # noqa: E501
+    def complete_campaign(self, id : Annotated[StrictStr, Field(..., description="The campaign id")], campaign_complete_options : Annotated[Optional[CampaignCompleteOptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None, **kwargs) -> object:  # noqa: E501
         """Complete a Campaign  # noqa: E501
 
         :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Completes a certification campaign. This is provided to admins so that they can complete a certification even if all items have not been completed.  Requires roles of CERT_ADMIN and ORG_ADMIN   # noqa: E501
@@ -97,23 +89,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the complete_campaign_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.complete_campaign_with_http_info(id,
-                                                     campaign_complete_options,
-                                                     **kwargs)  # noqa: E501
+        return self.complete_campaign_with_http_info(id, campaign_complete_options, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def complete_campaign_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The campaign id")],
-            campaign_complete_options:
-        Annotated[
-            Optional[CampaignCompleteOptions],
-            Field(
-                description=
-                "Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def complete_campaign_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The campaign id")], campaign_complete_options : Annotated[Optional[CampaignCompleteOptions], Field(description="Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Complete a Campaign  # noqa: E501
 
         :::caution  This endpoint will run successfully for any campaigns that are **past due**.  This endpoint will return a content error if the campaign is **not past due**.  :::  Completes a certification campaign. This is provided to admins so that they can complete a certification even if all items have not been completed.  Requires roles of CERT_ADMIN and ORG_ADMIN   # noqa: E501
@@ -154,17 +133,29 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'campaign_complete_options']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'campaign_complete_options'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method complete_campaign" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method complete_campaign" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -174,6 +165,7 @@ class CertificationCampaignsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -192,11 +184,11 @@ class CertificationCampaignsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -212,8 +204,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns/{id}/complete',
-            'POST',
+            '/campaigns/{id}/complete', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -223,16 +214,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_campaign(self, campaign: Campaign,
-                        **kwargs) -> Campaign:  # noqa: E501
+    def create_campaign(self, campaign : Campaign, **kwargs) -> Campaign:  # noqa: E501
         """Create a campaign  # noqa: E501
 
         Creates a new Certification Campaign with the information provided in the request body.  # noqa: E501
@@ -259,12 +248,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_campaign_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_campaign_with_http_info(campaign,
-                                                   **kwargs)  # noqa: E501
+        return self.create_campaign_with_http_info(campaign, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_campaign_with_http_info(self, campaign: Campaign,
-                                       **kwargs) -> ApiResponse:  # noqa: E501
+    def create_campaign_with_http_info(self, campaign : Campaign, **kwargs) -> ApiResponse:  # noqa: E501
         """Create a campaign  # noqa: E501
 
         Creates a new Certification Campaign with the information provided in the request body.  # noqa: E501
@@ -303,17 +290,28 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['campaign']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'campaign'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_campaign" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_campaign" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -339,11 +337,11 @@ class CertificationCampaignsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -358,8 +356,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns',
-            'POST',
+            '/campaigns', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -369,16 +366,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_campaign_template(self, campaign_template: CampaignTemplate,
-                                 **kwargs) -> CampaignTemplate:  # noqa: E501
+    def create_campaign_template(self, campaign_template : CampaignTemplate, **kwargs) -> CampaignTemplate:  # noqa: E501
         """Create a Campaign Template  # noqa: E501
 
         Create a campaign Template based on campaign.  # noqa: E501
@@ -405,13 +400,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_campaign_template_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_campaign_template_with_http_info(
-            campaign_template, **kwargs)  # noqa: E501
+        return self.create_campaign_template_with_http_info(campaign_template, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_campaign_template_with_http_info(
-            self, campaign_template: CampaignTemplate,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_campaign_template_with_http_info(self, campaign_template : CampaignTemplate, **kwargs) -> ApiResponse:  # noqa: E501
         """Create a Campaign Template  # noqa: E501
 
         Create a campaign Template based on campaign.  # noqa: E501
@@ -450,18 +442,28 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['campaign_template']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'campaign_template'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_campaign_template" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_campaign_template" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -487,11 +489,11 @@ class CertificationCampaignsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -506,8 +508,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaign-templates',
-            'POST',
+            '/campaign-templates', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -517,18 +518,152 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_campaigns(self, campaigns_delete_request: Annotated[
-        CampaignsDeleteRequest,
-        Field(..., description="The ids of the campaigns to delete.")],
-                         **kwargs) -> object:  # noqa: E501
+    def delete_campaign_template(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template being deleted.")], **kwargs) -> None:  # noqa: E501
+        """Delete a Campaign Template  # noqa: E501
+
+        Deletes a campaign template by ID.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_campaign_template(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: The ID of the campaign template being deleted. (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the delete_campaign_template_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.delete_campaign_template_with_http_info(id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def delete_campaign_template_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template being deleted.")], **kwargs) -> ApiResponse:  # noqa: E501
+        """Delete a Campaign Template  # noqa: E501
+
+        Deletes a campaign template by ID.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_campaign_template_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param id: The ID of the campaign template being deleted. (required)
+        :type id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_campaign_template" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['id']:
+            _path_params['id'] = _params['id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/campaign-templates/{id}', 'DELETE',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def delete_campaigns(self, campaigns_delete_request : Annotated[CampaignsDeleteRequest, Field(..., description="The ids of the campaigns to delete.")], **kwargs) -> object:  # noqa: E501
         """Deletes Campaigns  # noqa: E501
 
         Deletes campaigns whose Ids are specified in the provided list of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.  # noqa: E501
@@ -555,15 +690,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_campaigns_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_campaigns_with_http_info(campaigns_delete_request,
-                                                    **kwargs)  # noqa: E501
+        return self.delete_campaigns_with_http_info(campaigns_delete_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_campaigns_with_http_info(
-            self, campaigns_delete_request: Annotated[
-                CampaignsDeleteRequest,
-                Field(..., description="The ids of the campaigns to delete.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_campaigns_with_http_info(self, campaigns_delete_request : Annotated[CampaignsDeleteRequest, Field(..., description="The ids of the campaigns to delete.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Deletes Campaigns  # noqa: E501
 
         Deletes campaigns whose Ids are specified in the provided list of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.  # noqa: E501
@@ -602,17 +732,28 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['campaigns_delete_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'campaigns_delete_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_campaigns" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_campaigns" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -638,11 +779,11 @@ class CertificationCampaignsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -658,8 +799,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns/delete',
-            'POST',
+            '/campaigns/delete', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -669,60 +809,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_active_campaigns(
-            self,
-            detail:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **status**: *eq, in*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**, **created**"
-            )] = None,
-            **kwargs
-    ) -> List[GetActiveCampaigns200ResponseInner]:  # noqa: E501
+    def get_active_campaigns(self, detail : Annotated[Optional[StrictStr], Field(description="Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **status**: *eq, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**, **created**")] = None, **kwargs) -> List[GetActiveCampaigns200ResponseInner]:  # noqa: E501
         """List Campaigns  # noqa: E501
 
         Gets campaigns and returns them in a list. Can provide increased level of detail for each campaign if provided the correct query.  # noqa: E501
@@ -759,56 +853,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_active_campaigns_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_active_campaigns_with_http_info(
-            detail, limit, offset, count, filters, sorters,
-            **kwargs)  # noqa: E501
+        return self.get_active_campaigns_with_http_info(detail, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_active_campaigns_with_http_info(
-            self,
-            detail:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **status**: *eq, in*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**, **created**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_active_campaigns_with_http_info(self, detail : Annotated[Optional[StrictStr], Field(description="Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **status**: *eq, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**, **created**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Campaigns  # noqa: E501
 
         Gets campaigns and returns them in a list. Can provide increased level of detail for each campaign if provided the correct query.  # noqa: E501
@@ -858,18 +906,32 @@ class CertificationCampaignsApi:
         _params = locals()
 
         _all_params = [
-            'detail', 'limit', 'offset', 'count', 'filters', 'sorters'
+            'detail',
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_active_campaigns" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_active_campaigns" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -922,8 +984,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns',
-            'GET',
+            '/campaigns', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -933,18 +994,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_campaign(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The ID of the campaign to be retrieved")],
-                     **kwargs) -> SlimCampaign:  # noqa: E501
+    def get_campaign(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign to be retrieved")], **kwargs) -> SlimCampaign:  # noqa: E501
         """Get a campaign  # noqa: E501
 
         Retrieves information for an existing campaign using the campaign's ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN, or a CERT_ADMIN.  # noqa: E501
@@ -974,10 +1031,7 @@ class CertificationCampaignsApi:
         return self.get_campaign_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_campaign_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The ID of the campaign to be retrieved")],
-                                    **kwargs) -> ApiResponse:  # noqa: E501
+    def get_campaign_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign to be retrieved")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get a campaign  # noqa: E501
 
         Retrieves information for an existing campaign using the campaign's ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN, or a CERT_ADMIN.  # noqa: E501
@@ -1016,17 +1070,28 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_campaign" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_campaign" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1036,6 +1101,7 @@ class CertificationCampaignsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1064,8 +1130,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns/{id}',
-            'GET',
+            '/campaigns/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1075,32 +1140,25 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_campaign_reports(self, campaign_id: Annotated[
-        StrictStr,
-        Field(
-            ...,
-            description=
-            "The ID of the campaign for which reports are being fetched.")],
-                             **kwargs) -> List[CampaignReport]:  # noqa: E501
+    def get_campaign_reports(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign for which reports are being fetched.")], **kwargs) -> List[CampaignReport]:  # noqa: E501
         """Get Campaign Reports  # noqa: E501
 
         Fetches all reports for a certification campaign by campaign ID. Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_campaign_reports(campaign_id, async_req=True)
+        >>> thread = api.get_campaign_reports(id, async_req=True)
         >>> result = thread.get()
 
-        :param campaign_id: The ID of the campaign for which reports are being fetched. (required)
-        :type campaign_id: str
+        :param id: The ID of the campaign for which reports are being fetched. (required)
+        :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -1116,29 +1174,21 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_campaign_reports_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_campaign_reports_with_http_info(campaign_id,
-                                                        **kwargs)  # noqa: E501
+        return self.get_campaign_reports_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_campaign_reports_with_http_info(self, campaign_id: Annotated[
-        StrictStr,
-        Field(
-            ...,
-            description=
-            "The ID of the campaign for which reports are being fetched.")],
-                                            **kwargs
-                                            ) -> ApiResponse:  # noqa: E501
+    def get_campaign_reports_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign for which reports are being fetched.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Campaign Reports  # noqa: E501
 
         Fetches all reports for a certification campaign by campaign ID. Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_campaign_reports_with_http_info(campaign_id, async_req=True)
+        >>> thread = api.get_campaign_reports_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
-        :param campaign_id: The ID of the campaign for which reports are being fetched. (required)
-        :type campaign_id: str
+        :param id: The ID of the campaign for which reports are being fetched. (required)
+        :type id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1166,17 +1216,28 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['campaign_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_campaign_reports" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_campaign_reports" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1184,8 +1245,9 @@ class CertificationCampaignsApi:
 
         # process the path parameters
         _path_params = {}
-        if _params['campaign_id']:
-            _path_params['campaignId'] = _params['campaign_id']
+        if _params['id']:
+            _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1214,8 +1276,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns/{id}/reports',
-            'GET',
+            '/campaigns/{id}/reports', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1225,16 +1286,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_campaign_reports_config(
-            self, **kwargs) -> CampaignReportsConfig:  # noqa: E501
+    def get_campaign_reports_config(self, **kwargs) -> CampaignReportsConfig:  # noqa: E501
         """Get Campaign Reports Configuration  # noqa: E501
 
         Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns. Requires roles of CERT_ADMIN and ORG_ADMIN.  # noqa: E501
@@ -1259,12 +1318,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_campaign_reports_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_campaign_reports_config_with_http_info(
-            **kwargs)  # noqa: E501
+        return self.get_campaign_reports_config_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_campaign_reports_config_with_http_info(
-            self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_campaign_reports_config_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
         """Get Campaign Reports Configuration  # noqa: E501
 
         Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns. Requires roles of CERT_ADMIN and ORG_ADMIN.  # noqa: E501
@@ -1301,18 +1358,27 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = []
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_campaign_reports_config" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_campaign_reports_config" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1347,8 +1413,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns/reports-configuration',
-            'GET',
+            '/campaigns/reports-configuration', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1358,18 +1423,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_campaign_template(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The desired campaign template's ID.")],
-                              **kwargs) -> CampaignTemplate:  # noqa: E501
+    def get_campaign_template(self, id : Annotated[StrictStr, Field(..., description="The desired campaign template's ID.")], **kwargs) -> CampaignTemplate:  # noqa: E501
         """Get a Campaign Template  # noqa: E501
 
         Fetches a campaign template by ID.  # noqa: E501
@@ -1396,15 +1457,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_campaign_template_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_campaign_template_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.get_campaign_template_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_campaign_template_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="The desired campaign template's ID.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_campaign_template_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The desired campaign template's ID.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get a Campaign Template  # noqa: E501
 
         Fetches a campaign template by ID.  # noqa: E501
@@ -1443,17 +1499,28 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_campaign_template" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_campaign_template" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1463,6 +1530,7 @@ class CertificationCampaignsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1491,8 +1559,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaign-templates/{id}',
-            'GET',
+            '/campaign-templates/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1502,21 +1569,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_campaign_template_schedule(self, id: Annotated[
-        StrictStr,
-        Field(
-            ...,
-            description=
-            "The ID of the campaign template whose schedule is being fetched."
-        )], **kwargs) -> Schedule:  # noqa: E501
+    def get_campaign_template_schedule(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template whose schedule is being fetched.")], **kwargs) -> Schedule:  # noqa: E501
         """Gets a Campaign Template's Schedule  # noqa: E501
 
         Gets the schedule for a campaign template. Returns a 404 if there is no schedule set.  # noqa: E501
@@ -1543,17 +1603,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_campaign_template_schedule_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_campaign_template_schedule_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.get_campaign_template_schedule_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_campaign_template_schedule_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(
-            ...,
-            description=
-            "The ID of the campaign template whose schedule is being fetched."
-        )], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_campaign_template_schedule_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template whose schedule is being fetched.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Gets a Campaign Template's Schedule  # noqa: E501
 
         Gets the schedule for a campaign template. Returns a 404 if there is no schedule set.  # noqa: E501
@@ -1592,18 +1645,28 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_campaign_template_schedule" % _key)
+                    " to method get_campaign_template_schedule" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1613,6 +1676,7 @@ class CertificationCampaignsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1641,8 +1705,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaign-templates/{id}/schedule',
-            'GET',
+            '/campaign-templates/{id}/schedule', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1652,52 +1715,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_campaign_templates(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields: **name, id**"
-            )] = None,
-            **kwargs) -> List[CampaignTemplate]:  # noqa: E501
+    def list_campaign_templates(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields: **name, id**")] = None, **kwargs) -> List[CampaignTemplate]:  # noqa: E501
         """List Campaign Templates  # noqa: E501
 
         Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.  All CampaignTemplates matching the query params  # noqa: E501
@@ -1732,48 +1757,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_campaign_templates_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_campaign_templates_with_http_info(
-            limit, offset, count, sorters, filters, **kwargs)  # noqa: E501
+        return self.list_campaign_templates_with_http_info(limit, offset, count, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_campaign_templates_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields: **name, id**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_campaign_templates_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields: **name, id**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Campaign Templates  # noqa: E501
 
         Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.  All CampaignTemplates matching the query params  # noqa: E501
@@ -1820,17 +1807,32 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'count', 'sorters', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'count',
+            'sorters',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_campaign_templates" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_campaign_templates" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1880,8 +1882,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaign-templates',
-            'GET',
+            '/campaign-templates', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1891,19 +1892,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def move(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The certification campaign ID")],
-             admin_review_reassign: AdminReviewReassign,
-             **kwargs) -> CertificationTask:  # noqa: E501
+    def move(self, id : Annotated[StrictStr, Field(..., description="The certification campaign ID")], admin_review_reassign : AdminReviewReassign, **kwargs) -> CertificationTask:  # noqa: E501
         """Reassign Certifications  # noqa: E501
 
         This API reassigns the specified certifications from one identity to another. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.  # noqa: E501
@@ -1932,15 +1928,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the move_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.move_with_http_info(id, admin_review_reassign,
-                                        **kwargs)  # noqa: E501
+        return self.move_with_http_info(id, admin_review_reassign, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def move_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The certification campaign ID")],
-                            admin_review_reassign: AdminReviewReassign,
-                            **kwargs) -> ApiResponse:  # noqa: E501
+    def move_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The certification campaign ID")], admin_review_reassign : AdminReviewReassign, **kwargs) -> ApiResponse:  # noqa: E501
         """Reassign Certifications  # noqa: E501
 
         This API reassigns the specified certifications from one identity to another. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.  # noqa: E501
@@ -1981,17 +1972,29 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'admin_review_reassign']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'admin_review_reassign'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method move" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method move" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2001,6 +2004,7 @@ class CertificationCampaignsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2019,11 +2023,11 @@ class CertificationCampaignsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2039,8 +2043,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns/{id}/reassign',
-            'POST',
+            '/campaigns/{id}/reassign', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2050,25 +2053,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_campaign_template(self, id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The ID of the campaign template being modified."
-        )], json_patch_operation: Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) "
-            )], **kwargs) -> CampaignTemplate:  # noqa: E501
+    def patch_campaign_template(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template being modified.")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")], **kwargs) -> CampaignTemplate:  # noqa: E501
         """Update a Campaign Template  # noqa: E501
 
         Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  # noqa: E501
@@ -2097,21 +2089,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_campaign_template_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_campaign_template_with_http_info(
-            id, json_patch_operation, **kwargs)  # noqa: E501
+        return self.patch_campaign_template_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_campaign_template_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The ID of the campaign template being modified."
-        )], json_patch_operation: Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) "
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_campaign_template_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template being modified.")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) ")], **kwargs) -> ApiResponse:  # noqa: E501
         """Update a Campaign Template  # noqa: E501
 
         Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  # noqa: E501
@@ -2152,17 +2133,29 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'json_patch_operation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'json_patch_operation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method patch_campaign_template" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_campaign_template" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2172,6 +2165,7 @@ class CertificationCampaignsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2190,12 +2184,11 @@ class CertificationCampaignsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2211,8 +2204,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaign-templates/{id}',
-            'PATCH',
+            '/campaign-templates/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -2222,19 +2214,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def set_campaign_reports_config(
-            self, campaign_reports_config: Annotated[
-                CampaignReportsConfig,
-                Field(..., description="Campaign Report Configuration")],
-            **kwargs) -> CampaignReportsConfig:  # noqa: E501
+    def set_campaign_reports_config(self, campaign_reports_config : Annotated[CampaignReportsConfig, Field(..., description="Campaign Report Configuration")], **kwargs) -> CampaignReportsConfig:  # noqa: E501
         """Set Campaign Reports Configuration  # noqa: E501
 
         Overwrites configuration for campaign reports. Requires roles CERT_ADMIN and ORG_ADMIN.  # noqa: E501
@@ -2261,15 +2248,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the set_campaign_reports_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.set_campaign_reports_config_with_http_info(
-            campaign_reports_config, **kwargs)  # noqa: E501
+        return self.set_campaign_reports_config_with_http_info(campaign_reports_config, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def set_campaign_reports_config_with_http_info(
-            self, campaign_reports_config: Annotated[
-                CampaignReportsConfig,
-                Field(..., description="Campaign Report Configuration")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def set_campaign_reports_config_with_http_info(self, campaign_reports_config : Annotated[CampaignReportsConfig, Field(..., description="Campaign Report Configuration")], **kwargs) -> ApiResponse:  # noqa: E501
         """Set Campaign Reports Configuration  # noqa: E501
 
         Overwrites configuration for campaign reports. Requires roles CERT_ADMIN and ORG_ADMIN.  # noqa: E501
@@ -2308,18 +2290,28 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['campaign_reports_config']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'campaign_reports_config'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method set_campaign_reports_config" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_campaign_reports_config" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2345,11 +2337,11 @@ class CertificationCampaignsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2364,8 +2356,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns/reports-configuration',
-            'PUT',
+            '/campaigns/reports-configuration', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -2375,26 +2366,167 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def start_campaign(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The campaign id")],
-            activate_campaign_options:
-        Annotated[
-            Optional[ActivateCampaignOptions],
-            Field(
-                description=
-                "Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format."
-            )] = None,
-            **kwargs) -> object:  # noqa: E501
+    def set_campaign_template_schedule(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template being scheduled.")], schedule : Optional[Schedule] = None, **kwargs) -> None:  # noqa: E501
+        """Sets a Campaign Template's Schedule  # noqa: E501
+
+        Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.set_campaign_template_schedule(id, schedule, async_req=True)
+        >>> result = thread.get()
+
+        :param id: The ID of the campaign template being scheduled. (required)
+        :type id: str
+        :param schedule:
+        :type schedule: Schedule
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the set_campaign_template_schedule_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.set_campaign_template_schedule_with_http_info(id, schedule, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def set_campaign_template_schedule_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template being scheduled.")], schedule : Optional[Schedule] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Sets a Campaign Template's Schedule  # noqa: E501
+
+        Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.set_campaign_template_schedule_with_http_info(id, schedule, async_req=True)
+        >>> result = thread.get()
+
+        :param id: The ID of the campaign template being scheduled. (required)
+        :type id: str
+        :param schedule:
+        :type schedule: Schedule
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'id',
+            'schedule'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method set_campaign_template_schedule" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['id']:
+            _path_params['id'] = _params['id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['schedule'] is not None:
+            _body_params = _params['schedule']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/campaign-templates/{id}/schedule', 'PUT',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def start_campaign(self, id : Annotated[StrictStr, Field(..., description="The campaign id")], activate_campaign_options : Annotated[Optional[ActivateCampaignOptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None, **kwargs) -> object:  # noqa: E501
         """Activate a Campaign  # noqa: E501
 
         Submits a job to activate the campaign with the given Id. The campaign must be staged. Requires roles of CERT_ADMIN and ORG_ADMIN  # noqa: E501
@@ -2423,23 +2555,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the start_campaign_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.start_campaign_with_http_info(id,
-                                                  activate_campaign_options,
-                                                  **kwargs)  # noqa: E501
+        return self.start_campaign_with_http_info(id, activate_campaign_options, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def start_campaign_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The campaign id")],
-            activate_campaign_options:
-        Annotated[
-            Optional[ActivateCampaignOptions],
-            Field(
-                description=
-                "Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def start_campaign_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The campaign id")], activate_campaign_options : Annotated[Optional[ActivateCampaignOptions], Field(description="Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Activate a Campaign  # noqa: E501
 
         Submits a job to activate the campaign with the given Id. The campaign must be staged. Requires roles of CERT_ADMIN and ORG_ADMIN  # noqa: E501
@@ -2480,17 +2599,29 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'activate_campaign_options']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'activate_campaign_options'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method start_campaign" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method start_campaign" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2500,6 +2631,7 @@ class CertificationCampaignsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2518,11 +2650,11 @@ class CertificationCampaignsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2538,8 +2670,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns/{id}/activate',
-            'POST',
+            '/campaigns/{id}/activate', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2549,21 +2680,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def start_campaign_remediation_scan(self, id: Annotated[
-        StrictStr,
-        Field(
-            ...,
-            description=
-            "The ID of the campaign for which remediation scan is being run."
-        )], **kwargs) -> object:  # noqa: E501
+    def start_campaign_remediation_scan(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign for which remediation scan is being run.")], **kwargs) -> object:  # noqa: E501
         """Run Campaign Remediation Scan  # noqa: E501
 
         Kicks off remediation scan task for a certification campaign. Requires roles of CERT_ADMIN and ORG_ADMIN  # noqa: E501
@@ -2590,17 +2714,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the start_campaign_remediation_scan_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.start_campaign_remediation_scan_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.start_campaign_remediation_scan_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def start_campaign_remediation_scan_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(
-            ...,
-            description=
-            "The ID of the campaign for which remediation scan is being run."
-        )], **kwargs) -> ApiResponse:  # noqa: E501
+    def start_campaign_remediation_scan_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign for which remediation scan is being run.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Run Campaign Remediation Scan  # noqa: E501
 
         Kicks off remediation scan task for a certification campaign. Requires roles of CERT_ADMIN and ORG_ADMIN  # noqa: E501
@@ -2639,18 +2756,28 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method start_campaign_remediation_scan" % _key)
+                    " to method start_campaign_remediation_scan" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2660,6 +2787,7 @@ class CertificationCampaignsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2688,8 +2816,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns/{id}/run-remediation-scan',
-            'POST',
+            '/campaigns/{id}/run-remediation-scan', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2699,23 +2826,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def start_campaign_report(self, id: Annotated[
-        StrictStr,
-        Field(
-            ...,
-            description="The ID of the campaign for which report is being run."
-        )], type: Annotated[
-            ReportType,
-            Field(..., description="The type of the report to run.")],
-                              **kwargs) -> object:  # noqa: E501
+    def start_campaign_report(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign for which report is being run.")], type : Annotated[ReportType, Field(..., description="The type of the report to run.")], **kwargs) -> object:  # noqa: E501
         """Run Campaign Report  # noqa: E501
 
         Runs a report for a certification campaign. Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.  # noqa: E501
@@ -2744,19 +2862,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the start_campaign_report_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.start_campaign_report_with_http_info(
-            id, type, **kwargs)  # noqa: E501
+        return self.start_campaign_report_with_http_info(id, type, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def start_campaign_report_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(
-            ...,
-            description="The ID of the campaign for which report is being run."
-        )], type: Annotated[
-            ReportType,
-            Field(..., description="The type of the report to run.")], **kwargs
-                                             ) -> ApiResponse:  # noqa: E501
+    def start_campaign_report_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign for which report is being run.")], type : Annotated[ReportType, Field(..., description="The type of the report to run.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Run Campaign Report  # noqa: E501
 
         Runs a report for a certification campaign. Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.  # noqa: E501
@@ -2797,17 +2906,29 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'type']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'type'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method start_campaign_report" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method start_campaign_report" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2820,6 +2941,7 @@ class CertificationCampaignsApi:
 
         if _params['type']:
             _path_params['type'] = _params['type']
+
 
         # process the query parameters
         _query_params = []
@@ -2848,8 +2970,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns/{id}/run-report/{type}',
-            'POST',
+            '/campaigns/{id}/run-report/{type}', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2859,20 +2980,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def start_generate_campaign_template(self, id: Annotated[
-        StrictStr,
-        Field(
-            ...,
-            description="The ID of the campaign template to use for generation."
-        )], **kwargs) -> CampaignReference:  # noqa: E501
+    def start_generate_campaign_template(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template to use for generation.")], **kwargs) -> CampaignReference:  # noqa: E501
         """Generate a Campaign from Template  # noqa: E501
 
         Generates a new campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, \"%Y\" will insert the current year; a campaign template named \"Campaign for %y\" would generate a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Requires roles ORG_ADMIN.  # noqa: E501
@@ -2899,18 +3014,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the start_generate_campaign_template_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.start_generate_campaign_template_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.start_generate_campaign_template_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def start_generate_campaign_template_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description=
-                    "The ID of the campaign template to use for generation.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def start_generate_campaign_template_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template to use for generation.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Generate a Campaign from Template  # noqa: E501
 
         Generates a new campaign from a campaign template. The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation. Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, \"%Y\" will insert the current year; a campaign template named \"Campaign for %y\" would generate a campaign called \"Campaign for 2020\" (assuming the year at generation time is 2020). Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html). Requires roles ORG_ADMIN.  # noqa: E501
@@ -2949,18 +3056,28 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method start_generate_campaign_template" % _key)
+                    " to method start_generate_campaign_template" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2970,6 +3087,7 @@ class CertificationCampaignsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2997,8 +3115,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaign-templates/{id}/generate',
-            'POST',
+            '/campaign-templates/{id}/generate', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -3008,25 +3125,14 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_campaign(self, id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The ID of the campaign template being modified."
-        )], json_patch_operation: Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline "
-            )], **kwargs) -> SlimCampaign:  # noqa: E501
+    def update_campaign(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template being modified.")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline ")], **kwargs) -> SlimCampaign:  # noqa: E501
         """Update a Campaign  # noqa: E501
 
         Allows updating individual fields on a campaign using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  # noqa: E501
@@ -3055,21 +3161,10 @@ class CertificationCampaignsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_campaign_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_campaign_with_http_info(id, json_patch_operation,
-                                                   **kwargs)  # noqa: E501
+        return self.update_campaign_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_campaign_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The ID of the campaign template being modified."
-        )], json_patch_operation: Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline "
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_campaign_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template being modified.")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline ")], **kwargs) -> ApiResponse:  # noqa: E501
         """Update a Campaign  # noqa: E501
 
         Allows updating individual fields on a campaign using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  # noqa: E501
@@ -3110,17 +3205,29 @@ class CertificationCampaignsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'json_patch_operation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'json_patch_operation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_campaign" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_campaign" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3130,6 +3237,7 @@ class CertificationCampaignsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -3148,12 +3256,11 @@ class CertificationCampaignsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -3169,8 +3276,7 @@ class CertificationCampaignsApi:
         }
 
         return self.api_client.call_api(
-            '/campaigns/{id}',
-            'PATCH',
+            '/campaigns/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -3180,8 +3286,7 @@ class CertificationCampaignsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

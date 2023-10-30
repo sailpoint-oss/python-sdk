@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **message** | [**ErrorMessageDto**](ErrorMessageDto.md) |  | [optional] 
 **client_metadata** | **Dict[str, str]** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check. | [optional] 
 **violation_contexts** | [**List[SodViolationContext]**](SodViolationContext.md) |  | [optional] 
-**violated_policies** | [**List[BaseReferenceDto1]**](BaseReferenceDto1.md) | A list of the Policies that were violated | [optional] 
+**violated_policies** | [**List[BaseReferenceDto]**](BaseReferenceDto.md) | A list of the Policies that were violated | [optional] 
 
 ## Example
 

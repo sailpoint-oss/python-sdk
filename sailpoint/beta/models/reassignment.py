@@ -11,23 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.certification_reference import CertificationReference
-
 
 class Reassignment(BaseModel):
     """
     Reassignment
     """
     var_from: Optional[CertificationReference] = Field(None, alias="from")
-    comment: Optional[StrictStr] = Field(
-        None, description="Comments from the previous reviewer.")
+    comment: Optional[StrictStr] = Field(None, description="Comments from the previous reviewer.")
     __properties = ["from", "comment"]
 
     class Config:
@@ -50,7 +50,10 @@ class Reassignment(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of var_from
         if self.var_from:
             _dict['from'] = self.var_from.to_dict()
@@ -66,10 +69,9 @@ class Reassignment(BaseModel):
             return Reassignment.parse_obj(obj)
 
         _obj = Reassignment.parse_obj({
-            "var_from":
-            CertificationReference.from_dict(obj.get("from"))
-            if obj.get("from") is not None else None,
-            "comment":
-            obj.get("comment")
+            "var_from": CertificationReference.from_dict(obj.get("from")) if obj.get("from") is not None else None,
+            "comment": obj.get("comment")
         })
         return _obj
+
+

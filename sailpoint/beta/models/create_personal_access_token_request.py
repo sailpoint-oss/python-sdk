@@ -11,29 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class CreatePersonalAccessTokenRequest(BaseModel):
     """
     Object for specifying the name of a personal access token to create  # noqa: E501
     """
-    name: StrictStr = Field(
-        ...,
-        description=
-        "The name of the personal access token (PAT) to be created. Cannot be the same as another PAT owned by the user for whom this PAT is being created."
-    )
-    scope: Optional[conlist(StrictStr)] = Field(
-        None,
-        description=
-        "Scopes of the personal access token. If no scope is specified, the token will be created with the default scope \"sp:scopes:all\". This means the personal access token will have all the rights of the owner who created it."
-    )
+    name: StrictStr = Field(..., description="The name of the personal access token (PAT) to be created. Cannot be the same as another PAT owned by the user for whom this PAT is being created.")
+    scope: Optional[conlist(StrictStr)] = Field(None, description="Scopes of the personal access token. If no scope is specified, the token will be created with the default scope \"sp:scopes:all\". This means the personal access token will have all the rights of the owner who created it.")
     __properties = ["name", "scope"]
 
     class Config:
@@ -56,7 +49,10 @@ class CreatePersonalAccessTokenRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if scope (nullable) is None
         # and __fields_set__ contains the field
         if self.scope is None and "scope" in self.__fields_set__:
@@ -74,9 +70,9 @@ class CreatePersonalAccessTokenRequest(BaseModel):
             return CreatePersonalAccessTokenRequest.parse_obj(obj)
 
         _obj = CreatePersonalAccessTokenRequest.parse_obj({
-            "name":
-            obj.get("name"),
-            "scope":
-            obj.get("scope")
+            "name": obj.get("name"),
+            "scope": obj.get("scope")
         })
         return _obj
+
+

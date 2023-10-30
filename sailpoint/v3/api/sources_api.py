@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -33,7 +34,9 @@ from v3.models.usage_type import UsageType
 from v3.api_client import ApiClient
 from v3.api_response import ApiResponse
 from v3.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class SourcesApi:
@@ -49,12 +52,7 @@ class SourcesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_provisioning_policy(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id")],
-            provisioning_policy_dto: ProvisioningPolicyDto,
-            **kwargs) -> ProvisioningPolicyDto:  # noqa: E501
+    def create_provisioning_policy(self, source_id : Annotated[StrictStr, Field(..., description="The Source id")], provisioning_policy_dto : ProvisioningPolicyDto, **kwargs) -> ProvisioningPolicyDto:  # noqa: E501
         """Create Provisioning Policy  # noqa: E501
 
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -83,16 +81,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_provisioning_policy_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_provisioning_policy_with_http_info(
-            source_id, provisioning_policy_dto, **kwargs)  # noqa: E501
+        return self.create_provisioning_policy_with_http_info(source_id, provisioning_policy_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_provisioning_policy_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id")],
-            provisioning_policy_dto: ProvisioningPolicyDto,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_provisioning_policy_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id")], provisioning_policy_dto : ProvisioningPolicyDto, **kwargs) -> ApiResponse:  # noqa: E501
         """Create Provisioning Policy  # noqa: E501
 
         This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -133,18 +125,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'provisioning_policy_dto']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'provisioning_policy_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_provisioning_policy" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_provisioning_policy" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -154,6 +157,7 @@ class SourcesApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
+
 
         # process the query parameters
         _query_params = []
@@ -172,11 +176,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -192,8 +196,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/provisioning-policies',
-            'POST',
+            '/sources/{sourceId}/provisioning-policies', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -203,25 +206,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_source(
-            self,
-            source: Source,
-            provision_as_csv:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.  "
-            )] = None,
-            **kwargs) -> Source:  # noqa: E501
+    def create_source(self, source : Source, provision_as_csv : Annotated[Optional[StrictBool], Field(description="If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.  ")] = None, **kwargs) -> Source:  # noqa: E501
         """Creates a source in IdentityNow.  # noqa: E501
 
         This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -250,21 +242,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_source_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_source_with_http_info(source, provision_as_csv,
-                                                 **kwargs)  # noqa: E501
+        return self.create_source_with_http_info(source, provision_as_csv, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_source_with_http_info(
-            self,
-            source: Source,
-            provision_as_csv:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.  "
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_source_with_http_info(self, source : Source, provision_as_csv : Annotated[Optional[StrictBool], Field(description="If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.  ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Creates a source in IdentityNow.  # noqa: E501
 
         This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -305,17 +286,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source', 'provision_as_csv']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source',
+            'provision_as_csv'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_source" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_source" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -327,8 +320,7 @@ class SourcesApi:
         # process the query parameters
         _query_params = []
         if _params.get('provision_as_csv') is not None:  # noqa: E501
-            _query_params.append(
-                ('provisionAsCsv', _params['provision_as_csv']))
+            _query_params.append(('provisionAsCsv', _params['provision_as_csv']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -345,11 +337,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -364,8 +356,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources',
-            'POST',
+            '/sources', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -375,18 +366,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_source_schema(self, source_id: Annotated[
-        StrictStr, Field(..., description="The Source id.")],
-                             model_schema: ModelSchema,
-                             **kwargs) -> ModelSchema:  # noqa: E501
+    def create_source_schema(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], model_schema : ModelSchema, **kwargs) -> ModelSchema:  # noqa: E501
         """Create Schema on a Source  # noqa: E501
 
         Creates a new Schema on the specified Source in IdentityNow.   # noqa: E501
@@ -415,15 +402,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_source_schema_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_source_schema_with_http_info(
-            source_id, model_schema, **kwargs)  # noqa: E501
+        return self.create_source_schema_with_http_info(source_id, model_schema, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_source_schema_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            model_schema: ModelSchema, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_source_schema_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], model_schema : ModelSchema, **kwargs) -> ApiResponse:  # noqa: E501
         """Create Schema on a Source  # noqa: E501
 
         Creates a new Schema on the specified Source in IdentityNow.   # noqa: E501
@@ -464,17 +446,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'model_schema']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'model_schema'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_source_schema" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_source_schema" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -484,6 +478,7 @@ class SourcesApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
+
 
         # process the query parameters
         _query_params = []
@@ -502,11 +497,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -521,8 +516,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/schemas',
-            'POST',
+            '/sources/{sourceId}/schemas', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -532,23 +526,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_provisioning_policy(self, source_id: Annotated[
-        StrictStr,
-        Field(..., description="The Source ID.")], usage_type: Annotated[
-            UsageType,
-            Field(
-                ...,
-                description=
-                "The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. "
-            )], **kwargs) -> None:  # noqa: E501
+    def delete_provisioning_policy(self, source_id : Annotated[StrictStr, Field(..., description="The Source ID.")], usage_type : Annotated[UsageType, Field(..., description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. ")], **kwargs) -> None:  # noqa: E501
         """Delete Provisioning Policy by UsageType  # noqa: E501
 
         Deletes the provisioning policy with the specified usage on an application. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -577,19 +562,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_provisioning_policy_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_provisioning_policy_with_http_info(
-            source_id, usage_type, **kwargs)  # noqa: E501
+        return self.delete_provisioning_policy_with_http_info(source_id, usage_type, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_provisioning_policy_with_http_info(self, source_id: Annotated[
-        StrictStr,
-        Field(..., description="The Source ID.")], usage_type: Annotated[
-            UsageType,
-            Field(
-                ...,
-                description=
-                "The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. "
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_provisioning_policy_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source ID.")], usage_type : Annotated[UsageType, Field(..., description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. ")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Provisioning Policy by UsageType  # noqa: E501
 
         Deletes the provisioning policy with the specified usage on an application. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -630,18 +606,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'usage_type']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'usage_type'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_provisioning_policy" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_provisioning_policy" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -654,6 +641,7 @@ class SourcesApi:
 
         if _params['usage_type']:
             _path_params['usageType'] = _params['usage_type']
+
 
         # process the query parameters
         _query_params = []
@@ -674,8 +662,7 @@ class SourcesApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/provisioning-policies/{usageType}',
-            'DELETE',
+            '/sources/{sourceId}/provisioning-policies/{usageType}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -685,18 +672,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_source(self,
-                      id: Annotated[StrictStr,
-                                    Field(..., description="The Source id")],
-                      **kwargs) -> DeleteSource202Response:  # noqa: E501
+    def delete_source(self, id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> DeleteSource202Response:  # noqa: E501
         """Delete Source by ID  # noqa: E501
 
         This end-point deletes a specific source in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. All of accounts on the source will be removed first, then the source will be deleted. Actual status of task execution can be retrieved via method GET `/task-status/{id}`  # noqa: E501
@@ -726,9 +709,7 @@ class SourcesApi:
         return self.delete_source_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_source_with_http_info(self, id: Annotated[
-        StrictStr, Field(..., description="The Source id")],
-                                     **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_source_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Source by ID  # noqa: E501
 
         This end-point deletes a specific source in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. All of accounts on the source will be removed first, then the source will be deleted. Actual status of task execution can be retrieved via method GET `/task-status/{id}`  # noqa: E501
@@ -767,17 +748,28 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_source" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_source" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -787,6 +779,7 @@ class SourcesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -815,8 +808,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{id}',
-            'DELETE',
+            '/sources/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -826,21 +818,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_source_schema(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            schema_id: Annotated[StrictStr,
-                                 Field(..., description="The Schema id.")],
-            **kwargs) -> None:  # noqa: E501
+    def delete_source_schema(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], schema_id : Annotated[StrictStr, Field(..., description="The Schema id.")], **kwargs) -> None:  # noqa: E501
         """Delete Source Schema by ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -868,17 +853,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_source_schema_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_source_schema_with_http_info(
-            source_id, schema_id, **kwargs)  # noqa: E501
+        return self.delete_source_schema_with_http_info(source_id, schema_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_source_schema_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            schema_id: Annotated[StrictStr,
-                                 Field(..., description="The Schema id.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_source_schema_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], schema_id : Annotated[StrictStr, Field(..., description="The Schema id.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Source Schema by ID  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -918,17 +896,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'schema_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'schema_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_source_schema" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_source_schema" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -941,6 +931,7 @@ class SourcesApi:
 
         if _params['schema_id']:
             _path_params['schemaId'] = _params['schema_id']
+
 
         # process the query parameters
         _query_params = []
@@ -961,8 +952,7 @@ class SourcesApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/schemas/{schemaId}',
-            'DELETE',
+            '/sources/{sourceId}/schemas/{schemaId}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -972,17 +962,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_accounts_schema(self, id: Annotated[
-        StrictStr, Field(..., description="The Source id")],
-                            **kwargs) -> None:  # noqa: E501
+    def get_accounts_schema(self, id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> None:  # noqa: E501
         """Downloads source accounts schema template  # noqa: E501
 
         This API downloads the CSV schema that defines the account attributes on a source. >**NOTE: This API is designated only for Delimited File sources.**  # noqa: E501
@@ -1009,14 +996,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_accounts_schema_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_accounts_schema_with_http_info(id,
-                                                       **kwargs)  # noqa: E501
+        return self.get_accounts_schema_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_accounts_schema_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="The Source id")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_accounts_schema_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> ApiResponse:  # noqa: E501
         """Downloads source accounts schema template  # noqa: E501
 
         This API downloads the CSV schema that defines the account attributes on a source. >**NOTE: This API is designated only for Delimited File sources.**  # noqa: E501
@@ -1055,17 +1038,28 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_accounts_schema" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_accounts_schema" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1075,6 +1069,7 @@ class SourcesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1095,8 +1090,7 @@ class SourcesApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/sources/{id}/schemas/accounts',
-            'GET',
+            '/sources/{id}/schemas/accounts', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1106,22 +1100,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_entitlements_schema(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The Source id")],
-            schema_name: Annotated[
-                Optional[StrictStr],
-                Field(description="Name of entitlement schema")] = None,
-            **kwargs) -> None:  # noqa: E501
+    def get_entitlements_schema(self, id : Annotated[StrictStr, Field(..., description="The Source id")], schema_name : Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None, **kwargs) -> None:  # noqa: E501
         """Downloads source entitlements schema template  # noqa: E501
 
         This API downloads the CSV schema that defines the entitlement attributes on a source.  >**NOTE: This API is designated only for Delimited File sources.**  # noqa: E501
@@ -1150,18 +1136,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_entitlements_schema_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_entitlements_schema_with_http_info(
-            id, schema_name, **kwargs)  # noqa: E501
+        return self.get_entitlements_schema_with_http_info(id, schema_name, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_entitlements_schema_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The Source id")],
-            schema_name: Annotated[
-                Optional[StrictStr],
-                Field(description="Name of entitlement schema")] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_entitlements_schema_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The Source id")], schema_name : Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Downloads source entitlements schema template  # noqa: E501
 
         This API downloads the CSV schema that defines the entitlement attributes on a source.  >**NOTE: This API is designated only for Delimited File sources.**  # noqa: E501
@@ -1202,17 +1180,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['id', 'schema_name']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'schema_name'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_entitlements_schema" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_entitlements_schema" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1222,6 +1212,7 @@ class SourcesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1245,8 +1236,7 @@ class SourcesApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/sources/{id}/schemas/entitlements',
-            'GET',
+            '/sources/{id}/schemas/entitlements', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1256,23 +1246,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_provisioning_policy(self, source_id: Annotated[
-        StrictStr,
-        Field(..., description="The Source ID.")], usage_type: Annotated[
-            UsageType,
-            Field(
-                ...,
-                description=
-                "The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. "
-            )], **kwargs) -> ProvisioningPolicyDto:  # noqa: E501
+    def get_provisioning_policy(self, source_id : Annotated[StrictStr, Field(..., description="The Source ID.")], usage_type : Annotated[UsageType, Field(..., description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. ")], **kwargs) -> ProvisioningPolicyDto:  # noqa: E501
         """Get Provisioning Policy by UsageType  # noqa: E501
 
         This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -1301,19 +1282,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_provisioning_policy_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_provisioning_policy_with_http_info(
-            source_id, usage_type, **kwargs)  # noqa: E501
+        return self.get_provisioning_policy_with_http_info(source_id, usage_type, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_provisioning_policy_with_http_info(self, source_id: Annotated[
-        StrictStr,
-        Field(..., description="The Source ID.")], usage_type: Annotated[
-            UsageType,
-            Field(
-                ...,
-                description=
-                "The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. "
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_provisioning_policy_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source ID.")], usage_type : Annotated[UsageType, Field(..., description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. ")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Provisioning Policy by UsageType  # noqa: E501
 
         This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -1354,17 +1326,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'usage_type']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'usage_type'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_provisioning_policy" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_provisioning_policy" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1377,6 +1361,7 @@ class SourcesApi:
 
         if _params['usage_type']:
             _path_params['usageType'] = _params['usage_type']
+
 
         # process the query parameters
         _query_params = []
@@ -1405,8 +1390,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/provisioning-policies/{usageType}',
-            'GET',
+            '/sources/{sourceId}/provisioning-policies/{usageType}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1416,18 +1400,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_source(self,
-                   id: Annotated[StrictStr,
-                                 Field(..., description="The Source id")],
-                   **kwargs) -> Source:  # noqa: E501
+    def get_source(self, id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> Source:  # noqa: E501
         """Get Source by ID  # noqa: E501
 
         This end-point gets a specific source in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -1457,9 +1437,7 @@ class SourcesApi:
         return self.get_source_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_source_with_http_info(self, id: Annotated[
-        StrictStr, Field(..., description="The Source id")],
-                                  **kwargs) -> ApiResponse:  # noqa: E501
+    def get_source_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Source by ID  # noqa: E501
 
         This end-point gets a specific source in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -1498,17 +1476,28 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_source" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_source" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1518,6 +1507,7 @@ class SourcesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1546,8 +1536,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{id}',
-            'GET',
+            '/sources/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1557,17 +1546,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_source_health(self, source_id: Annotated[
-        StrictStr, Field(..., description="The Source id.")],
-                          **kwargs) -> SourceHealthDto:  # noqa: E501
+    def get_source_health(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], **kwargs) -> SourceHealthDto:  # noqa: E501
         """Fetches source health by id  # noqa: E501
 
         This endpoint fetches source health by source's id  # noqa: E501
@@ -1594,15 +1580,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_source_health_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_source_health_with_http_info(source_id,
-                                                     **kwargs)  # noqa: E501
+        return self.get_source_health_with_http_info(source_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_source_health_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_source_health_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Fetches source health by id  # noqa: E501
 
         This endpoint fetches source health by source's id  # noqa: E501
@@ -1641,17 +1622,28 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_source_health" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_source_health" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1661,6 +1653,7 @@ class SourcesApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
+
 
         # process the query parameters
         _query_params = []
@@ -1689,8 +1682,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/source-health',
-            'GET',
+            '/sources/{sourceId}/source-health', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1700,21 +1692,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_source_schema(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            schema_id: Annotated[StrictStr,
-                                 Field(..., description="The Schema id.")],
-            **kwargs) -> ModelSchema:  # noqa: E501
+    def get_source_schema(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], schema_id : Annotated[StrictStr, Field(..., description="The Schema id.")], **kwargs) -> ModelSchema:  # noqa: E501
         """Get Source Schema by ID  # noqa: E501
 
         Get the Source Schema by ID in IdentityNow.   # noqa: E501
@@ -1743,17 +1728,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_source_schema_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_source_schema_with_http_info(source_id, schema_id,
-                                                     **kwargs)  # noqa: E501
+        return self.get_source_schema_with_http_info(source_id, schema_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_source_schema_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            schema_id: Annotated[StrictStr,
-                                 Field(..., description="The Schema id.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_source_schema_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], schema_id : Annotated[StrictStr, Field(..., description="The Schema id.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Source Schema by ID  # noqa: E501
 
         Get the Source Schema by ID in IdentityNow.   # noqa: E501
@@ -1794,17 +1772,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'schema_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'schema_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_source_schema" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_source_schema" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1817,6 +1807,7 @@ class SourcesApi:
 
         if _params['schema_id']:
             _path_params['schemaId'] = _params['schema_id']
+
 
         # process the query parameters
         _query_params = []
@@ -1845,8 +1836,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/schemas/{schemaId}',
-            'GET',
+            '/sources/{sourceId}/schemas/{schemaId}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1856,21 +1846,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def import_accounts_schema(self,
-                               id: Annotated[
-                                   StrictStr,
-                                   Field(..., description="The Source id")],
-                               file: Optional[Union[StrictBytes,
-                                                    StrictStr]] = None,
-                               **kwargs) -> ModelSchema:  # noqa: E501
+    def import_accounts_schema(self, id : Annotated[StrictStr, Field(..., description="The Source id")], file : Optional[Union[StrictBytes, StrictStr]] = None, **kwargs) -> ModelSchema:  # noqa: E501
         """Uploads source accounts schema template  # noqa: E501
 
         This API uploads a source schema template file to configure a source's account attributes.  To retrieve the file to modify and upload, log into Identity Now.   Click **Admin** -> **Connections** -> **Sources** -> **`{SourceName}`** -> **Import Data** -> **Account Schema** -> **Options** -> **Download Schema**  >**NOTE: This API is designated only for Delimited File sources.**  # noqa: E501
@@ -1899,16 +1882,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the import_accounts_schema_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.import_accounts_schema_with_http_info(
-            id, file, **kwargs)  # noqa: E501
+        return self.import_accounts_schema_with_http_info(id, file, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def import_accounts_schema_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The Source id")],
-            file: Optional[Union[StrictBytes, StrictStr]] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def import_accounts_schema_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The Source id")], file : Optional[Union[StrictBytes, StrictStr]] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Uploads source accounts schema template  # noqa: E501
 
         This API uploads a source schema template file to configure a source's account attributes.  To retrieve the file to modify and upload, log into Identity Now.   Click **Admin** -> **Connections** -> **Sources** -> **`{SourceName}`** -> **Import Data** -> **Account Schema** -> **Options** -> **Download Schema**  >**NOTE: This API is designated only for Delimited File sources.**  # noqa: E501
@@ -1949,17 +1926,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['id', 'file']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'file'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method import_accounts_schema" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method import_accounts_schema" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1969,6 +1958,7 @@ class SourcesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1987,12 +1977,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['multipart/form-data'
-                                                        ]))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['multipart/form-data']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2007,8 +1996,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{id}/schemas/accounts',
-            'POST',
+            '/sources/{id}/schemas/accounts', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2018,21 +2006,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def import_connector_file(self,
-                              source_id: Annotated[
-                                  StrictStr,
-                                  Field(..., description="The Source id.")],
-                              file: Optional[Union[StrictBytes,
-                                                   StrictStr]] = None,
-                              **kwargs) -> Source:  # noqa: E501
+    def import_connector_file(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], file : Optional[Union[StrictBytes, StrictStr]] = None, **kwargs) -> Source:  # noqa: E501
         """Upload connector file to source  # noqa: E501
 
         This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -2061,16 +2042,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the import_connector_file_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.import_connector_file_with_http_info(
-            source_id, file, **kwargs)  # noqa: E501
+        return self.import_connector_file_with_http_info(source_id, file, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def import_connector_file_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            file: Optional[Union[StrictBytes, StrictStr]] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def import_connector_file_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], file : Optional[Union[StrictBytes, StrictStr]] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Upload connector file to source  # noqa: E501
 
         This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -2111,17 +2086,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'file']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'file'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method import_connector_file" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method import_connector_file" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2131,6 +2118,7 @@ class SourcesApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
+
 
         # process the query parameters
         _query_params = []
@@ -2149,12 +2137,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['multipart/form-data'
-                                                        ]))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['multipart/form-data']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2169,8 +2156,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/upload-connector-file',
-            'POST',
+            '/sources/{sourceId}/upload-connector-file', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2180,23 +2166,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def import_entitlements_schema(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The Source id")],
-            schema_name: Annotated[
-                Optional[StrictStr],
-                Field(description="Name of entitlement schema")] = None,
-            file: Optional[Union[StrictBytes, StrictStr]] = None,
-            **kwargs) -> ModelSchema:  # noqa: E501
+    def import_entitlements_schema(self, id : Annotated[StrictStr, Field(..., description="The Source id")], schema_name : Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None, file : Optional[Union[StrictBytes, StrictStr]] = None, **kwargs) -> ModelSchema:  # noqa: E501
         """Uploads source entitlements schema template  # noqa: E501
 
         This API uploads a source schema template file to configure a source's entitlement attributes.  To retrieve the file to modify and upload, log into Identity Now.   Click **Admin** -> **Connections** -> **Sources** -> **`{SourceName}`** -> **Import Data** -> **Import Entitlements** -> **Download**  >**NOTE: This API is designated only for Delimited File sources.**  # noqa: E501
@@ -2227,19 +2204,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the import_entitlements_schema_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.import_entitlements_schema_with_http_info(
-            id, schema_name, file, **kwargs)  # noqa: E501
+        return self.import_entitlements_schema_with_http_info(id, schema_name, file, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def import_entitlements_schema_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The Source id")],
-            schema_name: Annotated[
-                Optional[StrictStr],
-                Field(description="Name of entitlement schema")] = None,
-            file: Optional[Union[StrictBytes, StrictStr]] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def import_entitlements_schema_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The Source id")], schema_name : Annotated[Optional[StrictStr], Field(description="Name of entitlement schema")] = None, file : Optional[Union[StrictBytes, StrictStr]] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Uploads source entitlements schema template  # noqa: E501
 
         This API uploads a source schema template file to configure a source's entitlement attributes.  To retrieve the file to modify and upload, log into Identity Now.   Click **Admin** -> **Connections** -> **Sources** -> **`{SourceName}`** -> **Import Data** -> **Import Entitlements** -> **Download**  >**NOTE: This API is designated only for Delimited File sources.**  # noqa: E501
@@ -2282,18 +2250,30 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['id', 'schema_name', 'file']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'schema_name',
+            'file'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method import_entitlements_schema" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method import_entitlements_schema" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2303,6 +2283,7 @@ class SourcesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2324,12 +2305,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['multipart/form-data'
-                                                        ]))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['multipart/form-data']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2344,8 +2324,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{id}/schemas/entitlements',
-            'POST',
+            '/sources/{id}/schemas/entitlements', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2355,19 +2334,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_provisioning_policies(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id")],
-            **kwargs) -> List[ProvisioningPolicyDto]:  # noqa: E501
+    def list_provisioning_policies(self, source_id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> List[ProvisioningPolicyDto]:  # noqa: E501
         """Lists ProvisioningPolicies  # noqa: E501
 
         This end-point lists all the ProvisioningPolicies in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -2394,15 +2368,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_provisioning_policies_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_provisioning_policies_with_http_info(
-            source_id, **kwargs)  # noqa: E501
+        return self.list_provisioning_policies_with_http_info(source_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_provisioning_policies_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_provisioning_policies_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> ApiResponse:  # noqa: E501
         """Lists ProvisioningPolicies  # noqa: E501
 
         This end-point lists all the ProvisioningPolicies in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -2441,18 +2410,28 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_provisioning_policies" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_provisioning_policies" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2462,6 +2441,7 @@ class SourcesApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
+
 
         # process the query parameters
         _query_params = []
@@ -2490,8 +2470,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/provisioning-policies',
-            'GET',
+            '/sources/{sourceId}/provisioning-policies', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2501,26 +2480,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_source_schemas(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source ID.")],
-            include_types:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized."
-            )] = None,
-            **kwargs) -> List[ModelSchema]:  # noqa: E501
+    def list_source_schemas(self, source_id : Annotated[StrictStr, Field(..., description="The Source ID.")], include_types : Annotated[Optional[StrictStr], Field(description="If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized.")] = None, **kwargs) -> List[ModelSchema]:  # noqa: E501
         """List Schemas on a Source  # noqa: E501
 
         Lists the Schemas that exist on the specified Source in IdentityNow.   # noqa: E501
@@ -2549,23 +2516,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_source_schemas_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_source_schemas_with_http_info(source_id,
-                                                       include_types,
-                                                       **kwargs)  # noqa: E501
+        return self.list_source_schemas_with_http_info(source_id, include_types, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_source_schemas_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source ID.")],
-            include_types:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_source_schemas_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source ID.")], include_types : Annotated[Optional[StrictStr], Field(description="If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Schemas on a Source  # noqa: E501
 
         Lists the Schemas that exist on the specified Source in IdentityNow.   # noqa: E501
@@ -2606,17 +2560,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'include_types']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'include_types'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_source_schemas" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_source_schemas" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2626,6 +2592,7 @@ class SourcesApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
+
 
         # process the query parameters
         _query_params = []
@@ -2657,8 +2624,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/schemas',
-            'GET',
+            '/sources/{sourceId}/schemas', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2668,59 +2634,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_sources(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **name**: *co, eq, in, sw*   **type**: *eq, in*   **owner.id**: *eq, in*   **features**: *ca, co*   **created**: *eq*   **modified**: *eq*   **managementWorkgroup.id**: *eq*   **description**: *eq*   **authoritative**: *eq*   **healthy**: *eq*   **status**: *eq, in*   **connectionType**: *eq*   **connectorName**: *eq*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified, name, owner.name, healthy, status**"
-            )] = None,
-            for_subadmin:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter the returned list of sources for the identity specified by the parameter, which is the id of an identity with the role SOURCE_SUBADMIN. By convention, the value **me** indicates the identity id of the current user. Subadmins may only view Sources which they are able to administer; all other Sources will be filtered out when this parameter is set. If the current user is a SOURCE_SUBADMIN but fails to pass a valid value for this parameter, a 403 Forbidden is returned."
-            )] = None,
-            **kwargs) -> List[Source]:  # noqa: E501
+    def list_sources(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **name**: *co, eq, in, sw*   **type**: *eq, in*   **owner.id**: *eq, in*   **features**: *ca, co*   **created**: *eq*   **modified**: *eq*   **managementWorkgroup.id**: *eq*   **description**: *eq*   **authoritative**: *eq*   **healthy**: *eq*   **status**: *eq, in*   **connectionType**: *eq*   **connectorName**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified, name, owner.name, healthy, status**")] = None, for_subadmin : Annotated[Optional[StrictStr], Field(description="Filter the returned list of sources for the identity specified by the parameter, which is the id of an identity with the role SOURCE_SUBADMIN. By convention, the value **me** indicates the identity id of the current user. Subadmins may only view Sources which they are able to administer; all other Sources will be filtered out when this parameter is set. If the current user is a SOURCE_SUBADMIN but fails to pass a valid value for this parameter, a 403 Forbidden is returned.")] = None, **kwargs) -> List[Source]:  # noqa: E501
         """Lists all sources in IdentityNow.  # noqa: E501
 
         This end-point lists all the sources in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or ROLE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -2757,56 +2678,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_sources_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_sources_with_http_info(limit, offset, count, filters,
-                                                sorters, for_subadmin,
-                                                **kwargs)  # noqa: E501
+        return self.list_sources_with_http_info(limit, offset, count, filters, sorters, for_subadmin, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_sources_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **name**: *co, eq, in, sw*   **type**: *eq, in*   **owner.id**: *eq, in*   **features**: *ca, co*   **created**: *eq*   **modified**: *eq*   **managementWorkgroup.id**: *eq*   **description**: *eq*   **authoritative**: *eq*   **healthy**: *eq*   **status**: *eq, in*   **connectionType**: *eq*   **connectorName**: *eq*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified, name, owner.name, healthy, status**"
-            )] = None,
-            for_subadmin:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter the returned list of sources for the identity specified by the parameter, which is the id of an identity with the role SOURCE_SUBADMIN. By convention, the value **me** indicates the identity id of the current user. Subadmins may only view Sources which they are able to administer; all other Sources will be filtered out when this parameter is set. If the current user is a SOURCE_SUBADMIN but fails to pass a valid value for this parameter, a 403 Forbidden is returned."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_sources_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **name**: *co, eq, in, sw*   **type**: *eq, in*   **owner.id**: *eq, in*   **features**: *ca, co*   **created**: *eq*   **modified**: *eq*   **managementWorkgroup.id**: *eq*   **description**: *eq*   **authoritative**: *eq*   **healthy**: *eq*   **status**: *eq, in*   **connectionType**: *eq*   **connectorName**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified, name, owner.name, healthy, status**")] = None, for_subadmin : Annotated[Optional[StrictStr], Field(description="Filter the returned list of sources for the identity specified by the parameter, which is the id of an identity with the role SOURCE_SUBADMIN. By convention, the value **me** indicates the identity id of the current user. Subadmins may only view Sources which they are able to administer; all other Sources will be filtered out when this parameter is set. If the current user is a SOURCE_SUBADMIN but fails to pass a valid value for this parameter, a 403 Forbidden is returned.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Lists all sources in IdentityNow.  # noqa: E501
 
         This end-point lists all the sources in IdentityNow. A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or ROLE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -2856,18 +2731,32 @@ class SourcesApi:
         _params = locals()
 
         _all_params = [
-            'limit', 'offset', 'count', 'filters', 'sorters', 'for_subadmin'
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters',
+            'for_subadmin'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_sources" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_sources" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2921,8 +2810,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources',
-            'GET',
+            '/sources', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2932,24 +2820,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_provisioning_policy(self, source_id: Annotated[
-        StrictStr,
-        Field(..., description="The Source ID.")], usage_type: Annotated[
-            UsageType,
-            Field(
-                ...,
-                description=
-                "The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. "
-            )], provisioning_policy_dto: ProvisioningPolicyDto, **kwargs
-                                ) -> ProvisioningPolicyDto:  # noqa: E501
+    def put_provisioning_policy(self, source_id : Annotated[StrictStr, Field(..., description="The Source ID.")], usage_type : Annotated[UsageType, Field(..., description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. ")], provisioning_policy_dto : ProvisioningPolicyDto, **kwargs) -> ProvisioningPolicyDto:  # noqa: E501
         """Update Provisioning Policy by UsageType  # noqa: E501
 
         This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -2980,21 +2858,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_provisioning_policy_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_provisioning_policy_with_http_info(
-            source_id, usage_type, provisioning_policy_dto,
-            **kwargs)  # noqa: E501
+        return self.put_provisioning_policy_with_http_info(source_id, usage_type, provisioning_policy_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_provisioning_policy_with_http_info(self, source_id: Annotated[
-        StrictStr,
-        Field(..., description="The Source ID.")], usage_type: Annotated[
-            UsageType,
-            Field(
-                ...,
-                description=
-                "The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. "
-            )], provisioning_policy_dto: ProvisioningPolicyDto, **kwargs
-                                               ) -> ApiResponse:  # noqa: E501
+    def put_provisioning_policy_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source ID.")], usage_type : Annotated[UsageType, Field(..., description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. ")], provisioning_policy_dto : ProvisioningPolicyDto, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Provisioning Policy by UsageType  # noqa: E501
 
         This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -3037,17 +2904,30 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'usage_type', 'provisioning_policy_dto']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'usage_type',
+            'provisioning_policy_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method put_provisioning_policy" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_provisioning_policy" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3060,6 +2940,7 @@ class SourcesApi:
 
         if _params['usage_type']:
             _path_params['usageType'] = _params['usage_type']
+
 
         # process the query parameters
         _query_params = []
@@ -3078,11 +2959,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -3098,8 +2979,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/provisioning-policies/{usageType}',
-            'PUT',
+            '/sources/{sourceId}/provisioning-policies/{usageType}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -3109,18 +2989,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_source(self,
-                   id: Annotated[StrictStr,
-                                 Field(..., description="The Source id")],
-                   source: Source, **kwargs) -> Source:  # noqa: E501
+    def put_source(self, id : Annotated[StrictStr, Field(..., description="The Source id")], source : Source, **kwargs) -> Source:  # noqa: E501
         """Update Source (Full)  # noqa: E501
 
         This API updates a source in IdentityNow, using a full object representation. In other words, the existing Source configuration is completely replaced.  Some fields are immutable and cannot be changed, such as:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.   # noqa: E501
@@ -3149,13 +3025,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_source_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_source_with_http_info(id, source,
-                                              **kwargs)  # noqa: E501
+        return self.put_source_with_http_info(id, source, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_source_with_http_info(self, id: Annotated[
-        StrictStr, Field(..., description="The Source id")], source: Source,
-                                  **kwargs) -> ApiResponse:  # noqa: E501
+    def put_source_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The Source id")], source : Source, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Source (Full)  # noqa: E501
 
         This API updates a source in IdentityNow, using a full object representation. In other words, the existing Source configuration is completely replaced.  Some fields are immutable and cannot be changed, such as:  * id * type * authoritative * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.   # noqa: E501
@@ -3196,17 +3069,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['id', 'source']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'source'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method put_source" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_source" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3216,6 +3101,7 @@ class SourcesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -3234,11 +3120,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -3254,8 +3140,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{id}',
-            'PUT',
+            '/sources/{id}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -3265,21 +3150,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_source_schema(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            schema_id: Annotated[StrictStr,
-                                 Field(..., description="The Schema id.")],
-            model_schema: ModelSchema, **kwargs) -> ModelSchema:  # noqa: E501
+    def put_source_schema(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], schema_id : Annotated[StrictStr, Field(..., description="The Schema id.")], model_schema : ModelSchema, **kwargs) -> ModelSchema:  # noqa: E501
         """Update Source Schema (Full)  # noqa: E501
 
         This API will completely replace an existing Schema with the submitted payload. Some fields of the Schema cannot be updated. These fields are listed below.  * id * name * created * modified  Any attempt to modify these fields will result in an error response with a status code of 400.  > `id` must remain in the request body, but it cannot be changed.  If `id` is omitted from the request body, the result will be a 400 error.   # noqa: E501
@@ -3310,18 +3188,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_source_schema_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_source_schema_with_http_info(source_id, schema_id,
-                                                     model_schema,
-                                                     **kwargs)  # noqa: E501
+        return self.put_source_schema_with_http_info(source_id, schema_id, model_schema, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_source_schema_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            schema_id: Annotated[StrictStr,
-                                 Field(..., description="The Schema id.")],
-            model_schema: ModelSchema, **kwargs) -> ApiResponse:  # noqa: E501
+    def put_source_schema_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], schema_id : Annotated[StrictStr, Field(..., description="The Schema id.")], model_schema : ModelSchema, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Source Schema (Full)  # noqa: E501
 
         This API will completely replace an existing Schema with the submitted payload. Some fields of the Schema cannot be updated. These fields are listed below.  * id * name * created * modified  Any attempt to modify these fields will result in an error response with a status code of 400.  > `id` must remain in the request body, but it cannot be changed.  If `id` is omitted from the request body, the result will be a 400 error.   # noqa: E501
@@ -3364,17 +3234,30 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'schema_id', 'model_schema']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'schema_id',
+            'model_schema'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method put_source_schema" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_source_schema" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3387,6 +3270,7 @@ class SourcesApi:
 
         if _params['schema_id']:
             _path_params['schemaId'] = _params['schema_id']
+
 
         # process the query parameters
         _query_params = []
@@ -3405,11 +3289,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -3425,8 +3309,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/schemas/{schemaId}',
-            'PUT',
+            '/sources/{sourceId}/schemas/{schemaId}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -3436,20 +3319,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_provisioning_policies_in_bulk(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            provisioning_policy_dto: conlist(ProvisioningPolicyDto),
-            **kwargs) -> List[ProvisioningPolicyDto]:  # noqa: E501
+    def update_provisioning_policies_in_bulk(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], provisioning_policy_dto : conlist(ProvisioningPolicyDto), **kwargs) -> List[ProvisioningPolicyDto]:  # noqa: E501
         """Bulk Update Provisioning Policies  # noqa: E501
 
         This end-point updates a list of provisioning policies on the specified source in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -3478,16 +3355,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_provisioning_policies_in_bulk_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_provisioning_policies_in_bulk_with_http_info(
-            source_id, provisioning_policy_dto, **kwargs)  # noqa: E501
+        return self.update_provisioning_policies_in_bulk_with_http_info(source_id, provisioning_policy_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_provisioning_policies_in_bulk_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            provisioning_policy_dto: conlist(ProvisioningPolicyDto),
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def update_provisioning_policies_in_bulk_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], provisioning_policy_dto : conlist(ProvisioningPolicyDto), **kwargs) -> ApiResponse:  # noqa: E501
         """Bulk Update Provisioning Policies  # noqa: E501
 
         This end-point updates a list of provisioning policies on the specified source in IdentityNow. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -3528,18 +3399,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'provisioning_policy_dto']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'provisioning_policy_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update_provisioning_policies_in_bulk" % _key)
+                    " to method update_provisioning_policies_in_bulk" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3549,6 +3431,7 @@ class SourcesApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
+
 
         # process the query parameters
         _query_params = []
@@ -3567,11 +3450,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -3587,8 +3470,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/provisioning-policies/bulk-update',
-            'POST',
+            '/sources/{sourceId}/provisioning-policies/bulk-update', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -3598,30 +3480,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_provisioning_policy(self, source_id: Annotated[
-        StrictStr,
-        Field(..., description="The Source id.")], usage_type: Annotated[
-            UsageType,
-            Field(
-                ...,
-                description=
-                "The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. "
-            )], json_patch_operation: Annotated[
-                conlist(JsonPatchOperation),
-                Field(
-                    ...,
-                    description=
-                    "The JSONPatch payload used to update the schema.")],
-                                   **kwargs
-                                   ) -> ProvisioningPolicyDto:  # noqa: E501
+    def update_provisioning_policy(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], usage_type : Annotated[UsageType, Field(..., description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. ")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="The JSONPatch payload used to update the schema.")], **kwargs) -> ProvisioningPolicyDto:  # noqa: E501
         """Partial update of Provisioning Policy  # noqa: E501
 
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -3652,26 +3518,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_provisioning_policy_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_provisioning_policy_with_http_info(
-            source_id, usage_type, json_patch_operation,
-            **kwargs)  # noqa: E501
+        return self.update_provisioning_policy_with_http_info(source_id, usage_type, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_provisioning_policy_with_http_info(self, source_id: Annotated[
-        StrictStr,
-        Field(..., description="The Source id.")], usage_type: Annotated[
-            UsageType,
-            Field(
-                ...,
-                description=
-                "The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. "
-            )], json_patch_operation: Annotated[
-                conlist(JsonPatchOperation),
-                Field(
-                    ...,
-                    description=
-                    "The JSONPatch payload used to update the schema."
-                )], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_provisioning_policy_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], usage_type : Annotated[UsageType, Field(..., description="The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. ")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="The JSONPatch payload used to update the schema.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Partial update of Provisioning Policy  # noqa: E501
 
         This API selectively updates an existing Provisioning Policy using a JSONPatch payload. Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning. Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information. A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -3714,18 +3564,30 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'usage_type', 'json_patch_operation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'usage_type',
+            'json_patch_operation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_provisioning_policy" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_provisioning_policy" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3738,6 +3600,7 @@ class SourcesApi:
 
         if _params['usage_type']:
             _path_params['usageType'] = _params['usage_type']
+
 
         # process the query parameters
         _query_params = []
@@ -3756,12 +3619,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -3777,8 +3639,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/provisioning-policies/{usageType}',
-            'PATCH',
+            '/sources/{sourceId}/provisioning-policies/{usageType}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -3788,24 +3649,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_source(self, id: Annotated[
-        StrictStr, Field(
-            ..., description="The Source id"
-        )], json_patch_operation: Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow."
-            )], **kwargs) -> Source:  # noqa: E501
+    def update_source(self, id : Annotated[StrictStr, Field(..., description="The Source id")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow.")], **kwargs) -> Source:  # noqa: E501
         """Update Source (Partial)  # noqa: E501
 
         This API partially updates a source in IdentityNow, using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Some fields are immutable and cannot be changed, such as:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is required to call this API.   # noqa: E501
@@ -3834,20 +3685,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_source_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_source_with_http_info(id, json_patch_operation,
-                                                 **kwargs)  # noqa: E501
+        return self.update_source_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_source_with_http_info(self, id: Annotated[
-        StrictStr, Field(
-            ..., description="The Source id"
-        )], json_patch_operation: Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow."
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_source_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The Source id")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Update Source (Partial)  # noqa: E501
 
         This API partially updates a source in IdentityNow, using a list of patch operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Some fields are immutable and cannot be changed, such as:  * id * type * authoritative * created * modified * connector * connectorClass * passwordPolicies  Attempts to modify these fields will result in a 400 error.  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is required to call this API.   # noqa: E501
@@ -3888,17 +3729,29 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['id', 'json_patch_operation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'json_patch_operation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_source" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_source" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3908,6 +3761,7 @@ class SourcesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -3926,12 +3780,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -3947,8 +3800,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{id}',
-            'PATCH',
+            '/sources/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -3958,27 +3810,14 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_source_schema(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            schema_id: Annotated[StrictStr,
-                                 Field(..., description="The Schema id.")],
-            json_patch_operation: Annotated[
-                conlist(JsonPatchOperation),
-                Field(
-                    ...,
-                    description=
-                    "The JSONPatch payload used to update the schema.")],
-            **kwargs) -> ModelSchema:  # noqa: E501
+    def update_source_schema(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], schema_id : Annotated[StrictStr, Field(..., description="The Schema id.")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="The JSONPatch payload used to update the schema.")], **kwargs) -> ModelSchema:  # noqa: E501
         """Update Source Schema (Partial)  # noqa: E501
 
         Use this API to selectively update an existing Schema using a JSONPatch payload.   The following schema fields are immutable and cannot be updated:  - id - name - created - modified   To switch an account attribute to a group entitlement, you need to have the following in place:  - `isEntitlement: true` - Must define a schema for the group and [add it to the source](https://developer.sailpoint.com/idn/api/v3/create-source-schema) before updating the `isGroup` flag.  For example, here is the `group` account attribute referencing a schema that defines the group: ```json {     \"name\": \"groups\",     \"type\": \"STRING\",     \"schema\": {         \"type\": \"CONNECTOR_SCHEMA\",         \"id\": \"2c9180887671ff8c01767b4671fc7d60\",         \"name\": \"group\"     },     \"description\": \"The groups, roles etc. that reference account group objects\",     \"isMulti\": true,     \"isEntitlement\": true,     \"isGroup\": true } ```   # noqa: E501
@@ -4009,23 +3848,10 @@ class SourcesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_source_schema_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_source_schema_with_http_info(
-            source_id, schema_id, json_patch_operation, **kwargs)  # noqa: E501
+        return self.update_source_schema_with_http_info(source_id, schema_id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_source_schema_with_http_info(
-            self,
-            source_id: Annotated[StrictStr,
-                                 Field(..., description="The Source id.")],
-            schema_id: Annotated[StrictStr,
-                                 Field(..., description="The Schema id.")],
-            json_patch_operation: Annotated[
-                conlist(JsonPatchOperation),
-                Field(
-                    ...,
-                    description=
-                    "The JSONPatch payload used to update the schema.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def update_source_schema_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id.")], schema_id : Annotated[StrictStr, Field(..., description="The Schema id.")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="The JSONPatch payload used to update the schema.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Update Source Schema (Partial)  # noqa: E501
 
         Use this API to selectively update an existing Schema using a JSONPatch payload.   The following schema fields are immutable and cannot be updated:  - id - name - created - modified   To switch an account attribute to a group entitlement, you need to have the following in place:  - `isEntitlement: true` - Must define a schema for the group and [add it to the source](https://developer.sailpoint.com/idn/api/v3/create-source-schema) before updating the `isGroup` flag.  For example, here is the `group` account attribute referencing a schema that defines the group: ```json {     \"name\": \"groups\",     \"type\": \"STRING\",     \"schema\": {         \"type\": \"CONNECTOR_SCHEMA\",         \"id\": \"2c9180887671ff8c01767b4671fc7d60\",         \"name\": \"group\"     },     \"description\": \"The groups, roles etc. that reference account group objects\",     \"isMulti\": true,     \"isEntitlement\": true,     \"isGroup\": true } ```   # noqa: E501
@@ -4068,17 +3894,30 @@ class SourcesApi:
 
         _params = locals()
 
-        _all_params = ['source_id', 'schema_id', 'json_patch_operation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_id',
+            'schema_id',
+            'json_patch_operation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_source_schema" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_source_schema" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -4091,6 +3930,7 @@ class SourcesApi:
 
         if _params['schema_id']:
             _path_params['schemaId'] = _params['schema_id']
+
 
         # process the query parameters
         _query_params = []
@@ -4109,12 +3949,11 @@ class SourcesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -4130,8 +3969,7 @@ class SourcesApi:
         }
 
         return self.api_client.call_api(
-            '/sources/{sourceId}/schemas/{schemaId}',
-            'PATCH',
+            '/sources/{sourceId}/schemas/{schemaId}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -4141,8 +3979,7 @@ class SourcesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

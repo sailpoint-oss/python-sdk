@@ -11,37 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-
 
 class IdentityListItem(BaseModel):
     """
     IdentityListItem
     """
     id: Optional[StrictStr] = Field(None, description="the identity ID")
-    display_name: Optional[StrictStr] = Field(
-        None,
-        alias="displayName",
-        description="the display name of the identity")
-    first_name: Optional[StrictStr] = Field(
-        None, alias="firstName", description="the first name of the identity")
-    last_name: Optional[StrictStr] = Field(
-        None, alias="lastName", description="the last name of the identity")
-    active: Optional[StrictBool] = Field(
-        True, description="indicates if an identity is active or not")
-    deleted_date: Optional[StrictStr] = Field(
-        None,
-        alias="deletedDate",
-        description="the date when the identity was deleted")
-    __properties = [
-        "id", "displayName", "firstName", "lastName", "active", "deletedDate"
-    ]
+    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="the display name of the identity")
+    first_name: Optional[StrictStr] = Field(None, alias="firstName", description="the first name of the identity")
+    last_name: Optional[StrictStr] = Field(None, alias="lastName", description="the last name of the identity")
+    active: Optional[StrictBool] = Field(True, description="indicates if an identity is active or not")
+    deleted_date: Optional[StrictStr] = Field(None, alias="deletedDate", description="the date when the identity was deleted")
+    __properties = ["id", "displayName", "firstName", "lastName", "active", "deletedDate"]
 
     class Config:
         """Pydantic configuration"""
@@ -63,7 +53,10 @@ class IdentityListItem(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if deleted_date (nullable) is None
         # and __fields_set__ contains the field
         if self.deleted_date is None and "deleted_date" in self.__fields_set__:
@@ -81,17 +74,13 @@ class IdentityListItem(BaseModel):
             return IdentityListItem.parse_obj(obj)
 
         _obj = IdentityListItem.parse_obj({
-            "id":
-            obj.get("id"),
-            "display_name":
-            obj.get("displayName"),
-            "first_name":
-            obj.get("firstName"),
-            "last_name":
-            obj.get("lastName"),
-            "active":
-            obj.get("active") if obj.get("active") is not None else True,
-            "deleted_date":
-            obj.get("deletedDate")
+            "id": obj.get("id"),
+            "display_name": obj.get("displayName"),
+            "first_name": obj.get("firstName"),
+            "last_name": obj.get("lastName"),
+            "active": obj.get("active") if obj.get("active") is not None else True,
+            "deleted_date": obj.get("deletedDate")
         })
         return _obj
+
+

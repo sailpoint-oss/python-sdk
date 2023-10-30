@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.completed_approval import CompletedApproval  # noqa: E501
-
 
 class TestCompletedApproval(unittest.TestCase):
     """CompletedApproval unit test stubs"""
@@ -42,19 +42,19 @@ class TestCompletedApproval(unittest.TestCase):
                 modified = '2018-07-25T20:22:28.104Z',
                 request_created = '2017-07-11T18:45:35.098Z',
                 request_type = 'GRANT_ACCESS',
-                requester = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                requester = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
-                requested_for = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                requested_for = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
-                reviewed_by = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                reviewed_by = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
-                owner = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                owner = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
@@ -111,7 +111,7 @@ class TestCompletedApproval(unittest.TestCase):
                         client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}, 
                         violation_contexts = [
                             beta.models.sod_violation_context_1.SodViolationContext_1(
-                                policy = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                                policy = beta.models.base_reference_dto.BaseReferenceDto(
                                     type = 'IDENTITY', 
                                     id = '2c91808568c529c60168cca6f90c1313', 
                                     name = 'William Wilson', ), 
@@ -126,7 +126,7 @@ class TestCompletedApproval(unittest.TestCase):
                                     right_criteria = beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(), ), )
                             ], 
                         violated_policies = [
-                            beta.models.base_reference_dto.BaseReferenceDto(
+                            beta.models.base_reference_dto_1.BaseReferenceDto_1(
                                 id = 'ff8081814d977c21014da056804a0af3', 
                                 name = 'Github', )
                             ], ), )
@@ -140,7 +140,6 @@ class TestCompletedApproval(unittest.TestCase):
         """Test CompletedApproval"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

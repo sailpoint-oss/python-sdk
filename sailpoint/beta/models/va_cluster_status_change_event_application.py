@@ -11,14 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class VAClusterStatusChangeEventApplication(BaseModel):
     """
@@ -26,11 +27,7 @@ class VAClusterStatusChangeEventApplication(BaseModel):
     """
     id: StrictStr = Field(..., description="The GUID of the application")
     name: StrictStr = Field(..., description="The name of the application")
-    attributes: Optional[Dict[str, Any]] = Field(
-        ...,
-        description=
-        "Custom map of attributes for a source.  This will only be populated if type is `SOURCE` and the source has a proxy."
-    )
+    attributes: Optional[Dict[str, Any]] = Field(..., description="Custom map of attributes for a source.  This will only be populated if type is `SOURCE` and the source has a proxy.")
     __properties = ["id", "name", "attributes"]
 
     class Config:
@@ -53,7 +50,10 @@ class VAClusterStatusChangeEventApplication(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if attributes (nullable) is None
         # and __fields_set__ contains the field
         if self.attributes is None and "attributes" in self.__fields_set__:
@@ -71,11 +71,10 @@ class VAClusterStatusChangeEventApplication(BaseModel):
             return VAClusterStatusChangeEventApplication.parse_obj(obj)
 
         _obj = VAClusterStatusChangeEventApplication.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "attributes":
-            obj.get("attributes")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "attributes": obj.get("attributes")
         })
         return _obj
+
+

@@ -11,14 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.sod_violation_context_conflicting_access_criteria_left_criteria import SodViolationContextConflictingAccessCriteriaLeftCriteria  # noqa: E501
 
-
-class TestSodViolationContextConflictingAccessCriteriaLeftCriteria(
-        unittest.TestCase):
+class TestSodViolationContextConflictingAccessCriteriaLeftCriteria(unittest.TestCase):
     """SodViolationContextConflictingAccessCriteriaLeftCriteria unit test stubs"""
 
     def setUp(self):
@@ -27,9 +26,7 @@ class TestSodViolationContextConflictingAccessCriteriaLeftCriteria(
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> SodViolationContextConflictingAccessCriteriaLeftCriteria:
+    def make_instance(self, include_optional) -> SodViolationContextConflictingAccessCriteriaLeftCriteria:
         """Test SodViolationContextConflictingAccessCriteriaLeftCriteria
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -56,7 +53,6 @@ class TestSodViolationContextConflictingAccessCriteriaLeftCriteria(
         """Test SodViolationContextConflictingAccessCriteriaLeftCriteria"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

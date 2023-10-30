@@ -11,23 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class Reference(BaseModel):
     """
     Reference
     """
-    id: Optional[StrictStr] = Field(
-        None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(
-        None, description="The human readable name of the referenced object.")
+    id: Optional[StrictStr] = Field(None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(None, description="The human readable name of the referenced object.")
     __properties = ["id", "name"]
 
     class Config:
@@ -50,7 +49,10 @@ class Reference(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,3 +69,5 @@ class Reference(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

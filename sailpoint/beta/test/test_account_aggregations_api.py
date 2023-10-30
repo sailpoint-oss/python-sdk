@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.account_aggregations_api import AccountAggregationsApi  # noqa: E501

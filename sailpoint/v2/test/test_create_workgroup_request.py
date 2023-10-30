@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v2.models.create_workgroup_request import CreateWorkgroupRequest  # noqa: E501
-
 
 class TestCreateWorkgroupRequest(unittest.TestCase):
     """CreateWorkgroupRequest unit test stubs"""
@@ -50,7 +50,6 @@ class TestCreateWorkgroupRequest(unittest.TestCase):
         """Test CreateWorkgroupRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

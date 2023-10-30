@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.identity_preview_response import IdentityPreviewResponse  # noqa: E501
-
 
 class TestIdentityPreviewResponse(unittest.TestCase):
     """IdentityPreviewResponse unit test stubs"""
@@ -36,7 +36,7 @@ class TestIdentityPreviewResponse(unittest.TestCase):
         model = IdentityPreviewResponse()  # noqa: E501
         if include_optional:
             return IdentityPreviewResponse(
-                identity = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                identity = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
@@ -62,7 +62,6 @@ class TestIdentityPreviewResponse(unittest.TestCase):
         """Test IdentityPreviewResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

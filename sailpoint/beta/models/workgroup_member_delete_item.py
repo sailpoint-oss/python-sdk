@@ -11,33 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class WorkgroupMemberDeleteItem(BaseModel):
     """
     WorkgroupMemberDeleteItem
     """
-    id: StrictStr = Field(
-        ...,
-        description="Identifier of identity in bulk member add /remove request."
-    )
-    status: StrictStr = Field(
-        ...,
-        description=
-        " The HTTP response status code returned for an individual  member that is requested for deletion during a bulk delete operation.  > 204   - Identity is removed from Governance Group members list.  > 404   - Identity is not member of Governance Group. "
-    )
-    description: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human readable status description and containing additional context information about success or failures etc. "
-    )
+    id: StrictStr = Field(..., description="Identifier of identity in bulk member add /remove request.")
+    status: StrictStr = Field(..., description=" The HTTP response status code returned for an individual  member that is requested for deletion during a bulk delete operation.  > 204   - Identity is removed from Governance Group members list.  > 404   - Identity is not member of Governance Group. ")
+    description: Optional[StrictStr] = Field(None, description="Human readable status description and containing additional context information about success or failures etc. ")
     __properties = ["id", "status", "description"]
 
     class Config:
@@ -60,7 +50,10 @@ class WorkgroupMemberDeleteItem(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -73,11 +66,10 @@ class WorkgroupMemberDeleteItem(BaseModel):
             return WorkgroupMemberDeleteItem.parse_obj(obj)
 
         _obj = WorkgroupMemberDeleteItem.parse_obj({
-            "id":
-            obj.get("id"),
-            "status":
-            obj.get("status"),
-            "description":
-            obj.get("description")
+            "id": obj.get("id"),
+            "status": obj.get("status"),
+            "description": obj.get("description")
         })
         return _obj
+
+

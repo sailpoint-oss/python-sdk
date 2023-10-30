@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -27,7 +28,9 @@ from beta.models.managed_client_type import ManagedClientType
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class ManagedClientsApi:
@@ -43,16 +46,7 @@ class ManagedClientsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_managed_client_status(
-            self, id: Annotated[
-                StrictStr,
-                Field(...,
-                      description="ID of the Managed Client Status to get")],
-            type: Annotated[
-                ManagedClientType,
-                Field(...,
-                      description="Type of the Managed Client Status to get")],
-            **kwargs) -> ManagedClientStatus:  # noqa: E501
+    def get_managed_client_status(self, id : Annotated[StrictStr, Field(..., description="ID of the Managed Client Status to get")], type : Annotated[ManagedClientType, Field(..., description="Type of the Managed Client Status to get")], **kwargs) -> ManagedClientStatus:  # noqa: E501
         """Specified Managed Client Status.  # noqa: E501
 
         Retrieve Managed Client Status by ID.  # noqa: E501
@@ -81,20 +75,10 @@ class ManagedClientsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_managed_client_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_managed_client_status_with_http_info(
-            id, type, **kwargs)  # noqa: E501
+        return self.get_managed_client_status_with_http_info(id, type, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_managed_client_status_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(...,
-                      description="ID of the Managed Client Status to get")],
-            type: Annotated[
-                ManagedClientType,
-                Field(...,
-                      description="Type of the Managed Client Status to get")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_managed_client_status_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Managed Client Status to get")], type : Annotated[ManagedClientType, Field(..., description="Type of the Managed Client Status to get")], **kwargs) -> ApiResponse:  # noqa: E501
         """Specified Managed Client Status.  # noqa: E501
 
         Retrieve Managed Client Status by ID.  # noqa: E501
@@ -135,18 +119,29 @@ class ManagedClientsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'type']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'type'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_managed_client_status" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_managed_client_status" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -156,6 +151,7 @@ class ManagedClientsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -187,8 +183,7 @@ class ManagedClientsApi:
         }
 
         return self.api_client.call_api(
-            '/managed-clients/{id}/status',
-            'GET',
+            '/managed-clients/{id}/status', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -198,21 +193,14 @@ class ManagedClientsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_managed_client_status(
-            self, id: Annotated[
-                StrictStr,
-                Field(...,
-                      description="ID of the Managed Client Status to update"
-                      )], managed_client_status: ManagedClientStatus,
-            **kwargs) -> ManagedClientStatusAggResponse:  # noqa: E501
+    def update_managed_client_status(self, id : Annotated[StrictStr, Field(..., description="ID of the Managed Client Status to update")], managed_client_status : ManagedClientStatus, **kwargs) -> ManagedClientStatusAggResponse:  # noqa: E501
         """Handle status request from client  # noqa: E501
 
         Update a status detail passed in from the client  # noqa: E501
@@ -241,17 +229,10 @@ class ManagedClientsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_managed_client_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_managed_client_status_with_http_info(
-            id, managed_client_status, **kwargs)  # noqa: E501
+        return self.update_managed_client_status_with_http_info(id, managed_client_status, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_managed_client_status_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(...,
-                      description="ID of the Managed Client Status to update"
-                      )], managed_client_status: ManagedClientStatus,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def update_managed_client_status_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Managed Client Status to update")], managed_client_status : ManagedClientStatus, **kwargs) -> ApiResponse:  # noqa: E501
         """Handle status request from client  # noqa: E501
 
         Update a status detail passed in from the client  # noqa: E501
@@ -292,18 +273,29 @@ class ManagedClientsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'managed_client_status']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'managed_client_status'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_managed_client_status" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_managed_client_status" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -313,6 +305,7 @@ class ManagedClientsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -331,11 +324,11 @@ class ManagedClientsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -351,8 +344,7 @@ class ManagedClientsApi:
         }
 
         return self.api_client.call_api(
-            '/managed-clients/{id}/status',
-            'POST',
+            '/managed-clients/{id}/status', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -362,8 +354,7 @@ class ManagedClientsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

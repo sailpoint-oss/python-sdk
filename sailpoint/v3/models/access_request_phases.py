@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,30 +21,17 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 
-
 class AccessRequestPhases(BaseModel):
     """
     Provides additional details about this access request phase.  # noqa: E501
     """
-    started: Optional[datetime] = Field(
-        None, description="The time that this phase started.")
-    finished: Optional[datetime] = Field(
-        None, description="The time that this phase finished.")
-    name: Optional[StrictStr] = Field(None,
-                                      description="The name of this phase.")
-    state: Optional[StrictStr] = Field(None,
-                                       description="The state of this phase.")
-    result: Optional[StrictStr] = Field(None,
-                                        description="The state of this phase.")
-    phase_reference: Optional[StrictStr] = Field(
-        None,
-        alias="phaseReference",
-        description=
-        "A reference to another object on the RequestedItemStatus that contains more details about the phase. Note that for the Provisioning phase, this will be empty if there are no manual work items."
-    )
-    __properties = [
-        "started", "finished", "name", "state", "result", "phaseReference"
-    ]
+    started: Optional[datetime] = Field(None, description="The time that this phase started.")
+    finished: Optional[datetime] = Field(None, description="The time that this phase finished.")
+    name: Optional[StrictStr] = Field(None, description="The name of this phase.")
+    state: Optional[StrictStr] = Field(None, description="The state of this phase.")
+    result: Optional[StrictStr] = Field(None, description="The state of this phase.")
+    phase_reference: Optional[StrictStr] = Field(None, alias="phaseReference", description="A reference to another object on the RequestedItemStatus that contains more details about the phase. Note that for the Provisioning phase, this will be empty if there are no manual work items.")
+    __properties = ["started", "finished", "name", "state", "result", "phaseReference"]
 
     @validator('state')
     def state_validate_enum(cls, value):
@@ -52,9 +40,7 @@ class AccessRequestPhases(BaseModel):
             return value
 
         if value not in ('PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED'):
-            raise ValueError(
-                "must be one of enum values ('PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED')"
-            )
+            raise ValueError("must be one of enum values ('PENDING', 'EXECUTING', 'COMPLETED', 'CANCELLED')")
         return value
 
     @validator('result')
@@ -64,8 +50,7 @@ class AccessRequestPhases(BaseModel):
             return value
 
         if value not in ('SUCCESSFUL', 'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('SUCCESSFUL', 'FAILED')")
+            raise ValueError("must be one of enum values ('SUCCESSFUL', 'FAILED')")
         return value
 
     class Config:
@@ -88,7 +73,10 @@ class AccessRequestPhases(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -101,17 +89,13 @@ class AccessRequestPhases(BaseModel):
             return AccessRequestPhases.parse_obj(obj)
 
         _obj = AccessRequestPhases.parse_obj({
-            "started":
-            obj.get("started"),
-            "finished":
-            obj.get("finished"),
-            "name":
-            obj.get("name"),
-            "state":
-            obj.get("state"),
-            "result":
-            obj.get("result"),
-            "phase_reference":
-            obj.get("phaseReference")
+            "started": obj.get("started"),
+            "finished": obj.get("finished"),
+            "name": obj.get("name"),
+            "state": obj.get("state"),
+            "result": obj.get("result"),
+            "phase_reference": obj.get("phaseReference")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -30,7 +31,9 @@ from v3.models.json_patch_operation import JsonPatchOperation
 from v3.api_client import ApiClient
 from v3.api_response import ApiResponse
 from v3.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class PersonalAccessTokensApi:
@@ -46,12 +49,7 @@ class PersonalAccessTokensApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_personal_access_token(
-            self, create_personal_access_token_request: Annotated[
-                CreatePersonalAccessTokenRequest,
-                Field(...,
-                      description="Name and scope of personal access token.")],
-            **kwargs) -> CreatePersonalAccessTokenResponse:  # noqa: E501
+    def create_personal_access_token(self, create_personal_access_token_request : Annotated[CreatePersonalAccessTokenRequest, Field(..., description="Name and scope of personal access token.")], **kwargs) -> CreatePersonalAccessTokenResponse:  # noqa: E501
         """Create Personal Access Token  # noqa: E501
 
         This creates a personal access token.  # noqa: E501
@@ -78,16 +76,10 @@ class PersonalAccessTokensApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_personal_access_token_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_personal_access_token_with_http_info(
-            create_personal_access_token_request, **kwargs)  # noqa: E501
+        return self.create_personal_access_token_with_http_info(create_personal_access_token_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_personal_access_token_with_http_info(
-            self, create_personal_access_token_request: Annotated[
-                CreatePersonalAccessTokenRequest,
-                Field(...,
-                      description="Name and scope of personal access token.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_personal_access_token_with_http_info(self, create_personal_access_token_request : Annotated[CreatePersonalAccessTokenRequest, Field(..., description="Name and scope of personal access token.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Create Personal Access Token  # noqa: E501
 
         This creates a personal access token.  # noqa: E501
@@ -126,18 +118,28 @@ class PersonalAccessTokensApi:
 
         _params = locals()
 
-        _all_params = ['create_personal_access_token_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'create_personal_access_token_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_personal_access_token" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_personal_access_token" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -163,11 +165,11 @@ class PersonalAccessTokensApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -182,8 +184,7 @@ class PersonalAccessTokensApi:
         }
 
         return self.api_client.call_api(
-            '/personal-access-tokens',
-            'POST',
+            '/personal-access-tokens', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -193,18 +194,14 @@ class PersonalAccessTokensApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_personal_access_token(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The personal access token id")],
-                                     **kwargs) -> None:  # noqa: E501
+    def delete_personal_access_token(self, id : Annotated[StrictStr, Field(..., description="The personal access token id")], **kwargs) -> None:  # noqa: E501
         """Delete Personal Access Token  # noqa: E501
 
         This deletes a personal access token.  # noqa: E501
@@ -231,15 +228,10 @@ class PersonalAccessTokensApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_personal_access_token_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_personal_access_token_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.delete_personal_access_token_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_personal_access_token_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="The personal access token id")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_personal_access_token_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The personal access token id")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Personal Access Token  # noqa: E501
 
         This deletes a personal access token.  # noqa: E501
@@ -278,18 +270,28 @@ class PersonalAccessTokensApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_personal_access_token" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_personal_access_token" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -299,6 +301,7 @@ class PersonalAccessTokensApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -319,8 +322,7 @@ class PersonalAccessTokensApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/personal-access-tokens/{id}',
-            'DELETE',
+            '/personal-access-tokens/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -330,31 +332,14 @@ class PersonalAccessTokensApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_personal_access_tokens(
-            self,
-            owner_id:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The identity ID of the owner whose personal access tokens should be listed.  If \"me\", the caller should have the following right: 'idn:my-personal-access-tokens:read' If an actual owner ID or if the `owner-id` parameter is omitted in the request,  the caller should have the following right: 'idn:all-personal-access-tokens:read'.  If the caller has the following right, then managed personal access tokens associated with `owner-id`  will be retrieved: 'idn:managed-personal-access-tokens:read'"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull*"
-            )] = None,
-            **kwargs) -> List[GetPersonalAccessTokenResponse]:  # noqa: E501
+    def list_personal_access_tokens(self, owner_id : Annotated[Optional[StrictStr], Field(description="The identity ID of the owner whose personal access tokens should be listed.  If \"me\", the caller should have the following right: 'idn:my-personal-access-tokens:read' If an actual owner ID or if the `owner-id` parameter is omitted in the request,  the caller should have the following right: 'idn:all-personal-access-tokens:read'.  If the caller has the following right, then managed personal access tokens associated with `owner-id`  will be retrieved: 'idn:managed-personal-access-tokens:read'")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull*")] = None, **kwargs) -> List[GetPersonalAccessTokenResponse]:  # noqa: E501
         """List Personal Access Tokens  # noqa: E501
 
         This gets a collection of personal access tokens associated with the optional `owner-id`.  query parameter. If the `owner-id` query parameter is omitted, all personal access tokens  for a tenant will be retrieved, but the caller must have the 'idn:all-personal-access-tokens:read' right.  # noqa: E501
@@ -383,27 +368,10 @@ class PersonalAccessTokensApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_personal_access_tokens_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_personal_access_tokens_with_http_info(
-            owner_id, filters, **kwargs)  # noqa: E501
+        return self.list_personal_access_tokens_with_http_info(owner_id, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_personal_access_tokens_with_http_info(
-            self,
-            owner_id:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The identity ID of the owner whose personal access tokens should be listed.  If \"me\", the caller should have the following right: 'idn:my-personal-access-tokens:read' If an actual owner ID or if the `owner-id` parameter is omitted in the request,  the caller should have the following right: 'idn:all-personal-access-tokens:read'.  If the caller has the following right, then managed personal access tokens associated with `owner-id`  will be retrieved: 'idn:managed-personal-access-tokens:read'"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull*"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_personal_access_tokens_with_http_info(self, owner_id : Annotated[Optional[StrictStr], Field(description="The identity ID of the owner whose personal access tokens should be listed.  If \"me\", the caller should have the following right: 'idn:my-personal-access-tokens:read' If an actual owner ID or if the `owner-id` parameter is omitted in the request,  the caller should have the following right: 'idn:all-personal-access-tokens:read'.  If the caller has the following right, then managed personal access tokens associated with `owner-id`  will be retrieved: 'idn:managed-personal-access-tokens:read'")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Personal Access Tokens  # noqa: E501
 
         This gets a collection of personal access tokens associated with the optional `owner-id`.  query parameter. If the `owner-id` query parameter is omitted, all personal access tokens  for a tenant will be retrieved, but the caller must have the 'idn:all-personal-access-tokens:read' right.  # noqa: E501
@@ -444,18 +412,29 @@ class PersonalAccessTokensApi:
 
         _params = locals()
 
-        _all_params = ['owner_id', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'owner_id',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_personal_access_tokens" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_personal_access_tokens" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -496,8 +475,7 @@ class PersonalAccessTokensApi:
         }
 
         return self.api_client.call_api(
-            '/personal-access-tokens',
-            'GET',
+            '/personal-access-tokens', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -507,25 +485,14 @@ class PersonalAccessTokensApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_personal_access_token(self, id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The Personal Access Token id"
-        )], json_patch_operation: Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope "
-            )], **kwargs) -> GetPersonalAccessTokenResponse:  # noqa: E501
+    def patch_personal_access_token(self, id : Annotated[StrictStr, Field(..., description="The Personal Access Token id")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope ")], **kwargs) -> GetPersonalAccessTokenResponse:  # noqa: E501
         """Patch Personal Access Token  # noqa: E501
 
         This performs a targeted update to the field(s) of a Personal Access Token.  # noqa: E501
@@ -554,21 +521,10 @@ class PersonalAccessTokensApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_personal_access_token_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_personal_access_token_with_http_info(
-            id, json_patch_operation, **kwargs)  # noqa: E501
+        return self.patch_personal_access_token_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_personal_access_token_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="The Personal Access Token id"
-        )], json_patch_operation: Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope "
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_personal_access_token_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The Personal Access Token id")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope ")], **kwargs) -> ApiResponse:  # noqa: E501
         """Patch Personal Access Token  # noqa: E501
 
         This performs a targeted update to the field(s) of a Personal Access Token.  # noqa: E501
@@ -609,18 +565,29 @@ class PersonalAccessTokensApi:
 
         _params = locals()
 
-        _all_params = ['id', 'json_patch_operation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'json_patch_operation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method patch_personal_access_token" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_personal_access_token" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -630,6 +597,7 @@ class PersonalAccessTokensApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -648,12 +616,11 @@ class PersonalAccessTokensApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -669,8 +636,7 @@ class PersonalAccessTokensApi:
         }
 
         return self.api_client.call_api(
-            '/personal-access-tokens/{id}',
-            'PATCH',
+            '/personal-access-tokens/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -680,8 +646,7 @@ class PersonalAccessTokensApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

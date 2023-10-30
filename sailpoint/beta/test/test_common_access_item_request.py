@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.common_access_item_request import CommonAccessItemRequest  # noqa: E501
-
 
 class TestCommonAccessItemRequest(unittest.TestCase):
     """CommonAccessItemRequest unit test stubs"""
@@ -54,7 +54,6 @@ class TestCommonAccessItemRequest(unittest.TestCase):
         """Test CommonAccessItemRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

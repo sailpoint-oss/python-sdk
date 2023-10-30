@@ -11,26 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, conlist
-
 
 class AggregationResult(BaseModel):
     """
     AggregationResult
     """
-    aggregations: Optional[Dict[str, Any]] = Field(
-        None,
-        description=
-        "The document containing the results of the aggregation. This document is controlled by Elasticsearch and depends on the type of aggregation query that is run.  See Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) documentation for information. "
-    )
-    hits: Optional[conlist(Dict[str, Any])] = Field(
-        None, description="The results of the aggregation search query. ")
+    aggregations: Optional[Dict[str, Any]] = Field(None, description="The document containing the results of the aggregation. This document is controlled by Elasticsearch and depends on the type of aggregation query that is run.  See Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) documentation for information. ")
+    hits: Optional[conlist(Dict[str, Any])] = Field(None, description="The results of the aggregation search query. ")
     __properties = ["aggregations", "hits"]
 
     class Config:
@@ -53,7 +49,10 @@ class AggregationResult(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,9 +65,9 @@ class AggregationResult(BaseModel):
             return AggregationResult.parse_obj(obj)
 
         _obj = AggregationResult.parse_obj({
-            "aggregations":
-            obj.get("aggregations"),
-            "hits":
-            obj.get("hits")
+            "aggregations": obj.get("aggregations"),
+            "hits": obj.get("hits")
         })
         return _obj
+
+

@@ -11,27 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field
 from beta.models.localized_message import LocalizedMessage
-
 
 class CompleteInvocationInput(BaseModel):
     """
     CompleteInvocationInput
     """
-    localized_error: Optional[LocalizedMessage] = Field(None,
-                                                        alias="localizedError")
-    output: Optional[Dict[str, Any]] = Field(
-        None,
-        description=
-        "Trigger output that completed the invocation. Its schema is defined in the trigger definition."
-    )
+    localized_error: Optional[LocalizedMessage] = Field(None, alias="localizedError")
+    output: Optional[Dict[str, Any]] = Field(None, description="Trigger output that completed the invocation. Its schema is defined in the trigger definition.")
     __properties = ["localizedError", "output"]
 
     class Config:
@@ -54,7 +50,10 @@ class CompleteInvocationInput(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of localized_error
         if self.localized_error:
             _dict['localizedError'] = self.localized_error.to_dict()
@@ -70,10 +69,9 @@ class CompleteInvocationInput(BaseModel):
             return CompleteInvocationInput.parse_obj(obj)
 
         _obj = CompleteInvocationInput.parse_obj({
-            "localized_error":
-            LocalizedMessage.from_dict(obj.get("localizedError"))
-            if obj.get("localizedError") is not None else None,
-            "output":
-            obj.get("output")
+            "localized_error": LocalizedMessage.from_dict(obj.get("localizedError")) if obj.get("localizedError") is not None else None,
+            "output": obj.get("output")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -31,7 +32,9 @@ from beta.models.service_desk_integration_template_type import ServiceDeskIntegr
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class ServiceDeskIntegrationApi:
@@ -47,13 +50,7 @@ class ServiceDeskIntegrationApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_service_desk_integration(
-            self, service_desk_integration_dto: Annotated[
-                ServiceDeskIntegrationDto,
-                Field(
-                    ...,
-                    description="The specifics of a new integration to create"
-                )], **kwargs) -> ServiceDeskIntegrationDto:  # noqa: E501
+    def create_service_desk_integration(self, service_desk_integration_dto : Annotated[ServiceDeskIntegrationDto, Field(..., description="The specifics of a new integration to create")], **kwargs) -> ServiceDeskIntegrationDto:  # noqa: E501
         """Create new Service Desk integration  # noqa: E501
 
         Create a new Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -80,17 +77,10 @@ class ServiceDeskIntegrationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_service_desk_integration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_service_desk_integration_with_http_info(
-            service_desk_integration_dto, **kwargs)  # noqa: E501
+        return self.create_service_desk_integration_with_http_info(service_desk_integration_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_service_desk_integration_with_http_info(
-            self, service_desk_integration_dto: Annotated[
-                ServiceDeskIntegrationDto,
-                Field(
-                    ...,
-                    description="The specifics of a new integration to create"
-                )], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_service_desk_integration_with_http_info(self, service_desk_integration_dto : Annotated[ServiceDeskIntegrationDto, Field(..., description="The specifics of a new integration to create")], **kwargs) -> ApiResponse:  # noqa: E501
         """Create new Service Desk integration  # noqa: E501
 
         Create a new Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -129,18 +119,28 @@ class ServiceDeskIntegrationApi:
 
         _params = locals()
 
-        _all_params = ['service_desk_integration_dto']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'service_desk_integration_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_service_desk_integration" % _key)
+                    " to method create_service_desk_integration" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -166,11 +166,11 @@ class ServiceDeskIntegrationApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -186,8 +186,7 @@ class ServiceDeskIntegrationApi:
         }
 
         return self.api_client.call_api(
-            '/service-desk-integrations',
-            'POST',
+            '/service-desk-integrations', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -197,18 +196,14 @@ class ServiceDeskIntegrationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_service_desk_integration(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of Service Desk integration to delete")],
-                                        **kwargs) -> None:  # noqa: E501
+    def delete_service_desk_integration(self, id : Annotated[StrictStr, Field(..., description="ID of Service Desk integration to delete")], **kwargs) -> None:  # noqa: E501
         """Delete a Service Desk integration  # noqa: E501
 
         Delete an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -235,14 +230,10 @@ class ServiceDeskIntegrationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_service_desk_integration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_service_desk_integration_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.delete_service_desk_integration_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_service_desk_integration_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of Service Desk integration to delete"
-              )], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_service_desk_integration_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of Service Desk integration to delete")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete a Service Desk integration  # noqa: E501
 
         Delete an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -281,18 +272,28 @@ class ServiceDeskIntegrationApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete_service_desk_integration" % _key)
+                    " to method delete_service_desk_integration" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -302,6 +303,7 @@ class ServiceDeskIntegrationApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -322,8 +324,7 @@ class ServiceDeskIntegrationApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/service-desk-integrations/{id}',
-            'DELETE',
+            '/service-desk-integrations/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -333,18 +334,14 @@ class ServiceDeskIntegrationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_service_desk_integration(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the Service Desk integration to get"
-              )], **kwargs) -> ServiceDeskIntegrationDto:  # noqa: E501
+    def get_service_desk_integration(self, id : Annotated[StrictStr, Field(..., description="ID of the Service Desk integration to get")], **kwargs) -> ServiceDeskIntegrationDto:  # noqa: E501
         """Get a Service Desk integration  # noqa: E501
 
         Get an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -371,14 +368,10 @@ class ServiceDeskIntegrationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_service_desk_integration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_service_desk_integration_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.get_service_desk_integration_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_service_desk_integration_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the Service Desk integration to get"
-              )], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_service_desk_integration_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Service Desk integration to get")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get a Service Desk integration  # noqa: E501
 
         Get an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -417,18 +410,28 @@ class ServiceDeskIntegrationApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_service_desk_integration" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_service_desk_integration" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -438,6 +441,7 @@ class ServiceDeskIntegrationApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -466,8 +470,7 @@ class ServiceDeskIntegrationApi:
         }
 
         return self.api_client.call_api(
-            '/service-desk-integrations/{id}',
-            'GET',
+            '/service-desk-integrations/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -477,52 +480,14 @@ class ServiceDeskIntegrationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_service_desk_integration_list(
-            self,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in*"
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> List[ServiceDeskIntegrationDto]:  # noqa: E501
+    def get_service_desk_integration_list(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in*")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[ServiceDeskIntegrationDto]:  # noqa: E501
         """List existing Service Desk Integrations  # noqa: E501
 
         Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -557,48 +522,10 @@ class ServiceDeskIntegrationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_service_desk_integration_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_service_desk_integration_list_with_http_info(
-            offset, limit, sorters, filters, count, **kwargs)  # noqa: E501
+        return self.get_service_desk_integration_list_with_http_info(offset, limit, sorters, filters, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_service_desk_integration_list_with_http_info(
-            self,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**"
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in*"
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_service_desk_integration_list_with_http_info(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in*")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List existing Service Desk Integrations  # noqa: E501
 
         Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -645,18 +572,32 @@ class ServiceDeskIntegrationApi:
 
         _params = locals()
 
-        _all_params = ['offset', 'limit', 'sorters', 'filters', 'count']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'offset',
+            'limit',
+            'sorters',
+            'filters',
+            'count'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_service_desk_integration_list" % _key)
+                    " to method get_service_desk_integration_list" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -707,8 +648,7 @@ class ServiceDeskIntegrationApi:
         }
 
         return self.api_client.call_api(
-            '/service-desk-integrations',
-            'GET',
+            '/service-desk-integrations', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -718,21 +658,14 @@ class ServiceDeskIntegrationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_service_desk_integration_template(self, script_name: Annotated[
-        StrictStr,
-        Field(
-            ...,
-            description=
-            "The scriptName value of the Service Desk integration template to get"
-        )], **kwargs) -> ServiceDeskIntegrationTemplateDto:  # noqa: E501
+    def get_service_desk_integration_template(self, script_name : Annotated[StrictStr, Field(..., description="The scriptName value of the Service Desk integration template to get")], **kwargs) -> ServiceDeskIntegrationTemplateDto:  # noqa: E501
         """Service Desk integration template by scriptName.  # noqa: E501
 
         This API endpoint returns an existing Service Desk integration template by scriptName.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -759,19 +692,10 @@ class ServiceDeskIntegrationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_service_desk_integration_template_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_service_desk_integration_template_with_http_info(
-            script_name, **kwargs)  # noqa: E501
+        return self.get_service_desk_integration_template_with_http_info(script_name, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_service_desk_integration_template_with_http_info(
-            self, script_name:
-        Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description=
-                "The scriptName value of the Service Desk integration template to get"
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_service_desk_integration_template_with_http_info(self, script_name : Annotated[StrictStr, Field(..., description="The scriptName value of the Service Desk integration template to get")], **kwargs) -> ApiResponse:  # noqa: E501
         """Service Desk integration template by scriptName.  # noqa: E501
 
         This API endpoint returns an existing Service Desk integration template by scriptName.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -810,18 +734,28 @@ class ServiceDeskIntegrationApi:
 
         _params = locals()
 
-        _all_params = ['script_name']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'script_name'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_service_desk_integration_template" % _key)
+                    " to method get_service_desk_integration_template" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -831,6 +765,7 @@ class ServiceDeskIntegrationApi:
         _path_params = {}
         if _params['script_name']:
             _path_params['scriptName'] = _params['script_name']
+
 
         # process the query parameters
         _query_params = []
@@ -859,8 +794,7 @@ class ServiceDeskIntegrationApi:
         }
 
         return self.api_client.call_api(
-            '/service-desk-integrations/templates/{scriptName}',
-            'GET',
+            '/service-desk-integrations/templates/{scriptName}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -870,17 +804,14 @@ class ServiceDeskIntegrationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_service_desk_integration_types(
-            self, **kwargs
-    ) -> List[ServiceDeskIntegrationTemplateType]:  # noqa: E501
+    def get_service_desk_integration_types(self, **kwargs) -> List[ServiceDeskIntegrationTemplateType]:  # noqa: E501
         """Service Desk Integration Types List.  # noqa: E501
 
         This API endpoint returns the current list of supported Service Desk integration types.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -905,12 +836,10 @@ class ServiceDeskIntegrationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_service_desk_integration_types_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_service_desk_integration_types_with_http_info(
-            **kwargs)  # noqa: E501
+        return self.get_service_desk_integration_types_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_service_desk_integration_types_with_http_info(
-            self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_service_desk_integration_types_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
         """Service Desk Integration Types List.  # noqa: E501
 
         This API endpoint returns the current list of supported Service Desk integration types.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -947,18 +876,27 @@ class ServiceDeskIntegrationApi:
 
         _params = locals()
 
-        _all_params = []
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_service_desk_integration_types" % _key)
+                    " to method get_service_desk_integration_types" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -994,8 +932,7 @@ class ServiceDeskIntegrationApi:
         }
 
         return self.api_client.call_api(
-            '/service-desk-integrations/types',
-            'GET',
+            '/service-desk-integrations/types', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1005,16 +942,14 @@ class ServiceDeskIntegrationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_status_check_details(
-            self, **kwargs) -> QueuedCheckConfigDetails:  # noqa: E501
+    def get_status_check_details(self, **kwargs) -> QueuedCheckConfigDetails:  # noqa: E501
         """Get the time check configuration  # noqa: E501
 
         Get the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -1039,12 +974,10 @@ class ServiceDeskIntegrationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_status_check_details_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_status_check_details_with_http_info(
-            **kwargs)  # noqa: E501
+        return self.get_status_check_details_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_status_check_details_with_http_info(
-            self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_status_check_details_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
         """Get the time check configuration  # noqa: E501
 
         Get the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -1081,18 +1014,27 @@ class ServiceDeskIntegrationApi:
 
         _params = locals()
 
-        _all_params = []
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_status_check_details" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_status_check_details" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1128,8 +1070,7 @@ class ServiceDeskIntegrationApi:
         }
 
         return self.api_client.call_api(
-            '/service-desk-integrations/status-check-configuration',
-            'GET',
+            '/service-desk-integrations/status-check-configuration', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1139,25 +1080,14 @@ class ServiceDeskIntegrationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_service_desk_integration(self, id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="ID of the Service Desk integration to update"
-        )], json_patch: Annotated[
-            JsonPatch,
-            Field(
-                ...,
-                description=
-                "A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. "
-            )], **kwargs) -> ServiceDeskIntegrationDto:  # noqa: E501
+    def patch_service_desk_integration(self, id : Annotated[StrictStr, Field(..., description="ID of the Service Desk integration to update")], json_patch : Annotated[JsonPatch, Field(..., description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. ")], **kwargs) -> ServiceDeskIntegrationDto:  # noqa: E501
         """Service Desk Integration Update PATCH  # noqa: E501
 
         Update an existing ServiceDeskIntegration by ID with a PATCH request.  # noqa: E501
@@ -1186,21 +1116,10 @@ class ServiceDeskIntegrationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_service_desk_integration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_service_desk_integration_with_http_info(
-            id, json_patch, **kwargs)  # noqa: E501
+        return self.patch_service_desk_integration_with_http_info(id, json_patch, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_service_desk_integration_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="ID of the Service Desk integration to update"
-        )], json_patch: Annotated[
-            JsonPatch,
-            Field(
-                ...,
-                description=
-                "A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. "
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_service_desk_integration_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Service Desk integration to update")], json_patch : Annotated[JsonPatch, Field(..., description="A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. ")], **kwargs) -> ApiResponse:  # noqa: E501
         """Service Desk Integration Update PATCH  # noqa: E501
 
         Update an existing ServiceDeskIntegration by ID with a PATCH request.  # noqa: E501
@@ -1241,18 +1160,29 @@ class ServiceDeskIntegrationApi:
 
         _params = locals()
 
-        _all_params = ['id', 'json_patch']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'json_patch'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method patch_service_desk_integration" % _key)
+                    " to method patch_service_desk_integration" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1262,6 +1192,7 @@ class ServiceDeskIntegrationApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1280,12 +1211,11 @@ class ServiceDeskIntegrationApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1301,8 +1231,7 @@ class ServiceDeskIntegrationApi:
         }
 
         return self.api_client.call_api(
-            '/service-desk-integrations/{id}',
-            'PATCH',
+            '/service-desk-integrations/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -1312,23 +1241,14 @@ class ServiceDeskIntegrationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_service_desk_integration(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the Service Desk integration to update"
-              )], service_desk_integration_dto: Annotated[
-                  ServiceDeskIntegrationDto,
-                  Field(
-                      ...,
-                      description="The specifics of the integration to update"
-                  )], **kwargs) -> ServiceDeskIntegrationDto:  # noqa: E501
+    def put_service_desk_integration(self, id : Annotated[StrictStr, Field(..., description="ID of the Service Desk integration to update")], service_desk_integration_dto : Annotated[ServiceDeskIntegrationDto, Field(..., description="The specifics of the integration to update")], **kwargs) -> ServiceDeskIntegrationDto:  # noqa: E501
         """Update a Service Desk integration  # noqa: E501
 
         Update an existing Service Desk integration by ID with updated value in JSON form as the request body.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -1357,19 +1277,10 @@ class ServiceDeskIntegrationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_service_desk_integration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_service_desk_integration_with_http_info(
-            id, service_desk_integration_dto, **kwargs)  # noqa: E501
+        return self.put_service_desk_integration_with_http_info(id, service_desk_integration_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_service_desk_integration_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the Service Desk integration to update"
-              )], service_desk_integration_dto: Annotated[
-                  ServiceDeskIntegrationDto,
-                  Field(
-                      ...,
-                      description="The specifics of the integration to update"
-                  )], **kwargs) -> ApiResponse:  # noqa: E501
+    def put_service_desk_integration_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Service Desk integration to update")], service_desk_integration_dto : Annotated[ServiceDeskIntegrationDto, Field(..., description="The specifics of the integration to update")], **kwargs) -> ApiResponse:  # noqa: E501
         """Update a Service Desk integration  # noqa: E501
 
         Update an existing Service Desk integration by ID with updated value in JSON form as the request body.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -1410,18 +1321,29 @@ class ServiceDeskIntegrationApi:
 
         _params = locals()
 
-        _all_params = ['id', 'service_desk_integration_dto']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'service_desk_integration_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method put_service_desk_integration" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_service_desk_integration" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1431,6 +1353,7 @@ class ServiceDeskIntegrationApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1449,11 +1372,11 @@ class ServiceDeskIntegrationApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1469,8 +1392,7 @@ class ServiceDeskIntegrationApi:
         }
 
         return self.api_client.call_api(
-            '/service-desk-integrations/{id}',
-            'PUT',
+            '/service-desk-integrations/{id}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -1480,19 +1402,14 @@ class ServiceDeskIntegrationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_status_check_details(
-            self, queued_check_config_details: Annotated[
-                QueuedCheckConfigDetails,
-                Field(..., description="the modified time check configuration"
-                      )], **kwargs) -> QueuedCheckConfigDetails:  # noqa: E501
+    def update_status_check_details(self, queued_check_config_details : Annotated[QueuedCheckConfigDetails, Field(..., description="the modified time check configuration")], **kwargs) -> QueuedCheckConfigDetails:  # noqa: E501
         """Update the time check configuration  # noqa: E501
 
         Update the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -1519,15 +1436,10 @@ class ServiceDeskIntegrationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_status_check_details_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_status_check_details_with_http_info(
-            queued_check_config_details, **kwargs)  # noqa: E501
+        return self.update_status_check_details_with_http_info(queued_check_config_details, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_status_check_details_with_http_info(
-            self, queued_check_config_details: Annotated[
-                QueuedCheckConfigDetails,
-                Field(..., description="the modified time check configuration"
-                      )], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_status_check_details_with_http_info(self, queued_check_config_details : Annotated[QueuedCheckConfigDetails, Field(..., description="the modified time check configuration")], **kwargs) -> ApiResponse:  # noqa: E501
         """Update the time check configuration  # noqa: E501
 
         Update the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.  # noqa: E501
@@ -1566,18 +1478,28 @@ class ServiceDeskIntegrationApi:
 
         _params = locals()
 
-        _all_params = ['queued_check_config_details']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'queued_check_config_details'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_status_check_details" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_status_check_details" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1603,11 +1525,11 @@ class ServiceDeskIntegrationApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1623,8 +1545,7 @@ class ServiceDeskIntegrationApi:
         }
 
         return self.api_client.call_api(
-            '/service-desk-integrations/status-check-configuration',
-            'PUT',
+            '/service-desk-integrations/status-check-configuration', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -1634,8 +1555,7 @@ class ServiceDeskIntegrationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

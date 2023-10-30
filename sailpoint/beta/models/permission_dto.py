@@ -11,26 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class PermissionDto(BaseModel):
     """
     Simplified DTO for the Permission objects stored in SailPoint's database. The data is aggregated from customer systems and is free-form, so its appearance can vary largely between different clients/customers.  # noqa: E501
     """
-    rights: Optional[conlist(StrictStr)] = Field(
-        None,
-        description=
-        "All the rights (e.g. actions) that this permission allows on the target"
-    )
-    target: Optional[StrictStr] = Field(
-        None, description="The target the permission would grants rights on.")
+    rights: Optional[conlist(StrictStr)] = Field(None, description="All the rights (e.g. actions) that this permission allows on the target")
+    target: Optional[StrictStr] = Field(None, description="The target the permission would grants rights on.")
     __properties = ["rights", "target"]
 
     class Config:
@@ -55,8 +51,8 @@ class PermissionDto(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "rights",
-                              "target",
+                            "rights",
+                            "target",
                           },
                           exclude_none=True)
         return _dict
@@ -75,3 +71,5 @@ class PermissionDto(BaseModel):
             "target": obj.get("target")
         })
         return _obj
+
+

@@ -11,49 +11,28 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
-
 
 class AccountStatusChangedAccount(BaseModel):
     """
     AccountStatusChangedAccount
     """
-    id: Optional[StrictStr] = Field(
-        None, description="the ID of the account in the database")
-    native_identity: Optional[StrictStr] = Field(
-        None,
-        alias="nativeIdentity",
-        description="the native identifier of the account")
-    display_name: Optional[StrictStr] = Field(
-        None,
-        alias="displayName",
-        description="the display name of the account")
-    source_id: Optional[StrictStr] = Field(
-        None,
-        alias="sourceId",
-        description="the ID of the source for this account")
-    source_name: Optional[StrictStr] = Field(
-        None,
-        alias="sourceName",
-        description="the name of the source for this account")
-    entitlement_count: Optional[StrictInt] = Field(
-        None,
-        alias="entitlementCount",
-        description="the number of entitlements on this account")
-    access_type: Optional[StrictStr] = Field(
-        None,
-        alias="accessType",
-        description="this value is always \"account\"")
-    __properties = [
-        "id", "nativeIdentity", "displayName", "sourceId", "sourceName",
-        "entitlementCount", "accessType"
-    ]
+    id: Optional[StrictStr] = Field(None, description="the ID of the account in the database")
+    native_identity: Optional[StrictStr] = Field(None, alias="nativeIdentity", description="the native identifier of the account")
+    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="the display name of the account")
+    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="the ID of the source for this account")
+    source_name: Optional[StrictStr] = Field(None, alias="sourceName", description="the name of the source for this account")
+    entitlement_count: Optional[StrictInt] = Field(None, alias="entitlementCount", description="the number of entitlements on this account")
+    access_type: Optional[StrictStr] = Field(None, alias="accessType", description="this value is always \"account\"")
+    __properties = ["id", "nativeIdentity", "displayName", "sourceId", "sourceName", "entitlementCount", "accessType"]
 
     class Config:
         """Pydantic configuration"""
@@ -75,7 +54,10 @@ class AccountStatusChangedAccount(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -88,19 +70,14 @@ class AccountStatusChangedAccount(BaseModel):
             return AccountStatusChangedAccount.parse_obj(obj)
 
         _obj = AccountStatusChangedAccount.parse_obj({
-            "id":
-            obj.get("id"),
-            "native_identity":
-            obj.get("nativeIdentity"),
-            "display_name":
-            obj.get("displayName"),
-            "source_id":
-            obj.get("sourceId"),
-            "source_name":
-            obj.get("sourceName"),
-            "entitlement_count":
-            obj.get("entitlementCount"),
-            "access_type":
-            obj.get("accessType")
+            "id": obj.get("id"),
+            "native_identity": obj.get("nativeIdentity"),
+            "display_name": obj.get("displayName"),
+            "source_id": obj.get("sourceId"),
+            "source_name": obj.get("sourceName"),
+            "entitlement_count": obj.get("entitlementCount"),
+            "access_type": obj.get("accessType")
         })
         return _obj
+
+

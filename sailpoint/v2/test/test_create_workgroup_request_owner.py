@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v2.models.create_workgroup_request_owner import CreateWorkgroupRequestOwner  # noqa: E501
-
 
 class TestCreateWorkgroupRequestOwner(unittest.TestCase):
     """CreateWorkgroupRequestOwner unit test stubs"""
@@ -47,7 +47,6 @@ class TestCreateWorkgroupRequestOwner(unittest.TestCase):
         """Test CreateWorkgroupRequestOwner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

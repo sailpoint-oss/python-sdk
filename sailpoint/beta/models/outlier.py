@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,56 +21,22 @@ from datetime import datetime
 from typing import Any, Dict, Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, validator
 
-
 class Outlier(BaseModel):
     """
     Outlier
     """
-    id: Optional[StrictStr] = Field(
-        None,
-        description="The identity's unique identifier for the outlier record")
-    identity_id: Optional[StrictStr] = Field(
-        None,
-        alias="identityId",
-        description="The ID of the identity that is detected as an outlier")
-    type: Optional[StrictStr] = Field(
-        None, description="The type of outlier summary")
-    first_detection_date: Optional[datetime] = Field(
-        None,
-        alias="firstDetectionDate",
-        description="The first date the outlier was detected")
-    latest_detection_date: Optional[datetime] = Field(
-        None,
-        alias="latestDetectionDate",
-        description="The most recent date the outlier was detected")
-    ignored: Optional[StrictBool] = Field(
-        None, description="Flag whether or not the outlier has been ignored")
-    attributes: Optional[Dict[str, Any]] = Field(
-        None, description="Object containing mapped identity attributes")
-    score: Optional[Union[StrictFloat, StrictInt]] = Field(
-        None,
-        description=
-        "The outlier score determined by the detection engine ranging from 0..1"
-    )
-    unignore_type: Optional[StrictStr] = Field(
-        None,
-        alias="unignoreType",
-        description=
-        "Enum value of if the outlier manually or automatically un-ignored. Will be NULL if outlier is not ignored"
-    )
-    unignore_date: Optional[datetime] = Field(
-        None,
-        alias="unignoreDate",
-        description="shows date when last time has been unignored outlier")
-    ignore_date: Optional[datetime] = Field(
-        None,
-        alias="ignoreDate",
-        description="shows date when last time has been ignored outlier")
-    __properties = [
-        "id", "identityId", "type", "firstDetectionDate",
-        "latestDetectionDate", "ignored", "attributes", "score",
-        "unignoreType", "unignoreDate", "ignoreDate"
-    ]
+    id: Optional[StrictStr] = Field(None, description="The identity's unique identifier for the outlier record")
+    identity_id: Optional[StrictStr] = Field(None, alias="identityId", description="The ID of the identity that is detected as an outlier")
+    type: Optional[StrictStr] = Field(None, description="The type of outlier summary")
+    first_detection_date: Optional[datetime] = Field(None, alias="firstDetectionDate", description="The first date the outlier was detected")
+    latest_detection_date: Optional[datetime] = Field(None, alias="latestDetectionDate", description="The most recent date the outlier was detected")
+    ignored: Optional[StrictBool] = Field(None, description="Flag whether or not the outlier has been ignored")
+    attributes: Optional[Dict[str, Any]] = Field(None, description="Object containing mapped identity attributes")
+    score: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="The outlier score determined by the detection engine ranging from 0..1")
+    unignore_type: Optional[StrictStr] = Field(None, alias="unignoreType", description="Enum value of if the outlier manually or automatically un-ignored. Will be NULL if outlier is not ignored")
+    unignore_date: Optional[datetime] = Field(None, alias="unignoreDate", description="shows date when last time has been unignored outlier")
+    ignore_date: Optional[datetime] = Field(None, alias="ignoreDate", description="shows date when last time has been ignored outlier")
+    __properties = ["id", "identityId", "type", "firstDetectionDate", "latestDetectionDate", "ignored", "attributes", "score", "unignoreType", "unignoreDate", "ignoreDate"]
 
     @validator('type')
     def type_validate_enum(cls, value):
@@ -78,8 +45,7 @@ class Outlier(BaseModel):
             return value
 
         if value not in ('LOW_SIMILARITY', 'STRUCTURAL'):
-            raise ValueError(
-                "must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
+            raise ValueError("must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
         return value
 
     @validator('unignore_type')
@@ -89,8 +55,7 @@ class Outlier(BaseModel):
             return value
 
         if value not in ('MANUAL', 'AUTOMATIC'):
-            raise ValueError(
-                "must be one of enum values ('MANUAL', 'AUTOMATIC')")
+            raise ValueError("must be one of enum values ('MANUAL', 'AUTOMATIC')")
         return value
 
     class Config:
@@ -113,7 +78,10 @@ class Outlier(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -126,27 +94,18 @@ class Outlier(BaseModel):
             return Outlier.parse_obj(obj)
 
         _obj = Outlier.parse_obj({
-            "id":
-            obj.get("id"),
-            "identity_id":
-            obj.get("identityId"),
-            "type":
-            obj.get("type"),
-            "first_detection_date":
-            obj.get("firstDetectionDate"),
-            "latest_detection_date":
-            obj.get("latestDetectionDate"),
-            "ignored":
-            obj.get("ignored"),
-            "attributes":
-            obj.get("attributes"),
-            "score":
-            obj.get("score"),
-            "unignore_type":
-            obj.get("unignoreType"),
-            "unignore_date":
-            obj.get("unignoreDate"),
-            "ignore_date":
-            obj.get("ignoreDate")
+            "id": obj.get("id"),
+            "identity_id": obj.get("identityId"),
+            "type": obj.get("type"),
+            "first_detection_date": obj.get("firstDetectionDate"),
+            "latest_detection_date": obj.get("latestDetectionDate"),
+            "ignored": obj.get("ignored"),
+            "attributes": obj.get("attributes"),
+            "score": obj.get("score"),
+            "unignore_type": obj.get("unignoreType"),
+            "unignore_date": obj.get("unignoreDate"),
+            "ignore_date": obj.get("ignoreDate")
         })
         return _obj
+
+

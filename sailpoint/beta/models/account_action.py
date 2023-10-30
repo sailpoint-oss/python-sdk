@@ -11,27 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-
 
 class AccountAction(BaseModel):
     """
     AccountAction
     """
-    action: Optional[StrictStr] = Field(
-        None, description="Describes if action will be enabled or disabled")
-    source_ids: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="sourceIds",
-        description=
-        "List of source IDs. The sources must have the ENABLE feature or flat file source. See \"/sources\" endpoint for source features."
-    )
+    action: Optional[StrictStr] = Field(None, description="Describes if action will be enabled or disabled")
+    source_ids: Optional[conlist(StrictStr)] = Field(None, alias="sourceIds", description="List of source IDs. The sources must have the ENABLE feature or flat file source. See \"/sources\" endpoint for source features.")
     __properties = ["action", "sourceIds"]
 
     @validator('action')
@@ -41,8 +36,7 @@ class AccountAction(BaseModel):
             return value
 
         if value not in ('ENABLE', 'DISABLE'):
-            raise ValueError(
-                "must be one of enum values ('ENABLE', 'DISABLE')")
+            raise ValueError("must be one of enum values ('ENABLE', 'DISABLE')")
         return value
 
     class Config:
@@ -65,7 +59,10 @@ class AccountAction(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -82,3 +79,5 @@ class AccountAction(BaseModel):
             "source_ids": obj.get("sourceIds")
         })
         return _obj
+
+

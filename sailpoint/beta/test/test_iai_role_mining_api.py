@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.iai_role_mining_api import IAIRoleMiningApi  # noqa: E501
@@ -67,6 +68,13 @@ class TestIAIRoleMiningApi(unittest.TestCase):
         """
         pass
 
+    def test_get_all_potential_role_summaries(self) -> None:
+        """Test case for get_all_potential_role_summaries
+
+        Retrieves all potential role summaries  # noqa: E501
+        """
+        pass
+
     def test_get_entitlement_distribution_potential_role(self) -> None:
         """Test case for get_entitlement_distribution_potential_role
 
@@ -109,10 +117,24 @@ class TestIAIRoleMiningApi(unittest.TestCase):
         """
         pass
 
+    def test_get_potential_role_source_identity_usage(self) -> None:
+        """Test case for get_potential_role_source_identity_usage
+
+        Retrieves potential role source usage  # noqa: E501
+        """
+        pass
+
     def test_get_potential_role_summaries(self) -> None:
         """Test case for get_potential_role_summaries
 
         Retrieves all potential role summaries  # noqa: E501
+        """
+        pass
+
+    def test_get_role_mining_potential_role(self) -> None:
+        """Test case for get_role_mining_potential_role
+
+        Retrieves a specific potential role  # noqa: E501
         """
         pass
 
@@ -137,15 +159,22 @@ class TestIAIRoleMiningApi(unittest.TestCase):
         """
         pass
 
-    def test_get_saved_roles(self) -> None:
-        """Test case for get_saved_roles
+    def test_get_saved_potential_roles(self) -> None:
+        """Test case for get_saved_potential_roles
 
-        Retrieves all draft roles  # noqa: E501
+        Retrieves all saved potential roles  # noqa: E501
         """
         pass
 
     def test_patch_potential_role(self) -> None:
         """Test case for patch_potential_role
+
+        Update a potential role  # noqa: E501
+        """
+        pass
+
+    def test_patch_potential_role_0(self) -> None:
+        """Test case for patch_potential_role_0
 
         Update a potential role  # noqa: E501
         """

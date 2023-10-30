@@ -11,14 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from cc.models.list_applications200_response_inner_account_service_policies_inner import ListApplications200ResponseInnerAccountServicePoliciesInner  # noqa: E501
 
-
-class TestListApplications200ResponseInnerAccountServicePoliciesInner(
-        unittest.TestCase):
+class TestListApplications200ResponseInnerAccountServicePoliciesInner(unittest.TestCase):
     """ListApplications200ResponseInnerAccountServicePoliciesInner unit test stubs"""
 
     def setUp(self):
@@ -27,9 +26,7 @@ class TestListApplications200ResponseInnerAccountServicePoliciesInner(
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> ListApplications200ResponseInnerAccountServicePoliciesInner:
+    def make_instance(self, include_optional) -> ListApplications200ResponseInnerAccountServicePoliciesInner:
         """Test ListApplications200ResponseInnerAccountServicePoliciesInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -52,7 +49,6 @@ class TestListApplications200ResponseInnerAccountServicePoliciesInner(
         """Test ListApplications200ResponseInnerAccountServicePoliciesInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

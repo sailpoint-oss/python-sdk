@@ -11,15 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.dto_type import DtoType
-
 
 class RoleMembershipIdentity(BaseModel):
     """
@@ -27,10 +28,8 @@ class RoleMembershipIdentity(BaseModel):
     """
     type: Optional[DtoType] = None
     id: Optional[StrictStr] = Field(None, description="Identity id")
-    name: Optional[StrictStr] = Field(
-        None, description="Human-readable display name of the Identity.")
-    alias_name: Optional[StrictStr] = Field(
-        None, alias="aliasName", description="User name of the Identity")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the Identity.")
+    alias_name: Optional[StrictStr] = Field(None, alias="aliasName", description="User name of the Identity")
     __properties = ["type", "id", "name", "aliasName"]
 
     class Config:
@@ -53,7 +52,10 @@ class RoleMembershipIdentity(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if name (nullable) is None
         # and __fields_set__ contains the field
         if self.name is None and "name" in self.__fields_set__:
@@ -76,13 +78,11 @@ class RoleMembershipIdentity(BaseModel):
             return RoleMembershipIdentity.parse_obj(obj)
 
         _obj = RoleMembershipIdentity.parse_obj({
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "alias_name":
-            obj.get("aliasName")
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "alias_name": obj.get("aliasName")
         })
         return _obj
+
+

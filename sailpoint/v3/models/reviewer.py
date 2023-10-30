@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,23 +21,16 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 
-
 class Reviewer(BaseModel):
     """
     Reviewer
     """
-    id: Optional[StrictStr] = Field(None,
-                                    description="The id of the reviewer.")
-    name: Optional[StrictStr] = Field(None,
-                                      description="The name of the reviewer.")
-    email: Optional[StrictStr] = Field(
-        None, description="The email of the reviewing identity.")
-    type: Optional[StrictStr] = Field(
-        None, description="The type of the reviewing identity.")
-    created: Optional[datetime] = Field(
-        None, description="The created date of the reviewing identity.")
-    modified: Optional[datetime] = Field(
-        None, description="The modified date of the reviewing identity.")
+    id: Optional[StrictStr] = Field(None, description="The id of the reviewer.")
+    name: Optional[StrictStr] = Field(None, description="The name of the reviewer.")
+    email: Optional[StrictStr] = Field(None, description="The email of the reviewing identity.")
+    type: Optional[StrictStr] = Field(None, description="The type of the reviewing identity.")
+    created: Optional[datetime] = Field(None, description="The created date of the reviewing identity.")
+    modified: Optional[datetime] = Field(None, description="The modified date of the reviewing identity.")
     __properties = ["id", "name", "email", "type", "created", "modified"]
 
     @validator('type')
@@ -69,7 +63,10 @@ class Reviewer(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if created (nullable) is None
         # and __fields_set__ contains the field
         if self.created is None and "created" in self.__fields_set__:
@@ -100,3 +97,5 @@ class Reviewer(BaseModel):
             "modified": obj.get("modified")
         })
         return _obj
+
+

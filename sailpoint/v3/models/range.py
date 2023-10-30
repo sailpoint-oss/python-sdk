@@ -11,15 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel
 from v3.models.bound import Bound
-
 
 class Range(BaseModel):
     """
@@ -49,7 +50,10 @@ class Range(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of lower
         if self.lower:
             _dict['lower'] = self.lower.to_dict()
@@ -68,11 +72,9 @@ class Range(BaseModel):
             return Range.parse_obj(obj)
 
         _obj = Range.parse_obj({
-            "lower":
-            Bound.from_dict(obj.get("lower"))
-            if obj.get("lower") is not None else None,
-            "upper":
-            Bound.from_dict(obj.get("upper"))
-            if obj.get("upper") is not None else None
+            "lower": Bound.from_dict(obj.get("lower")) if obj.get("lower") is not None else None,
+            "upper": Bound.from_dict(obj.get("upper")) if obj.get("upper") is not None else None
         })
         return _obj
+
+

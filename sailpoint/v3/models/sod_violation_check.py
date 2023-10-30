@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,16 +21,12 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 
-
 class SodViolationCheck(BaseModel):
     """
     An object referencing an SOD violation check  # noqa: E501
     """
-    request_id: StrictStr = Field(...,
-                                  alias="requestId",
-                                  description="The id of the original request")
-    created: Optional[datetime] = Field(
-        None, description="The date-time when this request was created.")
+    request_id: StrictStr = Field(..., alias="requestId", description="The id of the original request")
+    created: Optional[datetime] = Field(None, description="The date-time when this request was created.")
     __properties = ["requestId", "created"]
 
     class Config:
@@ -54,7 +51,7 @@ class SodViolationCheck(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "created",
+                            "created",
                           },
                           exclude_none=True)
         return _dict
@@ -73,3 +70,5 @@ class SodViolationCheck(BaseModel):
             "created": obj.get("created")
         })
         return _obj
+
+

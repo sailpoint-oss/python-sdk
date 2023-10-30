@@ -11,38 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 from beta.models.role_mining_potential_role_export_state import RoleMiningPotentialRoleExportState
-
 
 class RoleMiningPotentialRoleExportResponse(BaseModel):
     """
     RoleMiningPotentialRoleExportResponse
     """
-    min_entitlement_popularity: Optional[StrictInt] = Field(
-        None,
-        alias="minEntitlementPopularity",
-        description=
-        "The minimum popularity among identities in the role which an entitlement must have to be included in the report"
-    )
-    include_common_access: Optional[StrictBool] = Field(
-        None,
-        alias="includeCommonAccess",
-        description=
-        "If false, do not include entitlements that are highly popular among the entire orginization"
-    )
-    export_id: Optional[StrictStr] = Field(
-        None, alias="exportId", description="ID used to reference this export")
+    min_entitlement_popularity: Optional[StrictInt] = Field(None, alias="minEntitlementPopularity", description="The minimum popularity among identities in the role which an entitlement must have to be included in the report")
+    include_common_access: Optional[StrictBool] = Field(None, alias="includeCommonAccess", description="If false, do not include entitlements that are highly popular among the entire orginization")
+    export_id: Optional[StrictStr] = Field(None, alias="exportId", description="ID used to reference this export")
     status: Optional[RoleMiningPotentialRoleExportState] = None
-    __properties = [
-        "minEntitlementPopularity", "includeCommonAccess", "exportId", "status"
-    ]
+    __properties = ["minEntitlementPopularity", "includeCommonAccess", "exportId", "status"]
 
     class Config:
         """Pydantic configuration"""
@@ -64,7 +52,10 @@ class RoleMiningPotentialRoleExportResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -77,13 +68,11 @@ class RoleMiningPotentialRoleExportResponse(BaseModel):
             return RoleMiningPotentialRoleExportResponse.parse_obj(obj)
 
         _obj = RoleMiningPotentialRoleExportResponse.parse_obj({
-            "min_entitlement_popularity":
-            obj.get("minEntitlementPopularity"),
-            "include_common_access":
-            obj.get("includeCommonAccess"),
-            "export_id":
-            obj.get("exportId"),
-            "status":
-            obj.get("status")
+            "min_entitlement_popularity": obj.get("minEntitlementPopularity"),
+            "include_common_access": obj.get("includeCommonAccess"),
+            "export_id": obj.get("exportId"),
+            "status": obj.get("status")
         })
         return _obj
+
+

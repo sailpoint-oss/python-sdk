@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -24,23 +25,19 @@ from pydantic import StrictStr, Field
 
 OUTLIERCONTRIBUTINGFEATUREVALUE_ONE_OF_SCHEMAS = ["float", "int"]
 
-
 class OutlierContributingFeatureValue(BaseModel):
     """
     The feature value
     """
     # data type: float
-    oneof_schema_1_validator: Optional[Union[
-        confloat(le=1.0, ge=0.0, strict=True),
-        conint(le=1, ge=0, strict=True)]] = None
+    oneof_schema_1_validator: Optional[Union[confloat(le=1.0, ge=0.0, strict=True), conint(le=1, ge=0, strict=True)]] = None
     # data type: int
     oneof_schema_2_validator: Optional[StrictInt] = None
     if TYPE_CHECKING:
         actual_instance: Union[float, int]
     else:
         actual_instance: Any
-    one_of_schemas: List[str] = Field(
-        OUTLIERCONTRIBUTINGFEATUREVALUE_ONE_OF_SCHEMAS, const=True)
+    one_of_schemas: List[str] = Field(OUTLIERCONTRIBUTINGFEATUREVALUE_ONE_OF_SCHEMAS, const=True)
 
     class Config:
         validate_assignment = True
@@ -48,13 +45,9 @@ class OutlierContributingFeatureValue(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -78,14 +71,10 @@ class OutlierContributingFeatureValue(BaseModel):
             error_messages.append(str(e))
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when setting `actual_instance` in OutlierContributingFeatureValue with oneOf schemas: float, int. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in OutlierContributingFeatureValue with oneOf schemas: float, int. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when setting `actual_instance` in OutlierContributingFeatureValue with oneOf schemas: float, int. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in OutlierContributingFeatureValue with oneOf schemas: float, int. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -121,14 +110,10 @@ class OutlierContributingFeatureValue(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when deserializing the JSON string into OutlierContributingFeatureValue with oneOf schemas: float, int. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into OutlierContributingFeatureValue with oneOf schemas: float, int. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into OutlierContributingFeatureValue with oneOf schemas: float, int. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into OutlierContributingFeatureValue with oneOf schemas: float, int. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -158,3 +143,5 @@ class OutlierContributingFeatureValue(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.dict())
+
+

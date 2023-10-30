@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v2.models.list_workgroups200_response_inner_owner import ListWorkgroups200ResponseInnerOwner  # noqa: E501
-
 
 class TestListWorkgroups200ResponseInnerOwner(unittest.TestCase):
     """ListWorkgroups200ResponseInnerOwner unit test stubs"""
@@ -26,8 +26,7 @@ class TestListWorkgroups200ResponseInnerOwner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> ListWorkgroups200ResponseInnerOwner:
+    def make_instance(self, include_optional) -> ListWorkgroups200ResponseInnerOwner:
         """Test ListWorkgroups200ResponseInnerOwner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -51,7 +50,6 @@ class TestListWorkgroups200ResponseInnerOwner(unittest.TestCase):
         """Test ListWorkgroups200ResponseInnerOwner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

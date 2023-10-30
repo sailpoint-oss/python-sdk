@@ -11,15 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.dto_type import DtoType
-
 
 class CommentDto1Author(BaseModel):
     """
@@ -27,10 +28,7 @@ class CommentDto1Author(BaseModel):
     """
     type: Optional[DtoType] = None
     id: Optional[StrictStr] = Field(None, description="ID of the author")
-    name: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human-readable display name of the identity making the comment")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the identity making the comment")
     __properties = ["type", "id", "name"]
 
     class Config:
@@ -53,7 +51,10 @@ class CommentDto1Author(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,3 +72,5 @@ class CommentDto1Author(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

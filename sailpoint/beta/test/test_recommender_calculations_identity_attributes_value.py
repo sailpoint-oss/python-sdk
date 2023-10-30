@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.recommender_calculations_identity_attributes_value import RecommenderCalculationsIdentityAttributesValue  # noqa: E501
-
 
 class TestRecommenderCalculationsIdentityAttributesValue(unittest.TestCase):
     """RecommenderCalculationsIdentityAttributesValue unit test stubs"""
@@ -26,9 +26,7 @@ class TestRecommenderCalculationsIdentityAttributesValue(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self, include_optional
-    ) -> RecommenderCalculationsIdentityAttributesValue:
+    def make_instance(self, include_optional) -> RecommenderCalculationsIdentityAttributesValue:
         """Test RecommenderCalculationsIdentityAttributesValue
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -49,7 +47,6 @@ class TestRecommenderCalculationsIdentityAttributesValue(unittest.TestCase):
         """Test RecommenderCalculationsIdentityAttributesValue"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

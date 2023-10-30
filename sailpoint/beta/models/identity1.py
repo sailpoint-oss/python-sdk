@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class Identity1(BaseModel):
     """
     The definition of an Identity according to the Reassignment Configuration service  # noqa: E501
     """
     id: Optional[StrictStr] = Field(None, description="The ID of the object")
-    name: Optional[StrictStr] = Field(
-        None, description="Human-readable display name of the object")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object")
     __properties = ["id", "name"]
 
     class Config:
@@ -49,7 +49,10 @@ class Identity1(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,3 +69,5 @@ class Identity1(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

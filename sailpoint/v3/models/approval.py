@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -22,23 +23,17 @@ from pydantic import BaseModel, Field, StrictStr, conlist
 from v3.models.account_source import AccountSource
 from v3.models.approval_comment import ApprovalComment
 
-
 class Approval(BaseModel):
     """
     Approval
     """
     comments: Optional[conlist(ApprovalComment)] = None
-    created: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
+    created: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
+    modified: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
     owner: Optional[AccountSource] = None
-    result: Optional[StrictStr] = Field(
-        None, description="The result of the approval")
+    result: Optional[StrictStr] = Field(None, description="The result of the approval")
     type: Optional[StrictStr] = None
-    __properties = [
-        "comments", "created", "modified", "owner", "result", "type"
-    ]
+    __properties = ["comments", "created", "modified", "owner", "result", "type"]
 
     class Config:
         """Pydantic configuration"""
@@ -60,7 +55,10 @@ class Approval(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in comments (list)
         _items = []
         if self.comments:
@@ -98,20 +96,13 @@ class Approval(BaseModel):
             return Approval.parse_obj(obj)
 
         _obj = Approval.parse_obj({
-            "comments": [
-                ApprovalComment.from_dict(_item)
-                for _item in obj.get("comments")
-            ] if obj.get("comments") is not None else None,
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "owner":
-            AccountSource.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "result":
-            obj.get("result"),
-            "type":
-            obj.get("type")
+            "comments": [ApprovalComment.from_dict(_item) for _item in obj.get("comments")] if obj.get("comments") is not None else None,
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "owner": AccountSource.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "result": obj.get("result"),
+            "type": obj.get("type")
         })
         return _obj
+
+

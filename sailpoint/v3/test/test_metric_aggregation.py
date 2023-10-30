@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.metric_aggregation import MetricAggregation  # noqa: E501
-
 
 class TestMetricAggregation(unittest.TestCase):
     """MetricAggregation unit test stubs"""
@@ -51,7 +51,6 @@ class TestMetricAggregation(unittest.TestCase):
         """Test MetricAggregation"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

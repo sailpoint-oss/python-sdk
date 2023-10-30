@@ -11,114 +11,37 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt
-
 
 class IdentityCertDecisionSummary(BaseModel):
     """
     IdentityCertDecisionSummary
     """
-    entitlement_decisions_made: Optional[StrictInt] = Field(
-        None,
-        alias="entitlementDecisionsMade",
-        description="Number of entitlement decisions that have been made")
-    access_profile_decisions_made: Optional[StrictInt] = Field(
-        None,
-        alias="accessProfileDecisionsMade",
-        description="Number of access profile decisions that have been made")
-    role_decisions_made: Optional[StrictInt] = Field(
-        None,
-        alias="roleDecisionsMade",
-        description="Number of role decisions that have been made")
-    account_decisions_made: Optional[StrictInt] = Field(
-        None,
-        alias="accountDecisionsMade",
-        description="Number of account decisions that have been made")
-    entitlement_decisions_total: Optional[StrictInt] = Field(
-        None,
-        alias="entitlementDecisionsTotal",
-        description=
-        "The total number of entitlement decisions on the certification, both complete and incomplete"
-    )
-    access_profile_decisions_total: Optional[StrictInt] = Field(
-        None,
-        alias="accessProfileDecisionsTotal",
-        description=
-        "The total number of access profile decisions on the certification, both complete and incomplete"
-    )
-    role_decisions_total: Optional[StrictInt] = Field(
-        None,
-        alias="roleDecisionsTotal",
-        description=
-        "The total number of role decisions on the certification, both complete and incomplete"
-    )
-    account_decisions_total: Optional[StrictInt] = Field(
-        None,
-        alias="accountDecisionsTotal",
-        description=
-        "The total number of account decisions on the certification, both complete and incomplete"
-    )
-    entitlements_approved: Optional[StrictInt] = Field(
-        None,
-        alias="entitlementsApproved",
-        description=
-        "The number of entitlement decisions that have been made which were approved"
-    )
-    entitlements_revoked: Optional[StrictInt] = Field(
-        None,
-        alias="entitlementsRevoked",
-        description=
-        "The number of entitlement decisions that have been made which were revoked"
-    )
-    access_profiles_approved: Optional[StrictInt] = Field(
-        None,
-        alias="accessProfilesApproved",
-        description=
-        "The number of access profile decisions that have been made which were approved"
-    )
-    access_profiles_revoked: Optional[StrictInt] = Field(
-        None,
-        alias="accessProfilesRevoked",
-        description=
-        "The number of access profile decisions that have been made which were revoked"
-    )
-    roles_approved: Optional[StrictInt] = Field(
-        None,
-        alias="rolesApproved",
-        description=
-        "The number of role decisions that have been made which were approved")
-    roles_revoked: Optional[StrictInt] = Field(
-        None,
-        alias="rolesRevoked",
-        description=
-        "The number of role decisions that have been made which were revoked")
-    accounts_approved: Optional[StrictInt] = Field(
-        None,
-        alias="accountsApproved",
-        description=
-        "The number of account decisions that have been made which were approved"
-    )
-    accounts_revoked: Optional[StrictInt] = Field(
-        None,
-        alias="accountsRevoked",
-        description=
-        "The number of account decisions that have been made which were revoked"
-    )
-    __properties = [
-        "entitlementDecisionsMade", "accessProfileDecisionsMade",
-        "roleDecisionsMade", "accountDecisionsMade",
-        "entitlementDecisionsTotal", "accessProfileDecisionsTotal",
-        "roleDecisionsTotal", "accountDecisionsTotal", "entitlementsApproved",
-        "entitlementsRevoked", "accessProfilesApproved",
-        "accessProfilesRevoked", "rolesApproved", "rolesRevoked",
-        "accountsApproved", "accountsRevoked"
-    ]
+    entitlement_decisions_made: Optional[StrictInt] = Field(None, alias="entitlementDecisionsMade", description="Number of entitlement decisions that have been made")
+    access_profile_decisions_made: Optional[StrictInt] = Field(None, alias="accessProfileDecisionsMade", description="Number of access profile decisions that have been made")
+    role_decisions_made: Optional[StrictInt] = Field(None, alias="roleDecisionsMade", description="Number of role decisions that have been made")
+    account_decisions_made: Optional[StrictInt] = Field(None, alias="accountDecisionsMade", description="Number of account decisions that have been made")
+    entitlement_decisions_total: Optional[StrictInt] = Field(None, alias="entitlementDecisionsTotal", description="The total number of entitlement decisions on the certification, both complete and incomplete")
+    access_profile_decisions_total: Optional[StrictInt] = Field(None, alias="accessProfileDecisionsTotal", description="The total number of access profile decisions on the certification, both complete and incomplete")
+    role_decisions_total: Optional[StrictInt] = Field(None, alias="roleDecisionsTotal", description="The total number of role decisions on the certification, both complete and incomplete")
+    account_decisions_total: Optional[StrictInt] = Field(None, alias="accountDecisionsTotal", description="The total number of account decisions on the certification, both complete and incomplete")
+    entitlements_approved: Optional[StrictInt] = Field(None, alias="entitlementsApproved", description="The number of entitlement decisions that have been made which were approved")
+    entitlements_revoked: Optional[StrictInt] = Field(None, alias="entitlementsRevoked", description="The number of entitlement decisions that have been made which were revoked")
+    access_profiles_approved: Optional[StrictInt] = Field(None, alias="accessProfilesApproved", description="The number of access profile decisions that have been made which were approved")
+    access_profiles_revoked: Optional[StrictInt] = Field(None, alias="accessProfilesRevoked", description="The number of access profile decisions that have been made which were revoked")
+    roles_approved: Optional[StrictInt] = Field(None, alias="rolesApproved", description="The number of role decisions that have been made which were approved")
+    roles_revoked: Optional[StrictInt] = Field(None, alias="rolesRevoked", description="The number of role decisions that have been made which were revoked")
+    accounts_approved: Optional[StrictInt] = Field(None, alias="accountsApproved", description="The number of account decisions that have been made which were approved")
+    accounts_revoked: Optional[StrictInt] = Field(None, alias="accountsRevoked", description="The number of account decisions that have been made which were revoked")
+    __properties = ["entitlementDecisionsMade", "accessProfileDecisionsMade", "roleDecisionsMade", "accountDecisionsMade", "entitlementDecisionsTotal", "accessProfileDecisionsTotal", "roleDecisionsTotal", "accountDecisionsTotal", "entitlementsApproved", "entitlementsRevoked", "accessProfilesApproved", "accessProfilesRevoked", "rolesApproved", "rolesRevoked", "accountsApproved", "accountsRevoked"]
 
     class Config:
         """Pydantic configuration"""
@@ -140,7 +63,10 @@ class IdentityCertDecisionSummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -153,37 +79,23 @@ class IdentityCertDecisionSummary(BaseModel):
             return IdentityCertDecisionSummary.parse_obj(obj)
 
         _obj = IdentityCertDecisionSummary.parse_obj({
-            "entitlement_decisions_made":
-            obj.get("entitlementDecisionsMade"),
-            "access_profile_decisions_made":
-            obj.get("accessProfileDecisionsMade"),
-            "role_decisions_made":
-            obj.get("roleDecisionsMade"),
-            "account_decisions_made":
-            obj.get("accountDecisionsMade"),
-            "entitlement_decisions_total":
-            obj.get("entitlementDecisionsTotal"),
-            "access_profile_decisions_total":
-            obj.get("accessProfileDecisionsTotal"),
-            "role_decisions_total":
-            obj.get("roleDecisionsTotal"),
-            "account_decisions_total":
-            obj.get("accountDecisionsTotal"),
-            "entitlements_approved":
-            obj.get("entitlementsApproved"),
-            "entitlements_revoked":
-            obj.get("entitlementsRevoked"),
-            "access_profiles_approved":
-            obj.get("accessProfilesApproved"),
-            "access_profiles_revoked":
-            obj.get("accessProfilesRevoked"),
-            "roles_approved":
-            obj.get("rolesApproved"),
-            "roles_revoked":
-            obj.get("rolesRevoked"),
-            "accounts_approved":
-            obj.get("accountsApproved"),
-            "accounts_revoked":
-            obj.get("accountsRevoked")
+            "entitlement_decisions_made": obj.get("entitlementDecisionsMade"),
+            "access_profile_decisions_made": obj.get("accessProfileDecisionsMade"),
+            "role_decisions_made": obj.get("roleDecisionsMade"),
+            "account_decisions_made": obj.get("accountDecisionsMade"),
+            "entitlement_decisions_total": obj.get("entitlementDecisionsTotal"),
+            "access_profile_decisions_total": obj.get("accessProfileDecisionsTotal"),
+            "role_decisions_total": obj.get("roleDecisionsTotal"),
+            "account_decisions_total": obj.get("accountDecisionsTotal"),
+            "entitlements_approved": obj.get("entitlementsApproved"),
+            "entitlements_revoked": obj.get("entitlementsRevoked"),
+            "access_profiles_approved": obj.get("accessProfilesApproved"),
+            "access_profiles_revoked": obj.get("accessProfilesRevoked"),
+            "roles_approved": obj.get("rolesApproved"),
+            "roles_revoked": obj.get("rolesRevoked"),
+            "accounts_approved": obj.get("accountsApproved"),
+            "accounts_revoked": obj.get("accountsRevoked")
         })
         return _obj
+
+

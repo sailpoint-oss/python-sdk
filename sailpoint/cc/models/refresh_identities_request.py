@@ -11,27 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from cc.models.refresh_identities_request_refresh_args import RefreshIdentitiesRequestRefreshArgs
-
 
 class RefreshIdentitiesRequest(BaseModel):
     """
     RefreshIdentitiesRequest
     """
-    filter: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Defines the identity or identities which this refresh applies to. The filter must use searchable identity attributes. If the filter cannot be understood or parsed, all identities will be refreshed. "
-    )
-    refresh_args: Optional[RefreshIdentitiesRequestRefreshArgs] = Field(
-        None, alias="refreshArgs")
+    filter: Optional[StrictStr] = Field(None, description="Defines the identity or identities which this refresh applies to. The filter must use searchable identity attributes. If the filter cannot be understood or parsed, all identities will be refreshed. ")
+    refresh_args: Optional[RefreshIdentitiesRequestRefreshArgs] = Field(None, alias="refreshArgs")
     __properties = ["filter", "refreshArgs"]
 
     class Config:
@@ -54,7 +50,10 @@ class RefreshIdentitiesRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of refresh_args
         if self.refresh_args:
             _dict['refreshArgs'] = self.refresh_args.to_dict()
@@ -70,11 +69,9 @@ class RefreshIdentitiesRequest(BaseModel):
             return RefreshIdentitiesRequest.parse_obj(obj)
 
         _obj = RefreshIdentitiesRequest.parse_obj({
-            "filter":
-            obj.get("filter"),
-            "refresh_args":
-            RefreshIdentitiesRequestRefreshArgs.from_dict(
-                obj.get("refreshArgs"))
-            if obj.get("refreshArgs") is not None else None
+            "filter": obj.get("filter"),
+            "refresh_args": RefreshIdentitiesRequestRefreshArgs.from_dict(obj.get("refreshArgs")) if obj.get("refreshArgs") is not None else None
         })
         return _obj
+
+

@@ -11,24 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
 
+from typing import Optional
+from pydantic import BaseModel
+from beta.models.role_mining_session_state import RoleMiningSessionState
 
 class RoleMiningSessionStatus(BaseModel):
     """
     RoleMiningSessionStatus
     """
-    state: Optional[StrictStr] = Field(
-        None,
-        description=
-        "The role mining session status. Can be one of these states - CREATED|UPDATED|IDENTITIES_OBTAINED|PRUNE_THRESHOLD_OBTAINED|POTENTIAL_ROLES_PROCESSING|POTENTIAL_ROLES_CREATED"
-    )
+    state: Optional[RoleMiningSessionState] = None
     __properties = ["state"]
 
     class Config:
@@ -51,7 +49,10 @@ class RoleMiningSessionStatus(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,5 +64,9 @@ class RoleMiningSessionStatus(BaseModel):
         if not isinstance(obj, dict):
             return RoleMiningSessionStatus.parse_obj(obj)
 
-        _obj = RoleMiningSessionStatus.parse_obj({"state": obj.get("state")})
+        _obj = RoleMiningSessionStatus.parse_obj({
+            "state": obj.get("state")
+        })
         return _obj
+
+

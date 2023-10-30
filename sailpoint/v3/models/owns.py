@@ -11,15 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, conlist
 from v3.models.reference import Reference
-
 
 class Owns(BaseModel):
     """
@@ -27,18 +28,12 @@ class Owns(BaseModel):
     """
     sources: Optional[conlist(Reference)] = None
     entitlements: Optional[conlist(Reference)] = None
-    access_profiles: Optional[conlist(Reference)] = Field(
-        None, alias="accessProfiles")
+    access_profiles: Optional[conlist(Reference)] = Field(None, alias="accessProfiles")
     roles: Optional[conlist(Reference)] = None
     apps: Optional[conlist(Reference)] = None
-    governance_groups: Optional[conlist(Reference)] = Field(
-        None, alias="governanceGroups")
-    fallback_approver: Optional[StrictBool] = Field(None,
-                                                    alias="fallbackApprover")
-    __properties = [
-        "sources", "entitlements", "accessProfiles", "roles", "apps",
-        "governanceGroups", "fallbackApprover"
-    ]
+    governance_groups: Optional[conlist(Reference)] = Field(None, alias="governanceGroups")
+    fallback_approver: Optional[StrictBool] = Field(None, alias="fallbackApprover")
+    __properties = ["sources", "entitlements", "accessProfiles", "roles", "apps", "governanceGroups", "fallbackApprover"]
 
     class Config:
         """Pydantic configuration"""
@@ -60,7 +55,10 @@ class Owns(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in sources (list)
         _items = []
         if self.sources:
@@ -115,26 +113,14 @@ class Owns(BaseModel):
             return Owns.parse_obj(obj)
 
         _obj = Owns.parse_obj({
-            "sources":
-            [Reference.from_dict(_item) for _item in obj.get("sources")]
-            if obj.get("sources") is not None else None,
-            "entitlements":
-            [Reference.from_dict(_item) for _item in obj.get("entitlements")]
-            if obj.get("entitlements") is not None else None,
-            "access_profiles": [
-                Reference.from_dict(_item)
-                for _item in obj.get("accessProfiles")
-            ] if obj.get("accessProfiles") is not None else None,
-            "roles":
-            [Reference.from_dict(_item) for _item in obj.get("roles")]
-            if obj.get("roles") is not None else None,
-            "apps": [Reference.from_dict(_item) for _item in obj.get("apps")]
-            if obj.get("apps") is not None else None,
-            "governance_groups": [
-                Reference.from_dict(_item)
-                for _item in obj.get("governanceGroups")
-            ] if obj.get("governanceGroups") is not None else None,
-            "fallback_approver":
-            obj.get("fallbackApprover")
+            "sources": [Reference.from_dict(_item) for _item in obj.get("sources")] if obj.get("sources") is not None else None,
+            "entitlements": [Reference.from_dict(_item) for _item in obj.get("entitlements")] if obj.get("entitlements") is not None else None,
+            "access_profiles": [Reference.from_dict(_item) for _item in obj.get("accessProfiles")] if obj.get("accessProfiles") is not None else None,
+            "roles": [Reference.from_dict(_item) for _item in obj.get("roles")] if obj.get("roles") is not None else None,
+            "apps": [Reference.from_dict(_item) for _item in obj.get("apps")] if obj.get("apps") is not None else None,
+            "governance_groups": [Reference.from_dict(_item) for _item in obj.get("governanceGroups")] if obj.get("governanceGroups") is not None else None,
+            "fallback_approver": obj.get("fallbackApprover")
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.reviewable_access_profile import ReviewableAccessProfile  # noqa: E501
-
 
 class TestReviewableAccessProfile(unittest.TestCase):
     """ReviewableAccessProfile unit test stubs"""
@@ -102,7 +102,6 @@ class TestReviewableAccessProfile(unittest.TestCase):
         """Test ReviewableAccessProfile"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,46 +22,20 @@ from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
 from v3.models.campaign_template_owner_ref import CampaignTemplateOwnerRef
 
-
 class CampaignTemplate(BaseModel):
     """
     Campaign Template  # noqa: E501
     """
-    id: Optional[StrictStr] = Field(None,
-                                    description="Id of the campaign template")
-    name: StrictStr = Field(
-        ...,
-        description=
-        "This template's name. Has no bearing on generated campaigns' names.")
-    description: StrictStr = Field(
-        ...,
-        description=
-        "This template's description. Has no bearing on generated campaigns' descriptions."
-    )
-    created: datetime = Field(...,
-                              description="Creation date of Campaign Template")
-    modified: datetime = Field(
-        ..., description="Modification date of Campaign Template")
-    scheduled: Optional[StrictBool] = Field(
-        False,
-        description="Indicates if this campaign template has been scheduled.")
-    owner_ref: Optional[CampaignTemplateOwnerRef] = Field(None,
-                                                          alias="ownerRef")
-    deadline_duration: Optional[StrictStr] = Field(
-        None,
-        alias="deadlineDuration",
-        description=
-        "The time period during which the campaign should be completed, formatted as an ISO-8601 Duration. When this template generates a campaign, the campaign's deadline will be the current date plus this duration. For example, if generation occurred on 2020-01-01 and this field was \"P2W\" (two weeks), the resulting campaign's deadline would be 2020-01-15 (the current date plus 14 days)."
-    )
-    campaign: Dict[str, Any] = Field(
-        ...,
-        description=
-        "This will hold campaign related information like name, description etc."
-    )
-    __properties = [
-        "id", "name", "description", "created", "modified", "scheduled",
-        "ownerRef", "deadlineDuration", "campaign"
-    ]
+    id: Optional[StrictStr] = Field(None, description="Id of the campaign template")
+    name: StrictStr = Field(..., description="This template's name. Has no bearing on generated campaigns' names.")
+    description: StrictStr = Field(..., description="This template's description. Has no bearing on generated campaigns' descriptions.")
+    created: datetime = Field(..., description="Creation date of Campaign Template")
+    modified: datetime = Field(..., description="Modification date of Campaign Template")
+    scheduled: Optional[StrictBool] = Field(False, description="Indicates if this campaign template has been scheduled.")
+    owner_ref: Optional[CampaignTemplateOwnerRef] = Field(None, alias="ownerRef")
+    deadline_duration: Optional[StrictStr] = Field(None, alias="deadlineDuration", description="The time period during which the campaign should be completed, formatted as an ISO-8601 Duration. When this template generates a campaign, the campaign's deadline will be the current date plus this duration. For example, if generation occurred on 2020-01-01 and this field was \"P2W\" (two weeks), the resulting campaign's deadline would be 2020-01-15 (the current date plus 14 days).")
+    campaign: Dict[str, Any] = Field(..., description="This will hold campaign related information like name, description etc.")
+    __properties = ["id", "name", "description", "created", "modified", "scheduled", "ownerRef", "deadlineDuration", "campaign"]
 
     class Config:
         """Pydantic configuration"""
@@ -84,9 +59,9 @@ class CampaignTemplate(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "created",
-                              "modified",
-                              "scheduled",
+                            "created",
+                            "modified",
+                            "scheduled",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner_ref
@@ -107,26 +82,16 @@ class CampaignTemplate(BaseModel):
             return CampaignTemplate.parse_obj(obj)
 
         _obj = CampaignTemplate.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "scheduled":
-            obj.get("scheduled")
-            if obj.get("scheduled") is not None else False,
-            "owner_ref":
-            CampaignTemplateOwnerRef.from_dict(obj.get("ownerRef"))
-            if obj.get("ownerRef") is not None else None,
-            "deadline_duration":
-            obj.get("deadlineDuration"),
-            "campaign":
-            Campaign.from_dict(obj.get("campaign"))
-            if obj.get("campaign") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "scheduled": obj.get("scheduled") if obj.get("scheduled") is not None else False,
+            "owner_ref": CampaignTemplateOwnerRef.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
+            "deadline_duration": obj.get("deadlineDuration"),
+            "campaign": Campaign.from_dict(obj.get("campaign")) if obj.get("campaign") is not None else None
         })
         return _obj
+
+

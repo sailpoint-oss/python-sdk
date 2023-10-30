@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool
@@ -22,34 +24,16 @@ from beta.models.approval_reminder_and_escalation_config import ApprovalReminder
 from beta.models.entitlement_request_config1 import EntitlementRequestConfig1
 from beta.models.request_on_behalf_of_config import RequestOnBehalfOfConfig
 
-
 class AccessRequestConfig(BaseModel):
     """
     AccessRequestConfig
     """
-    approvals_must_be_external: Optional[StrictBool] = Field(
-        None,
-        alias="approvalsMustBeExternal",
-        description=
-        "If true, then approvals must be processed by external system.")
-    auto_approval_enabled: Optional[StrictBool] = Field(
-        None,
-        alias="autoApprovalEnabled",
-        description=
-        "If true and requester and reviewer are the same, then automatically approve the approval."
-    )
-    request_on_behalf_of_config: Optional[RequestOnBehalfOfConfig] = Field(
-        None, alias="requestOnBehalfOfConfig")
-    approval_reminder_and_escalation_config: Optional[
-        ApprovalReminderAndEscalationConfig] = Field(
-            None, alias="approvalReminderAndEscalationConfig")
-    entitlement_request_config: Optional[EntitlementRequestConfig1] = Field(
-        None, alias="entitlementRequestConfig")
-    __properties = [
-        "approvalsMustBeExternal", "autoApprovalEnabled",
-        "requestOnBehalfOfConfig", "approvalReminderAndEscalationConfig",
-        "entitlementRequestConfig"
-    ]
+    approvals_must_be_external: Optional[StrictBool] = Field(None, alias="approvalsMustBeExternal", description="If true, then approvals must be processed by external system.")
+    auto_approval_enabled: Optional[StrictBool] = Field(None, alias="autoApprovalEnabled", description="If true and requester and reviewer are the same, then automatically approve the approval.")
+    request_on_behalf_of_config: Optional[RequestOnBehalfOfConfig] = Field(None, alias="requestOnBehalfOfConfig")
+    approval_reminder_and_escalation_config: Optional[ApprovalReminderAndEscalationConfig] = Field(None, alias="approvalReminderAndEscalationConfig")
+    entitlement_request_config: Optional[EntitlementRequestConfig1] = Field(None, alias="entitlementRequestConfig")
+    __properties = ["approvalsMustBeExternal", "autoApprovalEnabled", "requestOnBehalfOfConfig", "approvalReminderAndEscalationConfig", "entitlementRequestConfig"]
 
     class Config:
         """Pydantic configuration"""
@@ -71,22 +55,19 @@ class AccessRequestConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of request_on_behalf_of_config
         if self.request_on_behalf_of_config:
-            _dict[
-                'requestOnBehalfOfConfig'] = self.request_on_behalf_of_config.to_dict(
-                )
+            _dict['requestOnBehalfOfConfig'] = self.request_on_behalf_of_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of approval_reminder_and_escalation_config
         if self.approval_reminder_and_escalation_config:
-            _dict[
-                'approvalReminderAndEscalationConfig'] = self.approval_reminder_and_escalation_config.to_dict(
-                )
+            _dict['approvalReminderAndEscalationConfig'] = self.approval_reminder_and_escalation_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of entitlement_request_config
         if self.entitlement_request_config:
-            _dict[
-                'entitlementRequestConfig'] = self.entitlement_request_config.to_dict(
-                )
+            _dict['entitlementRequestConfig'] = self.entitlement_request_config.to_dict()
         return _dict
 
     @classmethod
@@ -99,22 +80,12 @@ class AccessRequestConfig(BaseModel):
             return AccessRequestConfig.parse_obj(obj)
 
         _obj = AccessRequestConfig.parse_obj({
-            "approvals_must_be_external":
-            obj.get("approvalsMustBeExternal"),
-            "auto_approval_enabled":
-            obj.get("autoApprovalEnabled"),
-            "request_on_behalf_of_config":
-            RequestOnBehalfOfConfig.from_dict(
-                obj.get("requestOnBehalfOfConfig"))
-            if obj.get("requestOnBehalfOfConfig") is not None else None,
-            "approval_reminder_and_escalation_config":
-            ApprovalReminderAndEscalationConfig.from_dict(
-                obj.get("approvalReminderAndEscalationConfig"))
-            if obj.get("approvalReminderAndEscalationConfig") is not None else
-            None,
-            "entitlement_request_config":
-            EntitlementRequestConfig1.from_dict(
-                obj.get("entitlementRequestConfig"))
-            if obj.get("entitlementRequestConfig") is not None else None
+            "approvals_must_be_external": obj.get("approvalsMustBeExternal"),
+            "auto_approval_enabled": obj.get("autoApprovalEnabled"),
+            "request_on_behalf_of_config": RequestOnBehalfOfConfig.from_dict(obj.get("requestOnBehalfOfConfig")) if obj.get("requestOnBehalfOfConfig") is not None else None,
+            "approval_reminder_and_escalation_config": ApprovalReminderAndEscalationConfig.from_dict(obj.get("approvalReminderAndEscalationConfig")) if obj.get("approvalReminderAndEscalationConfig") is not None else None,
+            "entitlement_request_config": EntitlementRequestConfig1.from_dict(obj.get("entitlementRequestConfig")) if obj.get("entitlementRequestConfig") is not None else None
         })
         return _obj
+
+

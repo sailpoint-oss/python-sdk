@@ -11,36 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class VAClusterStatusChangeEventPreviousHealthCheckResult(BaseModel):
     """
     The results of the last health check.  # noqa: E501
     """
-    message: StrictStr = Field(
-        ..., description="Detailed message of the result of the health check.")
-    result_type: StrictStr = Field(
-        ...,
-        alias="resultType",
-        description="The type of the health check result.")
-    status: Dict[str,
-                 Any] = Field(...,
-                              description="The status of the health check.")
+    message: StrictStr = Field(..., description="Detailed message of the result of the health check.")
+    result_type: StrictStr = Field(..., alias="resultType", description="The type of the health check result.")
+    status: Dict[str, Any] = Field(..., description="The status of the health check.")
     __properties = ["message", "resultType", "status"]
 
     @validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('Succeeded', 'Failed'):
-            raise ValueError(
-                "must be one of enum values ('Succeeded', 'Failed')")
+            raise ValueError("must be one of enum values ('Succeeded', 'Failed')")
         return value
 
     class Config:
@@ -57,35 +51,32 @@ class VAClusterStatusChangeEventPreviousHealthCheckResult(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-            cls, json_str: str
-    ) -> VAClusterStatusChangeEventPreviousHealthCheckResult:
+    def from_json(cls, json_str: str) -> VAClusterStatusChangeEventPreviousHealthCheckResult:
         """Create an instance of VAClusterStatusChangeEventPreviousHealthCheckResult from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(
-            cls,
-            obj: dict) -> VAClusterStatusChangeEventPreviousHealthCheckResult:
+    def from_dict(cls, obj: dict) -> VAClusterStatusChangeEventPreviousHealthCheckResult:
         """Create an instance of VAClusterStatusChangeEventPreviousHealthCheckResult from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return VAClusterStatusChangeEventPreviousHealthCheckResult.parse_obj(
-                obj)
+            return VAClusterStatusChangeEventPreviousHealthCheckResult.parse_obj(obj)
 
         _obj = VAClusterStatusChangeEventPreviousHealthCheckResult.parse_obj({
-            "message":
-            obj.get("message"),
-            "result_type":
-            obj.get("resultType"),
-            "status":
-            obj.get("status")
+            "message": obj.get("message"),
+            "result_type": obj.get("resultType"),
+            "status": obj.get("status")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from v3.api.account_activities_api import AccountActivitiesApi  # noqa: E501

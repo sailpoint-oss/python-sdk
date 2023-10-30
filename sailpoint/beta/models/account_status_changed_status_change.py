@@ -11,25 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class AccountStatusChangedStatusChange(BaseModel):
     """
     AccountStatusChangedStatusChange
     """
-    previous_status: Optional[StrictStr] = Field(
-        None,
-        alias="previousStatus",
-        description="the previous status of the account")
-    new_status: Optional[StrictStr] = Field(
-        None, alias="newStatus", description="the new status of the account")
+    previous_status: Optional[StrictStr] = Field(None, alias="previousStatus", description="the previous status of the account")
+    new_status: Optional[StrictStr] = Field(None, alias="newStatus", description="the new status of the account")
     __properties = ["previousStatus", "newStatus"]
 
     @validator('previous_status')
@@ -39,8 +36,7 @@ class AccountStatusChangedStatusChange(BaseModel):
             return value
 
         if value not in ('enabled', 'disabled', 'locked'):
-            raise ValueError(
-                "must be one of enum values ('enabled', 'disabled', 'locked')")
+            raise ValueError("must be one of enum values ('enabled', 'disabled', 'locked')")
         return value
 
     @validator('new_status')
@@ -50,8 +46,7 @@ class AccountStatusChangedStatusChange(BaseModel):
             return value
 
         if value not in ('enabled', 'disabled', 'locked'):
-            raise ValueError(
-                "must be one of enum values ('enabled', 'disabled', 'locked')")
+            raise ValueError("must be one of enum values ('enabled', 'disabled', 'locked')")
         return value
 
     class Config:
@@ -74,7 +69,10 @@ class AccountStatusChangedStatusChange(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -87,9 +85,9 @@ class AccountStatusChangedStatusChange(BaseModel):
             return AccountStatusChangedStatusChange.parse_obj(obj)
 
         _obj = AccountStatusChangedStatusChange.parse_obj({
-            "previous_status":
-            obj.get("previousStatus"),
-            "new_status":
-            obj.get("newStatus")
+            "previous_status": obj.get("previousStatus"),
+            "new_status": obj.get("newStatus")
         })
         return _obj
+
+

@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field
-
 
 class TestExternalExecuteWorkflow200Response(BaseModel):
     """
     TestExternalExecuteWorkflow200Response
     """
-    payload: Optional[Dict[str, Any]] = Field(
-        None, description="The input that was received")
+    payload: Optional[Dict[str, Any]] = Field(None, description="The input that was received")
     __properties = ["payload"]
 
     class Config:
@@ -42,14 +42,16 @@ class TestExternalExecuteWorkflow200Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls,
-                  json_str: str) -> TestExternalExecuteWorkflow200Response:
+    def from_json(cls, json_str: str) -> TestExternalExecuteWorkflow200Response:
         """Create an instance of TestExternalExecuteWorkflow200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -61,6 +63,9 @@ class TestExternalExecuteWorkflow200Response(BaseModel):
         if not isinstance(obj, dict):
             return TestExternalExecuteWorkflow200Response.parse_obj(obj)
 
-        _obj = TestExternalExecuteWorkflow200Response.parse_obj(
-            {"payload": obj.get("payload")})
+        _obj = TestExternalExecuteWorkflow200Response.parse_obj({
+            "payload": obj.get("payload")
+        })
         return _obj
+
+

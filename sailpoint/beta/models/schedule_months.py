@@ -11,27 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist, validator
-
 
 class ScheduleMonths(BaseModel):
     """
     Specifies which months of a schedule are active. Only valid for ANNUALLY schedule types. Examples:  On February and March: * type LIST * values \"2\", \"3\"  Every 3 months, starting in January (quarterly): * type LIST * values \"1\" * interval 3  Every two months between July and December: * type RANGE * values \"7\", \"12\" * interval 2   # noqa: E501
     """
-    type: StrictStr = Field(...,
-                            description="Enum type to specify months value")
-    values: conlist(StrictStr) = Field(
-        ...,
-        description=
-        "Values of the months based on the enum type mentioned above")
-    interval: Optional[StrictInt] = Field(
-        None, description="Interval between the cert generations")
+    type: StrictStr = Field(..., description="Enum type to specify months value")
+    values: conlist(StrictStr) = Field(..., description="Values of the months based on the enum type mentioned above")
+    interval: Optional[StrictInt] = Field(None, description="Interval between the cert generations")
     __properties = ["type", "values", "interval"]
 
     @validator('type')
@@ -61,7 +57,10 @@ class ScheduleMonths(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -79,3 +78,5 @@ class ScheduleMonths(BaseModel):
             "interval": obj.get("interval")
         })
         return _obj
+
+

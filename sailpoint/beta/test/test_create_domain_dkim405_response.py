@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.create_domain_dkim405_response import CreateDomainDkim405Response  # noqa: E501
-
 
 class TestCreateDomainDkim405Response(unittest.TestCase):
     """CreateDomainDkim405Response unit test stubs"""
@@ -49,7 +49,6 @@ class TestCreateDomainDkim405Response(unittest.TestCase):
         """Test CreateDomainDkim405Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

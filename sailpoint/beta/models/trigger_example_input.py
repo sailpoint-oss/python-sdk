@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -44,17 +45,7 @@ from beta.models.va_cluster_status_change_event import VAClusterStatusChangeEven
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-TRIGGEREXAMPLEINPUT_ONE_OF_SCHEMAS = [
-    "AccessRequestDynamicApprover", "AccessRequestPostApproval",
-    "AccessRequestPreApproval", "AccountAggregationCompleted",
-    "AccountAttributesChanged", "AccountCorrelated", "AccountUncorrelated",
-    "AccountsCollectedForAggregation", "CampaignActivated", "CampaignEnded",
-    "CampaignGenerated", "CertificationSignedOff", "IdentityAttributesChanged",
-    "IdentityCreated", "IdentityDeleted", "ProvisioningCompleted",
-    "SavedSearchComplete", "SourceAccount", "SourceCreated", "SourceDeleted",
-    "SourceUpdated", "VAClusterStatusChangeEvent"
-]
-
+TRIGGEREXAMPLEINPUT_ONE_OF_SCHEMAS = ["AccessRequestDynamicApprover", "AccessRequestPostApproval", "AccessRequestPreApproval", "AccountAggregationCompleted", "AccountAttributesChanged", "AccountCorrelated", "AccountUncorrelated", "AccountsCollectedForAggregation", "CampaignActivated", "CampaignEnded", "CampaignGenerated", "CertificationSignedOff", "IdentityAttributesChanged", "IdentityCreated", "IdentityDeleted", "ProvisioningCompleted", "SavedSearchComplete", "SourceAccount", "SourceCreated", "SourceDeleted", "SourceUpdated", "VAClusterStatusChangeEvent"]
 
 class TriggerExampleInput(BaseModel):
     """
@@ -109,24 +100,10 @@ class TriggerExampleInput(BaseModel):
     # data type: VAClusterStatusChangeEvent
     oneof_schema_24_validator: Optional[VAClusterStatusChangeEvent] = None
     if TYPE_CHECKING:
-        actual_instance: Union[AccessRequestDynamicApprover,
-                               AccessRequestPostApproval,
-                               AccessRequestPreApproval,
-                               AccountAggregationCompleted,
-                               AccountAttributesChanged, AccountCorrelated,
-                               AccountUncorrelated,
-                               AccountsCollectedForAggregation,
-                               CampaignActivated, CampaignEnded,
-                               CampaignGenerated, CertificationSignedOff,
-                               IdentityAttributesChanged, IdentityCreated,
-                               IdentityDeleted, ProvisioningCompleted,
-                               SavedSearchComplete, SourceAccount,
-                               SourceCreated, SourceDeleted, SourceUpdated,
-                               VAClusterStatusChangeEvent]
+        actual_instance: Union[AccessRequestDynamicApprover, AccessRequestPostApproval, AccessRequestPreApproval, AccountAggregationCompleted, AccountAttributesChanged, AccountCorrelated, AccountUncorrelated, AccountsCollectedForAggregation, CampaignActivated, CampaignEnded, CampaignGenerated, CertificationSignedOff, IdentityAttributesChanged, IdentityCreated, IdentityDeleted, ProvisioningCompleted, SavedSearchComplete, SourceAccount, SourceCreated, SourceDeleted, SourceUpdated, VAClusterStatusChangeEvent]
     else:
         actual_instance: Any
-    one_of_schemas: List[str] = Field(TRIGGEREXAMPLEINPUT_ONE_OF_SCHEMAS,
-                                      const=True)
+    one_of_schemas: List[str] = Field(TRIGGEREXAMPLEINPUT_ONE_OF_SCHEMAS, const=True)
 
     class Config:
         validate_assignment = True
@@ -134,13 +111,9 @@ class TriggerExampleInput(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -152,168 +125,130 @@ class TriggerExampleInput(BaseModel):
         match = 0
         # validate data type: AccessRequestDynamicApprover
         if not isinstance(v, AccessRequestDynamicApprover):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessRequestDynamicApprover`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessRequestDynamicApprover`")
         else:
             match += 1
         # validate data type: AccessRequestPostApproval
         if not isinstance(v, AccessRequestPostApproval):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessRequestPostApproval`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessRequestPostApproval`")
         else:
             match += 1
         # validate data type: AccessRequestPreApproval
         if not isinstance(v, AccessRequestPreApproval):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessRequestPreApproval`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessRequestPreApproval`")
         else:
             match += 1
         # validate data type: AccountAggregationCompleted
         if not isinstance(v, AccountAggregationCompleted):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccountAggregationCompleted`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccountAggregationCompleted`")
         else:
             match += 1
         # validate data type: AccountAttributesChanged
         if not isinstance(v, AccountAttributesChanged):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccountAttributesChanged`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccountAttributesChanged`")
         else:
             match += 1
         # validate data type: AccountCorrelated
         if not isinstance(v, AccountCorrelated):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccountCorrelated`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccountCorrelated`")
         else:
             match += 1
         # validate data type: AccountsCollectedForAggregation
         if not isinstance(v, AccountsCollectedForAggregation):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccountsCollectedForAggregation`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccountsCollectedForAggregation`")
         else:
             match += 1
         # validate data type: AccountUncorrelated
         if not isinstance(v, AccountUncorrelated):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccountUncorrelated`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccountUncorrelated`")
         else:
             match += 1
         # validate data type: CampaignActivated
         if not isinstance(v, CampaignActivated):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `CampaignActivated`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `CampaignActivated`")
         else:
             match += 1
         # validate data type: CampaignEnded
         if not isinstance(v, CampaignEnded):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `CampaignEnded`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `CampaignEnded`")
         else:
             match += 1
         # validate data type: CampaignGenerated
         if not isinstance(v, CampaignGenerated):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `CampaignGenerated`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `CampaignGenerated`")
         else:
             match += 1
         # validate data type: CertificationSignedOff
         if not isinstance(v, CertificationSignedOff):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `CertificationSignedOff`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `CertificationSignedOff`")
         else:
             match += 1
         # validate data type: IdentityAttributesChanged
         if not isinstance(v, IdentityAttributesChanged):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `IdentityAttributesChanged`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `IdentityAttributesChanged`")
         else:
             match += 1
         # validate data type: IdentityCreated
         if not isinstance(v, IdentityCreated):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `IdentityCreated`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `IdentityCreated`")
         else:
             match += 1
         # validate data type: IdentityDeleted
         if not isinstance(v, IdentityDeleted):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `IdentityDeleted`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `IdentityDeleted`")
         else:
             match += 1
         # validate data type: ProvisioningCompleted
         if not isinstance(v, ProvisioningCompleted):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `ProvisioningCompleted`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ProvisioningCompleted`")
         else:
             match += 1
         # validate data type: SavedSearchComplete
         if not isinstance(v, SavedSearchComplete):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `SavedSearchComplete`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SavedSearchComplete`")
         else:
             match += 1
         # validate data type: SourceAccount
         if not isinstance(v, SourceAccount):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `SourceAccount`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SourceAccount`")
         else:
             match += 1
         # validate data type: SourceAccount
         if not isinstance(v, SourceAccount):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `SourceAccount`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SourceAccount`")
         else:
             match += 1
         # validate data type: SourceAccount
         if not isinstance(v, SourceAccount):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `SourceAccount`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SourceAccount`")
         else:
             match += 1
         # validate data type: SourceCreated
         if not isinstance(v, SourceCreated):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `SourceCreated`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SourceCreated`")
         else:
             match += 1
         # validate data type: SourceDeleted
         if not isinstance(v, SourceDeleted):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `SourceDeleted`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SourceDeleted`")
         else:
             match += 1
         # validate data type: SourceUpdated
         if not isinstance(v, SourceUpdated):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `SourceUpdated`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SourceUpdated`")
         else:
             match += 1
         # validate data type: VAClusterStatusChangeEvent
         if not isinstance(v, VAClusterStatusChangeEvent):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `VAClusterStatusChangeEvent`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `VAClusterStatusChangeEvent`")
         else:
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when setting `actual_instance` in TriggerExampleInput with oneOf schemas: AccessRequestDynamicApprover, AccessRequestPostApproval, AccessRequestPreApproval, AccountAggregationCompleted, AccountAttributesChanged, AccountCorrelated, AccountUncorrelated, AccountsCollectedForAggregation, CampaignActivated, CampaignEnded, CampaignGenerated, CertificationSignedOff, IdentityAttributesChanged, IdentityCreated, IdentityDeleted, ProvisioningCompleted, SavedSearchComplete, SourceAccount, SourceCreated, SourceDeleted, SourceUpdated, VAClusterStatusChangeEvent. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in TriggerExampleInput with oneOf schemas: AccessRequestDynamicApprover, AccessRequestPostApproval, AccessRequestPreApproval, AccountAggregationCompleted, AccountAttributesChanged, AccountCorrelated, AccountUncorrelated, AccountsCollectedForAggregation, CampaignActivated, CampaignEnded, CampaignGenerated, CertificationSignedOff, IdentityAttributesChanged, IdentityCreated, IdentityDeleted, ProvisioningCompleted, SavedSearchComplete, SourceAccount, SourceCreated, SourceDeleted, SourceUpdated, VAClusterStatusChangeEvent. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when setting `actual_instance` in TriggerExampleInput with oneOf schemas: AccessRequestDynamicApprover, AccessRequestPostApproval, AccessRequestPreApproval, AccountAggregationCompleted, AccountAttributesChanged, AccountCorrelated, AccountUncorrelated, AccountsCollectedForAggregation, CampaignActivated, CampaignEnded, CampaignGenerated, CertificationSignedOff, IdentityAttributesChanged, IdentityCreated, IdentityDeleted, ProvisioningCompleted, SavedSearchComplete, SourceAccount, SourceCreated, SourceDeleted, SourceUpdated, VAClusterStatusChangeEvent. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in TriggerExampleInput with oneOf schemas: AccessRequestDynamicApprover, AccessRequestPostApproval, AccessRequestPreApproval, AccountAggregationCompleted, AccountAttributesChanged, AccountCorrelated, AccountUncorrelated, AccountsCollectedForAggregation, CampaignActivated, CampaignEnded, CampaignGenerated, CertificationSignedOff, IdentityAttributesChanged, IdentityCreated, IdentityDeleted, ProvisioningCompleted, SavedSearchComplete, SourceAccount, SourceCreated, SourceDeleted, SourceUpdated, VAClusterStatusChangeEvent. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -330,36 +265,31 @@ class TriggerExampleInput(BaseModel):
 
         # deserialize data into AccessRequestDynamicApprover
         try:
-            instance.actual_instance = AccessRequestDynamicApprover.from_json(
-                json_str)
+            instance.actual_instance = AccessRequestDynamicApprover.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
         # deserialize data into AccessRequestPostApproval
         try:
-            instance.actual_instance = AccessRequestPostApproval.from_json(
-                json_str)
+            instance.actual_instance = AccessRequestPostApproval.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
         # deserialize data into AccessRequestPreApproval
         try:
-            instance.actual_instance = AccessRequestPreApproval.from_json(
-                json_str)
+            instance.actual_instance = AccessRequestPreApproval.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
         # deserialize data into AccountAggregationCompleted
         try:
-            instance.actual_instance = AccountAggregationCompleted.from_json(
-                json_str)
+            instance.actual_instance = AccountAggregationCompleted.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
         # deserialize data into AccountAttributesChanged
         try:
-            instance.actual_instance = AccountAttributesChanged.from_json(
-                json_str)
+            instance.actual_instance = AccountAttributesChanged.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
@@ -371,8 +301,7 @@ class TriggerExampleInput(BaseModel):
             error_messages.append(str(e))
         # deserialize data into AccountsCollectedForAggregation
         try:
-            instance.actual_instance = AccountsCollectedForAggregation.from_json(
-                json_str)
+            instance.actual_instance = AccountsCollectedForAggregation.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
@@ -402,15 +331,13 @@ class TriggerExampleInput(BaseModel):
             error_messages.append(str(e))
         # deserialize data into CertificationSignedOff
         try:
-            instance.actual_instance = CertificationSignedOff.from_json(
-                json_str)
+            instance.actual_instance = CertificationSignedOff.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
         # deserialize data into IdentityAttributesChanged
         try:
-            instance.actual_instance = IdentityAttributesChanged.from_json(
-                json_str)
+            instance.actual_instance = IdentityAttributesChanged.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
@@ -428,8 +355,7 @@ class TriggerExampleInput(BaseModel):
             error_messages.append(str(e))
         # deserialize data into ProvisioningCompleted
         try:
-            instance.actual_instance = ProvisioningCompleted.from_json(
-                json_str)
+            instance.actual_instance = ProvisioningCompleted.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
@@ -477,22 +403,17 @@ class TriggerExampleInput(BaseModel):
             error_messages.append(str(e))
         # deserialize data into VAClusterStatusChangeEvent
         try:
-            instance.actual_instance = VAClusterStatusChangeEvent.from_json(
-                json_str)
+            instance.actual_instance = VAClusterStatusChangeEvent.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when deserializing the JSON string into TriggerExampleInput with oneOf schemas: AccessRequestDynamicApprover, AccessRequestPostApproval, AccessRequestPreApproval, AccountAggregationCompleted, AccountAttributesChanged, AccountCorrelated, AccountUncorrelated, AccountsCollectedForAggregation, CampaignActivated, CampaignEnded, CampaignGenerated, CertificationSignedOff, IdentityAttributesChanged, IdentityCreated, IdentityDeleted, ProvisioningCompleted, SavedSearchComplete, SourceAccount, SourceCreated, SourceDeleted, SourceUpdated, VAClusterStatusChangeEvent. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into TriggerExampleInput with oneOf schemas: AccessRequestDynamicApprover, AccessRequestPostApproval, AccessRequestPreApproval, AccountAggregationCompleted, AccountAttributesChanged, AccountCorrelated, AccountUncorrelated, AccountsCollectedForAggregation, CampaignActivated, CampaignEnded, CampaignGenerated, CertificationSignedOff, IdentityAttributesChanged, IdentityCreated, IdentityDeleted, ProvisioningCompleted, SavedSearchComplete, SourceAccount, SourceCreated, SourceDeleted, SourceUpdated, VAClusterStatusChangeEvent. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into TriggerExampleInput with oneOf schemas: AccessRequestDynamicApprover, AccessRequestPostApproval, AccessRequestPreApproval, AccountAggregationCompleted, AccountAttributesChanged, AccountCorrelated, AccountUncorrelated, AccountsCollectedForAggregation, CampaignActivated, CampaignEnded, CampaignGenerated, CertificationSignedOff, IdentityAttributesChanged, IdentityCreated, IdentityDeleted, ProvisioningCompleted, SavedSearchComplete, SourceAccount, SourceCreated, SourceDeleted, SourceUpdated, VAClusterStatusChangeEvent. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into TriggerExampleInput with oneOf schemas: AccessRequestDynamicApprover, AccessRequestPostApproval, AccessRequestPreApproval, AccountAggregationCompleted, AccountAttributesChanged, AccountCorrelated, AccountUncorrelated, AccountsCollectedForAggregation, CampaignActivated, CampaignEnded, CampaignGenerated, CertificationSignedOff, IdentityAttributesChanged, IdentityCreated, IdentityDeleted, ProvisioningCompleted, SavedSearchComplete, SourceAccount, SourceCreated, SourceDeleted, SourceUpdated, VAClusterStatusChangeEvent. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -522,3 +443,5 @@ class TriggerExampleInput(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.dict())
+
+

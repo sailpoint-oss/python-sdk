@@ -11,25 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class AttributeDefinitionSchema(BaseModel):
     """
     A reference to the schema on the source to the attribute values map to.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(
-        None, description="The type of object being referenced")
-    id: Optional[StrictStr] = Field(
-        None, description="The object ID this reference applies to.")
-    name: Optional[StrictStr] = Field(
-        None, description="The human-readable display name of the object.")
+    type: Optional[StrictStr] = Field(None, description="The type of object being referenced")
+    id: Optional[StrictStr] = Field(None, description="The object ID this reference applies to.")
+    name: Optional[StrictStr] = Field(None, description="The human-readable display name of the object.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -62,7 +60,10 @@ class AttributeDefinitionSchema(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -80,3 +81,5 @@ class AttributeDefinitionSchema(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

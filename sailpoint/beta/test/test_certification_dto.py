@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.certification_dto import CertificationDto  # noqa: E501
-
 
 class TestCertificationDto(unittest.TestCase):
     """CertificationDto unit test stubs"""
@@ -91,7 +91,6 @@ class TestCertificationDto(unittest.TestCase):
         """Test CertificationDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

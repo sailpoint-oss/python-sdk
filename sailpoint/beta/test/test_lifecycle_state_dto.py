@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.lifecycle_state_dto import LifecycleStateDto  # noqa: E501
-
 
 class TestLifecycleStateDto(unittest.TestCase):
     """LifecycleStateDto unit test stubs"""
@@ -50,7 +50,6 @@ class TestLifecycleStateDto(unittest.TestCase):
         """Test LifecycleStateDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,35 +11,29 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.role_insights_insight import RoleInsightsInsight
-
 
 class RoleInsightsEntitlementChanges(BaseModel):
     """
     RoleInsightsEntitlementChanges
     """
-    name: Optional[StrictStr] = Field(None,
-                                      description="Name of the entitlement")
+    name: Optional[StrictStr] = Field(None, description="Name of the entitlement")
     id: Optional[StrictStr] = Field(None, description="Id of the entitlement")
-    description: Optional[StrictStr] = Field(
-        None, description="Description for the entitlement")
-    attribute: Optional[StrictStr] = Field(
-        None, description="Attribute for the entitlement")
-    value: Optional[StrictStr] = Field(
-        None, description="Attribute value for the entitlement")
-    source: Optional[StrictStr] = Field(
-        None, description="Source or the application for the entitlement")
+    description: Optional[StrictStr] = Field(None, description="Description for the entitlement")
+    attribute: Optional[StrictStr] = Field(None, description="Attribute for the entitlement")
+    value: Optional[StrictStr] = Field(None, description="Attribute value for the entitlement")
+    source: Optional[StrictStr] = Field(None, description="Source or the application for the entitlement")
     insight: Optional[RoleInsightsInsight] = None
-    __properties = [
-        "name", "id", "description", "attribute", "value", "source", "insight"
-    ]
+    __properties = ["name", "id", "description", "attribute", "value", "source", "insight"]
 
     class Config:
         """Pydantic configuration"""
@@ -61,7 +55,10 @@ class RoleInsightsEntitlementChanges(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of insight
         if self.insight:
             _dict['insight'] = self.insight.to_dict()
@@ -77,20 +74,14 @@ class RoleInsightsEntitlementChanges(BaseModel):
             return RoleInsightsEntitlementChanges.parse_obj(obj)
 
         _obj = RoleInsightsEntitlementChanges.parse_obj({
-            "name":
-            obj.get("name"),
-            "id":
-            obj.get("id"),
-            "description":
-            obj.get("description"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value"),
-            "source":
-            obj.get("source"),
-            "insight":
-            RoleInsightsInsight.from_dict(obj.get("insight"))
-            if obj.get("insight") is not None else None
+            "name": obj.get("name"),
+            "id": obj.get("id"),
+            "description": obj.get("description"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value"),
+            "source": obj.get("source"),
+            "insight": RoleInsightsInsight.from_dict(obj.get("insight")) if obj.get("insight") is not None else None
         })
         return _obj
+
+

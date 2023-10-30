@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class AttributeDefinitionType(str, Enum):
     """
     The underlying type of the value which an AttributeDefinition represents.
     """
+
     """
     allowed enum values
     """
@@ -33,3 +38,5 @@ class AttributeDefinitionType(str, Enum):
     def from_json(cls, json_str: str) -> AttributeDefinitionType:
         """Create an instance of AttributeDefinitionType from a JSON string"""
         return AttributeDefinitionType(json.loads(json_str))
+
+

@@ -11,30 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict
 from pydantic import BaseModel, Field, StrictStr, validator
 from beta.models.dto_type import DtoType
 
-
-class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover(
-        BaseModel):
+class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover(BaseModel):
     """
     The identity of the approver.  # noqa: E501
     """
-    type: Dict[str, Any] = Field(
-        ..., description="The type of object that is referenced")
-    id: StrictStr = Field(
-        ..., description="ID of the object to which this reference applies")
-    name: StrictStr = Field(
-        ...,
-        description=
-        "Human-readable display name of the object to which this reference applies"
-    )
+    type: Dict[str, Any] = Field(..., description="The type of object that is referenced")
+    id: StrictStr = Field(..., description="ID of the object to which this reference applies")
+    name: StrictStr = Field(..., description="Human-readable display name of the object to which this reference applies")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -58,33 +52,32 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprove
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover:
+    def from_json(cls, json_str: str) -> AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover:
         """Create an instance of AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(
-        cls, obj: dict
-    ) -> AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover:
+    def from_dict(cls, obj: dict) -> AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover:
         """Create an instance of AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover.parse_obj(
-                obj)
+            return AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover.parse_obj(obj)
 
-        _obj = AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover.parse_obj(
-            {
-                "type": obj.get("type"),
-                "id": obj.get("id"),
-                "name": obj.get("name")
-            })
+        _obj = AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover.parse_obj({
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name")
+        })
         return _obj
+
+

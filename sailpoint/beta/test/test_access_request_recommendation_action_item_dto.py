@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto  # noqa: E501
-
 
 class TestAccessRequestRecommendationActionItemDto(unittest.TestCase):
     """AccessRequestRecommendationActionItemDto unit test stubs"""
@@ -26,9 +26,7 @@ class TestAccessRequestRecommendationActionItemDto(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self,
-            include_optional) -> AccessRequestRecommendationActionItemDto:
+    def make_instance(self, include_optional) -> AccessRequestRecommendationActionItemDto:
         """Test AccessRequestRecommendationActionItemDto
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -56,7 +54,6 @@ class TestAccessRequestRecommendationActionItemDto(unittest.TestCase):
         """Test AccessRequestRecommendationActionItemDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

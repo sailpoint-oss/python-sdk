@@ -11,14 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
+
 from pydantic import BaseModel, Field
 from beta.models.certification_signed_off_certification import CertificationSignedOffCertification
-
 
 class CertificationSignedOff(BaseModel):
     """
@@ -47,7 +49,10 @@ class CertificationSignedOff(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of certification
         if self.certification:
             _dict['certification'] = self.certification.to_dict()
@@ -63,9 +68,8 @@ class CertificationSignedOff(BaseModel):
             return CertificationSignedOff.parse_obj(obj)
 
         _obj = CertificationSignedOff.parse_obj({
-            "certification":
-            CertificationSignedOffCertification.from_dict(
-                obj.get("certification"))
-            if obj.get("certification") is not None else None
+            "certification": CertificationSignedOffCertification.from_dict(obj.get("certification")) if obj.get("certification") is not None else None
         })
         return _obj
+
+

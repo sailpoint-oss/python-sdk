@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.password_configuration_api import PasswordConfigurationApi  # noqa: E501

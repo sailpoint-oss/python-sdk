@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
@@ -22,25 +24,19 @@ from v3.models.display_reference import DisplayReference
 from v3.models.dto_type import DtoType
 from v3.models.reference import Reference
 
-
 class AccessProfileSummary(BaseModel):
     """
     This is a summary representation of an access profile.  # noqa: E501
     """
-    id: Optional[StrictStr] = Field(
-        None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(
-        None, description="The human readable name of the referenced object.")
+    id: Optional[StrictStr] = Field(None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(None, description="The human readable name of the referenced object.")
     display_name: Optional[StrictStr] = Field(None, alias="displayName")
     type: Optional[DtoType] = None
     description: Optional[StrictStr] = None
     source: Optional[Reference] = None
     owner: Optional[DisplayReference] = None
     revocable: Optional[StrictBool] = None
-    __properties = [
-        "id", "name", "displayName", "type", "description", "source", "owner",
-        "revocable"
-    ]
+    __properties = ["id", "name", "displayName", "type", "description", "source", "owner", "revocable"]
 
     class Config:
         """Pydantic configuration"""
@@ -62,7 +58,10 @@ class AccessProfileSummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -86,23 +85,15 @@ class AccessProfileSummary(BaseModel):
             return AccessProfileSummary.parse_obj(obj)
 
         _obj = AccessProfileSummary.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "display_name":
-            obj.get("displayName"),
-            "type":
-            obj.get("type"),
-            "description":
-            obj.get("description"),
-            "source":
-            Reference.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "owner":
-            DisplayReference.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "revocable":
-            obj.get("revocable")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "display_name": obj.get("displayName"),
+            "type": obj.get("type"),
+            "description": obj.get("description"),
+            "source": Reference.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "owner": DisplayReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "revocable": obj.get("revocable")
         })
         return _obj
+
+

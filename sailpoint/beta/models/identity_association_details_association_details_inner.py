@@ -11,27 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from beta.models.identity_entities import IdentityEntities
-
 
 class IdentityAssociationDetailsAssociationDetailsInner(BaseModel):
     """
     IdentityAssociationDetailsAssociationDetailsInner
     """
-    association_type: Optional[StrictStr] = Field(
-        None,
-        alias="associationType",
-        description="association type with the identity")
-    entities: Optional[conlist(IdentityEntities)] = Field(
-        None,
-        description="the specific resource this identity has ownership on")
+    association_type: Optional[StrictStr] = Field(None, alias="associationType", description="association type with the identity")
+    entities: Optional[conlist(IdentityEntities)] = Field(None, description="the specific resource this identity has ownership on")
     __properties = ["associationType", "entities"]
 
     class Config:
@@ -48,15 +44,16 @@ class IdentityAssociationDetailsAssociationDetailsInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-            cls, json_str: str
-    ) -> IdentityAssociationDetailsAssociationDetailsInner:
+    def from_json(cls, json_str: str) -> IdentityAssociationDetailsAssociationDetailsInner:
         """Create an instance of IdentityAssociationDetailsAssociationDetailsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in entities (list)
         _items = []
         if self.entities:
@@ -67,23 +64,18 @@ class IdentityAssociationDetailsAssociationDetailsInner(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(
-            cls,
-            obj: dict) -> IdentityAssociationDetailsAssociationDetailsInner:
+    def from_dict(cls, obj: dict) -> IdentityAssociationDetailsAssociationDetailsInner:
         """Create an instance of IdentityAssociationDetailsAssociationDetailsInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return IdentityAssociationDetailsAssociationDetailsInner.parse_obj(
-                obj)
+            return IdentityAssociationDetailsAssociationDetailsInner.parse_obj(obj)
 
         _obj = IdentityAssociationDetailsAssociationDetailsInner.parse_obj({
-            "association_type":
-            obj.get("associationType"),
-            "entities": [
-                IdentityEntities.from_dict(_item)
-                for _item in obj.get("entities")
-            ] if obj.get("entities") is not None else None
+            "association_type": obj.get("associationType"),
+            "entities": [IdentityEntities.from_dict(_item) for _item in obj.get("entities")] if obj.get("entities") is not None else None
         })
         return _obj
+
+

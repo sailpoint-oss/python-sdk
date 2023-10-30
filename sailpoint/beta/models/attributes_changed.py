@@ -11,27 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from beta.models.attribute_change import AttributeChange
-
 
 class AttributesChanged(BaseModel):
     """
     AttributesChanged
     """
     changes: Optional[conlist(AttributeChange)] = None
-    event_type: Optional[StrictStr] = Field(None,
-                                            alias="eventType",
-                                            description="the event type")
-    identity_id: Optional[StrictStr] = Field(None,
-                                             alias="identityId",
-                                             description="the identity id")
+    event_type: Optional[StrictStr] = Field(None, alias="eventType", description="the event type")
+    identity_id: Optional[StrictStr] = Field(None, alias="identityId", description="the identity id")
     dt: Optional[StrictStr] = Field(None, description="the date of event")
     __properties = ["changes", "eventType", "identityId", "dt"]
 
@@ -55,7 +52,10 @@ class AttributesChanged(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in changes (list)
         _items = []
         if self.changes:
@@ -75,14 +75,11 @@ class AttributesChanged(BaseModel):
             return AttributesChanged.parse_obj(obj)
 
         _obj = AttributesChanged.parse_obj({
-            "changes":
-            [AttributeChange.from_dict(_item) for _item in obj.get("changes")]
-            if obj.get("changes") is not None else None,
-            "event_type":
-            obj.get("eventType"),
-            "identity_id":
-            obj.get("identityId"),
-            "dt":
-            obj.get("dt")
+            "changes": [AttributeChange.from_dict(_item) for _item in obj.get("changes")] if obj.get("changes") is not None else None,
+            "event_type": obj.get("eventType"),
+            "identity_id": obj.get("identityId"),
+            "dt": obj.get("dt")
         })
         return _obj
+
+

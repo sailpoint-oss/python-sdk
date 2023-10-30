@@ -11,27 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class CommonAccessIDStatus(BaseModel):
     """
     CommonAccessIDStatus
     """
-    confirmed_ids: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="confirmedIds",
-        description="List of confirmed common access ids.")
-    denied_ids: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="deniedIds",
-        description="List of denied common access ids.")
+    confirmed_ids: Optional[conlist(StrictStr)] = Field(None, alias="confirmedIds", description="List of confirmed common access ids.")
+    denied_ids: Optional[conlist(StrictStr)] = Field(None, alias="deniedIds", description="List of denied common access ids.")
     __properties = ["confirmedIds", "deniedIds"]
 
     class Config:
@@ -54,7 +49,10 @@ class CommonAccessIDStatus(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,9 +65,9 @@ class CommonAccessIDStatus(BaseModel):
             return CommonAccessIDStatus.parse_obj(obj)
 
         _obj = CommonAccessIDStatus.parse_obj({
-            "confirmed_ids":
-            obj.get("confirmedIds"),
-            "denied_ids":
-            obj.get("deniedIds")
+            "confirmed_ids": obj.get("confirmedIds"),
+            "denied_ids": obj.get("deniedIds")
         })
         return _obj
+
+

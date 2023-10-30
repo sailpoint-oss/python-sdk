@@ -11,36 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from v3.models.identity_attribute import IdentityAttribute
 from v3.models.identity_reference import IdentityReference
 
-
 class PublicIdentity(BaseModel):
     """
     Details about a public identity  # noqa: E501
     """
     id: Optional[StrictStr] = Field(None, description="Identity id")
-    name: Optional[StrictStr] = Field(
-        None, description="Human-readable display name of identity.")
-    alias: Optional[StrictStr] = Field(
-        None, description="Alternate unique identifier for the identity.")
-    email: Optional[StrictStr] = Field(
-        None, description="Email address of identity.")
-    status: Optional[StrictStr] = Field(
-        None, description="The lifecycle status for the identity")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of identity.")
+    alias: Optional[StrictStr] = Field(None, description="Alternate unique identifier for the identity.")
+    email: Optional[StrictStr] = Field(None, description="Email address of identity.")
+    status: Optional[StrictStr] = Field(None, description="The lifecycle status for the identity")
     manager: Optional[IdentityReference] = None
-    attributes: Optional[conlist(IdentityAttribute)] = Field(
-        None, description="The public identity attributes of the identity")
-    __properties = [
-        "id", "name", "alias", "email", "status", "manager", "attributes"
-    ]
+    attributes: Optional[conlist(IdentityAttribute)] = Field(None, description="The public identity attributes of the identity")
+    __properties = ["id", "name", "alias", "email", "status", "manager", "attributes"]
 
     class Config:
         """Pydantic configuration"""
@@ -62,7 +56,10 @@ class PublicIdentity(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of manager
         if self.manager:
             _dict['manager'] = self.manager.to_dict()
@@ -100,22 +97,14 @@ class PublicIdentity(BaseModel):
             return PublicIdentity.parse_obj(obj)
 
         _obj = PublicIdentity.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "alias":
-            obj.get("alias"),
-            "email":
-            obj.get("email"),
-            "status":
-            obj.get("status"),
-            "manager":
-            IdentityReference.from_dict(obj.get("manager"))
-            if obj.get("manager") is not None else None,
-            "attributes": [
-                IdentityAttribute.from_dict(_item)
-                for _item in obj.get("attributes")
-            ] if obj.get("attributes") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "alias": obj.get("alias"),
+            "email": obj.get("email"),
+            "status": obj.get("status"),
+            "manager": IdentityReference.from_dict(obj.get("manager")) if obj.get("manager") is not None else None,
+            "attributes": [IdentityAttribute.from_dict(_item) for _item in obj.get("attributes")] if obj.get("attributes") is not None else None
         })
         return _obj
+
+

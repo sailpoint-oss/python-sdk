@@ -11,22 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, Field, StrictStr
 
+
+from pydantic import BaseModel, Field, StrictStr
 
 class NestedAggregation(BaseModel):
     """
     The nested aggregation object.  # noqa: E501
     """
-    name: StrictStr = Field(
-        ...,
-        description=
-        "The name of the nested aggregate to be included in the result.")
+    name: StrictStr = Field(..., description="The name of the nested aggregate to be included in the result.")
     type: StrictStr = Field(..., description="The type of the nested object.")
     __properties = ["name", "type"]
 
@@ -50,7 +49,10 @@ class NestedAggregation(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,3 +69,5 @@ class NestedAggregation(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

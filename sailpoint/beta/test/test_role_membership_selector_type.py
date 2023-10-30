@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.role_membership_selector_type import RoleMembershipSelectorType  # noqa: E501
-
 
 class TestRoleMembershipSelectorType(unittest.TestCase):
     """RoleMembershipSelectorType unit test stubs"""
@@ -29,7 +29,6 @@ class TestRoleMembershipSelectorType(unittest.TestCase):
     def testRoleMembershipSelectorType(self):
         """Test RoleMembershipSelectorType"""
         # inst = RoleMembershipSelectorType()
-
 
 if __name__ == '__main__':
     unittest.main()

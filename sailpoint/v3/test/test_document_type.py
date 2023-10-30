@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.document_type import DocumentType  # noqa: E501
-
 
 class TestDocumentType(unittest.TestCase):
     """DocumentType unit test stubs"""
@@ -29,7 +29,6 @@ class TestDocumentType(unittest.TestCase):
     def testDocumentType(self):
         """Test DocumentType"""
         # inst = DocumentType()
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,15 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.dto_type import DtoType
-
 
 class IdentityReferenceWithId(BaseModel):
     """
@@ -49,7 +50,10 @@ class IdentityReferenceWithId(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,3 +70,5 @@ class IdentityReferenceWithId(BaseModel):
             "id": obj.get("id")
         })
         return _obj
+
+

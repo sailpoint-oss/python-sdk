@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class HttpAuthenticationType(str, Enum):
     """
     Defines the HTTP Authentication type. Additional values may be added in the future.  If *NO_AUTH* is selected, no extra information will be in HttpConfig.  If *BASIC_AUTH* is selected, HttpConfig will include BasicAuthConfig with Username and Password as strings.  If *BEARER_TOKEN* is selected, HttpConfig will include BearerTokenAuthConfig with Token as string.
     """
+
     """
     allowed enum values
     """
@@ -32,3 +37,5 @@ class HttpAuthenticationType(str, Enum):
     def from_json(cls, json_str: str) -> HttpAuthenticationType:
         """Create an instance of HttpAuthenticationType from a JSON string"""
         return HttpAuthenticationType(json.loads(json_str))
+
+

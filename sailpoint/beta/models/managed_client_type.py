@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class ManagedClientType(str, Enum):
     """
     Managed Client type
     """
+
     """
     allowed enum values
     """
@@ -34,3 +39,5 @@ class ManagedClientType(str, Enum):
     def from_json(cls, json_str: str) -> ManagedClientType:
         """Create an instance of ManagedClientType from a JSON string"""
         return ManagedClientType(json.loads(json_str))
+
+

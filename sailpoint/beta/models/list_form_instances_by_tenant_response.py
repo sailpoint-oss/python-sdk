@@ -11,24 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictInt, conlist
 from beta.models.form_instance_response import FormInstanceResponse
-
 
 class ListFormInstancesByTenantResponse(BaseModel):
     """
     ListFormInstancesByTenantResponse
     """
-    count: Optional[StrictInt] = Field(None,
-                                       description="Count number of Results")
-    results: Optional[conlist(FormInstanceResponse)] = Field(
-        None, description="Results holds a list of FormInstanceResponse items")
+    count: Optional[StrictInt] = Field(None, description="Count number of Results")
+    results: Optional[conlist(FormInstanceResponse)] = Field(None, description="Results holds a list of FormInstanceResponse items")
     __properties = ["count", "results"]
 
     class Config:
@@ -51,7 +50,10 @@ class ListFormInstancesByTenantResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in results (list)
         _items = []
         if self.results:
@@ -71,11 +73,9 @@ class ListFormInstancesByTenantResponse(BaseModel):
             return ListFormInstancesByTenantResponse.parse_obj(obj)
 
         _obj = ListFormInstancesByTenantResponse.parse_obj({
-            "count":
-            obj.get("count"),
-            "results": [
-                FormInstanceResponse.from_dict(_item)
-                for _item in obj.get("results")
-            ] if obj.get("results") is not None else None
+            "count": obj.get("count"),
+            "results": [FormInstanceResponse.from_dict(_item) for _item in obj.get("results")] if obj.get("results") is not None else None
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.import_options import ImportOptions  # noqa: E501
-
 
 class TestImportOptions(unittest.TestCase):
     """ImportOptions unit test stubs"""
@@ -44,7 +44,7 @@ class TestImportOptions(unittest.TestCase):
                     ],
                 object_options = {TRIGGER_SUBSCRIPTION={includedIds=[be9e116d-08e1-49fc-ab7f-fa585e96c9e4], includedNames=[Test 2]}},
                 default_references = [
-                    beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                    beta.models.base_reference_dto.BaseReferenceDto(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'William Wilson', )
@@ -60,7 +60,6 @@ class TestImportOptions(unittest.TestCase):
         """Test ImportOptions"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

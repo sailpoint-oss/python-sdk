@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,24 +21,14 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 
-
 class Comment(BaseModel):
     """
     Comment
     """
-    commenter_id: Optional[StrictStr] = Field(
-        None,
-        alias="commenterId",
-        description="Id of the identity making the comment")
-    commenter_name: Optional[StrictStr] = Field(
-        None,
-        alias="commenterName",
-        description=
-        "Human-readable display name of the identity making the comment")
-    body: Optional[StrictStr] = Field(None,
-                                      description="Content of the comment")
-    var_date: Optional[datetime] = Field(
-        None, alias="date", description="Date and time comment was made")
+    commenter_id: Optional[StrictStr] = Field(None, alias="commenterId", description="Id of the identity making the comment")
+    commenter_name: Optional[StrictStr] = Field(None, alias="commenterName", description="Human-readable display name of the identity making the comment")
+    body: Optional[StrictStr] = Field(None, description="Content of the comment")
+    var_date: Optional[datetime] = Field(None, alias="date", description="Date and time comment was made")
     __properties = ["commenterId", "commenterName", "body", "date"]
 
     class Config:
@@ -60,7 +51,10 @@ class Comment(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -79,3 +73,5 @@ class Comment(BaseModel):
             "var_date": obj.get("date")
         })
         return _obj
+
+

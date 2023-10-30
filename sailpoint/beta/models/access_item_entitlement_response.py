@@ -11,45 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class AccessItemEntitlementResponse(BaseModel):
     """
     AccessItemEntitlementResponse
     """
-    access_type: Optional[StrictStr] = Field(
-        None,
-        alias="accessType",
-        description="the access item type. entitlement in this case")
+    access_type: Optional[StrictStr] = Field(None, alias="accessType", description="the access item type. entitlement in this case")
     id: Optional[StrictStr] = Field(None, description="the access item id")
-    attribute: Optional[StrictStr] = Field(
-        None, description="the entitlement attribute")
-    value: Optional[StrictStr] = Field(None,
-                                       description="the associated value")
-    entitlement_type: Optional[StrictStr] = Field(
-        None, alias="entitlementType", description="the type of entitlement")
-    source_name: Optional[StrictStr] = Field(
-        None, alias="sourceName", description="the name of the source")
-    source_id: Optional[StrictStr] = Field(None,
-                                           alias="sourceId",
-                                           description="the id of the source")
-    description: Optional[StrictStr] = Field(
-        None, description="the description for the entitlment")
-    display_name: Optional[StrictStr] = Field(
-        None,
-        alias="displayName",
-        description="the display name of the identity")
-    __properties = [
-        "accessType", "id", "attribute", "value", "entitlementType",
-        "sourceName", "sourceId", "description", "displayName"
-    ]
+    attribute: Optional[StrictStr] = Field(None, description="the entitlement attribute")
+    value: Optional[StrictStr] = Field(None, description="the associated value")
+    entitlement_type: Optional[StrictStr] = Field(None, alias="entitlementType", description="the type of entitlement")
+    source_name: Optional[StrictStr] = Field(None, alias="sourceName", description="the name of the source")
+    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="the id of the source")
+    description: Optional[StrictStr] = Field(None, description="the description for the entitlment")
+    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="the display name of the identity")
+    __properties = ["accessType", "id", "attribute", "value", "entitlementType", "sourceName", "sourceId", "description", "displayName"]
 
     class Config:
         """Pydantic configuration"""
@@ -71,7 +56,10 @@ class AccessItemEntitlementResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -84,23 +72,16 @@ class AccessItemEntitlementResponse(BaseModel):
             return AccessItemEntitlementResponse.parse_obj(obj)
 
         _obj = AccessItemEntitlementResponse.parse_obj({
-            "access_type":
-            obj.get("accessType"),
-            "id":
-            obj.get("id"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value"),
-            "entitlement_type":
-            obj.get("entitlementType"),
-            "source_name":
-            obj.get("sourceName"),
-            "source_id":
-            obj.get("sourceId"),
-            "description":
-            obj.get("description"),
-            "display_name":
-            obj.get("displayName")
+            "access_type": obj.get("accessType"),
+            "id": obj.get("id"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value"),
+            "entitlement_type": obj.get("entitlementType"),
+            "source_name": obj.get("sourceName"),
+            "source_id": obj.get("sourceId"),
+            "description": obj.get("description"),
+            "display_name": obj.get("displayName")
         })
         return _obj
+
+

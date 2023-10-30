@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,18 +21,14 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 
-
 class BaseCommonDto(BaseModel):
     """
     BaseCommonDto
     """
-    id: Optional[StrictStr] = Field(
-        None, description="System-generated unique ID of the Object")
+    id: Optional[StrictStr] = Field(None, description="System-generated unique ID of the Object")
     name: StrictStr = Field(..., description="Name of the Object")
-    created: Optional[datetime] = Field(
-        None, description="Creation date of the Object")
-    modified: Optional[datetime] = Field(
-        None, description="Last modification date of the Object")
+    created: Optional[datetime] = Field(None, description="Creation date of the Object")
+    modified: Optional[datetime] = Field(None, description="Last modification date of the Object")
     __properties = ["id", "name", "created", "modified"]
 
     class Config:
@@ -56,9 +53,9 @@ class BaseCommonDto(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "id",
-                              "created",
-                              "modified",
+                            "id",
+                            "created",
+                            "modified",
                           },
                           exclude_none=True)
         return _dict
@@ -79,3 +76,5 @@ class BaseCommonDto(BaseModel):
             "modified": obj.get("modified")
         })
         return _obj
+
+

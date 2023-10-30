@@ -11,37 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from v3.models.provisioning_criteria_level3 import ProvisioningCriteriaLevel3
 from v3.models.provisioning_criteria_operation import ProvisioningCriteriaOperation
 
-
 class ProvisioningCriteriaLevel2(BaseModel):
     """
     Defines matching criteria for an Account to be provisioned with a specific Access Profile  # noqa: E501
     """
     operation: Optional[ProvisioningCriteriaOperation] = None
-    attribute: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Name of the Account attribute to be tested. If **operation** is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required. Otherwise, specifying it is an error."
-    )
-    value: Optional[StrictStr] = Field(
-        None,
-        description=
-        "String value to test the Account attribute w/r/t the specified operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS, this field is required. Otherwise, specifying it is an error. If the Attribute is not String-typed, it will be converted to the appropriate type."
-    )
-    children: Optional[conlist(ProvisioningCriteriaLevel3)] = Field(
-        None,
-        description=
-        "Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes."
-    )
+    attribute: Optional[StrictStr] = Field(None, description="Name of the Account attribute to be tested. If **operation** is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required. Otherwise, specifying it is an error.")
+    value: Optional[StrictStr] = Field(None, description="String value to test the Account attribute w/r/t the specified operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS, this field is required. Otherwise, specifying it is an error. If the Attribute is not String-typed, it will be converted to the appropriate type.")
+    children: Optional[conlist(ProvisioningCriteriaLevel3)] = Field(None, description="Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes.")
     __properties = ["operation", "attribute", "value", "children"]
 
     class Config:
@@ -64,7 +53,10 @@ class ProvisioningCriteriaLevel2(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in children (list)
         _items = []
         if self.children:
@@ -99,15 +91,11 @@ class ProvisioningCriteriaLevel2(BaseModel):
             return ProvisioningCriteriaLevel2.parse_obj(obj)
 
         _obj = ProvisioningCriteriaLevel2.parse_obj({
-            "operation":
-            obj.get("operation"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value"),
-            "children": [
-                ProvisioningCriteriaLevel3.from_dict(_item)
-                for _item in obj.get("children")
-            ] if obj.get("children") is not None else None
+            "operation": obj.get("operation"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value"),
+            "children": [ProvisioningCriteriaLevel3.from_dict(_item) for _item in obj.get("children")] if obj.get("children") is not None else None
         })
         return _obj
+
+

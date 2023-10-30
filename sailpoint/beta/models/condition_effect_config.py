@@ -11,23 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class ConditionEffectConfig(BaseModel):
     """
     Arbitrary map containing a configuration based on the EffectType.  # noqa: E501
     """
-    default_value_label: Optional[StrictStr] = Field(
-        None, alias="defaultValueLabel", description="Effect type's label.")
-    element: Optional[StrictStr] = Field(None,
-                                         description="Element's identifier.")
+    default_value_label: Optional[StrictStr] = Field(None, alias="defaultValueLabel", description="Effect type's label.")
+    element: Optional[StrictStr] = Field(None, description="Element's identifier.")
     __properties = ["defaultValueLabel", "element"]
 
     class Config:
@@ -50,7 +49,10 @@ class ConditionEffectConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +65,9 @@ class ConditionEffectConfig(BaseModel):
             return ConditionEffectConfig.parse_obj(obj)
 
         _obj = ConditionEffectConfig.parse_obj({
-            "default_value_label":
-            obj.get("defaultValueLabel"),
-            "element":
-            obj.get("element")
+            "default_value_label": obj.get("defaultValueLabel"),
+            "element": obj.get("element")
         })
         return _obj
+
+

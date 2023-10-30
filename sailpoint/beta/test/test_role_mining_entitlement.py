@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.role_mining_entitlement import RoleMiningEntitlement  # noqa: E501
-
 
 class TestRoleMiningEntitlement(unittest.TestCase):
     """RoleMiningEntitlement unit test stubs"""
@@ -37,14 +37,18 @@ class TestRoleMiningEntitlement(unittest.TestCase):
         if include_optional:
             return RoleMiningEntitlement(
                 entitlement_ref = beta.models.role_mining_entitlement_ref.RoleMiningEntitlementRef(
-                    id = '', 
-                    name = '', 
-                    description = '', ),
-                name = '',
-                application_name = '',
+                    id = '2c91808a7e95e6e0017e96e2086206c8', 
+                    name = 'App.entitlement.1', 
+                    description = 'Entitlement 1', 
+                    attribute = 'groups', ),
+                name = 'Add/modify/delete users',
+                application_name = 'AppName',
                 identity_count = 45,
-                popularity = 65,
-                popularity_in_org = 35
+                popularity = 65.2,
+                popularity_in_org = 35.8,
+                source_id = '2c9180877620c1460176267f336a106f',
+                activity_source_state = 'complete',
+                source_usage_percent = 65.6
             )
         else:
             return RoleMiningEntitlement(
@@ -55,7 +59,6 @@ class TestRoleMiningEntitlement(unittest.TestCase):
         """Test RoleMiningEntitlement"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,35 +22,16 @@ from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from v3.models.base_reference_dto import BaseReferenceDto
 
-
 class GetPersonalAccessTokenResponse(BaseModel):
     """
     GetPersonalAccessTokenResponse
     """
-    id: StrictStr = Field(
-        ...,
-        description=
-        "The ID of the personal access token (to be used as the username for Basic Auth)."
-    )
-    name: StrictStr = Field(
-        ...,
-        description=
-        "The name of the personal access token. Cannot be the same as other personal access tokens owned by a user."
-    )
-    scope: Optional[conlist(StrictStr)] = Field(
-        ..., description="Scopes of the personal  access token.")
+    id: StrictStr = Field(..., description="The ID of the personal access token (to be used as the username for Basic Auth).")
+    name: StrictStr = Field(..., description="The name of the personal access token. Cannot be the same as other personal access tokens owned by a user.")
+    scope: Optional[conlist(StrictStr)] = Field(..., description="Scopes of the personal  access token.")
     owner: BaseReferenceDto = Field(...)
-    created: datetime = Field(
-        ...,
-        description=
-        "The date and time, down to the millisecond, when this personal access token was created."
-    )
-    last_used: Optional[datetime] = Field(
-        None,
-        alias="lastUsed",
-        description=
-        "The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed."
-    )
+    created: datetime = Field(..., description="The date and time, down to the millisecond, when this personal access token was created.")
+    last_used: Optional[datetime] = Field(None, alias="lastUsed", description="The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed.")
     __properties = ["id", "name", "scope", "owner", "created", "lastUsed"]
 
     class Config:
@@ -72,7 +54,10 @@ class GetPersonalAccessTokenResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -98,18 +83,13 @@ class GetPersonalAccessTokenResponse(BaseModel):
             return GetPersonalAccessTokenResponse.parse_obj(obj)
 
         _obj = GetPersonalAccessTokenResponse.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "scope":
-            obj.get("scope"),
-            "owner":
-            BaseReferenceDto.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "created":
-            obj.get("created"),
-            "last_used":
-            obj.get("lastUsed")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "scope": obj.get("scope"),
+            "owner": BaseReferenceDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "created": obj.get("created"),
+            "last_used": obj.get("lastUsed")
         })
         return _obj
+
+

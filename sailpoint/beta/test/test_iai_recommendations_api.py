@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.iai_recommendations_api import IAIRecommendationsApi  # noqa: E501

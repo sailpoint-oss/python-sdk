@@ -11,27 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
 from v3.models.transform_definition_attributes_value import TransformDefinitionAttributesValue
-
 
 class TransformDefinition(BaseModel):
     """
     TransformDefinition
     """
-    type: Optional[StrictStr] = Field(
-        None, description="The type of the transform definition.")
-    attributes: Optional[Dict[
-        str, TransformDefinitionAttributesValue]] = Field(
-            None,
-            description=
-            "Arbitrary key-value pairs to store any metadata for the object")
+    type: Optional[StrictStr] = Field(None, description="The type of the transform definition.")
+    attributes: Optional[Dict[str, TransformDefinitionAttributesValue]] = Field(None, description="Arbitrary key-value pairs to store any metadata for the object")
     __properties = ["type", "attributes"]
 
     class Config:
@@ -54,7 +50,10 @@ class TransformDefinition(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each value in attributes (dict)
         _field_dict = {}
         if self.attributes:
@@ -74,11 +73,14 @@ class TransformDefinition(BaseModel):
             return TransformDefinition.parse_obj(obj)
 
         _obj = TransformDefinition.parse_obj({
-            "type":
-            obj.get("type"),
-            "attributes":
-            dict((_k, TransformDefinitionAttributesValue.from_dict(_v))
-                 for _k, _v in obj.get("attributes").items())
-            if obj.get("attributes") is not None else None
+            "type": obj.get("type"),
+            "attributes": dict(
+                (_k, TransformDefinitionAttributesValue.from_dict(_v))
+                for _k, _v in obj.get("attributes").items()
+            )
+            if obj.get("attributes") is not None
+            else None
         })
         return _obj
+
+

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **email_address** | **str** | The email address of the identity | [optional] 
 **processing_state** | **str** | The processing state of the identity | [optional] 
 **identity_status** | **str** | The identity&#39;s status in the system | [optional] 
-**manager_ref** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**manager_ref** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **is_manager** | **bool** | Whether this identity is a manager of another identity | [optional] [default to False]
 **last_refresh** | **datetime** | The last time the identity was refreshed by the system | [optional] 
 **attributes** | **object** | A map with the identity attributes for the identity | [optional] 

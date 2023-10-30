@@ -11,29 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class PeerGroupMember(BaseModel):
     """
     PeerGroupMember
     """
-    id: Optional[StrictStr] = Field(
-        None, description="A unique identifier for the peer group member.")
-    type: Optional[StrictStr] = Field(
-        None, description="The type of the peer group member.")
-    peer_group_id: Optional[StrictStr] = Field(
-        None, description="The ID of the peer group.")
-    attributes: Optional[Dict[str, Dict[str, Any]]] = Field(
-        None,
-        description=
-        "Arbitrary key-value pairs, belonging to the peer group member.")
+    id: Optional[StrictStr] = Field(None, description="A unique identifier for the peer group member.")
+    type: Optional[StrictStr] = Field(None, description="The type of the peer group member.")
+    peer_group_id: Optional[StrictStr] = Field(None, description="The ID of the peer group.")
+    attributes: Optional[Dict[str, Dict[str, Any]]] = Field(None, description="Arbitrary key-value pairs, belonging to the peer group member.")
     __properties = ["id", "type", "peer_group_id", "attributes"]
 
     class Config:
@@ -56,7 +51,10 @@ class PeerGroupMember(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,13 +67,11 @@ class PeerGroupMember(BaseModel):
             return PeerGroupMember.parse_obj(obj)
 
         _obj = PeerGroupMember.parse_obj({
-            "id":
-            obj.get("id"),
-            "type":
-            obj.get("type"),
-            "peer_group_id":
-            obj.get("peer_group_id"),
-            "attributes":
-            obj.get("attributes")
+            "id": obj.get("id"),
+            "type": obj.get("type"),
+            "peer_group_id": obj.get("peer_group_id"),
+            "attributes": obj.get("attributes")
         })
         return _obj
+
+

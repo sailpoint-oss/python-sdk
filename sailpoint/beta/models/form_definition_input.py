@@ -11,29 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class FormDefinitionInput(BaseModel):
     """
     FormDefinitionInput
     """
-    id: Optional[StrictStr] = Field(
-        None, description="Unique identifier for the form input.")
-    type: Optional[StrictStr] = Field(
-        None,
-        description=
-        "FormDefinitionInputType value. STRING FormDefinitionInputTypeString")
-    label: Optional[StrictStr] = Field(None,
-                                       description="Name for the form input.")
-    description: Optional[StrictStr] = Field(
-        None, description="Form input's description.")
+    id: Optional[StrictStr] = Field(None, description="Unique identifier for the form input.")
+    type: Optional[StrictStr] = Field(None, description="FormDefinitionInputType value. STRING FormDefinitionInputTypeString")
+    label: Optional[StrictStr] = Field(None, description="Name for the form input.")
+    description: Optional[StrictStr] = Field(None, description="Form input's description.")
     __properties = ["id", "type", "label", "description"]
 
     @validator('type')
@@ -66,7 +61,10 @@ class FormDefinitionInput(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -79,13 +77,11 @@ class FormDefinitionInput(BaseModel):
             return FormDefinitionInput.parse_obj(obj)
 
         _obj = FormDefinitionInput.parse_obj({
-            "id":
-            obj.get("id"),
-            "type":
-            obj.get("type"),
-            "label":
-            obj.get("label"),
-            "description":
-            obj.get("description")
+            "id": obj.get("id"),
+            "type": obj.get("type"),
+            "label": obj.get("label"),
+            "description": obj.get("description")
         })
         return _obj
+
+

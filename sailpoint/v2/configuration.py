@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import copy
 import logging
 import multiprocessing
@@ -20,10 +21,10 @@ import urllib3
 import http.client as httplib
 
 JSON_SCHEMA_VALIDATION_KEYWORDS = {
-    'multipleOf', 'maximum', 'exclusiveMaximum', 'minimum', 'exclusiveMinimum',
-    'maxLength', 'minLength', 'pattern', 'maxItems', 'minItems'
+    'multipleOf', 'maximum', 'exclusiveMaximum',
+    'minimum', 'exclusiveMinimum', 'maxLength',
+    'minLength', 'pattern', 'maxItems', 'minItems'
 }
-
 
 class Configuration:
     """This class contains various settings of the API client.
@@ -57,20 +58,14 @@ class Configuration:
 
     _default = None
 
-    def __init__(
-        self,
-        host=None,
-        api_key=None,
-        api_key_prefix=None,
-        username=None,
-        password=None,
-        access_token=None,
-        server_index=None,
-        server_variables=None,
-        server_operation_index=None,
-        server_operation_variables=None,
-        ssl_ca_cert=None,
-    ) -> None:
+    def __init__(self, host=None,
+                 api_key=None, api_key_prefix=None,
+                 username=None, password=None,
+                 access_token=None,
+                 server_index=None, server_variables=None,
+                 server_operation_index=None, server_operation_variables=None,
+                 ssl_ca_cert=None,
+                 ) -> None:
         """Constructor
         """
         self._base_path = "https://sailpoint.api.identitynow.com/v2" if host is None else host
@@ -334,9 +329,7 @@ class Configuration:
         """
         if self.refresh_api_key_hook is not None:
             self.refresh_api_key_hook(self)
-        key = self.api_key.get(
-            identifier,
-            self.api_key.get(alias) if alias is not None else None)
+        key = self.api_key.get(identifier, self.api_key.get(alias) if alias is not None else None)
         if key:
             prefix = self.api_key_prefix.get(identifier)
             if prefix:
@@ -355,8 +348,9 @@ class Configuration:
         password = ""
         if self.password is not None:
             password = self.password
-        return urllib3.util.make_headers(basic_auth=username + ':' +
-                                         password).get('authorization')
+        return urllib3.util.make_headers(
+            basic_auth=username + ':' + password
+        ).get('authorization')
 
     def auth_settings(self):
         """Gets Auth Settings dict for api client.
@@ -397,26 +391,28 @@ class Configuration:
 
         :return: An array of host settings
         """
-        return [{
-            'url': "https://{tenant}.api.identitynow.com/v2",
-            'description': "This is the production API server.",
-            'variables': {
-                'tenant': {
-                    'description':
-                    "This is the name of your tenant, typically your company's name.",
-                    'default_value': "sailpoint",
-                }
+        return [
+            {
+                'url': "https://{tenant}.api.identitynow.com/v2",
+                'description': "This is the production API server.",
+                'variables': {
+                    'tenant': {
+                        'description': "This is the name of your tenant, typically your company's name.",
+                        'default_value': "sailpoint",
+                        }
+                    }
+            },
+            {
+                'url': "https://{apiUrl}/v2",
+                'description': "This is the V2 API server.",
+                'variables': {
+                    'apiUrl': {
+                        'description': "This is the api url of your tenant",
+                        'default_value': "sailpoint.api.identitynow.com",
+                        }
+                    }
             }
-        }, {
-            'url': "https://{apiUrl}/v2",
-            'description': "This is the V2 API server.",
-            'variables': {
-                'apiUrl': {
-                    'description': "This is the api url of your tenant",
-                    'default_value': "sailpoint.api.identitynow.com",
-                }
-            }
-        }]
+        ]
 
     def get_host_from_settings(self, index, variables=None, servers=None):
         """Gets host URL based on the index and variables
@@ -442,16 +438,16 @@ class Configuration:
 
         # go through variables and replace placeholders
         for variable_name, variable in server.get('variables', {}).items():
-            used_value = variables.get(variable_name,
-                                       variable['default_value'])
+            used_value = variables.get(
+                variable_name, variable['default_value'])
 
             if 'enum_values' in variable \
                     and used_value not in variable['enum_values']:
                 raise ValueError(
                     "The variable `{0}` in the host URL has invalid value "
-                    "{1}. Must be {2}.".format(variable_name,
-                                               variables[variable_name],
-                                               variable['enum_values']))
+                    "{1}. Must be {2}.".format(
+                        variable_name, variables[variable_name],
+                        variable['enum_values']))
 
             url = url.replace("{" + variable_name + "}", used_value)
 
@@ -460,8 +456,7 @@ class Configuration:
     @property
     def host(self):
         """Return generated host."""
-        return self.get_host_from_settings(self.server_index,
-                                           variables=self.server_variables)
+        return self.get_host_from_settings(self.server_index, variables=self.server_variables)
 
     @host.setter
     def host(self, value):

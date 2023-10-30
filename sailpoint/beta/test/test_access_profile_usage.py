@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.access_profile_usage import AccessProfileUsage  # noqa: E501
-
 
 class TestAccessProfileUsage(unittest.TestCase):
     """AccessProfileUsage unit test stubs"""
@@ -38,7 +38,7 @@ class TestAccessProfileUsage(unittest.TestCase):
             return AccessProfileUsage(
                 access_profile_id = '2c91808876438bbb017668c21919ecca',
                 used_by = [
-                    beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                    beta.models.base_reference_dto.BaseReferenceDto(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'William Wilson', )
@@ -53,7 +53,6 @@ class TestAccessProfileUsage(unittest.TestCase):
         """Test AccessProfileUsage"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

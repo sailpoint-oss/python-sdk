@@ -11,31 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.role_assignment_source_type import RoleAssignmentSourceType
-
 
 class RoleIdentity(BaseModel):
     """
     A subset of the fields of an Identity which is a member of a Role.  # noqa: E501
     """
     id: Optional[StrictStr] = Field(None, description="The ID of the Identity")
-    alias_name: Optional[StrictStr] = Field(
-        None,
-        alias="aliasName",
-        description="The alias / username of the Identity")
-    name: Optional[StrictStr] = Field(
-        None, description="The human-readable display name of the Identity")
-    email: Optional[StrictStr] = Field(
-        None, description="Email address of the Identity")
-    role_assignment_source: Optional[RoleAssignmentSourceType] = Field(
-        None, alias="roleAssignmentSource")
+    alias_name: Optional[StrictStr] = Field(None, alias="aliasName", description="The alias / username of the Identity")
+    name: Optional[StrictStr] = Field(None, description="The human-readable display name of the Identity")
+    email: Optional[StrictStr] = Field(None, description="Email address of the Identity")
+    role_assignment_source: Optional[RoleAssignmentSourceType] = Field(None, alias="roleAssignmentSource")
     __properties = ["id", "aliasName", "name", "email", "roleAssignmentSource"]
 
     class Config:
@@ -58,7 +53,10 @@ class RoleIdentity(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,15 +69,12 @@ class RoleIdentity(BaseModel):
             return RoleIdentity.parse_obj(obj)
 
         _obj = RoleIdentity.parse_obj({
-            "id":
-            obj.get("id"),
-            "alias_name":
-            obj.get("aliasName"),
-            "name":
-            obj.get("name"),
-            "email":
-            obj.get("email"),
-            "role_assignment_source":
-            obj.get("roleAssignmentSource")
+            "id": obj.get("id"),
+            "alias_name": obj.get("aliasName"),
+            "name": obj.get("name"),
+            "email": obj.get("email"),
+            "role_assignment_source": obj.get("roleAssignmentSource")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from v3.api.personal_access_tokens_api import PersonalAccessTokensApi  # noqa: E501

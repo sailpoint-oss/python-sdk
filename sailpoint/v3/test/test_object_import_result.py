@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.object_import_result import ObjectImportResult  # noqa: E501
-
 
 class TestObjectImportResult(unittest.TestCase):
     """ObjectImportResult unit test stubs"""
@@ -94,7 +94,6 @@ class TestObjectImportResult(unittest.TestCase):
         """Test ObjectImportResult"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

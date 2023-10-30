@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -28,7 +29,9 @@ from v3.models.transform_read import TransformRead
 from v3.api_client import ApiClient
 from v3.api_response import ApiResponse
 from v3.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class TransformsApi:
@@ -44,10 +47,7 @@ class TransformsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_transform(self, transform: Annotated[
-        Transform,
-        Field(..., description="The transform to be created.")],
-                         **kwargs) -> TransformRead:  # noqa: E501
+    def create_transform(self, transform : Annotated[Transform, Field(..., description="The transform to be created.")], **kwargs) -> TransformRead:  # noqa: E501
         """Create transform  # noqa: E501
 
         Creates a new transform object immediately. By default, the internal flag is set to false to indicate that this is a custom transform. Only SailPoint employees have the ability to create a transform with internal set to true. Newly created Transforms can be used in the Identity Profile mappings within the UI. A token with transform write authority is required to call this API.  # noqa: E501
@@ -74,14 +74,10 @@ class TransformsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_transform_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_transform_with_http_info(transform,
-                                                    **kwargs)  # noqa: E501
+        return self.create_transform_with_http_info(transform, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_transform_with_http_info(self, transform: Annotated[
-        Transform,
-        Field(..., description="The transform to be created.")],
-                                        **kwargs) -> ApiResponse:  # noqa: E501
+    def create_transform_with_http_info(self, transform : Annotated[Transform, Field(..., description="The transform to be created.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Create transform  # noqa: E501
 
         Creates a new transform object immediately. By default, the internal flag is set to false to indicate that this is a custom transform. Only SailPoint employees have the ability to create a transform with internal set to true. Newly created Transforms can be used in the Identity Profile mappings within the UI. A token with transform write authority is required to call this API.  # noqa: E501
@@ -120,17 +116,28 @@ class TransformsApi:
 
         _params = locals()
 
-        _all_params = ['transform']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'transform'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_transform" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_transform" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -156,11 +163,11 @@ class TransformsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -176,8 +183,7 @@ class TransformsApi:
         }
 
         return self.api_client.call_api(
-            '/transforms',
-            'POST',
+            '/transforms', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -187,18 +193,14 @@ class TransformsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_transform(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the transform to delete")],
-                         **kwargs) -> None:  # noqa: E501
+    def delete_transform(self, id : Annotated[StrictStr, Field(..., description="ID of the transform to delete")], **kwargs) -> None:  # noqa: E501
         """Delete a transform  # noqa: E501
 
         Deletes the transform specified by the given ID. Attempting to delete a transform that is used in one or more Identity Profile mappings will result in an error. If this occurs, you must first remove the transform from all mappings before deleting the transform. A token with transform delete authority is required to call this API.  # noqa: E501
@@ -228,10 +230,7 @@ class TransformsApi:
         return self.delete_transform_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_transform_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the transform to delete")],
-                                        **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_transform_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the transform to delete")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete a transform  # noqa: E501
 
         Deletes the transform specified by the given ID. Attempting to delete a transform that is used in one or more Identity Profile mappings will result in an error. If this occurs, you must first remove the transform from all mappings before deleting the transform. A token with transform delete authority is required to call this API.  # noqa: E501
@@ -270,17 +269,28 @@ class TransformsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_transform" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_transform" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -290,6 +300,7 @@ class TransformsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -310,8 +321,7 @@ class TransformsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/transforms/{id}',
-            'DELETE',
+            '/transforms/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -321,18 +331,14 @@ class TransformsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_transform(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the transform to retrieve")],
-                      **kwargs) -> TransformRead:  # noqa: E501
+    def get_transform(self, id : Annotated[StrictStr, Field(..., description="ID of the transform to retrieve")], **kwargs) -> TransformRead:  # noqa: E501
         """Transform by ID  # noqa: E501
 
         This API returns the transform specified by the given ID. A token with transform read authority is required to call this API.  # noqa: E501
@@ -362,10 +368,7 @@ class TransformsApi:
         return self.get_transform_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_transform_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the transform to retrieve")],
-                                     **kwargs) -> ApiResponse:  # noqa: E501
+    def get_transform_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the transform to retrieve")], **kwargs) -> ApiResponse:  # noqa: E501
         """Transform by ID  # noqa: E501
 
         This API returns the transform specified by the given ID. A token with transform read authority is required to call this API.  # noqa: E501
@@ -404,17 +407,28 @@ class TransformsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_transform" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_transform" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -424,6 +438,7 @@ class TransformsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -452,8 +467,7 @@ class TransformsApi:
         }
 
         return self.api_client.call_api(
-            '/transforms/{id}',
-            'GET',
+            '/transforms/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -463,50 +477,14 @@ class TransformsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_transforms(
-            self,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            name: Annotated[
-                Optional[StrictStr],
-                Field(description=
-                      "Name of the transform to retrieve from the list."
-                      )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **internal**: *eq* **name**: *eq*, *sw*"
-            )] = None,
-            **kwargs) -> List[TransformRead]:  # noqa: E501
+    def list_transforms(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, name : Annotated[Optional[StrictStr], Field(description="Name of the transform to retrieve from the list.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **internal**: *eq* **name**: *eq*, *sw*")] = None, **kwargs) -> List[TransformRead]:  # noqa: E501
         """List transforms  # noqa: E501
 
         Gets a list of all saved transform objects. A token with transforms-list read authority is required to call this API.  # noqa: E501
@@ -541,47 +519,10 @@ class TransformsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_transforms_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_transforms_with_http_info(offset, limit, count, name,
-                                                   filters,
-                                                   **kwargs)  # noqa: E501
+        return self.list_transforms_with_http_info(offset, limit, count, name, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_transforms_with_http_info(
-            self,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            name: Annotated[
-                Optional[StrictStr],
-                Field(description=
-                      "Name of the transform to retrieve from the list."
-                      )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **internal**: *eq* **name**: *eq*, *sw*"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_transforms_with_http_info(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, name : Annotated[Optional[StrictStr], Field(description="Name of the transform to retrieve from the list.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **internal**: *eq* **name**: *eq*, *sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List transforms  # noqa: E501
 
         Gets a list of all saved transform objects. A token with transforms-list read authority is required to call this API.  # noqa: E501
@@ -628,17 +569,32 @@ class TransformsApi:
 
         _params = locals()
 
-        _all_params = ['offset', 'limit', 'count', 'name', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'offset',
+            'limit',
+            'count',
+            'name',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_transforms" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_transforms" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -689,8 +645,7 @@ class TransformsApi:
         }
 
         return self.api_client.call_api(
-            '/transforms',
-            'GET',
+            '/transforms', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -700,27 +655,14 @@ class TransformsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_transform(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the transform to update")],
-            transform:
-        Annotated[
-            Optional[Transform],
-            Field(
-                description=
-                "The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified."
-            )] = None,
-            **kwargs) -> TransformRead:  # noqa: E501
+    def update_transform(self, id : Annotated[StrictStr, Field(..., description="ID of the transform to update")], transform : Annotated[Optional[Transform], Field(description="The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified.")] = None, **kwargs) -> TransformRead:  # noqa: E501
         """Update a transform  # noqa: E501
 
         Replaces the transform specified by the given ID with the transform provided in the request body. Only the \"attributes\" field is mutable. Attempting to change other properties (ex. \"name\" and \"type\") will result in an error. A token with transform write authority is required to call this API.  # noqa: E501
@@ -749,23 +691,10 @@ class TransformsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_transform_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_transform_with_http_info(id, transform,
-                                                    **kwargs)  # noqa: E501
+        return self.update_transform_with_http_info(id, transform, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_transform_with_http_info(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the transform to update")],
-            transform:
-        Annotated[
-            Optional[Transform],
-            Field(
-                description=
-                "The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def update_transform_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the transform to update")], transform : Annotated[Optional[Transform], Field(description="The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update a transform  # noqa: E501
 
         Replaces the transform specified by the given ID with the transform provided in the request body. Only the \"attributes\" field is mutable. Attempting to change other properties (ex. \"name\" and \"type\") will result in an error. A token with transform write authority is required to call this API.  # noqa: E501
@@ -806,17 +735,29 @@ class TransformsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'transform']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'transform'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_transform" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_transform" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -826,6 +767,7 @@ class TransformsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -844,11 +786,11 @@ class TransformsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -864,8 +806,7 @@ class TransformsApi:
         }
 
         return self.api_client.call_api(
-            '/transforms/{id}',
-            'PUT',
+            '/transforms/{id}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -875,8 +816,7 @@ class TransformsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

@@ -6,7 +6,7 @@ Provides additional details for a request that has been cancelled.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **str** | Comment made by the owner when cancelling the associated request. | [optional] 
-**owner** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **modified** | **datetime** | Date comment was added by the owner when cancelling the associated request | [optional] 
 
 ## Example

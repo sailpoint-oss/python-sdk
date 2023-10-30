@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.managed_cluster_queue import ManagedClusterQueue  # noqa: E501
-
 
 class TestManagedClusterQueue(unittest.TestCase):
     """ManagedClusterQueue unit test stubs"""
@@ -48,7 +48,6 @@ class TestManagedClusterQueue(unittest.TestCase):
         """Test ManagedClusterQueue"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

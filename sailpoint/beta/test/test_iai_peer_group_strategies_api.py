@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.iai_peer_group_strategies_api import IAIPeerGroupStrategiesApi  # noqa: E501

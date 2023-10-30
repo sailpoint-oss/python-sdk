@@ -11,24 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class NonEmployeeBulkUploadStatus(BaseModel):
     """
     NonEmployeeBulkUploadStatus
     """
-    status: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Returns the following values indicating the progress or result of the bulk upload job. \"PENDING\" means the job is queued and waiting to be processed. \"IN_PROGRESS\" means the job is currently being processed. \"COMPLETED\" means the job has been completed without any errors. \"ERROR\" means the job failed to process with errors. null means job has been submitted to the source. "
-    )
+    status: Optional[StrictStr] = Field(None, description="Returns the following values indicating the progress or result of the bulk upload job. \"PENDING\" means the job is queued and waiting to be processed. \"IN_PROGRESS\" means the job is currently being processed. \"COMPLETED\" means the job has been completed without any errors. \"ERROR\" means the job failed to process with errors. null means job has been submitted to the source. ")
     __properties = ["status"]
 
     @validator('status')
@@ -38,9 +35,7 @@ class NonEmployeeBulkUploadStatus(BaseModel):
             return value
 
         if value not in ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ERROR'):
-            raise ValueError(
-                "must be one of enum values ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ERROR')"
-            )
+            raise ValueError("must be one of enum values ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ERROR')")
         return value
 
     class Config:
@@ -63,7 +58,10 @@ class NonEmployeeBulkUploadStatus(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -75,6 +73,9 @@ class NonEmployeeBulkUploadStatus(BaseModel):
         if not isinstance(obj, dict):
             return NonEmployeeBulkUploadStatus.parse_obj(obj)
 
-        _obj = NonEmployeeBulkUploadStatus.parse_obj(
-            {"status": obj.get("status")})
+        _obj = NonEmployeeBulkUploadStatus.parse_obj({
+            "status": obj.get("status")
+        })
         return _obj
+
+

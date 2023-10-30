@@ -11,29 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class SendTestNotificationRequestDto(BaseModel):
     """
     SendTestNotificationRequestDto
     """
-    key: Optional[StrictStr] = Field(
-        None, description="The template notification key.")
-    medium: Optional[StrictStr] = Field(
-        None,
-        description=
-        "The notification medium. Has to be one of the following enum values.")
-    context: Optional[Dict[str, Any]] = Field(
-        None,
-        description=
-        "A Json object that denotes the context specific to the template.")
+    key: Optional[StrictStr] = Field(None, description="The template notification key.")
+    medium: Optional[StrictStr] = Field(None, description="The notification medium. Has to be one of the following enum values.")
+    context: Optional[Dict[str, Any]] = Field(None, description="A Json object that denotes the context specific to the template.")
     __properties = ["key", "medium", "context"]
 
     @validator('medium')
@@ -43,8 +37,7 @@ class SendTestNotificationRequestDto(BaseModel):
             return value
 
         if value not in ('EMAIL', 'SLACK', 'TEAMS'):
-            raise ValueError(
-                "must be one of enum values ('EMAIL', 'SLACK', 'TEAMS')")
+            raise ValueError("must be one of enum values ('EMAIL', 'SLACK', 'TEAMS')")
         return value
 
     class Config:
@@ -67,7 +60,10 @@ class SendTestNotificationRequestDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -80,11 +76,10 @@ class SendTestNotificationRequestDto(BaseModel):
             return SendTestNotificationRequestDto.parse_obj(obj)
 
         _obj = SendTestNotificationRequestDto.parse_obj({
-            "key":
-            obj.get("key"),
-            "medium":
-            obj.get("medium"),
-            "context":
-            obj.get("context")
+            "key": obj.get("key"),
+            "medium": obj.get("medium"),
+            "context": obj.get("context")
         })
         return _obj
+
+

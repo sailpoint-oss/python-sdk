@@ -11,28 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class Section(BaseModel):
     """
     Section
     """
     name: Optional[StrictStr] = Field(None, description="Name of the FormItem")
-    label: Optional[StrictStr] = Field(None,
-                                       description="Label of the section")
-    form_items: Optional[conlist(Dict[str, Any])] = Field(
-        None,
-        alias="formItems",
-        description=
-        "List of FormItems. FormItems can be SectionDetails and/or FieldDetails"
-    )
+    label: Optional[StrictStr] = Field(None, description="Label of the section")
+    form_items: Optional[conlist(Dict[str, Any])] = Field(None, alias="formItems", description="List of FormItems. FormItems can be SectionDetails and/or FieldDetails")
     __properties = ["name", "label", "formItems"]
 
     class Config:
@@ -55,7 +50,10 @@ class Section(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -73,3 +71,5 @@ class Section(BaseModel):
             "form_items": obj.get("formItems")
         })
         return _obj
+
+

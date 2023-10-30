@@ -11,28 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
-
 
 class NetworkConfiguration(BaseModel):
     """
     NetworkConfiguration
     """
-    range: Optional[conlist(StrictStr)] = Field(
-        None, description="The collection of ip ranges.")
-    geolocation: Optional[conlist(StrictStr)] = Field(
-        None, description="The collection of country codes.")
-    whitelisted: Optional[StrictBool] = Field(
-        False,
-        description=
-        "Denotes whether the provided lists are whitelisted or blacklisted for geo location."
-    )
+    range: Optional[conlist(StrictStr)] = Field(None, description="The collection of ip ranges.")
+    geolocation: Optional[conlist(StrictStr)] = Field(None, description="The collection of country codes.")
+    whitelisted: Optional[StrictBool] = Field(False, description="Denotes whether the provided lists are whitelisted or blacklisted for geo location.")
     __properties = ["range", "geolocation", "whitelisted"]
 
     class Config:
@@ -55,7 +50,10 @@ class NetworkConfiguration(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -68,12 +66,10 @@ class NetworkConfiguration(BaseModel):
             return NetworkConfiguration.parse_obj(obj)
 
         _obj = NetworkConfiguration.parse_obj({
-            "range":
-            obj.get("range"),
-            "geolocation":
-            obj.get("geolocation"),
-            "whitelisted":
-            obj.get("whitelisted")
-            if obj.get("whitelisted") is not None else False
+            "range": obj.get("range"),
+            "geolocation": obj.get("geolocation"),
+            "whitelisted": obj.get("whitelisted") if obj.get("whitelisted") is not None else False
         })
         return _obj
+
+

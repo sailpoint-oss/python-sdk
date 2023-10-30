@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class CommonAccessItemState(str, Enum):
     """
     State of common access item.
     """
+
     """
     allowed enum values
     """
@@ -31,3 +36,5 @@ class CommonAccessItemState(str, Enum):
     def from_json(cls, json_str: str) -> CommonAccessItemState:
         """Create an instance of CommonAccessItemState from a JSON string"""
         return CommonAccessItemState(json.loads(json_str))
+
+

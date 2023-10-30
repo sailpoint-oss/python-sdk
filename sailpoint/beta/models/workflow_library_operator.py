@@ -11,30 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from beta.models.workflow_library_form_fields import WorkflowLibraryFormFields
-
 
 class WorkflowLibraryOperator(BaseModel):
     """
     WorkflowLibraryOperator
     """
     id: Optional[StrictStr] = Field(None, description="Operator ID.")
-    name: Optional[StrictStr] = Field(None,
-                                      description="Operator friendly name")
+    name: Optional[StrictStr] = Field(None, description="Operator friendly name")
     type: Optional[StrictStr] = Field(None, description="Operator type")
-    description: Optional[StrictStr] = Field(
-        None, description="Description of the operator")
-    form_fields: Optional[conlist(WorkflowLibraryFormFields)] = Field(
-        None,
-        alias="formFields",
-        description="One or more inputs that the operator accepts")
+    description: Optional[StrictStr] = Field(None, description="Description of the operator")
+    form_fields: Optional[conlist(WorkflowLibraryFormFields)] = Field(None, alias="formFields", description="One or more inputs that the operator accepts")
     __properties = ["id", "name", "type", "description", "formFields"]
 
     class Config:
@@ -57,7 +53,10 @@ class WorkflowLibraryOperator(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in form_fields (list)
         _items = []
         if self.form_fields:
@@ -77,17 +76,12 @@ class WorkflowLibraryOperator(BaseModel):
             return WorkflowLibraryOperator.parse_obj(obj)
 
         _obj = WorkflowLibraryOperator.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("type"),
-            "description":
-            obj.get("description"),
-            "form_fields": [
-                WorkflowLibraryFormFields.from_dict(_item)
-                for _item in obj.get("formFields")
-            ] if obj.get("formFields") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "description": obj.get("description"),
+            "form_fields": [WorkflowLibraryFormFields.from_dict(_item) for _item in obj.get("formFields")] if obj.get("formFields") is not None else None
         })
         return _obj
+
+

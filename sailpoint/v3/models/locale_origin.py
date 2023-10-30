@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class LocaleOrigin(str, Enum):
     """
     An indicator of how the locale was selected. *DEFAULT* means the locale is the system default. *REQUEST* means the locale was selected from the request context (i.e., best match based on the *Accept-Language* header). Additional values may be added in the future without notice.
     """
+
     """
     allowed enum values
     """
@@ -31,3 +36,5 @@ class LocaleOrigin(str, Enum):
     def from_json(cls, json_str: str) -> LocaleOrigin:
         """Create an instance of LocaleOrigin from a JSON string"""
         return LocaleOrigin(json.loads(json_str))
+
+

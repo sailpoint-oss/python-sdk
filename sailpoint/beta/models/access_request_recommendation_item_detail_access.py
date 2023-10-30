@@ -11,27 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.access_request_recommendation_item_type import AccessRequestRecommendationItemType
-
 
 class AccessRequestRecommendationItemDetailAccess(BaseModel):
     """
     AccessRequestRecommendationItemDetailAccess
     """
-    id: Optional[StrictStr] = Field(
-        None, description="ID of access item being recommended.")
+    id: Optional[StrictStr] = Field(None, description="ID of access item being recommended.")
     type: Optional[AccessRequestRecommendationItemType] = None
-    name: Optional[StrictStr] = Field(None,
-                                      description="Name of the access item")
-    description: Optional[StrictStr] = Field(
-        None, description="Description of the access item")
+    name: Optional[StrictStr] = Field(None, description="Name of the access item")
+    description: Optional[StrictStr] = Field(None, description="Description of the access item")
     __properties = ["id", "type", "name", "description"]
 
     class Config:
@@ -48,19 +46,20 @@ class AccessRequestRecommendationItemDetailAccess(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-            cls, json_str: str) -> AccessRequestRecommendationItemDetailAccess:
+    def from_json(cls, json_str: str) -> AccessRequestRecommendationItemDetailAccess:
         """Create an instance of AccessRequestRecommendationItemDetailAccess from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls,
-                  obj: dict) -> AccessRequestRecommendationItemDetailAccess:
+    def from_dict(cls, obj: dict) -> AccessRequestRecommendationItemDetailAccess:
         """Create an instance of AccessRequestRecommendationItemDetailAccess from a dict"""
         if obj is None:
             return None
@@ -69,13 +68,11 @@ class AccessRequestRecommendationItemDetailAccess(BaseModel):
             return AccessRequestRecommendationItemDetailAccess.parse_obj(obj)
 
         _obj = AccessRequestRecommendationItemDetailAccess.parse_obj({
-            "id":
-            obj.get("id"),
-            "type":
-            obj.get("type"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description")
+            "id": obj.get("id"),
+            "type": obj.get("type"),
+            "name": obj.get("name"),
+            "description": obj.get("description")
         })
         return _obj
+
+

@@ -11,26 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 from beta.models.condition_effect_config import ConditionEffectConfig
-
 
 class ConditionEffect(BaseModel):
     """
     Effect produced by a condition.  # noqa: E501
     """
-    effect_type: Optional[StrictStr] = Field(
-        None,
-        alias="effectType",
-        description=
-        "Type of effect to perform when the conditions are evaluated for this logic block. HIDE ConditionEffectTypeHide  Disables validations. SHOW ConditionEffectTypeShow  Enables validations. DISABLE ConditionEffectTypeDisable  Disables validations. ENABLE ConditionEffectTypeEnable  Enables validations. REQUIRE ConditionEffectTypeRequire OPTIONAL ConditionEffectTypeOptional SUBMIT_MESSAGE ConditionEffectTypeSubmitMessage SUBMIT_NOTIFICATION ConditionEffectTypeSubmitNotification SET_DEFAULT_VALUE ConditionEffectTypeSetDefaultValue  This value is ignored on purpose."
-    )
+    effect_type: Optional[StrictStr] = Field(None, alias="effectType", description="Type of effect to perform when the conditions are evaluated for this logic block. HIDE ConditionEffectTypeHide  Disables validations. SHOW ConditionEffectTypeShow  Enables validations. DISABLE ConditionEffectTypeDisable  Disables validations. ENABLE ConditionEffectTypeEnable  Enables validations. REQUIRE ConditionEffectTypeRequire OPTIONAL ConditionEffectTypeOptional SUBMIT_MESSAGE ConditionEffectTypeSubmitMessage SUBMIT_NOTIFICATION ConditionEffectTypeSubmitNotification SET_DEFAULT_VALUE ConditionEffectTypeSetDefaultValue  This value is ignored on purpose.")
     config: Optional[ConditionEffectConfig] = None
     __properties = ["effectType", "config"]
 
@@ -40,12 +36,8 @@ class ConditionEffect(BaseModel):
         if value is None:
             return value
 
-        if value not in ('HIDE', 'SHOW', 'DISABLE', 'ENABLE', 'REQUIRE',
-                         'OPTIONAL', 'SUBMIT_MESSAGE', 'SUBMIT_NOTIFICATION',
-                         'SET_DEFAULT_VALUE'):
-            raise ValueError(
-                "must be one of enum values ('HIDE', 'SHOW', 'DISABLE', 'ENABLE', 'REQUIRE', 'OPTIONAL', 'SUBMIT_MESSAGE', 'SUBMIT_NOTIFICATION', 'SET_DEFAULT_VALUE')"
-            )
+        if value not in ('HIDE', 'SHOW', 'DISABLE', 'ENABLE', 'REQUIRE', 'OPTIONAL', 'SUBMIT_MESSAGE', 'SUBMIT_NOTIFICATION', 'SET_DEFAULT_VALUE'):
+            raise ValueError("must be one of enum values ('HIDE', 'SHOW', 'DISABLE', 'ENABLE', 'REQUIRE', 'OPTIONAL', 'SUBMIT_MESSAGE', 'SUBMIT_NOTIFICATION', 'SET_DEFAULT_VALUE')")
         return value
 
     class Config:
@@ -68,7 +60,10 @@ class ConditionEffect(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of config
         if self.config:
             _dict['config'] = self.config.to_dict()
@@ -84,10 +79,9 @@ class ConditionEffect(BaseModel):
             return ConditionEffect.parse_obj(obj)
 
         _obj = ConditionEffect.parse_obj({
-            "effect_type":
-            obj.get("effectType"),
-            "config":
-            ConditionEffectConfig.from_dict(obj.get("config"))
-            if obj.get("config") is not None else None
+            "effect_type": obj.get("effectType"),
+            "config": ConditionEffectConfig.from_dict(obj.get("config")) if obj.get("config") is not None else None
         })
         return _obj
+
+

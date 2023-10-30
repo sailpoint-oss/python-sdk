@@ -11,54 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool
-
 
 class RefreshIdentitiesRequestRefreshArgs(BaseModel):
     """
     RefreshIdentitiesRequestRefreshArgs
     """
-    correlate_entitlements: Optional[StrictBool] = Field(
-        None,
-        alias="correlateEntitlements",
-        description=
-        "This will refresh entitlement, role, and access profile calculations."
-    )
-    promote_attributes: Optional[StrictBool] = Field(
-        None,
-        alias="promoteAttributes",
-        description="This will calculate identity attributes.")
-    refresh_manager_status: Optional[StrictBool] = Field(
-        None,
-        alias="refreshManagerStatus",
-        description=
-        "This recalculates manager correlation and manager status. Note: This is computationally expensive to run. "
-    )
-    synchronize_attributes: Optional[StrictBool] = Field(
-        None,
-        alias="synchronizeAttributes",
-        description="Enables attribute synchronization.")
-    prune_identities: Optional[StrictBool] = Field(
-        None,
-        alias="pruneIdentities",
-        description=
-        "Option that will enable deletion of an identity objects if there are no account objects. Note: This is not typically used in IdentityNow, except by guidance from SailPoint. "
-    )
-    provision: Optional[StrictBool] = Field(
-        None,
-        description=
-        "Enables provisioning of role assignments with entitlements that are not currently fulfilled."
-    )
-    __properties = [
-        "correlateEntitlements", "promoteAttributes", "refreshManagerStatus",
-        "synchronizeAttributes", "pruneIdentities", "provision"
-    ]
+    correlate_entitlements: Optional[StrictBool] = Field(None, alias="correlateEntitlements", description="This will refresh entitlement, role, and access profile calculations.")
+    promote_attributes: Optional[StrictBool] = Field(None, alias="promoteAttributes", description="This will calculate identity attributes.")
+    refresh_manager_status: Optional[StrictBool] = Field(None, alias="refreshManagerStatus", description="This recalculates manager correlation and manager status. Note: This is computationally expensive to run. ")
+    synchronize_attributes: Optional[StrictBool] = Field(None, alias="synchronizeAttributes", description="Enables attribute synchronization.")
+    prune_identities: Optional[StrictBool] = Field(None, alias="pruneIdentities", description="Option that will enable deletion of an identity objects if there are no account objects. Note: This is not typically used in IdentityNow, except by guidance from SailPoint. ")
+    provision: Optional[StrictBool] = Field(None, description="Enables provisioning of role assignments with entitlements that are not currently fulfilled.")
+    __properties = ["correlateEntitlements", "promoteAttributes", "refreshManagerStatus", "synchronizeAttributes", "pruneIdentities", "provision"]
 
     class Config:
         """Pydantic configuration"""
@@ -80,7 +53,10 @@ class RefreshIdentitiesRequestRefreshArgs(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -93,17 +69,13 @@ class RefreshIdentitiesRequestRefreshArgs(BaseModel):
             return RefreshIdentitiesRequestRefreshArgs.parse_obj(obj)
 
         _obj = RefreshIdentitiesRequestRefreshArgs.parse_obj({
-            "correlate_entitlements":
-            obj.get("correlateEntitlements"),
-            "promote_attributes":
-            obj.get("promoteAttributes"),
-            "refresh_manager_status":
-            obj.get("refreshManagerStatus"),
-            "synchronize_attributes":
-            obj.get("synchronizeAttributes"),
-            "prune_identities":
-            obj.get("pruneIdentities"),
-            "provision":
-            obj.get("provision")
+            "correlate_entitlements": obj.get("correlateEntitlements"),
+            "promote_attributes": obj.get("promoteAttributes"),
+            "refresh_manager_status": obj.get("refreshManagerStatus"),
+            "synchronize_attributes": obj.get("synchronizeAttributes"),
+            "prune_identities": obj.get("pruneIdentities"),
+            "provision": obj.get("provision")
         })
         return _obj
+
+

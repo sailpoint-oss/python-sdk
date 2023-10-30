@@ -11,46 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, conint
-
 
 class PasswordOrgConfig(BaseModel):
     """
     PasswordOrgConfig
     """
-    custom_instructions_enabled: Optional[StrictBool] = Field(
-        False,
-        alias="customInstructionsEnabled",
-        description=
-        "Indicator whether custom password instructions feature is enabled. The default value is false."
-    )
-    digit_token_enabled: Optional[StrictBool] = Field(
-        False,
-        alias="digitTokenEnabled",
-        description=
-        "Indicator whether \"digit token\" feature is enabled. The default value is false."
-    )
-    digit_token_duration_minutes: Optional[conint(
-        strict=True, le=60, ge=1
-    )] = Field(
-        5,
-        alias="digitTokenDurationMinutes",
-        description=
-        "The duration of \"digit token\" in minutes. The default value is 5.")
-    digit_token_length: Optional[conint(strict=True, le=18, ge=6)] = Field(
-        6,
-        alias="digitTokenLength",
-        description="The length of \"digit token\". The default value is 6.")
-    __properties = [
-        "customInstructionsEnabled", "digitTokenEnabled",
-        "digitTokenDurationMinutes", "digitTokenLength"
-    ]
+    custom_instructions_enabled: Optional[StrictBool] = Field(False, alias="customInstructionsEnabled", description="Indicator whether custom password instructions feature is enabled. The default value is false.")
+    digit_token_enabled: Optional[StrictBool] = Field(False, alias="digitTokenEnabled", description="Indicator whether \"digit token\" feature is enabled. The default value is false.")
+    digit_token_duration_minutes: Optional[conint(strict=True, le=60, ge=1)] = Field(5, alias="digitTokenDurationMinutes", description="The duration of \"digit token\" in minutes. The default value is 5.")
+    digit_token_length: Optional[conint(strict=True, le=18, ge=6)] = Field(6, alias="digitTokenLength", description="The length of \"digit token\". The default value is 6.")
+    __properties = ["customInstructionsEnabled", "digitTokenEnabled", "digitTokenDurationMinutes", "digitTokenLength"]
 
     class Config:
         """Pydantic configuration"""
@@ -72,7 +51,10 @@ class PasswordOrgConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -85,17 +67,11 @@ class PasswordOrgConfig(BaseModel):
             return PasswordOrgConfig.parse_obj(obj)
 
         _obj = PasswordOrgConfig.parse_obj({
-            "custom_instructions_enabled":
-            obj.get("customInstructionsEnabled")
-            if obj.get("customInstructionsEnabled") is not None else False,
-            "digit_token_enabled":
-            obj.get("digitTokenEnabled")
-            if obj.get("digitTokenEnabled") is not None else False,
-            "digit_token_duration_minutes":
-            obj.get("digitTokenDurationMinutes")
-            if obj.get("digitTokenDurationMinutes") is not None else 5,
-            "digit_token_length":
-            obj.get("digitTokenLength")
-            if obj.get("digitTokenLength") is not None else 6
+            "custom_instructions_enabled": obj.get("customInstructionsEnabled") if obj.get("customInstructionsEnabled") is not None else False,
+            "digit_token_enabled": obj.get("digitTokenEnabled") if obj.get("digitTokenEnabled") is not None else False,
+            "digit_token_duration_minutes": obj.get("digitTokenDurationMinutes") if obj.get("digitTokenDurationMinutes") is not None else 5,
+            "digit_token_length": obj.get("digitTokenLength") if obj.get("digitTokenLength") is not None else 6
         })
         return _obj
+
+

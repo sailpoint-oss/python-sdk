@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest  # noqa: E501
-
 
 class TestCreatePersonalAccessTokenRequest(unittest.TestCase):
     """CreatePersonalAccessTokenRequest unit test stubs"""
@@ -26,8 +26,7 @@ class TestCreatePersonalAccessTokenRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> CreatePersonalAccessTokenRequest:
+    def make_instance(self, include_optional) -> CreatePersonalAccessTokenRequest:
         """Test CreatePersonalAccessTokenRequest
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -50,7 +49,6 @@ class TestCreatePersonalAccessTokenRequest(unittest.TestCase):
         """Test CreatePersonalAccessTokenRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

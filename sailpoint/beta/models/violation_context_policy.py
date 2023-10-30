@@ -11,23 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class ViolationContextPolicy(BaseModel):
     """
     The types of objects supported for SOD violations  # noqa: E501
     """
-    type: Optional[Dict[str, Any]] = Field(
-        None, description="The type of object that is referenced")
-    id: Optional[StrictStr] = Field(
-        None, description="ID of the object to which this reference applies")
+    type: Optional[Dict[str, Any]] = Field(None, description="The type of object that is referenced")
+    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
     name: Optional[StrictStr] = None
     __properties = ["type", "id", "name"]
 
@@ -61,7 +60,10 @@ class ViolationContextPolicy(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -79,3 +81,5 @@ class ViolationContextPolicy(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

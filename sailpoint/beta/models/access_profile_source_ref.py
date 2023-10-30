@@ -11,28 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class AccessProfileSourceRef(BaseModel):
     """
     AccessProfileSourceRef
     """
-    id: Optional[StrictStr] = Field(
-        None,
-        description=
-        "The ID of the Source with with which the Access Profile is associated"
-    )
-    type: Optional[StrictStr] = Field(
-        None, description="The type of the Source, will always be SOURCE")
-    name: Optional[StrictStr] = Field(
-        None, description="The display name of the associated Source")
+    id: Optional[StrictStr] = Field(None, description="The ID of the Source with with which the Access Profile is associated")
+    type: Optional[StrictStr] = Field(None, description="The type of the Source, will always be SOURCE")
+    name: Optional[StrictStr] = Field(None, description="The display name of the associated Source")
     __properties = ["id", "type", "name"]
 
     @validator('type')
@@ -65,7 +60,10 @@ class AccessProfileSourceRef(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -83,3 +81,5 @@ class AccessProfileSourceRef(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

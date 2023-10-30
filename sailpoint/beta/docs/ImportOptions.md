@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **exclude_types** | **List[str]** | Object type names to be excluded from an sp-config export command. | [optional] 
 **include_types** | **List[str]** | Object type names to be included in an sp-config export command. IncludeTypes takes precedence over excludeTypes. | [optional] 
 **object_options** | [**Dict[str, ObjectExportImportOptions]**](ObjectExportImportOptions.md) | Additional options targeting specific objects related to each item in the includeTypes field | [optional] 
-**default_references** | [**List[BaseReferenceDto1]**](BaseReferenceDto1.md) | List of BaseRefenceDtos that can be used to resolve references on import. | [optional] 
+**default_references** | [**List[BaseReferenceDto]**](BaseReferenceDto.md) | List of BaseRefenceDtos that can be used to resolve references on import. | [optional] 
 **exclude_backup** | **bool** | By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. If excludeBackup is true, the backup will not be performed. | [optional] [default to False]
 
 ## Example

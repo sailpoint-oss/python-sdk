@@ -11,37 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool
-
 
 class ValidateFilterOutputDto(BaseModel):
     """
     ValidateFilterOutputDto
     """
-    is_valid: Optional[StrictBool] = Field(
-        False,
-        alias="isValid",
-        description=
-        "When this field is true, the filter expression is valid against the input."
-    )
-    is_valid_json_path: Optional[StrictBool] = Field(
-        False,
-        alias="isValidJSONPath",
-        description=
-        "When this field is true, the filter expression is using a valid JSON path."
-    )
-    is_path_exist: Optional[StrictBool] = Field(
-        False,
-        alias="isPathExist",
-        description=
-        "When this field is true, the filter expression is using an existing path."
-    )
+    is_valid: Optional[StrictBool] = Field(False, alias="isValid", description="When this field is true, the filter expression is valid against the input.")
+    is_valid_json_path: Optional[StrictBool] = Field(False, alias="isValidJSONPath", description="When this field is true, the filter expression is using a valid JSON path.")
+    is_path_exist: Optional[StrictBool] = Field(False, alias="isPathExist", description="When this field is true, the filter expression is using an existing path.")
     __properties = ["isValid", "isValidJSONPath", "isPathExist"]
 
     class Config:
@@ -64,7 +50,10 @@ class ValidateFilterOutputDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -77,13 +66,10 @@ class ValidateFilterOutputDto(BaseModel):
             return ValidateFilterOutputDto.parse_obj(obj)
 
         _obj = ValidateFilterOutputDto.parse_obj({
-            "is_valid":
-            obj.get("isValid") if obj.get("isValid") is not None else False,
-            "is_valid_json_path":
-            obj.get("isValidJSONPath")
-            if obj.get("isValidJSONPath") is not None else False,
-            "is_path_exist":
-            obj.get("isPathExist")
-            if obj.get("isPathExist") is not None else False
+            "is_valid": obj.get("isValid") if obj.get("isValid") is not None else False,
+            "is_valid_json_path": obj.get("isValidJSONPath") if obj.get("isValidJSONPath") is not None else False,
+            "is_path_exist": obj.get("isPathExist") if obj.get("isPathExist") is not None else False
         })
         return _obj
+
+

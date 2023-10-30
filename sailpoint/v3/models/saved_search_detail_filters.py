@@ -11,16 +11,17 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
 from v3.models.filter_type import FilterType
 from v3.models.range import Range
-
 
 class SavedSearchDetailFilters(BaseModel):
     """
@@ -28,10 +29,8 @@ class SavedSearchDetailFilters(BaseModel):
     """
     type: Optional[FilterType] = None
     range: Optional[Range] = None
-    terms: Optional[conlist(StrictStr)] = Field(
-        None, description="The terms to be filtered.")
-    exclude: Optional[StrictBool] = Field(
-        False, description="Indicates if the filter excludes results.")
+    terms: Optional[conlist(StrictStr)] = Field(None, description="The terms to be filtered.")
+    exclude: Optional[StrictBool] = Field(False, description="Indicates if the filter excludes results.")
     __properties = ["type", "range", "terms", "exclude"]
 
     class Config:
@@ -54,7 +53,10 @@ class SavedSearchDetailFilters(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of range
         if self.range:
             _dict['range'] = self.range.to_dict()
@@ -70,14 +72,11 @@ class SavedSearchDetailFilters(BaseModel):
             return SavedSearchDetailFilters.parse_obj(obj)
 
         _obj = SavedSearchDetailFilters.parse_obj({
-            "type":
-            obj.get("type"),
-            "range":
-            Range.from_dict(obj.get("range"))
-            if obj.get("range") is not None else None,
-            "terms":
-            obj.get("terms"),
-            "exclude":
-            obj.get("exclude") if obj.get("exclude") is not None else False
+            "type": obj.get("type"),
+            "range": Range.from_dict(obj.get("range")) if obj.get("range") is not None else None,
+            "terms": obj.get("terms"),
+            "exclude": obj.get("exclude") if obj.get("exclude") is not None else False
         })
         return _obj
+
+

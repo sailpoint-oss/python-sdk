@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -27,7 +28,9 @@ from beta.models.custom_password_instruction import CustomPasswordInstruction
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class CustomPasswordInstructionsApi:
@@ -43,9 +46,7 @@ class CustomPasswordInstructionsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_custom_password_instructions(
-            self, custom_password_instruction: CustomPasswordInstruction,
-            **kwargs) -> CustomPasswordInstruction:  # noqa: E501
+    def create_custom_password_instructions(self, custom_password_instruction : CustomPasswordInstruction, **kwargs) -> CustomPasswordInstruction:  # noqa: E501
         """Create Custom Password Instructions  # noqa: E501
 
         This API creates the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -72,13 +73,10 @@ class CustomPasswordInstructionsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_custom_password_instructions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_custom_password_instructions_with_http_info(
-            custom_password_instruction, **kwargs)  # noqa: E501
+        return self.create_custom_password_instructions_with_http_info(custom_password_instruction, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_custom_password_instructions_with_http_info(
-            self, custom_password_instruction: CustomPasswordInstruction,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_custom_password_instructions_with_http_info(self, custom_password_instruction : CustomPasswordInstruction, **kwargs) -> ApiResponse:  # noqa: E501
         """Create Custom Password Instructions  # noqa: E501
 
         This API creates the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -117,18 +115,28 @@ class CustomPasswordInstructionsApi:
 
         _params = locals()
 
-        _all_params = ['custom_password_instruction']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'custom_password_instruction'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_custom_password_instructions" % _key)
+                    " to method create_custom_password_instructions" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -154,11 +162,11 @@ class CustomPasswordInstructionsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -171,8 +179,7 @@ class CustomPasswordInstructionsApi:
         }
 
         return self.api_client.call_api(
-            '/custom-password-instructions',
-            'POST',
+            '/custom-password-instructions', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -182,30 +189,14 @@ class CustomPasswordInstructionsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_custom_password_instructions(
-            self,
-            page_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description=
-                    "The page ID of custom password instructions to delete.")],
-            locale:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\"."
-            )] = None,
-            **kwargs) -> None:  # noqa: E501
+    def delete_custom_password_instructions(self, page_id : Annotated[StrictStr, Field(..., description="The page ID of custom password instructions to delete.")], locale : Annotated[Optional[StrictStr], Field(description="The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\".")] = None, **kwargs) -> None:  # noqa: E501
         """Delete Custom Password Instructions by page ID  # noqa: E501
 
         This API delete the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -234,26 +225,10 @@ class CustomPasswordInstructionsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_custom_password_instructions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_custom_password_instructions_with_http_info(
-            page_id, locale, **kwargs)  # noqa: E501
+        return self.delete_custom_password_instructions_with_http_info(page_id, locale, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_custom_password_instructions_with_http_info(
-            self,
-            page_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description=
-                    "The page ID of custom password instructions to delete.")],
-            locale:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\"."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_custom_password_instructions_with_http_info(self, page_id : Annotated[StrictStr, Field(..., description="The page ID of custom password instructions to delete.")], locale : Annotated[Optional[StrictStr], Field(description="The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\".")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Custom Password Instructions by page ID  # noqa: E501
 
         This API delete the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -294,18 +269,29 @@ class CustomPasswordInstructionsApi:
 
         _params = locals()
 
-        _all_params = ['page_id', 'locale']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'page_id',
+            'locale'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete_custom_password_instructions" % _key)
+                    " to method delete_custom_password_instructions" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -315,6 +301,7 @@ class CustomPasswordInstructionsApi:
         _path_params = {}
         if _params['page_id']:
             _path_params['pageId'] = _params['page_id']
+
 
         # process the query parameters
         _query_params = []
@@ -338,8 +325,7 @@ class CustomPasswordInstructionsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/custom-password-instructions/{pageId}',
-            'DELETE',
+            '/custom-password-instructions/{pageId}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -349,30 +335,14 @@ class CustomPasswordInstructionsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_custom_password_instructions(
-            self,
-            page_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description=
-                    "The page ID of custom password instructions to query.")],
-            locale:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\"."
-            )] = None,
-            **kwargs) -> CustomPasswordInstruction:  # noqa: E501
+    def get_custom_password_instructions(self, page_id : Annotated[StrictStr, Field(..., description="The page ID of custom password instructions to query.")], locale : Annotated[Optional[StrictStr], Field(description="The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\".")] = None, **kwargs) -> CustomPasswordInstruction:  # noqa: E501
         """Get Custom Password Instructions by Page ID  # noqa: E501
 
         This API returns the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -401,26 +371,10 @@ class CustomPasswordInstructionsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_custom_password_instructions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_custom_password_instructions_with_http_info(
-            page_id, locale, **kwargs)  # noqa: E501
+        return self.get_custom_password_instructions_with_http_info(page_id, locale, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_custom_password_instructions_with_http_info(
-            self,
-            page_id: Annotated[
-                StrictStr,
-                Field(
-                    ...,
-                    description=
-                    "The page ID of custom password instructions to query.")],
-            locale:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\"."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_custom_password_instructions_with_http_info(self, page_id : Annotated[StrictStr, Field(..., description="The page ID of custom password instructions to query.")], locale : Annotated[Optional[StrictStr], Field(description="The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\".")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Get Custom Password Instructions by Page ID  # noqa: E501
 
         This API returns the custom password instructions for the specified page ID. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -461,18 +415,29 @@ class CustomPasswordInstructionsApi:
 
         _params = locals()
 
-        _all_params = ['page_id', 'locale']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'page_id',
+            'locale'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_custom_password_instructions" % _key)
+                    " to method get_custom_password_instructions" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -482,6 +447,7 @@ class CustomPasswordInstructionsApi:
         _path_params = {}
         if _params['page_id']:
             _path_params['pageId'] = _params['page_id']
+
 
         # process the query parameters
         _query_params = []
@@ -511,8 +477,7 @@ class CustomPasswordInstructionsApi:
         }
 
         return self.api_client.call_api(
-            '/custom-password-instructions/{pageId}',
-            'GET',
+            '/custom-password-instructions/{pageId}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -522,8 +487,7 @@ class CustomPasswordInstructionsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

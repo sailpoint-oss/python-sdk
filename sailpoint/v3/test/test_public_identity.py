@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.public_identity import PublicIdentity  # noqa: E501
-
 
 class TestPublicIdentity(unittest.TestCase):
     """PublicIdentity unit test stubs"""
@@ -61,7 +61,6 @@ class TestPublicIdentity(unittest.TestCase):
         """Test PublicIdentity"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

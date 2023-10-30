@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.access_request_recommendation_item_type import AccessRequestRecommendationItemType
-
 
 class AccessRequestRecommendationItem(BaseModel):
     """
     AccessRequestRecommendationItem
     """
-    id: Optional[StrictStr] = Field(
-        None, description="ID of access item being recommended.")
+    id: Optional[StrictStr] = Field(None, description="ID of access item being recommended.")
     type: Optional[AccessRequestRecommendationItemType] = None
     __properties = ["id", "type"]
 
@@ -50,7 +50,10 @@ class AccessRequestRecommendationItem(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +66,9 @@ class AccessRequestRecommendationItem(BaseModel):
             return AccessRequestRecommendationItem.parse_obj(obj)
 
         _obj = AccessRequestRecommendationItem.parse_obj({
-            "id":
-            obj.get("id"),
-            "type":
-            obj.get("type")
+            "id": obj.get("id"),
+            "type": obj.get("type")
         })
         return _obj
+
+

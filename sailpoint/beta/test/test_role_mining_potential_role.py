@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.role_mining_potential_role import RoleMiningPotentialRole  # noqa: E501
-
 
 class TestRoleMiningPotentialRole(unittest.TestCase):
     """RoleMiningPotentialRole unit test stubs"""
@@ -57,8 +57,9 @@ class TestRoleMiningPotentialRole(unittest.TestCase):
                 role_id = '07a0b4e2-7a76-44fa-bd0b-c64654b66519',
                 saved = True,
                 session = beta.models.role_mining_session_parameters_dto.RoleMiningSessionParametersDto(
-                    min_num_identities_in_potential_role = 20, 
+                    id = '9f36f5e5-1e81-4eca-b087-548959d91c71', 
                     name = 'Saved RM Session - 07/10', 
+                    min_num_identities_in_potential_role = 20, 
                     prune_threshold = 5, 
                     saved = True, 
                     scope = beta.models.role_mining_session_scope.RoleMiningSessionScope(
@@ -66,8 +67,8 @@ class TestRoleMiningPotentialRole(unittest.TestCase):
                         criteria = 'source.name:DataScienceDataset', 
                         attribute_filter_criteria = {displayName={untranslated=Location: Miami}, ariaLabel={untranslated=Location: Miami}, data={displayName={translateKey=IDN.IDENTITY_ATTRIBUTES.LOCATION}, name=location, operator=EQUALS, values=[Miami]}}, ), 
                     type = 'SPECIALIZED', 
-                    state = beta.models.role_mining_session_status.RoleMiningSessionStatus(), 
-                    scoping_method = beta.models.role_mining_session_scoping_method.RoleMiningSessionScopingMethod(), ),
+                    state = 'CREATED', 
+                    scoping_method = 'MANUAL', ),
                 type = 'SPECIALIZED'
             )
         else:
@@ -79,7 +80,6 @@ class TestRoleMiningPotentialRole(unittest.TestCase):
         """Test RoleMiningPotentialRole"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

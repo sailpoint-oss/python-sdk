@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.reviewable_role import ReviewableRole  # noqa: E501
-
 
 class TestReviewableRole(unittest.TestCase):
     """ReviewableRole unit test stubs"""
@@ -111,7 +111,6 @@ class TestReviewableRole(unittest.TestCase):
         """Test ReviewableRole"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,17 +11,18 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictInt
 from beta.models.account_correlated_account import AccountCorrelatedAccount
 from beta.models.account_correlated_identity import AccountCorrelatedIdentity
 from beta.models.account_correlated_source import AccountCorrelatedSource
-
 
 class AccountCorrelated(BaseModel):
     """
@@ -30,18 +31,9 @@ class AccountCorrelated(BaseModel):
     identity: AccountCorrelatedIdentity = Field(...)
     source: AccountCorrelatedSource = Field(...)
     account: AccountCorrelatedAccount = Field(...)
-    attributes: Dict[str, Any] = Field(
-        ...,
-        description=
-        "The attributes associated with the account.  Attributes are unique per source."
-    )
-    entitlement_count: Optional[StrictInt] = Field(
-        None,
-        alias="entitlementCount",
-        description="The number of entitlements associated with this account.")
-    __properties = [
-        "identity", "source", "account", "attributes", "entitlementCount"
-    ]
+    attributes: Dict[str, Any] = Field(..., description="The attributes associated with the account.  Attributes are unique per source.")
+    entitlement_count: Optional[StrictInt] = Field(None, alias="entitlementCount", description="The number of entitlements associated with this account.")
+    __properties = ["identity", "source", "account", "attributes", "entitlementCount"]
 
     class Config:
         """Pydantic configuration"""
@@ -63,7 +55,10 @@ class AccountCorrelated(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of identity
         if self.identity:
             _dict['identity'] = self.identity.to_dict()
@@ -85,18 +80,12 @@ class AccountCorrelated(BaseModel):
             return AccountCorrelated.parse_obj(obj)
 
         _obj = AccountCorrelated.parse_obj({
-            "identity":
-            AccountCorrelatedIdentity.from_dict(obj.get("identity"))
-            if obj.get("identity") is not None else None,
-            "source":
-            AccountCorrelatedSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "account":
-            AccountCorrelatedAccount.from_dict(obj.get("account"))
-            if obj.get("account") is not None else None,
-            "attributes":
-            obj.get("attributes"),
-            "entitlement_count":
-            obj.get("entitlementCount")
+            "identity": AccountCorrelatedIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
+            "source": AccountCorrelatedSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "account": AccountCorrelatedAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None,
+            "attributes": obj.get("attributes"),
+            "entitlement_count": obj.get("entitlementCount")
         })
         return _obj
+
+

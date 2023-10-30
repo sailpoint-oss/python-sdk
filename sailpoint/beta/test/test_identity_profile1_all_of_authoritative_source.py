@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.identity_profile1_all_of_authoritative_source import IdentityProfile1AllOfAuthoritativeSource  # noqa: E501
-
 
 class TestIdentityProfile1AllOfAuthoritativeSource(unittest.TestCase):
     """IdentityProfile1AllOfAuthoritativeSource unit test stubs"""
@@ -26,9 +26,7 @@ class TestIdentityProfile1AllOfAuthoritativeSource(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self,
-            include_optional) -> IdentityProfile1AllOfAuthoritativeSource:
+    def make_instance(self, include_optional) -> IdentityProfile1AllOfAuthoritativeSource:
         """Test IdentityProfile1AllOfAuthoritativeSource
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -51,7 +49,6 @@ class TestIdentityProfile1AllOfAuthoritativeSource(unittest.TestCase):
         """Test IdentityProfile1AllOfAuthoritativeSource"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class RoleCriteriaKeyType(str, Enum):
     """
     Indicates whether the associated criteria represents an expression on identity attributes, account attributes, or entitlements, respectively.
     """
+
     """
     allowed enum values
     """
@@ -32,3 +37,5 @@ class RoleCriteriaKeyType(str, Enum):
     def from_json(cls, json_str: str) -> RoleCriteriaKeyType:
         """Create an instance of RoleCriteriaKeyType from a JSON string"""
         return RoleCriteriaKeyType(json.loads(json_str))
+
+

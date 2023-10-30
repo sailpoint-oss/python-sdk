@@ -11,24 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from v3.models.field_details_dto import FieldDetailsDto
 from v3.models.usage_type import UsageType
 
-
 class ProvisioningPolicyDto(BaseModel):
     """
     ProvisioningPolicyDto
     """
     name: StrictStr = Field(..., description="the provisioning policy name")
-    description: Optional[StrictStr] = Field(
-        None, description="the description of the provisioning policy")
+    description: Optional[StrictStr] = Field(None, description="the description of the provisioning policy")
     usage_type: Optional[UsageType] = Field(None, alias="usageType")
     fields: Optional[conlist(FieldDetailsDto)] = None
     __properties = ["name", "description", "usageType", "fields"]
@@ -53,7 +53,10 @@ class ProvisioningPolicyDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in fields (list)
         _items = []
         if self.fields:
@@ -73,14 +76,11 @@ class ProvisioningPolicyDto(BaseModel):
             return ProvisioningPolicyDto.parse_obj(obj)
 
         _obj = ProvisioningPolicyDto.parse_obj({
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "usage_type":
-            obj.get("usageType"),
-            "fields":
-            [FieldDetailsDto.from_dict(_item) for _item in obj.get("fields")]
-            if obj.get("fields") is not None else None
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "usage_type": obj.get("usageType"),
+            "fields": [FieldDetailsDto.from_dict(_item) for _item in obj.get("fields")] if obj.get("fields") is not None else None
         })
         return _obj
+
+

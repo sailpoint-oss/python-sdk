@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.sod_exempt_criteria1 import SodExemptCriteria1  # noqa: E501
-
 
 class TestSodExemptCriteria1(unittest.TestCase):
     """SodExemptCriteria1 unit test stubs"""
@@ -50,7 +50,6 @@ class TestSodExemptCriteria1(unittest.TestCase):
         """Test SodExemptCriteria1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,15 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
 from beta.models.argument import Argument
-
 
 class ConnectorRuleCreateRequestSignature(BaseModel):
     """
@@ -49,7 +50,10 @@ class ConnectorRuleCreateRequestSignature(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in input (list)
         _items = []
         if self.input:
@@ -77,10 +81,9 @@ class ConnectorRuleCreateRequestSignature(BaseModel):
             return ConnectorRuleCreateRequestSignature.parse_obj(obj)
 
         _obj = ConnectorRuleCreateRequestSignature.parse_obj({
-            "input": [Argument.from_dict(_item) for _item in obj.get("input")]
-            if obj.get("input") is not None else None,
-            "output":
-            Argument.from_dict(obj.get("output"))
-            if obj.get("output") is not None else None
+            "input": [Argument.from_dict(_item) for _item in obj.get("input")] if obj.get("input") is not None else None,
+            "output": Argument.from_dict(obj.get("output")) if obj.get("output") is not None else None
         })
         return _obj
+
+

@@ -11,67 +11,36 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
 from beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner import ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
 from beta.models.provisioning_completed_account_requests_inner_source import ProvisioningCompletedAccountRequestsInnerSource
 
-
 class ProvisioningCompletedAccountRequestsInner(BaseModel):
     """
     ProvisioningCompletedAccountRequestsInner
     """
     source: ProvisioningCompletedAccountRequestsInnerSource = Field(...)
-    account_id: Optional[StrictStr] = Field(
-        None,
-        alias="accountId",
-        description="The unique idenfier of the account being provisioned.")
-    account_operation: StrictStr = Field(
-        ...,
-        alias="accountOperation",
-        description=
-        "The provisioning operation; typically Create, Modify, Enable, Disable, Unlock, or Delete."
-    )
-    provisioning_result: Dict[str, Any] = Field(
-        ...,
-        alias="provisioningResult",
-        description=
-        "The overall result of the provisioning transaction; this could be success, pending, failed, etc."
-    )
-    provisioning_target: StrictStr = Field(
-        ...,
-        alias="provisioningTarget",
-        description=
-        "The name of the provisioning channel selected; this could be the same as the source, or could be a Service Desk Integration Module (SDIM)."
-    )
-    ticket_id: Optional[StrictStr] = Field(
-        None,
-        alias="ticketId",
-        description=
-        "A reference to a tracking number, if this is sent to a Service Desk Integration Module (SDIM)."
-    )
-    attribute_requests: Optional[conlist(
-        ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
-    )] = Field(None,
-               alias="attributeRequests",
-               description=
-               "A list of attributes as part of the provisioning transaction.")
-    __properties = [
-        "source", "accountId", "accountOperation", "provisioningResult",
-        "provisioningTarget", "ticketId", "attributeRequests"
-    ]
+    account_id: Optional[StrictStr] = Field(None, alias="accountId", description="The unique idenfier of the account being provisioned.")
+    account_operation: StrictStr = Field(..., alias="accountOperation", description="The provisioning operation; typically Create, Modify, Enable, Disable, Unlock, or Delete.")
+    provisioning_result: Dict[str, Any] = Field(..., alias="provisioningResult", description="The overall result of the provisioning transaction; this could be success, pending, failed, etc.")
+    provisioning_target: StrictStr = Field(..., alias="provisioningTarget", description="The name of the provisioning channel selected; this could be the same as the source, or could be a Service Desk Integration Module (SDIM).")
+    ticket_id: Optional[StrictStr] = Field(None, alias="ticketId", description="A reference to a tracking number, if this is sent to a Service Desk Integration Module (SDIM).")
+    attribute_requests: Optional[conlist(ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner)] = Field(None, alias="attributeRequests", description="A list of attributes as part of the provisioning transaction.")
+    __properties = ["source", "accountId", "accountOperation", "provisioningResult", "provisioningTarget", "ticketId", "attributeRequests"]
 
     @validator('provisioning_result')
     def provisioning_result_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('SUCCESS', 'PENDING', 'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('SUCCESS', 'PENDING', 'FAILED')")
+            raise ValueError("must be one of enum values ('SUCCESS', 'PENDING', 'FAILED')")
         return value
 
     class Config:
@@ -88,14 +57,16 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls,
-                  json_str: str) -> ProvisioningCompletedAccountRequestsInner:
+    def from_json(cls, json_str: str) -> ProvisioningCompletedAccountRequestsInner:
         """Create an instance of ProvisioningCompletedAccountRequestsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -128,22 +99,14 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
             return ProvisioningCompletedAccountRequestsInner.parse_obj(obj)
 
         _obj = ProvisioningCompletedAccountRequestsInner.parse_obj({
-            "source":
-            ProvisioningCompletedAccountRequestsInnerSource.from_dict(
-                obj.get("source")) if obj.get("source") is not None else None,
-            "account_id":
-            obj.get("accountId"),
-            "account_operation":
-            obj.get("accountOperation"),
-            "provisioning_result":
-            obj.get("provisioningResult"),
-            "provisioning_target":
-            obj.get("provisioningTarget"),
-            "ticket_id":
-            obj.get("ticketId"),
-            "attribute_requests": [
-                ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
-                .from_dict(_item) for _item in obj.get("attributeRequests")
-            ] if obj.get("attributeRequests") is not None else None
+            "source": ProvisioningCompletedAccountRequestsInnerSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "account_id": obj.get("accountId"),
+            "account_operation": obj.get("accountOperation"),
+            "provisioning_result": obj.get("provisioningResult"),
+            "provisioning_target": obj.get("provisioningTarget"),
+            "ticket_id": obj.get("ticketId"),
+            "attribute_requests": [ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.from_dict(_item) for _item in obj.get("attributeRequests")] if obj.get("attributeRequests") is not None else None
         })
         return _obj
+
+

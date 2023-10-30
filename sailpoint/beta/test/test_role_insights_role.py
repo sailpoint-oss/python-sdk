@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.role_insights_role import RoleInsightsRole  # noqa: E501
-
 
 class TestRoleInsightsRole(unittest.TestCase):
     """RoleInsightsRole unit test stubs"""
@@ -51,7 +51,6 @@ class TestRoleInsightsRole(unittest.TestCase):
         """Test RoleInsightsRole"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

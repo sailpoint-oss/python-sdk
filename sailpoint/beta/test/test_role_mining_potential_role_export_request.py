@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.role_mining_potential_role_export_request import RoleMiningPotentialRoleExportRequest  # noqa: E501
-
 
 class TestRoleMiningPotentialRoleExportRequest(unittest.TestCase):
     """RoleMiningPotentialRoleExportRequest unit test stubs"""
@@ -26,8 +26,7 @@ class TestRoleMiningPotentialRoleExportRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self, include_optional) -> RoleMiningPotentialRoleExportRequest:
+    def make_instance(self, include_optional) -> RoleMiningPotentialRoleExportRequest:
         """Test RoleMiningPotentialRoleExportRequest
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -49,7 +48,6 @@ class TestRoleMiningPotentialRoleExportRequest(unittest.TestCase):
         """Test RoleMiningPotentialRoleExportRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

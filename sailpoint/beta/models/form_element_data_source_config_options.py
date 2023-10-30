@@ -11,35 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class FormElementDataSourceConfigOptions(BaseModel):
     """
     FormElementDataSourceConfigOptions
     """
-    label: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Label is the main label to display to the user when selecting this option"
-    )
-    sub_label: Optional[StrictStr] = Field(
-        None,
-        alias="subLabel",
-        description=
-        "SubLabel is the sub label to display below the label in diminutive styling to help describe or identify this option"
-    )
-    value: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Value is the value to save as an entry when the user selects this option"
-    )
+    label: Optional[StrictStr] = Field(None, description="Label is the main label to display to the user when selecting this option")
+    sub_label: Optional[StrictStr] = Field(None, alias="subLabel", description="SubLabel is the sub label to display below the label in diminutive styling to help describe or identify this option")
+    value: Optional[StrictStr] = Field(None, description="Value is the value to save as an entry when the user selects this option")
     __properties = ["label", "subLabel", "value"]
 
     class Config:
@@ -62,7 +50,10 @@ class FormElementDataSourceConfigOptions(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -75,11 +66,10 @@ class FormElementDataSourceConfigOptions(BaseModel):
             return FormElementDataSourceConfigOptions.parse_obj(obj)
 
         _obj = FormElementDataSourceConfigOptions.parse_obj({
-            "label":
-            obj.get("label"),
-            "sub_label":
-            obj.get("subLabel"),
-            "value":
-            obj.get("value")
+            "label": obj.get("label"),
+            "sub_label": obj.get("subLabel"),
+            "value": obj.get("value")
         })
         return _obj
+
+

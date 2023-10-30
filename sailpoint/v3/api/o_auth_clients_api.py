@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -30,7 +31,9 @@ from v3.models.json_patch_operation import JsonPatchOperation
 from v3.api_client import ApiClient
 from v3.api_response import ApiResponse
 from v3.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class OAuthClientsApi:
@@ -46,9 +49,7 @@ class OAuthClientsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_oauth_client(
-            self, create_o_auth_client_request: CreateOAuthClientRequest,
-            **kwargs) -> CreateOAuthClientResponse:  # noqa: E501
+    def create_oauth_client(self, create_o_auth_client_request : CreateOAuthClientRequest, **kwargs) -> CreateOAuthClientResponse:  # noqa: E501
         """Create OAuth Client  # noqa: E501
 
         This creates an OAuth client.  # noqa: E501
@@ -75,13 +76,10 @@ class OAuthClientsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_oauth_client_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_oauth_client_with_http_info(
-            create_o_auth_client_request, **kwargs)  # noqa: E501
+        return self.create_oauth_client_with_http_info(create_o_auth_client_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_oauth_client_with_http_info(
-            self, create_o_auth_client_request: CreateOAuthClientRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_oauth_client_with_http_info(self, create_o_auth_client_request : CreateOAuthClientRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Create OAuth Client  # noqa: E501
 
         This creates an OAuth client.  # noqa: E501
@@ -120,17 +118,28 @@ class OAuthClientsApi:
 
         _params = locals()
 
-        _all_params = ['create_o_auth_client_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'create_o_auth_client_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_oauth_client" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_oauth_client" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -156,11 +165,11 @@ class OAuthClientsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -175,8 +184,7 @@ class OAuthClientsApi:
         }
 
         return self.api_client.call_api(
-            '/oauth-clients',
-            'POST',
+            '/oauth-clients', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -186,17 +194,14 @@ class OAuthClientsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_oauth_client(self, id: Annotated[
-        StrictStr, Field(..., description="The OAuth client id")],
-                            **kwargs) -> None:  # noqa: E501
+    def delete_oauth_client(self, id : Annotated[StrictStr, Field(..., description="The OAuth client id")], **kwargs) -> None:  # noqa: E501
         """Delete OAuth Client  # noqa: E501
 
         This deletes an OAuth client.  # noqa: E501
@@ -223,14 +228,10 @@ class OAuthClientsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_oauth_client_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_oauth_client_with_http_info(id,
-                                                       **kwargs)  # noqa: E501
+        return self.delete_oauth_client_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_oauth_client_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="The OAuth client id")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_oauth_client_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The OAuth client id")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete OAuth Client  # noqa: E501
 
         This deletes an OAuth client.  # noqa: E501
@@ -269,17 +270,28 @@ class OAuthClientsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_oauth_client" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_oauth_client" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -289,6 +301,7 @@ class OAuthClientsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -309,8 +322,7 @@ class OAuthClientsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/oauth-clients/{id}',
-            'DELETE',
+            '/oauth-clients/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -320,17 +332,14 @@ class OAuthClientsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_oauth_client(self, id: Annotated[
-        StrictStr, Field(..., description="The OAuth client id")],
-                         **kwargs) -> GetOAuthClientResponse:  # noqa: E501
+    def get_oauth_client(self, id : Annotated[StrictStr, Field(..., description="The OAuth client id")], **kwargs) -> GetOAuthClientResponse:  # noqa: E501
         """Get OAuth Client  # noqa: E501
 
         This gets details of an OAuth client.  # noqa: E501
@@ -360,9 +369,7 @@ class OAuthClientsApi:
         return self.get_oauth_client_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_oauth_client_with_http_info(self, id: Annotated[
-        StrictStr, Field(..., description="The OAuth client id")],
-                                        **kwargs) -> ApiResponse:  # noqa: E501
+    def get_oauth_client_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The OAuth client id")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get OAuth Client  # noqa: E501
 
         This gets details of an OAuth client.  # noqa: E501
@@ -401,17 +408,28 @@ class OAuthClientsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_oauth_client" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_oauth_client" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -421,6 +439,7 @@ class OAuthClientsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -449,8 +468,7 @@ class OAuthClientsApi:
         }
 
         return self.api_client.call_api(
-            '/oauth-clients/{id}',
-            'GET',
+            '/oauth-clients/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -460,24 +478,14 @@ class OAuthClientsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_oauth_clients(
-            self,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull*"
-            )] = None,
-            **kwargs) -> List[GetOAuthClientResponse]:  # noqa: E501
+    def list_oauth_clients(self, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull*")] = None, **kwargs) -> List[GetOAuthClientResponse]:  # noqa: E501
         """List OAuth Clients  # noqa: E501
 
         This gets a list of OAuth clients.  # noqa: E501
@@ -504,20 +512,10 @@ class OAuthClientsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_oauth_clients_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_oauth_clients_with_http_info(filters,
-                                                      **kwargs)  # noqa: E501
+        return self.list_oauth_clients_with_http_info(filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_oauth_clients_with_http_info(
-            self,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull*"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_oauth_clients_with_http_info(self, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List OAuth Clients  # noqa: E501
 
         This gets a list of OAuth clients.  # noqa: E501
@@ -556,17 +554,28 @@ class OAuthClientsApi:
 
         _params = locals()
 
-        _all_params = ['filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_oauth_clients" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_oauth_clients" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -604,8 +613,7 @@ class OAuthClientsApi:
         }
 
         return self.api_client.call_api(
-            '/oauth-clients',
-            'GET',
+            '/oauth-clients', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -615,24 +623,14 @@ class OAuthClientsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_oauth_client(self, id: Annotated[
-        StrictStr, Field(
-            ..., description="The OAuth client id"
-        )], json_patch_operation: Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported "
-            )], **kwargs) -> GetOAuthClientResponse:  # noqa: E501
+    def patch_oauth_client(self, id : Annotated[StrictStr, Field(..., description="The OAuth client id")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported ")], **kwargs) -> GetOAuthClientResponse:  # noqa: E501
         """Patch OAuth Client  # noqa: E501
 
         This performs a targeted update to the field(s) of an OAuth client.  # noqa: E501
@@ -661,20 +659,10 @@ class OAuthClientsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_oauth_client_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_oauth_client_with_http_info(id, json_patch_operation,
-                                                      **kwargs)  # noqa: E501
+        return self.patch_oauth_client_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_oauth_client_with_http_info(self, id: Annotated[
-        StrictStr, Field(
-            ..., description="The OAuth client id"
-        )], json_patch_operation: Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported "
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_oauth_client_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The OAuth client id")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported ")], **kwargs) -> ApiResponse:  # noqa: E501
         """Patch OAuth Client  # noqa: E501
 
         This performs a targeted update to the field(s) of an OAuth client.  # noqa: E501
@@ -715,17 +703,29 @@ class OAuthClientsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'json_patch_operation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'json_patch_operation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method patch_oauth_client" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_oauth_client" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -735,6 +735,7 @@ class OAuthClientsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -753,12 +754,11 @@ class OAuthClientsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -774,8 +774,7 @@ class OAuthClientsApi:
         }
 
         return self.api_client.call_api(
-            '/oauth-clients/{id}',
-            'PATCH',
+            '/oauth-clients/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -785,8 +784,7 @@ class OAuthClientsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

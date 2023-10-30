@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -27,7 +28,9 @@ from beta.models.peer_group_member import PeerGroupMember
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class IAIPeerGroupStrategiesApi:
@@ -43,38 +46,7 @@ class IAIPeerGroupStrategiesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_peer_group_outliers(
-            self,
-            strategy:
-        Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description=
-                "The strategy used to create peer groups. Currently, 'entitlement' is supported."
-            )],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> List[PeerGroupMember]:  # noqa: E501
+    def get_peer_group_outliers(self, strategy : Annotated[StrictStr, Field(..., description="The strategy used to create peer groups. Currently, 'entitlement' is supported.")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[PeerGroupMember]:  # noqa: E501
         """(Deprecated) Identity Outliers List  # noqa: E501
 
         -- Deprecated : See 'IAI Outliers' This API will be used by Identity Governance systems to identify identities that are not included in an organization's peer groups. By default, 250 identities are returned. You can specify between 1 and 1000 number of identities that can be returned.  # noqa: E501
@@ -107,42 +79,10 @@ class IAIPeerGroupStrategiesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_peer_group_outliers_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_peer_group_outliers_with_http_info(
-            strategy, limit, offset, count, **kwargs)  # noqa: E501
+        return self.get_peer_group_outliers_with_http_info(strategy, limit, offset, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_peer_group_outliers_with_http_info(
-            self,
-            strategy:
-        Annotated[
-            StrictStr,
-            Field(
-                ...,
-                description=
-                "The strategy used to create peer groups. Currently, 'entitlement' is supported."
-            )],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_peer_group_outliers_with_http_info(self, strategy : Annotated[StrictStr, Field(..., description="The strategy used to create peer groups. Currently, 'entitlement' is supported.")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """(Deprecated) Identity Outliers List  # noqa: E501
 
         -- Deprecated : See 'IAI Outliers' This API will be used by Identity Governance systems to identify identities that are not included in an organization's peer groups. By default, 250 identities are returned. You can specify between 1 and 1000 number of identities that can be returned.  # noqa: E501
@@ -185,23 +125,35 @@ class IAIPeerGroupStrategiesApi:
         :rtype: tuple(List[PeerGroupMember], status_code(int), headers(HTTPHeaderDict))
         """
 
-        warnings.warn(
-            "GET /peer-group-strategies/{strategy}/identity-outliers is deprecated.",
-            DeprecationWarning)
+        warnings.warn("GET /peer-group-strategies/{strategy}/identity-outliers is deprecated.", DeprecationWarning)
 
         _params = locals()
 
-        _all_params = ['strategy', 'limit', 'offset', 'count']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'strategy',
+            'limit',
+            'offset',
+            'count'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_peer_group_outliers" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_peer_group_outliers" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -211,6 +163,7 @@ class IAIPeerGroupStrategiesApi:
         _path_params = {}
         if _params['strategy']:
             _path_params['strategy'] = _params['strategy']
+
 
         # process the query parameters
         _query_params = []
@@ -247,8 +200,7 @@ class IAIPeerGroupStrategiesApi:
         }
 
         return self.api_client.call_api(
-            '/peer-group-strategies/{strategy}/identity-outliers',
-            'GET',
+            '/peer-group-strategies/{strategy}/identity-outliers', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -258,8 +210,7 @@ class IAIPeerGroupStrategiesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

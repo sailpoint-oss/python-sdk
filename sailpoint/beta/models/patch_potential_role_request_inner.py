@@ -11,27 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 from beta.models.json_patch_operation_value import JsonPatchOperationValue
-
 
 class PatchPotentialRoleRequestInner(BaseModel):
     """
     PatchPotentialRoleRequestInner
     """
-    op: Optional[StrictStr] = Field(
-        None, description="The operation to be performed")
-    path: StrictStr = Field(
-        ...,
-        description=
-        "A string JSON Pointer representing the target path to an element to be affected by the operation"
-    )
+    op: Optional[StrictStr] = Field(None, description="The operation to be performed")
+    path: StrictStr = Field(..., description="A string JSON Pointer representing the target path to an element to be affected by the operation")
     value: Optional[JsonPatchOperationValue] = None
     __properties = ["op", "path", "value"]
 
@@ -42,8 +38,7 @@ class PatchPotentialRoleRequestInner(BaseModel):
             return value
 
         if value not in ('remove', 'replace'):
-            raise ValueError(
-                "must be one of enum values ('remove', 'replace')")
+            raise ValueError("must be one of enum values ('remove', 'replace')")
         return value
 
     class Config:
@@ -66,7 +61,10 @@ class PatchPotentialRoleRequestInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of value
         if self.value:
             _dict['value'] = self.value.to_dict()
@@ -82,12 +80,10 @@ class PatchPotentialRoleRequestInner(BaseModel):
             return PatchPotentialRoleRequestInner.parse_obj(obj)
 
         _obj = PatchPotentialRoleRequestInner.parse_obj({
-            "op":
-            obj.get("op"),
-            "path":
-            obj.get("path"),
-            "value":
-            JsonPatchOperationValue.from_dict(obj.get("value"))
-            if obj.get("value") is not None else None
+            "op": obj.get("op"),
+            "path": obj.get("path"),
+            "value": JsonPatchOperationValue.from_dict(obj.get("value")) if obj.get("value") is not None else None
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,20 +21,13 @@ from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 
-
 class ReviewRecommendation(BaseModel):
     """
     ReviewRecommendation
     """
-    recommendation: Optional[StrictStr] = Field(
-        None,
-        description=
-        "The recommendation from IAI at the time of the decision. This field will be null if no recommendation was made."
-    )
-    reasons: Optional[conlist(StrictStr)] = Field(
-        None, description="A list of reasons for the recommendation.")
-    timestamp: Optional[datetime] = Field(
-        None, description="The time at which the recommendation was recorded.")
+    recommendation: Optional[StrictStr] = Field(None, description="The recommendation from IAI at the time of the decision. This field will be null if no recommendation was made.")
+    reasons: Optional[conlist(StrictStr)] = Field(None, description="A list of reasons for the recommendation.")
+    timestamp: Optional[datetime] = Field(None, description="The time at which the recommendation was recorded.")
     __properties = ["recommendation", "reasons", "timestamp"]
 
     class Config:
@@ -56,7 +50,10 @@ class ReviewRecommendation(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if recommendation (nullable) is None
         # and __fields_set__ contains the field
         if self.recommendation is None and "recommendation" in self.__fields_set__:
@@ -74,11 +71,10 @@ class ReviewRecommendation(BaseModel):
             return ReviewRecommendation.parse_obj(obj)
 
         _obj = ReviewRecommendation.parse_obj({
-            "recommendation":
-            obj.get("recommendation"),
-            "reasons":
-            obj.get("reasons"),
-            "timestamp":
-            obj.get("timestamp")
+            "recommendation": obj.get("recommendation"),
+            "reasons": obj.get("reasons"),
+            "timestamp": obj.get("timestamp")
         })
         return _obj
+
+

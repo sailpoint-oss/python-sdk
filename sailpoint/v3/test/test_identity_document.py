@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.identity_document import IdentityDocument  # noqa: E501
-
 
 class TestIdentityDocument(unittest.TestCase):
     """IdentityDocument unit test stubs"""
@@ -120,7 +120,6 @@ class TestIdentityDocument(unittest.TestCase):
         """Test IdentityDocument"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

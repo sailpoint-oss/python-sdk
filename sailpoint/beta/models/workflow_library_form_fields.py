@@ -11,33 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, validator
-
 
 class WorkflowLibraryFormFields(BaseModel):
     """
     WorkflowLibraryFormFields
     """
-    help_text: Optional[StrictStr] = Field(
-        None,
-        alias="helpText",
-        description="Describes the form field in the UI")
-    label: Optional[StrictStr] = Field(
-        None,
-        description="A human readable name for this form field in the UI")
-    name: Optional[StrictStr] = Field(
-        None, description="The name of the input attribute")
-    required: Optional[StrictBool] = Field(
-        None, description="Denotes if this field is a required attribute")
-    type: Optional[Dict[str,
-                        Any]] = Field(None,
-                                      description="The type of the form field")
+    help_text: Optional[StrictStr] = Field(None, alias="helpText", description="Describes the form field in the UI")
+    label: Optional[StrictStr] = Field(None, description="A human readable name for this form field in the UI")
+    name: Optional[StrictStr] = Field(None, description="The name of the input attribute")
+    required: Optional[StrictBool] = Field(None, description="Denotes if this field is a required attribute")
+    type: Optional[Dict[str, Any]] = Field(None, description="The type of the form field")
     __properties = ["helpText", "label", "name", "required", "type"]
 
     @validator('type')
@@ -46,15 +38,8 @@ class WorkflowLibraryFormFields(BaseModel):
         if value is None:
             return value
 
-        if value not in ('text', 'textarea', 'boolean', 'email', 'url',
-                         'number', 'json', 'checkbox', 'jsonpath', 'select',
-                         'multiType', 'duration', 'toggle', 'identityPicker',
-                         'governanceGroupPicker', 'string', 'object', 'array',
-                         'secret', 'keyValuePairs', 'emailPicker',
-                         'advancedToggle'):
-            raise ValueError(
-                "must be one of enum values ('text', 'textarea', 'boolean', 'email', 'url', 'number', 'json', 'checkbox', 'jsonpath', 'select', 'multiType', 'duration', 'toggle', 'identityPicker', 'governanceGroupPicker', 'string', 'object', 'array', 'secret', 'keyValuePairs', 'emailPicker', 'advancedToggle')"
-            )
+        if value not in ('text', 'textarea', 'boolean', 'email', 'url', 'number', 'json', 'checkbox', 'jsonpath', 'select', 'multiType', 'duration', 'toggle', 'identityPicker', 'governanceGroupPicker', 'string', 'object', 'array', 'secret', 'keyValuePairs', 'emailPicker', 'advancedToggle'):
+            raise ValueError("must be one of enum values ('text', 'textarea', 'boolean', 'email', 'url', 'number', 'json', 'checkbox', 'jsonpath', 'select', 'multiType', 'duration', 'toggle', 'identityPicker', 'governanceGroupPicker', 'string', 'object', 'array', 'secret', 'keyValuePairs', 'emailPicker', 'advancedToggle')")
         return value
 
     class Config:
@@ -77,7 +62,10 @@ class WorkflowLibraryFormFields(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if type (nullable) is None
         # and __fields_set__ contains the field
         if self.type is None and "type" in self.__fields_set__:
@@ -95,15 +83,12 @@ class WorkflowLibraryFormFields(BaseModel):
             return WorkflowLibraryFormFields.parse_obj(obj)
 
         _obj = WorkflowLibraryFormFields.parse_obj({
-            "help_text":
-            obj.get("helpText"),
-            "label":
-            obj.get("label"),
-            "name":
-            obj.get("name"),
-            "required":
-            obj.get("required"),
-            "type":
-            obj.get("type")
+            "help_text": obj.get("helpText"),
+            "label": obj.get("label"),
+            "name": obj.get("name"),
+            "required": obj.get("required"),
+            "type": obj.get("type")
         })
         return _obj
+
+

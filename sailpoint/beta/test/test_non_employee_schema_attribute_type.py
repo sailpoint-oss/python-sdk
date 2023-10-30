@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.non_employee_schema_attribute_type import NonEmployeeSchemaAttributeType  # noqa: E501
-
 
 class TestNonEmployeeSchemaAttributeType(unittest.TestCase):
     """NonEmployeeSchemaAttributeType unit test stubs"""
@@ -29,7 +29,6 @@ class TestNonEmployeeSchemaAttributeType(unittest.TestCase):
     def testNonEmployeeSchemaAttributeType(self):
         """Test NonEmployeeSchemaAttributeType"""
         # inst = NonEmployeeSchemaAttributeType()
-
 
 if __name__ == '__main__':
     unittest.main()

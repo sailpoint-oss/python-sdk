@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.saved_search_complete_search_results_account import SavedSearchCompleteSearchResultsAccount  # noqa: E501
-
 
 class TestSavedSearchCompleteSearchResultsAccount(unittest.TestCase):
     """SavedSearchCompleteSearchResultsAccount unit test stubs"""
@@ -26,8 +26,7 @@ class TestSavedSearchCompleteSearchResultsAccount(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self, include_optional) -> SavedSearchCompleteSearchResultsAccount:
+    def make_instance(self, include_optional) -> SavedSearchCompleteSearchResultsAccount:
         """Test SavedSearchCompleteSearchResultsAccount
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -57,7 +56,6 @@ class TestSavedSearchCompleteSearchResultsAccount(unittest.TestCase):
         """Test SavedSearchCompleteSearchResultsAccount"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

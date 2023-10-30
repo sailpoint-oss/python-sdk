@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.create_form_definition_request import CreateFormDefinitionRequest  # noqa: E501
-
 
 class TestCreateFormDefinitionRequest(unittest.TestCase):
     """CreateFormDefinitionRequest unit test stubs"""
@@ -94,7 +94,6 @@ class TestCreateFormDefinitionRequest(unittest.TestCase):
         """Test CreateFormDefinitionRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

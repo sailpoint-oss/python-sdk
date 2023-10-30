@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.medium import Medium  # noqa: E501
-
 
 class TestMedium(unittest.TestCase):
     """Medium unit test stubs"""
@@ -29,7 +29,6 @@ class TestMedium(unittest.TestCase):
     def testMedium(self):
         """Test Medium"""
         # inst = Medium()
-
 
 if __name__ == '__main__':
     unittest.main()

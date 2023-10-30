@@ -11,25 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, validator
 from v3.models.dto_type import DtoType
-
 
 class ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule(BaseModel):
     """
     Reference to beforeProvisioningRule for this Service Desk integration  # noqa: E501
     """
-    type: Optional[Dict[str, Any]] = Field(
-        None, description="The type of object being referenced")
+    type: Optional[Dict[str, Any]] = Field(None, description="The type of object being referenced")
     id: Optional[Dict[str, Any]] = Field(None, description="ID of the rule")
-    name: Optional[Dict[str, Any]] = Field(
-        None, description="Human-readable display name of the rule")
+    name: Optional[Dict[str, Any]] = Field(None, description="Human-readable display name of the rule")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -56,35 +55,32 @@ class ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-            cls, json_str: str
-    ) -> ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule:
+    def from_json(cls, json_str: str) -> ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule:
         """Create an instance of ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(
-            cls,
-            obj: dict) -> ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule:
+    def from_dict(cls, obj: dict) -> ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule:
         """Create an instance of ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.parse_obj(
-                obj)
+            return ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.parse_obj(obj)
 
         _obj = ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.parse_obj({
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name")
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
+
+

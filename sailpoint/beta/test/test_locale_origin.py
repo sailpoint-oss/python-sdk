@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.locale_origin import LocaleOrigin  # noqa: E501
-
 
 class TestLocaleOrigin(unittest.TestCase):
     """LocaleOrigin unit test stubs"""
@@ -29,7 +29,6 @@ class TestLocaleOrigin(unittest.TestCase):
     def testLocaleOrigin(self):
         """Test LocaleOrigin"""
         # inst = LocaleOrigin()
-
 
 if __name__ == '__main__':
     unittest.main()

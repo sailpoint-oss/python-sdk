@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class TriggerType(str, Enum):
     """
     The type of trigger.
     """
+
     """
     allowed enum values
     """
@@ -31,3 +36,5 @@ class TriggerType(str, Enum):
     def from_json(cls, json_str: str) -> TriggerType:
         """Create an instance of TriggerType from a JSON string"""
         return TriggerType(json.loads(json_str))
+
+

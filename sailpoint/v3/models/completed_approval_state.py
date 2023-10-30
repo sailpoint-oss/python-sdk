@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class CompletedApprovalState(str, Enum):
     """
     Enum represents completed approval object's state.
     """
+
     """
     allowed enum values
     """
@@ -31,3 +36,5 @@ class CompletedApprovalState(str, Enum):
     def from_json(cls, json_str: str) -> CompletedApprovalState:
         """Create an instance of CompletedApprovalState from a JSON string"""
         return CompletedApprovalState(json.loads(json_str))
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v2.models.get_org_settings200_response import GetOrgSettings200Response  # noqa: E501
-
 
 class TestGetOrgSettings200Response(unittest.TestCase):
     """GetOrgSettings200Response unit test stubs"""
@@ -102,7 +102,6 @@ class TestGetOrgSettings200Response(unittest.TestCase):
         """Test GetOrgSettings200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

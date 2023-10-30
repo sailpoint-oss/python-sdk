@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class ReassignmentTypeEnum(str, Enum):
     """
     Enum list containing types of Reassignment that can be found in the evaluate response.
     """
+
     """
     allowed enum values
     """
@@ -33,3 +38,5 @@ class ReassignmentTypeEnum(str, Enum):
     def from_json(cls, json_str: str) -> ReassignmentTypeEnum:
         """Create an instance of ReassignmentTypeEnum from a JSON string"""
         return ReassignmentTypeEnum(json.loads(json_str))
+
+

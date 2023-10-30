@@ -11,41 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
-
 
 class DkimAttributes(BaseModel):
     """
     DKIM attributes for a domain or identity  # noqa: E501
     """
-    id: Optional[StrictStr] = Field(
-        None, description="UUID associated with domain to be verified")
-    address: Optional[StrictStr] = Field(
-        None, description="The identity or domain address")
-    dkim_enabled: Optional[StrictBool] = Field(
-        False,
-        alias="dkimEnabled",
-        description=
-        "Whether or not DKIM has been enabled for this domain / identity")
-    dkim_tokens: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="dkimTokens",
-        description="The tokens to be added to a DNS for verification")
-    dkim_verification_status: Optional[StrictStr] = Field(
-        None,
-        alias="dkimVerificationStatus",
-        description=
-        "The current status if the domain /identity has been verified. Ie Success, Failed, Pending"
-    )
-    __properties = [
-        "id", "address", "dkimEnabled", "dkimTokens", "dkimVerificationStatus"
-    ]
+    id: Optional[StrictStr] = Field(None, description="UUID associated with domain to be verified")
+    address: Optional[StrictStr] = Field(None, description="The identity or domain address")
+    dkim_enabled: Optional[StrictBool] = Field(False, alias="dkimEnabled", description="Whether or not DKIM has been enabled for this domain / identity")
+    dkim_tokens: Optional[conlist(StrictStr)] = Field(None, alias="dkimTokens", description="The tokens to be added to a DNS for verification")
+    dkim_verification_status: Optional[StrictStr] = Field(None, alias="dkimVerificationStatus", description="The current status if the domain /identity has been verified. Ie Success, Failed, Pending")
+    __properties = ["id", "address", "dkimEnabled", "dkimTokens", "dkimVerificationStatus"]
 
     class Config:
         """Pydantic configuration"""
@@ -67,7 +52,10 @@ class DkimAttributes(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -80,16 +68,12 @@ class DkimAttributes(BaseModel):
             return DkimAttributes.parse_obj(obj)
 
         _obj = DkimAttributes.parse_obj({
-            "id":
-            obj.get("id"),
-            "address":
-            obj.get("address"),
-            "dkim_enabled":
-            obj.get("dkimEnabled")
-            if obj.get("dkimEnabled") is not None else False,
-            "dkim_tokens":
-            obj.get("dkimTokens"),
-            "dkim_verification_status":
-            obj.get("dkimVerificationStatus")
+            "id": obj.get("id"),
+            "address": obj.get("address"),
+            "dkim_enabled": obj.get("dkimEnabled") if obj.get("dkimEnabled") is not None else False,
+            "dkim_tokens": obj.get("dkimTokens"),
+            "dkim_verification_status": obj.get("dkimVerificationStatus")
         })
         return _obj
+
+

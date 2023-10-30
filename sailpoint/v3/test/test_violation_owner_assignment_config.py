@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig  # noqa: E501
-
 
 class TestViolationOwnerAssignmentConfig(unittest.TestCase):
     """ViolationOwnerAssignmentConfig unit test stubs"""
@@ -26,8 +26,7 @@ class TestViolationOwnerAssignmentConfig(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> ViolationOwnerAssignmentConfig:
+    def make_instance(self, include_optional) -> ViolationOwnerAssignmentConfig:
         """Test ViolationOwnerAssignmentConfig
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -49,7 +48,6 @@ class TestViolationOwnerAssignmentConfig(unittest.TestCase):
         """Test ViolationOwnerAssignmentConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

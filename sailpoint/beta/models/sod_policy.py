@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -19,10 +20,9 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, validator
-from beta.models.base_reference_dto1 import BaseReferenceDto1
+from beta.models.base_reference_dto import BaseReferenceDto
 from beta.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from beta.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig
-
 
 class SodPolicy(BaseModel):
     """
@@ -30,58 +30,23 @@ class SodPolicy(BaseModel):
     """
     id: Optional[StrictStr] = Field(None, description="Policy id")
     name: Optional[StrictStr] = Field(None, description="Policy Business Name")
-    created: Optional[datetime] = Field(
-        None, description="The time when this SOD policy is created.")
-    modified: Optional[datetime] = Field(
-        None, description="The time when this SOD policy is modified.")
-    description: Optional[StrictStr] = Field(
-        None, description="Optional description of the SOD policy")
-    owner_ref: Optional[BaseReferenceDto1] = Field(None, alias="ownerRef")
-    external_policy_reference: Optional[StrictStr] = Field(
-        None,
-        alias="externalPolicyReference",
-        description="Optional External Policy Reference")
-    policy_query: Optional[StrictStr] = Field(
-        None,
-        alias="policyQuery",
-        description="Search query of the SOD policy")
-    compensating_controls: Optional[StrictStr] = Field(
-        None,
-        alias="compensatingControls",
-        description="Optional compensating controls(Mitigating Controls)")
-    correction_advice: Optional[StrictStr] = Field(
-        None,
-        alias="correctionAdvice",
-        description="Optional correction advice")
-    state: Optional[StrictStr] = Field(
-        None, description="whether the policy is enforced or not")
-    tags: Optional[conlist(StrictStr)] = Field(
-        None, description="tags for this policy object")
-    creator_id: Optional[StrictStr] = Field(None,
-                                            alias="creatorId",
-                                            description="Policy's creator ID")
-    modifier_id: Optional[StrictStr] = Field(
-        None, alias="modifierId", description="Policy's modifier ID")
-    violation_owner_assignment_config: Optional[
-        ViolationOwnerAssignmentConfig] = Field(
-            None, alias="violationOwnerAssignmentConfig")
-    scheduled: Optional[StrictBool] = Field(
-        False,
-        description="defines whether a policy has been scheduled or not")
-    type: Optional[StrictStr] = Field(
-        'GENERAL',
-        description=
-        "whether a policy is query based or conflicting access based")
-    conflicting_access_criteria: Optional[
-        SodPolicyConflictingAccessCriteria] = Field(
-            None, alias="conflictingAccessCriteria")
-    __properties = [
-        "id", "name", "created", "modified", "description", "ownerRef",
-        "externalPolicyReference", "policyQuery", "compensatingControls",
-        "correctionAdvice", "state", "tags", "creatorId", "modifierId",
-        "violationOwnerAssignmentConfig", "scheduled", "type",
-        "conflictingAccessCriteria"
-    ]
+    created: Optional[datetime] = Field(None, description="The time when this SOD policy is created.")
+    modified: Optional[datetime] = Field(None, description="The time when this SOD policy is modified.")
+    description: Optional[StrictStr] = Field(None, description="Optional description of the SOD policy")
+    owner_ref: Optional[BaseReferenceDto] = Field(None, alias="ownerRef")
+    external_policy_reference: Optional[StrictStr] = Field(None, alias="externalPolicyReference", description="Optional External Policy Reference")
+    policy_query: Optional[StrictStr] = Field(None, alias="policyQuery", description="Search query of the SOD policy")
+    compensating_controls: Optional[StrictStr] = Field(None, alias="compensatingControls", description="Optional compensating controls(Mitigating Controls)")
+    correction_advice: Optional[StrictStr] = Field(None, alias="correctionAdvice", description="Optional correction advice")
+    state: Optional[StrictStr] = Field(None, description="whether the policy is enforced or not")
+    tags: Optional[conlist(StrictStr)] = Field(None, description="tags for this policy object")
+    creator_id: Optional[StrictStr] = Field(None, alias="creatorId", description="Policy's creator ID")
+    modifier_id: Optional[StrictStr] = Field(None, alias="modifierId", description="Policy's modifier ID")
+    violation_owner_assignment_config: Optional[ViolationOwnerAssignmentConfig] = Field(None, alias="violationOwnerAssignmentConfig")
+    scheduled: Optional[StrictBool] = Field(False, description="defines whether a policy has been scheduled or not")
+    type: Optional[StrictStr] = Field('GENERAL', description="whether a policy is query based or conflicting access based")
+    conflicting_access_criteria: Optional[SodPolicyConflictingAccessCriteria] = Field(None, alias="conflictingAccessCriteria")
+    __properties = ["id", "name", "created", "modified", "description", "ownerRef", "externalPolicyReference", "policyQuery", "compensatingControls", "correctionAdvice", "state", "tags", "creatorId", "modifierId", "violationOwnerAssignmentConfig", "scheduled", "type", "conflictingAccessCriteria"]
 
     @validator('state')
     def state_validate_enum(cls, value):
@@ -90,8 +55,7 @@ class SodPolicy(BaseModel):
             return value
 
         if value not in ('ENFORCED', 'NOT_ENFORCED'):
-            raise ValueError(
-                "must be one of enum values ('ENFORCED', 'NOT_ENFORCED')")
+            raise ValueError("must be one of enum values ('ENFORCED', 'NOT_ENFORCED')")
         return value
 
     @validator('type')
@@ -101,9 +65,7 @@ class SodPolicy(BaseModel):
             return value
 
         if value not in ('GENERAL', 'CONFLICTING_ACCESS_BASED'):
-            raise ValueError(
-                "must be one of enum values ('GENERAL', 'CONFLICTING_ACCESS_BASED')"
-            )
+            raise ValueError("must be one of enum values ('GENERAL', 'CONFLICTING_ACCESS_BASED')")
         return value
 
     class Config:
@@ -128,11 +90,11 @@ class SodPolicy(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "id",
-                              "created",
-                              "modified",
-                              "creator_id",
-                              "modifier_id",
+                            "id",
+                            "created",
+                            "modified",
+                            "creator_id",
+                            "modifier_id",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner_ref
@@ -140,14 +102,10 @@ class SodPolicy(BaseModel):
             _dict['ownerRef'] = self.owner_ref.to_dict()
         # override the default output from pydantic by calling `to_dict()` of violation_owner_assignment_config
         if self.violation_owner_assignment_config:
-            _dict[
-                'violationOwnerAssignmentConfig'] = self.violation_owner_assignment_config.to_dict(
-                )
+            _dict['violationOwnerAssignmentConfig'] = self.violation_owner_assignment_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of conflicting_access_criteria
         if self.conflicting_access_criteria:
-            _dict[
-                'conflictingAccessCriteria'] = self.conflicting_access_criteria.to_dict(
-                )
+            _dict['conflictingAccessCriteria'] = self.conflicting_access_criteria.to_dict()
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -185,47 +143,25 @@ class SodPolicy(BaseModel):
             return SodPolicy.parse_obj(obj)
 
         _obj = SodPolicy.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "description":
-            obj.get("description"),
-            "owner_ref":
-            BaseReferenceDto1.from_dict(obj.get("ownerRef"))
-            if obj.get("ownerRef") is not None else None,
-            "external_policy_reference":
-            obj.get("externalPolicyReference"),
-            "policy_query":
-            obj.get("policyQuery"),
-            "compensating_controls":
-            obj.get("compensatingControls"),
-            "correction_advice":
-            obj.get("correctionAdvice"),
-            "state":
-            obj.get("state"),
-            "tags":
-            obj.get("tags"),
-            "creator_id":
-            obj.get("creatorId"),
-            "modifier_id":
-            obj.get("modifierId"),
-            "violation_owner_assignment_config":
-            ViolationOwnerAssignmentConfig.from_dict(
-                obj.get("violationOwnerAssignmentConfig"))
-            if obj.get("violationOwnerAssignmentConfig") is not None else None,
-            "scheduled":
-            obj.get("scheduled")
-            if obj.get("scheduled") is not None else False,
-            "type":
-            obj.get("type") if obj.get("type") is not None else 'GENERAL',
-            "conflicting_access_criteria":
-            SodPolicyConflictingAccessCriteria.from_dict(
-                obj.get("conflictingAccessCriteria"))
-            if obj.get("conflictingAccessCriteria") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "description": obj.get("description"),
+            "owner_ref": BaseReferenceDto.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
+            "external_policy_reference": obj.get("externalPolicyReference"),
+            "policy_query": obj.get("policyQuery"),
+            "compensating_controls": obj.get("compensatingControls"),
+            "correction_advice": obj.get("correctionAdvice"),
+            "state": obj.get("state"),
+            "tags": obj.get("tags"),
+            "creator_id": obj.get("creatorId"),
+            "modifier_id": obj.get("modifierId"),
+            "violation_owner_assignment_config": ViolationOwnerAssignmentConfig.from_dict(obj.get("violationOwnerAssignmentConfig")) if obj.get("violationOwnerAssignmentConfig") is not None else None,
+            "scheduled": obj.get("scheduled") if obj.get("scheduled") is not None else False,
+            "type": obj.get("type") if obj.get("type") is not None else 'GENERAL',
+            "conflicting_access_criteria": SodPolicyConflictingAccessCriteria.from_dict(obj.get("conflictingAccessCriteria")) if obj.get("conflictingAccessCriteria") is not None else None
         })
         return _obj
+
+

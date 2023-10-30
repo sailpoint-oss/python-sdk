@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -23,10 +24,7 @@ from beta.models.array_inner import ArrayInner
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-JSONPATCHOPERATIONVALUE_ONE_OF_SCHEMAS = [
-    "List[ArrayInner]", "int", "object", "str"
-]
-
+JSONPATCHOPERATIONVALUE_ONE_OF_SCHEMAS = ["List[ArrayInner]", "int", "object", "str"]
 
 class JsonPatchOperationValue(BaseModel):
     """
@@ -44,8 +42,7 @@ class JsonPatchOperationValue(BaseModel):
         actual_instance: Union[List[ArrayInner], int, object, str]
     else:
         actual_instance: Any
-    one_of_schemas: List[str] = Field(JSONPATCHOPERATIONVALUE_ONE_OF_SCHEMAS,
-                                      const=True)
+    one_of_schemas: List[str] = Field(JSONPATCHOPERATIONVALUE_ONE_OF_SCHEMAS, const=True)
 
     class Config:
         validate_assignment = True
@@ -53,13 +50,9 @@ class JsonPatchOperationValue(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -95,14 +88,10 @@ class JsonPatchOperationValue(BaseModel):
             error_messages.append(str(e))
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when setting `actual_instance` in JsonPatchOperationValue with oneOf schemas: List[ArrayInner], int, object, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in JsonPatchOperationValue with oneOf schemas: List[ArrayInner], int, object, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when setting `actual_instance` in JsonPatchOperationValue with oneOf schemas: List[ArrayInner], int, object, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in JsonPatchOperationValue with oneOf schemas: List[ArrayInner], int, object, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -156,14 +145,10 @@ class JsonPatchOperationValue(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when deserializing the JSON string into JsonPatchOperationValue with oneOf schemas: List[ArrayInner], int, object, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into JsonPatchOperationValue with oneOf schemas: List[ArrayInner], int, object, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into JsonPatchOperationValue with oneOf schemas: List[ArrayInner], int, object, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into JsonPatchOperationValue with oneOf schemas: List[ArrayInner], int, object, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -193,3 +178,5 @@ class JsonPatchOperationValue(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.dict())
+
+

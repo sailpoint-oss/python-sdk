@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.source_management_workgroup import SourceManagementWorkgroup  # noqa: E501
-
 
 class TestSourceManagementWorkgroup(unittest.TestCase):
     """SourceManagementWorkgroup unit test stubs"""
@@ -49,7 +49,6 @@ class TestSourceManagementWorkgroup(unittest.TestCase):
         """Test SourceManagementWorkgroup"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

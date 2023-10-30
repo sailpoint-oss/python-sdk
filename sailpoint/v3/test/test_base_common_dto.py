@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.base_common_dto import BaseCommonDto  # noqa: E501
-
 
 class TestBaseCommonDto(unittest.TestCase):
     """BaseCommonDto unit test stubs"""
@@ -51,7 +51,6 @@ class TestBaseCommonDto(unittest.TestCase):
         """Test BaseCommonDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

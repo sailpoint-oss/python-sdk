@@ -11,36 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conint
-
 
 class ReportConfigDTO(BaseModel):
     """
     ReportConfigDTO
     """
-    column_name: Optional[StrictStr] = Field(
-        None, alias="columnName", description="Name of column in report")
-    required: Optional[StrictBool] = Field(
-        False,
-        description=
-        "If true, column is required in all reports, and this entry is immutable. A 400 error will result from any attempt to modify the column's definition."
-    )
-    included: Optional[StrictBool] = Field(
-        False,
-        description=
-        "If true, column is included in the report. A 400 error will be thrown if an attempt is made to set included=false if required==true."
-    )
-    order: Optional[conint(strict=True, le=2147483647, ge=0)] = Field(
-        None,
-        description=
-        "Relative sort order for the column. Columns will be displayed left-to-right in nondecreasing order."
-    )
+    column_name: Optional[StrictStr] = Field(None, alias="columnName", description="Name of column in report")
+    required: Optional[StrictBool] = Field(False, description="If true, column is required in all reports, and this entry is immutable. A 400 error will result from any attempt to modify the column's definition.")
+    included: Optional[StrictBool] = Field(False, description="If true, column is included in the report. A 400 error will be thrown if an attempt is made to set included=false if required==true.")
+    order: Optional[conint(strict=True, le=2147483647, ge=0)] = Field(None, description="Relative sort order for the column. Columns will be displayed left-to-right in nondecreasing order.")
     __properties = ["columnName", "required", "included", "order"]
 
     class Config:
@@ -63,7 +51,10 @@ class ReportConfigDTO(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,13 +67,11 @@ class ReportConfigDTO(BaseModel):
             return ReportConfigDTO.parse_obj(obj)
 
         _obj = ReportConfigDTO.parse_obj({
-            "column_name":
-            obj.get("columnName"),
-            "required":
-            obj.get("required") if obj.get("required") is not None else False,
-            "included":
-            obj.get("included") if obj.get("included") is not None else False,
-            "order":
-            obj.get("order")
+            "column_name": obj.get("columnName"),
+            "required": obj.get("required") if obj.get("required") is not None else False,
+            "included": obj.get("included") if obj.get("included") is not None else False,
+            "order": obj.get("order")
         })
         return _obj
+
+

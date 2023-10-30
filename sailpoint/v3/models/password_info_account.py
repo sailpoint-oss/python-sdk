@@ -11,31 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class PasswordInfoAccount(BaseModel):
     """
     PasswordInfoAccount
     """
-    account_id: Optional[StrictStr] = Field(
-        None,
-        alias="accountId",
-        description=
-        "Account ID of the account. This is specified per account schema in the source configuration. It is used to distinguish accounts. More info can be found here https://community.sailpoint.com/t5/IdentityNow-Connectors/How-do-I-designate-an-account-attribute-as-the-Account-ID-for-a/ta-p/80350"
-    )
-    account_name: Optional[StrictStr] = Field(
-        None,
-        alias="accountName",
-        description=
-        "Display name of the account. This is specified per account schema in the source configuration. It is used to display name of the account. More info can be found here https://community.sailpoint.com/t5/IdentityNow-Connectors/How-do-I-designate-an-account-attribute-as-the-Account-Name-for/ta-p/74008"
-    )
+    account_id: Optional[StrictStr] = Field(None, alias="accountId", description="Account ID of the account. This is specified per account schema in the source configuration. It is used to distinguish accounts. More info can be found here https://community.sailpoint.com/t5/IdentityNow-Connectors/How-do-I-designate-an-account-attribute-as-the-Account-ID-for-a/ta-p/80350")
+    account_name: Optional[StrictStr] = Field(None, alias="accountName", description="Display name of the account. This is specified per account schema in the source configuration. It is used to display name of the account. More info can be found here https://community.sailpoint.com/t5/IdentityNow-Connectors/How-do-I-designate-an-account-attribute-as-the-Account-Name-for/ta-p/74008")
     __properties = ["accountId", "accountName"]
 
     class Config:
@@ -58,7 +49,10 @@ class PasswordInfoAccount(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,9 +65,9 @@ class PasswordInfoAccount(BaseModel):
             return PasswordInfoAccount.parse_obj(obj)
 
         _obj = PasswordInfoAccount.parse_obj({
-            "account_id":
-            obj.get("accountId"),
-            "account_name":
-            obj.get("accountName")
+            "account_id": obj.get("accountId"),
+            "account_name": obj.get("accountName")
         })
         return _obj
+
+

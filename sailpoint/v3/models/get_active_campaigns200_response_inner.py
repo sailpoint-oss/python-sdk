@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -24,10 +25,7 @@ from v3.models.slim_campaign import SlimCampaign
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-GETACTIVECAMPAIGNS200RESPONSEINNER_ONE_OF_SCHEMAS = [
-    "Campaign", "SlimCampaign"
-]
-
+GETACTIVECAMPAIGNS200RESPONSEINNER_ONE_OF_SCHEMAS = ["Campaign", "SlimCampaign"]
 
 class GetActiveCampaigns200ResponseInner(BaseModel):
     """
@@ -41,8 +39,7 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
         actual_instance: Union[Campaign, SlimCampaign]
     else:
         actual_instance: Any
-    one_of_schemas: List[str] = Field(
-        GETACTIVECAMPAIGNS200RESPONSEINNER_ONE_OF_SCHEMAS, const=True)
+    one_of_schemas: List[str] = Field(GETACTIVECAMPAIGNS200RESPONSEINNER_ONE_OF_SCHEMAS, const=True)
 
     class Config:
         validate_assignment = True
@@ -50,13 +47,9 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -68,26 +61,20 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
         match = 0
         # validate data type: SlimCampaign
         if not isinstance(v, SlimCampaign):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `SlimCampaign`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `SlimCampaign`")
         else:
             match += 1
         # validate data type: Campaign
         if not isinstance(v, Campaign):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `Campaign`")
+            error_messages.append(f"Error! Input type `{type(v)}` is not `Campaign`")
         else:
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when setting `actual_instance` in GetActiveCampaigns200ResponseInner with oneOf schemas: Campaign, SlimCampaign. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in GetActiveCampaigns200ResponseInner with oneOf schemas: Campaign, SlimCampaign. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when setting `actual_instance` in GetActiveCampaigns200ResponseInner with oneOf schemas: Campaign, SlimCampaign. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in GetActiveCampaigns200ResponseInner with oneOf schemas: Campaign, SlimCampaign. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -117,14 +104,10 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when deserializing the JSON string into GetActiveCampaigns200ResponseInner with oneOf schemas: Campaign, SlimCampaign. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into GetActiveCampaigns200ResponseInner with oneOf schemas: Campaign, SlimCampaign. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into GetActiveCampaigns200ResponseInner with oneOf schemas: Campaign, SlimCampaign. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into GetActiveCampaigns200ResponseInner with oneOf schemas: Campaign, SlimCampaign. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -154,3 +137,5 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.dict())
+
+

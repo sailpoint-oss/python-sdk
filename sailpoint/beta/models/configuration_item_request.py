@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,34 +22,16 @@ from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.config_type_enum import ConfigTypeEnum
 
-
 class ConfigurationItemRequest(BaseModel):
     """
     The request body for creation or update of a Reassignment Configuration for a single identity and work type  # noqa: E501
     """
-    reassigned_from_id: Optional[StrictStr] = Field(
-        None,
-        alias="reassignedFromId",
-        description="The identity id to reassign an item from")
-    reassigned_to_id: Optional[StrictStr] = Field(
-        None,
-        alias="reassignedToId",
-        description="The identity id to reassign an item to")
+    reassigned_from_id: Optional[StrictStr] = Field(None, alias="reassignedFromId", description="The identity id to reassign an item from")
+    reassigned_to_id: Optional[StrictStr] = Field(None, alias="reassignedToId", description="The identity id to reassign an item to")
     config_type: Optional[ConfigTypeEnum] = Field(None, alias="configType")
-    start_date: Optional[datetime] = Field(
-        None,
-        alias="startDate",
-        description="The date from which to start reassigning work items")
-    end_date: Optional[datetime] = Field(
-        None,
-        alias="endDate",
-        description=
-        "The date from which to stop reassigning work items.  If this is an null string it indicates a permanent reassignment."
-    )
-    __properties = [
-        "reassignedFromId", "reassignedToId", "configType", "startDate",
-        "endDate"
-    ]
+    start_date: Optional[datetime] = Field(None, alias="startDate", description="The date from which to start reassigning work items")
+    end_date: Optional[datetime] = Field(None, alias="endDate", description="The date from which to stop reassigning work items.  If this is an null string it indicates a permanent reassignment.")
+    __properties = ["reassignedFromId", "reassignedToId", "configType", "startDate", "endDate"]
 
     class Config:
         """Pydantic configuration"""
@@ -70,7 +53,10 @@ class ConfigurationItemRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if end_date (nullable) is None
         # and __fields_set__ contains the field
         if self.end_date is None and "end_date" in self.__fields_set__:
@@ -88,15 +74,12 @@ class ConfigurationItemRequest(BaseModel):
             return ConfigurationItemRequest.parse_obj(obj)
 
         _obj = ConfigurationItemRequest.parse_obj({
-            "reassigned_from_id":
-            obj.get("reassignedFromId"),
-            "reassigned_to_id":
-            obj.get("reassignedToId"),
-            "config_type":
-            obj.get("configType"),
-            "start_date":
-            obj.get("startDate"),
-            "end_date":
-            obj.get("endDate")
+            "reassigned_from_id": obj.get("reassignedFromId"),
+            "reassigned_to_id": obj.get("reassignedToId"),
+            "config_type": obj.get("configType"),
+            "start_date": obj.get("startDate"),
+            "end_date": obj.get("endDate")
         })
         return _obj
+
+

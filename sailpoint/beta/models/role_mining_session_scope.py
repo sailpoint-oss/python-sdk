@@ -11,32 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class RoleMiningSessionScope(BaseModel):
     """
     RoleMiningSessionScope
     """
-    identity_ids: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="identityIds",
-        description="The list of identities for this role mining session.")
-    criteria: Optional[StrictStr] = Field(
-        None,
-        description=
-        "The \"search\" criteria that produces the list of identities for this role mining session."
-    )
-    attribute_filter_criteria: Optional[conlist(Dict[str, Any])] = Field(
-        None,
-        alias="attributeFilterCriteria",
-        description="The filter criteria for this role mining session.")
+    identity_ids: Optional[conlist(StrictStr)] = Field(None, alias="identityIds", description="The list of identities for this role mining session.")
+    criteria: Optional[StrictStr] = Field(None, description="The \"search\" criteria that produces the list of identities for this role mining session.")
+    attribute_filter_criteria: Optional[conlist(Dict[str, Any])] = Field(None, alias="attributeFilterCriteria", description="The filter criteria for this role mining session.")
     __properties = ["identityIds", "criteria", "attributeFilterCriteria"]
 
     class Config:
@@ -59,7 +50,20 @@ class RoleMiningSessionScope(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
+        # set to None if criteria (nullable) is None
+        # and __fields_set__ contains the field
+        if self.criteria is None and "criteria" in self.__fields_set__:
+            _dict['criteria'] = None
+
+        # set to None if attribute_filter_criteria (nullable) is None
+        # and __fields_set__ contains the field
+        if self.attribute_filter_criteria is None and "attribute_filter_criteria" in self.__fields_set__:
+            _dict['attributeFilterCriteria'] = None
+
         return _dict
 
     @classmethod
@@ -72,11 +76,10 @@ class RoleMiningSessionScope(BaseModel):
             return RoleMiningSessionScope.parse_obj(obj)
 
         _obj = RoleMiningSessionScope.parse_obj({
-            "identity_ids":
-            obj.get("identityIds"),
-            "criteria":
-            obj.get("criteria"),
-            "attribute_filter_criteria":
-            obj.get("attributeFilterCriteria")
+            "identity_ids": obj.get("identityIds"),
+            "criteria": obj.get("criteria"),
+            "attribute_filter_criteria": obj.get("attributeFilterCriteria")
         })
         return _obj
+
+

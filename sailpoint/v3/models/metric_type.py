@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class MetricType(str, Enum):
     """
     Enum representing the currently supported metric aggregation types. Additional values may be added in the future without notice.
     """
+
     """
     allowed enum values
     """
@@ -36,3 +41,5 @@ class MetricType(str, Enum):
     def from_json(cls, json_str: str) -> MetricType:
         """Create an instance of MetricType from a JSON string"""
         return MetricType(json.loads(json_str))
+
+

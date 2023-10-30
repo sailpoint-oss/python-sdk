@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.managed_client_type import ManagedClientType  # noqa: E501
-
 
 class TestManagedClientType(unittest.TestCase):
     """ManagedClientType unit test stubs"""
@@ -29,7 +29,6 @@ class TestManagedClientType(unittest.TestCase):
     def testManagedClientType(self):
         """Test ManagedClientType"""
         # inst = ManagedClientType()
-
 
 if __name__ == '__main__':
     unittest.main()

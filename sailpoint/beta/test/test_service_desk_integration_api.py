@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.service_desk_integration_api import ServiceDeskIntegrationApi  # noqa: E501

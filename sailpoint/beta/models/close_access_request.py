@@ -11,44 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-
 
 class CloseAccessRequest(BaseModel):
     """
     Request body payload for close access requests endpoint.  # noqa: E501
     """
-    access_request_ids: conlist(StrictStr) = Field(
-        ...,
-        alias="accessRequestIds",
-        description=
-        "Access Request IDs for the requests to be closed. Accepts 1-500 Identity Request IDs per request."
-    )
-    message: Optional[StrictStr] = Field(
-        'The IdentityNow Administrator manually closed this request.',
-        description=
-        "Reason for closing the access request. Displayed under Warnings in IdentityNow."
-    )
-    execution_status: Optional[StrictStr] = Field(
-        'Terminated',
-        alias="executionStatus",
-        description=
-        "The request's provisioning status. Displayed as Stage in IdentityNow."
-    )
-    completion_status: Optional[StrictStr] = Field(
-        'Failure',
-        alias="completionStatus",
-        description=
-        "The request's overall status. Displayed as Status in IdentityNow.")
-    __properties = [
-        "accessRequestIds", "message", "executionStatus", "completionStatus"
-    ]
+    access_request_ids: conlist(StrictStr) = Field(..., alias="accessRequestIds", description="Access Request IDs for the requests to be closed. Accepts 1-500 Identity Request IDs per request.")
+    message: Optional[StrictStr] = Field('The IdentityNow Administrator manually closed this request.', description="Reason for closing the access request. Displayed under Warnings in IdentityNow.")
+    execution_status: Optional[StrictStr] = Field('Terminated', alias="executionStatus", description="The request's provisioning status. Displayed as Stage in IdentityNow.")
+    completion_status: Optional[StrictStr] = Field('Failure', alias="completionStatus", description="The request's overall status. Displayed as Status in IdentityNow.")
+    __properties = ["accessRequestIds", "message", "executionStatus", "completionStatus"]
 
     @validator('execution_status')
     def execution_status_validate_enum(cls, value):
@@ -57,8 +38,7 @@ class CloseAccessRequest(BaseModel):
             return value
 
         if value not in ('Terminated', 'Completed'):
-            raise ValueError(
-                "must be one of enum values ('Terminated', 'Completed')")
+            raise ValueError("must be one of enum values ('Terminated', 'Completed')")
         return value
 
     @validator('completion_status')
@@ -68,9 +48,7 @@ class CloseAccessRequest(BaseModel):
             return value
 
         if value not in ('Success', 'Incomplete', 'Failure'):
-            raise ValueError(
-                "must be one of enum values ('Success', 'Incomplete', 'Failure')"
-            )
+            raise ValueError("must be one of enum values ('Success', 'Incomplete', 'Failure')")
         return value
 
     class Config:
@@ -93,7 +71,10 @@ class CloseAccessRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -106,16 +87,11 @@ class CloseAccessRequest(BaseModel):
             return CloseAccessRequest.parse_obj(obj)
 
         _obj = CloseAccessRequest.parse_obj({
-            "access_request_ids":
-            obj.get("accessRequestIds"),
-            "message":
-            obj.get("message") if obj.get("message") is not None else
-            'The IdentityNow Administrator manually closed this request.',
-            "execution_status":
-            obj.get("executionStatus")
-            if obj.get("executionStatus") is not None else 'Terminated',
-            "completion_status":
-            obj.get("completionStatus")
-            if obj.get("completionStatus") is not None else 'Failure'
+            "access_request_ids": obj.get("accessRequestIds"),
+            "message": obj.get("message") if obj.get("message") is not None else 'The IdentityNow Administrator manually closed this request.',
+            "execution_status": obj.get("executionStatus") if obj.get("executionStatus") is not None else 'Terminated',
+            "completion_status": obj.get("completionStatus") if obj.get("completionStatus") is not None else 'Failure'
         })
         return _obj
+
+

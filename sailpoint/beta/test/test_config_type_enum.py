@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.config_type_enum import ConfigTypeEnum  # noqa: E501
-
 
 class TestConfigTypeEnum(unittest.TestCase):
     """ConfigTypeEnum unit test stubs"""
@@ -29,7 +29,6 @@ class TestConfigTypeEnum(unittest.TestCase):
     def testConfigTypeEnum(self):
         """Test ConfigTypeEnum"""
         # inst = ConfigTypeEnum()
-
 
 if __name__ == '__main__':
     unittest.main()

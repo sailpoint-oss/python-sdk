@@ -11,28 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from v3.models.dto_type import DtoType
-
 
 class TaggedObjectDto(BaseModel):
     """
     TaggedObjectDto
     """
     type: Optional[DtoType] = None
-    id: Optional[StrictStr] = Field(
-        None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human-readable display name of the object to which this reference applies"
-    )
+    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object to which this reference applies")
     __properties = ["type", "id", "name"]
 
     class Config:
@@ -55,7 +51,10 @@ class TaggedObjectDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if name (nullable) is None
         # and __fields_set__ contains the field
         if self.name is None and "name" in self.__fields_set__:
@@ -78,3 +77,5 @@ class TaggedObjectDto(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

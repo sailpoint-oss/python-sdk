@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class RequestableObjectType(str, Enum):
     """
     The currently supported requestable object types. 
     """
+
     """
     allowed enum values
     """
@@ -31,3 +36,5 @@ class RequestableObjectType(str, Enum):
     def from_json(cls, json_str: str) -> RequestableObjectType:
         """Create an instance of RequestableObjectType from a JSON string"""
         return RequestableObjectType(json.loads(json_str))
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.managed_cluster_types import ManagedClusterTypes  # noqa: E501
-
 
 class TestManagedClusterTypes(unittest.TestCase):
     """ManagedClusterTypes unit test stubs"""
@@ -29,7 +29,6 @@ class TestManagedClusterTypes(unittest.TestCase):
     def testManagedClusterTypes(self):
         """Test ManagedClusterTypes"""
         # inst = ManagedClusterTypes()
-
 
 if __name__ == '__main__':
     unittest.main()

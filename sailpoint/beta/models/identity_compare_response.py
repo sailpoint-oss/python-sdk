@@ -11,25 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field
-
 
 class IdentityCompareResponse(BaseModel):
     """
     IdentityCompareResponse
     """
-    access_item_diff: Optional[Dict[str, Dict[str, Any]]] = Field(
-        None,
-        alias="accessItemDiff",
-        description=
-        "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check."
-    )
+    access_item_diff: Optional[Dict[str, Dict[str, Any]]] = Field(None, alias="accessItemDiff", description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.")
     __properties = ["accessItemDiff"]
 
     class Config:
@@ -52,7 +48,10 @@ class IdentityCompareResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -64,6 +63,9 @@ class IdentityCompareResponse(BaseModel):
         if not isinstance(obj, dict):
             return IdentityCompareResponse.parse_obj(obj)
 
-        _obj = IdentityCompareResponse.parse_obj(
-            {"access_item_diff": obj.get("accessItemDiff")})
+        _obj = IdentityCompareResponse.parse_obj({
+            "access_item_diff": obj.get("accessItemDiff")
+        })
         return _obj
+
+

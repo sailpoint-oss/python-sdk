@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.identity_association_details import IdentityAssociationDetails  # noqa: E501
-
 
 class TestIdentityAssociationDetails(unittest.TestCase):
     """IdentityAssociationDetails unit test stubs"""
@@ -52,7 +52,6 @@ class TestIdentityAssociationDetails(unittest.TestCase):
         """Test IdentityAssociationDetails"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

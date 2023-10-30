@@ -11,39 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, conlist
 from v3.models.access_profile_approval_scheme import AccessProfileApprovalScheme
-
 
 class Revocability(BaseModel):
     """
     Revocability
     """
-    comments_required: Optional[StrictBool] = Field(
-        False,
-        alias="commentsRequired",
-        description=
-        "Whether the requester of the containing object must provide comments justifying the request"
-    )
-    denial_comments_required: Optional[StrictBool] = Field(
-        False,
-        alias="denialCommentsRequired",
-        description=
-        "Whether an approver must provide comments when denying the request")
-    approval_schemes: Optional[conlist(AccessProfileApprovalScheme)] = Field(
-        None,
-        alias="approvalSchemes",
-        description=
-        "List describing the steps in approving the revocation request")
-    __properties = [
-        "commentsRequired", "denialCommentsRequired", "approvalSchemes"
-    ]
+    comments_required: Optional[StrictBool] = Field(False, alias="commentsRequired", description="Whether the requester of the containing object must provide comments justifying the request")
+    denial_comments_required: Optional[StrictBool] = Field(False, alias="denialCommentsRequired", description="Whether an approver must provide comments when denying the request")
+    approval_schemes: Optional[conlist(AccessProfileApprovalScheme)] = Field(None, alias="approvalSchemes", description="List describing the steps in approving the revocation request")
+    __properties = ["commentsRequired", "denialCommentsRequired", "approvalSchemes"]
 
     class Config:
         """Pydantic configuration"""
@@ -65,7 +51,10 @@ class Revocability(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in approval_schemes (list)
         _items = []
         if self.approval_schemes:
@@ -95,15 +84,10 @@ class Revocability(BaseModel):
             return Revocability.parse_obj(obj)
 
         _obj = Revocability.parse_obj({
-            "comments_required":
-            obj.get("commentsRequired")
-            if obj.get("commentsRequired") is not None else False,
-            "denial_comments_required":
-            obj.get("denialCommentsRequired")
-            if obj.get("denialCommentsRequired") is not None else False,
-            "approval_schemes": [
-                AccessProfileApprovalScheme.from_dict(_item)
-                for _item in obj.get("approvalSchemes")
-            ] if obj.get("approvalSchemes") is not None else None
+            "comments_required": obj.get("commentsRequired") if obj.get("commentsRequired") is not None else False,
+            "denial_comments_required": obj.get("denialCommentsRequired") if obj.get("denialCommentsRequired") is not None else False,
+            "approval_schemes": [AccessProfileApprovalScheme.from_dict(_item) for _item in obj.get("approvalSchemes")] if obj.get("approvalSchemes") is not None else None
         })
         return _obj
+
+

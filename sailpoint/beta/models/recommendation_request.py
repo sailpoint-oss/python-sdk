@@ -11,23 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.access_item_ref import AccessItemRef
-
 
 class RecommendationRequest(BaseModel):
     """
     RecommendationRequest
     """
-    identity_id: Optional[StrictStr] = Field(None,
-                                             alias="identityId",
-                                             description="The identity ID")
+    identity_id: Optional[StrictStr] = Field(None, alias="identityId", description="The identity ID")
     item: Optional[AccessItemRef] = None
     __properties = ["identityId", "item"]
 
@@ -51,7 +50,10 @@ class RecommendationRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of item
         if self.item:
             _dict['item'] = self.item.to_dict()
@@ -67,10 +69,9 @@ class RecommendationRequest(BaseModel):
             return RecommendationRequest.parse_obj(obj)
 
         _obj = RecommendationRequest.parse_obj({
-            "identity_id":
-            obj.get("identityId"),
-            "item":
-            AccessItemRef.from_dict(obj.get("item"))
-            if obj.get("item") is not None else None
+            "identity_id": obj.get("identityId"),
+            "item": AccessItemRef.from_dict(obj.get("item")) if obj.get("item") is not None else None
         })
         return _obj
+
+

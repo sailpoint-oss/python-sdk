@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.va_cluster_status_change_event import VAClusterStatusChangeEvent  # noqa: E501
-
 
 class TestVAClusterStatusChangeEvent(unittest.TestCase):
     """VAClusterStatusChangeEvent unit test stubs"""
@@ -74,7 +74,6 @@ class TestVAClusterStatusChangeEvent(unittest.TestCase):
         """Test VAClusterStatusChangeEvent"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

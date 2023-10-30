@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -22,48 +23,21 @@ from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
 from v3.models.schedule1 import Schedule1
 from v3.models.search_schedule_recipients_inner import SearchScheduleRecipientsInner
 
-
 class CreateScheduledSearchRequest(BaseModel):
     """
     CreateScheduledSearchRequest
     """
-    name: Optional[StrictStr] = Field(
-        None, description="The name of the scheduled search. ")
-    description: Optional[StrictStr] = Field(
-        None, description="The description of the scheduled search. ")
-    saved_search_id: StrictStr = Field(
-        ...,
-        alias="savedSearchId",
-        description="The ID of the saved search that will be executed.")
-    created: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
+    name: Optional[StrictStr] = Field(None, description="The name of the scheduled search. ")
+    description: Optional[StrictStr] = Field(None, description="The description of the scheduled search. ")
+    saved_search_id: StrictStr = Field(..., alias="savedSearchId", description="The ID of the saved search that will be executed.")
+    created: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
+    modified: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
     schedule: Schedule1 = Field(...)
-    recipients: conlist(SearchScheduleRecipientsInner) = Field(
-        ...,
-        description=
-        "A list of identities that should receive the scheduled search report via email."
-    )
-    enabled: Optional[StrictBool] = Field(
-        False, description="Indicates if the scheduled search is enabled. ")
-    email_empty_results: Optional[StrictBool] = Field(
-        False,
-        alias="emailEmptyResults",
-        description=
-        "Indicates if email generation should not be suppressed if search returns no results. "
-    )
-    display_query_details: Optional[StrictBool] = Field(
-        False,
-        alias="displayQueryDetails",
-        description=
-        "Indicates if the generated email should include the query and search results preview (which could include PII). "
-    )
-    __properties = [
-        "name", "description", "savedSearchId", "created", "modified",
-        "schedule", "recipients", "enabled", "emailEmptyResults",
-        "displayQueryDetails"
-    ]
+    recipients: conlist(SearchScheduleRecipientsInner) = Field(..., description="A list of identities that should receive the scheduled search report via email.")
+    enabled: Optional[StrictBool] = Field(False, description="Indicates if the scheduled search is enabled. ")
+    email_empty_results: Optional[StrictBool] = Field(False, alias="emailEmptyResults", description="Indicates if email generation should not be suppressed if search returns no results. ")
+    display_query_details: Optional[StrictBool] = Field(False, alias="displayQueryDetails", description="Indicates if the generated email should include the query and search results preview (which could include PII). ")
+    __properties = ["name", "description", "savedSearchId", "created", "modified", "schedule", "recipients", "enabled", "emailEmptyResults", "displayQueryDetails"]
 
     class Config:
         """Pydantic configuration"""
@@ -87,8 +61,8 @@ class CreateScheduledSearchRequest(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "created",
-                              "modified",
+                            "created",
+                            "modified",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of schedule
@@ -133,30 +107,17 @@ class CreateScheduledSearchRequest(BaseModel):
             return CreateScheduledSearchRequest.parse_obj(obj)
 
         _obj = CreateScheduledSearchRequest.parse_obj({
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "saved_search_id":
-            obj.get("savedSearchId"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "schedule":
-            Schedule1.from_dict(obj.get("schedule"))
-            if obj.get("schedule") is not None else None,
-            "recipients": [
-                SearchScheduleRecipientsInner.from_dict(_item)
-                for _item in obj.get("recipients")
-            ] if obj.get("recipients") is not None else None,
-            "enabled":
-            obj.get("enabled") if obj.get("enabled") is not None else False,
-            "email_empty_results":
-            obj.get("emailEmptyResults")
-            if obj.get("emailEmptyResults") is not None else False,
-            "display_query_details":
-            obj.get("displayQueryDetails")
-            if obj.get("displayQueryDetails") is not None else False
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "saved_search_id": obj.get("savedSearchId"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "schedule": Schedule1.from_dict(obj.get("schedule")) if obj.get("schedule") is not None else None,
+            "recipients": [SearchScheduleRecipientsInner.from_dict(_item) for _item in obj.get("recipients")] if obj.get("recipients") is not None else None,
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
+            "email_empty_results": obj.get("emailEmptyResults") if obj.get("emailEmptyResults") is not None else False,
+            "display_query_details": obj.get("displayQueryDetails") if obj.get("displayQueryDetails") is not None else False
         })
         return _obj
+
+

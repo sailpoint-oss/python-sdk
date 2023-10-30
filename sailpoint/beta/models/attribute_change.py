@@ -11,24 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class AttributeChange(BaseModel):
     """
     AttributeChange
     """
     name: Optional[StrictStr] = Field(None, description="the attribute name")
-    previous_value: Optional[StrictStr] = Field(
-        None, alias="previousValue", description="the old value of attribute")
-    new_value: Optional[StrictStr] = Field(
-        None, alias="newValue", description="the new value of attribute")
+    previous_value: Optional[StrictStr] = Field(None, alias="previousValue", description="the old value of attribute")
+    new_value: Optional[StrictStr] = Field(None, alias="newValue", description="the new value of attribute")
     __properties = ["name", "previousValue", "newValue"]
 
     class Config:
@@ -51,7 +50,10 @@ class AttributeChange(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -64,11 +66,10 @@ class AttributeChange(BaseModel):
             return AttributeChange.parse_obj(obj)
 
         _obj = AttributeChange.parse_obj({
-            "name":
-            obj.get("name"),
-            "previous_value":
-            obj.get("previousValue"),
-            "new_value":
-            obj.get("newValue")
+            "name": obj.get("name"),
+            "previous_value": obj.get("previousValue"),
+            "new_value": obj.get("newValue")
         })
         return _obj
+
+

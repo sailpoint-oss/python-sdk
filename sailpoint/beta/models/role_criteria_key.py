@@ -11,33 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.role_criteria_key_type import RoleCriteriaKeyType
-
 
 class RoleCriteriaKey(BaseModel):
     """
     Refers to a specific Identity attribute, Account attibute, or Entitlement used in Role membership criteria  # noqa: E501
     """
     type: RoleCriteriaKeyType = Field(...)
-    var_property: StrictStr = Field(
-        ...,
-        alias="property",
-        description=
-        "The name of the attribute or entitlement to which the associated criteria applies."
-    )
-    source_id: Optional[StrictStr] = Field(
-        None,
-        alias="sourceId",
-        description=
-        "ID of the Source from which an account attribute or entitlement is drawn. Required if type is ACCOUNT or ENTITLEMENT"
-    )
+    var_property: StrictStr = Field(..., alias="property", description="The name of the attribute or entitlement to which the associated criteria applies.")
+    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="ID of the Source from which an account attribute or entitlement is drawn. Required if type is ACCOUNT or ENTITLEMENT")
     __properties = ["type", "property", "sourceId"]
 
     class Config:
@@ -60,7 +51,10 @@ class RoleCriteriaKey(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if source_id (nullable) is None
         # and __fields_set__ contains the field
         if self.source_id is None and "source_id" in self.__fields_set__:
@@ -83,3 +77,5 @@ class RoleCriteriaKey(BaseModel):
             "source_id": obj.get("sourceId")
         })
         return _obj
+
+

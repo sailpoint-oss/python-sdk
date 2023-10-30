@@ -11,30 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from v3.models.admin_review_reassign_reassign_to import AdminReviewReassignReassignTo
-
 
 class AdminReviewReassign(BaseModel):
     """
     AdminReviewReassign
     """
-    certification_ids: Optional[conlist(
-        StrictStr, max_items=250, min_items=1)] = Field(
-            None,
-            alias="certificationIds",
-            description="List of certification IDs to reassign")
-    reassign_to: Optional[AdminReviewReassignReassignTo] = Field(
-        None, alias="reassignTo")
-    reason: Optional[StrictStr] = Field(
-        None,
-        description="Comment to explain why the certification was reassigned")
+    certification_ids: Optional[conlist(StrictStr, max_items=250, min_items=1)] = Field(None, alias="certificationIds", description="List of certification IDs to reassign")
+    reassign_to: Optional[AdminReviewReassignReassignTo] = Field(None, alias="reassignTo")
+    reason: Optional[StrictStr] = Field(None, description="Comment to explain why the certification was reassigned")
     __properties = ["certificationIds", "reassignTo", "reason"]
 
     class Config:
@@ -57,7 +51,10 @@ class AdminReviewReassign(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of reassign_to
         if self.reassign_to:
             _dict['reassignTo'] = self.reassign_to.to_dict()
@@ -73,12 +70,10 @@ class AdminReviewReassign(BaseModel):
             return AdminReviewReassign.parse_obj(obj)
 
         _obj = AdminReviewReassign.parse_obj({
-            "certification_ids":
-            obj.get("certificationIds"),
-            "reassign_to":
-            AdminReviewReassignReassignTo.from_dict(obj.get("reassignTo"))
-            if obj.get("reassignTo") is not None else None,
-            "reason":
-            obj.get("reason")
+            "certification_ids": obj.get("certificationIds"),
+            "reassign_to": AdminReviewReassignReassignTo.from_dict(obj.get("reassignTo")) if obj.get("reassignTo") is not None else None,
+            "reason": obj.get("reason")
         })
         return _obj
+
+

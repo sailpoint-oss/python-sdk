@@ -11,27 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
-
 
 class BulkIdentitiesAccountsResponse(BaseModel):
     """
     Bulk response object.  # noqa: E501
     """
-    id: Optional[StrictStr] = Field(
-        None, description="Identifier of bulk request item.")
-    status_code: Optional[StrictInt] = Field(
-        None, alias="statusCode", description="Response status value.")
-    message: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Status containing additional context information about failures.")
+    id: Optional[StrictStr] = Field(None, description="Identifier of bulk request item.")
+    status_code: Optional[StrictInt] = Field(None, alias="statusCode", description="Response status value.")
+    message: Optional[StrictStr] = Field(None, description="Status containing additional context information about failures.")
     __properties = ["id", "statusCode", "message"]
 
     class Config:
@@ -54,7 +50,10 @@ class BulkIdentitiesAccountsResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,11 +66,10 @@ class BulkIdentitiesAccountsResponse(BaseModel):
             return BulkIdentitiesAccountsResponse.parse_obj(obj)
 
         _obj = BulkIdentitiesAccountsResponse.parse_obj({
-            "id":
-            obj.get("id"),
-            "status_code":
-            obj.get("statusCode"),
-            "message":
-            obj.get("message")
+            "id": obj.get("id"),
+            "status_code": obj.get("statusCode"),
+            "message": obj.get("message")
         })
         return _obj
+
+

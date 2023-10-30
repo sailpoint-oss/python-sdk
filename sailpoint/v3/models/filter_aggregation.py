@@ -11,30 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from v3.models.search_filter_type import SearchFilterType
-
 
 class FilterAggregation(BaseModel):
     """
     An additional filter to constrain the results of the search query.  # noqa: E501
     """
-    name: StrictStr = Field(
-        ...,
-        description=
-        "The name of the filter aggregate to be included in the result.")
+    name: StrictStr = Field(..., description="The name of the filter aggregate to be included in the result.")
     type: Optional[SearchFilterType] = None
-    field: StrictStr = Field(
-        ...,
-        description=
-        "The search field to apply the filter to.  Prefix the field name with '@' to reference a nested object. "
-    )
+    field: StrictStr = Field(..., description="The search field to apply the filter to.  Prefix the field name with '@' to reference a nested object. ")
     value: StrictStr = Field(..., description="The value to filter on.")
     __properties = ["name", "type", "field", "value"]
 
@@ -58,7 +52,10 @@ class FilterAggregation(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -77,3 +74,5 @@ class FilterAggregation(BaseModel):
             "value": obj.get("value")
         })
         return _obj
+
+

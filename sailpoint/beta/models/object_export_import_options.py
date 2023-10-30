@@ -11,27 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class ObjectExportImportOptions(BaseModel):
     """
     ObjectExportImportOptions
     """
-    included_ids: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="includedIds",
-        description="Object ids to be included in an import or export.")
-    included_names: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="includedNames",
-        description="Object names to be included in an import or export.")
+    included_ids: Optional[conlist(StrictStr)] = Field(None, alias="includedIds", description="Object ids to be included in an import or export.")
+    included_names: Optional[conlist(StrictStr)] = Field(None, alias="includedNames", description="Object names to be included in an import or export.")
     __properties = ["includedIds", "includedNames"]
 
     class Config:
@@ -54,7 +49,10 @@ class ObjectExportImportOptions(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,9 +65,9 @@ class ObjectExportImportOptions(BaseModel):
             return ObjectExportImportOptions.parse_obj(obj)
 
         _obj = ObjectExportImportOptions.parse_obj({
-            "included_ids":
-            obj.get("includedIds"),
-            "included_names":
-            obj.get("includedNames")
+            "included_ids": obj.get("includedIds"),
+            "included_names": obj.get("includedNames")
         })
         return _obj
+
+

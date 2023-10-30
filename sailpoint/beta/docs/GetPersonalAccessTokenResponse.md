@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **str** | The ID of the personal access token (to be used as the username for Basic Auth). | 
 **name** | **str** | The name of the personal access token. Cannot be the same as other personal access tokens owned by a user. | 
 **scope** | **List[str]** | Scopes of the personal  access token. | 
-**owner** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | 
+**owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | 
 **created** | **datetime** | The date and time, down to the millisecond, when this personal access token was created. | 
 **last_used** | **datetime** | The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed. | [optional] 
 

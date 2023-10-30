@@ -11,25 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class ProvisioningDetails(BaseModel):
     """
     Provides additional details about provisioning for this request.  # noqa: E501
     """
-    ordered_sub_phase_references: Optional[StrictStr] = Field(
-        None,
-        alias="orderedSubPhaseReferences",
-        description=
-        "Ordered CSV of sub phase references to objects that contain more information about provisioning. For example, this can contain \"manualWorkItemDetails\" which indicate that there is further information in that object for this phase."
-    )
+    ordered_sub_phase_references: Optional[StrictStr] = Field(None, alias="orderedSubPhaseReferences", description="Ordered CSV of sub phase references to objects that contain more information about provisioning. For example, this can contain \"manualWorkItemDetails\" which indicate that there is further information in that object for this phase.")
     __properties = ["orderedSubPhaseReferences"]
 
     class Config:
@@ -52,7 +48,10 @@ class ProvisioningDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,7 +64,8 @@ class ProvisioningDetails(BaseModel):
             return ProvisioningDetails.parse_obj(obj)
 
         _obj = ProvisioningDetails.parse_obj({
-            "ordered_sub_phase_references":
-            obj.get("orderedSubPhaseReferences")
+            "ordered_sub_phase_references": obj.get("orderedSubPhaseReferences")
         })
         return _obj
+
+

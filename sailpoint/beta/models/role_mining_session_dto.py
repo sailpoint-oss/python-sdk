@@ -11,71 +11,38 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
-from beta.models.entity_created_by_dto import EntityCreatedByDTO
 from beta.models.role_mining_role_type import RoleMiningRoleType
+from beta.models.role_mining_session_dto_created_by import RoleMiningSessionDtoCreatedBy
 from beta.models.role_mining_session_scope import RoleMiningSessionScope
 from beta.models.role_mining_session_status import RoleMiningSessionStatus
-
 
 class RoleMiningSessionDto(BaseModel):
     """
     RoleMiningSessionDto
     """
     scope: Optional[RoleMiningSessionScope] = None
-    prune_threshold: Optional[StrictInt] = Field(
-        None,
-        alias="pruneThreshold",
-        description=
-        "The prune threshold to be used or null to calculate prescribedPruneThreshold"
-    )
-    prescribed_prune_threshold: Optional[StrictInt] = Field(
-        None,
-        alias="prescribedPruneThreshold",
-        description="The calculated prescribedPruneThreshold")
-    min_num_identities_in_potential_role: Optional[StrictInt] = Field(
-        None,
-        alias="minNumIdentitiesInPotentialRole",
-        description="Minimum number of identities in a potential role")
-    potential_role_count: Optional[StrictInt] = Field(
-        None,
-        alias="potentialRoleCount",
-        description="Number of potential roles")
-    potential_roles_ready_count: Optional[StrictInt] = Field(
-        None,
-        alias="potentialRolesReadyCount",
-        description="Number of potential roles ready")
+    prune_threshold: Optional[StrictInt] = Field(None, alias="pruneThreshold", description="The prune threshold to be used or null to calculate prescribedPruneThreshold")
+    prescribed_prune_threshold: Optional[StrictInt] = Field(None, alias="prescribedPruneThreshold", description="The calculated prescribedPruneThreshold")
+    min_num_identities_in_potential_role: Optional[StrictInt] = Field(None, alias="minNumIdentitiesInPotentialRole", description="Minimum number of identities in a potential role")
+    potential_role_count: Optional[StrictInt] = Field(None, alias="potentialRoleCount", description="Number of potential roles")
+    potential_roles_ready_count: Optional[StrictInt] = Field(None, alias="potentialRolesReadyCount", description="Number of potential roles ready")
     status: Optional[RoleMiningSessionStatus] = None
     type: Optional[RoleMiningRoleType] = None
-    email_recipient_id: Optional[StrictStr] = Field(
-        None,
-        alias="emailRecipientId",
-        description=
-        "The id of the user who will receive an email about the role mining session"
-    )
-    created_by: Optional[EntityCreatedByDTO] = Field(None, alias="createdBy")
-    identity_count: Optional[StrictInt] = Field(
-        None,
-        alias="identityCount",
-        description=
-        "Number of identities in the population which meet the search criteria or identity list provided"
-    )
-    saved: Optional[StrictBool] = Field(
-        None, description="The session's saved status")
-    name: Optional[StrictStr] = Field(None,
-                                      description="The session's saved name")
-    __properties = [
-        "scope", "pruneThreshold", "prescribedPruneThreshold",
-        "minNumIdentitiesInPotentialRole", "potentialRoleCount",
-        "potentialRolesReadyCount", "status", "type", "emailRecipientId",
-        "createdBy", "identityCount", "saved", "name"
-    ]
+    email_recipient_id: Optional[StrictStr] = Field(None, alias="emailRecipientId", description="The id of the user who will receive an email about the role mining session")
+    created_by: Optional[RoleMiningSessionDtoCreatedBy] = Field(None, alias="createdBy")
+    identity_count: Optional[StrictInt] = Field(None, alias="identityCount", description="Number of identities in the population which meet the search criteria or identity list provided")
+    saved: Optional[StrictBool] = Field(False, description="The session's saved status")
+    name: Optional[StrictStr] = Field(None, description="The session's saved name")
+    __properties = ["scope", "pruneThreshold", "prescribedPruneThreshold", "minNumIdentitiesInPotentialRole", "potentialRoleCount", "potentialRolesReadyCount", "status", "type", "emailRecipientId", "createdBy", "identityCount", "saved", "name"]
 
     class Config:
         """Pydantic configuration"""
@@ -97,7 +64,10 @@ class RoleMiningSessionDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of scope
         if self.scope:
             _dict['scope'] = self.scope.to_dict()
@@ -107,6 +77,31 @@ class RoleMiningSessionDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
             _dict['createdBy'] = self.created_by.to_dict()
+        # set to None if prune_threshold (nullable) is None
+        # and __fields_set__ contains the field
+        if self.prune_threshold is None and "prune_threshold" in self.__fields_set__:
+            _dict['pruneThreshold'] = None
+
+        # set to None if prescribed_prune_threshold (nullable) is None
+        # and __fields_set__ contains the field
+        if self.prescribed_prune_threshold is None and "prescribed_prune_threshold" in self.__fields_set__:
+            _dict['prescribedPruneThreshold'] = None
+
+        # set to None if min_num_identities_in_potential_role (nullable) is None
+        # and __fields_set__ contains the field
+        if self.min_num_identities_in_potential_role is None and "min_num_identities_in_potential_role" in self.__fields_set__:
+            _dict['minNumIdentitiesInPotentialRole'] = None
+
+        # set to None if email_recipient_id (nullable) is None
+        # and __fields_set__ contains the field
+        if self.email_recipient_id is None and "email_recipient_id" in self.__fields_set__:
+            _dict['emailRecipientId'] = None
+
+        # set to None if name (nullable) is None
+        # and __fields_set__ contains the field
+        if self.name is None and "name" in self.__fields_set__:
+            _dict['name'] = None
+
         return _dict
 
     @classmethod
@@ -119,34 +114,20 @@ class RoleMiningSessionDto(BaseModel):
             return RoleMiningSessionDto.parse_obj(obj)
 
         _obj = RoleMiningSessionDto.parse_obj({
-            "scope":
-            RoleMiningSessionScope.from_dict(obj.get("scope"))
-            if obj.get("scope") is not None else None,
-            "prune_threshold":
-            obj.get("pruneThreshold"),
-            "prescribed_prune_threshold":
-            obj.get("prescribedPruneThreshold"),
-            "min_num_identities_in_potential_role":
-            obj.get("minNumIdentitiesInPotentialRole"),
-            "potential_role_count":
-            obj.get("potentialRoleCount"),
-            "potential_roles_ready_count":
-            obj.get("potentialRolesReadyCount"),
-            "status":
-            RoleMiningSessionStatus.from_dict(obj.get("status"))
-            if obj.get("status") is not None else None,
-            "type":
-            obj.get("type"),
-            "email_recipient_id":
-            obj.get("emailRecipientId"),
-            "created_by":
-            EntityCreatedByDTO.from_dict(obj.get("createdBy"))
-            if obj.get("createdBy") is not None else None,
-            "identity_count":
-            obj.get("identityCount"),
-            "saved":
-            obj.get("saved"),
-            "name":
-            obj.get("name")
+            "scope": RoleMiningSessionScope.from_dict(obj.get("scope")) if obj.get("scope") is not None else None,
+            "prune_threshold": obj.get("pruneThreshold"),
+            "prescribed_prune_threshold": obj.get("prescribedPruneThreshold"),
+            "min_num_identities_in_potential_role": obj.get("minNumIdentitiesInPotentialRole"),
+            "potential_role_count": obj.get("potentialRoleCount"),
+            "potential_roles_ready_count": obj.get("potentialRolesReadyCount"),
+            "status": RoleMiningSessionStatus.from_dict(obj.get("status")) if obj.get("status") is not None else None,
+            "type": obj.get("type"),
+            "email_recipient_id": obj.get("emailRecipientId"),
+            "created_by": RoleMiningSessionDtoCreatedBy.from_dict(obj.get("createdBy")) if obj.get("createdBy") is not None else None,
+            "identity_count": obj.get("identityCount"),
+            "saved": obj.get("saved") if obj.get("saved") is not None else False,
+            "name": obj.get("name")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.identity_attributes_api import IdentityAttributesApi  # noqa: E501

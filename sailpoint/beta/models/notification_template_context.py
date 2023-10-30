@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,17 +21,13 @@ from datetime import datetime
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field
 
-
 class NotificationTemplateContext(BaseModel):
     """
     NotificationTemplateContext
     """
-    attributes: Optional[Dict[str, Any]] = Field(
-        None, description="A JSON object that stores the context.")
-    created: Optional[datetime] = Field(
-        None, description="When the global context was created")
-    modified: Optional[datetime] = Field(
-        None, description="When the global context was last modified")
+    attributes: Optional[Dict[str, Any]] = Field(None, description="A JSON object that stores the context.")
+    created: Optional[datetime] = Field(None, description="When the global context was created")
+    modified: Optional[datetime] = Field(None, description="When the global context was last modified")
     __properties = ["attributes", "created", "modified"]
 
     class Config:
@@ -53,7 +50,10 @@ class NotificationTemplateContext(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,11 +66,10 @@ class NotificationTemplateContext(BaseModel):
             return NotificationTemplateContext.parse_obj(obj)
 
         _obj = NotificationTemplateContext.parse_obj({
-            "attributes":
-            obj.get("attributes"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified")
+            "attributes": obj.get("attributes"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified")
         })
         return _obj
+
+

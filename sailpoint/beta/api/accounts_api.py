@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -36,7 +37,9 @@ from beta.models.list_accounts200_response_inner import ListAccounts200ResponseI
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class AccountsApi:
@@ -52,9 +55,7 @@ class AccountsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_account(self,
-                       account_attributes_create: AccountAttributesCreate,
-                       **kwargs) -> AccountsAsyncResult:  # noqa: E501
+    def create_account(self, account_attributes_create : AccountAttributesCreate, **kwargs) -> AccountsAsyncResult:  # noqa: E501
         """Create Account  # noqa: E501
 
         This API submits an account creation task and returns the task ID.   The `sourceId` where this account will be created must be included in the `attributes` object. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -81,13 +82,10 @@ class AccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_account_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_account_with_http_info(account_attributes_create,
-                                                  **kwargs)  # noqa: E501
+        return self.create_account_with_http_info(account_attributes_create, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_account_with_http_info(
-            self, account_attributes_create: AccountAttributesCreate,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_account_with_http_info(self, account_attributes_create : AccountAttributesCreate, **kwargs) -> ApiResponse:  # noqa: E501
         """Create Account  # noqa: E501
 
         This API submits an account creation task and returns the task ID.   The `sourceId` where this account will be created must be included in the `attributes` object. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -126,17 +124,28 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['account_attributes_create']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'account_attributes_create'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_account" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_account" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -162,11 +171,11 @@ class AccountsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -181,8 +190,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/accounts',
-            'POST',
+            '/accounts', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -192,18 +200,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_account(self,
-                       id: Annotated[StrictStr,
-                                     Field(..., description="The account ID")],
-                       **kwargs) -> AccountsAsyncResult:  # noqa: E501
+    def delete_account(self, id : Annotated[StrictStr, Field(..., description="The account ID")], **kwargs) -> AccountsAsyncResult:  # noqa: E501
         """Delete Account  # noqa: E501
 
         This API submits an account delete task and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -233,9 +237,7 @@ class AccountsApi:
         return self.delete_account_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_account_with_http_info(self, id: Annotated[
-        StrictStr, Field(..., description="The account ID")],
-                                      **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_account_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The account ID")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Account  # noqa: E501
 
         This API submits an account delete task and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -274,17 +276,28 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_account" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_account" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -294,6 +307,7 @@ class AccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -322,8 +336,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/{id}',
-            'DELETE',
+            '/accounts/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -333,18 +346,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def disable_account(self, id: Annotated[
-        StrictStr, Field(..., description="The account id")],
-                        account_toggle_request: AccountToggleRequest,
-                        **kwargs) -> AccountsAsyncResult:  # noqa: E501
+    def disable_account(self, id : Annotated[StrictStr, Field(..., description="The account id")], account_toggle_request : AccountToggleRequest, **kwargs) -> AccountsAsyncResult:  # noqa: E501
         """Disable Account  # noqa: E501
 
         This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -373,15 +382,10 @@ class AccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the disable_account_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.disable_account_with_http_info(id, account_toggle_request,
-                                                   **kwargs)  # noqa: E501
+        return self.disable_account_with_http_info(id, account_toggle_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def disable_account_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="The account id")],
-            account_toggle_request: AccountToggleRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def disable_account_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The account id")], account_toggle_request : AccountToggleRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Disable Account  # noqa: E501
 
         This API submits a task to disable the account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -422,17 +426,29 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'account_toggle_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'account_toggle_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method disable_account" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method disable_account" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -442,6 +458,7 @@ class AccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -460,11 +477,11 @@ class AccountsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -480,8 +497,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/{id}/disable',
-            'POST',
+            '/accounts/{id}/disable', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -491,17 +507,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def disable_account_for_identity(self, id: Annotated[
-        StrictStr, Field(..., description="The identity id.")],
-                                     **kwargs) -> object:  # noqa: E501
+    def disable_account_for_identity(self, id : Annotated[StrictStr, Field(..., description="The identity id.")], **kwargs) -> object:  # noqa: E501
         """Disable IDN Account for Identity  # noqa: E501
 
         This API submits a task to disable IDN account for a single identity.  # noqa: E501
@@ -528,14 +541,10 @@ class AccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the disable_account_for_identity_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.disable_account_for_identity_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.disable_account_for_identity_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def disable_account_for_identity_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="The identity id.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def disable_account_for_identity_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity id.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Disable IDN Account for Identity  # noqa: E501
 
         This API submits a task to disable IDN account for a single identity.  # noqa: E501
@@ -574,18 +583,28 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method disable_account_for_identity" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method disable_account_for_identity" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -595,6 +614,7 @@ class AccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -623,8 +643,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/identities-accounts/{id}/disable',
-            'POST',
+            '/identities-accounts/{id}/disable', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -634,18 +653,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def disable_accounts_for_identities(
-            self,
-            identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
-            **kwargs) -> List[BulkIdentitiesAccountsResponse]:  # noqa: E501
+    def disable_accounts_for_identities(self, identities_accounts_bulk_request : IdentitiesAccountsBulkRequest, **kwargs) -> List[BulkIdentitiesAccountsResponse]:  # noqa: E501
         """Disable IDN Accounts for Identities  # noqa: E501
 
         This API submits tasks to disable IDN account for each identity provided in the request body.  # noqa: E501
@@ -672,14 +687,10 @@ class AccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the disable_accounts_for_identities_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.disable_accounts_for_identities_with_http_info(
-            identities_accounts_bulk_request, **kwargs)  # noqa: E501
+        return self.disable_accounts_for_identities_with_http_info(identities_accounts_bulk_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def disable_accounts_for_identities_with_http_info(
-            self,
-            identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def disable_accounts_for_identities_with_http_info(self, identities_accounts_bulk_request : IdentitiesAccountsBulkRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Disable IDN Accounts for Identities  # noqa: E501
 
         This API submits tasks to disable IDN account for each identity provided in the request body.  # noqa: E501
@@ -718,18 +729,28 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['identities_accounts_bulk_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'identities_accounts_bulk_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method disable_accounts_for_identities" % _key)
+                    " to method disable_accounts_for_identities" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -755,11 +776,11 @@ class AccountsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -774,8 +795,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/identities-accounts/disable',
-            'POST',
+            '/identities-accounts/disable', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -785,19 +805,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def enable_account(self,
-                       id: Annotated[StrictStr,
-                                     Field(..., description="The account id")],
-                       account_toggle_request: AccountToggleRequest,
-                       **kwargs) -> AccountsAsyncResult:  # noqa: E501
+    def enable_account(self, id : Annotated[StrictStr, Field(..., description="The account id")], account_toggle_request : AccountToggleRequest, **kwargs) -> AccountsAsyncResult:  # noqa: E501
         """Enable Account  # noqa: E501
 
         This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -826,15 +841,10 @@ class AccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the enable_account_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.enable_account_with_http_info(id, account_toggle_request,
-                                                  **kwargs)  # noqa: E501
+        return self.enable_account_with_http_info(id, account_toggle_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def enable_account_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="The account id")],
-            account_toggle_request: AccountToggleRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def enable_account_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The account id")], account_toggle_request : AccountToggleRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Enable Account  # noqa: E501
 
         This API submits a task to enable account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -875,17 +885,29 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'account_toggle_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'account_toggle_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method enable_account" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method enable_account" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -895,6 +917,7 @@ class AccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -913,11 +936,11 @@ class AccountsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -933,8 +956,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/{id}/enable',
-            'POST',
+            '/accounts/{id}/enable', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -944,17 +966,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def enable_account_for_identity(self, id: Annotated[
-        StrictStr, Field(..., description="The identity id.")],
-                                    **kwargs) -> object:  # noqa: E501
+    def enable_account_for_identity(self, id : Annotated[StrictStr, Field(..., description="The identity id.")], **kwargs) -> object:  # noqa: E501
         """Enable IDN Account for Identity  # noqa: E501
 
         This API submits a task to enable IDN account for a single identity.  # noqa: E501
@@ -981,14 +1000,10 @@ class AccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the enable_account_for_identity_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.enable_account_for_identity_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.enable_account_for_identity_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def enable_account_for_identity_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="The identity id.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def enable_account_for_identity_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity id.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Enable IDN Account for Identity  # noqa: E501
 
         This API submits a task to enable IDN account for a single identity.  # noqa: E501
@@ -1027,18 +1042,28 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method enable_account_for_identity" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method enable_account_for_identity" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1048,6 +1073,7 @@ class AccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1076,8 +1102,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/identities-accounts/{id}/enable',
-            'POST',
+            '/identities-accounts/{id}/enable', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1087,18 +1112,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def enable_accounts_for_identities(
-            self,
-            identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
-            **kwargs) -> List[BulkIdentitiesAccountsResponse]:  # noqa: E501
+    def enable_accounts_for_identities(self, identities_accounts_bulk_request : IdentitiesAccountsBulkRequest, **kwargs) -> List[BulkIdentitiesAccountsResponse]:  # noqa: E501
         """Enable IDN Accounts for Identities  # noqa: E501
 
         This API submits tasks to enable IDN account for each identity provided in the request body.  # noqa: E501
@@ -1125,14 +1146,10 @@ class AccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the enable_accounts_for_identities_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.enable_accounts_for_identities_with_http_info(
-            identities_accounts_bulk_request, **kwargs)  # noqa: E501
+        return self.enable_accounts_for_identities_with_http_info(identities_accounts_bulk_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def enable_accounts_for_identities_with_http_info(
-            self,
-            identities_accounts_bulk_request: IdentitiesAccountsBulkRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def enable_accounts_for_identities_with_http_info(self, identities_accounts_bulk_request : IdentitiesAccountsBulkRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Enable IDN Accounts for Identities  # noqa: E501
 
         This API submits tasks to enable IDN account for each identity provided in the request body.  # noqa: E501
@@ -1171,18 +1188,28 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['identities_accounts_bulk_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'identities_accounts_bulk_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method enable_accounts_for_identities" % _key)
+                    " to method enable_accounts_for_identities" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1208,11 +1235,11 @@ class AccountsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1227,8 +1254,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/identities-accounts/enable',
-            'POST',
+            '/identities-accounts/enable', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1238,18 +1264,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_account(self,
-                    id: Annotated[StrictStr,
-                                  Field(..., description="The account ID")],
-                    **kwargs) -> Account:  # noqa: E501
+    def get_account(self, id : Annotated[StrictStr, Field(..., description="The account ID")], **kwargs) -> Account:  # noqa: E501
         """Account Details  # noqa: E501
 
         This API returns the details for a single account based on the ID.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -1279,9 +1301,7 @@ class AccountsApi:
         return self.get_account_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_account_with_http_info(self, id: Annotated[
-        StrictStr, Field(..., description="The account ID")],
-                                   **kwargs) -> ApiResponse:  # noqa: E501
+    def get_account_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The account ID")], **kwargs) -> ApiResponse:  # noqa: E501
         """Account Details  # noqa: E501
 
         This API returns the details for a single account based on the ID.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -1320,17 +1340,28 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_account" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_account" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1340,6 +1371,7 @@ class AccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1368,8 +1400,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/{id}',
-            'GET',
+            '/accounts/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1379,40 +1410,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_account_entitlements(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The account id")],
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> List[Entitlement]:  # noqa: E501
+    def get_account_entitlements(self, id : Annotated[StrictStr, Field(..., description="The account id")], offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[Entitlement]:  # noqa: E501
         """Account Entitlements  # noqa: E501
 
         This API returns entitlements of the account.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -1445,36 +1450,10 @@ class AccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_account_entitlements_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_account_entitlements_with_http_info(
-            id, offset, limit, count, **kwargs)  # noqa: E501
+        return self.get_account_entitlements_with_http_info(id, offset, limit, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_account_entitlements_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The account id")],
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_account_entitlements_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The account id")], offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Account Entitlements  # noqa: E501
 
         This API returns entitlements of the account.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -1519,18 +1498,31 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'offset', 'limit', 'count']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'offset',
+            'limit',
+            'count'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_account_entitlements" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_account_entitlements" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1540,6 +1532,7 @@ class AccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1577,8 +1570,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/{id}/entitlements',
-            'GET',
+            '/accounts/{id}/entitlements', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1588,59 +1580,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_accounts(
-            self,
-            detail_level:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Determines whether Slim, or increased level of detail is provided for each account in the returned list. FULL is the default behavior."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **identityId**: *eq*  **name**: *eq, in*  **nativeIdentity**: *eq, in*  **sourceId**: *eq, in*  **uncorrelated**: *eq*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **created**, **modified**"
-            )] = None,
-            **kwargs) -> List[ListAccounts200ResponseInner]:  # noqa: E501
+    def list_accounts(self, detail_level : Annotated[Optional[StrictStr], Field(description="Determines whether Slim, or increased level of detail is provided for each account in the returned list. FULL is the default behavior.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **identityId**: *eq*  **name**: *eq, in*  **nativeIdentity**: *eq, in*  **sourceId**: *eq, in*  **uncorrelated**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **created**, **modified**")] = None, **kwargs) -> List[ListAccounts200ResponseInner]:  # noqa: E501
         """Accounts List  # noqa: E501
 
         This returns a list of accounts.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -1677,56 +1624,10 @@ class AccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_accounts_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_accounts_with_http_info(detail_level, limit, offset,
-                                                 count, filters, sorters,
-                                                 **kwargs)  # noqa: E501
+        return self.list_accounts_with_http_info(detail_level, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_accounts_with_http_info(
-            self,
-            detail_level:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Determines whether Slim, or increased level of detail is provided for each account in the returned list. FULL is the default behavior."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **identityId**: *eq*  **name**: *eq, in*  **nativeIdentity**: *eq, in*  **sourceId**: *eq, in*  **uncorrelated**: *eq*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **created**, **modified**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_accounts_with_http_info(self, detail_level : Annotated[Optional[StrictStr], Field(description="Determines whether Slim, or increased level of detail is provided for each account in the returned list. FULL is the default behavior.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **identityId**: *eq*  **name**: *eq, in*  **nativeIdentity**: *eq, in*  **sourceId**: *eq, in*  **uncorrelated**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **created**, **modified**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Accounts List  # noqa: E501
 
         This returns a list of accounts.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -1776,18 +1677,32 @@ class AccountsApi:
         _params = locals()
 
         _all_params = [
-            'detail_level', 'limit', 'offset', 'count', 'filters', 'sorters'
+            'detail_level',
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_accounts" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_accounts" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1840,8 +1755,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/accounts',
-            'GET',
+            '/accounts', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1851,19 +1765,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_account(self,
-                    id: Annotated[StrictStr,
-                                  Field(..., description="The account ID")],
-                    account_attributes: AccountAttributes,
-                    **kwargs) -> AccountsAsyncResult:  # noqa: E501
+    def put_account(self, id : Annotated[StrictStr, Field(..., description="The account ID")], account_attributes : AccountAttributes, **kwargs) -> AccountsAsyncResult:  # noqa: E501
         """Update Account  # noqa: E501
 
         This API submits an account update task and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -1892,14 +1801,10 @@ class AccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_account_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_account_with_http_info(id, account_attributes,
-                                               **kwargs)  # noqa: E501
+        return self.put_account_with_http_info(id, account_attributes, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_account_with_http_info(self, id: Annotated[
-        StrictStr, Field(..., description="The account ID")],
-                                   account_attributes: AccountAttributes,
-                                   **kwargs) -> ApiResponse:  # noqa: E501
+    def put_account_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The account ID")], account_attributes : AccountAttributes, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Account  # noqa: E501
 
         This API submits an account update task and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -1940,17 +1845,29 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'account_attributes']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'account_attributes'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method put_account" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_account" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1960,6 +1877,7 @@ class AccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1978,11 +1896,11 @@ class AccountsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1998,8 +1916,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/{id}',
-            'PUT',
+            '/accounts/{id}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -2009,18 +1926,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def reload_account(self,
-                       id: Annotated[StrictStr,
-                                     Field(..., description="The account id")],
-                       **kwargs) -> AccountsAsyncResult:  # noqa: E501
+    def reload_account(self, id : Annotated[StrictStr, Field(..., description="The account id")], **kwargs) -> AccountsAsyncResult:  # noqa: E501
         """Reload Account  # noqa: E501
 
         This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -2050,9 +1963,7 @@ class AccountsApi:
         return self.reload_account_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def reload_account_with_http_info(self, id: Annotated[
-        StrictStr, Field(..., description="The account id")],
-                                      **kwargs) -> ApiResponse:  # noqa: E501
+    def reload_account_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The account id")], **kwargs) -> ApiResponse:  # noqa: E501
         """Reload Account  # noqa: E501
 
         This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -2091,17 +2002,28 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method reload_account" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method reload_account" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2111,6 +2033,7 @@ class AccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2139,8 +2062,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/{id}/reload',
-            'POST',
+            '/accounts/{id}/reload', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2150,19 +2072,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def unlock_account(self,
-                       id: Annotated[StrictStr,
-                                     Field(..., description="The account id")],
-                       account_unlock_request: AccountUnlockRequest,
-                       **kwargs) -> AccountsAsyncResult:  # noqa: E501
+    def unlock_account(self, id : Annotated[StrictStr, Field(..., description="The account id")], account_unlock_request : AccountUnlockRequest, **kwargs) -> AccountsAsyncResult:  # noqa: E501
         """Unlock Account  # noqa: E501
 
         This API submits a task to unlock an account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -2191,15 +2108,10 @@ class AccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the unlock_account_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.unlock_account_with_http_info(id, account_unlock_request,
-                                                  **kwargs)  # noqa: E501
+        return self.unlock_account_with_http_info(id, account_unlock_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def unlock_account_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="The account id")],
-            account_unlock_request: AccountUnlockRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def unlock_account_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The account id")], account_unlock_request : AccountUnlockRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Unlock Account  # noqa: E501
 
         This API submits a task to unlock an account and returns the task ID.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -2240,17 +2152,29 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'account_unlock_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'account_unlock_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method unlock_account" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method unlock_account" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2260,6 +2184,7 @@ class AccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2278,11 +2203,11 @@ class AccountsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2298,8 +2223,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/{id}/unlock',
-            'POST',
+            '/accounts/{id}/unlock', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2309,23 +2233,14 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_account(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The account ID")], request_body: Annotated[
-            conlist(Dict[str, Any]),
-            Field(
-                ...,
-                description=
-                "A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
-            )], **kwargs) -> object:  # noqa: E501
+    def update_account(self, id : Annotated[StrictStr, Field(..., description="The account ID")], request_body : Annotated[conlist(Dict[str, Any]), Field(..., description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")], **kwargs) -> object:  # noqa: E501
         """Update Account  # noqa: E501
 
         This updates account details.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -2354,19 +2269,10 @@ class AccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_account_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_account_with_http_info(id, request_body,
-                                                  **kwargs)  # noqa: E501
+        return self.update_account_with_http_info(id, request_body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_account_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The account ID")], request_body: Annotated[
-            conlist(Dict[str, Any]),
-            Field(
-                ...,
-                description=
-                "A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_account_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The account ID")], request_body : Annotated[conlist(Dict[str, Any]), Field(..., description="A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Update Account  # noqa: E501
 
         This updates account details.   A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -2407,17 +2313,29 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'request_body']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'request_body'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_account" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_account" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2427,6 +2345,7 @@ class AccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2445,12 +2364,11 @@ class AccountsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2466,8 +2384,7 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/{id}',
-            'PATCH',
+            '/accounts/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -2477,8 +2394,7 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

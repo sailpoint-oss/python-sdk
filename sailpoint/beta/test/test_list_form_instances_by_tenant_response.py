@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse  # noqa: E501
-
 
 class TestListFormInstancesByTenantResponse(unittest.TestCase):
     """ListFormInstancesByTenantResponse unit test stubs"""
@@ -26,8 +26,7 @@ class TestListFormInstancesByTenantResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> ListFormInstancesByTenantResponse:
+    def make_instance(self, include_optional) -> ListFormInstancesByTenantResponse:
         """Test ListFormInstancesByTenantResponse
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -106,7 +105,6 @@ class TestListFormInstancesByTenantResponse(unittest.TestCase):
         """Test ListFormInstancesByTenantResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

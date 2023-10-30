@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -31,7 +32,9 @@ from beta.models.source_code import SourceCode
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class ConnectorRuleManagementApi:
@@ -47,10 +50,7 @@ class ConnectorRuleManagementApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_connector_rule(self, connector_rule_create_request: Annotated[
-        ConnectorRuleCreateRequest,
-        Field(..., description="The connector rule to create")],
-                              **kwargs) -> ConnectorRuleResponse:  # noqa: E501
+    def create_connector_rule(self, connector_rule_create_request : Annotated[ConnectorRuleCreateRequest, Field(..., description="The connector rule to create")], **kwargs) -> ConnectorRuleResponse:  # noqa: E501
         """Create Connector Rule  # noqa: E501
 
         Creates a new connector rule. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -77,15 +77,10 @@ class ConnectorRuleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_connector_rule_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_connector_rule_with_http_info(
-            connector_rule_create_request, **kwargs)  # noqa: E501
+        return self.create_connector_rule_with_http_info(connector_rule_create_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_connector_rule_with_http_info(
-            self, connector_rule_create_request: Annotated[
-                ConnectorRuleCreateRequest,
-                Field(..., description="The connector rule to create")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_connector_rule_with_http_info(self, connector_rule_create_request : Annotated[ConnectorRuleCreateRequest, Field(..., description="The connector rule to create")], **kwargs) -> ApiResponse:  # noqa: E501
         """Create Connector Rule  # noqa: E501
 
         Creates a new connector rule. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -124,17 +119,28 @@ class ConnectorRuleManagementApi:
 
         _params = locals()
 
-        _all_params = ['connector_rule_create_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'connector_rule_create_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_connector_rule" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_connector_rule" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -160,11 +166,11 @@ class ConnectorRuleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -179,8 +185,7 @@ class ConnectorRuleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/connector-rules',
-            'POST',
+            '/connector-rules', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -190,18 +195,14 @@ class ConnectorRuleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_connector_rule(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the connector rule to delete")],
-                              **kwargs) -> None:  # noqa: E501
+    def delete_connector_rule(self, id : Annotated[StrictStr, Field(..., description="ID of the connector rule to delete")], **kwargs) -> None:  # noqa: E501
         """Delete a Connector-Rule  # noqa: E501
 
         Deletes the connector rule specified by the given ID. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -228,15 +229,10 @@ class ConnectorRuleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_connector_rule_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_connector_rule_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.delete_connector_rule_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_connector_rule_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the connector rule to delete")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_connector_rule_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the connector rule to delete")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete a Connector-Rule  # noqa: E501
 
         Deletes the connector rule specified by the given ID. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -275,17 +271,28 @@ class ConnectorRuleManagementApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_connector_rule" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_connector_rule" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -295,6 +302,7 @@ class ConnectorRuleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -315,8 +323,7 @@ class ConnectorRuleManagementApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/connector-rules/{id}',
-            'DELETE',
+            '/connector-rules/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -326,18 +333,14 @@ class ConnectorRuleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_connector_rule(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the connector rule to retrieve")],
-                           **kwargs) -> ConnectorRuleResponse:  # noqa: E501
+    def get_connector_rule(self, id : Annotated[StrictStr, Field(..., description="ID of the connector rule to retrieve")], **kwargs) -> ConnectorRuleResponse:  # noqa: E501
         """Connector-Rule by ID  # noqa: E501
 
         Returns the connector rule specified by ID. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -364,15 +367,10 @@ class ConnectorRuleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_connector_rule_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_connector_rule_with_http_info(id,
-                                                      **kwargs)  # noqa: E501
+        return self.get_connector_rule_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_connector_rule_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the connector rule to retrieve")],
-                                          **kwargs
-                                          ) -> ApiResponse:  # noqa: E501
+    def get_connector_rule_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the connector rule to retrieve")], **kwargs) -> ApiResponse:  # noqa: E501
         """Connector-Rule by ID  # noqa: E501
 
         Returns the connector rule specified by ID. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -411,17 +409,28 @@ class ConnectorRuleManagementApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_connector_rule" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_connector_rule" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -431,6 +440,7 @@ class ConnectorRuleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -459,8 +469,7 @@ class ConnectorRuleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/connector-rules/{id}',
-            'GET',
+            '/connector-rules/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -470,16 +479,14 @@ class ConnectorRuleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_connector_rule_list(
-            self, **kwargs) -> List[ConnectorRuleResponse]:  # noqa: E501
+    def get_connector_rule_list(self, **kwargs) -> List[ConnectorRuleResponse]:  # noqa: E501
         """List Connector Rules  # noqa: E501
 
         Returns the list of connector rules. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -504,12 +511,10 @@ class ConnectorRuleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_connector_rule_list_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_connector_rule_list_with_http_info(
-            **kwargs)  # noqa: E501
+        return self.get_connector_rule_list_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_connector_rule_list_with_http_info(
-            self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_connector_rule_list_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
         """List Connector Rules  # noqa: E501
 
         Returns the list of connector rules. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -546,17 +551,27 @@ class ConnectorRuleManagementApi:
 
         _params = locals()
 
-        _all_params = []
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_connector_rule_list" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_connector_rule_list" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -591,8 +606,7 @@ class ConnectorRuleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/connector-rules',
-            'GET',
+            '/connector-rules', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -602,24 +616,14 @@ class ConnectorRuleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_connector_rule(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the connector rule to update")],
-            connector_rule_update_request: Annotated[
-                Optional[ConnectorRuleUpdateRequest],
-                Field(description="The connector rule with updated data"
-                      )] = None,
-            **kwargs) -> ConnectorRuleResponse:  # noqa: E501
+    def update_connector_rule(self, id : Annotated[StrictStr, Field(..., description="ID of the connector rule to update")], connector_rule_update_request : Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="The connector rule with updated data")] = None, **kwargs) -> ConnectorRuleResponse:  # noqa: E501
         """Update a Connector Rule  # noqa: E501
 
         Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -648,20 +652,10 @@ class ConnectorRuleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_connector_rule_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_connector_rule_with_http_info(
-            id, connector_rule_update_request, **kwargs)  # noqa: E501
+        return self.update_connector_rule_with_http_info(id, connector_rule_update_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_connector_rule_with_http_info(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the connector rule to update")],
-            connector_rule_update_request: Annotated[
-                Optional[ConnectorRuleUpdateRequest],
-                Field(description="The connector rule with updated data"
-                      )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def update_connector_rule_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the connector rule to update")], connector_rule_update_request : Annotated[Optional[ConnectorRuleUpdateRequest], Field(description="The connector rule with updated data")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update a Connector Rule  # noqa: E501
 
         Updates an existing connector rule with the one provided in the request body. Note that the fields 'id', 'name', and 'type' are immutable. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -702,17 +696,29 @@ class ConnectorRuleManagementApi:
 
         _params = locals()
 
-        _all_params = ['id', 'connector_rule_update_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'connector_rule_update_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_connector_rule" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_connector_rule" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -722,6 +728,7 @@ class ConnectorRuleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -740,11 +747,11 @@ class ConnectorRuleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -760,8 +767,7 @@ class ConnectorRuleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/connector-rules/{id}',
-            'PUT',
+            '/connector-rules/{id}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -771,19 +777,14 @@ class ConnectorRuleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def validate_connector_rule(
-            self, source_code: Annotated[
-                SourceCode,
-                Field(..., description="The code to validate")],
-            **kwargs) -> ConnectorRuleValidationResponse:  # noqa: E501
+    def validate_connector_rule(self, source_code : Annotated[SourceCode, Field(..., description="The code to validate")], **kwargs) -> ConnectorRuleValidationResponse:  # noqa: E501
         """Validate Connector Rule  # noqa: E501
 
         Returns a list of issues within the code to fix, if any. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -810,15 +811,10 @@ class ConnectorRuleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the validate_connector_rule_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.validate_connector_rule_with_http_info(
-            source_code, **kwargs)  # noqa: E501
+        return self.validate_connector_rule_with_http_info(source_code, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def validate_connector_rule_with_http_info(
-            self, source_code: Annotated[
-                SourceCode,
-                Field(..., description="The code to validate")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def validate_connector_rule_with_http_info(self, source_code : Annotated[SourceCode, Field(..., description="The code to validate")], **kwargs) -> ApiResponse:  # noqa: E501
         """Validate Connector Rule  # noqa: E501
 
         Returns a list of issues within the code to fix, if any. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -857,17 +853,28 @@ class ConnectorRuleManagementApi:
 
         _params = locals()
 
-        _all_params = ['source_code']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'source_code'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method validate_connector_rule" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method validate_connector_rule" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -893,11 +900,11 @@ class ConnectorRuleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -912,8 +919,7 @@ class ConnectorRuleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/connector-rules/validate',
-            'POST',
+            '/connector-rules/validate', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -923,8 +929,7 @@ class ConnectorRuleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

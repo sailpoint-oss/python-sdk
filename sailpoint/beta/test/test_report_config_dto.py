@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.report_config_dto import ReportConfigDTO  # noqa: E501
-
 
 class TestReportConfigDTO(unittest.TestCase):
     """ReportConfigDTO unit test stubs"""
@@ -50,7 +50,6 @@ class TestReportConfigDTO(unittest.TestCase):
         """Test ReportConfigDTO"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.provisioning_policy import ProvisioningPolicy  # noqa: E501
-
 
 class TestProvisioningPolicy(unittest.TestCase):
     """ProvisioningPolicy unit test stubs"""
@@ -59,7 +59,6 @@ class TestProvisioningPolicy(unittest.TestCase):
         """Test ProvisioningPolicy"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

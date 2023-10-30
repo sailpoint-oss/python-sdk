@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from v3.api.certification_campaigns_api import CertificationCampaignsApi  # noqa: E501
@@ -43,6 +44,13 @@ class TestCertificationCampaignsApi(unittest.TestCase):
         """Test case for create_campaign_template
 
         Create a Campaign Template  # noqa: E501
+        """
+        pass
+
+    def test_delete_campaign_template(self) -> None:
+        """Test case for delete_campaign_template
+
+        Delete a Campaign Template  # noqa: E501
         """
         pass
 
@@ -120,6 +128,13 @@ class TestCertificationCampaignsApi(unittest.TestCase):
         """Test case for set_campaign_reports_config
 
         Set Campaign Reports Configuration  # noqa: E501
+        """
+        pass
+
+    def test_set_campaign_template_schedule(self) -> None:
+        """Test case for set_campaign_template_schedule
+
+        Sets a Campaign Template's Schedule  # noqa: E501
         """
         pass
 

@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field
 from beta.models.entitlement_access_request_config import EntitlementAccessRequestConfig
-
 
 class SourceEntitlementRequestConfig(BaseModel):
     """
     Entitlement Request Configuration  # noqa: E501
     """
-    access_request_config: Optional[EntitlementAccessRequestConfig] = Field(
-        None, alias="accessRequestConfig")
+    access_request_config: Optional[EntitlementAccessRequestConfig] = Field(None, alias="accessRequestConfig")
     __properties = ["accessRequestConfig"]
 
     class Config:
@@ -49,7 +49,10 @@ class SourceEntitlementRequestConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of access_request_config
         if self.access_request_config:
             _dict['accessRequestConfig'] = self.access_request_config.to_dict()
@@ -65,9 +68,8 @@ class SourceEntitlementRequestConfig(BaseModel):
             return SourceEntitlementRequestConfig.parse_obj(obj)
 
         _obj = SourceEntitlementRequestConfig.parse_obj({
-            "access_request_config":
-            EntitlementAccessRequestConfig.from_dict(
-                obj.get("accessRequestConfig"))
-            if obj.get("accessRequestConfig") is not None else None
+            "access_request_config": EntitlementAccessRequestConfig.from_dict(obj.get("accessRequestConfig")) if obj.get("accessRequestConfig") is not None else None
         })
         return _obj
+
+

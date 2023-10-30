@@ -11,47 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, conlist
 from beta.models.recommendation_request import RecommendationRequest
-
 
 class RecommendationRequestDto(BaseModel):
     """
     RecommendationRequestDto
     """
     requests: Optional[conlist(RecommendationRequest)] = None
-    exclude_interpretations: Optional[StrictBool] = Field(
-        False,
-        alias="excludeInterpretations",
-        description=
-        "Exclude interpretations in the response if \"true\". Return interpretations in the response if this attribute is not specified."
-    )
-    include_translation_messages: Optional[StrictBool] = Field(
-        False,
-        alias="includeTranslationMessages",
-        description=
-        "When set to true, the calling system uses the translated messages for the specified language"
-    )
-    include_debug_information: Optional[StrictBool] = Field(
-        False,
-        alias="includeDebugInformation",
-        description="Returns the recommender calculations if set to true")
-    prescribe_mode: Optional[StrictBool] = Field(
-        False,
-        alias="prescribeMode",
-        description=
-        "When set to true, uses prescribedRulesRecommenderConfig to get identity attributes and peer group threshold instead of standard config."
-    )
-    __properties = [
-        "requests", "excludeInterpretations", "includeTranslationMessages",
-        "includeDebugInformation", "prescribeMode"
-    ]
+    exclude_interpretations: Optional[StrictBool] = Field(False, alias="excludeInterpretations", description="Exclude interpretations in the response if \"true\". Return interpretations in the response if this attribute is not specified.")
+    include_translation_messages: Optional[StrictBool] = Field(False, alias="includeTranslationMessages", description="When set to true, the calling system uses the translated messages for the specified language")
+    include_debug_information: Optional[StrictBool] = Field(False, alias="includeDebugInformation", description="Returns the recommender calculations if set to true")
+    prescribe_mode: Optional[StrictBool] = Field(False, alias="prescribeMode", description="When set to true, uses prescribedRulesRecommenderConfig to get identity attributes and peer group threshold instead of standard config.")
+    __properties = ["requests", "excludeInterpretations", "includeTranslationMessages", "includeDebugInformation", "prescribeMode"]
 
     class Config:
         """Pydantic configuration"""
@@ -73,7 +53,10 @@ class RecommendationRequestDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in requests (list)
         _items = []
         if self.requests:
@@ -93,21 +76,12 @@ class RecommendationRequestDto(BaseModel):
             return RecommendationRequestDto.parse_obj(obj)
 
         _obj = RecommendationRequestDto.parse_obj({
-            "requests": [
-                RecommendationRequest.from_dict(_item)
-                for _item in obj.get("requests")
-            ] if obj.get("requests") is not None else None,
-            "exclude_interpretations":
-            obj.get("excludeInterpretations")
-            if obj.get("excludeInterpretations") is not None else False,
-            "include_translation_messages":
-            obj.get("includeTranslationMessages")
-            if obj.get("includeTranslationMessages") is not None else False,
-            "include_debug_information":
-            obj.get("includeDebugInformation")
-            if obj.get("includeDebugInformation") is not None else False,
-            "prescribe_mode":
-            obj.get("prescribeMode")
-            if obj.get("prescribeMode") is not None else False
+            "requests": [RecommendationRequest.from_dict(_item) for _item in obj.get("requests")] if obj.get("requests") is not None else None,
+            "exclude_interpretations": obj.get("excludeInterpretations") if obj.get("excludeInterpretations") is not None else False,
+            "include_translation_messages": obj.get("includeTranslationMessages") if obj.get("includeTranslationMessages") is not None else False,
+            "include_debug_information": obj.get("includeDebugInformation") if obj.get("includeDebugInformation") is not None else False,
+            "prescribe_mode": obj.get("prescribeMode") if obj.get("prescribeMode") is not None else False
         })
         return _obj
+
+

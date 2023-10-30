@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.completion_status import CompletionStatus  # noqa: E501
-
 
 class TestCompletionStatus(unittest.TestCase):
     """CompletionStatus unit test stubs"""
@@ -29,7 +29,6 @@ class TestCompletionStatus(unittest.TestCase):
     def testCompletionStatus(self):
         """Test CompletionStatus"""
         # inst = CompletionStatus()
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
@@ -22,72 +24,28 @@ from v3.models.data_access import DataAccess
 from v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from v3.models.reviewable_entitlement_account import ReviewableEntitlementAccount
 
-
 class ReviewableEntitlement(BaseModel):
     """
     ReviewableEntitlement
     """
-    id: Optional[StrictStr] = Field(None,
-                                    description="The id for the entitlement")
-    name: Optional[StrictStr] = Field(
-        None, description="The name of the entitlement")
-    description: Optional[StrictStr] = Field(
-        None, description="Information about the entitlement")
-    privileged: Optional[StrictBool] = Field(
-        False,
-        description="Indicates if the entitlement is a privileged entitlement")
+    id: Optional[StrictStr] = Field(None, description="The id for the entitlement")
+    name: Optional[StrictStr] = Field(None, description="The name of the entitlement")
+    description: Optional[StrictStr] = Field(None, description="Information about the entitlement")
+    privileged: Optional[StrictBool] = Field(False, description="Indicates if the entitlement is a privileged entitlement")
     owner: Optional[IdentityReferenceWithNameAndEmail] = None
-    attribute_name: Optional[StrictStr] = Field(
-        None,
-        alias="attributeName",
-        description="The name of the attribute on the source")
-    attribute_value: Optional[StrictStr] = Field(
-        None,
-        alias="attributeValue",
-        description="The value of the attribute on the source")
-    source_schema_object_type: Optional[StrictStr] = Field(
-        None,
-        alias="sourceSchemaObjectType",
-        description=
-        "The schema object type on the source used to represent the entitlement and its attributes"
-    )
-    source_name: Optional[StrictStr] = Field(
-        None,
-        alias="sourceName",
-        description="The name of the source for which this entitlement belongs"
-    )
-    source_type: Optional[StrictStr] = Field(
-        None,
-        alias="sourceType",
-        description="The type of the source for which the entitlement belongs")
-    has_permissions: Optional[StrictBool] = Field(
-        False,
-        alias="hasPermissions",
-        description="Indicates if the entitlement has permissions")
-    is_permission: Optional[StrictBool] = Field(
-        False,
-        alias="isPermission",
-        description=
-        "Indicates if the entitlement is a representation of an account permission"
-    )
-    revocable: Optional[StrictBool] = Field(
-        False, description="Indicates whether the entitlement can be revoked")
-    cloud_governed: Optional[StrictBool] = Field(
-        False,
-        alias="cloudGoverned",
-        description="True if the entitlement is cloud governed")
-    contains_data_access: Optional[StrictBool] = Field(
-        False,
-        alias="containsDataAccess",
-        description="True if the entitlement has DAS data")
+    attribute_name: Optional[StrictStr] = Field(None, alias="attributeName", description="The name of the attribute on the source")
+    attribute_value: Optional[StrictStr] = Field(None, alias="attributeValue", description="The value of the attribute on the source")
+    source_schema_object_type: Optional[StrictStr] = Field(None, alias="sourceSchemaObjectType", description="The schema object type on the source used to represent the entitlement and its attributes")
+    source_name: Optional[StrictStr] = Field(None, alias="sourceName", description="The name of the source for which this entitlement belongs")
+    source_type: Optional[StrictStr] = Field(None, alias="sourceType", description="The type of the source for which the entitlement belongs")
+    has_permissions: Optional[StrictBool] = Field(False, alias="hasPermissions", description="Indicates if the entitlement has permissions")
+    is_permission: Optional[StrictBool] = Field(False, alias="isPermission", description="Indicates if the entitlement is a representation of an account permission")
+    revocable: Optional[StrictBool] = Field(False, description="Indicates whether the entitlement can be revoked")
+    cloud_governed: Optional[StrictBool] = Field(False, alias="cloudGoverned", description="True if the entitlement is cloud governed")
+    contains_data_access: Optional[StrictBool] = Field(False, alias="containsDataAccess", description="True if the entitlement has DAS data")
     data_access: Optional[DataAccess] = Field(None, alias="dataAccess")
     account: Optional[ReviewableEntitlementAccount] = None
-    __properties = [
-        "id", "name", "description", "privileged", "owner", "attributeName",
-        "attributeValue", "sourceSchemaObjectType", "sourceName", "sourceType",
-        "hasPermissions", "isPermission", "revocable", "cloudGoverned",
-        "containsDataAccess", "dataAccess", "account"
-    ]
+    __properties = ["id", "name", "description", "privileged", "owner", "attributeName", "attributeValue", "sourceSchemaObjectType", "sourceName", "sourceType", "hasPermissions", "isPermission", "revocable", "cloudGoverned", "containsDataAccess", "dataAccess", "account"]
 
     class Config:
         """Pydantic configuration"""
@@ -109,7 +67,10 @@ class ReviewableEntitlement(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -151,48 +112,24 @@ class ReviewableEntitlement(BaseModel):
             return ReviewableEntitlement.parse_obj(obj)
 
         _obj = ReviewableEntitlement.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "privileged":
-            obj.get("privileged")
-            if obj.get("privileged") is not None else False,
-            "owner":
-            IdentityReferenceWithNameAndEmail.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "attribute_name":
-            obj.get("attributeName"),
-            "attribute_value":
-            obj.get("attributeValue"),
-            "source_schema_object_type":
-            obj.get("sourceSchemaObjectType"),
-            "source_name":
-            obj.get("sourceName"),
-            "source_type":
-            obj.get("sourceType"),
-            "has_permissions":
-            obj.get("hasPermissions")
-            if obj.get("hasPermissions") is not None else False,
-            "is_permission":
-            obj.get("isPermission")
-            if obj.get("isPermission") is not None else False,
-            "revocable":
-            obj.get("revocable")
-            if obj.get("revocable") is not None else False,
-            "cloud_governed":
-            obj.get("cloudGoverned")
-            if obj.get("cloudGoverned") is not None else False,
-            "contains_data_access":
-            obj.get("containsDataAccess")
-            if obj.get("containsDataAccess") is not None else False,
-            "data_access":
-            DataAccess.from_dict(obj.get("dataAccess"))
-            if obj.get("dataAccess") is not None else None,
-            "account":
-            ReviewableEntitlementAccount.from_dict(obj.get("account"))
-            if obj.get("account") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "privileged": obj.get("privileged") if obj.get("privileged") is not None else False,
+            "owner": IdentityReferenceWithNameAndEmail.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "attribute_name": obj.get("attributeName"),
+            "attribute_value": obj.get("attributeValue"),
+            "source_schema_object_type": obj.get("sourceSchemaObjectType"),
+            "source_name": obj.get("sourceName"),
+            "source_type": obj.get("sourceType"),
+            "has_permissions": obj.get("hasPermissions") if obj.get("hasPermissions") is not None else False,
+            "is_permission": obj.get("isPermission") if obj.get("isPermission") is not None else False,
+            "revocable": obj.get("revocable") if obj.get("revocable") is not None else False,
+            "cloud_governed": obj.get("cloudGoverned") if obj.get("cloudGoverned") is not None else False,
+            "contains_data_access": obj.get("containsDataAccess") if obj.get("containsDataAccess") is not None else False,
+            "data_access": DataAccess.from_dict(obj.get("dataAccess")) if obj.get("dataAccess") is not None else None,
+            "account": ReviewableEntitlementAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None
         })
         return _obj
+
+

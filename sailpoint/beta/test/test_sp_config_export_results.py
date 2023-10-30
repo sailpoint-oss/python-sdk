@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.sp_config_export_results import SpConfigExportResults  # noqa: E501
-
 
 class TestSpConfigExportResults(unittest.TestCase):
     """SpConfigExportResults unit test stubs"""
@@ -51,7 +51,7 @@ class TestSpConfigExportResults(unittest.TestCase):
                 objects = [
                     beta.models.config_object_for_export_and_import.Config Object for Export and Import(
                         version = 1, 
-                        self = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                        self = beta.models.base_reference_dto.BaseReferenceDto(
                             type = 'IDENTITY', 
                             id = '2c91808568c529c60168cca6f90c1313', 
                             name = 'William Wilson', ), 
@@ -67,7 +67,6 @@ class TestSpConfigExportResults(unittest.TestCase):
         """Test SpConfigExportResults"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

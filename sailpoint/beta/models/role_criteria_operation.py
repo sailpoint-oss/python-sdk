@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class RoleCriteriaOperation(str, Enum):
     """
     An operation
     """
+
     """
     allowed enum values
     """
@@ -36,3 +41,5 @@ class RoleCriteriaOperation(str, Enum):
     def from_json(cls, json_str: str) -> RoleCriteriaOperation:
         """Create an instance of RoleCriteriaOperation from a JSON string"""
         return RoleCriteriaOperation(json.loads(json_str))
+
+

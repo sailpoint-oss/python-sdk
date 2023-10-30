@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.sod_policy import SodPolicy  # noqa: E501
-
 
 class TestSodPolicy(unittest.TestCase):
     """SodPolicy unit test stubs"""
@@ -41,7 +41,7 @@ class TestSodPolicy(unittest.TestCase):
                 created = '2020-01-01T00:00Z',
                 modified = '2020-01-01T00:00Z',
                 description = 'This policy ensures compliance of xyz',
-                owner_ref = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                owner_ref = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
@@ -69,7 +69,6 @@ class TestSodPolicy(unittest.TestCase):
         """Test SodPolicy"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

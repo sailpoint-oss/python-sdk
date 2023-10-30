@@ -11,14 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
-from beta.models.mfa_config import MfaConfig  # noqa: E501
+from beta.models.mfa_duo_config import MfaDuoConfig  # noqa: E501
 
-
-class TestMfaConfig(unittest.TestCase):
-    """MfaConfig unit test stubs"""
+class TestMfaDuoConfig(unittest.TestCase):
+    """MfaDuoConfig unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,31 +26,32 @@ class TestMfaConfig(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> MfaConfig:
-        """Test MfaConfig
+    def make_instance(self, include_optional) -> MfaDuoConfig:
+        """Test MfaDuoConfig
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `MfaConfig`
+        # uncomment below to create an instance of `MfaDuoConfig`
         """
-        model = MfaConfig()  # noqa: E501
+        model = MfaDuoConfig()  # noqa: E501
         if include_optional:
-            return MfaConfig(
+            return MfaDuoConfig(
+                mfa_method = 'duo-web',
                 enabled = True,
                 host = 'example.com',
-                access_key = '',
-                identity_attribute = 'email'
+                access_key = 'qw123Y3QlA5UqocYpdU3rEkzrK2D497y',
+                identity_attribute = 'email',
+                config_properties = {skey=qwERttyZx1CdlQye2Vwtbsjr3HKddy4BAiCXjc5x, ikey=Q123WE45R6TY7890ZXCV}
             )
         else:
-            return MfaConfig(
+            return MfaDuoConfig(
         )
         """
 
-    def testMfaConfig(self):
-        """Test MfaConfig"""
+    def testMfaDuoConfig(self):
+        """Test MfaDuoConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

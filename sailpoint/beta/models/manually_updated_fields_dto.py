@@ -11,31 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool
-
 
 class ManuallyUpdatedFieldsDTO(BaseModel):
     """
     ManuallyUpdatedFieldsDTO
     """
-    display_name: Optional[StrictBool] = Field(
-        False,
-        alias="DISPLAY_NAME",
-        description=
-        "True if the entitlements name was updated manually via entitlement import csv or patch endpoint.  False means that property value has not been change after first entitlement aggregation. Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `name` property."
-    )
-    description: Optional[StrictBool] = Field(
-        False,
-        alias="DESCRIPTION",
-        description=
-        "True if the entitlement description was updated manually via entitlement import csv or patch endpoint.  False means that property value has not been change after first entitlement aggregation. Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `description` property."
-    )
+    display_name: Optional[StrictBool] = Field(False, alias="DISPLAY_NAME", description="True if the entitlements name was updated manually via entitlement import csv or patch endpoint.  False means that property value has not been change after first entitlement aggregation. Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `name` property.")
+    description: Optional[StrictBool] = Field(False, alias="DESCRIPTION", description="True if the entitlement description was updated manually via entitlement import csv or patch endpoint.  False means that property value has not been change after first entitlement aggregation. Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `description` property.")
     __properties = ["DISPLAY_NAME", "DESCRIPTION"]
 
     class Config:
@@ -58,7 +49,10 @@ class ManuallyUpdatedFieldsDTO(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,11 +65,9 @@ class ManuallyUpdatedFieldsDTO(BaseModel):
             return ManuallyUpdatedFieldsDTO.parse_obj(obj)
 
         _obj = ManuallyUpdatedFieldsDTO.parse_obj({
-            "display_name":
-            obj.get("DISPLAY_NAME")
-            if obj.get("DISPLAY_NAME") is not None else False,
-            "description":
-            obj.get("DESCRIPTION")
-            if obj.get("DESCRIPTION") is not None else False
+            "display_name": obj.get("DISPLAY_NAME") if obj.get("DISPLAY_NAME") is not None else False,
+            "description": obj.get("DESCRIPTION") if obj.get("DESCRIPTION") is not None else False
         })
         return _obj
+
+

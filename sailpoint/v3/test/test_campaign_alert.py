@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.campaign_alert import CampaignAlert  # noqa: E501
-
 
 class TestCampaignAlert(unittest.TestCase):
     """CampaignAlert unit test stubs"""
@@ -53,7 +53,6 @@ class TestCampaignAlert(unittest.TestCase):
         """Test CampaignAlert"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

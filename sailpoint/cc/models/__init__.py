@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from cc.models.create_application_request import CreateApplicationRequest
 from cc.models.create_connector_request import CreateConnectorRequest

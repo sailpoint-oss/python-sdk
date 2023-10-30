@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.create_scheduled_search_request import CreateScheduledSearchRequest  # noqa: E501
-
 
 class TestCreateScheduledSearchRequest(unittest.TestCase):
     """CreateScheduledSearchRequest unit test stubs"""
@@ -77,7 +77,6 @@ class TestCreateScheduledSearchRequest(unittest.TestCase):
         """Test CreateScheduledSearchRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

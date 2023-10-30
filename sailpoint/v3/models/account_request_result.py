@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class AccountRequestResult(BaseModel):
     """
     AccountRequestResult
     """
     errors: Optional[conlist(StrictStr)] = None
-    status: Optional[StrictStr] = Field(
-        None, description="The status of the account request")
+    status: Optional[StrictStr] = Field(None, description="The status of the account request")
     ticket_id: Optional[StrictStr] = Field(None, alias="ticketId")
     __properties = ["errors", "status", "ticketId"]
 
@@ -50,7 +50,10 @@ class AccountRequestResult(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if ticket_id (nullable) is None
         # and __fields_set__ contains the field
         if self.ticket_id is None and "ticket_id" in self.__fields_set__:
@@ -73,3 +76,5 @@ class AccountRequestResult(BaseModel):
             "ticket_id": obj.get("ticketId")
         })
         return _obj
+
+

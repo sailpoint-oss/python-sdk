@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from v3.api.certification_campaign_filters_api import CertificationCampaignFiltersApi  # noqa: E501
@@ -36,6 +37,13 @@ class TestCertificationCampaignFiltersApi(unittest.TestCase):
         """Test case for get_campaign_filter_by_id
 
         Get Campaign Filter by ID  # noqa: E501
+        """
+        pass
+
+    def test_update_campaign_filter(self) -> None:
+        """Test case for update_campaign_filter
+
+        Updates a Campaign Filter  # noqa: E501
         """
         pass
 

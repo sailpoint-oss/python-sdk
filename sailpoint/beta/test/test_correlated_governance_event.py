@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.correlated_governance_event import CorrelatedGovernanceEvent  # noqa: E501
-
 
 class TestCorrelatedGovernanceEvent(unittest.TestCase):
     """CorrelatedGovernanceEvent unit test stubs"""
@@ -55,7 +55,6 @@ class TestCorrelatedGovernanceEvent(unittest.TestCase):
         """Test CorrelatedGovernanceEvent"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,31 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
 from beta.models.condition_effect import ConditionEffect
 from beta.models.condition_rule import ConditionRule
 
-
 class FormCondition(BaseModel):
     """
     Represent a form conditional.  # noqa: E501
     """
-    rule_operator: Optional[StrictStr] = Field(
-        None,
-        alias="ruleOperator",
-        description=
-        "ConditionRuleLogicalOperatorType value. AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr"
-    )
-    rules: Optional[conlist(ConditionRule)] = Field(
-        None, description="List of rules.")
-    effects: Optional[conlist(ConditionEffect)] = Field(
-        None, description="List of effects.")
+    rule_operator: Optional[StrictStr] = Field(None, alias="ruleOperator", description="ConditionRuleLogicalOperatorType value. AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr")
+    rules: Optional[conlist(ConditionRule)] = Field(None, description="List of rules.")
+    effects: Optional[conlist(ConditionEffect)] = Field(None, description="List of effects.")
     __properties = ["ruleOperator", "rules", "effects"]
 
     @validator('rule_operator')
@@ -68,7 +62,10 @@ class FormCondition(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in rules (list)
         _items = []
         if self.rules:
@@ -95,13 +92,10 @@ class FormCondition(BaseModel):
             return FormCondition.parse_obj(obj)
 
         _obj = FormCondition.parse_obj({
-            "rule_operator":
-            obj.get("ruleOperator"),
-            "rules":
-            [ConditionRule.from_dict(_item) for _item in obj.get("rules")]
-            if obj.get("rules") is not None else None,
-            "effects":
-            [ConditionEffect.from_dict(_item) for _item in obj.get("effects")]
-            if obj.get("effects") is not None else None
+            "rule_operator": obj.get("ruleOperator"),
+            "rules": [ConditionRule.from_dict(_item) for _item in obj.get("rules")] if obj.get("rules") is not None else None,
+            "effects": [ConditionEffect.from_dict(_item) for _item in obj.get("effects")] if obj.get("effects") is not None else None
         })
         return _obj
+
+

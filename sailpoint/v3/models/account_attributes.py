@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict
 from pydantic import BaseModel, Field
-
 
 class AccountAttributes(BaseModel):
     """
     AccountAttributes
     """
-    attributes: Dict[str, Any] = Field(
-        ..., description="The schema attribute values for the account")
+    attributes: Dict[str, Any] = Field(..., description="The schema attribute values for the account")
     __properties = ["attributes"]
 
     class Config:
@@ -48,7 +48,10 @@ class AccountAttributes(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -60,6 +63,9 @@ class AccountAttributes(BaseModel):
         if not isinstance(obj, dict):
             return AccountAttributes.parse_obj(obj)
 
-        _obj = AccountAttributes.parse_obj(
-            {"attributes": obj.get("attributes")})
+        _obj = AccountAttributes.parse_obj({
+            "attributes": obj.get("attributes")
+        })
         return _obj
+
+

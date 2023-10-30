@@ -11,23 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class CertifierResponse(BaseModel):
     """
     CertifierResponse
     """
-    id: Optional[StrictStr] = Field(None,
-                                    description="the id of the certifier")
-    display_name: Optional[StrictStr] = Field(
-        None, alias="displayName", description="the name of the certifier")
+    id: Optional[StrictStr] = Field(None, description="the id of the certifier")
+    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="the name of the certifier")
     __properties = ["id", "displayName"]
 
     class Config:
@@ -50,7 +49,10 @@ class CertifierResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +65,9 @@ class CertifierResponse(BaseModel):
             return CertifierResponse.parse_obj(obj)
 
         _obj = CertifierResponse.parse_obj({
-            "id":
-            obj.get("id"),
-            "display_name":
-            obj.get("displayName")
+            "id": obj.get("id"),
+            "display_name": obj.get("displayName")
         })
         return _obj
+
+

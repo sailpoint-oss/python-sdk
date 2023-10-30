@@ -11,30 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.reassignment_type_enum import ReassignmentTypeEnum
-
 
 class LookupStep(BaseModel):
     """
     The definition of an Identity according to the Reassignment Configuration service  # noqa: E501
     """
-    reassigned_to_id: Optional[StrictStr] = Field(
-        None,
-        alias="reassignedToId",
-        description="The ID of the Identity who work is reassigned to")
-    reassigned_from_id: Optional[StrictStr] = Field(
-        None,
-        alias="reassignedFromId",
-        description="The ID of the Identity who work is reassigned from")
-    reassignment_type: Optional[ReassignmentTypeEnum] = Field(
-        None, alias="reassignmentType")
+    reassigned_to_id: Optional[StrictStr] = Field(None, alias="reassignedToId", description="The ID of the Identity who work is reassigned to")
+    reassigned_from_id: Optional[StrictStr] = Field(None, alias="reassignedFromId", description="The ID of the Identity who work is reassigned from")
+    reassignment_type: Optional[ReassignmentTypeEnum] = Field(None, alias="reassignmentType")
     __properties = ["reassignedToId", "reassignedFromId", "reassignmentType"]
 
     class Config:
@@ -57,7 +51,10 @@ class LookupStep(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -70,11 +67,10 @@ class LookupStep(BaseModel):
             return LookupStep.parse_obj(obj)
 
         _obj = LookupStep.parse_obj({
-            "reassigned_to_id":
-            obj.get("reassignedToId"),
-            "reassigned_from_id":
-            obj.get("reassignedFromId"),
-            "reassignment_type":
-            obj.get("reassignmentType")
+            "reassigned_to_id": obj.get("reassignedToId"),
+            "reassigned_from_id": obj.get("reassignedFromId"),
+            "reassignment_type": obj.get("reassignmentType")
         })
         return _obj
+
+

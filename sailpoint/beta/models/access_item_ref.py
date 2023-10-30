@@ -11,25 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class AccessItemRef(BaseModel):
     """
     AccessItemRef
     """
-    id: Optional[StrictStr] = Field(
-        None,
-        description=
-        "The ID of the access item for which to retrieve the recommendation")
-    type: Optional[StrictStr] = Field(
-        None, description="The type of the access item.")
+    id: Optional[StrictStr] = Field(None, description="The ID of the access item for which to retrieve the recommendation")
+    type: Optional[StrictStr] = Field(None, description="The type of the access item.")
     __properties = ["id", "type"]
 
     @validator('type')
@@ -39,9 +36,7 @@ class AccessItemRef(BaseModel):
             return value
 
         if value not in ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE'):
-            raise ValueError(
-                "must be one of enum values ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE')"
-            )
+            raise ValueError("must be one of enum values ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE')")
         return value
 
     class Config:
@@ -64,7 +59,10 @@ class AccessItemRef(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,3 +79,5 @@ class AccessItemRef(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

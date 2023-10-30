@@ -11,23 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field
-
 
 class FormDefinitionDynamicSchemaResponse(BaseModel):
     """
     FormDefinitionDynamicSchemaResponse
     """
-    output_schema: Optional[Dict[str, Dict[str, Any]]] = Field(
-        None,
-        alias="outputSchema",
-        description="OutputSchema holds a JSON schema generated dynamically")
+    output_schema: Optional[Dict[str, Dict[str, Any]]] = Field(None, alias="outputSchema", description="OutputSchema holds a JSON schema generated dynamically")
     __properties = ["outputSchema"]
 
     class Config:
@@ -50,7 +48,10 @@ class FormDefinitionDynamicSchemaResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -62,6 +63,9 @@ class FormDefinitionDynamicSchemaResponse(BaseModel):
         if not isinstance(obj, dict):
             return FormDefinitionDynamicSchemaResponse.parse_obj(obj)
 
-        _obj = FormDefinitionDynamicSchemaResponse.parse_obj(
-            {"output_schema": obj.get("outputSchema")})
+        _obj = FormDefinitionDynamicSchemaResponse.parse_obj({
+            "output_schema": obj.get("outputSchema")
+        })
         return _obj
+
+

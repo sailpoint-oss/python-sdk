@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -29,7 +30,9 @@ from v3.models.search_arguments import SearchArguments
 from v3.api_client import ApiClient
 from v3.api_response import ApiResponse
 from v3.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class SavedSearchApi:
@@ -45,10 +48,7 @@ class SavedSearchApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_saved_search(self, create_saved_search_request: Annotated[
-        CreateSavedSearchRequest,
-        Field(..., description="The saved search to persist.")],
-                            **kwargs) -> SavedSearch:  # noqa: E501
+    def create_saved_search(self, create_saved_search_request : Annotated[CreateSavedSearchRequest, Field(..., description="The saved search to persist.")], **kwargs) -> SavedSearch:  # noqa: E501
         """Create a saved search  # noqa: E501
 
         Creates a new saved search.   # noqa: E501
@@ -75,15 +75,10 @@ class SavedSearchApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_saved_search_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_saved_search_with_http_info(
-            create_saved_search_request, **kwargs)  # noqa: E501
+        return self.create_saved_search_with_http_info(create_saved_search_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_saved_search_with_http_info(
-            self, create_saved_search_request: Annotated[
-                CreateSavedSearchRequest,
-                Field(..., description="The saved search to persist.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_saved_search_with_http_info(self, create_saved_search_request : Annotated[CreateSavedSearchRequest, Field(..., description="The saved search to persist.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Create a saved search  # noqa: E501
 
         Creates a new saved search.   # noqa: E501
@@ -122,17 +117,28 @@ class SavedSearchApi:
 
         _params = locals()
 
-        _all_params = ['create_saved_search_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'create_saved_search_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_saved_search" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_saved_search" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -158,11 +164,11 @@ class SavedSearchApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -174,8 +180,7 @@ class SavedSearchApi:
         }
 
         return self.api_client.call_api(
-            '/saved-searches',
-            'POST',
+            '/saved-searches', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -185,18 +190,14 @@ class SavedSearchApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_saved_search(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the requested document.")],
-                            **kwargs) -> None:  # noqa: E501
+    def delete_saved_search(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], **kwargs) -> None:  # noqa: E501
         """Delete document by ID  # noqa: E501
 
         Deletes the specified saved search.   # noqa: E501
@@ -223,15 +224,10 @@ class SavedSearchApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_saved_search_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_saved_search_with_http_info(id,
-                                                       **kwargs)  # noqa: E501
+        return self.delete_saved_search_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_saved_search_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the requested document.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_saved_search_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete document by ID  # noqa: E501
 
         Deletes the specified saved search.   # noqa: E501
@@ -270,17 +266,28 @@ class SavedSearchApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_saved_search" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_saved_search" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -290,6 +297,7 @@ class SavedSearchApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -310,8 +318,7 @@ class SavedSearchApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/saved-searches/{id}',
-            'DELETE',
+            '/saved-searches/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -321,25 +328,14 @@ class SavedSearchApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def execute_saved_search(self, id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="ID of the requested document."
-        )], search_arguments: Annotated[
-            SearchArguments,
-            Field(
-                ...,
-                description=
-                "When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. "
-            )], **kwargs) -> None:  # noqa: E501
+    def execute_saved_search(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], search_arguments : Annotated[SearchArguments, Field(..., description="When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. ")], **kwargs) -> None:  # noqa: E501
         """Execute a saved search by ID  # noqa: E501
 
         Executes the specified saved search.   # noqa: E501
@@ -368,21 +364,10 @@ class SavedSearchApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the execute_saved_search_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.execute_saved_search_with_http_info(
-            id, search_arguments, **kwargs)  # noqa: E501
+        return self.execute_saved_search_with_http_info(id, search_arguments, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def execute_saved_search_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="ID of the requested document."
-        )], search_arguments: Annotated[
-            SearchArguments,
-            Field(
-                ...,
-                description=
-                "When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. "
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def execute_saved_search_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], search_arguments : Annotated[SearchArguments, Field(..., description="When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. ")], **kwargs) -> ApiResponse:  # noqa: E501
         """Execute a saved search by ID  # noqa: E501
 
         Executes the specified saved search.   # noqa: E501
@@ -423,17 +408,29 @@ class SavedSearchApi:
 
         _params = locals()
 
-        _all_params = ['id', 'search_arguments']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'search_arguments'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method execute_saved_search" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method execute_saved_search" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -443,6 +440,7 @@ class SavedSearchApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -461,11 +459,11 @@ class SavedSearchApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -473,8 +471,7 @@ class SavedSearchApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/saved-searches/{id}/execute',
-            'POST',
+            '/saved-searches/{id}/execute', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -484,18 +481,14 @@ class SavedSearchApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_saved_search(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the requested document.")],
-                         **kwargs) -> SavedSearch:  # noqa: E501
+    def get_saved_search(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], **kwargs) -> SavedSearch:  # noqa: E501
         """Return saved search by ID  # noqa: E501
 
         Returns the specified saved search.   # noqa: E501
@@ -525,10 +518,7 @@ class SavedSearchApi:
         return self.get_saved_search_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_saved_search_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the requested document.")],
-                                        **kwargs) -> ApiResponse:  # noqa: E501
+    def get_saved_search_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Return saved search by ID  # noqa: E501
 
         Returns the specified saved search.   # noqa: E501
@@ -567,17 +557,28 @@ class SavedSearchApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_saved_search" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_saved_search" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -587,6 +588,7 @@ class SavedSearchApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -615,8 +617,7 @@ class SavedSearchApi:
         }
 
         return self.api_client.call_api(
-            '/saved-searches/{id}',
-            'GET',
+            '/saved-searches/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -626,45 +627,14 @@ class SavedSearchApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_saved_searches(
-            self,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "An expression used to constrain the result set using the filtering syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results).  Allowed filter properties: *owner.id*, *public*  Allowed filter operator: *eq*  **Example filters**:  ```owner.id eq \"0de46054-fe90-434a-b84e-c6b3359d0c64\"``` -- returns saved searches for the specified owner ID  ```public eq true``` -- returns all public saved searches  ```owner.id eq me or public eq true``` -- returns all of the current user's saved searches as well as all public saved searches belonging to other users in the current org "
-            )] = None,
-            **kwargs) -> List[SavedSearch]:  # noqa: E501
+    def list_saved_searches(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="An expression used to constrain the result set using the filtering syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results).  Allowed filter properties: *owner.id*, *public*  Allowed filter operator: *eq*  **Example filters**:  ```owner.id eq \"0de46054-fe90-434a-b84e-c6b3359d0c64\"``` -- returns saved searches for the specified owner ID  ```public eq true``` -- returns all public saved searches  ```owner.id eq me or public eq true``` -- returns all of the current user's saved searches as well as all public saved searches belonging to other users in the current org ")] = None, **kwargs) -> List[SavedSearch]:  # noqa: E501
         """Return a list of Saved Searches  # noqa: E501
 
         Returns a list of saved searches.   # noqa: E501
@@ -697,42 +667,10 @@ class SavedSearchApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_saved_searches_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_saved_searches_with_http_info(offset, limit, count,
-                                                       filters,
-                                                       **kwargs)  # noqa: E501
+        return self.list_saved_searches_with_http_info(offset, limit, count, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_saved_searches_with_http_info(
-            self,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "An expression used to constrain the result set using the filtering syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results).  Allowed filter properties: *owner.id*, *public*  Allowed filter operator: *eq*  **Example filters**:  ```owner.id eq \"0de46054-fe90-434a-b84e-c6b3359d0c64\"``` -- returns saved searches for the specified owner ID  ```public eq true``` -- returns all public saved searches  ```owner.id eq me or public eq true``` -- returns all of the current user's saved searches as well as all public saved searches belonging to other users in the current org "
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_saved_searches_with_http_info(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="An expression used to constrain the result set using the filtering syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results).  Allowed filter properties: *owner.id*, *public*  Allowed filter operator: *eq*  **Example filters**:  ```owner.id eq \"0de46054-fe90-434a-b84e-c6b3359d0c64\"``` -- returns saved searches for the specified owner ID  ```public eq true``` -- returns all public saved searches  ```owner.id eq me or public eq true``` -- returns all of the current user's saved searches as well as all public saved searches belonging to other users in the current org ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Return a list of Saved Searches  # noqa: E501
 
         Returns a list of saved searches.   # noqa: E501
@@ -777,17 +715,31 @@ class SavedSearchApi:
 
         _params = locals()
 
-        _all_params = ['offset', 'limit', 'count', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'offset',
+            'limit',
+            'count',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_saved_searches" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_saved_searches" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -831,8 +783,7 @@ class SavedSearchApi:
         }
 
         return self.api_client.call_api(
-            '/saved-searches',
-            'GET',
+            '/saved-searches', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -842,22 +793,14 @@ class SavedSearchApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_saved_search(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the requested document.")],
-            saved_search: Annotated[
-                SavedSearch,
-                Field(..., description="The saved search to persist.")],
-            **kwargs) -> SavedSearch:  # noqa: E501
+    def put_saved_search(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], saved_search : Annotated[SavedSearch, Field(..., description="The saved search to persist.")], **kwargs) -> SavedSearch:  # noqa: E501
         """Updates an existing saved search   # noqa: E501
 
         Updates an existing saved search.   >**NOTE: You cannot update the `owner` of the saved search.**   # noqa: E501
@@ -886,18 +829,10 @@ class SavedSearchApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_saved_search_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_saved_search_with_http_info(id, saved_search,
-                                                    **kwargs)  # noqa: E501
+        return self.put_saved_search_with_http_info(id, saved_search, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_saved_search_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the requested document.")],
-            saved_search: Annotated[
-                SavedSearch,
-                Field(..., description="The saved search to persist.")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def put_saved_search_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], saved_search : Annotated[SavedSearch, Field(..., description="The saved search to persist.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Updates an existing saved search   # noqa: E501
 
         Updates an existing saved search.   >**NOTE: You cannot update the `owner` of the saved search.**   # noqa: E501
@@ -938,17 +873,29 @@ class SavedSearchApi:
 
         _params = locals()
 
-        _all_params = ['id', 'saved_search']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'saved_search'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method put_saved_search" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method put_saved_search" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -958,6 +905,7 @@ class SavedSearchApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -976,11 +924,11 @@ class SavedSearchApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -995,8 +943,7 @@ class SavedSearchApi:
         }
 
         return self.api_client.call_api(
-            '/saved-searches/{id}',
-            'PUT',
+            '/saved-searches/{id}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -1006,8 +953,7 @@ class SavedSearchApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

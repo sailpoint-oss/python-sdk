@@ -11,23 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.base_reference_dto1 import BaseReferenceDto1
-
+from beta.models.base_reference_dto import BaseReferenceDto
 
 class TaggedObject(BaseModel):
     """
     TaggedObject
     """
-    object_ref: Optional[BaseReferenceDto1] = Field(None, alias="objectRef")
-    tags: Optional[conlist(StrictStr)] = Field(
-        None, description="Labels to be applied to an Object")
+    object_ref: Optional[BaseReferenceDto] = Field(None, alias="objectRef")
+    tags: Optional[conlist(StrictStr)] = Field(None, description="Labels to be applied to an Object")
     __properties = ["objectRef", "tags"]
 
     class Config:
@@ -50,7 +50,10 @@ class TaggedObject(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of object_ref
         if self.object_ref:
             _dict['objectRef'] = self.object_ref.to_dict()
@@ -66,10 +69,9 @@ class TaggedObject(BaseModel):
             return TaggedObject.parse_obj(obj)
 
         _obj = TaggedObject.parse_obj({
-            "object_ref":
-            BaseReferenceDto1.from_dict(obj.get("objectRef"))
-            if obj.get("objectRef") is not None else None,
-            "tags":
-            obj.get("tags")
+            "object_ref": BaseReferenceDto.from_dict(obj.get("objectRef")) if obj.get("objectRef") is not None else None,
+            "tags": obj.get("tags")
         })
         return _obj
+
+

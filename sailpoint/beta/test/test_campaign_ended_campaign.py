@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.campaign_ended_campaign import CampaignEndedCampaign  # noqa: E501
-
 
 class TestCampaignEndedCampaign(unittest.TestCase):
     """CampaignEndedCampaign unit test stubs"""
@@ -69,7 +69,6 @@ class TestCampaignEndedCampaign(unittest.TestCase):
         """Test CampaignEndedCampaign"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

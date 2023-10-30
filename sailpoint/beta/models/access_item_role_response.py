@@ -11,35 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class AccessItemRoleResponse(BaseModel):
     """
     AccessItemRoleResponse
     """
-    access_type: Optional[StrictStr] = Field(
-        None,
-        alias="accessType",
-        description="the access item type. role in this case")
+    access_type: Optional[StrictStr] = Field(None, alias="accessType", description="the access item type. role in this case")
     id: Optional[StrictStr] = Field(None, description="the access item id")
-    display_name: Optional[StrictStr] = Field(
-        None, alias="displayName", description="the role display name")
-    description: Optional[StrictStr] = Field(
-        None, description="the description for the role")
-    source_name: Optional[StrictStr] = Field(
-        None,
-        alias="sourceName",
-        description="the associated source name if it exists")
-    __properties = [
-        "accessType", "id", "displayName", "description", "sourceName"
-    ]
+    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="the role display name")
+    description: Optional[StrictStr] = Field(None, description="the description for the role")
+    source_name: Optional[StrictStr] = Field(None, alias="sourceName", description="the associated source name if it exists")
+    __properties = ["accessType", "id", "displayName", "description", "sourceName"]
 
     class Config:
         """Pydantic configuration"""
@@ -61,7 +52,10 @@ class AccessItemRoleResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -74,15 +68,12 @@ class AccessItemRoleResponse(BaseModel):
             return AccessItemRoleResponse.parse_obj(obj)
 
         _obj = AccessItemRoleResponse.parse_obj({
-            "access_type":
-            obj.get("accessType"),
-            "id":
-            obj.get("id"),
-            "display_name":
-            obj.get("displayName"),
-            "description":
-            obj.get("description"),
-            "source_name":
-            obj.get("sourceName")
+            "access_type": obj.get("accessType"),
+            "id": obj.get("id"),
+            "display_name": obj.get("displayName"),
+            "description": obj.get("description"),
+            "source_name": obj.get("sourceName")
         })
         return _obj
+
+

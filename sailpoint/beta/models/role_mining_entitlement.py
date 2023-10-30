@@ -11,43 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr
-from beta.models.role_mining_entitlement_ref import RoleMiningEntitlementRef
 
+from typing import Optional, Union
+from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr
+from beta.models.role_mining_entitlement_ref import RoleMiningEntitlementRef
 
 class RoleMiningEntitlement(BaseModel):
     """
     RoleMiningEntitlement
     """
-    entitlement_ref: Optional[RoleMiningEntitlementRef] = Field(
-        None, alias="entitlementRef")
-    name: Optional[StrictStr] = Field(None,
-                                      description="Name of the entitlement")
-    application_name: Optional[StrictStr] = Field(
-        None,
-        alias="applicationName",
-        description="Application name of the entitlement")
-    identity_count: Optional[StrictInt] = Field(
-        None,
-        alias="identityCount",
-        description="The number of identities with this entitlement in a role."
-    )
-    popularity: Optional[StrictInt] = Field(
-        None, description="The % popularity of this entitlement in a role.")
-    popularity_in_org: Optional[StrictInt] = Field(
-        None,
-        alias="popularityInOrg",
-        description="TThe % popularity of this entitlement in the org.")
-    __properties = [
-        "entitlementRef", "name", "applicationName", "identityCount",
-        "popularity", "popularityInOrg"
-    ]
+    entitlement_ref: Optional[RoleMiningEntitlementRef] = Field(None, alias="entitlementRef")
+    name: Optional[StrictStr] = Field(None, description="Name of the entitlement")
+    application_name: Optional[StrictStr] = Field(None, alias="applicationName", description="Application name of the entitlement")
+    identity_count: Optional[StrictInt] = Field(None, alias="identityCount", description="The number of identities with this entitlement in a role.")
+    popularity: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="The % popularity of this entitlement in a role.")
+    popularity_in_org: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="popularityInOrg", description="The % popularity of this entitlement in the org.")
+    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="The ID of the source/application.")
+    activity_source_state: Optional[StrictStr] = Field(None, alias="activitySourceState", description="The status of activity data for the source.   Value is complete or notComplete.")
+    source_usage_percent: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="sourceUsagePercent", description="The percentage of identities in the potential role that have usage of the source/application of this entitlement.")
+    __properties = ["entitlementRef", "name", "applicationName", "identityCount", "popularity", "popularityInOrg", "sourceId", "activitySourceState", "sourceUsagePercent"]
 
     class Config:
         """Pydantic configuration"""
@@ -69,10 +57,23 @@ class RoleMiningEntitlement(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of entitlement_ref
         if self.entitlement_ref:
             _dict['entitlementRef'] = self.entitlement_ref.to_dict()
+        # set to None if activity_source_state (nullable) is None
+        # and __fields_set__ contains the field
+        if self.activity_source_state is None and "activity_source_state" in self.__fields_set__:
+            _dict['activitySourceState'] = None
+
+        # set to None if source_usage_percent (nullable) is None
+        # and __fields_set__ contains the field
+        if self.source_usage_percent is None and "source_usage_percent" in self.__fields_set__:
+            _dict['sourceUsagePercent'] = None
+
         return _dict
 
     @classmethod
@@ -85,18 +86,16 @@ class RoleMiningEntitlement(BaseModel):
             return RoleMiningEntitlement.parse_obj(obj)
 
         _obj = RoleMiningEntitlement.parse_obj({
-            "entitlement_ref":
-            RoleMiningEntitlementRef.from_dict(obj.get("entitlementRef"))
-            if obj.get("entitlementRef") is not None else None,
-            "name":
-            obj.get("name"),
-            "application_name":
-            obj.get("applicationName"),
-            "identity_count":
-            obj.get("identityCount"),
-            "popularity":
-            obj.get("popularity"),
-            "popularity_in_org":
-            obj.get("popularityInOrg")
+            "entitlement_ref": RoleMiningEntitlementRef.from_dict(obj.get("entitlementRef")) if obj.get("entitlementRef") is not None else None,
+            "name": obj.get("name"),
+            "application_name": obj.get("applicationName"),
+            "identity_count": obj.get("identityCount"),
+            "popularity": obj.get("popularity"),
+            "popularity_in_org": obj.get("popularityInOrg"),
+            "source_id": obj.get("sourceId"),
+            "activity_source_state": obj.get("activitySourceState"),
+            "source_usage_percent": obj.get("sourceUsagePercent")
         })
         return _obj
+
+

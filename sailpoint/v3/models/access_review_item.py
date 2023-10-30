@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
@@ -22,30 +24,18 @@ from v3.models.access_summary import AccessSummary
 from v3.models.certification_decision import CertificationDecision
 from v3.models.certification_identity_summary import CertificationIdentitySummary
 
-
 class AccessReviewItem(BaseModel):
     """
     AccessReviewItem
     """
-    access_summary: Optional[AccessSummary] = Field(None,
-                                                    alias="accessSummary")
-    identity_summary: Optional[CertificationIdentitySummary] = Field(
-        None, alias="identitySummary")
+    access_summary: Optional[AccessSummary] = Field(None, alias="accessSummary")
+    identity_summary: Optional[CertificationIdentitySummary] = Field(None, alias="identitySummary")
     id: Optional[StrictStr] = Field(None, description="The review item's id")
-    completed: Optional[StrictBool] = Field(
-        None, description="Whether the review item is complete")
-    new_access: Optional[StrictBool] = Field(
-        None,
-        alias="newAccess",
-        description=
-        "Indicates whether the review item is for new access to a source")
+    completed: Optional[StrictBool] = Field(None, description="Whether the review item is complete")
+    new_access: Optional[StrictBool] = Field(None, alias="newAccess", description="Indicates whether the review item is for new access to a source")
     decision: Optional[CertificationDecision] = None
-    comments: Optional[StrictStr] = Field(
-        None, description="Comments for this review item")
-    __properties = [
-        "accessSummary", "identitySummary", "id", "completed", "newAccess",
-        "decision", "comments"
-    ]
+    comments: Optional[StrictStr] = Field(None, description="Comments for this review item")
+    __properties = ["accessSummary", "identitySummary", "id", "completed", "newAccess", "decision", "comments"]
 
     class Config:
         """Pydantic configuration"""
@@ -67,7 +57,10 @@ class AccessReviewItem(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of access_summary
         if self.access_summary:
             _dict['accessSummary'] = self.access_summary.to_dict()
@@ -91,21 +84,14 @@ class AccessReviewItem(BaseModel):
             return AccessReviewItem.parse_obj(obj)
 
         _obj = AccessReviewItem.parse_obj({
-            "access_summary":
-            AccessSummary.from_dict(obj.get("accessSummary"))
-            if obj.get("accessSummary") is not None else None,
-            "identity_summary":
-            CertificationIdentitySummary.from_dict(obj.get("identitySummary"))
-            if obj.get("identitySummary") is not None else None,
-            "id":
-            obj.get("id"),
-            "completed":
-            obj.get("completed"),
-            "new_access":
-            obj.get("newAccess"),
-            "decision":
-            obj.get("decision"),
-            "comments":
-            obj.get("comments")
+            "access_summary": AccessSummary.from_dict(obj.get("accessSummary")) if obj.get("accessSummary") is not None else None,
+            "identity_summary": CertificationIdentitySummary.from_dict(obj.get("identitySummary")) if obj.get("identitySummary") is not None else None,
+            "id": obj.get("id"),
+            "completed": obj.get("completed"),
+            "new_access": obj.get("newAccess"),
+            "decision": obj.get("decision"),
+            "comments": obj.get("comments")
         })
         return _obj
+
+

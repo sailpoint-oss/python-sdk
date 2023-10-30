@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.sod_violation_context_check_completed1 import SodViolationContextCheckCompleted1  # noqa: E501
-
 
 class TestSodViolationContextCheckCompleted1(unittest.TestCase):
     """SodViolationContextCheckCompleted1 unit test stubs"""
@@ -26,8 +26,7 @@ class TestSodViolationContextCheckCompleted1(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> SodViolationContextCheckCompleted1:
+    def make_instance(self, include_optional) -> SodViolationContextCheckCompleted1:
         """Test SodViolationContextCheckCompleted1
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -47,7 +46,7 @@ class TestSodViolationContextCheckCompleted1(unittest.TestCase):
                     client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}, 
                     violation_contexts = [
                         beta.models.sod_violation_context_1.SodViolationContext_1(
-                            policy = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                            policy = beta.models.base_reference_dto.BaseReferenceDto(
                                 type = 'IDENTITY', 
                                 id = '2c91808568c529c60168cca6f90c1313', 
                                 name = 'William Wilson', ), 
@@ -62,7 +61,7 @@ class TestSodViolationContextCheckCompleted1(unittest.TestCase):
                                 right_criteria = beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(), ), )
                         ], 
                     violated_policies = [
-                        beta.models.base_reference_dto.BaseReferenceDto(
+                        beta.models.base_reference_dto_1.BaseReferenceDto_1(
                             id = 'ff8081814d977c21014da056804a0af3', 
                             name = 'Github', )
                         ], )
@@ -76,7 +75,6 @@ class TestSodViolationContextCheckCompleted1(unittest.TestCase):
         """Test SodViolationContextCheckCompleted1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

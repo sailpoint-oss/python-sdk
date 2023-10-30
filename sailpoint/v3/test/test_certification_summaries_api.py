@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from v3.api.certification_summaries_api import CertificationSummariesApi  # noqa: E501

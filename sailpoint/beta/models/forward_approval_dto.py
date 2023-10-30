@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, Field, constr
 
+
+from pydantic import BaseModel, Field, constr
 
 class ForwardApprovalDto(BaseModel):
     """
     ForwardApprovalDto
     """
-    new_owner_id: constr(strict=True, max_length=255, min_length=1) = Field(
-        ..., alias="newOwnerId", description="The Id of the new owner")
-    comment: constr(strict=True, max_length=255, min_length=1) = Field(
-        ..., description="The comment provided by the forwarder")
+    new_owner_id: constr(strict=True, max_length=255, min_length=1) = Field(..., alias="newOwnerId", description="The Id of the new owner")
+    comment: constr(strict=True, max_length=255, min_length=1) = Field(..., description="The comment provided by the forwarder")
     __properties = ["newOwnerId", "comment"]
 
     class Config:
@@ -49,7 +49,10 @@ class ForwardApprovalDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -62,9 +65,9 @@ class ForwardApprovalDto(BaseModel):
             return ForwardApprovalDto.parse_obj(obj)
 
         _obj = ForwardApprovalDto.parse_obj({
-            "new_owner_id":
-            obj.get("newOwnerId"),
-            "comment":
-            obj.get("comment")
+            "new_owner_id": obj.get("newOwnerId"),
+            "comment": obj.get("comment")
         })
         return _obj
+
+

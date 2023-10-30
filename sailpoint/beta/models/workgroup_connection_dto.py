@@ -11,23 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 from beta.models.connected_object import ConnectedObject
-
 
 class WorkgroupConnectionDto(BaseModel):
     """
     WorkgroupConnectionDto
     """
     object: Optional[ConnectedObject] = None
-    connection_type: Optional[StrictStr] = Field(
-        None, alias="connectionType", description="Connection Type.")
+    connection_type: Optional[StrictStr] = Field(None, alias="connectionType", description="Connection Type.")
     __properties = ["object", "connectionType"]
 
     @validator('connection_type')
@@ -36,11 +36,8 @@ class WorkgroupConnectionDto(BaseModel):
         if value is None:
             return value
 
-        if value not in ('AccessRequestReviewer', 'Owner',
-                         'ManagementWorkgroup'):
-            raise ValueError(
-                "must be one of enum values ('AccessRequestReviewer', 'Owner', 'ManagementWorkgroup')"
-            )
+        if value not in ('AccessRequestReviewer', 'Owner', 'ManagementWorkgroup'):
+            raise ValueError("must be one of enum values ('AccessRequestReviewer', 'Owner', 'ManagementWorkgroup')")
         return value
 
     class Config:
@@ -63,7 +60,10 @@ class WorkgroupConnectionDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of object
         if self.object:
             _dict['object'] = self.object.to_dict()
@@ -79,10 +79,9 @@ class WorkgroupConnectionDto(BaseModel):
             return WorkgroupConnectionDto.parse_obj(obj)
 
         _obj = WorkgroupConnectionDto.parse_obj({
-            "object":
-            ConnectedObject.from_dict(obj.get("object"))
-            if obj.get("object") is not None else None,
-            "connection_type":
-            obj.get("connectionType")
+            "object": ConnectedObject.from_dict(obj.get("object")) if obj.get("object") is not None else None,
+            "connection_type": obj.get("connectionType")
         })
         return _obj
+
+

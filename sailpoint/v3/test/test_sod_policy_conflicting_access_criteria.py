@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria  # noqa: E501
-
 
 class TestSodPolicyConflictingAccessCriteria(unittest.TestCase):
     """SodPolicyConflictingAccessCriteria unit test stubs"""
@@ -26,8 +26,7 @@ class TestSodPolicyConflictingAccessCriteria(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> SodPolicyConflictingAccessCriteria:
+    def make_instance(self, include_optional) -> SodPolicyConflictingAccessCriteria:
         """Test SodPolicyConflictingAccessCriteria
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -53,7 +52,6 @@ class TestSodPolicyConflictingAccessCriteria(unittest.TestCase):
         """Test SodPolicyConflictingAccessCriteria"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class DeleteCampaignsRequest(BaseModel):
     """
     DeleteCampaignsRequest
     """
-    ids: Optional[conlist(StrictStr)] = Field(
-        None, description="The ids of the campaigns to delete")
+    ids: Optional[conlist(StrictStr)] = Field(None, description="The ids of the campaigns to delete")
     __properties = ["ids"]
 
     class Config:
@@ -48,7 +48,10 @@ class DeleteCampaignsRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -60,5 +63,9 @@ class DeleteCampaignsRequest(BaseModel):
         if not isinstance(obj, dict):
             return DeleteCampaignsRequest.parse_obj(obj)
 
-        _obj = DeleteCampaignsRequest.parse_obj({"ids": obj.get("ids")})
+        _obj = DeleteCampaignsRequest.parse_obj({
+            "ids": obj.get("ids")
+        })
         return _obj
+
+

@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class ListAccounts200ResponseInnerPasswordChangeResult(BaseModel):
     """
     ListAccounts200ResponseInnerPasswordChangeResult
     """
-    completion_status: Optional[StrictStr] = Field(None,
-                                                   alias="completionStatus")
+    completion_status: Optional[StrictStr] = Field(None, alias="completionStatus")
     __properties = ["completionStatus"]
 
     class Config:
@@ -42,29 +42,30 @@ class ListAccounts200ResponseInnerPasswordChangeResult(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-            cls,
-            json_str: str) -> ListAccounts200ResponseInnerPasswordChangeResult:
+    def from_json(cls, json_str: str) -> ListAccounts200ResponseInnerPasswordChangeResult:
         """Create an instance of ListAccounts200ResponseInnerPasswordChangeResult from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(
-            cls,
-            obj: dict) -> ListAccounts200ResponseInnerPasswordChangeResult:
+    def from_dict(cls, obj: dict) -> ListAccounts200ResponseInnerPasswordChangeResult:
         """Create an instance of ListAccounts200ResponseInnerPasswordChangeResult from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ListAccounts200ResponseInnerPasswordChangeResult.parse_obj(
-                obj)
+            return ListAccounts200ResponseInnerPasswordChangeResult.parse_obj(obj)
 
-        _obj = ListAccounts200ResponseInnerPasswordChangeResult.parse_obj(
-            {"completion_status": obj.get("completionStatus")})
+        _obj = ListAccounts200ResponseInnerPasswordChangeResult.parse_obj({
+            "completion_status": obj.get("completionStatus")
+        })
         return _obj
+
+

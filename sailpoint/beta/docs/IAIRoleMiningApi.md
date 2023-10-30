@@ -10,18 +10,22 @@ Method | HTTP request | Description
 [**export_role_mining_potential_role**](IAIRoleMiningApi.md#export_role_mining_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export | Export (download) details for a potential role in a role mining session
 [**export_role_mining_potential_role_async**](IAIRoleMiningApi.md#export_role_mining_potential_role_async) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async | Asynchronously export details for a potential role in a role mining session and upload to S3
 [**export_role_mining_potential_role_status**](IAIRoleMiningApi.md#export_role_mining_potential_role_status) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId} | Retrieve status of a potential role export job
+[**get_all_potential_role_summaries**](IAIRoleMiningApi.md#get_all_potential_role_summaries) | **GET** /role-mining-potential-roles | Retrieves all potential role summaries
 [**get_entitlement_distribution_potential_role**](IAIRoleMiningApi.md#get_entitlement_distribution_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularity-distribution | Retrieves entitlement popularity distribution for a potential role in a role mining session
 [**get_entitlements_potential_role**](IAIRoleMiningApi.md#get_entitlements_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities | Retrieves entitlements for a potential role in a role mining session
 [**get_excluded_entitlements_potential_role**](IAIRoleMiningApi.md#get_excluded_entitlements_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements | Retrieves excluded entitlements for a potential role in a role mining session
 [**get_identities_potential_role**](IAIRoleMiningApi.md#get_identities_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
 [**get_potential_role**](IAIRoleMiningApi.md#get_potential_role) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
 [**get_potential_role_applications**](IAIRoleMiningApi.md#get_potential_role_applications) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
+[**get_potential_role_source_identity_usage**](IAIRoleMiningApi.md#get_potential_role_source_identity_usage) | **GET** /role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage | Retrieves potential role source usage
 [**get_potential_role_summaries**](IAIRoleMiningApi.md#get_potential_role_summaries) | **GET** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
+[**get_role_mining_potential_role**](IAIRoleMiningApi.md#get_role_mining_potential_role) | **GET** /role-mining-potential-roles/{potentialRoleId} | Retrieves a specific potential role
 [**get_role_mining_session**](IAIRoleMiningApi.md#get_role_mining_session) | **GET** /role-mining-sessions/{sessionId} | Get a role mining session
 [**get_role_mining_session_status**](IAIRoleMiningApi.md#get_role_mining_session_status) | **GET** /role-mining-sessions/{sessionId}/status | Get role mining session status state
 [**get_role_mining_sessions**](IAIRoleMiningApi.md#get_role_mining_sessions) | **GET** /role-mining-sessions | Retrieves all role mining sessions
-[**get_saved_roles**](IAIRoleMiningApi.md#get_saved_roles) | **GET** /role-mining-sessions/{sessionId}/potential-roles/draft-roles | Retrieves all draft roles
+[**get_saved_potential_roles**](IAIRoleMiningApi.md#get_saved_potential_roles) | **GET** /role-mining-potential-roles/saved | Retrieves all saved potential roles
 [**patch_potential_role**](IAIRoleMiningApi.md#patch_potential_role) | **PATCH** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
+[**patch_potential_role_0**](IAIRoleMiningApi.md#patch_potential_role_0) | **PATCH** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
 [**patch_role_mining_session**](IAIRoleMiningApi.md#patch_role_mining_session) | **PATCH** /role-mining-sessions/{sessionId} | Patch a role mining session
 [**update_entitlements_potential_role**](IAIRoleMiningApi.md#update_entitlements_potential_role) | **POST** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 
@@ -533,6 +537,96 @@ Name | Type | Description  | Notes
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_all_potential_role_summaries**
+> List[RoleMiningPotentialRoleSummary] get_all_potential_role_summaries(sorters=sorters, filters=filters, offset=offset, limit=limit, count=count)
+
+Retrieves all potential role summaries
+
+Returns all potential role summaries that match the query parameters
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+```python
+import time
+import os
+import beta
+from beta.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
+from beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = beta.IAIRoleMiningApi(api_client)
+    sorters = 'createdDate' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate** (optional)
+    filters = '(createdByName co \"int\") and (createdById sw \"2c9180907\") and (type eq \"COMMON\") and ((name co \"entt\") or (saved eq true))' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq* **scopingMethod**: *eq* **sessionState**: *eq* **identityAttribute**: *co* (optional)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+
+    try:
+        # Retrieves all potential role summaries
+        api_response = api_instance.get_all_potential_role_summaries(sorters=sorters, filters=filters, offset=offset, limit=limit, count=count)
+        print("The response of IAIRoleMiningApi->get_all_potential_role_summaries:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IAIRoleMiningApi->get_all_potential_role_summaries: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate** | [optional] 
+ **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq* **scopingMethod**: *eq* **sessionState**: *eq* **identityAttribute**: *co* | [optional] 
+ **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
+ **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
+ **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
+
+### Return type
+
+[**List[RoleMiningPotentialRoleSummary]**](RoleMiningPotentialRoleSummary.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Succeeded. Returns all potential role summaries that match the query parameters. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1075,6 +1169,98 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_potential_role_source_identity_usage**
+> List[RoleMiningPotentialRoleSourceUsage] get_potential_role_source_identity_usage(potential_role_id, source_id, sorters=sorters, offset=offset, limit=limit, count=count)
+
+Retrieves potential role source usage
+
+This method returns source usageCount (as number of days in the last 90 days) for each identity in a potential role.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+```python
+import time
+import os
+import beta
+from beta.models.role_mining_potential_role_source_usage import RoleMiningPotentialRoleSourceUsage
+from beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = beta.IAIRoleMiningApi(api_client)
+    potential_role_id = 'e0cc5d7d-bf7f-4f81-b2af-8885b09d9923' # str | A potential role id
+    source_id = '2c9180877620c1460176267f336a106f' # str | A source id
+    sorters = '-usageCount' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **displayName, email, usageCount** (optional)
+    offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
+
+    try:
+        # Retrieves potential role source usage
+        api_response = api_instance.get_potential_role_source_identity_usage(potential_role_id, source_id, sorters=sorters, offset=offset, limit=limit, count=count)
+        print("The response of IAIRoleMiningApi->get_potential_role_source_identity_usage:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IAIRoleMiningApi->get_potential_role_source_identity_usage: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **potential_role_id** | **str**| A potential role id | 
+ **source_id** | **str**| A source id | 
+ **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **displayName, email, usageCount** | [optional] 
+ **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
+ **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
+ **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
+
+### Return type
+
+[**List[RoleMiningPotentialRoleSourceUsage]**](RoleMiningPotentialRoleSourceUsage.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Succeeded. Returns a list of source usage for the identities in a potential role. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_potential_role_summaries**
 > List[RoleMiningPotentialRoleSummary] get_potential_role_summaries(session_id, sorters=sorters, filters=filters, offset=offset, limit=limit, count=count)
 
@@ -1159,6 +1345,88 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a list of potential role summaries for a role mining session. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_role_mining_potential_role**
+> RoleMiningPotentialRole get_role_mining_potential_role(potential_role_id)
+
+Retrieves a specific potential role
+
+This method returns a specific potential role.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+```python
+import time
+import os
+import beta
+from beta.models.role_mining_potential_role import RoleMiningPotentialRole
+from beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = beta.IAIRoleMiningApi(api_client)
+    potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id
+
+    try:
+        # Retrieves a specific potential role
+        api_response = api_instance.get_role_mining_potential_role(potential_role_id)
+        print("The response of IAIRoleMiningApi->get_role_mining_potential_role:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IAIRoleMiningApi->get_role_mining_potential_role: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **potential_role_id** | **str**| A potential role id | 
+
+### Return type
+
+[**RoleMiningPotentialRole**](RoleMiningPotentialRole.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Succeeded. Returns a list of potential roles for a role mining session. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -1421,12 +1689,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_saved_roles**
-> List[RoleMiningSessionDraftRoleDto] get_saved_roles(session_id, sorters=sorters, filters=filters, offset=offset, limit=limit, count=count)
+# **get_saved_potential_roles**
+> List[RoleMiningSessionDraftRoleDto] get_saved_potential_roles(sorters=sorters, offset=offset, limit=limit, count=count)
 
-Retrieves all draft roles
+Retrieves all saved potential roles
 
-This method returns all saved potential roles (draft roles) for a role mining session.
+This method returns all saved potential roles (draft roles).
 
 ### Example
 
@@ -1459,20 +1727,18 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = beta.IAIRoleMiningApi(api_client)
-    session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     sorters = 'modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified** (optional)
-    filters = '(type eq \"COMMON\")and ((name co \"ent\")or (description co \"desc\"))' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **description**: *sw, co* **name**: *eq, sw, co* **type**: *eq* (optional)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
 
     try:
-        # Retrieves all draft roles
-        api_response = api_instance.get_saved_roles(session_id, sorters=sorters, filters=filters, offset=offset, limit=limit, count=count)
-        print("The response of IAIRoleMiningApi->get_saved_roles:\n")
+        # Retrieves all saved potential roles
+        api_response = api_instance.get_saved_potential_roles(sorters=sorters, offset=offset, limit=limit, count=count)
+        print("The response of IAIRoleMiningApi->get_saved_potential_roles:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling IAIRoleMiningApi->get_saved_roles: %s\n" % e)
+        print("Exception when calling IAIRoleMiningApi->get_saved_potential_roles: %s\n" % e)
 ```
 
 
@@ -1481,9 +1747,7 @@ with beta.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **session_id** | **str**| The role mining session id | 
  **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified** | [optional] 
- **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **description**: *sw, co* **name**: *eq, sw, co* **type**: *eq* | [optional] 
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
@@ -1562,6 +1826,93 @@ with beta.ApiClient(configuration) as api_client:
         pprint(api_response)
     except Exception as e:
         print("Exception when calling IAIRoleMiningApi->patch_potential_role: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **session_id** | **str**| The role mining session id | 
+ **potential_role_id** | **str**| The potential role summary id | 
+ **patch_potential_role_request_inner** | [**List[PatchPotentialRoleRequestInner]**](PatchPotentialRoleRequestInner.md)|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Succeeded. Returns the potential role summary based on the potentialRoleId provided. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patch_potential_role_0**
+> object patch_potential_role_0(session_id, potential_role_id, patch_potential_role_request_inner)
+
+Update a potential role
+
+The method updates an existing potential role using.  The following fields can be modified:  * `description`  * `name`  * `saved`   >**NOTE: All other fields cannot be modified.** 
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+```python
+import time
+import os
+import beta
+from beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
+from beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = beta.IAIRoleMiningApi(api_client)
+    session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
+    potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The potential role summary id
+    patch_potential_role_request_inner = [{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}] # List[PatchPotentialRoleRequestInner] | 
+
+    try:
+        # Update a potential role
+        api_response = api_instance.patch_potential_role_0(session_id, potential_role_id, patch_potential_role_request_inner)
+        print("The response of IAIRoleMiningApi->patch_potential_role_0:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IAIRoleMiningApi->patch_potential_role_0: %s\n" % e)
 ```
 
 

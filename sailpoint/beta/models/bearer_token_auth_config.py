@@ -11,22 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class BearerTokenAuthConfig(BaseModel):
     """
     Config required if BEARER_TOKEN authentication is used. On response, this field is set to null as to not return secrets.  # noqa: E501
     """
-    bearer_token: Optional[StrictStr] = Field(None,
-                                              alias="bearerToken",
-                                              description="Bearer token")
+    bearer_token: Optional[StrictStr] = Field(None, alias="bearerToken", description="Bearer token")
     __properties = ["bearerToken"]
 
     class Config:
@@ -49,7 +48,10 @@ class BearerTokenAuthConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if bearer_token (nullable) is None
         # and __fields_set__ contains the field
         if self.bearer_token is None and "bearer_token" in self.__fields_set__:
@@ -66,6 +68,9 @@ class BearerTokenAuthConfig(BaseModel):
         if not isinstance(obj, dict):
             return BearerTokenAuthConfig.parse_obj(obj)
 
-        _obj = BearerTokenAuthConfig.parse_obj(
-            {"bearer_token": obj.get("bearerToken")})
+        _obj = BearerTokenAuthConfig.parse_obj({
+            "bearer_token": obj.get("bearerToken")
+        })
         return _obj
+
+

@@ -11,30 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 from v3.models.dto_type import DtoType
-
 
 class ReportResultReference(BaseModel):
     """
     ReportResultReference
     """
     type: Optional[DtoType] = None
-    id: Optional[StrictStr] = Field(
-        None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human-readable display name of the object to which this reference applies"
-    )
-    status: Optional[StrictStr] = Field(
-        None, description="Status of a violation report")
+    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object to which this reference applies")
+    status: Optional[StrictStr] = Field(None, description="Status of a violation report")
     __properties = ["type", "id", "name", "status"]
 
     @validator('status')
@@ -43,11 +38,8 @@ class ReportResultReference(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED',
-                         'TEMP_ERROR', 'PENDING'):
-            raise ValueError(
-                "must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING')"
-            )
+        if value not in ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING'):
+            raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING')")
         return value
 
     class Config:
@@ -70,7 +62,10 @@ class ReportResultReference(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -89,3 +84,5 @@ class ReportResultReference(BaseModel):
             "status": obj.get("status")
         })
         return _obj
+
+

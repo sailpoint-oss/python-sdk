@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.approval_scheme import ApprovalScheme  # noqa: E501
-
 
 class TestApprovalScheme(unittest.TestCase):
     """ApprovalScheme unit test stubs"""
@@ -29,7 +29,6 @@ class TestApprovalScheme(unittest.TestCase):
     def testApprovalScheme(self):
         """Test ApprovalScheme"""
         # inst = ApprovalScheme()
-
 
 if __name__ == '__main__':
     unittest.main()

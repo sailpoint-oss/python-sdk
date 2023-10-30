@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -25,53 +26,25 @@ from v3.models.requestability_for_role import RequestabilityForRole
 from v3.models.revocability import Revocability
 from v3.models.role_membership_selector import RoleMembershipSelector
 
-
 class Role(BaseModel):
     """
     A Role  # noqa: E501
     """
-    id: Optional[StrictStr] = Field(
-        None,
-        description=
-        "The id of the Role. This field must be left null when creating an Role, otherwise a 400 Bad Request error will result."
-    )
-    name: constr(strict=True, max_length=128) = Field(
-        ..., description="The human-readable display name of the Role")
-    created: Optional[datetime] = Field(
-        None, description="Date the Role was created")
-    modified: Optional[datetime] = Field(
-        None, description="Date the Role was last modified.")
-    description: Optional[StrictStr] = Field(
-        None, description="A human-readable description of the Role")
+    id: Optional[StrictStr] = Field(None, description="The id of the Role. This field must be left null when creating an Role, otherwise a 400 Bad Request error will result.")
+    name: constr(strict=True, max_length=128) = Field(..., description="The human-readable display name of the Role")
+    created: Optional[datetime] = Field(None, description="Date the Role was created")
+    modified: Optional[datetime] = Field(None, description="Date the Role was last modified.")
+    description: Optional[StrictStr] = Field(None, description="A human-readable description of the Role")
     owner: OwnerReference = Field(...)
-    access_profiles: Optional[conlist(AccessProfileRef)] = Field(
-        None, alias="accessProfiles")
+    access_profiles: Optional[conlist(AccessProfileRef)] = Field(None, alias="accessProfiles")
     membership: Optional[RoleMembershipSelector] = None
-    legacy_membership_info: Optional[Dict[str, Any]] = Field(
-        None,
-        alias="legacyMembershipInfo",
-        description=
-        "This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration."
-    )
-    enabled: Optional[StrictBool] = Field(
-        False, description="Whether the Role is enabled or not.")
-    requestable: Optional[StrictBool] = Field(
-        False,
-        description="Whether the Role can be the target of access requests.")
-    access_request_config: Optional[RequestabilityForRole] = Field(
-        None, alias="accessRequestConfig")
-    revocation_request_config: Optional[Revocability] = Field(
-        None, alias="revocationRequestConfig")
-    segments: Optional[conlist(StrictStr)] = Field(
-        None,
-        description=
-        "List of IDs of segments, if any, to which this Role is assigned.")
-    __properties = [
-        "id", "name", "created", "modified", "description", "owner",
-        "accessProfiles", "membership", "legacyMembershipInfo", "enabled",
-        "requestable", "accessRequestConfig", "revocationRequestConfig",
-        "segments"
-    ]
+    legacy_membership_info: Optional[Dict[str, Any]] = Field(None, alias="legacyMembershipInfo", description="This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration.")
+    enabled: Optional[StrictBool] = Field(False, description="Whether the Role is enabled or not.")
+    requestable: Optional[StrictBool] = Field(False, description="Whether the Role can be the target of access requests.")
+    access_request_config: Optional[RequestabilityForRole] = Field(None, alias="accessRequestConfig")
+    revocation_request_config: Optional[Revocability] = Field(None, alias="revocationRequestConfig")
+    segments: Optional[conlist(StrictStr)] = Field(None, description="List of IDs of segments, if any, to which this Role is assigned.")
+    __properties = ["id", "name", "created", "modified", "description", "owner", "accessProfiles", "membership", "legacyMembershipInfo", "enabled", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments"]
 
     class Config:
         """Pydantic configuration"""
@@ -95,8 +68,8 @@ class Role(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "created",
-                              "modified",
+                            "created",
+                            "modified",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -117,9 +90,7 @@ class Role(BaseModel):
             _dict['accessRequestConfig'] = self.access_request_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of revocation_request_config
         if self.revocation_request_config:
-            _dict[
-                'revocationRequestConfig'] = self.revocation_request_config.to_dict(
-                )
+            _dict['revocationRequestConfig'] = self.revocation_request_config.to_dict()
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -157,40 +128,21 @@ class Role(BaseModel):
             return Role.parse_obj(obj)
 
         _obj = Role.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "description":
-            obj.get("description"),
-            "owner":
-            OwnerReference.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None,
-            "access_profiles": [
-                AccessProfileRef.from_dict(_item)
-                for _item in obj.get("accessProfiles")
-            ] if obj.get("accessProfiles") is not None else None,
-            "membership":
-            RoleMembershipSelector.from_dict(obj.get("membership"))
-            if obj.get("membership") is not None else None,
-            "legacy_membership_info":
-            obj.get("legacyMembershipInfo"),
-            "enabled":
-            obj.get("enabled") if obj.get("enabled") is not None else False,
-            "requestable":
-            obj.get("requestable")
-            if obj.get("requestable") is not None else False,
-            "access_request_config":
-            RequestabilityForRole.from_dict(obj.get("accessRequestConfig"))
-            if obj.get("accessRequestConfig") is not None else None,
-            "revocation_request_config":
-            Revocability.from_dict(obj.get("revocationRequestConfig"))
-            if obj.get("revocationRequestConfig") is not None else None,
-            "segments":
-            obj.get("segments")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "description": obj.get("description"),
+            "owner": OwnerReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "access_profiles": [AccessProfileRef.from_dict(_item) for _item in obj.get("accessProfiles")] if obj.get("accessProfiles") is not None else None,
+            "membership": RoleMembershipSelector.from_dict(obj.get("membership")) if obj.get("membership") is not None else None,
+            "legacy_membership_info": obj.get("legacyMembershipInfo"),
+            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
+            "requestable": obj.get("requestable") if obj.get("requestable") is not None else False,
+            "access_request_config": RequestabilityForRole.from_dict(obj.get("accessRequestConfig")) if obj.get("accessRequestConfig") is not None else None,
+            "revocation_request_config": Revocability.from_dict(obj.get("revocationRequestConfig")) if obj.get("revocationRequestConfig") is not None else None,
+            "segments": obj.get("segments")
         })
         return _obj
+
+

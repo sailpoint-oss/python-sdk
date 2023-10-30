@@ -11,15 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel
 from v3.models.expression import Expression
-
 
 class VisibilityCriteria(BaseModel):
     """
@@ -48,7 +49,10 @@ class VisibilityCriteria(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of expression
         if self.expression:
             _dict['expression'] = self.expression.to_dict()
@@ -64,8 +68,8 @@ class VisibilityCriteria(BaseModel):
             return VisibilityCriteria.parse_obj(obj)
 
         _obj = VisibilityCriteria.parse_obj({
-            "expression":
-            Expression.from_dict(obj.get("expression"))
-            if obj.get("expression") is not None else None
+            "expression": Expression.from_dict(obj.get("expression")) if obj.get("expression") is not None else None
         })
         return _obj
+
+

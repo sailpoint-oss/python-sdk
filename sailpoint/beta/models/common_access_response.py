@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,23 +22,16 @@ from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
 from beta.models.common_access_item_access import CommonAccessItemAccess
 
-
 class CommonAccessResponse(BaseModel):
     """
     CommonAccessResponse
     """
     access: Optional[CommonAccessItemAccess] = None
-    status: Optional[StrictStr] = Field(None,
-                                        description="CONFIRMED or DENIED")
+    status: Optional[StrictStr] = Field(None, description="CONFIRMED or DENIED")
     last_updated: Optional[datetime] = Field(None, alias="lastUpdated")
-    reviewed_by_user: Optional[StrictBool] = Field(
-        None,
-        alias="reviewedByUser",
-        description="true if user has confirmed or denied status")
+    reviewed_by_user: Optional[StrictBool] = Field(None, alias="reviewedByUser", description="true if user has confirmed or denied status")
     last_reviewed: Optional[datetime] = Field(None, alias="lastReviewed")
-    __properties = [
-        "access", "status", "lastUpdated", "reviewedByUser", "lastReviewed"
-    ]
+    __properties = ["access", "status", "lastUpdated", "reviewedByUser", "lastReviewed"]
 
     class Config:
         """Pydantic configuration"""
@@ -61,8 +55,8 @@ class CommonAccessResponse(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "last_updated",
-                              "last_reviewed",
+                            "last_updated",
+                            "last_reviewed",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of access
@@ -80,16 +74,12 @@ class CommonAccessResponse(BaseModel):
             return CommonAccessResponse.parse_obj(obj)
 
         _obj = CommonAccessResponse.parse_obj({
-            "access":
-            CommonAccessItemAccess.from_dict(obj.get("access"))
-            if obj.get("access") is not None else None,
-            "status":
-            obj.get("status"),
-            "last_updated":
-            obj.get("lastUpdated"),
-            "reviewed_by_user":
-            obj.get("reviewedByUser"),
-            "last_reviewed":
-            obj.get("lastReviewed")
+            "access": CommonAccessItemAccess.from_dict(obj.get("access")) if obj.get("access") is not None else None,
+            "status": obj.get("status"),
+            "last_updated": obj.get("lastUpdated"),
+            "reviewed_by_user": obj.get("reviewedByUser"),
+            "last_reviewed": obj.get("lastReviewed")
         })
         return _obj
+
+

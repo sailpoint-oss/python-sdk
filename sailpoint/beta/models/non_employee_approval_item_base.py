@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -22,32 +23,19 @@ from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr
 from beta.models.approval_status import ApprovalStatus
 from beta.models.identity_reference_with_id import IdentityReferenceWithId
 
-
 class NonEmployeeApprovalItemBase(BaseModel):
     """
     NonEmployeeApprovalItemBase
     """
-    id: Optional[StrictStr] = Field(
-        None, description="Non-Employee approval item id")
+    id: Optional[StrictStr] = Field(None, description="Non-Employee approval item id")
     approver: Optional[IdentityReferenceWithId] = None
-    account_name: Optional[StrictStr] = Field(
-        None,
-        alias="accountName",
-        description="Requested identity account name")
-    approval_status: Optional[ApprovalStatus] = Field(None,
-                                                      alias="approvalStatus")
-    approval_order: Optional[Union[StrictFloat, StrictInt]] = Field(
-        None, alias="approvalOrder", description="Approval order")
-    comment: Optional[StrictStr] = Field(None,
-                                         description="comment of approver")
-    modified: Optional[datetime] = Field(
-        None, description="When the request was last modified.")
-    created: Optional[datetime] = Field(
-        None, description="When the request was created.")
-    __properties = [
-        "id", "approver", "accountName", "approvalStatus", "approvalOrder",
-        "comment", "modified", "created"
-    ]
+    account_name: Optional[StrictStr] = Field(None, alias="accountName", description="Requested identity account name")
+    approval_status: Optional[ApprovalStatus] = Field(None, alias="approvalStatus")
+    approval_order: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="approvalOrder", description="Approval order")
+    comment: Optional[StrictStr] = Field(None, description="comment of approver")
+    modified: Optional[datetime] = Field(None, description="When the request was last modified.")
+    created: Optional[datetime] = Field(None, description="When the request was created.")
+    __properties = ["id", "approver", "accountName", "approvalStatus", "approvalOrder", "comment", "modified", "created"]
 
     class Config:
         """Pydantic configuration"""
@@ -69,7 +57,10 @@ class NonEmployeeApprovalItemBase(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of approver
         if self.approver:
             _dict['approver'] = self.approver.to_dict()
@@ -85,22 +76,15 @@ class NonEmployeeApprovalItemBase(BaseModel):
             return NonEmployeeApprovalItemBase.parse_obj(obj)
 
         _obj = NonEmployeeApprovalItemBase.parse_obj({
-            "id":
-            obj.get("id"),
-            "approver":
-            IdentityReferenceWithId.from_dict(obj.get("approver"))
-            if obj.get("approver") is not None else None,
-            "account_name":
-            obj.get("accountName"),
-            "approval_status":
-            obj.get("approvalStatus"),
-            "approval_order":
-            obj.get("approvalOrder"),
-            "comment":
-            obj.get("comment"),
-            "modified":
-            obj.get("modified"),
-            "created":
-            obj.get("created")
+            "id": obj.get("id"),
+            "approver": IdentityReferenceWithId.from_dict(obj.get("approver")) if obj.get("approver") is not None else None,
+            "account_name": obj.get("accountName"),
+            "approval_status": obj.get("approvalStatus"),
+            "approval_order": obj.get("approvalOrder"),
+            "comment": obj.get("comment"),
+            "modified": obj.get("modified"),
+            "created": obj.get("created")
         })
         return _obj
+
+

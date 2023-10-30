@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -27,7 +28,9 @@ from beta.models.password_sync_group import PasswordSyncGroup
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class PasswordSyncGroupsApi:
@@ -43,9 +46,7 @@ class PasswordSyncGroupsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_password_sync_group(
-            self, password_sync_group: PasswordSyncGroup,
-            **kwargs) -> PasswordSyncGroup:  # noqa: E501
+    def create_password_sync_group(self, password_sync_group : PasswordSyncGroup, **kwargs) -> PasswordSyncGroup:  # noqa: E501
         """Create Password Sync Group  # noqa: E501
 
         This API creates a password sync group based on the specifications provided. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -72,13 +73,10 @@ class PasswordSyncGroupsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_password_sync_group_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_password_sync_group_with_http_info(
-            password_sync_group, **kwargs)  # noqa: E501
+        return self.create_password_sync_group_with_http_info(password_sync_group, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_password_sync_group_with_http_info(
-            self, password_sync_group: PasswordSyncGroup,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_password_sync_group_with_http_info(self, password_sync_group : PasswordSyncGroup, **kwargs) -> ApiResponse:  # noqa: E501
         """Create Password Sync Group  # noqa: E501
 
         This API creates a password sync group based on the specifications provided. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -117,18 +115,28 @@ class PasswordSyncGroupsApi:
 
         _params = locals()
 
-        _all_params = ['password_sync_group']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'password_sync_group'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_password_sync_group" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_password_sync_group" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -154,11 +162,11 @@ class PasswordSyncGroupsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -173,8 +181,7 @@ class PasswordSyncGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/password-sync-groups',
-            'POST',
+            '/password-sync-groups', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -184,18 +191,14 @@ class PasswordSyncGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_password_sync_group(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The ID of password sync group to delete.")],
-                                   **kwargs) -> None:  # noqa: E501
+    def delete_password_sync_group(self, id : Annotated[StrictStr, Field(..., description="The ID of password sync group to delete.")], **kwargs) -> None:  # noqa: E501
         """Delete Password Sync Group by ID  # noqa: E501
 
         This API deletes the specified password sync group. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -222,14 +225,10 @@ class PasswordSyncGroupsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_password_sync_group_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_password_sync_group_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.delete_password_sync_group_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_password_sync_group_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The ID of password sync group to delete."
-              )], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_password_sync_group_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of password sync group to delete.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Password Sync Group by ID  # noqa: E501
 
         This API deletes the specified password sync group. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -268,18 +267,28 @@ class PasswordSyncGroupsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_password_sync_group" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_password_sync_group" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -289,6 +298,7 @@ class PasswordSyncGroupsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -309,8 +319,7 @@ class PasswordSyncGroupsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/password-sync-groups/{id}',
-            'DELETE',
+            '/password-sync-groups/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -320,18 +329,14 @@ class PasswordSyncGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_password_sync_group(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The ID of password sync group to retrieve.")],
-                                **kwargs) -> PasswordSyncGroup:  # noqa: E501
+    def get_password_sync_group(self, id : Annotated[StrictStr, Field(..., description="The ID of password sync group to retrieve.")], **kwargs) -> PasswordSyncGroup:  # noqa: E501
         """Get Password Sync Group by ID  # noqa: E501
 
         This API returns the sync group for the specified ID. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -358,15 +363,10 @@ class PasswordSyncGroupsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_password_sync_group_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_password_sync_group_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.get_password_sync_group_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_password_sync_group_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The ID of password sync group to retrieve.")],
-                                               **kwargs
-                                               ) -> ApiResponse:  # noqa: E501
+    def get_password_sync_group_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of password sync group to retrieve.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Password Sync Group by ID  # noqa: E501
 
         This API returns the sync group for the specified ID. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -405,17 +405,28 @@ class PasswordSyncGroupsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_password_sync_group" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_password_sync_group" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -425,6 +436,7 @@ class PasswordSyncGroupsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -453,8 +465,7 @@ class PasswordSyncGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/password-sync-groups/{id}',
-            'GET',
+            '/password-sync-groups/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -464,38 +475,14 @@ class PasswordSyncGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_password_sync_groups(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> List[PasswordSyncGroup]:  # noqa: E501
+    def get_password_sync_groups(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[PasswordSyncGroup]:  # noqa: E501
         """Get Password Sync Group List  # noqa: E501
 
         This API returns a list of password sync groups. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -526,34 +513,10 @@ class PasswordSyncGroupsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_password_sync_groups_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_password_sync_groups_with_http_info(
-            limit, offset, count, **kwargs)  # noqa: E501
+        return self.get_password_sync_groups_with_http_info(limit, offset, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_password_sync_groups_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_password_sync_groups_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Get Password Sync Group List  # noqa: E501
 
         This API returns a list of password sync groups. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -596,18 +559,30 @@ class PasswordSyncGroupsApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'count']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'count'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_password_sync_groups" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_password_sync_groups" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -651,8 +626,7 @@ class PasswordSyncGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/password-sync-groups',
-            'GET',
+            '/password-sync-groups', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -662,20 +636,14 @@ class PasswordSyncGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_password_sync_group(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The ID of password sync group to update.")],
-                                   password_sync_group: PasswordSyncGroup,
-                                   **kwargs
-                                   ) -> PasswordSyncGroup:  # noqa: E501
+    def update_password_sync_group(self, id : Annotated[StrictStr, Field(..., description="The ID of password sync group to update.")], password_sync_group : PasswordSyncGroup, **kwargs) -> PasswordSyncGroup:  # noqa: E501
         """Update Password Sync Group by ID  # noqa: E501
 
         This API updates the specified password sync group. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -704,17 +672,10 @@ class PasswordSyncGroupsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_password_sync_group_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_password_sync_group_with_http_info(
-            id, password_sync_group, **kwargs)  # noqa: E501
+        return self.update_password_sync_group_with_http_info(id, password_sync_group, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_password_sync_group_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(...,
-                      description="The ID of password sync group to update.")],
-            password_sync_group: PasswordSyncGroup,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def update_password_sync_group_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of password sync group to update.")], password_sync_group : PasswordSyncGroup, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Password Sync Group by ID  # noqa: E501
 
         This API updates the specified password sync group. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -755,18 +716,29 @@ class PasswordSyncGroupsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'password_sync_group']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'password_sync_group'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_password_sync_group" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_password_sync_group" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -776,6 +748,7 @@ class PasswordSyncGroupsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -794,11 +767,11 @@ class PasswordSyncGroupsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -814,8 +787,7 @@ class PasswordSyncGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/password-sync-groups/{id}',
-            'PUT',
+            '/password-sync-groups/{id}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -825,8 +797,7 @@ class PasswordSyncGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

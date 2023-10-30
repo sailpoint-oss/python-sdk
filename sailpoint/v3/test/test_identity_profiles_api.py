@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from v3.api.identity_profiles_api import IdentityProfilesApi  # noqa: E501

@@ -11,40 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class AccessRequestDynamicApprover1(BaseModel):
     """
     AccessRequestDynamicApprover1
     """
-    id: StrictStr = Field(
-        ...,
-        description=
-        "The unique ID of the identity to add to the approver list for the access request."
-    )
-    name: StrictStr = Field(
-        ...,
-        description=
-        "The name of the identity to add to the approver list for the access request."
-    )
-    type: Dict[str,
-               Any] = Field(...,
-                            description="The type of object being referenced.")
+    id: StrictStr = Field(..., description="The unique ID of the identity to add to the approver list for the access request.")
+    name: StrictStr = Field(..., description="The name of the identity to add to the approver list for the access request.")
+    type: Dict[str, Any] = Field(..., description="The type of object being referenced.")
     __properties = ["id", "name", "type"]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('IDENTITY', 'GOVERNANCE_GROUP'):
-            raise ValueError(
-                "must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP')")
+            raise ValueError("must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP')")
         return value
 
     class Config:
@@ -67,7 +57,10 @@ class AccessRequestDynamicApprover1(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -85,3 +78,5 @@ class AccessRequestDynamicApprover1(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

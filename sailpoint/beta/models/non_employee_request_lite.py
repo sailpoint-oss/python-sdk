@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.identity_reference_with_id import IdentityReferenceWithId
-
 
 class NonEmployeeRequestLite(BaseModel):
     """
     NonEmployeeRequestLite
     """
-    id: Optional[StrictStr] = Field(None,
-                                    description="Non-Employee request id.")
+    id: Optional[StrictStr] = Field(None, description="Non-Employee request id.")
     requester: Optional[IdentityReferenceWithId] = None
     __properties = ["id", "requester"]
 
@@ -50,7 +50,10 @@ class NonEmployeeRequestLite(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of requester
         if self.requester:
             _dict['requester'] = self.requester.to_dict()
@@ -66,10 +69,9 @@ class NonEmployeeRequestLite(BaseModel):
             return NonEmployeeRequestLite.parse_obj(obj)
 
         _obj = NonEmployeeRequestLite.parse_obj({
-            "id":
-            obj.get("id"),
-            "requester":
-            IdentityReferenceWithId.from_dict(obj.get("requester"))
-            if obj.get("requester") is not None else None
+            "id": obj.get("id"),
+            "requester": IdentityReferenceWithId.from_dict(obj.get("requester")) if obj.get("requester") is not None else None
         })
         return _obj
+
+

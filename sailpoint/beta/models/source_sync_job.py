@@ -11,14 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
+
 from pydantic import BaseModel, Field, StrictStr, validator
 from beta.models.source_sync_payload import SourceSyncPayload
-
 
 class SourceSyncJob(BaseModel):
     """
@@ -33,9 +35,7 @@ class SourceSyncJob(BaseModel):
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR'):
-            raise ValueError(
-                "must be one of enum values ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR')"
-            )
+            raise ValueError("must be one of enum values ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR')")
         return value
 
     class Config:
@@ -58,7 +58,10 @@ class SourceSyncJob(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of payload
         if self.payload:
             _dict['payload'] = self.payload.to_dict()
@@ -74,12 +77,10 @@ class SourceSyncJob(BaseModel):
             return SourceSyncJob.parse_obj(obj)
 
         _obj = SourceSyncJob.parse_obj({
-            "id":
-            obj.get("id"),
-            "status":
-            obj.get("status"),
-            "payload":
-            SourceSyncPayload.from_dict(obj.get("payload"))
-            if obj.get("payload") is not None else None
+            "id": obj.get("id"),
+            "status": obj.get("status"),
+            "payload": SourceSyncPayload.from_dict(obj.get("payload")) if obj.get("payload") is not None else None
         })
         return _obj
+
+

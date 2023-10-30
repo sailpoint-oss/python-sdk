@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.source_updated import SourceUpdated  # noqa: E501
-
 
 class TestSourceUpdated(unittest.TestCase):
     """SourceUpdated unit test stubs"""
@@ -60,7 +60,6 @@ class TestSourceUpdated(unittest.TestCase):
         """Test SourceUpdated"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

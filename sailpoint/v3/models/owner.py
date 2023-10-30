@@ -11,27 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from v3.models.dto_type import DtoType
-
 
 class Owner(BaseModel):
     """
     Owner
     """
-    id: Optional[StrictStr] = Field(
-        None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(
-        None, description="The human readable name of the referenced object.")
+    id: Optional[StrictStr] = Field(None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(None, description="The human readable name of the referenced object.")
     type: Optional[DtoType] = None
-    email: Optional[StrictStr] = Field(None,
-                                       description="The email of the identity")
+    email: Optional[StrictStr] = Field(None, description="The email of the identity")
     __properties = ["id", "name", "type", "email"]
 
     class Config:
@@ -54,7 +52,10 @@ class Owner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -73,3 +74,5 @@ class Owner(BaseModel):
             "email": obj.get("email")
         })
         return _obj
+
+

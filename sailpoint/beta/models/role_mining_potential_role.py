@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
@@ -24,57 +26,27 @@ from beta.models.role_mining_potential_role_provision_state import RoleMiningPot
 from beta.models.role_mining_role_type import RoleMiningRoleType
 from beta.models.role_mining_session_parameters_dto import RoleMiningSessionParametersDto
 
-
 class RoleMiningPotentialRole(BaseModel):
     """
     RoleMiningPotentialRole
     """
     created_by: Optional[EntityCreatedByDTO] = Field(None, alias="createdBy")
-    density: Optional[StrictInt] = Field(
-        None, description="The density of a potential role.")
-    description: Optional[StrictStr] = Field(
-        None, description="The description of a potential role.")
-    entitlement_count: Optional[StrictInt] = Field(
-        None,
-        alias="entitlementCount",
-        description="The number of entitlements in a potential role.")
-    excluded_entitlements: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="excludedEntitlements",
-        description="The list of entitlement ids to be excluded.")
-    freshness: Optional[StrictInt] = Field(
-        None, description="The freshness of a potential role.")
-    identity_count: Optional[StrictInt] = Field(
-        None,
-        alias="identityCount",
-        description="The number of identities in a potential role.")
-    identity_distribution: Optional[conlist(
-        RoleMiningIdentityDistribution)] = Field(
-            None,
-            alias="identityDistribution",
-            description="Identity attribute distribution.")
-    identity_ids: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="identityIds",
-        description="The list of ids in a potential role.")
-    name: Optional[StrictStr] = Field(
-        None, description="Name of the potential role.")
-    provision_state: Optional[RoleMiningPotentialRoleProvisionState] = Field(
-        None, alias="provisionState")
-    quality: Optional[StrictInt] = Field(
-        None, description="The quality of a potential role.")
-    role_id: Optional[StrictStr] = Field(
-        None, alias="roleId", description="The roleId of a potential role.")
-    saved: Optional[StrictBool] = Field(
-        None, description="The potential role's saved status.")
+    density: Optional[StrictInt] = Field(None, description="The density of a potential role.")
+    description: Optional[StrictStr] = Field(None, description="The description of a potential role.")
+    entitlement_count: Optional[StrictInt] = Field(None, alias="entitlementCount", description="The number of entitlements in a potential role.")
+    excluded_entitlements: Optional[conlist(StrictStr)] = Field(None, alias="excludedEntitlements", description="The list of entitlement ids to be excluded.")
+    freshness: Optional[StrictInt] = Field(None, description="The freshness of a potential role.")
+    identity_count: Optional[StrictInt] = Field(None, alias="identityCount", description="The number of identities in a potential role.")
+    identity_distribution: Optional[conlist(RoleMiningIdentityDistribution)] = Field(None, alias="identityDistribution", description="Identity attribute distribution.")
+    identity_ids: Optional[conlist(StrictStr)] = Field(None, alias="identityIds", description="The list of ids in a potential role.")
+    name: Optional[StrictStr] = Field(None, description="Name of the potential role.")
+    provision_state: Optional[RoleMiningPotentialRoleProvisionState] = Field(None, alias="provisionState")
+    quality: Optional[StrictInt] = Field(None, description="The quality of a potential role.")
+    role_id: Optional[StrictStr] = Field(None, alias="roleId", description="The roleId of a potential role.")
+    saved: Optional[StrictBool] = Field(None, description="The potential role's saved status.")
     session: Optional[RoleMiningSessionParametersDto] = None
     type: Optional[RoleMiningRoleType] = None
-    __properties = [
-        "createdBy", "density", "description", "entitlementCount",
-        "excludedEntitlements", "freshness", "identityCount",
-        "identityDistribution", "identityIds", "name", "provisionState",
-        "quality", "roleId", "saved", "session", "type"
-    ]
+    __properties = ["createdBy", "density", "description", "entitlementCount", "excludedEntitlements", "freshness", "identityCount", "identityDistribution", "identityIds", "name", "provisionState", "quality", "roleId", "saved", "session", "type"]
 
     class Config:
         """Pydantic configuration"""
@@ -96,7 +68,10 @@ class RoleMiningPotentialRole(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
             _dict['createdBy'] = self.created_by.to_dict()
@@ -122,41 +97,23 @@ class RoleMiningPotentialRole(BaseModel):
             return RoleMiningPotentialRole.parse_obj(obj)
 
         _obj = RoleMiningPotentialRole.parse_obj({
-            "created_by":
-            EntityCreatedByDTO.from_dict(obj.get("createdBy"))
-            if obj.get("createdBy") is not None else None,
-            "density":
-            obj.get("density"),
-            "description":
-            obj.get("description"),
-            "entitlement_count":
-            obj.get("entitlementCount"),
-            "excluded_entitlements":
-            obj.get("excludedEntitlements"),
-            "freshness":
-            obj.get("freshness"),
-            "identity_count":
-            obj.get("identityCount"),
-            "identity_distribution": [
-                RoleMiningIdentityDistribution.from_dict(_item)
-                for _item in obj.get("identityDistribution")
-            ] if obj.get("identityDistribution") is not None else None,
-            "identity_ids":
-            obj.get("identityIds"),
-            "name":
-            obj.get("name"),
-            "provision_state":
-            obj.get("provisionState"),
-            "quality":
-            obj.get("quality"),
-            "role_id":
-            obj.get("roleId"),
-            "saved":
-            obj.get("saved"),
-            "session":
-            RoleMiningSessionParametersDto.from_dict(obj.get("session"))
-            if obj.get("session") is not None else None,
-            "type":
-            obj.get("type")
+            "created_by": EntityCreatedByDTO.from_dict(obj.get("createdBy")) if obj.get("createdBy") is not None else None,
+            "density": obj.get("density"),
+            "description": obj.get("description"),
+            "entitlement_count": obj.get("entitlementCount"),
+            "excluded_entitlements": obj.get("excludedEntitlements"),
+            "freshness": obj.get("freshness"),
+            "identity_count": obj.get("identityCount"),
+            "identity_distribution": [RoleMiningIdentityDistribution.from_dict(_item) for _item in obj.get("identityDistribution")] if obj.get("identityDistribution") is not None else None,
+            "identity_ids": obj.get("identityIds"),
+            "name": obj.get("name"),
+            "provision_state": obj.get("provisionState"),
+            "quality": obj.get("quality"),
+            "role_id": obj.get("roleId"),
+            "saved": obj.get("saved"),
+            "session": RoleMiningSessionParametersDto.from_dict(obj.get("session")) if obj.get("session") is not None else None,
+            "type": obj.get("type")
         })
         return _obj
+
+

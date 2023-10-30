@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -26,7 +27,6 @@ from v3.models.document_type import DocumentType
 from v3.models.expansion_item import ExpansionItem
 from v3.models.original_request import OriginalRequest
 
-
 class AccountActivityDocument(BaseModel):
     """
     AccountActivity  # noqa: E501
@@ -34,36 +34,23 @@ class AccountActivityDocument(BaseModel):
     id: StrictStr = Field(...)
     name: StrictStr = Field(...)
     type: DocumentType = Field(..., alias="_type")
-    action: Optional[StrictStr] = Field(
-        None, description="The type of action that this activity performed")
-    created: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
-    stage: Optional[StrictStr] = Field(
-        None, description="The current stage of the activity")
+    action: Optional[StrictStr] = Field(None, description="The type of action that this activity performed")
+    created: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
+    modified: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
+    stage: Optional[StrictStr] = Field(None, description="The current stage of the activity")
     origin: Optional[StrictStr] = None
-    status: Optional[StrictStr] = Field(
-        None, description="the current status of the activity")
+    status: Optional[StrictStr] = Field(None, description="the current status of the activity")
     requester: Optional[AccountSource] = None
     recipient: Optional[AccountSource] = None
     tracking_number: Optional[StrictStr] = Field(None, alias="trackingNumber")
     errors: Optional[conlist(StrictStr)] = None
     warnings: Optional[conlist(StrictStr)] = None
     approvals: Optional[conlist(Approval)] = None
-    original_requests: Optional[conlist(OriginalRequest)] = Field(
-        None, alias="originalRequests")
-    expansion_items: Optional[conlist(ExpansionItem)] = Field(
-        None, alias="expansionItems")
-    account_requests: Optional[conlist(AccountRequest)] = Field(
-        None, alias="accountRequests")
+    original_requests: Optional[conlist(OriginalRequest)] = Field(None, alias="originalRequests")
+    expansion_items: Optional[conlist(ExpansionItem)] = Field(None, alias="expansionItems")
+    account_requests: Optional[conlist(AccountRequest)] = Field(None, alias="accountRequests")
     sources: Optional[StrictStr] = None
-    __properties = [
-        "id", "name", "_type", "action", "created", "modified", "stage",
-        "origin", "status", "requester", "recipient", "trackingNumber",
-        "errors", "warnings", "approvals", "originalRequests",
-        "expansionItems", "accountRequests", "sources"
-    ]
+    __properties = ["id", "name", "_type", "action", "created", "modified", "stage", "origin", "status", "requester", "recipient", "trackingNumber", "errors", "warnings", "approvals", "originalRequests", "expansionItems", "accountRequests", "sources"]
 
     class Config:
         """Pydantic configuration"""
@@ -85,7 +72,10 @@ class AccountActivityDocument(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of requester
         if self.requester:
             _dict['requester'] = self.requester.to_dict()
@@ -157,52 +147,26 @@ class AccountActivityDocument(BaseModel):
             return AccountActivityDocument.parse_obj(obj)
 
         _obj = AccountActivityDocument.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("_type"),
-            "action":
-            obj.get("action"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "stage":
-            obj.get("stage"),
-            "origin":
-            obj.get("origin"),
-            "status":
-            obj.get("status"),
-            "requester":
-            AccountSource.from_dict(obj.get("requester"))
-            if obj.get("requester") is not None else None,
-            "recipient":
-            AccountSource.from_dict(obj.get("recipient"))
-            if obj.get("recipient") is not None else None,
-            "tracking_number":
-            obj.get("trackingNumber"),
-            "errors":
-            obj.get("errors"),
-            "warnings":
-            obj.get("warnings"),
-            "approvals":
-            [Approval.from_dict(_item) for _item in obj.get("approvals")]
-            if obj.get("approvals") is not None else None,
-            "original_requests": [
-                OriginalRequest.from_dict(_item)
-                for _item in obj.get("originalRequests")
-            ] if obj.get("originalRequests") is not None else None,
-            "expansion_items": [
-                ExpansionItem.from_dict(_item)
-                for _item in obj.get("expansionItems")
-            ] if obj.get("expansionItems") is not None else None,
-            "account_requests": [
-                AccountRequest.from_dict(_item)
-                for _item in obj.get("accountRequests")
-            ] if obj.get("accountRequests") is not None else None,
-            "sources":
-            obj.get("sources")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "type": obj.get("_type"),
+            "action": obj.get("action"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "stage": obj.get("stage"),
+            "origin": obj.get("origin"),
+            "status": obj.get("status"),
+            "requester": AccountSource.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
+            "recipient": AccountSource.from_dict(obj.get("recipient")) if obj.get("recipient") is not None else None,
+            "tracking_number": obj.get("trackingNumber"),
+            "errors": obj.get("errors"),
+            "warnings": obj.get("warnings"),
+            "approvals": [Approval.from_dict(_item) for _item in obj.get("approvals")] if obj.get("approvals") is not None else None,
+            "original_requests": [OriginalRequest.from_dict(_item) for _item in obj.get("originalRequests")] if obj.get("originalRequests") is not None else None,
+            "expansion_items": [ExpansionItem.from_dict(_item) for _item in obj.get("expansionItems")] if obj.get("expansionItems") is not None else None,
+            "account_requests": [AccountRequest.from_dict(_item) for _item in obj.get("accountRequests")] if obj.get("accountRequests") is not None else None,
+            "sources": obj.get("sources")
         })
         return _obj
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -43,7 +44,9 @@ from beta.models.workflow_o_auth_client import WorkflowOAuthClient
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class WorkflowsApi:
@@ -59,10 +62,7 @@ class WorkflowsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def cancel_workflow_execution(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The workflow execution ID")],
-                                  **kwargs) -> None:  # noqa: E501
+    def cancel_workflow_execution(self, id : Annotated[StrictStr, Field(..., description="The workflow execution ID")], **kwargs) -> None:  # noqa: E501
         """Cancel Workflow Execution by ID  # noqa: E501
 
         Use this API to cancel a running workflow execution.  # noqa: E501
@@ -89,15 +89,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the cancel_workflow_execution_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.cancel_workflow_execution_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.cancel_workflow_execution_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def cancel_workflow_execution_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="The workflow execution ID")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def cancel_workflow_execution_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The workflow execution ID")], **kwargs) -> ApiResponse:  # noqa: E501
         """Cancel Workflow Execution by ID  # noqa: E501
 
         Use this API to cancel a running workflow execution.  # noqa: E501
@@ -136,18 +131,28 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method cancel_workflow_execution" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method cancel_workflow_execution" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -157,6 +162,7 @@ class WorkflowsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -177,8 +183,7 @@ class WorkflowsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/workflow-executions/{id}/cancel',
-            'POST',
+            '/workflow-executions/{id}/cancel', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -188,16 +193,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_workflow(self, create_workflow_request: CreateWorkflowRequest,
-                        **kwargs) -> Workflow:  # noqa: E501
+    def create_workflow(self, create_workflow_request : CreateWorkflowRequest, **kwargs) -> Workflow:  # noqa: E501
         """Create Workflow  # noqa: E501
 
         Create a new workflow with the desired trigger and steps specified in the request body.  # noqa: E501
@@ -224,13 +227,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_workflow_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_workflow_with_http_info(create_workflow_request,
-                                                   **kwargs)  # noqa: E501
+        return self.create_workflow_with_http_info(create_workflow_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_workflow_with_http_info(
-            self, create_workflow_request: CreateWorkflowRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_workflow_with_http_info(self, create_workflow_request : CreateWorkflowRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Create Workflow  # noqa: E501
 
         Create a new workflow with the desired trigger and steps specified in the request body.  # noqa: E501
@@ -269,17 +269,28 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['create_workflow_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'create_workflow_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_workflow" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_workflow" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -305,11 +316,11 @@ class WorkflowsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -324,8 +335,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflows',
-            'POST',
+            '/workflows', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -335,17 +345,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_workflow(self, id: Annotated[
-        StrictStr, Field(..., description="Id of the Workflow")],
-                        **kwargs) -> None:  # noqa: E501
+    def delete_workflow(self, id : Annotated[StrictStr, Field(..., description="Id of the Workflow")], **kwargs) -> None:  # noqa: E501
         """Delete Workflow By Id  # noqa: E501
 
         Delete a workflow.  **Enabled workflows cannot be deleted**.  They must first be disabled.  # noqa: E501
@@ -375,9 +382,7 @@ class WorkflowsApi:
         return self.delete_workflow_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_workflow_with_http_info(self, id: Annotated[
-        StrictStr, Field(..., description="Id of the Workflow")],
-                                       **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_workflow_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Id of the Workflow")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Workflow By Id  # noqa: E501
 
         Delete a workflow.  **Enabled workflows cannot be deleted**.  They must first be disabled.  # noqa: E501
@@ -416,17 +421,28 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_workflow" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_workflow" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -436,6 +452,7 @@ class WorkflowsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -456,8 +473,7 @@ class WorkflowsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/workflows/{id}',
-            'DELETE',
+            '/workflows/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -467,17 +483,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_workflow(self, id: Annotated[
-        StrictStr, Field(..., description="Id of the workflow")],
-                     **kwargs) -> Workflow:  # noqa: E501
+    def get_workflow(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow")], **kwargs) -> Workflow:  # noqa: E501
         """Get Workflow By Id  # noqa: E501
 
         Get a single workflow by id.  # noqa: E501
@@ -507,9 +520,7 @@ class WorkflowsApi:
         return self.get_workflow_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_workflow_with_http_info(self, id: Annotated[
-        StrictStr, Field(..., description="Id of the workflow")],
-                                    **kwargs) -> ApiResponse:  # noqa: E501
+    def get_workflow_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Workflow By Id  # noqa: E501
 
         Get a single workflow by id.  # noqa: E501
@@ -548,17 +559,28 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_workflow" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_workflow" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -568,6 +590,7 @@ class WorkflowsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -595,8 +618,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflows/{id}',
-            'GET',
+            '/workflows/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -606,18 +628,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_workflow_execution(self, id: Annotated[
-        StrictStr,
-        Field(..., description="Id of the workflow execution")],
-                               **kwargs) -> object:  # noqa: E501
+    def get_workflow_execution(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow execution")], **kwargs) -> object:  # noqa: E501
         """Get a Workflow Execution  # noqa: E501
 
         Get a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.  # noqa: E501
@@ -644,15 +662,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_workflow_execution_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_workflow_execution_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.get_workflow_execution_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_workflow_execution_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="Id of the workflow execution")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_workflow_execution_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow execution")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get a Workflow Execution  # noqa: E501
 
         Get a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.  # noqa: E501
@@ -691,17 +704,28 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_workflow_execution" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_workflow_execution" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -711,6 +735,7 @@ class WorkflowsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -739,8 +764,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflow-executions/{id}',
-            'GET',
+            '/workflow-executions/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -750,19 +774,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_workflow_execution_history(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="Id of the workflow execution")],
-            **kwargs) -> List[WorkflowExecutionEvent]:  # noqa: E501
+    def get_workflow_execution_history(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow execution")], **kwargs) -> List[WorkflowExecutionEvent]:  # noqa: E501
         """Get Workflow Execution History  # noqa: E501
 
         Get a detailed history of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.  # noqa: E501
@@ -789,15 +808,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_workflow_execution_history_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_workflow_execution_history_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.get_workflow_execution_history_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_workflow_execution_history_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="Id of the workflow execution")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_workflow_execution_history_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow execution")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Workflow Execution History  # noqa: E501
 
         Get a detailed history of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.  # noqa: E501
@@ -836,18 +850,28 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_workflow_execution_history" % _key)
+                    " to method get_workflow_execution_history" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -857,6 +881,7 @@ class WorkflowsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -885,8 +910,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflow-executions/{id}/history',
-            'GET',
+            '/workflow-executions/{id}/history', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -896,30 +920,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_complete_workflow_library(
-        self,
-        limit: Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        offset: Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-        **kwargs
-    ) -> List[ListCompleteWorkflowLibrary200ResponseInner]:  # noqa: E501
+    def list_complete_workflow_library(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[ListCompleteWorkflowLibrary200ResponseInner]:  # noqa: E501
         """List Complete Workflow Library  # noqa: E501
 
         This lists all triggers, actions, and operators in the library  # noqa: E501
@@ -948,27 +956,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_complete_workflow_library_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_complete_workflow_library_with_http_info(
-            limit, offset, **kwargs)  # noqa: E501
+        return self.list_complete_workflow_library_with_http_info(limit, offset, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_complete_workflow_library_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_complete_workflow_library_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Complete Workflow Library  # noqa: E501
 
         This lists all triggers, actions, and operators in the library  # noqa: E501
@@ -1009,18 +1000,29 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list_complete_workflow_library" % _key)
+                    " to method list_complete_workflow_library" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1061,8 +1063,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflow-library',
-            'GET',
+            '/workflow-library', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1072,47 +1073,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_workflow_executions(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="Id of the workflow")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **start_time**: *eq, lt, lte, gt, gte*  **status**: *eq*"
-            )] = None,
-            **kwargs) -> List[WorkflowExecution]:  # noqa: E501
+    def list_workflow_executions(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **start_time**: *eq, lt, lte, gt, gte*  **status**: *eq*")] = None, **kwargs) -> List[WorkflowExecution]:  # noqa: E501
         """List Workflow Executions  # noqa: E501
 
         This lists the executions for a given workflow. Workflow executions are available for up to 90 days before being archived. By default, you can get a maximum of 250 executions.  To get executions past the first 250 records, you can do the following:  1. Use the [Get Workflows](https://developer.sailpoint.com/idn/api/beta/list-workflows) endpoint to get your workflows.  2. Get your workflow ID from the response.  3. You can then do either of the following:     - Filter to find relevant workflow executions.   For example, you can filter for failed workflow executions: `GET /workflows/:workflowID/executions?filters=status eq \"Failed\"`    - You can paginate through results with the `offset` parameter.    For example, you can page through 50 executions per page and use that as a way to get to the records past the first 250.    Refer to [Paginating Results](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results) for more information about the query parameters you can use to achieve pagination.   # noqa: E501
@@ -1147,43 +1115,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_workflow_executions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_workflow_executions_with_http_info(
-            id, limit, offset, count, filters, **kwargs)  # noqa: E501
+        return self.list_workflow_executions_with_http_info(id, limit, offset, count, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_workflow_executions_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="Id of the workflow")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **start_time**: *eq, lt, lte, gt, gte*  **status**: *eq*"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_workflow_executions_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **start_time**: *eq, lt, lte, gt, gte*  **status**: *eq*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Workflow Executions  # noqa: E501
 
         This lists the executions for a given workflow. Workflow executions are available for up to 90 days before being archived. By default, you can get a maximum of 250 executions.  To get executions past the first 250 records, you can do the following:  1. Use the [Get Workflows](https://developer.sailpoint.com/idn/api/beta/list-workflows) endpoint to get your workflows.  2. Get your workflow ID from the response.  3. You can then do either of the following:     - Filter to find relevant workflow executions.   For example, you can filter for failed workflow executions: `GET /workflows/:workflowID/executions?filters=status eq \"Failed\"`    - You can paginate through results with the `offset` parameter.    For example, you can page through 50 executions per page and use that as a way to get to the records past the first 250.    Refer to [Paginating Results](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results) for more information about the query parameters you can use to achieve pagination.   # noqa: E501
@@ -1230,18 +1165,32 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'limit', 'offset', 'count', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'limit',
+            'offset',
+            'count',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_workflow_executions" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_workflow_executions" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1251,6 +1200,7 @@ class WorkflowsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1291,8 +1241,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflows/{id}/executions',
-            'GET',
+            '/workflows/{id}/executions', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1302,38 +1251,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_workflow_library_actions(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*"
-            )] = None,
-            **kwargs) -> List[WorkflowLibraryAction]:  # noqa: E501
+    def list_workflow_library_actions(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*")] = None, **kwargs) -> List[WorkflowLibraryAction]:  # noqa: E501
         """List Workflow Library Actions  # noqa: E501
 
         This lists the workflow actions available to you.  # noqa: E501
@@ -1364,34 +1289,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_workflow_library_actions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_workflow_library_actions_with_http_info(
-            limit, offset, filters, **kwargs)  # noqa: E501
+        return self.list_workflow_library_actions_with_http_info(limit, offset, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_workflow_library_actions_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_workflow_library_actions_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Workflow Library Actions  # noqa: E501
 
         This lists the workflow actions available to you.  # noqa: E501
@@ -1434,18 +1335,30 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_workflow_library_actions" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_workflow_library_actions" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1489,8 +1402,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflow-library/actions',
-            'GET',
+            '/workflow-library/actions', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1500,16 +1412,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_workflow_library_operators(
-            self, **kwargs) -> List[WorkflowLibraryOperator]:  # noqa: E501
+    def list_workflow_library_operators(self, **kwargs) -> List[WorkflowLibraryOperator]:  # noqa: E501
         """List Workflow Library Operators  # noqa: E501
 
         This lists the workflow operators available to you  # noqa: E501
@@ -1534,12 +1444,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_workflow_library_operators_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_workflow_library_operators_with_http_info(
-            **kwargs)  # noqa: E501
+        return self.list_workflow_library_operators_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_workflow_library_operators_with_http_info(
-            self, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_workflow_library_operators_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
         """List Workflow Library Operators  # noqa: E501
 
         This lists the workflow operators available to you  # noqa: E501
@@ -1576,18 +1484,27 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = []
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list_workflow_library_operators" % _key)
+                    " to method list_workflow_library_operators" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1622,8 +1539,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflow-library/operators',
-            'GET',
+            '/workflow-library/operators', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1633,38 +1549,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_workflow_library_triggers(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*"
-            )] = None,
-            **kwargs) -> List[WorkflowLibraryTrigger]:  # noqa: E501
+    def list_workflow_library_triggers(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*")] = None, **kwargs) -> List[WorkflowLibraryTrigger]:  # noqa: E501
         """List Workflow Library Triggers  # noqa: E501
 
         This lists the workflow triggers available to you  # noqa: E501
@@ -1695,34 +1587,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_workflow_library_triggers_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_workflow_library_triggers_with_http_info(
-            limit, offset, filters, **kwargs)  # noqa: E501
+        return self.list_workflow_library_triggers_with_http_info(limit, offset, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_workflow_library_triggers_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_workflow_library_triggers_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Workflow Library Triggers  # noqa: E501
 
         This lists the workflow triggers available to you  # noqa: E501
@@ -1765,18 +1633,30 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'filters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'filters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list_workflow_library_triggers" % _key)
+                    " to method list_workflow_library_triggers" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1820,8 +1700,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflow-library/triggers',
-            'GET',
+            '/workflow-library/triggers', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1831,8 +1710,7 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
@@ -1867,8 +1745,7 @@ class WorkflowsApi:
         return self.list_workflows_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_workflows_with_http_info(self,
-                                      **kwargs) -> ApiResponse:  # noqa: E501
+    def list_workflows_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
         """List Workflows  # noqa: E501
 
         List all workflows in the tenant.  # noqa: E501
@@ -1905,17 +1782,27 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = []
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_workflows" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_workflows" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1950,8 +1837,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflows',
-            'GET',
+            '/workflows', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1961,18 +1847,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_workflow(self, id: Annotated[
-        StrictStr, Field(..., description="Id of the Workflow")],
-                       json_patch_operation: conlist(JsonPatchOperation),
-                       **kwargs) -> Workflow:  # noqa: E501
+    def patch_workflow(self, id : Annotated[StrictStr, Field(..., description="Id of the Workflow")], json_patch_operation : conlist(JsonPatchOperation), **kwargs) -> Workflow:  # noqa: E501
         """Patch Workflow  # noqa: E501
 
         Partially update an existing Workflow using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  # noqa: E501
@@ -2001,15 +1883,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_workflow_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_workflow_with_http_info(id, json_patch_operation,
-                                                  **kwargs)  # noqa: E501
+        return self.patch_workflow_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_workflow_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="Id of the Workflow")],
-            json_patch_operation: conlist(JsonPatchOperation),
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_workflow_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Id of the Workflow")], json_patch_operation : conlist(JsonPatchOperation), **kwargs) -> ApiResponse:  # noqa: E501
         """Patch Workflow  # noqa: E501
 
         Partially update an existing Workflow using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  # noqa: E501
@@ -2050,17 +1927,29 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'json_patch_operation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'json_patch_operation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method patch_workflow" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_workflow" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2070,6 +1959,7 @@ class WorkflowsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2088,12 +1978,11 @@ class WorkflowsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2108,8 +1997,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflows/{id}',
-            'PATCH',
+            '/workflows/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -2119,21 +2007,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def post_external_execute_workflow(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="Id of the workflow")],
-            post_external_execute_workflow_request: Optional[
-                PostExternalExecuteWorkflowRequest] = None,
-            **kwargs) -> PostExternalExecuteWorkflow200Response:  # noqa: E501
+    def post_external_execute_workflow(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow")], post_external_execute_workflow_request : Optional[PostExternalExecuteWorkflowRequest] = None, **kwargs) -> PostExternalExecuteWorkflow200Response:  # noqa: E501
         """Execute Workflow via External Trigger  # noqa: E501
 
         This endpoint allows a service outside of IdentityNow to initiate a workflow that uses the \"External Trigger\" step.  The external service will invoke this endpoint with the input data it wants to send to the workflow in the body.  # noqa: E501
@@ -2162,17 +2043,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the post_external_execute_workflow_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.post_external_execute_workflow_with_http_info(
-            id, post_external_execute_workflow_request, **kwargs)  # noqa: E501
+        return self.post_external_execute_workflow_with_http_info(id, post_external_execute_workflow_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def post_external_execute_workflow_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="Id of the workflow")],
-            post_external_execute_workflow_request: Optional[
-                PostExternalExecuteWorkflowRequest] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def post_external_execute_workflow_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow")], post_external_execute_workflow_request : Optional[PostExternalExecuteWorkflowRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Execute Workflow via External Trigger  # noqa: E501
 
         This endpoint allows a service outside of IdentityNow to initiate a workflow that uses the \"External Trigger\" step.  The external service will invoke this endpoint with the input data it wants to send to the workflow in the body.  # noqa: E501
@@ -2213,18 +2087,29 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'post_external_execute_workflow_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'post_external_execute_workflow_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method post_external_execute_workflow" % _key)
+                    " to method post_external_execute_workflow" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2234,6 +2119,7 @@ class WorkflowsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2252,11 +2138,11 @@ class WorkflowsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2271,8 +2157,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflows/execute/external/{id}',
-            'POST',
+            '/workflows/execute/external/{id}', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2282,18 +2167,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def post_workflow_external_trigger(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="Id of the workflow")],
-            **kwargs) -> WorkflowOAuthClient:  # noqa: E501
+    def post_workflow_external_trigger(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow")], **kwargs) -> WorkflowOAuthClient:  # noqa: E501
         """Generate External Trigger OAuth Client  # noqa: E501
 
         Create OAuth client ID, client secret, and callback URL for use in an external trigger.  External triggers will need this information to generate an access token to authenticate to the callback URL and submit a trigger payload that will initiate the workflow.  # noqa: E501
@@ -2320,14 +2201,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the post_workflow_external_trigger_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.post_workflow_external_trigger_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.post_workflow_external_trigger_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def post_workflow_external_trigger_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="Id of the workflow")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def post_workflow_external_trigger_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow")], **kwargs) -> ApiResponse:  # noqa: E501
         """Generate External Trigger OAuth Client  # noqa: E501
 
         Create OAuth client ID, client secret, and callback URL for use in an external trigger.  External triggers will need this information to generate an access token to authenticate to the callback URL and submit a trigger payload that will initiate the workflow.  # noqa: E501
@@ -2366,18 +2243,28 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method post_workflow_external_trigger" % _key)
+                    " to method post_workflow_external_trigger" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2387,6 +2274,7 @@ class WorkflowsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2414,8 +2302,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflows/{id}/external/oauth-clients',
-            'POST',
+            '/workflows/{id}/external/oauth-clients', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2425,21 +2312,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def test_external_execute_workflow(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="Id of the workflow")],
-            test_external_execute_workflow_request: Optional[
-                TestExternalExecuteWorkflowRequest] = None,
-            **kwargs) -> TestExternalExecuteWorkflow200Response:  # noqa: E501
+    def test_external_execute_workflow(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow")], test_external_execute_workflow_request : Optional[TestExternalExecuteWorkflowRequest] = None, **kwargs) -> TestExternalExecuteWorkflow200Response:  # noqa: E501
         """Test Workflow via External Trigger  # noqa: E501
 
         Validate a workflow with an \"External Trigger\" can receive input.  The response includes the input that the workflow received, which can be used to validate that the input is intact when it reaches the workflow.  # noqa: E501
@@ -2468,17 +2348,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the test_external_execute_workflow_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.test_external_execute_workflow_with_http_info(
-            id, test_external_execute_workflow_request, **kwargs)  # noqa: E501
+        return self.test_external_execute_workflow_with_http_info(id, test_external_execute_workflow_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def test_external_execute_workflow_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="Id of the workflow")],
-            test_external_execute_workflow_request: Optional[
-                TestExternalExecuteWorkflowRequest] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def test_external_execute_workflow_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow")], test_external_execute_workflow_request : Optional[TestExternalExecuteWorkflowRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Test Workflow via External Trigger  # noqa: E501
 
         Validate a workflow with an \"External Trigger\" can receive input.  The response includes the input that the workflow received, which can be used to validate that the input is intact when it reaches the workflow.  # noqa: E501
@@ -2519,18 +2392,29 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'test_external_execute_workflow_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'test_external_execute_workflow_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method test_external_execute_workflow" % _key)
+                    " to method test_external_execute_workflow" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2540,6 +2424,7 @@ class WorkflowsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2558,11 +2443,11 @@ class WorkflowsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2577,8 +2462,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflows/execute/external/{id}/test',
-            'POST',
+            '/workflows/execute/external/{id}/test', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2588,18 +2472,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def test_workflow(self, id: Annotated[
-        StrictStr, Field(..., description="Id of the workflow")],
-                      test_workflow_request: TestWorkflowRequest,
-                      **kwargs) -> TestWorkflow200Response:  # noqa: E501
+    def test_workflow(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow")], test_workflow_request : TestWorkflowRequest, **kwargs) -> TestWorkflow200Response:  # noqa: E501
         """Test Workflow By Id  # noqa: E501
 
         Test a workflow with the provided input data.  The input data should resemble the input that the trigger will send the workflow.  See the [event trigger documentation](https://developer.sailpoint.com/idn/docs/event-triggers/available) for an example input for the trigger that initiates this workflow. This endpoint will return an execution ID, which can be used to lookup more information about the execution using the `Get a Workflow Execution` endpoint. **This will cause a live run of the workflow, which could result in unintended modifications to your IDN tenant.**  # noqa: E501
@@ -2628,15 +2508,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the test_workflow_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.test_workflow_with_http_info(id, test_workflow_request,
-                                                 **kwargs)  # noqa: E501
+        return self.test_workflow_with_http_info(id, test_workflow_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def test_workflow_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="Id of the workflow")],
-            test_workflow_request: TestWorkflowRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def test_workflow_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Id of the workflow")], test_workflow_request : TestWorkflowRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Test Workflow By Id  # noqa: E501
 
         Test a workflow with the provided input data.  The input data should resemble the input that the trigger will send the workflow.  See the [event trigger documentation](https://developer.sailpoint.com/idn/docs/event-triggers/available) for an example input for the trigger that initiates this workflow. This endpoint will return an execution ID, which can be used to lookup more information about the execution using the `Get a Workflow Execution` endpoint. **This will cause a live run of the workflow, which could result in unintended modifications to your IDN tenant.**  # noqa: E501
@@ -2677,17 +2552,29 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'test_workflow_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'test_workflow_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method test_workflow" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method test_workflow" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2697,6 +2584,7 @@ class WorkflowsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2715,11 +2603,11 @@ class WorkflowsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2734,8 +2622,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflows/{id}/test',
-            'POST',
+            '/workflows/{id}/test', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2745,18 +2632,14 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_workflow(self, id: Annotated[
-        StrictStr, Field(..., description="Id of the Workflow")],
-                        workflow_body: WorkflowBody,
-                        **kwargs) -> Workflow:  # noqa: E501
+    def update_workflow(self, id : Annotated[StrictStr, Field(..., description="Id of the Workflow")], workflow_body : WorkflowBody, **kwargs) -> Workflow:  # noqa: E501
         """Update Workflow  # noqa: E501
 
         Perform a full update of a workflow.  The updated workflow object is returned in the response.  # noqa: E501
@@ -2785,14 +2668,10 @@ class WorkflowsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_workflow_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_workflow_with_http_info(id, workflow_body,
-                                                   **kwargs)  # noqa: E501
+        return self.update_workflow_with_http_info(id, workflow_body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_workflow_with_http_info(self, id: Annotated[
-        StrictStr, Field(..., description="Id of the Workflow")],
-                                       workflow_body: WorkflowBody,
-                                       **kwargs) -> ApiResponse:  # noqa: E501
+    def update_workflow_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Id of the Workflow")], workflow_body : WorkflowBody, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Workflow  # noqa: E501
 
         Perform a full update of a workflow.  The updated workflow object is returned in the response.  # noqa: E501
@@ -2833,17 +2712,29 @@ class WorkflowsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'workflow_body']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'workflow_body'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_workflow" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_workflow" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2853,6 +2744,7 @@ class WorkflowsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -2871,11 +2763,11 @@ class WorkflowsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2890,8 +2782,7 @@ class WorkflowsApi:
         }
 
         return self.api_client.call_api(
-            '/workflows/{id}',
-            'PUT',
+            '/workflows/{id}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -2901,8 +2792,7 @@ class WorkflowsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

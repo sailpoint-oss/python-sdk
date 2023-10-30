@@ -11,27 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.connected_object_type import ConnectedObjectType
-
 
 class ConnectedObject(BaseModel):
     """
     ConnectedObject
     """
     type: Optional[ConnectedObjectType] = None
-    id: Optional[StrictStr] = Field(
-        None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(
-        None, description="Human-readable name of Connected object")
-    description: Optional[StrictStr] = Field(
-        None, description="Description of the Connected object.")
+    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(None, description="Human-readable name of Connected object")
+    description: Optional[StrictStr] = Field(None, description="Description of the Connected object.")
     __properties = ["type", "id", "name", "description"]
 
     class Config:
@@ -54,7 +52,10 @@ class ConnectedObject(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -73,3 +74,5 @@ class ConnectedObject(BaseModel):
             "description": obj.get("description")
         })
         return _obj
+
+

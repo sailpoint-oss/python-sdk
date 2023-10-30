@@ -11,15 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from beta.models.password_info_account import PasswordInfoAccount
-
 
 class PasswordInfo(BaseModel):
     """
@@ -28,19 +29,10 @@ class PasswordInfo(BaseModel):
     identity_id: Optional[StrictStr] = Field(None, alias="identityId")
     source_id: Optional[StrictStr] = Field(None, alias="sourceId")
     public_key_id: Optional[StrictStr] = Field(None, alias="publicKeyId")
-    public_key: Optional[StrictStr] = Field(
-        None,
-        alias="publicKey",
-        description="User's public key with Base64 encoding")
-    accounts: Optional[conlist(PasswordInfoAccount)] = Field(
-        None,
-        description="Account info related to queried identity and source")
-    policies: Optional[conlist(StrictStr)] = Field(
-        None, description="Password constraints")
-    __properties = [
-        "identityId", "sourceId", "publicKeyId", "publicKey", "accounts",
-        "policies"
-    ]
+    public_key: Optional[StrictStr] = Field(None, alias="publicKey", description="User's public key with Base64 encoding")
+    accounts: Optional[conlist(PasswordInfoAccount)] = Field(None, description="Account info related to queried identity and source")
+    policies: Optional[conlist(StrictStr)] = Field(None, description="Password constraints")
+    __properties = ["identityId", "sourceId", "publicKeyId", "publicKey", "accounts", "policies"]
 
     class Config:
         """Pydantic configuration"""
@@ -62,7 +54,10 @@ class PasswordInfo(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in accounts (list)
         _items = []
         if self.accounts:
@@ -82,19 +77,13 @@ class PasswordInfo(BaseModel):
             return PasswordInfo.parse_obj(obj)
 
         _obj = PasswordInfo.parse_obj({
-            "identity_id":
-            obj.get("identityId"),
-            "source_id":
-            obj.get("sourceId"),
-            "public_key_id":
-            obj.get("publicKeyId"),
-            "public_key":
-            obj.get("publicKey"),
-            "accounts": [
-                PasswordInfoAccount.from_dict(_item)
-                for _item in obj.get("accounts")
-            ] if obj.get("accounts") is not None else None,
-            "policies":
-            obj.get("policies")
+            "identity_id": obj.get("identityId"),
+            "source_id": obj.get("sourceId"),
+            "public_key_id": obj.get("publicKeyId"),
+            "public_key": obj.get("publicKey"),
+            "accounts": [PasswordInfoAccount.from_dict(_item) for _item in obj.get("accounts")] if obj.get("accounts") is not None else None,
+            "policies": obj.get("policies")
         })
         return _obj
+
+

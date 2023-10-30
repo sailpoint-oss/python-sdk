@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -37,7 +38,9 @@ from beta.models.validate_filter_output_dto import ValidateFilterOutputDto
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class TriggersApi:
@@ -53,11 +56,7 @@ class TriggersApi:
         self.api_client = api_client
 
     @validate_arguments
-    def complete_trigger_invocation(self, id: Annotated[
-        StrictStr,
-        Field(..., description="The ID of the invocation to complete.")],
-                                    complete_invocation: CompleteInvocation,
-                                    **kwargs) -> None:  # noqa: E501
+    def complete_trigger_invocation(self, id : Annotated[StrictStr, Field(..., description="The ID of the invocation to complete.")], complete_invocation : CompleteInvocation, **kwargs) -> None:  # noqa: E501
         """Complete Trigger Invocation  # noqa: E501
 
         Completes an invocation to a REQUEST_RESPONSE type trigger.  # noqa: E501
@@ -86,16 +85,10 @@ class TriggersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the complete_trigger_invocation_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.complete_trigger_invocation_with_http_info(
-            id, complete_invocation, **kwargs)  # noqa: E501
+        return self.complete_trigger_invocation_with_http_info(id, complete_invocation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def complete_trigger_invocation_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="The ID of the invocation to complete."
-                      )], complete_invocation: CompleteInvocation,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def complete_trigger_invocation_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the invocation to complete.")], complete_invocation : CompleteInvocation, **kwargs) -> ApiResponse:  # noqa: E501
         """Complete Trigger Invocation  # noqa: E501
 
         Completes an invocation to a REQUEST_RESPONSE type trigger.  # noqa: E501
@@ -136,18 +129,29 @@ class TriggersApi:
 
         _params = locals()
 
-        _all_params = ['id', 'complete_invocation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'complete_invocation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method complete_trigger_invocation" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method complete_trigger_invocation" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -157,6 +161,7 @@ class TriggersApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -175,11 +180,11 @@ class TriggersApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -187,8 +192,7 @@ class TriggersApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/trigger-invocations/{id}/complete',
-            'POST',
+            '/trigger-invocations/{id}/complete', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -198,17 +202,14 @@ class TriggersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_subscription(self,
-                            subscription_post_request: SubscriptionPostRequest,
-                            **kwargs) -> Subscription:  # noqa: E501
+    def create_subscription(self, subscription_post_request : SubscriptionPostRequest, **kwargs) -> Subscription:  # noqa: E501
         """Create a Subscription  # noqa: E501
 
         This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required: * HTTP subscriptions require httpConfig * EventBridge subscriptions require eventBridgeConfig  # noqa: E501
@@ -235,13 +236,10 @@ class TriggersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_subscription_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_subscription_with_http_info(
-            subscription_post_request, **kwargs)  # noqa: E501
+        return self.create_subscription_with_http_info(subscription_post_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_subscription_with_http_info(
-            self, subscription_post_request: SubscriptionPostRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_subscription_with_http_info(self, subscription_post_request : SubscriptionPostRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Create a Subscription  # noqa: E501
 
         This API creates a new subscription to a trigger and defines trigger invocation details. The type of subscription determines which config object is required: * HTTP subscriptions require httpConfig * EventBridge subscriptions require eventBridgeConfig  # noqa: E501
@@ -280,17 +278,28 @@ class TriggersApi:
 
         _params = locals()
 
-        _all_params = ['subscription_post_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'subscription_post_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_subscription" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_subscription" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -316,11 +325,11 @@ class TriggersApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -335,8 +344,7 @@ class TriggersApi:
         }
 
         return self.api_client.call_api(
-            '/trigger-subscriptions',
-            'POST',
+            '/trigger-subscriptions', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -346,17 +354,14 @@ class TriggersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_subscription(self, id: Annotated[
-        StrictStr, Field(..., description="Subscription ID")],
-                            **kwargs) -> None:  # noqa: E501
+    def delete_subscription(self, id : Annotated[StrictStr, Field(..., description="Subscription ID")], **kwargs) -> None:  # noqa: E501
         """Delete a Subscription  # noqa: E501
 
         Deletes an existing subscription to a trigger.  # noqa: E501
@@ -383,14 +388,10 @@ class TriggersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_subscription_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_subscription_with_http_info(id,
-                                                       **kwargs)  # noqa: E501
+        return self.delete_subscription_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_subscription_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="Subscription ID")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_subscription_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Subscription ID")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete a Subscription  # noqa: E501
 
         Deletes an existing subscription to a trigger.  # noqa: E501
@@ -429,17 +430,28 @@ class TriggersApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_subscription" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_subscription" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -449,6 +461,7 @@ class TriggersApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -469,8 +482,7 @@ class TriggersApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/trigger-subscriptions/{id}',
-            'DELETE',
+            '/trigger-subscriptions/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -480,52 +492,14 @@ class TriggersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_subscriptions(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **triggerId**: *eq*  **type**: *eq*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **triggerId** **triggerName**"
-            )] = None,
-            **kwargs) -> List[Subscription]:  # noqa: E501
+    def list_subscriptions(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **triggerId**: *eq*  **type**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **triggerId** **triggerName**")] = None, **kwargs) -> List[Subscription]:  # noqa: E501
         """List Subscriptions  # noqa: E501
 
         Gets a list of all trigger subscriptions.  # noqa: E501
@@ -560,49 +534,10 @@ class TriggersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_subscriptions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_subscriptions_with_http_info(limit, offset, count,
-                                                      filters, sorters,
-                                                      **kwargs)  # noqa: E501
+        return self.list_subscriptions_with_http_info(limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_subscriptions_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **triggerId**: *eq*  **type**: *eq*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **triggerId** **triggerName**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_subscriptions_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **triggerId**: *eq*  **type**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **triggerId** **triggerName**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Subscriptions  # noqa: E501
 
         Gets a list of all trigger subscriptions.  # noqa: E501
@@ -649,17 +584,32 @@ class TriggersApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'count', 'filters', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_subscriptions" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_subscriptions" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -709,8 +659,7 @@ class TriggersApi:
         }
 
         return self.api_client.call_api(
-            '/trigger-subscriptions',
-            'GET',
+            '/trigger-subscriptions', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -720,52 +669,14 @@ class TriggersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_trigger_invocation_status(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq* **subscriptionId**: *eq*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **triggerId** **subscriptionName** **created** **completed**"
-            )] = None,
-            **kwargs) -> List[InvocationStatus]:  # noqa: E501
+    def list_trigger_invocation_status(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq* **subscriptionId**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **triggerId** **subscriptionName** **created** **completed**")] = None, **kwargs) -> List[InvocationStatus]:  # noqa: E501
         """List Latest Invocation Statuses  # noqa: E501
 
         Gets a list of latest invocation statuses. Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours. This endpoint may only fetch up to 2000 invocations, and should not be treated as a representation of the full history of invocations.  # noqa: E501
@@ -800,48 +711,10 @@ class TriggersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_trigger_invocation_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_trigger_invocation_status_with_http_info(
-            limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.list_trigger_invocation_status_with_http_info(limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_trigger_invocation_status_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq* **subscriptionId**: *eq*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **triggerId** **subscriptionName** **created** **completed**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_trigger_invocation_status_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq* **subscriptionId**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **triggerId** **subscriptionName** **created** **completed**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Latest Invocation Statuses  # noqa: E501
 
         Gets a list of latest invocation statuses. Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours. This endpoint may only fetch up to 2000 invocations, and should not be treated as a representation of the full history of invocations.  # noqa: E501
@@ -888,18 +761,32 @@ class TriggersApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'count', 'filters', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list_trigger_invocation_status" % _key)
+                    " to method list_trigger_invocation_status" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -949,8 +836,7 @@ class TriggersApi:
         }
 
         return self.api_client.call_api(
-            '/trigger-invocations/status',
-            'GET',
+            '/trigger-invocations/status', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -960,52 +846,14 @@ class TriggersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_triggers(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **id** **name**"
-            )] = None,
-            **kwargs) -> List[Trigger]:  # noqa: E501
+    def list_triggers(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **id** **name**")] = None, **kwargs) -> List[Trigger]:  # noqa: E501
         """List Triggers  # noqa: E501
 
         Gets a list of triggers that are available in the tenant.  # noqa: E501
@@ -1040,49 +888,10 @@ class TriggersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_triggers_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_triggers_with_http_info(limit, offset, count, filters,
-                                                 sorters,
-                                                 **kwargs)  # noqa: E501
+        return self.list_triggers_with_http_info(limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_triggers_with_http_info(
-            self,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **id** **name**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_triggers_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **id** **name**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Triggers  # noqa: E501
 
         Gets a list of triggers that are available in the tenant.  # noqa: E501
@@ -1129,17 +938,32 @@ class TriggersApi:
 
         _params = locals()
 
-        _all_params = ['limit', 'offset', 'count', 'filters', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_triggers" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_triggers" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1189,8 +1013,7 @@ class TriggersApi:
         }
 
         return self.api_client.call_api(
-            '/triggers',
-            'GET',
+            '/triggers', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1200,20 +1023,14 @@ class TriggersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_subscription(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the Subscription to patch")],
-                           subscription_patch_request_inner: conlist(
-                               SubscriptionPatchRequestInner),
-                           **kwargs) -> Subscription:  # noqa: E501
+    def patch_subscription(self, id : Annotated[StrictStr, Field(..., description="ID of the Subscription to patch")], subscription_patch_request_inner : conlist(SubscriptionPatchRequestInner), **kwargs) -> Subscription:  # noqa: E501
         """Patch a Subscription  # noqa: E501
 
         This API updates a trigger subscription in IdentityNow, using a set of instructions to modify a subscription partially. The following fields are patchable:  **name**, **description**, **enabled**, **type**, **filter**, **responseDeadline**, **httpConfig**, **eventBridgeConfig**, **workflowConfig**  # noqa: E501
@@ -1242,17 +1059,10 @@ class TriggersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_subscription_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_subscription_with_http_info(
-            id, subscription_patch_request_inner, **kwargs)  # noqa: E501
+        return self.patch_subscription_with_http_info(id, subscription_patch_request_inner, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_subscription_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the Subscription to patch")],
-            subscription_patch_request_inner: conlist(
-                SubscriptionPatchRequestInner),
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_subscription_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Subscription to patch")], subscription_patch_request_inner : conlist(SubscriptionPatchRequestInner), **kwargs) -> ApiResponse:  # noqa: E501
         """Patch a Subscription  # noqa: E501
 
         This API updates a trigger subscription in IdentityNow, using a set of instructions to modify a subscription partially. The following fields are patchable:  **name**, **description**, **enabled**, **type**, **filter**, **responseDeadline**, **httpConfig**, **eventBridgeConfig**, **workflowConfig**  # noqa: E501
@@ -1293,17 +1103,29 @@ class TriggersApi:
 
         _params = locals()
 
-        _all_params = ['id', 'subscription_patch_request_inner']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'subscription_patch_request_inner'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method patch_subscription" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_subscription" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1313,6 +1135,7 @@ class TriggersApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1331,12 +1154,11 @@ class TriggersApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1352,8 +1174,7 @@ class TriggersApi:
         }
 
         return self.api_client.call_api(
-            '/trigger-subscriptions/{id}',
-            'PATCH',
+            '/trigger-subscriptions/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -1363,17 +1184,14 @@ class TriggersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def start_test_trigger_invocation(
-            self, test_invocation: TestInvocation,
-            **kwargs) -> List[Invocation]:  # noqa: E501
+    def start_test_trigger_invocation(self, test_invocation : TestInvocation, **kwargs) -> List[Invocation]:  # noqa: E501
         """Start a Test Invocation  # noqa: E501
 
         Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.  # noqa: E501
@@ -1400,13 +1218,10 @@ class TriggersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the start_test_trigger_invocation_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.start_test_trigger_invocation_with_http_info(
-            test_invocation, **kwargs)  # noqa: E501
+        return self.start_test_trigger_invocation_with_http_info(test_invocation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def start_test_trigger_invocation_with_http_info(
-            self, test_invocation: TestInvocation,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def start_test_trigger_invocation_with_http_info(self, test_invocation : TestInvocation, **kwargs) -> ApiResponse:  # noqa: E501
         """Start a Test Invocation  # noqa: E501
 
         Initiate a test event for all subscribers of the specified event trigger.  If there are no subscribers to the specified trigger in the tenant, then no test event will be sent.  # noqa: E501
@@ -1445,18 +1260,28 @@ class TriggersApi:
 
         _params = locals()
 
-        _all_params = ['test_invocation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'test_invocation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method start_test_trigger_invocation" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method start_test_trigger_invocation" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1482,11 +1307,11 @@ class TriggersApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1502,8 +1327,7 @@ class TriggersApi:
         }
 
         return self.api_client.call_api(
-            '/trigger-invocations/test',
-            'POST',
+            '/trigger-invocations/test', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1513,17 +1337,14 @@ class TriggersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def test_subscription_filter(
-            self, validate_filter_input_dto: ValidateFilterInputDto,
-            **kwargs) -> ValidateFilterOutputDto:  # noqa: E501
+    def test_subscription_filter(self, validate_filter_input_dto : ValidateFilterInputDto, **kwargs) -> ValidateFilterOutputDto:  # noqa: E501
         """Validate a Subscription Filter  # noqa: E501
 
         Validates a JSONPath filter expression against a provided mock input. Request requires a security scope of:   # noqa: E501
@@ -1550,13 +1371,10 @@ class TriggersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the test_subscription_filter_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.test_subscription_filter_with_http_info(
-            validate_filter_input_dto, **kwargs)  # noqa: E501
+        return self.test_subscription_filter_with_http_info(validate_filter_input_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def test_subscription_filter_with_http_info(
-            self, validate_filter_input_dto: ValidateFilterInputDto,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def test_subscription_filter_with_http_info(self, validate_filter_input_dto : ValidateFilterInputDto, **kwargs) -> ApiResponse:  # noqa: E501
         """Validate a Subscription Filter  # noqa: E501
 
         Validates a JSONPath filter expression against a provided mock input. Request requires a security scope of:   # noqa: E501
@@ -1595,18 +1413,28 @@ class TriggersApi:
 
         _params = locals()
 
-        _all_params = ['validate_filter_input_dto']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'validate_filter_input_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method test_subscription_filter" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method test_subscription_filter" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1632,11 +1460,11 @@ class TriggersApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1651,8 +1479,7 @@ class TriggersApi:
         }
 
         return self.api_client.call_api(
-            '/trigger-subscriptions/validate-filter',
-            'POST',
+            '/trigger-subscriptions/validate-filter', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1662,18 +1489,14 @@ class TriggersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_subscription(self, id: Annotated[
-        StrictStr, Field(..., description="Subscription ID")],
-                            subscription_put_request: SubscriptionPutRequest,
-                            **kwargs) -> Subscription:  # noqa: E501
+    def update_subscription(self, id : Annotated[StrictStr, Field(..., description="Subscription ID")], subscription_put_request : SubscriptionPutRequest, **kwargs) -> Subscription:  # noqa: E501
         """Update a Subscription  # noqa: E501
 
         This API updates a trigger subscription in IdentityNow, using a full object representation. In other words, the existing   Subscription is completely replaced. The following fields are immutable:     * id    * triggerId     Attempts to modify these fields result in 400.  # noqa: E501
@@ -1702,15 +1525,10 @@ class TriggersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_subscription_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_subscription_with_http_info(
-            id, subscription_put_request, **kwargs)  # noqa: E501
+        return self.update_subscription_with_http_info(id, subscription_put_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_subscription_with_http_info(
-            self, id: Annotated[StrictStr,
-                                Field(..., description="Subscription ID")],
-            subscription_put_request: SubscriptionPutRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def update_subscription_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Subscription ID")], subscription_put_request : SubscriptionPutRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Update a Subscription  # noqa: E501
 
         This API updates a trigger subscription in IdentityNow, using a full object representation. In other words, the existing   Subscription is completely replaced. The following fields are immutable:     * id    * triggerId     Attempts to modify these fields result in 400.  # noqa: E501
@@ -1751,17 +1569,29 @@ class TriggersApi:
 
         _params = locals()
 
-        _all_params = ['id', 'subscription_put_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'subscription_put_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_subscription" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_subscription" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1771,6 +1601,7 @@ class TriggersApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1789,11 +1620,11 @@ class TriggersApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1809,8 +1640,7 @@ class TriggersApi:
         }
 
         return self.api_client.call_api(
-            '/trigger-subscriptions/{id}',
-            'PUT',
+            '/trigger-subscriptions/{id}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -1820,8 +1650,7 @@ class TriggersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

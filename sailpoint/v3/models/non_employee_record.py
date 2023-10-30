@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,49 +21,24 @@ from datetime import datetime
 from typing import Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
 
-
 class NonEmployeeRecord(BaseModel):
     """
     NonEmployeeRecord
     """
-    id: Optional[StrictStr] = Field(None,
-                                    description="Non-Employee record id.")
-    account_name: Optional[StrictStr] = Field(
-        None,
-        alias="accountName",
-        description="Requested identity account name.")
-    first_name: Optional[StrictStr] = Field(
-        None, alias="firstName", description="Non-Employee's first name.")
-    last_name: Optional[StrictStr] = Field(
-        None, alias="lastName", description="Non-Employee's last name.")
-    email: Optional[StrictStr] = Field(None,
-                                       description="Non-Employee's email.")
-    phone: Optional[StrictStr] = Field(None,
-                                       description="Non-Employee's phone.")
-    manager: Optional[StrictStr] = Field(
-        None,
-        description=
-        "The account ID of a valid identity to serve as this non-employee's manager."
-    )
-    source_id: Optional[StrictStr] = Field(
-        None, alias="sourceId", description="Non-Employee's source id.")
-    data: Optional[Dict[str, StrictStr]] = Field(
-        None, description="Attribute blob/bag for a non-employee.")
-    start_date: Optional[datetime] = Field(
-        None,
-        alias="startDate",
-        description="Non-Employee employment start date.")
-    end_date: Optional[datetime] = Field(
-        None, alias="endDate", description="Non-Employee employment end date.")
-    modified: Optional[datetime] = Field(
-        None, description="When the request was last modified.")
-    created: Optional[datetime] = Field(
-        None, description="When the request was created.")
-    __properties = [
-        "id", "accountName", "firstName", "lastName", "email", "phone",
-        "manager", "sourceId", "data", "startDate", "endDate", "modified",
-        "created"
-    ]
+    id: Optional[StrictStr] = Field(None, description="Non-Employee record id.")
+    account_name: Optional[StrictStr] = Field(None, alias="accountName", description="Requested identity account name.")
+    first_name: Optional[StrictStr] = Field(None, alias="firstName", description="Non-Employee's first name.")
+    last_name: Optional[StrictStr] = Field(None, alias="lastName", description="Non-Employee's last name.")
+    email: Optional[StrictStr] = Field(None, description="Non-Employee's email.")
+    phone: Optional[StrictStr] = Field(None, description="Non-Employee's phone.")
+    manager: Optional[StrictStr] = Field(None, description="The account ID of a valid identity to serve as this non-employee's manager.")
+    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="Non-Employee's source id.")
+    data: Optional[Dict[str, StrictStr]] = Field(None, description="Attribute blob/bag for a non-employee.")
+    start_date: Optional[datetime] = Field(None, alias="startDate", description="Non-Employee employment start date.")
+    end_date: Optional[datetime] = Field(None, alias="endDate", description="Non-Employee employment end date.")
+    modified: Optional[datetime] = Field(None, description="When the request was last modified.")
+    created: Optional[datetime] = Field(None, description="When the request was created.")
+    __properties = ["id", "accountName", "firstName", "lastName", "email", "phone", "manager", "sourceId", "data", "startDate", "endDate", "modified", "created"]
 
     class Config:
         """Pydantic configuration"""
@@ -84,7 +60,10 @@ class NonEmployeeRecord(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -97,31 +76,20 @@ class NonEmployeeRecord(BaseModel):
             return NonEmployeeRecord.parse_obj(obj)
 
         _obj = NonEmployeeRecord.parse_obj({
-            "id":
-            obj.get("id"),
-            "account_name":
-            obj.get("accountName"),
-            "first_name":
-            obj.get("firstName"),
-            "last_name":
-            obj.get("lastName"),
-            "email":
-            obj.get("email"),
-            "phone":
-            obj.get("phone"),
-            "manager":
-            obj.get("manager"),
-            "source_id":
-            obj.get("sourceId"),
-            "data":
-            obj.get("data"),
-            "start_date":
-            obj.get("startDate"),
-            "end_date":
-            obj.get("endDate"),
-            "modified":
-            obj.get("modified"),
-            "created":
-            obj.get("created")
+            "id": obj.get("id"),
+            "account_name": obj.get("accountName"),
+            "first_name": obj.get("firstName"),
+            "last_name": obj.get("lastName"),
+            "email": obj.get("email"),
+            "phone": obj.get("phone"),
+            "manager": obj.get("manager"),
+            "source_id": obj.get("sourceId"),
+            "data": obj.get("data"),
+            "start_date": obj.get("startDate"),
+            "end_date": obj.get("endDate"),
+            "modified": obj.get("modified"),
+            "created": obj.get("created")
         })
         return _obj
+
+

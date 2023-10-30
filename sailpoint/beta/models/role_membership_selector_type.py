@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class RoleMembershipSelectorType(str, Enum):
     """
     This enum characterizes the type of a Role's membership selector. Only the following two are fully supported:  STANDARD: Indicates that Role membership is defined in terms of a criteria expression  IDENTITY_LIST: Indicates that Role membership is conferred on the specific identities listed
     """
+
     """
     allowed enum values
     """
@@ -31,3 +36,5 @@ class RoleMembershipSelectorType(str, Enum):
     def from_json(cls, json_str: str) -> RoleMembershipSelectorType:
         """Create an instance of RoleMembershipSelectorType from a JSON string"""
         return RoleMembershipSelectorType(json.loads(json_str))
+
+

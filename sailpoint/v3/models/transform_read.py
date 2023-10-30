@@ -11,50 +11,32 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, constr, validator
-
 
 class TransformRead(BaseModel):
     """
     TransformRead
     """
-    name: constr(strict=True, max_length=50, min_length=1) = Field(
-        ..., description="Unique name of this transform")
+    name: constr(strict=True, max_length=50, min_length=1) = Field(..., description="Unique name of this transform")
     type: StrictStr = Field(..., description="The type of transform operation")
-    attributes: Optional[Dict[str, Any]] = Field(
-        ...,
-        description=
-        "Meta-data about the transform. Values in this list are specific to the type of transform to be executed."
-    )
+    attributes: Optional[Dict[str, Any]] = Field(..., description="Meta-data about the transform. Values in this list are specific to the type of transform to be executed.")
     id: StrictStr = Field(..., description="Unique ID of this transform")
-    internal: StrictBool = Field(
-        ...,
-        description=
-        "Indicates whether this is an internal SailPoint-created transform or a customer-created transform"
-    )
+    internal: StrictBool = Field(..., description="Indicates whether this is an internal SailPoint-created transform or a customer-created transform")
     __properties = ["name", "type", "attributes", "id", "internal"]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('accountAttribute', 'base64Decode', 'base64Encode',
-                         'concat', 'conditional', 'dateCompare', 'dateFormat',
-                         'dateMath', 'decomposeDiacriticalMarks', 'e164phone',
-                         'firstValid', 'rule', 'identityAttribute', 'indexOf',
-                         'iso3166', 'lastIndexOf', 'leftPad', 'lookup',
-                         'lower', 'normalizeNames', 'randomAlphaNumeric',
-                         'randomNumeric', 'reference', 'replaceAll', 'replace',
-                         'rightPad', 'split', 'static', 'substring', 'trim',
-                         'upper', 'usernameGenerator', 'uuid'):
-            raise ValueError(
-                "must be one of enum values ('accountAttribute', 'base64Decode', 'base64Encode', 'concat', 'conditional', 'dateCompare', 'dateFormat', 'dateMath', 'decomposeDiacriticalMarks', 'e164phone', 'firstValid', 'rule', 'identityAttribute', 'indexOf', 'iso3166', 'lastIndexOf', 'leftPad', 'lookup', 'lower', 'normalizeNames', 'randomAlphaNumeric', 'randomNumeric', 'reference', 'replaceAll', 'replace', 'rightPad', 'split', 'static', 'substring', 'trim', 'upper', 'usernameGenerator', 'uuid')"
-            )
+        if value not in ('accountAttribute', 'base64Decode', 'base64Encode', 'concat', 'conditional', 'dateCompare', 'dateFormat', 'dateMath', 'decomposeDiacriticalMarks', 'e164phone', 'firstValid', 'rule', 'identityAttribute', 'indexOf', 'iso3166', 'lastIndexOf', 'leftPad', 'lookup', 'lower', 'normalizeNames', 'randomAlphaNumeric', 'randomNumeric', 'reference', 'replaceAll', 'replace', 'rightPad', 'split', 'static', 'substring', 'trim', 'upper', 'usernameGenerator', 'uuid'):
+            raise ValueError("must be one of enum values ('accountAttribute', 'base64Decode', 'base64Encode', 'concat', 'conditional', 'dateCompare', 'dateFormat', 'dateMath', 'decomposeDiacriticalMarks', 'e164phone', 'firstValid', 'rule', 'identityAttribute', 'indexOf', 'iso3166', 'lastIndexOf', 'leftPad', 'lookup', 'lower', 'normalizeNames', 'randomAlphaNumeric', 'randomNumeric', 'reference', 'replaceAll', 'replace', 'rightPad', 'split', 'static', 'substring', 'trim', 'upper', 'usernameGenerator', 'uuid')")
         return value
 
     class Config:
@@ -77,7 +59,10 @@ class TransformRead(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if attributes (nullable) is None
         # and __fields_set__ contains the field
         if self.attributes is None and "attributes" in self.__fields_set__:
@@ -95,15 +80,12 @@ class TransformRead(BaseModel):
             return TransformRead.parse_obj(obj)
 
         _obj = TransformRead.parse_obj({
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("type"),
-            "attributes":
-            obj.get("attributes"),
-            "id":
-            obj.get("id"),
-            "internal":
-            obj.get("internal") if obj.get("internal") is not None else False
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "attributes": obj.get("attributes"),
+            "id": obj.get("id"),
+            "internal": obj.get("internal") if obj.get("internal") is not None else False
         })
         return _obj
+
+

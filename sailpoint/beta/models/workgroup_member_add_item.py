@@ -11,31 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class WorkgroupMemberAddItem(BaseModel):
     """
     WorkgroupMemberAddItem
     """
-    id: StrictStr = Field(
-        ..., description="Identifier of identity in bulk member add request.")
-    status: StrictStr = Field(
-        ...,
-        description=
-        " The HTTP response status code returned for an individual member that is requested for addition during a bulk add operation.   The HTTP response status code returned for an individual Governance Group is requested for deletion.   > 201   - Identity is added into Governance Group members list.  > 409   - Identity is already member of  Governance Group. "
-    )
-    description: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human readable status description and containing additional context information about success or failures etc. "
-    )
+    id: StrictStr = Field(..., description="Identifier of identity in bulk member add request.")
+    status: StrictStr = Field(..., description=" The HTTP response status code returned for an individual member that is requested for addition during a bulk add operation.   The HTTP response status code returned for an individual Governance Group is requested for deletion.   > 201   - Identity is added into Governance Group members list.  > 409   - Identity is already member of  Governance Group. ")
+    description: Optional[StrictStr] = Field(None, description="Human readable status description and containing additional context information about success or failures etc. ")
     __properties = ["id", "status", "description"]
 
     class Config:
@@ -58,7 +50,10 @@ class WorkgroupMemberAddItem(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,11 +66,10 @@ class WorkgroupMemberAddItem(BaseModel):
             return WorkgroupMemberAddItem.parse_obj(obj)
 
         _obj = WorkgroupMemberAddItem.parse_obj({
-            "id":
-            obj.get("id"),
-            "status":
-            obj.get("status"),
-            "description":
-            obj.get("description")
+            "id": obj.get("id"),
+            "status": obj.get("status"),
+            "description": obj.get("description")
         })
         return _obj
+
+

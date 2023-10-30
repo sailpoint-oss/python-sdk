@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,27 +21,15 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 
-
 class NonEmployeeBulkUploadJob(BaseModel):
     """
     NonEmployeeBulkUploadJob
     """
-    id: Optional[StrictStr] = Field(
-        None, description="The bulk upload job's ID. (UUID)")
-    source_id: Optional[StrictStr] = Field(
-        None,
-        alias="sourceId",
-        description=
-        "The ID of the source to bulk-upload non-employees to. (UUID)")
-    created: Optional[datetime] = Field(
-        None, description="The date-time the job was submitted.")
-    modified: Optional[datetime] = Field(
-        None, description="The date-time that the job was last updated.")
-    status: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Returns the following values indicating the progress or result of the bulk upload job. \"PENDING\" means the job is queued and waiting to be processed. \"IN_PROGRESS\" means the job is currently being processed. \"COMPLETED\" means the job has been completed without any errors. \"ERROR\" means the job failed to process with errors. "
-    )
+    id: Optional[StrictStr] = Field(None, description="The bulk upload job's ID. (UUID)")
+    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="The ID of the source to bulk-upload non-employees to. (UUID)")
+    created: Optional[datetime] = Field(None, description="The date-time the job was submitted.")
+    modified: Optional[datetime] = Field(None, description="The date-time that the job was last updated.")
+    status: Optional[StrictStr] = Field(None, description="Returns the following values indicating the progress or result of the bulk upload job. \"PENDING\" means the job is queued and waiting to be processed. \"IN_PROGRESS\" means the job is currently being processed. \"COMPLETED\" means the job has been completed without any errors. \"ERROR\" means the job failed to process with errors. ")
     __properties = ["id", "sourceId", "created", "modified", "status"]
 
     @validator('status')
@@ -50,9 +39,7 @@ class NonEmployeeBulkUploadJob(BaseModel):
             return value
 
         if value not in ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ERROR'):
-            raise ValueError(
-                "must be one of enum values ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ERROR')"
-            )
+            raise ValueError("must be one of enum values ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ERROR')")
         return value
 
     class Config:
@@ -75,7 +62,10 @@ class NonEmployeeBulkUploadJob(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -88,15 +78,12 @@ class NonEmployeeBulkUploadJob(BaseModel):
             return NonEmployeeBulkUploadJob.parse_obj(obj)
 
         _obj = NonEmployeeBulkUploadJob.parse_obj({
-            "id":
-            obj.get("id"),
-            "source_id":
-            obj.get("sourceId"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "status":
-            obj.get("status")
+            "id": obj.get("id"),
+            "source_id": obj.get("sourceId"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "status": obj.get("status")
         })
         return _obj
+
+

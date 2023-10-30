@@ -11,28 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class WorkflowOAuthClient(BaseModel):
     """
     WorkflowOAuthClient
     """
-    id: Optional[StrictStr] = Field(
-        None,
-        description=
-        "OAuth client ID for the trigger. This is a UUID generated upon creation."
-    )
-    secret: Optional[StrictStr] = Field(None,
-                                        description="OAuthClient secret.")
-    url: Optional[StrictStr] = Field(
-        None, description="URL for the external trigger to invoke")
+    id: Optional[StrictStr] = Field(None, description="OAuth client ID for the trigger. This is a UUID generated upon creation.")
+    secret: Optional[StrictStr] = Field(None, description="OAuthClient secret.")
+    url: Optional[StrictStr] = Field(None, description="URL for the external trigger to invoke")
     __properties = ["id", "secret", "url"]
 
     class Config:
@@ -55,7 +50,10 @@ class WorkflowOAuthClient(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -73,3 +71,5 @@ class WorkflowOAuthClient(BaseModel):
             "url": obj.get("url")
         })
         return _obj
+
+

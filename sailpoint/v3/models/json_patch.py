@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
 from v3.models.json_patch_operation import JsonPatchOperation
-
 
 class JsonPatch(BaseModel):
     """
     A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)  # noqa: E501
     """
-    operations: Optional[conlist(JsonPatchOperation)] = Field(
-        None, description="Operations to be applied")
+    operations: Optional[conlist(JsonPatchOperation)] = Field(None, description="Operations to be applied")
     __properties = ["operations"]
 
     class Config:
@@ -49,7 +49,10 @@ class JsonPatch(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in operations (list)
         _items = []
         if self.operations:
@@ -69,9 +72,8 @@ class JsonPatch(BaseModel):
             return JsonPatch.parse_obj(obj)
 
         _obj = JsonPatch.parse_obj({
-            "operations": [
-                JsonPatchOperation.from_dict(_item)
-                for _item in obj.get("operations")
-            ] if obj.get("operations") is not None else None
+            "operations": [JsonPatchOperation.from_dict(_item) for _item in obj.get("operations")] if obj.get("operations") is not None else None
         })
         return _obj
+
+

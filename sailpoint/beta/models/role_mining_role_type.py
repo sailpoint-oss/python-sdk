@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class RoleMiningRoleType(str, Enum):
     """
     Role type
     """
+
     """
     allowed enum values
     """
@@ -31,3 +36,5 @@ class RoleMiningRoleType(str, Enum):
     def from_json(cls, json_str: str) -> RoleMiningRoleType:
         """Create an instance of RoleMiningRoleType from a JSON string"""
         return RoleMiningRoleType(json.loads(json_str))
+
+

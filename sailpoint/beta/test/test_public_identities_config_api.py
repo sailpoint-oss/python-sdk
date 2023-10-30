@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.public_identities_config_api import PublicIdentitiesConfigApi  # noqa: E501

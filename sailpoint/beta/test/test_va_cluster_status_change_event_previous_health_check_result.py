@@ -11,14 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.va_cluster_status_change_event_previous_health_check_result import VAClusterStatusChangeEventPreviousHealthCheckResult  # noqa: E501
 
-
-class TestVAClusterStatusChangeEventPreviousHealthCheckResult(
-        unittest.TestCase):
+class TestVAClusterStatusChangeEventPreviousHealthCheckResult(unittest.TestCase):
     """VAClusterStatusChangeEventPreviousHealthCheckResult unit test stubs"""
 
     def setUp(self):
@@ -27,9 +26,7 @@ class TestVAClusterStatusChangeEventPreviousHealthCheckResult(
     def tearDown(self):
         pass
 
-    def make_instance(
-        self, include_optional
-    ) -> VAClusterStatusChangeEventPreviousHealthCheckResult:
+    def make_instance(self, include_optional) -> VAClusterStatusChangeEventPreviousHealthCheckResult:
         """Test VAClusterStatusChangeEventPreviousHealthCheckResult
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -55,7 +52,6 @@ class TestVAClusterStatusChangeEventPreviousHealthCheckResult(
         """Test VAClusterStatusChangeEventPreviousHealthCheckResult"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

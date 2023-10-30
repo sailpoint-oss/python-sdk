@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.forward_approval_dto import ForwardApprovalDto  # noqa: E501
-
 
 class TestForwardApprovalDto(unittest.TestCase):
     """ForwardApprovalDto unit test stubs"""
@@ -50,7 +50,6 @@ class TestForwardApprovalDto(unittest.TestCase):
         """Test ForwardApprovalDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

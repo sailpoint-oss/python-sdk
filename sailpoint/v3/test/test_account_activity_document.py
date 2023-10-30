@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.account_activity_document import AccountActivityDocument  # noqa: E501
-
 
 class TestAccountActivityDocument(unittest.TestCase):
     """AccountActivityDocument unit test stubs"""
@@ -135,7 +135,6 @@ class TestAccountActivityDocument(unittest.TestCase):
         """Test AccountActivityDocument"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

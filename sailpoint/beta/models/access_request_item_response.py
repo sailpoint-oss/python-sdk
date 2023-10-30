@@ -11,42 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
 from beta.models.approval_info_response import ApprovalInfoResponse
-
 
 class AccessRequestItemResponse(BaseModel):
     """
     AccessRequestItemResponse
     """
-    operation: Optional[StrictStr] = Field(
-        None, description="the access request item operation")
-    access_item_type: Optional[StrictStr] = Field(
-        None, alias="accessItemType", description="the access item type")
-    name: Optional[StrictStr] = Field(
-        None, description="the name of access request item")
-    decision: Optional[StrictStr] = Field(
-        None, description="the final decision for the access request")
-    description: Optional[StrictStr] = Field(
-        None, description="the description of access request item")
-    source_id: Optional[StrictStr] = Field(None,
-                                           alias="sourceId",
-                                           description="the source id")
-    source_name: Optional[StrictStr] = Field(None,
-                                             alias="sourceName",
-                                             description="the source Name")
-    approval_infos: Optional[conlist(ApprovalInfoResponse)] = Field(
-        None, alias="approvalInfos")
-    __properties = [
-        "operation", "accessItemType", "name", "decision", "description",
-        "sourceId", "sourceName", "approvalInfos"
-    ]
+    operation: Optional[StrictStr] = Field(None, description="the access request item operation")
+    access_item_type: Optional[StrictStr] = Field(None, alias="accessItemType", description="the access item type")
+    name: Optional[StrictStr] = Field(None, description="the name of access request item")
+    decision: Optional[StrictStr] = Field(None, description="the final decision for the access request")
+    description: Optional[StrictStr] = Field(None, description="the description of access request item")
+    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="the source id")
+    source_name: Optional[StrictStr] = Field(None, alias="sourceName", description="the source Name")
+    approval_infos: Optional[conlist(ApprovalInfoResponse)] = Field(None, alias="approvalInfos")
+    __properties = ["operation", "accessItemType", "name", "decision", "description", "sourceId", "sourceName", "approvalInfos"]
 
     @validator('decision')
     def decision_validate_enum(cls, value):
@@ -55,8 +43,7 @@ class AccessRequestItemResponse(BaseModel):
             return value
 
         if value not in ('APPROVED', 'REJECTED'):
-            raise ValueError(
-                "must be one of enum values ('APPROVED', 'REJECTED')")
+            raise ValueError("must be one of enum values ('APPROVED', 'REJECTED')")
         return value
 
     class Config:
@@ -79,7 +66,10 @@ class AccessRequestItemResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in approval_infos (list)
         _items = []
         if self.approval_infos:
@@ -99,23 +89,15 @@ class AccessRequestItemResponse(BaseModel):
             return AccessRequestItemResponse.parse_obj(obj)
 
         _obj = AccessRequestItemResponse.parse_obj({
-            "operation":
-            obj.get("operation"),
-            "access_item_type":
-            obj.get("accessItemType"),
-            "name":
-            obj.get("name"),
-            "decision":
-            obj.get("decision"),
-            "description":
-            obj.get("description"),
-            "source_id":
-            obj.get("sourceId"),
-            "source_name":
-            obj.get("sourceName"),
-            "approval_infos": [
-                ApprovalInfoResponse.from_dict(_item)
-                for _item in obj.get("approvalInfos")
-            ] if obj.get("approvalInfos") is not None else None
+            "operation": obj.get("operation"),
+            "access_item_type": obj.get("accessItemType"),
+            "name": obj.get("name"),
+            "decision": obj.get("decision"),
+            "description": obj.get("description"),
+            "source_id": obj.get("sourceId"),
+            "source_name": obj.get("sourceName"),
+            "approval_infos": [ApprovalInfoResponse.from_dict(_item) for _item in obj.get("approvalInfos")] if obj.get("approvalInfos") is not None else None
         })
         return _obj
+
+

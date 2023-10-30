@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class SubscriptionType(str, Enum):
     """
     Subscription type. **NOTE** If type is EVENTBRIDGE, then eventBridgeConfig is required. If type is HTTP, then httpConfig is required.
     """
+
     """
     allowed enum values
     """
@@ -34,3 +39,5 @@ class SubscriptionType(str, Enum):
     def from_json(cls, json_str: str) -> SubscriptionType:
         """Create an instance of SubscriptionType from a JSON string"""
         return SubscriptionType(json.loads(json_str))
+
+

@@ -11,28 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from v3.models.account_source import AccountSource
 from v3.models.attribute_request import AttributeRequest
 
-
 class OriginalRequest(BaseModel):
     """
     OriginalRequest
     """
-    account_id: Optional[StrictStr] = Field(None,
-                                            alias="accountId",
-                                            description="the account id")
-    attribute_requests: Optional[conlist(AttributeRequest)] = Field(
-        None, alias="attributeRequests")
-    op: Optional[StrictStr] = Field(None,
-                                    description="the operation that was used")
+    account_id: Optional[StrictStr] = Field(None, alias="accountId", description="the account id")
+    attribute_requests: Optional[conlist(AttributeRequest)] = Field(None, alias="attributeRequests")
+    op: Optional[StrictStr] = Field(None, description="the operation that was used")
     source: Optional[AccountSource] = None
     __properties = ["accountId", "attributeRequests", "op", "source"]
 
@@ -56,7 +53,10 @@ class OriginalRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in attribute_requests (list)
         _items = []
         if self.attribute_requests:
@@ -79,16 +79,11 @@ class OriginalRequest(BaseModel):
             return OriginalRequest.parse_obj(obj)
 
         _obj = OriginalRequest.parse_obj({
-            "account_id":
-            obj.get("accountId"),
-            "attribute_requests": [
-                AttributeRequest.from_dict(_item)
-                for _item in obj.get("attributeRequests")
-            ] if obj.get("attributeRequests") is not None else None,
-            "op":
-            obj.get("op"),
-            "source":
-            AccountSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None
+            "account_id": obj.get("accountId"),
+            "attribute_requests": [AttributeRequest.from_dict(_item) for _item in obj.get("attributeRequests")] if obj.get("attributeRequests") is not None else None,
+            "op": obj.get("op"),
+            "source": AccountSource.from_dict(obj.get("source")) if obj.get("source") is not None else None
         })
         return _obj
+
+

@@ -11,24 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class ProcessIdentitiesRequest(BaseModel):
     """
     ProcessIdentitiesRequest
     """
-    identity_ids: Optional[conlist(
-        StrictStr, max_items=250, min_items=1)] = Field(
-            None,
-            alias="identityIds",
-            description="List of up to 250 identity IDs to process.")
+    identity_ids: Optional[conlist(StrictStr, max_items=250, min_items=1)] = Field(None, alias="identityIds", description="List of up to 250 identity IDs to process.")
     __properties = ["identityIds"]
 
     class Config:
@@ -51,7 +48,10 @@ class ProcessIdentitiesRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,6 +63,9 @@ class ProcessIdentitiesRequest(BaseModel):
         if not isinstance(obj, dict):
             return ProcessIdentitiesRequest.parse_obj(obj)
 
-        _obj = ProcessIdentitiesRequest.parse_obj(
-            {"identity_ids": obj.get("identityIds")})
+        _obj = ProcessIdentitiesRequest.parse_obj({
+            "identity_ids": obj.get("identityIds")
+        })
         return _obj
+
+

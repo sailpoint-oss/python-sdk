@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,20 +22,13 @@ from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from beta.models.medium import Medium
 
-
 class PreferencesDto(BaseModel):
     """
     Maps an Identity's attribute key to a list of preferred notification mediums.  # noqa: E501
     """
-    key: Optional[StrictStr] = Field(
-        None, description="The template notification key.")
-    mediums: Optional[conlist(Medium)] = Field(
-        None,
-        description=
-        "List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future."
-    )
-    modified: Optional[datetime] = Field(
-        None, description="Modified date of preference")
+    key: Optional[StrictStr] = Field(None, description="The template notification key.")
+    mediums: Optional[conlist(Medium)] = Field(None, description="List of preferred notification mediums, i.e., the mediums (or method) for which notifications are enabled. More mediums may be added in the future.")
+    modified: Optional[datetime] = Field(None, description="Modified date of preference")
     __properties = ["key", "mediums", "modified"]
 
     class Config:
@@ -57,7 +51,10 @@ class PreferencesDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -75,3 +72,5 @@ class PreferencesDto(BaseModel):
             "modified": obj.get("modified")
         })
         return _obj
+
+

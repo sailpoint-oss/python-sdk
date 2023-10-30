@@ -11,30 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class OwnerReferenceSegments(BaseModel):
     """
     The owner of this object.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Owner type. This field must be either left null or set to 'IDENTITY' on input, otherwise a 400 Bad Request error will result."
-    )
+    type: Optional[StrictStr] = Field(None, description="Owner type. This field must be either left null or set to 'IDENTITY' on input, otherwise a 400 Bad Request error will result.")
     id: Optional[StrictStr] = Field(None, description="Identity id")
-    name: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human-readable display name of the owner. It may be left null or omitted in a POST or PATCH. If set, it must match the current value of the owner's display name, otherwise a 400 Bad Request error will result."
-    )
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the owner. It may be left null or omitted in a POST or PATCH. If set, it must match the current value of the owner's display name, otherwise a 400 Bad Request error will result.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -67,7 +60,10 @@ class OwnerReferenceSegments(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -85,3 +81,5 @@ class OwnerReferenceSegments(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

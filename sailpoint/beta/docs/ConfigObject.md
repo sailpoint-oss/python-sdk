@@ -6,7 +6,7 @@ Config export and import format for individual object configurations.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **version** | **int** | Current version of configuration object. | [optional] 
-**var_self** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**var_self** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **object** | **Dict[str, object]** | Object details. Format dependant on the object type. | [optional] 
 
 ## Example

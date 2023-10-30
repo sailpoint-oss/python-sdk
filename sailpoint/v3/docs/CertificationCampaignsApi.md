@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**complete_campaign**](CertificationCampaignsApi.md#complete_campaign) | **POST** /campaigns/{id}/complete | Complete a Campaign
 [**create_campaign**](CertificationCampaignsApi.md#create_campaign) | **POST** /campaigns | Create a campaign
 [**create_campaign_template**](CertificationCampaignsApi.md#create_campaign_template) | **POST** /campaign-templates | Create a Campaign Template
+[**delete_campaign_template**](CertificationCampaignsApi.md#delete_campaign_template) | **DELETE** /campaign-templates/{id} | Delete a Campaign Template
 [**delete_campaigns**](CertificationCampaignsApi.md#delete_campaigns) | **POST** /campaigns/delete | Deletes Campaigns
 [**get_active_campaigns**](CertificationCampaignsApi.md#get_active_campaigns) | **GET** /campaigns | List Campaigns
 [**get_campaign**](CertificationCampaignsApi.md#get_campaign) | **GET** /campaigns/{id} | Get a campaign
@@ -18,6 +19,7 @@ Method | HTTP request | Description
 [**move**](CertificationCampaignsApi.md#move) | **POST** /campaigns/{id}/reassign | Reassign Certifications
 [**patch_campaign_template**](CertificationCampaignsApi.md#patch_campaign_template) | **PATCH** /campaign-templates/{id} | Update a Campaign Template
 [**set_campaign_reports_config**](CertificationCampaignsApi.md#set_campaign_reports_config) | **PUT** /campaigns/reports-configuration | Set Campaign Reports Configuration
+[**set_campaign_template_schedule**](CertificationCampaignsApi.md#set_campaign_template_schedule) | **PUT** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
 [**start_campaign**](CertificationCampaignsApi.md#start_campaign) | **POST** /campaigns/{id}/activate | Activate a Campaign
 [**start_campaign_remediation_scan**](CertificationCampaignsApi.md#start_campaign_remediation_scan) | **POST** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
 [**start_campaign_report**](CertificationCampaignsApi.md#start_campaign_report) | **POST** /campaigns/{id}/run-report/{type} | Run Campaign Report
@@ -267,6 +269,86 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Created successfully. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_campaign_template**
+> delete_campaign_template(id)
+
+Delete a Campaign Template
+
+Deletes a campaign template by ID.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+```python
+import time
+import os
+import v3
+from v3.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
+# See configuration.py for a list of all supported configuration parameters.
+configuration = v3.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v3"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with v3.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = v3.CertificationCampaignsApi(api_client)
+    id = '2c9180835d191a86015d28455b4a2329' # str | The ID of the campaign template being deleted.
+
+    try:
+        # Delete a Campaign Template
+        api_instance.delete_campaign_template(id)
+    except Exception as e:
+        print("Exception when calling CertificationCampaignsApi->delete_campaign_template: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The ID of the campaign template being deleted. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
@@ -533,7 +615,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_campaign_reports**
-> List[CampaignReport] get_campaign_reports(campaign_id)
+> List[CampaignReport] get_campaign_reports(id)
 
 Get Campaign Reports
 
@@ -570,11 +652,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = v3.CertificationCampaignsApi(api_client)
-    campaign_id = '2c91808571bcfcf80171c23e4b4221fc' # str | The ID of the campaign for which reports are being fetched.
+    id = '2c91808571bcfcf80171c23e4b4221fc' # str | The ID of the campaign for which reports are being fetched.
 
     try:
         # Get Campaign Reports
-        api_response = api_instance.get_campaign_reports(campaign_id)
+        api_response = api_instance.get_campaign_reports(id)
         print("The response of CertificationCampaignsApi->get_campaign_reports:\n")
         pprint(api_response)
     except Exception as e:
@@ -587,7 +669,7 @@ with v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaign_id** | **str**| The ID of the campaign for which reports are being fetched. | 
+ **id** | **str**| The ID of the campaign for which reports are being fetched. | 
 
 ### Return type
 
@@ -1198,6 +1280,89 @@ Name | Type | Description  | Notes
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **set_campaign_template_schedule**
+> set_campaign_template_schedule(id, schedule=schedule)
+
+Sets a Campaign Template's Schedule
+
+Sets the schedule for a campaign template. If a schedule already exists, it will be overwritten with the new one.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+```python
+import time
+import os
+import v3
+from v3.models.schedule import Schedule
+from v3.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
+# See configuration.py for a list of all supported configuration parameters.
+configuration = v3.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v3"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with v3.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = v3.CertificationCampaignsApi(api_client)
+    id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | The ID of the campaign template being scheduled.
+    schedule = {type=MONTHLY, hours={type=LIST, values=[17]}, days={type=LIST, values=[15]}} # Schedule |  (optional)
+
+    try:
+        # Sets a Campaign Template's Schedule
+        api_instance.set_campaign_template_schedule(id, schedule=schedule)
+    except Exception as e:
+        print("Exception when calling CertificationCampaignsApi->set_campaign_template_schedule: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The ID of the campaign template being scheduled. | 
+ **schedule** | [**Schedule**](Schedule.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
 **429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 

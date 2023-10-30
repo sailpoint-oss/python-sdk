@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.identity import Identity  # noqa: E501
-
 
 class TestIdentity(unittest.TestCase):
     """Identity unit test stubs"""
@@ -44,7 +44,7 @@ class TestIdentity(unittest.TestCase):
                 email_address = 'sender@example.com',
                 processing_state = 'ERROR',
                 identity_status = 'LOCKED',
-                manager_ref = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                manager_ref = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
@@ -65,7 +65,6 @@ class TestIdentity(unittest.TestCase):
         """Test Identity"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.recommendation_response_dto import RecommendationResponseDto  # noqa: E501
-
 
 class TestRecommendationResponseDto(unittest.TestCase):
     """RecommendationResponseDto unit test stubs"""
@@ -74,7 +74,6 @@ class TestRecommendationResponseDto(unittest.TestCase):
         """Test RecommendationResponseDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

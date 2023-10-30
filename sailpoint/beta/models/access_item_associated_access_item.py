@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -27,12 +28,7 @@ from beta.models.access_item_role_response import AccessItemRoleResponse
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-ACCESSITEMASSOCIATEDACCESSITEM_ONE_OF_SCHEMAS = [
-    "AccessItemAccessProfileResponse", "AccessItemAccountResponse",
-    "AccessItemAppResponse", "AccessItemEntitlementResponse",
-    "AccessItemRoleResponse"
-]
-
+ACCESSITEMASSOCIATEDACCESSITEM_ONE_OF_SCHEMAS = ["AccessItemAccessProfileResponse", "AccessItemAccountResponse", "AccessItemAppResponse", "AccessItemEntitlementResponse", "AccessItemRoleResponse"]
 
 class AccessItemAssociatedAccessItem(BaseModel):
     """
@@ -49,15 +45,10 @@ class AccessItemAssociatedAccessItem(BaseModel):
     # data type: AccessItemRoleResponse
     oneof_schema_5_validator: Optional[AccessItemRoleResponse] = None
     if TYPE_CHECKING:
-        actual_instance: Union[AccessItemAccessProfileResponse,
-                               AccessItemAccountResponse,
-                               AccessItemAppResponse,
-                               AccessItemEntitlementResponse,
-                               AccessItemRoleResponse]
+        actual_instance: Union[AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse]
     else:
         actual_instance: Any
-    one_of_schemas: List[str] = Field(
-        ACCESSITEMASSOCIATEDACCESSITEM_ONE_OF_SCHEMAS, const=True)
+    one_of_schemas: List[str] = Field(ACCESSITEMASSOCIATEDACCESSITEM_ONE_OF_SCHEMAS, const=True)
 
     class Config:
         validate_assignment = True
@@ -65,13 +56,9 @@ class AccessItemAssociatedAccessItem(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -83,49 +70,35 @@ class AccessItemAssociatedAccessItem(BaseModel):
         match = 0
         # validate data type: AccessItemAccessProfileResponse
         if not isinstance(v, AccessItemAccessProfileResponse):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessItemAccessProfileResponse`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemAccessProfileResponse`")
         else:
             match += 1
         # validate data type: AccessItemAccountResponse
         if not isinstance(v, AccessItemAccountResponse):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessItemAccountResponse`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemAccountResponse`")
         else:
             match += 1
         # validate data type: AccessItemAppResponse
         if not isinstance(v, AccessItemAppResponse):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessItemAppResponse`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemAppResponse`")
         else:
             match += 1
         # validate data type: AccessItemEntitlementResponse
         if not isinstance(v, AccessItemEntitlementResponse):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessItemEntitlementResponse`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemEntitlementResponse`")
         else:
             match += 1
         # validate data type: AccessItemRoleResponse
         if not isinstance(v, AccessItemRoleResponse):
-            error_messages.append(
-                f"Error! Input type `{type(v)}` is not `AccessItemRoleResponse`"
-            )
+            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessItemRoleResponse`")
         else:
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when setting `actual_instance` in AccessItemAssociatedAccessItem with oneOf schemas: AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in AccessItemAssociatedAccessItem with oneOf schemas: AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when setting `actual_instance` in AccessItemAssociatedAccessItem with oneOf schemas: AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in AccessItemAssociatedAccessItem with oneOf schemas: AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -142,50 +115,41 @@ class AccessItemAssociatedAccessItem(BaseModel):
 
         # deserialize data into AccessItemAccessProfileResponse
         try:
-            instance.actual_instance = AccessItemAccessProfileResponse.from_json(
-                json_str)
+            instance.actual_instance = AccessItemAccessProfileResponse.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
         # deserialize data into AccessItemAccountResponse
         try:
-            instance.actual_instance = AccessItemAccountResponse.from_json(
-                json_str)
+            instance.actual_instance = AccessItemAccountResponse.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
         # deserialize data into AccessItemAppResponse
         try:
-            instance.actual_instance = AccessItemAppResponse.from_json(
-                json_str)
+            instance.actual_instance = AccessItemAppResponse.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
         # deserialize data into AccessItemEntitlementResponse
         try:
-            instance.actual_instance = AccessItemEntitlementResponse.from_json(
-                json_str)
+            instance.actual_instance = AccessItemEntitlementResponse.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
         # deserialize data into AccessItemRoleResponse
         try:
-            instance.actual_instance = AccessItemRoleResponse.from_json(
-                json_str)
+            instance.actual_instance = AccessItemRoleResponse.from_json(json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when deserializing the JSON string into AccessItemAssociatedAccessItem with oneOf schemas: AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into AccessItemAssociatedAccessItem with oneOf schemas: AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into AccessItemAssociatedAccessItem with oneOf schemas: AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into AccessItemAssociatedAccessItem with oneOf schemas: AccessItemAccessProfileResponse, AccessItemAccountResponse, AccessItemAppResponse, AccessItemEntitlementResponse, AccessItemRoleResponse. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -215,3 +179,5 @@ class AccessItemAssociatedAccessItem(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.dict())
+
+

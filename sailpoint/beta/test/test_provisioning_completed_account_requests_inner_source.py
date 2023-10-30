@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.provisioning_completed_account_requests_inner_source import ProvisioningCompletedAccountRequestsInnerSource  # noqa: E501
-
 
 class TestProvisioningCompletedAccountRequestsInnerSource(unittest.TestCase):
     """ProvisioningCompletedAccountRequestsInnerSource unit test stubs"""
@@ -26,9 +26,7 @@ class TestProvisioningCompletedAccountRequestsInnerSource(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self, include_optional
-    ) -> ProvisioningCompletedAccountRequestsInnerSource:
+    def make_instance(self, include_optional) -> ProvisioningCompletedAccountRequestsInnerSource:
         """Test ProvisioningCompletedAccountRequestsInnerSource
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -54,7 +52,6 @@ class TestProvisioningCompletedAccountRequestsInnerSource(unittest.TestCase):
         """Test ProvisioningCompletedAccountRequestsInnerSource"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

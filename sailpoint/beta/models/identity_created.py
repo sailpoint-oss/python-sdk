@@ -11,26 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict
 from pydantic import BaseModel, Field
 from beta.models.identity_created_identity import IdentityCreatedIdentity
-
 
 class IdentityCreated(BaseModel):
     """
     IdentityCreated
     """
     identity: IdentityCreatedIdentity = Field(...)
-    attributes: Dict[str, Any] = Field(
-        ...,
-        description=
-        "The attributes assigned to the identity.  Attributes are determined by the identity profile."
-    )
+    attributes: Dict[str, Any] = Field(..., description="The attributes assigned to the identity.  Attributes are determined by the identity profile.")
     __properties = ["identity", "attributes"]
 
     class Config:
@@ -53,7 +50,10 @@ class IdentityCreated(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of identity
         if self.identity:
             _dict['identity'] = self.identity.to_dict()
@@ -69,10 +69,9 @@ class IdentityCreated(BaseModel):
             return IdentityCreated.parse_obj(obj)
 
         _obj = IdentityCreated.parse_obj({
-            "identity":
-            IdentityCreatedIdentity.from_dict(obj.get("identity"))
-            if obj.get("identity") is not None else None,
-            "attributes":
-            obj.get("attributes")
+            "identity": IdentityCreatedIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
+            "attributes": obj.get("attributes")
         })
         return _obj
+
+

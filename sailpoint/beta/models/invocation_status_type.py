@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class InvocationStatusType(str, Enum):
     """
     Defines the Invocation type.  **TEST** The trigger was invocated as a test, either via the test subscription button in the UI or via the start test invocation API.  **REAL_TIME** The trigger subscription is live and was invocated by a real event in IdentityNow.
     """
+
     """
     allowed enum values
     """
@@ -31,3 +36,5 @@ class InvocationStatusType(str, Enum):
     def from_json(cls, json_str: str) -> InvocationStatusType:
         """Create an instance of InvocationStatusType from a JSON string"""
         return InvocationStatusType(json.loads(json_str))
+
+

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -22,7 +23,7 @@ from pydantic import Field, StrictBool, StrictStr, conint, conlist
 
 from typing import List, Optional
 
-from beta.models.base_reference_dto1 import BaseReferenceDto1
+from beta.models.base_reference_dto import BaseReferenceDto
 from beta.models.json_patch_operation import JsonPatchOperation
 from beta.models.workgroup_bulk_delete_request import WorkgroupBulkDeleteRequest
 from beta.models.workgroup_connection_dto import WorkgroupConnectionDto
@@ -34,7 +35,9 @@ from beta.models.workgroup_member_delete_item import WorkgroupMemberDeleteItem
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class GovernanceGroupsApi:
@@ -50,8 +53,7 @@ class GovernanceGroupsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_workgroup(self, workgroup_dto: WorkgroupDto,
-                         **kwargs) -> WorkgroupDto:  # noqa: E501
+    def create_workgroup(self, workgroup_dto : WorkgroupDto, **kwargs) -> WorkgroupDto:  # noqa: E501
         """Create a new Governance Group.  # noqa: E501
 
         This API creates a new Governance Group.  # noqa: E501
@@ -78,12 +80,10 @@ class GovernanceGroupsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_workgroup_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_workgroup_with_http_info(workgroup_dto,
-                                                    **kwargs)  # noqa: E501
+        return self.create_workgroup_with_http_info(workgroup_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_workgroup_with_http_info(self, workgroup_dto: WorkgroupDto,
-                                        **kwargs) -> ApiResponse:  # noqa: E501
+    def create_workgroup_with_http_info(self, workgroup_dto : WorkgroupDto, **kwargs) -> ApiResponse:  # noqa: E501
         """Create a new Governance Group.  # noqa: E501
 
         This API creates a new Governance Group.  # noqa: E501
@@ -122,17 +122,28 @@ class GovernanceGroupsApi:
 
         _params = locals()
 
-        _all_params = ['workgroup_dto']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'workgroup_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_workgroup" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_workgroup" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -158,11 +169,11 @@ class GovernanceGroupsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -177,8 +188,7 @@ class GovernanceGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/workgroups',
-            'POST',
+            '/workgroups', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -188,18 +198,14 @@ class GovernanceGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_workgroup(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the Governance Group")],
-                         **kwargs) -> None:  # noqa: E501
+    def delete_workgroup(self, id : Annotated[StrictStr, Field(..., description="ID of the Governance Group")], **kwargs) -> None:  # noqa: E501
         """Delete a Governance Group  # noqa: E501
 
         This API deletes a Governance Group by its ID.  # noqa: E501
@@ -229,10 +235,7 @@ class GovernanceGroupsApi:
         return self.delete_workgroup_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_workgroup_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the Governance Group")],
-                                        **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_workgroup_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Governance Group")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete a Governance Group  # noqa: E501
 
         This API deletes a Governance Group by its ID.  # noqa: E501
@@ -271,17 +274,28 @@ class GovernanceGroupsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_workgroup" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_workgroup" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -291,6 +305,7 @@ class GovernanceGroupsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -311,8 +326,7 @@ class GovernanceGroupsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/workgroups/{id}',
-            'DELETE',
+            '/workgroups/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -322,38 +336,27 @@ class GovernanceGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_workgroup_members(self, workgroup_id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="ID of the Governance Group."
-        )], base_reference_dto1: Annotated[
-            conlist(BaseReferenceDto1),
-            Field(
-                ...,
-                description=
-                "List of identities to be removed from  a Governance Group members list."
-            )], **kwargs) -> List[WorkgroupMemberDeleteItem]:  # noqa: E501
+    def delete_workgroup_members(self, workgroup_id : Annotated[StrictStr, Field(..., description="ID of the Governance Group.")], base_reference_dto : Annotated[conlist(BaseReferenceDto), Field(..., description="List of identities to be removed from  a Governance Group members list.")], **kwargs) -> List[WorkgroupMemberDeleteItem]:  # noqa: E501
         """Remove members from Governance Group  # noqa: E501
 
         This API removes one or more  members from a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.delete_workgroup_members(workgroup_id, base_reference_dto1, async_req=True)
+        >>> thread = api.delete_workgroup_members(workgroup_id, base_reference_dto, async_req=True)
         >>> result = thread.get()
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param base_reference_dto1: List of identities to be removed from  a Governance Group members list. (required)
-        :type base_reference_dto1: List[BaseReferenceDto1]
+        :param base_reference_dto: List of identities to be removed from  a Governance Group members list. (required)
+        :type base_reference_dto: List[BaseReferenceDto]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -369,34 +372,23 @@ class GovernanceGroupsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_workgroup_members_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_workgroup_members_with_http_info(
-            workgroup_id, base_reference_dto1, **kwargs)  # noqa: E501
+        return self.delete_workgroup_members_with_http_info(workgroup_id, base_reference_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_workgroup_members_with_http_info(self, workgroup_id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="ID of the Governance Group."
-        )], base_reference_dto1: Annotated[
-            conlist(BaseReferenceDto1),
-            Field(
-                ...,
-                description=
-                "List of identities to be removed from  a Governance Group members list."
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_workgroup_members_with_http_info(self, workgroup_id : Annotated[StrictStr, Field(..., description="ID of the Governance Group.")], base_reference_dto : Annotated[conlist(BaseReferenceDto), Field(..., description="List of identities to be removed from  a Governance Group members list.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Remove members from Governance Group  # noqa: E501
 
         This API removes one or more  members from a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.delete_workgroup_members_with_http_info(workgroup_id, base_reference_dto1, async_req=True)
+        >>> thread = api.delete_workgroup_members_with_http_info(workgroup_id, base_reference_dto, async_req=True)
         >>> result = thread.get()
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param base_reference_dto1: List of identities to be removed from  a Governance Group members list. (required)
-        :type base_reference_dto1: List[BaseReferenceDto1]
+        :param base_reference_dto: List of identities to be removed from  a Governance Group members list. (required)
+        :type base_reference_dto: List[BaseReferenceDto]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -424,18 +416,29 @@ class GovernanceGroupsApi:
 
         _params = locals()
 
-        _all_params = ['workgroup_id', 'base_reference_dto1']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'workgroup_id',
+            'base_reference_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_workgroup_members" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_workgroup_members" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -446,6 +449,7 @@ class GovernanceGroupsApi:
         if _params['workgroup_id']:
             _path_params['workgroupId'] = _params['workgroup_id']
 
+
         # process the query parameters
         _query_params = []
         # process the header parameters
@@ -455,19 +459,19 @@ class GovernanceGroupsApi:
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['base_reference_dto1'] is not None:
-            _body_params = _params['base_reference_dto1']
+        if _params['base_reference_dto'] is not None:
+            _body_params = _params['base_reference_dto']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -482,8 +486,7 @@ class GovernanceGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/workgroups/{workgroupId}/members/bulk-delete',
-            'POST',
+            '/workgroups/{workgroupId}/members/bulk-delete', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -493,17 +496,14 @@ class GovernanceGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_workgroups_in_bulk(
-            self, workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest,
-            **kwargs) -> List[WorkgroupDeleteItem]:  # noqa: E501
+    def delete_workgroups_in_bulk(self, workgroup_bulk_delete_request : WorkgroupBulkDeleteRequest, **kwargs) -> List[WorkgroupDeleteItem]:  # noqa: E501
         """Delete Governance Group(s)  # noqa: E501
 
          This API initiates a bulk deletion of one or more Governance Groups.  >  If any of the indicated Governance Groups have one or more connections associated with it,then those Governance Groups will be added in  **inUse** list of the response. Governance Group(s) marked as **inUse** can not be deleted.  >  If any of the indicated Governance Groups is not does not exists in Organization,then those Governance Groups will be added in **notFound** list of the response. Governance Groups marked as **notFound** will not be deleted.  >  If any of the indicated Governance Groups does not have any connections associated with it,then those Governance Groups will be added in **deleted** list of the response. A Governance Group marked as **deleted** will be deleted from current Organization.  >  If the request contains any **inUse** or **notFound** Governance Group IDs then it skips only these Governance Groups for deletion and deletes the rest of Governance Groups which have no connections associated with it.   >  **This API has limit number of Governance Groups can be deleted at one time. If the request contains more then 100 Governance Groups IDs to be deleted then the API will throw an exception.**  # noqa: E501
@@ -530,13 +530,10 @@ class GovernanceGroupsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_workgroups_in_bulk_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_workgroups_in_bulk_with_http_info(
-            workgroup_bulk_delete_request, **kwargs)  # noqa: E501
+        return self.delete_workgroups_in_bulk_with_http_info(workgroup_bulk_delete_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_workgroups_in_bulk_with_http_info(
-            self, workgroup_bulk_delete_request: WorkgroupBulkDeleteRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_workgroups_in_bulk_with_http_info(self, workgroup_bulk_delete_request : WorkgroupBulkDeleteRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Governance Group(s)  # noqa: E501
 
          This API initiates a bulk deletion of one or more Governance Groups.  >  If any of the indicated Governance Groups have one or more connections associated with it,then those Governance Groups will be added in  **inUse** list of the response. Governance Group(s) marked as **inUse** can not be deleted.  >  If any of the indicated Governance Groups is not does not exists in Organization,then those Governance Groups will be added in **notFound** list of the response. Governance Groups marked as **notFound** will not be deleted.  >  If any of the indicated Governance Groups does not have any connections associated with it,then those Governance Groups will be added in **deleted** list of the response. A Governance Group marked as **deleted** will be deleted from current Organization.  >  If the request contains any **inUse** or **notFound** Governance Group IDs then it skips only these Governance Groups for deletion and deletes the rest of Governance Groups which have no connections associated with it.   >  **This API has limit number of Governance Groups can be deleted at one time. If the request contains more then 100 Governance Groups IDs to be deleted then the API will throw an exception.**  # noqa: E501
@@ -575,18 +572,28 @@ class GovernanceGroupsApi:
 
         _params = locals()
 
-        _all_params = ['workgroup_bulk_delete_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'workgroup_bulk_delete_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_workgroups_in_bulk" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_workgroups_in_bulk" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -612,11 +619,11 @@ class GovernanceGroupsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -631,8 +638,7 @@ class GovernanceGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/workgroups/bulk-delete',
-            'POST',
+            '/workgroups/bulk-delete', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -642,18 +648,14 @@ class GovernanceGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_workgroup(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the Governance Group")],
-                      **kwargs) -> WorkgroupDto:  # noqa: E501
+    def get_workgroup(self, id : Annotated[StrictStr, Field(..., description="ID of the Governance Group")], **kwargs) -> WorkgroupDto:  # noqa: E501
         """Get Governance Group by Id  # noqa: E501
 
         This API returns a Governance Groups by its ID.  # noqa: E501
@@ -683,10 +685,7 @@ class GovernanceGroupsApi:
         return self.get_workgroup_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_workgroup_with_http_info(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the Governance Group")],
-                                     **kwargs) -> ApiResponse:  # noqa: E501
+    def get_workgroup_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Governance Group")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Governance Group by Id  # noqa: E501
 
         This API returns a Governance Groups by its ID.  # noqa: E501
@@ -725,17 +724,28 @@ class GovernanceGroupsApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_workgroup" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_workgroup" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -745,6 +755,7 @@ class GovernanceGroupsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -772,8 +783,7 @@ class GovernanceGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/workgroups/{id}',
-            'GET',
+            '/workgroups/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -783,48 +793,14 @@ class GovernanceGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_connections(
-            self,
-            workgroup_id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the Governance Group.")],
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=50, ge=0)],
-            Field(
-                description=
-                "Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**"
-            )] = None,
-            **kwargs) -> List[WorkgroupConnectionDto]:  # noqa: E501
+    def list_connections(self, workgroup_id : Annotated[StrictStr, Field(..., description="ID of the Governance Group.")], offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=50, ge=0)], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**")] = None, **kwargs) -> List[WorkgroupConnectionDto]:  # noqa: E501
         """List connections for Governance Group  # noqa: E501
 
         This API returns list of connections associated with a Governance Group.  # noqa: E501
@@ -859,45 +835,10 @@ class GovernanceGroupsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_connections_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_connections_with_http_info(workgroup_id, offset,
-                                                    limit, count, sorters,
-                                                    **kwargs)  # noqa: E501
+        return self.list_connections_with_http_info(workgroup_id, offset, limit, count, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_connections_with_http_info(
-            self,
-            workgroup_id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the Governance Group.")],
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=50, ge=0)],
-            Field(
-                description=
-                "Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_connections_with_http_info(self, workgroup_id : Annotated[StrictStr, Field(..., description="ID of the Governance Group.")], offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=50, ge=0)], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List connections for Governance Group  # noqa: E501
 
         This API returns list of connections associated with a Governance Group.  # noqa: E501
@@ -944,17 +885,32 @@ class GovernanceGroupsApi:
 
         _params = locals()
 
-        _all_params = ['workgroup_id', 'offset', 'limit', 'count', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'workgroup_id',
+            'offset',
+            'limit',
+            'count',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_connections" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_connections" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -964,6 +920,7 @@ class GovernanceGroupsApi:
         _path_params = {}
         if _params['workgroup_id']:
             _path_params['workgroupId'] = _params['workgroup_id']
+
 
         # process the query parameters
         _query_params = []
@@ -1003,8 +960,7 @@ class GovernanceGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/workgroups/{workgroupId}/connections',
-            'GET',
+            '/workgroups/{workgroupId}/connections', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1014,48 +970,14 @@ class GovernanceGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_workgroup_members(
-            self,
-            workgroup_id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the Governance Group.")],
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=50, ge=0)],
-            Field(
-                description=
-                "Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**"
-            )] = None,
-            **kwargs) -> List[BaseReferenceDto1]:  # noqa: E501
+    def list_workgroup_members(self, workgroup_id : Annotated[StrictStr, Field(..., description="ID of the Governance Group.")], offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=50, ge=0)], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**")] = None, **kwargs) -> List[BaseReferenceDto]:  # noqa: E501
         """List Governance Group Members  # noqa: E501
 
         This API returns list of members associated with a Governance Group.  # noqa: E501
@@ -1084,51 +1006,16 @@ class GovernanceGroupsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: List[BaseReferenceDto1]
+        :rtype: List[BaseReferenceDto]
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_workgroup_members_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_workgroup_members_with_http_info(
-            workgroup_id, offset, limit, count, sorters,
-            **kwargs)  # noqa: E501
+        return self.list_workgroup_members_with_http_info(workgroup_id, offset, limit, count, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_workgroup_members_with_http_info(
-            self,
-            workgroup_id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the Governance Group.")],
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=50, ge=0)],
-            Field(
-                description=
-                "Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_workgroup_members_with_http_info(self, workgroup_id : Annotated[StrictStr, Field(..., description="ID of the Governance Group.")], offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=50, ge=0)], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Governance Group Members  # noqa: E501
 
         This API returns list of members associated with a Governance Group.  # noqa: E501
@@ -1170,22 +1057,37 @@ class GovernanceGroupsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(List[BaseReferenceDto1], status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(List[BaseReferenceDto], status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
-        _all_params = ['workgroup_id', 'offset', 'limit', 'count', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'workgroup_id',
+            'offset',
+            'limit',
+            'count',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_workgroup_members" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_workgroup_members" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1195,6 +1097,7 @@ class GovernanceGroupsApi:
         _path_params = {}
         if _params['workgroup_id']:
             _path_params['workgroupId'] = _params['workgroup_id']
+
 
         # process the query parameters
         _query_params = []
@@ -1225,7 +1128,7 @@ class GovernanceGroupsApi:
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "List[BaseReferenceDto1]",
+            '200': "List[BaseReferenceDto]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1234,8 +1137,7 @@ class GovernanceGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/workgroups/{workgroupId}/members',
-            'GET',
+            '/workgroups/{workgroupId}/members', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1245,52 +1147,14 @@ class GovernanceGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_workgroups(
-            self,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=50, ge=0)],
-            Field(
-                description=
-                "Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Governance Group fields and operators: **id**: *eq, in*  **name**: *eq, sw*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**"
-            )] = None,
-            **kwargs) -> List[WorkgroupDto]:  # noqa: E501
+    def list_workgroups(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=50, ge=0)], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Governance Group fields and operators: **id**: *eq, in*  **name**: *eq, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**")] = None, **kwargs) -> List[WorkgroupDto]:  # noqa: E501
         """List Governance Groups  # noqa: E501
 
         This API returns list of Governance Groups  # noqa: E501
@@ -1325,49 +1189,10 @@ class GovernanceGroupsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_workgroups_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_workgroups_with_http_info(offset, limit, count,
-                                                   filters, sorters,
-                                                   **kwargs)  # noqa: E501
+        return self.list_workgroups_with_http_info(offset, limit, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_workgroups_with_http_info(
-            self,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=50, ge=0)],
-            Field(
-                description=
-                "Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Governance Group fields and operators: **id**: *eq, in*  **name**: *eq, sw*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_workgroups_with_http_info(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=50, ge=0)], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Governance Group fields and operators: **id**: *eq, in*  **name**: *eq, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Governance Groups  # noqa: E501
 
         This API returns list of Governance Groups  # noqa: E501
@@ -1414,17 +1239,32 @@ class GovernanceGroupsApi:
 
         _params = locals()
 
-        _all_params = ['offset', 'limit', 'count', 'filters', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'offset',
+            'limit',
+            'count',
+            'filters',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_workgroups" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_workgroups" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1474,8 +1314,7 @@ class GovernanceGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/workgroups',
-            'GET',
+            '/workgroups', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1485,21 +1324,14 @@ class GovernanceGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_workgroup(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the Governance Group")],
-            json_patch_operation: Optional[conlist(JsonPatchOperation)] = None,
-            **kwargs) -> WorkgroupDto:  # noqa: E501
+    def patch_workgroup(self, id : Annotated[StrictStr, Field(..., description="ID of the Governance Group")], json_patch_operation : Optional[conlist(JsonPatchOperation)] = None, **kwargs) -> WorkgroupDto:  # noqa: E501
         """Patch a Governance Group  # noqa: E501
 
         This API updates existing Governance Group by its ID. Following fields are patchable. **name**, **description** A token with API, ORG_ADMIN is required to call this API. In addition.  # noqa: E501
@@ -1528,17 +1360,10 @@ class GovernanceGroupsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_workgroup_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_workgroup_with_http_info(id, json_patch_operation,
-                                                   **kwargs)  # noqa: E501
+        return self.patch_workgroup_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_workgroup_with_http_info(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the Governance Group")],
-            json_patch_operation: Optional[conlist(JsonPatchOperation)] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_workgroup_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Governance Group")], json_patch_operation : Optional[conlist(JsonPatchOperation)] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Patch a Governance Group  # noqa: E501
 
         This API updates existing Governance Group by its ID. Following fields are patchable. **name**, **description** A token with API, ORG_ADMIN is required to call this API. In addition.  # noqa: E501
@@ -1579,17 +1404,29 @@ class GovernanceGroupsApi:
 
         _params = locals()
 
-        _all_params = ['id', 'json_patch_operation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'json_patch_operation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method patch_workgroup" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_workgroup" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1599,6 +1436,7 @@ class GovernanceGroupsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1617,12 +1455,11 @@ class GovernanceGroupsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1637,8 +1474,7 @@ class GovernanceGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/workgroups/{id}',
-            'PATCH',
+            '/workgroups/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -1648,38 +1484,27 @@ class GovernanceGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_workgroup_members(self, workgroup_id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="ID of the Governance Group."
-        )], base_reference_dto1: Annotated[
-            conlist(BaseReferenceDto1),
-            Field(
-                ...,
-                description=
-                "List of identities to be added to a Governance Group members list."
-            )], **kwargs) -> List[WorkgroupMemberAddItem]:  # noqa: E501
+    def update_workgroup_members(self, workgroup_id : Annotated[StrictStr, Field(..., description="ID of the Governance Group.")], base_reference_dto : Annotated[conlist(BaseReferenceDto), Field(..., description="List of identities to be added to a Governance Group members list.")], **kwargs) -> List[WorkgroupMemberAddItem]:  # noqa: E501
         """Add members to Governance Group  # noqa: E501
 
         This API adds one or more members to a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_workgroup_members(workgroup_id, base_reference_dto1, async_req=True)
+        >>> thread = api.update_workgroup_members(workgroup_id, base_reference_dto, async_req=True)
         >>> result = thread.get()
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param base_reference_dto1: List of identities to be added to a Governance Group members list. (required)
-        :type base_reference_dto1: List[BaseReferenceDto1]
+        :param base_reference_dto: List of identities to be added to a Governance Group members list. (required)
+        :type base_reference_dto: List[BaseReferenceDto]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -1695,34 +1520,23 @@ class GovernanceGroupsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_workgroup_members_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_workgroup_members_with_http_info(
-            workgroup_id, base_reference_dto1, **kwargs)  # noqa: E501
+        return self.update_workgroup_members_with_http_info(workgroup_id, base_reference_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_workgroup_members_with_http_info(self, workgroup_id: Annotated[
-        StrictStr,
-        Field(
-            ..., description="ID of the Governance Group."
-        )], base_reference_dto1: Annotated[
-            conlist(BaseReferenceDto1),
-            Field(
-                ...,
-                description=
-                "List of identities to be added to a Governance Group members list."
-            )], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_workgroup_members_with_http_info(self, workgroup_id : Annotated[StrictStr, Field(..., description="ID of the Governance Group.")], base_reference_dto : Annotated[conlist(BaseReferenceDto), Field(..., description="List of identities to be added to a Governance Group members list.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Add members to Governance Group  # noqa: E501
 
         This API adds one or more members to a Governance Group.  A token with API, ORG_ADMIN authority is required to call this API.  >  **Following field of Identity is an optional field in the request.**  >  **name**  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_workgroup_members_with_http_info(workgroup_id, base_reference_dto1, async_req=True)
+        >>> thread = api.update_workgroup_members_with_http_info(workgroup_id, base_reference_dto, async_req=True)
         >>> result = thread.get()
 
         :param workgroup_id: ID of the Governance Group. (required)
         :type workgroup_id: str
-        :param base_reference_dto1: List of identities to be added to a Governance Group members list. (required)
-        :type base_reference_dto1: List[BaseReferenceDto1]
+        :param base_reference_dto: List of identities to be added to a Governance Group members list. (required)
+        :type base_reference_dto: List[BaseReferenceDto]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1750,18 +1564,29 @@ class GovernanceGroupsApi:
 
         _params = locals()
 
-        _all_params = ['workgroup_id', 'base_reference_dto1']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'workgroup_id',
+            'base_reference_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_workgroup_members" %
-                                   _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_workgroup_members" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1772,6 +1597,7 @@ class GovernanceGroupsApi:
         if _params['workgroup_id']:
             _path_params['workgroupId'] = _params['workgroup_id']
 
+
         # process the query parameters
         _query_params = []
         # process the header parameters
@@ -1781,19 +1607,19 @@ class GovernanceGroupsApi:
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['base_reference_dto1'] is not None:
-            _body_params = _params['base_reference_dto1']
+        if _params['base_reference_dto'] is not None:
+            _body_params = _params['base_reference_dto']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1808,8 +1634,7 @@ class GovernanceGroupsApi:
         }
 
         return self.api_client.call_api(
-            '/workgroups/{workgroupId}/members/bulk-add',
-            'POST',
+            '/workgroups/{workgroupId}/members/bulk-add', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1819,8 +1644,7 @@ class GovernanceGroupsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

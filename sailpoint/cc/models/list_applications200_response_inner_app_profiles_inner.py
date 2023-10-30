@@ -11,14 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional, Union
 from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr
-
 
 class ListApplications200ResponseInnerAppProfilesInner(BaseModel):
     """
@@ -45,39 +46,34 @@ class ListApplications200ResponseInnerAppProfilesInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-            cls,
-            json_str: str) -> ListApplications200ResponseInnerAppProfilesInner:
+    def from_json(cls, json_str: str) -> ListApplications200ResponseInnerAppProfilesInner:
         """Create an instance of ListApplications200ResponseInnerAppProfilesInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(
-            cls,
-            obj: dict) -> ListApplications200ResponseInnerAppProfilesInner:
+    def from_dict(cls, obj: dict) -> ListApplications200ResponseInnerAppProfilesInner:
         """Create an instance of ListApplications200ResponseInnerAppProfilesInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ListApplications200ResponseInnerAppProfilesInner.parse_obj(
-                obj)
+            return ListApplications200ResponseInnerAppProfilesInner.parse_obj(obj)
 
         _obj = ListApplications200ResponseInnerAppProfilesInner.parse_obj({
-            "id":
-            obj.get("id"),
-            "filename":
-            obj.get("filename"),
-            "created_by":
-            obj.get("createdBy"),
-            "date_created":
-            obj.get("dateCreated"),
-            "xsd_version":
-            obj.get("xsdVersion")
+            "id": obj.get("id"),
+            "filename": obj.get("filename"),
+            "created_by": obj.get("createdBy"),
+            "date_created": obj.get("dateCreated"),
+            "xsd_version": obj.get("xsdVersion")
         })
         return _obj
+
+

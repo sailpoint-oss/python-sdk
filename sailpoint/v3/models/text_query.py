@@ -11,37 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
-
 
 class TextQuery(BaseModel):
     """
     Query parameters used to construct an Elasticsearch text query object.  # noqa: E501
     """
-    terms: conlist(StrictStr) = Field(
-        ...,
-        description=
-        "Words or characters that specify a particular thing to be searched for."
-    )
-    fields: conlist(StrictStr) = Field(
-        ..., description="The fields to be searched.")
-    match_any: Optional[StrictBool] = Field(
-        False,
-        alias="matchAny",
-        description=
-        "Indicates that at least one of the terms must be found in the specified fields;  otherwise, all terms must be found."
-    )
-    contains: Optional[StrictBool] = Field(
-        False,
-        description=
-        "Indicates that the terms can be located anywhere in the specified fields;  otherwise, the fields must begin with the terms."
-    )
+    terms: conlist(StrictStr) = Field(..., description="Words or characters that specify a particular thing to be searched for.")
+    fields: conlist(StrictStr) = Field(..., description="The fields to be searched.")
+    match_any: Optional[StrictBool] = Field(False, alias="matchAny", description="Indicates that at least one of the terms must be found in the specified fields;  otherwise, all terms must be found.")
+    contains: Optional[StrictBool] = Field(False, description="Indicates that the terms can be located anywhere in the specified fields;  otherwise, the fields must begin with the terms.")
     __properties = ["terms", "fields", "matchAny", "contains"]
 
     class Config:
@@ -64,7 +51,10 @@ class TextQuery(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -77,13 +67,11 @@ class TextQuery(BaseModel):
             return TextQuery.parse_obj(obj)
 
         _obj = TextQuery.parse_obj({
-            "terms":
-            obj.get("terms"),
-            "fields":
-            obj.get("fields"),
-            "match_any":
-            obj.get("matchAny") if obj.get("matchAny") is not None else False,
-            "contains":
-            obj.get("contains") if obj.get("contains") is not None else False
+            "terms": obj.get("terms"),
+            "fields": obj.get("fields"),
+            "match_any": obj.get("matchAny") if obj.get("matchAny") is not None else False,
+            "contains": obj.get("contains") if obj.get("contains") is not None else False
         })
         return _obj
+
+

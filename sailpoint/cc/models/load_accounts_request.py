@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictBytes, StrictStr
-
 
 class LoadAccountsRequest(BaseModel):
     """
     LoadAccountsRequest
     """
-    disable_optimization: Optional[StrictBool] = Field(
-        None, alias="disableOptimization")
+    disable_optimization: Optional[StrictBool] = Field(None, alias="disableOptimization")
     file: Optional[Union[StrictBytes, StrictStr]] = None
     __properties = ["disableOptimization", "file"]
 
@@ -49,7 +49,10 @@ class LoadAccountsRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -62,9 +65,9 @@ class LoadAccountsRequest(BaseModel):
             return LoadAccountsRequest.parse_obj(obj)
 
         _obj = LoadAccountsRequest.parse_obj({
-            "disable_optimization":
-            obj.get("disableOptimization"),
-            "file":
-            obj.get("file")
+            "disable_optimization": obj.get("disableOptimization"),
+            "file": obj.get("file")
         })
         return _obj
+
+

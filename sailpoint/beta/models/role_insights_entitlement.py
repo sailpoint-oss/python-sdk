@@ -11,33 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class RoleInsightsEntitlement(BaseModel):
     """
     RoleInsightsEntitlement
     """
-    name: Optional[StrictStr] = Field(None,
-                                      description="Name of the entitlement")
+    name: Optional[StrictStr] = Field(None, description="Name of the entitlement")
     id: Optional[StrictStr] = Field(None, description="Id of the entitlement")
-    description: Optional[StrictStr] = Field(
-        None, description="Description for the entitlement")
-    source: Optional[StrictStr] = Field(
-        None, description="Source or the application for the entitlement")
-    attribute: Optional[StrictStr] = Field(
-        None, description="Attribute for the entitlement")
-    value: Optional[StrictStr] = Field(
-        None, description="Attribute value for the entitlement")
-    __properties = [
-        "name", "id", "description", "source", "attribute", "value"
-    ]
+    description: Optional[StrictStr] = Field(None, description="Description for the entitlement")
+    source: Optional[StrictStr] = Field(None, description="Source or the application for the entitlement")
+    attribute: Optional[StrictStr] = Field(None, description="Attribute for the entitlement")
+    value: Optional[StrictStr] = Field(None, description="Attribute value for the entitlement")
+    __properties = ["name", "id", "description", "source", "attribute", "value"]
 
     class Config:
         """Pydantic configuration"""
@@ -59,7 +53,10 @@ class RoleInsightsEntitlement(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -72,17 +69,13 @@ class RoleInsightsEntitlement(BaseModel):
             return RoleInsightsEntitlement.parse_obj(obj)
 
         _obj = RoleInsightsEntitlement.parse_obj({
-            "name":
-            obj.get("name"),
-            "id":
-            obj.get("id"),
-            "description":
-            obj.get("description"),
-            "source":
-            obj.get("source"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value")
+            "name": obj.get("name"),
+            "id": obj.get("id"),
+            "description": obj.get("description"),
+            "source": obj.get("source"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value")
         })
         return _obj
+
+

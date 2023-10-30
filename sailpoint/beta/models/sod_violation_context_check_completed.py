@@ -11,26 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 from beta.models.sod_violation_check_result import SodViolationCheckResult
-
 
 class SodViolationContextCheckCompleted(BaseModel):
     """
     An object referencing a completed SOD violation check  # noqa: E501
     """
-    state: Optional[StrictStr] = Field(
-        None, description="The status of SOD violation check")
-    uuid: Optional[StrictStr] = Field(
-        None, description="The id of the Violation check event")
-    violation_check_result: Optional[SodViolationCheckResult] = Field(
-        None, alias="violationCheckResult")
+    state: Optional[StrictStr] = Field(None, description="The status of SOD violation check")
+    uuid: Optional[StrictStr] = Field(None, description="The id of the Violation check event")
+    violation_check_result: Optional[SodViolationCheckResult] = Field(None, alias="violationCheckResult")
     __properties = ["state", "uuid", "violationCheckResult"]
 
     @validator('state')
@@ -63,12 +61,13 @@ class SodViolationContextCheckCompleted(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of violation_check_result
         if self.violation_check_result:
-            _dict[
-                'violationCheckResult'] = self.violation_check_result.to_dict(
-                )
+            _dict['violationCheckResult'] = self.violation_check_result.to_dict()
         return _dict
 
     @classmethod
@@ -81,12 +80,10 @@ class SodViolationContextCheckCompleted(BaseModel):
             return SodViolationContextCheckCompleted.parse_obj(obj)
 
         _obj = SodViolationContextCheckCompleted.parse_obj({
-            "state":
-            obj.get("state"),
-            "uuid":
-            obj.get("uuid"),
-            "violation_check_result":
-            SodViolationCheckResult.from_dict(obj.get("violationCheckResult"))
-            if obj.get("violationCheckResult") is not None else None
+            "state": obj.get("state"),
+            "uuid": obj.get("uuid"),
+            "violation_check_result": SodViolationCheckResult.from_dict(obj.get("violationCheckResult")) if obj.get("violationCheckResult") is not None else None
         })
         return _obj
+
+

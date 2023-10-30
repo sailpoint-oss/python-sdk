@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -23,7 +24,9 @@ from beta.models.violation_prediction import ViolationPrediction
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
 from beta.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class SODViolationsApi:
@@ -39,9 +42,7 @@ class SODViolationsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def predict_sod_violations(self,
-                               identity_with_new_access: IdentityWithNewAccess,
-                               **kwargs) -> ViolationPrediction:  # noqa: E501
+    def predict_sod_violations(self, identity_with_new_access : IdentityWithNewAccess, **kwargs) -> ViolationPrediction:  # noqa: E501
         """Predict SOD violations for the given identity if they were granted the given access.  # noqa: E501
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.  A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -68,13 +69,10 @@ class SODViolationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the predict_sod_violations_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.predict_sod_violations_with_http_info(
-            identity_with_new_access, **kwargs)  # noqa: E501
+        return self.predict_sod_violations_with_http_info(identity_with_new_access, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def predict_sod_violations_with_http_info(
-            self, identity_with_new_access: IdentityWithNewAccess,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def predict_sod_violations_with_http_info(self, identity_with_new_access : IdentityWithNewAccess, **kwargs) -> ApiResponse:  # noqa: E501
         """Predict SOD violations for the given identity if they were granted the given access.  # noqa: E501
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.  A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -113,17 +111,28 @@ class SODViolationsApi:
 
         _params = locals()
 
-        _all_params = ['identity_with_new_access']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'identity_with_new_access'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method predict_sod_violations" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method predict_sod_violations" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -149,11 +158,11 @@ class SODViolationsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -169,8 +178,7 @@ class SODViolationsApi:
         }
 
         return self.api_client.call_api(
-            '/sod-violations/predict',
-            'POST',
+            '/sod-violations/predict', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -180,8 +188,7 @@ class SODViolationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

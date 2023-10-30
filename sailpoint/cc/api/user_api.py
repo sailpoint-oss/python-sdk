@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -27,7 +28,9 @@ from cc.models.update_user_permissions_request import UpdateUserPermissionsReque
 from cc.api_client import ApiClient
 from cc.api_response import ApiResponse
 from cc.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class UserApi:
@@ -43,8 +46,7 @@ class UserApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_identity(self, id: StrictStr,
-                     **kwargs) -> GetIdentity200Response:  # noqa: E501
+    def get_identity(self, id : StrictStr, **kwargs) -> GetIdentity200Response:  # noqa: E501
         """Get Single Identity  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -73,8 +75,7 @@ class UserApi:
         return self.get_identity_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_with_http_info(self, id: StrictStr,
-                                    **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
         """Get Single Identity  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -112,17 +113,28 @@ class UserApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_identity" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_identity" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -132,6 +144,7 @@ class UserApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -154,8 +167,7 @@ class UserApi:
         }
 
         return self.api_client.call_api(
-            '/cc/api/user/get/{id}',
-            'GET',
+            '/cc/api/user/get/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -165,18 +177,14 @@ class UserApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_user_permissions(self,
-                                update_user_permissions_request: Optional[
-                                    UpdateUserPermissionsRequest] = None,
-                                **kwargs) -> None:  # noqa: E501
+    def update_user_permissions(self, update_user_permissions_request : Optional[UpdateUserPermissionsRequest] = None, **kwargs) -> None:  # noqa: E501
         """Update User Permissions  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -202,15 +210,10 @@ class UserApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_user_permissions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_user_permissions_with_http_info(
-            update_user_permissions_request, **kwargs)  # noqa: E501
+        return self.update_user_permissions_with_http_info(update_user_permissions_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_user_permissions_with_http_info(
-            self,
-            update_user_permissions_request: Optional[
-                UpdateUserPermissionsRequest] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def update_user_permissions_with_http_info(self, update_user_permissions_request : Optional[UpdateUserPermissionsRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update User Permissions  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -248,17 +251,28 @@ class UserApi:
 
         _params = locals()
 
-        _all_params = ['update_user_permissions_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'update_user_permissions_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_user_permissions" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_user_permissions" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -284,11 +298,11 @@ class UserApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -296,8 +310,7 @@ class UserApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/cc/api/user/updatePermissions',
-            'POST',
+            '/cc/api/user/updatePermissions', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -307,8 +320,7 @@ class UserApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

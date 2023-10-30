@@ -11,44 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-
 
 class NonEmployeeSchemaAttributeBody(BaseModel):
     """
     NonEmployeeSchemaAttributeBody
     """
-    type: StrictStr = Field(
-        ...,
-        description=
-        "Type of the attribute. Only type 'TEXT' is supported for custom attributes."
-    )
-    label: StrictStr = Field(
-        ...,
-        description="Label displayed on the UI for this schema attribute.")
-    technical_name: StrictStr = Field(
-        ...,
-        alias="technicalName",
-        description=
-        "The technical name of the attribute. Must be unique per source.")
-    help_text: Optional[StrictStr] = Field(
-        None, alias="helpText", description="help text displayed by UI.")
-    placeholder: Optional[StrictStr] = Field(
-        None, description="Hint text that fills UI box.")
-    required: Optional[StrictBool] = Field(
-        None,
-        description=
-        "If true, the schema attribute is required for all non-employees in the source"
-    )
-    __properties = [
-        "type", "label", "technicalName", "helpText", "placeholder", "required"
-    ]
+    type: StrictStr = Field(..., description="Type of the attribute. Only type 'TEXT' is supported for custom attributes.")
+    label: StrictStr = Field(..., description="Label displayed on the UI for this schema attribute.")
+    technical_name: StrictStr = Field(..., alias="technicalName", description="The technical name of the attribute. Must be unique per source.")
+    help_text: Optional[StrictStr] = Field(None, alias="helpText", description="help text displayed by UI.")
+    placeholder: Optional[StrictStr] = Field(None, description="Hint text that fills UI box.")
+    required: Optional[StrictBool] = Field(None, description="If true, the schema attribute is required for all non-employees in the source")
+    __properties = ["type", "label", "technicalName", "helpText", "placeholder", "required"]
 
     class Config:
         """Pydantic configuration"""
@@ -70,7 +53,10 @@ class NonEmployeeSchemaAttributeBody(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -83,17 +69,13 @@ class NonEmployeeSchemaAttributeBody(BaseModel):
             return NonEmployeeSchemaAttributeBody.parse_obj(obj)
 
         _obj = NonEmployeeSchemaAttributeBody.parse_obj({
-            "type":
-            obj.get("type"),
-            "label":
-            obj.get("label"),
-            "technical_name":
-            obj.get("technicalName"),
-            "help_text":
-            obj.get("helpText"),
-            "placeholder":
-            obj.get("placeholder"),
-            "required":
-            obj.get("required")
+            "type": obj.get("type"),
+            "label": obj.get("label"),
+            "technical_name": obj.get("technicalName"),
+            "help_text": obj.get("helpText"),
+            "placeholder": obj.get("placeholder"),
+            "required": obj.get("required")
         })
         return _obj
+
+

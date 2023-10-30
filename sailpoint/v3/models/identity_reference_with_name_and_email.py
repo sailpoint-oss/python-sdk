@@ -11,28 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class IdentityReferenceWithNameAndEmail(BaseModel):
     """
     IdentityReferenceWithNameAndEmail
     """
-    type: Optional[StrictStr] = Field(
-        None, description="The type can only be IDENTITY. This is read-only")
+    type: Optional[StrictStr] = Field(None, description="The type can only be IDENTITY. This is read-only")
     id: Optional[StrictStr] = Field(None, description="Identity id.")
-    name: Optional[StrictStr] = Field(
-        None,
-        description="Human-readable display name of identity. This is read-only"
-    )
-    email: Optional[StrictStr] = Field(
-        None, description="Email address of identity. This is read-only")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of identity. This is read-only")
+    email: Optional[StrictStr] = Field(None, description="Email address of identity. This is read-only")
     __properties = ["type", "id", "name", "email"]
 
     class Config:
@@ -55,7 +51,10 @@ class IdentityReferenceWithNameAndEmail(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -68,13 +67,11 @@ class IdentityReferenceWithNameAndEmail(BaseModel):
             return IdentityReferenceWithNameAndEmail.parse_obj(obj)
 
         _obj = IdentityReferenceWithNameAndEmail.parse_obj({
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "email":
-            obj.get("email")
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "email": obj.get("email")
         })
         return _obj
+
+

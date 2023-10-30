@@ -11,31 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class EntitlementApprovalScheme(BaseModel):
     """
     EntitlementApprovalScheme
     """
-    approver_type: Optional[StrictStr] = Field(
-        None,
-        alias="approverType",
-        description=
-        "Describes the individual or group that is responsible for an approval step. Values are as follows.  **ENTITLEMENT_OWNER**: Owner of the associated Entitlement  **SOURCE_OWNER**: Owner of the associated Source  **MANAGER**: Manager of the Identity for whom the request is being made  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field"
-    )
-    approver_id: Optional[StrictStr] = Field(
-        None,
-        alias="approverId",
-        description=
-        "Id of the specific approver, used only when approverType is GOVERNANCE_GROUP"
-    )
+    approver_type: Optional[StrictStr] = Field(None, alias="approverType", description="Describes the individual or group that is responsible for an approval step. Values are as follows.  **ENTITLEMENT_OWNER**: Owner of the associated Entitlement  **SOURCE_OWNER**: Owner of the associated Source  **MANAGER**: Manager of the Identity for whom the request is being made  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field")
+    approver_id: Optional[StrictStr] = Field(None, alias="approverId", description="Id of the specific approver, used only when approverType is GOVERNANCE_GROUP")
     __properties = ["approverType", "approverId"]
 
     @validator('approver_type')
@@ -44,11 +35,8 @@ class EntitlementApprovalScheme(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ENTITLEMENT_OWNER', 'SOURCE_OWNER', 'MANAGER',
-                         'GOVERNANCE_GROUP'):
-            raise ValueError(
-                "must be one of enum values ('ENTITLEMENT_OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP')"
-            )
+        if value not in ('ENTITLEMENT_OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP'):
+            raise ValueError("must be one of enum values ('ENTITLEMENT_OWNER', 'SOURCE_OWNER', 'MANAGER', 'GOVERNANCE_GROUP')")
         return value
 
     class Config:
@@ -71,7 +59,10 @@ class EntitlementApprovalScheme(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if approver_id (nullable) is None
         # and __fields_set__ contains the field
         if self.approver_id is None and "approver_id" in self.__fields_set__:
@@ -89,9 +80,9 @@ class EntitlementApprovalScheme(BaseModel):
             return EntitlementApprovalScheme.parse_obj(obj)
 
         _obj = EntitlementApprovalScheme.parse_obj({
-            "approver_type":
-            obj.get("approverType"),
-            "approver_id":
-            obj.get("approverId")
+            "approver_type": obj.get("approverType"),
+            "approver_id": obj.get("approverId")
         })
         return _obj
+
+

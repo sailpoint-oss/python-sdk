@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.provisioning_config import ProvisioningConfig  # noqa: E501
-
 
 class TestProvisioningConfig(unittest.TestCase):
     """ProvisioningConfig unit test stubs"""
@@ -53,7 +53,6 @@ class TestProvisioningConfig(unittest.TestCase):
         """Test ProvisioningConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.role_mining_potential_role_export_state import RoleMiningPotentialRoleExportState  # noqa: E501
-
 
 class TestRoleMiningPotentialRoleExportState(unittest.TestCase):
     """RoleMiningPotentialRoleExportState unit test stubs"""
@@ -29,7 +29,6 @@ class TestRoleMiningPotentialRoleExportState(unittest.TestCase):
     def testRoleMiningPotentialRoleExportState(self):
         """Test RoleMiningPotentialRoleExportState"""
         # inst = RoleMiningPotentialRoleExportState()
-
 
 if __name__ == '__main__':
     unittest.main()

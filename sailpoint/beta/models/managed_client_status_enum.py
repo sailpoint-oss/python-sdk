@@ -11,16 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
+
+
+
 class ManagedClientStatusEnum(str, Enum):
     """
     ManagedClientStatusEnum
     """
+
     """
     allowed enum values
     """
@@ -36,3 +41,5 @@ class ManagedClientStatusEnum(str, Enum):
     def from_json(cls, json_str: str) -> ManagedClientStatusEnum:
         """Create an instance of ManagedClientStatusEnum from a JSON string"""
         return ManagedClientStatusEnum(json.loads(json_str))
+
+

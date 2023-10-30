@@ -11,24 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
 from beta.models.form_element_data_source_config_options import FormElementDataSourceConfigOptions
-
 
 class ListFormElementDataByElementIDResponse(BaseModel):
     """
     ListFormElementDataByElementIDResponse
     """
-    results: Optional[conlist(FormElementDataSourceConfigOptions)] = Field(
-        None,
-        description=
-        "Results holds a list of FormElementDataSourceConfigOptions items")
+    results: Optional[conlist(FormElementDataSourceConfigOptions)] = Field(None, description="Results holds a list of FormElementDataSourceConfigOptions items")
     __properties = ["results"]
 
     class Config:
@@ -45,14 +43,16 @@ class ListFormElementDataByElementIDResponse(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls,
-                  json_str: str) -> ListFormElementDataByElementIDResponse:
+    def from_json(cls, json_str: str) -> ListFormElementDataByElementIDResponse:
         """Create an instance of ListFormElementDataByElementIDResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in results (list)
         _items = []
         if self.results:
@@ -72,9 +72,8 @@ class ListFormElementDataByElementIDResponse(BaseModel):
             return ListFormElementDataByElementIDResponse.parse_obj(obj)
 
         _obj = ListFormElementDataByElementIDResponse.parse_obj({
-            "results": [
-                FormElementDataSourceConfigOptions.from_dict(_item)
-                for _item in obj.get("results")
-            ] if obj.get("results") is not None else None
+            "results": [FormElementDataSourceConfigOptions.from_dict(_item) for _item in obj.get("results")] if obj.get("results") is not None else None
         })
         return _obj
+
+

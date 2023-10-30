@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.access_request_type import AccessRequestType  # noqa: E501
-
 
 class TestAccessRequestType(unittest.TestCase):
     """AccessRequestType unit test stubs"""
@@ -29,7 +29,6 @@ class TestAccessRequestType(unittest.TestCase):
     def testAccessRequestType(self):
         """Test AccessRequestType"""
         # inst = AccessRequestType()
-
 
 if __name__ == '__main__':
     unittest.main()

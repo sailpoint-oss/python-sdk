@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.role_mining_session_scoping_method import RoleMiningSessionScopingMethod  # noqa: E501
-
 
 class TestRoleMiningSessionScopingMethod(unittest.TestCase):
     """RoleMiningSessionScopingMethod unit test stubs"""
@@ -26,29 +26,9 @@ class TestRoleMiningSessionScopingMethod(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> RoleMiningSessionScopingMethod:
-        """Test RoleMiningSessionScopingMethod
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # uncomment below to create an instance of `RoleMiningSessionScopingMethod`
-        """
-        model = RoleMiningSessionScopingMethod()  # noqa: E501
-        if include_optional:
-            return RoleMiningSessionScopingMethod(
-                state = 'MANUAL'
-            )
-        else:
-            return RoleMiningSessionScopingMethod(
-        )
-        """
-
     def testRoleMiningSessionScopingMethod(self):
         """Test RoleMiningSessionScopingMethod"""
-        # inst_req_only = self.make_instance(include_optional=False)
-        # inst_req_and_optional = self.make_instance(include_optional=True)
-
+        # inst = RoleMiningSessionScopingMethod()
 
 if __name__ == '__main__':
     unittest.main()

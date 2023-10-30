@@ -11,24 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class IdentitiesAccountsBulkRequest(BaseModel):
     """
     IdentitiesAccountsBulkRequest
     """
-    identity_ids: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="identityIds",
-        description=
-        "The ids of the identities for which enable/disable accounts.")
+    identity_ids: Optional[conlist(StrictStr)] = Field(None, alias="identityIds", description="The ids of the identities for which enable/disable accounts.")
     __properties = ["identityIds"]
 
     class Config:
@@ -51,7 +48,10 @@ class IdentitiesAccountsBulkRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,6 +63,9 @@ class IdentitiesAccountsBulkRequest(BaseModel):
         if not isinstance(obj, dict):
             return IdentitiesAccountsBulkRequest.parse_obj(obj)
 
-        _obj = IdentitiesAccountsBulkRequest.parse_obj(
-            {"identity_ids": obj.get("identityIds")})
+        _obj = IdentitiesAccountsBulkRequest.parse_obj({
+            "identity_ids": obj.get("identityIds")
+        })
         return _obj
+
+

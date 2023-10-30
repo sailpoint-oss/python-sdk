@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.template_dto import TemplateDto  # noqa: E501
-
 
 class TestTemplateDto(unittest.TestCase):
     """TemplateDto unit test stubs"""
@@ -63,7 +63,6 @@ class TestTemplateDto(unittest.TestCase):
         """Test TemplateDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

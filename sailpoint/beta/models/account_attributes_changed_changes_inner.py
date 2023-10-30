@@ -11,26 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.account_attributes_changed_changes_inner_new_value import AccountAttributesChangedChangesInnerNewValue
 from beta.models.account_attributes_changed_changes_inner_old_value import AccountAttributesChangedChangesInnerOldValue
 
-
 class AccountAttributesChangedChangesInner(BaseModel):
     """
     AccountAttributesChangedChangesInner
     """
     attribute: StrictStr = Field(..., description="The name of the attribute.")
-    old_value: Optional[AccountAttributesChangedChangesInnerOldValue] = Field(
-        ..., alias="oldValue")
-    new_value: Optional[AccountAttributesChangedChangesInnerNewValue] = Field(
-        ..., alias="newValue")
+    old_value: Optional[AccountAttributesChangedChangesInnerOldValue] = Field(..., alias="oldValue")
+    new_value: Optional[AccountAttributesChangedChangesInnerNewValue] = Field(..., alias="newValue")
     __properties = ["attribute", "oldValue", "newValue"]
 
     class Config:
@@ -53,7 +52,10 @@ class AccountAttributesChangedChangesInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of old_value
         if self.old_value:
             _dict['oldValue'] = self.old_value.to_dict()
@@ -82,15 +84,10 @@ class AccountAttributesChangedChangesInner(BaseModel):
             return AccountAttributesChangedChangesInner.parse_obj(obj)
 
         _obj = AccountAttributesChangedChangesInner.parse_obj({
-            "attribute":
-            obj.get("attribute"),
-            "old_value":
-            AccountAttributesChangedChangesInnerOldValue.from_dict(
-                obj.get("oldValue"))
-            if obj.get("oldValue") is not None else None,
-            "new_value":
-            AccountAttributesChangedChangesInnerNewValue.from_dict(
-                obj.get("newValue"))
-            if obj.get("newValue") is not None else None
+            "attribute": obj.get("attribute"),
+            "old_value": AccountAttributesChangedChangesInnerOldValue.from_dict(obj.get("oldValue")) if obj.get("oldValue") is not None else None,
+            "new_value": AccountAttributesChangedChangesInnerNewValue.from_dict(obj.get("newValue")) if obj.get("newValue") is not None else None
         })
         return _obj
+
+

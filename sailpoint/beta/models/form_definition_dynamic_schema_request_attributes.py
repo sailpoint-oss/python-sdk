@@ -11,24 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class FormDefinitionDynamicSchemaRequestAttributes(BaseModel):
     """
     FormDefinitionDynamicSchemaRequestAttributes
     """
-    form_definition_id: Optional[StrictStr] = Field(
-        None,
-        alias="formDefinitionId",
-        description=
-        "FormDefinitionID is a unique guid identifying this form definition")
+    form_definition_id: Optional[StrictStr] = Field(None, alias="formDefinitionId", description="FormDefinitionID is a unique guid identifying this form definition")
     __properties = ["formDefinitionId"]
 
     class Config:
@@ -45,20 +42,20 @@ class FormDefinitionDynamicSchemaRequestAttributes(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-            cls,
-            json_str: str) -> FormDefinitionDynamicSchemaRequestAttributes:
+    def from_json(cls, json_str: str) -> FormDefinitionDynamicSchemaRequestAttributes:
         """Create an instance of FormDefinitionDynamicSchemaRequestAttributes from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls,
-                  obj: dict) -> FormDefinitionDynamicSchemaRequestAttributes:
+    def from_dict(cls, obj: dict) -> FormDefinitionDynamicSchemaRequestAttributes:
         """Create an instance of FormDefinitionDynamicSchemaRequestAttributes from a dict"""
         if obj is None:
             return None
@@ -66,6 +63,9 @@ class FormDefinitionDynamicSchemaRequestAttributes(BaseModel):
         if not isinstance(obj, dict):
             return FormDefinitionDynamicSchemaRequestAttributes.parse_obj(obj)
 
-        _obj = FormDefinitionDynamicSchemaRequestAttributes.parse_obj(
-            {"form_definition_id": obj.get("formDefinitionId")})
+        _obj = FormDefinitionDynamicSchemaRequestAttributes.parse_obj({
+            "form_definition_id": obj.get("formDefinitionId")
+        })
         return _obj
+
+

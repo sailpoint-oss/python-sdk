@@ -11,28 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class IdentityProfileAllOfAuthoritativeSource(BaseModel):
     """
     The authoritative source for this Identity Profile.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(
-        None, description="Type of the object to which this reference applies")
-    id: Optional[StrictStr] = Field(
-        None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human-readable display name of the object to which this reference applies"
-    )
+    type: Optional[StrictStr] = Field(None, description="Type of the object to which this reference applies")
+    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object to which this reference applies")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -59,14 +54,16 @@ class IdentityProfileAllOfAuthoritativeSource(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls,
-                  json_str: str) -> IdentityProfileAllOfAuthoritativeSource:
+    def from_json(cls, json_str: str) -> IdentityProfileAllOfAuthoritativeSource:
         """Create an instance of IdentityProfileAllOfAuthoritativeSource from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -79,11 +76,10 @@ class IdentityProfileAllOfAuthoritativeSource(BaseModel):
             return IdentityProfileAllOfAuthoritativeSource.parse_obj(obj)
 
         _obj = IdentityProfileAllOfAuthoritativeSource.parse_obj({
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name")
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
+
+

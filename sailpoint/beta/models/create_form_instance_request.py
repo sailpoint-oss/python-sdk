@@ -11,16 +11,17 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist, validator
 from beta.models.form_instance_created_by import FormInstanceCreatedBy
 from beta.models.form_instance_recipient import FormInstanceRecipient
-
 
 class CreateFormInstanceRequest(BaseModel):
     """
@@ -28,38 +29,13 @@ class CreateFormInstanceRequest(BaseModel):
     """
     created_by: FormInstanceCreatedBy = Field(..., alias="createdBy")
     expire: StrictStr = Field(..., description="Expire is required")
-    form_definition_id: StrictStr = Field(
-        ...,
-        alias="formDefinitionId",
-        description=
-        "FormDefinitionID is the id of the form definition that created this form"
-    )
-    form_input: Optional[Dict[str, Dict[str, Any]]] = Field(
-        None,
-        alias="formInput",
-        description="FormInput is an object of form input labels to value")
-    recipients: conlist(FormInstanceRecipient) = Field(
-        ..., description="Recipients is required")
-    stand_alone_form: Optional[StrictBool] = Field(
-        False,
-        alias="standAloneForm",
-        description=
-        "StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form"
-    )
-    state: Optional[StrictStr] = Field(
-        None,
-        description=
-        "State is required, if not present initial state is FormInstanceStateAssigned ASSIGNED FormInstanceStateAssigned IN_PROGRESS FormInstanceStateInProgress SUBMITTED FormInstanceStateSubmitted COMPLETED FormInstanceStateCompleted CANCELLED FormInstanceStateCancelled"
-    )
-    ttl: Optional[StrictInt] = Field(
-        None,
-        description=
-        "TTL an epoch timestamp in seconds, it most be in seconds or dynamodb will ignore it SEE: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/time-to-live-ttl-before-you-start.html"
-    )
-    __properties = [
-        "createdBy", "expire", "formDefinitionId", "formInput", "recipients",
-        "standAloneForm", "state", "ttl"
-    ]
+    form_definition_id: StrictStr = Field(..., alias="formDefinitionId", description="FormDefinitionID is the id of the form definition that created this form")
+    form_input: Optional[Dict[str, Dict[str, Any]]] = Field(None, alias="formInput", description="FormInput is an object of form input labels to value")
+    recipients: conlist(FormInstanceRecipient) = Field(..., description="Recipients is required")
+    stand_alone_form: Optional[StrictBool] = Field(False, alias="standAloneForm", description="StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form")
+    state: Optional[StrictStr] = Field(None, description="State is required, if not present initial state is FormInstanceStateAssigned ASSIGNED FormInstanceStateAssigned IN_PROGRESS FormInstanceStateInProgress SUBMITTED FormInstanceStateSubmitted COMPLETED FormInstanceStateCompleted CANCELLED FormInstanceStateCancelled")
+    ttl: Optional[StrictInt] = Field(None, description="TTL an epoch timestamp in seconds, it most be in seconds or dynamodb will ignore it SEE: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/time-to-live-ttl-before-you-start.html")
+    __properties = ["createdBy", "expire", "formDefinitionId", "formInput", "recipients", "standAloneForm", "state", "ttl"]
 
     @validator('state')
     def state_validate_enum(cls, value):
@@ -67,11 +43,8 @@ class CreateFormInstanceRequest(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ASSIGNED', 'IN_PROGRESS', 'SUBMITTED', 'COMPLETED',
-                         'CANCELLED'):
-            raise ValueError(
-                "must be one of enum values ('ASSIGNED', 'IN_PROGRESS', 'SUBMITTED', 'COMPLETED', 'CANCELLED')"
-            )
+        if value not in ('ASSIGNED', 'IN_PROGRESS', 'SUBMITTED', 'COMPLETED', 'CANCELLED'):
+            raise ValueError("must be one of enum values ('ASSIGNED', 'IN_PROGRESS', 'SUBMITTED', 'COMPLETED', 'CANCELLED')")
         return value
 
     class Config:
@@ -94,7 +67,10 @@ class CreateFormInstanceRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
             _dict['createdBy'] = self.created_by.to_dict()
@@ -117,25 +93,15 @@ class CreateFormInstanceRequest(BaseModel):
             return CreateFormInstanceRequest.parse_obj(obj)
 
         _obj = CreateFormInstanceRequest.parse_obj({
-            "created_by":
-            FormInstanceCreatedBy.from_dict(obj.get("createdBy"))
-            if obj.get("createdBy") is not None else None,
-            "expire":
-            obj.get("expire"),
-            "form_definition_id":
-            obj.get("formDefinitionId"),
-            "form_input":
-            obj.get("formInput"),
-            "recipients": [
-                FormInstanceRecipient.from_dict(_item)
-                for _item in obj.get("recipients")
-            ] if obj.get("recipients") is not None else None,
-            "stand_alone_form":
-            obj.get("standAloneForm")
-            if obj.get("standAloneForm") is not None else False,
-            "state":
-            obj.get("state"),
-            "ttl":
-            obj.get("ttl")
+            "created_by": FormInstanceCreatedBy.from_dict(obj.get("createdBy")) if obj.get("createdBy") is not None else None,
+            "expire": obj.get("expire"),
+            "form_definition_id": obj.get("formDefinitionId"),
+            "form_input": obj.get("formInput"),
+            "recipients": [FormInstanceRecipient.from_dict(_item) for _item in obj.get("recipients")] if obj.get("recipients") is not None else None,
+            "stand_alone_form": obj.get("standAloneForm") if obj.get("standAloneForm") is not None else False,
+            "state": obj.get("state"),
+            "ttl": obj.get("ttl")
         })
         return _obj
+
+

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.execution_status import ExecutionStatus  # noqa: E501
-
 
 class TestExecutionStatus(unittest.TestCase):
     """ExecutionStatus unit test stubs"""
@@ -29,7 +29,6 @@ class TestExecutionStatus(unittest.TestCase):
     def testExecutionStatus(self):
         """Test ExecutionStatus"""
         # inst = ExecutionStatus()
-
 
 if __name__ == '__main__':
     unittest.main()

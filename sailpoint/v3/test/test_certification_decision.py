@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.certification_decision import CertificationDecision  # noqa: E501
-
 
 class TestCertificationDecision(unittest.TestCase):
     """CertificationDecision unit test stubs"""
@@ -29,7 +29,6 @@ class TestCertificationDecision(unittest.TestCase):
     def testCertificationDecision(self):
         """Test CertificationDecision"""
         # inst = CertificationDecision()
-
 
 if __name__ == '__main__':
     unittest.main()

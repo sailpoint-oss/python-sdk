@@ -11,37 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class TestInvocation(BaseModel):
     """
     TestInvocation
     """
-    trigger_id: StrictStr = Field(...,
-                                  alias="triggerId",
-                                  description="Trigger ID")
-    input: Optional[Dict[str, Any]] = Field(
-        None,
-        description=
-        "Mock input to use for test invocation.  This must adhere to the input schema defined in the trigger being invoked.  If this property is omitted, then the default trigger sample payload will be sent."
-    )
-    content_json: Dict[str, Any] = Field(
-        ...,
-        alias="contentJson",
-        description="JSON map of invocation metadata.")
-    subscription_ids: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="subscriptionIds",
-        description=
-        "Only send the test event to the subscription IDs listed.  If omitted, the test event will be sent to all subscribers."
-    )
+    trigger_id: StrictStr = Field(..., alias="triggerId", description="Trigger ID")
+    input: Optional[Dict[str, Any]] = Field(None, description="Mock input to use for test invocation.  This must adhere to the input schema defined in the trigger being invoked.  If this property is omitted, then the default trigger sample payload will be sent.")
+    content_json: Dict[str, Any] = Field(..., alias="contentJson", description="JSON map of invocation metadata.")
+    subscription_ids: Optional[conlist(StrictStr)] = Field(None, alias="subscriptionIds", description="Only send the test event to the subscription IDs listed.  If omitted, the test event will be sent to all subscribers.")
     __properties = ["triggerId", "input", "contentJson", "subscriptionIds"]
 
     class Config:
@@ -64,7 +51,10 @@ class TestInvocation(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -77,13 +67,11 @@ class TestInvocation(BaseModel):
             return TestInvocation.parse_obj(obj)
 
         _obj = TestInvocation.parse_obj({
-            "trigger_id":
-            obj.get("triggerId"),
-            "input":
-            obj.get("input"),
-            "content_json":
-            obj.get("contentJson"),
-            "subscription_ids":
-            obj.get("subscriptionIds")
+            "trigger_id": obj.get("triggerId"),
+            "input": obj.get("input"),
+            "content_json": obj.get("contentJson"),
+            "subscription_ids": obj.get("subscriptionIds")
         })
         return _obj
+
+

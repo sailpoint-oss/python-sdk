@@ -11,24 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class EntityCreatedByDTO(BaseModel):
     """
     EntityCreatedByDTO
     """
     id: Optional[StrictStr] = Field(None, description="ID of the creator")
-    display_name: Optional[StrictStr] = Field(
-        None,
-        alias="displayName",
-        description="The display name of the creator")
+    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="The display name of the creator")
     __properties = ["id", "displayName"]
 
     class Config:
@@ -51,7 +49,10 @@ class EntityCreatedByDTO(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -64,9 +65,9 @@ class EntityCreatedByDTO(BaseModel):
             return EntityCreatedByDTO.parse_obj(obj)
 
         _obj = EntityCreatedByDTO.parse_obj({
-            "id":
-            obj.get("id"),
-            "display_name":
-            obj.get("displayName")
+            "id": obj.get("id"),
+            "display_name": obj.get("displayName")
         })
         return _obj
+
+

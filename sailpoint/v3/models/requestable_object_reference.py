@@ -11,14 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class RequestableObjectReference(BaseModel):
     """
@@ -26,8 +27,7 @@ class RequestableObjectReference(BaseModel):
     """
     id: Optional[StrictStr] = Field(None, description="Id of the object.")
     name: Optional[StrictStr] = Field(None, description="Name of the object.")
-    description: Optional[StrictStr] = Field(
-        None, description="Description of the object.")
+    description: Optional[StrictStr] = Field(None, description="Description of the object.")
     type: Optional[StrictStr] = Field(None, description="Type of the object.")
     __properties = ["id", "name", "description", "type"]
 
@@ -38,9 +38,7 @@ class RequestableObjectReference(BaseModel):
             return value
 
         if value not in ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT'):
-            raise ValueError(
-                "must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')"
-            )
+            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')")
         return value
 
     class Config:
@@ -63,7 +61,10 @@ class RequestableObjectReference(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,13 +77,11 @@ class RequestableObjectReference(BaseModel):
             return RequestableObjectReference.parse_obj(obj)
 
         _obj = RequestableObjectReference.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "type":
-            obj.get("type")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "type": obj.get("type")
         })
         return _obj
+
+

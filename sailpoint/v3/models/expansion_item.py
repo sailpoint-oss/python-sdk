@@ -11,31 +11,28 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from v3.models.account_source import AccountSource
 from v3.models.attribute_request import AttributeRequest
 
-
 class ExpansionItem(BaseModel):
     """
     ExpansionItem
     """
-    account_id: Optional[StrictStr] = Field(
-        None, alias="accountId", description="The ID of the account")
+    account_id: Optional[StrictStr] = Field(None, alias="accountId", description="The ID of the account")
     cause: Optional[StrictStr] = None
     name: Optional[StrictStr] = Field(None, description="The name of the item")
-    attribute_requests: Optional[conlist(AttributeRequest)] = Field(
-        None, alias="attributeRequests")
+    attribute_requests: Optional[conlist(AttributeRequest)] = Field(None, alias="attributeRequests")
     source: Optional[AccountSource] = None
-    __properties = [
-        "accountId", "cause", "name", "attributeRequests", "source"
-    ]
+    __properties = ["accountId", "cause", "name", "attributeRequests", "source"]
 
     class Config:
         """Pydantic configuration"""
@@ -57,7 +54,10 @@ class ExpansionItem(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in attribute_requests (list)
         _items = []
         if self.attribute_requests:
@@ -80,18 +80,12 @@ class ExpansionItem(BaseModel):
             return ExpansionItem.parse_obj(obj)
 
         _obj = ExpansionItem.parse_obj({
-            "account_id":
-            obj.get("accountId"),
-            "cause":
-            obj.get("cause"),
-            "name":
-            obj.get("name"),
-            "attribute_requests": [
-                AttributeRequest.from_dict(_item)
-                for _item in obj.get("attributeRequests")
-            ] if obj.get("attributeRequests") is not None else None,
-            "source":
-            AccountSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None
+            "account_id": obj.get("accountId"),
+            "cause": obj.get("cause"),
+            "name": obj.get("name"),
+            "attribute_requests": [AttributeRequest.from_dict(_item) for _item in obj.get("attributeRequests")] if obj.get("attributeRequests") is not None else None,
+            "source": AccountSource.from_dict(obj.get("source")) if obj.get("source") is not None else None
         })
         return _obj
+
+

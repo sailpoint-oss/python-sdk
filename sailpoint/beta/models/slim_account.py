@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,59 +21,26 @@ from datetime import datetime
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
 
-
 class SlimAccount(BaseModel):
     """
     SlimAccount
     """
-    id: Optional[StrictStr] = Field(
-        None, description="System-generated unique ID of the Object")
+    id: Optional[StrictStr] = Field(None, description="System-generated unique ID of the Object")
     name: StrictStr = Field(..., description="Name of the Object")
-    created: Optional[datetime] = Field(
-        None, description="Creation date of the Object")
-    modified: Optional[datetime] = Field(
-        None, description="Last modification date of the Object")
-    uuid: Optional[StrictStr] = Field(
-        None, description="Unique ID from the owning source")
-    native_identity: Optional[StrictStr] = Field(
-        None,
-        alias="nativeIdentity",
-        description="The native identifier of the account")
-    description: Optional[StrictStr] = Field(
-        None, description="The description for the account")
-    disabled: Optional[StrictBool] = Field(
-        None, description="Whether the account is disabled")
-    locked: Optional[StrictBool] = Field(
-        None, description="Whether the account is locked")
-    manually_correlated: Optional[StrictBool] = Field(
-        None,
-        alias="manuallyCorrelated",
-        description="Whether the account was manually correlated")
-    has_entitlements: Optional[StrictBool] = Field(
-        None,
-        alias="hasEntitlements",
-        description=
-        "Whether the account has any entitlements associated with it")
-    source_id: Optional[StrictStr] = Field(
-        None,
-        alias="sourceId",
-        description="The ID of the source for which this account belongs")
-    source_name: Optional[StrictStr] = Field(
-        None, alias="sourceName", description="The name of the source")
-    identity_id: Optional[StrictStr] = Field(
-        None,
-        alias="identityId",
-        description=
-        "The ID of the identity for which this account is correlated to if not uncorrelated"
-    )
-    attributes: Optional[Dict[str, Any]] = Field(
-        None,
-        description="A map containing attributes associated with the account")
-    __properties = [
-        "id", "name", "created", "modified", "uuid", "nativeIdentity",
-        "description", "disabled", "locked", "manuallyCorrelated",
-        "hasEntitlements", "sourceId", "sourceName", "identityId", "attributes"
-    ]
+    created: Optional[datetime] = Field(None, description="Creation date of the Object")
+    modified: Optional[datetime] = Field(None, description="Last modification date of the Object")
+    uuid: Optional[StrictStr] = Field(None, description="Unique ID from the owning source")
+    native_identity: Optional[StrictStr] = Field(None, alias="nativeIdentity", description="The native identifier of the account")
+    description: Optional[StrictStr] = Field(None, description="The description for the account")
+    disabled: Optional[StrictBool] = Field(None, description="Whether the account is disabled")
+    locked: Optional[StrictBool] = Field(None, description="Whether the account is locked")
+    manually_correlated: Optional[StrictBool] = Field(None, alias="manuallyCorrelated", description="Whether the account was manually correlated")
+    has_entitlements: Optional[StrictBool] = Field(None, alias="hasEntitlements", description="Whether the account has any entitlements associated with it")
+    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="The ID of the source for which this account belongs")
+    source_name: Optional[StrictStr] = Field(None, alias="sourceName", description="The name of the source")
+    identity_id: Optional[StrictStr] = Field(None, alias="identityId", description="The ID of the identity for which this account is correlated to if not uncorrelated")
+    attributes: Optional[Dict[str, Any]] = Field(None, description="A map containing attributes associated with the account")
+    __properties = ["id", "name", "created", "modified", "uuid", "nativeIdentity", "description", "disabled", "locked", "manuallyCorrelated", "hasEntitlements", "sourceId", "sourceName", "identityId", "attributes"]
 
     class Config:
         """Pydantic configuration"""
@@ -96,9 +64,9 @@ class SlimAccount(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "id",
-                              "created",
-                              "modified",
+                            "id",
+                            "created",
+                            "modified",
                           },
                           exclude_none=True)
         # set to None if uuid (nullable) is None
@@ -123,35 +91,22 @@ class SlimAccount(BaseModel):
             return SlimAccount.parse_obj(obj)
 
         _obj = SlimAccount.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "uuid":
-            obj.get("uuid"),
-            "native_identity":
-            obj.get("nativeIdentity"),
-            "description":
-            obj.get("description"),
-            "disabled":
-            obj.get("disabled"),
-            "locked":
-            obj.get("locked"),
-            "manually_correlated":
-            obj.get("manuallyCorrelated"),
-            "has_entitlements":
-            obj.get("hasEntitlements"),
-            "source_id":
-            obj.get("sourceId"),
-            "source_name":
-            obj.get("sourceName"),
-            "identity_id":
-            obj.get("identityId"),
-            "attributes":
-            obj.get("attributes")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "uuid": obj.get("uuid"),
+            "native_identity": obj.get("nativeIdentity"),
+            "description": obj.get("description"),
+            "disabled": obj.get("disabled"),
+            "locked": obj.get("locked"),
+            "manually_correlated": obj.get("manuallyCorrelated"),
+            "has_entitlements": obj.get("hasEntitlements"),
+            "source_id": obj.get("sourceId"),
+            "source_name": obj.get("sourceName"),
+            "identity_id": obj.get("identityId"),
+            "attributes": obj.get("attributes")
         })
         return _obj
+
+

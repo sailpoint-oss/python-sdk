@@ -11,42 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, conint
 from v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
-
 
 class ApprovalReminderAndEscalationConfig(BaseModel):
     """
     ApprovalReminderAndEscalationConfig
     """
-    days_until_escalation: Optional[StrictInt] = Field(
-        None,
-        alias="daysUntilEscalation",
-        description=
-        "Number of days to wait before the first reminder. If no reminders are configured, then this is the number of days to wait before escalation."
-    )
-    days_between_reminders: Optional[StrictInt] = Field(
-        None,
-        alias="daysBetweenReminders",
-        description="Number of days to wait between reminder notifications.")
-    max_reminders: Optional[conint(strict=True, ge=1)] = Field(
-        None,
-        alias="maxReminders",
-        description=
-        "Maximum number of reminder notification to send to the reviewer before approval escalation."
-    )
-    fallback_approver_ref: Optional[IdentityReferenceWithNameAndEmail] = Field(
-        None, alias="fallbackApproverRef")
-    __properties = [
-        "daysUntilEscalation", "daysBetweenReminders", "maxReminders",
-        "fallbackApproverRef"
-    ]
+    days_until_escalation: Optional[StrictInt] = Field(None, alias="daysUntilEscalation", description="Number of days to wait before the first reminder. If no reminders are configured, then this is the number of days to wait before escalation.")
+    days_between_reminders: Optional[StrictInt] = Field(None, alias="daysBetweenReminders", description="Number of days to wait between reminder notifications.")
+    max_reminders: Optional[conint(strict=True, ge=1)] = Field(None, alias="maxReminders", description="Maximum number of reminder notification to send to the reviewer before approval escalation.")
+    fallback_approver_ref: Optional[IdentityReferenceWithNameAndEmail] = Field(None, alias="fallbackApproverRef")
+    __properties = ["daysUntilEscalation", "daysBetweenReminders", "maxReminders", "fallbackApproverRef"]
 
     class Config:
         """Pydantic configuration"""
@@ -68,7 +52,10 @@ class ApprovalReminderAndEscalationConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of fallback_approver_ref
         if self.fallback_approver_ref:
             _dict['fallbackApproverRef'] = self.fallback_approver_ref.to_dict()
@@ -89,15 +76,11 @@ class ApprovalReminderAndEscalationConfig(BaseModel):
             return ApprovalReminderAndEscalationConfig.parse_obj(obj)
 
         _obj = ApprovalReminderAndEscalationConfig.parse_obj({
-            "days_until_escalation":
-            obj.get("daysUntilEscalation"),
-            "days_between_reminders":
-            obj.get("daysBetweenReminders"),
-            "max_reminders":
-            obj.get("maxReminders"),
-            "fallback_approver_ref":
-            IdentityReferenceWithNameAndEmail.from_dict(
-                obj.get("fallbackApproverRef"))
-            if obj.get("fallbackApproverRef") is not None else None
+            "days_until_escalation": obj.get("daysUntilEscalation"),
+            "days_between_reminders": obj.get("daysBetweenReminders"),
+            "max_reminders": obj.get("maxReminders"),
+            "fallback_approver_ref": IdentityReferenceWithNameAndEmail.from_dict(obj.get("fallbackApproverRef")) if obj.get("fallbackApproverRef") is not None else None
         })
         return _obj
+
+

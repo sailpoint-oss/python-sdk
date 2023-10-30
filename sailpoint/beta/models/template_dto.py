@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,68 +21,31 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 
-
 class TemplateDto(BaseModel):
     """
     TemplateDto
     """
     key: StrictStr = Field(..., description="The key of the template")
-    name: Optional[StrictStr] = Field(
-        None, description="The name of the Task Manager Subscription")
-    medium: StrictStr = Field(
-        ...,
-        description=
-        "The message medium. More mediums may be added in the future.")
-    locale: StrictStr = Field(
-        ...,
-        description="The locale for the message text, a BCP 47 language tag.")
-    subject: Optional[StrictStr] = Field(
-        None, description="The subject line in the template")
-    header: Optional[StrictStr] = Field(
-        None,
-        description=
-        "The header value is now located within the body field. If included with non-null values, will result in a 400."
-    )
-    body: Optional[StrictStr] = Field(None,
-                                      description="The body in the template")
-    footer: Optional[StrictStr] = Field(
-        None,
-        description=
-        "The footer value is now located within the body field. If included with non-null values, will result in a 400."
-    )
-    var_from: Optional[StrictStr] = Field(
-        None,
-        alias="from",
-        description="The \"From:\" address in the template")
-    reply_to: Optional[StrictStr] = Field(
-        None,
-        alias="replyTo",
-        description="The \"Reply To\" line in the template")
-    description: Optional[StrictStr] = Field(
-        None, description="The description in the template")
-    id: Optional[StrictStr] = Field(None,
-                                    description="This is auto-generated.")
-    created: Optional[datetime] = Field(
-        None,
-        description=
-        "The time when this template is created. This is auto-generated.")
-    modified: Optional[datetime] = Field(
-        None,
-        description=
-        "The time when this template was last modified. This is auto-generated."
-    )
-    __properties = [
-        "key", "name", "medium", "locale", "subject", "header", "body",
-        "footer", "from", "replyTo", "description", "id", "created", "modified"
-    ]
+    name: Optional[StrictStr] = Field(None, description="The name of the Task Manager Subscription")
+    medium: StrictStr = Field(..., description="The message medium. More mediums may be added in the future.")
+    locale: StrictStr = Field(..., description="The locale for the message text, a BCP 47 language tag.")
+    subject: Optional[StrictStr] = Field(None, description="The subject line in the template")
+    header: Optional[StrictStr] = Field(None, description="The header value is now located within the body field. If included with non-null values, will result in a 400.")
+    body: Optional[StrictStr] = Field(None, description="The body in the template")
+    footer: Optional[StrictStr] = Field(None, description="The footer value is now located within the body field. If included with non-null values, will result in a 400.")
+    var_from: Optional[StrictStr] = Field(None, alias="from", description="The \"From:\" address in the template")
+    reply_to: Optional[StrictStr] = Field(None, alias="replyTo", description="The \"Reply To\" line in the template")
+    description: Optional[StrictStr] = Field(None, description="The description in the template")
+    id: Optional[StrictStr] = Field(None, description="This is auto-generated.")
+    created: Optional[datetime] = Field(None, description="The time when this template is created. This is auto-generated.")
+    modified: Optional[datetime] = Field(None, description="The time when this template was last modified. This is auto-generated.")
+    __properties = ["key", "name", "medium", "locale", "subject", "header", "body", "footer", "from", "replyTo", "description", "id", "created", "modified"]
 
     @validator('medium')
     def medium_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('EMAIL', 'PHONE', 'SMS', 'SLACK', 'TEAMS'):
-            raise ValueError(
-                "must be one of enum values ('EMAIL', 'PHONE', 'SMS', 'SLACK', 'TEAMS')"
-            )
+            raise ValueError("must be one of enum values ('EMAIL', 'PHONE', 'SMS', 'SLACK', 'TEAMS')")
         return value
 
     class Config:
@@ -104,7 +68,10 @@ class TemplateDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if header (nullable) is None
         # and __fields_set__ contains the field
         if self.header is None and "header" in self.__fields_set__:
@@ -143,3 +110,5 @@ class TemplateDto(BaseModel):
             "modified": obj.get("modified")
         })
         return _obj
+
+

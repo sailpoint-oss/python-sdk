@@ -11,40 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class IdentityHistoryResponse(BaseModel):
     """
     IdentityHistoryResponse
     """
     id: Optional[StrictStr] = Field(None, description="the identity ID")
-    display_name: Optional[StrictStr] = Field(
-        None,
-        alias="displayName",
-        description="the display name of the identity")
-    snapshot: Optional[StrictStr] = Field(
-        None, description="the date when the identity record was created")
-    deleted_date: Optional[StrictStr] = Field(
-        None,
-        alias="deletedDate",
-        description="the date when the identity was deleted")
-    access_item_count: Optional[Dict[str, StrictStr]] = Field(
-        None,
-        alias="accessItemCount",
-        description="A map containing the count of each access item")
-    attributes: Optional[Dict[str, StrictStr]] = Field(
-        None, description="A map containing the identity attributes")
-    __properties = [
-        "id", "displayName", "snapshot", "deletedDate", "accessItemCount",
-        "attributes"
-    ]
+    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="the display name of the identity")
+    snapshot: Optional[StrictStr] = Field(None, description="the date when the identity record was created")
+    deleted_date: Optional[StrictStr] = Field(None, alias="deletedDate", description="the date when the identity was deleted")
+    access_item_count: Optional[Dict[str, StrictStr]] = Field(None, alias="accessItemCount", description="A map containing the count of each access item")
+    attributes: Optional[Dict[str, StrictStr]] = Field(None, description="A map containing the identity attributes")
+    __properties = ["id", "displayName", "snapshot", "deletedDate", "accessItemCount", "attributes"]
 
     class Config:
         """Pydantic configuration"""
@@ -66,7 +53,10 @@ class IdentityHistoryResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -79,17 +69,13 @@ class IdentityHistoryResponse(BaseModel):
             return IdentityHistoryResponse.parse_obj(obj)
 
         _obj = IdentityHistoryResponse.parse_obj({
-            "id":
-            obj.get("id"),
-            "display_name":
-            obj.get("displayName"),
-            "snapshot":
-            obj.get("snapshot"),
-            "deleted_date":
-            obj.get("deletedDate"),
-            "access_item_count":
-            obj.get("accessItemCount"),
-            "attributes":
-            obj.get("attributes")
+            "id": obj.get("id"),
+            "display_name": obj.get("displayName"),
+            "snapshot": obj.get("snapshot"),
+            "deleted_date": obj.get("deletedDate"),
+            "access_item_count": obj.get("accessItemCount"),
+            "attributes": obj.get("attributes")
         })
         return _obj
+
+

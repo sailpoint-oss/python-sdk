@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from cc.api.sources_accounts_api import SourcesAccountsApi  # noqa: E501

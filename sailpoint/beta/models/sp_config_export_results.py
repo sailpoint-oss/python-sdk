@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -22,25 +23,17 @@ from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 from beta.models.config_object import ConfigObject
 from beta.models.export_options import ExportOptions
 
-
 class SpConfigExportResults(BaseModel):
     """
     Response model for config export download response.  # noqa: E501
     """
-    version: Optional[StrictInt] = Field(
-        None, description="Current version of the export results object.")
-    timestamp: Optional[datetime] = Field(
-        None, description="Time the export was completed.")
-    tenant: Optional[StrictStr] = Field(
-        None, description="Name of the tenant where this export originated.")
-    description: Optional[StrictStr] = Field(
-        None,
-        description="Optional user defined description/name for export job.")
+    version: Optional[StrictInt] = Field(None, description="Current version of the export results object.")
+    timestamp: Optional[datetime] = Field(None, description="Time the export was completed.")
+    tenant: Optional[StrictStr] = Field(None, description="Name of the tenant where this export originated.")
+    description: Optional[StrictStr] = Field(None, description="Optional user defined description/name for export job.")
     options: Optional[ExportOptions] = None
     objects: Optional[conlist(ConfigObject)] = None
-    __properties = [
-        "version", "timestamp", "tenant", "description", "options", "objects"
-    ]
+    __properties = ["version", "timestamp", "tenant", "description", "options", "objects"]
 
     class Config:
         """Pydantic configuration"""
@@ -62,7 +55,10 @@ class SpConfigExportResults(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of options
         if self.options:
             _dict['options'] = self.options.to_dict()
@@ -85,19 +81,13 @@ class SpConfigExportResults(BaseModel):
             return SpConfigExportResults.parse_obj(obj)
 
         _obj = SpConfigExportResults.parse_obj({
-            "version":
-            obj.get("version"),
-            "timestamp":
-            obj.get("timestamp"),
-            "tenant":
-            obj.get("tenant"),
-            "description":
-            obj.get("description"),
-            "options":
-            ExportOptions.from_dict(obj.get("options"))
-            if obj.get("options") is not None else None,
-            "objects":
-            [ConfigObject.from_dict(_item) for _item in obj.get("objects")]
-            if obj.get("objects") is not None else None
+            "version": obj.get("version"),
+            "timestamp": obj.get("timestamp"),
+            "tenant": obj.get("tenant"),
+            "description": obj.get("description"),
+            "options": ExportOptions.from_dict(obj.get("options")) if obj.get("options") is not None else None,
+            "objects": [ConfigObject.from_dict(_item) for _item in obj.get("objects")] if obj.get("objects") is not None else None
         })
         return _obj
+
+

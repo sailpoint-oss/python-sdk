@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | **str** | Id of the entitlement | [optional] 
 **name** | **str** | Name of the entitlement | [optional] 
 **description** | **str** | Description forthe entitlement | [optional] 
+**attribute** | **str** | The entitlement attribute | [optional] 
 
 ## Example
 

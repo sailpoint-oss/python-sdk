@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_profile_id** | **str** | ID of the Access Profile that is in use | [optional] 
-**used_by** | [**List[BaseReferenceDto1]**](BaseReferenceDto1.md) | List of references to objects which are using the indicated Access Profile | [optional] 
+**used_by** | [**List[BaseReferenceDto]**](BaseReferenceDto.md) | List of references to objects which are using the indicated Access Profile | [optional] 
 
 ## Example
 

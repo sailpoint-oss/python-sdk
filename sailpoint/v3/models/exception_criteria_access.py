@@ -11,32 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
 from v3.models.dto_type import DtoType
-
 
 class ExceptionCriteriaAccess(BaseModel):
     """
     Access reference with addition of boolean existing flag to indicate whether the access was extant  # noqa: E501
     """
     type: Optional[DtoType] = None
-    id: Optional[StrictStr] = Field(
-        None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human-readable display name of the object to which this reference applies"
-    )
-    existing: Optional[StrictBool] = Field(
-        False,
-        description=
-        "Whether the subject identity already had that access or not")
+    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object to which this reference applies")
+    existing: Optional[StrictBool] = Field(False, description="Whether the subject identity already had that access or not")
     __properties = ["type", "id", "name", "existing"]
 
     class Config:
@@ -59,7 +52,10 @@ class ExceptionCriteriaAccess(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -72,13 +68,11 @@ class ExceptionCriteriaAccess(BaseModel):
             return ExceptionCriteriaAccess.parse_obj(obj)
 
         _obj = ExceptionCriteriaAccess.parse_obj({
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "existing":
-            obj.get("existing") if obj.get("existing") is not None else False
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "existing": obj.get("existing") if obj.get("existing") is not None else False
         })
         return _obj
+
+

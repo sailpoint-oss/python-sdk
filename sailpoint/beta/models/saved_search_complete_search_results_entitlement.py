@@ -11,25 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class SavedSearchCompleteSearchResultsEntitlement(BaseModel):
     """
     A table of entitlements that match the search criteria.  # noqa: E501
     """
-    count: StrictStr = Field(...,
-                             description="The number of rows in the table.")
-    noun: StrictStr = Field(
-        ..., description="The type of object represented in the table.")
-    preview: conlist(conlist(StrictStr)) = Field(
-        ..., description="A sample of the data in the table.")
+    count: StrictStr = Field(..., description="The number of rows in the table.")
+    noun: StrictStr = Field(..., description="The type of object represented in the table.")
+    preview: conlist(conlist(StrictStr)) = Field(..., description="A sample of the data in the table.")
     __properties = ["count", "noun", "preview"]
 
     class Config:
@@ -46,19 +44,20 @@ class SavedSearchCompleteSearchResultsEntitlement(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-            cls, json_str: str) -> SavedSearchCompleteSearchResultsEntitlement:
+    def from_json(cls, json_str: str) -> SavedSearchCompleteSearchResultsEntitlement:
         """Create an instance of SavedSearchCompleteSearchResultsEntitlement from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls,
-                  obj: dict) -> SavedSearchCompleteSearchResultsEntitlement:
+    def from_dict(cls, obj: dict) -> SavedSearchCompleteSearchResultsEntitlement:
         """Create an instance of SavedSearchCompleteSearchResultsEntitlement from a dict"""
         if obj is None:
             return None
@@ -67,11 +66,10 @@ class SavedSearchCompleteSearchResultsEntitlement(BaseModel):
             return SavedSearchCompleteSearchResultsEntitlement.parse_obj(obj)
 
         _obj = SavedSearchCompleteSearchResultsEntitlement.parse_obj({
-            "count":
-            obj.get("count"),
-            "noun":
-            obj.get("noun"),
-            "preview":
-            obj.get("preview")
+            "count": obj.get("count"),
+            "noun": obj.get("noun"),
+            "preview": obj.get("preview")
         })
         return _obj
+
+

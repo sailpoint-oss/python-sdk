@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 from v2.models.list_workgroups200_response_inner_owner import ListWorkgroups200ResponseInnerOwner
-
 
 class ListWorkgroups200ResponseInner(BaseModel):
     """
     ListWorkgroups200ResponseInner
     """
-    connection_count: Optional[StrictInt] = Field(None,
-                                                  alias="connectionCount")
+    connection_count: Optional[StrictInt] = Field(None, alias="connectionCount")
     created: Optional[StrictInt] = None
     description: Optional[StrictStr] = None
     id: Optional[StrictStr] = None
@@ -34,10 +34,7 @@ class ListWorkgroups200ResponseInner(BaseModel):
     modified: Optional[StrictInt] = None
     name: Optional[StrictStr] = None
     owner: Optional[ListWorkgroups200ResponseInnerOwner] = None
-    __properties = [
-        "connectionCount", "created", "description", "id", "memberCount",
-        "modified", "name", "owner"
-    ]
+    __properties = ["connectionCount", "created", "description", "id", "memberCount", "modified", "name", "owner"]
 
     class Config:
         """Pydantic configuration"""
@@ -59,7 +56,10 @@ class ListWorkgroups200ResponseInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -75,22 +75,15 @@ class ListWorkgroups200ResponseInner(BaseModel):
             return ListWorkgroups200ResponseInner.parse_obj(obj)
 
         _obj = ListWorkgroups200ResponseInner.parse_obj({
-            "connection_count":
-            obj.get("connectionCount"),
-            "created":
-            obj.get("created"),
-            "description":
-            obj.get("description"),
-            "id":
-            obj.get("id"),
-            "member_count":
-            obj.get("memberCount"),
-            "modified":
-            obj.get("modified"),
-            "name":
-            obj.get("name"),
-            "owner":
-            ListWorkgroups200ResponseInnerOwner.from_dict(obj.get("owner"))
-            if obj.get("owner") is not None else None
+            "connection_count": obj.get("connectionCount"),
+            "created": obj.get("created"),
+            "description": obj.get("description"),
+            "id": obj.get("id"),
+            "member_count": obj.get("memberCount"),
+            "modified": obj.get("modified"),
+            "name": obj.get("name"),
+            "owner": ListWorkgroups200ResponseInnerOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None
         })
         return _obj
+
+

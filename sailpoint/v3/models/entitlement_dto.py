@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,45 +22,23 @@ from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
 from v3.models.base_reference_dto import BaseReferenceDto
 
-
 class EntitlementDto(BaseModel):
     """
     EntitlementDto
     """
-    id: Optional[StrictStr] = Field(
-        None, description="System-generated unique ID of the Object")
+    id: Optional[StrictStr] = Field(None, description="System-generated unique ID of the Object")
     name: StrictStr = Field(..., description="Name of the Object")
-    created: Optional[datetime] = Field(
-        None, description="Creation date of the Object")
-    modified: Optional[datetime] = Field(
-        None, description="Last modification date of the Object")
-    attribute: Optional[StrictStr] = Field(
-        None, description="Name of the entitlement attribute")
-    value: Optional[StrictStr] = Field(
-        None, description="Raw value of the entitlement")
-    description: Optional[StrictStr] = Field(
-        None, description="Entitlment description")
-    attributes: Optional[Dict[str, Any]] = Field(
-        None, description="Entitlement attributes")
-    source_schema_object_type: Optional[StrictStr] = Field(
-        None,
-        alias="sourceSchemaObjectType",
-        description=
-        "Schema objectType on the given application that maps to an Account Group"
-    )
-    privileged: Optional[StrictBool] = Field(
-        None, description="Determines if this Entitlement is privileged.")
-    cloud_governed: Optional[StrictBool] = Field(
-        None,
-        alias="cloudGoverned",
-        description="Determines if this Entitlement is goverened in the cloud."
-    )
+    created: Optional[datetime] = Field(None, description="Creation date of the Object")
+    modified: Optional[datetime] = Field(None, description="Last modification date of the Object")
+    attribute: Optional[StrictStr] = Field(None, description="Name of the entitlement attribute")
+    value: Optional[StrictStr] = Field(None, description="Raw value of the entitlement")
+    description: Optional[StrictStr] = Field(None, description="Entitlment description")
+    attributes: Optional[Dict[str, Any]] = Field(None, description="Entitlement attributes")
+    source_schema_object_type: Optional[StrictStr] = Field(None, alias="sourceSchemaObjectType", description="Schema objectType on the given application that maps to an Account Group")
+    privileged: Optional[StrictBool] = Field(None, description="Determines if this Entitlement is privileged.")
+    cloud_governed: Optional[StrictBool] = Field(None, alias="cloudGoverned", description="Determines if this Entitlement is goverened in the cloud.")
     source: Optional[BaseReferenceDto] = None
-    __properties = [
-        "id", "name", "created", "modified", "attribute", "value",
-        "description", "attributes", "sourceSchemaObjectType", "privileged",
-        "cloudGoverned", "source"
-    ]
+    __properties = ["id", "name", "created", "modified", "attribute", "value", "description", "attributes", "sourceSchemaObjectType", "privileged", "cloudGoverned", "source"]
 
     class Config:
         """Pydantic configuration"""
@@ -83,9 +62,9 @@ class EntitlementDto(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                              "id",
-                              "created",
-                              "modified",
+                            "id",
+                            "created",
+                            "modified",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of source
@@ -103,30 +82,19 @@ class EntitlementDto(BaseModel):
             return EntitlementDto.parse_obj(obj)
 
         _obj = EntitlementDto.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value"),
-            "description":
-            obj.get("description"),
-            "attributes":
-            obj.get("attributes"),
-            "source_schema_object_type":
-            obj.get("sourceSchemaObjectType"),
-            "privileged":
-            obj.get("privileged"),
-            "cloud_governed":
-            obj.get("cloudGoverned"),
-            "source":
-            BaseReferenceDto.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value"),
+            "description": obj.get("description"),
+            "attributes": obj.get("attributes"),
+            "source_schema_object_type": obj.get("sourceSchemaObjectType"),
+            "privileged": obj.get("privileged"),
+            "cloud_governed": obj.get("cloudGoverned"),
+            "source": BaseReferenceDto.from_dict(obj.get("source")) if obj.get("source") is not None else None
         })
         return _obj
+
+

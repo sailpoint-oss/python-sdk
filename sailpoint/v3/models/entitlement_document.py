@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -22,39 +23,24 @@ from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 from v3.models.document_type import DocumentType
 from v3.models.reference import Reference
 
-
 class EntitlementDocument(BaseModel):
     """
     Entitlement  # noqa: E501
     """
-    id: StrictStr = Field(
-        ..., description="The unique ID of the referenced object.")
-    name: StrictStr = Field(
-        ..., description="The human readable name of the referenced object.")
+    id: StrictStr = Field(..., description="The unique ID of the referenced object.")
+    name: StrictStr = Field(..., description="The human readable name of the referenced object.")
     type: DocumentType = Field(..., alias="_type")
-    description: Optional[StrictStr] = Field(
-        None, description="A description of the entitlement")
-    attribute: Optional[StrictStr] = Field(
-        None, description="The name of the entitlement attribute")
-    value: Optional[StrictStr] = Field(
-        None, description="The value of the entitlement")
-    modified: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
-    synced: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
-    display_name: Optional[StrictStr] = Field(
-        None,
-        alias="displayName",
-        description="The display name of the entitlement")
+    description: Optional[StrictStr] = Field(None, description="A description of the entitlement")
+    attribute: Optional[StrictStr] = Field(None, description="The name of the entitlement attribute")
+    value: Optional[StrictStr] = Field(None, description="The value of the entitlement")
+    modified: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
+    synced: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
+    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="The display name of the entitlement")
     source: Optional[Reference] = None
     privileged: Optional[StrictBool] = None
     identity_count: Optional[StrictInt] = Field(None, alias="identityCount")
     tags: Optional[conlist(StrictStr)] = None
-    __properties = [
-        "id", "name", "_type", "description", "attribute", "value", "modified",
-        "synced", "displayName", "source", "privileged", "identityCount",
-        "tags"
-    ]
+    __properties = ["id", "name", "_type", "description", "attribute", "value", "modified", "synced", "displayName", "source", "privileged", "identityCount", "tags"]
 
     class Config:
         """Pydantic configuration"""
@@ -76,7 +62,10 @@ class EntitlementDocument(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -102,32 +91,20 @@ class EntitlementDocument(BaseModel):
             return EntitlementDocument.parse_obj(obj)
 
         _obj = EntitlementDocument.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("_type"),
-            "description":
-            obj.get("description"),
-            "attribute":
-            obj.get("attribute"),
-            "value":
-            obj.get("value"),
-            "modified":
-            obj.get("modified"),
-            "synced":
-            obj.get("synced"),
-            "display_name":
-            obj.get("displayName"),
-            "source":
-            Reference.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "privileged":
-            obj.get("privileged"),
-            "identity_count":
-            obj.get("identityCount"),
-            "tags":
-            obj.get("tags")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "type": obj.get("_type"),
+            "description": obj.get("description"),
+            "attribute": obj.get("attribute"),
+            "value": obj.get("value"),
+            "modified": obj.get("modified"),
+            "synced": obj.get("synced"),
+            "display_name": obj.get("displayName"),
+            "source": Reference.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "privileged": obj.get("privileged"),
+            "identity_count": obj.get("identityCount"),
+            "tags": obj.get("tags")
         })
         return _obj
+
+

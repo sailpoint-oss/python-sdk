@@ -11,26 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-
 
 class IdentityCertificationTask(BaseModel):
     """
     IdentityCertificationTask
     """
     id: Optional[StrictStr] = Field(None, description="The task id")
-    certification_id: Optional[StrictStr] = Field(
-        None, alias="certificationId", description="The certification id")
+    certification_id: Optional[StrictStr] = Field(None, alias="certificationId", description="The certification id")
     type: Optional[StrictStr] = None
     status: Optional[StrictStr] = None
-    errors: Optional[conlist(StrictStr)] = Field(
-        None, description="Any errors executing the task (Optional).")
+    errors: Optional[conlist(StrictStr)] = Field(None, description="Any errors executing the task (Optional).")
     __properties = ["id", "certificationId", "type", "status", "errors"]
 
     @validator('type')
@@ -50,9 +49,7 @@ class IdentityCertificationTask(BaseModel):
             return value
 
         if value not in ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR'):
-            raise ValueError(
-                "must be one of enum values ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR')"
-            )
+            raise ValueError("must be one of enum values ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR')")
         return value
 
     class Config:
@@ -75,7 +72,10 @@ class IdentityCertificationTask(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -88,15 +88,12 @@ class IdentityCertificationTask(BaseModel):
             return IdentityCertificationTask.parse_obj(obj)
 
         _obj = IdentityCertificationTask.parse_obj({
-            "id":
-            obj.get("id"),
-            "certification_id":
-            obj.get("certificationId"),
-            "type":
-            obj.get("type"),
-            "status":
-            obj.get("status"),
-            "errors":
-            obj.get("errors")
+            "id": obj.get("id"),
+            "certification_id": obj.get("certificationId"),
+            "type": obj.get("type"),
+            "status": obj.get("status"),
+            "errors": obj.get("errors")
         })
         return _obj
+
+

@@ -11,15 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 from beta.models.section_details import SectionDetails
-
 
 class Form(BaseModel):
     """
@@ -28,16 +29,10 @@ class Form(BaseModel):
     id: Optional[StrictStr] = Field(None, description="ID of the form")
     name: Optional[StrictStr] = Field(None, description="Name of the form")
     title: Optional[StrictStr] = Field(None, description="The form title")
-    subtitle: Optional[StrictStr] = Field(None,
-                                          description="The form subtitle.")
-    target_user: Optional[StrictStr] = Field(
-        None,
-        alias="targetUser",
-        description="The name of the user that should be shown this form")
+    subtitle: Optional[StrictStr] = Field(None, description="The form subtitle.")
+    target_user: Optional[StrictStr] = Field(None, alias="targetUser", description="The name of the user that should be shown this form")
     sections: Optional[SectionDetails] = None
-    __properties = [
-        "id", "name", "title", "subtitle", "targetUser", "sections"
-    ]
+    __properties = ["id", "name", "title", "subtitle", "targetUser", "sections"]
 
     class Config:
         """Pydantic configuration"""
@@ -59,7 +54,10 @@ class Form(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of sections
         if self.sections:
             _dict['sections'] = self.sections.to_dict()
@@ -75,18 +73,13 @@ class Form(BaseModel):
             return Form.parse_obj(obj)
 
         _obj = Form.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "title":
-            obj.get("title"),
-            "subtitle":
-            obj.get("subtitle"),
-            "target_user":
-            obj.get("targetUser"),
-            "sections":
-            SectionDetails.from_dict(obj.get("sections"))
-            if obj.get("sections") is not None else None
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "title": obj.get("title"),
+            "subtitle": obj.get("subtitle"),
+            "target_user": obj.get("targetUser"),
+            "sections": SectionDetails.from_dict(obj.get("sections")) if obj.get("sections") is not None else None
         })
         return _obj
+
+

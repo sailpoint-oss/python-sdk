@@ -4,6 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **str** | Id of the potential role | [optional] 
+**name** | **str** | Name of the potential role | [optional] 
 **potential_role_ref** | [**RoleMiningPotentialRoleRef**](RoleMiningPotentialRoleRef.md) |  | [optional] 
 **identity_count** | **int** | The number of identities in a potential role. | [optional] 
 **entitlement_count** | **int** | The number of entitlements in a potential role. | [optional] 
@@ -13,6 +15,8 @@ Name | Type | Description | Notes
 **density** | **int** | The density metric (0-100) of this potential role. Higher density values indicate higher similarity amongst the identities. | [optional] 
 **freshness** | **int** | The freshness metric (0-100) of this potential role. Higher freshness values indicate this potential role is more distinctive compared to existing roles. | [optional] 
 **quality** | **int** | The quality metric (0-100) of this potential role. Higher quality values indicate this potential role has high density and freshness. | [optional] 
+**type** | [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
+**session** | [**RoleMiningSessionParametersDto**](RoleMiningSessionParametersDto.md) |  | [optional] 
 
 ## Example
 

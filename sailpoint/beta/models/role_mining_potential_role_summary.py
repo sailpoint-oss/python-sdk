@@ -11,65 +11,38 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 from beta.models.role_mining_potential_role_provision_state import RoleMiningPotentialRoleProvisionState
 from beta.models.role_mining_potential_role_ref import RoleMiningPotentialRoleRef
-
+from beta.models.role_mining_role_type import RoleMiningRoleType
+from beta.models.role_mining_session_parameters_dto import RoleMiningSessionParametersDto
 
 class RoleMiningPotentialRoleSummary(BaseModel):
     """
     RoleMiningPotentialRoleSummary
     """
-    potential_role_ref: Optional[RoleMiningPotentialRoleRef] = Field(
-        None, alias="potentialRoleRef")
-    identity_count: Optional[StrictInt] = Field(
-        None,
-        alias="identityCount",
-        description="The number of identities in a potential role.")
-    entitlement_count: Optional[StrictInt] = Field(
-        None,
-        alias="entitlementCount",
-        description="The number of entitlements in a potential role.")
-    identity_group_status: Optional[StrictStr] = Field(
-        None,
-        alias="identityGroupStatus",
-        description=
-        "The status for this identity group which can be \"REQUESTED\" or \"OBTAINED\""
-    )
-    provision_state: Optional[RoleMiningPotentialRoleProvisionState] = Field(
-        None, alias="provisionState")
-    role_id: Optional[StrictStr] = Field(
-        None,
-        alias="roleId",
-        description=
-        "ID of the provisioned role in IIQ or IDN.  Null if this potential role has not been provisioned."
-    )
-    density: Optional[StrictInt] = Field(
-        None,
-        description=
-        "The density metric (0-100) of this potential role. Higher density values indicate higher similarity amongst the identities."
-    )
-    freshness: Optional[StrictInt] = Field(
-        None,
-        description=
-        "The freshness metric (0-100) of this potential role. Higher freshness values indicate this potential role is more distinctive compared to existing roles."
-    )
-    quality: Optional[StrictInt] = Field(
-        None,
-        description=
-        "The quality metric (0-100) of this potential role. Higher quality values indicate this potential role has high density and freshness."
-    )
-    __properties = [
-        "potentialRoleRef", "identityCount", "entitlementCount",
-        "identityGroupStatus", "provisionState", "roleId", "density",
-        "freshness", "quality"
-    ]
+    id: Optional[StrictStr] = Field(None, description="Id of the potential role")
+    name: Optional[StrictStr] = Field(None, description="Name of the potential role")
+    potential_role_ref: Optional[RoleMiningPotentialRoleRef] = Field(None, alias="potentialRoleRef")
+    identity_count: Optional[StrictInt] = Field(None, alias="identityCount", description="The number of identities in a potential role.")
+    entitlement_count: Optional[StrictInt] = Field(None, alias="entitlementCount", description="The number of entitlements in a potential role.")
+    identity_group_status: Optional[StrictStr] = Field(None, alias="identityGroupStatus", description="The status for this identity group which can be \"REQUESTED\" or \"OBTAINED\"")
+    provision_state: Optional[RoleMiningPotentialRoleProvisionState] = Field(None, alias="provisionState")
+    role_id: Optional[StrictStr] = Field(None, alias="roleId", description="ID of the provisioned role in IIQ or IDN.  Null if this potential role has not been provisioned.")
+    density: Optional[StrictInt] = Field(None, description="The density metric (0-100) of this potential role. Higher density values indicate higher similarity amongst the identities.")
+    freshness: Optional[StrictInt] = Field(None, description="The freshness metric (0-100) of this potential role. Higher freshness values indicate this potential role is more distinctive compared to existing roles.")
+    quality: Optional[StrictInt] = Field(None, description="The quality metric (0-100) of this potential role. Higher quality values indicate this potential role has high density and freshness.")
+    type: Optional[RoleMiningRoleType] = None
+    session: Optional[RoleMiningSessionParametersDto] = None
+    __properties = ["id", "name", "potentialRoleRef", "identityCount", "entitlementCount", "identityGroupStatus", "provisionState", "roleId", "density", "freshness", "quality", "type", "session"]
 
     class Config:
         """Pydantic configuration"""
@@ -91,10 +64,21 @@ class RoleMiningPotentialRoleSummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of potential_role_ref
         if self.potential_role_ref:
             _dict['potentialRoleRef'] = self.potential_role_ref.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of session
+        if self.session:
+            _dict['session'] = self.session.to_dict()
+        # set to None if role_id (nullable) is None
+        # and __fields_set__ contains the field
+        if self.role_id is None and "role_id" in self.__fields_set__:
+            _dict['roleId'] = None
+
         return _dict
 
     @classmethod
@@ -107,24 +91,20 @@ class RoleMiningPotentialRoleSummary(BaseModel):
             return RoleMiningPotentialRoleSummary.parse_obj(obj)
 
         _obj = RoleMiningPotentialRoleSummary.parse_obj({
-            "potential_role_ref":
-            RoleMiningPotentialRoleRef.from_dict(obj.get("potentialRoleRef"))
-            if obj.get("potentialRoleRef") is not None else None,
-            "identity_count":
-            obj.get("identityCount"),
-            "entitlement_count":
-            obj.get("entitlementCount"),
-            "identity_group_status":
-            obj.get("identityGroupStatus"),
-            "provision_state":
-            obj.get("provisionState"),
-            "role_id":
-            obj.get("roleId"),
-            "density":
-            obj.get("density"),
-            "freshness":
-            obj.get("freshness"),
-            "quality":
-            obj.get("quality")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "potential_role_ref": RoleMiningPotentialRoleRef.from_dict(obj.get("potentialRoleRef")) if obj.get("potentialRoleRef") is not None else None,
+            "identity_count": obj.get("identityCount"),
+            "entitlement_count": obj.get("entitlementCount"),
+            "identity_group_status": obj.get("identityGroupStatus"),
+            "provision_state": obj.get("provisionState"),
+            "role_id": obj.get("roleId"),
+            "density": obj.get("density"),
+            "freshness": obj.get("freshness"),
+            "quality": obj.get("quality"),
+            "type": obj.get("type"),
+            "session": RoleMiningSessionParametersDto.from_dict(obj.get("session")) if obj.get("session") is not None else None
         })
         return _obj
+
+

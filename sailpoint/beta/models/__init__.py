@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from beta.models.access_constraint import AccessConstraint
 from beta.models.access_criteria import AccessCriteria
@@ -379,8 +380,9 @@ from beta.models.manually_updated_fields_dto import ManuallyUpdatedFieldsDTO
 from beta.models.medium import Medium
 from beta.models.message_catalog_dto import MessageCatalogDto
 from beta.models.metric_response import MetricResponse
-from beta.models.mfa_config import MfaConfig
 from beta.models.mfa_config_test_response import MfaConfigTestResponse
+from beta.models.mfa_duo_config import MfaDuoConfig
+from beta.models.mfa_okta_config import MfaOktaConfig
 from beta.models.model_schema import ModelSchema
 from beta.models.multi_policy_request import MultiPolicyRequest
 from beta.models.native_change_detection_config import NativeChangeDetectionConfig
@@ -529,14 +531,17 @@ from beta.models.role_mining_potential_role_export_state import RoleMiningPotent
 from beta.models.role_mining_potential_role_provision_request import RoleMiningPotentialRoleProvisionRequest
 from beta.models.role_mining_potential_role_provision_state import RoleMiningPotentialRoleProvisionState
 from beta.models.role_mining_potential_role_ref import RoleMiningPotentialRoleRef
+from beta.models.role_mining_potential_role_source_usage import RoleMiningPotentialRoleSourceUsage
 from beta.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
 from beta.models.role_mining_role_type import RoleMiningRoleType
 from beta.models.role_mining_session_draft_role_dto import RoleMiningSessionDraftRoleDto
 from beta.models.role_mining_session_dto import RoleMiningSessionDto
+from beta.models.role_mining_session_dto_created_by import RoleMiningSessionDtoCreatedBy
 from beta.models.role_mining_session_parameters_dto import RoleMiningSessionParametersDto
 from beta.models.role_mining_session_response import RoleMiningSessionResponse
 from beta.models.role_mining_session_scope import RoleMiningSessionScope
 from beta.models.role_mining_session_scoping_method import RoleMiningSessionScopingMethod
+from beta.models.role_mining_session_state import RoleMiningSessionState
 from beta.models.role_mining_session_status import RoleMiningSessionStatus
 from beta.models.saved_search_complete import SavedSearchComplete
 from beta.models.saved_search_complete_search_results import SavedSearchCompleteSearchResults
@@ -624,6 +629,7 @@ from beta.models.subscription_post_request import SubscriptionPostRequest
 from beta.models.subscription_put_request import SubscriptionPutRequest
 from beta.models.subscription_type import SubscriptionType
 from beta.models.tagged_object import TaggedObject
+from beta.models.task_result_response import TaskResultResponse
 from beta.models.task_result_simplified import TaskResultSimplified
 from beta.models.task_return_details import TaskReturnDetails
 from beta.models.task_status import TaskStatus

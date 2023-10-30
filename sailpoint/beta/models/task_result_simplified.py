@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,27 +21,18 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 
-
 class TaskResultSimplified(BaseModel):
     """
     TaskResultSimplified
     """
     id: Optional[StrictStr] = Field(None, description="Task identifier")
     name: Optional[StrictStr] = Field(None, description="Task name")
-    description: Optional[StrictStr] = Field(None,
-                                             description="Task description")
-    launcher: Optional[StrictStr] = Field(
-        None, description="User or process who launched the task")
-    completed: Optional[datetime] = Field(
-        None, description="Date time of completion")
-    launched: Optional[datetime] = Field(
-        None, description="Date time when the task was launched")
-    completion_status: Optional[StrictStr] = Field(
-        None, alias="completionStatus", description="Task result status")
-    __properties = [
-        "id", "name", "description", "launcher", "completed", "launched",
-        "completionStatus"
-    ]
+    description: Optional[StrictStr] = Field(None, description="Task description")
+    launcher: Optional[StrictStr] = Field(None, description="User or process who launched the task")
+    completed: Optional[datetime] = Field(None, description="Date time of completion")
+    launched: Optional[datetime] = Field(None, description="Date time when the task was launched")
+    completion_status: Optional[StrictStr] = Field(None, alias="completionStatus", description="Task result status")
+    __properties = ["id", "name", "description", "launcher", "completed", "launched", "completionStatus"]
 
     @validator('completion_status')
     def completion_status_validate_enum(cls, value):
@@ -48,11 +40,8 @@ class TaskResultSimplified(BaseModel):
         if value is None:
             return value
 
-        if value not in ('Success', 'Warning', 'Error', 'Terminated',
-                         'TempError'):
-            raise ValueError(
-                "must be one of enum values ('Success', 'Warning', 'Error', 'Terminated', 'TempError')"
-            )
+        if value not in ('Success', 'Warning', 'Error', 'Terminated', 'TempError'):
+            raise ValueError("must be one of enum values ('Success', 'Warning', 'Error', 'Terminated', 'TempError')")
         return value
 
     class Config:
@@ -75,7 +64,10 @@ class TaskResultSimplified(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -88,19 +80,14 @@ class TaskResultSimplified(BaseModel):
             return TaskResultSimplified.parse_obj(obj)
 
         _obj = TaskResultSimplified.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "launcher":
-            obj.get("launcher"),
-            "completed":
-            obj.get("completed"),
-            "launched":
-            obj.get("launched"),
-            "completion_status":
-            obj.get("completionStatus")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "launcher": obj.get("launcher"),
+            "completed": obj.get("completed"),
+            "launched": obj.get("launched"),
+            "completion_status": obj.get("completionStatus")
         })
         return _obj
+
+

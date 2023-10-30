@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 
 from beta.api.mfa_configuration_api import MFAConfigurationApi  # noqa: E501
@@ -25,17 +26,38 @@ class TestMFAConfigurationApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_get_mfa_config(self) -> None:
-        """Test case for get_mfa_config
+    def test_delete_mfa_config(self) -> None:
+        """Test case for delete_mfa_config
 
-        Configuration of a MFA method  # noqa: E501
+        Delete MFA method configuration  # noqa: E501
         """
         pass
 
-    def test_set_mfa_config(self) -> None:
-        """Test case for set_mfa_config
+    def test_get_mfa_duo_config(self) -> None:
+        """Test case for get_mfa_duo_config
 
-        Set MFA method configuration  # noqa: E501
+        Configuration of Duo MFA method  # noqa: E501
+        """
+        pass
+
+    def test_get_mfa_okta_config(self) -> None:
+        """Test case for get_mfa_okta_config
+
+        Configuration of Okta MFA method  # noqa: E501
+        """
+        pass
+
+    def test_set_mfa_duo_config(self) -> None:
+        """Test case for set_mfa_duo_config
+
+        Set Duo MFA configuration  # noqa: E501
+        """
+        pass
+
+    def test_set_mfa_okta_config(self) -> None:
+        """Test case for set_mfa_okta_config
+
+        Set Okta MFA configuration  # noqa: E501
         """
         pass
 

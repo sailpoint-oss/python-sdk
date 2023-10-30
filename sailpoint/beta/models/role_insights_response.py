@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,36 +21,17 @@ from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist, validator
 
-
 class RoleInsightsResponse(BaseModel):
     """
     RoleInsightsResponse
     """
-    id: Optional[StrictStr] = Field(
-        None, description="Request Id for a role insight generation request")
-    created_date: Optional[datetime] = Field(
-        None,
-        alias="createdDate",
-        description="The date-time role insights request was created.")
-    last_generated: Optional[datetime] = Field(
-        None,
-        alias="lastGenerated",
-        description="The date-time role insights request was completed.")
-    number_of_updates: Optional[StrictInt] = Field(
-        None,
-        alias="numberOfUpdates",
-        description=
-        "Total number of updates for this request. Starts with 0 and will have correct number when request is COMPLETED."
-    )
-    role_ids: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="roleIds",
-        description="The role IDs that are in this request.")
+    id: Optional[StrictStr] = Field(None, description="Request Id for a role insight generation request")
+    created_date: Optional[datetime] = Field(None, alias="createdDate", description="The date-time role insights request was created.")
+    last_generated: Optional[datetime] = Field(None, alias="lastGenerated", description="The date-time role insights request was completed.")
+    number_of_updates: Optional[StrictInt] = Field(None, alias="numberOfUpdates", description="Total number of updates for this request. Starts with 0 and will have correct number when request is COMPLETED.")
+    role_ids: Optional[conlist(StrictStr)] = Field(None, alias="roleIds", description="The role IDs that are in this request.")
     status: Optional[StrictStr] = Field(None, description="Request status")
-    __properties = [
-        "id", "createdDate", "lastGenerated", "numberOfUpdates", "roleIds",
-        "status"
-    ]
+    __properties = ["id", "createdDate", "lastGenerated", "numberOfUpdates", "roleIds", "status"]
 
     @validator('status')
     def status_validate_enum(cls, value):
@@ -58,9 +40,7 @@ class RoleInsightsResponse(BaseModel):
             return value
 
         if value not in ('CREATED', 'IN PROGRESS', 'COMPLETED', 'FAILED'):
-            raise ValueError(
-                "must be one of enum values ('CREATED', 'IN PROGRESS', 'COMPLETED', 'FAILED')"
-            )
+            raise ValueError("must be one of enum values ('CREATED', 'IN PROGRESS', 'COMPLETED', 'FAILED')")
         return value
 
     class Config:
@@ -83,7 +63,10 @@ class RoleInsightsResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -96,17 +79,13 @@ class RoleInsightsResponse(BaseModel):
             return RoleInsightsResponse.parse_obj(obj)
 
         _obj = RoleInsightsResponse.parse_obj({
-            "id":
-            obj.get("id"),
-            "created_date":
-            obj.get("createdDate"),
-            "last_generated":
-            obj.get("lastGenerated"),
-            "number_of_updates":
-            obj.get("numberOfUpdates"),
-            "role_ids":
-            obj.get("roleIds"),
-            "status":
-            obj.get("status")
+            "id": obj.get("id"),
+            "created_date": obj.get("createdDate"),
+            "last_generated": obj.get("lastGenerated"),
+            "number_of_updates": obj.get("numberOfUpdates"),
+            "role_ids": obj.get("roleIds"),
+            "status": obj.get("status")
         })
         return _obj
+
+

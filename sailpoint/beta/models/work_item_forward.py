@@ -11,29 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-
 
 class WorkItemForward(BaseModel):
     """
     WorkItemForward
     """
-    target_owner_id: StrictStr = Field(
-        ...,
-        alias="targetOwnerId",
-        description="The ID of the identity to forward this work item to.")
-    comment: StrictStr = Field(
-        ..., description="Comments to send to the target owner")
-    send_notifications: Optional[StrictBool] = Field(
-        True,
-        alias="sendNotifications",
-        description="If true, send a notification to the target owner.")
+    target_owner_id: StrictStr = Field(..., alias="targetOwnerId", description="The ID of the identity to forward this work item to.")
+    comment: StrictStr = Field(..., description="Comments to send to the target owner")
+    send_notifications: Optional[StrictBool] = Field(True, alias="sendNotifications", description="If true, send a notification to the target owner.")
     __properties = ["targetOwnerId", "comment", "sendNotifications"]
 
     class Config:
@@ -56,7 +50,10 @@ class WorkItemForward(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,12 +66,10 @@ class WorkItemForward(BaseModel):
             return WorkItemForward.parse_obj(obj)
 
         _obj = WorkItemForward.parse_obj({
-            "target_owner_id":
-            obj.get("targetOwnerId"),
-            "comment":
-            obj.get("comment"),
-            "send_notifications":
-            obj.get("sendNotifications")
-            if obj.get("sendNotifications") is not None else True
+            "target_owner_id": obj.get("targetOwnerId"),
+            "comment": obj.get("comment"),
+            "send_notifications": obj.get("sendNotifications") if obj.get("sendNotifications") is not None else True
         })
         return _obj
+
+

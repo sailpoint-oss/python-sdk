@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.sod_policy_schedule import SodPolicySchedule  # noqa: E501
-
 
 class TestSodPolicySchedule(unittest.TestCase):
     """SodPolicySchedule unit test stubs"""
@@ -65,7 +65,6 @@ class TestSodPolicySchedule(unittest.TestCase):
         """Test SodPolicySchedule"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

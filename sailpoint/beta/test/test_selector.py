@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.selector import Selector  # noqa: E501
-
 
 class TestSelector(unittest.TestCase):
     """Selector unit test stubs"""
@@ -51,7 +51,6 @@ class TestSelector(unittest.TestCase):
         """Test Selector"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

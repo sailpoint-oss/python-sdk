@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.search_arguments import SearchArguments  # noqa: E501
-
 
 class TestSearchArguments(unittest.TestCase):
     """SearchArguments unit test stubs"""
@@ -55,7 +55,6 @@ class TestSearchArguments(unittest.TestCase):
         """Test SearchArguments"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

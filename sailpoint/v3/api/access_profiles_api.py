@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -31,7 +32,9 @@ from v3.models.json_patch_operation import JsonPatchOperation
 from v3.api_client import ApiClient
 from v3.api_response import ApiResponse
 from v3.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class AccessProfilesApi:
@@ -47,8 +50,7 @@ class AccessProfilesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_access_profile(self, access_profile: AccessProfile,
-                              **kwargs) -> AccessProfile:  # noqa: E501
+    def create_access_profile(self, access_profile : AccessProfile, **kwargs) -> AccessProfile:  # noqa: E501
         """Create an Access Profile  # noqa: E501
 
         This API creates an Access Profile. A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a token with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the Access Profile's Source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.  # noqa: E501
@@ -75,13 +77,10 @@ class AccessProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_access_profile_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_access_profile_with_http_info(
-            access_profile, **kwargs)  # noqa: E501
+        return self.create_access_profile_with_http_info(access_profile, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_access_profile_with_http_info(
-            self, access_profile: AccessProfile,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def create_access_profile_with_http_info(self, access_profile : AccessProfile, **kwargs) -> ApiResponse:  # noqa: E501
         """Create an Access Profile  # noqa: E501
 
         This API creates an Access Profile. A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a token with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the Access Profile's Source. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.  # noqa: E501
@@ -120,17 +119,28 @@ class AccessProfilesApi:
 
         _params = locals()
 
-        _all_params = ['access_profile']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'access_profile'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_access_profile" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_access_profile" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -156,11 +166,11 @@ class AccessProfilesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -175,8 +185,7 @@ class AccessProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/access-profiles',
-            'POST',
+            '/access-profiles', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -186,18 +195,14 @@ class AccessProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_access_profile(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the Access Profile to delete")],
-                              **kwargs) -> None:  # noqa: E501
+    def delete_access_profile(self, id : Annotated[StrictStr, Field(..., description="ID of the Access Profile to delete")], **kwargs) -> None:  # noqa: E501
         """Delete the specified Access Profile  # noqa: E501
 
         This API deletes an existing Access Profile.  The Access Profile must not be in use, for example, Access Profile can not be deleted if they belong to an Application, Life Cycle State or a Role. If it is, a 400 error is returned.  A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to invoke this API. In addition, a SOURCE_SUBADMIN token must be able to administer the Source associated with the Access Profile.  # noqa: E501
@@ -224,15 +229,10 @@ class AccessProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_access_profile_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_access_profile_with_http_info(
-            id, **kwargs)  # noqa: E501
+        return self.delete_access_profile_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_access_profile_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the Access Profile to delete")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_access_profile_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Access Profile to delete")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete the specified Access Profile  # noqa: E501
 
         This API deletes an existing Access Profile.  The Access Profile must not be in use, for example, Access Profile can not be deleted if they belong to an Application, Life Cycle State or a Role. If it is, a 400 error is returned.  A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to invoke this API. In addition, a SOURCE_SUBADMIN token must be able to administer the Source associated with the Access Profile.  # noqa: E501
@@ -271,17 +271,28 @@ class AccessProfilesApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_access_profile" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_access_profile" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -291,6 +302,7 @@ class AccessProfilesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -311,8 +323,7 @@ class AccessProfilesApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/access-profiles/{id}',
-            'DELETE',
+            '/access-profiles/{id}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -322,18 +333,14 @@ class AccessProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_access_profiles_in_bulk(
-            self,
-            access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest,
-            **kwargs) -> AccessProfileBulkDeleteResponse:  # noqa: E501
+    def delete_access_profiles_in_bulk(self, access_profile_bulk_delete_request : AccessProfileBulkDeleteRequest, **kwargs) -> AccessProfileBulkDeleteResponse:  # noqa: E501
         """Delete Access Profile(s)  # noqa: E501
 
         This API initiates a bulk deletion of one or more Access Profiles.  By default, if any of the indicated Access Profiles are in use, no deletions will be performed and the **inUse** field of the response indicates the usages that must be removed first. If the request field **bestEffortOnly** is **true**, however, usages are reported in the **inUse** response field but all other indicated Access Profiles will be deleted.  A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to delete Access Profiles which are associated with Sources they are able to administer.  # noqa: E501
@@ -360,14 +367,10 @@ class AccessProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_access_profiles_in_bulk_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_access_profiles_in_bulk_with_http_info(
-            access_profile_bulk_delete_request, **kwargs)  # noqa: E501
+        return self.delete_access_profiles_in_bulk_with_http_info(access_profile_bulk_delete_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_access_profiles_in_bulk_with_http_info(
-            self,
-            access_profile_bulk_delete_request: AccessProfileBulkDeleteRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_access_profiles_in_bulk_with_http_info(self, access_profile_bulk_delete_request : AccessProfileBulkDeleteRequest, **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Access Profile(s)  # noqa: E501
 
         This API initiates a bulk deletion of one or more Access Profiles.  By default, if any of the indicated Access Profiles are in use, no deletions will be performed and the **inUse** field of the response indicates the usages that must be removed first. If the request field **bestEffortOnly** is **true**, however, usages are reported in the **inUse** response field but all other indicated Access Profiles will be deleted.  A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to delete Access Profiles which are associated with Sources they are able to administer.  # noqa: E501
@@ -406,18 +409,28 @@ class AccessProfilesApi:
 
         _params = locals()
 
-        _all_params = ['access_profile_bulk_delete_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'access_profile_bulk_delete_request'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete_access_profiles_in_bulk" % _key)
+                    " to method delete_access_profiles_in_bulk" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -443,11 +456,11 @@ class AccessProfilesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -463,8 +476,7 @@ class AccessProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/access-profiles/bulk-delete',
-            'POST',
+            '/access-profiles/bulk-delete', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -474,18 +486,14 @@ class AccessProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_access_profile(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the Access Profile")],
-                           **kwargs) -> AccessProfile:  # noqa: E501
+    def get_access_profile(self, id : Annotated[StrictStr, Field(..., description="ID of the Access Profile")], **kwargs) -> AccessProfile:  # noqa: E501
         """Get an Access Profile  # noqa: E501
 
         This API returns an Access Profile by its ID.  A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -512,15 +520,10 @@ class AccessProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_access_profile_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_access_profile_with_http_info(id,
-                                                      **kwargs)  # noqa: E501
+        return self.get_access_profile_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_access_profile_with_http_info(
-            self,
-            id: Annotated[StrictStr,
-                          Field(..., description="ID of the Access Profile")],
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_access_profile_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Access Profile")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get an Access Profile  # noqa: E501
 
         This API returns an Access Profile by its ID.  A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -559,17 +562,28 @@ class AccessProfilesApi:
 
         _params = locals()
 
-        _all_params = ['id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_access_profile" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_access_profile" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -579,6 +593,7 @@ class AccessProfilesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -606,8 +621,7 @@ class AccessProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/access-profiles/{id}',
-            'GET',
+            '/access-profiles/{id}', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -617,55 +631,14 @@ class AccessProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_access_profile_entitlements(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the containing Access Profile")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Entitlement fields and operators: **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created, modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified**"
-            )] = None,
-            **kwargs) -> List[Entitlement]:  # noqa: E501
+    def get_access_profile_entitlements(self, id : Annotated[StrictStr, Field(..., description="ID of the containing Access Profile")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Entitlement fields and operators: **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created, modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified**")] = None, **kwargs) -> List[Entitlement]:  # noqa: E501
         """List Access Profile's Entitlements  # noqa: E501
 
         This API lists the Entitlements associated with a given Access Profile  A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to invoke this API. In addition, a token with SOURCE_SUBADMIN authority must have access to the Source associated with the given Access Profile  # noqa: E501
@@ -702,51 +675,10 @@ class AccessProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_access_profile_entitlements_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_access_profile_entitlements_with_http_info(
-            id, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.get_access_profile_entitlements_with_http_info(id, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_access_profile_entitlements_with_http_info(
-            self,
-            id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the containing Access Profile")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Entitlement fields and operators: **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created, modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def get_access_profile_entitlements_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the containing Access Profile")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Entitlement fields and operators: **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created, modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, attribute, value, created, modified**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Access Profile's Entitlements  # noqa: E501
 
         This API lists the Entitlements associated with a given Access Profile  A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to invoke this API. In addition, a token with SOURCE_SUBADMIN authority must have access to the Source associated with the given Access Profile  # noqa: E501
@@ -795,18 +727,33 @@ class AccessProfilesApi:
 
         _params = locals()
 
-        _all_params = ['id', 'limit', 'offset', 'count', 'filters', 'sorters']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_access_profile_entitlements" % _key)
+                    " to method get_access_profile_entitlements" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -816,6 +763,7 @@ class AccessProfilesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -858,8 +806,7 @@ class AccessProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/access-profiles/{id}/entitlements',
-            'GET',
+            '/access-profiles/{id}/entitlements', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -869,73 +816,14 @@ class AccessProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_access_profiles(
-            self,
-            for_subadmin:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID.  A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=50, ge=0)],
-            Field(
-                description=
-                "Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created, modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Composite operators supported: *and, or*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**"
-            )] = None,
-            for_segment_ids:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error."
-            )] = None,
-            include_unsegmented:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Whether or not the response list should contain unsegmented Access Profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error."
-            )] = None,
-            **kwargs) -> List[AccessProfile]:  # noqa: E501
+    def list_access_profiles(self, for_subadmin : Annotated[Optional[StrictStr], Field(description="If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID.  A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.")] = None, limit : Annotated[Optional[conint(strict=True, le=50, ge=0)], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created, modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Composite operators supported: *and, or*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None, for_segment_ids : Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.")] = None, include_unsegmented : Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Access Profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None, **kwargs) -> List[AccessProfile]:  # noqa: E501
         """List Access Profiles  # noqa: E501
 
         This API returns a list of Access Profiles.  A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -976,70 +864,10 @@ class AccessProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_access_profiles_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_access_profiles_with_http_info(
-            for_subadmin, limit, offset, count, filters, sorters,
-            for_segment_ids, include_unsegmented, **kwargs)  # noqa: E501
+        return self.list_access_profiles_with_http_info(for_subadmin, limit, offset, count, filters, sorters, for_segment_ids, include_unsegmented, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_access_profiles_with_http_info(
-            self,
-            for_subadmin:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID.  A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin."
-            )] = None,
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=50, ge=0)],
-            Field(
-                description=
-                "Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            filters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created, modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Composite operators supported: *and, or*"
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**"
-            )] = None,
-            for_segment_ids:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error."
-            )] = None,
-            include_unsegmented:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "Whether or not the response list should contain unsegmented Access Profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error."
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def list_access_profiles_with_http_info(self, for_subadmin : Annotated[Optional[StrictStr], Field(description="If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID.  A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.")] = None, limit : Annotated[Optional[conint(strict=True, le=50, ge=0)], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **created, modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*  **source.id**: *eq, in*  Composite operators supported: *and, or*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None, for_segment_ids : Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.")] = None, include_unsegmented : Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Access Profiles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List Access Profiles  # noqa: E501
 
         This API returns a list of Access Profiles.  A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -1093,19 +921,34 @@ class AccessProfilesApi:
         _params = locals()
 
         _all_params = [
-            'for_subadmin', 'limit', 'offset', 'count', 'filters', 'sorters',
-            'for_segment_ids', 'include_unsegmented'
+            'for_subadmin',
+            'limit',
+            'offset',
+            'count',
+            'filters',
+            'sorters',
+            'for_segment_ids',
+            'include_unsegmented'
         ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_access_profiles" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_access_profiles" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1135,12 +978,10 @@ class AccessProfilesApi:
             _query_params.append(('sorters', _params['sorters']))
 
         if _params.get('for_segment_ids') is not None:  # noqa: E501
-            _query_params.append(
-                ('for-segment-ids', _params['for_segment_ids']))
+            _query_params.append(('for-segment-ids', _params['for_segment_ids']))
 
         if _params.get('include_unsegmented') is not None:  # noqa: E501
-            _query_params.append(
-                ('include-unsegmented', _params['include_unsegmented']))
+            _query_params.append(('include-unsegmented', _params['include_unsegmented']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -1166,8 +1007,7 @@ class AccessProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/access-profiles',
-            'GET',
+            '/access-profiles', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1177,19 +1017,14 @@ class AccessProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_access_profile(self, id: Annotated[
-        StrictStr,
-        Field(..., description="ID of the Access Profile to patch")],
-                             json_patch_operation: conlist(JsonPatchOperation),
-                             **kwargs) -> AccessProfile:  # noqa: E501
+    def patch_access_profile(self, id : Annotated[StrictStr, Field(..., description="ID of the Access Profile to patch")], json_patch_operation : conlist(JsonPatchOperation), **kwargs) -> AccessProfile:  # noqa: E501
         """Patch a specified Access Profile  # noqa: E501
 
         This API updates an existing Access Profile. The following fields are patchable:  **name**  **description**  **enabled**  **owner**  **requestable**  **accessRequestConfig**  **revokeRequestConfig**  **segments**  **entitlements**  **provisioningCriteria**  **source** (must be updated with entitlements belonging to new source in the same API call)  If you need to change the `source` of the access profile, you can do so only if you update the `entitlements` in the same API call.  The new entitlements can only come from the target source that you want to change to.  Look for the example \"Replace Source\" in the examples dropdown.  A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer. >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.  > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.  >  Patching the value of the **requestable** field is only supported for customers enabled with the new Request Center. Otherwise, attempting to modify this field results in a 400 error.  # noqa: E501
@@ -1218,16 +1053,10 @@ class AccessProfilesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_access_profile_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_access_profile_with_http_info(
-            id, json_patch_operation, **kwargs)  # noqa: E501
+        return self.patch_access_profile_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_access_profile_with_http_info(
-            self, id: Annotated[
-                StrictStr,
-                Field(..., description="ID of the Access Profile to patch")],
-            json_patch_operation: conlist(JsonPatchOperation),
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_access_profile_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Access Profile to patch")], json_patch_operation : conlist(JsonPatchOperation), **kwargs) -> ApiResponse:  # noqa: E501
         """Patch a specified Access Profile  # noqa: E501
 
         This API updates an existing Access Profile. The following fields are patchable:  **name**  **description**  **enabled**  **owner**  **requestable**  **accessRequestConfig**  **revokeRequestConfig**  **segments**  **entitlements**  **provisioningCriteria**  **source** (must be updated with entitlements belonging to new source in the same API call)  If you need to change the `source` of the access profile, you can do so only if you update the `entitlements` in the same API call.  The new entitlements can only come from the target source that you want to change to.  Look for the example \"Replace Source\" in the examples dropdown.  A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer. >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.  > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.  >  Patching the value of the **requestable** field is only supported for customers enabled with the new Request Center. Otherwise, attempting to modify this field results in a 400 error.  # noqa: E501
@@ -1268,17 +1097,29 @@ class AccessProfilesApi:
 
         _params = locals()
 
-        _all_params = ['id', 'json_patch_operation']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'json_patch_operation'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method patch_access_profile" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_access_profile" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1288,6 +1129,7 @@ class AccessProfilesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -1306,12 +1148,11 @@ class AccessProfilesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
+        _content_types_list = _params.get('_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1326,8 +1167,7 @@ class AccessProfilesApi:
         }
 
         return self.api_client.call_api(
-            '/access-profiles/{id}',
-            'PATCH',
+            '/access-profiles/{id}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -1337,8 +1177,7 @@ class AccessProfilesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

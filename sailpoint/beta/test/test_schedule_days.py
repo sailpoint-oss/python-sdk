@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.schedule_days import ScheduleDays  # noqa: E501
-
 
 class TestScheduleDays(unittest.TestCase):
     """ScheduleDays unit test stubs"""
@@ -51,7 +51,6 @@ class TestScheduleDays(unittest.TestCase):
         """Test ScheduleDays"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

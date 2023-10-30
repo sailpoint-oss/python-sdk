@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,7 +21,6 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 from v3.models.document_type import DocumentType
-
 
 class AggregationDocument(BaseModel):
     """
@@ -32,21 +32,11 @@ class AggregationDocument(BaseModel):
     status: Optional[StrictStr] = None
     duration: Optional[StrictInt] = None
     avg_duration: Optional[StrictInt] = Field(None, alias="avgDuration")
-    changed_accounts: Optional[StrictInt] = Field(None,
-                                                  alias="changedAccounts")
-    next_scheduled: Optional[datetime] = Field(
-        None,
-        alias="nextScheduled",
-        description="A date-time in ISO-8601 format")
-    start_time: Optional[datetime] = Field(
-        None, alias="startTime", description="A date-time in ISO-8601 format")
-    source_owner: Optional[StrictStr] = Field(None,
-                                              alias="sourceOwner",
-                                              description="John Doe")
-    __properties = [
-        "id", "name", "_type", "status", "duration", "avgDuration",
-        "changedAccounts", "nextScheduled", "startTime", "sourceOwner"
-    ]
+    changed_accounts: Optional[StrictInt] = Field(None, alias="changedAccounts")
+    next_scheduled: Optional[datetime] = Field(None, alias="nextScheduled", description="A date-time in ISO-8601 format")
+    start_time: Optional[datetime] = Field(None, alias="startTime", description="A date-time in ISO-8601 format")
+    source_owner: Optional[StrictStr] = Field(None, alias="sourceOwner", description="John Doe")
+    __properties = ["id", "name", "_type", "status", "duration", "avgDuration", "changedAccounts", "nextScheduled", "startTime", "sourceOwner"]
 
     class Config:
         """Pydantic configuration"""
@@ -68,7 +58,10 @@ class AggregationDocument(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # set to None if next_scheduled (nullable) is None
         # and __fields_set__ contains the field
         if self.next_scheduled is None and "next_scheduled" in self.__fields_set__:
@@ -91,25 +84,17 @@ class AggregationDocument(BaseModel):
             return AggregationDocument.parse_obj(obj)
 
         _obj = AggregationDocument.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("_type"),
-            "status":
-            obj.get("status"),
-            "duration":
-            obj.get("duration"),
-            "avg_duration":
-            obj.get("avgDuration"),
-            "changed_accounts":
-            obj.get("changedAccounts"),
-            "next_scheduled":
-            obj.get("nextScheduled"),
-            "start_time":
-            obj.get("startTime"),
-            "source_owner":
-            obj.get("sourceOwner")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "type": obj.get("_type"),
+            "status": obj.get("status"),
+            "duration": obj.get("duration"),
+            "avg_duration": obj.get("avgDuration"),
+            "changed_accounts": obj.get("changedAccounts"),
+            "next_scheduled": obj.get("nextScheduled"),
+            "start_time": obj.get("startTime"),
+            "source_owner": obj.get("sourceOwner")
         })
         return _obj
+
+

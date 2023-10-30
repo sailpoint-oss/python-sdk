@@ -11,22 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-
 
 class ListPredefinedSelectOptionsResponse(BaseModel):
     """
     ListPredefinedSelectOptionsResponse
     """
-    results: Optional[conlist(StrictStr)] = Field(
-        None,
-        description="Results holds a list of PreDefinedSelectOption items")
+    results: Optional[conlist(StrictStr)] = Field(None, description="Results holds a list of PreDefinedSelectOption items")
     __properties = ["results"]
 
     class Config:
@@ -49,7 +48,10 @@ class ListPredefinedSelectOptionsResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -61,6 +63,9 @@ class ListPredefinedSelectOptionsResponse(BaseModel):
         if not isinstance(obj, dict):
             return ListPredefinedSelectOptionsResponse.parse_obj(obj)
 
-        _obj = ListPredefinedSelectOptionsResponse.parse_obj(
-            {"results": obj.get("results")})
+        _obj = ListPredefinedSelectOptionsResponse.parse_obj({
+            "results": obj.get("results")
+        })
         return _obj
+
+

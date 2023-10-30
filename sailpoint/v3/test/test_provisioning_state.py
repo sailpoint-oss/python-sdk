@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.provisioning_state import ProvisioningState  # noqa: E501
-
 
 class TestProvisioningState(unittest.TestCase):
     """ProvisioningState unit test stubs"""
@@ -29,7 +29,6 @@ class TestProvisioningState(unittest.TestCase):
     def testProvisioningState(self):
         """Test ProvisioningState"""
         # inst = ProvisioningState()
-
 
 if __name__ == '__main__':
     unittest.main()

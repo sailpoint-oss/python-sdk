@@ -11,29 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 from beta.models.dto_type import DtoType
-
 
 class AccessRequestDynamicApproverRequestedBy(BaseModel):
     """
     The identity that initiated the access request.  # noqa: E501
     """
-    type: Optional[Dict[str, Any]] = Field(
-        None, description="The type of object that is referenced")
-    id: Optional[StrictStr] = Field(
-        None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human-readable display name of the object to which this reference applies"
-    )
+    type: Optional[Dict[str, Any]] = Field(None, description="The type of object that is referenced")
+    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object to which this reference applies")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -60,14 +55,16 @@ class AccessRequestDynamicApproverRequestedBy(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls,
-                  json_str: str) -> AccessRequestDynamicApproverRequestedBy:
+    def from_json(cls, json_str: str) -> AccessRequestDynamicApproverRequestedBy:
         """Create an instance of AccessRequestDynamicApproverRequestedBy from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -80,11 +77,10 @@ class AccessRequestDynamicApproverRequestedBy(BaseModel):
             return AccessRequestDynamicApproverRequestedBy.parse_obj(obj)
 
         _obj = AccessRequestDynamicApproverRequestedBy.parse_obj({
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name")
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
+
+

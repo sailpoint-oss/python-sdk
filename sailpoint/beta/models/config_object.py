@@ -11,26 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictInt
-from beta.models.base_reference_dto1 import BaseReferenceDto1
-
+from beta.models.base_reference_dto import BaseReferenceDto
 
 class ConfigObject(BaseModel):
     """
     Config export and import format for individual object configurations.  # noqa: E501
     """
-    version: Optional[StrictInt] = Field(
-        None, description="Current version of configuration object.")
-    var_self: Optional[BaseReferenceDto1] = Field(None, alias="self")
-    object: Optional[Dict[str, Any]] = Field(
-        None,
-        description="Object details. Format dependant on the object type.")
+    version: Optional[StrictInt] = Field(None, description="Current version of configuration object.")
+    var_self: Optional[BaseReferenceDto] = Field(None, alias="self")
+    object: Optional[Dict[str, Any]] = Field(None, description="Object details. Format dependant on the object type.")
     __properties = ["version", "self", "object"]
 
     class Config:
@@ -53,7 +51,10 @@ class ConfigObject(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of var_self
         if self.var_self:
             _dict['self'] = self.var_self.to_dict()
@@ -69,12 +70,10 @@ class ConfigObject(BaseModel):
             return ConfigObject.parse_obj(obj)
 
         _obj = ConfigObject.parse_obj({
-            "version":
-            obj.get("version"),
-            "var_self":
-            BaseReferenceDto1.from_dict(obj.get("self"))
-            if obj.get("self") is not None else None,
-            "object":
-            obj.get("object")
+            "version": obj.get("version"),
+            "var_self": BaseReferenceDto.from_dict(obj.get("self")) if obj.get("self") is not None else None,
+            "object": obj.get("object")
         })
         return _obj
+
+

@@ -11,32 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
 from beta.models.lookup_step import LookupStep
-
 
 class EvaluateResponse(BaseModel):
     """
     The response body for Evaluate Reassignment Configuration  # noqa: E501
     """
-    reassign_to_id: Optional[StrictStr] = Field(
-        None,
-        alias="reassignToId",
-        description=
-        "The Identity ID which should be the recipient of any work items sent to a specific identity & work type"
-    )
-    lookup_trail: Optional[conlist(LookupStep)] = Field(
-        None,
-        alias="lookupTrail",
-        description=
-        "List of Reassignments found by looking up the next `TargetIdentity` in a ReassignmentConfiguration"
-    )
+    reassign_to_id: Optional[StrictStr] = Field(None, alias="reassignToId", description="The Identity ID which should be the recipient of any work items sent to a specific identity & work type")
+    lookup_trail: Optional[conlist(LookupStep)] = Field(None, alias="lookupTrail", description="List of Reassignments found by looking up the next `TargetIdentity` in a ReassignmentConfiguration")
     __properties = ["reassignToId", "lookupTrail"]
 
     class Config:
@@ -59,7 +50,10 @@ class EvaluateResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in lookup_trail (list)
         _items = []
         if self.lookup_trail:
@@ -79,10 +73,9 @@ class EvaluateResponse(BaseModel):
             return EvaluateResponse.parse_obj(obj)
 
         _obj = EvaluateResponse.parse_obj({
-            "reassign_to_id":
-            obj.get("reassignToId"),
-            "lookup_trail":
-            [LookupStep.from_dict(_item) for _item in obj.get("lookupTrail")]
-            if obj.get("lookupTrail") is not None else None
+            "reassign_to_id": obj.get("reassignToId"),
+            "lookup_trail": [LookupStep.from_dict(_item) for _item in obj.get("lookupTrail")] if obj.get("lookupTrail") is not None else None
         })
         return _obj
+
+

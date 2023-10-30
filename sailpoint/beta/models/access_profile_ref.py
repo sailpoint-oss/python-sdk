@@ -11,31 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class AccessProfileRef(BaseModel):
     """
     AccessProfileRef
     """
-    id: Optional[StrictStr] = Field(None,
-                                    description="ID of the Access Profile")
-    type: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Type of requested object. This field must be either left null or set to 'ACCESS_PROFILE' when creating an Access Profile, otherwise a 400 Bad Request error will result."
-    )
-    name: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human-readable display name of the Access Profile. This field is ignored on input."
-    )
+    id: Optional[StrictStr] = Field(None, description="ID of the Access Profile")
+    type: Optional[StrictStr] = Field(None, description="Type of requested object. This field must be either left null or set to 'ACCESS_PROFILE' when creating an Access Profile, otherwise a 400 Bad Request error will result.")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the Access Profile. This field is ignored on input.")
     __properties = ["id", "type", "name"]
 
     @validator('type')
@@ -68,7 +60,10 @@ class AccessProfileRef(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -86,3 +81,5 @@ class AccessProfileRef(BaseModel):
             "name": obj.get("name")
         })
         return _obj
+
+

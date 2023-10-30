@@ -4,13 +4,14 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**min_num_identities_in_potential_role** | **int** | Minimum number of identities in a potential role | [optional] 
+**id** | **str** | The ID of the role mining session | [optional] 
 **name** | **str** | The session&#39;s saved name | [optional] 
+**min_num_identities_in_potential_role** | **int** | Minimum number of identities in a potential role | [optional] 
 **prune_threshold** | **int** | The prune threshold to be used or null to calculate prescribedPruneThreshold | [optional] 
 **saved** | **bool** | The session&#39;s saved status | [optional] [default to True]
 **scope** | [**RoleMiningSessionScope**](RoleMiningSessionScope.md) |  | [optional] 
 **type** | [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
-**state** | [**RoleMiningSessionStatus**](RoleMiningSessionStatus.md) |  | [optional] 
+**state** | [**RoleMiningSessionState**](RoleMiningSessionState.md) |  | [optional] 
 **scoping_method** | [**RoleMiningSessionScopingMethod**](RoleMiningSessionScopingMethod.md) |  | [optional] 
 
 ## Example

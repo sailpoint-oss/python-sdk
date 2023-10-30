@@ -11,28 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class IdentityEntitiesIdentityEntity(BaseModel):
     """
     IdentityEntitiesIdentityEntity
     """
-    id: Optional[StrictStr] = Field(
-        None,
-        description="id of the resource to which the identity is associated")
-    name: Optional[StrictStr] = Field(
-        None,
-        description="name of the resource to which the identity is associated")
-    type: Optional[StrictStr] = Field(
-        None,
-        description="type of the resource to which the identity is associated")
+    id: Optional[StrictStr] = Field(None, description="id of the resource to which the identity is associated")
+    name: Optional[StrictStr] = Field(None, description="name of the resource to which the identity is associated")
+    type: Optional[StrictStr] = Field(None, description="type of the resource to which the identity is associated")
     __properties = ["id", "name", "type"]
 
     class Config:
@@ -55,7 +50,10 @@ class IdentityEntitiesIdentityEntity(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -73,3 +71,5 @@ class IdentityEntitiesIdentityEntity(BaseModel):
             "type": obj.get("type")
         })
         return _obj
+
+

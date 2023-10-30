@@ -11,10 +11,12 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List
 from pydantic import BaseModel, Field, StrictStr, conlist
@@ -22,29 +24,15 @@ from beta.models.access_request_dynamic_approver_requested_by import AccessReque
 from beta.models.access_request_dynamic_approver_requested_for import AccessRequestDynamicApproverRequestedFor
 from beta.models.access_request_dynamic_approver_requested_items_inner import AccessRequestDynamicApproverRequestedItemsInner
 
-
 class AccessRequestDynamicApprover(BaseModel):
     """
     AccessRequestDynamicApprover
     """
-    access_request_id: StrictStr = Field(
-        ...,
-        alias="accessRequestId",
-        description=
-        "The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request. "
-    )
-    requested_for: AccessRequestDynamicApproverRequestedFor = Field(
-        ..., alias="requestedFor")
-    requested_items: conlist(
-        AccessRequestDynamicApproverRequestedItemsInner) = Field(
-            ...,
-            alias="requestedItems",
-            description="The access items that are being requested.")
-    requested_by: AccessRequestDynamicApproverRequestedBy = Field(
-        ..., alias="requestedBy")
-    __properties = [
-        "accessRequestId", "requestedFor", "requestedItems", "requestedBy"
-    ]
+    access_request_id: StrictStr = Field(..., alias="accessRequestId", description="The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request. ")
+    requested_for: AccessRequestDynamicApproverRequestedFor = Field(..., alias="requestedFor")
+    requested_items: conlist(AccessRequestDynamicApproverRequestedItemsInner) = Field(..., alias="requestedItems", description="The access items that are being requested.")
+    requested_by: AccessRequestDynamicApproverRequestedBy = Field(..., alias="requestedBy")
+    __properties = ["accessRequestId", "requestedFor", "requestedItems", "requestedBy"]
 
     class Config:
         """Pydantic configuration"""
@@ -66,7 +54,10 @@ class AccessRequestDynamicApprover(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of requested_for
         if self.requested_for:
             _dict['requestedFor'] = self.requested_for.to_dict()
@@ -92,19 +83,11 @@ class AccessRequestDynamicApprover(BaseModel):
             return AccessRequestDynamicApprover.parse_obj(obj)
 
         _obj = AccessRequestDynamicApprover.parse_obj({
-            "access_request_id":
-            obj.get("accessRequestId"),
-            "requested_for":
-            AccessRequestDynamicApproverRequestedFor.from_dict(
-                obj.get("requestedFor"))
-            if obj.get("requestedFor") is not None else None,
-            "requested_items": [
-                AccessRequestDynamicApproverRequestedItemsInner.from_dict(
-                    _item) for _item in obj.get("requestedItems")
-            ] if obj.get("requestedItems") is not None else None,
-            "requested_by":
-            AccessRequestDynamicApproverRequestedBy.from_dict(
-                obj.get("requestedBy"))
-            if obj.get("requestedBy") is not None else None
+            "access_request_id": obj.get("accessRequestId"),
+            "requested_for": AccessRequestDynamicApproverRequestedFor.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
+            "requested_items": [AccessRequestDynamicApproverRequestedItemsInner.from_dict(_item) for _item in obj.get("requestedItems")] if obj.get("requestedItems") is not None else None,
+            "requested_by": AccessRequestDynamicApproverRequestedBy.from_dict(obj.get("requestedBy")) if obj.get("requestedBy") is not None else None
         })
         return _obj
+
+

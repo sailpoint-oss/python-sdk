@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.work_item_state import WorkItemState  # noqa: E501
-
 
 class TestWorkItemState(unittest.TestCase):
     """WorkItemState unit test stubs"""
@@ -29,7 +29,6 @@ class TestWorkItemState(unittest.TestCase):
     def testWorkItemState(self):
         """Test WorkItemState"""
         # inst = WorkItemState()
-
 
 if __name__ == '__main__':
     unittest.main()

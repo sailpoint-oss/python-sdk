@@ -11,14 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr
-
 
 class ListApplications200ResponseInnerHealth(BaseModel):
     """
@@ -44,14 +45,16 @@ class ListApplications200ResponseInnerHealth(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls,
-                  json_str: str) -> ListApplications200ResponseInnerHealth:
+    def from_json(cls, json_str: str) -> ListApplications200ResponseInnerHealth:
         """Create an instance of ListApplications200ResponseInnerHealth from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -64,13 +67,11 @@ class ListApplications200ResponseInnerHealth(BaseModel):
             return ListApplications200ResponseInnerHealth.parse_obj(obj)
 
         _obj = ListApplications200ResponseInnerHealth.parse_obj({
-            "status":
-            obj.get("status"),
-            "last_changed":
-            obj.get("lastChanged"),
-            "since":
-            obj.get("since"),
-            "healthy":
-            obj.get("healthy")
+            "status": obj.get("status"),
+            "last_changed": obj.get("lastChanged"),
+            "since": obj.get("since"),
+            "healthy": obj.get("healthy")
         })
         return _obj
+
+

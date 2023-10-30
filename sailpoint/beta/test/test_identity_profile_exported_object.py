@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.identity_profile_exported_object import IdentityProfileExportedObject  # noqa: E501
-
 
 class TestIdentityProfileExportedObject(unittest.TestCase):
     """IdentityProfileExportedObject unit test stubs"""
@@ -37,7 +37,7 @@ class TestIdentityProfileExportedObject(unittest.TestCase):
         if include_optional:
             return IdentityProfileExportedObject(
                 version = 1,
-                var_self = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                var_self = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
@@ -52,7 +52,6 @@ class TestIdentityProfileExportedObject(unittest.TestCase):
         """Test IdentityProfileExportedObject"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

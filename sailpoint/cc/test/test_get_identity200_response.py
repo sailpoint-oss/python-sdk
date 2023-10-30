@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from cc.models.get_identity200_response import GetIdentity200Response  # noqa: E501
-
 
 class TestGetIdentity200Response(unittest.TestCase):
     """GetIdentity200Response unit test stubs"""
@@ -145,7 +145,6 @@ class TestGetIdentity200Response(unittest.TestCase):
         """Test GetIdentity200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

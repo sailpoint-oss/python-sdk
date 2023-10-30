@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.provisioning_config_managed_resource_refs_inner import ProvisioningConfigManagedResourceRefsInner  # noqa: E501
-
 
 class TestProvisioningConfigManagedResourceRefsInner(unittest.TestCase):
     """ProvisioningConfigManagedResourceRefsInner unit test stubs"""
@@ -26,9 +26,7 @@ class TestProvisioningConfigManagedResourceRefsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(
-            self,
-            include_optional) -> ProvisioningConfigManagedResourceRefsInner:
+    def make_instance(self, include_optional) -> ProvisioningConfigManagedResourceRefsInner:
         """Test ProvisioningConfigManagedResourceRefsInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -51,7 +49,6 @@ class TestProvisioningConfigManagedResourceRefsInner(unittest.TestCase):
         """Test ProvisioningConfigManagedResourceRefsInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

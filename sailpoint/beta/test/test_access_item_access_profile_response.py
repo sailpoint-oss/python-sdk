@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.access_item_access_profile_response import AccessItemAccessProfileResponse  # noqa: E501
-
 
 class TestAccessItemAccessProfileResponse(unittest.TestCase):
     """AccessItemAccessProfileResponse unit test stubs"""
@@ -26,8 +26,7 @@ class TestAccessItemAccessProfileResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> AccessItemAccessProfileResponse:
+    def make_instance(self, include_optional) -> AccessItemAccessProfileResponse:
         """Test AccessItemAccessProfileResponse
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -56,7 +55,6 @@ class TestAccessItemAccessProfileResponse(unittest.TestCase):
         """Test AccessItemAccessProfileResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

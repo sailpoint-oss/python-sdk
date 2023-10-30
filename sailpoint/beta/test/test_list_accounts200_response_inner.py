@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.list_accounts200_response_inner import ListAccounts200ResponseInner  # noqa: E501
-
 
 class TestListAccounts200ResponseInner(unittest.TestCase):
     """ListAccounts200ResponseInner unit test stubs"""
@@ -66,7 +66,6 @@ class TestListAccounts200ResponseInner(unittest.TestCase):
         """Test ListAccounts200ResponseInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

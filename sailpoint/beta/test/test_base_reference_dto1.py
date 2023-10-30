@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.base_reference_dto1 import BaseReferenceDto1  # noqa: E501
-
 
 class TestBaseReferenceDto1(unittest.TestCase):
     """BaseReferenceDto1 unit test stubs"""
@@ -36,9 +36,8 @@ class TestBaseReferenceDto1(unittest.TestCase):
         model = BaseReferenceDto1()  # noqa: E501
         if include_optional:
             return BaseReferenceDto1(
-                type = 'IDENTITY',
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson'
+                id = 'ff8081814d977c21014da056804a0af3',
+                name = 'Github'
             )
         else:
             return BaseReferenceDto1(
@@ -49,7 +48,6 @@ class TestBaseReferenceDto1(unittest.TestCase):
         """Test BaseReferenceDto1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

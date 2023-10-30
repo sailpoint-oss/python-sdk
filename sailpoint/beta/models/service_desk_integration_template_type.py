@@ -11,27 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class ServiceDeskIntegrationTemplateType(BaseModel):
     """
     This represents a Service Desk Integration template type.  # noqa: E501
     """
-    name: Optional[StrictStr] = Field(
-        None, description="This is the name of the type.")
-    type: StrictStr = Field(...,
-                            description="This is the type value for the type.")
-    script_name: StrictStr = Field(
-        ...,
-        alias="scriptName",
-        description="This is the scriptName attribute value for the type.")
+    name: Optional[StrictStr] = Field(None, description="This is the name of the type.")
+    type: StrictStr = Field(..., description="This is the type value for the type.")
+    script_name: StrictStr = Field(..., alias="scriptName", description="This is the scriptName attribute value for the type.")
     __properties = ["name", "type", "scriptName"]
 
     class Config:
@@ -54,7 +50,10 @@ class ServiceDeskIntegrationTemplateType(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,11 +66,10 @@ class ServiceDeskIntegrationTemplateType(BaseModel):
             return ServiceDeskIntegrationTemplateType.parse_obj(obj)
 
         _obj = ServiceDeskIntegrationTemplateType.parse_obj({
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("type"),
-            "script_name":
-            obj.get("scriptName")
+            "name": obj.get("name"),
+            "type": obj.get("type"),
+            "script_name": obj.get("scriptName")
         })
         return _obj
+
+

@@ -11,30 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-
 
 class AccessCriteriaCriteriaListInner(BaseModel):
     """
     AccessCriteriaCriteriaListInner
     """
-    type: Optional[StrictStr] = Field(
-        None,
-        description="Type of the propery to which this reference applies to")
-    id: Optional[StrictStr] = Field(
-        None,
-        description="ID of the object to which this reference applies to")
-    name: Optional[StrictStr] = Field(
-        None,
-        description=
-        "Human-readable display name of the object to which this reference applies to"
-    )
+    type: Optional[StrictStr] = Field(None, description="Type of the propery to which this reference applies to")
+    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies to")
+    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object to which this reference applies to")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -67,7 +60,10 @@ class AccessCriteriaCriteriaListInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -80,11 +76,10 @@ class AccessCriteriaCriteriaListInner(BaseModel):
             return AccessCriteriaCriteriaListInner.parse_obj(obj)
 
         _obj = AccessCriteriaCriteriaListInner.parse_obj({
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name")
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
+
+

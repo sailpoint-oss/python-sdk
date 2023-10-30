@@ -11,25 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class PostExternalExecuteWorkflow200Response(BaseModel):
     """
     PostExternalExecuteWorkflow200Response
     """
-    workflow_execution_id: Optional[StrictStr] = Field(
-        None,
-        alias="workflowExecutionId",
-        description="The workflow execution id")
-    message: Optional[StrictStr] = Field(
-        None, description="An error message if any errors occurred")
+    workflow_execution_id: Optional[StrictStr] = Field(None, alias="workflowExecutionId", description="The workflow execution id")
+    message: Optional[StrictStr] = Field(None, description="An error message if any errors occurred")
     __properties = ["workflowExecutionId", "message"]
 
     class Config:
@@ -46,14 +43,16 @@ class PostExternalExecuteWorkflow200Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls,
-                  json_str: str) -> PostExternalExecuteWorkflow200Response:
+    def from_json(cls, json_str: str) -> PostExternalExecuteWorkflow200Response:
         """Create an instance of PostExternalExecuteWorkflow200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,9 +65,9 @@ class PostExternalExecuteWorkflow200Response(BaseModel):
             return PostExternalExecuteWorkflow200Response.parse_obj(obj)
 
         _obj = PostExternalExecuteWorkflow200Response.parse_obj({
-            "workflow_execution_id":
-            obj.get("workflowExecutionId"),
-            "message":
-            obj.get("message")
+            "workflow_execution_id": obj.get("workflowExecutionId"),
+            "message": obj.get("message")
         })
         return _obj
+
+

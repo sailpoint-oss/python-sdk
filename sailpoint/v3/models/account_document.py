@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -24,60 +25,30 @@ from v3.models.account_source import AccountSource
 from v3.models.display_reference import DisplayReference
 from v3.models.document_type import DocumentType
 
-
 class AccountDocument(BaseModel):
     """
     Account  # noqa: E501
     """
-    id: StrictStr = Field(
-        ..., description="The unique ID of the referenced object.")
-    name: StrictStr = Field(
-        ..., description="The human readable name of the referenced object.")
+    id: StrictStr = Field(..., description="The unique ID of the referenced object.")
+    name: StrictStr = Field(..., description="The human readable name of the referenced object.")
     type: DocumentType = Field(..., alias="_type")
-    account_id: Optional[StrictStr] = Field(
-        None, alias="accountId", description="The ID of the account")
+    account_id: Optional[StrictStr] = Field(None, alias="accountId", description="The ID of the account")
     source: Optional[AccountSource] = None
-    disabled: Optional[StrictBool] = Field(
-        None, description="Indicates if the account is disabled")
-    locked: Optional[StrictBool] = Field(
-        None, description="Indicates if the account is locked")
+    disabled: Optional[StrictBool] = Field(None, description="Indicates if the account is disabled")
+    locked: Optional[StrictBool] = Field(None, description="Indicates if the account is locked")
     privileged: Optional[StrictBool] = None
-    manually_correlated: Optional[StrictBool] = Field(
-        None,
-        alias="manuallyCorrelated",
-        description=
-        "Indicates if the account has been manually correlated to an identity")
-    password_last_set: Optional[datetime] = Field(
-        None,
-        alias="passwordLastSet",
-        description="A date-time in ISO-8601 format")
-    entitlement_attributes: Optional[Dict[str, Any]] = Field(
-        None,
-        alias="entitlementAttributes",
-        description="a map or dictionary of key/value pairs")
-    created: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
-    attributes: Optional[Dict[str, Any]] = Field(
-        None, description="a map or dictionary of key/value pairs")
+    manually_correlated: Optional[StrictBool] = Field(None, alias="manuallyCorrelated", description="Indicates if the account has been manually correlated to an identity")
+    password_last_set: Optional[datetime] = Field(None, alias="passwordLastSet", description="A date-time in ISO-8601 format")
+    entitlement_attributes: Optional[Dict[str, Any]] = Field(None, alias="entitlementAttributes", description="a map or dictionary of key/value pairs")
+    created: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
+    modified: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
+    attributes: Optional[Dict[str, Any]] = Field(None, description="a map or dictionary of key/value pairs")
     identity: Optional[DisplayReference] = None
     access: Optional[conlist(AccessProfileEntitlement)] = None
-    entitlement_count: Optional[StrictInt] = Field(
-        None,
-        alias="entitlementCount",
-        description="The number of entitlements assigned to the account")
-    uncorrelated: Optional[StrictBool] = Field(
-        None,
-        description="Indicates if the account is not correlated to an identity"
-    )
+    entitlement_count: Optional[StrictInt] = Field(None, alias="entitlementCount", description="The number of entitlements assigned to the account")
+    uncorrelated: Optional[StrictBool] = Field(None, description="Indicates if the account is not correlated to an identity")
     tags: Optional[conlist(StrictStr)] = None
-    __properties = [
-        "id", "name", "_type", "accountId", "source", "disabled", "locked",
-        "privileged", "manuallyCorrelated", "passwordLastSet",
-        "entitlementAttributes", "created", "modified", "attributes",
-        "identity", "access", "entitlementCount", "uncorrelated", "tags"
-    ]
+    __properties = ["id", "name", "_type", "accountId", "source", "disabled", "locked", "privileged", "manuallyCorrelated", "passwordLastSet", "entitlementAttributes", "created", "modified", "attributes", "identity", "access", "entitlementCount", "uncorrelated", "tags"]
 
     class Config:
         """Pydantic configuration"""
@@ -99,7 +70,10 @@ class AccountDocument(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -145,47 +119,26 @@ class AccountDocument(BaseModel):
             return AccountDocument.parse_obj(obj)
 
         _obj = AccountDocument.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "type":
-            obj.get("_type"),
-            "account_id":
-            obj.get("accountId"),
-            "source":
-            AccountSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "disabled":
-            obj.get("disabled"),
-            "locked":
-            obj.get("locked"),
-            "privileged":
-            obj.get("privileged"),
-            "manually_correlated":
-            obj.get("manuallyCorrelated"),
-            "password_last_set":
-            obj.get("passwordLastSet"),
-            "entitlement_attributes":
-            obj.get("entitlementAttributes"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
-            "attributes":
-            obj.get("attributes"),
-            "identity":
-            DisplayReference.from_dict(obj.get("identity"))
-            if obj.get("identity") is not None else None,
-            "access": [
-                AccessProfileEntitlement.from_dict(_item)
-                for _item in obj.get("access")
-            ] if obj.get("access") is not None else None,
-            "entitlement_count":
-            obj.get("entitlementCount"),
-            "uncorrelated":
-            obj.get("uncorrelated"),
-            "tags":
-            obj.get("tags")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "type": obj.get("_type"),
+            "account_id": obj.get("accountId"),
+            "source": AccountSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "disabled": obj.get("disabled"),
+            "locked": obj.get("locked"),
+            "privileged": obj.get("privileged"),
+            "manually_correlated": obj.get("manuallyCorrelated"),
+            "password_last_set": obj.get("passwordLastSet"),
+            "entitlement_attributes": obj.get("entitlementAttributes"),
+            "created": obj.get("created"),
+            "modified": obj.get("modified"),
+            "attributes": obj.get("attributes"),
+            "identity": DisplayReference.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
+            "access": [AccessProfileEntitlement.from_dict(_item) for _item in obj.get("access")] if obj.get("access") is not None else None,
+            "entitlement_count": obj.get("entitlementCount"),
+            "uncorrelated": obj.get("uncorrelated"),
+            "tags": obj.get("tags")
         })
         return _obj
+
+

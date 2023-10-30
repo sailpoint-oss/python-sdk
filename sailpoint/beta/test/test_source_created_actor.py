@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.source_created_actor import SourceCreatedActor  # noqa: E501
-
 
 class TestSourceCreatedActor(unittest.TestCase):
     """SourceCreatedActor unit test stubs"""
@@ -52,7 +52,6 @@ class TestSourceCreatedActor(unittest.TestCase):
         """Test SourceCreatedActor"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

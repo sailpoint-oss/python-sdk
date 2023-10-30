@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.role_mining_session_parameters_dto import RoleMiningSessionParametersDto  # noqa: E501
-
 
 class TestRoleMiningSessionParametersDto(unittest.TestCase):
     """RoleMiningSessionParametersDto unit test stubs"""
@@ -26,8 +26,7 @@ class TestRoleMiningSessionParametersDto(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> RoleMiningSessionParametersDto:
+    def make_instance(self, include_optional) -> RoleMiningSessionParametersDto:
         """Test RoleMiningSessionParametersDto
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -37,8 +36,9 @@ class TestRoleMiningSessionParametersDto(unittest.TestCase):
         model = RoleMiningSessionParametersDto()  # noqa: E501
         if include_optional:
             return RoleMiningSessionParametersDto(
-                min_num_identities_in_potential_role = 20,
+                id = '9f36f5e5-1e81-4eca-b087-548959d91c71',
                 name = 'Saved RM Session - 07/10',
+                min_num_identities_in_potential_role = 20,
                 prune_threshold = 5,
                 saved = True,
                 scope = beta.models.role_mining_session_scope.RoleMiningSessionScope(
@@ -46,9 +46,8 @@ class TestRoleMiningSessionParametersDto(unittest.TestCase):
                     criteria = 'source.name:DataScienceDataset', 
                     attribute_filter_criteria = {displayName={untranslated=Location: Miami}, ariaLabel={untranslated=Location: Miami}, data={displayName={translateKey=IDN.IDENTITY_ATTRIBUTES.LOCATION}, name=location, operator=EQUALS, values=[Miami]}}, ),
                 type = 'SPECIALIZED',
-                state = beta.models.role_mining_session_status.RoleMiningSessionStatus(),
-                scoping_method = beta.models.role_mining_session_scoping_method.RoleMiningSessionScopingMethod(
-                    state = 'MANUAL', )
+                state = 'CREATED',
+                scoping_method = 'MANUAL'
             )
         else:
             return RoleMiningSessionParametersDto(
@@ -59,7 +58,6 @@ class TestRoleMiningSessionParametersDto(unittest.TestCase):
         """Test RoleMiningSessionParametersDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

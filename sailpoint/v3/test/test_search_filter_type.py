@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from v3.models.search_filter_type import SearchFilterType  # noqa: E501
-
 
 class TestSearchFilterType(unittest.TestCase):
     """SearchFilterType unit test stubs"""
@@ -29,7 +29,6 @@ class TestSearchFilterType(unittest.TestCase):
     def testSearchFilterType(self):
         """Test SearchFilterType"""
         # inst = SearchFilterType()
-
 
 if __name__ == '__main__':
     unittest.main()

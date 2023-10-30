@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.access_request_dynamic_approver import AccessRequestDynamicApprover  # noqa: E501
-
 
 class TestAccessRequestDynamicApprover(unittest.TestCase):
     """AccessRequestDynamicApprover unit test stubs"""
@@ -74,7 +74,6 @@ class TestAccessRequestDynamicApprover(unittest.TestCase):
         """Test AccessRequestDynamicApprover"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

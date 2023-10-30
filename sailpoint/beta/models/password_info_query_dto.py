@@ -11,23 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-
 
 class PasswordInfoQueryDTO(BaseModel):
     """
     PasswordInfoQueryDTO
     """
-    user_name: Optional[StrictStr] = Field(
-        None, alias="userName", description="The login name of the user")
-    source_name: Optional[StrictStr] = Field(
-        None, alias="sourceName", description="The display name of the source")
+    user_name: Optional[StrictStr] = Field(None, alias="userName", description="The login name of the user")
+    source_name: Optional[StrictStr] = Field(None, alias="sourceName", description="The display name of the source")
     __properties = ["userName", "sourceName"]
 
     class Config:
@@ -50,7 +49,10 @@ class PasswordInfoQueryDTO(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +65,9 @@ class PasswordInfoQueryDTO(BaseModel):
             return PasswordInfoQueryDTO.parse_obj(obj)
 
         _obj = PasswordInfoQueryDTO.parse_obj({
-            "user_name":
-            obj.get("userName"),
-            "source_name":
-            obj.get("sourceName")
+            "user_name": obj.get("userName"),
+            "source_name": obj.get("sourceName")
         })
         return _obj
+
+

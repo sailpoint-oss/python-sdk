@@ -11,15 +11,17 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
+
 from pydantic import BaseModel, Field, StrictStr
 from v3.models.criteria_type import CriteriaType
 from v3.models.operation import Operation
-
 
 class CampaignFilterDetailsCriteriaListInner(BaseModel):
     """
@@ -27,14 +29,8 @@ class CampaignFilterDetailsCriteriaListInner(BaseModel):
     """
     type: CriteriaType = Field(...)
     operation: Operation = Field(...)
-    var_property: StrictStr = Field(
-        ...,
-        alias="property",
-        description="The specified key from the Type of criteria.")
-    value: StrictStr = Field(
-        ...,
-        description="The value for the specified key from the Type of Criteria"
-    )
+    var_property: StrictStr = Field(..., alias="property", description="The specified key from the Type of criteria.")
+    value: StrictStr = Field(..., description="The value for the specified key from the Type of Criteria")
     __properties = ["type", "operation", "property", "value"]
 
     class Config:
@@ -51,14 +47,16 @@ class CampaignFilterDetailsCriteriaListInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls,
-                  json_str: str) -> CampaignFilterDetailsCriteriaListInner:
+    def from_json(cls, json_str: str) -> CampaignFilterDetailsCriteriaListInner:
         """Create an instance of CampaignFilterDetailsCriteriaListInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,13 +69,11 @@ class CampaignFilterDetailsCriteriaListInner(BaseModel):
             return CampaignFilterDetailsCriteriaListInner.parse_obj(obj)
 
         _obj = CampaignFilterDetailsCriteriaListInner.parse_obj({
-            "type":
-            obj.get("type"),
-            "operation":
-            obj.get("operation"),
-            "var_property":
-            obj.get("property"),
-            "value":
-            obj.get("value")
+            "type": obj.get("type"),
+            "operation": obj.get("operation"),
+            "var_property": obj.get("property"),
+            "value": obj.get("value")
         })
         return _obj
+
+

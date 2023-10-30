@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -22,10 +23,7 @@ from pydantic import BaseModel, Field, StrictBool, StrictStr, ValidationError, c
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-ACCOUNTATTRIBUTESCHANGEDCHANGESINNEROLDVALUE_ONE_OF_SCHEMAS = [
-    "List[str]", "bool", "str"
-]
-
+ACCOUNTATTRIBUTESCHANGEDCHANGESINNEROLDVALUE_ONE_OF_SCHEMAS = ["List[str]", "bool", "str"]
 
 class AccountAttributesChangedChangesInnerOldValue(BaseModel):
     """
@@ -41,9 +39,7 @@ class AccountAttributesChangedChangesInnerOldValue(BaseModel):
         actual_instance: Union[List[str], bool, str]
     else:
         actual_instance: Any
-    one_of_schemas: List[str] = Field(
-        ACCOUNTATTRIBUTESCHANGEDCHANGESINNEROLDVALUE_ONE_OF_SCHEMAS,
-        const=True)
+    one_of_schemas: List[str] = Field(ACCOUNTATTRIBUTESCHANGEDCHANGESINNEROLDVALUE_ONE_OF_SCHEMAS, const=True)
 
     class Config:
         validate_assignment = True
@@ -51,13 +47,9 @@ class AccountAttributesChangedChangesInnerOldValue(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError(
-                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
-                )
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
             if kwargs:
-                raise ValueError(
-                    "If a position argument is used, keyword arguments cannot be used."
-                )
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -90,26 +82,19 @@ class AccountAttributesChangedChangesInnerOldValue(BaseModel):
             error_messages.append(str(e))
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when setting `actual_instance` in AccountAttributesChangedChangesInnerOldValue with oneOf schemas: List[str], bool, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in AccountAttributesChangedChangesInnerOldValue with oneOf schemas: List[str], bool, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when setting `actual_instance` in AccountAttributesChangedChangesInnerOldValue with oneOf schemas: List[str], bool, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in AccountAttributesChangedChangesInnerOldValue with oneOf schemas: List[str], bool, str. Details: " + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls,
-                  obj: dict) -> AccountAttributesChangedChangesInnerOldValue:
+    def from_dict(cls, obj: dict) -> AccountAttributesChangedChangesInnerOldValue:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(
-            cls,
-            json_str: str) -> AccountAttributesChangedChangesInnerOldValue:
+    def from_json(cls, json_str: str) -> AccountAttributesChangedChangesInnerOldValue:
         """Returns the object represented by the json string"""
         instance = AccountAttributesChangedChangesInnerOldValue.construct()
         if json_str is None:
@@ -148,14 +133,10 @@ class AccountAttributesChangedChangesInnerOldValue(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError(
-                "Multiple matches found when deserializing the JSON string into AccountAttributesChangedChangesInnerOldValue with oneOf schemas: List[str], bool, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into AccountAttributesChangedChangesInnerOldValue with oneOf schemas: List[str], bool, str. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError(
-                "No match found when deserializing the JSON string into AccountAttributesChangedChangesInnerOldValue with oneOf schemas: List[str], bool, str. Details: "
-                + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into AccountAttributesChangedChangesInnerOldValue with oneOf schemas: List[str], bool, str. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -185,3 +166,5 @@ class AccountAttributesChangedChangesInnerOldValue(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.dict())
+
+

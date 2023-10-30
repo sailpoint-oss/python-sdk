@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse  # noqa: E501
-
 
 class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
     """CreatePersonalAccessTokenResponse unit test stubs"""
@@ -26,8 +26,7 @@ class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self,
-                      include_optional) -> CreatePersonalAccessTokenResponse:
+    def make_instance(self, include_optional) -> CreatePersonalAccessTokenResponse:
         """Test CreatePersonalAccessTokenResponse
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -41,7 +40,7 @@ class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
                 secret = '1d1bef2b9f426383447f64f69349fc7cac176042578d205c256ba3f37c59adb9',
                 scope = [demo:personal-access-token-scope:first, demo:personal-access-token-scope:second],
                 name = 'NodeJS Integration',
-                owner = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                owner = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
@@ -53,7 +52,7 @@ class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
                 secret = '1d1bef2b9f426383447f64f69349fc7cac176042578d205c256ba3f37c59adb9',
                 scope = [demo:personal-access-token-scope:first, demo:personal-access-token-scope:second],
                 name = 'NodeJS Integration',
-                owner = beta.models.base_reference_dto_1.BaseReferenceDto_1(
+                owner = beta.models.base_reference_dto.BaseReferenceDto(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
@@ -65,7 +64,6 @@ class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
         """Test CreatePersonalAccessTokenResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import re  # noqa: F401
 import io
 import warnings
@@ -21,10 +22,13 @@ from pydantic import StrictBool, StrictBytes, StrictStr
 
 from typing import Optional, Union
 
+
 from cc.api_client import ApiClient
 from cc.api_response import ApiResponse
 from cc.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+    ApiTypeError,
+    ApiValueError
+)
 
 
 class SourcesAggregationApi:
@@ -40,12 +44,7 @@ class SourcesAggregationApi:
         self.api_client = api_client
 
     @validate_arguments
-    def load_accounts(self,
-                      id: StrictStr,
-                      content_type: Optional[StrictStr] = None,
-                      disable_optimization: Optional[StrictBool] = None,
-                      file: Optional[Union[StrictBytes, StrictStr]] = None,
-                      **kwargs) -> None:  # noqa: E501
+    def load_accounts(self, id : StrictStr, content_type : Optional[StrictStr] = None, disable_optimization : Optional[StrictBool] = None, file : Optional[Union[StrictBytes, StrictStr]] = None, **kwargs) -> None:  # noqa: E501
         """Account Aggregation (File)  # noqa: E501
 
         Aggregates a delimited file for the given source.  This only works for file-based sources.  # noqa: E501
@@ -78,18 +77,10 @@ class SourcesAggregationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the load_accounts_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.load_accounts_with_http_info(id, content_type,
-                                                 disable_optimization, file,
-                                                 **kwargs)  # noqa: E501
+        return self.load_accounts_with_http_info(id, content_type, disable_optimization, file, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def load_accounts_with_http_info(
-            self,
-            id: StrictStr,
-            content_type: Optional[StrictStr] = None,
-            disable_optimization: Optional[StrictBool] = None,
-            file: Optional[Union[StrictBytes, StrictStr]] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
+    def load_accounts_with_http_info(self, id : StrictStr, content_type : Optional[StrictStr] = None, disable_optimization : Optional[StrictBool] = None, file : Optional[Union[StrictBytes, StrictStr]] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Account Aggregation (File)  # noqa: E501
 
         Aggregates a delimited file for the given source.  This only works for file-based sources.  # noqa: E501
@@ -134,17 +125,31 @@ class SourcesAggregationApi:
 
         _params = locals()
 
-        _all_params = ['id', 'content_type', 'disable_optimization', 'file']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _all_params = [
+            'id',
+            'content_type',
+            'disable_optimization',
+            'file'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method load_accounts" % _key)
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method load_accounts" % _key
+                )
             _params[_key] = _val
         del _params['kwargs']
 
@@ -154,6 +159,7 @@ class SourcesAggregationApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -166,8 +172,7 @@ class SourcesAggregationApi:
         _form_params = []
         _files = {}
         if _params['disable_optimization']:
-            _form_params.append(
-                ('disableOptimization', _params['disable_optimization']))
+            _form_params.append(('disableOptimization', _params['disable_optimization']))
 
         if _params['file']:
             _files['file'] = _params['file']
@@ -179,12 +184,11 @@ class SourcesAggregationApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['multipart/form-data'
-                                                        ]))
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['multipart/form-data']))
         if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -192,8 +196,7 @@ class SourcesAggregationApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/cc/api/source/loadAccounts/{id}',
-            'POST',
+            '/cc/api/source/loadAccounts/{id}', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -203,8 +206,7 @@ class SourcesAggregationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

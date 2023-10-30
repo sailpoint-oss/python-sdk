@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import unittest
 import datetime
 
 from beta.models.comment_dto1_author import CommentDto1Author  # noqa: E501
-
 
 class TestCommentDto1Author(unittest.TestCase):
     """CommentDto1Author unit test stubs"""
@@ -49,7 +49,6 @@ class TestCommentDto1Author(unittest.TestCase):
         """Test CommentDto1Author"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
-
 
 if __name__ == '__main__':
     unittest.main()

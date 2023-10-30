@@ -11,38 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
+
 from typing import List
 from pydantic import BaseModel, Field, conlist
-from beta.models.base_reference_dto1 import BaseReferenceDto1
+from beta.models.base_reference_dto import BaseReferenceDto
 from beta.models.sp_config_message import SpConfigMessage
-
 
 class ObjectImportResult(BaseModel):
     """
     Response model for import of a single object.  # noqa: E501
     """
-    infos: conlist(SpConfigMessage) = Field(
-        ...,
-        description=
-        "Informational messages returned from the target service on import.")
-    warnings: conlist(SpConfigMessage) = Field(
-        ...,
-        description=
-        "Warning messages returned from the target service on import.")
-    errors: conlist(SpConfigMessage) = Field(
-        ...,
-        description="Error messages returned from the target service on import."
-    )
-    imported_objects: conlist(BaseReferenceDto1) = Field(
-        ...,
-        alias="importedObjects",
-        description=
-        "References to objects that were created or updated by the import.")
+    infos: conlist(SpConfigMessage) = Field(..., description="Informational messages returned from the target service on import.")
+    warnings: conlist(SpConfigMessage) = Field(..., description="Warning messages returned from the target service on import.")
+    errors: conlist(SpConfigMessage) = Field(..., description="Error messages returned from the target service on import.")
+    imported_objects: conlist(BaseReferenceDto) = Field(..., alias="importedObjects", description="References to objects that were created or updated by the import.")
     __properties = ["infos", "warnings", "errors", "importedObjects"]
 
     class Config:
@@ -65,7 +53,10 @@ class ObjectImportResult(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in infos (list)
         _items = []
         if self.infos:
@@ -106,19 +97,11 @@ class ObjectImportResult(BaseModel):
             return ObjectImportResult.parse_obj(obj)
 
         _obj = ObjectImportResult.parse_obj({
-            "infos":
-            [SpConfigMessage.from_dict(_item) for _item in obj.get("infos")]
-            if obj.get("infos") is not None else None,
-            "warnings": [
-                SpConfigMessage.from_dict(_item)
-                for _item in obj.get("warnings")
-            ] if obj.get("warnings") is not None else None,
-            "errors":
-            [SpConfigMessage.from_dict(_item) for _item in obj.get("errors")]
-            if obj.get("errors") is not None else None,
-            "imported_objects": [
-                BaseReferenceDto1.from_dict(_item)
-                for _item in obj.get("importedObjects")
-            ] if obj.get("importedObjects") is not None else None
+            "infos": [SpConfigMessage.from_dict(_item) for _item in obj.get("infos")] if obj.get("infos") is not None else None,
+            "warnings": [SpConfigMessage.from_dict(_item) for _item in obj.get("warnings")] if obj.get("warnings") is not None else None,
+            "errors": [SpConfigMessage.from_dict(_item) for _item in obj.get("errors")] if obj.get("errors") is not None else None,
+            "imported_objects": [BaseReferenceDto.from_dict(_item) for _item in obj.get("importedObjects")] if obj.get("importedObjects") is not None else None
         })
         return _obj
+
+

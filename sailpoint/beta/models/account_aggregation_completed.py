@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -22,39 +23,24 @@ from pydantic import BaseModel, Field, StrictStr, conlist, validator
 from beta.models.account_aggregation_completed_source import AccountAggregationCompletedSource
 from beta.models.account_aggregation_completed_stats import AccountAggregationCompletedStats
 
-
 class AccountAggregationCompleted(BaseModel):
     """
     AccountAggregationCompleted
     """
     source: AccountAggregationCompletedSource = Field(...)
-    status: Dict[str, Any] = Field(
-        ..., description="The overall status of the aggregation.")
-    started: datetime = Field(
-        ...,
-        description="The date and time when the account aggregation started.")
-    completed: datetime = Field(
-        ...,
-        description="The date and time when the account aggregation finished.")
-    errors: Optional[conlist(StrictStr)] = Field(
-        ...,
-        description="A list of errors that occurred during the aggregation.")
-    warnings: Optional[conlist(StrictStr)] = Field(
-        ...,
-        description="A list of warnings that occurred during the aggregation.")
+    status: Dict[str, Any] = Field(..., description="The overall status of the aggregation.")
+    started: datetime = Field(..., description="The date and time when the account aggregation started.")
+    completed: datetime = Field(..., description="The date and time when the account aggregation finished.")
+    errors: Optional[conlist(StrictStr)] = Field(..., description="A list of errors that occurred during the aggregation.")
+    warnings: Optional[conlist(StrictStr)] = Field(..., description="A list of warnings that occurred during the aggregation.")
     stats: AccountAggregationCompletedStats = Field(...)
-    __properties = [
-        "source", "status", "started", "completed", "errors", "warnings",
-        "stats"
-    ]
+    __properties = ["source", "status", "started", "completed", "errors", "warnings", "stats"]
 
     @validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('Success', 'Failed', 'Terminated'):
-            raise ValueError(
-                "must be one of enum values ('Success', 'Failed', 'Terminated')"
-            )
+            raise ValueError("must be one of enum values ('Success', 'Failed', 'Terminated')")
         return value
 
     class Config:
@@ -77,7 +63,10 @@ class AccountAggregationCompleted(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -106,21 +95,14 @@ class AccountAggregationCompleted(BaseModel):
             return AccountAggregationCompleted.parse_obj(obj)
 
         _obj = AccountAggregationCompleted.parse_obj({
-            "source":
-            AccountAggregationCompletedSource.from_dict(obj.get("source"))
-            if obj.get("source") is not None else None,
-            "status":
-            obj.get("status"),
-            "started":
-            obj.get("started"),
-            "completed":
-            obj.get("completed"),
-            "errors":
-            obj.get("errors"),
-            "warnings":
-            obj.get("warnings"),
-            "stats":
-            AccountAggregationCompletedStats.from_dict(obj.get("stats"))
-            if obj.get("stats") is not None else None
+            "source": AccountAggregationCompletedSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "status": obj.get("status"),
+            "started": obj.get("started"),
+            "completed": obj.get("completed"),
+            "errors": obj.get("errors"),
+            "warnings": obj.get("warnings"),
+            "stats": AccountAggregationCompletedStats.from_dict(obj.get("stats")) if obj.get("stats") is not None else None
         })
         return _obj
+
+

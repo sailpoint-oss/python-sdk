@@ -11,26 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
 from beta.models.configuration_details_response import ConfigurationDetailsResponse
 from beta.models.identity1 import Identity1
 
-
 class ConfigurationItemResponse(BaseModel):
     """
     The response body of a Reassignment Configuration for a single identity  # noqa: E501
     """
     identity: Optional[Identity1] = None
-    config_details: Optional[conlist(ConfigurationDetailsResponse)] = Field(
-        None,
-        alias="configDetails",
-        description="Details of how work should be reassigned for an Identity")
+    config_details: Optional[conlist(ConfigurationDetailsResponse)] = Field(None, alias="configDetails", description="Details of how work should be reassigned for an Identity")
     __properties = ["identity", "configDetails"]
 
     class Config:
@@ -53,7 +51,10 @@ class ConfigurationItemResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of identity
         if self.identity:
             _dict['identity'] = self.identity.to_dict()
@@ -76,12 +77,9 @@ class ConfigurationItemResponse(BaseModel):
             return ConfigurationItemResponse.parse_obj(obj)
 
         _obj = ConfigurationItemResponse.parse_obj({
-            "identity":
-            Identity1.from_dict(obj.get("identity"))
-            if obj.get("identity") is not None else None,
-            "config_details": [
-                ConfigurationDetailsResponse.from_dict(_item)
-                for _item in obj.get("configDetails")
-            ] if obj.get("configDetails") is not None else None
+            "identity": Identity1.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
+            "config_details": [ConfigurationDetailsResponse.from_dict(_item) for _item in obj.get("configDetails")] if obj.get("configDetails") is not None else None
         })
         return _obj
+
+
