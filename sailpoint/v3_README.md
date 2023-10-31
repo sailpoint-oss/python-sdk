@@ -108,6 +108,7 @@ Class | Method | HTTP request | Description
 *AuthUserApi* | [**get_auth_user**](v3/docs/AuthUserApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth User Details
 *AuthUserApi* | [**patch_auth_user**](v3/docs/AuthUserApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth User Update
 *CertificationCampaignFiltersApi* | [**create_campaign_filter**](v3/docs/CertificationCampaignFiltersApi.md#create_campaign_filter) | **POST** /campaign-filters | Create a Campaign Filter
+*CertificationCampaignFiltersApi* | [**delete_campaign_filters**](v3/docs/CertificationCampaignFiltersApi.md#delete_campaign_filters) | **POST** /campaign-filters/delete | Deletes Campaign Filters
 *CertificationCampaignFiltersApi* | [**get_campaign_filter_by_id**](v3/docs/CertificationCampaignFiltersApi.md#get_campaign_filter_by_id) | **GET** /campaign-filters/{id} | Get Campaign Filter by ID
 *CertificationCampaignFiltersApi* | [**list_campaign_filters**](v3/docs/CertificationCampaignFiltersApi.md#list_campaign_filters) | **GET** /campaign-filters | List Campaign Filters
 *CertificationCampaignFiltersApi* | [**update_campaign_filter**](v3/docs/CertificationCampaignFiltersApi.md#update_campaign_filter) | **POST** /campaign-filters/{id} | Updates a Campaign Filter
