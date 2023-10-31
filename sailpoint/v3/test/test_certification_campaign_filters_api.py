@@ -40,6 +40,13 @@ class TestCertificationCampaignFiltersApi(unittest.TestCase):
         """
         pass
 
+    def test_list_campaign_filters(self) -> None:
+        """Test case for list_campaign_filters
+
+        List Campaign Filters  # noqa: E501
+        """
+        pass
+
     def test_update_campaign_filter(self) -> None:
         """Test case for update_campaign_filter
 
