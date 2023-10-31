@@ -672,7 +672,7 @@ class CertificationCampaignsApi:
 
     @validate_arguments
     def delete_campaign_template_schedule(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template whose schedule is being deleted.")], **kwargs) -> None:  # noqa: E501
-        """Deletes a Campaign Template's Schedule  # noqa: E501
+        """(Deprecated) Deletes a Campaign Template's Schedule  # noqa: E501
 
         Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -702,7 +702,7 @@ class CertificationCampaignsApi:
 
     @validate_arguments
     def delete_campaign_template_schedule_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the campaign template whose schedule is being deleted.")], **kwargs) -> ApiResponse:  # noqa: E501
-        """Deletes a Campaign Template's Schedule  # noqa: E501
+        """(Deprecated) Deletes a Campaign Template's Schedule  # noqa: E501
 
         Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -737,6 +737,8 @@ class CertificationCampaignsApi:
                  returns the request thread.
         :rtype: None
         """
+
+        warnings.warn("DELETE /campaign-templates/{id}/schedule is deprecated.", DeprecationWarning)
 
         _params = locals()
 

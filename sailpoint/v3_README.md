@@ -116,6 +116,7 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**create_campaign**](v3/docs/CertificationCampaignsApi.md#create_campaign) | **POST** /campaigns | Create a campaign
 *CertificationCampaignsApi* | [**create_campaign_template**](v3/docs/CertificationCampaignsApi.md#create_campaign_template) | **POST** /campaign-templates | Create a Campaign Template
 *CertificationCampaignsApi* | [**delete_campaign_template**](v3/docs/CertificationCampaignsApi.md#delete_campaign_template) | **DELETE** /campaign-templates/{id} | Delete a Campaign Template
+*CertificationCampaignsApi* | [**delete_campaign_template_schedule**](v3/docs/CertificationCampaignsApi.md#delete_campaign_template_schedule) | **DELETE** /campaign-templates/{id}/schedule | Deletes a Campaign Template&#39;s Schedule
 *CertificationCampaignsApi* | [**delete_campaigns**](v3/docs/CertificationCampaignsApi.md#delete_campaigns) | **POST** /campaigns/delete | Deletes Campaigns
 *CertificationCampaignsApi* | [**get_active_campaigns**](v3/docs/CertificationCampaignsApi.md#get_active_campaigns) | **GET** /campaigns | List Campaigns
 *CertificationCampaignsApi* | [**get_campaign**](v3/docs/CertificationCampaignsApi.md#get_campaign) | **GET** /campaigns/{id} | Get a campaign

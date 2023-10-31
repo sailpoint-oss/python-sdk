@@ -54,6 +54,13 @@ class TestCertificationCampaignsApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_campaign_template_schedule(self) -> None:
+        """Test case for delete_campaign_template_schedule
+
+        Deletes a Campaign Template's Schedule  # noqa: E501
+        """
+        pass
+
     def test_delete_campaigns(self) -> None:
         """Test case for delete_campaigns
 
