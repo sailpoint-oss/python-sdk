@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.tagged_object_dto import TaggedObjectDto
+from beta.models.tagged_object_dto import TaggedObjectDto
 
 # TODO update the JSON string below
 json = "{}"

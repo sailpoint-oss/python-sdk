@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **get_pending_task_headers**
-> get_pending_task_headers(offset=offset, limit=limit, count=count, sorters=sorters, filters=filters)
+> get_pending_task_headers(offset=offset, limit=limit, count=count)
 
 Retrieve headers only for pending task list.
 
@@ -51,12 +51,10 @@ with beta.ApiClient(configuration) as api_client:
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-    sorters = 'sorters_example' # str | sort criteria (optional)
-    filters = 'filters_example' # str | filter criteria (optional)
 
     try:
         # Retrieve headers only for pending task list.
-        api_instance.get_pending_task_headers(offset=offset, limit=limit, count=count, sorters=sorters, filters=filters)
+        api_instance.get_pending_task_headers(offset=offset, limit=limit, count=count)
     except Exception as e:
         print("Exception when calling TaskManagementApi->get_pending_task_headers: %s\n" % e)
 ```
@@ -70,8 +68,6 @@ Name | Type | Description  | Notes
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
- **sorters** | **str**| sort criteria | [optional] 
- **filters** | **str**| filter criteria | [optional] 
 
 ### Return type
 
@@ -97,7 +93,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_pending_tasks**
-> List[TaskStatus] get_pending_tasks(offset=offset, limit=limit, count=count, sorters=sorters, filters=filters)
+> List[TaskStatus] get_pending_tasks(offset=offset, limit=limit, count=count)
 
 Retrieve a pending task list.
 
@@ -137,12 +133,10 @@ with beta.ApiClient(configuration) as api_client:
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-    sorters = 'sorters_example' # str | sort criteria (optional)
-    filters = 'filters_example' # str | filter criteria (optional)
 
     try:
         # Retrieve a pending task list.
-        api_response = api_instance.get_pending_tasks(offset=offset, limit=limit, count=count, sorters=sorters, filters=filters)
+        api_response = api_instance.get_pending_tasks(offset=offset, limit=limit, count=count)
         print("The response of TaskManagementApi->get_pending_tasks:\n")
         pprint(api_response)
     except Exception as e:
@@ -158,8 +152,6 @@ Name | Type | Description  | Notes
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
- **sorters** | **str**| sort criteria | [optional] 
- **filters** | **str**| filter criteria | [optional] 
 
 ### Return type
 
@@ -308,8 +300,8 @@ with beta.ApiClient(configuration) as api_client:
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-    filters = 'completionStatus eq \"Success\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **sourceId**: *eq, in*   **completionStatus**: *eq, in*   **type**: *eq, in* \"CLOUD_ACCOUNT_AGGREGATION\", \"CLOUD_GROUP_AGGREGATION\", \"CLOUD_PROCESS_UNCORRELATED_ACCOUNTS\" or \"CLOUD_REFRESH_ROLE\" (optional)
-    sorters = '-created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **created** (optional)
+    filters = 'completionStatus eq \"Success\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in*  **type**: *eq, in* (optional)
+    sorters = '-created' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created** (optional)
 
     try:
         # Retrieve a task status list.
@@ -329,8 +321,8 @@ Name | Type | Description  | Notes
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
- **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **sourceId**: *eq, in*   **completionStatus**: *eq, in*   **type**: *eq, in* \&quot;CLOUD_ACCOUNT_AGGREGATION\&quot;, \&quot;CLOUD_GROUP_AGGREGATION\&quot;, \&quot;CLOUD_PROCESS_UNCORRELATED_ACCOUNTS\&quot; or \&quot;CLOUD_REFRESH_ROLE\&quot; | [optional] 
- **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **created** | [optional] 
+ **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in*  **type**: *eq, in* | [optional] 
+ **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created** | [optional] 
 
 ### Return type
 

@@ -187,7 +187,7 @@ class RoleInsightsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def download_role_insights_entitlements_changes(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], sorters : Annotated[Optional[StrictStr], Field(description="sort by identitiesWithAccess, default order descending")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter(s) by \"starts with\" for the name and description.")] = None, **kwargs) -> str:  # noqa: E501
+    def download_role_insights_entitlements_changes(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*")] = None, **kwargs) -> str:  # noqa: E501
         """Download entitlement insights for a role  # noqa: E501
 
         This endpoint returns the entitlement insights for a role.  # noqa: E501
@@ -199,9 +199,9 @@ class RoleInsightsApi:
 
         :param insight_id: The role insight id (required)
         :type insight_id: str
-        :param sorters: sort by identitiesWithAccess, default order descending
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order.
         :type sorters: str
-        :param filters: Filter parameter(s) by \"starts with\" for the name and description.
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*
         :type filters: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -221,7 +221,7 @@ class RoleInsightsApi:
         return self.download_role_insights_entitlements_changes_with_http_info(insight_id, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def download_role_insights_entitlements_changes_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], sorters : Annotated[Optional[StrictStr], Field(description="sort by identitiesWithAccess, default order descending")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter(s) by \"starts with\" for the name and description.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def download_role_insights_entitlements_changes_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Download entitlement insights for a role  # noqa: E501
 
         This endpoint returns the entitlement insights for a role.  # noqa: E501
@@ -233,9 +233,9 @@ class RoleInsightsApi:
 
         :param insight_id: The role insight id (required)
         :type insight_id: str
-        :param sorters: sort by identitiesWithAccess, default order descending
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order.
         :type sorters: str
-        :param filters: Filter parameter(s) by \"starts with\" for the name and description.
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*
         :type filters: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -347,7 +347,7 @@ class RoleInsightsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_entitlement_changes_identities(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], entitlement_id : Annotated[StrictStr, Field(..., description="The entitlement id")], has_entitlement : Annotated[Optional[StrictBool], Field(description="Identity has this entitlement or not")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="sort by name")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter by \"starts with\" for the name.")] = None, **kwargs) -> List[RoleInsightsIdentities]:  # noqa: E501
+    def get_entitlement_changes_identities(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], entitlement_id : Annotated[StrictStr, Field(..., description="The entitlement id")], has_entitlement : Annotated[Optional[StrictBool], Field(description="Identity has this entitlement or not")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*")] = None, **kwargs) -> List[RoleInsightsIdentities]:  # noqa: E501
         """Get identities for a suggested entitlement (for a role)  # noqa: E501
 
         Role insights suggests entitlements to be added for a role. This endpoint returns a list of identities in the role, with or without the entitlements, for a suggested entitlement so that the user can see which identities would be affected if the suggested entitlement were to be added to the role.  # noqa: E501
@@ -369,9 +369,9 @@ class RoleInsightsApi:
         :type limit: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param sorters: sort by name
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**
         :type sorters: str
-        :param filters: Filter parameter by \"starts with\" for the name.
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*
         :type filters: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -391,7 +391,7 @@ class RoleInsightsApi:
         return self.get_entitlement_changes_identities_with_http_info(insight_id, entitlement_id, has_entitlement, offset, limit, count, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_entitlement_changes_identities_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], entitlement_id : Annotated[StrictStr, Field(..., description="The entitlement id")], has_entitlement : Annotated[Optional[StrictBool], Field(description="Identity has this entitlement or not")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="sort by name")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter by \"starts with\" for the name.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_entitlement_changes_identities_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], entitlement_id : Annotated[StrictStr, Field(..., description="The entitlement id")], has_entitlement : Annotated[Optional[StrictBool], Field(description="Identity has this entitlement or not")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Get identities for a suggested entitlement (for a role)  # noqa: E501
 
         Role insights suggests entitlements to be added for a role. This endpoint returns a list of identities in the role, with or without the entitlements, for a suggested entitlement so that the user can see which identities would be affected if the suggested entitlement were to be added to the role.  # noqa: E501
@@ -413,9 +413,9 @@ class RoleInsightsApi:
         :type limit: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param sorters: sort by name
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**
         :type sorters: str
-        :param filters: Filter parameter by \"starts with\" for the name.
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*
         :type filters: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -691,7 +691,7 @@ class RoleInsightsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_insights(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="sort by numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities (default- ascending)")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter(s) by \"starts with\" for the name, ownerName and description.")] = None, **kwargs) -> List[RoleInsight]:  # noqa: E501
+    def get_role_insights(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw*")] = None, **kwargs) -> List[RoleInsight]:  # noqa: E501
         """Get role insights  # noqa: E501
 
         This method returns detailed role insights for each role.  # noqa: E501
@@ -707,9 +707,9 @@ class RoleInsightsApi:
         :type limit: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param sorters: sort by numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities (default- ascending)
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities**
         :type sorters: str
-        :param filters: Filter parameter(s) by \"starts with\" for the name, ownerName and description.
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw*
         :type filters: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -729,7 +729,7 @@ class RoleInsightsApi:
         return self.get_role_insights_with_http_info(offset, limit, count, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_insights_with_http_info(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="sort by numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities (default- ascending)")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter(s) by \"starts with\" for the name, ownerName and description.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_insights_with_http_info(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Get role insights  # noqa: E501
 
         This method returns detailed role insights for each role.  # noqa: E501
@@ -745,9 +745,9 @@ class RoleInsightsApi:
         :type limit: int
         :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
         :type count: bool
-        :param sorters: sort by numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities (default- ascending)
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities**
         :type sorters: str
-        :param filters: Filter parameter(s) by \"starts with\" for the name, ownerName and description.
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw*
         :type filters: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -867,7 +867,7 @@ class RoleInsightsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_insights_current_entitlements(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], filters : Annotated[Optional[StrictStr], Field(description="Filter parameter(s) by \"starts with\" for the name and description.")] = None, **kwargs) -> List[RoleInsightsEntitlement]:  # noqa: E501
+    def get_role_insights_current_entitlements(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*")] = None, **kwargs) -> List[RoleInsightsEntitlement]:  # noqa: E501
         """Get current entitlement for a role  # noqa: E501
 
         This endpoint gets the entitlements for a role. The term \"current\" is to distinguish from the entitlement(s) an insight might recommend adding.  # noqa: E501
@@ -879,7 +879,7 @@ class RoleInsightsApi:
 
         :param insight_id: The role insight id (required)
         :type insight_id: str
-        :param filters: Filter parameter(s) by \"starts with\" for the name and description.
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*
         :type filters: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -899,7 +899,7 @@ class RoleInsightsApi:
         return self.get_role_insights_current_entitlements_with_http_info(insight_id, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_insights_current_entitlements_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], filters : Annotated[Optional[StrictStr], Field(description="Filter parameter(s) by \"starts with\" for the name and description.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_insights_current_entitlements_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Get current entitlement for a role  # noqa: E501
 
         This endpoint gets the entitlements for a role. The term \"current\" is to distinguish from the entitlement(s) an insight might recommend adding.  # noqa: E501
@@ -911,7 +911,7 @@ class RoleInsightsApi:
 
         :param insight_id: The role insight id (required)
         :type insight_id: str
-        :param filters: Filter parameter(s) by \"starts with\" for the name and description.
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*
         :type filters: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1019,7 +1019,7 @@ class RoleInsightsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_insights_entitlements_changes(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], sorters : Annotated[Optional[StrictStr], Field(description="sort by identitiesWithAccess or name")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter(s) by \"starts with\" for the name and description.")] = None, **kwargs) -> List[RoleInsightsEntitlementChanges]:  # noqa: E501
+    def get_role_insights_entitlements_changes(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*")] = None, **kwargs) -> List[RoleInsightsEntitlementChanges]:  # noqa: E501
         """Get entitlement insights for a role  # noqa: E501
 
         This endpoint returns entitlement insights for a role.  # noqa: E501
@@ -1031,9 +1031,9 @@ class RoleInsightsApi:
 
         :param insight_id: The role insight id (required)
         :type insight_id: str
-        :param sorters: sort by identitiesWithAccess or name
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name**
         :type sorters: str
-        :param filters: Filter parameter(s) by \"starts with\" for the name and description.
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*
         :type filters: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1053,7 +1053,7 @@ class RoleInsightsApi:
         return self.get_role_insights_entitlements_changes_with_http_info(insight_id, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_insights_entitlements_changes_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], sorters : Annotated[Optional[StrictStr], Field(description="sort by identitiesWithAccess or name")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter parameter(s) by \"starts with\" for the name and description.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_insights_entitlements_changes_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Get entitlement insights for a role  # noqa: E501
 
         This endpoint returns entitlement insights for a role.  # noqa: E501
@@ -1065,9 +1065,9 @@ class RoleInsightsApi:
 
         :param insight_id: The role insight id (required)
         :type insight_id: str
-        :param sorters: sort by identitiesWithAccess or name
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name**
         :type sorters: str
-        :param filters: Filter parameter(s) by \"starts with\" for the name and description.
+        :param filters: Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*
         :type filters: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional

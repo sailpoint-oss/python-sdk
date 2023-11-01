@@ -33,10 +33,24 @@ class TestCertificationCampaignFiltersApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_campaign_filters(self) -> None:
+        """Test case for delete_campaign_filters
+
+        Deletes Campaign Filters  # noqa: E501
+        """
+        pass
+
     def test_get_campaign_filter_by_id(self) -> None:
         """Test case for get_campaign_filter_by_id
 
         Get Campaign Filter by ID  # noqa: E501
+        """
+        pass
+
+    def test_list_campaign_filters(self) -> None:
+        """Test case for list_campaign_filters
+
+        List Campaign Filters  # noqa: E501
         """
         pass
 

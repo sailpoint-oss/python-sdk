@@ -108,12 +108,15 @@ Class | Method | HTTP request | Description
 *AuthUserApi* | [**get_auth_user**](v3/docs/AuthUserApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth User Details
 *AuthUserApi* | [**patch_auth_user**](v3/docs/AuthUserApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth User Update
 *CertificationCampaignFiltersApi* | [**create_campaign_filter**](v3/docs/CertificationCampaignFiltersApi.md#create_campaign_filter) | **POST** /campaign-filters | Create a Campaign Filter
+*CertificationCampaignFiltersApi* | [**delete_campaign_filters**](v3/docs/CertificationCampaignFiltersApi.md#delete_campaign_filters) | **POST** /campaign-filters/delete | Deletes Campaign Filters
 *CertificationCampaignFiltersApi* | [**get_campaign_filter_by_id**](v3/docs/CertificationCampaignFiltersApi.md#get_campaign_filter_by_id) | **GET** /campaign-filters/{id} | Get Campaign Filter by ID
+*CertificationCampaignFiltersApi* | [**list_campaign_filters**](v3/docs/CertificationCampaignFiltersApi.md#list_campaign_filters) | **GET** /campaign-filters | List Campaign Filters
 *CertificationCampaignFiltersApi* | [**update_campaign_filter**](v3/docs/CertificationCampaignFiltersApi.md#update_campaign_filter) | **POST** /campaign-filters/{id} | Updates a Campaign Filter
 *CertificationCampaignsApi* | [**complete_campaign**](v3/docs/CertificationCampaignsApi.md#complete_campaign) | **POST** /campaigns/{id}/complete | Complete a Campaign
 *CertificationCampaignsApi* | [**create_campaign**](v3/docs/CertificationCampaignsApi.md#create_campaign) | **POST** /campaigns | Create a campaign
 *CertificationCampaignsApi* | [**create_campaign_template**](v3/docs/CertificationCampaignsApi.md#create_campaign_template) | **POST** /campaign-templates | Create a Campaign Template
 *CertificationCampaignsApi* | [**delete_campaign_template**](v3/docs/CertificationCampaignsApi.md#delete_campaign_template) | **DELETE** /campaign-templates/{id} | Delete a Campaign Template
+*CertificationCampaignsApi* | [**delete_campaign_template_schedule**](v3/docs/CertificationCampaignsApi.md#delete_campaign_template_schedule) | **DELETE** /campaign-templates/{id}/schedule | Deletes a Campaign Template&#39;s Schedule
 *CertificationCampaignsApi* | [**delete_campaigns**](v3/docs/CertificationCampaignsApi.md#delete_campaigns) | **POST** /campaigns/delete | Deletes Campaigns
 *CertificationCampaignsApi* | [**get_active_campaigns**](v3/docs/CertificationCampaignsApi.md#get_active_campaigns) | **GET** /campaigns | List Campaigns
 *CertificationCampaignsApi* | [**get_campaign**](v3/docs/CertificationCampaignsApi.md#get_campaign) | **GET** /campaigns/{id} | Get a campaign

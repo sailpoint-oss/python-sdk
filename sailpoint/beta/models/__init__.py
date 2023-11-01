@@ -629,6 +629,8 @@ from beta.models.subscription_post_request import SubscriptionPostRequest
 from beta.models.subscription_put_request import SubscriptionPutRequest
 from beta.models.subscription_type import SubscriptionType
 from beta.models.tagged_object import TaggedObject
+from beta.models.tagged_object_dto import TaggedObjectDto
+from beta.models.tagged_object_object_ref import TaggedObjectObjectRef
 from beta.models.task_result_response import TaskResultResponse
 from beta.models.task_result_simplified import TaskResultSimplified
 from beta.models.task_return_details import TaskReturnDetails

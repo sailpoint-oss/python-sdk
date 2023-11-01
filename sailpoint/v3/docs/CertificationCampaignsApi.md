@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create_campaign**](CertificationCampaignsApi.md#create_campaign) | **POST** /campaigns | Create a campaign
 [**create_campaign_template**](CertificationCampaignsApi.md#create_campaign_template) | **POST** /campaign-templates | Create a Campaign Template
 [**delete_campaign_template**](CertificationCampaignsApi.md#delete_campaign_template) | **DELETE** /campaign-templates/{id} | Delete a Campaign Template
+[**delete_campaign_template_schedule**](CertificationCampaignsApi.md#delete_campaign_template_schedule) | **DELETE** /campaign-templates/{id}/schedule | Deletes a Campaign Template&#39;s Schedule
 [**delete_campaigns**](CertificationCampaignsApi.md#delete_campaigns) | **POST** /campaigns/delete | Deletes Campaigns
 [**get_active_campaigns**](CertificationCampaignsApi.md#get_active_campaigns) | **GET** /campaigns | List Campaigns
 [**get_campaign**](CertificationCampaignsApi.md#get_campaign) | **GET** /campaigns/{id} | Get a campaign
@@ -356,6 +357,86 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_campaign_template_schedule**
+> delete_campaign_template_schedule(id)
+
+Deletes a Campaign Template's Schedule
+
+Deletes the schedule for a campaign template. Returns a 404 if there is no schedule set.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+```python
+import time
+import os
+import v3
+from v3.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
+# See configuration.py for a list of all supported configuration parameters.
+configuration = v3.Configuration(
+    host = "https://sailpoint.api.identitynow.com/v3"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with v3.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = v3.CertificationCampaignsApi(api_client)
+    id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | The ID of the campaign template whose schedule is being deleted.
+
+    try:
+        # Deletes a Campaign Template's Schedule
+        api_instance.delete_campaign_template_schedule(id)
+    except Exception as e:
+        print("Exception when calling CertificationCampaignsApi->delete_campaign_template_schedule: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| The ID of the campaign template whose schedule is being deleted. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
+**400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
+**403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**404** | Not Found - returned if the request URL refers to a resource or object that does not exist |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_campaigns**
 > object delete_campaigns(campaigns_delete_request)
 
@@ -482,7 +563,7 @@ with v3.ApiClient(configuration) as api_client:
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
     filters = 'name eq \"Manager Campaign\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **status**: *eq, in* (optional)
-    sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**, **created** (optional)
+    sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created** (optional)
 
     try:
         # List Campaigns
@@ -504,7 +585,7 @@ Name | Type | Description  | Notes
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
  **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **status**: *eq, in* | [optional] 
- **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**, **created** | [optional] 
+ **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created** | [optional] 
 
 ### Return type
 
@@ -983,7 +1064,7 @@ with v3.ApiClient(configuration) as api_client:
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
     sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
-    filters = 'name eq \"manager template\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields: **name, id** (optional)
+    filters = 'name eq \"manager template\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq*  **id**: *eq* (optional)
 
     try:
         # List Campaign Templates
@@ -1004,7 +1085,7 @@ Name | Type | Description  | Notes
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
  **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** | [optional] 
- **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields: **name, id** | [optional] 
+ **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq*  **id**: *eq* | [optional] 
 
 ### Return type
 

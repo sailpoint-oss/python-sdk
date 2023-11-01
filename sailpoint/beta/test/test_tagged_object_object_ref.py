@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from beta.models.tagged_object import TaggedObject  # noqa: E501
+from beta.models.tagged_object_object_ref import TaggedObjectObjectRef  # noqa: E501
 
-class TestTaggedObject(unittest.TestCase):
-    """TaggedObject unit test stubs"""
+class TestTaggedObjectObjectRef(unittest.TestCase):
+    """TaggedObjectObjectRef unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,29 +26,27 @@ class TestTaggedObject(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> TaggedObject:
-        """Test TaggedObject
+    def make_instance(self, include_optional) -> TaggedObjectObjectRef:
+        """Test TaggedObjectObjectRef
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `TaggedObject`
+        # uncomment below to create an instance of `TaggedObjectObjectRef`
         """
-        model = TaggedObject()  # noqa: E501
+        model = TaggedObjectObjectRef()  # noqa: E501
         if include_optional:
-            return TaggedObject(
-                object_ref = beta.models.tagged_object_object_ref.TaggedObject_objectRef(
-                    type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
-                tags = [BU_FINANCE, PCI]
+            return TaggedObjectObjectRef(
+                type = 'IDENTITY',
+                id = '2c91808568c529c60168cca6f90c1313',
+                name = 'William Wilson'
             )
         else:
-            return TaggedObject(
+            return TaggedObjectObjectRef(
         )
         """
 
-    def testTaggedObject(self):
-        """Test TaggedObject"""
+    def testTaggedObjectObjectRef(self):
+        """Test TaggedObjectObjectRef"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -193,7 +193,7 @@ class TaggedObjectsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_tags_to_many_object(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ROLE, IDENTITY and SOD_POLICY.")], **kwargs) -> None:  # noqa: E501
+    def delete_tags_to_many_object(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")], **kwargs) -> None:  # noqa: E501
         """Remove Tags from Multiple Objects  # noqa: E501
 
         This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -203,7 +203,7 @@ class TaggedObjectsApi:
         >>> thread = api.delete_tags_to_many_object(bulk_tagged_object, async_req=True)
         >>> result = thread.get()
 
-        :param bulk_tagged_object: Supported object types are ROLE, IDENTITY and SOD_POLICY. (required)
+        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
         :type bulk_tagged_object: BulkTaggedObject
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -223,7 +223,7 @@ class TaggedObjectsApi:
         return self.delete_tags_to_many_object_with_http_info(bulk_tagged_object, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_tags_to_many_object_with_http_info(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ROLE, IDENTITY and SOD_POLICY.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_tags_to_many_object_with_http_info(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Remove Tags from Multiple Objects  # noqa: E501
 
         This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -233,7 +233,7 @@ class TaggedObjectsApi:
         >>> thread = api.delete_tags_to_many_object_with_http_info(bulk_tagged_object, async_req=True)
         >>> result = thread.get()
 
-        :param bulk_tagged_object: Supported object types are ROLE, IDENTITY and SOD_POLICY. (required)
+        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
         :type bulk_tagged_object: BulkTaggedObject
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1150,7 +1150,7 @@ class TaggedObjectsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def set_tags_to_many_objects(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ROLE, IDENTITY and SOD_POLICY.")], **kwargs) -> BulkTaggedObject:  # noqa: E501
+    def set_tags_to_many_objects(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")], **kwargs) -> BulkTaggedObject:  # noqa: E501
         """Tag Multiple Objects  # noqa: E501
 
         This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -1160,7 +1160,7 @@ class TaggedObjectsApi:
         >>> thread = api.set_tags_to_many_objects(bulk_tagged_object, async_req=True)
         >>> result = thread.get()
 
-        :param bulk_tagged_object: Supported object types are ROLE, IDENTITY and SOD_POLICY. (required)
+        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
         :type bulk_tagged_object: BulkTaggedObject
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -1180,7 +1180,7 @@ class TaggedObjectsApi:
         return self.set_tags_to_many_objects_with_http_info(bulk_tagged_object, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def set_tags_to_many_objects_with_http_info(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ROLE, IDENTITY and SOD_POLICY.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def set_tags_to_many_objects_with_http_info(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Tag Multiple Objects  # noqa: E501
 
         This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -1190,7 +1190,7 @@ class TaggedObjectsApi:
         >>> thread = api.set_tags_to_many_objects_with_http_info(bulk_tagged_object, async_req=True)
         >>> result = thread.get()
 
-        :param bulk_tagged_object: Supported object types are ROLE, IDENTITY and SOD_POLICY. (required)
+        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
         :type bulk_tagged_object: BulkTaggedObject
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
