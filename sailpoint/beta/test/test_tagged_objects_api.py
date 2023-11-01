@@ -26,17 +26,17 @@ class TestTaggedObjectsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_add_tags_to_many_objects(self) -> None:
-        """Test case for add_tags_to_many_objects
-
-        Tag Multiple Objects  # noqa: E501
-        """
-        pass
-
     def test_delete_tagged_object(self) -> None:
         """Test case for delete_tagged_object
 
         Delete Tagged Object  # noqa: E501
+        """
+        pass
+
+    def test_delete_tags_to_many_object(self) -> None:
+        """Test case for delete_tags_to_many_object
+
+        Remove Tags from Multiple Objects  # noqa: E501
         """
         pass
 
@@ -61,10 +61,10 @@ class TestTaggedObjectsApi(unittest.TestCase):
         """
         pass
 
-    def test_remove_tags_to_many_object(self) -> None:
-        """Test case for remove_tags_to_many_object
+    def test_put_tagged_object(self) -> None:
+        """Test case for put_tagged_object
 
-        Remove Tags from Multiple Objects  # noqa: E501
+        Update Tagged Object  # noqa: E501
         """
         pass
 
@@ -75,10 +75,10 @@ class TestTaggedObjectsApi(unittest.TestCase):
         """
         pass
 
-    def test_update_tagged_object(self) -> None:
-        """Test case for update_tagged_object
+    def test_set_tags_to_many_objects(self) -> None:
+        """Test case for set_tags_to_many_objects
 
-        Update Tagged Object  # noqa: E501
+        Tag Multiple Objects  # noqa: E501
         """
         pass
 

@@ -20,13 +20,13 @@ import json
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.base_reference_dto import BaseReferenceDto
+from beta.models.tagged_object_object_ref import TaggedObjectObjectRef
 
 class TaggedObject(BaseModel):
     """
     TaggedObject
     """
-    object_ref: Optional[BaseReferenceDto] = Field(None, alias="objectRef")
+    object_ref: Optional[TaggedObjectObjectRef] = Field(None, alias="objectRef")
     tags: Optional[conlist(StrictStr)] = Field(None, description="Labels to be applied to an Object")
     __properties = ["objectRef", "tags"]
 
@@ -69,7 +69,7 @@ class TaggedObject(BaseModel):
             return TaggedObject.parse_obj(obj)
 
         _obj = TaggedObject.parse_obj({
-            "object_ref": BaseReferenceDto.from_dict(obj.get("objectRef")) if obj.get("objectRef") is not None else None,
+            "object_ref": TaggedObjectObjectRef.from_dict(obj.get("objectRef")) if obj.get("objectRef") is not None else None,
             "tags": obj.get("tags")
         })
         return _obj

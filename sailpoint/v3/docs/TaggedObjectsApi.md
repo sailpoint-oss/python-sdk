@@ -133,7 +133,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = v3.TaggedObjectsApi(api_client)
-    bulk_tagged_object = v3.BulkTaggedObject() # BulkTaggedObject | Supported object types are ROLE, IDENTITY and SOD_POLICY.
+    bulk_tagged_object = v3.BulkTaggedObject() # BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
     try:
         # Remove Tags from Multiple Objects
@@ -148,7 +148,7 @@ with v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulk_tagged_object** | [**BulkTaggedObject**](BulkTaggedObject.md)| Supported object types are ROLE, IDENTITY and SOD_POLICY. | 
+ **bulk_tagged_object** | [**BulkTaggedObject**](BulkTaggedObject.md)| Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
 
 ### Return type
 
@@ -641,7 +641,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = v3.TaggedObjectsApi(api_client)
-    bulk_tagged_object = v3.BulkTaggedObject() # BulkTaggedObject | Supported object types are ROLE, IDENTITY and SOD_POLICY.
+    bulk_tagged_object = v3.BulkTaggedObject() # BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
     try:
         # Tag Multiple Objects
@@ -658,7 +658,7 @@ with v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulk_tagged_object** | [**BulkTaggedObject**](BulkTaggedObject.md)| Supported object types are ROLE, IDENTITY and SOD_POLICY. | 
+ **bulk_tagged_object** | [**BulkTaggedObject**](BulkTaggedObject.md)| Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
 
 ### Return type
 

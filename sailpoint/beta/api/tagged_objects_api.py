@@ -47,158 +47,6 @@ class TaggedObjectsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def add_tags_to_many_objects(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ROLE, IDENTITY and SOD_POLICY.")], **kwargs) -> BulkTaggedObject:  # noqa: E501
-        """Tag Multiple Objects  # noqa: E501
-
-        This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.add_tags_to_many_objects(bulk_tagged_object, async_req=True)
-        >>> result = thread.get()
-
-        :param bulk_tagged_object: Supported object types are ROLE, IDENTITY and SOD_POLICY. (required)
-        :type bulk_tagged_object: BulkTaggedObject
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: BulkTaggedObject
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the add_tags_to_many_objects_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.add_tags_to_many_objects_with_http_info(bulk_tagged_object, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def add_tags_to_many_objects_with_http_info(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ROLE, IDENTITY and SOD_POLICY.")], **kwargs) -> ApiResponse:  # noqa: E501
-        """Tag Multiple Objects  # noqa: E501
-
-        This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.add_tags_to_many_objects_with_http_info(bulk_tagged_object, async_req=True)
-        >>> result = thread.get()
-
-        :param bulk_tagged_object: Supported object types are ROLE, IDENTITY and SOD_POLICY. (required)
-        :type bulk_tagged_object: BulkTaggedObject
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
-        :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(BulkTaggedObject, status_code(int), headers(HTTPHeaderDict))
-        """
-
-        _params = locals()
-
-        _all_params = [
-            'bulk_tagged_object'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
-
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method add_tags_to_many_objects" % _key
-                )
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-
-        # process the query parameters
-        _query_params = []
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        if _params['bulk_tagged_object'] is not None:
-            _body_params = _params['bulk_tagged_object']
-
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
-        if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
-
-        # authentication setting
-        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
-
-        _response_types_map = {
-            '200': "BulkTaggedObject",
-            '400': "ErrorResponseDto",
-            '401': "ListAccessProfiles401Response",
-            '403': "ErrorResponseDto",
-            '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto",
-        }
-
-        return self.api_client.call_api(
-            '/tagged-objects/bulk-add', 'POST',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
-
-    @validate_arguments
     def delete_tagged_object(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to delete.")], id : Annotated[StrictStr, Field(..., description="The ID of the object reference to delete.")], **kwargs) -> None:  # noqa: E501
         """Delete Tagged Object  # noqa: E501
 
@@ -329,6 +177,151 @@ class TaggedObjectsApi:
 
         return self.api_client.call_api(
             '/tagged-objects/{type}/{id}', 'DELETE',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def delete_tags_to_many_object(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")], **kwargs) -> None:  # noqa: E501
+        """Remove Tags from Multiple Objects  # noqa: E501
+
+        This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_tags_to_many_object(bulk_tagged_object, async_req=True)
+        >>> result = thread.get()
+
+        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_tagged_object: BulkTaggedObject
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the delete_tags_to_many_object_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.delete_tags_to_many_object_with_http_info(bulk_tagged_object, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def delete_tags_to_many_object_with_http_info(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")], **kwargs) -> ApiResponse:  # noqa: E501
+        """Remove Tags from Multiple Objects  # noqa: E501
+
+        This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_tags_to_many_object_with_http_info(bulk_tagged_object, async_req=True)
+        >>> result = thread.get()
+
+        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_tagged_object: BulkTaggedObject
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'bulk_tagged_object'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_tags_to_many_object" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['bulk_tagged_object'] is not None:
+            _body_params = _params['bulk_tagged_object']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/tagged-objects/bulk-remove', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -844,18 +837,22 @@ class TaggedObjectsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def remove_tags_to_many_object(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ROLE, IDENTITY and SOD_POLICY.")], **kwargs) -> None:  # noqa: E501
-        """Remove Tags from Multiple Objects  # noqa: E501
+    def put_tagged_object(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to update.")], id : Annotated[StrictStr, Field(..., description="The ID of the object reference to update.")], tagged_object : TaggedObject, **kwargs) -> TaggedObject:  # noqa: E501
+        """Update Tagged Object  # noqa: E501
 
-        This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
+        This updates a tagged object for the specified type.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.remove_tags_to_many_object(bulk_tagged_object, async_req=True)
+        >>> thread = api.put_tagged_object(type, id, tagged_object, async_req=True)
         >>> result = thread.get()
 
-        :param bulk_tagged_object: Supported object types are ROLE, IDENTITY and SOD_POLICY. (required)
-        :type bulk_tagged_object: BulkTaggedObject
+        :param type: The type of tagged object to update. (required)
+        :type type: str
+        :param id: The ID of the object reference to update. (required)
+        :type id: str
+        :param tagged_object: (required)
+        :type tagged_object: TaggedObject
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -865,27 +862,31 @@ class TaggedObjectsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: TaggedObject
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            message = "Error! Please call the remove_tags_to_many_object_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            message = "Error! Please call the put_tagged_object_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.remove_tags_to_many_object_with_http_info(bulk_tagged_object, **kwargs)  # noqa: E501
+        return self.put_tagged_object_with_http_info(type, id, tagged_object, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def remove_tags_to_many_object_with_http_info(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ROLE, IDENTITY and SOD_POLICY.")], **kwargs) -> ApiResponse:  # noqa: E501
-        """Remove Tags from Multiple Objects  # noqa: E501
+    def put_tagged_object_with_http_info(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to update.")], id : Annotated[StrictStr, Field(..., description="The ID of the object reference to update.")], tagged_object : TaggedObject, **kwargs) -> ApiResponse:  # noqa: E501
+        """Update Tagged Object  # noqa: E501
 
-        This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
+        This updates a tagged object for the specified type.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.remove_tags_to_many_object_with_http_info(bulk_tagged_object, async_req=True)
+        >>> thread = api.put_tagged_object_with_http_info(type, id, tagged_object, async_req=True)
         >>> result = thread.get()
 
-        :param bulk_tagged_object: Supported object types are ROLE, IDENTITY and SOD_POLICY. (required)
-        :type bulk_tagged_object: BulkTaggedObject
+        :param type: The type of tagged object to update. (required)
+        :type type: str
+        :param id: The ID of the object reference to update. (required)
+        :type id: str
+        :param tagged_object: (required)
+        :type tagged_object: TaggedObject
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -908,13 +909,15 @@ class TaggedObjectsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(TaggedObject, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
-            'bulk_tagged_object'
+            'type',
+            'id',
+            'tagged_object'
         ]
         _all_params.extend(
             [
@@ -933,7 +936,7 @@ class TaggedObjectsApi:
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method remove_tags_to_many_object" % _key
+                    " to method put_tagged_object" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
@@ -942,6 +945,12 @@ class TaggedObjectsApi:
 
         # process the path parameters
         _path_params = {}
+        if _params['type']:
+            _path_params['type'] = _params['type']
+
+        if _params['id']:
+            _path_params['id'] = _params['id']
+
 
         # process the query parameters
         _query_params = []
@@ -952,8 +961,8 @@ class TaggedObjectsApi:
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['bulk_tagged_object'] is not None:
-            _body_params = _params['bulk_tagged_object']
+        if _params['tagged_object'] is not None:
+            _body_params = _params['tagged_object']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -969,10 +978,17 @@ class TaggedObjectsApi:
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            '200': "TaggedObject",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
 
         return self.api_client.call_api(
-            '/tagged-objects/bulk-remove', 'POST',
+            '/tagged-objects/{type}/{id}', 'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -1134,22 +1150,18 @@ class TaggedObjectsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_tagged_object(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to update.")], id : Annotated[StrictStr, Field(..., description="The ID of the object reference to update.")], tagged_object : TaggedObject, **kwargs) -> TaggedObject:  # noqa: E501
-        """Update Tagged Object  # noqa: E501
+    def set_tags_to_many_objects(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")], **kwargs) -> BulkTaggedObject:  # noqa: E501
+        """Tag Multiple Objects  # noqa: E501
 
-        This updates a tagged object for the specified type.  # noqa: E501
+        This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_tagged_object(type, id, tagged_object, async_req=True)
+        >>> thread = api.set_tags_to_many_objects(bulk_tagged_object, async_req=True)
         >>> result = thread.get()
 
-        :param type: The type of tagged object to update. (required)
-        :type type: str
-        :param id: The ID of the object reference to update. (required)
-        :type id: str
-        :param tagged_object: (required)
-        :type tagged_object: TaggedObject
+        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_tagged_object: BulkTaggedObject
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -1159,31 +1171,27 @@ class TaggedObjectsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: TaggedObject
+        :rtype: BulkTaggedObject
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            message = "Error! Please call the update_tagged_object_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            message = "Error! Please call the set_tags_to_many_objects_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_tagged_object_with_http_info(type, id, tagged_object, **kwargs)  # noqa: E501
+        return self.set_tags_to_many_objects_with_http_info(bulk_tagged_object, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_tagged_object_with_http_info(self, type : Annotated[StrictStr, Field(..., description="The type of tagged object to update.")], id : Annotated[StrictStr, Field(..., description="The ID of the object reference to update.")], tagged_object : TaggedObject, **kwargs) -> ApiResponse:  # noqa: E501
-        """Update Tagged Object  # noqa: E501
+    def set_tags_to_many_objects_with_http_info(self, bulk_tagged_object : Annotated[BulkTaggedObject, Field(..., description="Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.")], **kwargs) -> ApiResponse:  # noqa: E501
+        """Tag Multiple Objects  # noqa: E501
 
-        This updates a tagged object for the specified type.  # noqa: E501
+        This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_tagged_object_with_http_info(type, id, tagged_object, async_req=True)
+        >>> thread = api.set_tags_to_many_objects_with_http_info(bulk_tagged_object, async_req=True)
         >>> result = thread.get()
 
-        :param type: The type of tagged object to update. (required)
-        :type type: str
-        :param id: The ID of the object reference to update. (required)
-        :type id: str
-        :param tagged_object: (required)
-        :type tagged_object: TaggedObject
+        :param bulk_tagged_object: Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. (required)
+        :type bulk_tagged_object: BulkTaggedObject
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -1206,15 +1214,13 @@ class TaggedObjectsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(TaggedObject, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(BulkTaggedObject, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
-            'type',
-            'id',
-            'tagged_object'
+            'bulk_tagged_object'
         ]
         _all_params.extend(
             [
@@ -1233,7 +1239,7 @@ class TaggedObjectsApi:
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update_tagged_object" % _key
+                    " to method set_tags_to_many_objects" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
@@ -1242,12 +1248,6 @@ class TaggedObjectsApi:
 
         # process the path parameters
         _path_params = {}
-        if _params['type']:
-            _path_params['type'] = _params['type']
-
-        if _params['id']:
-            _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1258,8 +1258,8 @@ class TaggedObjectsApi:
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['tagged_object'] is not None:
-            _body_params = _params['tagged_object']
+        if _params['bulk_tagged_object'] is not None:
+            _body_params = _params['bulk_tagged_object']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -1276,7 +1276,7 @@ class TaggedObjectsApi:
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "TaggedObject",
+            '200': "BulkTaggedObject",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -1285,7 +1285,7 @@ class TaggedObjectsApi:
         }
 
         return self.api_client.call_api(
-            '/tagged-objects/{type}/{id}', 'PUT',
+            '/tagged-objects/bulk-add', 'POST',
             _path_params,
             _query_params,
             _header_params,

@@ -455,14 +455,14 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**update_source**](beta/docs/SourcesApi.md#update_source) | **PATCH** /sources/{id} | Update Source (Partial)
 *SourcesApi* | [**update_source_entitlement_request_config**](beta/docs/SourcesApi.md#update_source_entitlement_request_config) | **PUT** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesApi* | [**update_source_schema**](beta/docs/SourcesApi.md#update_source_schema) | **PATCH** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
-*TaggedObjectsApi* | [**add_tags_to_many_objects**](beta/docs/TaggedObjectsApi.md#add_tags_to_many_objects) | **POST** /tagged-objects/bulk-add | Tag Multiple Objects
 *TaggedObjectsApi* | [**delete_tagged_object**](beta/docs/TaggedObjectsApi.md#delete_tagged_object) | **DELETE** /tagged-objects/{type}/{id} | Delete Tagged Object
+*TaggedObjectsApi* | [**delete_tags_to_many_object**](beta/docs/TaggedObjectsApi.md#delete_tags_to_many_object) | **POST** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsApi* | [**get_tagged_object**](beta/docs/TaggedObjectsApi.md#get_tagged_object) | **GET** /tagged-objects/{type}/{id} | Get Tagged Object
 *TaggedObjectsApi* | [**list_tagged_objects**](beta/docs/TaggedObjectsApi.md#list_tagged_objects) | **GET** /tagged-objects | List Tagged Objects
 *TaggedObjectsApi* | [**list_tagged_objects_by_type**](beta/docs/TaggedObjectsApi.md#list_tagged_objects_by_type) | **GET** /tagged-objects/{type} | List Tagged Objects
-*TaggedObjectsApi* | [**remove_tags_to_many_object**](beta/docs/TaggedObjectsApi.md#remove_tags_to_many_object) | **POST** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
+*TaggedObjectsApi* | [**put_tagged_object**](beta/docs/TaggedObjectsApi.md#put_tagged_object) | **PUT** /tagged-objects/{type}/{id} | Update Tagged Object
 *TaggedObjectsApi* | [**set_tag_to_object**](beta/docs/TaggedObjectsApi.md#set_tag_to_object) | **POST** /tagged-objects | Add Tag to Object
-*TaggedObjectsApi* | [**update_tagged_object**](beta/docs/TaggedObjectsApi.md#update_tagged_object) | **PUT** /tagged-objects/{type}/{id} | Update Tagged Object
+*TaggedObjectsApi* | [**set_tags_to_many_objects**](beta/docs/TaggedObjectsApi.md#set_tags_to_many_objects) | **POST** /tagged-objects/bulk-add | Tag Multiple Objects
 *TaskManagementApi* | [**get_pending_task_headers**](beta/docs/TaskManagementApi.md#get_pending_task_headers) | **HEAD** /task-status/pending-tasks | Retrieve headers only for pending task list.
 *TaskManagementApi* | [**get_pending_tasks**](beta/docs/TaskManagementApi.md#get_pending_tasks) | **GET** /task-status/pending-tasks | Retrieve a pending task list.
 *TaskManagementApi* | [**get_task_status**](beta/docs/TaskManagementApi.md#get_task_status) | **GET** /task-status/{id} | Get task status by ID.
@@ -1142,6 +1142,8 @@ Class | Method | HTTP request | Description
  - [SubscriptionPutRequest](beta/docs/SubscriptionPutRequest.md)
  - [SubscriptionType](beta/docs/SubscriptionType.md)
  - [TaggedObject](beta/docs/TaggedObject.md)
+ - [TaggedObjectDto](beta/docs/TaggedObjectDto.md)
+ - [TaggedObjectObjectRef](beta/docs/TaggedObjectObjectRef.md)
  - [TaskResultResponse](beta/docs/TaskResultResponse.md)
  - [TaskResultSimplified](beta/docs/TaskResultSimplified.md)
  - [TaskReturnDetails](beta/docs/TaskReturnDetails.md)

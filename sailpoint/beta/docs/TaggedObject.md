@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**object_ref** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**object_ref** | [**TaggedObjectObjectRef**](TaggedObjectObjectRef.md) |  | [optional] 
 **tags** | **List[str]** | Labels to be applied to an Object | [optional] 
 
 ## Example

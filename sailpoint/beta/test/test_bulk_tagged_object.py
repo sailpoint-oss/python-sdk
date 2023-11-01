@@ -37,7 +37,7 @@ class TestBulkTaggedObject(unittest.TestCase):
         if include_optional:
             return BulkTaggedObject(
                 object_refs = [
-                    beta.models.base_reference_dto.BaseReferenceDto(
+                    beta.models.tagged_object_dto.TaggedObjectDto(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'William Wilson', )
