@@ -38,6 +38,7 @@ class ReviewableEntitlement(BaseModel):
     source_schema_object_type: Optional[StrictStr] = Field(None, alias="sourceSchemaObjectType", description="The schema object type on the source used to represent the entitlement and its attributes")
     source_name: Optional[StrictStr] = Field(None, alias="sourceName", description="The name of the source for which this entitlement belongs")
     source_type: Optional[StrictStr] = Field(None, alias="sourceType", description="The type of the source for which the entitlement belongs")
+    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="The ID of the source for which the entitlement belongs")
     has_permissions: Optional[StrictBool] = Field(False, alias="hasPermissions", description="Indicates if the entitlement has permissions")
     is_permission: Optional[StrictBool] = Field(False, alias="isPermission", description="Indicates if the entitlement is a representation of an account permission")
     revocable: Optional[StrictBool] = Field(False, description="Indicates whether the entitlement can be revoked")
@@ -45,7 +46,7 @@ class ReviewableEntitlement(BaseModel):
     contains_data_access: Optional[StrictBool] = Field(False, alias="containsDataAccess", description="True if the entitlement has DAS data")
     data_access: Optional[DataAccess] = Field(None, alias="dataAccess")
     account: Optional[ReviewableEntitlementAccount] = None
-    __properties = ["id", "name", "description", "privileged", "owner", "attributeName", "attributeValue", "sourceSchemaObjectType", "sourceName", "sourceType", "hasPermissions", "isPermission", "revocable", "cloudGoverned", "containsDataAccess", "dataAccess", "account"]
+    __properties = ["id", "name", "description", "privileged", "owner", "attributeName", "attributeValue", "sourceSchemaObjectType", "sourceName", "sourceType", "sourceId", "hasPermissions", "isPermission", "revocable", "cloudGoverned", "containsDataAccess", "dataAccess", "account"]
 
     class Config:
         """Pydantic configuration"""
@@ -122,6 +123,7 @@ class ReviewableEntitlement(BaseModel):
             "source_schema_object_type": obj.get("sourceSchemaObjectType"),
             "source_name": obj.get("sourceName"),
             "source_type": obj.get("sourceType"),
+            "source_id": obj.get("sourceId"),
             "has_permissions": obj.get("hasPermissions") if obj.get("hasPermissions") is not None else False,
             "is_permission": obj.get("isPermission") if obj.get("isPermission") is not None else False,
             "revocable": obj.get("revocable") if obj.get("revocable") is not None else False,

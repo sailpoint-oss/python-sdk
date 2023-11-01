@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **source_schema_object_type** | **str** | The schema object type on the source used to represent the entitlement and its attributes | [optional] 
 **source_name** | **str** | The name of the source for which this entitlement belongs | [optional] 
 **source_type** | **str** | The type of the source for which the entitlement belongs | [optional] 
+**source_id** | **str** | The ID of the source for which the entitlement belongs | [optional] 
 **has_permissions** | **bool** | Indicates if the entitlement has permissions | [optional] [default to False]
 **is_permission** | **bool** | Indicates if the entitlement is a representation of an account permission | [optional] [default to False]
 **revocable** | **bool** | Indicates whether the entitlement can be revoked | [optional] [default to False]
