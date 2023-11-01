@@ -52,9 +52,9 @@ class RoleInsightsApi:
 
     @validate_arguments
     def create_role_insight_requests(self, **kwargs) -> RoleInsightsResponse:  # noqa: E501
-        """A request to generate insights for roles  # noqa: E501
+        """(Deprecated) Generate insights for roles  # noqa: E501
 
-        This submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.  # noqa: E501
+        Submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -80,9 +80,9 @@ class RoleInsightsApi:
 
     @validate_arguments
     def create_role_insight_requests_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
-        """A request to generate insights for roles  # noqa: E501
+        """(Deprecated) Generate insights for roles  # noqa: E501
 
-        This submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.  # noqa: E501
+        Submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -113,6 +113,8 @@ class RoleInsightsApi:
                  returns the request thread.
         :rtype: tuple(RoleInsightsResponse, status_code(int), headers(HTTPHeaderDict))
         """
+
+        warnings.warn("POST /role-insights/requests is deprecated.", DeprecationWarning)
 
         _params = locals()
 
@@ -166,6 +168,7 @@ class RoleInsightsApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
 
@@ -1180,9 +1183,9 @@ class RoleInsightsApi:
 
     @validate_arguments
     def get_role_insights_requests(self, id : Annotated[StrictStr, Field(..., description="The role insights request id")], **kwargs) -> RoleInsightsResponse:  # noqa: E501
-        """Returns the metadata for a request in order to generate insights for roles.  # noqa: E501
+        """(Deprecated) Returns metadata from prior request.  # noqa: E501
 
-        This endpoint returns details of a prior request.  # noqa: E501
+        This endpoint returns details of a prior role insights request.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1210,9 +1213,9 @@ class RoleInsightsApi:
 
     @validate_arguments
     def get_role_insights_requests_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The role insights request id")], **kwargs) -> ApiResponse:  # noqa: E501
-        """Returns the metadata for a request in order to generate insights for roles.  # noqa: E501
+        """(Deprecated) Returns metadata from prior request.  # noqa: E501
 
-        This endpoint returns details of a prior request.  # noqa: E501
+        This endpoint returns details of a prior role insights request.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1245,6 +1248,8 @@ class RoleInsightsApi:
                  returns the request thread.
         :rtype: tuple(RoleInsightsResponse, status_code(int), headers(HTTPHeaderDict))
         """
+
+        warnings.warn("GET /role-insights/requests/{id} is deprecated.", DeprecationWarning)
 
         _params = locals()
 
@@ -1302,6 +1307,7 @@ class RoleInsightsApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
             '500': "ErrorResponseDto",
         }
 

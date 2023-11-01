@@ -4,23 +4,23 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_role_insight_requests**](RoleInsightsApi.md#create_role_insight_requests) | **POST** /role-insights/requests | A request to generate insights for roles
+[**create_role_insight_requests**](RoleInsightsApi.md#create_role_insight_requests) | **POST** /role-insights/requests | Generate insights for roles
 [**download_role_insights_entitlements_changes**](RoleInsightsApi.md#download_role_insights_entitlements_changes) | **GET** /role-insights/{insightId}/entitlement-changes/download | Download entitlement insights for a role
 [**get_entitlement_changes_identities**](RoleInsightsApi.md#get_entitlement_changes_identities) | **GET** /role-insights/{insightId}/entitlement-changes/{entitlementId}/identities | Get identities for a suggested entitlement (for a role)
 [**get_role_insight**](RoleInsightsApi.md#get_role_insight) | **GET** /role-insights/{insightId} | Get a single role insight
 [**get_role_insights**](RoleInsightsApi.md#get_role_insights) | **GET** /role-insights | Get role insights
 [**get_role_insights_current_entitlements**](RoleInsightsApi.md#get_role_insights_current_entitlements) | **GET** /role-insights/{insightId}/current-entitlements | Get current entitlement for a role
 [**get_role_insights_entitlements_changes**](RoleInsightsApi.md#get_role_insights_entitlements_changes) | **GET** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
-[**get_role_insights_requests**](RoleInsightsApi.md#get_role_insights_requests) | **GET** /role-insights/requests/{id} | Returns the metadata for a request in order to generate insights for roles.
+[**get_role_insights_requests**](RoleInsightsApi.md#get_role_insights_requests) | **GET** /role-insights/requests/{id} | Returns metadata from prior request.
 [**get_role_insights_summary**](RoleInsightsApi.md#get_role_insights_summary) | **GET** /role-insights/summary | Get role insights summary information
 
 
 # **create_role_insight_requests**
 > RoleInsightsResponse create_role_insight_requests()
 
-A request to generate insights for roles
+Generate insights for roles
 
-This submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.
+Submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.
 
 ### Example
 
@@ -55,7 +55,7 @@ with beta.ApiClient(configuration) as api_client:
     api_instance = beta.RoleInsightsApi(api_client)
 
     try:
-        # A request to generate insights for roles
+        # Generate insights for roles
         api_response = api_instance.create_role_insight_requests()
         print("The response of RoleInsightsApi->create_role_insight_requests:\n")
         pprint(api_response)
@@ -88,6 +88,7 @@ This endpoint does not need any parameter.
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -612,9 +613,9 @@ Name | Type | Description  | Notes
 # **get_role_insights_requests**
 > RoleInsightsResponse get_role_insights_requests(id)
 
-Returns the metadata for a request in order to generate insights for roles.
+Returns metadata from prior request.
 
-This endpoint returns details of a prior request.
+This endpoint returns details of a prior role insights request. 
 
 ### Example
 
@@ -650,7 +651,7 @@ with beta.ApiClient(configuration) as api_client:
     id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insights request id
 
     try:
-        # Returns the metadata for a request in order to generate insights for roles.
+        # Returns metadata from prior request.
         api_response = api_instance.get_role_insights_requests(id)
         print("The response of RoleInsightsApi->get_role_insights_requests:\n")
         pprint(api_response)
@@ -686,6 +687,7 @@ Name | Type | Description  | Notes
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
 **500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

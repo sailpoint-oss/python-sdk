@@ -29,7 +29,7 @@ class TestRoleInsightsApi(unittest.TestCase):
     def test_create_role_insight_requests(self) -> None:
         """Test case for create_role_insight_requests
 
-        A request to generate insights for roles  # noqa: E501
+        Generate insights for roles  # noqa: E501
         """
         pass
 
@@ -78,7 +78,7 @@ class TestRoleInsightsApi(unittest.TestCase):
     def test_get_role_insights_requests(self) -> None:
         """Test case for get_role_insights_requests
 
-        Returns the metadata for a request in order to generate insights for roles.  # noqa: E501
+        Returns metadata from prior request.  # noqa: E501
         """
         pass
 
