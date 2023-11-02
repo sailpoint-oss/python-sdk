@@ -37,7 +37,9 @@ class TestAccountAggregationCompleted(unittest.TestCase):
         if include_optional:
             return AccountAggregationCompleted(
                 source = beta.models.account_aggregation_completed_source.AccountAggregationCompleted_source(
-                    type = SOURCE, ),
+                    type = 'SOURCE', 
+                    id = '2c9180835d191a86015d28455b4b232a', 
+                    name = 'HR Active Directory', ),
                 status = Success,
                 started = '2020-06-29T22:01:50.474Z',
                 completed = '2020-06-29T22:02:04.090Z',
@@ -57,7 +59,9 @@ class TestAccountAggregationCompleted(unittest.TestCase):
         else:
             return AccountAggregationCompleted(
                 source = beta.models.account_aggregation_completed_source.AccountAggregationCompleted_source(
-                    type = SOURCE, ),
+                    type = 'SOURCE', 
+                    id = '2c9180835d191a86015d28455b4b232a', 
+                    name = 'HR Active Directory', ),
                 status = Success,
                 started = '2020-06-29T22:01:50.474Z',
                 completed = '2020-06-29T22:02:04.090Z',

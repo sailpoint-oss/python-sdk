@@ -5,10 +5,10 @@ Details of the reviewer for certification.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that the reviewer is. | 
-**email** | **str** | The email of the reviewing identity. Only applicable to &#x60;IDENTITY&#x60; | [optional] 
-**id** | **str** | ID of the object to which this reference applies | 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**type** | **str** | The reviewer&#39;s DTO type. | 
+**id** | **str** | The reviewer&#39;s ID. | 
+**name** | **str** | The reviewer&#39;s display name. | 
+**email** | **str** | The reviewing identity&#39;s email. Only applicable to &#x60;IDENTITY&#x60;. | [optional] 
 
 ## Example
 

@@ -46,10 +46,7 @@ class TestImportSpConfigRequest(unittest.TestCase):
                         ], 
                     object_options = {TRIGGER_SUBSCRIPTION={includedIds=[be9e116d-08e1-49fc-ab7f-fa585e96c9e4], includedNames=[Test 2]}}, 
                     default_references = [
-                        beta.models.base_reference_dto.BaseReferenceDto(
-                            type = 'IDENTITY', 
-                            id = '2c91808568c529c60168cca6f90c1313', 
-                            name = 'William Wilson', )
+                        'TRIGGER_SUBSCRIPTION'
                         ], 
                     exclude_backup = False, )
             )

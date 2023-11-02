@@ -36,18 +36,18 @@ class TestAccountCorrelatedAccount(unittest.TestCase):
         model = AccountCorrelatedAccount()  # noqa: E501
         if include_optional:
             return AccountCorrelatedAccount(
-                type = ACCOUNT,
+                type = 'ACCOUNT',
+                id = '98da47c31df444558c211f9b205184f6',
+                name = 'Brian Mendoza',
                 native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com',
-                uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108',
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson'
+                uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108'
             )
         else:
             return AccountCorrelatedAccount(
-                type = ACCOUNT,
+                type = 'ACCOUNT',
+                id = '98da47c31df444558c211f9b205184f6',
+                name = 'Brian Mendoza',
                 native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com',
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson',
         )
         """
 

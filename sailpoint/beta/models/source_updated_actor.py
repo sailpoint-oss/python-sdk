@@ -18,17 +18,16 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-from beta.models.dto_type import DtoType
 
 class SourceUpdatedActor(BaseModel):
     """
-    The identity or system that performed the update.  # noqa: E501
+    Identity who updated the source.  # noqa: E501
     """
-    type: Dict[str, Any] = Field(..., description="The type of object that is referenced")
-    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
-    name: StrictStr = Field(..., description="Human-readable display name of the object to which this reference applies")
+    type: StrictStr = Field(..., description="DTO type of identity who updated the source.")
+    id: Optional[StrictStr] = Field(None, description="ID of identity who updated the source.")
+    name: StrictStr = Field(..., description="Display name of identity who updated the source.")
     __properties = ["type", "id", "name"]
 
     @validator('type')

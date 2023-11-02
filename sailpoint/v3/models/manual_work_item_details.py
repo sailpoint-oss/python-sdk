@@ -21,7 +21,8 @@ from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, conlist
 from v3.models.approval_forward_history import ApprovalForwardHistory
-from v3.models.base_reference_dto import BaseReferenceDto
+from v3.models.manual_work_item_details_current_owner import ManualWorkItemDetailsCurrentOwner
+from v3.models.manual_work_item_details_original_owner import ManualWorkItemDetailsOriginalOwner
 from v3.models.manual_work_item_state import ManualWorkItemState
 
 class ManualWorkItemDetails(BaseModel):
@@ -29,8 +30,8 @@ class ManualWorkItemDetails(BaseModel):
     ManualWorkItemDetails
     """
     forwarded: Optional[StrictBool] = Field(None, description="True if the request for this item was forwarded from one owner to another.")
-    original_owner: Optional[BaseReferenceDto] = Field(None, alias="originalOwner")
-    current_owner: Optional[BaseReferenceDto] = Field(None, alias="currentOwner")
+    original_owner: Optional[ManualWorkItemDetailsOriginalOwner] = Field(None, alias="originalOwner")
+    current_owner: Optional[ManualWorkItemDetailsCurrentOwner] = Field(None, alias="currentOwner")
     modified: Optional[datetime] = Field(None, description="Time at which item was modified.")
     status: Optional[ManualWorkItemState] = None
     forward_history: Optional[conlist(ApprovalForwardHistory)] = Field(None, alias="forwardHistory", description="The history of approval forward action.")
@@ -86,8 +87,8 @@ class ManualWorkItemDetails(BaseModel):
 
         _obj = ManualWorkItemDetails.parse_obj({
             "forwarded": obj.get("forwarded"),
-            "original_owner": BaseReferenceDto.from_dict(obj.get("originalOwner")) if obj.get("originalOwner") is not None else None,
-            "current_owner": BaseReferenceDto.from_dict(obj.get("currentOwner")) if obj.get("currentOwner") is not None else None,
+            "original_owner": ManualWorkItemDetailsOriginalOwner.from_dict(obj.get("originalOwner")) if obj.get("originalOwner") is not None else None,
+            "current_owner": ManualWorkItemDetailsCurrentOwner.from_dict(obj.get("currentOwner")) if obj.get("currentOwner") is not None else None,
             "modified": obj.get("modified"),
             "status": obj.get("status"),
             "forward_history": [ApprovalForwardHistory.from_dict(_item) for _item in obj.get("forwardHistory")] if obj.get("forwardHistory") is not None else None

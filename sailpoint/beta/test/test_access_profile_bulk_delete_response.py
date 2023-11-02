@@ -42,10 +42,10 @@ class TestAccessProfileBulkDeleteResponse(unittest.TestCase):
                     beta.models.access_profile_usage.AccessProfileUsage(
                         access_profile_id = '2c91808876438bbb017668c21919ecca', 
                         used_by = [
-                            beta.models.base_reference_dto.BaseReferenceDto(
-                                type = 'IDENTITY', 
-                                id = '2c91808568c529c60168cca6f90c1313', 
-                                name = 'William Wilson', )
+                            beta.models.access_profile_usage_used_by_inner.AccessProfileUsage_usedBy_inner(
+                                type = 'ROLE', 
+                                id = '2c8180857a9b3da0017aa03418480f9d', 
+                                name = 'Manager Role', )
                             ], )
                     ]
             )

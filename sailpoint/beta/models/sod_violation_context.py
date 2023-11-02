@@ -20,14 +20,14 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, Field
-from beta.models.base_reference_dto import BaseReferenceDto
+from beta.models.sod_policy_dto import SodPolicyDto
 from beta.models.sod_violation_context_conflicting_access_criteria import SodViolationContextConflictingAccessCriteria
 
 class SodViolationContext(BaseModel):
     """
     The contextual information of the violated criteria  # noqa: E501
     """
-    policy: Optional[BaseReferenceDto] = None
+    policy: Optional[SodPolicyDto] = None
     conflicting_access_criteria: Optional[SodViolationContextConflictingAccessCriteria] = Field(None, alias="conflictingAccessCriteria")
     __properties = ["policy", "conflictingAccessCriteria"]
 
@@ -73,7 +73,7 @@ class SodViolationContext(BaseModel):
             return SodViolationContext.parse_obj(obj)
 
         _obj = SodViolationContext.parse_obj({
-            "policy": BaseReferenceDto.from_dict(obj.get("policy")) if obj.get("policy") is not None else None,
+            "policy": SodPolicyDto.from_dict(obj.get("policy")) if obj.get("policy") is not None else None,
             "conflicting_access_criteria": SodViolationContextConflictingAccessCriteria.from_dict(obj.get("conflictingAccessCriteria")) if obj.get("conflictingAccessCriteria") is not None else None
         })
         return _obj

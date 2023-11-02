@@ -36,15 +36,15 @@ class TestIdentityAttributesChangedIdentity(unittest.TestCase):
         model = IdentityAttributesChangedIdentity()  # noqa: E501
         if include_optional:
             return IdentityAttributesChangedIdentity(
-                type = IDENTITY,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson'
+                type = 'IDENTITY',
+                id = '2c7180a46faadee4016fb4e018c20642',
+                name = 'Michael Michaels'
             )
         else:
             return IdentityAttributesChangedIdentity(
-                type = IDENTITY,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson',
+                type = 'IDENTITY',
+                id = '2c7180a46faadee4016fb4e018c20642',
+                name = 'Michael Michaels',
         )
         """
 

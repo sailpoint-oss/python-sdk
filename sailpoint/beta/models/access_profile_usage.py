@@ -20,14 +20,14 @@ import json
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.base_reference_dto import BaseReferenceDto
+from beta.models.access_profile_usage_used_by_inner import AccessProfileUsageUsedByInner
 
 class AccessProfileUsage(BaseModel):
     """
     AccessProfileUsage
     """
     access_profile_id: Optional[StrictStr] = Field(None, alias="accessProfileId", description="ID of the Access Profile that is in use")
-    used_by: Optional[conlist(BaseReferenceDto)] = Field(None, alias="usedBy", description="List of references to objects which are using the indicated Access Profile")
+    used_by: Optional[conlist(AccessProfileUsageUsedByInner)] = Field(None, alias="usedBy", description="List of references to objects which are using the indicated Access Profile")
     __properties = ["accessProfileId", "usedBy"]
 
     class Config:
@@ -74,7 +74,7 @@ class AccessProfileUsage(BaseModel):
 
         _obj = AccessProfileUsage.parse_obj({
             "access_profile_id": obj.get("accessProfileId"),
-            "used_by": [BaseReferenceDto.from_dict(_item) for _item in obj.get("usedBy")] if obj.get("usedBy") is not None else None
+            "used_by": [AccessProfileUsageUsedByInner.from_dict(_item) for _item in obj.get("usedBy")] if obj.get("usedBy") is not None else None
         })
         return _obj
 

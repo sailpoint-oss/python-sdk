@@ -39,11 +39,11 @@ class TestRequestedItemStatus(unittest.TestCase):
                 name = 'AccessProfile1',
                 type = 'ACCESS_PROFILE',
                 cancelled_request_details = v3.models.cancelled_request_details.CancelledRequestDetails(
-                    comment = 'Nisl quis ipsum quam quisque condimentum nunc ut dolor nunc.', 
-                    owner = v3.models.base_reference_dto.BaseReferenceDto(
+                    comment = 'This request must be cancelled.', 
+                    owner = v3.models.owner_dto.OwnerDto(
                         type = 'IDENTITY', 
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'William Wilson', ), 
+                        id = '2c9180a46faadee4016fb4e018c20639', 
+                        name = 'Support', ), 
                     modified = '2019-12-20T09:17:12.192Z', ),
                 error_messages = [
                     [
@@ -57,14 +57,14 @@ class TestRequestedItemStatus(unittest.TestCase):
                 approval_details = [
                     v3.models.approval_status_dto.ApprovalStatusDto(
                         forwarded = False, 
-                        original_owner = v3.models.base_reference_dto.BaseReferenceDto(
+                        original_owner = v3.models.approval_status_dto_original_owner.ApprovalStatusDto_originalOwner(
                             type = 'IDENTITY', 
-                            id = '2c91808568c529c60168cca6f90c1313', 
-                            name = 'William Wilson', ), 
-                        current_owner = v3.models.base_reference_dto.BaseReferenceDto(
-                            id = '2c91808568c529c60168cca6f90c1313', 
-                            name = 'William Wilson', ), 
-                        reviewed_by = , 
+                            id = '2c7180a46faadee4016fb4e018c20642', 
+                            name = 'Michael Michaels', ), 
+                        current_owner = v3.models.access_item_reviewed_by.AccessItemReviewedBy(
+                            type = 'IDENTITY', 
+                            id = '2c3780a46faadee4016fb4e018c20652', 
+                            name = 'Allen Albertson', ), 
                         modified = '2019-08-23T18:52:57.398Z', 
                         status = 'PENDING', 
                         scheme = 'MANAGER', 
@@ -80,13 +80,14 @@ class TestRequestedItemStatus(unittest.TestCase):
                 manual_work_item_details = [
                     v3.models.manual_work_item_details.ManualWorkItemDetails(
                         forwarded = True, 
-                        original_owner = v3.models.base_reference_dto.BaseReferenceDto(
+                        original_owner = v3.models.manual_work_item_details_original_owner.ManualWorkItemDetails_originalOwner(
                             type = 'IDENTITY', 
-                            id = '2c91808568c529c60168cca6f90c1313', 
-                            name = 'William Wilson', ), 
-                        current_owner = v3.models.base_reference_dto.BaseReferenceDto(
-                            id = '2c91808568c529c60168cca6f90c1313', 
-                            name = 'William Wilson', ), 
+                            id = '2c7180a46faadee4016fb4e018c20642', 
+                            name = 'Michael Michaels', ), 
+                        current_owner = v3.models.manual_work_item_details_current_owner.ManualWorkItemDetails_currentOwner(
+                            type = 'IDENTITY', 
+                            id = '2c3780a46faadee4016fb4e018c20652', 
+                            name = 'Allen Albertson', ), 
                         modified = '2019-08-23T18:52:57.398Z', 
                         status = 'PENDING', 
                         forward_history = [
@@ -103,16 +104,16 @@ class TestRequestedItemStatus(unittest.TestCase):
                 request_type = 'GRANT_ACCESS',
                 modified = '2019-08-23T18:52:59.162Z',
                 created = '2019-08-23T18:40:35.772Z',
-                requester = v3.models.base_reference_dto.BaseReferenceDto(
+                requester = v3.models.access_item_requester.AccessItemRequester(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
-                requested_for = v3.models.base_reference_dto.BaseReferenceDto(
+                requested_for = v3.models.access_item_requested_for.AccessItemRequestedFor(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c4180a46faadee4016fb4e018c20626', 
+                    name = 'Robert Robinson', ),
                 requester_comment = v3.models.comment_dto.CommentDto(
-                    comment = 'Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum erat', 
+                    comment = 'This is a comment.', 
                     author = v3.models.comment_dto_author.CommentDto_author(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
@@ -129,24 +130,25 @@ class TestRequestedItemStatus(unittest.TestCase):
                         client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}, 
                         violation_contexts = [
                             v3.models.sod_violation_context.SodViolationContext(
-                                policy = v3.models.base_reference_dto.BaseReferenceDto(
-                                    type = 'IDENTITY', 
-                                    id = '2c91808568c529c60168cca6f90c1313', 
-                                    name = 'William Wilson', ), 
+                                policy = v3.models.sod_policy_dto.SodPolicyDto(
+                                    type = 'SOD_POLICY', 
+                                    id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
+                                    name = 'Business SOD Policy', ), 
                                 conflicting_access_criteria = v3.models.sod_violation_context_conflicting_access_criteria.SodViolationContext_conflictingAccessCriteria(
                                     left_criteria = v3.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(
                                         criteria_list = [
                                             v3.models.sod_exempt_criteria.SodExemptCriteria(
                                                 existing = True, 
+                                                type = 'IDENTITY', 
                                                 id = '2c918085771e9d3301773b3cb66f6398', 
                                                 name = 'My HR Entitlement', )
                                             ], ), 
                                     right_criteria = v3.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(), ), )
                             ], 
                         violated_policies = [
-                            v3.models.base_reference_dto.BaseReferenceDto(
-                                id = '2c91808568c529c60168cca6f90c1313', 
-                                name = 'William Wilson', )
+                            v3.models.sod_policy_dto.SodPolicyDto(
+                                id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
+                                name = 'Business SOD Policy', )
                             ], ), ),
                 provisioning_details = v3.models.provisioning_details.ProvisioningDetails(
                     ordered_sub_phase_references = 'manualWorkItemDetails', ),

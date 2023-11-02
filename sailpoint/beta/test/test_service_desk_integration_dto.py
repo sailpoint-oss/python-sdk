@@ -42,14 +42,14 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
                 modified = '2023-01-03T21:16:22.432Z',
                 description = 'A very nice Service Desk integration',
                 type = 'ServiceNowSDIM',
-                owner_ref = beta.models.service_desk_integration_dto_all_of_owner_ref.ServiceDeskIntegrationDto_allOf_ownerRef(
-                    type = IDENTITY, 
-                    id = 2c91808568c529c60168cca6f90c1313, 
-                    name = MyName, ),
-                cluster_ref = beta.models.service_desk_integration_dto_all_of_cluster_ref.ServiceDeskIntegrationDto_allOf_clusterRef(
-                    type = CLUSTER, 
-                    id = 2c9180866166b5b0016167c32ef31a66, 
-                    name = Corporate Cluster, ),
+                owner_ref = beta.models.owner_dto.OwnerDto(
+                    type = 'IDENTITY', 
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', ),
+                cluster_ref = beta.models.source_cluster_dto.SourceClusterDto(
+                    type = 'CLUSTER', 
+                    id = '2c9180847a7fccdd017aa5896f9f4f6f', 
+                    name = 'Training VA', ),
                 cluster = 'xyzzy999',
                 managed_sources = [2c9180835d191a86015d28455b4a2329, 2c5680835d191a85765d28455b4a9823],
                 provisioning_config = beta.models.provisioning_config.ProvisioningConfig(
@@ -61,10 +61,10 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
                     no_provisioning_requests = True, 
                     provisioning_request_expiration = 7, ),
                 attributes = {property=value, key=value},
-                before_provisioning_rule = beta.models.service_desk_integration_dto_all_of_before_provisioning_rule.ServiceDeskIntegrationDto_allOf_beforeProvisioningRule(
-                    type = RULE, 
-                    id = 2c91808568c529c60168cca6f90c1333, 
-                    name = Example Rule, )
+                before_provisioning_rule = beta.models.before_provisioning_rule_dto.BeforeProvisioningRuleDto(
+                    type = 'RULE', 
+                    id = '048eb3d55c5a4758bd07dccb87741c78', 
+                    name = 'Before Provisioning Airtable Rule', )
             )
         else:
             return ServiceDeskIntegrationDto(

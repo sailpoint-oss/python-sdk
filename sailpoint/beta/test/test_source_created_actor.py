@@ -36,14 +36,14 @@ class TestSourceCreatedActor(unittest.TestCase):
         model = SourceCreatedActor()  # noqa: E501
         if include_optional:
             return SourceCreatedActor(
-                type = IDENTITY,
-                id = '2c91808568c529c60168cca6f90c1313',
+                type = 'IDENTITY',
+                id = '2c7180a46faadee4016fb4e018c20648',
                 name = 'William Wilson'
             )
         else:
             return SourceCreatedActor(
-                type = IDENTITY,
-                id = '2c91808568c529c60168cca6f90c1313',
+                type = 'IDENTITY',
+                id = '2c7180a46faadee4016fb4e018c20648',
                 name = 'William Wilson',
         )
         """

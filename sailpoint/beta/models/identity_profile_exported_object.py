@@ -20,15 +20,15 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt
-from beta.models.base_reference_dto import BaseReferenceDto
 from beta.models.identity_profile1 import IdentityProfile1
+from beta.models.self_import_export_dto import SelfImportExportDto
 
 class IdentityProfileExportedObject(BaseModel):
     """
     Identity Profile exported object  # noqa: E501
     """
     version: Optional[StrictInt] = Field(None, description="Version or object from the target service.")
-    var_self: Optional[BaseReferenceDto] = Field(None, alias="self")
+    var_self: Optional[SelfImportExportDto] = Field(None, alias="self")
     object: Optional[IdentityProfile1] = None
     __properties = ["version", "self", "object"]
 
@@ -75,7 +75,7 @@ class IdentityProfileExportedObject(BaseModel):
 
         _obj = IdentityProfileExportedObject.parse_obj({
             "version": obj.get("version"),
-            "var_self": BaseReferenceDto.from_dict(obj.get("self")) if obj.get("self") is not None else None,
+            "var_self": SelfImportExportDto.from_dict(obj.get("self")) if obj.get("self") is not None else None,
             "object": IdentityProfile1.from_dict(obj.get("object")) if obj.get("object") is not None else None
         })
         return _obj

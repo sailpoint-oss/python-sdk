@@ -20,7 +20,6 @@ import json
 
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, validator
-from beta.models.dto_type import DtoType
 
 class ProvisioningConfigManagedResourceRefsInner(BaseModel):
     """

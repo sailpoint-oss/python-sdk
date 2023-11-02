@@ -36,10 +36,10 @@ class TestIdentityPreviewResponse(unittest.TestCase):
         model = IdentityPreviewResponse()  # noqa: E501
         if include_optional:
             return IdentityPreviewResponse(
-                identity = beta.models.base_reference_dto.BaseReferenceDto(
+                identity = beta.models.identity_preview_response_identity.IdentityPreviewResponse_identity(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c4180a46faadee4016fb4e018c20626', 
+                    name = 'Robert Robinson', ),
                 preview_attributes = [
                     beta.models.identity_attribute_preview.IdentityAttributePreview(
                         name = 'email', 

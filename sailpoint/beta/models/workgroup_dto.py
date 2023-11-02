@@ -20,18 +20,18 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
-from beta.models.base_reference_dto import BaseReferenceDto
+from beta.models.owner_dto import OwnerDto
 
 class WorkgroupDto(BaseModel):
     """
     WorkgroupDto
     """
-    owner: Optional[BaseReferenceDto] = None
-    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(None, description="Name of the Governance Group")
-    description: Optional[StrictStr] = Field(None, description="Description of the Governance Group")
-    member_count: Optional[StrictInt] = Field(None, alias="memberCount", description="Number of members in the Governance Group.")
-    connection_count: Optional[StrictInt] = Field(None, alias="connectionCount", description="Number of connections in the Governance Group.")
+    owner: Optional[OwnerDto] = None
+    id: Optional[StrictStr] = Field(None, description="Governance group ID.")
+    name: Optional[StrictStr] = Field(None, description="Governance group name.")
+    description: Optional[StrictStr] = Field(None, description="Governance group description.")
+    member_count: Optional[StrictInt] = Field(None, alias="memberCount", description="Number of members in the governance group.")
+    connection_count: Optional[StrictInt] = Field(None, alias="connectionCount", description="Number of connections in the governance group.")
     __properties = ["owner", "id", "name", "description", "memberCount", "connectionCount"]
 
     class Config:
@@ -76,7 +76,7 @@ class WorkgroupDto(BaseModel):
             return WorkgroupDto.parse_obj(obj)
 
         _obj = WorkgroupDto.parse_obj({
-            "owner": BaseReferenceDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": OwnerDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
             "id": obj.get("id"),
             "name": obj.get("name"),
             "description": obj.get("description"),

@@ -6,8 +6,8 @@ The identity of the approver.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **object** | The type of object that is referenced | 
-**id** | **str** | ID of the object to which this reference applies | 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**id** | **str** | ID of identity who approved the access item request. | 
+**name** | **str** | Human-readable display name of identity who approved the access item request. | 
 
 ## Example
 

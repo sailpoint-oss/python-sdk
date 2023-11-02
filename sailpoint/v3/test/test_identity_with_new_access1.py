@@ -38,10 +38,7 @@ class TestIdentityWithNewAccess1(unittest.TestCase):
             return IdentityWithNewAccess1(
                 identity_id = '2c91809050db617d0150e0bf3215385e',
                 access_refs = [
-                    v3.models.base_reference_dto.BaseReferenceDto(
-                        type = 'IDENTITY', 
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'William Wilson', )
+                    null
                     ],
                 client_metadata = {clientName=client1, clientId=2c91808f7892918f0178b78da4a305a1}
             )
@@ -49,10 +46,7 @@ class TestIdentityWithNewAccess1(unittest.TestCase):
             return IdentityWithNewAccess1(
                 identity_id = '2c91809050db617d0150e0bf3215385e',
                 access_refs = [
-                    v3.models.base_reference_dto.BaseReferenceDto(
-                        type = 'IDENTITY', 
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'William Wilson', )
+                    null
                     ],
         )
         """

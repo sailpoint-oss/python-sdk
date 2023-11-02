@@ -6,7 +6,7 @@ An identity with a set of access to be added
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identity_id** | **str** | Identity id to be checked. | 
-**access_refs** | [**List[IdentityWithNewAccessAccessRefsInner]**](IdentityWithNewAccessAccessRefsInner.md) | The list of ENTITLEMENTs to consider for calculating possible violations in a preventive check. | 
+**access_refs** | [**List[IdentityWithNewAccessAccessRefsInner]**](IdentityWithNewAccessAccessRefsInner.md) | The list of entitlements to consider for possible violations in a preventive check. | 
 
 ## Example
 

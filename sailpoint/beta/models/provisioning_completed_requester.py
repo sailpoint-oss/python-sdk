@@ -18,17 +18,16 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict
+
 from pydantic import BaseModel, Field, StrictStr, validator
-from beta.models.dto_type import DtoType
 
 class ProvisioningCompletedRequester(BaseModel):
     """
-    Reference to the identity (if any) who submitted the provisioning request.  # noqa: E501
+    Provisioning requester's identity.  # noqa: E501
     """
-    type: Dict[str, Any] = Field(..., description="The type of object that is referenced")
-    id: StrictStr = Field(..., description="ID of the object to which this reference applies")
-    name: StrictStr = Field(..., description="Human-readable display name of the object to which this reference applies")
+    type: StrictStr = Field(..., description="Provisioning requester's DTO type.")
+    id: StrictStr = Field(..., description="Provisioning requester's identity ID.")
+    name: StrictStr = Field(..., description="Provisioning owner's human-readable display name.")
     __properties = ["type", "id", "name"]
 
     @validator('type')

@@ -1,13 +1,13 @@
 # WorkflowAllOfCreator
 
-The identity that created the workflow.
+Workflow creator's identity.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | [optional] 
-**id** | **str** | ID of the object to which this reference applies | [optional] 
-**name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
+**type** | **str** | Workflow creator&#39;s DTO type. | [optional] 
+**id** | **str** | Workflow creator&#39;s identity ID. | [optional] 
+**name** | **str** | Workflow creator&#39;s display name. | [optional] 
 
 ## Example
 

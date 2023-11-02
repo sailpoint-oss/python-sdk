@@ -37,13 +37,17 @@ class TestAccountCorrelated(unittest.TestCase):
         if include_optional:
             return AccountCorrelated(
                 identity = beta.models.account_correlated_identity.AccountCorrelated_identity(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 source = beta.models.account_correlated_source.AccountCorrelated_source(
-                    id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                     type = 'SOURCE', 
-                    name = 'Corporate Active Directory', ),
+                    id = '2c9180835d191a86015d28455b4b232a', 
+                    name = 'HR Active Directory', ),
                 account = beta.models.account_correlated_account.AccountCorrelated_account(
-                    type = ACCOUNT, 
+                    type = 'ACCOUNT', 
+                    id = '98da47c31df444558c211f9b205184f6', 
+                    name = 'Brian Mendoza', 
                     native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com', 
                     uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108', ),
                 attributes = {sn=doe, givenName=john, memberOf=[cn=g1,ou=groups,dc=acme,dc=com, cn=g2,ou=groups,dc=acme,dc=com, cn=g3,ou=groups,dc=acme,dc=com]},
@@ -52,13 +56,17 @@ class TestAccountCorrelated(unittest.TestCase):
         else:
             return AccountCorrelated(
                 identity = beta.models.account_correlated_identity.AccountCorrelated_identity(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 source = beta.models.account_correlated_source.AccountCorrelated_source(
-                    id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                     type = 'SOURCE', 
-                    name = 'Corporate Active Directory', ),
+                    id = '2c9180835d191a86015d28455b4b232a', 
+                    name = 'HR Active Directory', ),
                 account = beta.models.account_correlated_account.AccountCorrelated_account(
-                    type = ACCOUNT, 
+                    type = 'ACCOUNT', 
+                    id = '98da47c31df444558c211f9b205184f6', 
+                    name = 'Brian Mendoza', 
                     native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com', 
                     uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108', ),
                 attributes = {sn=doe, givenName=john, memberOf=[cn=g1,ou=groups,dc=acme,dc=com, cn=g2,ou=groups,dc=acme,dc=com, cn=g3,ou=groups,dc=acme,dc=com]},

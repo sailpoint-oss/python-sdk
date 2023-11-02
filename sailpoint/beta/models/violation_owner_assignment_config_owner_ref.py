@@ -19,17 +19,26 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
-from beta.models.dto_type import DtoType
+from pydantic import BaseModel, Field, StrictStr, validator
 
 class ViolationOwnerAssignmentConfigOwnerRef(BaseModel):
     """
     ViolationOwnerAssignmentConfigOwnerRef
     """
-    type: Optional[DtoType] = None
-    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object to which this reference applies")
+    type: Optional[StrictStr] = Field(None, description="Owner's DTO type.")
+    id: Optional[StrictStr] = Field(None, description="Owner's identity ID.")
+    name: Optional[StrictStr] = Field(None, description="Owner's display name.")
     __properties = ["type", "id", "name"]
+
+    @validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('IDENTITY'):
+            raise ValueError("must be one of enum values ('IDENTITY')")
+        return value
 
     class Config:
         """Pydantic configuration"""

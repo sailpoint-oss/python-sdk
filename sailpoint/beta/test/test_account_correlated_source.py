@@ -36,15 +36,15 @@ class TestAccountCorrelatedSource(unittest.TestCase):
         model = AccountCorrelatedSource()  # noqa: E501
         if include_optional:
             return AccountCorrelatedSource(
-                id = '4e4d982dddff4267ab12f0f1e72b5a6d',
                 type = 'SOURCE',
-                name = 'Corporate Active Directory'
+                id = '2c9180835d191a86015d28455b4b232a',
+                name = 'HR Active Directory'
             )
         else:
             return AccountCorrelatedSource(
-                id = '4e4d982dddff4267ab12f0f1e72b5a6d',
                 type = 'SOURCE',
-                name = 'Corporate Active Directory',
+                id = '2c9180835d191a86015d28455b4b232a',
+                name = 'HR Active Directory',
         )
         """
 

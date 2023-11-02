@@ -1,13 +1,13 @@
 # SourceDeletedActor
 
-The identity that deleted the source.
+Identity who deleted the source.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | 
-**id** | **str** | ID of the object to which this reference applies | 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**type** | **str** | DTO type of identity who deleted the source. | 
+**id** | **str** | ID of identity who deleted the source. | 
+**name** | **str** | Display name of identity who deleted the source. | 
 
 ## Example
 

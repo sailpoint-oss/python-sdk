@@ -23,10 +23,10 @@ from pydantic import BaseModel, Field, StrictStr, validator
 
 class ViolationContextPolicy(BaseModel):
     """
-    The types of objects supported for SOD violations  # noqa: E501
+    The types of objects supported for SOD policy violations.  # noqa: E501
     """
-    type: Optional[Dict[str, Any]] = Field(None, description="The type of object that is referenced")
-    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
+    type: Optional[Dict[str, Any]] = Field(None, description="The type of object supported for SOD policy violations.")
+    id: Optional[StrictStr] = Field(None, description="SOD policy ID.")
     name: Optional[StrictStr] = None
     __properties = ["type", "id", "name"]
 

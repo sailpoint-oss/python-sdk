@@ -97,11 +97,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_lifecycle_state**
-> BaseReferenceDto delete_lifecycle_state(identity_profile_id, lifecycle_state_id)
+> LifecyclestateDeleted delete_lifecycle_state(identity_profile_id, lifecycle_state_id)
 
 Delete Lifecycle State by ID
 
-This endpoint deletes the Lifecycle State using it's ID. A token with API, or ORG_ADMIN authority is required to call this API.
+This endpoint deletes the Lifecycle State using its ID. A token with API, or ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -111,7 +111,7 @@ This endpoint deletes the Lifecycle State using it's ID. A token with API, or OR
 import time
 import os
 import v3
-from v3.models.base_reference_dto import BaseReferenceDto
+from v3.models.lifecyclestate_deleted import LifecyclestateDeleted
 from v3.rest import ApiException
 from pprint import pprint
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseReferenceDto**](BaseReferenceDto.md)
+[**LifecyclestateDeleted**](LifecyclestateDeleted.md)
 
 ### Authorization
 

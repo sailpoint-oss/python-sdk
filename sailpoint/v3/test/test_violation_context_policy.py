@@ -37,7 +37,7 @@ class TestViolationContextPolicy(unittest.TestCase):
         if include_optional:
             return ViolationContextPolicy(
                 type = ENTITLEMENT,
-                id = '2c91808568c529c60168cca6f90c1313',
+                id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 name = 'A very cool policy name'
             )
         else:

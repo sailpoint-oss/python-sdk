@@ -20,7 +20,7 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, validator
-from beta.models.base_reference_dto import BaseReferenceDto
+from beta.models.owner_dto import OwnerDto
 from beta.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from beta.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig
 
@@ -28,23 +28,23 @@ class SodPolicy(BaseModel):
     """
     SodPolicy
     """
-    id: Optional[StrictStr] = Field(None, description="Policy id")
-    name: Optional[StrictStr] = Field(None, description="Policy Business Name")
+    id: Optional[StrictStr] = Field(None, description="Policy ID.")
+    name: Optional[StrictStr] = Field(None, description="Policy business name.")
     created: Optional[datetime] = Field(None, description="The time when this SOD policy is created.")
     modified: Optional[datetime] = Field(None, description="The time when this SOD policy is modified.")
-    description: Optional[StrictStr] = Field(None, description="Optional description of the SOD policy")
-    owner_ref: Optional[BaseReferenceDto] = Field(None, alias="ownerRef")
-    external_policy_reference: Optional[StrictStr] = Field(None, alias="externalPolicyReference", description="Optional External Policy Reference")
-    policy_query: Optional[StrictStr] = Field(None, alias="policyQuery", description="Search query of the SOD policy")
-    compensating_controls: Optional[StrictStr] = Field(None, alias="compensatingControls", description="Optional compensating controls(Mitigating Controls)")
-    correction_advice: Optional[StrictStr] = Field(None, alias="correctionAdvice", description="Optional correction advice")
-    state: Optional[StrictStr] = Field(None, description="whether the policy is enforced or not")
-    tags: Optional[conlist(StrictStr)] = Field(None, description="tags for this policy object")
-    creator_id: Optional[StrictStr] = Field(None, alias="creatorId", description="Policy's creator ID")
-    modifier_id: Optional[StrictStr] = Field(None, alias="modifierId", description="Policy's modifier ID")
+    description: Optional[StrictStr] = Field(None, description="Optional description of the SOD policy.")
+    owner_ref: Optional[OwnerDto] = Field(None, alias="ownerRef")
+    external_policy_reference: Optional[StrictStr] = Field(None, alias="externalPolicyReference", description="Optional external policy reference.")
+    policy_query: Optional[StrictStr] = Field(None, alias="policyQuery", description="Search query of the SOD policy.")
+    compensating_controls: Optional[StrictStr] = Field(None, alias="compensatingControls", description="Optional compensating controls (Mitigating Controls).")
+    correction_advice: Optional[StrictStr] = Field(None, alias="correctionAdvice", description="Optional correction advice.")
+    state: Optional[StrictStr] = Field(None, description="Whether the policy is enforced or not.")
+    tags: Optional[conlist(StrictStr)] = Field(None, description="Tags for the policy object.")
+    creator_id: Optional[StrictStr] = Field(None, alias="creatorId", description="Policy's creator ID.")
+    modifier_id: Optional[StrictStr] = Field(None, alias="modifierId", description="Policy's modifier ID.")
     violation_owner_assignment_config: Optional[ViolationOwnerAssignmentConfig] = Field(None, alias="violationOwnerAssignmentConfig")
-    scheduled: Optional[StrictBool] = Field(False, description="defines whether a policy has been scheduled or not")
-    type: Optional[StrictStr] = Field('GENERAL', description="whether a policy is query based or conflicting access based")
+    scheduled: Optional[StrictBool] = Field(False, description="Defines whether a policy has been scheduled or not.")
+    type: Optional[StrictStr] = Field('GENERAL', description="Whether a policy is query based or conflicting access based.")
     conflicting_access_criteria: Optional[SodPolicyConflictingAccessCriteria] = Field(None, alias="conflictingAccessCriteria")
     __properties = ["id", "name", "created", "modified", "description", "ownerRef", "externalPolicyReference", "policyQuery", "compensatingControls", "correctionAdvice", "state", "tags", "creatorId", "modifierId", "violationOwnerAssignmentConfig", "scheduled", "type", "conflictingAccessCriteria"]
 
@@ -148,7 +148,7 @@ class SodPolicy(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "description": obj.get("description"),
-            "owner_ref": BaseReferenceDto.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
+            "owner_ref": OwnerDto.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
             "external_policy_reference": obj.get("externalPolicyReference"),
             "policy_query": obj.get("policyQuery"),
             "compensating_controls": obj.get("compensatingControls"),

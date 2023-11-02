@@ -1,13 +1,13 @@
 # IdentityWithNewAccessAccessRefsInner
 
-The types of objects supported for SOD violations
+Entitlement including a specific set of access.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | [optional] 
-**id** | **str** | ID of the object to which this reference applies | [optional] 
-**name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
+**type** | **str** | Entitlement&#39;s DTO type. | [optional] 
+**id** | **str** | Entitlement&#39;s ID. | [optional] 
+**name** | **str** | Entitlement&#39;s display name. | [optional] 
 
 ## Example
 

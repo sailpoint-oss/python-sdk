@@ -6,7 +6,7 @@ Identity Profile exported object
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **version** | **int** | Version or object from the target service. | [optional] 
-**var_self** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**var_self** | [**SelfImportExportDto**](SelfImportExportDto.md) |  | [optional] 
 **object** | [**IdentityProfile1**](IdentityProfile1.md) |  | [optional] 
 
 ## Example

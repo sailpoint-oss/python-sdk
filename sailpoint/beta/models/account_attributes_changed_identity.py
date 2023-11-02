@@ -18,17 +18,16 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict
+
 from pydantic import BaseModel, Field, StrictStr, validator
-from beta.models.dto_type import DtoType
 
 class AccountAttributesChangedIdentity(BaseModel):
     """
-    The identity whose account attributes changed.  # noqa: E501
+    The identity whose account attributes were updated.  # noqa: E501
     """
-    type: Dict[str, Any] = Field(..., description="The type of object that is referenced")
-    id: StrictStr = Field(..., description="ID of the object to which this reference applies")
-    name: StrictStr = Field(..., description="Human-readable display name of the object to which this reference applies")
+    type: StrictStr = Field(..., description="DTO type of the identity whose account attributes were updated.")
+    id: StrictStr = Field(..., description="ID of the identity whose account attributes were updated.")
+    name: StrictStr = Field(..., description="Display name of the identity whose account attributes were updated.")
     __properties = ["type", "id", "name"]
 
     @validator('type')

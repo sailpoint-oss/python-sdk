@@ -53,7 +53,10 @@ class TestWorkflow(unittest.TestCase):
                 execution_count = 2,
                 failure_count = 0,
                 created = '2022-01-10T16:06:16.636381447Z',
-                creator = {type=IDENTITY, id=2c91808568c529c60168cca6f90c1313, name=William Wilson}
+                creator = beta.models.workflow_all_of_creator.Workflow_allOf_creator(
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', )
             )
         else:
             return Workflow(

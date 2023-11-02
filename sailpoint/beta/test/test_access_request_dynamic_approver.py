@@ -37,8 +37,10 @@ class TestAccessRequestDynamicApprover(unittest.TestCase):
         if include_optional:
             return AccessRequestDynamicApprover(
                 access_request_id = '4b4d982dddff4267ab12f0f1e72b5a6d',
-                requested_for = beta.models.access_request_dynamic_approver_requested_for.AccessRequestDynamicApprover_requestedFor(
-                    type = IDENTITY, ),
+                requested_for = beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    type = 'IDENTITY', 
+                    id = '2c4180a46faadee4016fb4e018c20626', 
+                    name = 'Robert Robinson', ),
                 requested_items = [
                     beta.models.access_request_dynamic_approver_requested_items_inner.AccessRequestDynamicApprover_requestedItems_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
@@ -48,14 +50,18 @@ class TestAccessRequestDynamicApprover(unittest.TestCase):
                         operation = Add, 
                         comment = 'William needs this access for his day to day job activities.', )
                     ],
-                requested_by = beta.models.access_request_dynamic_approver_requested_by.AccessRequestDynamicApprover_requestedBy(
-                    type = IDENTITY, )
+                requested_by = beta.models.access_item_requester_dto.AccessItemRequesterDto(
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
+                    name = 'William Wilson', )
             )
         else:
             return AccessRequestDynamicApprover(
                 access_request_id = '4b4d982dddff4267ab12f0f1e72b5a6d',
-                requested_for = beta.models.access_request_dynamic_approver_requested_for.AccessRequestDynamicApprover_requestedFor(
-                    type = IDENTITY, ),
+                requested_for = beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    type = 'IDENTITY', 
+                    id = '2c4180a46faadee4016fb4e018c20626', 
+                    name = 'Robert Robinson', ),
                 requested_items = [
                     beta.models.access_request_dynamic_approver_requested_items_inner.AccessRequestDynamicApprover_requestedItems_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
@@ -65,8 +71,10 @@ class TestAccessRequestDynamicApprover(unittest.TestCase):
                         operation = Add, 
                         comment = 'William needs this access for his day to day job activities.', )
                     ],
-                requested_by = beta.models.access_request_dynamic_approver_requested_by.AccessRequestDynamicApprover_requestedBy(
-                    type = IDENTITY, ),
+                requested_by = beta.models.access_item_requester_dto.AccessItemRequesterDto(
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
+                    name = 'William Wilson', ),
         )
         """
 

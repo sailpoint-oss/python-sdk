@@ -37,13 +37,17 @@ class TestIdentityCreated(unittest.TestCase):
         if include_optional:
             return IdentityCreated(
                 identity = beta.models.identity_created_identity.IdentityCreated_identity(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 attributes = {firstname=John}
             )
         else:
             return IdentityCreated(
                 identity = beta.models.identity_created_identity.IdentityCreated_identity(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 attributes = {firstname=John},
         )
         """

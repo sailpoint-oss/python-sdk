@@ -20,8 +20,9 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from v3.models.access_item_reviewed_by import AccessItemReviewedBy
 from v3.models.approval_scheme import ApprovalScheme
-from v3.models.base_reference_dto import BaseReferenceDto
+from v3.models.approval_status_dto_original_owner import ApprovalStatusDtoOriginalOwner
 from v3.models.error_message_dto import ErrorMessageDto
 from v3.models.manual_work_item_state import ManualWorkItemState
 
@@ -30,16 +31,15 @@ class ApprovalStatusDto(BaseModel):
     ApprovalStatusDto
     """
     forwarded: Optional[StrictBool] = Field(None, description="True if the request for this item was forwarded from one owner to another.")
-    original_owner: Optional[BaseReferenceDto] = Field(None, alias="originalOwner")
-    current_owner: Optional[BaseReferenceDto] = Field(None, alias="currentOwner")
-    reviewed_by: Optional[BaseReferenceDto] = Field(None, alias="reviewedBy")
+    original_owner: Optional[ApprovalStatusDtoOriginalOwner] = Field(None, alias="originalOwner")
+    current_owner: Optional[AccessItemReviewedBy] = Field(None, alias="currentOwner")
     modified: Optional[datetime] = Field(None, description="Time at which item was modified.")
     status: Optional[ManualWorkItemState] = None
     scheme: Optional[ApprovalScheme] = None
     error_messages: Optional[conlist(ErrorMessageDto)] = Field(None, alias="errorMessages", description="If the request failed, includes any error messages that were generated.")
     comment: Optional[StrictStr] = Field(None, description="Comment, if any, provided by the approver.")
     remove_date: Optional[datetime] = Field(None, alias="removeDate", description="The date the role or access profile is no longer assigned to the specified identity.")
-    __properties = ["forwarded", "originalOwner", "currentOwner", "reviewedBy", "modified", "status", "scheme", "errorMessages", "comment", "removeDate"]
+    __properties = ["forwarded", "originalOwner", "currentOwner", "modified", "status", "scheme", "errorMessages", "comment", "removeDate"]
 
     class Config:
         """Pydantic configuration"""
@@ -71,9 +71,6 @@ class ApprovalStatusDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of current_owner
         if self.current_owner:
             _dict['currentOwner'] = self.current_owner.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of reviewed_by
-        if self.reviewed_by:
-            _dict['reviewedBy'] = self.reviewed_by.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in error_messages (list)
         _items = []
         if self.error_messages:
@@ -94,9 +91,8 @@ class ApprovalStatusDto(BaseModel):
 
         _obj = ApprovalStatusDto.parse_obj({
             "forwarded": obj.get("forwarded"),
-            "original_owner": BaseReferenceDto.from_dict(obj.get("originalOwner")) if obj.get("originalOwner") is not None else None,
-            "current_owner": BaseReferenceDto.from_dict(obj.get("currentOwner")) if obj.get("currentOwner") is not None else None,
-            "reviewed_by": BaseReferenceDto.from_dict(obj.get("reviewedBy")) if obj.get("reviewedBy") is not None else None,
+            "original_owner": ApprovalStatusDtoOriginalOwner.from_dict(obj.get("originalOwner")) if obj.get("originalOwner") is not None else None,
+            "current_owner": AccessItemReviewedBy.from_dict(obj.get("currentOwner")) if obj.get("currentOwner") is not None else None,
             "modified": obj.get("modified"),
             "status": obj.get("status"),
             "scheme": obj.get("scheme"),

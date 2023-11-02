@@ -20,7 +20,7 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from v3.models.base_reference_dto import BaseReferenceDto
+from v3.models.pat_owner import PatOwner
 
 class CreatePersonalAccessTokenResponse(BaseModel):
     """
@@ -30,7 +30,7 @@ class CreatePersonalAccessTokenResponse(BaseModel):
     secret: StrictStr = Field(..., description="The secret of the personal access token (to be used as the password for Basic Auth).")
     scope: Optional[conlist(StrictStr)] = Field(..., description="Scopes of the personal  access token.")
     name: StrictStr = Field(..., description="The name of the personal access token. Cannot be the same as other personal access tokens owned by a user.")
-    owner: BaseReferenceDto = Field(...)
+    owner: PatOwner = Field(...)
     created: datetime = Field(..., description="The date and time, down to the millisecond, when this personal access token was created.")
     __properties = ["id", "secret", "scope", "name", "owner", "created"]
 
@@ -82,7 +82,7 @@ class CreatePersonalAccessTokenResponse(BaseModel):
             "secret": obj.get("secret"),
             "scope": obj.get("scope"),
             "name": obj.get("name"),
-            "owner": BaseReferenceDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": PatOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
             "created": obj.get("created")
         })
         return _obj

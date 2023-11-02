@@ -20,15 +20,15 @@ import json
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, conlist
-from v3.models.provisioning_config_managed_resource_refs_inner import ProvisioningConfigManagedResourceRefsInner
 from v3.models.provisioning_config_plan_initializer_script import ProvisioningConfigPlanInitializerScript
+from v3.models.service_desk_source import ServiceDeskSource
 
 class ProvisioningConfig(BaseModel):
     """
     Specification of a Service Desk integration provisioning configuration.  # noqa: E501
     """
     universal_manager: Optional[StrictBool] = Field(None, alias="universalManager", description="Specifies whether this configuration is used to manage provisioning requests for all sources from the org.  If true, no managedResourceRefs are allowed.")
-    managed_resource_refs: Optional[conlist(ProvisioningConfigManagedResourceRefsInner)] = Field(None, alias="managedResourceRefs", description="References to sources for the Service Desk integration template.  May only be specified if universalManager is false.")
+    managed_resource_refs: Optional[conlist(ServiceDeskSource)] = Field(None, alias="managedResourceRefs", description="References to sources for the Service Desk integration template.  May only be specified if universalManager is false.")
     plan_initializer_script: Optional[ProvisioningConfigPlanInitializerScript] = Field(None, alias="planInitializerScript")
     no_provisioning_requests: Optional[StrictBool] = Field(None, alias="noProvisioningRequests", description="Name of an attribute that when true disables the saving of ProvisioningRequest objects whenever plans are sent through this integration.")
     provisioning_request_expiration: Optional[StrictInt] = Field(None, alias="provisioningRequestExpiration", description="When saving pending requests is enabled, this defines the number of hours the request is allowed to live before it is considered expired and no longer affects plan compilation.")
@@ -82,7 +82,7 @@ class ProvisioningConfig(BaseModel):
 
         _obj = ProvisioningConfig.parse_obj({
             "universal_manager": obj.get("universalManager"),
-            "managed_resource_refs": [ProvisioningConfigManagedResourceRefsInner.from_dict(_item) for _item in obj.get("managedResourceRefs")] if obj.get("managedResourceRefs") is not None else None,
+            "managed_resource_refs": [ServiceDeskSource.from_dict(_item) for _item in obj.get("managedResourceRefs")] if obj.get("managedResourceRefs") is not None else None,
             "plan_initializer_script": ProvisioningConfigPlanInitializerScript.from_dict(obj.get("planInitializerScript")) if obj.get("planInitializerScript") is not None else None,
             "no_provisioning_requests": obj.get("noProvisioningRequests"),
             "provisioning_request_expiration": obj.get("provisioningRequestExpiration")

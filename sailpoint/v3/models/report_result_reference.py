@@ -20,17 +20,26 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-from v3.models.dto_type import DtoType
 
 class ReportResultReference(BaseModel):
     """
     ReportResultReference
     """
-    type: Optional[DtoType] = None
-    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object to which this reference applies")
-    status: Optional[StrictStr] = Field(None, description="Status of a violation report")
+    type: Optional[StrictStr] = Field(None, description="SOD policy violation report result DTO type.")
+    id: Optional[StrictStr] = Field(None, description="SOD policy violation report result ID.")
+    name: Optional[StrictStr] = Field(None, description="Human-readable name of the SOD policy violation report result.")
+    status: Optional[StrictStr] = Field(None, description="Status of a SOD policy violation report.")
     __properties = ["type", "id", "name", "status"]
+
+    @validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('REPORT_RESULT'):
+            raise ValueError("must be one of enum values ('REPORT_RESULT')")
+        return value
 
     @validator('status')
     def status_validate_enum(cls, value):

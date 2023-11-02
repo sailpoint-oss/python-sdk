@@ -23,12 +23,12 @@ from pydantic import BaseModel, Field, StrictStr, validator
 
 class AccountCorrelatedSource(BaseModel):
     """
-    The source from which the account came from.  # noqa: E501
+    The source the accounts are being correlated from.  # noqa: E501
     """
-    id: StrictStr = Field(..., description="ID of the object to which this reference applies")
-    type: StrictStr = Field(..., description="The type of object that is referenced")
-    name: StrictStr = Field(..., description="Human-readable display name of the object to which this reference applies")
-    __properties = ["id", "type", "name"]
+    type: StrictStr = Field(..., description="The DTO type of the source the accounts are being correlated from.")
+    id: StrictStr = Field(..., description="The ID of the source the accounts are being correlated from.")
+    name: StrictStr = Field(..., description="Display name of the source the accounts are being correlated from.")
+    __properties = ["type", "id", "name"]
 
     @validator('type')
     def type_validate_enum(cls, value):
@@ -73,8 +73,8 @@ class AccountCorrelatedSource(BaseModel):
             return AccountCorrelatedSource.parse_obj(obj)
 
         _obj = AccountCorrelatedSource.parse_obj({
-            "id": obj.get("id"),
             "type": obj.get("type"),
+            "id": obj.get("id"),
             "name": obj.get("name")
         })
         return _obj

@@ -47,10 +47,10 @@ class TestSodPolicySchedule(unittest.TestCase):
                     expiration = '2018-06-25T20:22:28.104Z', 
                     time_zone_id = 'GMT-06:00', ),
                 recipients = [
-                    beta.models.base_reference_dto.BaseReferenceDto(
+                    beta.models.sod_recipient.SodRecipient(
                         type = 'IDENTITY', 
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'William Wilson', )
+                        id = '2c7180a46faadee4016fb4e018c20642', 
+                        name = 'Michael Michaels', )
                     ],
                 email_empty_results = False,
                 creator_id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',

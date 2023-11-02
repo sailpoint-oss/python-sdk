@@ -5,7 +5,7 @@ Specification of attribute sync configuration for a source
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | 
+**source** | [**AttrSyncSource**](AttrSyncSource.md) |  | 
 **attributes** | [**List[AttrSyncSourceAttributeConfig]**](AttrSyncSourceAttributeConfig.md) | Attribute synchronization configuration for specific identity attributes in the context of a source | 
 
 ## Example

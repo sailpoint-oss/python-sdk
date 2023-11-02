@@ -41,10 +41,10 @@ class TestSodPolicy(unittest.TestCase):
                 created = '2020-01-01T00:00Z',
                 modified = '2020-01-01T00:00Z',
                 description = 'This policy ensures compliance of xyz',
-                owner_ref = v3.models.base_reference_dto.BaseReferenceDto(
+                owner_ref = v3.models.owner_dto.OwnerDto(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', ),
                 external_policy_reference = 'XYZ policy',
                 policy_query = '@access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdg) AND @access(id:0f11f2a4-7c94-4bf3-a2bd-742580fe3bdf)',
                 compensating_controls = 'Have a manager review the transaction decisions for their "out of compliance" employee',

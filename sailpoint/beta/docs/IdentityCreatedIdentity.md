@@ -1,13 +1,13 @@
 # IdentityCreatedIdentity
 
-The identity that was created.
+Created identity.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | 
-**id** | **str** | ID of the object to which this reference applies | 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**type** | **str** | Created identity&#39;s DTO type. | 
+**id** | **str** | Created identity ID. | 
+**name** | **str** | Created identity&#39;s display name. | 
 
 ## Example
 

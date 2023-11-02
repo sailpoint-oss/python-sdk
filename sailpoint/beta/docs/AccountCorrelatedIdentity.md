@@ -1,13 +1,13 @@
 # AccountCorrelatedIdentity
 
-The identity that the account correlated with.
+Identity the account is correlated with.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | 
-**id** | **str** | ID of the object to which this reference applies | 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**type** | **str** | DTO type of the identity the account is correlated with. | 
+**id** | **str** | ID of the identity the account is correlated with. | 
+**name** | **str** | Display name of the identity the account is correlated with. | 
 
 ## Example
 

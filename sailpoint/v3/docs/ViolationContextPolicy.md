@@ -6,7 +6,7 @@ The types of objects supported for SOD violations
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **object** | The type of object that is referenced | [optional] 
-**id** | **str** | ID of the object to which this reference applies | [optional] 
+**id** | **str** | SOD policy ID. | [optional] 
 **name** | **str** |  | [optional] 
 
 ## Example

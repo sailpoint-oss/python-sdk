@@ -37,13 +37,17 @@ class TestIdentityDeleted(unittest.TestCase):
         if include_optional:
             return IdentityDeleted(
                 identity = beta.models.identity_deleted_identity.IdentityDeleted_identity(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 attributes = {firstname=John}
             )
         else:
             return IdentityDeleted(
                 identity = beta.models.identity_deleted_identity.IdentityDeleted_identity(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 attributes = {firstname=John},
         )
         """

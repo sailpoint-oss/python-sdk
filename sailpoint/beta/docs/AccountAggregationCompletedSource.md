@@ -1,13 +1,13 @@
 # AccountAggregationCompletedSource
 
-The source from which the accounts were aggregated.
+The source the accounts are being aggregated from.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | 
-**id** | **str** | ID of the object to which this reference applies | 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**type** | **str** | The DTO type of the source the accounts are being aggregated from. | 
+**id** | **str** | The ID of the source the accounts are being aggregated from. | 
+**name** | **str** | Display name of the source the accounts are being aggregated from. | 
 
 ## Example
 

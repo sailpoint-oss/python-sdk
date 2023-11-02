@@ -20,7 +20,6 @@ import json
 
 from typing import Dict, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, validator
-from beta.models.base_reference_dto import BaseReferenceDto
 from beta.models.object_export_import_options import ObjectExportImportOptions
 
 class ImportOptions(BaseModel):
@@ -30,7 +29,7 @@ class ImportOptions(BaseModel):
     exclude_types: Optional[conlist(StrictStr)] = Field(None, alias="excludeTypes", description="Object type names to be excluded from an sp-config export command.")
     include_types: Optional[conlist(StrictStr)] = Field(None, alias="includeTypes", description="Object type names to be included in an sp-config export command. IncludeTypes takes precedence over excludeTypes.")
     object_options: Optional[Dict[str, ObjectExportImportOptions]] = Field(None, alias="objectOptions", description="Additional options targeting specific objects related to each item in the includeTypes field")
-    default_references: Optional[conlist(BaseReferenceDto)] = Field(None, alias="defaultReferences", description="List of BaseRefenceDtos that can be used to resolve references on import.")
+    default_references: Optional[conlist(StrictStr)] = Field(None, alias="defaultReferences", description="List of object types that can be used to resolve references on import.")
     exclude_backup: Optional[StrictBool] = Field(False, alias="excludeBackup", description="By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. If excludeBackup is true, the backup will not be performed.")
     __properties = ["excludeTypes", "includeTypes", "objectOptions", "defaultReferences", "excludeBackup"]
 
@@ -47,6 +46,17 @@ class ImportOptions(BaseModel):
 
     @validator('include_types')
     def include_types_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION'):
+                raise ValueError("each list item must be one of ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
+        return value
+
+    @validator('default_references')
+    def default_references_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
@@ -87,13 +97,6 @@ class ImportOptions(BaseModel):
                 if self.object_options[_key]:
                     _field_dict[_key] = self.object_options[_key].to_dict()
             _dict['objectOptions'] = _field_dict
-        # override the default output from pydantic by calling `to_dict()` of each item in default_references (list)
-        _items = []
-        if self.default_references:
-            for _item in self.default_references:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict['defaultReferences'] = _items
         return _dict
 
     @classmethod
@@ -114,7 +117,7 @@ class ImportOptions(BaseModel):
             )
             if obj.get("objectOptions") is not None
             else None,
-            "default_references": [BaseReferenceDto.from_dict(_item) for _item in obj.get("defaultReferences")] if obj.get("defaultReferences") is not None else None,
+            "default_references": obj.get("defaultReferences"),
             "exclude_backup": obj.get("excludeBackup") if obj.get("excludeBackup") is not None else False
         })
         return _obj

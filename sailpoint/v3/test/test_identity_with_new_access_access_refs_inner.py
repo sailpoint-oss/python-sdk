@@ -36,9 +36,9 @@ class TestIdentityWithNewAccessAccessRefsInner(unittest.TestCase):
         model = IdentityWithNewAccessAccessRefsInner()  # noqa: E501
         if include_optional:
             return IdentityWithNewAccessAccessRefsInner(
-                type = ENTITLEMENT,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson'
+                type = 'ENTITLEMENT',
+                id = '2c91809773dee32014e13e122092014e',
+                name = 'CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local'
             )
         else:
             return IdentityWithNewAccessAccessRefsInner(

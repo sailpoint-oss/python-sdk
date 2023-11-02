@@ -39,10 +39,10 @@ class TestGetPersonalAccessTokenResponse(unittest.TestCase):
                 id = '86f1dc6fe8f54414950454cbb11278fa',
                 name = 'NodeJS Integration',
                 scope = [demo:personal-access-token-scope:first, demo:personal-access-token-scope:second],
-                owner = v3.models.base_reference_dto.BaseReferenceDto(
+                owner = v3.models.pat_owner.PatOwner(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', ),
                 created = '2017-07-11T18:45:37.098Z',
                 last_used = '2017-07-11T18:45:37.098Z'
             )
@@ -51,10 +51,10 @@ class TestGetPersonalAccessTokenResponse(unittest.TestCase):
                 id = '86f1dc6fe8f54414950454cbb11278fa',
                 name = 'NodeJS Integration',
                 scope = [demo:personal-access-token-scope:first, demo:personal-access-token-scope:second],
-                owner = v3.models.base_reference_dto.BaseReferenceDto(
+                owner = v3.models.pat_owner.PatOwner(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', ),
                 created = '2017-07-11T18:45:37.098Z',
         )
         """

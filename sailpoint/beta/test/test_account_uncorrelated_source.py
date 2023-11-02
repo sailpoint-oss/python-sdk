@@ -36,15 +36,15 @@ class TestAccountUncorrelatedSource(unittest.TestCase):
         model = AccountUncorrelatedSource()  # noqa: E501
         if include_optional:
             return AccountUncorrelatedSource(
-                type = SOURCE,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson'
+                type = 'SOURCE',
+                id = '2c6180835d191a86015d28455b4b231b',
+                name = 'Corporate Directory'
             )
         else:
             return AccountUncorrelatedSource(
-                type = SOURCE,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson',
+                type = 'SOURCE',
+                id = '2c6180835d191a86015d28455b4b231b',
+                name = 'Corporate Directory',
         )
         """
 

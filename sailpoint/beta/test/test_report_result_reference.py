@@ -36,10 +36,10 @@ class TestReportResultReference(unittest.TestCase):
         model = ReportResultReference()  # noqa: E501
         if include_optional:
             return ReportResultReference(
-                type = 'IDENTITY',
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson',
-                status = 'SUCCESS'
+                type = 'REPORT_RESULT',
+                id = '2c9180835d191a86015d28455b4b232a',
+                name = 'SOD Policy 1 Violation',
+                status = 'PENDING'
             )
         else:
             return ReportResultReference(

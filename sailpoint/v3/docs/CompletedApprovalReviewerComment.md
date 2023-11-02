@@ -5,9 +5,9 @@ The approval's reviewer's comment.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**comment** | **str** | Content of the comment | [optional] 
+**comment** | **str** | Comment content. | [optional] 
 **author** | [**CommentDtoAuthor**](CommentDtoAuthor.md) |  | [optional] 
-**created** | **datetime** | Date and time comment was created | [optional] 
+**created** | **datetime** | Date and time comment was created. | [optional] 
 
 ## Example
 

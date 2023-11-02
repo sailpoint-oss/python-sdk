@@ -20,7 +20,7 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.base_reference_dto import BaseReferenceDto
+from beta.models.pat_owner import PatOwner
 
 class GetPersonalAccessTokenResponse(BaseModel):
     """
@@ -29,7 +29,7 @@ class GetPersonalAccessTokenResponse(BaseModel):
     id: StrictStr = Field(..., description="The ID of the personal access token (to be used as the username for Basic Auth).")
     name: StrictStr = Field(..., description="The name of the personal access token. Cannot be the same as other personal access tokens owned by a user.")
     scope: Optional[conlist(StrictStr)] = Field(..., description="Scopes of the personal  access token.")
-    owner: BaseReferenceDto = Field(...)
+    owner: PatOwner = Field(...)
     created: datetime = Field(..., description="The date and time, down to the millisecond, when this personal access token was created.")
     last_used: Optional[datetime] = Field(None, alias="lastUsed", description="The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed.")
     __properties = ["id", "name", "scope", "owner", "created", "lastUsed"]
@@ -86,7 +86,7 @@ class GetPersonalAccessTokenResponse(BaseModel):
             "id": obj.get("id"),
             "name": obj.get("name"),
             "scope": obj.get("scope"),
-            "owner": BaseReferenceDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": PatOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
             "created": obj.get("created"),
             "last_used": obj.get("lastUsed")
         })

@@ -42,25 +42,25 @@ class TestPendingApproval(unittest.TestCase):
                 modified = '2018-07-25T20:22:28.104Z',
                 request_created = '2017-07-11T18:45:35.098Z',
                 request_type = 'GRANT_ACCESS',
-                requester = v3.models.base_reference_dto.BaseReferenceDto(
+                requester = v3.models.access_item_requester.AccessItemRequester(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
-                requested_for = v3.models.base_reference_dto.BaseReferenceDto(
+                requested_for = v3.models.access_item_requested_for.AccessItemRequestedFor(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
-                owner = v3.models.base_reference_dto.BaseReferenceDto(
+                    id = '2c4180a46faadee4016fb4e018c20626', 
+                    name = 'Robert Robinson', ),
+                owner = v3.models.pending_approval_owner.PendingApproval_owner(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', ),
                 requested_object = v3.models.requestable_object_reference.RequestableObjectReference(
                     id = '2c9180835d2e5168015d32f890ca1581', 
                     name = 'Applied Research Access', 
                     description = 'Access to research information, lab results, and schematics', 
                     type = 'ROLE', ),
                 requester_comment = v3.models.comment_dto.CommentDto(
-                    comment = 'Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum erat', 
+                    comment = 'This is a comment.', 
                     author = v3.models.comment_dto_author.CommentDto_author(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
@@ -68,7 +68,7 @@ class TestPendingApproval(unittest.TestCase):
                     created = '2017-07-11T18:45:37.098Z', ),
                 previous_reviewers_comments = [
                     v3.models.comment_dto.CommentDto(
-                        comment = 'Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum erat', 
+                        comment = 'This is a comment.', 
                         author = v3.models.comment_dto_author.CommentDto_author(
                             type = 'IDENTITY', 
                             id = '2c91808568c529c60168cca6f90c1313', 
@@ -100,24 +100,25 @@ class TestPendingApproval(unittest.TestCase):
                         client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}, 
                         violation_contexts = [
                             v3.models.sod_violation_context.SodViolationContext(
-                                policy = v3.models.base_reference_dto.BaseReferenceDto(
-                                    type = 'IDENTITY', 
-                                    id = '2c91808568c529c60168cca6f90c1313', 
-                                    name = 'William Wilson', ), 
+                                policy = v3.models.sod_policy_dto.SodPolicyDto(
+                                    type = 'SOD_POLICY', 
+                                    id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
+                                    name = 'Business SOD Policy', ), 
                                 conflicting_access_criteria = v3.models.sod_violation_context_conflicting_access_criteria.SodViolationContext_conflictingAccessCriteria(
                                     left_criteria = v3.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(
                                         criteria_list = [
                                             v3.models.sod_exempt_criteria.SodExemptCriteria(
                                                 existing = True, 
+                                                type = 'IDENTITY', 
                                                 id = '2c918085771e9d3301773b3cb66f6398', 
                                                 name = 'My HR Entitlement', )
                                             ], ), 
                                     right_criteria = v3.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(), ), )
                             ], 
                         violated_policies = [
-                            v3.models.base_reference_dto.BaseReferenceDto(
-                                id = '2c91808568c529c60168cca6f90c1313', 
-                                name = 'William Wilson', )
+                            v3.models.sod_policy_dto.SodPolicyDto(
+                                id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
+                                name = 'Business SOD Policy', )
                             ], ), )
             )
         else:

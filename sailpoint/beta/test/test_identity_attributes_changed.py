@@ -37,7 +37,9 @@ class TestIdentityAttributesChanged(unittest.TestCase):
         if include_optional:
             return IdentityAttributesChanged(
                 identity = beta.models.identity_attributes_changed_identity.IdentityAttributesChanged_identity(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 changes = [
                     beta.models.identity_attributes_changed_changes_inner.IdentityAttributesChanged_changes_inner(
                         attribute = 'department', 
@@ -48,7 +50,9 @@ class TestIdentityAttributesChanged(unittest.TestCase):
         else:
             return IdentityAttributesChanged(
                 identity = beta.models.identity_attributes_changed_identity.IdentityAttributesChanged_identity(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 changes = [
                     beta.models.identity_attributes_changed_changes_inner.IdentityAttributesChanged_changes_inner(
                         attribute = 'department', 

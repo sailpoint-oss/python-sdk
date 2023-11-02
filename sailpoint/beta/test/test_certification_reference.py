@@ -36,11 +36,13 @@ class TestCertificationReference(unittest.TestCase):
         model = CertificationReference()  # noqa: E501
         if include_optional:
             return CertificationReference(
-                type = CERTIFICATION,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson',
+                type = 'IDENTITY',
+                id = '7589a83cec4b4f138ce56c1a5ef0756d',
+                name = 'Manager Access for Michael Michaels',
                 reviewer = beta.models.reviewer.Reviewer(
-                    type = IDENTITY, 
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', 
                     email = 'reviewer@test.com', )
             )
         else:

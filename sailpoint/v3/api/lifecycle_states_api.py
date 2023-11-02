@@ -23,9 +23,9 @@ from pydantic import Field, StrictBool, StrictStr, conint, conlist
 
 from typing import List, Optional
 
-from v3.models.base_reference_dto import BaseReferenceDto
 from v3.models.json_patch_operation import JsonPatchOperation
 from v3.models.lifecycle_state import LifecycleState
+from v3.models.lifecyclestate_deleted import LifecyclestateDeleted
 from v3.models.set_lifecycle_state200_response import SetLifecycleState200Response
 from v3.models.set_lifecycle_state_request import SetLifecycleStateRequest
 
@@ -210,10 +210,10 @@ class LifecycleStatesApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_lifecycle_state(self, identity_profile_id : Annotated[StrictStr, Field(..., description="Identity Profile ID")], lifecycle_state_id : Annotated[StrictStr, Field(..., description="Lifecycle State ID")], **kwargs) -> BaseReferenceDto:  # noqa: E501
+    def delete_lifecycle_state(self, identity_profile_id : Annotated[StrictStr, Field(..., description="Identity Profile ID")], lifecycle_state_id : Annotated[StrictStr, Field(..., description="Lifecycle State ID")], **kwargs) -> LifecyclestateDeleted:  # noqa: E501
         """Delete Lifecycle State by ID  # noqa: E501
 
-        This endpoint deletes the Lifecycle State using it's ID. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
+        This endpoint deletes the Lifecycle State using its ID. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -233,7 +233,7 @@ class LifecycleStatesApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: BaseReferenceDto
+        :rtype: LifecyclestateDeleted
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -245,7 +245,7 @@ class LifecycleStatesApi:
     def delete_lifecycle_state_with_http_info(self, identity_profile_id : Annotated[StrictStr, Field(..., description="Identity Profile ID")], lifecycle_state_id : Annotated[StrictStr, Field(..., description="Lifecycle State ID")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Lifecycle State by ID  # noqa: E501
 
-        This endpoint deletes the Lifecycle State using it's ID. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
+        This endpoint deletes the Lifecycle State using its ID. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -278,7 +278,7 @@ class LifecycleStatesApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(BaseReferenceDto, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(LifecyclestateDeleted, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -337,7 +337,7 @@ class LifecycleStatesApi:
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
 
         _response_types_map = {
-            '202': "BaseReferenceDto",
+            '202': "LifecyclestateDeleted",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",

@@ -37,8 +37,10 @@ class TestTriggerExampleInput(unittest.TestCase):
         if include_optional:
             return TriggerExampleInput(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',
-                requested_for = beta.models.access_request_post_approval_requested_for.AccessRequestPostApproval_requestedFor(
-                    type = IDENTITY, ),
+                requested_for = beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    type = 'IDENTITY', 
+                    id = '2c4180a46faadee4016fb4e018c20626', 
+                    name = 'Robert Robinson', ),
                 requested_items = [
                     beta.models.access_request_pre_approval_requested_items_inner.AccessRequestPreApproval_requestedItems_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
@@ -48,8 +50,10 @@ class TestTriggerExampleInput(unittest.TestCase):
                         operation = Add, 
                         comment = 'William needs this access to do his job.', )
                     ],
-                requested_by = beta.models.access_request_post_approval_requested_by.AccessRequestPostApproval_requestedBy(
-                    type = IDENTITY, ),
+                requested_by = beta.models.access_item_requester_dto.AccessItemRequesterDto(
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
+                    name = 'William Wilson', ),
                 requested_items_status = [
                     beta.models.access_request_post_approval_requested_items_status_inner.AccessRequestPostApproval_requestedItemsStatus_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
@@ -69,7 +73,9 @@ class TestTriggerExampleInput(unittest.TestCase):
                             ], )
                     ],
                 source = beta.models.account_uncorrelated_source.AccountUncorrelated_source(
-                    type = SOURCE, ),
+                    type = 'SOURCE', 
+                    id = '2c6180835d191a86015d28455b4b231b', 
+                    name = 'Corporate Directory', ),
                 status = Success,
                 started = '2020-06-29T22:01:50.474Z',
                 completed = '2020-06-29T22:02:04.090Z',
@@ -86,9 +92,13 @@ class TestTriggerExampleInput(unittest.TestCase):
                     added = 4, 
                     removed = 3, ),
                 identity = beta.models.identity_deleted_identity.IdentityDeleted_identity(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 account = beta.models.account_uncorrelated_account.AccountUncorrelated_account(
                     type = ACCOUNT, 
+                    id = '4dd497e3723e439991cb6d0e478375dd', 
+                    name = 'Sadie Jensen', 
                     native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com', 
                     uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108', ),
                 changes = [
@@ -121,9 +131,13 @@ class TestTriggerExampleInput(unittest.TestCase):
                 sources = 'Corp AD, Corp LDAP, Corp Salesforce',
                 action = 'IdentityRefresh',
                 recipient = beta.models.provisioning_completed_recipient.ProvisioningCompleted_recipient(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 requester = beta.models.provisioning_completed_requester.ProvisioningCompleted_requester(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
+                    name = 'William Wilson', ),
                 account_requests = [
                     beta.models.provisioning_completed_account_requests_inner.ProvisioningCompleted_accountRequests_inner(
                         source = beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
@@ -179,7 +193,9 @@ class TestTriggerExampleInput(unittest.TestCase):
                 created = '2020-06-29T22:01:50.474Z',
                 connector = 'active-directory',
                 actor = beta.models.source_updated_actor.SourceUpdated_actor(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
+                    name = 'William Wilson', ),
                 deleted = '2021-03-29T22:01:50.474Z',
                 modified = '2021-03-29T22:01:50.474Z',
                 application = beta.models.va_cluster_status_change_event_application.VAClusterStatusChangeEvent_application(
@@ -198,8 +214,10 @@ class TestTriggerExampleInput(unittest.TestCase):
         else:
             return TriggerExampleInput(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',
-                requested_for = beta.models.access_request_post_approval_requested_for.AccessRequestPostApproval_requestedFor(
-                    type = IDENTITY, ),
+                requested_for = beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    type = 'IDENTITY', 
+                    id = '2c4180a46faadee4016fb4e018c20626', 
+                    name = 'Robert Robinson', ),
                 requested_items = [
                     beta.models.access_request_pre_approval_requested_items_inner.AccessRequestPreApproval_requestedItems_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
@@ -209,8 +227,10 @@ class TestTriggerExampleInput(unittest.TestCase):
                         operation = Add, 
                         comment = 'William needs this access to do his job.', )
                     ],
-                requested_by = beta.models.access_request_post_approval_requested_by.AccessRequestPostApproval_requestedBy(
-                    type = IDENTITY, ),
+                requested_by = beta.models.access_item_requester_dto.AccessItemRequesterDto(
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
+                    name = 'William Wilson', ),
                 requested_items_status = [
                     beta.models.access_request_post_approval_requested_items_status_inner.AccessRequestPostApproval_requestedItemsStatus_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
@@ -230,7 +250,9 @@ class TestTriggerExampleInput(unittest.TestCase):
                             ], )
                     ],
                 source = beta.models.account_uncorrelated_source.AccountUncorrelated_source(
-                    type = SOURCE, ),
+                    type = 'SOURCE', 
+                    id = '2c6180835d191a86015d28455b4b231b', 
+                    name = 'Corporate Directory', ),
                 status = Success,
                 started = '2020-06-29T22:01:50.474Z',
                 completed = '2020-06-29T22:02:04.090Z',
@@ -247,9 +269,13 @@ class TestTriggerExampleInput(unittest.TestCase):
                     added = 4, 
                     removed = 3, ),
                 identity = beta.models.identity_deleted_identity.IdentityDeleted_identity(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 account = beta.models.account_uncorrelated_account.AccountUncorrelated_account(
                     type = ACCOUNT, 
+                    id = '4dd497e3723e439991cb6d0e478375dd', 
+                    name = 'Sadie Jensen', 
                     native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com', 
                     uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108', ),
                 changes = [
@@ -280,7 +306,9 @@ class TestTriggerExampleInput(unittest.TestCase):
                 tracking_number = '4b4d982dddff4267ab12f0f1e72b5a6d',
                 sources = 'Corp AD, Corp LDAP, Corp Salesforce',
                 recipient = beta.models.provisioning_completed_recipient.ProvisioningCompleted_recipient(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 account_requests = [
                     beta.models.provisioning_completed_account_requests_inner.ProvisioningCompleted_accountRequests_inner(
                         source = beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
@@ -335,7 +363,9 @@ class TestTriggerExampleInput(unittest.TestCase):
                 created = '2020-06-29T22:01:50.474Z',
                 connector = 'active-directory',
                 actor = beta.models.source_updated_actor.SourceUpdated_actor(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
+                    name = 'William Wilson', ),
                 deleted = '2021-03-29T22:01:50.474Z',
                 modified = '2021-03-29T22:01:50.474Z',
                 application = beta.models.va_cluster_status_change_event_application.VAClusterStatusChangeEvent_application(

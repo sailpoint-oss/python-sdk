@@ -36,7 +36,7 @@ class TestCompletedApprovalReviewerComment(unittest.TestCase):
         model = CompletedApprovalReviewerComment()  # noqa: E501
         if include_optional:
             return CompletedApprovalReviewerComment(
-                comment = 'Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum erat',
+                comment = 'This is a comment.',
                 author = v3.models.comment_dto_author.CommentDto_author(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 

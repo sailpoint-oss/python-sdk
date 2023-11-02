@@ -40,10 +40,10 @@ class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
                 secret = '1d1bef2b9f426383447f64f69349fc7cac176042578d205c256ba3f37c59adb9',
                 scope = [demo:personal-access-token-scope:first, demo:personal-access-token-scope:second],
                 name = 'NodeJS Integration',
-                owner = beta.models.base_reference_dto.BaseReferenceDto(
+                owner = beta.models.pat_owner.PatOwner(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', ),
                 created = '2017-07-11T18:45:37.098Z'
             )
         else:
@@ -52,10 +52,10 @@ class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
                 secret = '1d1bef2b9f426383447f64f69349fc7cac176042578d205c256ba3f37c59adb9',
                 scope = [demo:personal-access-token-scope:first, demo:personal-access-token-scope:second],
                 name = 'NodeJS Integration',
-                owner = beta.models.base_reference_dto.BaseReferenceDto(
+                owner = beta.models.pat_owner.PatOwner(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', ),
                 created = '2017-07-11T18:45:37.098Z',
         )
         """

@@ -36,7 +36,12 @@ class TestCommentDto(unittest.TestCase):
         model = CommentDto()  # noqa: E501
         if include_optional:
             return CommentDto(
-                comment = ''
+                comment = 'This is a comment.',
+                author = beta.models.comment_dto_author.CommentDto_author(
+                    type = 'IDENTITY', 
+                    id = '2c91808568c529c60168cca6f90c1313', 
+                    name = 'Adam Kennedy', ),
+                created = '2017-07-11T18:45:37.098Z'
             )
         else:
             return CommentDto(

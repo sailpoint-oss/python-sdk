@@ -5,8 +5,8 @@ An identity with a set of access to be added
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identity_id** | **str** | Set of identity id&#39;s to be checked. | 
-**access_refs** | [**List[BaseReferenceDto]**](BaseReferenceDto.md) | The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type. | 
+**identity_id** | **str** | Set of identity IDs to be checked. | 
+**access_refs** | [**List[EntitlementRef]**](EntitlementRef.md) | The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type. | 
 **client_metadata** | **Dict[str, str]** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check. | [optional] 
 
 ## Example

@@ -20,14 +20,14 @@ import json
 
 from typing import List
 from pydantic import BaseModel, Field, conlist
+from beta.models.attr_sync_source import AttrSyncSource
 from beta.models.attr_sync_source_attribute_config import AttrSyncSourceAttributeConfig
-from beta.models.base_reference_dto import BaseReferenceDto
 
 class AttrSyncSourceConfig(BaseModel):
     """
     Specification of attribute sync configuration for a source  # noqa: E501
     """
-    source: BaseReferenceDto = Field(...)
+    source: AttrSyncSource = Field(...)
     attributes: conlist(AttrSyncSourceAttributeConfig) = Field(..., description="Attribute synchronization configuration for specific identity attributes in the context of a source")
     __properties = ["source", "attributes"]
 
@@ -77,7 +77,7 @@ class AttrSyncSourceConfig(BaseModel):
             return AttrSyncSourceConfig.parse_obj(obj)
 
         _obj = AttrSyncSourceConfig.parse_obj({
-            "source": BaseReferenceDto.from_dict(obj.get("source")) if obj.get("source") is not None else None,
+            "source": AttrSyncSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
             "attributes": [AttrSyncSourceAttributeConfig.from_dict(_item) for _item in obj.get("attributes")] if obj.get("attributes") is not None else None
         })
         return _obj

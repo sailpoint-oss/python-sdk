@@ -52,11 +52,12 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
                 due = '2018-10-19T13:49:37.385Z',
                 signed = '2018-10-19T13:49:37.385Z',
                 reviewer = beta.models.reviewer.Reviewer(
-                    type = IDENTITY, 
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', 
                     email = 'reviewer@test.com', ),
                 reassignment = beta.models.reassignment.Reassignment(
-                    from = beta.models.certification_reference.CertificationReference(
-                        type = CERTIFICATION, ), 
+                    from = beta.models.certification_reference.CertificationReference(), 
                     comment = 'Please review', ),
                 has_errors = False,
                 error_message = 'The certification has an error',
@@ -83,7 +84,9 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
                 due = '2018-10-19T13:49:37.385Z',
                 signed = '2018-10-19T13:49:37.385Z',
                 reviewer = beta.models.reviewer.Reviewer(
-                    type = IDENTITY, 
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', 
                     email = 'reviewer@test.com', ),
                 has_errors = False,
                 completed = False,

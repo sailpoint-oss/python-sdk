@@ -36,9 +36,9 @@ class TestCampaignReport(unittest.TestCase):
         model = CampaignReport()  # noqa: E501
         if include_optional:
             return CampaignReport(
-                type = 'IDENTITY',
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson',
+                type = 'REPORT_RESULT',
+                id = '2c9180835d191a86015d28455b4b232a',
+                name = 'SOD Policy 1 Violation',
                 status = 'PENDING',
                 report_type = 'CAMPAIGN_COMPOSITION_REPORT',
                 last_run_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')

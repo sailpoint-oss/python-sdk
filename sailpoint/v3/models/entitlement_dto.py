@@ -20,7 +20,7 @@ import json
 from datetime import datetime
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-from v3.models.base_reference_dto import BaseReferenceDto
+from v3.models.entitlement_source import EntitlementSource
 
 class EntitlementDto(BaseModel):
     """
@@ -37,7 +37,7 @@ class EntitlementDto(BaseModel):
     source_schema_object_type: Optional[StrictStr] = Field(None, alias="sourceSchemaObjectType", description="Schema objectType on the given application that maps to an Account Group")
     privileged: Optional[StrictBool] = Field(None, description="Determines if this Entitlement is privileged.")
     cloud_governed: Optional[StrictBool] = Field(None, alias="cloudGoverned", description="Determines if this Entitlement is goverened in the cloud.")
-    source: Optional[BaseReferenceDto] = None
+    source: Optional[EntitlementSource] = None
     __properties = ["id", "name", "created", "modified", "attribute", "value", "description", "attributes", "sourceSchemaObjectType", "privileged", "cloudGoverned", "source"]
 
     class Config:
@@ -93,7 +93,7 @@ class EntitlementDto(BaseModel):
             "source_schema_object_type": obj.get("sourceSchemaObjectType"),
             "privileged": obj.get("privileged"),
             "cloud_governed": obj.get("cloudGoverned"),
-            "source": BaseReferenceDto.from_dict(obj.get("source")) if obj.get("source") is not None else None
+            "source": EntitlementSource.from_dict(obj.get("source")) if obj.get("source") is not None else None
         })
         return _obj
 

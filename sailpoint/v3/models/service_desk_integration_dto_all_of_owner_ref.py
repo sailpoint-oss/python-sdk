@@ -18,17 +18,16 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, validator
-from v3.models.dto_type import DtoType
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, validator
 
 class ServiceDeskIntegrationDtoAllOfOwnerRef(BaseModel):
     """
-    Reference to the identity that is the owner of this Service Desk integration  # noqa: E501
+    Source for Service Desk integration template.  # noqa: E501
     """
-    type: Optional[Dict[str, Any]] = Field(None, description="The type of object being referenced")
-    id: Optional[Dict[str, Any]] = Field(None, description="ID of the identity")
-    name: Optional[Dict[str, Any]] = Field(None, description="Human-readable display name of the identity")
+    type: Optional[StrictStr] = Field(None, description="DTO type of source for service desk integration template.")
+    id: Optional[StrictStr] = Field(None, description="ID of source for service desk integration template.")
+    name: Optional[StrictStr] = Field(None, description="Human-readable name of source for service desk integration template.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -37,8 +36,8 @@ class ServiceDeskIntegrationDtoAllOfOwnerRef(BaseModel):
         if value is None:
             return value
 
-        if value not in ('IDENTITY'):
-            raise ValueError("must be one of enum values ('IDENTITY')")
+        if value not in ('SOURCE'):
+            raise ValueError("must be one of enum values ('SOURCE')")
         return value
 
     class Config:

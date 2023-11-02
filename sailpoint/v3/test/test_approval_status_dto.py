@@ -37,18 +37,14 @@ class TestApprovalStatusDto(unittest.TestCase):
         if include_optional:
             return ApprovalStatusDto(
                 forwarded = False,
-                original_owner = v3.models.base_reference_dto.BaseReferenceDto(
+                original_owner = v3.models.approval_status_dto_original_owner.ApprovalStatusDto_originalOwner(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
-                current_owner = v3.models.base_reference_dto.BaseReferenceDto(
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
+                current_owner = v3.models.access_item_reviewed_by.AccessItemReviewedBy(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
-                reviewed_by = v3.models.base_reference_dto.BaseReferenceDto(
-                    type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c3780a46faadee4016fb4e018c20652', 
+                    name = 'Allen Albertson', ),
                 modified = '2019-08-23T18:52:57.398Z',
                 status = 'PENDING',
                 scheme = 'MANAGER',

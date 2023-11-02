@@ -26,9 +26,9 @@ class CommentDto(BaseModel):
     """
     CommentDto
     """
-    comment: Optional[StrictStr] = Field(None, description="Content of the comment")
+    comment: Optional[StrictStr] = Field(None, description="Comment content.")
     author: Optional[CommentDtoAuthor] = None
-    created: Optional[datetime] = Field(None, description="Date and time comment was created")
+    created: Optional[datetime] = Field(None, description="Date and time comment was created.")
     __properties = ["comment", "author", "created"]
 
     class Config:
@@ -58,6 +58,11 @@ class CommentDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of author
         if self.author:
             _dict['author'] = self.author.to_dict()
+        # set to None if comment (nullable) is None
+        # and __fields_set__ contains the field
+        if self.comment is None and "comment" in self.__fields_set__:
+            _dict['comment'] = None
+
         return _dict
 
     @classmethod

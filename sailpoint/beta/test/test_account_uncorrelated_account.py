@@ -37,17 +37,17 @@ class TestAccountUncorrelatedAccount(unittest.TestCase):
         if include_optional:
             return AccountUncorrelatedAccount(
                 type = ACCOUNT,
+                id = '4dd497e3723e439991cb6d0e478375dd',
+                name = 'Sadie Jensen',
                 native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com',
-                uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108',
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson'
+                uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108'
             )
         else:
             return AccountUncorrelatedAccount(
                 type = ACCOUNT,
+                id = '4dd497e3723e439991cb6d0e478375dd',
+                name = 'Sadie Jensen',
                 native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com',
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson',
         )
         """
 

@@ -27,7 +27,7 @@ class IdentityCreated(BaseModel):
     IdentityCreated
     """
     identity: IdentityCreatedIdentity = Field(...)
-    attributes: Dict[str, Any] = Field(..., description="The attributes assigned to the identity.  Attributes are determined by the identity profile.")
+    attributes: Dict[str, Any] = Field(..., description="The attributes assigned to the identity. Attributes are determined by the identity profile.")
     __properties = ["identity", "attributes"]
 
     class Config:

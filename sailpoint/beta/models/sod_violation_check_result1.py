@@ -20,8 +20,8 @@ import json
 
 from typing import Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.base_reference_dto1 import BaseReferenceDto1
 from beta.models.error_message_dto import ErrorMessageDto
+from beta.models.sod_policy_dto import SodPolicyDto
 from beta.models.sod_violation_context1 import SodViolationContext1
 
 class SodViolationCheckResult1(BaseModel):
@@ -31,7 +31,7 @@ class SodViolationCheckResult1(BaseModel):
     message: Optional[ErrorMessageDto] = None
     client_metadata: Optional[Dict[str, StrictStr]] = Field(None, alias="clientMetadata", description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.")
     violation_contexts: Optional[conlist(SodViolationContext1)] = Field(None, alias="violationContexts")
-    violated_policies: Optional[conlist(BaseReferenceDto1)] = Field(None, alias="violatedPolicies", description="A list of the Policies that were violated")
+    violated_policies: Optional[conlist(SodPolicyDto)] = Field(None, alias="violatedPolicies", description="A list of the Policies that were violated.")
     __properties = ["message", "clientMetadata", "violationContexts", "violatedPolicies"]
 
     class Config:
@@ -90,7 +90,7 @@ class SodViolationCheckResult1(BaseModel):
             "message": ErrorMessageDto.from_dict(obj.get("message")) if obj.get("message") is not None else None,
             "client_metadata": obj.get("clientMetadata"),
             "violation_contexts": [SodViolationContext1.from_dict(_item) for _item in obj.get("violationContexts")] if obj.get("violationContexts") is not None else None,
-            "violated_policies": [BaseReferenceDto1.from_dict(_item) for _item in obj.get("violatedPolicies")] if obj.get("violatedPolicies") is not None else None
+            "violated_policies": [SodPolicyDto.from_dict(_item) for _item in obj.get("violatedPolicies")] if obj.get("violatedPolicies") is not None else None
         })
         return _obj
 

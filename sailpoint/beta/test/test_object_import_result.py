@@ -55,10 +55,10 @@ class TestObjectImportResult(unittest.TestCase):
                         details = {details=message details}, )
                     ],
                 imported_objects = [
-                    beta.models.base_reference_dto.BaseReferenceDto(
-                        type = 'IDENTITY', 
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'William Wilson', )
+                    beta.models.import_object.ImportObject(
+                        type = 'SOURCE', 
+                        id = '2c9180835d191a86015d28455b4b232a', 
+                        name = 'HR Active Directory', )
                     ]
             )
         else:
@@ -82,10 +82,10 @@ class TestObjectImportResult(unittest.TestCase):
                         details = {details=message details}, )
                     ],
                 imported_objects = [
-                    beta.models.base_reference_dto.BaseReferenceDto(
-                        type = 'IDENTITY', 
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'William Wilson', )
+                    beta.models.import_object.ImportObject(
+                        type = 'SOURCE', 
+                        id = '2c9180835d191a86015d28455b4b232a', 
+                        name = 'HR Active Directory', )
                     ],
         )
         """

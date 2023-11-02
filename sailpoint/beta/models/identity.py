@@ -20,7 +20,7 @@ import json
 from datetime import datetime
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, validator
-from beta.models.base_reference_dto import BaseReferenceDto
+from beta.models.identity_dto_manager_ref import IdentityDtoManagerRef
 from beta.models.lifecycle_state_dto import LifecycleStateDto
 
 class Identity(BaseModel):
@@ -35,7 +35,7 @@ class Identity(BaseModel):
     email_address: Optional[StrictStr] = Field(None, alias="emailAddress", description="The email address of the identity")
     processing_state: Optional[StrictStr] = Field(None, alias="processingState", description="The processing state of the identity")
     identity_status: Optional[StrictStr] = Field(None, alias="identityStatus", description="The identity's status in the system")
-    manager_ref: Optional[BaseReferenceDto] = Field(None, alias="managerRef")
+    manager_ref: Optional[IdentityDtoManagerRef] = Field(None, alias="managerRef")
     is_manager: Optional[StrictBool] = Field(False, alias="isManager", description="Whether this identity is a manager of another identity")
     last_refresh: Optional[datetime] = Field(None, alias="lastRefresh", description="The last time the identity was refreshed by the system")
     attributes: Optional[Dict[str, Any]] = Field(None, description="A map with the identity attributes for the identity")
@@ -120,7 +120,7 @@ class Identity(BaseModel):
             "email_address": obj.get("emailAddress"),
             "processing_state": obj.get("processingState"),
             "identity_status": obj.get("identityStatus"),
-            "manager_ref": BaseReferenceDto.from_dict(obj.get("managerRef")) if obj.get("managerRef") is not None else None,
+            "manager_ref": IdentityDtoManagerRef.from_dict(obj.get("managerRef")) if obj.get("managerRef") is not None else None,
             "is_manager": obj.get("isManager") if obj.get("isManager") is not None else False,
             "last_refresh": obj.get("lastRefresh"),
             "attributes": obj.get("attributes"),

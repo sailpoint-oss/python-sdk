@@ -6,9 +6,9 @@ An example of the JSON payload that will be sent by the trigger to the subscribe
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_request_id** | **str** | The unique ID of the access request. | 
-**requested_for** | [**AccessRequestPostApprovalRequestedFor**](AccessRequestPostApprovalRequestedFor.md) |  | 
+**requested_for** | [**AccessItemRequestedForDto**](AccessItemRequestedForDto.md) |  | 
 **requested_items** | [**List[AccessRequestPreApprovalRequestedItemsInner]**](AccessRequestPreApprovalRequestedItemsInner.md) | Details of the access items being requested. | 
-**requested_by** | [**AccessRequestPostApprovalRequestedBy**](AccessRequestPostApprovalRequestedBy.md) |  | 
+**requested_by** | [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | 
 **requested_items_status** | [**List[AccessRequestPostApprovalRequestedItemsStatusInner]**](AccessRequestPostApprovalRequestedItemsStatusInner.md) | Details on the outcome of each access item. | 
 **source** | [**AccountUncorrelatedSource**](AccountUncorrelatedSource.md) |  | 
 **status** | **object** | The overall status of the collection. | 

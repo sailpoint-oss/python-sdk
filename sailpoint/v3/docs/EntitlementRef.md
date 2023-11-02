@@ -1,12 +1,13 @@
 # EntitlementRef
 
+Entitlement including a specific set of access.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The ID of the Entitlement | [optional] 
-**type** | **str** | The type of the Entitlement, will always be ENTITLEMENT | [optional] 
-**name** | **str** | The display name of the Entitlement | [optional] 
+**type** | **str** | Entitlement&#39;s DTO type. | [optional] 
+**id** | **str** | Entitlement&#39;s ID. | [optional] 
+**name** | **str** | Entitlement&#39;s display name. | [optional] 
 
 ## Example
 

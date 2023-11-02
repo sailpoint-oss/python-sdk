@@ -52,8 +52,8 @@ class TestAccessProfile(unittest.TestCase):
                     name = 'ODS-AD-SOURCE', ),
                 entitlements = [
                     beta.models.entitlement_ref.EntitlementRef(
-                        id = '2c91809773dee32014e13e122092014e', 
                         type = 'ENTITLEMENT', 
+                        id = '2c91809773dee32014e13e122092014e', 
                         name = 'CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local', )
                     ],
                 requestable = True,

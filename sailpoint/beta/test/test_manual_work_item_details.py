@@ -37,14 +37,14 @@ class TestManualWorkItemDetails(unittest.TestCase):
         if include_optional:
             return ManualWorkItemDetails(
                 forwarded = True,
-                original_owner = beta.models.base_reference_dto.BaseReferenceDto(
+                original_owner = beta.models.manual_work_item_details_original_owner.ManualWorkItemDetails_originalOwner(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
-                current_owner = beta.models.base_reference_dto.BaseReferenceDto(
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
+                current_owner = beta.models.manual_work_item_details_current_owner.ManualWorkItemDetails_currentOwner(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c3780a46faadee4016fb4e018c20652', 
+                    name = 'Allen Albertson', ),
                 modified = '2019-08-23T18:52:57.398Z',
                 status = 'PENDING',
                 forward_history = [

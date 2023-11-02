@@ -20,15 +20,15 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from v3.models.base_reference_dto import BaseReferenceDto
+from v3.models.owner_dto import OwnerDto
 
 class CancelledRequestDetails(BaseModel):
     """
     Provides additional details for a request that has been cancelled.  # noqa: E501
     """
     comment: Optional[StrictStr] = Field(None, description="Comment made by the owner when cancelling the associated request.")
-    owner: Optional[BaseReferenceDto] = None
-    modified: Optional[datetime] = Field(None, description="Date comment was added by the owner when cancelling the associated request")
+    owner: Optional[OwnerDto] = None
+    modified: Optional[datetime] = Field(None, description="Date comment was added by the owner when cancelling the associated request.")
     __properties = ["comment", "owner", "modified"]
 
     class Config:
@@ -71,7 +71,7 @@ class CancelledRequestDetails(BaseModel):
 
         _obj = CancelledRequestDetails.parse_obj({
             "comment": obj.get("comment"),
-            "owner": BaseReferenceDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "owner": OwnerDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
             "modified": obj.get("modified")
         })
         return _obj

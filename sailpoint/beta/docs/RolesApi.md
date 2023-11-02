@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **bulk_delete_roles**
-> BaseReferenceDto bulk_delete_roles(role_bulk_delete_request)
+> TaskResultDto bulk_delete_roles(role_bulk_delete_request)
 
 Delete Role(s)
 
@@ -28,8 +28,8 @@ This API initiates a bulk deletion of one or more Roles.  A token with API, ORG_
 import time
 import os
 import beta
-from beta.models.base_reference_dto import BaseReferenceDto
 from beta.models.role_bulk_delete_request import RoleBulkDeleteRequest
+from beta.models.task_result_dto import TaskResultDto
 from beta.rest import ApiException
 from pprint import pprint
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseReferenceDto**](BaseReferenceDto.md)
+[**TaskResultDto**](TaskResultDto.md)
 
 ### Authorization
 

@@ -36,11 +36,11 @@ class TestCancelledRequestDetails(unittest.TestCase):
         model = CancelledRequestDetails()  # noqa: E501
         if include_optional:
             return CancelledRequestDetails(
-                comment = 'Nisl quis ipsum quam quisque condimentum nunc ut dolor nunc.',
-                owner = v3.models.base_reference_dto.BaseReferenceDto(
+                comment = 'This request must be cancelled.',
+                owner = v3.models.owner_dto.OwnerDto(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', ),
                 modified = '2019-12-20T09:17:12.192Z'
             )
         else:

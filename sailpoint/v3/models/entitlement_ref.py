@@ -23,12 +23,12 @@ from pydantic import BaseModel, Field, StrictStr, validator
 
 class EntitlementRef(BaseModel):
     """
-    EntitlementRef
+    Entitlement including a specific set of access.  # noqa: E501
     """
-    id: Optional[StrictStr] = Field(None, description="The ID of the Entitlement")
-    type: Optional[StrictStr] = Field(None, description="The type of the Entitlement, will always be ENTITLEMENT")
-    name: Optional[StrictStr] = Field(None, description="The display name of the Entitlement")
-    __properties = ["id", "type", "name"]
+    type: Optional[StrictStr] = Field(None, description="Entitlement's DTO type.")
+    id: Optional[StrictStr] = Field(None, description="Entitlement's ID.")
+    name: Optional[StrictStr] = Field(None, description="Entitlement's display name.")
+    __properties = ["type", "id", "name"]
 
     @validator('type')
     def type_validate_enum(cls, value):
@@ -76,8 +76,8 @@ class EntitlementRef(BaseModel):
             return EntitlementRef.parse_obj(obj)
 
         _obj = EntitlementRef.parse_obj({
-            "id": obj.get("id"),
             "type": obj.get("type"),
+            "id": obj.get("id"),
             "name": obj.get("name")
         })
         return _obj

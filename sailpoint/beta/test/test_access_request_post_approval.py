@@ -37,8 +37,10 @@ class TestAccessRequestPostApproval(unittest.TestCase):
         if include_optional:
             return AccessRequestPostApproval(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',
-                requested_for = beta.models.access_request_post_approval_requested_for.AccessRequestPostApproval_requestedFor(
-                    type = IDENTITY, ),
+                requested_for = beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    type = 'IDENTITY', 
+                    id = '2c4180a46faadee4016fb4e018c20626', 
+                    name = 'Robert Robinson', ),
                 requested_items_status = [
                     beta.models.access_request_post_approval_requested_items_status_inner.AccessRequestPostApproval_requestedItemsStatus_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
@@ -57,14 +59,18 @@ class TestAccessRequestPostApproval(unittest.TestCase):
                                     type = IDENTITY, ), )
                             ], )
                     ],
-                requested_by = beta.models.access_request_post_approval_requested_by.AccessRequestPostApproval_requestedBy(
-                    type = IDENTITY, )
+                requested_by = beta.models.access_item_requester_dto.AccessItemRequesterDto(
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
+                    name = 'William Wilson', )
             )
         else:
             return AccessRequestPostApproval(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',
-                requested_for = beta.models.access_request_post_approval_requested_for.AccessRequestPostApproval_requestedFor(
-                    type = IDENTITY, ),
+                requested_for = beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
+                    type = 'IDENTITY', 
+                    id = '2c4180a46faadee4016fb4e018c20626', 
+                    name = 'Robert Robinson', ),
                 requested_items_status = [
                     beta.models.access_request_post_approval_requested_items_status_inner.AccessRequestPostApproval_requestedItemsStatus_inner(
                         id = '2c91808b6ef1d43e016efba0ce470904', 
@@ -83,8 +89,10 @@ class TestAccessRequestPostApproval(unittest.TestCase):
                                     type = IDENTITY, ), )
                             ], )
                     ],
-                requested_by = beta.models.access_request_post_approval_requested_by.AccessRequestPostApproval_requestedBy(
-                    type = IDENTITY, ),
+                requested_by = beta.models.access_item_requester_dto.AccessItemRequesterDto(
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
+                    name = 'William Wilson', ),
         )
         """
 

@@ -20,12 +20,15 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from v3.models.access_item_requested_for import AccessItemRequestedFor
+from v3.models.access_item_requester import AccessItemRequester
+from v3.models.access_item_reviewed_by import AccessItemReviewedBy
 from v3.models.access_request_type import AccessRequestType
 from v3.models.approval_forward_history import ApprovalForwardHistory
-from v3.models.base_reference_dto import BaseReferenceDto
 from v3.models.comment_dto import CommentDto
 from v3.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment
 from v3.models.completed_approval_state import CompletedApprovalState
+from v3.models.owner_dto import OwnerDto
 from v3.models.requestable_object_reference import RequestableObjectReference
 from v3.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted
 
@@ -39,10 +42,10 @@ class CompletedApproval(BaseModel):
     modified: Optional[datetime] = Field(None, description="When the approval was modified last time.")
     request_created: Optional[datetime] = Field(None, alias="requestCreated", description="When the access-request was created.")
     request_type: Optional[AccessRequestType] = Field(None, alias="requestType")
-    requester: Optional[BaseReferenceDto] = None
-    requested_for: Optional[BaseReferenceDto] = Field(None, alias="requestedFor")
-    reviewed_by: Optional[BaseReferenceDto] = Field(None, alias="reviewedBy")
-    owner: Optional[BaseReferenceDto] = None
+    requester: Optional[AccessItemRequester] = None
+    requested_for: Optional[AccessItemRequestedFor] = Field(None, alias="requestedFor")
+    reviewed_by: Optional[AccessItemReviewedBy] = Field(None, alias="reviewedBy")
+    owner: Optional[OwnerDto] = None
     requested_object: Optional[RequestableObjectReference] = Field(None, alias="requestedObject")
     requester_comment: Optional[CommentDto] = Field(None, alias="requesterComment")
     reviewer_comment: Optional[CompletedApprovalReviewerComment] = Field(None, alias="reviewerComment")
@@ -151,10 +154,10 @@ class CompletedApproval(BaseModel):
             "modified": obj.get("modified"),
             "request_created": obj.get("requestCreated"),
             "request_type": obj.get("requestType"),
-            "requester": BaseReferenceDto.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
-            "requested_for": BaseReferenceDto.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
-            "reviewed_by": BaseReferenceDto.from_dict(obj.get("reviewedBy")) if obj.get("reviewedBy") is not None else None,
-            "owner": BaseReferenceDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "requester": AccessItemRequester.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
+            "requested_for": AccessItemRequestedFor.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
+            "reviewed_by": AccessItemReviewedBy.from_dict(obj.get("reviewedBy")) if obj.get("reviewedBy") is not None else None,
+            "owner": OwnerDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
             "requested_object": RequestableObjectReference.from_dict(obj.get("requestedObject")) if obj.get("requestedObject") is not None else None,
             "requester_comment": CommentDto.from_dict(obj.get("requesterComment")) if obj.get("requesterComment") is not None else None,
             "reviewer_comment": CompletedApprovalReviewerComment.from_dict(obj.get("reviewerComment")) if obj.get("reviewerComment") is not None else None,

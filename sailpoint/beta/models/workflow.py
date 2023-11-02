@@ -36,9 +36,9 @@ class Workflow(BaseModel):
     enabled: Optional[StrictBool] = Field(False, description="Enable or disable the workflow.  Workflows cannot be created in an enabled state.")
     trigger: Optional[WorkflowTrigger] = None
     id: Optional[StrictStr] = Field(None, description="Workflow ID. This is a UUID generated upon creation.")
-    execution_count: Optional[StrictInt] = Field(None, alias="executionCount", description="The number of times this workflow has been executed")
-    failure_count: Optional[StrictInt] = Field(None, alias="failureCount", description="The number of times this workflow has failed during execution")
-    created: Optional[datetime] = Field(None, description="The date and time the workflow was created")
+    execution_count: Optional[StrictInt] = Field(None, alias="executionCount", description="The number of times this workflow has been executed.")
+    failure_count: Optional[StrictInt] = Field(None, alias="failureCount", description="The number of times this workflow has failed during execution.")
+    created: Optional[datetime] = Field(None, description="The date and time the workflow was created.")
     creator: Optional[WorkflowAllOfCreator] = None
     __properties = ["name", "owner", "description", "definition", "enabled", "trigger", "id", "executionCount", "failureCount", "created", "creator"]
 

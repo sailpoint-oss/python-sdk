@@ -20,11 +20,13 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from v3.models.access_item_requested_for import AccessItemRequestedFor
+from v3.models.access_item_requester import AccessItemRequester
 from v3.models.access_request_type import AccessRequestType
 from v3.models.approval_forward_history import ApprovalForwardHistory
-from v3.models.base_reference_dto import BaseReferenceDto
 from v3.models.comment_dto import CommentDto
 from v3.models.pending_approval_action import PendingApprovalAction
+from v3.models.pending_approval_owner import PendingApprovalOwner
 from v3.models.requestable_object_reference import RequestableObjectReference
 from v3.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted
 
@@ -38,9 +40,9 @@ class PendingApproval(BaseModel):
     modified: Optional[datetime] = Field(None, description="When the approval was modified last time.")
     request_created: Optional[datetime] = Field(None, alias="requestCreated", description="When the access-request was created.")
     request_type: Optional[AccessRequestType] = Field(None, alias="requestType")
-    requester: Optional[BaseReferenceDto] = None
-    requested_for: Optional[BaseReferenceDto] = Field(None, alias="requestedFor")
-    owner: Optional[BaseReferenceDto] = None
+    requester: Optional[AccessItemRequester] = None
+    requested_for: Optional[AccessItemRequestedFor] = Field(None, alias="requestedFor")
+    owner: Optional[PendingApprovalOwner] = None
     requested_object: Optional[RequestableObjectReference] = Field(None, alias="requestedObject")
     requester_comment: Optional[CommentDto] = Field(None, alias="requesterComment")
     previous_reviewers_comments: Optional[conlist(CommentDto)] = Field(None, alias="previousReviewersComments", description="The history of the previous reviewers comments.")
@@ -127,9 +129,9 @@ class PendingApproval(BaseModel):
             "modified": obj.get("modified"),
             "request_created": obj.get("requestCreated"),
             "request_type": obj.get("requestType"),
-            "requester": BaseReferenceDto.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
-            "requested_for": BaseReferenceDto.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
-            "owner": BaseReferenceDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
+            "requester": AccessItemRequester.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
+            "requested_for": AccessItemRequestedFor.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
+            "owner": PendingApprovalOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
             "requested_object": RequestableObjectReference.from_dict(obj.get("requestedObject")) if obj.get("requestedObject") is not None else None,
             "requester_comment": CommentDto.from_dict(obj.get("requesterComment")) if obj.get("requesterComment") is not None else None,
             "previous_reviewers_comments": [CommentDto.from_dict(_item) for _item in obj.get("previousReviewersComments")] if obj.get("previousReviewersComments") is not None else None,

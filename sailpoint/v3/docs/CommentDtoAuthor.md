@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**DtoType**](DtoType.md) |  | [optional] 
-**id** | **str** | ID of the author | [optional] 
-**name** | **str** | Human-readable display name of the identity making the comment | [optional] 
+**type** | **str** | DTO type of the commenting identity. | [optional] 
+**id** | **str** | ID of the commenting identity. | [optional] 
+**name** | **str** | Display name of the commenting identity. | [optional] 
 
 ## Example
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identity** | [**IdentityCreatedIdentity**](IdentityCreatedIdentity.md) |  | 
-**attributes** | **Dict[str, object]** | The attributes assigned to the identity.  Attributes are determined by the identity profile. | 
+**attributes** | **Dict[str, object]** | The attributes assigned to the identity. Attributes are determined by the identity profile. | 
 
 ## Example
 

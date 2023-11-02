@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_request_id** | **str** | The unique ID of the access request. | 
-**requested_for** | [**AccessRequestPostApprovalRequestedFor**](AccessRequestPostApprovalRequestedFor.md) |  | 
+**requested_for** | [**AccessItemRequestedForDto**](AccessItemRequestedForDto.md) |  | 
 **requested_items_status** | [**List[AccessRequestPostApprovalRequestedItemsStatusInner]**](AccessRequestPostApprovalRequestedItemsStatusInner.md) | Details on the outcome of each access item. | 
-**requested_by** | [**AccessRequestPostApprovalRequestedBy**](AccessRequestPostApprovalRequestedBy.md) |  | 
+**requested_by** | [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | 
 
 ## Example
 

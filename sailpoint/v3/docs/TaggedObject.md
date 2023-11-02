@@ -1,10 +1,11 @@
 # TaggedObject
 
+Tagged object.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**object_ref** | [**TaggedObjectDto**](TaggedObjectDto.md) |  | [optional] 
+**object_ref** | [**TaggedObject**](TaggedObject.md) |  | [optional] 
 **tags** | **List[str]** | Labels to be applied to an Object | [optional] 
 
 ## Example

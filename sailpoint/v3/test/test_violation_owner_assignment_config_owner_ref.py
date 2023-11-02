@@ -37,8 +37,8 @@ class TestViolationOwnerAssignmentConfigOwnerRef(unittest.TestCase):
         if include_optional:
             return ViolationOwnerAssignmentConfigOwnerRef(
                 type = 'IDENTITY',
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson'
+                id = '2c9180a46faadee4016fb4e018c20639',
+                name = 'Support'
             )
         else:
             return ViolationOwnerAssignmentConfigOwnerRef(

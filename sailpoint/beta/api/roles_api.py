@@ -23,11 +23,11 @@ from pydantic import Field, StrictBool, StrictStr, conint, conlist
 
 from typing import List, Optional
 
-from beta.models.base_reference_dto import BaseReferenceDto
 from beta.models.json_patch_operation import JsonPatchOperation
 from beta.models.role import Role
 from beta.models.role_bulk_delete_request import RoleBulkDeleteRequest
 from beta.models.role_identity import RoleIdentity
+from beta.models.task_result_dto import TaskResultDto
 
 from beta.api_client import ApiClient
 from beta.api_response import ApiResponse
@@ -50,7 +50,7 @@ class RolesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def bulk_delete_roles(self, role_bulk_delete_request : RoleBulkDeleteRequest, **kwargs) -> BaseReferenceDto:  # noqa: E501
+    def bulk_delete_roles(self, role_bulk_delete_request : RoleBulkDeleteRequest, **kwargs) -> TaskResultDto:  # noqa: E501
         """Delete Role(s)  # noqa: E501
 
         This API initiates a bulk deletion of one or more Roles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Roles included in the request are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.  # noqa: E501
@@ -71,7 +71,7 @@ class RolesApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: BaseReferenceDto
+        :rtype: TaskResultDto
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -114,7 +114,7 @@ class RolesApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(BaseReferenceDto, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(TaskResultDto, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -176,7 +176,7 @@ class RolesApi:
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
 
         _response_types_map = {
-            '202': "BaseReferenceDto",
+            '202': "TaskResultDto",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",

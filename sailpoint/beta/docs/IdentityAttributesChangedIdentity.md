@@ -1,13 +1,13 @@
 # IdentityAttributesChangedIdentity
 
-The identity who's attributes changed.
+Identity whose attributes changed.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | 
-**id** | **str** | ID of the object to which this reference applies | 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**type** | **str** | DTO type of identity whose attributes changed. | 
+**id** | **str** | ID of identity whose attributes changed. | 
+**name** | **str** | Display name of identity whose attributes changed. | 
 
 ## Example
 

@@ -1,13 +1,13 @@
 # AccountUncorrelatedSource
 
-The source from which the account came from.
+The source the accounts are uncorrelated from.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | 
-**id** | **str** | ID of the object to which this reference applies | 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**type** | **str** | The DTO type of the source the accounts are uncorrelated from. | 
+**id** | **str** | The ID of the source the accounts are uncorrelated from. | 
+**name** | **str** | Display name of the source the accounts are uncorrelated from. | 
 
 ## Example
 

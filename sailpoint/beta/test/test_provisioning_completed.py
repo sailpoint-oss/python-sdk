@@ -46,9 +46,13 @@ class TestProvisioningCompleted(unittest.TestCase):
                     'Notification Skipped due to invalid email'
                     ],
                 recipient = beta.models.provisioning_completed_recipient.ProvisioningCompleted_recipient(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 requester = beta.models.provisioning_completed_requester.ProvisioningCompleted_requester(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
+                    name = 'William Wilson', ),
                 account_requests = [
                     beta.models.provisioning_completed_account_requests_inner.ProvisioningCompleted_accountRequests_inner(
                         source = beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
@@ -73,7 +77,9 @@ class TestProvisioningCompleted(unittest.TestCase):
                 tracking_number = '4b4d982dddff4267ab12f0f1e72b5a6d',
                 sources = 'Corp AD, Corp LDAP, Corp Salesforce',
                 recipient = beta.models.provisioning_completed_recipient.ProvisioningCompleted_recipient(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 account_requests = [
                     beta.models.provisioning_completed_account_requests_inner.ProvisioningCompleted_accountRequests_inner(
                         source = beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(

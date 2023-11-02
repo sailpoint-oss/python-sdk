@@ -20,8 +20,8 @@ import json
 
 from typing import List
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.access_request_post_approval_requested_by import AccessRequestPostApprovalRequestedBy
-from beta.models.access_request_post_approval_requested_for import AccessRequestPostApprovalRequestedFor
+from beta.models.access_item_requested_for_dto import AccessItemRequestedForDto
+from beta.models.access_item_requester_dto import AccessItemRequesterDto
 from beta.models.access_request_pre_approval_requested_items_inner import AccessRequestPreApprovalRequestedItemsInner
 
 class AccessRequestPreApproval(BaseModel):
@@ -29,9 +29,9 @@ class AccessRequestPreApproval(BaseModel):
     AccessRequestPreApproval
     """
     access_request_id: StrictStr = Field(..., alias="accessRequestId", description="The unique ID of the access request.")
-    requested_for: AccessRequestPostApprovalRequestedFor = Field(..., alias="requestedFor")
+    requested_for: AccessItemRequestedForDto = Field(..., alias="requestedFor")
     requested_items: conlist(AccessRequestPreApprovalRequestedItemsInner) = Field(..., alias="requestedItems", description="Details of the access items being requested.")
-    requested_by: AccessRequestPostApprovalRequestedBy = Field(..., alias="requestedBy")
+    requested_by: AccessItemRequesterDto = Field(..., alias="requestedBy")
     __properties = ["accessRequestId", "requestedFor", "requestedItems", "requestedBy"]
 
     class Config:
@@ -84,9 +84,9 @@ class AccessRequestPreApproval(BaseModel):
 
         _obj = AccessRequestPreApproval.parse_obj({
             "access_request_id": obj.get("accessRequestId"),
-            "requested_for": AccessRequestPostApprovalRequestedFor.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
+            "requested_for": AccessItemRequestedForDto.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
             "requested_items": [AccessRequestPreApprovalRequestedItemsInner.from_dict(_item) for _item in obj.get("requestedItems")] if obj.get("requestedItems") is not None else None,
-            "requested_by": AccessRequestPostApprovalRequestedBy.from_dict(obj.get("requestedBy")) if obj.get("requestedBy") is not None else None
+            "requested_by": AccessItemRequesterDto.from_dict(obj.get("requestedBy")) if obj.get("requestedBy") is not None else None
         })
         return _obj
 

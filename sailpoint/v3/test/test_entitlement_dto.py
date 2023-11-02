@@ -47,10 +47,10 @@ class TestEntitlementDto(unittest.TestCase):
                 source_schema_object_type = 'group',
                 privileged = False,
                 cloud_governed = False,
-                source = v3.models.base_reference_dto.BaseReferenceDto(
-                    type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', )
+                source = v3.models.entitlement_source.EntitlementSource(
+                    type = 'SOURCE', 
+                    id = '2c9180835d191a86015d28455b4b232a', 
+                    name = 'HR Active Directory', )
             )
         else:
             return EntitlementDto(

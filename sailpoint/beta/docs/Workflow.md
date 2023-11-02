@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **enabled** | **bool** | Enable or disable the workflow.  Workflows cannot be created in an enabled state. | [optional] [default to False]
 **trigger** | [**WorkflowTrigger**](WorkflowTrigger.md) |  | [optional] 
 **id** | **str** | Workflow ID. This is a UUID generated upon creation. | [optional] 
-**execution_count** | **int** | The number of times this workflow has been executed | [optional] 
-**failure_count** | **int** | The number of times this workflow has failed during execution | [optional] 
-**created** | **datetime** | The date and time the workflow was created | [optional] 
+**execution_count** | **int** | The number of times this workflow has been executed. | [optional] 
+**failure_count** | **int** | The number of times this workflow has failed during execution. | [optional] 
+**created** | **datetime** | The date and time the workflow was created. | [optional] 
 **creator** | [**WorkflowAllOfCreator**](WorkflowAllOfCreator.md) |  | [optional] 
 
 ## Example

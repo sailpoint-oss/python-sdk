@@ -20,14 +20,14 @@ import json
 
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
-from beta.models.base_reference_dto import BaseReferenceDto
 from beta.models.identity_attribute_preview import IdentityAttributePreview
+from beta.models.identity_preview_response_identity import IdentityPreviewResponseIdentity
 
 class IdentityPreviewResponse(BaseModel):
     """
     IdentityPreviewResponse
     """
-    identity: Optional[BaseReferenceDto] = None
+    identity: Optional[IdentityPreviewResponseIdentity] = None
     preview_attributes: Optional[conlist(IdentityAttributePreview)] = Field(None, alias="previewAttributes")
     __properties = ["identity", "previewAttributes"]
 
@@ -77,7 +77,7 @@ class IdentityPreviewResponse(BaseModel):
             return IdentityPreviewResponse.parse_obj(obj)
 
         _obj = IdentityPreviewResponse.parse_obj({
-            "identity": BaseReferenceDto.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
+            "identity": IdentityPreviewResponseIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
             "preview_attributes": [IdentityAttributePreview.from_dict(_item) for _item in obj.get("previewAttributes")] if obj.get("previewAttributes") is not None else None
         })
         return _obj

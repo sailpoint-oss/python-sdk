@@ -101,6 +101,11 @@ class AccessProfile(BaseModel):
         if self.description is None and "description" in self.__fields_set__:
             _dict['description'] = None
 
+        # set to None if entitlements (nullable) is None
+        # and __fields_set__ contains the field
+        if self.entitlements is None and "entitlements" in self.__fields_set__:
+            _dict['entitlements'] = None
+
         # set to None if segments (nullable) is None
         # and __fields_set__ contains the field
         if self.segments is None and "segments" in self.__fields_set__:

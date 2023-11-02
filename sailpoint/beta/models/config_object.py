@@ -20,14 +20,14 @@ import json
 
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictInt
-from beta.models.base_reference_dto import BaseReferenceDto
+from beta.models.self_import_export_dto import SelfImportExportDto
 
 class ConfigObject(BaseModel):
     """
     Config export and import format for individual object configurations.  # noqa: E501
     """
     version: Optional[StrictInt] = Field(None, description="Current version of configuration object.")
-    var_self: Optional[BaseReferenceDto] = Field(None, alias="self")
+    var_self: Optional[SelfImportExportDto] = Field(None, alias="self")
     object: Optional[Dict[str, Any]] = Field(None, description="Object details. Format dependant on the object type.")
     __properties = ["version", "self", "object"]
 
@@ -71,7 +71,7 @@ class ConfigObject(BaseModel):
 
         _obj = ConfigObject.parse_obj({
             "version": obj.get("version"),
-            "var_self": BaseReferenceDto.from_dict(obj.get("self")) if obj.get("self") is not None else None,
+            "var_self": SelfImportExportDto.from_dict(obj.get("self")) if obj.get("self") is not None else None,
             "object": obj.get("object")
         })
         return _obj

@@ -20,7 +20,7 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, validator
-from v3.models.base_reference_dto import BaseReferenceDto
+from v3.models.owner_dto import OwnerDto
 from v3.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from v3.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig
 
@@ -33,7 +33,7 @@ class SodPolicy(BaseModel):
     created: Optional[datetime] = Field(None, description="The time when this SOD policy is created.")
     modified: Optional[datetime] = Field(None, description="The time when this SOD policy is modified.")
     description: Optional[StrictStr] = Field(None, description="Optional description of the SOD policy")
-    owner_ref: Optional[BaseReferenceDto] = Field(None, alias="ownerRef")
+    owner_ref: Optional[OwnerDto] = Field(None, alias="ownerRef")
     external_policy_reference: Optional[StrictStr] = Field(None, alias="externalPolicyReference", description="Optional External Policy Reference")
     policy_query: Optional[StrictStr] = Field(None, alias="policyQuery", description="Search query of the SOD policy")
     compensating_controls: Optional[StrictStr] = Field(None, alias="compensatingControls", description="Optional compensating controls(Mitigating Controls)")
@@ -148,7 +148,7 @@ class SodPolicy(BaseModel):
             "created": obj.get("created"),
             "modified": obj.get("modified"),
             "description": obj.get("description"),
-            "owner_ref": BaseReferenceDto.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
+            "owner_ref": OwnerDto.from_dict(obj.get("ownerRef")) if obj.get("ownerRef") is not None else None,
             "external_policy_reference": obj.get("externalPolicyReference"),
             "policy_query": obj.get("policyQuery"),
             "compensating_controls": obj.get("compensatingControls"),

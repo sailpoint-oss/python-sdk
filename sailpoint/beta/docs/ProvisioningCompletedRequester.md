@@ -1,13 +1,13 @@
 # ProvisioningCompletedRequester
 
-Reference to the identity (if any) who submitted the provisioning request.
+Provisioning requester's identity.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | 
-**id** | **str** | ID of the object to which this reference applies | 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**type** | **str** | Provisioning requester&#39;s DTO type. | 
+**id** | **str** | Provisioning requester&#39;s identity ID. | 
+**name** | **str** | Provisioning owner&#39;s human-readable display name. | 
 
 ## Example
 

@@ -36,18 +36,18 @@ class TestAttrSyncSourceConfig(unittest.TestCase):
         model = AttrSyncSourceConfig()  # noqa: E501
         if include_optional:
             return AttrSyncSourceConfig(
-                source = beta.models.base_reference_dto.BaseReferenceDto(
-                    type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                source = beta.models.attr_sync_source.AttrSyncSource(
+                    type = 'SOURCE', 
+                    id = '2c9180835d191a86015d28455b4b232a', 
+                    name = 'HR Active Directory', ),
                 attributes = [{name=email, displayName=Email, enabled=true, target=mail}, {name=firstname, displayName=First Name, enabled=false, target=givenName}]
             )
         else:
             return AttrSyncSourceConfig(
-                source = beta.models.base_reference_dto.BaseReferenceDto(
-                    type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                source = beta.models.attr_sync_source.AttrSyncSource(
+                    type = 'SOURCE', 
+                    id = '2c9180835d191a86015d28455b4b232a', 
+                    name = 'HR Active Directory', ),
                 attributes = [{name=email, displayName=Email, enabled=true, target=mail}, {name=firstname, displayName=First Name, enabled=false, target=givenName}],
         )
         """

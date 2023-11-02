@@ -18,17 +18,16 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict
+
 from pydantic import BaseModel, Field, StrictStr, validator
-from beta.models.dto_type import DtoType
 
 class AccountUncorrelatedIdentity(BaseModel):
     """
-    The identity that the account uncorrelated with.  # noqa: E501
+    Identity the account is uncorrelated with.  # noqa: E501
     """
-    type: Dict[str, Any] = Field(..., description="The type of object that is referenced")
-    id: StrictStr = Field(..., description="ID of the object to which this reference applies")
-    name: StrictStr = Field(..., description="Human-readable display name of the object to which this reference applies")
+    type: StrictStr = Field(..., description="DTO type of the identity the account is uncorrelated with.")
+    id: StrictStr = Field(..., description="ID of the identity the account is uncorrelated with.")
+    name: StrictStr = Field(..., description="Display name of the identity the account is uncorrelated with.")
     __properties = ["type", "id", "name"]
 
     @validator('type')

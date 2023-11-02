@@ -20,15 +20,14 @@ import json
 
 from typing import Any, Dict
 from pydantic import BaseModel, Field, StrictStr, validator
-from beta.models.dto_type import DtoType
 
 class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover(BaseModel):
     """
     The identity of the approver.  # noqa: E501
     """
     type: Dict[str, Any] = Field(..., description="The type of object that is referenced")
-    id: StrictStr = Field(..., description="ID of the object to which this reference applies")
-    name: StrictStr = Field(..., description="Human-readable display name of the object to which this reference applies")
+    id: StrictStr = Field(..., description="ID of identity who approved the access item request.")
+    name: StrictStr = Field(..., description="Human-readable display name of identity who approved the access item request.")
     __properties = ["type", "id", "name"]
 
     @validator('type')

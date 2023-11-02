@@ -27,7 +27,7 @@ class BulkTaggedObject(BaseModel):
     BulkTaggedObject
     """
     object_refs: Optional[conlist(TaggedObjectDto)] = Field(None, alias="objectRefs")
-    tags: Optional[conlist(StrictStr)] = Field(None, description="Label to be applied to an Object")
+    tags: Optional[conlist(StrictStr)] = Field(None, description="Label to be applied to object.")
     operation: Optional[StrictStr] = Field('APPEND', description="If APPEND, tags are appended to the list of tags for the object. A 400 error is returned if this would add duplicate tags to the object.  If MERGE, tags are merged with the existing tags. Duplicate tags are silently ignored.")
     __properties = ["objectRefs", "tags", "operation"]
 

@@ -1,13 +1,13 @@
 # AccountUncorrelatedIdentity
 
-The identity that the account uncorrelated with.
+Identity the account is uncorrelated with.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | 
-**id** | **str** | ID of the object to which this reference applies | 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**type** | **str** | DTO type of the identity the account is uncorrelated with. | 
+**id** | **str** | ID of the identity the account is uncorrelated with. | 
+**name** | **str** | Display name of the identity the account is uncorrelated with. | 
 
 ## Example
 

@@ -36,10 +36,10 @@ class TestWorkgroupDto(unittest.TestCase):
         model = WorkgroupDto()  # noqa: E501
         if include_optional:
             return WorkgroupDto(
-                owner = beta.models.base_reference_dto.BaseReferenceDto(
+                owner = beta.models.owner_dto.OwnerDto(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', ),
                 id = '2c91808568c529c60168cca6f90c1313',
                 name = 'DB Access Governance Group',
                 description = 'Description of the Governance Group',

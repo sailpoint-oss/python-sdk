@@ -42,34 +42,34 @@ class TestPendingApproval(unittest.TestCase):
                 modified = '2018-07-25T20:22:28.104Z',
                 request_created = '2017-07-11T18:45:35.098Z',
                 request_type = 'GRANT_ACCESS',
-                requester = beta.models.base_reference_dto.BaseReferenceDto(
+                requester = beta.models.access_item_requester_dto.AccessItemRequesterDto(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
-                requested_for = beta.models.base_reference_dto.BaseReferenceDto(
+                requested_for = beta.models.access_item_requested_for_dto.AccessItemRequestedForDto(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
-                owner = beta.models.base_reference_dto.BaseReferenceDto(
+                    id = '2c4180a46faadee4016fb4e018c20626', 
+                    name = 'Robert Robinson', ),
+                owner = beta.models.access_item_owner_dto.AccessItemOwnerDto(
                     type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', ),
                 requested_object = beta.models.requestable_object_reference.RequestableObjectReference(
                     id = '2c938083633d259901633d25c68c00fa', 
                     name = 'Object Name', 
                     description = 'Object Description', 
                     type = 'ROLE', ),
-                requester_comment = beta.models.comment_dto_1.CommentDto_1(
-                    comment = 'Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum erat', 
-                    author = beta.models.comment_dto_1_author.CommentDto_1_author(
+                requester_comment = beta.models.comment_dto.CommentDto(
+                    comment = 'This is a comment.', 
+                    author = beta.models.comment_dto_author.CommentDto_author(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'Adam Kennedy', ), 
                     created = '2017-07-11T18:45:37.098Z', ),
                 previous_reviewers_comments = [
-                    beta.models.comment_dto_1.CommentDto_1(
-                        comment = 'Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum erat', 
-                        author = beta.models.comment_dto_1_author.CommentDto_1_author(
+                    beta.models.comment_dto.CommentDto(
+                        comment = 'This is a comment.', 
+                        author = beta.models.comment_dto_author.CommentDto_author(
                             type = 'IDENTITY', 
                             id = '2c91808568c529c60168cca6f90c1313', 
                             name = 'Adam Kennedy', ), 
@@ -100,24 +100,25 @@ class TestPendingApproval(unittest.TestCase):
                         client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}, 
                         violation_contexts = [
                             beta.models.sod_violation_context_1.SodViolationContext_1(
-                                policy = beta.models.base_reference_dto.BaseReferenceDto(
-                                    type = 'IDENTITY', 
-                                    id = '2c91808568c529c60168cca6f90c1313', 
-                                    name = 'William Wilson', ), 
+                                policy = beta.models.sod_policy_dto.SodPolicyDto(
+                                    type = 'SOD_POLICY', 
+                                    id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
+                                    name = 'Business SOD Policy', ), 
                                 conflicting_access_criteria = beta.models.sod_violation_context_1_conflicting_access_criteria.SodViolationContext_1_conflictingAccessCriteria(
                                     left_criteria = beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(
                                         criteria_list = [
                                             beta.models.sod_exempt_criteria_1.SodExemptCriteria_1(
                                                 existing = True, 
+                                                type = 'IDENTITY', 
                                                 id = '2c918085771e9d3301773b3cb66f6398', 
                                                 name = 'My HR Entitlement', )
                                             ], ), 
                                     right_criteria = beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(), ), )
                             ], 
                         violated_policies = [
-                            beta.models.base_reference_dto_1.BaseReferenceDto_1(
-                                id = 'ff8081814d977c21014da056804a0af3', 
-                                name = 'Github', )
+                            beta.models.sod_policy_dto.SodPolicyDto(
+                                id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
+                                name = 'Business SOD Policy', )
                             ], ), )
             )
         else:

@@ -36,15 +36,15 @@ class TestAccountUncorrelatedIdentity(unittest.TestCase):
         model = AccountUncorrelatedIdentity()  # noqa: E501
         if include_optional:
             return AccountUncorrelatedIdentity(
-                type = IDENTITY,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson'
+                type = 'IDENTITY',
+                id = '2c3780a46faadee4016fb4e018c20652',
+                name = 'Allen Albertson'
             )
         else:
             return AccountUncorrelatedIdentity(
-                type = IDENTITY,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson',
+                type = 'IDENTITY',
+                id = '2c3780a46faadee4016fb4e018c20652',
+                name = 'Allen Albertson',
         )
         """
 

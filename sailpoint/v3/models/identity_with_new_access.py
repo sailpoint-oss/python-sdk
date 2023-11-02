@@ -27,7 +27,7 @@ class IdentityWithNewAccess(BaseModel):
     An identity with a set of access to be added  # noqa: E501
     """
     identity_id: StrictStr = Field(..., alias="identityId", description="Identity id to be checked.")
-    access_refs: conlist(IdentityWithNewAccessAccessRefsInner) = Field(..., alias="accessRefs", description="The list of ENTITLEMENTs to consider for calculating possible violations in a preventive check.")
+    access_refs: conlist(IdentityWithNewAccessAccessRefsInner) = Field(..., alias="accessRefs", description="The list of entitlements to consider for possible violations in a preventive check.")
     __properties = ["identityId", "accessRefs"]
 
     class Config:

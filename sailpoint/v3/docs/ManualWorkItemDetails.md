@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **forwarded** | **bool** | True if the request for this item was forwarded from one owner to another. | [optional] 
-**original_owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**current_owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**original_owner** | [**ManualWorkItemDetailsOriginalOwner**](ManualWorkItemDetailsOriginalOwner.md) |  | [optional] 
+**current_owner** | [**ManualWorkItemDetailsCurrentOwner**](ManualWorkItemDetailsCurrentOwner.md) |  | [optional] 
 **modified** | **datetime** | Time at which item was modified. | [optional] 
 **status** | [**ManualWorkItemState**](ManualWorkItemState.md) |  | [optional] 
 **forward_history** | [**List[ApprovalForwardHistory]**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 

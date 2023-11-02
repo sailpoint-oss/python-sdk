@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**DtoType**](DtoType.md) |  | [optional] 
-**id** | **str** | ID of the object to which this reference applies | [optional] 
-**name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
+**type** | **str** | Owner&#39;s DTO type. | [optional] 
+**id** | **str** | Owner&#39;s identity ID. | [optional] 
+**name** | **str** | Owner&#39;s display name. | [optional] 
 
 ## Example
 

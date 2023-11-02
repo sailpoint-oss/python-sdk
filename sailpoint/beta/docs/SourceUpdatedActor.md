@@ -1,13 +1,13 @@
 # SourceUpdatedActor
 
-The identity or system that performed the update.
+Identity who updated the source.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | 
-**id** | **str** | ID of the object to which this reference applies | [optional] 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**type** | **str** | DTO type of identity who updated the source. | 
+**id** | **str** | ID of identity who updated the source. | [optional] 
+**name** | **str** | Display name of identity who updated the source. | 
 
 ## Example
 

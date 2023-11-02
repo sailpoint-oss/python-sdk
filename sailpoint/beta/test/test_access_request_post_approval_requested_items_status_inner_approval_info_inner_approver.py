@@ -37,14 +37,14 @@ class TestAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApp
         if include_optional:
             return AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover(
                 type = IDENTITY,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson'
+                id = '2c3780a46faadee4016fb4e018c20652',
+                name = 'Allen Albertson'
             )
         else:
             return AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover(
                 type = IDENTITY,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson',
+                id = '2c3780a46faadee4016fb4e018c20652',
+                name = 'Allen Albertson',
         )
         """
 

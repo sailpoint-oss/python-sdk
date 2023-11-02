@@ -1,13 +1,13 @@
 # ServiceDeskIntegrationDtoAllOfOwnerRef
 
-Reference to the identity that is the owner of this Service Desk integration
+Source for Service Desk integration template.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object being referenced | [optional] 
-**id** | **object** | ID of the identity | [optional] 
-**name** | **object** | Human-readable display name of the identity | [optional] 
+**type** | **str** | DTO type of source for service desk integration template. | [optional] 
+**id** | **str** | ID of source for service desk integration template. | [optional] 
+**name** | **str** | Human-readable name of source for service desk integration template. | [optional] 
 
 ## Example
 

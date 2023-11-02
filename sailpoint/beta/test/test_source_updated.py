@@ -42,7 +42,9 @@ class TestSourceUpdated(unittest.TestCase):
                 modified = '2021-03-29T22:01:50.474Z',
                 connector = 'active-directory',
                 actor = beta.models.source_updated_actor.SourceUpdated_actor(
-                    type = IDENTITY, )
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
+                    name = 'William Wilson', )
             )
         else:
             return SourceUpdated(
@@ -52,7 +54,9 @@ class TestSourceUpdated(unittest.TestCase):
                 modified = '2021-03-29T22:01:50.474Z',
                 connector = 'active-directory',
                 actor = beta.models.source_updated_actor.SourceUpdated_actor(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20648', 
+                    name = 'William Wilson', ),
         )
         """
 

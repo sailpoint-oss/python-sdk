@@ -178,7 +178,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_workgroup_members**
-> List[WorkgroupMemberDeleteItem] delete_workgroup_members(workgroup_id, base_reference_dto)
+> List[WorkgroupMemberDeleteItem] delete_workgroup_members(workgroup_id, bulk_workgroup_members_request_inner)
 
 Remove members from Governance Group
 
@@ -192,7 +192,7 @@ This API removes one or more  members from a Governance Group.  A token with API
 import time
 import os
 import beta
-from beta.models.base_reference_dto import BaseReferenceDto
+from beta.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner
 from beta.models.workgroup_member_delete_item import WorkgroupMemberDeleteItem
 from beta.rest import ApiException
 from pprint import pprint
@@ -217,11 +217,11 @@ with beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = beta.GovernanceGroupsApi(api_client)
     workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group.
-    base_reference_dto = [beta.BaseReferenceDto()] # List[BaseReferenceDto] | List of identities to be removed from  a Governance Group members list.
+    bulk_workgroup_members_request_inner = [beta.BulkWorkgroupMembersRequestInner()] # List[BulkWorkgroupMembersRequestInner] | List of identities to be removed from  a Governance Group members list.
 
     try:
         # Remove members from Governance Group
-        api_response = api_instance.delete_workgroup_members(workgroup_id, base_reference_dto)
+        api_response = api_instance.delete_workgroup_members(workgroup_id, bulk_workgroup_members_request_inner)
         print("The response of GovernanceGroupsApi->delete_workgroup_members:\n")
         pprint(api_response)
     except Exception as e:
@@ -235,7 +235,7 @@ with beta.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workgroup_id** | **str**| ID of the Governance Group. | 
- **base_reference_dto** | [**List[BaseReferenceDto]**](BaseReferenceDto.md)| List of identities to be removed from  a Governance Group members list. | 
+ **bulk_workgroup_members_request_inner** | [**List[BulkWorkgroupMembersRequestInner]**](BulkWorkgroupMembersRequestInner.md)| List of identities to be removed from  a Governance Group members list. | 
 
 ### Return type
 
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_workgroup_members**
-> List[BaseReferenceDto] list_workgroup_members(workgroup_id, offset=offset, limit=limit, count=count, sorters=sorters)
+> List[ListWorkgroupMembers200ResponseInner] list_workgroup_members(workgroup_id, offset=offset, limit=limit, count=count, sorters=sorters)
 
 List Governance Group Members
 
@@ -532,7 +532,7 @@ This API returns list of members associated with a Governance Group.
 import time
 import os
 import beta
-from beta.models.base_reference_dto import BaseReferenceDto
+from beta.models.list_workgroup_members200_response_inner import ListWorkgroupMembers200ResponseInner
 from beta.rest import ApiException
 from pprint import pprint
 
@@ -584,7 +584,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[BaseReferenceDto]**](BaseReferenceDto.md)
+[**List[ListWorkgroupMembers200ResponseInner]**](ListWorkgroupMembers200ResponseInner.md)
 
 ### Authorization
 
@@ -783,7 +783,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_workgroup_members**
-> List[WorkgroupMemberAddItem] update_workgroup_members(workgroup_id, base_reference_dto)
+> List[WorkgroupMemberAddItem] update_workgroup_members(workgroup_id, bulk_workgroup_members_request_inner)
 
 Add members to Governance Group
 
@@ -797,7 +797,7 @@ This API adds one or more members to a Governance Group.  A token with API, ORG_
 import time
 import os
 import beta
-from beta.models.base_reference_dto import BaseReferenceDto
+from beta.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner
 from beta.models.workgroup_member_add_item import WorkgroupMemberAddItem
 from beta.rest import ApiException
 from pprint import pprint
@@ -822,11 +822,11 @@ with beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = beta.GovernanceGroupsApi(api_client)
     workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group.
-    base_reference_dto = [beta.BaseReferenceDto()] # List[BaseReferenceDto] | List of identities to be added to a Governance Group members list.
+    bulk_workgroup_members_request_inner = [beta.BulkWorkgroupMembersRequestInner()] # List[BulkWorkgroupMembersRequestInner] | List of identities to be added to a Governance Group members list.
 
     try:
         # Add members to Governance Group
-        api_response = api_instance.update_workgroup_members(workgroup_id, base_reference_dto)
+        api_response = api_instance.update_workgroup_members(workgroup_id, bulk_workgroup_members_request_inner)
         print("The response of GovernanceGroupsApi->update_workgroup_members:\n")
         pprint(api_response)
     except Exception as e:
@@ -840,7 +840,7 @@ with beta.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workgroup_id** | **str**| ID of the Governance Group. | 
- **base_reference_dto** | [**List[BaseReferenceDto]**](BaseReferenceDto.md)| List of identities to be added to a Governance Group members list. | 
+ **bulk_workgroup_members_request_inner** | [**List[BulkWorkgroupMembersRequestInner]**](BulkWorkgroupMembersRequestInner.md)| List of identities to be added to a Governance Group members list. | 
 
 ### Return type
 

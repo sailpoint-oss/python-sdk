@@ -1,12 +1,12 @@
 # IdentityProfileExportedObject
 
-Identity Profile exported object
+Identity profile exported object.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **version** | **int** | Version or object from the target service. | [optional] 
-**var_self** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**var_self** | [**IdentityProfileExportedObjectSelf**](IdentityProfileExportedObjectSelf.md) |  | [optional] 
 **object** | [**IdentityProfile**](IdentityProfile.md) |  | [optional] 
 
 ## Example

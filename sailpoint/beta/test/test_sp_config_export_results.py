@@ -51,10 +51,10 @@ class TestSpConfigExportResults(unittest.TestCase):
                 objects = [
                     beta.models.config_object_for_export_and_import.Config Object for Export and Import(
                         version = 1, 
-                        self = beta.models.base_reference_dto.BaseReferenceDto(
-                            type = 'IDENTITY', 
-                            id = '2c91808568c529c60168cca6f90c1313', 
-                            name = 'William Wilson', ), 
+                        self = beta.models.self_import_export_dto.SelfImportExportDto(
+                            type = 'SOURCE', 
+                            id = '2c9180835d191a86015d28455b4b232a', 
+                            name = 'HR Active Directory', ), 
                         object = { }, )
                     ]
             )

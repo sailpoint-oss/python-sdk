@@ -4,10 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**DtoType**](DtoType.md) |  | [optional] 
-**id** | **str** | ID of the object to which this reference applies | [optional] 
-**name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
-**status** | **str** | Status of a violation report | [optional] 
+**type** | **str** | SOD policy violation report result DTO type. | [optional] 
+**id** | **str** | SOD policy violation report result ID. | [optional] 
+**name** | **str** | Human-readable name of the SOD policy violation report result. | [optional] 
+**status** | **str** | Status of a SOD policy violation report. | [optional] 
 **report_type** | [**ReportType**](ReportType.md) |  | 
 **last_run_at** | **datetime** | The most recent date and time this report was run | [optional] [readonly] 
 

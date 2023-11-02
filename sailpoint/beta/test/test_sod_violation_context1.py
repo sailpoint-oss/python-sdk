@@ -36,10 +36,10 @@ class TestSodViolationContext1(unittest.TestCase):
         model = SodViolationContext1()  # noqa: E501
         if include_optional:
             return SodViolationContext1(
-                policy = beta.models.base_reference_dto.BaseReferenceDto(
-                    type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'William Wilson', ),
+                policy = beta.models.sod_policy_dto.SodPolicyDto(
+                    type = 'SOD_POLICY', 
+                    id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
+                    name = 'Business SOD Policy', ),
                 conflicting_access_criteria = beta.models.sod_violation_context_1_conflicting_access_criteria.SodViolationContext_1_conflictingAccessCriteria(
                     left_criteria = beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(
                         criteria_list = [

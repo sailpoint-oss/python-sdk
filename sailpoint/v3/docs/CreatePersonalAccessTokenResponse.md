@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **secret** | **str** | The secret of the personal access token (to be used as the password for Basic Auth). | 
 **scope** | **List[str]** | Scopes of the personal  access token. | 
 **name** | **str** | The name of the personal access token. Cannot be the same as other personal access tokens owned by a user. | 
-**owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | 
+**owner** | [**PatOwner**](PatOwner.md) |  | 
 **created** | **datetime** | The date and time, down to the millisecond, when this personal access token was created. | 
 
 ## Example

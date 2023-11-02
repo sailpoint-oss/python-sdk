@@ -36,8 +36,7 @@ class TestReassignment(unittest.TestCase):
         model = Reassignment()  # noqa: E501
         if include_optional:
             return Reassignment(
-                var_from = beta.models.certification_reference.CertificationReference(
-                    type = CERTIFICATION, ),
+                var_from = beta.models.certification_reference.CertificationReference(),
                 comment = 'Please review'
             )
         else:

@@ -18,19 +18,18 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-from beta.models.dto_type import DtoType
 
 class Reviewer(BaseModel):
     """
     Details of the reviewer for certification.  # noqa: E501
     """
-    type: Dict[str, Any] = Field(..., description="The type of object that the reviewer is.")
-    email: Optional[StrictStr] = Field(None, description="The email of the reviewing identity. Only applicable to `IDENTITY`")
-    id: StrictStr = Field(..., description="ID of the object to which this reference applies")
-    name: StrictStr = Field(..., description="Human-readable display name of the object to which this reference applies")
-    __properties = ["type", "id", "name"]
+    type: StrictStr = Field(..., description="The reviewer's DTO type.")
+    id: StrictStr = Field(..., description="The reviewer's ID.")
+    name: StrictStr = Field(..., description="The reviewer's display name.")
+    email: Optional[StrictStr] = Field(None, description="The reviewing identity's email. Only applicable to `IDENTITY`.")
+    __properties = ["type", "id", "name", "email"]
 
     @validator('type')
     def type_validate_enum(cls, value):
@@ -63,6 +62,11 @@ class Reviewer(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # set to None if email (nullable) is None
+        # and __fields_set__ contains the field
+        if self.email is None and "email" in self.__fields_set__:
+            _dict['email'] = None
+
         return _dict
 
     @classmethod
@@ -77,7 +81,8 @@ class Reviewer(BaseModel):
         _obj = Reviewer.parse_obj({
             "type": obj.get("type"),
             "id": obj.get("id"),
-            "name": obj.get("name")
+            "name": obj.get("name"),
+            "email": obj.get("email")
         })
         return _obj
 

@@ -18,18 +18,17 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-from beta.models.dto_type import DtoType
 from beta.models.reviewer import Reviewer
 
 class CertificationReference(BaseModel):
     """
-    The previous certification  # noqa: E501
+    Previous certification.  # noqa: E501
     """
-    type: Optional[Dict[str, Any]] = Field(None, description="The type of object that the reviewer is.")
-    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object to which this reference applies")
+    type: Optional[StrictStr] = Field(None, description="DTO type of certification for review.")
+    id: Optional[StrictStr] = Field(None, description="ID of certification for review.")
+    name: Optional[StrictStr] = Field(None, description="Display name of certification for review.")
     reviewer: Optional[Reviewer] = None
     __properties = ["type", "id", "name", "reviewer"]
 

@@ -19,17 +19,26 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
-from v3.models.dto_type import DtoType
+from pydantic import BaseModel, Field, StrictStr, validator
 
 class CommentDtoAuthor(BaseModel):
     """
     CommentDtoAuthor
     """
-    type: Optional[DtoType] = None
-    id: Optional[StrictStr] = Field(None, description="ID of the author")
-    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the identity making the comment")
+    type: Optional[StrictStr] = Field(None, description="DTO type of the commenting identity.")
+    id: Optional[StrictStr] = Field(None, description="ID of the commenting identity.")
+    name: Optional[StrictStr] = Field(None, description="Display name of the commenting identity.")
     __properties = ["type", "id", "name"]
+
+    @validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('IDENTITY'):
+            raise ValueError("must be one of enum values ('IDENTITY')")
+        return value
 
     class Config:
         """Pydantic configuration"""

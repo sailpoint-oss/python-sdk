@@ -1,13 +1,13 @@
 # ProvisioningCompletedRecipient
 
-Reference to the identity who is the target of the provisioning request.
+Provisioning recpient.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | 
-**id** | **str** | ID of the object to which this reference applies | 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**type** | **str** | Provisioning recipient DTO type. | 
+**id** | **str** | Provisioning recipient&#39;s identity ID. | 
+**name** | **str** | Provisioning recipient&#39;s display name. | 
 
 ## Example
 

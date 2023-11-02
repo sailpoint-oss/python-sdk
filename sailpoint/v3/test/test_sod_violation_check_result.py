@@ -43,25 +43,26 @@ class TestSodViolationCheckResult(unittest.TestCase):
                 client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1},
                 violation_contexts = [
                     v3.models.sod_violation_context.SodViolationContext(
-                        policy = v3.models.base_reference_dto.BaseReferenceDto(
-                            type = 'IDENTITY', 
-                            id = '2c91808568c529c60168cca6f90c1313', 
-                            name = 'William Wilson', ), 
+                        policy = v3.models.sod_policy_dto.SodPolicyDto(
+                            type = 'SOD_POLICY', 
+                            id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
+                            name = 'Business SOD Policy', ), 
                         conflicting_access_criteria = v3.models.sod_violation_context_conflicting_access_criteria.SodViolationContext_conflictingAccessCriteria(
                             left_criteria = v3.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(
                                 criteria_list = [
                                     v3.models.sod_exempt_criteria.SodExemptCriteria(
                                         existing = True, 
+                                        type = 'IDENTITY', 
                                         id = '2c918085771e9d3301773b3cb66f6398', 
                                         name = 'My HR Entitlement', )
                                     ], ), 
                             right_criteria = v3.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(), ), )
                     ],
                 violated_policies = [
-                    v3.models.base_reference_dto.BaseReferenceDto(
-                        type = 'IDENTITY', 
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'William Wilson', )
+                    v3.models.sod_policy_dto.SodPolicyDto(
+                        type = 'SOD_POLICY', 
+                        id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
+                        name = 'Business SOD Policy', )
                     ]
             )
         else:

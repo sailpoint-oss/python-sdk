@@ -1,13 +1,13 @@
 # AccountAttributesChangedIdentity
 
-The identity whose account attributes changed.
+The identity whose account attributes were updated.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | 
-**id** | **str** | ID of the object to which this reference applies | 
-**name** | **str** | Human-readable display name of the object to which this reference applies | 
+**type** | **str** | DTO type of the identity whose account attributes were updated. | 
+**id** | **str** | ID of the identity whose account attributes were updated. | 
+**name** | **str** | Display name of the identity whose account attributes were updated. | 
 
 ## Example
 

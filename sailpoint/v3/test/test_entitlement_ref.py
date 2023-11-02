@@ -36,8 +36,8 @@ class TestEntitlementRef(unittest.TestCase):
         model = EntitlementRef()  # noqa: E501
         if include_optional:
             return EntitlementRef(
-                id = '2c91809773dee32014e13e122092014e',
                 type = 'ENTITLEMENT',
+                id = '2c91809773dee32014e13e122092014e',
                 name = 'CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local'
             )
         else:

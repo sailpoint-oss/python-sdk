@@ -18,17 +18,16 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-from beta.models.dto_type import DtoType
 
 class IdentityWithNewAccessAccessRefsInner(BaseModel):
     """
-    The types of objects supported for SOD violations  # noqa: E501
+    Entitlement including a specific set of access.  # noqa: E501
     """
-    type: Optional[Dict[str, Any]] = Field(None, description="The type of object that is referenced")
-    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object to which this reference applies")
+    type: Optional[StrictStr] = Field(None, description="Entitlement's DTO type.")
+    id: Optional[StrictStr] = Field(None, description="Entitlement's ID.")
+    name: Optional[StrictStr] = Field(None, description="Entitlement's display name.")
     __properties = ["type", "id", "name"]
 
     @validator('type')

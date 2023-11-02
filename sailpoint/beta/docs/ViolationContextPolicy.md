@@ -1,12 +1,12 @@
 # ViolationContextPolicy
 
-The types of objects supported for SOD violations
+The types of objects supported for SOD policy violations.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that is referenced | [optional] 
-**id** | **str** | ID of the object to which this reference applies | [optional] 
+**type** | **object** | The type of object supported for SOD policy violations. | [optional] 
+**id** | **str** | SOD policy ID. | [optional] 
 **name** | **str** |  | [optional] 
 
 ## Example

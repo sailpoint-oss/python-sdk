@@ -36,15 +36,15 @@ class TestAccountAggregationCompletedSource(unittest.TestCase):
         model = AccountAggregationCompletedSource()  # noqa: E501
         if include_optional:
             return AccountAggregationCompletedSource(
-                type = SOURCE,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson'
+                type = 'SOURCE',
+                id = '2c9180835d191a86015d28455b4b232a',
+                name = 'HR Active Directory'
             )
         else:
             return AccountAggregationCompletedSource(
-                type = SOURCE,
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'William Wilson',
+                type = 'SOURCE',
+                id = '2c9180835d191a86015d28455b4b232a',
+                name = 'HR Active Directory',
         )
         """
 

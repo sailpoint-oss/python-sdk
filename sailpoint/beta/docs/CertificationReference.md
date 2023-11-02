@@ -1,13 +1,13 @@
 # CertificationReference
 
-The previous certification
+Previous certification.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **object** | The type of object that the reviewer is. | [optional] 
-**id** | **str** | ID of the object to which this reference applies | [optional] 
-**name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
+**type** | **str** | DTO type of certification for review. | [optional] 
+**id** | **str** | ID of certification for review. | [optional] 
+**name** | **str** | Display name of certification for review. | [optional] 
 **reviewer** | [**Reviewer**](Reviewer.md) |  | [optional] 
 
 ## Example

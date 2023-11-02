@@ -17,16 +17,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, StrictStr
+from pydantic import BaseModel, Field, StrictStr
+from beta.models.comment_dto_author import CommentDtoAuthor
 
 class CommentDto(BaseModel):
     """
     CommentDto
     """
-    comment: Optional[StrictStr] = None
-    __properties = ["comment"]
+    comment: Optional[StrictStr] = Field(None, description="Comment content.")
+    author: Optional[CommentDtoAuthor] = None
+    created: Optional[datetime] = Field(None, description="Date and time comment was created.")
+    __properties = ["comment", "author", "created"]
 
     class Config:
         """Pydantic configuration"""
@@ -52,6 +55,14 @@ class CommentDto(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of author
+        if self.author:
+            _dict['author'] = self.author.to_dict()
+        # set to None if comment (nullable) is None
+        # and __fields_set__ contains the field
+        if self.comment is None and "comment" in self.__fields_set__:
+            _dict['comment'] = None
+
         return _dict
 
     @classmethod
@@ -64,7 +75,9 @@ class CommentDto(BaseModel):
             return CommentDto.parse_obj(obj)
 
         _obj = CommentDto.parse_obj({
-            "comment": obj.get("comment")
+            "comment": obj.get("comment"),
+            "author": CommentDtoAuthor.from_dict(obj.get("author")) if obj.get("author") is not None else None,
+            "created": obj.get("created")
         })
         return _obj
 

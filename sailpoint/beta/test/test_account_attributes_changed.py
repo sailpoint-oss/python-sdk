@@ -37,7 +37,9 @@ class TestAccountAttributesChanged(unittest.TestCase):
         if include_optional:
             return AccountAttributesChanged(
                 identity = beta.models.account_attributes_changed_identity.AccountAttributesChanged_identity(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 source = beta.models.account_attributes_changed_source.AccountAttributesChanged_source(
                     id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                     type = 'SOURCE', 
@@ -58,7 +60,9 @@ class TestAccountAttributesChanged(unittest.TestCase):
         else:
             return AccountAttributesChanged(
                 identity = beta.models.account_attributes_changed_identity.AccountAttributesChanged_identity(
-                    type = IDENTITY, ),
+                    type = 'IDENTITY', 
+                    id = '2c7180a46faadee4016fb4e018c20642', 
+                    name = 'Michael Michaels', ),
                 source = beta.models.account_attributes_changed_source.AccountAttributesChanged_source(
                     id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                     type = 'SOURCE', 

@@ -5,7 +5,7 @@ The contextual information of the violated criteria
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**policy** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**policy** | [**SodPolicyDto**](SodPolicyDto.md) |  | [optional] 
 **conflicting_access_criteria** | [**SodViolationContextConflictingAccessCriteria**](SodViolationContextConflictingAccessCriteria.md) |  | [optional] 
 
 ## Example

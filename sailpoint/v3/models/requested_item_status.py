@@ -20,10 +20,11 @@ import json
 from datetime import datetime
 from typing import Dict, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, validator
+from v3.models.access_item_requested_for import AccessItemRequestedFor
+from v3.models.access_item_requester import AccessItemRequester
 from v3.models.access_request_phases import AccessRequestPhases
 from v3.models.access_request_type import AccessRequestType
 from v3.models.approval_status_dto import ApprovalStatusDto
-from v3.models.base_reference_dto import BaseReferenceDto
 from v3.models.cancelled_request_details import CancelledRequestDetails
 from v3.models.comment_dto import CommentDto
 from v3.models.error_message_dto import ErrorMessageDto
@@ -48,8 +49,8 @@ class RequestedItemStatus(BaseModel):
     request_type: Optional[AccessRequestType] = Field(None, alias="requestType")
     modified: Optional[datetime] = Field(None, description="When the request was last modified.")
     created: Optional[datetime] = Field(None, description="When the request was created.")
-    requester: Optional[BaseReferenceDto] = None
-    requested_for: Optional[BaseReferenceDto] = Field(None, alias="requestedFor")
+    requester: Optional[AccessItemRequester] = None
+    requested_for: Optional[AccessItemRequestedFor] = Field(None, alias="requestedFor")
     requester_comment: Optional[CommentDto] = Field(None, alias="requesterComment")
     sod_violation_context: Optional[SodViolationContextCheckCompleted] = Field(None, alias="sodViolationContext")
     provisioning_details: Optional[ProvisioningDetails] = Field(None, alias="provisioningDetails")
@@ -193,8 +194,8 @@ class RequestedItemStatus(BaseModel):
             "request_type": obj.get("requestType"),
             "modified": obj.get("modified"),
             "created": obj.get("created"),
-            "requester": BaseReferenceDto.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
-            "requested_for": BaseReferenceDto.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
+            "requester": AccessItemRequester.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
+            "requested_for": AccessItemRequestedFor.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
             "requester_comment": CommentDto.from_dict(obj.get("requesterComment")) if obj.get("requesterComment") is not None else None,
             "sod_violation_context": SodViolationContextCheckCompleted.from_dict(obj.get("sodViolationContext")) if obj.get("sodViolationContext") is not None else None,
             "provisioning_details": ProvisioningDetails.from_dict(obj.get("provisioningDetails")) if obj.get("provisioningDetails") is not None else None,
