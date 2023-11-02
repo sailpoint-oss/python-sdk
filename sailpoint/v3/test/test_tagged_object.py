@@ -36,10 +36,10 @@ class TestTaggedObject(unittest.TestCase):
         model = TaggedObject()  # noqa: E501
         if include_optional:
             return TaggedObject(
-                object_ref = v3.models.tagged_object.TaggedObject(
-                    object_ref = v3.models.tagged_object.TaggedObject(
-                        tags = [BU_FINANCE, PCI], ), 
-                    tags = [BU_FINANCE, PCI], ),
+                object_ref = v3.models.tagged_object_dto.TaggedObjectDto(
+                    type = 'IDENTITY', 
+                    id = '2c91808568c529c60168cca6f90c1313', 
+                    name = 'William Wilson', ),
                 tags = [BU_FINANCE, PCI]
             )
         else:
