@@ -20,7 +20,7 @@ from pydantic import validate_arguments, ValidationError
 
 from pydantic import StrictStr
 
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from cc.models.refresh_identities_request import RefreshIdentitiesRequest
 
@@ -45,7 +45,7 @@ class SystemApi:
         self.api_client = api_client
 
     @validate_arguments
-    def refresh_identities(self, content_type : Optional[StrictStr] = None, refresh_identities_request : Optional[RefreshIdentitiesRequest] = None, **kwargs) -> None:  # noqa: E501
+    def refresh_identities(self, content_type : Optional[StrictStr] = None, refresh_identities_request : Optional[RefreshIdentitiesRequest] = None, **kwargs) -> Dict[str, object]:  # noqa: E501
         """Refresh Identities  # noqa: E501
 
         This kicks off an identity refresh for a specified set of identity attributes.  This can be a long running process.  IdentityNow has pre-scheduled versions of this task at set intervals and events already, so only run this when directed by SailPoint.  _Note: If the identities specified by the filter do not exist, a full identity refresh will be run.  Use with caution._  Refresh Arguments:  | Key                   | Description                                        | |-----------------------|----------------------------------------------------| | correlateEntitlements | Analyzes entitlements, access profiles, and roles. | | promoteAttributes     | Calculates identity attributes.                    | | refreshManagerStatus  | Calculates manager correlation and manager status. | | synchronizeAttributes | Performs attribute sync provisioning.              | | pruneIdentities       | Removes any identities which don't have accounts.  | | provision             | Provisions any assigned roles or access profiles.  |  # noqa: E501
@@ -68,7 +68,7 @@ class SystemApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: Dict[str, object]
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -113,7 +113,7 @@ class SystemApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(Dict[str, object], status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -178,7 +178,9 @@ class SystemApi:
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            '200': "Dict[str, object]",
+        }
 
         return self.api_client.call_api(
             '/cc/api/system/refreshIdentities', 'POST',

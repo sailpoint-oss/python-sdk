@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **create_application**
-> create_application(create_application_request=create_application_request)
+> Dict[str, object] create_application(create_application_request=create_application_request)
 
 Create Application
 
@@ -52,7 +52,9 @@ with cc.ApiClient(configuration) as api_client:
 
     try:
         # Create Application
-        api_instance.create_application(create_application_request=create_application_request)
+        api_response = api_instance.create_application(create_application_request=create_application_request)
+        print("The response of ApplicationsApi->create_application:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApplicationsApi->create_application: %s\n" % e)
 ```
@@ -67,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**Dict[str, object]**
 
 ### Authorization
 
@@ -233,7 +235,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_application_access_profiles**
-> get_application_access_profiles(id)
+> Dict[str, object] get_application_access_profiles(id)
 
 Get Access Profiles for Application
 
@@ -261,7 +263,9 @@ with cc.ApiClient(configuration) as api_client:
 
     try:
         # Get Access Profiles for Application
-        api_instance.get_application_access_profiles(id)
+        api_response = api_instance.get_application_access_profiles(id)
+        print("The response of ApplicationsApi->get_application_access_profiles:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApplicationsApi->get_application_access_profiles: %s\n" % e)
 ```
@@ -276,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**Dict[str, object]**
 
 ### Authorization
 
@@ -366,7 +370,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_application**
-> update_application(id, update_application_request=update_application_request)
+> Dict[str, object] update_application(id, request_body=request_body)
 
 Update Application
 
@@ -378,7 +382,6 @@ Update Application
 import time
 import os
 import cc
-from cc.models.update_application_request import UpdateApplicationRequest
 from cc.rest import ApiException
 from pprint import pprint
 
@@ -402,11 +405,13 @@ with cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cc.ApplicationsApi(api_client)
     id = '12345' # str | 
-    update_application_request = cc.UpdateApplicationRequest() # UpdateApplicationRequest |  (optional)
+    request_body = None # Dict[str, object] |  (optional)
 
     try:
         # Update Application
-        api_instance.update_application(id, update_application_request=update_application_request)
+        api_response = api_instance.update_application(id, request_body=request_body)
+        print("The response of ApplicationsApi->update_application:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling ApplicationsApi->update_application: %s\n" % e)
 ```
@@ -418,11 +423,11 @@ with cc.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **update_application_request** | [**UpdateApplicationRequest**](UpdateApplicationRequest.md)|  | [optional] 
+ **request_body** | [**Dict[str, object]**](object.md)|  | [optional] 
 
 ### Return type
 
-void (empty response body)
+**Dict[str, object]**
 
 ### Authorization
 

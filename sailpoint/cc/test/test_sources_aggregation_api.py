@@ -33,6 +33,13 @@ class TestSourcesAggregationApi(unittest.TestCase):
         """
         pass
 
+    def test_load_entitlements(self) -> None:
+        """Test case for load_entitlements
+
+        Account Aggregation (File)  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

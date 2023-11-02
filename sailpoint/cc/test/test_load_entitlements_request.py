@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from cc.models.update_application_request import UpdateApplicationRequest  # noqa: E501
+from cc.models.load_entitlements_request import LoadEntitlementsRequest  # noqa: E501
 
-class TestUpdateApplicationRequest(unittest.TestCase):
-    """UpdateApplicationRequest unit test stubs"""
+class TestLoadEntitlementsRequest(unittest.TestCase):
+    """LoadEntitlementsRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,25 +26,25 @@ class TestUpdateApplicationRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> UpdateApplicationRequest:
-        """Test UpdateApplicationRequest
+    def make_instance(self, include_optional) -> LoadEntitlementsRequest:
+        """Test LoadEntitlementsRequest
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `UpdateApplicationRequest`
+        # uncomment below to create an instance of `LoadEntitlementsRequest`
         """
-        model = UpdateApplicationRequest()  # noqa: E501
+        model = LoadEntitlementsRequest()  # noqa: E501
         if include_optional:
-            return UpdateApplicationRequest(
-                description = ''
+            return LoadEntitlementsRequest(
+                file = bytes(b'blah')
             )
         else:
-            return UpdateApplicationRequest(
+            return LoadEntitlementsRequest(
         )
         """
 
-    def testUpdateApplicationRequest(self):
-        """Test UpdateApplicationRequest"""
+    def testLoadEntitlementsRequest(self):
+        """Test LoadEntitlementsRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

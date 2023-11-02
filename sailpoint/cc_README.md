@@ -86,6 +86,7 @@ Class | Method | HTTP request | Description
 *ConnectorsApi* | [**list_connectors**](cc/docs/ConnectorsApi.md#list_connectors) | **GET** /cc/api/connector/list | List Connectors
 *SourcesAccountsApi* | [**export_account_feed**](cc/docs/SourcesAccountsApi.md#export_account_feed) | **GET** /cc/api/source/exportAccountFeed/{id} | Export Account Feed
 *SourcesAggregationApi* | [**load_accounts**](cc/docs/SourcesAggregationApi.md#load_accounts) | **POST** /cc/api/source/loadAccounts/{id} | Account Aggregation (File)
+*SourcesAggregationApi* | [**load_entitlements**](cc/docs/SourcesAggregationApi.md#load_entitlements) | **POST** /cc/api/source/loadEntitlements/{id} | Account Aggregation (File)
 *SystemApi* | [**refresh_identities**](cc/docs/SystemApi.md#refresh_identities) | **POST** /cc/api/system/refreshIdentities | Refresh Identities
 *UserApi* | [**get_identity**](cc/docs/UserApi.md#get_identity) | **GET** /cc/api/user/get/{id} | Get Single Identity
 *UserApi* | [**update_user_permissions**](cc/docs/UserApi.md#update_user_permissions) | **POST** /cc/api/user/updatePermissions | Update User Permissions
@@ -109,9 +110,9 @@ Class | Method | HTTP request | Description
  - [ListConnectors200Response](cc/docs/ListConnectors200Response.md)
  - [ListConnectors200ResponseItemsInner](cc/docs/ListConnectors200ResponseItemsInner.md)
  - [LoadAccountsRequest](cc/docs/LoadAccountsRequest.md)
+ - [LoadEntitlementsRequest](cc/docs/LoadEntitlementsRequest.md)
  - [RefreshIdentitiesRequest](cc/docs/RefreshIdentitiesRequest.md)
  - [RefreshIdentitiesRequestRefreshArgs](cc/docs/RefreshIdentitiesRequestRefreshArgs.md)
- - [UpdateApplicationRequest](cc/docs/UpdateApplicationRequest.md)
  - [UpdateUserPermissionsRequest](cc/docs/UpdateUserPermissionsRequest.md)
 
 

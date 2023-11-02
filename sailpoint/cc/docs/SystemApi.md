@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **refresh_identities**
-> refresh_identities(content_type=content_type, refresh_identities_request=refresh_identities_request)
+> Dict[str, object] refresh_identities(content_type=content_type, refresh_identities_request=refresh_identities_request)
 
 Refresh Identities
 
@@ -50,7 +50,9 @@ with cc.ApiClient(configuration) as api_client:
 
     try:
         # Refresh Identities
-        api_instance.refresh_identities(content_type=content_type, refresh_identities_request=refresh_identities_request)
+        api_response = api_instance.refresh_identities(content_type=content_type, refresh_identities_request=refresh_identities_request)
+        print("The response of SystemApi->refresh_identities:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling SystemApi->refresh_identities: %s\n" % e)
 ```
@@ -66,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**Dict[str, object]**
 
 ### Authorization
 

@@ -18,15 +18,15 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, StrictStr
+from typing import Optional, Union
+from pydantic import BaseModel, StrictBytes, StrictStr
 
-class UpdateApplicationRequest(BaseModel):
+class LoadEntitlementsRequest(BaseModel):
     """
-    UpdateApplicationRequest
+    LoadEntitlementsRequest
     """
-    description: Optional[StrictStr] = None
-    __properties = ["description"]
+    file: Optional[Union[StrictBytes, StrictStr]] = None
+    __properties = ["file"]
 
     class Config:
         """Pydantic configuration"""
@@ -42,8 +42,8 @@ class UpdateApplicationRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> UpdateApplicationRequest:
-        """Create an instance of UpdateApplicationRequest from a JSON string"""
+    def from_json(cls, json_str: str) -> LoadEntitlementsRequest:
+        """Create an instance of LoadEntitlementsRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -55,16 +55,16 @@ class UpdateApplicationRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> UpdateApplicationRequest:
-        """Create an instance of UpdateApplicationRequest from a dict"""
+    def from_dict(cls, obj: dict) -> LoadEntitlementsRequest:
+        """Create an instance of LoadEntitlementsRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return UpdateApplicationRequest.parse_obj(obj)
+            return LoadEntitlementsRequest.parse_obj(obj)
 
-        _obj = UpdateApplicationRequest.parse_obj({
-            "description": obj.get("description")
+        _obj = LoadEntitlementsRequest.parse_obj({
+            "file": obj.get("file")
         })
         return _obj
 

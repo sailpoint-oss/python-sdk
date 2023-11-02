@@ -20,11 +20,10 @@ from pydantic import validate_arguments, ValidationError
 
 from pydantic import StrictStr
 
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 from cc.models.create_application_request import CreateApplicationRequest
 from cc.models.list_applications200_response_inner import ListApplications200ResponseInner
-from cc.models.update_application_request import UpdateApplicationRequest
 
 from cc.api_client import ApiClient
 from cc.api_response import ApiResponse
@@ -47,7 +46,7 @@ class ApplicationsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_application(self, create_application_request : Optional[CreateApplicationRequest] = None, **kwargs) -> None:  # noqa: E501
+    def create_application(self, create_application_request : Optional[CreateApplicationRequest] = None, **kwargs) -> Dict[str, object]:  # noqa: E501
         """Create Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -67,7 +66,7 @@ class ApplicationsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: Dict[str, object]
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -109,7 +108,7 @@ class ApplicationsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(Dict[str, object], status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -170,7 +169,9 @@ class ApplicationsApi:
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            '200': "Dict[str, object]",
+        }
 
         return self.api_client.call_api(
             '/cc/api/app/create', 'POST',
@@ -464,7 +465,7 @@ class ApplicationsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_application_access_profiles(self, id : StrictStr, **kwargs) -> None:  # noqa: E501
+    def get_application_access_profiles(self, id : StrictStr, **kwargs) -> Dict[str, object]:  # noqa: E501
         """Get Access Profiles for Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -484,7 +485,7 @@ class ApplicationsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: Dict[str, object]
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -526,7 +527,7 @@ class ApplicationsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(Dict[str, object], status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -580,7 +581,9 @@ class ApplicationsApi:
         # authentication setting
         _auth_settings = []  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            '200': "Dict[str, object]",
+        }
 
         return self.api_client.call_api(
             '/cc/api/app/getAccessProfiles/{id}', 'GET',
@@ -730,19 +733,19 @@ class ApplicationsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_application(self, id : StrictStr, update_application_request : Optional[UpdateApplicationRequest] = None, **kwargs) -> None:  # noqa: E501
+    def update_application(self, id : StrictStr, request_body : Optional[Dict[str, Any]] = None, **kwargs) -> Dict[str, object]:  # noqa: E501
         """Update Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_application(id, update_application_request, async_req=True)
+        >>> thread = api.update_application(id, request_body, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
-        :param update_application_request:
-        :type update_application_request: UpdateApplicationRequest
+        :param request_body:
+        :type request_body: Dict[str, object]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -752,28 +755,28 @@ class ApplicationsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: Dict[str, object]
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_application_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_application_with_http_info(id, update_application_request, **kwargs)  # noqa: E501
+        return self.update_application_with_http_info(id, request_body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_application_with_http_info(self, id : StrictStr, update_application_request : Optional[UpdateApplicationRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def update_application_with_http_info(self, id : StrictStr, request_body : Optional[Dict[str, Any]] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Update Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_application_with_http_info(id, update_application_request, async_req=True)
+        >>> thread = api.update_application_with_http_info(id, request_body, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
-        :param update_application_request:
-        :type update_application_request: UpdateApplicationRequest
+        :param request_body:
+        :type request_body: Dict[str, object]
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -796,14 +799,14 @@ class ApplicationsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(Dict[str, object], status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
 
         _all_params = [
             'id',
-            'update_application_request'
+            'request_body'
         ]
         _all_params.extend(
             [
@@ -844,8 +847,8 @@ class ApplicationsApi:
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['update_application_request'] is not None:
-            _body_params = _params['update_application_request']
+        if _params['request_body'] is not None:
+            _body_params = _params['request_body']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -861,7 +864,9 @@ class ApplicationsApi:
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            '200': "Dict[str, object]",
+        }
 
         return self.api_client.call_api(
             '/cc/api/app/update/{id}', 'POST',
