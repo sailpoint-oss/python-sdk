@@ -1,0 +1,44 @@
+name: "Build and push SDK to Test PyPi"
+
+on:
+  workflow_dispatch:
+
+jobs:
+    pypi-publish:
+      name: Upload release to Test PyPI
+      runs-on: ubuntu-latest
+      permissions:
+        id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
+      steps:
+      # retrieve your distributions here
+
+      # Setup Python
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+            python-version: '3.x'
+
+      - name: Install build and twine packages
+        id: requirements
+        run: |
+          python -m pip install --upgrade build
+          python -m pip install --upgrade twine
+
+      - name: Build sailpoint package
+        id: build
+        if: steps.requirements.outcome == 'success'
+        run: |
+          cd sailpoint/
+          python -m build
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{secrets.TEST_PYTHON_API_KEY}}
+          repository-url: https://test.pypi.org/legacy/
+          packages-dir: sailpoint/dist/
