@@ -375,8 +375,8 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**create_sod_policy**](beta/docs/SODPolicyApi.md#create_sod_policy) | **POST** /sod-policies | Create SOD policy
 *SODPolicyApi* | [**delete_sod_policy**](beta/docs/SODPolicyApi.md#delete_sod_policy) | **DELETE** /sod-policies/{id} | Delete SOD policy by ID
 *SODPolicyApi* | [**delete_sod_policy_schedule**](beta/docs/SODPolicyApi.md#delete_sod_policy_schedule) | **DELETE** /sod-policies/{id}/schedule | Delete SOD policy schedule
-*SODPolicyApi* | [**download_custom_violation_report**](beta/docs/SODPolicyApi.md#download_custom_violation_report) | **GET** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
-*SODPolicyApi* | [**download_default_violation_report**](beta/docs/SODPolicyApi.md#download_default_violation_report) | **GET** /sod-violation-report/{reportResultId}/download | Download violation report
+*SODPolicyApi* | [**get_custom_violation_report**](beta/docs/SODPolicyApi.md#get_custom_violation_report) | **GET** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
+*SODPolicyApi* | [**get_default_violation_report**](beta/docs/SODPolicyApi.md#get_default_violation_report) | **GET** /sod-violation-report/{reportResultId}/download | Download violation report
 *SODPolicyApi* | [**get_sod_all_report_run_status**](beta/docs/SODPolicyApi.md#get_sod_all_report_run_status) | **GET** /sod-violation-report | Get multi-report run task status
 *SODPolicyApi* | [**get_sod_policy**](beta/docs/SODPolicyApi.md#get_sod_policy) | **GET** /sod-policies/{id} | Get SOD policy by ID
 *SODPolicyApi* | [**get_sod_policy_schedule**](beta/docs/SODPolicyApi.md#get_sod_policy_schedule) | **GET** /sod-policies/{id}/schedule | Get SOD policy schedule
@@ -384,11 +384,11 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**get_sod_violation_report_status**](beta/docs/SODPolicyApi.md#get_sod_violation_report_status) | **GET** /sod-policies/{id}/violation-report | Get SOD violation report status
 *SODPolicyApi* | [**list_sod_policies**](beta/docs/SODPolicyApi.md#list_sod_policies) | **GET** /sod-policies | List SOD policies
 *SODPolicyApi* | [**patch_sod_policy**](beta/docs/SODPolicyApi.md#patch_sod_policy) | **PATCH** /sod-policies/{id} | Patch a SOD policy
-*SODPolicyApi* | [**run_sod_all_policies_for_org**](beta/docs/SODPolicyApi.md#run_sod_all_policies_for_org) | **POST** /sod-violation-report/run | Runs all policies for org
-*SODPolicyApi* | [**run_sod_policy**](beta/docs/SODPolicyApi.md#run_sod_policy) | **POST** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
-*SODPolicyApi* | [**update_policy_schedule**](beta/docs/SODPolicyApi.md#update_policy_schedule) | **PUT** /sod-policies/{id}/schedule | Update SOD Policy schedule
-*SODPolicyApi* | [**update_sod_policy**](beta/docs/SODPolicyApi.md#update_sod_policy) | **PUT** /sod-policies/{id} | Update SOD policy by ID
-*SODViolationsApi* | [**predict_sod_violations**](beta/docs/SODViolationsApi.md#predict_sod_violations) | **POST** /sod-violations/predict | Predict SOD violations for the given identity if they were granted the given access.
+*SODPolicyApi* | [**put_policy_schedule**](beta/docs/SODPolicyApi.md#put_policy_schedule) | **PUT** /sod-policies/{id}/schedule | Update SOD Policy schedule
+*SODPolicyApi* | [**put_sod_policy**](beta/docs/SODPolicyApi.md#put_sod_policy) | **PUT** /sod-policies/{id} | Update SOD policy by ID
+*SODPolicyApi* | [**start_sod_all_policies_for_org**](beta/docs/SODPolicyApi.md#start_sod_all_policies_for_org) | **POST** /sod-violation-report/run | Runs all policies for org
+*SODPolicyApi* | [**start_sod_policy**](beta/docs/SODPolicyApi.md#start_sod_policy) | **POST** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
+*SODViolationsApi* | [**start_predict_sod_violations**](beta/docs/SODViolationsApi.md#start_predict_sod_violations) | **POST** /sod-violations/predict | Predict SOD violations for identity.
 *SPConfigApi* | [**export_sp_config**](beta/docs/SPConfigApi.md#export_sp_config) | **POST** /sp-config/export | Initiates configuration objects export job
 *SPConfigApi* | [**get_sp_config_export**](beta/docs/SPConfigApi.md#get_sp_config_export) | **GET** /sp-config/export/{id}/download | Download export job result.
 *SPConfigApi* | [**get_sp_config_export_status**](beta/docs/SPConfigApi.md#get_sp_config_export_status) | **GET** /sp-config/export/{id} | Get export job status

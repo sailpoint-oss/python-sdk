@@ -1,4 +1,4 @@
-# ListApplications200ResponseInner
+# GetApplication200Response
 
 
 ## Properties
@@ -53,24 +53,24 @@ Name | Type | Description | Notes
 **xsd_version** | **str** |  | [optional] 
 **app_profiles** | [**List[ListApplications200ResponseInnerAppProfilesInner]**](ListApplications200ResponseInnerAppProfilesInner.md) |  | [optional] 
 **password_service_id** | **float** |  | [optional] 
-**access_profile_ids** | **List[str]** |  | [optional] 
+**access_profile_ids** | **object** |  | [optional] 
 
 ## Example
 
 ```python
-from cc.models.list_applications200_response_inner import ListApplications200ResponseInner
+from cc.models.get_application200_response import GetApplication200Response
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of ListApplications200ResponseInner from a JSON string
-list_applications200_response_inner_instance = ListApplications200ResponseInner.from_json(json)
+# create an instance of GetApplication200Response from a JSON string
+get_application200_response_instance = GetApplication200Response.from_json(json)
 # print the JSON string representation of the object
-print ListApplications200ResponseInner.to_json()
+print GetApplication200Response.to_json()
 
 # convert the object into a dict
-list_applications200_response_inner_dict = list_applications200_response_inner_instance.to_dict()
-# create an instance of ListApplications200ResponseInner from a dict
-list_applications200_response_inner_form_dict = list_applications200_response_inner.from_dict(list_applications200_response_inner_dict)
+get_application200_response_dict = get_application200_response_instance.to_dict()
+# create an instance of GetApplication200Response from a dict
+get_application200_response_form_dict = get_application200_response.from_dict(get_application200_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

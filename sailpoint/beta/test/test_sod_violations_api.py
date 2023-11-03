@@ -26,10 +26,10 @@ class TestSODViolationsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_predict_sod_violations(self) -> None:
-        """Test case for predict_sod_violations
+    def test_start_predict_sod_violations(self) -> None:
+        """Test case for start_predict_sod_violations
 
-        Predict SOD violations for the given identity if they were granted the given access.  # noqa: E501
+        Predict SOD violations for identity.  # noqa: E501
         """
         pass
 

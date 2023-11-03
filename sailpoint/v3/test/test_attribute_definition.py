@@ -43,7 +43,7 @@ class TestAttributeDefinition(unittest.TestCase):
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'group', ),
                 description = 'SAM Account Name',
-                is_multi_valued = False,
+                is_multi = False,
                 is_entitlement = False,
                 is_group = False
             )

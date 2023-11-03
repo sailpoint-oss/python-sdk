@@ -1836,14 +1836,14 @@ class SODPolicyApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def set_policy_schedule(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy to update its schedule.")], sod_policy_schedule : SodPolicySchedule, **kwargs) -> SodPolicySchedule:  # noqa: E501
+    def put_policy_schedule(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy to update its schedule.")], sod_policy_schedule : SodPolicySchedule, **kwargs) -> SodPolicySchedule:  # noqa: E501
         """Update SOD Policy schedule  # noqa: E501
 
         This updates schedule for a specified SOD policy.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_policy_schedule(id, sod_policy_schedule, async_req=True)
+        >>> thread = api.put_policy_schedule(id, sod_policy_schedule, async_req=True)
         >>> result = thread.get()
 
         :param id: The ID of the SOD policy to update its schedule. (required)
@@ -1863,19 +1863,19 @@ class SODPolicyApi:
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            message = "Error! Please call the set_policy_schedule_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            message = "Error! Please call the put_policy_schedule_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.set_policy_schedule_with_http_info(id, sod_policy_schedule, **kwargs)  # noqa: E501
+        return self.put_policy_schedule_with_http_info(id, sod_policy_schedule, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def set_policy_schedule_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy to update its schedule.")], sod_policy_schedule : SodPolicySchedule, **kwargs) -> ApiResponse:  # noqa: E501
+    def put_policy_schedule_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy to update its schedule.")], sod_policy_schedule : SodPolicySchedule, **kwargs) -> ApiResponse:  # noqa: E501
         """Update SOD Policy schedule  # noqa: E501
 
         This updates schedule for a specified SOD policy.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_policy_schedule_with_http_info(id, sod_policy_schedule, async_req=True)
+        >>> thread = api.put_policy_schedule_with_http_info(id, sod_policy_schedule, async_req=True)
         >>> result = thread.get()
 
         :param id: The ID of the SOD policy to update its schedule. (required)
@@ -1930,7 +1930,7 @@ class SODPolicyApi:
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method set_policy_schedule" % _key
+                    " to method put_policy_schedule" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
@@ -1996,14 +1996,14 @@ class SODPolicyApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def set_sod_policy(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy to update.")], sod_policy : SodPolicy, **kwargs) -> SodPolicy:  # noqa: E501
+    def put_sod_policy(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy to update.")], sod_policy : SodPolicy, **kwargs) -> SodPolicy:  # noqa: E501
         """Update SOD policy by ID  # noqa: E501
 
         This updates a specified SOD policy. Requires role of ORG_ADMIN.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_sod_policy(id, sod_policy, async_req=True)
+        >>> thread = api.put_sod_policy(id, sod_policy, async_req=True)
         >>> result = thread.get()
 
         :param id: The ID of the SOD policy to update. (required)
@@ -2023,19 +2023,19 @@ class SODPolicyApi:
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            message = "Error! Please call the set_sod_policy_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            message = "Error! Please call the put_sod_policy_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.set_sod_policy_with_http_info(id, sod_policy, **kwargs)  # noqa: E501
+        return self.put_sod_policy_with_http_info(id, sod_policy, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def set_sod_policy_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy to update.")], sod_policy : SodPolicy, **kwargs) -> ApiResponse:  # noqa: E501
+    def put_sod_policy_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy to update.")], sod_policy : SodPolicy, **kwargs) -> ApiResponse:  # noqa: E501
         """Update SOD policy by ID  # noqa: E501
 
         This updates a specified SOD policy. Requires role of ORG_ADMIN.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.set_sod_policy_with_http_info(id, sod_policy, async_req=True)
+        >>> thread = api.put_sod_policy_with_http_info(id, sod_policy, async_req=True)
         >>> result = thread.get()
 
         :param id: The ID of the SOD policy to update. (required)
@@ -2090,7 +2090,7 @@ class SODPolicyApi:
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method set_sod_policy" % _key
+                    " to method put_sod_policy" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']

@@ -39,6 +39,7 @@ from cc.exceptions import ApiException
 # import models into sdk package
 from cc.models.create_application_request import CreateApplicationRequest
 from cc.models.create_connector_request import CreateConnectorRequest
+from cc.models.get_application200_response import GetApplication200Response
 from cc.models.get_identity200_response import GetIdentity200Response
 from cc.models.get_identity200_response_auth import GetIdentity200ResponseAuth
 from cc.models.get_identity200_response_org import GetIdentity200ResponseOrg

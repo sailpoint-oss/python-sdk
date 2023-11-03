@@ -243,8 +243,8 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**get_sod_violation_report_status**](v3/docs/SODPolicyApi.md#get_sod_violation_report_status) | **GET** /sod-policies/{id}/violation-report | Get SOD violation report status
 *SODPolicyApi* | [**list_sod_policies**](v3/docs/SODPolicyApi.md#list_sod_policies) | **GET** /sod-policies | List SOD policies
 *SODPolicyApi* | [**patch_sod_policy**](v3/docs/SODPolicyApi.md#patch_sod_policy) | **PATCH** /sod-policies/{id} | Patch SOD policy by ID
-*SODPolicyApi* | [**set_policy_schedule**](v3/docs/SODPolicyApi.md#set_policy_schedule) | **PUT** /sod-policies/{id}/schedule | Update SOD Policy schedule
-*SODPolicyApi* | [**set_sod_policy**](v3/docs/SODPolicyApi.md#set_sod_policy) | **PUT** /sod-policies/{id} | Update SOD policy by ID
+*SODPolicyApi* | [**put_policy_schedule**](v3/docs/SODPolicyApi.md#put_policy_schedule) | **PUT** /sod-policies/{id}/schedule | Update SOD Policy schedule
+*SODPolicyApi* | [**put_sod_policy**](v3/docs/SODPolicyApi.md#put_sod_policy) | **PUT** /sod-policies/{id} | Update SOD policy by ID
 *SODPolicyApi* | [**start_evaluate_sod_policy**](v3/docs/SODPolicyApi.md#start_evaluate_sod_policy) | **POST** /sod-policies/{id}/evaluate | Evaluate one policy by ID
 *SODPolicyApi* | [**start_sod_all_policies_for_org**](v3/docs/SODPolicyApi.md#start_sod_all_policies_for_org) | **POST** /sod-violation-report/run | Runs all policies for org
 *SODPolicyApi* | [**start_sod_policy**](v3/docs/SODPolicyApi.md#start_sod_policy) | **POST** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report

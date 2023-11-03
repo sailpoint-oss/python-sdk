@@ -23,6 +23,7 @@ from pydantic import StrictStr
 from typing import Any, Dict, List, Optional
 
 from cc.models.create_application_request import CreateApplicationRequest
+from cc.models.get_application200_response import GetApplication200Response
 from cc.models.list_applications200_response_inner import ListApplications200ResponseInner
 
 from cc.api_client import ApiClient
@@ -327,7 +328,7 @@ class ApplicationsApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_application(self, id : StrictStr, **kwargs) -> ListApplications200ResponseInner:  # noqa: E501
+    def get_application(self, id : StrictStr, **kwargs) -> GetApplication200Response:  # noqa: E501
         """Get Single Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -347,7 +348,7 @@ class ApplicationsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: ListApplications200ResponseInner
+        :rtype: GetApplication200Response
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -389,7 +390,7 @@ class ApplicationsApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(ListApplications200ResponseInner, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(GetApplication200Response, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -444,7 +445,7 @@ class ApplicationsApi:
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
 
         _response_types_map = {
-            '200': "ListApplications200ResponseInner",
+            '200': "GetApplication200Response",
         }
 
         return self.api_client.call_api(

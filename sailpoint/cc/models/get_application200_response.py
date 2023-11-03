@@ -25,9 +25,9 @@ from cc.models.list_applications200_response_inner_app_profiles_inner import Lis
 from cc.models.list_applications200_response_inner_health import ListApplications200ResponseInnerHealth
 from cc.models.list_applications200_response_inner_owner import ListApplications200ResponseInnerOwner
 
-class ListApplications200ResponseInner(BaseModel):
+class GetApplication200Response(BaseModel):
     """
-    ListApplications200ResponseInner
+    GetApplication200Response
     """
     id: Optional[StrictStr] = None
     app_id: Optional[StrictStr] = Field(None, alias="appId")
@@ -78,7 +78,7 @@ class ListApplications200ResponseInner(BaseModel):
     xsd_version: Optional[StrictStr] = Field(None, alias="xsdVersion")
     app_profiles: Optional[conlist(ListApplications200ResponseInnerAppProfilesInner)] = Field(None, alias="appProfiles")
     password_service_id: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="passwordServiceId")
-    access_profile_ids: Optional[conlist(StrictStr)] = Field(None, alias="accessProfileIds")
+    access_profile_ids: Optional[Dict[str, Any]] = Field(None, alias="accessProfileIds")
     __properties = ["id", "appId", "serviceId", "serviceAppId", "name", "description", "appCenterEnabled", "provisionRequestEnabled", "controlType", "mobile", "privateApp", "scriptName", "status", "icon", "health", "enableSso", "ssoMethod", "hasLinks", "hasAutomations", "stepUpAuthData", "stepUpAuthType", "usageAnalytics", "usageCertRequired", "usageCertText", "launchpadEnabled", "passwordManaged", "owner", "dateCreated", "lastUpdated", "defaultAccessProfile", "service", "selectedSsoMethod", "supportedSsoMethods", "offNetworkBlockedRoles", "supportedOffNetwork", "accountServiceId", "launcherCount", "accountServiceName", "accountServiceExternalId", "accountServiceMatchAllAccounts", "externalId", "accountServiceUseForPasswordManagement", "accountServicePolicyId", "accountServicePolicyName", "requireStrongAuthn", "accountServicePolicies", "xsdVersion", "appProfiles", "passwordServiceId", "accessProfileIds"]
 
     class Config:
@@ -95,8 +95,8 @@ class ListApplications200ResponseInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ListApplications200ResponseInner:
-        """Create an instance of ListApplications200ResponseInner from a JSON string"""
+    def from_json(cls, json_str: str) -> GetApplication200Response:
+        """Create an instance of GetApplication200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -128,15 +128,15 @@ class ListApplications200ResponseInner(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ListApplications200ResponseInner:
-        """Create an instance of ListApplications200ResponseInner from a dict"""
+    def from_dict(cls, obj: dict) -> GetApplication200Response:
+        """Create an instance of GetApplication200Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ListApplications200ResponseInner.parse_obj(obj)
+            return GetApplication200Response.parse_obj(obj)
 
-        _obj = ListApplications200ResponseInner.parse_obj({
+        _obj = GetApplication200Response.parse_obj({
             "id": obj.get("id"),
             "app_id": obj.get("appId"),
             "service_id": obj.get("serviceId"),

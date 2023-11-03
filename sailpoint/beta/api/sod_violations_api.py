@@ -42,14 +42,14 @@ class SODViolationsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def predict_sod_violations(self, identity_with_new_access : IdentityWithNewAccess, **kwargs) -> ViolationPrediction:  # noqa: E501
-        """Predict SOD violations for the given identity if they were granted the given access.  # noqa: E501
+    def start_predict_sod_violations(self, identity_with_new_access : IdentityWithNewAccess, **kwargs) -> ViolationPrediction:  # noqa: E501
+        """(Deprecated) Predict SOD violations for identity.  # noqa: E501
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.  A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.predict_sod_violations(identity_with_new_access, async_req=True)
+        >>> thread = api.start_predict_sod_violations(identity_with_new_access, async_req=True)
         >>> result = thread.get()
 
         :param identity_with_new_access: (required)
@@ -67,19 +67,19 @@ class SODViolationsApi:
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            message = "Error! Please call the predict_sod_violations_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            message = "Error! Please call the start_predict_sod_violations_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.predict_sod_violations_with_http_info(identity_with_new_access, **kwargs)  # noqa: E501
+        return self.start_predict_sod_violations_with_http_info(identity_with_new_access, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def predict_sod_violations_with_http_info(self, identity_with_new_access : IdentityWithNewAccess, **kwargs) -> ApiResponse:  # noqa: E501
-        """Predict SOD violations for the given identity if they were granted the given access.  # noqa: E501
+    def start_predict_sod_violations_with_http_info(self, identity_with_new_access : IdentityWithNewAccess, **kwargs) -> ApiResponse:  # noqa: E501
+        """(Deprecated) Predict SOD violations for identity.  # noqa: E501
 
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.  A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.predict_sod_violations_with_http_info(identity_with_new_access, async_req=True)
+        >>> thread = api.start_predict_sod_violations_with_http_info(identity_with_new_access, async_req=True)
         >>> result = thread.get()
 
         :param identity_with_new_access: (required)
@@ -109,6 +109,8 @@ class SODViolationsApi:
         :rtype: tuple(ViolationPrediction, status_code(int), headers(HTTPHeaderDict))
         """
 
+        warnings.warn("POST /sod-violations/predict is deprecated.", DeprecationWarning)
+
         _params = locals()
 
         _all_params = [
@@ -131,7 +133,7 @@ class SODViolationsApi:
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method predict_sod_violations" % _key
+                    " to method start_predict_sod_violations" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']

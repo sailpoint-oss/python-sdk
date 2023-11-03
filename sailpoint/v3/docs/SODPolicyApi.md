@@ -16,8 +16,8 @@ Method | HTTP request | Description
 [**get_sod_violation_report_status**](SODPolicyApi.md#get_sod_violation_report_status) | **GET** /sod-policies/{id}/violation-report | Get SOD violation report status
 [**list_sod_policies**](SODPolicyApi.md#list_sod_policies) | **GET** /sod-policies | List SOD policies
 [**patch_sod_policy**](SODPolicyApi.md#patch_sod_policy) | **PATCH** /sod-policies/{id} | Patch SOD policy by ID
-[**set_policy_schedule**](SODPolicyApi.md#set_policy_schedule) | **PUT** /sod-policies/{id}/schedule | Update SOD Policy schedule
-[**set_sod_policy**](SODPolicyApi.md#set_sod_policy) | **PUT** /sod-policies/{id} | Update SOD policy by ID
+[**put_policy_schedule**](SODPolicyApi.md#put_policy_schedule) | **PUT** /sod-policies/{id}/schedule | Update SOD Policy schedule
+[**put_sod_policy**](SODPolicyApi.md#put_sod_policy) | **PUT** /sod-policies/{id} | Update SOD policy by ID
 [**start_evaluate_sod_policy**](SODPolicyApi.md#start_evaluate_sod_policy) | **POST** /sod-policies/{id}/evaluate | Evaluate one policy by ID
 [**start_sod_all_policies_for_org**](SODPolicyApi.md#start_sod_all_policies_for_org) | **POST** /sod-violation-report/run | Runs all policies for org
 [**start_sod_policy**](SODPolicyApi.md#start_sod_policy) | **POST** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
@@ -1016,8 +1016,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **set_policy_schedule**
-> SodPolicySchedule set_policy_schedule(id, sod_policy_schedule)
+# **put_policy_schedule**
+> SodPolicySchedule put_policy_schedule(id, sod_policy_schedule)
 
 Update SOD Policy schedule
 
@@ -1059,11 +1059,11 @@ with v3.ApiClient(configuration) as api_client:
 
     try:
         # Update SOD Policy schedule
-        api_response = api_instance.set_policy_schedule(id, sod_policy_schedule)
-        print("The response of SODPolicyApi->set_policy_schedule:\n")
+        api_response = api_instance.put_policy_schedule(id, sod_policy_schedule)
+        print("The response of SODPolicyApi->put_policy_schedule:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SODPolicyApi->set_policy_schedule: %s\n" % e)
+        print("Exception when calling SODPolicyApi->put_policy_schedule: %s\n" % e)
 ```
 
 
@@ -1100,8 +1100,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **set_sod_policy**
-> SodPolicy set_sod_policy(id, sod_policy)
+# **put_sod_policy**
+> SodPolicy put_sod_policy(id, sod_policy)
 
 Update SOD policy by ID
 
@@ -1143,11 +1143,11 @@ with v3.ApiClient(configuration) as api_client:
 
     try:
         # Update SOD policy by ID
-        api_response = api_instance.set_sod_policy(id, sod_policy)
-        print("The response of SODPolicyApi->set_sod_policy:\n")
+        api_response = api_instance.put_sod_policy(id, sod_policy)
+        print("The response of SODPolicyApi->put_sod_policy:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SODPolicyApi->set_sod_policy: %s\n" % e)
+        print("Exception when calling SODPolicyApi->put_sod_policy: %s\n" % e)
 ```
 
 

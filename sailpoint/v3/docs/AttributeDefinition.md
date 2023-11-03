@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **type** | [**AttributeDefinitionType**](AttributeDefinitionType.md) |  | [optional] 
 **var_schema** | [**AttributeDefinitionSchema**](AttributeDefinitionSchema.md) |  | [optional] 
 **description** | **str** | A human-readable description of the attribute. | [optional] 
-**is_multi_valued** | **bool** | Flag indicating whether or not the attribute is multi-valued. | [optional] 
-**is_entitlement** | **bool** | Flag indicating whether or not the attribute is an entitlement. | [optional] 
-**is_group** | **bool** | Flag indicating whether or not the attribute represents a group. This can only be &#x60;true&#x60; if &#x60;isEntitlement&#x60; is also &#x60;true&#x60; **and** there is a schema defined for the attribute..  | [optional] 
+**is_multi** | **bool** | Flag indicating whether or not the attribute is multi-valued. | [optional] [default to False]
+**is_entitlement** | **bool** | Flag indicating whether or not the attribute is an entitlement. | [optional] [default to False]
+**is_group** | **bool** | Flag indicating whether or not the attribute represents a group. This can only be &#x60;true&#x60; if &#x60;isEntitlement&#x60; is also &#x60;true&#x60; **and** there is a schema defined for the attribute..  | [optional] [default to False]
 
 ## Example
 

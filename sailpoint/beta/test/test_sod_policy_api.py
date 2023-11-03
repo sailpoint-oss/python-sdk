@@ -47,15 +47,15 @@ class TestSODPolicyApi(unittest.TestCase):
         """
         pass
 
-    def test_download_custom_violation_report(self) -> None:
-        """Test case for download_custom_violation_report
+    def test_get_custom_violation_report(self) -> None:
+        """Test case for get_custom_violation_report
 
         Download custom violation report  # noqa: E501
         """
         pass
 
-    def test_download_default_violation_report(self) -> None:
-        """Test case for download_default_violation_report
+    def test_get_default_violation_report(self) -> None:
+        """Test case for get_default_violation_report
 
         Download violation report  # noqa: E501
         """
@@ -110,31 +110,31 @@ class TestSODPolicyApi(unittest.TestCase):
         """
         pass
 
-    def test_run_sod_all_policies_for_org(self) -> None:
-        """Test case for run_sod_all_policies_for_org
-
-        Runs all policies for org  # noqa: E501
-        """
-        pass
-
-    def test_run_sod_policy(self) -> None:
-        """Test case for run_sod_policy
-
-        Runs SOD policy violation report  # noqa: E501
-        """
-        pass
-
-    def test_update_policy_schedule(self) -> None:
-        """Test case for update_policy_schedule
+    def test_put_policy_schedule(self) -> None:
+        """Test case for put_policy_schedule
 
         Update SOD Policy schedule  # noqa: E501
         """
         pass
 
-    def test_update_sod_policy(self) -> None:
-        """Test case for update_sod_policy
+    def test_put_sod_policy(self) -> None:
+        """Test case for put_sod_policy
 
         Update SOD policy by ID  # noqa: E501
+        """
+        pass
+
+    def test_start_sod_all_policies_for_org(self) -> None:
+        """Test case for start_sod_all_policies_for_org
+
+        Runs all policies for org  # noqa: E501
+        """
+        pass
+
+    def test_start_sod_policy(self) -> None:
+        """Test case for start_sod_policy
+
+        Runs SOD policy violation report  # noqa: E501
         """
         pass
 

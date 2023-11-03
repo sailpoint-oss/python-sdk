@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from cc.models.list_applications200_response_inner import ListApplications200ResponseInner  # noqa: E501
+from cc.models.get_application200_response import GetApplication200Response  # noqa: E501
 
-class TestListApplications200ResponseInner(unittest.TestCase):
-    """ListApplications200ResponseInner unit test stubs"""
+class TestGetApplication200Response(unittest.TestCase):
+    """GetApplication200Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,16 +26,16 @@ class TestListApplications200ResponseInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ListApplications200ResponseInner:
-        """Test ListApplications200ResponseInner
+    def make_instance(self, include_optional) -> GetApplication200Response:
+        """Test GetApplication200Response
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ListApplications200ResponseInner`
+        # uncomment below to create an instance of `GetApplication200Response`
         """
-        model = ListApplications200ResponseInner()  # noqa: E501
+        model = GetApplication200Response()  # noqa: E501
         if include_optional:
-            return ListApplications200ResponseInner(
+            return GetApplication200Response(
                 id = '',
                 app_id = '',
                 service_id = '',
@@ -103,17 +103,15 @@ class TestListApplications200ResponseInner(unittest.TestCase):
                         xsd_version = '', )
                     ],
                 password_service_id = 1.337,
-                access_profile_ids = [
-                    ''
-                    ]
+                access_profile_ids = None
             )
         else:
-            return ListApplications200ResponseInner(
+            return GetApplication200Response(
         )
         """
 
-    def testListApplications200ResponseInner(self):
-        """Test ListApplications200ResponseInner"""
+    def testGetApplication200Response(self):
+        """Test GetApplication200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

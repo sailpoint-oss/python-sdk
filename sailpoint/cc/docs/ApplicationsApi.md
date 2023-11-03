@@ -160,7 +160,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_application**
-> ListApplications200ResponseInner get_application(id)
+> GetApplication200Response get_application(id)
 
 Get Single Application
 
@@ -172,7 +172,7 @@ Get Single Application
 import time
 import os
 import cc
-from cc.models.list_applications200_response_inner import ListApplications200ResponseInner
+from cc.models.get_application200_response import GetApplication200Response
 from cc.rest import ApiException
 from pprint import pprint
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListApplications200ResponseInner**](ListApplications200ResponseInner.md)
+[**GetApplication200Response**](GetApplication200Response.md)
 
 ### Authorization
 

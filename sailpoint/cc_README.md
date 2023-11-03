@@ -96,6 +96,7 @@ Class | Method | HTTP request | Description
 
  - [CreateApplicationRequest](cc/docs/CreateApplicationRequest.md)
  - [CreateConnectorRequest](cc/docs/CreateConnectorRequest.md)
+ - [GetApplication200Response](cc/docs/GetApplication200Response.md)
  - [GetIdentity200Response](cc/docs/GetIdentity200Response.md)
  - [GetIdentity200ResponseAuth](cc/docs/GetIdentity200ResponseAuth.md)
  - [GetIdentity200ResponseOrg](cc/docs/GetIdentity200ResponseOrg.md)

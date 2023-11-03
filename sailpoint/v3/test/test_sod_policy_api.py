@@ -110,15 +110,15 @@ class TestSODPolicyApi(unittest.TestCase):
         """
         pass
 
-    def test_set_policy_schedule(self) -> None:
-        """Test case for set_policy_schedule
+    def test_put_policy_schedule(self) -> None:
+        """Test case for put_policy_schedule
 
         Update SOD Policy schedule  # noqa: E501
         """
         pass
 
-    def test_set_sod_policy(self) -> None:
-        """Test case for set_sod_policy
+    def test_put_sod_policy(self) -> None:
+        """Test case for put_sod_policy
 
         Update SOD policy by ID  # noqa: E501
         """

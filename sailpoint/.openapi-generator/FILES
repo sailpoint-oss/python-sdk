@@ -15,6 +15,7 @@ cc/docs/ApplicationsApi.md
 cc/docs/ConnectorsApi.md
 cc/docs/CreateApplicationRequest.md
 cc/docs/CreateConnectorRequest.md
+cc/docs/GetApplication200Response.md
 cc/docs/GetIdentity200Response.md
 cc/docs/GetIdentity200ResponseAuth.md
 cc/docs/GetIdentity200ResponseOrg.md
@@ -41,6 +42,7 @@ cc/exceptions.py
 cc/models/__init__.py
 cc/models/create_application_request.py
 cc/models/create_connector_request.py
+cc/models/get_application200_response.py
 cc/models/get_identity200_response.py
 cc/models/get_identity200_response_auth.py
 cc/models/get_identity200_response_org.py
@@ -66,6 +68,7 @@ cc/test/test_applications_api.py
 cc/test/test_connectors_api.py
 cc/test/test_create_application_request.py
 cc/test/test_create_connector_request.py
+cc/test/test_get_application200_response.py
 cc/test/test_get_identity200_response.py
 cc/test/test_get_identity200_response_auth.py
 cc/test/test_get_identity200_response_org.py

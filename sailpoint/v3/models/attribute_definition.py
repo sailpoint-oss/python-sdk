@@ -31,10 +31,10 @@ class AttributeDefinition(BaseModel):
     type: Optional[AttributeDefinitionType] = None
     var_schema: Optional[AttributeDefinitionSchema] = Field(None, alias="schema")
     description: Optional[StrictStr] = Field(None, description="A human-readable description of the attribute.")
-    is_multi_valued: Optional[StrictBool] = Field(None, alias="isMultiValued", description="Flag indicating whether or not the attribute is multi-valued.")
-    is_entitlement: Optional[StrictBool] = Field(None, alias="isEntitlement", description="Flag indicating whether or not the attribute is an entitlement.")
-    is_group: Optional[StrictBool] = Field(None, alias="isGroup", description="Flag indicating whether or not the attribute represents a group. This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute.. ")
-    __properties = ["name", "type", "schema", "description", "isMultiValued", "isEntitlement", "isGroup"]
+    is_multi: Optional[StrictBool] = Field(False, alias="isMulti", description="Flag indicating whether or not the attribute is multi-valued.")
+    is_entitlement: Optional[StrictBool] = Field(False, alias="isEntitlement", description="Flag indicating whether or not the attribute is an entitlement.")
+    is_group: Optional[StrictBool] = Field(False, alias="isGroup", description="Flag indicating whether or not the attribute represents a group. This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute.. ")
+    __properties = ["name", "type", "schema", "description", "isMulti", "isEntitlement", "isGroup"]
 
     class Config:
         """Pydantic configuration"""
@@ -79,9 +79,9 @@ class AttributeDefinition(BaseModel):
             "type": obj.get("type"),
             "var_schema": AttributeDefinitionSchema.from_dict(obj.get("schema")) if obj.get("schema") is not None else None,
             "description": obj.get("description"),
-            "is_multi_valued": obj.get("isMultiValued"),
-            "is_entitlement": obj.get("isEntitlement"),
-            "is_group": obj.get("isGroup")
+            "is_multi": obj.get("isMulti") if obj.get("isMulti") is not None else False,
+            "is_entitlement": obj.get("isEntitlement") if obj.get("isEntitlement") is not None else False,
+            "is_group": obj.get("isGroup") if obj.get("isGroup") is not None else False
         })
         return _obj
 
