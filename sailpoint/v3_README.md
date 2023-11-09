@@ -223,6 +223,10 @@ Class | Method | HTTP request | Description
 *PublicIdentitiesApi* | [**get_public_identities**](v3/docs/PublicIdentitiesApi.md#get_public_identities) | **GET** /public-identities | Get a list of public identities
 *PublicIdentitiesConfigApi* | [**get_public_identity_config**](v3/docs/PublicIdentitiesConfigApi.md#get_public_identity_config) | **GET** /public-identities-config | Get the Public Identities Configuration
 *PublicIdentitiesConfigApi* | [**update_public_identity_config**](v3/docs/PublicIdentitiesConfigApi.md#update_public_identity_config) | **PUT** /public-identities-config | Update the Public Identities Configuration
+*ReportsDataExtractionApi* | [**cancel_report**](v3/docs/ReportsDataExtractionApi.md#cancel_report) | **POST** /reports/{id}/cancel | Cancel Report
+*ReportsDataExtractionApi* | [**get_report**](v3/docs/ReportsDataExtractionApi.md#get_report) | **GET** /reports/{taskResultId} | Get Report File
+*ReportsDataExtractionApi* | [**get_report_result**](v3/docs/ReportsDataExtractionApi.md#get_report_result) | **GET** /reports/{taskResultId}/result | Get Report Result
+*ReportsDataExtractionApi* | [**start_report**](v3/docs/ReportsDataExtractionApi.md#start_report) | **POST** /reports/run | Run Report
 *RequestableObjectsApi* | [**list_requestable_objects**](v3/docs/RequestableObjectsApi.md#list_requestable_objects) | **GET** /requestable-objects | Requestable Objects List
 *RolesApi* | [**create_role**](v3/docs/RolesApi.md#create_role) | **POST** /roles | Create a Role
 *RolesApi* | [**delete_bulk_roles**](v3/docs/RolesApi.md#delete_bulk_roles) | **POST** /roles/bulk-delete | Delete Role(s)
@@ -385,6 +389,7 @@ Class | Method | HTTP request | Description
  - [AccountUnlockRequest](v3/docs/AccountUnlockRequest.md)
  - [AccountUsage](v3/docs/AccountUsage.md)
  - [AccountsAsyncResult](v3/docs/AccountsAsyncResult.md)
+ - [AccountsExportReportArguments](v3/docs/AccountsExportReportArguments.md)
  - [ActivateCampaignOptions](v3/docs/ActivateCampaignOptions.md)
  - [AdminReviewReassign](v3/docs/AdminReviewReassign.md)
  - [AdminReviewReassignReassignTo](v3/docs/AdminReviewReassignReassignTo.md)
@@ -505,6 +510,8 @@ Class | Method | HTTP request | Description
  - [GetOAuthClientResponse](v3/docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](v3/docs/GetPersonalAccessTokenResponse.md)
  - [GrantType](v3/docs/GrantType.md)
+ - [IdentitiesDetailsReportArguments](v3/docs/IdentitiesDetailsReportArguments.md)
+ - [IdentitiesReportArguments](v3/docs/IdentitiesReportArguments.md)
  - [IdentityAccess](v3/docs/IdentityAccess.md)
  - [IdentityAttribute](v3/docs/IdentityAttribute.md)
  - [IdentityAttributeConfig](v3/docs/IdentityAttributeConfig.md)
@@ -518,6 +525,7 @@ Class | Method | HTTP request | Description
  - [IdentityProfileAllOfOwner](v3/docs/IdentityProfileAllOfOwner.md)
  - [IdentityProfileExportedObject](v3/docs/IdentityProfileExportedObject.md)
  - [IdentityProfileExportedObjectSelf](v3/docs/IdentityProfileExportedObjectSelf.md)
+ - [IdentityProfileIdentityErrorReportArguments](v3/docs/IdentityProfileIdentityErrorReportArguments.md)
  - [IdentityReference](v3/docs/IdentityReference.md)
  - [IdentityReferenceWithNameAndEmail](v3/docs/IdentityReferenceWithNameAndEmail.md)
  - [IdentitySummary](v3/docs/IdentitySummary.md)
@@ -577,6 +585,7 @@ Class | Method | HTTP request | Description
  - [ObjectImportResult](v3/docs/ObjectImportResult.md)
  - [Operation](v3/docs/Operation.md)
  - [OriginalRequest](v3/docs/OriginalRequest.md)
+ - [OrphanUncorrelatedReportArguments](v3/docs/OrphanUncorrelatedReportArguments.md)
  - [Owner](v3/docs/Owner.md)
  - [OwnerDto](v3/docs/OwnerDto.md)
  - [OwnerReference](v3/docs/OwnerReference.md)
@@ -623,7 +632,10 @@ Class | Method | HTTP request | Description
  - [Reference](v3/docs/Reference.md)
  - [RemediationItemDetails](v3/docs/RemediationItemDetails.md)
  - [RemediationItems](v3/docs/RemediationItems.md)
+ - [ReportDetails](v3/docs/ReportDetails.md)
+ - [ReportDetailsArguments](v3/docs/ReportDetailsArguments.md)
  - [ReportResultReference](v3/docs/ReportResultReference.md)
+ - [ReportResults](v3/docs/ReportResults.md)
  - [ReportType](v3/docs/ReportType.md)
  - [RequestOnBehalfOfConfig](v3/docs/RequestOnBehalfOfConfig.md)
  - [Requestability](v3/docs/Requestability.md)
@@ -676,6 +688,7 @@ Class | Method | HTTP request | Description
  - [Search](v3/docs/Search.md)
  - [SearchAggregationSpecification](v3/docs/SearchAggregationSpecification.md)
  - [SearchArguments](v3/docs/SearchArguments.md)
+ - [SearchExportReportArguments](v3/docs/SearchExportReportArguments.md)
  - [SearchFilterType](v3/docs/SearchFilterType.md)
  - [SearchIdentityReference](v3/docs/SearchIdentityReference.md)
  - [SearchSchedule](v3/docs/SearchSchedule.md)
@@ -724,6 +737,9 @@ Class | Method | HTTP request | Description
  - [SubSearchAggregationSpecification](v3/docs/SubSearchAggregationSpecification.md)
  - [TaggedObject](v3/docs/TaggedObject.md)
  - [TaggedObjectDto](v3/docs/TaggedObjectDto.md)
+ - [TaskResultDetails](v3/docs/TaskResultDetails.md)
+ - [TaskResultDetailsMessagesInner](v3/docs/TaskResultDetailsMessagesInner.md)
+ - [TaskResultDetailsReturnsInner](v3/docs/TaskResultDetailsReturnsInner.md)
  - [TaskResultDto](v3/docs/TaskResultDto.md)
  - [TaskResultSimplified](v3/docs/TaskResultSimplified.md)
  - [TextQuery](v3/docs/TextQuery.md)

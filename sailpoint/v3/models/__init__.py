@@ -62,6 +62,7 @@ from v3.models.account_toggle_request import AccountToggleRequest
 from v3.models.account_unlock_request import AccountUnlockRequest
 from v3.models.account_usage import AccountUsage
 from v3.models.accounts_async_result import AccountsAsyncResult
+from v3.models.accounts_export_report_arguments import AccountsExportReportArguments
 from v3.models.activate_campaign_options import ActivateCampaignOptions
 from v3.models.admin_review_reassign import AdminReviewReassign
 from v3.models.admin_review_reassign_reassign_to import AdminReviewReassignReassignTo
@@ -182,6 +183,8 @@ from v3.models.get_active_campaigns200_response_inner import GetActiveCampaigns2
 from v3.models.get_o_auth_client_response import GetOAuthClientResponse
 from v3.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
 from v3.models.grant_type import GrantType
+from v3.models.identities_details_report_arguments import IdentitiesDetailsReportArguments
+from v3.models.identities_report_arguments import IdentitiesReportArguments
 from v3.models.identity_access import IdentityAccess
 from v3.models.identity_attribute import IdentityAttribute
 from v3.models.identity_attribute_config import IdentityAttributeConfig
@@ -195,6 +198,7 @@ from v3.models.identity_profile_all_of_authoritative_source import IdentityProfi
 from v3.models.identity_profile_all_of_owner import IdentityProfileAllOfOwner
 from v3.models.identity_profile_exported_object import IdentityProfileExportedObject
 from v3.models.identity_profile_exported_object_self import IdentityProfileExportedObjectSelf
+from v3.models.identity_profile_identity_error_report_arguments import IdentityProfileIdentityErrorReportArguments
 from v3.models.identity_reference import IdentityReference
 from v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from v3.models.identity_summary import IdentitySummary
@@ -254,6 +258,7 @@ from v3.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNEC
 from v3.models.object_import_result import ObjectImportResult
 from v3.models.operation import Operation
 from v3.models.original_request import OriginalRequest
+from v3.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments
 from v3.models.owner import Owner
 from v3.models.owner_dto import OwnerDto
 from v3.models.owner_reference import OwnerReference
@@ -300,7 +305,10 @@ from v3.models.reassignment_type import ReassignmentType
 from v3.models.reference import Reference
 from v3.models.remediation_item_details import RemediationItemDetails
 from v3.models.remediation_items import RemediationItems
+from v3.models.report_details import ReportDetails
+from v3.models.report_details_arguments import ReportDetailsArguments
 from v3.models.report_result_reference import ReportResultReference
+from v3.models.report_results import ReportResults
 from v3.models.report_type import ReportType
 from v3.models.request_on_behalf_of_config import RequestOnBehalfOfConfig
 from v3.models.requestability import Requestability
@@ -353,6 +361,7 @@ from v3.models.scheduled_search_name import ScheduledSearchName
 from v3.models.search import Search
 from v3.models.search_aggregation_specification import SearchAggregationSpecification
 from v3.models.search_arguments import SearchArguments
+from v3.models.search_export_report_arguments import SearchExportReportArguments
 from v3.models.search_filter_type import SearchFilterType
 from v3.models.search_identity_reference import SearchIdentityReference
 from v3.models.search_schedule import SearchSchedule
@@ -401,6 +410,9 @@ from v3.models.sp_config_message import SpConfigMessage
 from v3.models.sub_search_aggregation_specification import SubSearchAggregationSpecification
 from v3.models.tagged_object import TaggedObject
 from v3.models.tagged_object_dto import TaggedObjectDto
+from v3.models.task_result_details import TaskResultDetails
+from v3.models.task_result_details_messages_inner import TaskResultDetailsMessagesInner
+from v3.models.task_result_details_returns_inner import TaskResultDetailsReturnsInner
 from v3.models.task_result_dto import TaskResultDto
 from v3.models.task_result_simplified import TaskResultSimplified
 from v3.models.text_query import TextQuery

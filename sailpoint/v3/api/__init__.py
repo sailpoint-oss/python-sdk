@@ -24,6 +24,7 @@ from v3.api.password_sync_groups_api import PasswordSyncGroupsApi
 from v3.api.personal_access_tokens_api import PersonalAccessTokensApi
 from v3.api.public_identities_api import PublicIdentitiesApi
 from v3.api.public_identities_config_api import PublicIdentitiesConfigApi
+from v3.api.reports_data_extraction_api import ReportsDataExtractionApi
 from v3.api.requestable_objects_api import RequestableObjectsApi
 from v3.api.roles_api import RolesApi
 from v3.api.sod_policy_api import SODPolicyApi
