@@ -368,7 +368,7 @@ class SearchApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def search_get(self, index : Annotated[StrictStr, Field(..., description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *accounts*, *aggregations*, *entitlements*, *events*, *identities*, and *roles*. ")], id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], **kwargs) -> object:  # noqa: E501
+    def search_get(self, index : Annotated[StrictStr, Field(..., description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. ")], id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], **kwargs) -> object:  # noqa: E501
         """Get a Document by ID  # noqa: E501
 
         Fetches a single document from the specified index, using the specified document ID.  # noqa: E501
@@ -378,7 +378,7 @@ class SearchApi:
         >>> thread = api.search_get(index, id, async_req=True)
         >>> result = thread.get()
 
-        :param index: The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *accounts*, *aggregations*, *entitlements*, *events*, *identities*, and *roles*.  (required)
+        :param index: The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.  (required)
         :type index: str
         :param id: ID of the requested document. (required)
         :type id: str
@@ -400,7 +400,7 @@ class SearchApi:
         return self.search_get_with_http_info(index, id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def search_get_with_http_info(self, index : Annotated[StrictStr, Field(..., description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *accounts*, *aggregations*, *entitlements*, *events*, *identities*, and *roles*. ")], id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def search_get_with_http_info(self, index : Annotated[StrictStr, Field(..., description="The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. ")], id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], **kwargs) -> ApiResponse:  # noqa: E501
         """Get a Document by ID  # noqa: E501
 
         Fetches a single document from the specified index, using the specified document ID.  # noqa: E501
@@ -410,7 +410,7 @@ class SearchApi:
         >>> thread = api.search_get_with_http_info(index, id, async_req=True)
         >>> result = thread.get()
 
-        :param index: The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *accounts*, *aggregations*, *entitlements*, *events*, *identities*, and *roles*.  (required)
+        :param index: The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.  (required)
         :type index: str
         :param id: ID of the requested document. (required)
         :type id: str

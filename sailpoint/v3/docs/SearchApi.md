@@ -216,7 +216,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = v3.SearchApi(api_client)
-    index = 'accounts' # str | The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *accounts*, *aggregations*, *entitlements*, *events*, *identities*, and *roles*. 
+    index = 'accounts' # str | The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. 
     id = '2c91808568c529c60168cca6f90c1313' # str | ID of the requested document.
 
     try:
@@ -234,7 +234,7 @@ with v3.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **index** | **str**| The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *accounts*, *aggregations*, *entitlements*, *events*, *identities*, and *roles*.  | 
+ **index** | **str**| The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.  | 
  **id** | **str**| ID of the requested document. | 
 
 ### Return type
