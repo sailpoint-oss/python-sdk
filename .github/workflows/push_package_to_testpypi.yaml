@@ -39,6 +39,6 @@ jobs:
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          password: ${{secrets.TEST_PYTHON_API_KEY}}
-          repository-url: https://test.pypi.org/legacy/
+          password: ${{secrets.ARTIFACTORY_TOKEN_DEV}}
+          repository-url: https://sailpoint.jfrog.io/artifactory/sp-pypi-dev/
           packages-dir: sailpoint/dist/
