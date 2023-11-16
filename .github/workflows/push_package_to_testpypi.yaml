@@ -37,10 +37,22 @@ jobs:
           cd sailpoint/
           python -m build
 
-      - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{secrets.ARTIFACTORY_TOKEN_DEV}}
-          repository-url: https://sailpoint.jfrog.io/artifactory/sp-pypi-dev/
-          packages-dir: sailpoint/dist/
+      - name: Setup JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v3
+        env:
+          JF_URL: https://sailpoint.jfrog.io
+          JF_ACCESS_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN_DEV }}
+      - name: Publish distribution to JFrog
+        run: |
+          # Ping the server (test connection)
+          jf rt ping
+          # Upload the package
+          jf rt u saipoint/dist/* sp-pypi-dev
+
+      # - name: Publish package distributions to PyPI
+      #   uses: pypa/gh-action-pypi-publish@release/v1
+      #   with:
+      #     user: __token__
+      #     password: ${{secrets.ARTIFACTORY_TOKEN_DEV}}
+      #     repository-url: https://sailpoint.jfrog.io/artifactory/sp-pypi-dev/
+      #     packages-dir: sailpoint/dist/
