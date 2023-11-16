@@ -47,7 +47,7 @@ jobs:
           # Ping the server (test connection)
           jf rt ping
           # Upload the package
-          jf rt u sailpoint/dist/* sp-pypi-dev
+          jf rt u sailpoint/dist/sailpoint-1.0.0-py3-none-any.whl sp-pypi-dev
 
       # - name: Publish package distributions to PyPI
       #   uses: pypa/gh-action-pypi-publish@release/v1
