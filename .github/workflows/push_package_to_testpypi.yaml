@@ -34,7 +34,6 @@ jobs:
         id: build
         if: steps.requirements.outcome == 'success'
         run: |
-          cd sailpoint/
           python -m build
 
       - name: Setup JFrog CLI
@@ -47,8 +46,8 @@ jobs:
           # Ping the server (test connection)
           jf rt ping
           # Upload the package
-          jf rt u sailpoint/dist/sailpoint-1.0.0-py3-none-any.whl sp-pypi-dev
-          jf rt u sailpoint/dist/sailpoint-1.0.0.tar.gz sp-pypi-dev
+          jf rt u dist/sailpoint-1.0.0-py3-none-any.whl sp-pypi-dev
+          jf rt u dist/sailpoint-1.0.0.tar.gz sp-pypi-dev
 
 
       # - name: Publish package distributions to PyPI
