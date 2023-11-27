@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.fullcampaign_all_of_role_composition_campaign_info_remediator_ref import FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef
+from sailpoint.beta.models.fullcampaign_all_of_role_composition_campaign_info_remediator_ref import FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef
 
 # TODO update the JSON string below
 json = "{}"

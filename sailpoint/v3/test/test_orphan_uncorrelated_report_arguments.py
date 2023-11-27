@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments  # noqa: E501
+from sailpoint.v3.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments  # noqa: E501
+
 
 class TestOrphanUncorrelatedReportArguments(unittest.TestCase):
     """OrphanUncorrelatedReportArguments unit test stubs"""
@@ -26,7 +26,8 @@ class TestOrphanUncorrelatedReportArguments(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> OrphanUncorrelatedReportArguments:
+    def make_instance(self,
+                      include_optional) -> OrphanUncorrelatedReportArguments:
         """Test OrphanUncorrelatedReportArguments
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -50,6 +51,7 @@ class TestOrphanUncorrelatedReportArguments(unittest.TestCase):
         """Test OrphanUncorrelatedReportArguments"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

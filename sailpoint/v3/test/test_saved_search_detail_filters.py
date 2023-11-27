@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.saved_search_detail_filters import SavedSearchDetailFilters  # noqa: E501
+from sailpoint.v3.models.saved_search_detail_filters import SavedSearchDetailFilters  # noqa: E501
+
 
 class TestSavedSearchDetailFilters(unittest.TestCase):
     """SavedSearchDetailFilters unit test stubs"""
@@ -37,11 +37,11 @@ class TestSavedSearchDetailFilters(unittest.TestCase):
         if include_optional:
             return SavedSearchDetailFilters(
                 type = 'RANGE',
-                range = v3.models.range.Range(
-                    lower = v3.models.bound.Bound(
+                range = sailpoint.v3.models.range.Range(
+                    lower = sailpoint.v3.models.bound.Bound(
                         value = '1', 
                         inclusive = False, ), 
-                    upper = v3.models.bound.Bound(
+                    upper = sailpoint.v3.models.bound.Bound(
                         value = '1', 
                         inclusive = False, ), ),
                 terms = [
@@ -58,6 +58,7 @@ class TestSavedSearchDetailFilters(unittest.TestCase):
         """Test SavedSearchDetailFilters"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

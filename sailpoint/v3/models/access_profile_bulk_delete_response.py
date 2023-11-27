@@ -11,24 +11,34 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from v3.models.access_profile_usage import AccessProfileUsage
+from sailpoint.v3.models.access_profile_usage import AccessProfileUsage
+
 
 class AccessProfileBulkDeleteResponse(BaseModel):
     """
     AccessProfileBulkDeleteResponse
     """
-    task_id: Optional[StrictStr] = Field(None, alias="taskId", description="ID of the task which is executing the bulk deletion. This can be passed to the **/task-status** API to track status.")
-    pending: Optional[conlist(StrictStr)] = Field(None, description="List of IDs of Access Profiles which are pending deletion.")
-    in_use: Optional[conlist(AccessProfileUsage)] = Field(None, alias="inUse", description="List of usages of Access Profiles targeted for deletion.")
+    task_id: Optional[StrictStr] = Field(
+        None,
+        alias="taskId",
+        description=
+        "ID of the task which is executing the bulk deletion. This can be passed to the **/task-status** API to track status."
+    )
+    pending: Optional[conlist(StrictStr)] = Field(
+        None,
+        description="List of IDs of Access Profiles which are pending deletion."
+    )
+    in_use: Optional[conlist(AccessProfileUsage)] = Field(
+        None,
+        alias="inUse",
+        description="List of usages of Access Profiles targeted for deletion.")
     __properties = ["taskId", "pending", "inUse"]
 
     class Config:
@@ -51,10 +61,7 @@ class AccessProfileBulkDeleteResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in in_use (list)
         _items = []
         if self.in_use:
@@ -74,10 +81,13 @@ class AccessProfileBulkDeleteResponse(BaseModel):
             return AccessProfileBulkDeleteResponse.parse_obj(obj)
 
         _obj = AccessProfileBulkDeleteResponse.parse_obj({
-            "task_id": obj.get("taskId"),
-            "pending": obj.get("pending"),
-            "in_use": [AccessProfileUsage.from_dict(_item) for _item in obj.get("inUse")] if obj.get("inUse") is not None else None
+            "task_id":
+            obj.get("taskId"),
+            "pending":
+            obj.get("pending"),
+            "in_use": [
+                AccessProfileUsage.from_dict(_item)
+                for _item in obj.get("inUse")
+            ] if obj.get("inUse") is not None else None
         })
         return _obj
-
-

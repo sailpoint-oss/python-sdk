@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.connector_rule_response import ConnectorRuleResponse
+from sailpoint.beta.models.connector_rule_response import ConnectorRuleResponse
 
 # TODO update the JSON string below
 json = "{}"

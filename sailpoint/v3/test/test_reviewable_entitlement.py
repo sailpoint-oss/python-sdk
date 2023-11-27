@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.reviewable_entitlement import ReviewableEntitlement  # noqa: E501
+from sailpoint.v3.models.reviewable_entitlement import ReviewableEntitlement  # noqa: E501
+
 
 class TestReviewableEntitlement(unittest.TestCase):
     """ReviewableEntitlement unit test stubs"""
@@ -40,7 +40,7 @@ class TestReviewableEntitlement(unittest.TestCase):
                 name = 'CN=entitlement.bbb7c650',
                 description = 'Gives read/write access to the company database',
                 privileged = False,
-                owner = v3.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
+                owner = sailpoint.v3.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
                     type = 'IDENTITY', 
                     id = '5168015d32f890ca15812c9180835d2e', 
                     name = 'Alison Ferguso', 
@@ -56,19 +56,19 @@ class TestReviewableEntitlement(unittest.TestCase):
                 revocable = True,
                 cloud_governed = False,
                 contains_data_access = True,
-                data_access = v3.models.data_access.DataAccess(
+                data_access = sailpoint.v3.models.data_access.DataAccess(
                     policies = [
-                        v3.models.data_access_policies_inner.DataAccess_policies_inner(
+                        sailpoint.v3.models.data_access_policies_inner.DataAccess_policies_inner(
                             value = 'GDPR-20', )
                         ], 
                     categories = [
-                        v3.models.data_access_categories_inner.DataAccess_categories_inner(
+                        sailpoint.v3.models.data_access_categories_inner.DataAccess_categories_inner(
                             value = 'email-7', 
                             match_count = 10, )
                         ], 
-                    impact_score = v3.models.data_access_impact_score.DataAccess_impactScore(
+                    impact_score = sailpoint.v3.models.data_access_impact_score.DataAccess_impactScore(
                         value = 'Medium', ), ),
-                account = v3.models.reviewable_entitlement_account.ReviewableEntitlement_account(
+                account = sailpoint.v3.models.reviewable_entitlement_account.ReviewableEntitlement_account(
                     native_identity = 'CN=Alison Ferguso', 
                     disabled = False, 
                     locked = False, 
@@ -87,6 +87,7 @@ class TestReviewableEntitlement(unittest.TestCase):
         """Test ReviewableEntitlement"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

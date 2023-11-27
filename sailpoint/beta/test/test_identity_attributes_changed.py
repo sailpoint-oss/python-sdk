@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_attributes_changed import IdentityAttributesChanged  # noqa: E501
+from sailpoint.beta.models.identity_attributes_changed import IdentityAttributesChanged  # noqa: E501
+
 
 class TestIdentityAttributesChanged(unittest.TestCase):
     """IdentityAttributesChanged unit test stubs"""
@@ -36,12 +36,12 @@ class TestIdentityAttributesChanged(unittest.TestCase):
         model = IdentityAttributesChanged()  # noqa: E501
         if include_optional:
             return IdentityAttributesChanged(
-                identity = beta.models.identity_attributes_changed_identity.IdentityAttributesChanged_identity(
+                identity = sailpoint.beta.models.identity_attributes_changed_identity.IdentityAttributesChanged_identity(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
                 changes = [
-                    beta.models.identity_attributes_changed_changes_inner.IdentityAttributesChanged_changes_inner(
+                    sailpoint.beta.models.identity_attributes_changed_changes_inner.IdentityAttributesChanged_changes_inner(
                         attribute = 'department', 
                         old_value = sales, 
                         new_value = marketing, )
@@ -49,12 +49,12 @@ class TestIdentityAttributesChanged(unittest.TestCase):
             )
         else:
             return IdentityAttributesChanged(
-                identity = beta.models.identity_attributes_changed_identity.IdentityAttributesChanged_identity(
+                identity = sailpoint.beta.models.identity_attributes_changed_identity.IdentityAttributesChanged_identity(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
                 changes = [
-                    beta.models.identity_attributes_changed_changes_inner.IdentityAttributesChanged_changes_inner(
+                    sailpoint.beta.models.identity_attributes_changed_changes_inner.IdentityAttributesChanged_changes_inner(
                         attribute = 'department', 
                         old_value = sales, 
                         new_value = marketing, )
@@ -66,6 +66,7 @@ class TestIdentityAttributesChanged(unittest.TestCase):
         """Test IdentityAttributesChanged"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

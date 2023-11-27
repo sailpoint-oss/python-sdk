@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.entitlement_access_request_config import EntitlementAccessRequestConfig  # noqa: E501
+from sailpoint.beta.models.entitlement_access_request_config import EntitlementAccessRequestConfig  # noqa: E501
+
 
 class TestEntitlementAccessRequestConfig(unittest.TestCase):
     """EntitlementAccessRequestConfig unit test stubs"""
@@ -26,7 +26,8 @@ class TestEntitlementAccessRequestConfig(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> EntitlementAccessRequestConfig:
+    def make_instance(self,
+                      include_optional) -> EntitlementAccessRequestConfig:
         """Test EntitlementAccessRequestConfig
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -37,7 +38,7 @@ class TestEntitlementAccessRequestConfig(unittest.TestCase):
         if include_optional:
             return EntitlementAccessRequestConfig(
                 approval_schemes = [
-                    beta.models.entitlement_approval_scheme.EntitlementApprovalScheme(
+                    sailpoint.beta.models.entitlement_approval_scheme.EntitlementApprovalScheme(
                         approver_type = 'GOVERNANCE_GROUP', 
                         approver_id = 'e3eab852-8315-467f-9de7-70eda97f63c8', )
                     ],
@@ -53,6 +54,7 @@ class TestEntitlementAccessRequestConfig(unittest.TestCase):
         """Test EntitlementAccessRequestConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

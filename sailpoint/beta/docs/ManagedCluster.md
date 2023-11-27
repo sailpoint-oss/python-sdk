@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.managed_cluster import ManagedCluster
+from sailpoint.beta.models.managed_cluster import ManagedCluster
 
 # TODO update the JSON string below
 json = "{}"

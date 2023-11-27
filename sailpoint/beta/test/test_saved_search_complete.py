@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.saved_search_complete import SavedSearchComplete  # noqa: E501
+from sailpoint.beta.models.saved_search_complete import SavedSearchComplete  # noqa: E501
+
 
 class TestSavedSearchComplete(unittest.TestCase):
     """SavedSearchComplete unit test stubs"""
@@ -41,20 +41,20 @@ class TestSavedSearchComplete(unittest.TestCase):
                 owner_name = 'Cloud Support',
                 query = 'modified:[now-7y/d TO now]',
                 search_name = 'Modified Activity',
-                search_results = beta.models.saved_search_complete_search_results.SavedSearchComplete_searchResults(
-                    account = beta.models.saved_search_complete_search_results_account.SavedSearchComplete_searchResults_Account(
+                search_results = sailpoint.beta.models.saved_search_complete_search_results.SavedSearchComplete_searchResults(
+                    account = sailpoint.beta.models.saved_search_complete_search_results_account.SavedSearchComplete_searchResults_Account(
                         count = '3', 
                         noun = 'accounts', 
                         preview = [
                             []
                             ], ), 
-                    entitlement = beta.models.saved_search_complete_search_results_entitlement.SavedSearchComplete_searchResults_Entitlement(
+                    entitlement = sailpoint.beta.models.saved_search_complete_search_results_entitlement.SavedSearchComplete_searchResults_Entitlement(
                         count = '2', 
                         noun = 'entitlements', 
                         preview = [
                             []
                             ], ), 
-                    identity = beta.models.saved_search_complete_search_results_identity.SavedSearchComplete_searchResults_Identity(
+                    identity = sailpoint.beta.models.saved_search_complete_search_results_identity.SavedSearchComplete_searchResults_Identity(
                         count = '2', 
                         noun = 'identities', 
                         preview = [
@@ -69,20 +69,20 @@ class TestSavedSearchComplete(unittest.TestCase):
                 owner_name = 'Cloud Support',
                 query = 'modified:[now-7y/d TO now]',
                 search_name = 'Modified Activity',
-                search_results = beta.models.saved_search_complete_search_results.SavedSearchComplete_searchResults(
-                    account = beta.models.saved_search_complete_search_results_account.SavedSearchComplete_searchResults_Account(
+                search_results = sailpoint.beta.models.saved_search_complete_search_results.SavedSearchComplete_searchResults(
+                    account = sailpoint.beta.models.saved_search_complete_search_results_account.SavedSearchComplete_searchResults_Account(
                         count = '3', 
                         noun = 'accounts', 
                         preview = [
                             []
                             ], ), 
-                    entitlement = beta.models.saved_search_complete_search_results_entitlement.SavedSearchComplete_searchResults_Entitlement(
+                    entitlement = sailpoint.beta.models.saved_search_complete_search_results_entitlement.SavedSearchComplete_searchResults_Entitlement(
                         count = '2', 
                         noun = 'entitlements', 
                         preview = [
                             []
                             ], ), 
-                    identity = beta.models.saved_search_complete_search_results_identity.SavedSearchComplete_searchResults_Identity(
+                    identity = sailpoint.beta.models.saved_search_complete_search_results_identity.SavedSearchComplete_searchResults_Identity(
                         count = '2', 
                         noun = 'identities', 
                         preview = [
@@ -96,6 +96,7 @@ class TestSavedSearchComplete(unittest.TestCase):
         """Test SavedSearchComplete"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

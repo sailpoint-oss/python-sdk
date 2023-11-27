@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.resource_bundle_message import ResourceBundleMessage
+from sailpoint.beta.models.resource_bundle_message import ResourceBundleMessage
 
 # TODO update the JSON string below
 json = "{}"

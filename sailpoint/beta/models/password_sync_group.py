@@ -11,24 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
+
 
 class PasswordSyncGroup(BaseModel):
     """
     PasswordSyncGroup
     """
     id: Optional[StrictStr] = Field(None, description="ID of the sync group")
-    name: Optional[StrictStr] = Field(None, description="Name of the sync group")
-    password_policy_id: Optional[StrictStr] = Field(None, alias="passwordPolicyId", description="ID of the password policy")
-    source_ids: Optional[conlist(StrictStr)] = Field(None, alias="sourceIds", description="List of password managed sources IDs")
+    name: Optional[StrictStr] = Field(None,
+                                      description="Name of the sync group")
+    password_policy_id: Optional[StrictStr] = Field(
+        None,
+        alias="passwordPolicyId",
+        description="ID of the password policy")
+    source_ids: Optional[conlist(StrictStr)] = Field(
+        None,
+        alias="sourceIds",
+        description="List of password managed sources IDs")
     __properties = ["id", "name", "passwordPolicyId", "sourceIds"]
 
     class Config:
@@ -51,10 +57,7 @@ class PasswordSyncGroup(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,11 +70,13 @@ class PasswordSyncGroup(BaseModel):
             return PasswordSyncGroup.parse_obj(obj)
 
         _obj = PasswordSyncGroup.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "password_policy_id": obj.get("passwordPolicyId"),
-            "source_ids": obj.get("sourceIds")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "password_policy_id":
+            obj.get("passwordPolicyId"),
+            "source_ids":
+            obj.get("sourceIds")
         })
         return _obj
-
-

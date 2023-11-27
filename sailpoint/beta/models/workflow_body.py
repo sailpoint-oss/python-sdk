@@ -11,30 +11,37 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-from beta.models.workflow_body_owner import WorkflowBodyOwner
-from beta.models.workflow_definition import WorkflowDefinition
-from beta.models.workflow_trigger import WorkflowTrigger
+from sailpoint.beta.models.workflow_body_owner import WorkflowBodyOwner
+from sailpoint.beta.models.workflow_definition import WorkflowDefinition
+from sailpoint.beta.models.workflow_trigger import WorkflowTrigger
+
 
 class WorkflowBody(BaseModel):
     """
     WorkflowBody
     """
-    name: Optional[StrictStr] = Field(None, description="The name of the workflow")
+    name: Optional[StrictStr] = Field(None,
+                                      description="The name of the workflow")
     owner: Optional[WorkflowBodyOwner] = None
-    description: Optional[StrictStr] = Field(None, description="Description of what the workflow accomplishes")
+    description: Optional[StrictStr] = Field(
+        None, description="Description of what the workflow accomplishes")
     definition: Optional[WorkflowDefinition] = None
-    enabled: Optional[StrictBool] = Field(False, description="Enable or disable the workflow.  Workflows cannot be created in an enabled state.")
+    enabled: Optional[StrictBool] = Field(
+        False,
+        description=
+        "Enable or disable the workflow.  Workflows cannot be created in an enabled state."
+    )
     trigger: Optional[WorkflowTrigger] = None
-    __properties = ["name", "owner", "description", "definition", "enabled", "trigger"]
+    __properties = [
+        "name", "owner", "description", "definition", "enabled", "trigger"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -56,10 +63,7 @@ class WorkflowBody(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -81,13 +85,20 @@ class WorkflowBody(BaseModel):
             return WorkflowBody.parse_obj(obj)
 
         _obj = WorkflowBody.parse_obj({
-            "name": obj.get("name"),
-            "owner": WorkflowBodyOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "description": obj.get("description"),
-            "definition": WorkflowDefinition.from_dict(obj.get("definition")) if obj.get("definition") is not None else None,
-            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
-            "trigger": WorkflowTrigger.from_dict(obj.get("trigger")) if obj.get("trigger") is not None else None
+            "name":
+            obj.get("name"),
+            "owner":
+            WorkflowBodyOwner.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "description":
+            obj.get("description"),
+            "definition":
+            WorkflowDefinition.from_dict(obj.get("definition"))
+            if obj.get("definition") is not None else None,
+            "enabled":
+            obj.get("enabled") if obj.get("enabled") is not None else False,
+            "trigger":
+            WorkflowTrigger.from_dict(obj.get("trigger"))
+            if obj.get("trigger") is not None else None
         })
         return _obj
-
-

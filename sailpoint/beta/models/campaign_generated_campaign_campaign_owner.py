@@ -11,23 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr
+
 
 class CampaignGeneratedCampaignCampaignOwner(BaseModel):
     """
     The identity that owns the campaign.  # noqa: E501
     """
     id: StrictStr = Field(..., description="The unique ID of the identity.")
-    display_name: StrictStr = Field(..., alias="displayName", description="The display name of the identity.")
-    email: StrictStr = Field(..., description="The primary email address of the identity.")
+    display_name: StrictStr = Field(
+        ...,
+        alias="displayName",
+        description="The display name of the identity.")
+    email: StrictStr = Field(
+        ..., description="The primary email address of the identity.")
     __properties = ["id", "displayName", "email"]
 
     class Config:
@@ -44,16 +46,14 @@ class CampaignGeneratedCampaignCampaignOwner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CampaignGeneratedCampaignCampaignOwner:
+    def from_json(cls,
+                  json_str: str) -> CampaignGeneratedCampaignCampaignOwner:
         """Create an instance of CampaignGeneratedCampaignCampaignOwner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,10 +66,11 @@ class CampaignGeneratedCampaignCampaignOwner(BaseModel):
             return CampaignGeneratedCampaignCampaignOwner.parse_obj(obj)
 
         _obj = CampaignGeneratedCampaignCampaignOwner.parse_obj({
-            "id": obj.get("id"),
-            "display_name": obj.get("displayName"),
-            "email": obj.get("email")
+            "id":
+            obj.get("id"),
+            "display_name":
+            obj.get("displayName"),
+            "email":
+            obj.get("email")
         })
         return _obj
-
-

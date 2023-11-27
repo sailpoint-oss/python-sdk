@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.report_type import ReportType  # noqa: E501
+from sailpoint.v3.models.report_type import ReportType  # noqa: E501
+
 
 class TestReportType(unittest.TestCase):
     """ReportType unit test stubs"""
@@ -29,6 +29,7 @@ class TestReportType(unittest.TestCase):
     def testReportType(self):
         """Test ReportType"""
         # inst = ReportType()
+
 
 if __name__ == '__main__':
     unittest.main()

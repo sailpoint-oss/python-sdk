@@ -11,22 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class MailFromAttributesDto(BaseModel):
     """
     MAIL FROM attributes for a domain / identity  # noqa: E501
     """
-    identity: Optional[StrictStr] = Field(None, description="The identity or domain address")
-    mail_from_domain: Optional[StrictStr] = Field(None, alias="mailFromDomain", description="The new MAIL FROM domain of the identity. Must be a subdomain of the identity.")
+    identity: Optional[StrictStr] = Field(
+        None, description="The identity or domain address")
+    mail_from_domain: Optional[StrictStr] = Field(
+        None,
+        alias="mailFromDomain",
+        description=
+        "The new MAIL FROM domain of the identity. Must be a subdomain of the identity."
+    )
     __properties = ["identity", "mailFromDomain"]
 
     class Config:
@@ -49,10 +54,7 @@ class MailFromAttributesDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +67,9 @@ class MailFromAttributesDto(BaseModel):
             return MailFromAttributesDto.parse_obj(obj)
 
         _obj = MailFromAttributesDto.parse_obj({
-            "identity": obj.get("identity"),
-            "mail_from_domain": obj.get("mailFromDomain")
+            "identity":
+            obj.get("identity"),
+            "mail_from_domain":
+            obj.get("mailFromDomain")
         })
         return _obj
-
-

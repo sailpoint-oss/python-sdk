@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.template_bulk_delete_dto import TemplateBulkDeleteDto
+from sailpoint.beta.models.template_bulk_delete_dto import TemplateBulkDeleteDto
 
 # TODO update the JSON string below
 json = "{}"

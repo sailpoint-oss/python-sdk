@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.source_health_dto import SourceHealthDto
+from sailpoint.v3.models.source_health_dto import SourceHealthDto
 
 # TODO update the JSON string below
 json = "{}"

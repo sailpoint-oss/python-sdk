@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from v3.models.dto_type import DtoType
+from sailpoint.v3.models.dto_type import DtoType
+
 
 class NameType(BaseModel):
     """
     NameType
     """
-    name: Optional[StrictStr] = Field(None, description="the actor or target name")
+    name: Optional[StrictStr] = Field(None,
+                                      description="the actor or target name")
     type: Optional[DtoType] = None
     __properties = ["name", "type"]
 
@@ -50,10 +50,7 @@ class NameType(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -70,5 +67,3 @@ class NameType(BaseModel):
             "type": obj.get("type")
         })
         return _obj
-
-

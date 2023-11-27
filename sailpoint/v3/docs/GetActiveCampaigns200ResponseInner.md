@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
+from sailpoint.v3.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
 
 # TODO update the JSON string below
 json = "{}"

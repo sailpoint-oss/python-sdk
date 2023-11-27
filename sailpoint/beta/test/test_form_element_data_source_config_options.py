@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.form_element_data_source_config_options import FormElementDataSourceConfigOptions  # noqa: E501
+from sailpoint.beta.models.form_element_data_source_config_options import FormElementDataSourceConfigOptions  # noqa: E501
+
 
 class TestFormElementDataSourceConfigOptions(unittest.TestCase):
     """FormElementDataSourceConfigOptions unit test stubs"""
@@ -26,7 +26,8 @@ class TestFormElementDataSourceConfigOptions(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> FormElementDataSourceConfigOptions:
+    def make_instance(self,
+                      include_optional) -> FormElementDataSourceConfigOptions:
         """Test FormElementDataSourceConfigOptions
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -49,6 +50,7 @@ class TestFormElementDataSourceConfigOptions(unittest.TestCase):
         """Test FormElementDataSourceConfigOptions"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,4 +1,4 @@
-# beta.SegmentsApi
+# sailpoint.beta.SegmentsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -25,14 +25,14 @@ This API creates a segment.  >**Note:** Segment definitions may take time to pro
 ```python
 import time
 import os
-import beta
-from beta.models.segment import Segment
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.segment import Segment
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -46,10 +46,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SegmentsApi(api_client)
-    segment = beta.Segment() # Segment | 
+    api_instance = sailpoint.beta.SegmentsApi(api_client)
+    segment = sailpoint.beta.Segment() # Segment | 
 
     try:
         # Create Segment
@@ -107,13 +107,13 @@ This API deletes the segment specified by the given ID. >**Note:** Segment delet
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -127,9 +127,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SegmentsApi(api_client)
+    api_instance = sailpoint.beta.SegmentsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The segment ID to delete.
 
     try:
@@ -187,14 +187,14 @@ This API returns the segment specified by the given ID. A token with ORG_ADMIN o
 ```python
 import time
 import os
-import beta
-from beta.models.segment import Segment
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.segment import Segment
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -208,9 +208,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SegmentsApi(api_client)
+    api_instance = sailpoint.beta.SegmentsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The segment ID to retrieve.
 
     try:
@@ -270,14 +270,14 @@ This API returns a list of all segments. A token with ORG_ADMIN or API authority
 ```python
 import time
 import os
-import beta
-from beta.models.segment import Segment
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.segment import Segment
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -291,9 +291,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SegmentsApi(api_client)
+    api_instance = sailpoint.beta.SegmentsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -356,14 +356,14 @@ Use this API to update segment fields by using the [JSON Patch](https://tools.ie
 ```python
 import time
 import os
-import beta
-from beta.models.segment import Segment
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.segment import Segment
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -377,9 +377,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SegmentsApi(api_client)
+    api_instance = sailpoint.beta.SegmentsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The segment ID to modify.
     request_body = [{op=replace, path=/visibilityCriteria, value={expression={operator=AND, children=[{operator=EQUALS, attribute=location, value={type=STRING, value=Philadelphia}}, {operator=EQUALS, attribute=department, value={type=STRING, value=HR}}]}}}] # List[object] | A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * owner * visibilityCriteria * active 
 

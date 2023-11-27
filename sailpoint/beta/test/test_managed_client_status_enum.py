@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.managed_client_status_enum import ManagedClientStatusEnum  # noqa: E501
+from sailpoint.beta.models.managed_client_status_enum import ManagedClientStatusEnum  # noqa: E501
+
 
 class TestManagedClientStatusEnum(unittest.TestCase):
     """ManagedClientStatusEnum unit test stubs"""
@@ -29,6 +29,7 @@ class TestManagedClientStatusEnum(unittest.TestCase):
     def testManagedClientStatusEnum(self):
         """Test ManagedClientStatusEnum"""
         # inst = ManagedClientStatusEnum()
+
 
 if __name__ == '__main__':
     unittest.main()

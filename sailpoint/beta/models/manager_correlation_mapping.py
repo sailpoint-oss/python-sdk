@@ -11,22 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class ManagerCorrelationMapping(BaseModel):
     """
     ManagerCorrelationMapping
     """
-    account_attribute: Optional[StrictStr] = Field(None, alias="accountAttribute", description="Name of the attribute to use for manager correlation. The value found on the account attribute will be used to lookup the manager's identity.")
-    identity_attribute: Optional[StrictStr] = Field(None, alias="identityAttribute", description="Name of the identity attribute to search when trying to find a manager using the value from the accountAttribute.")
+    account_attribute: Optional[StrictStr] = Field(
+        None,
+        alias="accountAttribute",
+        description=
+        "Name of the attribute to use for manager correlation. The value found on the account attribute will be used to lookup the manager's identity."
+    )
+    identity_attribute: Optional[StrictStr] = Field(
+        None,
+        alias="identityAttribute",
+        description=
+        "Name of the identity attribute to search when trying to find a manager using the value from the accountAttribute."
+    )
     __properties = ["accountAttribute", "identityAttribute"]
 
     class Config:
@@ -49,10 +58,7 @@ class ManagerCorrelationMapping(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +71,9 @@ class ManagerCorrelationMapping(BaseModel):
             return ManagerCorrelationMapping.parse_obj(obj)
 
         _obj = ManagerCorrelationMapping.parse_obj({
-            "account_attribute": obj.get("accountAttribute"),
-            "identity_attribute": obj.get("identityAttribute")
+            "account_attribute":
+            obj.get("accountAttribute"),
+            "identity_attribute":
+            obj.get("identityAttribute")
         })
         return _obj
-
-

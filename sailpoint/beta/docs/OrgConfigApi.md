@@ -1,4 +1,4 @@
-# beta.OrgConfigApi
+# sailpoint.beta.OrgConfigApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -23,14 +23,14 @@ Get org configuration with only external (org admin) accessible properties for t
 ```python
 import time
 import os
-import beta
-from beta.models.org_config import OrgConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.org_config import OrgConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -44,9 +44,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.OrgConfigApi(api_client)
+    api_instance = sailpoint.beta.OrgConfigApi(api_client)
 
     try:
         # Get Org configuration settings
@@ -102,13 +102,13 @@ Get a list of valid time zones that can be set in org configurations.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -122,9 +122,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.OrgConfigApi(api_client)
+    api_instance = sailpoint.beta.OrgConfigApi(api_client)
 
     try:
         # Get list of time zones
@@ -179,15 +179,15 @@ Patch configuration of the current org using http://jsonpatch.com/ syntax.  Comm
 ```python
 import time
 import os
-import beta
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.models.org_config import OrgConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.org_config import OrgConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -201,9 +201,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.OrgConfigApi(api_client)
+    api_instance = sailpoint.beta.OrgConfigApi(api_client)
     json_patch_operation = [{op=replace, path=/timeZone, value=America/Toronto}] # List[JsonPatchOperation] | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     try:

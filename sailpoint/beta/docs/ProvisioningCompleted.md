@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.provisioning_completed import ProvisioningCompleted
+from sailpoint.beta.models.provisioning_completed import ProvisioningCompleted
 
 # TODO update the JSON string below
 json = "{}"

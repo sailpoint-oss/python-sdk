@@ -1,4 +1,4 @@
-# beta.AccountsApi
+# sailpoint.beta.AccountsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -35,15 +35,15 @@ This API submits an account creation task and returns the task ID.   The `source
 ```python
 import time
 import os
-import beta
-from beta.models.account_attributes_create import AccountAttributesCreate
-from beta.models.accounts_async_result import AccountsAsyncResult
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.account_attributes_create import AccountAttributesCreate
+from sailpoint.beta.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -57,10 +57,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
-    account_attributes_create = beta.AccountAttributesCreate() # AccountAttributesCreate | 
+    api_instance = sailpoint.beta.AccountsApi(api_client)
+    account_attributes_create = sailpoint.beta.AccountAttributesCreate() # AccountAttributesCreate | 
 
     try:
         # Create Account
@@ -118,14 +118,14 @@ This API submits an account delete task and returns the task ID.   A token with 
 ```python
 import time
 import os
-import beta
-from beta.models.accounts_async_result import AccountsAsyncResult
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -139,9 +139,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
+    api_instance = sailpoint.beta.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID
 
     try:
@@ -201,15 +201,15 @@ This API submits a task to disable the account and returns the task ID.   A toke
 ```python
 import time
 import os
-import beta
-from beta.models.account_toggle_request import AccountToggleRequest
-from beta.models.accounts_async_result import AccountsAsyncResult
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.account_toggle_request import AccountToggleRequest
+from sailpoint.beta.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -223,11 +223,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
+    api_instance = sailpoint.beta.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id
-    account_toggle_request = beta.AccountToggleRequest() # AccountToggleRequest | 
+    account_toggle_request = sailpoint.beta.AccountToggleRequest() # AccountToggleRequest | 
 
     try:
         # Disable Account
@@ -287,13 +287,13 @@ This API submits a task to disable IDN account for a single identity.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -307,9 +307,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
+    api_instance = sailpoint.beta.AccountsApi(api_client)
     id = '2c91808384203c2d018437e631158309' # str | The identity id.
 
     try:
@@ -369,15 +369,15 @@ This API submits tasks to disable IDN account for each identity provided in the 
 ```python
 import time
 import os
-import beta
-from beta.models.bulk_identities_accounts_response import BulkIdentitiesAccountsResponse
-from beta.models.identities_accounts_bulk_request import IdentitiesAccountsBulkRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.bulk_identities_accounts_response import BulkIdentitiesAccountsResponse
+from sailpoint.beta.models.identities_accounts_bulk_request import IdentitiesAccountsBulkRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -391,10 +391,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
-    identities_accounts_bulk_request = beta.IdentitiesAccountsBulkRequest() # IdentitiesAccountsBulkRequest | 
+    api_instance = sailpoint.beta.AccountsApi(api_client)
+    identities_accounts_bulk_request = sailpoint.beta.IdentitiesAccountsBulkRequest() # IdentitiesAccountsBulkRequest | 
 
     try:
         # Disable IDN Accounts for Identities
@@ -452,15 +452,15 @@ This API submits a task to enable account and returns the task ID.   A token wit
 ```python
 import time
 import os
-import beta
-from beta.models.account_toggle_request import AccountToggleRequest
-from beta.models.accounts_async_result import AccountsAsyncResult
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.account_toggle_request import AccountToggleRequest
+from sailpoint.beta.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -474,11 +474,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
+    api_instance = sailpoint.beta.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id
-    account_toggle_request = beta.AccountToggleRequest() # AccountToggleRequest | 
+    account_toggle_request = sailpoint.beta.AccountToggleRequest() # AccountToggleRequest | 
 
     try:
         # Enable Account
@@ -538,13 +538,13 @@ This API submits a task to enable IDN account for a single identity.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -558,9 +558,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
+    api_instance = sailpoint.beta.AccountsApi(api_client)
     id = '2c91808384203c2d018437e631158309' # str | The identity id.
 
     try:
@@ -620,15 +620,15 @@ This API submits tasks to enable IDN account for each identity provided in the r
 ```python
 import time
 import os
-import beta
-from beta.models.bulk_identities_accounts_response import BulkIdentitiesAccountsResponse
-from beta.models.identities_accounts_bulk_request import IdentitiesAccountsBulkRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.bulk_identities_accounts_response import BulkIdentitiesAccountsResponse
+from sailpoint.beta.models.identities_accounts_bulk_request import IdentitiesAccountsBulkRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -642,10 +642,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
-    identities_accounts_bulk_request = beta.IdentitiesAccountsBulkRequest() # IdentitiesAccountsBulkRequest | 
+    api_instance = sailpoint.beta.AccountsApi(api_client)
+    identities_accounts_bulk_request = sailpoint.beta.IdentitiesAccountsBulkRequest() # IdentitiesAccountsBulkRequest | 
 
     try:
         # Enable IDN Accounts for Identities
@@ -703,14 +703,14 @@ This API returns the details for a single account based on the ID.   A token wit
 ```python
 import time
 import os
-import beta
-from beta.models.account import Account
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.account import Account
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -724,9 +724,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
+    api_instance = sailpoint.beta.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID
 
     try:
@@ -786,14 +786,14 @@ This API returns entitlements of the account.   A token with ORG_ADMIN authority
 ```python
 import time
 import os
-import beta
-from beta.models.entitlement import Entitlement
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.entitlement import Entitlement
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -807,9 +807,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
+    api_instance = sailpoint.beta.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -875,14 +875,14 @@ This returns a list of accounts.   A token with ORG_ADMIN authority is required 
 ```python
 import time
 import os
-import beta
-from beta.models.list_accounts200_response_inner import ListAccounts200ResponseInner
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.list_accounts200_response_inner import ListAccounts200ResponseInner
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -896,9 +896,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
+    api_instance = sailpoint.beta.AccountsApi(api_client)
     detail_level = 'FULL' # str | Determines whether Slim, or increased level of detail is provided for each account in the returned list. FULL is the default behavior. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -967,15 +967,15 @@ This API submits an account update task and returns the task ID.   A token with 
 ```python
 import time
 import os
-import beta
-from beta.models.account_attributes import AccountAttributes
-from beta.models.accounts_async_result import AccountsAsyncResult
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.account_attributes import AccountAttributes
+from sailpoint.beta.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -989,11 +989,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
+    api_instance = sailpoint.beta.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID
-    account_attributes = beta.AccountAttributes() # AccountAttributes | 
+    account_attributes = sailpoint.beta.AccountAttributes() # AccountAttributes | 
 
     try:
         # Update Account
@@ -1053,14 +1053,14 @@ This API asynchronously reloads the account directly from the connector and perf
 ```python
 import time
 import os
-import beta
-from beta.models.accounts_async_result import AccountsAsyncResult
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1074,9 +1074,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
+    api_instance = sailpoint.beta.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id
 
     try:
@@ -1136,15 +1136,15 @@ This API submits a task to unlock an account and returns the task ID.   A token 
 ```python
 import time
 import os
-import beta
-from beta.models.account_unlock_request import AccountUnlockRequest
-from beta.models.accounts_async_result import AccountsAsyncResult
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.account_unlock_request import AccountUnlockRequest
+from sailpoint.beta.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1158,11 +1158,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
+    api_instance = sailpoint.beta.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id
-    account_unlock_request = beta.AccountUnlockRequest() # AccountUnlockRequest | 
+    account_unlock_request = sailpoint.beta.AccountUnlockRequest() # AccountUnlockRequest | 
 
     try:
         # Unlock Account
@@ -1222,13 +1222,13 @@ This updates account details.   A token with ORG_ADMIN authority is required to 
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1242,9 +1242,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountsApi(api_client)
+    api_instance = sailpoint.beta.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID
     request_body = [{op=replace, path=/identityId, value=2c9180845d1edece015d27a975983e21}] # List[object] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 

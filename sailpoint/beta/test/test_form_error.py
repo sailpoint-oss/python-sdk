@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.form_error import FormError  # noqa: E501
+from sailpoint.beta.models.form_error import FormError  # noqa: E501
+
 
 class TestFormError(unittest.TestCase):
     """FormError unit test stubs"""
@@ -38,7 +38,7 @@ class TestFormError(unittest.TestCase):
             return FormError(
                 key = 'department',
                 messages = [
-                    beta.models.error_message_is_the_standard_api_error_response_message_type/.ErrorMessage is the standard API error response message type.(
+                    sailpoint.beta.models.error_message_is_the_standard_api_error_response_message_type/.ErrorMessage is the standard API error response message type.(
                         locale = 'en-US', 
                         locale_origin = 'DEFAULT', 
                         text = 'This is an error', )
@@ -54,6 +54,7 @@ class TestFormError(unittest.TestCase):
         """Test FormError"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

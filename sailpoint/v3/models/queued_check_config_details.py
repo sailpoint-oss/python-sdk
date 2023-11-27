@@ -11,23 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr
+
 
 class QueuedCheckConfigDetails(BaseModel):
     """
     Configuration of maximum number days and interval for checking Service Desk integration queue status  # noqa: E501
     """
-    provisioning_status_check_interval_minutes: StrictStr = Field(..., alias="provisioningStatusCheckIntervalMinutes", description="interval in minutes between status checks")
-    provisioning_max_status_check_days: StrictStr = Field(..., alias="provisioningMaxStatusCheckDays", description="maximum number of days to check")
-    __properties = ["provisioningStatusCheckIntervalMinutes", "provisioningMaxStatusCheckDays"]
+    provisioning_status_check_interval_minutes: StrictStr = Field(
+        ...,
+        alias="provisioningStatusCheckIntervalMinutes",
+        description="interval in minutes between status checks")
+    provisioning_max_status_check_days: StrictStr = Field(
+        ...,
+        alias="provisioningMaxStatusCheckDays",
+        description="maximum number of days to check")
+    __properties = [
+        "provisioningStatusCheckIntervalMinutes",
+        "provisioningMaxStatusCheckDays"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -49,10 +56,7 @@ class QueuedCheckConfigDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +69,9 @@ class QueuedCheckConfigDetails(BaseModel):
             return QueuedCheckConfigDetails.parse_obj(obj)
 
         _obj = QueuedCheckConfigDetails.parse_obj({
-            "provisioning_status_check_interval_minutes": obj.get("provisioningStatusCheckIntervalMinutes"),
-            "provisioning_max_status_check_days": obj.get("provisioningMaxStatusCheckDays")
+            "provisioning_status_check_interval_minutes":
+            obj.get("provisioningStatusCheckIntervalMinutes"),
+            "provisioning_max_status_check_days":
+            obj.get("provisioningMaxStatusCheckDays")
         })
         return _obj
-
-

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.create_connector_request import CreateConnectorRequest
+from sailpoint.cc.models.create_connector_request import CreateConnectorRequest
 
 # TODO update the JSON string below
 json = "{}"

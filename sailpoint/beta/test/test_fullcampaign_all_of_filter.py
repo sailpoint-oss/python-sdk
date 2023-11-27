@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.fullcampaign_all_of_filter import FullcampaignAllOfFilter  # noqa: E501
+from sailpoint.beta.models.fullcampaign_all_of_filter import FullcampaignAllOfFilter  # noqa: E501
+
 
 class TestFullcampaignAllOfFilter(unittest.TestCase):
     """FullcampaignAllOfFilter unit test stubs"""
@@ -49,6 +49,7 @@ class TestFullcampaignAllOfFilter(unittest.TestCase):
         """Test FullcampaignAllOfFilter"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

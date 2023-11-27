@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.http_dispatch_mode import HttpDispatchMode  # noqa: E501
+from sailpoint.beta.models.http_dispatch_mode import HttpDispatchMode  # noqa: E501
+
 
 class TestHttpDispatchMode(unittest.TestCase):
     """HttpDispatchMode unit test stubs"""
@@ -29,6 +29,7 @@ class TestHttpDispatchMode(unittest.TestCase):
     def testHttpDispatchMode(self):
         """Test HttpDispatchMode"""
         # inst = HttpDispatchMode()
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.sod_policy import SodPolicy
+from sailpoint.beta.models.sod_policy import SodPolicy
 
 # TODO update the JSON string below
 json = "{}"

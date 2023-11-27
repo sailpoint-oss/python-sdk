@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.metric_response import MetricResponse
+from sailpoint.beta.models.metric_response import MetricResponse
 
 # TODO update the JSON string below
 json = "{}"

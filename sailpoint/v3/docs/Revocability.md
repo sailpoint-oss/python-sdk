@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.revocability import Revocability
+from sailpoint.v3.models.revocability import Revocability
 
 # TODO update the JSON string below
 json = "{}"

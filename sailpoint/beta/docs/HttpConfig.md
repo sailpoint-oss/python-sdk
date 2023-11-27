@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.http_config import HttpConfig
+from sailpoint.beta.models.http_config import HttpConfig
 
 # TODO update the JSON string below
 json = "{}"

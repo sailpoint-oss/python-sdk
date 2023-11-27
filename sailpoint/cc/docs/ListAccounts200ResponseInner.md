@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.list_accounts200_response_inner import ListAccounts200ResponseInner
+from sailpoint.cc.models.list_accounts200_response_inner import ListAccounts200ResponseInner
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.managed_cluster_queue import ManagedClusterQueue
+from sailpoint.beta.models.managed_cluster_queue import ManagedClusterQueue
 
 # TODO update the JSON string below
 json = "{}"

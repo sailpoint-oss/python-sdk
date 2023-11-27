@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto  # noqa: E501
+from sailpoint.v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto  # noqa: E501
+
 
 class TestServiceDeskIntegrationDto(unittest.TestCase):
     """ServiceDeskIntegrationDto unit test stubs"""
@@ -42,26 +42,26 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
                 modified = '2015-05-28T14:07:17Z',
                 description = 'A very nice Service Desk integration',
                 type = 'ServiceNowSDIM',
-                owner_ref = v3.models.service_desk_integration_dto_all_of_owner_ref.ServiceDeskIntegrationDto_allOf_ownerRef(
+                owner_ref = sailpoint.v3.models.service_desk_integration_dto_all_of_owner_ref.ServiceDeskIntegrationDto_allOf_ownerRef(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', ),
-                cluster_ref = v3.models.source_cluster_dto.SourceClusterDto(
+                cluster_ref = sailpoint.v3.models.source_cluster_dto.SourceClusterDto(
                     type = 'CLUSTER', 
                     id = '2c9180847a7fccdd017aa5896f9f4f6f', 
                     name = 'Training VA', ),
                 cluster = 'xyzzy999',
                 managed_sources = [2c9180835d191a86015d28455b4a2329, 2c5680835d191a85765d28455b4a9823],
-                provisioning_config = v3.models.provisioning_config.ProvisioningConfig(
+                provisioning_config = sailpoint.v3.models.provisioning_config.ProvisioningConfig(
                     universal_manager = True, 
                     managed_resource_refs = [{type=SOURCE, id=2c9180855d191c59015d291ceb051111, name=My Source 1}, {type=SOURCE, id=2c9180855d191c59015d291ceb052222, name=My Source 2}], 
-                    plan_initializer_script = v3.models.provisioning_config_plan_initializer_script.ProvisioningConfig_planInitializerScript(
+                    plan_initializer_script = sailpoint.v3.models.provisioning_config_plan_initializer_script.ProvisioningConfig_planInitializerScript(
                         source = '<?xml version='1.0' encoding='UTF-8'?>\r\n<!DOCTYPE Rule PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\r\n<Rule name=\"Example Rule\" type=\"BeforeProvisioning\">\r\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\r\n  <Source><![CDATA[\r\nimport sailpoint.object.*;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\r\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\r\nimport sailpoint.object.ProvisioningPlan;\r\nimport sailpoint.object.ProvisioningPlan.Operation;\r\n\r\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n}\r\n\r\n  ]]></Source>
 ', ), 
                     no_provisioning_requests = True, 
                     provisioning_request_expiration = 7, ),
                 attributes = {property=value, key=value},
-                before_provisioning_rule = v3.models.before_provisioning_rule_dto.BeforeProvisioningRuleDto(
+                before_provisioning_rule = sailpoint.v3.models.before_provisioning_rule_dto.BeforeProvisioningRuleDto(
                     type = 'RULE', 
                     id = '048eb3d55c5a4758bd07dccb87741c78', 
                     name = 'Before Provisioning Airtable Rule', )
@@ -79,6 +79,7 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
         """Test ServiceDeskIntegrationDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

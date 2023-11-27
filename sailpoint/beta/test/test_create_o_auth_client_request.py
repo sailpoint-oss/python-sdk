@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.create_o_auth_client_request import CreateOAuthClientRequest  # noqa: E501
+from sailpoint.beta.models.create_o_auth_client_request import CreateOAuthClientRequest  # noqa: E501
+
 
 class TestCreateOAuthClientRequest(unittest.TestCase):
     """CreateOAuthClientRequest unit test stubs"""
@@ -67,6 +67,7 @@ class TestCreateOAuthClientRequest(unittest.TestCase):
         """Test CreateOAuthClientRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

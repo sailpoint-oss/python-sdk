@@ -11,36 +11,54 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-from beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
+from sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
+
 
 class AccessRequestPostApprovalRequestedItemsStatusInner(BaseModel):
     """
     AccessRequestPostApprovalRequestedItemsStatusInner
     """
-    id: StrictStr = Field(..., description="The unique ID of the access item being requested.")
-    name: StrictStr = Field(..., description="The human friendly name of the access item.")
-    description: Optional[StrictStr] = Field(None, description="Detailed description of the access item.")
+    id: StrictStr = Field(
+        ..., description="The unique ID of the access item being requested.")
+    name: StrictStr = Field(
+        ..., description="The human friendly name of the access item.")
+    description: Optional[StrictStr] = Field(
+        None, description="Detailed description of the access item.")
     type: Dict[str, Any] = Field(..., description="The type of access item.")
-    operation: Dict[str, Any] = Field(..., description="The action to perform on the access item.")
-    comment: Optional[StrictStr] = Field(None, description="A comment from the identity requesting the access.")
-    client_metadata: Optional[Dict[str, Any]] = Field(None, alias="clientMetadata", description="Additional customer defined metadata about the access item.")
-    approval_info: conlist(AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) = Field(..., alias="approvalInfo", description="A list of one or more approvers for the access request.")
-    __properties = ["id", "name", "description", "type", "operation", "comment", "clientMetadata", "approvalInfo"]
+    operation: Dict[str, Any] = Field(
+        ..., description="The action to perform on the access item.")
+    comment: Optional[StrictStr] = Field(
+        None, description="A comment from the identity requesting the access.")
+    client_metadata: Optional[Dict[str, Any]] = Field(
+        None,
+        alias="clientMetadata",
+        description=
+        "Additional customer defined metadata about the access item.")
+    approval_info: conlist(
+        AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
+    ) = Field(
+        ...,
+        alias="approvalInfo",
+        description="A list of one or more approvers for the access request.")
+    __properties = [
+        "id", "name", "description", "type", "operation", "comment",
+        "clientMetadata", "approvalInfo"
+    ]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT'):
-            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')")
+            raise ValueError(
+                "must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')"
+            )
         return value
 
     @validator('operation')
@@ -64,16 +82,15 @@ class AccessRequestPostApprovalRequestedItemsStatusInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccessRequestPostApprovalRequestedItemsStatusInner:
+    def from_json(
+            cls, json_str: str
+    ) -> AccessRequestPostApprovalRequestedItemsStatusInner:
         """Create an instance of AccessRequestPostApprovalRequestedItemsStatusInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in approval_info (list)
         _items = []
         if self.approval_info:
@@ -99,24 +116,35 @@ class AccessRequestPostApprovalRequestedItemsStatusInner(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccessRequestPostApprovalRequestedItemsStatusInner:
+    def from_dict(
+            cls,
+            obj: dict) -> AccessRequestPostApprovalRequestedItemsStatusInner:
         """Create an instance of AccessRequestPostApprovalRequestedItemsStatusInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccessRequestPostApprovalRequestedItemsStatusInner.parse_obj(obj)
+            return AccessRequestPostApprovalRequestedItemsStatusInner.parse_obj(
+                obj)
 
         _obj = AccessRequestPostApprovalRequestedItemsStatusInner.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "type": obj.get("type"),
-            "operation": obj.get("operation"),
-            "comment": obj.get("comment"),
-            "client_metadata": obj.get("clientMetadata"),
-            "approval_info": [AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner.from_dict(_item) for _item in obj.get("approvalInfo")] if obj.get("approvalInfo") is not None else None
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "type":
+            obj.get("type"),
+            "operation":
+            obj.get("operation"),
+            "comment":
+            obj.get("comment"),
+            "client_metadata":
+            obj.get("clientMetadata"),
+            "approval_info": [
+                AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
+                .from_dict(_item) for _item in obj.get("approvalInfo")
+            ] if obj.get("approvalInfo") is not None else None
         })
         return _obj
-
-

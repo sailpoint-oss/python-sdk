@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr
+
 
 class SourceSyncPayload(BaseModel):
     """
     SourceSyncPayload
     """
     type: StrictStr = Field(..., description="Payload type.")
-    data_json: StrictStr = Field(..., alias="dataJson", description="Payload type.")
+    data_json: StrictStr = Field(...,
+                                 alias="dataJson",
+                                 description="Payload type.")
     __properties = ["type", "dataJson"]
 
     class Config:
@@ -49,10 +49,7 @@ class SourceSyncPayload(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,5 +66,3 @@ class SourceSyncPayload(BaseModel):
             "data_json": obj.get("dataJson")
         })
         return _obj
-
-

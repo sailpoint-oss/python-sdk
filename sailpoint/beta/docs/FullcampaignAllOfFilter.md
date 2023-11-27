@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.fullcampaign_all_of_filter import FullcampaignAllOfFilter
+from sailpoint.beta.models.fullcampaign_all_of_filter import FullcampaignAllOfFilter
 
 # TODO update the JSON string below
 json = "{}"

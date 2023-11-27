@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,19 +22,17 @@ from pydantic import Field, StrictBool, StrictStr, conint
 
 from typing import List, Optional
 
-from beta.models.role_insight import RoleInsight
-from beta.models.role_insights_entitlement import RoleInsightsEntitlement
-from beta.models.role_insights_entitlement_changes import RoleInsightsEntitlementChanges
-from beta.models.role_insights_identities import RoleInsightsIdentities
-from beta.models.role_insights_response import RoleInsightsResponse
-from beta.models.role_insights_summary import RoleInsightsSummary
+from sailpoint.beta.models.role_insight import RoleInsight
+from sailpoint.beta.models.role_insights_entitlement import RoleInsightsEntitlement
+from sailpoint.beta.models.role_insights_entitlement_changes import RoleInsightsEntitlementChanges
+from sailpoint.beta.models.role_insights_identities import RoleInsightsIdentities
+from sailpoint.beta.models.role_insights_response import RoleInsightsResponse
+from sailpoint.beta.models.role_insights_summary import RoleInsightsSummary
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class RoleInsightsApi:
@@ -51,7 +48,8 @@ class RoleInsightsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_role_insight_requests(self, **kwargs) -> RoleInsightsResponse:  # noqa: E501
+    def create_role_insight_requests(
+            self, **kwargs) -> RoleInsightsResponse:  # noqa: E501
         """(Deprecated) Generate insights for roles  # noqa: E501
 
         Submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.  # noqa: E501
@@ -76,10 +74,12 @@ class RoleInsightsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_role_insight_requests_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_role_insight_requests_with_http_info(**kwargs)  # noqa: E501
+        return self.create_role_insight_requests_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_role_insight_requests_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_role_insight_requests_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """(Deprecated) Generate insights for roles  # noqa: E501
 
         Submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.  # noqa: E501
@@ -114,31 +114,23 @@ class RoleInsightsApi:
         :rtype: tuple(RoleInsightsResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
-        warnings.warn("POST /role-insights/requests is deprecated.", DeprecationWarning)
+        warnings.warn("POST /role-insights/requests is deprecated.",
+                      DeprecationWarning)
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_role_insight_requests" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_role_insight_requests" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -173,7 +165,8 @@ class RoleInsightsApi:
         }
 
         return self.api_client.call_api(
-            '/role-insights/requests', 'POST',
+            '/role-insights/requests',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -183,14 +176,34 @@ class RoleInsightsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def download_role_insights_entitlements_changes(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*")] = None, **kwargs) -> str:  # noqa: E501
+    def download_role_insights_entitlements_changes(
+            self,
+            insight_id: Annotated[
+                StrictStr,
+                Field(..., description="The role insight id")],
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*"
+            )] = None,
+            **kwargs) -> str:  # noqa: E501
         """Download entitlement insights for a role  # noqa: E501
 
         This endpoint returns the entitlement insights for a role.  # noqa: E501
@@ -221,10 +234,30 @@ class RoleInsightsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the download_role_insights_entitlements_changes_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.download_role_insights_entitlements_changes_with_http_info(insight_id, sorters, filters, **kwargs)  # noqa: E501
+        return self.download_role_insights_entitlements_changes_with_http_info(
+            insight_id, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def download_role_insights_entitlements_changes_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def download_role_insights_entitlements_changes_with_http_info(
+            self,
+            insight_id: Annotated[
+                StrictStr,
+                Field(..., description="The role insight id")],
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Download entitlement insights for a role  # noqa: E501
 
         This endpoint returns the entitlement insights for a role.  # noqa: E501
@@ -267,30 +300,19 @@ class RoleInsightsApi:
 
         _params = locals()
 
-        _all_params = [
-            'insight_id',
-            'sorters',
-            'filters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['insight_id', 'sorters', 'filters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method download_role_insights_entitlements_changes" % _key
-                )
+                    " to method download_role_insights_entitlements_changes" %
+                    _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -300,7 +322,6 @@ class RoleInsightsApi:
         _path_params = {}
         if _params['insight_id']:
             _path_params['insightId'] = _params['insight_id']
-
 
         # process the query parameters
         _query_params = []
@@ -333,7 +354,8 @@ class RoleInsightsApi:
         }
 
         return self.api_client.call_api(
-            '/role-insights/{insightId}/entitlement-changes/download', 'GET',
+            '/role-insights/{insightId}/entitlement-changes/download',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -343,14 +365,62 @@ class RoleInsightsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_entitlement_changes_identities(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], entitlement_id : Annotated[StrictStr, Field(..., description="The entitlement id")], has_entitlement : Annotated[Optional[StrictBool], Field(description="Identity has this entitlement or not")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*")] = None, **kwargs) -> List[RoleInsightsIdentities]:  # noqa: E501
+    def get_entitlement_changes_identities(
+            self,
+            insight_id: Annotated[
+                StrictStr,
+                Field(..., description="The role insight id")],
+            entitlement_id: Annotated[
+                StrictStr,
+                Field(..., description="The entitlement id")],
+            has_entitlement: Annotated[
+                Optional[StrictBool],
+                Field(description="Identity has this entitlement or not"
+                      )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**"
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*"
+            )] = None,
+            **kwargs) -> List[RoleInsightsIdentities]:  # noqa: E501
         """Get identities for a suggested entitlement (for a role)  # noqa: E501
 
         Role insights suggests entitlements to be added for a role. This endpoint returns a list of identities in the role, with or without the entitlements, for a suggested entitlement so that the user can see which identities would be affected if the suggested entitlement were to be added to the role.  # noqa: E501
@@ -391,10 +461,59 @@ class RoleInsightsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_entitlement_changes_identities_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_entitlement_changes_identities_with_http_info(insight_id, entitlement_id, has_entitlement, offset, limit, count, sorters, filters, **kwargs)  # noqa: E501
+        return self.get_entitlement_changes_identities_with_http_info(
+            insight_id, entitlement_id, has_entitlement, offset, limit, count,
+            sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_entitlement_changes_identities_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], entitlement_id : Annotated[StrictStr, Field(..., description="The entitlement id")], has_entitlement : Annotated[Optional[StrictBool], Field(description="Identity has this entitlement or not")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_entitlement_changes_identities_with_http_info(
+            self,
+            insight_id: Annotated[
+                StrictStr,
+                Field(..., description="The role insight id")],
+            entitlement_id: Annotated[
+                StrictStr,
+                Field(..., description="The entitlement id")],
+            has_entitlement: Annotated[
+                Optional[StrictBool],
+                Field(description="Identity has this entitlement or not"
+                      )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**"
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get identities for a suggested entitlement (for a role)  # noqa: E501
 
         Role insights suggests entitlements to be added for a role. This endpoint returns a list of identities in the role, with or without the entitlements, for a suggested entitlement so that the user can see which identities would be affected if the suggested entitlement were to be added to the role.  # noqa: E501
@@ -448,34 +567,20 @@ class RoleInsightsApi:
         _params = locals()
 
         _all_params = [
-            'insight_id',
-            'entitlement_id',
-            'has_entitlement',
-            'offset',
-            'limit',
-            'count',
-            'sorters',
-            'filters'
+            'insight_id', 'entitlement_id', 'has_entitlement', 'offset',
+            'limit', 'count', 'sorters', 'filters'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_entitlement_changes_identities" % _key
-                )
+                    " to method get_entitlement_changes_identities" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -489,11 +594,11 @@ class RoleInsightsApi:
         if _params['entitlement_id']:
             _path_params['entitlementId'] = _params['entitlement_id']
 
-
         # process the query parameters
         _query_params = []
         if _params.get('has_entitlement') is not None:  # noqa: E501
-            _query_params.append(('hasEntitlement', _params['has_entitlement']))
+            _query_params.append(
+                ('hasEntitlement', _params['has_entitlement']))
 
         if _params.get('offset') is not None:  # noqa: E501
             _query_params.append(('offset', _params['offset']))
@@ -533,7 +638,8 @@ class RoleInsightsApi:
         }
 
         return self.api_client.call_api(
-            '/role-insights/{insightId}/entitlement-changes/{entitlementId}/identities', 'GET',
+            '/role-insights/{insightId}/entitlement-changes/{entitlementId}/identities',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -543,14 +649,17 @@ class RoleInsightsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_insight(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], **kwargs) -> RoleInsight:  # noqa: E501
+    def get_role_insight(self, insight_id: Annotated[
+        StrictStr, Field(..., description="The role insight id")],
+                         **kwargs) -> RoleInsight:  # noqa: E501
         """Get a single role insight  # noqa: E501
 
         This endpoint gets role insights information for a role.  # noqa: E501
@@ -577,10 +686,13 @@ class RoleInsightsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_role_insight_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_role_insight_with_http_info(insight_id, **kwargs)  # noqa: E501
+        return self.get_role_insight_with_http_info(insight_id,
+                                                    **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_insight_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_insight_with_http_info(self, insight_id: Annotated[
+        StrictStr, Field(..., description="The role insight id")],
+                                        **kwargs) -> ApiResponse:  # noqa: E501
         """Get a single role insight  # noqa: E501
 
         This endpoint gets role insights information for a role.  # noqa: E501
@@ -619,28 +731,17 @@ class RoleInsightsApi:
 
         _params = locals()
 
-        _all_params = [
-            'insight_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['insight_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_role_insight" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_role_insight" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -650,7 +751,6 @@ class RoleInsightsApi:
         _path_params = {}
         if _params['insight_id']:
             _path_params['insightId'] = _params['insight_id']
-
 
         # process the query parameters
         _query_params = []
@@ -677,7 +777,8 @@ class RoleInsightsApi:
         }
 
         return self.api_client.call_api(
-            '/role-insights/{insightId}', 'GET',
+            '/role-insights/{insightId}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -687,14 +788,52 @@ class RoleInsightsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_insights(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw*")] = None, **kwargs) -> List[RoleInsight]:  # noqa: E501
+    def get_role_insights(
+            self,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities**"
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw*"
+            )] = None,
+            **kwargs) -> List[RoleInsight]:  # noqa: E501
         """Get role insights  # noqa: E501
 
         This method returns detailed role insights for each role.  # noqa: E501
@@ -729,10 +868,49 @@ class RoleInsightsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_role_insights_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_role_insights_with_http_info(offset, limit, count, sorters, filters, **kwargs)  # noqa: E501
+        return self.get_role_insights_with_http_info(offset, limit, count,
+                                                     sorters, filters,
+                                                     **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_insights_with_http_info(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_insights_with_http_info(
+            self,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities**"
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get role insights  # noqa: E501
 
         This method returns detailed role insights for each role.  # noqa: E501
@@ -779,32 +957,17 @@ class RoleInsightsApi:
 
         _params = locals()
 
-        _all_params = [
-            'offset',
-            'limit',
-            'count',
-            'sorters',
-            'filters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['offset', 'limit', 'count', 'sorters', 'filters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_role_insights" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_role_insights" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -853,7 +1016,8 @@ class RoleInsightsApi:
         }
 
         return self.api_client.call_api(
-            '/role-insights', 'GET',
+            '/role-insights',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -863,14 +1027,27 @@ class RoleInsightsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_insights_current_entitlements(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*")] = None, **kwargs) -> List[RoleInsightsEntitlement]:  # noqa: E501
+    def get_role_insights_current_entitlements(
+            self,
+            insight_id: Annotated[
+                StrictStr,
+                Field(..., description="The role insight id")],
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*"
+            )] = None,
+            **kwargs) -> List[RoleInsightsEntitlement]:  # noqa: E501
         """Get current entitlement for a role  # noqa: E501
 
         This endpoint gets the entitlements for a role. The term \"current\" is to distinguish from the entitlement(s) an insight might recommend adding.  # noqa: E501
@@ -899,10 +1076,23 @@ class RoleInsightsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_role_insights_current_entitlements_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_role_insights_current_entitlements_with_http_info(insight_id, filters, **kwargs)  # noqa: E501
+        return self.get_role_insights_current_entitlements_with_http_info(
+            insight_id, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_insights_current_entitlements_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_insights_current_entitlements_with_http_info(
+            self,
+            insight_id: Annotated[
+                StrictStr,
+                Field(..., description="The role insight id")],
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get current entitlement for a role  # noqa: E501
 
         This endpoint gets the entitlements for a role. The term \"current\" is to distinguish from the entitlement(s) an insight might recommend adding.  # noqa: E501
@@ -943,29 +1133,18 @@ class RoleInsightsApi:
 
         _params = locals()
 
-        _all_params = [
-            'insight_id',
-            'filters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['insight_id', 'filters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_role_insights_current_entitlements" % _key
-                )
+                    " to method get_role_insights_current_entitlements" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -975,7 +1154,6 @@ class RoleInsightsApi:
         _path_params = {}
         if _params['insight_id']:
             _path_params['insightId'] = _params['insight_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1005,7 +1183,8 @@ class RoleInsightsApi:
         }
 
         return self.api_client.call_api(
-            '/role-insights/{insightId}/current-entitlements', 'GET',
+            '/role-insights/{insightId}/current-entitlements',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1015,14 +1194,34 @@ class RoleInsightsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_insights_entitlements_changes(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*")] = None, **kwargs) -> List[RoleInsightsEntitlementChanges]:  # noqa: E501
+    def get_role_insights_entitlements_changes(
+            self,
+            insight_id: Annotated[
+                StrictStr,
+                Field(..., description="The role insight id")],
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name**"
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*"
+            )] = None,
+            **kwargs) -> List[RoleInsightsEntitlementChanges]:  # noqa: E501
         """Get entitlement insights for a role  # noqa: E501
 
         This endpoint returns entitlement insights for a role.  # noqa: E501
@@ -1053,10 +1252,30 @@ class RoleInsightsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_role_insights_entitlements_changes_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_role_insights_entitlements_changes_with_http_info(insight_id, sorters, filters, **kwargs)  # noqa: E501
+        return self.get_role_insights_entitlements_changes_with_http_info(
+            insight_id, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_insights_entitlements_changes_with_http_info(self, insight_id : Annotated[StrictStr, Field(..., description="The role insight id")], sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_insights_entitlements_changes_with_http_info(
+            self,
+            insight_id: Annotated[
+                StrictStr,
+                Field(..., description="The role insight id")],
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name**"
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get entitlement insights for a role  # noqa: E501
 
         This endpoint returns entitlement insights for a role.  # noqa: E501
@@ -1099,30 +1318,18 @@ class RoleInsightsApi:
 
         _params = locals()
 
-        _all_params = [
-            'insight_id',
-            'sorters',
-            'filters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['insight_id', 'sorters', 'filters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_role_insights_entitlements_changes" % _key
-                )
+                    " to method get_role_insights_entitlements_changes" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1132,7 +1339,6 @@ class RoleInsightsApi:
         _path_params = {}
         if _params['insight_id']:
             _path_params['insightId'] = _params['insight_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1165,7 +1371,8 @@ class RoleInsightsApi:
         }
 
         return self.api_client.call_api(
-            '/role-insights/{insightId}/entitlement-changes', 'GET',
+            '/role-insights/{insightId}/entitlement-changes',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1175,14 +1382,19 @@ class RoleInsightsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_insights_requests(self, id : Annotated[StrictStr, Field(..., description="The role insights request id")], **kwargs) -> RoleInsightsResponse:  # noqa: E501
+    def get_role_insights_requests(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="The role insights request id")],
+            **kwargs) -> RoleInsightsResponse:  # noqa: E501
         """(Deprecated) Returns metadata from prior request.  # noqa: E501
 
         This endpoint returns details of a prior role insights request.   # noqa: E501
@@ -1209,10 +1421,15 @@ class RoleInsightsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_role_insights_requests_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_role_insights_requests_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_role_insights_requests_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_insights_requests_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The role insights request id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_insights_requests_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="The role insights request id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """(Deprecated) Returns metadata from prior request.  # noqa: E501
 
         This endpoint returns details of a prior role insights request.   # noqa: E501
@@ -1249,32 +1466,23 @@ class RoleInsightsApi:
         :rtype: tuple(RoleInsightsResponse, status_code(int), headers(HTTPHeaderDict))
         """
 
-        warnings.warn("GET /role-insights/requests/{id} is deprecated.", DeprecationWarning)
+        warnings.warn("GET /role-insights/requests/{id} is deprecated.",
+                      DeprecationWarning)
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_role_insights_requests" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_role_insights_requests" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1284,7 +1492,6 @@ class RoleInsightsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1312,7 +1519,8 @@ class RoleInsightsApi:
         }
 
         return self.api_client.call_api(
-            '/role-insights/requests/{id}', 'GET',
+            '/role-insights/requests/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1322,14 +1530,16 @@ class RoleInsightsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_insights_summary(self, **kwargs) -> RoleInsightsSummary:  # noqa: E501
+    def get_role_insights_summary(
+            self, **kwargs) -> RoleInsightsSummary:  # noqa: E501
         """Get role insights summary information  # noqa: E501
 
         This method returns high level summary information for role insights for a customer.  # noqa: E501
@@ -1354,10 +1564,12 @@ class RoleInsightsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_role_insights_summary_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_role_insights_summary_with_http_info(**kwargs)  # noqa: E501
+        return self.get_role_insights_summary_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_insights_summary_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_insights_summary_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """Get role insights summary information  # noqa: E501
 
         This method returns high level summary information for role insights for a customer.  # noqa: E501
@@ -1394,27 +1606,18 @@ class RoleInsightsApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_role_insights_summary" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_role_insights_summary" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1448,7 +1651,8 @@ class RoleInsightsApi:
         }
 
         return self.api_client.call_api(
-            '/role-insights/summary', 'GET',
+            '/role-insights/summary',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1458,7 +1662,8 @@ class RoleInsightsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

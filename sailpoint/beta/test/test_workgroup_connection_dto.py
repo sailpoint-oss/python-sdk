@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.workgroup_connection_dto import WorkgroupConnectionDto  # noqa: E501
+from sailpoint.beta.models.workgroup_connection_dto import WorkgroupConnectionDto  # noqa: E501
+
 
 class TestWorkgroupConnectionDto(unittest.TestCase):
     """WorkgroupConnectionDto unit test stubs"""
@@ -36,7 +36,7 @@ class TestWorkgroupConnectionDto(unittest.TestCase):
         model = WorkgroupConnectionDto()  # noqa: E501
         if include_optional:
             return WorkgroupConnectionDto(
-                object = beta.models.connected_object.ConnectedObject(
+                object = sailpoint.beta.models.connected_object.ConnectedObject(
                     type = 'ACCESS_PROFILE', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'Employee-database-read-write', 
@@ -52,6 +52,7 @@ class TestWorkgroupConnectionDto(unittest.TestCase):
         """Test WorkgroupConnectionDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,4 +1,4 @@
-# beta.IAIRoleMiningApi
+# sailpoint.beta.IAIRoleMiningApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -44,15 +44,15 @@ This method starts a job to provision a potential role
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_potential_role_provision_request import RoleMiningPotentialRoleProvisionRequest
-from beta.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_potential_role_provision_request import RoleMiningPotentialRoleProvisionRequest
+from sailpoint.beta.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -66,14 +66,14 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id in a role mining session
     min_entitlement_popularity = 0 # int | Minimum popularity required for an entitlement to be included in the provisioned role. (optional) (default to 0)
     include_common_access = True # bool | Boolean determining whether common access entitlements will be included in the provisioned role. (optional) (default to True)
-    role_mining_potential_role_provision_request = beta.RoleMiningPotentialRoleProvisionRequest() # RoleMiningPotentialRoleProvisionRequest | Required information to create a new role (optional)
+    role_mining_potential_role_provision_request = sailpoint.beta.RoleMiningPotentialRoleProvisionRequest() # RoleMiningPotentialRoleProvisionRequest | Required information to create a new role (optional)
 
     try:
         # Create request to provision a potential role into an actual role.
@@ -135,15 +135,15 @@ This submits a create role mining session request to the role mining application
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_session_dto import RoleMiningSessionDto
-from beta.models.role_mining_session_response import RoleMiningSessionResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_session_dto import RoleMiningSessionDto
+from sailpoint.beta.models.role_mining_session_response import RoleMiningSessionResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -157,10 +157,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
-    role_mining_session_dto = beta.RoleMiningSessionDto() # RoleMiningSessionDto | Role mining session parameters
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
+    role_mining_session_dto = sailpoint.beta.RoleMiningSessionDto() # RoleMiningSessionDto | Role mining session parameters
 
     try:
         # Create a role mining session
@@ -218,13 +218,13 @@ This endpoint downloads a completed export of information for a potential role i
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -238,9 +238,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '278359a6-04b7-4669-9468-924cf580964a' # str | A potential role id in a role mining session
     export_id = '4940ffd4-836f-48a3-b2b0-6d498c3fdf40' # str | The id of a previously run export job for this potential role
@@ -302,13 +302,13 @@ This endpoint downloads all the information for a potential role in a role minin
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -322,9 +322,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id in a role mining session
 
@@ -384,15 +384,15 @@ This endpoint uploads all the information for a potential role in a role mining 
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_potential_role_export_request import RoleMiningPotentialRoleExportRequest
-from beta.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_potential_role_export_request import RoleMiningPotentialRoleExportRequest
+from sailpoint.beta.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -406,12 +406,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '278359a6-04b7-4669-9468-924cf580964a' # str | A potential role id in a role mining session
-    role_mining_potential_role_export_request = beta.RoleMiningPotentialRoleExportRequest() # RoleMiningPotentialRoleExportRequest |  (optional)
+    role_mining_potential_role_export_request = sailpoint.beta.RoleMiningPotentialRoleExportRequest() # RoleMiningPotentialRoleExportRequest |  (optional)
 
     try:
         # Asynchronously export details for a potential role in a role mining session and upload to S3
@@ -470,14 +470,14 @@ This endpoint retrieves information about the current status of a potential role
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -491,9 +491,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '278359a6-04b7-4669-9468-924cf580964a' # str | A potential role id in a role mining session
     export_id = '4940ffd4-836f-48a3-b2b0-6d498c3fdf40' # str | The id of a previously run export job for this potential role
@@ -555,14 +555,14 @@ Returns all potential role summaries that match the query parameters
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -576,9 +576,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     sorters = 'createdDate' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **createdDate, identityCount, entitlementCount, freshness, quality** (optional)
     filters = '(createdByName co \"int\") and (createdById sw \"2c9180907\") and (type eq \"COMMON\") and ((name co \"entt\") or (saved eq true))' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **createdById**: *eq, sw, co*  **createdByName**: *eq, sw, co*  **description**: *sw, co*  **endDate**: *le, lt*  **freshness**: *eq, ge, gt, le, lt*  **name**: *eq, sw, co, ge, gt, le, lt*  **quality**: *eq, ge, gt, le, lt*  **startDate**: *ge, gt*  **saved**: *eq*  **type**: *eq, ge, gt, le, lt*  **scopingMethod**: *eq*  **sessionState**: *eq*  **identityAttribute**: *co* (optional)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -645,13 +645,13 @@ This method returns entitlement popularity distribution for a potential role in 
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -665,9 +665,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id in a role mining session
     include_common_access = True # bool | Boolean determining whether common access entitlements will be included or not (optional)
@@ -729,14 +729,14 @@ This method returns entitlements for a potential role in a role mining session.
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_entitlement import RoleMiningEntitlement
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_entitlement import RoleMiningEntitlement
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -750,9 +750,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id in a role mining session
     include_common_access = True # bool | Boolean determining whether common access entitlements will be included or not (optional)
@@ -824,14 +824,14 @@ This method returns excluded entitlements for a potential role in a role mining 
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_entitlement import RoleMiningEntitlement
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_entitlement import RoleMiningEntitlement
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -845,9 +845,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id in a role mining session
     sorters = 'populariity' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **popularity** (optional)
@@ -917,14 +917,14 @@ This method returns identities for a potential role in a role mining session.
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_identity import RoleMiningIdentity
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_identity import RoleMiningIdentity
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -938,9 +938,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id in a role mining session
     sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
@@ -1010,14 +1010,14 @@ This method returns a specific potential role for a role mining session.
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_potential_role import RoleMiningPotentialRole
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_potential_role import RoleMiningPotentialRole
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1031,9 +1031,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id in a role mining session
 
@@ -1094,14 +1094,14 @@ This method returns the applications of a potential role for a role mining sessi
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_potential_role_application import RoleMiningPotentialRoleApplication
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_potential_role_application import RoleMiningPotentialRoleApplication
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1115,9 +1115,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id in a role mining session
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -1183,14 +1183,14 @@ This method returns source usageCount (as number of days in the last 90 days) fo
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_potential_role_source_usage import RoleMiningPotentialRoleSourceUsage
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_potential_role_source_usage import RoleMiningPotentialRoleSourceUsage
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1204,9 +1204,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     potential_role_id = 'e0cc5d7d-bf7f-4f81-b2af-8885b09d9923' # str | A potential role id
     source_id = '2c9180877620c1460176267f336a106f' # str | A source id
     sorters = '-usageCount' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **displayName, email, usageCount** (optional)
@@ -1275,14 +1275,14 @@ This method returns the potential role summaries for a role mining session.
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_potential_role_summary import RoleMiningPotentialRoleSummary
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1296,9 +1296,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     sorters = 'createdDate' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **createdDate** (optional)
     filters = '(createdByName co \"int\")and (createdById sw \"2c9180907\")and (type eq \"COMMON\")and ((name co \"entt\")or (saved eq true))' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **createdById**: *eq, sw, co*  **createdByName**: *eq, sw, co*  **description**: *sw, co*  **endDate**: *le, lt*  **freshness**: *eq, ge, gt, le, lt*  **name**: *eq, sw, co*  **quality**: *eq, ge, gt, le, lt*  **startDate**: *ge, gt*  **saved**: *eq*  **type**: *eq* (optional)
@@ -1367,14 +1367,14 @@ This method returns a specific potential role.
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_potential_role import RoleMiningPotentialRole
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_potential_role import RoleMiningPotentialRole
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1388,9 +1388,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id
 
     try:
@@ -1449,14 +1449,14 @@ The method retrieves a role mining session.
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_session_response import RoleMiningSessionResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_session_response import RoleMiningSessionResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1470,9 +1470,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id to be retrieved.
 
     try:
@@ -1532,14 +1532,14 @@ This method returns a role mining session status for a customer.
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_session_status import RoleMiningSessionStatus
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_session_status import RoleMiningSessionStatus
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1553,9 +1553,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
 
     try:
@@ -1613,14 +1613,14 @@ Returns all role mining sessions that match the query parameters
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_session_dto import RoleMiningSessionDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_session_dto import RoleMiningSessionDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1634,9 +1634,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     filters = 'saved eq \"true\" and name sw \"RM Session\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **saved**: *eq*  **name**: *eq, sw* (optional)
     sorters = 'createdBy,createdDate' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **createdBy, createdDate** (optional)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -1703,14 +1703,14 @@ This method returns all saved potential roles (draft roles).
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_session_draft_role_dto import RoleMiningSessionDraftRoleDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_session_draft_role_dto import RoleMiningSessionDraftRoleDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1724,9 +1724,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     sorters = 'modified' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified** (optional)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -1791,14 +1791,14 @@ The method updates an existing potential role using.  The following fields can b
 ```python
 import time
 import os
-import beta
-from beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1812,9 +1812,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The potential role summary id
     patch_potential_role_request_inner = [{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}] # List[PatchPotentialRoleRequestInner] | 
@@ -1878,14 +1878,14 @@ The method updates an existing potential role using.  The following fields can b
 ```python
 import time
 import os
-import beta
-from beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1899,9 +1899,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The potential role summary id
     patch_potential_role_request_inner = [{op=remove, path=/description}, {op=replace, path=/description, value=Acct I - Potential Role}, {op=remove, path=/saved}, {op=replace, path=/saved, value=false}, {op=remove, path=/name}, {op=replace, path=/name, value=Potential Role Accounting}] # List[PatchPotentialRoleRequestInner] | 
@@ -1965,14 +1965,14 @@ The  method updates an existing role mining session using PATCH. Supports op in 
 ```python
 import time
 import os
-import beta
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1986,9 +1986,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id to be patched
     json_patch_operation = [{op=replace, path=/pruneThreshold, value=83}, {op=replace, path=/minNumIdentitiesInPotentialRole, value=10}, {op=replace, path=/saved, value=false}, {op=replace, path=/name, value=RM Session - 07/10/22}, {op=add, path=/name, value=RM Session - 07/10/22}] # List[JsonPatchOperation] | Replace pruneThreshold and/or minNumIdentitiesInPotentialRole in role mining session. Update saved status or saved name for a role mining session.
 
@@ -2050,15 +2050,15 @@ This endpoint adds or removes entitlements from an exclusion list for a potentia
 ```python
 import time
 import os
-import beta
-from beta.models.role_mining_potential_role import RoleMiningPotentialRole
-from beta.models.role_mining_potential_role_edit_entitlements import RoleMiningPotentialRoleEditEntitlements
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_mining_potential_role import RoleMiningPotentialRole
+from sailpoint.beta.models.role_mining_potential_role_edit_entitlements import RoleMiningPotentialRoleEditEntitlements
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -2072,12 +2072,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRoleMiningApi(api_client)
+    api_instance = sailpoint.beta.IAIRoleMiningApi(api_client)
     session_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role mining session id
     potential_role_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | A potential role id in a role mining session
-    role_mining_potential_role_edit_entitlements = beta.RoleMiningPotentialRoleEditEntitlements() # RoleMiningPotentialRoleEditEntitlements | Role mining session parameters
+    role_mining_potential_role_edit_entitlements = sailpoint.beta.RoleMiningPotentialRoleEditEntitlements() # RoleMiningPotentialRoleEditEntitlements | Role mining session parameters
 
     try:
         # Edit entitlements for a potential role to exclude some entitlements

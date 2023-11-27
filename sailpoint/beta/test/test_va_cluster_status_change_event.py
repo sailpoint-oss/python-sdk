@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.va_cluster_status_change_event import VAClusterStatusChangeEvent  # noqa: E501
+from sailpoint.beta.models.va_cluster_status_change_event import VAClusterStatusChangeEvent  # noqa: E501
+
 
 class TestVAClusterStatusChangeEvent(unittest.TestCase):
     """VAClusterStatusChangeEvent unit test stubs"""
@@ -38,15 +38,15 @@ class TestVAClusterStatusChangeEvent(unittest.TestCase):
             return VAClusterStatusChangeEvent(
                 created = '2020-06-29T22:01:50.474Z',
                 type = CLUSTER,
-                application = beta.models.va_cluster_status_change_event_application.VAClusterStatusChangeEvent_application(
+                application = sailpoint.beta.models.va_cluster_status_change_event_application.VAClusterStatusChangeEvent_application(
                     id = '2c9180866166b5b0016167c32ef31a66', 
                     name = 'Production VA Cluster', 
                     attributes = { }, ),
-                health_check_result = beta.models.va_cluster_status_change_event_health_check_result.VAClusterStatusChangeEvent_healthCheckResult(
+                health_check_result = sailpoint.beta.models.va_cluster_status_change_event_health_check_result.VAClusterStatusChangeEvent_healthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
                     status = Succeeded, ),
-                previous_health_check_result = beta.models.va_cluster_status_change_event_previous_health_check_result.VAClusterStatusChangeEvent_previousHealthCheckResult(
+                previous_health_check_result = sailpoint.beta.models.va_cluster_status_change_event_previous_health_check_result.VAClusterStatusChangeEvent_previousHealthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
                     status = Failed, )
@@ -55,15 +55,15 @@ class TestVAClusterStatusChangeEvent(unittest.TestCase):
             return VAClusterStatusChangeEvent(
                 created = '2020-06-29T22:01:50.474Z',
                 type = CLUSTER,
-                application = beta.models.va_cluster_status_change_event_application.VAClusterStatusChangeEvent_application(
+                application = sailpoint.beta.models.va_cluster_status_change_event_application.VAClusterStatusChangeEvent_application(
                     id = '2c9180866166b5b0016167c32ef31a66', 
                     name = 'Production VA Cluster', 
                     attributes = { }, ),
-                health_check_result = beta.models.va_cluster_status_change_event_health_check_result.VAClusterStatusChangeEvent_healthCheckResult(
+                health_check_result = sailpoint.beta.models.va_cluster_status_change_event_health_check_result.VAClusterStatusChangeEvent_healthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
                     status = Succeeded, ),
-                previous_health_check_result = beta.models.va_cluster_status_change_event_previous_health_check_result.VAClusterStatusChangeEvent_previousHealthCheckResult(
+                previous_health_check_result = sailpoint.beta.models.va_cluster_status_change_event_previous_health_check_result.VAClusterStatusChangeEvent_previousHealthCheckResult(
                     message = 'Test Connection failed with exception. Error message - java.lang Exception', 
                     result_type = 'SOURCE_STATE_ERROR_CLUSTER', 
                     status = Failed, ),
@@ -74,6 +74,7 @@ class TestVAClusterStatusChangeEvent(unittest.TestCase):
         """Test VAClusterStatusChangeEvent"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

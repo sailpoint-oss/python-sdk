@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from cc.models.list_accounts200_response_inner import ListAccounts200ResponseInner  # noqa: E501
+from sailpoint.cc.models.list_accounts200_response_inner import ListAccounts200ResponseInner  # noqa: E501
+
 
 class TestListAccounts200ResponseInner(unittest.TestCase):
     """ListAccounts200ResponseInner unit test stubs"""
@@ -55,7 +55,7 @@ class TestListAccounts200ResponseInner(unittest.TestCase):
                 service_id = 44663,
                 pending_password_request_id = '',
                 password_change_status = 'SUCCESS',
-                password_change_result = cc.models.list_accounts_200_response_inner_password_change_result.listAccounts_200_response_inner_passwordChangeResult(
+                password_change_result = sailpoint.cc.models.list_accounts_200_response_inner_password_change_result.listAccounts_200_response_inner_passwordChangeResult(
                     completion_status = 'SUCCESS', )
             )
         else:
@@ -67,6 +67,7 @@ class TestListAccounts200ResponseInner(unittest.TestCase):
         """Test ListAccounts200ResponseInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

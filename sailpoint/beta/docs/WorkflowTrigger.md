@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.workflow_trigger import WorkflowTrigger
+from sailpoint.beta.models.workflow_trigger import WorkflowTrigger
 
 # TODO update the JSON string below
 json = "{}"

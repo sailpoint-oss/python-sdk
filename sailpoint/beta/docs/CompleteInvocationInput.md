@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.complete_invocation_input import CompleteInvocationInput
+from sailpoint.beta.models.complete_invocation_input import CompleteInvocationInput
 
 # TODO update the JSON string below
 json = "{}"

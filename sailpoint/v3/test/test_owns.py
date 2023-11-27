@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.owns import Owns  # noqa: E501
+from sailpoint.v3.models.owns import Owns  # noqa: E501
+
 
 class TestOwns(unittest.TestCase):
     """Owns unit test stubs"""
@@ -37,32 +37,32 @@ class TestOwns(unittest.TestCase):
         if include_optional:
             return Owns(
                 sources = [
-                    v3.models.reference.Reference(
+                    sailpoint.v3.models.reference.Reference(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],
                 entitlements = [
-                    v3.models.reference.Reference(
+                    sailpoint.v3.models.reference.Reference(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],
                 access_profiles = [
-                    v3.models.reference.Reference(
+                    sailpoint.v3.models.reference.Reference(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],
                 roles = [
-                    v3.models.reference.Reference(
+                    sailpoint.v3.models.reference.Reference(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],
                 apps = [
-                    v3.models.reference.Reference(
+                    sailpoint.v3.models.reference.Reference(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],
                 governance_groups = [
-                    v3.models.reference.Reference(
+                    sailpoint.v3.models.reference.Reference(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],
@@ -77,6 +77,7 @@ class TestOwns(unittest.TestCase):
         """Test Owns"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

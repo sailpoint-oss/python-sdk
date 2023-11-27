@@ -11,23 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.tagged_object_object_ref import TaggedObjectObjectRef
+from sailpoint.beta.models.tagged_object_object_ref import TaggedObjectObjectRef
+
 
 class TaggedObject(BaseModel):
     """
     TaggedObject
     """
-    object_ref: Optional[TaggedObjectObjectRef] = Field(None, alias="objectRef")
-    tags: Optional[conlist(StrictStr)] = Field(None, description="Labels to be applied to an Object")
+    object_ref: Optional[TaggedObjectObjectRef] = Field(None,
+                                                        alias="objectRef")
+    tags: Optional[conlist(StrictStr)] = Field(
+        None, description="Labels to be applied to an Object")
     __properties = ["objectRef", "tags"]
 
     class Config:
@@ -50,10 +51,7 @@ class TaggedObject(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of object_ref
         if self.object_ref:
             _dict['objectRef'] = self.object_ref.to_dict()
@@ -69,9 +67,10 @@ class TaggedObject(BaseModel):
             return TaggedObject.parse_obj(obj)
 
         _obj = TaggedObject.parse_obj({
-            "object_ref": TaggedObjectObjectRef.from_dict(obj.get("objectRef")) if obj.get("objectRef") is not None else None,
-            "tags": obj.get("tags")
+            "object_ref":
+            TaggedObjectObjectRef.from_dict(obj.get("objectRef"))
+            if obj.get("objectRef") is not None else None,
+            "tags":
+            obj.get("tags")
         })
         return _obj
-
-

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.visibility_criteria import VisibilityCriteria  # noqa: E501
+from sailpoint.v3.models.visibility_criteria import VisibilityCriteria  # noqa: E501
+
 
 class TestVisibilityCriteria(unittest.TestCase):
     """VisibilityCriteria unit test stubs"""
@@ -36,10 +36,10 @@ class TestVisibilityCriteria(unittest.TestCase):
         model = VisibilityCriteria()  # noqa: E501
         if include_optional:
             return VisibilityCriteria(
-                expression = v3.models.expression.Expression(
+                expression = sailpoint.v3.models.expression.Expression(
                     operator = 'EQUALS', 
                     attribute = 'location', 
-                    value = v3.models.value.Value(
+                    value = sailpoint.v3.models.value.Value(
                         type = 'STRING', ), 
                     children = [], )
             )
@@ -52,6 +52,7 @@ class TestVisibilityCriteria(unittest.TestCase):
         """Test VisibilityCriteria"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

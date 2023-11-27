@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v2.models.list_workgroups200_response_inner import ListWorkgroups200ResponseInner  # noqa: E501
+from sailpoint.v2.models.list_workgroups200_response_inner import ListWorkgroups200ResponseInner  # noqa: E501
+
 
 class TestListWorkgroups200ResponseInner(unittest.TestCase):
     """ListWorkgroups200ResponseInner unit test stubs"""
@@ -26,7 +26,8 @@ class TestListWorkgroups200ResponseInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ListWorkgroups200ResponseInner:
+    def make_instance(self,
+                      include_optional) -> ListWorkgroups200ResponseInner:
         """Test ListWorkgroups200ResponseInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -43,7 +44,7 @@ class TestListWorkgroups200ResponseInner(unittest.TestCase):
                 member_count = 2,
                 modified = 1641498673000,
                 name = 'Phil Governance Group',
-                owner = v2.models.list_workgroups_200_response_inner_owner.listWorkgroups_200_response_inner_owner(
+                owner = sailpoint.v2.models.list_workgroups_200_response_inner_owner.listWorkgroups_200_response_inner_owner(
                     display_name = 'Philip Ellis', 
                     email_address = 'philip.ellis@sailpoint.com', 
                     id = '2c9180897d2cb80b017d39ccb26c1804', 
@@ -58,6 +59,7 @@ class TestListWorkgroups200ResponseInner(unittest.TestCase):
         """Test ListWorkgroups200ResponseInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

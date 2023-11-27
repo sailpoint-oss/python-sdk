@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.domain_address import DomainAddress
+from sailpoint.beta.models.domain_address import DomainAddress
 
 # TODO update the JSON string below
 json = "{}"

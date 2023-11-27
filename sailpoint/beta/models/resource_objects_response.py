@@ -11,16 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
-from beta.models.resource_object import ResourceObject
+from sailpoint.beta.models.resource_object import ResourceObject
+
 
 class ResourceObjectsResponse(BaseModel):
     """
@@ -28,10 +27,22 @@ class ResourceObjectsResponse(BaseModel):
     """
     id: Optional[StrictStr] = Field(None, description="ID of the source")
     name: Optional[StrictStr] = Field(None, description="Name of the source")
-    object_count: Optional[StrictInt] = Field(None, alias="objectCount", description="The number of objects that were fetched by the connector.")
-    elapsed_millis: Optional[StrictInt] = Field(None, alias="elapsedMillis", description="The number of milliseconds spent on the entire request.")
-    resource_objects: Optional[conlist(ResourceObject)] = Field(None, alias="resourceObjects", description="Fetched objects from the source connector.")
-    __properties = ["id", "name", "objectCount", "elapsedMillis", "resourceObjects"]
+    object_count: Optional[StrictInt] = Field(
+        None,
+        alias="objectCount",
+        description="The number of objects that were fetched by the connector."
+    )
+    elapsed_millis: Optional[StrictInt] = Field(
+        None,
+        alias="elapsedMillis",
+        description="The number of milliseconds spent on the entire request.")
+    resource_objects: Optional[conlist(ResourceObject)] = Field(
+        None,
+        alias="resourceObjects",
+        description="Fetched objects from the source connector.")
+    __properties = [
+        "id", "name", "objectCount", "elapsedMillis", "resourceObjects"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -55,11 +66,11 @@ class ResourceObjectsResponse(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "id",
-                            "name",
-                            "object_count",
-                            "elapsed_millis",
-                            "resource_objects",
+                              "id",
+                              "name",
+                              "object_count",
+                              "elapsed_millis",
+                              "resource_objects",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in resource_objects (list)
@@ -81,12 +92,17 @@ class ResourceObjectsResponse(BaseModel):
             return ResourceObjectsResponse.parse_obj(obj)
 
         _obj = ResourceObjectsResponse.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "object_count": obj.get("objectCount"),
-            "elapsed_millis": obj.get("elapsedMillis"),
-            "resource_objects": [ResourceObject.from_dict(_item) for _item in obj.get("resourceObjects")] if obj.get("resourceObjects") is not None else None
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "object_count":
+            obj.get("objectCount"),
+            "elapsed_millis":
+            obj.get("elapsedMillis"),
+            "resource_objects": [
+                ResourceObject.from_dict(_item)
+                for _item in obj.get("resourceObjects")
+            ] if obj.get("resourceObjects") is not None else None
         })
         return _obj
-
-

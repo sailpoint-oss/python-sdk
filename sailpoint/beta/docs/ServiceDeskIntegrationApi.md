@@ -1,4 +1,4 @@
-# beta.ServiceDeskIntegrationApi
+# sailpoint.beta.ServiceDeskIntegrationApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -30,14 +30,14 @@ Create a new Service Desk Integrations.  A token with Org Admin or Service Desk 
 ```python
 import time
 import os
-import beta
-from beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -51,10 +51,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ServiceDeskIntegrationApi(api_client)
-    service_desk_integration_dto = beta.ServiceDeskIntegrationDto() # ServiceDeskIntegrationDto | The specifics of a new integration to create
+    api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
+    service_desk_integration_dto = sailpoint.beta.ServiceDeskIntegrationDto() # ServiceDeskIntegrationDto | The specifics of a new integration to create
 
     try:
         # Create new Service Desk integration
@@ -113,13 +113,13 @@ Delete an existing Service Desk integration by ID.  A token with Org Admin or Se
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -133,9 +133,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ServiceDeskIntegrationApi(api_client)
+    api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
     id = 'anId' # str | ID of Service Desk integration to delete
 
     try:
@@ -193,14 +193,14 @@ Get an existing Service Desk integration by ID.  A token with Org Admin or Servi
 ```python
 import time
 import os
-import beta
-from beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -214,9 +214,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ServiceDeskIntegrationApi(api_client)
+    api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
     id = 'anId' # str | ID of the Service Desk integration to get
 
     try:
@@ -276,14 +276,14 @@ Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations. 
 ```python
 import time
 import os
-import beta
-from beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -297,9 +297,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ServiceDeskIntegrationApi(api_client)
+    api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     sorters = 'name' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
@@ -367,14 +367,14 @@ This API endpoint returns an existing Service Desk integration template by scrip
 ```python
 import time
 import os
-import beta
-from beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -388,9 +388,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ServiceDeskIntegrationApi(api_client)
+    api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
     script_name = 'aScriptName' # str | The scriptName value of the Service Desk integration template to get
 
     try:
@@ -450,14 +450,14 @@ This API endpoint returns the current list of supported Service Desk integration
 ```python
 import time
 import os
-import beta
-from beta.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -471,9 +471,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ServiceDeskIntegrationApi(api_client)
+    api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
 
     try:
         # Service Desk Integration Types List.
@@ -529,14 +529,14 @@ Get the time check configuration of queued SDIM tickets.  A token with Org Admin
 ```python
 import time
 import os
-import beta
-from beta.models.queued_check_config_details import QueuedCheckConfigDetails
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.queued_check_config_details import QueuedCheckConfigDetails
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -550,9 +550,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ServiceDeskIntegrationApi(api_client)
+    api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
 
     try:
         # Get the time check configuration
@@ -608,15 +608,15 @@ Update an existing ServiceDeskIntegration by ID with a PATCH request.
 ```python
 import time
 import os
-import beta
-from beta.models.json_patch import JsonPatch
-from beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.json_patch import JsonPatch
+from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -630,9 +630,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ServiceDeskIntegrationApi(api_client)
+    api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
     id = 'anId' # str | ID of the Service Desk integration to update
     json_patch = [{op=replace, path=/ownerRef, value={id=2c9180867d05b227017d09921a205b4d, type=IDENTITY, name=Angelo2 tester}}] # JsonPatch | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. 
 
@@ -694,14 +694,14 @@ Update an existing Service Desk integration by ID with updated value in JSON for
 ```python
 import time
 import os
-import beta
-from beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -715,11 +715,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ServiceDeskIntegrationApi(api_client)
+    api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
     id = 'anId' # str | ID of the Service Desk integration to update
-    service_desk_integration_dto = beta.ServiceDeskIntegrationDto() # ServiceDeskIntegrationDto | The specifics of the integration to update
+    service_desk_integration_dto = sailpoint.beta.ServiceDeskIntegrationDto() # ServiceDeskIntegrationDto | The specifics of the integration to update
 
     try:
         # Update a Service Desk integration
@@ -779,14 +779,14 @@ Update the time check configuration of queued SDIM tickets.  A token with Org Ad
 ```python
 import time
 import os
-import beta
-from beta.models.queued_check_config_details import QueuedCheckConfigDetails
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.queued_check_config_details import QueuedCheckConfigDetails
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -800,10 +800,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ServiceDeskIntegrationApi(api_client)
-    queued_check_config_details = beta.QueuedCheckConfigDetails() # QueuedCheckConfigDetails | the modified time check configuration
+    api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
+    queued_check_config_details = sailpoint.beta.QueuedCheckConfigDetails() # QueuedCheckConfigDetails | the modified time check configuration
 
     try:
         # Update the time check configuration

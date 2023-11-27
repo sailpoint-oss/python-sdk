@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.provisioning_completed_account_requests_inner import ProvisioningCompletedAccountRequestsInner  # noqa: E501
+from sailpoint.beta.models.provisioning_completed_account_requests_inner import ProvisioningCompletedAccountRequestsInner  # noqa: E501
+
 
 class TestProvisioningCompletedAccountRequestsInner(unittest.TestCase):
     """ProvisioningCompletedAccountRequestsInner unit test stubs"""
@@ -26,7 +26,9 @@ class TestProvisioningCompletedAccountRequestsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ProvisioningCompletedAccountRequestsInner:
+    def make_instance(
+            self,
+            include_optional) -> ProvisioningCompletedAccountRequestsInner:
         """Test ProvisioningCompletedAccountRequestsInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -36,7 +38,7 @@ class TestProvisioningCompletedAccountRequestsInner(unittest.TestCase):
         model = ProvisioningCompletedAccountRequestsInner()  # noqa: E501
         if include_optional:
             return ProvisioningCompletedAccountRequestsInner(
-                source = beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
+                source = sailpoint.beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
                     id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                     type = 'SOURCE', 
                     name = 'Corporate Active Directory', ),
@@ -46,7 +48,7 @@ class TestProvisioningCompletedAccountRequestsInner(unittest.TestCase):
                 provisioning_target = 'Corp AD',
                 ticket_id = '72619262',
                 attribute_requests = [
-                    beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner.ProvisioningCompleted_accountRequests_inner_attributeRequests_inner(
+                    sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner.ProvisioningCompleted_accountRequests_inner_attributeRequests_inner(
                         attribute_name = 'memberOf', 
                         attribute_value = 'CN=jedi,DC=starwars,DC=com', 
                         operation = Add, )
@@ -54,7 +56,7 @@ class TestProvisioningCompletedAccountRequestsInner(unittest.TestCase):
             )
         else:
             return ProvisioningCompletedAccountRequestsInner(
-                source = beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
+                source = sailpoint.beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
                     id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                     type = 'SOURCE', 
                     name = 'Corporate Active Directory', ),
@@ -68,6 +70,7 @@ class TestProvisioningCompletedAccountRequestsInner(unittest.TestCase):
         """Test ProvisioningCompletedAccountRequestsInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

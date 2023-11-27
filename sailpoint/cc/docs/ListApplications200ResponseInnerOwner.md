@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.list_applications200_response_inner_owner import ListApplications200ResponseInnerOwner
+from sailpoint.cc.models.list_applications200_response_inner_owner import ListApplications200ResponseInnerOwner
 
 # TODO update the JSON string below
 json = "{}"

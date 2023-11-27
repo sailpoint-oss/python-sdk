@@ -49,7 +49,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.get_identity200_response import GetIdentity200Response
+from sailpoint.cc.models.get_identity200_response import GetIdentity200Response
 
 # TODO update the JSON string below
 json = "{}"

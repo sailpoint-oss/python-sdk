@@ -1,4 +1,4 @@
-# v3.SourcesApi
+# sailpoint.v3.SourcesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -45,14 +45,14 @@ This API generates a create policy/template based on field value transforms. Thi
 ```python
 import time
 import os
-import v3
-from v3.models.provisioning_policy_dto import ProvisioningPolicyDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -66,9 +66,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
     provisioning_policy_dto = {name=Account, description=Account Provisioning Policy, usageType=CREATE, fields=[{name=displayName, transform={type=identityAttribute, attributes={name=displayName}}, attributes={}, isRequired=false, type=string, isMultiValued=false}, {name=distinguishedName, transform={type=usernameGenerator, attributes={sourceCheck=true, patterns=[CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com, CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com, CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com, CN=$fn$ln${uniqueCounter},OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com], fn={type=identityAttribute, attributes={name=firstname}}, ln={type=identityAttribute, attributes={name=lastname}}, fi={type=substring, attributes={input={type=identityAttribute, attributes={name=firstname}}, begin=0.0, end=1.0}}, fti={type=substring, attributes={input={type=identityAttribute, attributes={name=firstname}}, begin=0.0, end=2.0}}}}, attributes={cloudMaxUniqueChecks=5, cloudMaxSize=100, cloudRequired=true}, isRequired=false, type=, isMultiValued=false}, {name=description, transform={type=static, attributes={value=}}, attributes={}, isRequired=false, type=string, isMultiValued=false}]} # ProvisioningPolicyDto | 
 
@@ -130,14 +130,14 @@ This creates a specific source with a full source JSON representation. Any passw
 ```python
 import time
 import os
-import v3
-from v3.models.source import Source
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.source import Source
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -151,10 +151,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
-    source = v3.Source() # Source | 
+    api_instance = sailpoint.v3.SourcesApi(api_client)
+    source = sailpoint.v3.Source() # Source | 
     provision_as_csv = false # bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional)
 
     try:
@@ -214,14 +214,14 @@ Creates a new Schema on the specified Source in IdentityNow.
 ```python
 import time
 import os
-import v3
-from v3.models.model_schema import ModelSchema
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.model_schema import ModelSchema
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -235,11 +235,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
-    model_schema = v3.ModelSchema() # ModelSchema | 
+    model_schema = sailpoint.v3.ModelSchema() # ModelSchema | 
 
     try:
         # Create Schema on a Source
@@ -298,14 +298,14 @@ Deletes the provisioning policy with the specified usage on an application. A to
 ```python
 import time
 import os
-import v3
-from v3.models.usage_type import UsageType
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.usage_type import UsageType
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -319,11 +319,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID.
-    usage_type = v3.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+    usage_type = sailpoint.v3.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
 
     try:
         # Delete Provisioning Policy by UsageType
@@ -381,14 +381,14 @@ This end-point deletes a specific source in IdentityNow. A token with ORG_ADMIN,
 ```python
 import time
 import os
-import v3
-from v3.models.delete_source202_response import DeleteSource202Response
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.delete_source202_response import DeleteSource202Response
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -402,9 +402,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
 
     try:
@@ -462,13 +462,13 @@ Delete Source Schema by ID
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -482,9 +482,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
     schema_id = '2c9180835d191a86015d28455b4a2329' # str | The Schema id.
 
@@ -544,13 +544,13 @@ This API downloads the CSV schema that defines the account attributes on a sourc
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -564,9 +564,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
 
     try:
@@ -624,13 +624,13 @@ This API downloads the CSV schema that defines the entitlement attributes on a s
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -644,9 +644,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
     schema_name = '?schemaName=group' # str | Name of entitlement schema (optional)
 
@@ -706,15 +706,15 @@ This end-point retrieves the ProvisioningPolicy with the specified usage on the 
 ```python
 import time
 import os
-import v3
-from v3.models.provisioning_policy_dto import ProvisioningPolicyDto
-from v3.models.usage_type import UsageType
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.v3.models.usage_type import UsageType
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -728,11 +728,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID.
-    usage_type = v3.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+    usage_type = sailpoint.v3.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
 
     try:
         # Get Provisioning Policy by UsageType
@@ -792,14 +792,14 @@ This end-point gets a specific source in IdentityNow. A token with ORG_ADMIN, SO
 ```python
 import time
 import os
-import v3
-from v3.models.source import Source
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.source import Source
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -813,9 +813,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
 
     try:
@@ -875,14 +875,14 @@ This endpoint fetches source health by source's id
 ```python
 import time
 import os
-import v3
-from v3.models.source_health_dto import SourceHealthDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.source_health_dto import SourceHealthDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -896,9 +896,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
 
     try:
@@ -958,14 +958,14 @@ Get the Source Schema by ID in IdentityNow.
 ```python
 import time
 import os
-import v3
-from v3.models.model_schema import ModelSchema
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.model_schema import ModelSchema
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -979,9 +979,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
     schema_id = '2c9180835d191a86015d28455b4a2329' # str | The Schema id.
 
@@ -1043,14 +1043,14 @@ This API uploads a source schema template file to configure a source's account a
 ```python
 import time
 import os
-import v3
-from v3.models.model_schema import ModelSchema
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.model_schema import ModelSchema
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1064,9 +1064,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
     file = None # bytearray |  (optional)
 
@@ -1127,14 +1127,14 @@ This uploads a supplemental source connector file (like jdbc driver jars) to a s
 ```python
 import time
 import os
-import v3
-from v3.models.source import Source
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.source import Source
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1148,9 +1148,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
     file = None # bytearray |  (optional)
 
@@ -1211,14 +1211,14 @@ This API uploads a source schema template file to configure a source's entitleme
 ```python
 import time
 import os
-import v3
-from v3.models.model_schema import ModelSchema
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.model_schema import ModelSchema
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1232,9 +1232,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
     schema_name = '?schemaName=group' # str | Name of entitlement schema (optional)
     file = None # bytearray |  (optional)
@@ -1297,14 +1297,14 @@ This end-point lists all the ProvisioningPolicies in IdentityNow. A token with A
 ```python
 import time
 import os
-import v3
-from v3.models.provisioning_policy_dto import ProvisioningPolicyDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1318,9 +1318,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
 
     try:
@@ -1380,14 +1380,14 @@ Lists the Schemas that exist on the specified Source in IdentityNow.
 ```python
 import time
 import os
-import v3
-from v3.models.model_schema import ModelSchema
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.model_schema import ModelSchema
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1401,9 +1401,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID.
     include_types = 'group' # str | If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized. (optional)
 
@@ -1465,14 +1465,14 @@ This end-point lists all the sources in IdentityNow. A token with ORG_ADMIN, SOU
 ```python
 import time
 import os
-import v3
-from v3.models.source import Source
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.source import Source
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1486,9 +1486,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -1558,15 +1558,15 @@ This end-point updates the provisioning policy with the specified usage on the s
 ```python
 import time
 import os
-import v3
-from v3.models.provisioning_policy_dto import ProvisioningPolicyDto
-from v3.models.usage_type import UsageType
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.v3.models.usage_type import UsageType
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1580,12 +1580,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID.
-    usage_type = v3.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
-    provisioning_policy_dto = v3.ProvisioningPolicyDto() # ProvisioningPolicyDto | 
+    usage_type = sailpoint.v3.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+    provisioning_policy_dto = sailpoint.v3.ProvisioningPolicyDto() # ProvisioningPolicyDto | 
 
     try:
         # Update Provisioning Policy by UsageType
@@ -1646,14 +1646,14 @@ This API updates a source in IdentityNow, using a full object representation. In
 ```python
 import time
 import os
-import v3
-from v3.models.source import Source
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.source import Source
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1667,11 +1667,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
-    source = v3.Source() # Source | 
+    source = sailpoint.v3.Source() # Source | 
 
     try:
         # Update Source (Full)
@@ -1731,14 +1731,14 @@ This API will completely replace an existing Schema with the submitted payload. 
 ```python
 import time
 import os
-import v3
-from v3.models.model_schema import ModelSchema
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.model_schema import ModelSchema
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1752,12 +1752,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
     schema_id = '2c9180835d191a86015d28455b4a2329' # str | The Schema id.
-    model_schema = v3.ModelSchema() # ModelSchema | 
+    model_schema = sailpoint.v3.ModelSchema() # ModelSchema | 
 
     try:
         # Update Source Schema (Full)
@@ -1818,14 +1818,14 @@ This end-point updates a list of provisioning policies on the specified source i
 ```python
 import time
 import os
-import v3
-from v3.models.provisioning_policy_dto import ProvisioningPolicyDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1839,11 +1839,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
-    provisioning_policy_dto = [v3.ProvisioningPolicyDto()] # List[ProvisioningPolicyDto] | 
+    provisioning_policy_dto = [sailpoint.v3.ProvisioningPolicyDto()] # List[ProvisioningPolicyDto] | 
 
     try:
         # Bulk Update Provisioning Policies
@@ -1903,16 +1903,16 @@ This API selectively updates an existing Provisioning Policy using a JSONPatch p
 ```python
 import time
 import os
-import v3
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.models.provisioning_policy_dto import ProvisioningPolicyDto
-from v3.models.usage_type import UsageType
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.v3.models.usage_type import UsageType
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1926,11 +1926,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
-    usage_type = v3.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+    usage_type = sailpoint.v3.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
     json_patch_operation = [{op=add, path=/fields/0, value={name=email, transform={type=identityAttribute, attributes={name=email}}, attributes={}, isRequired=false, type=string, isMultiValued=false}}] # List[JsonPatchOperation] | The JSONPatch payload used to update the schema.
 
     try:
@@ -1992,15 +1992,15 @@ This API partially updates a source in IdentityNow, using a list of patch operat
 ```python
 import time
 import os
-import v3
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.models.source import Source
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.source import Source
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -2014,9 +2014,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
     json_patch_operation = [{op=replace, path=/description, value=new description}] # List[JsonPatchOperation] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow.
 
@@ -2078,15 +2078,15 @@ Use this API to selectively update an existing Schema using a JSONPatch payload.
 ```python
 import time
 import os
-import v3
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.models.model_schema import ModelSchema
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.model_schema import ModelSchema
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -2100,9 +2100,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SourcesApi(api_client)
+    api_instance = sailpoint.v3.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
     schema_id = '2c9180835d191a86015d28455b4a2329' # str | The Schema id.
     json_patch_operation = [{op=add, path=/attributes/-, value={name=location, type=STRING, schema=null, description=Employee location, isMulti=false, isEntitlement=false, isGroup=false}}] # List[JsonPatchOperation] | The JSONPatch payload used to update the schema.

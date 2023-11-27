@@ -11,22 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class BasicAuthConfig(BaseModel):
     """
     Config required if BASIC_AUTH is used.  # noqa: E501
     """
-    user_name: Optional[StrictStr] = Field(None, alias="userName", description="The username to authenticate.")
-    password: Optional[StrictStr] = Field(None, description="The password to authenticate. On response, this field is set to null as to not return secrets.")
+    user_name: Optional[StrictStr] = Field(
+        None, alias="userName", description="The username to authenticate.")
+    password: Optional[StrictStr] = Field(
+        None,
+        description=
+        "The password to authenticate. On response, this field is set to null as to not return secrets."
+    )
     __properties = ["userName", "password"]
 
     class Config:
@@ -49,10 +53,7 @@ class BasicAuthConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if password (nullable) is None
         # and __fields_set__ contains the field
         if self.password is None and "password" in self.__fields_set__:
@@ -74,5 +75,3 @@ class BasicAuthConfig(BaseModel):
             "password": obj.get("password")
         })
         return _obj
-
-

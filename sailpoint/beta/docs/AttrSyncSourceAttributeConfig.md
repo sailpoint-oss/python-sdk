@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.attr_sync_source_attribute_config import AttrSyncSourceAttributeConfig
+from sailpoint.beta.models.attr_sync_source_attribute_config import AttrSyncSourceAttributeConfig
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,25 +11,38 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, conlist
-from v3.models.access_profile_approval_scheme import AccessProfileApprovalScheme
+from sailpoint.v3.models.access_profile_approval_scheme import AccessProfileApprovalScheme
+
 
 class Requestability(BaseModel):
     """
     Requestability
     """
-    comments_required: Optional[StrictBool] = Field(None, alias="commentsRequired", description="Whether the requester of the containing object must provide comments justifying the request")
-    denial_comments_required: Optional[StrictBool] = Field(None, alias="denialCommentsRequired", description="Whether an approver must provide comments when denying the request")
-    approval_schemes: Optional[conlist(AccessProfileApprovalScheme)] = Field(None, alias="approvalSchemes", description="List describing the steps in approving the request")
-    __properties = ["commentsRequired", "denialCommentsRequired", "approvalSchemes"]
+    comments_required: Optional[StrictBool] = Field(
+        None,
+        alias="commentsRequired",
+        description=
+        "Whether the requester of the containing object must provide comments justifying the request"
+    )
+    denial_comments_required: Optional[StrictBool] = Field(
+        None,
+        alias="denialCommentsRequired",
+        description=
+        "Whether an approver must provide comments when denying the request")
+    approval_schemes: Optional[conlist(AccessProfileApprovalScheme)] = Field(
+        None,
+        alias="approvalSchemes",
+        description="List describing the steps in approving the request")
+    __properties = [
+        "commentsRequired", "denialCommentsRequired", "approvalSchemes"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -51,10 +64,7 @@ class Requestability(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in approval_schemes (list)
         _items = []
         if self.approval_schemes:
@@ -74,10 +84,13 @@ class Requestability(BaseModel):
             return Requestability.parse_obj(obj)
 
         _obj = Requestability.parse_obj({
-            "comments_required": obj.get("commentsRequired"),
-            "denial_comments_required": obj.get("denialCommentsRequired"),
-            "approval_schemes": [AccessProfileApprovalScheme.from_dict(_item) for _item in obj.get("approvalSchemes")] if obj.get("approvalSchemes") is not None else None
+            "comments_required":
+            obj.get("commentsRequired"),
+            "denial_comments_required":
+            obj.get("denialCommentsRequired"),
+            "approval_schemes": [
+                AccessProfileApprovalScheme.from_dict(_item)
+                for _item in obj.get("approvalSchemes")
+            ] if obj.get("approvalSchemes") is not None else None
         })
         return _obj
-
-

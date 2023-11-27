@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,19 +22,17 @@ from pydantic import Field, StrictBool, StrictStr, conint, conlist
 
 from typing import List, Optional, Union
 
-from beta.models.latest_outlier_summary import LatestOutlierSummary
-from beta.models.outlier import Outlier
-from beta.models.outlier_contributing_feature import OutlierContributingFeature
-from beta.models.outlier_feature_summary import OutlierFeatureSummary
-from beta.models.outlier_summary import OutlierSummary
-from beta.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems
+from sailpoint.beta.models.latest_outlier_summary import LatestOutlierSummary
+from sailpoint.beta.models.outlier import Outlier
+from sailpoint.beta.models.outlier_contributing_feature import OutlierContributingFeature
+from sailpoint.beta.models.outlier_feature_summary import OutlierFeatureSummary
+from sailpoint.beta.models.outlier_summary import OutlierSummary
+from sailpoint.beta.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class IAIOutliersApi:
@@ -51,7 +48,14 @@ class IAIOutliersApi:
         self.api_client = api_client
 
     @validate_arguments
-    def export_outliers_zip(self, type : Annotated[Optional[StrictStr], Field(description="Type of the identity outliers snapshot to filter on")] = None, **kwargs) -> bytearray:  # noqa: E501
+    def export_outliers_zip(
+            self,
+            type: Annotated[
+                Optional[StrictStr],
+                Field(description=
+                      "Type of the identity outliers snapshot to filter on"
+                      )] = None,
+            **kwargs) -> bytearray:  # noqa: E501
         """IAI Identity Outliers Export  # noqa: E501
 
         This API exports a list of ignored outliers to a CSV as well as list of non-ignored outliers to a CSV. These two CSVs will be zipped and exported Columns will include: identityID, type, firstDetectionDate, latestDetectionDate, ignored, & attributes (defined set of identity attributes) Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -78,10 +82,18 @@ class IAIOutliersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the export_outliers_zip_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.export_outliers_zip_with_http_info(type, **kwargs)  # noqa: E501
+        return self.export_outliers_zip_with_http_info(type,
+                                                       **kwargs)  # noqa: E501
 
     @validate_arguments
-    def export_outliers_zip_with_http_info(self, type : Annotated[Optional[StrictStr], Field(description="Type of the identity outliers snapshot to filter on")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def export_outliers_zip_with_http_info(
+            self,
+            type: Annotated[
+                Optional[StrictStr],
+                Field(description=
+                      "Type of the identity outliers snapshot to filter on"
+                      )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """IAI Identity Outliers Export  # noqa: E501
 
         This API exports a list of ignored outliers to a CSV as well as list of non-ignored outliers to a CSV. These two CSVs will be zipped and exported Columns will include: identityID, type, firstDetectionDate, latestDetectionDate, ignored, & attributes (defined set of identity attributes) Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -120,28 +132,17 @@ class IAIOutliersApi:
 
         _params = locals()
 
-        _all_params = [
-            'type'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['type']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method export_outliers_zip" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method export_outliers_zip" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -179,7 +180,8 @@ class IAIOutliersApi:
         }
 
         return self.api_client.call_api(
-            '/outliers/export', 'GET',
+            '/outliers/export',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -189,14 +191,50 @@ class IAIOutliersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identity_outlier_snapshots(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, type : Annotated[Optional[StrictStr], Field(description="Type of the identity outliers snapshot to filter on")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **snapshotDate**: *ge, le*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **snapshotDate**")] = None, **kwargs) -> List[OutlierSummary]:  # noqa: E501
+    def get_identity_outlier_snapshots(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            type: Annotated[
+                Optional[StrictStr],
+                Field(description=
+                      "Type of the identity outliers snapshot to filter on"
+                      )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **snapshotDate**: *ge, le*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **snapshotDate**"
+            )] = None,
+            **kwargs) -> List[OutlierSummary]:  # noqa: E501
         """IAI Identity Outliers Summary  # noqa: E501
 
         This API receives a summary containing: the number of identities that customer has, the number of outliers, and the type of outlier Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -231,10 +269,46 @@ class IAIOutliersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_outlier_snapshots_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_outlier_snapshots_with_http_info(limit, offset, type, filters, sorters, **kwargs)  # noqa: E501
+        return self.get_identity_outlier_snapshots_with_http_info(
+            limit, offset, type, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_outlier_snapshots_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, type : Annotated[Optional[StrictStr], Field(description="Type of the identity outliers snapshot to filter on")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **snapshotDate**: *ge, le*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **snapshotDate**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_outlier_snapshots_with_http_info(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            type: Annotated[
+                Optional[StrictStr],
+                Field(description=
+                      "Type of the identity outliers snapshot to filter on"
+                      )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **snapshotDate**: *ge, le*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **snapshotDate**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """IAI Identity Outliers Summary  # noqa: E501
 
         This API receives a summary containing: the number of identities that customer has, the number of outliers, and the type of outlier Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -281,32 +355,18 @@ class IAIOutliersApi:
 
         _params = locals()
 
-        _all_params = [
-            'limit',
-            'offset',
-            'type',
-            'filters',
-            'sorters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['limit', 'offset', 'type', 'filters', 'sorters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_identity_outlier_snapshots" % _key
-                )
+                    " to method get_identity_outlier_snapshots" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -357,7 +417,8 @@ class IAIOutliersApi:
         }
 
         return self.api_client.call_api(
-            '/outlier-summaries', 'GET',
+            '/outlier-summaries',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -367,14 +428,57 @@ class IAIOutliersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identity_outliers(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, type : Annotated[Optional[StrictStr], Field(description="Type of the identity outliers snapshot to filter on")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **attributes**: *eq, sw, co, in*  **firstDetectionDate**: *ge, le*  **certStatus**: *eq*  **ignored**: *eq*  **score**: *ge, le*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **firstDetectionDate, attributes, score**")] = None, **kwargs) -> List[Outlier]:  # noqa: E501
+    def get_identity_outliers(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            type: Annotated[
+                Optional[StrictStr],
+                Field(description=
+                      "Type of the identity outliers snapshot to filter on"
+                      )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **attributes**: *eq, sw, co, in*  **firstDetectionDate**: *ge, le*  **certStatus**: *eq*  **ignored**: *eq*  **score**: *ge, le*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **firstDetectionDate, attributes, score**"
+            )] = None,
+            **kwargs) -> List[Outlier]:  # noqa: E501
         """IAI Get Identity Outliers  # noqa: E501
 
         This API receives a list of outliers, containing data such as: identityId, outlier type, detection dates, identity attributes, if identity is ignore, and certification information Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -411,10 +515,54 @@ class IAIOutliersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_outliers_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_outliers_with_http_info(limit, offset, count, type, filters, sorters, **kwargs)  # noqa: E501
+        return self.get_identity_outliers_with_http_info(
+            limit, offset, count, type, filters, sorters,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_outliers_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, type : Annotated[Optional[StrictStr], Field(description="Type of the identity outliers snapshot to filter on")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **attributes**: *eq, sw, co, in*  **firstDetectionDate**: *ge, le*  **certStatus**: *eq*  **ignored**: *eq*  **score**: *ge, le*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **firstDetectionDate, attributes, score**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_outliers_with_http_info(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            type: Annotated[
+                Optional[StrictStr],
+                Field(description=
+                      "Type of the identity outliers snapshot to filter on"
+                      )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **attributes**: *eq, sw, co, in*  **firstDetectionDate**: *ge, le*  **certStatus**: *eq*  **ignored**: *eq*  **score**: *ge, le*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **firstDetectionDate, attributes, score**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """IAI Get Identity Outliers  # noqa: E501
 
         This API receives a list of outliers, containing data such as: identityId, outlier type, detection dates, identity attributes, if identity is ignore, and certification information Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -464,32 +612,18 @@ class IAIOutliersApi:
         _params = locals()
 
         _all_params = [
-            'limit',
-            'offset',
-            'count',
-            'type',
-            'filters',
-            'sorters'
+            'limit', 'offset', 'count', 'type', 'filters', 'sorters'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_identity_outliers" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_identity_outliers" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -542,7 +676,8 @@ class IAIOutliersApi:
         }
 
         return self.api_client.call_api(
-            '/outliers', 'GET',
+            '/outliers',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -552,14 +687,22 @@ class IAIOutliersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_latest_identity_outlier_snapshots(self, type : Annotated[Optional[StrictStr], Field(description="Type of the identity outliers snapshot to filter on")] = None, **kwargs) -> List[LatestOutlierSummary]:  # noqa: E501
+    def get_latest_identity_outlier_snapshots(
+            self,
+            type: Annotated[
+                Optional[StrictStr],
+                Field(description=
+                      "Type of the identity outliers snapshot to filter on"
+                      )] = None,
+            **kwargs) -> List[LatestOutlierSummary]:  # noqa: E501
         """IAI Identity Outliers Latest Summary  # noqa: E501
 
         This API returns a most recent snapshot of each outlier type, each containing: the number of identities that customer has, the number of outliers, and the type of outlier Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -586,10 +729,18 @@ class IAIOutliersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_latest_identity_outlier_snapshots_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_latest_identity_outlier_snapshots_with_http_info(type, **kwargs)  # noqa: E501
+        return self.get_latest_identity_outlier_snapshots_with_http_info(
+            type, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_latest_identity_outlier_snapshots_with_http_info(self, type : Annotated[Optional[StrictStr], Field(description="Type of the identity outliers snapshot to filter on")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_latest_identity_outlier_snapshots_with_http_info(
+            self,
+            type: Annotated[
+                Optional[StrictStr],
+                Field(description=
+                      "Type of the identity outliers snapshot to filter on"
+                      )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """IAI Identity Outliers Latest Summary  # noqa: E501
 
         This API returns a most recent snapshot of each outlier type, each containing: the number of identities that customer has, the number of outliers, and the type of outlier Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -628,28 +779,18 @@ class IAIOutliersApi:
 
         _params = locals()
 
-        _all_params = [
-            'type'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['type']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_latest_identity_outlier_snapshots" % _key
-                )
+                    " to method get_latest_identity_outlier_snapshots" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -688,7 +829,8 @@ class IAIOutliersApi:
         }
 
         return self.api_client.call_api(
-            '/outlier-summaries/latest', 'GET',
+            '/outlier-summaries/latest',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -698,14 +840,19 @@ class IAIOutliersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_outlier_contributing_feature_summary(self, outlier_feature_id : Annotated[StrictStr, Field(..., description="Contributing feature id")], **kwargs) -> OutlierFeatureSummary:  # noqa: E501
+    def get_outlier_contributing_feature_summary(
+            self, outlier_feature_id: Annotated[
+                StrictStr,
+                Field(..., description="Contributing feature id")],
+            **kwargs) -> OutlierFeatureSummary:  # noqa: E501
         """Get identity outlier contibuting feature summary  # noqa: E501
 
         This API returns a summary of a contributing feature for an identity outlier. The object contains: contributing feature name (translated text or message key), identity outlier display name, feature values, feature definition and explanation (translated text or message key), peer display name and identityId, access item reference, translation messages object Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -732,10 +879,15 @@ class IAIOutliersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_outlier_contributing_feature_summary_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_outlier_contributing_feature_summary_with_http_info(outlier_feature_id, **kwargs)  # noqa: E501
+        return self.get_outlier_contributing_feature_summary_with_http_info(
+            outlier_feature_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_outlier_contributing_feature_summary_with_http_info(self, outlier_feature_id : Annotated[StrictStr, Field(..., description="Contributing feature id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_outlier_contributing_feature_summary_with_http_info(
+            self, outlier_feature_id: Annotated[
+                StrictStr,
+                Field(..., description="Contributing feature id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get identity outlier contibuting feature summary  # noqa: E501
 
         This API returns a summary of a contributing feature for an identity outlier. The object contains: contributing feature name (translated text or message key), identity outlier display name, feature values, feature definition and explanation (translated text or message key), peer display name and identityId, access item reference, translation messages object Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -774,28 +926,19 @@ class IAIOutliersApi:
 
         _params = locals()
 
-        _all_params = [
-            'outlier_feature_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['outlier_feature_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_outlier_contributing_feature_summary" % _key
-                )
+                    " to method get_outlier_contributing_feature_summary" %
+                    _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -805,7 +948,6 @@ class IAIOutliersApi:
         _path_params = {}
         if _params['outlier_feature_id']:
             _path_params['outlierFeatureId'] = _params['outlier_feature_id']
-
 
         # process the query parameters
         _query_params = []
@@ -834,7 +976,8 @@ class IAIOutliersApi:
         }
 
         return self.api_client.call_api(
-            '/outlier-feature-summaries/{outlierFeatureId}', 'GET',
+            '/outlier-feature-summaries/{outlierFeatureId}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -844,14 +987,54 @@ class IAIOutliersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_peer_group_outliers_contributing_features(self, outlier_id : Annotated[StrictStr, Field(..., description="The outlier id")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, include_translation_messages : Annotated[Optional[StrictStr], Field(description="Whether or not to include translation messages object in returned response")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **importance**")] = None, **kwargs) -> List[OutlierContributingFeature]:  # noqa: E501
+    def get_peer_group_outliers_contributing_features(
+            self,
+            outlier_id: Annotated[StrictStr,
+                                  Field(..., description="The outlier id")],
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            include_translation_messages:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Whether or not to include translation messages object in returned response"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **importance**"
+            )] = None,
+            **kwargs) -> List[OutlierContributingFeature]:  # noqa: E501
         """Get identity outlier's contibuting features  # noqa: E501
 
         This API returns a list of contributing feature objects for a single outlier. The object contains: feature name, feature value type, value, importance, display name (translated text or message key), description (translated text or message key), translation messages object Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -888,10 +1071,51 @@ class IAIOutliersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_peer_group_outliers_contributing_features_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_peer_group_outliers_contributing_features_with_http_info(outlier_id, limit, offset, count, include_translation_messages, sorters, **kwargs)  # noqa: E501
+        return self.get_peer_group_outliers_contributing_features_with_http_info(
+            outlier_id, limit, offset, count, include_translation_messages,
+            sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_peer_group_outliers_contributing_features_with_http_info(self, outlier_id : Annotated[StrictStr, Field(..., description="The outlier id")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, include_translation_messages : Annotated[Optional[StrictStr], Field(description="Whether or not to include translation messages object in returned response")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **importance**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_peer_group_outliers_contributing_features_with_http_info(
+            self,
+            outlier_id: Annotated[StrictStr,
+                                  Field(..., description="The outlier id")],
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            include_translation_messages:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Whether or not to include translation messages object in returned response"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **importance**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get identity outlier's contibuting features  # noqa: E501
 
         This API returns a list of contributing feature objects for a single outlier. The object contains: feature name, feature value type, value, importance, display name (translated text or message key), description (translated text or message key), translation messages object Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -941,32 +1165,21 @@ class IAIOutliersApi:
         _params = locals()
 
         _all_params = [
-            'outlier_id',
-            'limit',
-            'offset',
-            'count',
-            'include_translation_messages',
-            'sorters'
+            'outlier_id', 'limit', 'offset', 'count',
+            'include_translation_messages', 'sorters'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_peer_group_outliers_contributing_features" % _key
-                )
+                    " to method get_peer_group_outliers_contributing_features"
+                    % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -976,7 +1189,6 @@ class IAIOutliersApi:
         _path_params = {}
         if _params['outlier_id']:
             _path_params['outlierId'] = _params['outlier_id']
-
 
         # process the query parameters
         _query_params = []
@@ -989,8 +1201,10 @@ class IAIOutliersApi:
         if _params.get('count') is not None:  # noqa: E501
             _query_params.append(('count', _params['count']))
 
-        if _params.get('include_translation_messages') is not None:  # noqa: E501
-            _query_params.append(('include-translation-messages', _params['include_translation_messages']))
+        if _params.get(
+                'include_translation_messages') is not None:  # noqa: E501
+            _query_params.append(('include-translation-messages',
+                                  _params['include_translation_messages']))
 
         if _params.get('sorters') is not None:  # noqa: E501
             _query_params.append(('sorters', _params['sorters']))
@@ -1020,7 +1234,8 @@ class IAIOutliersApi:
         }
 
         return self.api_client.call_api(
-            '/outliers/{outlierId}/contributing-features', 'GET',
+            '/outliers/{outlierId}/contributing-features',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1030,14 +1245,16 @@ class IAIOutliersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def ignore_identity_outliers(self, request_body : conlist(StrictStr), **kwargs) -> None:  # noqa: E501
+    def ignore_identity_outliers(self, request_body: conlist(StrictStr),
+                                 **kwargs) -> None:  # noqa: E501
         """IAI Identity Outliers Ignore  # noqa: E501
 
         This API receives a list of IdentityIDs in the request, changes the outliers to be ignored--returning a 204 if successful. Requires authorization scope of 'iai:outliers-management:update'  # noqa: E501
@@ -1064,10 +1281,13 @@ class IAIOutliersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the ignore_identity_outliers_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.ignore_identity_outliers_with_http_info(request_body, **kwargs)  # noqa: E501
+        return self.ignore_identity_outliers_with_http_info(
+            request_body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def ignore_identity_outliers_with_http_info(self, request_body : conlist(StrictStr), **kwargs) -> ApiResponse:  # noqa: E501
+    def ignore_identity_outliers_with_http_info(
+            self, request_body: conlist(StrictStr),
+            **kwargs) -> ApiResponse:  # noqa: E501
         """IAI Identity Outliers Ignore  # noqa: E501
 
         This API receives a list of IdentityIDs in the request, changes the outliers to be ignored--returning a 204 if successful. Requires authorization scope of 'iai:outliers-management:update'  # noqa: E501
@@ -1106,28 +1326,18 @@ class IAIOutliersApi:
 
         _params = locals()
 
-        _all_params = [
-            'request_body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['request_body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method ignore_identity_outliers" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method ignore_identity_outliers" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1153,11 +1363,11 @@ class IAIOutliersApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1165,7 +1375,8 @@ class IAIOutliersApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/outliers/ignore', 'POST',
+            '/outliers/ignore',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1175,14 +1386,53 @@ class IAIOutliersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_outliers_contributing_feature_access_items(self, outlier_id : Annotated[StrictStr, Field(..., description="The outlier id")], contributing_feature_name : Annotated[StrictStr, Field(..., description="The name of contributing feature")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, access_type : Annotated[Optional[StrictStr], Field(description="The type of access item for the identity outlier contributing feature. If not provided, it returns all")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName**")] = None, **kwargs) -> List[OutliersContributingFeatureAccessItems]:  # noqa: E501
+    def list_outliers_contributing_feature_access_items(
+        self,
+        outlier_id: Annotated[StrictStr,
+                              Field(..., description="The outlier id")],
+        contributing_feature_name: Annotated[
+            StrictStr,
+            Field(..., description="The name of contributing feature")],
+        limit: Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        offset: Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        count: Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        access_type: Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The type of access item for the identity outlier contributing feature. If not provided, it returns all"
+            )] = None,
+        sorters: Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName**"
+            )] = None,
+        **kwargs
+    ) -> List[OutliersContributingFeatureAccessItems]:  # noqa: E501
         """Gets a list of access items associated with each identity outlier contributing feature  # noqa: E501
 
         This API returns a list of the enriched access items associated with each feature filtered by the access item type  The object contains: accessItemId, display name (translated text or message key), description (translated text or message key), accessType, sourceName, extremelyRare Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -1221,10 +1471,54 @@ class IAIOutliersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_outliers_contributing_feature_access_items_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_outliers_contributing_feature_access_items_with_http_info(outlier_id, contributing_feature_name, limit, offset, count, access_type, sorters, **kwargs)  # noqa: E501
+        return self.list_outliers_contributing_feature_access_items_with_http_info(
+            outlier_id, contributing_feature_name, limit, offset, count,
+            access_type, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_outliers_contributing_feature_access_items_with_http_info(self, outlier_id : Annotated[StrictStr, Field(..., description="The outlier id")], contributing_feature_name : Annotated[StrictStr, Field(..., description="The name of contributing feature")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, access_type : Annotated[Optional[StrictStr], Field(description="The type of access item for the identity outlier contributing feature. If not provided, it returns all")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_outliers_contributing_feature_access_items_with_http_info(
+            self,
+            outlier_id: Annotated[StrictStr,
+                                  Field(..., description="The outlier id")],
+            contributing_feature_name: Annotated[
+                StrictStr,
+                Field(..., description="The name of contributing feature")],
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            access_type:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The type of access item for the identity outlier contributing feature. If not provided, it returns all"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Gets a list of access items associated with each identity outlier contributing feature  # noqa: E501
 
         This API returns a list of the enriched access items associated with each feature filtered by the access item type  The object contains: accessItemId, display name (translated text or message key), description (translated text or message key), accessType, sourceName, extremelyRare Requires authorization scope of 'iai:outliers-management:read'  # noqa: E501
@@ -1276,33 +1570,21 @@ class IAIOutliersApi:
         _params = locals()
 
         _all_params = [
-            'outlier_id',
-            'contributing_feature_name',
-            'limit',
-            'offset',
-            'count',
-            'access_type',
-            'sorters'
+            'outlier_id', 'contributing_feature_name', 'limit', 'offset',
+            'count', 'access_type', 'sorters'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list_outliers_contributing_feature_access_items" % _key
-                )
+                    " to method list_outliers_contributing_feature_access_items"
+                    % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1314,8 +1596,8 @@ class IAIOutliersApi:
             _path_params['outlierId'] = _params['outlier_id']
 
         if _params['contributing_feature_name']:
-            _path_params['contributingFeatureName'] = _params['contributing_feature_name']
-
+            _path_params['contributingFeatureName'] = _params[
+                'contributing_feature_name']
 
         # process the query parameters
         _query_params = []
@@ -1359,7 +1641,8 @@ class IAIOutliersApi:
         }
 
         return self.api_client.call_api(
-            '/outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items', 'GET',
+            '/outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1369,14 +1652,16 @@ class IAIOutliersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def un_ignore_identity_outliers(self, request_body : conlist(StrictStr), **kwargs) -> None:  # noqa: E501
+    def un_ignore_identity_outliers(self, request_body: conlist(StrictStr),
+                                    **kwargs) -> None:  # noqa: E501
         """IAI Identity Outliers Unignore  # noqa: E501
 
         This API receives a list of IdentityIDs in the request, changes the outliers to be un-ignored--returning a 204 if successful. Requires authorization scope of 'iai:outliers-management:update'  # noqa: E501
@@ -1403,10 +1688,13 @@ class IAIOutliersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the un_ignore_identity_outliers_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.un_ignore_identity_outliers_with_http_info(request_body, **kwargs)  # noqa: E501
+        return self.un_ignore_identity_outliers_with_http_info(
+            request_body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def un_ignore_identity_outliers_with_http_info(self, request_body : conlist(StrictStr), **kwargs) -> ApiResponse:  # noqa: E501
+    def un_ignore_identity_outliers_with_http_info(
+            self, request_body: conlist(StrictStr),
+            **kwargs) -> ApiResponse:  # noqa: E501
         """IAI Identity Outliers Unignore  # noqa: E501
 
         This API receives a list of IdentityIDs in the request, changes the outliers to be un-ignored--returning a 204 if successful. Requires authorization scope of 'iai:outliers-management:update'  # noqa: E501
@@ -1445,28 +1733,18 @@ class IAIOutliersApi:
 
         _params = locals()
 
-        _all_params = [
-            'request_body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['request_body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method un_ignore_identity_outliers" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method un_ignore_identity_outliers" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1492,11 +1770,11 @@ class IAIOutliersApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1504,7 +1782,8 @@ class IAIOutliersApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/outliers/unignore', 'POST',
+            '/outliers/unignore',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1514,7 +1793,8 @@ class IAIOutliersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

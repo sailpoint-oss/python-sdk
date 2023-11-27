@@ -11,22 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr
-from beta.models.access_request_recommendation_item import AccessRequestRecommendationItem
+from sailpoint.beta.models.access_request_recommendation_item import AccessRequestRecommendationItem
+
 
 class AccessRequestRecommendationActionItemDto(BaseModel):
     """
     AccessRequestRecommendationActionItemDto
     """
-    identity_id: StrictStr = Field(..., alias="identityId", description="The identity ID taking the action.")
+    identity_id: StrictStr = Field(
+        ...,
+        alias="identityId",
+        description="The identity ID taking the action.")
     access: AccessRequestRecommendationItem = Field(...)
     __properties = ["identityId", "access"]
 
@@ -44,16 +45,14 @@ class AccessRequestRecommendationActionItemDto(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccessRequestRecommendationActionItemDto:
+    def from_json(cls,
+                  json_str: str) -> AccessRequestRecommendationActionItemDto:
         """Create an instance of AccessRequestRecommendationActionItemDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of access
         if self.access:
             _dict['access'] = self.access.to_dict()
@@ -69,9 +68,10 @@ class AccessRequestRecommendationActionItemDto(BaseModel):
             return AccessRequestRecommendationActionItemDto.parse_obj(obj)
 
         _obj = AccessRequestRecommendationActionItemDto.parse_obj({
-            "identity_id": obj.get("identityId"),
-            "access": AccessRequestRecommendationItem.from_dict(obj.get("access")) if obj.get("access") is not None else None
+            "identity_id":
+            obj.get("identityId"),
+            "access":
+            AccessRequestRecommendationItem.from_dict(obj.get("access"))
+            if obj.get("access") is not None else None
         })
         return _obj
-
-

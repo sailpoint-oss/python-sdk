@@ -11,19 +11,18 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field
-from v3.models.access_summary_access import AccessSummaryAccess
-from v3.models.reviewable_access_profile import ReviewableAccessProfile
-from v3.models.reviewable_entitlement import ReviewableEntitlement
-from v3.models.reviewable_role import ReviewableRole
+from sailpoint.v3.models.access_summary_access import AccessSummaryAccess
+from sailpoint.v3.models.reviewable_access_profile import ReviewableAccessProfile
+from sailpoint.v3.models.reviewable_entitlement import ReviewableEntitlement
+from sailpoint.v3.models.reviewable_role import ReviewableRole
+
 
 class AccessSummary(BaseModel):
     """
@@ -31,7 +30,8 @@ class AccessSummary(BaseModel):
     """
     access: Optional[AccessSummaryAccess] = None
     entitlement: Optional[ReviewableEntitlement] = None
-    access_profile: Optional[ReviewableAccessProfile] = Field(None, alias="accessProfile")
+    access_profile: Optional[ReviewableAccessProfile] = Field(
+        None, alias="accessProfile")
     role: Optional[ReviewableRole] = None
     __properties = ["access", "entitlement", "accessProfile", "role"]
 
@@ -55,10 +55,7 @@ class AccessSummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of access
         if self.access:
             _dict['access'] = self.access.to_dict()
@@ -93,11 +90,17 @@ class AccessSummary(BaseModel):
             return AccessSummary.parse_obj(obj)
 
         _obj = AccessSummary.parse_obj({
-            "access": AccessSummaryAccess.from_dict(obj.get("access")) if obj.get("access") is not None else None,
-            "entitlement": ReviewableEntitlement.from_dict(obj.get("entitlement")) if obj.get("entitlement") is not None else None,
-            "access_profile": ReviewableAccessProfile.from_dict(obj.get("accessProfile")) if obj.get("accessProfile") is not None else None,
-            "role": ReviewableRole.from_dict(obj.get("role")) if obj.get("role") is not None else None
+            "access":
+            AccessSummaryAccess.from_dict(obj.get("access"))
+            if obj.get("access") is not None else None,
+            "entitlement":
+            ReviewableEntitlement.from_dict(obj.get("entitlement"))
+            if obj.get("entitlement") is not None else None,
+            "access_profile":
+            ReviewableAccessProfile.from_dict(obj.get("accessProfile"))
+            if obj.get("accessProfile") is not None else None,
+            "role":
+            ReviewableRole.from_dict(obj.get("role"))
+            if obj.get("role") is not None else None
         })
         return _obj
-
-

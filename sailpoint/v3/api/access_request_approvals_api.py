@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,18 +22,16 @@ from pydantic import Field, StrictBool, StrictStr, conint
 
 from typing import Any, Dict, List, Optional
 
-from v3.models.approval_summary import ApprovalSummary
-from v3.models.comment_dto import CommentDto
-from v3.models.completed_approval import CompletedApproval
-from v3.models.forward_approval_dto import ForwardApprovalDto
-from v3.models.pending_approval import PendingApproval
+from sailpoint.v3.models.approval_summary import ApprovalSummary
+from sailpoint.v3.models.comment_dto import CommentDto
+from sailpoint.v3.models.completed_approval import CompletedApproval
+from sailpoint.v3.models.forward_approval_dto import ForwardApprovalDto
+from sailpoint.v3.models.pending_approval import PendingApproval
 
-from v3.api_client import ApiClient
-from v3.api_response import ApiResponse
-from v3.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.v3.api_client import ApiClient
+from sailpoint.v3.api_response import ApiResponse
+from sailpoint.v3.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class AccessRequestApprovalsApi:
@@ -50,7 +47,15 @@ class AccessRequestApprovalsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def approve_access_request(self, approval_id : Annotated[StrictStr, Field(..., description="The id of the approval.")], comment_dto : Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None, **kwargs) -> object:  # noqa: E501
+    def approve_access_request(
+            self,
+            approval_id: Annotated[
+                StrictStr,
+                Field(..., description="The id of the approval.")],
+            comment_dto: Annotated[
+                Optional[CommentDto],
+                Field(description="Reviewer's comment.")] = None,
+            **kwargs) -> object:  # noqa: E501
         """Approves an access request approval.  # noqa: E501
 
         This endpoint approves an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.  # noqa: E501
@@ -79,10 +84,19 @@ class AccessRequestApprovalsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the approve_access_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.approve_access_request_with_http_info(approval_id, comment_dto, **kwargs)  # noqa: E501
+        return self.approve_access_request_with_http_info(
+            approval_id, comment_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def approve_access_request_with_http_info(self, approval_id : Annotated[StrictStr, Field(..., description="The id of the approval.")], comment_dto : Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def approve_access_request_with_http_info(
+            self,
+            approval_id: Annotated[
+                StrictStr,
+                Field(..., description="The id of the approval.")],
+            comment_dto: Annotated[
+                Optional[CommentDto],
+                Field(description="Reviewer's comment.")] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Approves an access request approval.  # noqa: E501
 
         This endpoint approves an access request approval. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.  # noqa: E501
@@ -123,29 +137,17 @@ class AccessRequestApprovalsApi:
 
         _params = locals()
 
-        _all_params = [
-            'approval_id',
-            'comment_dto'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['approval_id', 'comment_dto']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method approve_access_request" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method approve_access_request" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -155,7 +157,6 @@ class AccessRequestApprovalsApi:
         _path_params = {}
         if _params['approval_id']:
             _path_params['approvalId'] = _params['approval_id']
-
 
         # process the query parameters
         _query_params = []
@@ -174,11 +175,11 @@ class AccessRequestApprovalsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -194,7 +195,8 @@ class AccessRequestApprovalsApi:
         }
 
         return self.api_client.call_api(
-            '/access-request-approvals/{approvalId}/approve', 'POST',
+            '/access-request-approvals/{approvalId}/approve',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -204,14 +206,23 @@ class AccessRequestApprovalsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def forward_access_request(self, approval_id : Annotated[StrictStr, Field(..., description="The id of the approval.")], forward_approval_dto : Annotated[ForwardApprovalDto, Field(..., description="Information about the forwarded approval.")], **kwargs) -> object:  # noqa: E501
+    def forward_access_request(
+            self, approval_id: Annotated[
+                StrictStr,
+                Field(..., description="The id of the approval.")],
+            forward_approval_dto: Annotated[
+                ForwardApprovalDto,
+                Field(...,
+                      description="Information about the forwarded approval."
+                      )], **kwargs) -> object:  # noqa: E501
         """Forwards an access request approval.  # noqa: E501
 
         This endpoint forwards an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.  # noqa: E501
@@ -240,10 +251,19 @@ class AccessRequestApprovalsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the forward_access_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.forward_access_request_with_http_info(approval_id, forward_approval_dto, **kwargs)  # noqa: E501
+        return self.forward_access_request_with_http_info(
+            approval_id, forward_approval_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def forward_access_request_with_http_info(self, approval_id : Annotated[StrictStr, Field(..., description="The id of the approval.")], forward_approval_dto : Annotated[ForwardApprovalDto, Field(..., description="Information about the forwarded approval.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def forward_access_request_with_http_info(
+            self, approval_id: Annotated[
+                StrictStr,
+                Field(..., description="The id of the approval.")],
+            forward_approval_dto: Annotated[
+                ForwardApprovalDto,
+                Field(...,
+                      description="Information about the forwarded approval."
+                      )], **kwargs) -> ApiResponse:  # noqa: E501
         """Forwards an access request approval.  # noqa: E501
 
         This endpoint forwards an access request approval to a new owner. Only the owner of the approval and ORG_ADMIN users are allowed to perform this action.  # noqa: E501
@@ -284,29 +304,17 @@ class AccessRequestApprovalsApi:
 
         _params = locals()
 
-        _all_params = [
-            'approval_id',
-            'forward_approval_dto'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['approval_id', 'forward_approval_dto']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method forward_access_request" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method forward_access_request" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -316,7 +324,6 @@ class AccessRequestApprovalsApi:
         _path_params = {}
         if _params['approval_id']:
             _path_params['approvalId'] = _params['approval_id']
-
 
         # process the query parameters
         _query_params = []
@@ -335,11 +342,11 @@ class AccessRequestApprovalsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -355,7 +362,8 @@ class AccessRequestApprovalsApi:
         }
 
         return self.api_client.call_api(
-            '/access-request-approvals/{approvalId}/forward', 'POST',
+            '/access-request-approvals/{approvalId}/forward',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -365,14 +373,31 @@ class AccessRequestApprovalsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_access_request_approval_summary(self, owner_id : Annotated[Optional[StrictStr], Field(description="The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.")] = None, from_date : Annotated[Optional[StrictStr], Field(description="From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format")] = None, **kwargs) -> ApprovalSummary:  # noqa: E501
+    def get_access_request_approval_summary(
+            self,
+            owner_id:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value."
+            )] = None,
+            from_date:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format"
+            )] = None,
+            **kwargs) -> ApprovalSummary:  # noqa: E501
         """Get the number of access-requests-approvals  # noqa: E501
 
         This endpoint returns the number of pending, approved and rejected access requests approvals. See \"owner-id\" query parameter below for authorization info.  # noqa: E501
@@ -401,10 +426,27 @@ class AccessRequestApprovalsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_access_request_approval_summary_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_access_request_approval_summary_with_http_info(owner_id, from_date, **kwargs)  # noqa: E501
+        return self.get_access_request_approval_summary_with_http_info(
+            owner_id, from_date, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_access_request_approval_summary_with_http_info(self, owner_id : Annotated[Optional[StrictStr], Field(description="The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value.")] = None, from_date : Annotated[Optional[StrictStr], Field(description="From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_access_request_approval_summary_with_http_info(
+            self,
+            owner_id:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value."
+            )] = None,
+            from_date:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get the number of access-requests-approvals  # noqa: E501
 
         This endpoint returns the number of pending, approved and rejected access requests approvals. See \"owner-id\" query parameter below for authorization info.  # noqa: E501
@@ -445,29 +487,18 @@ class AccessRequestApprovalsApi:
 
         _params = locals()
 
-        _all_params = [
-            'owner_id',
-            'from_date'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['owner_id', 'from_date']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_access_request_approval_summary" % _key
-                )
+                    " to method get_access_request_approval_summary" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -508,7 +539,8 @@ class AccessRequestApprovalsApi:
         }
 
         return self.api_client.call_api(
-            '/access-request-approvals/approval-summary', 'GET',
+            '/access-request-approvals/approval-summary',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -518,14 +550,59 @@ class AccessRequestApprovalsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_completed_approvals(self, owner_id : Annotated[Optional[StrictStr], Field(description="If present, the value returns only completed approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **requestedFor.id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **modified**: *gt, lt, ge, le, co, eq, in, ne, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**")] = None, **kwargs) -> List[CompletedApproval]:  # noqa: E501
+    def list_completed_approvals(
+            self,
+            owner_id:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "If present, the value returns only completed approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **requestedFor.id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **modified**: *gt, lt, ge, le, co, eq, in, ne, sw*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**"
+            )] = None,
+            **kwargs) -> List[CompletedApproval]:  # noqa: E501
         """Completed Access Request Approvals List  # noqa: E501
 
         This endpoint returns list of completed approvals. See *owner-id* query parameter below for authorization info.  # noqa: E501
@@ -562,10 +639,56 @@ class AccessRequestApprovalsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_completed_approvals_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_completed_approvals_with_http_info(owner_id, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.list_completed_approvals_with_http_info(
+            owner_id, limit, offset, count, filters, sorters,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_completed_approvals_with_http_info(self, owner_id : Annotated[Optional[StrictStr], Field(description="If present, the value returns only completed approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **requestedFor.id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **modified**: *gt, lt, ge, le, co, eq, in, ne, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_completed_approvals_with_http_info(
+            self,
+            owner_id:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "If present, the value returns only completed approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **requestedFor.id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **modified**: *gt, lt, ge, le, co, eq, in, ne, sw*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Completed Access Request Approvals List  # noqa: E501
 
         This endpoint returns list of completed approvals. See *owner-id* query parameter below for authorization info.  # noqa: E501
@@ -615,32 +738,19 @@ class AccessRequestApprovalsApi:
         _params = locals()
 
         _all_params = [
-            'owner_id',
-            'limit',
-            'offset',
-            'count',
-            'filters',
-            'sorters'
+            'owner_id', 'limit', 'offset', 'count', 'filters', 'sorters'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_completed_approvals" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_completed_approvals" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -693,7 +803,8 @@ class AccessRequestApprovalsApi:
         }
 
         return self.api_client.call_api(
-            '/access-request-approvals/completed', 'GET',
+            '/access-request-approvals/completed',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -703,14 +814,59 @@ class AccessRequestApprovalsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_pending_approvals(self, owner_id : Annotated[Optional[StrictStr], Field(description="If present, the value returns only pending approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **requestedFor.id**: *eq, in*  **modified**: *gt, lt, ge, le, eq, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**")] = None, **kwargs) -> List[PendingApproval]:  # noqa: E501
+    def list_pending_approvals(
+            self,
+            owner_id:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "If present, the value returns only pending approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **requestedFor.id**: *eq, in*  **modified**: *gt, lt, ge, le, eq, in*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**"
+            )] = None,
+            **kwargs) -> List[PendingApproval]:  # noqa: E501
         """Pending Access Request Approvals List  # noqa: E501
 
         This endpoint returns a list of pending approvals. See \"owner-id\" query parameter below for authorization info.  # noqa: E501
@@ -747,10 +903,56 @@ class AccessRequestApprovalsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_pending_approvals_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_pending_approvals_with_http_info(owner_id, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.list_pending_approvals_with_http_info(
+            owner_id, limit, offset, count, filters, sorters,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_pending_approvals_with_http_info(self, owner_id : Annotated[Optional[StrictStr], Field(description="If present, the value returns only pending approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **requestedFor.id**: *eq, in*  **modified**: *gt, lt, ge, le, eq, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_pending_approvals_with_http_info(
+            self,
+            owner_id:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "If present, the value returns only pending approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **requestedFor.id**: *eq, in*  **modified**: *gt, lt, ge, le, eq, in*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Pending Access Request Approvals List  # noqa: E501
 
         This endpoint returns a list of pending approvals. See \"owner-id\" query parameter below for authorization info.  # noqa: E501
@@ -800,32 +1002,18 @@ class AccessRequestApprovalsApi:
         _params = locals()
 
         _all_params = [
-            'owner_id',
-            'limit',
-            'offset',
-            'count',
-            'filters',
-            'sorters'
+            'owner_id', 'limit', 'offset', 'count', 'filters', 'sorters'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_pending_approvals" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_pending_approvals" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -878,7 +1066,8 @@ class AccessRequestApprovalsApi:
         }
 
         return self.api_client.call_api(
-            '/access-request-approvals/pending', 'GET',
+            '/access-request-approvals/pending',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -888,14 +1077,23 @@ class AccessRequestApprovalsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def reject_access_request(self, approval_id : Annotated[StrictStr, Field(..., description="The id of the approval.")], comment_dto : Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None, **kwargs) -> object:  # noqa: E501
+    def reject_access_request(
+            self,
+            approval_id: Annotated[
+                StrictStr,
+                Field(..., description="The id of the approval.")],
+            comment_dto: Annotated[
+                Optional[CommentDto],
+                Field(description="Reviewer's comment.")] = None,
+            **kwargs) -> object:  # noqa: E501
         """Rejects an access request approval.  # noqa: E501
 
         This endpoint rejects an access request approval. Only the owner of the approval and admin users are allowed to perform this action.  # noqa: E501
@@ -924,10 +1122,19 @@ class AccessRequestApprovalsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the reject_access_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.reject_access_request_with_http_info(approval_id, comment_dto, **kwargs)  # noqa: E501
+        return self.reject_access_request_with_http_info(
+            approval_id, comment_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def reject_access_request_with_http_info(self, approval_id : Annotated[StrictStr, Field(..., description="The id of the approval.")], comment_dto : Annotated[Optional[CommentDto], Field(description="Reviewer's comment.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def reject_access_request_with_http_info(
+            self,
+            approval_id: Annotated[
+                StrictStr,
+                Field(..., description="The id of the approval.")],
+            comment_dto: Annotated[
+                Optional[CommentDto],
+                Field(description="Reviewer's comment.")] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Rejects an access request approval.  # noqa: E501
 
         This endpoint rejects an access request approval. Only the owner of the approval and admin users are allowed to perform this action.  # noqa: E501
@@ -968,29 +1175,17 @@ class AccessRequestApprovalsApi:
 
         _params = locals()
 
-        _all_params = [
-            'approval_id',
-            'comment_dto'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['approval_id', 'comment_dto']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method reject_access_request" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method reject_access_request" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1000,7 +1195,6 @@ class AccessRequestApprovalsApi:
         _path_params = {}
         if _params['approval_id']:
             _path_params['approvalId'] = _params['approval_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1019,11 +1213,11 @@ class AccessRequestApprovalsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1039,7 +1233,8 @@ class AccessRequestApprovalsApi:
         }
 
         return self.api_client.call_api(
-            '/access-request-approvals/{approvalId}/reject', 'POST',
+            '/access-request-approvals/{approvalId}/reject',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1049,7 +1244,8 @@ class AccessRequestApprovalsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

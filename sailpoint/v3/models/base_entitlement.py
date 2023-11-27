@@ -11,25 +11,29 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class BaseEntitlement(BaseModel):
     """
     BaseEntitlement
     """
-    id: Optional[StrictStr] = Field(None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(None, description="The human readable name of the referenced object.")
-    description: Optional[StrictStr] = Field(None, description="A description of the entitlement")
-    attribute: Optional[StrictStr] = Field(None, description="The name of the entitlement attribute")
-    value: Optional[StrictStr] = Field(None, description="The value of the entitlement")
+    id: Optional[StrictStr] = Field(
+        None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(
+        None, description="The human readable name of the referenced object.")
+    description: Optional[StrictStr] = Field(
+        None, description="A description of the entitlement")
+    attribute: Optional[StrictStr] = Field(
+        None, description="The name of the entitlement attribute")
+    value: Optional[StrictStr] = Field(
+        None, description="The value of the entitlement")
     __properties = ["id", "name", "description", "attribute", "value"]
 
     class Config:
@@ -52,10 +56,7 @@ class BaseEntitlement(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -75,5 +76,3 @@ class BaseEntitlement(BaseModel):
             "value": obj.get("value")
         })
         return _obj
-
-

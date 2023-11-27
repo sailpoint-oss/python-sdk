@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.reassign_reference import ReassignReference
+from sailpoint.beta.models.reassign_reference import ReassignReference
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,25 +11,36 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from v3.models.error_message_dto import ErrorMessageDto
+from sailpoint.v3.models.error_message_dto import ErrorMessageDto
+
 
 class ErrorResponseDto(BaseModel):
     """
     ErrorResponseDto
     """
-    detail_code: Optional[StrictStr] = Field(None, alias="detailCode", description="Fine-grained error code providing more detail of the error.")
-    tracking_id: Optional[StrictStr] = Field(None, alias="trackingId", description="Unique tracking id for the error.")
-    messages: Optional[conlist(ErrorMessageDto)] = Field(None, description="Generic localized reason for error")
-    causes: Optional[conlist(ErrorMessageDto)] = Field(None, description="Plain-text descriptive reasons to provide additional detail to the text provided in the messages field")
+    detail_code: Optional[StrictStr] = Field(
+        None,
+        alias="detailCode",
+        description=
+        "Fine-grained error code providing more detail of the error.")
+    tracking_id: Optional[StrictStr] = Field(
+        None,
+        alias="trackingId",
+        description="Unique tracking id for the error.")
+    messages: Optional[conlist(ErrorMessageDto)] = Field(
+        None, description="Generic localized reason for error")
+    causes: Optional[conlist(ErrorMessageDto)] = Field(
+        None,
+        description=
+        "Plain-text descriptive reasons to provide additional detail to the text provided in the messages field"
+    )
     __properties = ["detailCode", "trackingId", "messages", "causes"]
 
     class Config:
@@ -52,10 +63,7 @@ class ErrorResponseDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
@@ -82,11 +90,16 @@ class ErrorResponseDto(BaseModel):
             return ErrorResponseDto.parse_obj(obj)
 
         _obj = ErrorResponseDto.parse_obj({
-            "detail_code": obj.get("detailCode"),
-            "tracking_id": obj.get("trackingId"),
-            "messages": [ErrorMessageDto.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
-            "causes": [ErrorMessageDto.from_dict(_item) for _item in obj.get("causes")] if obj.get("causes") is not None else None
+            "detail_code":
+            obj.get("detailCode"),
+            "tracking_id":
+            obj.get("trackingId"),
+            "messages": [
+                ErrorMessageDto.from_dict(_item)
+                for _item in obj.get("messages")
+            ] if obj.get("messages") is not None else None,
+            "causes":
+            [ErrorMessageDto.from_dict(_item) for _item in obj.get("causes")]
+            if obj.get("causes") is not None else None
         })
         return _obj
-
-

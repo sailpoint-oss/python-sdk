@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.provisioning_config_plan_initializer_script import ProvisioningConfigPlanInitializerScript
+from sailpoint.v3.models.provisioning_config_plan_initializer_script import ProvisioningConfigPlanInitializerScript
 
 # TODO update the JSON string below
 json = "{}"

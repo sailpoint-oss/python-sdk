@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.completed_approval import CompletedApproval
+from sailpoint.beta.models.completed_approval import CompletedApproval
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,53 +19,106 @@ import json
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
-from v3.models.app import App
-from v3.models.base_account import BaseAccount
-from v3.models.display_reference import DisplayReference
-from v3.models.document_type import DocumentType
-from v3.models.identity_access import IdentityAccess
-from v3.models.owns import Owns
-from v3.models.processing_details import ProcessingDetails
-from v3.models.reference import Reference
+from sailpoint.v3.models.app import App
+from sailpoint.v3.models.base_account import BaseAccount
+from sailpoint.v3.models.display_reference import DisplayReference
+from sailpoint.v3.models.document_type import DocumentType
+from sailpoint.v3.models.identity_access import IdentityAccess
+from sailpoint.v3.models.owns import Owns
+from sailpoint.v3.models.processing_details import ProcessingDetails
+from sailpoint.v3.models.reference import Reference
+
 
 class IdentityDocument(BaseModel):
     """
     Identity  # noqa: E501
     """
-    id: StrictStr = Field(..., description="The unique ID of the referenced object.")
-    name: StrictStr = Field(..., description="The human readable name of the referenced object.")
+    id: StrictStr = Field(
+        ..., description="The unique ID of the referenced object.")
+    name: StrictStr = Field(
+        ..., description="The human readable name of the referenced object.")
     type: DocumentType = Field(..., alias="_type")
-    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="The display name of the identity")
-    first_name: Optional[StrictStr] = Field(None, alias="firstName", description="The first name of the identity")
-    last_name: Optional[StrictStr] = Field(None, alias="lastName", description="The last name of the identity")
-    email: Optional[StrictStr] = Field(None, description="The identity's primary email address")
-    created: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
-    synced: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
-    phone: Optional[StrictStr] = Field(None, description="The phone number of the identity")
-    inactive: Optional[StrictBool] = Field(None, description="Indicates if the identity is inactive")
+    display_name: Optional[StrictStr] = Field(
+        None,
+        alias="displayName",
+        description="The display name of the identity")
+    first_name: Optional[StrictStr] = Field(
+        None, alias="firstName", description="The first name of the identity")
+    last_name: Optional[StrictStr] = Field(
+        None, alias="lastName", description="The last name of the identity")
+    email: Optional[StrictStr] = Field(
+        None, description="The identity's primary email address")
+    created: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
+    modified: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
+    synced: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
+    phone: Optional[StrictStr] = Field(
+        None, description="The phone number of the identity")
+    inactive: Optional[StrictBool] = Field(
+        None, description="Indicates if the identity is inactive")
     protected: Optional[StrictBool] = None
-    status: Optional[StrictStr] = Field(None, description="The identity's status in SailPoint")
+    status: Optional[StrictStr] = Field(
+        None, description="The identity's status in SailPoint")
     employee_number: Optional[StrictStr] = Field(None, alias="employeeNumber")
     manager: Optional[DisplayReference] = None
-    is_manager: Optional[StrictBool] = Field(None, alias="isManager", description="Indicates if this identity is a manager of other identities")
-    identity_profile: Optional[Reference] = Field(None, alias="identityProfile")
+    is_manager: Optional[StrictBool] = Field(
+        None,
+        alias="isManager",
+        description=
+        "Indicates if this identity is a manager of other identities")
+    identity_profile: Optional[Reference] = Field(None,
+                                                  alias="identityProfile")
     source: Optional[Reference] = None
-    attributes: Optional[Dict[str, Any]] = Field(None, description="a map or dictionary of key/value pairs")
-    processing_state: Optional[StrictStr] = Field(None, alias="processingState")
-    processing_details: Optional[ProcessingDetails] = Field(None, alias="processingDetails")
-    accounts: Optional[conlist(BaseAccount)] = Field(None, description="List of accounts associated with the identity")
-    account_count: Optional[StrictInt] = Field(None, alias="accountCount", description="Number of accounts associated with the identity")
-    apps: Optional[conlist(App)] = Field(None, description="The list of applications the identity has access to")
-    app_count: Optional[StrictInt] = Field(None, alias="appCount", description="The number of applications the identity has access to")
-    access: Optional[conlist(IdentityAccess)] = Field(None, description="The list of access items assigned to the identity")
-    access_count: Optional[StrictInt] = Field(None, alias="accessCount", description="The number of access items assigned to the identity")
-    access_profile_count: Optional[StrictInt] = Field(None, alias="accessProfileCount", description="The number of access profiles assigned to the identity")
-    entitlement_count: Optional[StrictInt] = Field(None, alias="entitlementCount", description="The number of entitlements assigned to the identity")
-    role_count: Optional[StrictInt] = Field(None, alias="roleCount", description="The number of roles assigned to the identity")
+    attributes: Optional[Dict[str, Any]] = Field(
+        None, description="a map or dictionary of key/value pairs")
+    processing_state: Optional[StrictStr] = Field(None,
+                                                  alias="processingState")
+    processing_details: Optional[ProcessingDetails] = Field(
+        None, alias="processingDetails")
+    accounts: Optional[conlist(BaseAccount)] = Field(
+        None, description="List of accounts associated with the identity")
+    account_count: Optional[StrictInt] = Field(
+        None,
+        alias="accountCount",
+        description="Number of accounts associated with the identity")
+    apps: Optional[conlist(App)] = Field(
+        None,
+        description="The list of applications the identity has access to")
+    app_count: Optional[StrictInt] = Field(
+        None,
+        alias="appCount",
+        description="The number of applications the identity has access to")
+    access: Optional[conlist(IdentityAccess)] = Field(
+        None, description="The list of access items assigned to the identity")
+    access_count: Optional[StrictInt] = Field(
+        None,
+        alias="accessCount",
+        description="The number of access items assigned to the identity")
+    access_profile_count: Optional[StrictInt] = Field(
+        None,
+        alias="accessProfileCount",
+        description="The number of access profiles assigned to the identity")
+    entitlement_count: Optional[StrictInt] = Field(
+        None,
+        alias="entitlementCount",
+        description="The number of entitlements assigned to the identity")
+    role_count: Optional[StrictInt] = Field(
+        None,
+        alias="roleCount",
+        description="The number of roles assigned to the identity")
     owns: Optional[Owns] = None
     tags: Optional[conlist(StrictStr)] = None
-    __properties = ["id", "name", "_type", "displayName", "firstName", "lastName", "email", "created", "modified", "synced", "phone", "inactive", "protected", "status", "employeeNumber", "manager", "isManager", "identityProfile", "source", "attributes", "processingState", "processingDetails", "accounts", "accountCount", "apps", "appCount", "access", "accessCount", "accessProfileCount", "entitlementCount", "roleCount", "owns", "tags"]
+    __properties = [
+        "id", "name", "_type", "displayName", "firstName", "lastName", "email",
+        "created", "modified", "synced", "phone", "inactive", "protected",
+        "status", "employeeNumber", "manager", "isManager", "identityProfile",
+        "source", "attributes", "processingState", "processingDetails",
+        "accounts", "accountCount", "apps", "appCount", "access",
+        "accessCount", "accessProfileCount", "entitlementCount", "roleCount",
+        "owns", "tags"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -88,10 +140,7 @@ class IdentityDocument(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of manager
         if self.manager:
             _dict['manager'] = self.manager.to_dict()
@@ -160,40 +209,78 @@ class IdentityDocument(BaseModel):
             return IdentityDocument.parse_obj(obj)
 
         _obj = IdentityDocument.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "type": obj.get("_type"),
-            "display_name": obj.get("displayName"),
-            "first_name": obj.get("firstName"),
-            "last_name": obj.get("lastName"),
-            "email": obj.get("email"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "synced": obj.get("synced"),
-            "phone": obj.get("phone"),
-            "inactive": obj.get("inactive"),
-            "protected": obj.get("protected"),
-            "status": obj.get("status"),
-            "employee_number": obj.get("employeeNumber"),
-            "manager": DisplayReference.from_dict(obj.get("manager")) if obj.get("manager") is not None else None,
-            "is_manager": obj.get("isManager"),
-            "identity_profile": Reference.from_dict(obj.get("identityProfile")) if obj.get("identityProfile") is not None else None,
-            "source": Reference.from_dict(obj.get("source")) if obj.get("source") is not None else None,
-            "attributes": obj.get("attributes"),
-            "processing_state": obj.get("processingState"),
-            "processing_details": ProcessingDetails.from_dict(obj.get("processingDetails")) if obj.get("processingDetails") is not None else None,
-            "accounts": [BaseAccount.from_dict(_item) for _item in obj.get("accounts")] if obj.get("accounts") is not None else None,
-            "account_count": obj.get("accountCount"),
-            "apps": [App.from_dict(_item) for _item in obj.get("apps")] if obj.get("apps") is not None else None,
-            "app_count": obj.get("appCount"),
-            "access": [IdentityAccess.from_dict(_item) for _item in obj.get("access")] if obj.get("access") is not None else None,
-            "access_count": obj.get("accessCount"),
-            "access_profile_count": obj.get("accessProfileCount"),
-            "entitlement_count": obj.get("entitlementCount"),
-            "role_count": obj.get("roleCount"),
-            "owns": Owns.from_dict(obj.get("owns")) if obj.get("owns") is not None else None,
-            "tags": obj.get("tags")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "type":
+            obj.get("_type"),
+            "display_name":
+            obj.get("displayName"),
+            "first_name":
+            obj.get("firstName"),
+            "last_name":
+            obj.get("lastName"),
+            "email":
+            obj.get("email"),
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified"),
+            "synced":
+            obj.get("synced"),
+            "phone":
+            obj.get("phone"),
+            "inactive":
+            obj.get("inactive"),
+            "protected":
+            obj.get("protected"),
+            "status":
+            obj.get("status"),
+            "employee_number":
+            obj.get("employeeNumber"),
+            "manager":
+            DisplayReference.from_dict(obj.get("manager"))
+            if obj.get("manager") is not None else None,
+            "is_manager":
+            obj.get("isManager"),
+            "identity_profile":
+            Reference.from_dict(obj.get("identityProfile"))
+            if obj.get("identityProfile") is not None else None,
+            "source":
+            Reference.from_dict(obj.get("source"))
+            if obj.get("source") is not None else None,
+            "attributes":
+            obj.get("attributes"),
+            "processing_state":
+            obj.get("processingState"),
+            "processing_details":
+            ProcessingDetails.from_dict(obj.get("processingDetails"))
+            if obj.get("processingDetails") is not None else None,
+            "accounts":
+            [BaseAccount.from_dict(_item) for _item in obj.get("accounts")]
+            if obj.get("accounts") is not None else None,
+            "account_count":
+            obj.get("accountCount"),
+            "apps": [App.from_dict(_item) for _item in obj.get("apps")]
+            if obj.get("apps") is not None else None,
+            "app_count":
+            obj.get("appCount"),
+            "access":
+            [IdentityAccess.from_dict(_item) for _item in obj.get("access")]
+            if obj.get("access") is not None else None,
+            "access_count":
+            obj.get("accessCount"),
+            "access_profile_count":
+            obj.get("accessProfileCount"),
+            "entitlement_count":
+            obj.get("entitlementCount"),
+            "role_count":
+            obj.get("roleCount"),
+            "owns":
+            Owns.from_dict(obj.get("owns"))
+            if obj.get("owns") is not None else None,
+            "tags":
+            obj.get("tags")
         })
         return _obj
-
-

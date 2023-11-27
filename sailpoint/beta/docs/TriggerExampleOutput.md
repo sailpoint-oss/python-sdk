@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.trigger_example_output import TriggerExampleOutput
+from sailpoint.beta.models.trigger_example_output import TriggerExampleOutput
 
 # TODO update the JSON string below
 json = "{}"

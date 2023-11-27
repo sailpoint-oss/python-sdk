@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.notification_template_context import NotificationTemplateContext
+from sailpoint.beta.models.notification_template_context import NotificationTemplateContext
 
 # TODO update the JSON string below
 json = "{}"

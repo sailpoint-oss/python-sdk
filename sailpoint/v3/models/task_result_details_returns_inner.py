@@ -11,22 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class TaskResultDetailsReturnsInner(BaseModel):
     """
     TaskResultDetailsReturnsInner
     """
-    display_label: Optional[StrictStr] = Field(None, alias="displayLabel", description="Attribute description.")
-    attribute_name: Optional[StrictStr] = Field(None, alias="attributeName", description="System or database attribute name.")
+    display_label: Optional[StrictStr] = Field(
+        None, alias="displayLabel", description="Attribute description.")
+    attribute_name: Optional[StrictStr] = Field(
+        None,
+        alias="attributeName",
+        description="System or database attribute name.")
     __properties = ["displayLabel", "attributeName"]
 
     class Config:
@@ -49,10 +52,7 @@ class TaskResultDetailsReturnsInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +65,9 @@ class TaskResultDetailsReturnsInner(BaseModel):
             return TaskResultDetailsReturnsInner.parse_obj(obj)
 
         _obj = TaskResultDetailsReturnsInner.parse_obj({
-            "display_label": obj.get("displayLabel"),
-            "attribute_name": obj.get("attributeName")
+            "display_label":
+            obj.get("displayLabel"),
+            "attribute_name":
+            obj.get("attributeName")
         })
         return _obj
-
-

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,16 +22,14 @@ from pydantic import Field, StrictBool, StrictStr
 
 from typing import Optional, Union
 
-from v3.models.report_details import ReportDetails
-from v3.models.report_results import ReportResults
-from v3.models.task_result_details import TaskResultDetails
+from sailpoint.v3.models.report_details import ReportDetails
+from sailpoint.v3.models.report_results import ReportResults
+from sailpoint.v3.models.task_result_details import TaskResultDetails
 
-from v3.api_client import ApiClient
-from v3.api_response import ApiResponse
-from v3.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.v3.api_client import ApiClient
+from sailpoint.v3.api_response import ApiResponse
+from sailpoint.v3.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class ReportsDataExtractionApi:
@@ -48,7 +45,10 @@ class ReportsDataExtractionApi:
         self.api_client = api_client
 
     @validate_arguments
-    def cancel_report(self, id : Annotated[StrictStr, Field(..., description="ID of the running Report to cancel")], **kwargs) -> None:  # noqa: E501
+    def cancel_report(self, id: Annotated[
+        StrictStr,
+        Field(..., description="ID of the running Report to cancel")],
+                      **kwargs) -> None:  # noqa: E501
         """Cancel Report  # noqa: E501
 
         Cancels a running report.  # noqa: E501
@@ -78,7 +78,10 @@ class ReportsDataExtractionApi:
         return self.cancel_report_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def cancel_report_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the running Report to cancel")], **kwargs) -> ApiResponse:  # noqa: E501
+    def cancel_report_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(..., description="ID of the running Report to cancel")],
+                                     **kwargs) -> ApiResponse:  # noqa: E501
         """Cancel Report  # noqa: E501
 
         Cancels a running report.  # noqa: E501
@@ -117,28 +120,17 @@ class ReportsDataExtractionApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method cancel_report" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method cancel_report" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -148,7 +140,6 @@ class ReportsDataExtractionApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -169,7 +160,8 @@ class ReportsDataExtractionApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/reports/{id}/cancel', 'POST',
+            '/reports/{id}/cancel',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -179,14 +171,43 @@ class ReportsDataExtractionApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_report(self, task_result_id : Annotated[StrictStr, Field(..., description="Unique identifier of the task result which handled report")], file_format : Annotated[StrictStr, Field(..., description="Output format of the requested report file")], name : Annotated[Optional[StrictStr], Field(description="preferred Report file name, by default will be used report name from task result.")] = None, auditable : Annotated[Optional[StrictBool], Field(description="Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId.")] = None, **kwargs) -> bytearray:  # noqa: E501
+    def get_report(
+            self,
+            task_result_id: Annotated[
+                StrictStr,
+                Field(
+                    ...,
+                    description=
+                    "Unique identifier of the task result which handled report"
+                )],
+            file_format: Annotated[
+                StrictStr,
+                Field(...,
+                      description="Output format of the requested report file"
+                      )],
+            name:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "preferred Report file name, by default will be used report name from task result."
+            )] = None,
+            auditable:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId."
+            )] = None,
+            **kwargs) -> bytearray:  # noqa: E501
         """Get Report File  # noqa: E501
 
         Gets a report in file format.  # noqa: E501
@@ -219,10 +240,40 @@ class ReportsDataExtractionApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_report_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_report_with_http_info(task_result_id, file_format, name, auditable, **kwargs)  # noqa: E501
+        return self.get_report_with_http_info(task_result_id, file_format,
+                                              name, auditable,
+                                              **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_report_with_http_info(self, task_result_id : Annotated[StrictStr, Field(..., description="Unique identifier of the task result which handled report")], file_format : Annotated[StrictStr, Field(..., description="Output format of the requested report file")], name : Annotated[Optional[StrictStr], Field(description="preferred Report file name, by default will be used report name from task result.")] = None, auditable : Annotated[Optional[StrictBool], Field(description="Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_report_with_http_info(
+            self,
+            task_result_id: Annotated[
+                StrictStr,
+                Field(
+                    ...,
+                    description=
+                    "Unique identifier of the task result which handled report"
+                )],
+            file_format: Annotated[
+                StrictStr,
+                Field(...,
+                      description="Output format of the requested report file"
+                      )],
+            name:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "preferred Report file name, by default will be used report name from task result."
+            )] = None,
+            auditable:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "Enables auditing for current report download. Will create an audit event and sent it to the REPORT cloud-audit kafka topic.  Event will be created if there is any result present by requested taskResultId."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get Report File  # noqa: E501
 
         Gets a report in file format.  # noqa: E501
@@ -267,31 +318,17 @@ class ReportsDataExtractionApi:
 
         _params = locals()
 
-        _all_params = [
-            'task_result_id',
-            'file_format',
-            'name',
-            'auditable'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['task_result_id', 'file_format', 'name', 'auditable']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_report" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_report" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -301,7 +338,6 @@ class ReportsDataExtractionApi:
         _path_params = {}
         if _params['task_result_id']:
             _path_params['taskResultId'] = _params['task_result_id']
-
 
         # process the query parameters
         _query_params = []
@@ -339,7 +375,8 @@ class ReportsDataExtractionApi:
         }
 
         return self.api_client.call_api(
-            '/reports/{taskResultId}', 'GET',
+            '/reports/{taskResultId}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -349,14 +386,31 @@ class ReportsDataExtractionApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_report_result(self, task_result_id : Annotated[StrictStr, Field(..., description="Unique identifier of the task result which handled report")], completed : Annotated[Optional[StrictBool], Field(description="state of task result to apply ordering when results are fetching from the DB")] = None, **kwargs) -> ReportResults:  # noqa: E501
+    def get_report_result(
+            self,
+            task_result_id: Annotated[
+                StrictStr,
+                Field(
+                    ...,
+                    description=
+                    "Unique identifier of the task result which handled report"
+                )],
+            completed:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "state of task result to apply ordering when results are fetching from the DB"
+            )] = None,
+            **kwargs) -> ReportResults:  # noqa: E501
         """Get Report Result  # noqa: E501
 
         Get the report results for a report that was run or is running. Returns empty report result in case there are no active task definitions with used in payload task definition name.  # noqa: E501
@@ -385,10 +439,27 @@ class ReportsDataExtractionApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_report_result_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_report_result_with_http_info(task_result_id, completed, **kwargs)  # noqa: E501
+        return self.get_report_result_with_http_info(task_result_id, completed,
+                                                     **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_report_result_with_http_info(self, task_result_id : Annotated[StrictStr, Field(..., description="Unique identifier of the task result which handled report")], completed : Annotated[Optional[StrictBool], Field(description="state of task result to apply ordering when results are fetching from the DB")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_report_result_with_http_info(
+            self,
+            task_result_id: Annotated[
+                StrictStr,
+                Field(
+                    ...,
+                    description=
+                    "Unique identifier of the task result which handled report"
+                )],
+            completed:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "state of task result to apply ordering when results are fetching from the DB"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get Report Result  # noqa: E501
 
         Get the report results for a report that was run or is running. Returns empty report result in case there are no active task definitions with used in payload task definition name.  # noqa: E501
@@ -429,29 +500,17 @@ class ReportsDataExtractionApi:
 
         _params = locals()
 
-        _all_params = [
-            'task_result_id',
-            'completed'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['task_result_id', 'completed']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_report_result" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_report_result" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -461,7 +520,6 @@ class ReportsDataExtractionApi:
         _path_params = {}
         if _params['task_result_id']:
             _path_params['taskResultId'] = _params['task_result_id']
-
 
         # process the query parameters
         _query_params = []
@@ -492,7 +550,8 @@ class ReportsDataExtractionApi:
         }
 
         return self.api_client.call_api(
-            '/reports/{taskResultId}/result', 'GET',
+            '/reports/{taskResultId}/result',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -502,14 +561,16 @@ class ReportsDataExtractionApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def start_report(self, report_details : ReportDetails, **kwargs) -> TaskResultDetails:  # noqa: E501
+    def start_report(self, report_details: ReportDetails,
+                     **kwargs) -> TaskResultDetails:  # noqa: E501
         """Run Report  # noqa: E501
 
         Runs a report according to input report details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.  # noqa: E501
@@ -536,10 +597,12 @@ class ReportsDataExtractionApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the start_report_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.start_report_with_http_info(report_details, **kwargs)  # noqa: E501
+        return self.start_report_with_http_info(report_details,
+                                                **kwargs)  # noqa: E501
 
     @validate_arguments
-    def start_report_with_http_info(self, report_details : ReportDetails, **kwargs) -> ApiResponse:  # noqa: E501
+    def start_report_with_http_info(self, report_details: ReportDetails,
+                                    **kwargs) -> ApiResponse:  # noqa: E501
         """Run Report  # noqa: E501
 
         Runs a report according to input report details. If non-concurrent task is already running then it returns, otherwise new task creates and returns.  # noqa: E501
@@ -578,28 +641,17 @@ class ReportsDataExtractionApi:
 
         _params = locals()
 
-        _all_params = [
-            'report_details'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['report_details']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method start_report" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method start_report" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -625,11 +677,11 @@ class ReportsDataExtractionApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -644,7 +696,8 @@ class ReportsDataExtractionApi:
         }
 
         return self.api_client.call_api(
-            '/reports/run', 'POST',
+            '/reports/run',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -654,7 +707,8 @@ class ReportsDataExtractionApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

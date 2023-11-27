@@ -11,19 +11,18 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, List, Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist
-from cc.models.list_applications200_response_inner_account_service_policies_inner import ListApplications200ResponseInnerAccountServicePoliciesInner
-from cc.models.list_applications200_response_inner_app_profiles_inner import ListApplications200ResponseInnerAppProfilesInner
-from cc.models.list_applications200_response_inner_health import ListApplications200ResponseInnerHealth
-from cc.models.list_applications200_response_inner_owner import ListApplications200ResponseInnerOwner
+from sailpoint.cc.models.list_applications200_response_inner_account_service_policies_inner import ListApplications200ResponseInnerAccountServicePoliciesInner
+from sailpoint.cc.models.list_applications200_response_inner_app_profiles_inner import ListApplications200ResponseInnerAppProfilesInner
+from sailpoint.cc.models.list_applications200_response_inner_health import ListApplications200ResponseInnerHealth
+from sailpoint.cc.models.list_applications200_response_inner_owner import ListApplications200ResponseInnerOwner
+
 
 class GetApplication200Response(BaseModel):
     """
@@ -35,8 +34,10 @@ class GetApplication200Response(BaseModel):
     service_app_id: Optional[StrictStr] = Field(None, alias="serviceAppId")
     name: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
-    app_center_enabled: Optional[StrictBool] = Field(None, alias="appCenterEnabled")
-    provision_request_enabled: Optional[StrictBool] = Field(None, alias="provisionRequestEnabled")
+    app_center_enabled: Optional[StrictBool] = Field(None,
+                                                     alias="appCenterEnabled")
+    provision_request_enabled: Optional[StrictBool] = Field(
+        None, alias="provisionRequestEnabled")
     control_type: Optional[StrictStr] = Field(None, alias="controlType")
     mobile: Optional[StrictBool] = None
     private_app: Optional[StrictBool] = Field(None, alias="privateApp")
@@ -48,38 +49,84 @@ class GetApplication200Response(BaseModel):
     sso_method: Optional[StrictStr] = Field(None, alias="ssoMethod")
     has_links: Optional[StrictBool] = Field(None, alias="hasLinks")
     has_automations: Optional[StrictBool] = Field(None, alias="hasAutomations")
-    step_up_auth_data: Optional[Dict[str, Any]] = Field(None, alias="stepUpAuthData")
-    step_up_auth_type: Optional[StrictStr] = Field(None, alias="stepUpAuthType")
+    step_up_auth_data: Optional[Dict[str, Any]] = Field(None,
+                                                        alias="stepUpAuthData")
+    step_up_auth_type: Optional[StrictStr] = Field(None,
+                                                   alias="stepUpAuthType")
     usage_analytics: Optional[StrictBool] = Field(None, alias="usageAnalytics")
-    usage_cert_required: Optional[StrictBool] = Field(None, alias="usageCertRequired")
-    usage_cert_text: Optional[Dict[str, Any]] = Field(None, alias="usageCertText")
-    launchpad_enabled: Optional[StrictBool] = Field(None, alias="launchpadEnabled")
-    password_managed: Optional[StrictBool] = Field(None, alias="passwordManaged")
+    usage_cert_required: Optional[StrictBool] = Field(
+        None, alias="usageCertRequired")
+    usage_cert_text: Optional[Dict[str, Any]] = Field(None,
+                                                      alias="usageCertText")
+    launchpad_enabled: Optional[StrictBool] = Field(None,
+                                                    alias="launchpadEnabled")
+    password_managed: Optional[StrictBool] = Field(None,
+                                                   alias="passwordManaged")
     owner: Optional[ListApplications200ResponseInnerOwner] = None
-    date_created: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="dateCreated")
-    last_updated: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="lastUpdated")
-    default_access_profile: Optional[Dict[str, Any]] = Field(None, alias="defaultAccessProfile")
+    date_created: Optional[Union[StrictFloat,
+                                 StrictInt]] = Field(None, alias="dateCreated")
+    last_updated: Optional[Union[StrictFloat,
+                                 StrictInt]] = Field(None, alias="lastUpdated")
+    default_access_profile: Optional[Dict[str, Any]] = Field(
+        None, alias="defaultAccessProfile")
     service: Optional[StrictStr] = None
-    selected_sso_method: Optional[StrictStr] = Field(None, alias="selectedSsoMethod")
-    supported_sso_methods: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="supportedSsoMethods")
-    off_network_blocked_roles: Optional[Dict[str, Any]] = Field(None, alias="offNetworkBlockedRoles")
-    supported_off_network: Optional[StrictStr] = Field(None, alias="supportedOffNetwork")
-    account_service_id: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="accountServiceId")
-    launcher_count: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="launcherCount")
-    account_service_name: Optional[StrictStr] = Field(None, alias="accountServiceName")
-    account_service_external_id: Optional[StrictStr] = Field(None, alias="accountServiceExternalId")
-    account_service_match_all_accounts: Optional[StrictBool] = Field(None, alias="accountServiceMatchAllAccounts")
+    selected_sso_method: Optional[StrictStr] = Field(None,
+                                                     alias="selectedSsoMethod")
+    supported_sso_methods: Optional[Union[StrictFloat, StrictInt]] = Field(
+        None, alias="supportedSsoMethods")
+    off_network_blocked_roles: Optional[Dict[str, Any]] = Field(
+        None, alias="offNetworkBlockedRoles")
+    supported_off_network: Optional[StrictStr] = Field(
+        None, alias="supportedOffNetwork")
+    account_service_id: Optional[Union[StrictFloat, StrictInt]] = Field(
+        None, alias="accountServiceId")
+    launcher_count: Optional[Union[StrictFloat,
+                                   StrictInt]] = Field(None,
+                                                       alias="launcherCount")
+    account_service_name: Optional[StrictStr] = Field(
+        None, alias="accountServiceName")
+    account_service_external_id: Optional[StrictStr] = Field(
+        None, alias="accountServiceExternalId")
+    account_service_match_all_accounts: Optional[StrictBool] = Field(
+        None, alias="accountServiceMatchAllAccounts")
     external_id: Optional[StrictStr] = Field(None, alias="externalId")
-    account_service_use_for_password_management: Optional[StrictBool] = Field(None, alias="accountServiceUseForPasswordManagement")
-    account_service_policy_id: Optional[StrictStr] = Field(None, alias="accountServicePolicyId")
-    account_service_policy_name: Optional[StrictStr] = Field(None, alias="accountServicePolicyName")
-    require_strong_authn: Optional[StrictBool] = Field(None, alias="requireStrongAuthn")
-    account_service_policies: Optional[conlist(ListApplications200ResponseInnerAccountServicePoliciesInner)] = Field(None, alias="accountServicePolicies")
+    account_service_use_for_password_management: Optional[StrictBool] = Field(
+        None, alias="accountServiceUseForPasswordManagement")
+    account_service_policy_id: Optional[StrictStr] = Field(
+        None, alias="accountServicePolicyId")
+    account_service_policy_name: Optional[StrictStr] = Field(
+        None, alias="accountServicePolicyName")
+    require_strong_authn: Optional[StrictBool] = Field(
+        None, alias="requireStrongAuthn")
+    account_service_policies: Optional[conlist(
+        ListApplications200ResponseInnerAccountServicePoliciesInner)] = Field(
+            None, alias="accountServicePolicies")
     xsd_version: Optional[StrictStr] = Field(None, alias="xsdVersion")
-    app_profiles: Optional[conlist(ListApplications200ResponseInnerAppProfilesInner)] = Field(None, alias="appProfiles")
-    password_service_id: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="passwordServiceId")
-    access_profile_ids: Optional[Dict[str, Any]] = Field(None, alias="accessProfileIds")
-    __properties = ["id", "appId", "serviceId", "serviceAppId", "name", "description", "appCenterEnabled", "provisionRequestEnabled", "controlType", "mobile", "privateApp", "scriptName", "status", "icon", "health", "enableSso", "ssoMethod", "hasLinks", "hasAutomations", "stepUpAuthData", "stepUpAuthType", "usageAnalytics", "usageCertRequired", "usageCertText", "launchpadEnabled", "passwordManaged", "owner", "dateCreated", "lastUpdated", "defaultAccessProfile", "service", "selectedSsoMethod", "supportedSsoMethods", "offNetworkBlockedRoles", "supportedOffNetwork", "accountServiceId", "launcherCount", "accountServiceName", "accountServiceExternalId", "accountServiceMatchAllAccounts", "externalId", "accountServiceUseForPasswordManagement", "accountServicePolicyId", "accountServicePolicyName", "requireStrongAuthn", "accountServicePolicies", "xsdVersion", "appProfiles", "passwordServiceId", "accessProfileIds"]
+    app_profiles: Optional[conlist(
+        ListApplications200ResponseInnerAppProfilesInner)] = Field(
+            None, alias="appProfiles")
+    password_service_id: Optional[Union[StrictFloat, StrictInt]] = Field(
+        None, alias="passwordServiceId")
+    access_profile_ids: Optional[Dict[str,
+                                      Any]] = Field(None,
+                                                    alias="accessProfileIds")
+    __properties = [
+        "id", "appId", "serviceId", "serviceAppId", "name", "description",
+        "appCenterEnabled", "provisionRequestEnabled", "controlType", "mobile",
+        "privateApp", "scriptName", "status", "icon", "health", "enableSso",
+        "ssoMethod", "hasLinks", "hasAutomations", "stepUpAuthData",
+        "stepUpAuthType", "usageAnalytics", "usageCertRequired",
+        "usageCertText", "launchpadEnabled", "passwordManaged", "owner",
+        "dateCreated", "lastUpdated", "defaultAccessProfile", "service",
+        "selectedSsoMethod", "supportedSsoMethods", "offNetworkBlockedRoles",
+        "supportedOffNetwork", "accountServiceId", "launcherCount",
+        "accountServiceName", "accountServiceExternalId",
+        "accountServiceMatchAllAccounts", "externalId",
+        "accountServiceUseForPasswordManagement", "accountServicePolicyId",
+        "accountServicePolicyName", "requireStrongAuthn",
+        "accountServicePolicies", "xsdVersion", "appProfiles",
+        "passwordServiceId", "accessProfileIds"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -101,10 +148,7 @@ class GetApplication200Response(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of health
         if self.health:
             _dict['health'] = self.health.to_dict()
@@ -137,57 +181,111 @@ class GetApplication200Response(BaseModel):
             return GetApplication200Response.parse_obj(obj)
 
         _obj = GetApplication200Response.parse_obj({
-            "id": obj.get("id"),
-            "app_id": obj.get("appId"),
-            "service_id": obj.get("serviceId"),
-            "service_app_id": obj.get("serviceAppId"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "app_center_enabled": obj.get("appCenterEnabled"),
-            "provision_request_enabled": obj.get("provisionRequestEnabled"),
-            "control_type": obj.get("controlType"),
-            "mobile": obj.get("mobile"),
-            "private_app": obj.get("privateApp"),
-            "script_name": obj.get("scriptName"),
-            "status": obj.get("status"),
-            "icon": obj.get("icon"),
-            "health": ListApplications200ResponseInnerHealth.from_dict(obj.get("health")) if obj.get("health") is not None else None,
-            "enable_sso": obj.get("enableSso"),
-            "sso_method": obj.get("ssoMethod"),
-            "has_links": obj.get("hasLinks"),
-            "has_automations": obj.get("hasAutomations"),
-            "step_up_auth_data": obj.get("stepUpAuthData"),
-            "step_up_auth_type": obj.get("stepUpAuthType"),
-            "usage_analytics": obj.get("usageAnalytics"),
-            "usage_cert_required": obj.get("usageCertRequired"),
-            "usage_cert_text": obj.get("usageCertText"),
-            "launchpad_enabled": obj.get("launchpadEnabled"),
-            "password_managed": obj.get("passwordManaged"),
-            "owner": ListApplications200ResponseInnerOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "date_created": obj.get("dateCreated"),
-            "last_updated": obj.get("lastUpdated"),
-            "default_access_profile": obj.get("defaultAccessProfile"),
-            "service": obj.get("service"),
-            "selected_sso_method": obj.get("selectedSsoMethod"),
-            "supported_sso_methods": obj.get("supportedSsoMethods"),
-            "off_network_blocked_roles": obj.get("offNetworkBlockedRoles"),
-            "supported_off_network": obj.get("supportedOffNetwork"),
-            "account_service_id": obj.get("accountServiceId"),
-            "launcher_count": obj.get("launcherCount"),
-            "account_service_name": obj.get("accountServiceName"),
-            "account_service_external_id": obj.get("accountServiceExternalId"),
-            "account_service_match_all_accounts": obj.get("accountServiceMatchAllAccounts"),
-            "external_id": obj.get("externalId"),
-            "account_service_use_for_password_management": obj.get("accountServiceUseForPasswordManagement"),
-            "account_service_policy_id": obj.get("accountServicePolicyId"),
-            "account_service_policy_name": obj.get("accountServicePolicyName"),
-            "require_strong_authn": obj.get("requireStrongAuthn"),
-            "account_service_policies": [ListApplications200ResponseInnerAccountServicePoliciesInner.from_dict(_item) for _item in obj.get("accountServicePolicies")] if obj.get("accountServicePolicies") is not None else None,
-            "xsd_version": obj.get("xsdVersion"),
-            "app_profiles": [ListApplications200ResponseInnerAppProfilesInner.from_dict(_item) for _item in obj.get("appProfiles")] if obj.get("appProfiles") is not None else None,
-            "password_service_id": obj.get("passwordServiceId"),
-            "access_profile_ids": obj.get("accessProfileIds")
+            "id":
+            obj.get("id"),
+            "app_id":
+            obj.get("appId"),
+            "service_id":
+            obj.get("serviceId"),
+            "service_app_id":
+            obj.get("serviceAppId"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "app_center_enabled":
+            obj.get("appCenterEnabled"),
+            "provision_request_enabled":
+            obj.get("provisionRequestEnabled"),
+            "control_type":
+            obj.get("controlType"),
+            "mobile":
+            obj.get("mobile"),
+            "private_app":
+            obj.get("privateApp"),
+            "script_name":
+            obj.get("scriptName"),
+            "status":
+            obj.get("status"),
+            "icon":
+            obj.get("icon"),
+            "health":
+            ListApplications200ResponseInnerHealth.from_dict(obj.get("health"))
+            if obj.get("health") is not None else None,
+            "enable_sso":
+            obj.get("enableSso"),
+            "sso_method":
+            obj.get("ssoMethod"),
+            "has_links":
+            obj.get("hasLinks"),
+            "has_automations":
+            obj.get("hasAutomations"),
+            "step_up_auth_data":
+            obj.get("stepUpAuthData"),
+            "step_up_auth_type":
+            obj.get("stepUpAuthType"),
+            "usage_analytics":
+            obj.get("usageAnalytics"),
+            "usage_cert_required":
+            obj.get("usageCertRequired"),
+            "usage_cert_text":
+            obj.get("usageCertText"),
+            "launchpad_enabled":
+            obj.get("launchpadEnabled"),
+            "password_managed":
+            obj.get("passwordManaged"),
+            "owner":
+            ListApplications200ResponseInnerOwner.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "date_created":
+            obj.get("dateCreated"),
+            "last_updated":
+            obj.get("lastUpdated"),
+            "default_access_profile":
+            obj.get("defaultAccessProfile"),
+            "service":
+            obj.get("service"),
+            "selected_sso_method":
+            obj.get("selectedSsoMethod"),
+            "supported_sso_methods":
+            obj.get("supportedSsoMethods"),
+            "off_network_blocked_roles":
+            obj.get("offNetworkBlockedRoles"),
+            "supported_off_network":
+            obj.get("supportedOffNetwork"),
+            "account_service_id":
+            obj.get("accountServiceId"),
+            "launcher_count":
+            obj.get("launcherCount"),
+            "account_service_name":
+            obj.get("accountServiceName"),
+            "account_service_external_id":
+            obj.get("accountServiceExternalId"),
+            "account_service_match_all_accounts":
+            obj.get("accountServiceMatchAllAccounts"),
+            "external_id":
+            obj.get("externalId"),
+            "account_service_use_for_password_management":
+            obj.get("accountServiceUseForPasswordManagement"),
+            "account_service_policy_id":
+            obj.get("accountServicePolicyId"),
+            "account_service_policy_name":
+            obj.get("accountServicePolicyName"),
+            "require_strong_authn":
+            obj.get("requireStrongAuthn"),
+            "account_service_policies": [
+                ListApplications200ResponseInnerAccountServicePoliciesInner.
+                from_dict(_item) for _item in obj.get("accountServicePolicies")
+            ] if obj.get("accountServicePolicies") is not None else None,
+            "xsd_version":
+            obj.get("xsdVersion"),
+            "app_profiles": [
+                ListApplications200ResponseInnerAppProfilesInner.from_dict(
+                    _item) for _item in obj.get("appProfiles")
+            ] if obj.get("appProfiles") is not None else None,
+            "password_service_id":
+            obj.get("passwordServiceId"),
+            "access_profile_ids":
+            obj.get("accessProfileIds")
         })
         return _obj
-
-

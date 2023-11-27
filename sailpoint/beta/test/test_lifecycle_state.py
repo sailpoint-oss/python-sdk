@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.lifecycle_state import LifecycleState  # noqa: E501
+from sailpoint.beta.models.lifecycle_state import LifecycleState  # noqa: E501
+
 
 class TestLifecycleState(unittest.TestCase):
     """LifecycleState unit test stubs"""
@@ -44,13 +44,13 @@ class TestLifecycleState(unittest.TestCase):
                 modified = '2015-05-28T14:07:17Z',
                 enabled = True,
                 identity_count = 12,
-                email_notification_option = beta.models.email_notification_option.EmailNotificationOption(
+                email_notification_option = sailpoint.beta.models.email_notification_option.EmailNotificationOption(
                     notify_managers = True, 
                     notify_all_admins = True, 
                     notify_specific_users = True, 
                     email_address_list = [test@test.com, test2@test.com], ),
                 account_actions = [
-                    beta.models.account_action.AccountAction(
+                    sailpoint.beta.models.account_action.AccountAction(
                         action = 'ENABLE', 
                         source_ids = [2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500], )
                     ],
@@ -65,6 +65,7 @@ class TestLifecycleState(unittest.TestCase):
         """Test LifecycleState"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

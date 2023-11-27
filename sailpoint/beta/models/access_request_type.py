@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class AccessRequestType(str, Enum):
     """
     Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type can only have a single Identity ID in the requestedFor field.
     """
-
     """
     allowed enum values
     """
@@ -36,5 +31,3 @@ class AccessRequestType(str, Enum):
     def from_json(cls, json_str: str) -> AccessRequestType:
         """Create an instance of AccessRequestType from a JSON string"""
         return AccessRequestType(json.loads(json_str))
-
-

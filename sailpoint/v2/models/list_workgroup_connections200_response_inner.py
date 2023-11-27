@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class ListWorkgroupConnections200ResponseInner(BaseModel):
     """
@@ -31,7 +30,10 @@ class ListWorkgroupConnections200ResponseInner(BaseModel):
     object_id: Optional[StrictStr] = Field(None, alias="objectId")
     object_type: Optional[StrictStr] = Field(None, alias="objectType")
     workgroup_id: Optional[StrictStr] = Field(None, alias="workgroupId")
-    __properties = ["connectionType", "description", "name", "objectId", "objectType", "workgroupId"]
+    __properties = [
+        "connectionType", "description", "name", "objectId", "objectType",
+        "workgroupId"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -47,16 +49,14 @@ class ListWorkgroupConnections200ResponseInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ListWorkgroupConnections200ResponseInner:
+    def from_json(cls,
+                  json_str: str) -> ListWorkgroupConnections200ResponseInner:
         """Create an instance of ListWorkgroupConnections200ResponseInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,13 +69,17 @@ class ListWorkgroupConnections200ResponseInner(BaseModel):
             return ListWorkgroupConnections200ResponseInner.parse_obj(obj)
 
         _obj = ListWorkgroupConnections200ResponseInner.parse_obj({
-            "connection_type": obj.get("connectionType"),
-            "description": obj.get("description"),
-            "name": obj.get("name"),
-            "object_id": obj.get("objectId"),
-            "object_type": obj.get("objectType"),
-            "workgroup_id": obj.get("workgroupId")
+            "connection_type":
+            obj.get("connectionType"),
+            "description":
+            obj.get("description"),
+            "name":
+            obj.get("name"),
+            "object_id":
+            obj.get("objectId"),
+            "object_type":
+            obj.get("objectType"),
+            "workgroup_id":
+            obj.get("workgroupId")
         })
         return _obj
-
-

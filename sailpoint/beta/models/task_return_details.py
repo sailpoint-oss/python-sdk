@@ -11,22 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr
+
 
 class TaskReturnDetails(BaseModel):
     """
     Task return details  # noqa: E501
     """
-    name: StrictStr = Field(..., description="Display name of the TaskReturnDetails")
-    attribute_name: StrictStr = Field(..., alias="attributeName", description="Attribute the TaskReturnDetails is for")
+    name: StrictStr = Field(
+        ..., description="Display name of the TaskReturnDetails")
+    attribute_name: StrictStr = Field(
+        ...,
+        alias="attributeName",
+        description="Attribute the TaskReturnDetails is for")
     __properties = ["name", "attributeName"]
 
     class Config:
@@ -49,10 +51,7 @@ class TaskReturnDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +64,9 @@ class TaskReturnDetails(BaseModel):
             return TaskReturnDetails.parse_obj(obj)
 
         _obj = TaskReturnDetails.parse_obj({
-            "name": obj.get("name"),
-            "attribute_name": obj.get("attributeName")
+            "name":
+            obj.get("name"),
+            "attribute_name":
+            obj.get("attributeName")
         })
         return _obj
-
-

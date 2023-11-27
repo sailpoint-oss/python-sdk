@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.type_ahead_query import TypeAheadQuery
+from sailpoint.v3.models.type_ahead_query import TypeAheadQuery
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from v3.api.scheduled_search_api import ScheduledSearchApi  # noqa: E501
+from sailpoint.v3.api.scheduled_search_api import ScheduledSearchApi  # noqa: E501
 
 
 class TestScheduledSearchApi(unittest.TestCase):

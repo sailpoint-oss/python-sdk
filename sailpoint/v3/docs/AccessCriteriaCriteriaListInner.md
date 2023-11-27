@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
+from sailpoint.v3.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
 
 # TODO update the JSON string below
 json = "{}"

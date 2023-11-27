@@ -1,4 +1,4 @@
-# beta.SPConfigApi
+# sailpoint.beta.SPConfigApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -27,15 +27,15 @@ This post will export objects from the tenant to a JSON configuration file. For 
 ```python
 import time
 import os
-import beta
-from beta.models.export_payload import ExportPayload
-from beta.models.sp_config_job import SpConfigJob
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.export_payload import ExportPayload
+from sailpoint.beta.models.sp_config_job import SpConfigJob
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -49,9 +49,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SPConfigApi(api_client)
+    api_instance = sailpoint.beta.SPConfigApi(api_client)
     export_payload = {description=Export all available objects, excludeTypes=[], includeTypes=[ACCESS_PROFILE, ACCESS_REQUEST_CONFIG, ATTR_SYNC_SOURCE_CONFIG, AUTH_ORG, CAMPAIGN_FILTER, FORM_DEFINITION, GOVERNANCE_GROUP, IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, LIFECYCLE_STATE, NOTIFICATION_TEMPLATE, PASSWORD_POLICY, PASSWORD_SYNC_GROUP, PUBLIC_IDENTITIES_CONFIG, ROLE, RULE, SEGMENT, SERVICE_DESK_INTEGRATION, SOD_POLICY, SOURCE, TAG, TRANSFORM, TRIGGER_SUBSCRIPTION, WORKFLOW], objectOptions={}} # ExportPayload | Export options control what will be included in the export.
 
     try:
@@ -111,14 +111,14 @@ This endpoint gets the export file resulting from the export job with the reques
 ```python
 import time
 import os
-import beta
-from beta.models.sp_config_export_results import SpConfigExportResults
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.sp_config_export_results import SpConfigExportResults
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -132,9 +132,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SPConfigApi(api_client)
+    api_instance = sailpoint.beta.SPConfigApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the export job whose results will be downloaded.
 
     try:
@@ -194,14 +194,14 @@ This gets the status of the export job identified by the `id` parameter. The req
 ```python
 import time
 import os
-import beta
-from beta.models.sp_config_job import SpConfigJob
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.sp_config_job import SpConfigJob
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -215,9 +215,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SPConfigApi(api_client)
+    api_instance = sailpoint.beta.SPConfigApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the export job whose status will be returned.
 
     try:
@@ -277,14 +277,14 @@ This gets import file resulting from the import job with the requested id and do
 ```python
 import time
 import os
-import beta
-from beta.models.sp_config_import_results import SpConfigImportResults
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.sp_config_import_results import SpConfigImportResults
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -298,9 +298,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SPConfigApi(api_client)
+    api_instance = sailpoint.beta.SPConfigApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the import job whose results will be downloaded.
 
     try:
@@ -360,14 +360,14 @@ This gets the status of the import job identified by the `id` parameter. For mor
 ```python
 import time
 import os
-import beta
-from beta.models.sp_config_job import SpConfigJob
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.sp_config_job import SpConfigJob
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -381,9 +381,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SPConfigApi(api_client)
+    api_instance = sailpoint.beta.SPConfigApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the import job whose status will be returned.
 
     try:
@@ -443,15 +443,15 @@ This post will import objects from a JSON configuration file into a tenant. By d
 ```python
 import time
 import os
-import beta
-from beta.models.import_options import ImportOptions
-from beta.models.sp_config_job import SpConfigJob
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.import_options import ImportOptions
+from sailpoint.beta.models.sp_config_job import SpConfigJob
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -465,12 +465,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SPConfigApi(api_client)
+    api_instance = sailpoint.beta.SPConfigApi(api_client)
     data = None # bytearray | JSON file containing the objects to be imported.
     preview = False # bool | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. (optional) (default to False)
-    options = beta.ImportOptions() # ImportOptions |  (optional)
+    options = sailpoint.beta.ImportOptions() # ImportOptions |  (optional)
 
     try:
         # Initiates configuration objects import job
@@ -531,14 +531,14 @@ This gets the list of object configurations which are known to the tenant export
 ```python
 import time
 import os
-import beta
-from beta.models.sp_config_object import SpConfigObject
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.sp_config_object import SpConfigObject
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -552,9 +552,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SPConfigApi(api_client)
+    api_instance = sailpoint.beta.SPConfigApi(api_client)
 
     try:
         # Get config object details

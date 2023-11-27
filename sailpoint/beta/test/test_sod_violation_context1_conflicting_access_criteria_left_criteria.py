@@ -11,13 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.sod_violation_context1_conflicting_access_criteria_left_criteria import SodViolationContext1ConflictingAccessCriteriaLeftCriteria  # noqa: E501
+from sailpoint.beta.models.sod_violation_context1_conflicting_access_criteria_left_criteria import SodViolationContext1ConflictingAccessCriteriaLeftCriteria  # noqa: E501
 
-class TestSodViolationContext1ConflictingAccessCriteriaLeftCriteria(unittest.TestCase):
+
+class TestSodViolationContext1ConflictingAccessCriteriaLeftCriteria(
+        unittest.TestCase):
     """SodViolationContext1ConflictingAccessCriteriaLeftCriteria unit test stubs"""
 
     def setUp(self):
@@ -26,7 +27,9 @@ class TestSodViolationContext1ConflictingAccessCriteriaLeftCriteria(unittest.Tes
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SodViolationContext1ConflictingAccessCriteriaLeftCriteria:
+    def make_instance(
+        self, include_optional
+    ) -> SodViolationContext1ConflictingAccessCriteriaLeftCriteria:
         """Test SodViolationContext1ConflictingAccessCriteriaLeftCriteria
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -37,7 +40,7 @@ class TestSodViolationContext1ConflictingAccessCriteriaLeftCriteria(unittest.Tes
         if include_optional:
             return SodViolationContext1ConflictingAccessCriteriaLeftCriteria(
                 criteria_list = [
-                    beta.models.sod_exempt_criteria_1.SodExemptCriteria_1(
+                    sailpoint.beta.models.sod_exempt_criteria_1.SodExemptCriteria_1(
                         existing = True, 
                         type = 'IDENTITY', 
                         id = '2c918085771e9d3301773b3cb66f6398', 
@@ -53,6 +56,7 @@ class TestSodViolationContext1ConflictingAccessCriteriaLeftCriteria(unittest.Tes
         """Test SodViolationContext1ConflictingAccessCriteriaLeftCriteria"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

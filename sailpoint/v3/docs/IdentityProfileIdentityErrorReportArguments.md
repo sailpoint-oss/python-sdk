@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.identity_profile_identity_error_report_arguments import IdentityProfileIdentityErrorReportArguments
+from sailpoint.v3.models.identity_profile_identity_error_report_arguments import IdentityProfileIdentityErrorReportArguments
 
 # TODO update the JSON string below
 json = "{}"

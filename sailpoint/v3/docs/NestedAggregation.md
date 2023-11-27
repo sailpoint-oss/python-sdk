@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.nested_aggregation import NestedAggregation
+from sailpoint.v3.models.nested_aggregation import NestedAggregation
 
 # TODO update the JSON string below
 json = "{}"

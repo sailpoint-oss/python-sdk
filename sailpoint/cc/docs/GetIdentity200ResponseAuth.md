@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.get_identity200_response_auth import GetIdentity200ResponseAuth
+from sailpoint.cc.models.get_identity200_response_auth import GetIdentity200ResponseAuth
 
 # TODO update the JSON string below
 json = "{}"

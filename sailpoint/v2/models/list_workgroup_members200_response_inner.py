@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
+
 
 class ListWorkgroupMembers200ResponseInner(BaseModel):
     """
@@ -52,10 +51,7 @@ class ListWorkgroupMembers200ResponseInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -68,12 +64,15 @@ class ListWorkgroupMembers200ResponseInner(BaseModel):
             return ListWorkgroupMembers200ResponseInner.parse_obj(obj)
 
         _obj = ListWorkgroupMembers200ResponseInner.parse_obj({
-            "alias": obj.get("alias"),
-            "email": obj.get("email"),
-            "external_id": obj.get("externalId"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "alias":
+            obj.get("alias"),
+            "email":
+            obj.get("email"),
+            "external_id":
+            obj.get("externalId"),
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name")
         })
         return _obj
-
-

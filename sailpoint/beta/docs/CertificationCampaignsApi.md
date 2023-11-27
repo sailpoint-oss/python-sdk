@@ -1,4 +1,4 @@
-# beta.CertificationCampaignsApi
+# sailpoint.beta.CertificationCampaignsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -42,14 +42,14 @@ Complete a Campaign
 ```python
 import time
 import os
-import beta
-from beta.models.complete_campaign_options import CompleteCampaignOptions
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.complete_campaign_options import CompleteCampaignOptions
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -63,11 +63,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The campaign id
-    complete_campaign_options = beta.CompleteCampaignOptions() # CompleteCampaignOptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE (optional)
+    complete_campaign_options = sailpoint.beta.CompleteCampaignOptions() # CompleteCampaignOptions | Optional. Default behavior is for the campaign to auto-approve upon completion, unless autoCompleteAction=REVOKE (optional)
 
     try:
         # Complete a Campaign
@@ -127,14 +127,14 @@ Creates a new Certification Campaign with the information provided in the reques
 ```python
 import time
 import os
-import beta
-from beta.models.campaign import Campaign
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.campaign import Campaign
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -148,10 +148,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
-    campaign = beta.Campaign() # Campaign | 
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
+    campaign = sailpoint.beta.Campaign() # Campaign | 
 
     try:
         # Create a campaign
@@ -209,14 +209,14 @@ Create a campaign Template based on campaign.
 ```python
 import time
 import os
-import beta
-from beta.models.campaign_template import CampaignTemplate
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.campaign_template import CampaignTemplate
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -230,10 +230,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
-    campaign_template = beta.CampaignTemplate() # CampaignTemplate | 
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
+    campaign_template = sailpoint.beta.CampaignTemplate() # CampaignTemplate | 
 
     try:
         # Create a Campaign Template
@@ -291,13 +291,13 @@ Deletes a campaign template by ID.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -311,9 +311,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The ID of the campaign template being deleted.
 
     try:
@@ -371,13 +371,13 @@ Deletes the schedule for a campaign template. Returns a 404 if there is no sched
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -391,9 +391,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | The ID of the campaign template whose schedule is being deleted.
 
     try:
@@ -451,14 +451,14 @@ Deletes campaigns whose Ids are specified in the provided list of campaign Ids. 
 ```python
 import time
 import os
-import beta
-from beta.models.delete_campaigns_request import DeleteCampaignsRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.delete_campaigns_request import DeleteCampaignsRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -472,10 +472,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
-    delete_campaigns_request = beta.DeleteCampaignsRequest() # DeleteCampaignsRequest | The ids of the campaigns to delete.
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
+    delete_campaigns_request = sailpoint.beta.DeleteCampaignsRequest() # DeleteCampaignsRequest | The ids of the campaigns to delete.
 
     try:
         # Deletes Campaigns
@@ -534,14 +534,14 @@ Gets campaigns and returns them in a list. Can provide increased level of detail
 ```python
 import time
 import os
-import beta
-from beta.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -555,9 +555,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     detail = 'FULL' # str | Determines whether slim, or increased level of detail is provided for each campaign in the returned list. Slim is the default behavior. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -626,14 +626,14 @@ Retrieves information for an existing campaign using the campaign's ID. Authoriz
 ```python
 import time
 import os
-import beta
-from beta.models.slimcampaign import Slimcampaign
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.slimcampaign import Slimcampaign
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -647,9 +647,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = '2c91808571bcfcf80171c23e4b4221fc' # str | The ID of the campaign to be retrieved
 
     try:
@@ -709,14 +709,14 @@ Fetches all reports for a certification campaign by campaign ID. Requires roles 
 ```python
 import time
 import os
-import beta
-from beta.models.campaign_report import CampaignReport
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.campaign_report import CampaignReport
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -730,9 +730,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = '2c91808571bcfcf80171c23e4b4221fc' # str | The ID of the campaign for which reports are being fetched.
 
     try:
@@ -792,14 +792,14 @@ Fetches configuration for campaign reports. Currently it includes only one eleme
 ```python
 import time
 import os
-import beta
-from beta.models.campaign_reports_config import CampaignReportsConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.campaign_reports_config import CampaignReportsConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -813,9 +813,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
 
     try:
         # Get Campaign Reports Configuration
@@ -870,14 +870,14 @@ Fetches a campaign template by ID.
 ```python
 import time
 import os
-import beta
-from beta.models.campaign_template import CampaignTemplate
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.campaign_template import CampaignTemplate
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -891,9 +891,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The desired campaign template's ID.
 
     try:
@@ -953,14 +953,14 @@ Gets the schedule for a campaign template. Returns a 404 if there is no schedule
 ```python
 import time
 import os
-import beta
-from beta.models.schedule import Schedule
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.schedule import Schedule
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -974,9 +974,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | The ID of the campaign template whose schedule is being fetched.
 
     try:
@@ -1036,14 +1036,14 @@ Lists all CampaignTemplates. Scope can be reduced via standard V3 query params. 
 ```python
 import time
 import os
-import beta
-from beta.models.campaign_template import CampaignTemplate
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.campaign_template import CampaignTemplate
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1057,9 +1057,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -1126,15 +1126,15 @@ This API reassigns the specified certifications from one identity to another. A 
 ```python
 import time
 import os
-import beta
-from beta.models.admin_review_reassign import AdminReviewReassign
-from beta.models.certification_task import CertificationTask
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.admin_review_reassign import AdminReviewReassign
+from sailpoint.beta.models.certification_task import CertificationTask
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1148,11 +1148,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The certification campaign ID
-    admin_review_reassign = beta.AdminReviewReassign() # AdminReviewReassign | 
+    admin_review_reassign = sailpoint.beta.AdminReviewReassign() # AdminReviewReassign | 
 
     try:
         # Reassign Certifications
@@ -1212,15 +1212,15 @@ Allows updating individual fields on a campaign template using the [JSON Patch](
 ```python
 import time
 import os
-import beta
-from beta.models.campaign_template import CampaignTemplate
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.campaign_template import CampaignTemplate
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1234,9 +1234,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The ID of the campaign template being modified.
     json_patch_operation = [{op=replace, path=/description, value=Updated description!}, {op=replace, path=/campaign/filter/id, value=ff80818155fe8c080155fe8d925b0316}] # List[JsonPatchOperation] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
 
@@ -1298,14 +1298,14 @@ Overwrites configuration for campaign reports. Requires roles CERT_ADMIN and ORG
 ```python
 import time
 import os
-import beta
-from beta.models.campaign_reports_config import CampaignReportsConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.campaign_reports_config import CampaignReportsConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1319,10 +1319,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
-    campaign_reports_config = beta.CampaignReportsConfig() # CampaignReportsConfig | Campaign Report Configuration
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
+    campaign_reports_config = sailpoint.beta.CampaignReportsConfig() # CampaignReportsConfig | Campaign Report Configuration
 
     try:
         # Set Campaign Reports Configuration
@@ -1380,14 +1380,14 @@ Sets the schedule for a campaign template. If a schedule already exists, it will
 ```python
 import time
 import os
-import beta
-from beta.models.schedule import Schedule
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.schedule import Schedule
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1401,9 +1401,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = '04bedce387bd47b2ae1f86eb0bb36dee' # str | The ID of the campaign template being scheduled.
     schedule = {type=MONTHLY, hours={type=LIST, values=[17]}, days={type=LIST, values=[15]}} # Schedule |  (optional)
 
@@ -1463,14 +1463,14 @@ Submits a job to activate the campaign with the given Id. The campaign must be s
 ```python
 import time
 import os
-import beta
-from beta.models.activate_campaign_options import ActivateCampaignOptions
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.activate_campaign_options import ActivateCampaignOptions
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1484,11 +1484,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The campaign id
-    activate_campaign_options = beta.ActivateCampaignOptions() # ActivateCampaignOptions | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
+    activate_campaign_options = sailpoint.beta.ActivateCampaignOptions() # ActivateCampaignOptions | Optional. If no timezone is specified, the standard UTC timezone is used (i.e. UTC+00:00). Although this can take any timezone, the intended value is the caller's timezone. The activation time calculated from the given timezone may cause the campaign deadline time to be modified, but it will remain within the original date. The timezone must be in a valid ISO 8601 format. (optional)
 
     try:
         # Activate a Campaign
@@ -1548,13 +1548,13 @@ Kicks off remediation scan task for a certification campaign. Requires roles of 
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1568,9 +1568,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = '2c91808571bcfcf80171c23e4b4221fc' # str | The ID of the campaign for which remediation scan is being run.
 
     try:
@@ -1630,14 +1630,14 @@ Runs a report for a certification campaign. Requires the following roles: CERT_A
 ```python
 import time
 import os
-import beta
-from beta.models.report_type import ReportType
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.report_type import ReportType
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1651,11 +1651,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = '2c91808571bcfcf80171c23e4b4221fc' # str | The ID of the campaign for which report is being run.
-    type = beta.ReportType() # ReportType | The type of the report to run.
+    type = sailpoint.beta.ReportType() # ReportType | The type of the report to run.
 
     try:
         # Run Campaign Report
@@ -1715,14 +1715,14 @@ Generates a new campaign from a campaign template. The campaign object contained
 ```python
 import time
 import os
-import beta
-from beta.models.campaign_reference import CampaignReference
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.campaign_reference import CampaignReference
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1736,9 +1736,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The ID of the campaign template to use for generation.
 
     try:
@@ -1797,14 +1797,14 @@ Allows updating individual fields on a campaign using the [JSON Patch](https://t
 ```python
 import time
 import os
-import beta
-from beta.models.slimcampaign import Slimcampaign
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.slimcampaign import Slimcampaign
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1818,9 +1818,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationCampaignsApi(api_client)
+    api_instance = sailpoint.beta.CertificationCampaignsApi(api_client)
     id = '2c91808571bcfcf80171c23e4b4221fc' # str | The ID of the campaign template being modified.
     request_body = [{op=replace, path=/name, value=This field has been updated!}, {op=copy, from=/name, path=/description}] # List[object] | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline 
 

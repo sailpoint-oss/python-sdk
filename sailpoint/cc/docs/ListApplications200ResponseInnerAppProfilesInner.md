@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.list_applications200_response_inner_app_profiles_inner import ListApplications200ResponseInnerAppProfilesInner
+from sailpoint.cc.models.list_applications200_response_inner_app_profiles_inner import ListApplications200ResponseInnerAppProfilesInner
 
 # TODO update the JSON string below
 json = "{}"

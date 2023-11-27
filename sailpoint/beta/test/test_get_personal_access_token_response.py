@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.get_personal_access_token_response import GetPersonalAccessTokenResponse  # noqa: E501
+from sailpoint.beta.models.get_personal_access_token_response import GetPersonalAccessTokenResponse  # noqa: E501
+
 
 class TestGetPersonalAccessTokenResponse(unittest.TestCase):
     """GetPersonalAccessTokenResponse unit test stubs"""
@@ -26,7 +26,8 @@ class TestGetPersonalAccessTokenResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> GetPersonalAccessTokenResponse:
+    def make_instance(self,
+                      include_optional) -> GetPersonalAccessTokenResponse:
         """Test GetPersonalAccessTokenResponse
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -39,7 +40,7 @@ class TestGetPersonalAccessTokenResponse(unittest.TestCase):
                 id = '86f1dc6fe8f54414950454cbb11278fa',
                 name = 'NodeJS Integration',
                 scope = [demo:personal-access-token-scope:first, demo:personal-access-token-scope:second],
-                owner = beta.models.pat_owner.PatOwner(
+                owner = sailpoint.beta.models.pat_owner.PatOwner(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Support', ),
@@ -51,7 +52,7 @@ class TestGetPersonalAccessTokenResponse(unittest.TestCase):
                 id = '86f1dc6fe8f54414950454cbb11278fa',
                 name = 'NodeJS Integration',
                 scope = [demo:personal-access-token-scope:first, demo:personal-access-token-scope:second],
-                owner = beta.models.pat_owner.PatOwner(
+                owner = sailpoint.beta.models.pat_owner.PatOwner(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Support', ),
@@ -63,6 +64,7 @@ class TestGetPersonalAccessTokenResponse(unittest.TestCase):
         """Test GetPersonalAccessTokenResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

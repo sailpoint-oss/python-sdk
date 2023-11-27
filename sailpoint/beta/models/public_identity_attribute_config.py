@@ -11,22 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class PublicIdentityAttributeConfig(BaseModel):
     """
     Used to map an attribute key for an Identity to its display name.  # noqa: E501
     """
-    key: Optional[StrictStr] = Field(None, description="the key of the attribute")
-    name: Optional[StrictStr] = Field(None, description="the display name of the attribute")
+    key: Optional[StrictStr] = Field(None,
+                                     description="the key of the attribute")
+    name: Optional[StrictStr] = Field(
+        None, description="the display name of the attribute")
     __properties = ["key", "name"]
 
     class Config:
@@ -49,10 +50,7 @@ class PublicIdentityAttributeConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,5 +67,3 @@ class PublicIdentityAttributeConfig(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

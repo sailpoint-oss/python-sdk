@@ -1,4 +1,4 @@
-# beta.PasswordSyncGroupsApi
+# sailpoint.beta.PasswordSyncGroupsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -25,14 +25,14 @@ This API creates a password sync group based on the specifications provided. A t
 ```python
 import time
 import os
-import beta
-from beta.models.password_sync_group import PasswordSyncGroup
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.password_sync_group import PasswordSyncGroup
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -46,9 +46,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.PasswordSyncGroupsApi(api_client)
+    api_instance = sailpoint.beta.PasswordSyncGroupsApi(api_client)
     password_sync_group = {name=Password Sync Group 2, passwordPolicyId=2c91808d744ba0ce01746f93b6204501, sourceIds=[2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500]} # PasswordSyncGroup | 
 
     try:
@@ -107,13 +107,13 @@ This API deletes the specified password sync group. A token with ORG_ADMIN autho
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -127,9 +127,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.PasswordSyncGroupsApi(api_client)
+    api_instance = sailpoint.beta.PasswordSyncGroupsApi(api_client)
     id = '6881f631-3bd5-4213-9c75-8e05cc3e35dd' # str | The ID of password sync group to delete.
 
     try:
@@ -186,14 +186,14 @@ This API returns the sync group for the specified ID. A token with ORG_ADMIN aut
 ```python
 import time
 import os
-import beta
-from beta.models.password_sync_group import PasswordSyncGroup
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.password_sync_group import PasswordSyncGroup
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -207,9 +207,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.PasswordSyncGroupsApi(api_client)
+    api_instance = sailpoint.beta.PasswordSyncGroupsApi(api_client)
     id = '6881f631-3bd5-4213-9c75-8e05cc3e35dd' # str | The ID of password sync group to retrieve.
 
     try:
@@ -269,14 +269,14 @@ This API returns a list of password sync groups. A token with ORG_ADMIN authorit
 ```python
 import time
 import os
-import beta
-from beta.models.password_sync_group import PasswordSyncGroup
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.password_sync_group import PasswordSyncGroup
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -290,9 +290,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.PasswordSyncGroupsApi(api_client)
+    api_instance = sailpoint.beta.PasswordSyncGroupsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -355,14 +355,14 @@ This API updates the specified password sync group. A token with ORG_ADMIN autho
 ```python
 import time
 import os
-import beta
-from beta.models.password_sync_group import PasswordSyncGroup
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.password_sync_group import PasswordSyncGroup
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -376,9 +376,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.PasswordSyncGroupsApi(api_client)
+    api_instance = sailpoint.beta.PasswordSyncGroupsApi(api_client)
     id = '6881f631-3bd5-4213-9c75-8e05cc3e35dd' # str | The ID of password sync group to update.
     password_sync_group = {id=6881f631-3bd5-4213-9c75-8e05cc3e35dd, name=Password Sync Group 2, passwordPolicyId=2c91808d744ba0ce01746f93b6204501, sourceIds=[2c918084660f45d6016617daa9210584, 2c918084660f45d6016617daa9210500]} # PasswordSyncGroup | 
 

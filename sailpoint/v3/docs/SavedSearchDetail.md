@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.saved_search_detail import SavedSearchDetail
+from sailpoint.v3.models.saved_search_detail import SavedSearchDetail
 
 # TODO update the JSON string below
 json = "{}"

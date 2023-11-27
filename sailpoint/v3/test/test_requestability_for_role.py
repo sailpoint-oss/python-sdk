@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.requestability_for_role import RequestabilityForRole  # noqa: E501
+from sailpoint.v3.models.requestability_for_role import RequestabilityForRole  # noqa: E501
+
 
 class TestRequestabilityForRole(unittest.TestCase):
     """RequestabilityForRole unit test stubs"""
@@ -39,7 +39,7 @@ class TestRequestabilityForRole(unittest.TestCase):
                 comments_required = True,
                 denial_comments_required = True,
                 approval_schemes = [
-                    v3.models.approval_scheme_for_role.ApprovalSchemeForRole(
+                    sailpoint.v3.models.approval_scheme_for_role.ApprovalSchemeForRole(
                         approver_type = 'GOVERNANCE_GROUP', 
                         approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                     ]
@@ -53,6 +53,7 @@ class TestRequestabilityForRole(unittest.TestCase):
         """Test RequestabilityForRole"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from cc.api.connectors_api import ConnectorsApi  # noqa: E501
+from sailpoint.cc.api.connectors_api import ConnectorsApi  # noqa: E501
 
 
 class TestConnectorsApi(unittest.TestCase):

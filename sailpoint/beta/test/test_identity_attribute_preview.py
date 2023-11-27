@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_attribute_preview import IdentityAttributePreview  # noqa: E501
+from sailpoint.beta.models.identity_attribute_preview import IdentityAttributePreview  # noqa: E501
+
 
 class TestIdentityAttributePreview(unittest.TestCase):
     """IdentityAttributePreview unit test stubs"""
@@ -40,7 +40,7 @@ class TestIdentityAttributePreview(unittest.TestCase):
                 value = email@mail.com,
                 previous_value = oldEmail@mail.com,
                 error_messages = [
-                    beta.models.error_message_dto.ErrorMessageDto(
+                    sailpoint.beta.models.error_message_dto.ErrorMessageDto(
                         locale = 'en-US', 
                         locale_origin = 'DEFAULT', 
                         text = 'The request was syntactically correct but its content is semantically invalid.', )
@@ -55,6 +55,7 @@ class TestIdentityAttributePreview(unittest.TestCase):
         """Test IdentityAttributePreview"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

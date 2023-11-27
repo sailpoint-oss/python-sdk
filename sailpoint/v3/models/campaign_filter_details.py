@@ -11,34 +11,48 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-from v3.models.campaign_filter_details_criteria_list_inner import CampaignFilterDetailsCriteriaListInner
+from sailpoint.v3.models.campaign_filter_details_criteria_list_inner import CampaignFilterDetailsCriteriaListInner
+
 
 class CampaignFilterDetails(BaseModel):
     """
     Campaign Filter Details  # noqa: E501
     """
-    id: Optional[StrictStr] = Field(None, description="Id of the campaign filter")
+    id: Optional[StrictStr] = Field(None,
+                                    description="Id of the campaign filter")
     name: StrictStr = Field(..., description="This is campaign filter's name.")
-    description: StrictStr = Field(..., description="This is campaign filter's description.")
-    owner: StrictStr = Field(..., description="The owner of this filter. This field is automatically populated at creation time with the current user.")
-    mode: Dict[str, Any] = Field(..., description="The mode/type of Filter, where it is of INCLUSION or EXCLUSION type. INCLUSION type will include the data in generated campaign  as per specified in criteria, whereas EXCLUSION type will exclude the the data in generated campaign as per specified in criteria.")
-    criteria_list: Optional[conlist(CampaignFilterDetailsCriteriaListInner)] = Field(None, alias="criteriaList", description="List of criteria.")
-    __properties = ["id", "name", "description", "owner", "mode", "criteriaList"]
+    description: StrictStr = Field(
+        ..., description="This is campaign filter's description.")
+    owner: StrictStr = Field(
+        ...,
+        description=
+        "The owner of this filter. This field is automatically populated at creation time with the current user."
+    )
+    mode: Dict[str, Any] = Field(
+        ...,
+        description=
+        "The mode/type of Filter, where it is of INCLUSION or EXCLUSION type. INCLUSION type will include the data in generated campaign  as per specified in criteria, whereas EXCLUSION type will exclude the the data in generated campaign as per specified in criteria."
+    )
+    criteria_list: Optional[conlist(
+        CampaignFilterDetailsCriteriaListInner)] = Field(
+            None, alias="criteriaList", description="List of criteria.")
+    __properties = [
+        "id", "name", "description", "owner", "mode", "criteriaList"
+    ]
 
     @validator('mode')
     def mode_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('INCLUSION', 'EXCLUSION'):
-            raise ValueError("must be one of enum values ('INCLUSION', 'EXCLUSION')")
+            raise ValueError(
+                "must be one of enum values ('INCLUSION', 'EXCLUSION')")
         return value
 
     class Config:
@@ -61,10 +75,7 @@ class CampaignFilterDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in criteria_list (list)
         _items = []
         if self.criteria_list:
@@ -84,13 +95,19 @@ class CampaignFilterDetails(BaseModel):
             return CampaignFilterDetails.parse_obj(obj)
 
         _obj = CampaignFilterDetails.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "owner": obj.get("owner"),
-            "mode": obj.get("mode"),
-            "criteria_list": [CampaignFilterDetailsCriteriaListInner.from_dict(_item) for _item in obj.get("criteriaList")] if obj.get("criteriaList") is not None else None
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "owner":
+            obj.get("owner"),
+            "mode":
+            obj.get("mode"),
+            "criteria_list": [
+                CampaignFilterDetailsCriteriaListInner.from_dict(_item)
+                for _item in obj.get("criteriaList")
+            ] if obj.get("criteriaList") is not None else None
         })
         return _obj
-
-

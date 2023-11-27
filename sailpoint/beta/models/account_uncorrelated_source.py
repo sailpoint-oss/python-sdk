@@ -11,23 +11,29 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class AccountUncorrelatedSource(BaseModel):
     """
     The source the accounts are uncorrelated from.  # noqa: E501
     """
-    type: StrictStr = Field(..., description="The DTO type of the source the accounts are uncorrelated from.")
-    id: StrictStr = Field(..., description="The ID of the source the accounts are uncorrelated from.")
-    name: StrictStr = Field(..., description="Display name of the source the accounts are uncorrelated from.")
+    type: StrictStr = Field(
+        ...,
+        description=
+        "The DTO type of the source the accounts are uncorrelated from.")
+    id: StrictStr = Field(
+        ...,
+        description="The ID of the source the accounts are uncorrelated from.")
+    name: StrictStr = Field(
+        ...,
+        description=
+        "Display name of the source the accounts are uncorrelated from.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -57,10 +63,7 @@ class AccountUncorrelatedSource(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -78,5 +81,3 @@ class AccountUncorrelatedSource(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

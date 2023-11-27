@@ -1,4 +1,4 @@
-# beta.SourcesApi
+# sailpoint.beta.SourcesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -57,14 +57,14 @@ This API generates a create policy/template based on field value transforms. Thi
 ```python
 import time
 import os
-import beta
-from beta.models.provisioning_policy_dto import ProvisioningPolicyDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -78,9 +78,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
     provisioning_policy_dto = {name=Account, description=Account Provisioning Policy, usageType=CREATE, fields=[{name=displayName, transform={type=identityAttribute, attributes={name=displayName}}, attributes={}, isRequired=false, type=string, isMultiValued=false}, {name=distinguishedName, transform={type=usernameGenerator, attributes={sourceCheck=true, patterns=[CN=$fi $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com, CN=$fti $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com, CN=$fn $ln,OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com, CN=$fn$ln${uniqueCounter},OU=zzUsers,OU=Demo,DC=seri,DC=sailpointdemo,DC=com], fn={type=identityAttribute, attributes={name=firstname}}, ln={type=identityAttribute, attributes={name=lastname}}, fi={type=substring, attributes={input={type=identityAttribute, attributes={name=firstname}}, begin=0.0, end=1.0}}, fti={type=substring, attributes={input={type=identityAttribute, attributes={name=firstname}}, begin=0.0, end=2.0}}}}, attributes={cloudMaxUniqueChecks=5, cloudMaxSize=100, cloudRequired=true}, isRequired=false, type=, isMultiValued=false}, {name=description, transform={type=static, attributes={value=}}, attributes={}, isRequired=false, type=string, isMultiValued=false}]} # ProvisioningPolicyDto | 
 
@@ -142,14 +142,14 @@ This creates a specific source with a full source JSON representation. Any passw
 ```python
 import time
 import os
-import beta
-from beta.models.source import Source
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.source import Source
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -163,10 +163,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
-    source = beta.Source() # Source | 
+    api_instance = sailpoint.beta.SourcesApi(api_client)
+    source = sailpoint.beta.Source() # Source | 
     provision_as_csv = false # bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional)
 
     try:
@@ -224,14 +224,14 @@ Creates a new Schema on the specified Source in IdentityNow.
 ```python
 import time
 import os
-import beta
-from beta.models.model_schema import ModelSchema
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.model_schema import ModelSchema
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -245,11 +245,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
-    model_schema = beta.ModelSchema() # ModelSchema | 
+    model_schema = sailpoint.beta.ModelSchema() # ModelSchema | 
 
     try:
         # Creates a new Schema on the specified Source in IdentityNow.
@@ -308,14 +308,14 @@ This end-point deletes a specific source in IdentityNow. A token with ORG_ADMIN,
 ```python
 import time
 import os
-import beta
-from beta.models.delete202_response import Delete202Response
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.delete202_response import Delete202Response
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -329,9 +329,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID
 
     try:
@@ -391,13 +391,13 @@ Deletes the native change detection configuration for the source specified by th
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -411,9 +411,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The source id
 
     try:
@@ -471,14 +471,14 @@ Deletes the provisioning policy with the specified usage on an application. A to
 ```python
 import time
 import os
-import beta
-from beta.models.usage_type import UsageType
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.usage_type import UsageType
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -492,11 +492,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID.
-    usage_type = beta.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+    usage_type = sailpoint.beta.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
 
     try:
         # Delete Provisioning Policy by UsageType
@@ -552,13 +552,13 @@ Delete Source Schema by ID
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -572,9 +572,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID.
     schema_id = '2c9180835d191a86015d28455b4a2329' # str | The Schema ID.
 
@@ -634,14 +634,14 @@ This API returns the existing native change detection configuration for a source
 ```python
 import time
 import os
-import beta
-from beta.models.native_change_detection_config import NativeChangeDetectionConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.native_change_detection_config import NativeChangeDetectionConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -655,9 +655,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The source id
 
     try:
@@ -717,15 +717,15 @@ This end-point retrieves the ProvisioningPolicy with the specified usage on the 
 ```python
 import time
 import os
-import beta
-from beta.models.provisioning_policy_dto import ProvisioningPolicyDto
-from beta.models.usage_type import UsageType
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.beta.models.usage_type import UsageType
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -739,11 +739,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID.
-    usage_type = beta.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+    usage_type = sailpoint.beta.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
 
     try:
         # Get Provisioning Policy by UsageType
@@ -803,14 +803,14 @@ This end-point gets a specific source in IdentityNow. A token with ORG_ADMIN, SO
 ```python
 import time
 import os
-import beta
-from beta.models.source import Source
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.source import Source
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -824,9 +824,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID
 
     try:
@@ -884,13 +884,13 @@ Downloads source accounts schema template
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -904,9 +904,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
 
     try:
@@ -964,14 +964,14 @@ This API returns the existing attribute synchronization configuration for a sour
 ```python
 import time
 import os
-import beta
-from beta.models.attr_sync_source_config import AttrSyncSourceConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.attr_sync_source_config import AttrSyncSourceConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -985,9 +985,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The source id
 
     try:
@@ -1047,14 +1047,14 @@ Looks up and returns the source config for the requested source id after populat
 ```python
 import time
 import os
-import beta
-from beta.models.connector_detail import ConnectorDetail
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.connector_detail import ConnectorDetail
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1068,9 +1068,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = 'id_example' # str | The Source id
     locale = 'locale_example' # str | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional)
 
@@ -1131,14 +1131,14 @@ This API gets the current entitlement request configuration for a source. This s
 ```python
 import time
 import os
-import beta
-from beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1152,9 +1152,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
 
     try:
         # Get Source Entitlement Request Configuration
@@ -1207,13 +1207,13 @@ Downloads source entitlements schema template
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1227,9 +1227,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
     schema_name = '?schemaName=group' # str | Name of entitlement schema (optional)
 
@@ -1289,14 +1289,14 @@ Get the Source Schema by ID in IdentityNow.
 ```python
 import time
 import os
-import beta
-from beta.models.model_schema import ModelSchema
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.model_schema import ModelSchema
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1310,9 +1310,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID.
     schema_id = '2c9180835d191a86015d28455b4a2329' # str | The Schema ID.
 
@@ -1374,14 +1374,14 @@ This API uploads a source schema template file to configure a source's account a
 ```python
 import time
 import os
-import beta
-from beta.models.model_schema import ModelSchema
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.model_schema import ModelSchema
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1395,9 +1395,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
     file = None # bytearray |  (optional)
 
@@ -1458,14 +1458,14 @@ This uploads a supplemental source connector file (like jdbc driver jars) to a s
 ```python
 import time
 import os
-import beta
-from beta.models.source import Source
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.source import Source
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1479,9 +1479,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
     file = None # bytearray |  (optional)
 
@@ -1542,14 +1542,14 @@ This API uploads a source schema template file to configure a source's entitleme
 ```python
 import time
 import os
-import beta
-from beta.models.model_schema import ModelSchema
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.model_schema import ModelSchema
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1563,9 +1563,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The Source id
     schema_name = '?schemaName=group' # str | Name of entitlement schema (optional)
     file = None # bytearray |  (optional)
@@ -1628,14 +1628,14 @@ This end-point lists all the ProvisioningPolicies in IdentityNow. A token with A
 ```python
 import time
 import os
-import beta
-from beta.models.provisioning_policy_dto import ProvisioningPolicyDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1649,9 +1649,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
 
     try:
@@ -1709,14 +1709,14 @@ Lists the Schemas that exist on the specified Source in IdentityNow.
 ```python
 import time
 import os
-import beta
-from beta.models.model_schema import ModelSchema
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.model_schema import ModelSchema
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1730,9 +1730,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
     include_types = 'group' # str | If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized. (optional)
 
@@ -1793,14 +1793,14 @@ This end-point lists all the sources in IdentityNow.  A token with ORG_ADMIN, SO
 ```python
 import time
 import os
-import beta
-from beta.models.source import Source
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.source import Source
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1814,9 +1814,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -1886,15 +1886,15 @@ Retrieves a sample of data returned from account and group aggregation requests.
 ```python
 import time
 import os
-import beta
-from beta.models.resource_objects_request import ResourceObjectsRequest
-from beta.models.resource_objects_response import ResourceObjectsResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.resource_objects_request import ResourceObjectsRequest
+from sailpoint.beta.models.resource_objects_response import ResourceObjectsResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1908,11 +1908,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = 'cef3ee201db947c5912551015ba0c679' # str | The ID of the Source
-    resource_objects_request = beta.ResourceObjectsRequest() # ResourceObjectsRequest | 
+    resource_objects_request = sailpoint.beta.ResourceObjectsRequest() # ResourceObjectsRequest | 
 
     try:
         # Peek source connector's resource objects
@@ -1972,14 +1972,14 @@ This endpoint validates that the cluster being used by the source is reachable f
 ```python
 import time
 import os
-import beta
-from beta.models.status_response import StatusResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.status_response import StatusResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1993,9 +1993,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = 'cef3ee201db947c5912551015ba0c679' # str | The ID of the Source
 
     try:
@@ -2055,14 +2055,14 @@ Replaces the native change detection configuration for the source specified by t
 ```python
 import time
 import os
-import beta
-from beta.models.native_change_detection_config import NativeChangeDetectionConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.native_change_detection_config import NativeChangeDetectionConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -2076,11 +2076,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The source id
-    native_change_detection_config = beta.NativeChangeDetectionConfig() # NativeChangeDetectionConfig | 
+    native_change_detection_config = sailpoint.beta.NativeChangeDetectionConfig() # NativeChangeDetectionConfig | 
 
     try:
         # Update Native Change Detection Configuration
@@ -2140,15 +2140,15 @@ This end-point updates the provisioning policy with the specified usage on the s
 ```python
 import time
 import os
-import beta
-from beta.models.provisioning_policy_dto import ProvisioningPolicyDto
-from beta.models.usage_type import UsageType
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.beta.models.usage_type import UsageType
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -2162,12 +2162,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID.
-    usage_type = beta.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
-    provisioning_policy_dto = beta.ProvisioningPolicyDto() # ProvisioningPolicyDto | 
+    usage_type = sailpoint.beta.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+    provisioning_policy_dto = sailpoint.beta.ProvisioningPolicyDto() # ProvisioningPolicyDto | 
 
     try:
         # Update Provisioning Policy by UsageType
@@ -2228,14 +2228,14 @@ This API updates a source in IdentityNow, using a full object representation. In
 ```python
 import time
 import os
-import beta
-from beta.models.source import Source
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.source import Source
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -2249,11 +2249,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
-    source = beta.Source() # Source | 
+    source = sailpoint.beta.Source() # Source | 
 
     try:
         # Update Source (Full)
@@ -2313,14 +2313,14 @@ Replaces the attribute synchronization configuration for the source specified by
 ```python
 import time
 import os
-import beta
-from beta.models.attr_sync_source_config import AttrSyncSourceConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.attr_sync_source_config import AttrSyncSourceConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -2334,11 +2334,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The source id
-    attr_sync_source_config = beta.AttrSyncSourceConfig() # AttrSyncSourceConfig | 
+    attr_sync_source_config = sailpoint.beta.AttrSyncSourceConfig() # AttrSyncSourceConfig | 
 
     try:
         # Update Attribute Sync Config
@@ -2398,14 +2398,14 @@ This API will completely replace an existing Schema with the submitted payload. 
 ```python
 import time
 import os
-import beta
-from beta.models.model_schema import ModelSchema
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.model_schema import ModelSchema
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -2419,12 +2419,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source ID.
     schema_id = '2c9180835d191a86015d28455b4a2329' # str | The Schema ID.
-    model_schema = beta.ModelSchema() # ModelSchema | 
+    model_schema = sailpoint.beta.ModelSchema() # ModelSchema | 
 
     try:
         # Update Source Schema (Full)
@@ -2485,14 +2485,14 @@ This end-point performs attribute synchronization for a selected source. A token
 ```python
 import time
 import os
-import beta
-from beta.models.source_sync_job import SourceSyncJob
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.source_sync_job import SourceSyncJob
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -2506,9 +2506,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = 'id_example' # str | The Source id
 
     try:
@@ -2568,14 +2568,14 @@ This endpoint performs a more detailed validation of the source's configuration 
 ```python
 import time
 import os
-import beta
-from beta.models.status_response import StatusResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.status_response import StatusResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -2589,9 +2589,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = 'cef3ee201db947c5912551015ba0c679' # str | The ID of the Source
 
     try:
@@ -2651,14 +2651,14 @@ This endpoint validates that the configured credentials are valid and will prope
 ```python
 import time
 import os
-import beta
-from beta.models.status_response import StatusResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.status_response import StatusResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -2672,9 +2672,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = 'cef3ee201db947c5912551015ba0c679' # str | The ID of the Source.
 
     try:
@@ -2734,14 +2734,14 @@ This end-point updates a list of provisioning policies on the specified source i
 ```python
 import time
 import os
-import beta
-from beta.models.provisioning_policy_dto import ProvisioningPolicyDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -2755,11 +2755,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
-    provisioning_policy_dto = [beta.ProvisioningPolicyDto()] # List[ProvisioningPolicyDto] | 
+    provisioning_policy_dto = [sailpoint.beta.ProvisioningPolicyDto()] # List[ProvisioningPolicyDto] | 
 
     try:
         # Bulk Update Provisioning Policies
@@ -2819,16 +2819,16 @@ This API selectively updates an existing Provisioning Policy using a JSONPatch p
 ```python
 import time
 import os
-import beta
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.models.provisioning_policy_dto import ProvisioningPolicyDto
-from beta.models.usage_type import UsageType
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.provisioning_policy_dto import ProvisioningPolicyDto
+from sailpoint.beta.models.usage_type import UsageType
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -2842,11 +2842,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
-    usage_type = beta.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+    usage_type = sailpoint.beta.UsageType() # UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
     json_patch_operation = [{op=add, path=/fields/0, value={name=email, transform={type=identityAttribute, attributes={name=email}}, attributes={}, isRequired=false, type=string, isMultiValued=false}}] # List[JsonPatchOperation] | The JSONPatch payload used to update the schema.
 
     try:
@@ -2908,15 +2908,15 @@ This API partially updates a source in IdentityNow, using a list of patch operat
 ```python
 import time
 import os
-import beta
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.models.source import Source
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.source import Source
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -2930,9 +2930,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The Source id
     json_patch_operation = [{op=replace, path=/description, value=new description}] # List[JsonPatchOperation] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow.
 
@@ -2994,14 +2994,14 @@ This API replaces the current entitlement request configuration for a source. Th
 ```python
 import time
 import os
-import beta
-from beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -3015,9 +3015,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_entitlement_request_config = {accessRequestConfig={approvalSchemes=[]}} # SourceEntitlementRequestConfig | 
 
     try:
@@ -3076,15 +3076,15 @@ Use this API to selectively update an existing Schema using a JSONPatch payload.
 ```python
 import time
 import os
-import beta
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.models.model_schema import ModelSchema
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.model_schema import ModelSchema
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -3098,9 +3098,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourcesApi(api_client)
+    api_instance = sailpoint.beta.SourcesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | The Source id.
     schema_id = '2c9180835d191a86015d28455b4a2329' # str | The Schema id.
     json_patch_operation = [{op=replace, path=/displayAttribute, value={new-display-attribute=null}}] # List[JsonPatchOperation] | The JSONPatch payload used to update the schema.

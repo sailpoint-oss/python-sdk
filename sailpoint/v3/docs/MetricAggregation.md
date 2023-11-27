@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.metric_aggregation import MetricAggregation
+from sailpoint.v3.models.metric_aggregation import MetricAggregation
 
 # TODO update the JSON string below
 json = "{}"

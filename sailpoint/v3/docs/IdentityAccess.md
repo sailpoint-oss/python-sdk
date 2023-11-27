@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.identity_access import IdentityAccess
+from sailpoint.v3.models.identity_access import IdentityAccess
 
 # TODO update the JSON string below
 json = "{}"

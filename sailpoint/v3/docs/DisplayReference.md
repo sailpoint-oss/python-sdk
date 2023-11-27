@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.display_reference import DisplayReference
+from sailpoint.v3.models.display_reference import DisplayReference
 
 # TODO update the JSON string below
 json = "{}"

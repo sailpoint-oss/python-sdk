@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.role_document import RoleDocument
+from sailpoint.v3.models.role_document import RoleDocument
 
 # TODO update the JSON string below
 json = "{}"

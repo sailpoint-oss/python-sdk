@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,43 +19,89 @@ import json
 from datetime import datetime
 from typing import Any, Dict, List
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist, validator
-from beta.models.task_return_details import TaskReturnDetails
-from beta.models.task_status_message import TaskStatusMessage
+from sailpoint.beta.models.task_return_details import TaskReturnDetails
+from sailpoint.beta.models.task_status_message import TaskStatusMessage
+
 
 class TaskStatus(BaseModel):
     """
     Details and current status of a specific task  # noqa: E501
     """
-    id: StrictStr = Field(..., description="System-generated unique ID of the task this TaskStatus represents")
-    type: StrictStr = Field(..., description="Type of task this TaskStatus represents")
-    unique_name: StrictStr = Field(..., alias="uniqueName", description="Name of the task this TaskStatus represents")
-    description: StrictStr = Field(..., description="Description of the task this TaskStatus represents")
-    parent_name: StrictStr = Field(..., alias="parentName", description="Name of the parent of the task this TaskStatus represents")
-    launcher: StrictStr = Field(..., description="Service to execute the task this TaskStatus represents")
-    created: datetime = Field(..., description="Creation date of the task this TaskStatus represents")
-    modified: datetime = Field(..., description="Last modification date of the task this TaskStatus represents")
-    launched: datetime = Field(..., description="Launch date of the task this TaskStatus represents")
-    completed: datetime = Field(..., description="Completion date of the task this TaskStatus represents")
-    completion_status: StrictStr = Field(..., alias="completionStatus", description="Completion status of the task this TaskStatus represents")
-    messages: conlist(TaskStatusMessage) = Field(..., description="Messages associated with the task this TaskStatus represents")
-    returns: conlist(TaskReturnDetails) = Field(..., description="Return values from the task this TaskStatus represents")
-    attributes: Dict[str, Any] = Field(..., description="Attributes of the task this TaskStatus represents")
-    progress: StrictStr = Field(..., description="Current progress of the task this TaskStatus represents")
-    percent_complete: StrictInt = Field(..., alias="percentComplete", description="Current percentage completion of the task this TaskStatus represents")
-    __properties = ["id", "type", "uniqueName", "description", "parentName", "launcher", "created", "modified", "launched", "completed", "completionStatus", "messages", "returns", "attributes", "progress", "percentComplete"]
+    id: StrictStr = Field(
+        ...,
+        description=
+        "System-generated unique ID of the task this TaskStatus represents")
+    type: StrictStr = Field(
+        ..., description="Type of task this TaskStatus represents")
+    unique_name: StrictStr = Field(
+        ...,
+        alias="uniqueName",
+        description="Name of the task this TaskStatus represents")
+    description: StrictStr = Field(
+        ..., description="Description of the task this TaskStatus represents")
+    parent_name: StrictStr = Field(
+        ...,
+        alias="parentName",
+        description="Name of the parent of the task this TaskStatus represents"
+    )
+    launcher: StrictStr = Field(
+        ...,
+        description="Service to execute the task this TaskStatus represents")
+    created: datetime = Field(
+        ...,
+        description="Creation date of the task this TaskStatus represents")
+    modified: datetime = Field(
+        ...,
+        description=
+        "Last modification date of the task this TaskStatus represents")
+    launched: datetime = Field(
+        ..., description="Launch date of the task this TaskStatus represents")
+    completed: datetime = Field(
+        ...,
+        description="Completion date of the task this TaskStatus represents")
+    completion_status: StrictStr = Field(
+        ...,
+        alias="completionStatus",
+        description="Completion status of the task this TaskStatus represents")
+    messages: conlist(TaskStatusMessage) = Field(
+        ...,
+        description=
+        "Messages associated with the task this TaskStatus represents")
+    returns: conlist(TaskReturnDetails) = Field(
+        ...,
+        description="Return values from the task this TaskStatus represents")
+    attributes: Dict[str, Any] = Field(
+        ..., description="Attributes of the task this TaskStatus represents")
+    progress: StrictStr = Field(
+        ...,
+        description="Current progress of the task this TaskStatus represents")
+    percent_complete: StrictInt = Field(
+        ...,
+        alias="percentComplete",
+        description=
+        "Current percentage completion of the task this TaskStatus represents")
+    __properties = [
+        "id", "type", "uniqueName", "description", "parentName", "launcher",
+        "created", "modified", "launched", "completed", "completionStatus",
+        "messages", "returns", "attributes", "progress", "percentComplete"
+    ]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('QUARTZ', 'QPOC', 'QUEUED_TASK'):
-            raise ValueError("must be one of enum values ('QUARTZ', 'QPOC', 'QUEUED_TASK')")
+            raise ValueError(
+                "must be one of enum values ('QUARTZ', 'QPOC', 'QUEUED_TASK')")
         return value
 
     @validator('completion_status')
     def completion_status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Success', 'Warning', 'Error', 'Terminated', 'TempError'):
-            raise ValueError("must be one of enum values ('Success', 'Warning', 'Error', 'Terminated', 'TempError')")
+        if value not in ('Success', 'Warning', 'Error', 'Terminated',
+                         'TempError'):
+            raise ValueError(
+                "must be one of enum values ('Success', 'Warning', 'Error', 'Terminated', 'TempError')"
+            )
         return value
 
     class Config:
@@ -79,10 +124,7 @@ class TaskStatus(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
@@ -109,23 +151,41 @@ class TaskStatus(BaseModel):
             return TaskStatus.parse_obj(obj)
 
         _obj = TaskStatus.parse_obj({
-            "id": obj.get("id"),
-            "type": obj.get("type"),
-            "unique_name": obj.get("uniqueName"),
-            "description": obj.get("description"),
-            "parent_name": obj.get("parentName"),
-            "launcher": obj.get("launcher"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "launched": obj.get("launched"),
-            "completed": obj.get("completed"),
-            "completion_status": obj.get("completionStatus"),
-            "messages": [TaskStatusMessage.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
-            "returns": [TaskReturnDetails.from_dict(_item) for _item in obj.get("returns")] if obj.get("returns") is not None else None,
-            "attributes": obj.get("attributes"),
-            "progress": obj.get("progress"),
-            "percent_complete": obj.get("percentComplete")
+            "id":
+            obj.get("id"),
+            "type":
+            obj.get("type"),
+            "unique_name":
+            obj.get("uniqueName"),
+            "description":
+            obj.get("description"),
+            "parent_name":
+            obj.get("parentName"),
+            "launcher":
+            obj.get("launcher"),
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified"),
+            "launched":
+            obj.get("launched"),
+            "completed":
+            obj.get("completed"),
+            "completion_status":
+            obj.get("completionStatus"),
+            "messages": [
+                TaskStatusMessage.from_dict(_item)
+                for _item in obj.get("messages")
+            ] if obj.get("messages") is not None else None,
+            "returns": [
+                TaskReturnDetails.from_dict(_item)
+                for _item in obj.get("returns")
+            ] if obj.get("returns") is not None else None,
+            "attributes":
+            obj.get("attributes"),
+            "progress":
+            obj.get("progress"),
+            "percent_complete":
+            obj.get("percentComplete")
         })
         return _obj
-
-

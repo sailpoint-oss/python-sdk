@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.invocation import Invocation
+from sailpoint.beta.models.invocation import Invocation
 
 # TODO update the JSON string below
 json = "{}"

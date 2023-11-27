@@ -11,21 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
+
 
 class CampaignReportsConfig(BaseModel):
     """
     CampaignReportsConfig
     """
-    identity_attribute_columns: Optional[conlist(StrictStr)] = Field(None, alias="identityAttributeColumns", description="list of identity attribute columns")
+    identity_attribute_columns: Optional[conlist(StrictStr)] = Field(
+        None,
+        alias="identityAttributeColumns",
+        description="list of identity attribute columns")
     __properties = ["identityAttributeColumns"]
 
     class Config:
@@ -48,10 +50,7 @@ class CampaignReportsConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -64,8 +63,7 @@ class CampaignReportsConfig(BaseModel):
             return CampaignReportsConfig.parse_obj(obj)
 
         _obj = CampaignReportsConfig.parse_obj({
-            "identity_attribute_columns": obj.get("identityAttributeColumns")
+            "identity_attribute_columns":
+            obj.get("identityAttributeColumns")
         })
         return _obj
-
-

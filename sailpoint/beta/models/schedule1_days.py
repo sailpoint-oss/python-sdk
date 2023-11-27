@@ -11,24 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
-from beta.models.selector_type import SelectorType
+from sailpoint.beta.models.selector_type import SelectorType
+
 
 class Schedule1Days(BaseModel):
     """
     Schedule1Days
     """
     type: SelectorType = Field(...)
-    values: conlist(StrictStr) = Field(..., description="The selected values. ")
-    interval: Optional[StrictInt] = Field(None, description="The selected interval for RANGE selectors. ")
+    values: conlist(StrictStr) = Field(...,
+                                       description="The selected values. ")
+    interval: Optional[StrictInt] = Field(
+        None, description="The selected interval for RANGE selectors. ")
     __properties = ["type", "values", "interval"]
 
     class Config:
@@ -51,10 +52,7 @@ class Schedule1Days(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if interval (nullable) is None
         # and __fields_set__ contains the field
         if self.interval is None and "interval" in self.__fields_set__:
@@ -77,5 +75,3 @@ class Schedule1Days(BaseModel):
             "interval": obj.get("interval")
         })
         return _obj
-
-

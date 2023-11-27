@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.role_identity import RoleIdentity
+from sailpoint.v3.models.role_identity import RoleIdentity
 
 # TODO update the JSON string below
 json = "{}"

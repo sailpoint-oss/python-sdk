@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.audit_details import AuditDetails  # noqa: E501
+from sailpoint.beta.models.audit_details import AuditDetails  # noqa: E501
+
 
 class TestAuditDetails(unittest.TestCase):
     """AuditDetails unit test stubs"""
@@ -37,11 +37,11 @@ class TestAuditDetails(unittest.TestCase):
         if include_optional:
             return AuditDetails(
                 created = '2022-07-21T11:13:12.345Z',
-                created_by = beta.models.identity_1.Identity_1(
+                created_by = sailpoint.beta.models.identity_1.Identity_1(
                     id = '2c91808380aa05580180aaaaf1940410', 
                     name = 'William Wilson', ),
                 modified = '2022-07-21T11:13:12.345Z',
-                modified_by = beta.models.identity_1.Identity_1(
+                modified_by = sailpoint.beta.models.identity_1.Identity_1(
                     id = '2c91808380aa05580180aaaaf1940410', 
                     name = 'William Wilson', )
             )
@@ -54,6 +54,7 @@ class TestAuditDetails(unittest.TestCase):
         """Test AuditDetails"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from cc.models.list_connectors200_response import ListConnectors200Response  # noqa: E501
+from sailpoint.cc.models.list_connectors200_response import ListConnectors200Response  # noqa: E501
+
 
 class TestListConnectors200Response(unittest.TestCase):
     """ListConnectors200Response unit test stubs"""
@@ -38,10 +38,10 @@ class TestListConnectors200Response(unittest.TestCase):
             return ListConnectors200Response(
                 total = 1.337,
                 items = [
-                    cc.models.list_connectors_200_response_items_inner.listConnectors_200_response_items_inner(
+                    sailpoint.cc.models.list_connectors_200_response_items_inner.listConnectors_200_response_items_inner(
                         application_xml = '', 
                         class_name = '', 
-                        connector_metadata = cc.models.connector_metadata.connectorMetadata(), 
+                        connector_metadata = sailpoint.cc.models.connector_metadata.connectorMetadata(), 
                         correlation_config_xml = '', 
                         direct_connect = True, 
                         file_upload = True, 
@@ -54,7 +54,7 @@ class TestListConnectors200Response(unittest.TestCase):
                         source_config_from = '', 
                         source_config_xml = '', 
                         status = 'RELEASED', 
-                        translation_properties = cc.models.translation_properties.translationProperties(), 
+                        translation_properties = sailpoint.cc.models.translation_properties.translationProperties(), 
                         type = 'ACF2 - Full', 
                         uploaded_files = [], )
                     ]
@@ -68,6 +68,7 @@ class TestListConnectors200Response(unittest.TestCase):
         """Test ListConnectors200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

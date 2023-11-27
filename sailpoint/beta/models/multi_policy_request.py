@@ -11,21 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
+
 
 class MultiPolicyRequest(BaseModel):
     """
     MultiPolicyRequest
     """
-    filtered_policy_list: Optional[conlist(StrictStr)] = Field(None, alias="filteredPolicyList", description="Multi-policy report will be run for this list of ids")
+    filtered_policy_list: Optional[conlist(StrictStr)] = Field(
+        None,
+        alias="filteredPolicyList",
+        description="Multi-policy report will be run for this list of ids")
     __properties = ["filteredPolicyList"]
 
     class Config:
@@ -48,10 +50,7 @@ class MultiPolicyRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +62,6 @@ class MultiPolicyRequest(BaseModel):
         if not isinstance(obj, dict):
             return MultiPolicyRequest.parse_obj(obj)
 
-        _obj = MultiPolicyRequest.parse_obj({
-            "filtered_policy_list": obj.get("filteredPolicyList")
-        })
+        _obj = MultiPolicyRequest.parse_obj(
+            {"filtered_policy_list": obj.get("filteredPolicyList")})
         return _obj
-
-

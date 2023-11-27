@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.task_result_dto import TaskResultDto
+from sailpoint.v3.models.task_result_dto import TaskResultDto
 
 # TODO update the JSON string below
 json = "{}"

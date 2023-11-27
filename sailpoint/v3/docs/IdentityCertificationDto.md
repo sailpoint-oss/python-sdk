@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.identity_certification_dto import IdentityCertificationDto
+from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
 
 # TODO update the JSON string below
 json = "{}"

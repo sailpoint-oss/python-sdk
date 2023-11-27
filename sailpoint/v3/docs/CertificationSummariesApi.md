@@ -1,4 +1,4 @@
-# v3.CertificationSummariesApi
+# sailpoint.v3.CertificationSummariesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -24,14 +24,14 @@ This API returns a list of access summaries for the specified identity campaign 
 ```python
 import time
 import os
-import v3
-from v3.models.access_summary import AccessSummary
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.access_summary import AccessSummary
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -45,9 +45,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationSummariesApi(api_client)
+    api_instance = sailpoint.v3.CertificationSummariesApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID
     type = 'ACCESS_PROFILE' # str | The type of access review item to retrieve summaries for
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -119,14 +119,14 @@ This API returns a summary of the decisions made on an identity campaign certifi
 ```python
 import time
 import os
-import v3
-from v3.models.identity_cert_decision_summary import IdentityCertDecisionSummary
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_cert_decision_summary import IdentityCertDecisionSummary
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -140,9 +140,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationSummariesApi(api_client)
+    api_instance = sailpoint.v3.CertificationSummariesApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The certification ID
     filters = 'identitySummary.id eq \"ef38f94347e94562b5bb8424a56397d8\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identitySummary.id**: *eq, in* (optional)
 
@@ -204,14 +204,14 @@ This API returns a list of the identity summaries for a specific identity campai
 ```python
 import time
 import os
-import v3
-from v3.models.certification_identity_summary import CertificationIdentitySummary
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.certification_identity_summary import CertificationIdentitySummary
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -225,9 +225,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationSummariesApi(api_client)
+    api_instance = sailpoint.v3.CertificationSummariesApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -297,14 +297,14 @@ This API returns the summary for an identity on a specified identity campaign ce
 ```python
 import time
 import os
-import v3
-from v3.models.certification_identity_summary import CertificationIdentitySummary
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.certification_identity_summary import CertificationIdentitySummary
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -318,9 +318,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationSummariesApi(api_client)
+    api_instance = sailpoint.v3.CertificationSummariesApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID
     identity_summary_id = '2c91808772a504f50172a9540e501ba8' # str | The identity summary ID
 

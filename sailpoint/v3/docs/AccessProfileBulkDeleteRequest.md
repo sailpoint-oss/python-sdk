@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
+from sailpoint.v3.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
 
 # TODO update the JSON string below
 json = "{}"

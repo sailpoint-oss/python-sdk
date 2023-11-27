@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v2.models.create_workgroup_request import CreateWorkgroupRequest
+from sailpoint.v2.models.create_workgroup_request import CreateWorkgroupRequest
 
 # TODO update the JSON string below
 json = "{}"

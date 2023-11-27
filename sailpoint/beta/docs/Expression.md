@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.expression import Expression
+from sailpoint.beta.models.expression import Expression
 
 # TODO update the JSON string below
 json = "{}"

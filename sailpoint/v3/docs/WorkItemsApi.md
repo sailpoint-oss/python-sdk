@@ -1,4 +1,4 @@
-# v3.WorkItemsApi
+# sailpoint.v3.WorkItemsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -32,14 +32,14 @@ This API approves an Approval Item. Either an admin, or the owning/current user 
 ```python
 import time
 import os
-import v3
-from v3.models.work_items import WorkItems
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.work_items import WorkItems
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -53,9 +53,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.WorkItemsApi(api_client)
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
     approval_item_id = '1211bcaa32112bcef6122adb21cef1ac' # str | The ID of the approval item.
 
@@ -117,14 +117,14 @@ This API bulk approves Approval Items. Either an admin, or the owning/current us
 ```python
 import time
 import os
-import v3
-from v3.models.work_items import WorkItems
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.work_items import WorkItems
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -138,9 +138,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.WorkItemsApi(api_client)
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
 
     try:
@@ -200,14 +200,14 @@ This API completes a work item. Either an admin, or the owning/current user must
 ```python
 import time
 import os
-import v3
-from v3.models.work_items import WorkItems
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.work_items import WorkItems
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -221,9 +221,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.WorkItemsApi(api_client)
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
 
     try:
@@ -283,14 +283,14 @@ This gets a collection of completed work items belonging to either the specified
 ```python
 import time
 import os
-import v3
-from v3.models.work_items import WorkItems
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.work_items import WorkItems
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -304,9 +304,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.WorkItemsApi(api_client)
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
     owner_id = '1211bcaa32112bcef6122adb21cef1ac' # str | The id of the owner of the work item list being requested.  Either an admin, or the owning/current user must make this request. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -371,14 +371,14 @@ This gets a count of completed work items belonging to either the specified user
 ```python
 import time
 import os
-import v3
-from v3.models.work_items_count import WorkItemsCount
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.work_items_count import WorkItemsCount
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -392,9 +392,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.WorkItemsApi(api_client)
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
     owner_id = '1211bcaa32112bcef6122adb21cef1ac' # str | ID of the work item owner. (optional)
 
     try:
@@ -453,14 +453,14 @@ This gets a count of work items belonging to either the specified user(admin req
 ```python
 import time
 import os
-import v3
-from v3.models.work_items_count import WorkItemsCount
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.work_items_count import WorkItemsCount
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -474,9 +474,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.WorkItemsApi(api_client)
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
     owner_id = 'ef38f94347e94562b5bb8424a56397d8' # str | ID of the work item owner. (optional)
 
     try:
@@ -535,14 +535,14 @@ This gets the details of a Work Item belonging to either the specified user(admi
 ```python
 import time
 import os
-import v3
-from v3.models.work_items import WorkItems
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.work_items import WorkItems
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -556,9 +556,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.WorkItemsApi(api_client)
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | ID of the work item.
 
     try:
@@ -617,14 +617,14 @@ This gets a summary of work items belonging to either the specified user(admin r
 ```python
 import time
 import os
-import v3
-from v3.models.work_items_summary import WorkItemsSummary
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.work_items_summary import WorkItemsSummary
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -638,9 +638,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.WorkItemsApi(api_client)
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
     owner_id = '1211bcaa32112bcef6122adb21cef1ac' # str | ID of the work item owner. (optional)
 
     try:
@@ -699,14 +699,14 @@ This gets a collection of work items belonging to either the specified user(admi
 ```python
 import time
 import os
-import v3
-from v3.models.work_items import WorkItems
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.work_items import WorkItems
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -720,9 +720,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.WorkItemsApi(api_client)
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -787,14 +787,14 @@ This API rejects an Approval Item. Either an admin, or the owning/current user m
 ```python
 import time
 import os
-import v3
-from v3.models.work_items import WorkItems
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.work_items import WorkItems
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -808,9 +808,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.WorkItemsApi(api_client)
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
     approval_item_id = '1211bcaa32112bcef6122adb21cef1ac' # str | The ID of the approval item.
 
@@ -872,14 +872,14 @@ This API bulk rejects Approval Items. Either an admin, or the owning/current use
 ```python
 import time
 import os
-import v3
-from v3.models.work_items import WorkItems
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.work_items import WorkItems
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -893,9 +893,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.WorkItemsApi(api_client)
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
 
     try:
@@ -955,14 +955,14 @@ This API submits account selections. Either an admin, or the owning/current user
 ```python
 import time
 import os
-import v3
-from v3.models.work_items import WorkItems
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.work_items import WorkItems
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -976,9 +976,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.WorkItemsApi(api_client)
+    api_instance = sailpoint.v3.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
     request_body = {fieldName=fieldValue} # Dict[str, object] | Account Selection Data map, keyed on fieldName
 

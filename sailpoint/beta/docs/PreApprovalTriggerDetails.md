@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.pre_approval_trigger_details import PreApprovalTriggerDetails
+from sailpoint.beta.models.pre_approval_trigger_details import PreApprovalTriggerDetails
 
 # TODO update the JSON string below
 json = "{}"

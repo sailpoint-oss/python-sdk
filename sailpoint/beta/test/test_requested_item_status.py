@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.requested_item_status import RequestedItemStatus  # noqa: E501
+from sailpoint.beta.models.requested_item_status import RequestedItemStatus  # noqa: E501
+
 
 class TestRequestedItemStatus(unittest.TestCase):
     """RequestedItemStatus unit test stubs"""
@@ -38,16 +38,16 @@ class TestRequestedItemStatus(unittest.TestCase):
             return RequestedItemStatus(
                 name = 'AccessProfile1',
                 type = 'ACCESS_PROFILE',
-                cancelled_request_details = beta.models.cancelled_request_details.CancelledRequestDetails(
+                cancelled_request_details = sailpoint.beta.models.cancelled_request_details.CancelledRequestDetails(
                     comment = 'This request must be cancelled.', 
-                    owner = beta.models.owner_dto.OwnerDto(
+                    owner = sailpoint.beta.models.owner_dto.OwnerDto(
                         type = 'IDENTITY', 
                         id = '2c9180a46faadee4016fb4e018c20639', 
                         name = 'Support', ), 
                     modified = '2019-12-20T09:17:12.192Z', ),
                 error_messages = [
                     [
-                        beta.models.error_message_dto.ErrorMessageDto(
+                        sailpoint.beta.models.error_message_dto.ErrorMessageDto(
                             locale = 'en-US', 
                             locale_origin = 'DEFAULT', 
                             text = 'The request was syntactically correct but its content is semantically invalid.', )
@@ -55,13 +55,13 @@ class TestRequestedItemStatus(unittest.TestCase):
                     ],
                 state = 'EXECUTING',
                 approval_details = [
-                    beta.models.approval_status_dto.ApprovalStatusDto(
+                    sailpoint.beta.models.approval_status_dto.ApprovalStatusDto(
                         forwarded = False, 
-                        original_owner = beta.models.approval_status_dto_original_owner.ApprovalStatusDto_originalOwner(
+                        original_owner = sailpoint.beta.models.approval_status_dto_original_owner.ApprovalStatusDto_originalOwner(
                             type = 'IDENTITY', 
                             id = '2c7180a46faadee4016fb4e018c20642', 
                             name = 'Michael Michaels', ), 
-                        current_owner = beta.models.access_item_reviewed_by.AccessItemReviewedBy(
+                        current_owner = sailpoint.beta.models.access_item_reviewed_by.AccessItemReviewedBy(
                             type = 'IDENTITY', 
                             id = '2c3780a46faadee4016fb4e018c20652', 
                             name = 'Allen Albertson', ), 
@@ -69,7 +69,7 @@ class TestRequestedItemStatus(unittest.TestCase):
                         status = 'PENDING', 
                         scheme = 'MANAGER', 
                         error_messages = [
-                            beta.models.error_message_dto.ErrorMessageDto(
+                            sailpoint.beta.models.error_message_dto.ErrorMessageDto(
                                 locale = 'en-US', 
                                 locale_origin = 'DEFAULT', 
                                 text = 'The request was syntactically correct but its content is semantically invalid.', )
@@ -78,20 +78,20 @@ class TestRequestedItemStatus(unittest.TestCase):
                         remove_date = '2020-07-11T00:00Z', )
                     ],
                 manual_work_item_details = [
-                    beta.models.manual_work_item_details.ManualWorkItemDetails(
+                    sailpoint.beta.models.manual_work_item_details.ManualWorkItemDetails(
                         forwarded = True, 
-                        original_owner = beta.models.manual_work_item_details_original_owner.ManualWorkItemDetails_originalOwner(
+                        original_owner = sailpoint.beta.models.manual_work_item_details_original_owner.ManualWorkItemDetails_originalOwner(
                             type = 'IDENTITY', 
                             id = '2c7180a46faadee4016fb4e018c20642', 
                             name = 'Michael Michaels', ), 
-                        current_owner = beta.models.manual_work_item_details_current_owner.ManualWorkItemDetails_currentOwner(
+                        current_owner = sailpoint.beta.models.manual_work_item_details_current_owner.ManualWorkItemDetails_currentOwner(
                             type = 'IDENTITY', 
                             id = '2c3780a46faadee4016fb4e018c20652', 
                             name = 'Allen Albertson', ), 
                         modified = '2019-08-23T18:52:57.398Z', 
                         status = 'PENDING', 
                         forward_history = [
-                            beta.models.approval_forward_history.ApprovalForwardHistory(
+                            sailpoint.beta.models.approval_forward_history.ApprovalForwardHistory(
                                 old_approver_name = 'Frank Mir', 
                                 new_approver_name = 'Al Volta', 
                                 comment = 'Forwarding from Frank to Al', 
@@ -104,60 +104,60 @@ class TestRequestedItemStatus(unittest.TestCase):
                 request_type = 'GRANT_ACCESS',
                 modified = '2019-08-23T18:52:59.162Z',
                 created = '2019-08-23T18:40:35.772Z',
-                requester = beta.models.access_item_requester.AccessItemRequester(
+                requester = sailpoint.beta.models.access_item_requester.AccessItemRequester(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
-                requested_for = beta.models.access_item_requested_for.AccessItemRequestedFor(
+                requested_for = sailpoint.beta.models.access_item_requested_for.AccessItemRequestedFor(
                     type = 'IDENTITY', 
                     id = '2c4180a46faadee4016fb4e018c20626', 
                     name = 'Robert Robinson', ),
-                requester_comment = beta.models.comment_dto.CommentDto(
+                requester_comment = sailpoint.beta.models.comment_dto.CommentDto(
                     comment = 'This is a comment.', 
-                    author = beta.models.comment_dto_author.CommentDto_author(
+                    author = sailpoint.beta.models.comment_dto_author.CommentDto_author(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'Adam Kennedy', ), 
                     created = '2017-07-11T18:45:37.098Z', ),
-                sod_violation_context = beta.models.sod_violation_context_check_completed.SodViolationContextCheckCompleted(
+                sod_violation_context = sailpoint.beta.models.sod_violation_context_check_completed.SodViolationContextCheckCompleted(
                     state = 'SUCCESS', 
                     uuid = 'f73d16e9-a038-46c5-b217-1246e15fdbdd', 
-                    violation_check_result = beta.models.sod_violation_check_result.SodViolationCheckResult(
-                        message = beta.models.error_message_dto.ErrorMessageDto(
+                    violation_check_result = sailpoint.beta.models.sod_violation_check_result.SodViolationCheckResult(
+                        message = sailpoint.beta.models.error_message_dto.ErrorMessageDto(
                             locale = 'en-US', 
                             locale_origin = 'DEFAULT', 
                             text = 'The request was syntactically correct but its content is semantically invalid.', ), 
                         client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}, 
                         violation_contexts = [
-                            beta.models.sod_violation_context.SodViolationContext(
-                                policy = beta.models.sod_policy_dto.SodPolicyDto(
+                            sailpoint.beta.models.sod_violation_context.SodViolationContext(
+                                policy = sailpoint.beta.models.sod_policy_dto.SodPolicyDto(
                                     type = 'SOD_POLICY', 
                                     id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                                     name = 'Business SOD Policy', ), 
-                                conflicting_access_criteria = beta.models.sod_violation_context_conflicting_access_criteria.SodViolationContext_conflictingAccessCriteria(
-                                    left_criteria = beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(
+                                conflicting_access_criteria = sailpoint.beta.models.sod_violation_context_conflicting_access_criteria.SodViolationContext_conflictingAccessCriteria(
+                                    left_criteria = sailpoint.beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(
                                         criteria_list = [
-                                            beta.models.sod_exempt_criteria.SodExemptCriteria(
+                                            sailpoint.beta.models.sod_exempt_criteria.SodExemptCriteria(
                                                 existing = True, 
                                                 type = 'IDENTITY', 
                                                 id = '2c918085771e9d3301773b3cb66f6398', 
                                                 name = 'My HR Entitlement', )
                                             ], ), 
-                                    right_criteria = beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(), ), )
+                                    right_criteria = sailpoint.beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(), ), )
                             ], 
                         violated_policies = [
-                            beta.models.sod_policy_dto.SodPolicyDto(
+                            sailpoint.beta.models.sod_policy_dto.SodPolicyDto(
                                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                                 name = 'Business SOD Policy', )
                             ], ), ),
-                provisioning_details = beta.models.provisioning_details.ProvisioningDetails(
+                provisioning_details = sailpoint.beta.models.provisioning_details.ProvisioningDetails(
                     ordered_sub_phase_references = 'manualWorkItemDetails', ),
-                pre_approval_trigger_details = beta.models.pre_approval_trigger_details.PreApprovalTriggerDetails(
+                pre_approval_trigger_details = sailpoint.beta.models.pre_approval_trigger_details.PreApprovalTriggerDetails(
                     comment = 'Access is Approved', 
                     reviewer = 'John Doe', 
                     decision = 'APPROVED', ),
                 access_request_phases = [
-                    beta.models.access_request_phases.AccessRequestPhases(
+                    sailpoint.beta.models.access_request_phases.AccessRequestPhases(
                         started = '2020-07-11T00:00Z', 
                         finished = '2020-07-12T00:00Z', 
                         name = 'APPROVAL_PHASE', 
@@ -180,6 +180,7 @@ class TestRequestedItemStatus(unittest.TestCase):
         """Test RequestedItemStatus"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

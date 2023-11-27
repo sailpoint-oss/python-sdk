@@ -11,23 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class ServiceDeskSource(BaseModel):
     """
     Source for Service Desk integration template.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="DTO type of source for service desk integration template.")
-    id: Optional[StrictStr] = Field(None, description="ID of source for service desk integration template.")
-    name: Optional[StrictStr] = Field(None, description="Human-readable name of source for service desk integration template.")
+    type: Optional[StrictStr] = Field(
+        None,
+        description="DTO type of source for service desk integration template."
+    )
+    id: Optional[StrictStr] = Field(
+        None,
+        description="ID of source for service desk integration template.")
+    name: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Human-readable name of source for service desk integration template.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -60,10 +67,7 @@ class ServiceDeskSource(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,5 +85,3 @@ class ServiceDeskSource(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

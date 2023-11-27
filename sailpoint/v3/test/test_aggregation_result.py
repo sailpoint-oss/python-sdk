@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.aggregation_result import AggregationResult  # noqa: E501
+from sailpoint.v3.models.aggregation_result import AggregationResult  # noqa: E501
+
 
 class TestAggregationResult(unittest.TestCase):
     """AggregationResult unit test stubs"""
@@ -38,7 +38,7 @@ class TestAggregationResult(unittest.TestCase):
             return AggregationResult(
                 aggregations = {Identity Locations={buckets=[{key=Austin, doc_count=109}, {key=London, doc_count=64}, {key=San Jose, doc_count=27}, {key=Brussels, doc_count=26}, {key=Sao Paulo, doc_count=24}, {key=Munich, doc_count=23}, {key=Singapore, doc_count=22}, {key=Tokyo, doc_count=20}, {key=Taipei, doc_count=16}]}},
                 hits = [
-                    v3.models.search_document.SearchDocument()
+                    sailpoint.v3.models.search_document.SearchDocument()
                     ]
             )
         else:
@@ -50,6 +50,7 @@ class TestAggregationResult(unittest.TestCase):
         """Test AggregationResult"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

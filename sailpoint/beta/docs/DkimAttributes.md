@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.dkim_attributes import DkimAttributes
+from sailpoint.beta.models.dkim_attributes import DkimAttributes
 
 # TODO update the JSON string below
 json = "{}"

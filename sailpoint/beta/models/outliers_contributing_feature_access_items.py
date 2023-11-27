@@ -11,27 +11,40 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, validator
+
 
 class OutliersContributingFeatureAccessItems(BaseModel):
     """
     OutliersContributingFeatureAccessItems
     """
-    id: Optional[StrictStr] = Field(None, description="The ID of the access item")
-    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="the display name of the access item")
-    description: Optional[StrictStr] = Field(None, description="Description of the access item.")
-    access_type: Optional[StrictStr] = Field(None, alias="accessType", description="The type of the access item.")
-    source_name: Optional[StrictStr] = Field(None, alias="sourceName", description="the associated source name if it exists")
-    extremely_rare: Optional[StrictBool] = Field(False, alias="extremelyRare", description="rarest access")
-    __properties = ["id", "displayName", "description", "accessType", "sourceName", "extremelyRare"]
+    id: Optional[StrictStr] = Field(None,
+                                    description="The ID of the access item")
+    display_name: Optional[StrictStr] = Field(
+        None,
+        alias="displayName",
+        description="the display name of the access item")
+    description: Optional[StrictStr] = Field(
+        None, description="Description of the access item.")
+    access_type: Optional[StrictStr] = Field(
+        None, alias="accessType", description="The type of the access item.")
+    source_name: Optional[StrictStr] = Field(
+        None,
+        alias="sourceName",
+        description="the associated source name if it exists")
+    extremely_rare: Optional[StrictBool] = Field(False,
+                                                 alias="extremelyRare",
+                                                 description="rarest access")
+    __properties = [
+        "id", "displayName", "description", "accessType", "sourceName",
+        "extremelyRare"
+    ]
 
     @validator('access_type')
     def access_type_validate_enum(cls, value):
@@ -40,7 +53,9 @@ class OutliersContributingFeatureAccessItems(BaseModel):
             return value
 
         if value not in ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE'):
-            raise ValueError("must be one of enum values ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE')")
+            raise ValueError(
+                "must be one of enum values ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE')"
+            )
         return value
 
     class Config:
@@ -57,16 +72,14 @@ class OutliersContributingFeatureAccessItems(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> OutliersContributingFeatureAccessItems:
+    def from_json(cls,
+                  json_str: str) -> OutliersContributingFeatureAccessItems:
         """Create an instance of OutliersContributingFeatureAccessItems from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -79,13 +92,18 @@ class OutliersContributingFeatureAccessItems(BaseModel):
             return OutliersContributingFeatureAccessItems.parse_obj(obj)
 
         _obj = OutliersContributingFeatureAccessItems.parse_obj({
-            "id": obj.get("id"),
-            "display_name": obj.get("displayName"),
-            "description": obj.get("description"),
-            "access_type": obj.get("accessType"),
-            "source_name": obj.get("sourceName"),
-            "extremely_rare": obj.get("extremelyRare") if obj.get("extremelyRare") is not None else False
+            "id":
+            obj.get("id"),
+            "display_name":
+            obj.get("displayName"),
+            "description":
+            obj.get("description"),
+            "access_type":
+            obj.get("accessType"),
+            "source_name":
+            obj.get("sourceName"),
+            "extremely_rare":
+            obj.get("extremelyRare")
+            if obj.get("extremelyRare") is not None else False
         })
         return _obj
-
-

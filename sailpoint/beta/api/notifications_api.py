@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,25 +22,23 @@ from pydantic import Field, StrictBool, StrictStr, conint, conlist
 
 from typing import List, Optional
 
-from beta.models.dkim_attributes import DkimAttributes
-from beta.models.domain_address import DomainAddress
-from beta.models.domain_status_dto import DomainStatusDto
-from beta.models.email_status_dto import EmailStatusDto
-from beta.models.mail_from_attributes import MailFromAttributes
-from beta.models.mail_from_attributes_dto import MailFromAttributesDto
-from beta.models.notification_template_context import NotificationTemplateContext
-from beta.models.preferences_dto import PreferencesDto
-from beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
-from beta.models.template_bulk_delete_dto import TemplateBulkDeleteDto
-from beta.models.template_dto import TemplateDto
-from beta.models.template_dto_default import TemplateDtoDefault
+from sailpoint.beta.models.dkim_attributes import DkimAttributes
+from sailpoint.beta.models.domain_address import DomainAddress
+from sailpoint.beta.models.domain_status_dto import DomainStatusDto
+from sailpoint.beta.models.email_status_dto import EmailStatusDto
+from sailpoint.beta.models.mail_from_attributes import MailFromAttributes
+from sailpoint.beta.models.mail_from_attributes_dto import MailFromAttributesDto
+from sailpoint.beta.models.notification_template_context import NotificationTemplateContext
+from sailpoint.beta.models.preferences_dto import PreferencesDto
+from sailpoint.beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
+from sailpoint.beta.models.template_bulk_delete_dto import TemplateBulkDeleteDto
+from sailpoint.beta.models.template_dto import TemplateDto
+from sailpoint.beta.models.template_dto_default import TemplateDtoDefault
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class NotificationsApi:
@@ -57,7 +54,8 @@ class NotificationsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_domain_dkim(self, domain_address : DomainAddress, **kwargs) -> DomainStatusDto:  # noqa: E501
+    def create_domain_dkim(self, domain_address: DomainAddress,
+                           **kwargs) -> DomainStatusDto:  # noqa: E501
         """Verify domain address via DKIM  # noqa: E501
 
         Create a domain to be verified via DKIM (DomainKeys Identified Mail)  # noqa: E501
@@ -84,10 +82,13 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_domain_dkim_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_domain_dkim_with_http_info(domain_address, **kwargs)  # noqa: E501
+        return self.create_domain_dkim_with_http_info(domain_address,
+                                                      **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_domain_dkim_with_http_info(self, domain_address : DomainAddress, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_domain_dkim_with_http_info(
+            self, domain_address: DomainAddress,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Verify domain address via DKIM  # noqa: E501
 
         Create a domain to be verified via DKIM (DomainKeys Identified Mail)  # noqa: E501
@@ -126,28 +127,17 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'domain_address'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['domain_address']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_domain_dkim" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_domain_dkim" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -173,11 +163,11 @@ class NotificationsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -193,7 +183,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/verified-domains', 'POST',
+            '/verified-domains',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -203,14 +194,16 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_notification_template(self, template_dto : TemplateDto, **kwargs) -> TemplateDto:  # noqa: E501
+    def create_notification_template(self, template_dto: TemplateDto,
+                                     **kwargs) -> TemplateDto:  # noqa: E501
         """Create Notification Template  # noqa: E501
 
         This creates a template for your site.   You can also use this endpoint to update a template.  First, copy the response body from the [get notification template endpoint](https://developer.sailpoint.com/idn/api/beta/get-notification-template) for a template you wish to update and paste it into the request body for this endpoint.   Modify the fields you want to change and submit the POST request when ready.  # noqa: E501
@@ -237,10 +230,13 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_notification_template_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_notification_template_with_http_info(template_dto, **kwargs)  # noqa: E501
+        return self.create_notification_template_with_http_info(
+            template_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_notification_template_with_http_info(self, template_dto : TemplateDto, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_notification_template_with_http_info(
+            self, template_dto: TemplateDto,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create Notification Template  # noqa: E501
 
         This creates a template for your site.   You can also use this endpoint to update a template.  First, copy the response body from the [get notification template endpoint](https://developer.sailpoint.com/idn/api/beta/get-notification-template) for a template you wish to update and paste it into the request body for this endpoint.   Modify the fields you want to change and submit the POST request when ready.  # noqa: E501
@@ -279,28 +275,18 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'template_dto'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['template_dto']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_notification_template" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_notification_template" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -326,11 +312,11 @@ class NotificationsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -345,7 +331,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/notification-templates', 'POST',
+            '/notification-templates',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -355,14 +342,16 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_verified_from_address(self, email_status_dto : EmailStatusDto, **kwargs) -> EmailStatusDto:  # noqa: E501
+    def create_verified_from_address(self, email_status_dto: EmailStatusDto,
+                                     **kwargs) -> EmailStatusDto:  # noqa: E501
         """Create Verified From Address  # noqa: E501
 
         Create a new sender email address and initiate verification process.  # noqa: E501
@@ -389,10 +378,13 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_verified_from_address_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_verified_from_address_with_http_info(email_status_dto, **kwargs)  # noqa: E501
+        return self.create_verified_from_address_with_http_info(
+            email_status_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_verified_from_address_with_http_info(self, email_status_dto : EmailStatusDto, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_verified_from_address_with_http_info(
+            self, email_status_dto: EmailStatusDto,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create Verified From Address  # noqa: E501
 
         Create a new sender email address and initiate verification process.  # noqa: E501
@@ -431,28 +423,18 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'email_status_dto'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['email_status_dto']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_verified_from_address" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_verified_from_address" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -478,11 +460,11 @@ class NotificationsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -497,7 +479,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/verified-from-addresses', 'POST',
+            '/verified-from-addresses',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -507,14 +490,17 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_notification_templates_in_bulk(self, template_bulk_delete_dto : conlist(TemplateBulkDeleteDto), **kwargs) -> None:  # noqa: E501
+    def delete_notification_templates_in_bulk(
+            self, template_bulk_delete_dto: conlist(TemplateBulkDeleteDto),
+            **kwargs) -> None:  # noqa: E501
         """Bulk Delete Notification Templates  # noqa: E501
 
         This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, you can only delete a subset of your notifications, i.e. ones that show up in the list call.  # noqa: E501
@@ -541,10 +527,13 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_notification_templates_in_bulk_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_notification_templates_in_bulk_with_http_info(template_bulk_delete_dto, **kwargs)  # noqa: E501
+        return self.delete_notification_templates_in_bulk_with_http_info(
+            template_bulk_delete_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_notification_templates_in_bulk_with_http_info(self, template_bulk_delete_dto : conlist(TemplateBulkDeleteDto), **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_notification_templates_in_bulk_with_http_info(
+            self, template_bulk_delete_dto: conlist(TemplateBulkDeleteDto),
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Bulk Delete Notification Templates  # noqa: E501
 
         This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, you can only delete a subset of your notifications, i.e. ones that show up in the list call.  # noqa: E501
@@ -583,28 +572,18 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'template_bulk_delete_dto'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['template_bulk_delete_dto']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete_notification_templates_in_bulk" % _key
-                )
+                    " to method delete_notification_templates_in_bulk" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -630,11 +609,11 @@ class NotificationsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -642,7 +621,8 @@ class NotificationsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/notification-templates/bulk-delete', 'POST',
+            '/notification-templates/bulk-delete',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -652,14 +632,16 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_verified_from_address(self, id : StrictStr, **kwargs) -> None:  # noqa: E501
+    def delete_verified_from_address(self, id: StrictStr,
+                                     **kwargs) -> None:  # noqa: E501
         """Delete Verified From Address  # noqa: E501
 
         Delete a verified sender email address  # noqa: E501
@@ -686,10 +668,12 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_verified_from_address_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_verified_from_address_with_http_info(id, **kwargs)  # noqa: E501
+        return self.delete_verified_from_address_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_verified_from_address_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_verified_from_address_with_http_info(
+            self, id: StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Verified From Address  # noqa: E501
 
         Delete a verified sender email address  # noqa: E501
@@ -728,28 +712,18 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_verified_from_address" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_verified_from_address" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -759,7 +733,6 @@ class NotificationsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -780,7 +753,8 @@ class NotificationsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/verified-from-addresses/{id}', 'DELETE',
+            '/verified-from-addresses/{id}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -790,14 +764,16 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_dkim_attributes(self, **kwargs) -> List[DkimAttributes]:  # noqa: E501
+    def get_dkim_attributes(self,
+                            **kwargs) -> List[DkimAttributes]:  # noqa: E501
         """Get DKIM Attributes  # noqa: E501
 
         Retrieve DKIM (DomainKeys Identified Mail) attributes for all your tenants' AWS SES identities. Limits retrieval to 100 identities per call.  # noqa: E501
@@ -825,7 +801,8 @@ class NotificationsApi:
         return self.get_dkim_attributes_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_dkim_attributes_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_dkim_attributes_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """Get DKIM Attributes  # noqa: E501
 
         Retrieve DKIM (DomainKeys Identified Mail) attributes for all your tenants' AWS SES identities. Limits retrieval to 100 identities per call.  # noqa: E501
@@ -862,27 +839,17 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_dkim_attributes" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_dkim_attributes" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -917,7 +884,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/verified-domains', 'GET',
+            '/verified-domains',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -927,14 +895,21 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_mail_from_attributes(self, id : Annotated[StrictStr, Field(..., description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")], **kwargs) -> MailFromAttributes:  # noqa: E501
+    def get_mail_from_attributes(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status"
+        )], **kwargs) -> MailFromAttributes:  # noqa: E501
         """Get MAIL FROM Attributes  # noqa: E501
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.  # noqa: E501
@@ -961,10 +936,17 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_mail_from_attributes_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_mail_from_attributes_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_mail_from_attributes_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_mail_from_attributes_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_mail_from_attributes_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status"
+        )], **kwargs) -> ApiResponse:  # noqa: E501
         """Get MAIL FROM Attributes  # noqa: E501
 
         Retrieve MAIL FROM attributes for a given AWS SES identity.  # noqa: E501
@@ -1003,28 +985,18 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_mail_from_attributes" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_mail_from_attributes" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1062,7 +1034,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/mail-from-attributes/{identity}', 'GET',
+            '/mail-from-attributes/{identity}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1072,14 +1045,17 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_notification_preference(self, key : Annotated[StrictStr, Field(..., description="The notification key.")], **kwargs) -> PreferencesDto:  # noqa: E501
+    def get_notification_preference(self, key: Annotated[
+        StrictStr, Field(..., description="The notification key.")],
+                                    **kwargs) -> PreferencesDto:  # noqa: E501
         """Get Notification Preferences for tenant.  # noqa: E501
 
         Returns the notification preferences for tenant.  Note that if the key doesn't exist, then a 404 will be returned. Request will require the following legacy roles:  ORG_ADMIN and API  # noqa: E501
@@ -1106,10 +1082,15 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_notification_preference_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_notification_preference_with_http_info(key, **kwargs)  # noqa: E501
+        return self.get_notification_preference_with_http_info(
+            key, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_notification_preference_with_http_info(self, key : Annotated[StrictStr, Field(..., description="The notification key.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_notification_preference_with_http_info(
+            self,
+            key: Annotated[StrictStr,
+                           Field(..., description="The notification key.")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get Notification Preferences for tenant.  # noqa: E501
 
         Returns the notification preferences for tenant.  Note that if the key doesn't exist, then a 404 will be returned. Request will require the following legacy roles:  ORG_ADMIN and API  # noqa: E501
@@ -1148,28 +1129,18 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'key'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['key']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_notification_preference" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_notification_preference" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1179,7 +1150,6 @@ class NotificationsApi:
         _path_params = {}
         if _params['key']:
             _path_params['key'] = _params['key']
-
 
         # process the query parameters
         _query_params = []
@@ -1207,7 +1177,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/notification-preferences/{key}', 'GET',
+            '/notification-preferences/{key}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1217,14 +1188,18 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_notification_template(self, id : Annotated[StrictStr, Field(..., description="Id of the Notification Template")], **kwargs) -> List[TemplateDto]:  # noqa: E501
+    def get_notification_template(self, id: Annotated[
+        StrictStr,
+        Field(..., description="Id of the Notification Template")],
+                                  **kwargs) -> List[TemplateDto]:  # noqa: E501
         """Get Notification Template By Id  # noqa: E501
 
         This gets a template that you have modified for your site by Id.  # noqa: E501
@@ -1251,10 +1226,15 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_notification_template_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_notification_template_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_notification_template_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_notification_template_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Id of the Notification Template")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_notification_template_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="Id of the Notification Template")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get Notification Template By Id  # noqa: E501
 
         This gets a template that you have modified for your site by Id.  # noqa: E501
@@ -1293,28 +1273,18 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_notification_template" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_notification_template" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1324,7 +1294,6 @@ class NotificationsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1352,7 +1321,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/notification-templates/{id}', 'GET',
+            '/notification-templates/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1362,14 +1332,16 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_notifications_template_context(self, **kwargs) -> List[NotificationTemplateContext]:  # noqa: E501
+    def get_notifications_template_context(
+            self, **kwargs) -> List[NotificationTemplateContext]:  # noqa: E501
         """Get Notification Template Context  # noqa: E501
 
         The notification service (Hermes) maintains metadata to construct the notification templates or supply any information during the event propagation.  The data-store where this information is retrieved is  called \"Global Context\" (a.k.a. notification template context). It defines a set of attributes  that will be available per tenant (organization).  Regarding authorization, the access token contains the tenant and will grant access to the one requested. Requires the following security scope:  idn:notification-templates:read  # noqa: E501
@@ -1394,10 +1366,12 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_notifications_template_context_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_notifications_template_context_with_http_info(**kwargs)  # noqa: E501
+        return self.get_notifications_template_context_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_notifications_template_context_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_notifications_template_context_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """Get Notification Template Context  # noqa: E501
 
         The notification service (Hermes) maintains metadata to construct the notification templates or supply any information during the event propagation.  The data-store where this information is retrieved is  called \"Global Context\" (a.k.a. notification template context). It defines a set of attributes  that will be available per tenant (organization).  Regarding authorization, the access token contains the tenant and will grant access to the one requested. Requires the following security scope:  idn:notification-templates:read  # noqa: E501
@@ -1434,27 +1408,18 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_notifications_template_context" % _key
-                )
+                    " to method get_notifications_template_context" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1489,7 +1454,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/notification-template-context', 'GET',
+            '/notification-template-context',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1499,14 +1465,52 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_from_addresses(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **email**: *eq, co, ge, le, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **email**")] = None, **kwargs) -> List[EmailStatusDto]:  # noqa: E501
+    def list_from_addresses(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **email**: *eq, co, ge, le, sw*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **email**"
+            )] = None,
+            **kwargs) -> List[EmailStatusDto]:  # noqa: E501
         """List From Addresses  # noqa: E501
 
         Retrieve a list of sender email addresses and their verification statuses  # noqa: E501
@@ -1541,10 +1545,49 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_from_addresses_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_from_addresses_with_http_info(limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.list_from_addresses_with_http_info(limit, offset, count,
+                                                       filters, sorters,
+                                                       **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_from_addresses_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **email**: *eq, co, ge, le, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **email**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_from_addresses_with_http_info(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **email**: *eq, co, ge, le, sw*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **email**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List From Addresses  # noqa: E501
 
         Retrieve a list of sender email addresses and their verification statuses  # noqa: E501
@@ -1591,32 +1634,17 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'limit',
-            'offset',
-            'count',
-            'filters',
-            'sorters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['limit', 'offset', 'count', 'filters', 'sorters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_from_addresses" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_from_addresses" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1665,7 +1693,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/verified-from-addresses', 'GET',
+            '/verified-from-addresses',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1675,14 +1704,38 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_notification_template_defaults(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, co, sw*  **medium**: *eq, co, sw*  **locale**: *eq, co, sw*")] = None, **kwargs) -> List[TemplateDtoDefault]:  # noqa: E501
+    def list_notification_template_defaults(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, co, sw*  **medium**: *eq, co, sw*  **locale**: *eq, co, sw*"
+            )] = None,
+            **kwargs) -> List[TemplateDtoDefault]:  # noqa: E501
         """List Notification Template Defaults  # noqa: E501
 
         This lists the default templates used for notifications, such as emails from IdentityNow. Since this is a beta feature, it doesn't include all the templates.  # noqa: E501
@@ -1713,10 +1766,34 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_notification_template_defaults_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_notification_template_defaults_with_http_info(limit, offset, filters, **kwargs)  # noqa: E501
+        return self.list_notification_template_defaults_with_http_info(
+            limit, offset, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_notification_template_defaults_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, co, sw*  **medium**: *eq, co, sw*  **locale**: *eq, co, sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_notification_template_defaults_with_http_info(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, co, sw*  **medium**: *eq, co, sw*  **locale**: *eq, co, sw*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List Notification Template Defaults  # noqa: E501
 
         This lists the default templates used for notifications, such as emails from IdentityNow. Since this is a beta feature, it doesn't include all the templates.  # noqa: E501
@@ -1759,30 +1836,18 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'limit',
-            'offset',
-            'filters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['limit', 'offset', 'filters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list_notification_template_defaults" % _key
-                )
+                    " to method list_notification_template_defaults" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1826,7 +1891,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/notification-template-defaults', 'GET',
+            '/notification-template-defaults',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1836,14 +1902,38 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_notification_templates(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, co, sw*  **medium**: *eq, co, sw*  **locale**: *eq, co, sw*")] = None, **kwargs) -> List[TemplateDto]:  # noqa: E501
+    def list_notification_templates(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, co, sw*  **medium**: *eq, co, sw*  **locale**: *eq, co, sw*"
+            )] = None,
+            **kwargs) -> List[TemplateDto]:  # noqa: E501
         """List Notification Templates  # noqa: E501
 
         This lists the templates that you have modified for your site. Since this is a beta feature, it doesn't include all your modified templates.  # noqa: E501
@@ -1874,10 +1964,34 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_notification_templates_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_notification_templates_with_http_info(limit, offset, filters, **kwargs)  # noqa: E501
+        return self.list_notification_templates_with_http_info(
+            limit, offset, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_notification_templates_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, co, sw*  **medium**: *eq, co, sw*  **locale**: *eq, co, sw*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_notification_templates_with_http_info(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, co, sw*  **medium**: *eq, co, sw*  **locale**: *eq, co, sw*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List Notification Templates  # noqa: E501
 
         This lists the templates that you have modified for your site. Since this is a beta feature, it doesn't include all your modified templates.  # noqa: E501
@@ -1920,30 +2034,18 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'limit',
-            'offset',
-            'filters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['limit', 'offset', 'filters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_notification_templates" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_notification_templates" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1987,7 +2089,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/notification-templates', 'GET',
+            '/notification-templates',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1997,14 +2100,17 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_mail_from_attributes(self, mail_from_attributes_dto : MailFromAttributesDto, **kwargs) -> MailFromAttributes:  # noqa: E501
+    def put_mail_from_attributes(
+            self, mail_from_attributes_dto: MailFromAttributesDto,
+            **kwargs) -> MailFromAttributes:  # noqa: E501
         """Change MAIL FROM domain  # noqa: E501
 
         Change the MAIL FROM domain of an AWS SES email identity and provide the MX and TXT records to be placed in the caller's DNS  # noqa: E501
@@ -2031,10 +2137,13 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_mail_from_attributes_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_mail_from_attributes_with_http_info(mail_from_attributes_dto, **kwargs)  # noqa: E501
+        return self.put_mail_from_attributes_with_http_info(
+            mail_from_attributes_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_mail_from_attributes_with_http_info(self, mail_from_attributes_dto : MailFromAttributesDto, **kwargs) -> ApiResponse:  # noqa: E501
+    def put_mail_from_attributes_with_http_info(
+            self, mail_from_attributes_dto: MailFromAttributesDto,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Change MAIL FROM domain  # noqa: E501
 
         Change the MAIL FROM domain of an AWS SES email identity and provide the MX and TXT records to be placed in the caller's DNS  # noqa: E501
@@ -2073,28 +2182,18 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'mail_from_attributes_dto'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['mail_from_attributes_dto']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_mail_from_attributes" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method put_mail_from_attributes" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2120,11 +2219,11 @@ class NotificationsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2139,7 +2238,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/mail-from-attributes', 'PUT',
+            '/mail-from-attributes',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -2149,14 +2249,18 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_notification_preference(self, key : Annotated[StrictStr, Field(..., description="The notification key.")], preferences_dto : PreferencesDto, **kwargs) -> PreferencesDto:  # noqa: E501
+    def put_notification_preference(self, key: Annotated[
+        StrictStr, Field(..., description="The notification key.")],
+                                    preferences_dto: PreferencesDto,
+                                    **kwargs) -> PreferencesDto:  # noqa: E501
         """Overwrite the preferences for the given notification key.  # noqa: E501
 
         In the notification world, a notification flows through these salient stages -   1. Interest matching,   2. Preferences   3. Template Rendering.   The default notification preferences make up a part of the second stage, along with user preferences (which is a future goal). The expectation is for  admins to be able to set default preferences for their org, like opting in to or out of certain notifications, and configuring future preferences as  we tack on more features. The key in the Dto is not necessary but if it is provided and doesn't match the key in the URI, then a 400 will be thrown.  Request will require the following legacy roles:  ORG_ADMIN and API  # noqa: E501
@@ -2185,10 +2289,16 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_notification_preference_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_notification_preference_with_http_info(key, preferences_dto, **kwargs)  # noqa: E501
+        return self.put_notification_preference_with_http_info(
+            key, preferences_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_notification_preference_with_http_info(self, key : Annotated[StrictStr, Field(..., description="The notification key.")], preferences_dto : PreferencesDto, **kwargs) -> ApiResponse:  # noqa: E501
+    def put_notification_preference_with_http_info(
+            self,
+            key: Annotated[StrictStr,
+                           Field(..., description="The notification key.")],
+            preferences_dto: PreferencesDto,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Overwrite the preferences for the given notification key.  # noqa: E501
 
         In the notification world, a notification flows through these salient stages -   1. Interest matching,   2. Preferences   3. Template Rendering.   The default notification preferences make up a part of the second stage, along with user preferences (which is a future goal). The expectation is for  admins to be able to set default preferences for their org, like opting in to or out of certain notifications, and configuring future preferences as  we tack on more features. The key in the Dto is not necessary but if it is provided and doesn't match the key in the URI, then a 400 will be thrown.  Request will require the following legacy roles:  ORG_ADMIN and API  # noqa: E501
@@ -2229,29 +2339,18 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'key',
-            'preferences_dto'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['key', 'preferences_dto']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_notification_preference" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method put_notification_preference" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2261,7 +2360,6 @@ class NotificationsApi:
         _path_params = {}
         if _params['key']:
             _path_params['key'] = _params['key']
-
 
         # process the query parameters
         _query_params = []
@@ -2280,11 +2378,11 @@ class NotificationsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2299,7 +2397,8 @@ class NotificationsApi:
         }
 
         return self.api_client.call_api(
-            '/notification-preferences/{key}', 'PUT',
+            '/notification-preferences/{key}',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -2309,14 +2408,18 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def send_test_notification(self, send_test_notification_request_dto : SendTestNotificationRequestDto, **kwargs) -> None:  # noqa: E501
+    def send_test_notification(
+            self,
+            send_test_notification_request_dto: SendTestNotificationRequestDto,
+            **kwargs) -> None:  # noqa: E501
         """Send Test Notification  # noqa: E501
 
         Send a Test Notification  # noqa: E501
@@ -2343,10 +2446,14 @@ class NotificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the send_test_notification_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.send_test_notification_with_http_info(send_test_notification_request_dto, **kwargs)  # noqa: E501
+        return self.send_test_notification_with_http_info(
+            send_test_notification_request_dto, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def send_test_notification_with_http_info(self, send_test_notification_request_dto : SendTestNotificationRequestDto, **kwargs) -> ApiResponse:  # noqa: E501
+    def send_test_notification_with_http_info(
+            self,
+            send_test_notification_request_dto: SendTestNotificationRequestDto,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Send Test Notification  # noqa: E501
 
         Send a Test Notification  # noqa: E501
@@ -2385,28 +2492,17 @@ class NotificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'send_test_notification_request_dto'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['send_test_notification_request_dto']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method send_test_notification" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method send_test_notification" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2432,11 +2528,11 @@ class NotificationsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2444,7 +2540,8 @@ class NotificationsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/send-test-notification', 'POST',
+            '/send-test-notification',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2454,7 +2551,8 @@ class NotificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

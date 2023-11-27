@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional, Union
 from pydantic import BaseModel, StrictBytes, StrictStr
+
 
 class UpdatePasswordDictionaryRequest(BaseModel):
     """
@@ -48,10 +47,7 @@ class UpdatePasswordDictionaryRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +59,6 @@ class UpdatePasswordDictionaryRequest(BaseModel):
         if not isinstance(obj, dict):
             return UpdatePasswordDictionaryRequest.parse_obj(obj)
 
-        _obj = UpdatePasswordDictionaryRequest.parse_obj({
-            "file": obj.get("file")
-        })
+        _obj = UpdatePasswordDictionaryRequest.parse_obj(
+            {"file": obj.get("file")})
         return _obj
-
-

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.search_export_report_arguments import SearchExportReportArguments  # noqa: E501
+from sailpoint.v3.models.search_export_report_arguments import SearchExportReportArguments  # noqa: E501
+
 
 class TestSearchExportReportArguments(unittest.TestCase):
     """SearchExportReportArguments unit test stubs"""
@@ -38,11 +38,11 @@ class TestSearchExportReportArguments(unittest.TestCase):
             return SearchExportReportArguments(
                 indices = [entitlements],
                 filters = {source.id={type=TERMS, terms=[2c9180897termsId780bd2920576]}, source.name.exact={type=TERMS, terms=[IdentityNow], exclude=true}},
-                query = v3.models.query.Query(
+                query = sailpoint.v3.models.query.Query(
                     query = 'name:a*', 
                     fields = [name], 
                     time_zone = 'America/Chicago', 
-                    inner_hit = v3.models.inner_hit.InnerHit(
+                    inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
                         query = 'source.name:\"Active Directory\"', 
                         type = 'access', ), ),
                 include_nested = True,
@@ -52,11 +52,11 @@ class TestSearchExportReportArguments(unittest.TestCase):
             )
         else:
             return SearchExportReportArguments(
-                query = v3.models.query.Query(
+                query = sailpoint.v3.models.query.Query(
                     query = 'name:a*', 
                     fields = [name], 
                     time_zone = 'America/Chicago', 
-                    inner_hit = v3.models.inner_hit.InnerHit(
+                    inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
                         query = 'source.name:\"Active Directory\"', 
                         type = 'access', ), ),
                 default_s3_bucket = True,
@@ -67,6 +67,7 @@ class TestSearchExportReportArguments(unittest.TestCase):
         """Test SearchExportReportArguments"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

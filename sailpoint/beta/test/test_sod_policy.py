@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.sod_policy import SodPolicy  # noqa: E501
+from sailpoint.beta.models.sod_policy import SodPolicy  # noqa: E501
+
 
 class TestSodPolicy(unittest.TestCase):
     """SodPolicy unit test stubs"""
@@ -41,7 +41,7 @@ class TestSodPolicy(unittest.TestCase):
                 created = '2020-01-01T00:00Z',
                 modified = '2020-01-01T00:00Z',
                 description = 'This policy ensures compliance of xyz',
-                owner_ref = beta.models.owner_dto.OwnerDto(
+                owner_ref = sailpoint.beta.models.owner_dto.OwnerDto(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Support', ),
@@ -53,7 +53,7 @@ class TestSodPolicy(unittest.TestCase):
                 tags = [TAG1, TAG2],
                 creator_id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 modifier_id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
-                violation_owner_assignment_config = beta.models.violation_owner_assignment_config.ViolationOwnerAssignmentConfig(
+                violation_owner_assignment_config = sailpoint.beta.models.violation_owner_assignment_config.ViolationOwnerAssignmentConfig(
                     assignment_rule = 'MANAGER', 
                     owner_ref = null, ),
                 scheduled = True,
@@ -69,6 +69,7 @@ class TestSodPolicy(unittest.TestCase):
         """Test SodPolicy"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

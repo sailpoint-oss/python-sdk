@@ -1,4 +1,4 @@
-# beta.SearchAttributeConfigurationApi
+# sailpoint.beta.SearchAttributeConfigurationApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -25,14 +25,14 @@ This API accepts an attribute name, an attribute display name and a list of name
 ```python
 import time
 import os
-import beta
-from beta.models.search_attribute_config import SearchAttributeConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -46,9 +46,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SearchAttributeConfigurationApi(api_client)
+    api_instance = sailpoint.beta.SearchAttributeConfigurationApi(api_client)
     search_attribute_config = {name=newMailAttribute, displayName=New Mail Attribute, applicationAttributes={2c9180866166b5b0016167c32ef31a66=mail, 2c9180866166b5b0016167c32ef31a67=mail}} # SearchAttributeConfig | 
 
     try:
@@ -108,13 +108,13 @@ This API accepts an extended attribute name and deletes the corresponding extend
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -128,9 +128,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SearchAttributeConfigurationApi(api_client)
+    api_instance = sailpoint.beta.SearchAttributeConfigurationApi(api_client)
     name = 'newMailAttribute' # str | Name of the extended search attribute configuration to delete.
 
     try:
@@ -187,14 +187,14 @@ This API retrieves a list of attribute/application associates currently configur
 ```python
 import time
 import os
-import beta
-from beta.models.search_attribute_config import SearchAttributeConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -208,9 +208,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SearchAttributeConfigurationApi(api_client)
+    api_instance = sailpoint.beta.SearchAttributeConfigurationApi(api_client)
 
     try:
         # Retrieve a list of extended search attributes in IdentityNow.
@@ -264,14 +264,14 @@ This API accepts an extended attribute name and retrieves the corresponding exte
 ```python
 import time
 import os
-import beta
-from beta.models.search_attribute_config import SearchAttributeConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -285,9 +285,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SearchAttributeConfigurationApi(api_client)
+    api_instance = sailpoint.beta.SearchAttributeConfigurationApi(api_client)
     name = 'newMailAttribute' # str | Name of the extended search attribute configuration to delete.
 
     try:
@@ -347,15 +347,15 @@ This API updates an existing Search Attribute Configuration. The following field
 ```python
 import time
 import os
-import beta
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.models.search_attribute_config import SearchAttributeConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -369,9 +369,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SearchAttributeConfigurationApi(api_client)
+    api_instance = sailpoint.beta.SearchAttributeConfigurationApi(api_client)
     name = 'promotedMailAttribute' # str | Name of the Search Attribute Configuration to patch.
     json_patch_operation = [{op=replace, path=/name, value=newAttributeName}, {op=replace, path=/displayName, value=new attribute display name}, {op=add, path=/applicationAttributes, value={2c91808b79fd2422017a0b35d30f3968=employeeNumber}}] # List[JsonPatchOperation] | 
 

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.approval_status_dto import ApprovalStatusDto  # noqa: E501
+from sailpoint.beta.models.approval_status_dto import ApprovalStatusDto  # noqa: E501
+
 
 class TestApprovalStatusDto(unittest.TestCase):
     """ApprovalStatusDto unit test stubs"""
@@ -37,11 +37,11 @@ class TestApprovalStatusDto(unittest.TestCase):
         if include_optional:
             return ApprovalStatusDto(
                 forwarded = False,
-                original_owner = beta.models.approval_status_dto_original_owner.ApprovalStatusDto_originalOwner(
+                original_owner = sailpoint.beta.models.approval_status_dto_original_owner.ApprovalStatusDto_originalOwner(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                current_owner = beta.models.access_item_reviewed_by.AccessItemReviewedBy(
+                current_owner = sailpoint.beta.models.access_item_reviewed_by.AccessItemReviewedBy(
                     type = 'IDENTITY', 
                     id = '2c3780a46faadee4016fb4e018c20652', 
                     name = 'Allen Albertson', ),
@@ -49,7 +49,7 @@ class TestApprovalStatusDto(unittest.TestCase):
                 status = 'PENDING',
                 scheme = 'MANAGER',
                 error_messages = [
-                    beta.models.error_message_dto.ErrorMessageDto(
+                    sailpoint.beta.models.error_message_dto.ErrorMessageDto(
                         locale = 'en-US', 
                         locale_origin = 'DEFAULT', 
                         text = 'The request was syntactically correct but its content is semantically invalid.', )
@@ -66,6 +66,7 @@ class TestApprovalStatusDto(unittest.TestCase):
         """Test ApprovalStatusDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

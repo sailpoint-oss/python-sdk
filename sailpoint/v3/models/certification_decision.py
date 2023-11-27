@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class CertificationDecision(str, Enum):
     """
     The decision to approve or revoke the review item
     """
-
     """
     allowed enum values
     """
@@ -36,5 +31,3 @@ class CertificationDecision(str, Enum):
     def from_json(cls, json_str: str) -> CertificationDecision:
         """Create an instance of CertificationDecision from a JSON string"""
         return CertificationDecision(json.loads(json_str))
-
-

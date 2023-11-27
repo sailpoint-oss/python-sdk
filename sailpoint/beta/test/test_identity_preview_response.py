@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_preview_response import IdentityPreviewResponse  # noqa: E501
+from sailpoint.beta.models.identity_preview_response import IdentityPreviewResponse  # noqa: E501
+
 
 class TestIdentityPreviewResponse(unittest.TestCase):
     """IdentityPreviewResponse unit test stubs"""
@@ -36,17 +36,17 @@ class TestIdentityPreviewResponse(unittest.TestCase):
         model = IdentityPreviewResponse()  # noqa: E501
         if include_optional:
             return IdentityPreviewResponse(
-                identity = beta.models.identity_preview_response_identity.IdentityPreviewResponse_identity(
+                identity = sailpoint.beta.models.identity_preview_response_identity.IdentityPreviewResponse_identity(
                     type = 'IDENTITY', 
                     id = '2c4180a46faadee4016fb4e018c20626', 
                     name = 'Robert Robinson', ),
                 preview_attributes = [
-                    beta.models.identity_attribute_preview.IdentityAttributePreview(
+                    sailpoint.beta.models.identity_attribute_preview.IdentityAttributePreview(
                         name = 'email', 
                         value = email@mail.com, 
                         previous_value = oldEmail@mail.com, 
                         error_messages = [
-                            beta.models.error_message_dto.ErrorMessageDto(
+                            sailpoint.beta.models.error_message_dto.ErrorMessageDto(
                                 locale = 'en-US', 
                                 locale_origin = 'DEFAULT', 
                                 text = 'The request was syntactically correct but its content is semantically invalid.', )
@@ -62,6 +62,7 @@ class TestIdentityPreviewResponse(unittest.TestCase):
         """Test IdentityPreviewResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

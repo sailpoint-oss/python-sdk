@@ -11,23 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-from v3.models.reviewer import Reviewer
+from sailpoint.v3.models.reviewer import Reviewer
+
 
 class CertificationReference(BaseModel):
     """
     CertificationReference
     """
-    id: Optional[StrictStr] = Field(None, description="The id of the certification.")
-    name: Optional[StrictStr] = Field(None, description="The name of the certification.")
+    id: Optional[StrictStr] = Field(None,
+                                    description="The id of the certification.")
+    name: Optional[StrictStr] = Field(
+        None, description="The name of the certification.")
     type: Optional[StrictStr] = None
     reviewer: Optional[Reviewer] = None
     __properties = ["id", "name", "type", "reviewer"]
@@ -62,10 +63,7 @@ class CertificationReference(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of reviewer
         if self.reviewer:
             _dict['reviewer'] = self.reviewer.to_dict()
@@ -81,11 +79,14 @@ class CertificationReference(BaseModel):
             return CertificationReference.parse_obj(obj)
 
         _obj = CertificationReference.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "reviewer": Reviewer.from_dict(obj.get("reviewer")) if obj.get("reviewer") is not None else None
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "type":
+            obj.get("type"),
+            "reviewer":
+            Reviewer.from_dict(obj.get("reviewer"))
+            if obj.get("reviewer") is not None else None
         })
         return _obj
-
-

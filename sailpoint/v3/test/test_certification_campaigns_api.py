@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from v3.api.certification_campaigns_api import CertificationCampaignsApi  # noqa: E501
+from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi  # noqa: E501
 
 
 class TestCertificationCampaignsApi(unittest.TestCase):

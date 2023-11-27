@@ -1,4 +1,4 @@
-# beta.IAIRecommendationsApi
+# sailpoint.beta.IAIRecommendationsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -24,14 +24,14 @@ The getMessageCatalogs API returns message catalog based on the language headers
 ```python
 import time
 import os
-import beta
-from beta.models.message_catalog_dto import MessageCatalogDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.message_catalog_dto import MessageCatalogDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -45,9 +45,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRecommendationsApi(api_client)
+    api_instance = sailpoint.beta.IAIRecommendationsApi(api_client)
     catalog_id = 'catalog_id_example' # str | The ID of the message catalog.
 
     try:
@@ -106,15 +106,15 @@ The getRecommendations API returns recommendations based on the requested object
 ```python
 import time
 import os
-import beta
-from beta.models.recommendation_request_dto import RecommendationRequestDto
-from beta.models.recommendation_response_dto import RecommendationResponseDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.recommendation_request_dto import RecommendationRequestDto
+from sailpoint.beta.models.recommendation_response_dto import RecommendationResponseDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -128,10 +128,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRecommendationsApi(api_client)
-    recommendation_request_dto = beta.RecommendationRequestDto() # RecommendationRequestDto | 
+    api_instance = sailpoint.beta.IAIRecommendationsApi(api_client)
+    recommendation_request_dto = sailpoint.beta.RecommendationRequestDto() # RecommendationRequestDto | 
 
     try:
         # Returns a Recommendation Based on Object
@@ -189,14 +189,14 @@ Retrieves configuration attributes used by certification recommendations.
 ```python
 import time
 import os
-import beta
-from beta.models.recommendation_config_dto import RecommendationConfigDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.recommendation_config_dto import RecommendationConfigDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -210,9 +210,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRecommendationsApi(api_client)
+    api_instance = sailpoint.beta.IAIRecommendationsApi(api_client)
 
     try:
         # Get certification recommendation config values
@@ -266,14 +266,14 @@ Updates configuration attributes used by certification recommendations.
 ```python
 import time
 import os
-import beta
-from beta.models.recommendation_config_dto import RecommendationConfigDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.recommendation_config_dto import RecommendationConfigDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -287,10 +287,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIRecommendationsApi(api_client)
-    recommendation_config_dto = beta.RecommendationConfigDto() # RecommendationConfigDto | 
+    api_instance = sailpoint.beta.IAIRecommendationsApi(api_client)
+    recommendation_config_dto = sailpoint.beta.RecommendationConfigDto() # RecommendationConfigDto | 
 
     try:
         # Update certification recommendation config values

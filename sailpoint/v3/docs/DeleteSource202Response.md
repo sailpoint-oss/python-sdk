@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.delete_source202_response import DeleteSource202Response
+from sailpoint.v3.models.delete_source202_response import DeleteSource202Response
 
 # TODO update the JSON string below
 json = "{}"

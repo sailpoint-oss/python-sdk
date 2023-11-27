@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.expression import Expression  # noqa: E501
+from sailpoint.beta.models.expression import Expression  # noqa: E501
+
 
 class TestExpression(unittest.TestCase):
     """Expression unit test stubs"""
@@ -38,7 +38,7 @@ class TestExpression(unittest.TestCase):
             return Expression(
                 operator = 'EQUALS',
                 attribute = 'location',
-                value = beta.models.value.Value(
+                value = sailpoint.beta.models.value.Value(
                     type = 'STRING', ),
                 children = []
             )
@@ -51,6 +51,7 @@ class TestExpression(unittest.TestCase):
         """Test Expression"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

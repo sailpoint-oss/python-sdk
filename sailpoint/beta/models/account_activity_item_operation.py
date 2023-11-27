@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class AccountActivityItemOperation(str, Enum):
     """
     Represents an operation in an account activity item
     """
-
     """
     allowed enum values
     """
@@ -43,5 +38,3 @@ class AccountActivityItemOperation(str, Enum):
     def from_json(cls, json_str: str) -> AccountActivityItemOperation:
         """Create an instance of AccountActivityItemOperation from a JSON string"""
         return AccountActivityItemOperation(json.loads(json_str))
-
-

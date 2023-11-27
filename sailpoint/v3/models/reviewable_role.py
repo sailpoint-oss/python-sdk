@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,8 +19,9 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
-from v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
-from v3.models.reviewable_access_profile import ReviewableAccessProfile
+from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
+from sailpoint.v3.models.reviewable_access_profile import ReviewableAccessProfile
+
 
 class ReviewableRole(BaseModel):
     """
@@ -29,13 +29,27 @@ class ReviewableRole(BaseModel):
     """
     id: Optional[StrictStr] = Field(None, description="The id for the Role")
     name: Optional[StrictStr] = Field(None, description="The name of the Role")
-    description: Optional[StrictStr] = Field(None, description="Information about the Role")
-    privileged: Optional[StrictBool] = Field(None, description="Indicates if the entitlement is a privileged entitlement")
+    description: Optional[StrictStr] = Field(
+        None, description="Information about the Role")
+    privileged: Optional[StrictBool] = Field(
+        None,
+        description="Indicates if the entitlement is a privileged entitlement")
     owner: Optional[IdentityReferenceWithNameAndEmail] = None
-    revocable: Optional[StrictBool] = Field(None, description="Indicates whether the Role can be revoked or requested")
-    end_date: Optional[datetime] = Field(None, alias="endDate", description="The date when a user's access expires.")
-    access_profiles: Optional[conlist(ReviewableAccessProfile)] = Field(None, alias="accessProfiles", description="The list of Access Profiles associated with this Role")
-    __properties = ["id", "name", "description", "privileged", "owner", "revocable", "endDate", "accessProfiles"]
+    revocable: Optional[StrictBool] = Field(
+        None,
+        description="Indicates whether the Role can be revoked or requested")
+    end_date: Optional[datetime] = Field(
+        None,
+        alias="endDate",
+        description="The date when a user's access expires.")
+    access_profiles: Optional[conlist(ReviewableAccessProfile)] = Field(
+        None,
+        alias="accessProfiles",
+        description="The list of Access Profiles associated with this Role")
+    __properties = [
+        "id", "name", "description", "privileged", "owner", "revocable",
+        "endDate", "accessProfiles"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -57,10 +71,7 @@ class ReviewableRole(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -88,15 +99,24 @@ class ReviewableRole(BaseModel):
             return ReviewableRole.parse_obj(obj)
 
         _obj = ReviewableRole.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "privileged": obj.get("privileged"),
-            "owner": IdentityReferenceWithNameAndEmail.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "revocable": obj.get("revocable"),
-            "end_date": obj.get("endDate"),
-            "access_profiles": [ReviewableAccessProfile.from_dict(_item) for _item in obj.get("accessProfiles")] if obj.get("accessProfiles") is not None else None
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "privileged":
+            obj.get("privileged"),
+            "owner":
+            IdentityReferenceWithNameAndEmail.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "revocable":
+            obj.get("revocable"),
+            "end_date":
+            obj.get("endDate"),
+            "access_profiles": [
+                ReviewableAccessProfile.from_dict(_item)
+                for _item in obj.get("accessProfiles")
+            ] if obj.get("accessProfiles") is not None else None
         })
         return _obj
-
-

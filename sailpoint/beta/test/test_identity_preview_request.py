@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_preview_request import IdentityPreviewRequest  # noqa: E501
+from sailpoint.beta.models.identity_preview_request import IdentityPreviewRequest  # noqa: E501
+
 
 class TestIdentityPreviewRequest(unittest.TestCase):
     """IdentityPreviewRequest unit test stubs"""
@@ -37,12 +37,12 @@ class TestIdentityPreviewRequest(unittest.TestCase):
         if include_optional:
             return IdentityPreviewRequest(
                 identity_id = '',
-                identity_attribute_config = beta.models.identity_attribute_config.IdentityAttributeConfig(
+                identity_attribute_config = sailpoint.beta.models.identity_attribute_config.IdentityAttributeConfig(
                     enabled = True, 
                     attribute_transforms = [
-                        beta.models.identity_attribute_transform.IdentityAttributeTransform(
+                        sailpoint.beta.models.identity_attribute_transform.IdentityAttributeTransform(
                             identity_attribute_name = 'email', 
-                            transform_definition = beta.models.transform_definition.TransformDefinition(
+                            transform_definition = sailpoint.beta.models.transform_definition.TransformDefinition(
                                 type = 'accountAttribute', 
                                 attributes = {attributeName=e-mail, sourceName=MySource, sourceId=2c9180877a826e68017a8c0b03da1a53}, ), )
                         ], )
@@ -56,6 +56,7 @@ class TestIdentityPreviewRequest(unittest.TestCase):
         """Test IdentityPreviewRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

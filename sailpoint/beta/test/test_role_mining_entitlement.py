@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.role_mining_entitlement import RoleMiningEntitlement  # noqa: E501
+from sailpoint.beta.models.role_mining_entitlement import RoleMiningEntitlement  # noqa: E501
+
 
 class TestRoleMiningEntitlement(unittest.TestCase):
     """RoleMiningEntitlement unit test stubs"""
@@ -36,7 +36,7 @@ class TestRoleMiningEntitlement(unittest.TestCase):
         model = RoleMiningEntitlement()  # noqa: E501
         if include_optional:
             return RoleMiningEntitlement(
-                entitlement_ref = beta.models.role_mining_entitlement_ref.RoleMiningEntitlementRef(
+                entitlement_ref = sailpoint.beta.models.role_mining_entitlement_ref.RoleMiningEntitlementRef(
                     id = '2c91808a7e95e6e0017e96e2086206c8', 
                     name = 'App.entitlement.1', 
                     description = 'Entitlement 1', 
@@ -59,6 +59,7 @@ class TestRoleMiningEntitlement(unittest.TestCase):
         """Test RoleMiningEntitlement"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

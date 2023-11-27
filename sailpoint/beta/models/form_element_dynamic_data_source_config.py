@@ -11,23 +11,32 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
+
 
 class FormElementDynamicDataSourceConfig(BaseModel):
     """
     FormElementDynamicDataSourceConfig
     """
-    aggregation_bucket_field: Optional[StrictStr] = Field(None, alias="aggregationBucketField", description="AggregationBucketField is the aggregation bucket field name")
-    indices: Optional[conlist(StrictStr)] = Field(None, description="Indices is a list of indices to use")
-    object_type: Optional[StrictStr] = Field(None, alias="objectType", description="ObjectType is a PreDefinedSelectOption value IDENTITY PreDefinedSelectOptionIdentity ACCESS_PROFILE PreDefinedSelectOptionAccessProfile SOURCES PreDefinedSelectOptionSources ROLE PreDefinedSelectOptionRole ENTITLEMENT PreDefinedSelectOptionEntitlement")
+    aggregation_bucket_field: Optional[StrictStr] = Field(
+        None,
+        alias="aggregationBucketField",
+        description=
+        "AggregationBucketField is the aggregation bucket field name")
+    indices: Optional[conlist(StrictStr)] = Field(
+        None, description="Indices is a list of indices to use")
+    object_type: Optional[StrictStr] = Field(
+        None,
+        alias="objectType",
+        description=
+        "ObjectType is a PreDefinedSelectOption value IDENTITY PreDefinedSelectOptionIdentity ACCESS_PROFILE PreDefinedSelectOptionAccessProfile SOURCES PreDefinedSelectOptionSources ROLE PreDefinedSelectOptionRole ENTITLEMENT PreDefinedSelectOptionEntitlement"
+    )
     query: Optional[StrictStr] = Field(None, description="Query is a text")
     __properties = ["aggregationBucketField", "indices", "objectType", "query"]
 
@@ -38,8 +47,11 @@ class FormElementDynamicDataSourceConfig(BaseModel):
             return value
 
         for i in value:
-            if i not in ('accessprofiles', 'accountactivities', 'entitlements', 'identities', 'events', 'roles', '*'):
-                raise ValueError("each list item must be one of ('accessprofiles', 'accountactivities', 'entitlements', 'identities', 'events', 'roles', '*')")
+            if i not in ('accessprofiles', 'accountactivities', 'entitlements',
+                         'identities', 'events', 'roles', '*'):
+                raise ValueError(
+                    "each list item must be one of ('accessprofiles', 'accountactivities', 'entitlements', 'identities', 'events', 'roles', '*')"
+                )
         return value
 
     @validator('object_type')
@@ -48,8 +60,11 @@ class FormElementDynamicDataSourceConfig(BaseModel):
         if value is None:
             return value
 
-        if value not in ('IDENTITY', 'ACCESS_PROFILE', 'SOURCES', 'ROLE', 'ENTITLEMENT'):
-            raise ValueError("must be one of enum values ('IDENTITY', 'ACCESS_PROFILE', 'SOURCES', 'ROLE', 'ENTITLEMENT')")
+        if value not in ('IDENTITY', 'ACCESS_PROFILE', 'SOURCES', 'ROLE',
+                         'ENTITLEMENT'):
+            raise ValueError(
+                "must be one of enum values ('IDENTITY', 'ACCESS_PROFILE', 'SOURCES', 'ROLE', 'ENTITLEMENT')"
+            )
         return value
 
     class Config:
@@ -72,10 +87,7 @@ class FormElementDynamicDataSourceConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -88,11 +100,13 @@ class FormElementDynamicDataSourceConfig(BaseModel):
             return FormElementDynamicDataSourceConfig.parse_obj(obj)
 
         _obj = FormElementDynamicDataSourceConfig.parse_obj({
-            "aggregation_bucket_field": obj.get("aggregationBucketField"),
-            "indices": obj.get("indices"),
-            "object_type": obj.get("objectType"),
-            "query": obj.get("query")
+            "aggregation_bucket_field":
+            obj.get("aggregationBucketField"),
+            "indices":
+            obj.get("indices"),
+            "object_type":
+            obj.get("objectType"),
+            "query":
+            obj.get("query")
         })
         return _obj
-
-

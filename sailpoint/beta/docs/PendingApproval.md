@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.pending_approval import PendingApproval
+from sailpoint.beta.models.pending_approval import PendingApproval
 
 # TODO update the JSON string below
 json = "{}"

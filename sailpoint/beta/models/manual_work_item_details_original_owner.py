@@ -11,23 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class ManualWorkItemDetailsOriginalOwner(BaseModel):
     """
     Identity of original work item owner, if the work item has been forwarded.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="DTO type of original work item owner's identity.")
-    id: Optional[StrictStr] = Field(None, description="ID of original work item owner's identity.")
-    name: Optional[StrictStr] = Field(None, description="Display name of original work item owner.")
+    type: Optional[StrictStr] = Field(
+        None, description="DTO type of original work item owner's identity.")
+    id: Optional[StrictStr] = Field(
+        None, description="ID of original work item owner's identity.")
+    name: Optional[StrictStr] = Field(
+        None, description="Display name of original work item owner.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -37,7 +39,8 @@ class ManualWorkItemDetailsOriginalOwner(BaseModel):
             return value
 
         if value not in ('GOVERNANCE_GROUP', 'IDENTITY'):
-            raise ValueError("must be one of enum values ('GOVERNANCE_GROUP', 'IDENTITY')")
+            raise ValueError(
+                "must be one of enum values ('GOVERNANCE_GROUP', 'IDENTITY')")
         return value
 
     class Config:
@@ -60,10 +63,7 @@ class ManualWorkItemDetailsOriginalOwner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,10 +76,11 @@ class ManualWorkItemDetailsOriginalOwner(BaseModel):
             return ManualWorkItemDetailsOriginalOwner.parse_obj(obj)
 
         _obj = ManualWorkItemDetailsOriginalOwner.parse_obj({
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "type":
+            obj.get("type"),
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name")
         })
         return _obj
-
-

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.mfa_duo_config import MfaDuoConfig
+from sailpoint.beta.models.mfa_duo_config import MfaDuoConfig
 
 # TODO update the JSON string below
 json = "{}"

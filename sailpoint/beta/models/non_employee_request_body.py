@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,21 +20,47 @@ from datetime import datetime
 from typing import Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
 
+
 class NonEmployeeRequestBody(BaseModel):
     """
     NonEmployeeRequestBody
     """
-    account_name: StrictStr = Field(..., alias="accountName", description="Requested identity account name.")
-    first_name: StrictStr = Field(..., alias="firstName", description="Non-Employee's first name.")
-    last_name: StrictStr = Field(..., alias="lastName", description="Non-Employee's last name.")
+    account_name: StrictStr = Field(
+        ...,
+        alias="accountName",
+        description="Requested identity account name.")
+    first_name: StrictStr = Field(...,
+                                  alias="firstName",
+                                  description="Non-Employee's first name.")
+    last_name: StrictStr = Field(...,
+                                 alias="lastName",
+                                 description="Non-Employee's last name.")
     email: StrictStr = Field(..., description="Non-Employee's email.")
     phone: StrictStr = Field(..., description="Non-Employee's phone.")
-    manager: StrictStr = Field(..., description="The account ID of a valid identity to serve as this non-employee's manager.")
-    source_id: StrictStr = Field(..., alias="sourceId", description="Non-Employee's source id.")
-    data: Optional[Dict[str, StrictStr]] = Field(None, description="Attribute blob/bag for a non-employee, 10 attributes is the maximum size supported.")
-    start_date: datetime = Field(..., alias="startDate", description="Non-Employee employment start date.")
-    end_date: datetime = Field(..., alias="endDate", description="Non-Employee employment end date.")
-    __properties = ["accountName", "firstName", "lastName", "email", "phone", "manager", "sourceId", "data", "startDate", "endDate"]
+    manager: StrictStr = Field(
+        ...,
+        description=
+        "The account ID of a valid identity to serve as this non-employee's manager."
+    )
+    source_id: StrictStr = Field(...,
+                                 alias="sourceId",
+                                 description="Non-Employee's source id.")
+    data: Optional[Dict[str, StrictStr]] = Field(
+        None,
+        description=
+        "Attribute blob/bag for a non-employee, 10 attributes is the maximum size supported."
+    )
+    start_date: datetime = Field(
+        ...,
+        alias="startDate",
+        description="Non-Employee employment start date.")
+    end_date: datetime = Field(...,
+                               alias="endDate",
+                               description="Non-Employee employment end date.")
+    __properties = [
+        "accountName", "firstName", "lastName", "email", "phone", "manager",
+        "sourceId", "data", "startDate", "endDate"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -57,10 +82,7 @@ class NonEmployeeRequestBody(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -73,17 +95,25 @@ class NonEmployeeRequestBody(BaseModel):
             return NonEmployeeRequestBody.parse_obj(obj)
 
         _obj = NonEmployeeRequestBody.parse_obj({
-            "account_name": obj.get("accountName"),
-            "first_name": obj.get("firstName"),
-            "last_name": obj.get("lastName"),
-            "email": obj.get("email"),
-            "phone": obj.get("phone"),
-            "manager": obj.get("manager"),
-            "source_id": obj.get("sourceId"),
-            "data": obj.get("data"),
-            "start_date": obj.get("startDate"),
-            "end_date": obj.get("endDate")
+            "account_name":
+            obj.get("accountName"),
+            "first_name":
+            obj.get("firstName"),
+            "last_name":
+            obj.get("lastName"),
+            "email":
+            obj.get("email"),
+            "phone":
+            obj.get("phone"),
+            "manager":
+            obj.get("manager"),
+            "source_id":
+            obj.get("sourceId"),
+            "data":
+            obj.get("data"),
+            "start_date":
+            obj.get("startDate"),
+            "end_date":
+            obj.get("endDate")
         })
         return _obj
-
-

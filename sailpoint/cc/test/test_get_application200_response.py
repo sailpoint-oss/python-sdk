@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from cc.models.get_application200_response import GetApplication200Response  # noqa: E501
+from sailpoint.cc.models.get_application200_response import GetApplication200Response  # noqa: E501
+
 
 class TestGetApplication200Response(unittest.TestCase):
     """GetApplication200Response unit test stubs"""
@@ -50,7 +50,7 @@ class TestGetApplication200Response(unittest.TestCase):
                 script_name = '',
                 status = '',
                 icon = '',
-                health = cc.models.list_applications_200_response_inner_health.listApplications_200_response_inner_health(
+                health = sailpoint.cc.models.list_applications_200_response_inner_health.listApplications_200_response_inner_health(
                     status = '', 
                     last_changed = '', 
                     since = 1.337, 
@@ -66,7 +66,7 @@ class TestGetApplication200Response(unittest.TestCase):
                 usage_cert_text = None,
                 launchpad_enabled = True,
                 password_managed = True,
-                owner = cc.models.list_applications_200_response_inner_owner.listApplications_200_response_inner_owner(
+                owner = sailpoint.cc.models.list_applications_200_response_inner_owner.listApplications_200_response_inner_owner(
                     id = '', 
                     name = '', ),
                 date_created = 1.337,
@@ -88,14 +88,14 @@ class TestGetApplication200Response(unittest.TestCase):
                 account_service_policy_name = '',
                 require_strong_authn = True,
                 account_service_policies = [
-                    cc.models.list_applications_200_response_inner_account_service_policies_inner.listApplications_200_response_inner_accountServicePolicies_inner(
+                    sailpoint.cc.models.list_applications_200_response_inner_account_service_policies_inner.listApplications_200_response_inner_accountServicePolicies_inner(
                         policy_id = '', 
                         policy_name = '', 
-                        selectors = cc.models.selectors.selectors(), )
+                        selectors = sailpoint.cc.models.selectors.selectors(), )
                     ],
                 xsd_version = '',
                 app_profiles = [
-                    cc.models.list_applications_200_response_inner_app_profiles_inner.listApplications_200_response_inner_appProfiles_inner(
+                    sailpoint.cc.models.list_applications_200_response_inner_app_profiles_inner.listApplications_200_response_inner_appProfiles_inner(
                         id = 1.337, 
                         filename = '', 
                         created_by = '', 
@@ -114,6 +114,7 @@ class TestGetApplication200Response(unittest.TestCase):
         """Test GetApplication200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

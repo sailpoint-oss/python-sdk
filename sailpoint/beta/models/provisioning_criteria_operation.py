@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class ProvisioningCriteriaOperation(str, Enum):
     """
     Supported operations on ProvisioningCriteria
     """
-
     """
     allowed enum values
     """
@@ -40,5 +35,3 @@ class ProvisioningCriteriaOperation(str, Enum):
     def from_json(cls, json_str: str) -> ProvisioningCriteriaOperation:
         """Create an instance of ProvisioningCriteriaOperation from a JSON string"""
         return ProvisioningCriteriaOperation(json.loads(json_str))
-
-

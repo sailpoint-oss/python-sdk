@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.access_request_dynamic_approver_requested_items_inner import AccessRequestDynamicApproverRequestedItemsInner  # noqa: E501
+from sailpoint.beta.models.access_request_dynamic_approver_requested_items_inner import AccessRequestDynamicApproverRequestedItemsInner  # noqa: E501
+
 
 class TestAccessRequestDynamicApproverRequestedItemsInner(unittest.TestCase):
     """AccessRequestDynamicApproverRequestedItemsInner unit test stubs"""
@@ -26,7 +26,9 @@ class TestAccessRequestDynamicApproverRequestedItemsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccessRequestDynamicApproverRequestedItemsInner:
+    def make_instance(
+            self, include_optional
+    ) -> AccessRequestDynamicApproverRequestedItemsInner:
         """Test AccessRequestDynamicApproverRequestedItemsInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -56,6 +58,7 @@ class TestAccessRequestDynamicApproverRequestedItemsInner(unittest.TestCase):
         """Test AccessRequestDynamicApproverRequestedItemsInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.test_workflow200_response import TestWorkflow200Response  # noqa: E501
+from sailpoint.beta.models.test_workflow200_response import TestWorkflow200Response  # noqa: E501
+
 
 class TestTestWorkflow200Response(unittest.TestCase):
     """TestWorkflow200Response unit test stubs"""
@@ -47,6 +47,7 @@ class TestTestWorkflow200Response(unittest.TestCase):
         """Test TestWorkflow200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

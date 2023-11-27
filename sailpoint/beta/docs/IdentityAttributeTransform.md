@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.identity_attribute_transform import IdentityAttributeTransform
+from sailpoint.beta.models.identity_attribute_transform import IdentityAttributeTransform
 
 # TODO update the JSON string below
 json = "{}"

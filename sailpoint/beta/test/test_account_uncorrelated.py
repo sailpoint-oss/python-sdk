@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.account_uncorrelated import AccountUncorrelated  # noqa: E501
+from sailpoint.beta.models.account_uncorrelated import AccountUncorrelated  # noqa: E501
+
 
 class TestAccountUncorrelated(unittest.TestCase):
     """AccountUncorrelated unit test stubs"""
@@ -36,15 +36,15 @@ class TestAccountUncorrelated(unittest.TestCase):
         model = AccountUncorrelated()  # noqa: E501
         if include_optional:
             return AccountUncorrelated(
-                identity = beta.models.account_uncorrelated_identity.AccountUncorrelated_identity(
+                identity = sailpoint.beta.models.account_uncorrelated_identity.AccountUncorrelated_identity(
                     type = 'IDENTITY', 
                     id = '2c3780a46faadee4016fb4e018c20652', 
                     name = 'Allen Albertson', ),
-                source = beta.models.account_uncorrelated_source.AccountUncorrelated_source(
+                source = sailpoint.beta.models.account_uncorrelated_source.AccountUncorrelated_source(
                     type = 'SOURCE', 
                     id = '2c6180835d191a86015d28455b4b231b', 
                     name = 'Corporate Directory', ),
-                account = beta.models.account_uncorrelated_account.AccountUncorrelated_account(
+                account = sailpoint.beta.models.account_uncorrelated_account.AccountUncorrelated_account(
                     type = ACCOUNT, 
                     id = '4dd497e3723e439991cb6d0e478375dd', 
                     name = 'Sadie Jensen', 
@@ -54,15 +54,15 @@ class TestAccountUncorrelated(unittest.TestCase):
             )
         else:
             return AccountUncorrelated(
-                identity = beta.models.account_uncorrelated_identity.AccountUncorrelated_identity(
+                identity = sailpoint.beta.models.account_uncorrelated_identity.AccountUncorrelated_identity(
                     type = 'IDENTITY', 
                     id = '2c3780a46faadee4016fb4e018c20652', 
                     name = 'Allen Albertson', ),
-                source = beta.models.account_uncorrelated_source.AccountUncorrelated_source(
+                source = sailpoint.beta.models.account_uncorrelated_source.AccountUncorrelated_source(
                     type = 'SOURCE', 
                     id = '2c6180835d191a86015d28455b4b231b', 
                     name = 'Corporate Directory', ),
-                account = beta.models.account_uncorrelated_account.AccountUncorrelated_account(
+                account = sailpoint.beta.models.account_uncorrelated_account.AccountUncorrelated_account(
                     type = ACCOUNT, 
                     id = '4dd497e3723e439991cb6d0e478375dd', 
                     name = 'Sadie Jensen', 
@@ -75,6 +75,7 @@ class TestAccountUncorrelated(unittest.TestCase):
         """Test AccountUncorrelated"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

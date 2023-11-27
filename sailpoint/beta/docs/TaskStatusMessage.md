@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.task_status_message import TaskStatusMessage
+from sailpoint.beta.models.task_status_message import TaskStatusMessage
 
 # TODO update the JSON string below
 json = "{}"

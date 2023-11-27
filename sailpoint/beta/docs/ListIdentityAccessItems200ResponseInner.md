@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
+from sailpoint.beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
 
 # TODO update the JSON string below
 json = "{}"

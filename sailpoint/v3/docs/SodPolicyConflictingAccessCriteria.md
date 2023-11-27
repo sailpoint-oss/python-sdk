@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
+from sailpoint.v3.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 
 # TODO update the JSON string below
 json = "{}"

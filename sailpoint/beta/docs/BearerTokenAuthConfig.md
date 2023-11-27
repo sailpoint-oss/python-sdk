@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.bearer_token_auth_config import BearerTokenAuthConfig
+from sailpoint.beta.models.bearer_token_auth_config import BearerTokenAuthConfig
 
 # TODO update the JSON string below
 json = "{}"

@@ -1,4 +1,4 @@
-# beta.SODPolicyApi
+# sailpoint.beta.SODPolicyApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -36,14 +36,14 @@ This creates both General and Conflicting Access Based policy, with a limit of 5
 ```python
 import time
 import os
-import beta
-from beta.models.sod_policy import SodPolicy
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.sod_policy import SodPolicy
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -57,9 +57,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     sod_policy = {name=Conflicting-Policy-Name, description=This policy ensures compliance of xyz, ownerRef={type=IDENTITY, id=2c91808568c529c60168cca6f90c1313, name=Owner Name}, externalPolicyReference=XYZ policy, compensatingControls=Have a manager review the transaction decisions for their "out of compliance" employee, correctionAdvice=Based on the role of the employee, managers should remove access that is not required for their job function., state=ENFORCED, tags=[string], creatorId=0f11f2a4-7c94-4bf3-a2bd-742580fe3bde, modifierId=0f11f2a4-7c94-4bf3-a2bd-742580fe3bde, violationOwnerAssignmentConfig={assignmentRule=MANAGER, ownerRef={type=IDENTITY, id=2c91808568c529c60168cca6f90c1313, name=Violation Owner Name}}, scheduled=true, type=CONFLICTING_ACCESS_BASED, conflictingAccessCriteria={leftCriteria={name=money-in, criteriaList=[{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67}]}, rightCriteria={name=money-out, criteriaList=[{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a68}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a69}]}}} # SodPolicy | 
 
     try:
@@ -118,13 +118,13 @@ This deletes a specified SOD policy. Requires role of ORG_ADMIN.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -138,9 +138,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the SOD Policy to delete.
     logical = True # bool | Indicates whether this is a soft delete (logical true) or a hard delete. (optional) (default to True)
 
@@ -200,13 +200,13 @@ This deletes schedule for a specified SOD policy. Requires role of ORG_ADMIN.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -220,9 +220,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the SOD policy the schedule must be deleted for.
 
     try:
@@ -280,13 +280,13 @@ This allows to download a specified named violation report for a given report re
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -300,9 +300,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     report_result_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the report reference to download.
     file_name = 'custom-name' # str | Custom Name for the  file.
 
@@ -364,13 +364,13 @@ This allows to download a violation report for a given report reference. Require
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -384,9 +384,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     report_result_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the report reference to download.
 
     try:
@@ -446,14 +446,14 @@ This endpoint gets the status for a violation report for all policy run. Require
 ```python
 import time
 import os
-import beta
-from beta.models.report_result_reference import ReportResultReference
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.report_result_reference import ReportResultReference
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -467,9 +467,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
 
     try:
         # Get multi-report run task status
@@ -524,14 +524,14 @@ This gets specified SOD policy. Requires role of ORG_ADMIN.
 ```python
 import time
 import os
-import beta
-from beta.models.sod_policy import SodPolicy
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.sod_policy import SodPolicy
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -545,9 +545,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the object reference to retrieve.
 
     try:
@@ -607,14 +607,14 @@ This endpoint gets a specified SOD policy's schedule. Requires the role of ORG_A
 ```python
 import time
 import os
-import beta
-from beta.models.sod_policy_schedule import SodPolicySchedule
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.sod_policy_schedule import SodPolicySchedule
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -628,9 +628,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the object reference to retrieve.
 
     try:
@@ -689,14 +689,14 @@ This gets the status for a violation report run task that has already been invok
 ```python
 import time
 import os
-import beta
-from beta.models.report_result_reference import ReportResultReference
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.report_result_reference import ReportResultReference
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -710,9 +710,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     report_result_id = '2e8d8180-24bc-4d21-91c6-7affdb473b0d' # str | The ID of the report reference to retrieve.
 
     try:
@@ -772,14 +772,14 @@ This gets the status for a violation report run task that has already been invok
 ```python
 import time
 import os
-import beta
-from beta.models.report_result_reference import ReportResultReference
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.report_result_reference import ReportResultReference
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -793,9 +793,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the object reference to retrieve.
 
     try:
@@ -855,14 +855,14 @@ This gets list of all SOD policies. Requires role of ORG_ADMIN
 ```python
 import time
 import os
-import beta
-from beta.models.sod_policy import SodPolicy
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.sod_policy import SodPolicy
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -876,9 +876,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -943,14 +943,14 @@ Allows updating SOD Policy fields other than [\"id\",\"created\",\"creatorId\",\
 ```python
 import time
 import os
-import beta
-from beta.models.sod_policy import SodPolicy
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.sod_policy import SodPolicy
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -964,9 +964,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     id = '2c9180835d191a86015d28455b4a2329' # str | The ID of the SOD policy being modified.
     request_body = [{op=replace, path=/description, value=Modified description}, {op=replace, path=/conflictingAccessCriteria/leftCriteria/name, value=money-in-modified}, {op=replace, path=/conflictingAccessCriteria/rightCriteria, value={name=money-out-modified, criteriaList=[{type=ENTITLEMENT, id=2c918087682f9a86016839c0509c1ab2}]}}] # List[object] | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
 
@@ -1028,14 +1028,14 @@ This updates schedule for a specified SOD policy. Requires role of ORG_ADMIN.
 ```python
 import time
 import os
-import beta
-from beta.models.sod_policy_schedule import SodPolicySchedule
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.sod_policy_schedule import SodPolicySchedule
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1049,11 +1049,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the SOD policy to update its schedule.
-    sod_policy_schedule = beta.SodPolicySchedule() # SodPolicySchedule | 
+    sod_policy_schedule = sailpoint.beta.SodPolicySchedule() # SodPolicySchedule | 
 
     try:
         # Update SOD Policy schedule
@@ -1112,14 +1112,14 @@ This updates a specified SOD policy. Requires role of ORG_ADMIN.
 ```python
 import time
 import os
-import beta
-from beta.models.sod_policy import SodPolicy
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.sod_policy import SodPolicy
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1133,9 +1133,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the SOD policy to update.
     sod_policy = {id=0f11f2a4-7c94-4bf3-a2bd-742580fe3bde, name=Conflicting-Policy-Name, created=2020-01-01T00:00:00.000000Z, modified=2020-01-01T00:00:00.000000Z, description=Modified Description, ownerRef={type=IDENTITY, id=2c91808568c529c60168cca6f90c1313, name=Owner Name}, externalPolicyReference=XYZ policy, compensatingControls=Have a manager review the transaction decisions for their "out of compliance" employee, correctionAdvice=Based on the role of the employee, managers should remove access that is not required for their job function., state=ENFORCED, tags=[string], creatorId=0f11f2a4-7c94-4bf3-a2bd-742580fe3bde, modifierId=0f11f2a4-7c94-4bf3-a2bd-742580fe3bde, violationOwnerAssignmentConfig={assignmentRule=MANAGER, ownerRef={type=IDENTITY, id=2c91808568c529c60168cca6f90c1313, name=Violation Owner Name}}, scheduled=true, type=CONFLICTING_ACCESS_BASED, conflictingAccessCriteria={leftCriteria={name=money-in, criteriaList=[{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67}]}, rightCriteria={name=money-out, criteriaList=[{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a68}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a69}]}}} # SodPolicy | 
 
@@ -1197,15 +1197,15 @@ Runs multi-policy report for the org. If a policy reports more than 5000 violati
 ```python
 import time
 import os
-import beta
-from beta.models.multi_policy_request import MultiPolicyRequest
-from beta.models.report_result_reference import ReportResultReference
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.multi_policy_request import MultiPolicyRequest
+from sailpoint.beta.models.report_result_reference import ReportResultReference
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1219,9 +1219,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     multi_policy_request = {filteredPolicyList=[b868cd40-ffa4-4337-9c07-1a51846cfa94, 63a07a7b-39a4-48aa-956d-50c827deba2a]} # MultiPolicyRequest |  (optional)
 
     try:
@@ -1280,14 +1280,14 @@ This invokes processing of violation report for given SOD policy. If the policy 
 ```python
 import time
 import os
-import beta
-from beta.models.report_result_reference import ReportResultReference
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.report_result_reference import ReportResultReference
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1301,9 +1301,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODPolicyApi(api_client)
+    api_instance = sailpoint.beta.SODPolicyApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The SOD policy ID to run.
 
     try:

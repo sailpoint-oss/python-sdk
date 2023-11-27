@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.public_identity_attribute_config import PublicIdentityAttributeConfig
+from sailpoint.beta.models.public_identity_attribute_config import PublicIdentityAttributeConfig
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.source_schemas_inner import SourceSchemasInner
+from sailpoint.v3.models.source_schemas_inner import SourceSchemasInner
 
 # TODO update the JSON string below
 json = "{}"

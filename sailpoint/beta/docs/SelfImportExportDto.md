@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.self_import_export_dto import SelfImportExportDto
+from sailpoint.beta.models.self_import_export_dto import SelfImportExportDto
 
 # TODO update the JSON string below
 json = "{}"

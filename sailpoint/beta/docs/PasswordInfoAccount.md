@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.password_info_account import PasswordInfoAccount
+from sailpoint.beta.models.password_info_account import PasswordInfoAccount
 
 # TODO update the JSON string below
 json = "{}"

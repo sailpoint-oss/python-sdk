@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.fullcampaign_all_of_role_composition_campaign_info import FullcampaignAllOfRoleCompositionCampaignInfo  # noqa: E501
+from sailpoint.beta.models.fullcampaign_all_of_role_composition_campaign_info import FullcampaignAllOfRoleCompositionCampaignInfo  # noqa: E501
+
 
 class TestFullcampaignAllOfRoleCompositionCampaignInfo(unittest.TestCase):
     """FullcampaignAllOfRoleCompositionCampaignInfo unit test stubs"""
@@ -26,7 +26,9 @@ class TestFullcampaignAllOfRoleCompositionCampaignInfo(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> FullcampaignAllOfRoleCompositionCampaignInfo:
+    def make_instance(
+            self,
+            include_optional) -> FullcampaignAllOfRoleCompositionCampaignInfo:
         """Test FullcampaignAllOfRoleCompositionCampaignInfo
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -36,12 +38,12 @@ class TestFullcampaignAllOfRoleCompositionCampaignInfo(unittest.TestCase):
         model = FullcampaignAllOfRoleCompositionCampaignInfo()  # noqa: E501
         if include_optional:
             return FullcampaignAllOfRoleCompositionCampaignInfo(
-                reviewer = beta.models.fullcampaign_all_of_search_campaign_info_reviewer.fullcampaign_allOf_searchCampaignInfo_reviewer(
+                reviewer = sailpoint.beta.models.fullcampaign_all_of_search_campaign_info_reviewer.fullcampaign_allOf_searchCampaignInfo_reviewer(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
                 role_ids = [2c90ad2a70ace7d50170acf22ca90010],
-                remediator_ref = beta.models.fullcampaign_all_of_role_composition_campaign_info_remediator_ref.fullcampaign_allOf_roleCompositionCampaignInfo_remediatorRef(
+                remediator_ref = sailpoint.beta.models.fullcampaign_all_of_role_composition_campaign_info_remediator_ref.fullcampaign_allOf_roleCompositionCampaignInfo_remediatorRef(
                     type = 'IDENTITY', 
                     id = '2c90ad2a70ace7d50170acf22ca90010', 
                     name = 'Role Admin', ),
@@ -50,7 +52,7 @@ class TestFullcampaignAllOfRoleCompositionCampaignInfo(unittest.TestCase):
             )
         else:
             return FullcampaignAllOfRoleCompositionCampaignInfo(
-                remediator_ref = beta.models.fullcampaign_all_of_role_composition_campaign_info_remediator_ref.fullcampaign_allOf_roleCompositionCampaignInfo_remediatorRef(
+                remediator_ref = sailpoint.beta.models.fullcampaign_all_of_role_composition_campaign_info_remediator_ref.fullcampaign_allOf_roleCompositionCampaignInfo_remediatorRef(
                     type = 'IDENTITY', 
                     id = '2c90ad2a70ace7d50170acf22ca90010', 
                     name = 'Role Admin', ),
@@ -61,6 +63,7 @@ class TestFullcampaignAllOfRoleCompositionCampaignInfo(unittest.TestCase):
         """Test FullcampaignAllOfRoleCompositionCampaignInfo"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

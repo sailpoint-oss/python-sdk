@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
+from sailpoint.beta.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
 
 # TODO update the JSON string below
 json = "{}"

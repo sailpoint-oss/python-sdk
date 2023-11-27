@@ -11,22 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
+
 
 class TranslationMessage(BaseModel):
     """
     TranslationMessage
     """
-    key: Optional[StrictStr] = Field(None, description="The key of the translation message")
-    values: Optional[conlist(StrictStr)] = Field(None, description="The values corresponding to the translation messages")
+    key: Optional[StrictStr] = Field(
+        None, description="The key of the translation message")
+    values: Optional[conlist(StrictStr)] = Field(
+        None,
+        description="The values corresponding to the translation messages")
     __properties = ["key", "values"]
 
     class Config:
@@ -49,10 +51,7 @@ class TranslationMessage(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,5 +68,3 @@ class TranslationMessage(BaseModel):
             "values": obj.get("values")
         })
         return _obj
-
-

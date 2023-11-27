@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,14 +22,12 @@ from pydantic import Field, StrictBool, StrictStr, conint
 
 from typing import List, Optional
 
-from beta.models.cancelable_account_activity import CancelableAccountActivity
+from sailpoint.beta.models.cancelable_account_activity import CancelableAccountActivity
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class AccountActivitiesApi:
@@ -46,7 +43,11 @@ class AccountActivitiesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_account_activity(self, id : Annotated[StrictStr, Field(..., description="The account activity id")], **kwargs) -> CancelableAccountActivity:  # noqa: E501
+    def get_account_activity(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The account activity id")],
+            **kwargs) -> CancelableAccountActivity:  # noqa: E501
         """Get Account Activity  # noqa: E501
 
         This gets a single account activity by its id.  # noqa: E501
@@ -73,10 +74,15 @@ class AccountActivitiesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_account_activity_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_account_activity_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_account_activity_with_http_info(id,
+                                                        **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_account_activity_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The account activity id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_account_activity_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The account activity id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get Account Activity  # noqa: E501
 
         This gets a single account activity by its id.  # noqa: E501
@@ -115,28 +121,17 @@ class AccountActivitiesApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_account_activity" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_account_activity" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -146,7 +141,6 @@ class AccountActivitiesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -175,7 +169,8 @@ class AccountActivitiesApi:
         }
 
         return self.api_client.call_api(
-            '/account-activities/{id}', 'GET',
+            '/account-activities/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -185,14 +180,76 @@ class AccountActivitiesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_account_activities(self, requested_for : Annotated[Optional[StrictStr], Field(description="The identity that the activity was requested for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None, requested_by : Annotated[Optional[StrictStr], Field(description="The identity that requested the activity. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None, regarding_identity : Annotated[Optional[StrictStr], Field(description="The specified identity will be either the requester or target of the account activity. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.")] = None, type : Annotated[Optional[StrictStr], Field(description="The type of account activity.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **created**: *gt, lt, ge, le, co, eq, in, ne, isnull, sw*  **modified**: *gt, lt, ge, le, co, eq, in, ne, isnull, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified**")] = None, **kwargs) -> List[CancelableAccountActivity]:  # noqa: E501
+    def list_account_activities(
+            self,
+            requested_for:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The identity that the activity was requested for. *me* indicates the current user. Mutually exclusive with *regarding-identity*."
+            )] = None,
+            requested_by:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The identity that requested the activity. *me* indicates the current user. Mutually exclusive with *regarding-identity*."
+            )] = None,
+            regarding_identity:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The specified identity will be either the requester or target of the account activity. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*."
+            )] = None,
+            type: Annotated[
+                Optional[StrictStr],
+                Field(description="The type of account activity.")] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **created**: *gt, lt, ge, le, co, eq, in, ne, isnull, sw*  **modified**: *gt, lt, ge, le, co, eq, in, ne, isnull, sw*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified**"
+            )] = None,
+            **kwargs) -> List[CancelableAccountActivity]:  # noqa: E501
         """List Account Activities  # noqa: E501
 
         This gets a collection of account activities that satisfy the given query parameters.  # noqa: E501
@@ -235,10 +292,73 @@ class AccountActivitiesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_account_activities_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_account_activities_with_http_info(requested_for, requested_by, regarding_identity, type, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.list_account_activities_with_http_info(
+            requested_for, requested_by, regarding_identity, type, limit,
+            offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_account_activities_with_http_info(self, requested_for : Annotated[Optional[StrictStr], Field(description="The identity that the activity was requested for. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None, requested_by : Annotated[Optional[StrictStr], Field(description="The identity that requested the activity. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None, regarding_identity : Annotated[Optional[StrictStr], Field(description="The specified identity will be either the requester or target of the account activity. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.")] = None, type : Annotated[Optional[StrictStr], Field(description="The type of account activity.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **created**: *gt, lt, ge, le, co, eq, in, ne, isnull, sw*  **modified**: *gt, lt, ge, le, co, eq, in, ne, isnull, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_account_activities_with_http_info(
+            self,
+            requested_for:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The identity that the activity was requested for. *me* indicates the current user. Mutually exclusive with *regarding-identity*."
+            )] = None,
+            requested_by:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The identity that requested the activity. *me* indicates the current user. Mutually exclusive with *regarding-identity*."
+            )] = None,
+            regarding_identity:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The specified identity will be either the requester or target of the account activity. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*."
+            )] = None,
+            type: Annotated[
+                Optional[StrictStr],
+                Field(description="The type of account activity.")] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **type**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **created**: *gt, lt, ge, le, co, eq, in, ne, isnull, sw*  **modified**: *gt, lt, ge, le, co, eq, in, ne, isnull, sw*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List Account Activities  # noqa: E501
 
         This gets a collection of account activities that satisfy the given query parameters.  # noqa: E501
@@ -294,35 +414,19 @@ class AccountActivitiesApi:
         _params = locals()
 
         _all_params = [
-            'requested_for',
-            'requested_by',
-            'regarding_identity',
-            'type',
-            'limit',
-            'offset',
-            'count',
-            'filters',
-            'sorters'
+            'requested_for', 'requested_by', 'regarding_identity', 'type',
+            'limit', 'offset', 'count', 'filters', 'sorters'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_account_activities" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_account_activities" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -340,7 +444,8 @@ class AccountActivitiesApi:
             _query_params.append(('requested-by', _params['requested_by']))
 
         if _params.get('regarding_identity') is not None:  # noqa: E501
-            _query_params.append(('regarding-identity', _params['regarding_identity']))
+            _query_params.append(
+                ('regarding-identity', _params['regarding_identity']))
 
         if _params.get('type') is not None:  # noqa: E501
             _query_params.append(('type', _params['type']))
@@ -384,7 +489,8 @@ class AccountActivitiesApi:
         }
 
         return self.api_client.call_api(
-            '/account-activities', 'GET',
+            '/account-activities',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -394,7 +500,8 @@ class AccountActivitiesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

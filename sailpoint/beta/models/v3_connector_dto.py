@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+
 
 class V3ConnectorDto(BaseModel):
     """
@@ -27,12 +26,25 @@ class V3ConnectorDto(BaseModel):
     """
     name: Optional[StrictStr] = Field(None, description="The connector name")
     type: Optional[StrictStr] = Field(None, description="The connector type")
-    script_name: Optional[StrictStr] = Field(None, alias="scriptName", description="The connector script name")
-    features: Optional[conlist(StrictStr)] = Field(None, description="The list of features supported by the connector")
-    direct_connect: Optional[StrictBool] = Field(False, alias="directConnect", description="true if the source is a direct connect source")
-    connector_metadata: Optional[Dict[str, Any]] = Field(None, alias="connectorMetadata", description="Object containing metadata pertinent to the UI to be used")
-    status: Optional[StrictStr] = Field(None, description="The connector status")
-    __properties = ["name", "type", "scriptName", "features", "directConnect", "connectorMetadata", "status"]
+    script_name: Optional[StrictStr] = Field(
+        None, alias="scriptName", description="The connector script name")
+    features: Optional[conlist(StrictStr)] = Field(
+        None, description="The list of features supported by the connector")
+    direct_connect: Optional[StrictBool] = Field(
+        False,
+        alias="directConnect",
+        description="true if the source is a direct connect source")
+    connector_metadata: Optional[Dict[str, Any]] = Field(
+        None,
+        alias="connectorMetadata",
+        description="Object containing metadata pertinent to the UI to be used"
+    )
+    status: Optional[StrictStr] = Field(None,
+                                        description="The connector status")
+    __properties = [
+        "name", "type", "scriptName", "features", "directConnect",
+        "connectorMetadata", "status"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -54,10 +66,7 @@ class V3ConnectorDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if features (nullable) is None
         # and __fields_set__ contains the field
         if self.features is None and "features" in self.__fields_set__:
@@ -75,14 +84,20 @@ class V3ConnectorDto(BaseModel):
             return V3ConnectorDto.parse_obj(obj)
 
         _obj = V3ConnectorDto.parse_obj({
-            "name": obj.get("name"),
-            "type": obj.get("type"),
-            "script_name": obj.get("scriptName"),
-            "features": obj.get("features"),
-            "direct_connect": obj.get("directConnect") if obj.get("directConnect") is not None else False,
-            "connector_metadata": obj.get("connectorMetadata"),
-            "status": obj.get("status")
+            "name":
+            obj.get("name"),
+            "type":
+            obj.get("type"),
+            "script_name":
+            obj.get("scriptName"),
+            "features":
+            obj.get("features"),
+            "direct_connect":
+            obj.get("directConnect")
+            if obj.get("directConnect") is not None else False,
+            "connector_metadata":
+            obj.get("connectorMetadata"),
+            "status":
+            obj.get("status")
         })
         return _obj
-
-

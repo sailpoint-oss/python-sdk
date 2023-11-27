@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.violation_context import ViolationContext  # noqa: E501
+from sailpoint.beta.models.violation_context import ViolationContext  # noqa: E501
+
 
 class TestViolationContext(unittest.TestCase):
     """ViolationContext unit test stubs"""
@@ -36,12 +36,12 @@ class TestViolationContext(unittest.TestCase):
         model = ViolationContext()  # noqa: E501
         if include_optional:
             return ViolationContext(
-                policy = beta.models.violation_context_policy.ViolationContext_policy(
+                policy = sailpoint.beta.models.violation_context_policy.ViolationContext_policy(
                     type = ENTITLEMENT, ),
-                conflicting_access_criteria = beta.models.exception_access_criteria.ExceptionAccessCriteria(
-                    left_criteria = beta.models.exception_criteria.ExceptionCriteria(
+                conflicting_access_criteria = sailpoint.beta.models.exception_access_criteria.ExceptionAccessCriteria(
+                    left_criteria = sailpoint.beta.models.exception_criteria.ExceptionCriteria(
                         criteria_list = [{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66, existing=true}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67, existing=false}], ), 
-                    right_criteria = beta.models.exception_criteria.ExceptionCriteria(
+                    right_criteria = sailpoint.beta.models.exception_criteria.ExceptionCriteria(
                         criteria_list = [{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66, existing=true}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67, existing=false}], ), )
             )
         else:
@@ -53,6 +53,7 @@ class TestViolationContext(unittest.TestCase):
         """Test ViolationContext"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

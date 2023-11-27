@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.exception_criteria_criteria_list_inner import ExceptionCriteriaCriteriaListInner
+from sailpoint.v3.models.exception_criteria_criteria_list_inner import ExceptionCriteriaCriteriaListInner
 
 # TODO update the JSON string below
 json = "{}"

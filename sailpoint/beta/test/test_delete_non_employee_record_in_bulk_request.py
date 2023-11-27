@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.delete_non_employee_record_in_bulk_request import DeleteNonEmployeeRecordInBulkRequest  # noqa: E501
+from sailpoint.beta.models.delete_non_employee_record_in_bulk_request import DeleteNonEmployeeRecordInBulkRequest  # noqa: E501
+
 
 class TestDeleteNonEmployeeRecordInBulkRequest(unittest.TestCase):
     """DeleteNonEmployeeRecordInBulkRequest unit test stubs"""
@@ -26,7 +26,8 @@ class TestDeleteNonEmployeeRecordInBulkRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> DeleteNonEmployeeRecordInBulkRequest:
+    def make_instance(
+            self, include_optional) -> DeleteNonEmployeeRecordInBulkRequest:
         """Test DeleteNonEmployeeRecordInBulkRequest
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -52,6 +53,7 @@ class TestDeleteNonEmployeeRecordInBulkRequest(unittest.TestCase):
         """Test DeleteNonEmployeeRecordInBulkRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

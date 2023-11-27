@@ -11,30 +11,38 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 
-class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(BaseModel):
+
+class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
+        BaseModel):
     """
     ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
     """
-    attribute_name: StrictStr = Field(..., alias="attributeName", description="The name of the attribute being provisioned.")
-    attribute_value: Optional[StrictStr] = Field(None, alias="attributeValue", description="The value of the attribute being provisioned.")
-    operation: Dict[str, Any] = Field(..., description="The operation to handle the attribute.")
+    attribute_name: StrictStr = Field(
+        ...,
+        alias="attributeName",
+        description="The name of the attribute being provisioned.")
+    attribute_value: Optional[StrictStr] = Field(
+        None,
+        alias="attributeValue",
+        description="The value of the attribute being provisioned.")
+    operation: Dict[str, Any] = Field(
+        ..., description="The operation to handle the attribute.")
     __properties = ["attributeName", "attributeValue", "operation"]
 
     @validator('operation')
     def operation_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('Add', 'Set', 'Remove'):
-            raise ValueError("must be one of enum values ('Add', 'Set', 'Remove')")
+            raise ValueError(
+                "must be one of enum values ('Add', 'Set', 'Remove')")
         return value
 
     class Config:
@@ -51,16 +59,15 @@ class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(BaseModel)
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner:
+    def from_json(
+        cls, json_str: str
+    ) -> ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner:
         """Create an instance of ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if attribute_value (nullable) is None
         # and __fields_set__ contains the field
         if self.attribute_value is None and "attribute_value" in self.__fields_set__:
@@ -69,19 +76,21 @@ class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(BaseModel)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner:
+    def from_dict(
+        cls, obj: dict
+    ) -> ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner:
         """Create an instance of ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.parse_obj(obj)
+            return ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.parse_obj(
+                obj)
 
-        _obj = ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.parse_obj({
-            "attribute_name": obj.get("attributeName"),
-            "attribute_value": obj.get("attributeValue"),
-            "operation": obj.get("operation")
-        })
+        _obj = ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.parse_obj(
+            {
+                "attribute_name": obj.get("attributeName"),
+                "attribute_value": obj.get("attributeValue"),
+                "operation": obj.get("operation")
+            })
         return _obj
-
-

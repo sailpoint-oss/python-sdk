@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v2.models.get_org_settings200_response import GetOrgSettings200Response  # noqa: E501
+from sailpoint.v2.models.get_org_settings200_response import GetOrgSettings200Response  # noqa: E501
+
 
 class TestGetOrgSettings200Response(unittest.TestCase):
     """GetOrgSettings200Response unit test stubs"""
@@ -68,12 +68,12 @@ class TestGetOrgSettings200Response(unittest.TestCase):
                 username_label = '',
                 enable_automation_generation = True,
                 password_replay_state = 'enabled',
-                system_notification_config = v2.models.get_org_settings_200_response_system_notification_config.getOrgSettings_200_response_systemNotificationConfig(
+                system_notification_config = sailpoint.v2.models.get_org_settings_200_response_system_notification_config.getOrgSettings_200_response_systemNotificationConfig(
                     notifications = [
-                        v2.models.get_org_settings_200_response_system_notification_config_notifications_inner.getOrgSettings_200_response_systemNotificationConfig_notifications_inner(
+                        sailpoint.v2.models.get_org_settings_200_response_system_notification_config_notifications_inner.getOrgSettings_200_response_systemNotificationConfig_notifications_inner(
                             type = '', 
                             by_email = True, 
-                            thresholds = v2.models.get_org_settings_200_response_system_notification_config_notifications_inner_thresholds.getOrgSettings_200_response_systemNotificationConfig_notifications_inner_thresholds(
+                            thresholds = sailpoint.v2.models.get_org_settings_200_response_system_notification_config_notifications_inner_thresholds.getOrgSettings_200_response_systemNotificationConfig_notifications_inner_thresholds(
                                 healthy = '', 
                                 unhealthy = '', ), )
                         ], 
@@ -86,7 +86,7 @@ class TestGetOrgSettings200Response(unittest.TestCase):
                     ''
                     ],
                 style_hash = '',
-                approval_config = v2.models.get_org_settings_200_response_approval_config.getOrgSettings_200_response_approvalConfig(
+                approval_config = sailpoint.v2.models.get_org_settings_200_response_approval_config.getOrgSettings_200_response_approvalConfig(
                     days_till_escalation = 56, 
                     days_between_reminders = 56, 
                     max_reminders = 56, 
@@ -102,6 +102,7 @@ class TestGetOrgSettings200Response(unittest.TestCase):
         """Test GetOrgSettings200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

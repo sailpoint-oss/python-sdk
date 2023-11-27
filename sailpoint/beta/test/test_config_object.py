@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.config_object import ConfigObject  # noqa: E501
+from sailpoint.beta.models.config_object import ConfigObject  # noqa: E501
+
 
 class TestConfigObject(unittest.TestCase):
     """ConfigObject unit test stubs"""
@@ -37,7 +37,7 @@ class TestConfigObject(unittest.TestCase):
         if include_optional:
             return ConfigObject(
                 version = 1,
-                var_self = beta.models.self_import_export_dto.SelfImportExportDto(
+                var_self = sailpoint.beta.models.self_import_export_dto.SelfImportExportDto(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', ),
@@ -52,6 +52,7 @@ class TestConfigObject(unittest.TestCase):
         """Test ConfigObject"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

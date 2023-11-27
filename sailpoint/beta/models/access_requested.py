@@ -11,24 +11,28 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from beta.models.access_request_response import AccessRequestResponse
+from sailpoint.beta.models.access_request_response import AccessRequestResponse
+
 
 class AccessRequested(BaseModel):
     """
     AccessRequested
     """
-    access_request: Optional[AccessRequestResponse] = Field(None, alias="accessRequest")
-    identity_id: Optional[StrictStr] = Field(None, alias="identityId", description="the identity id")
-    event_type: Optional[StrictStr] = Field(None, alias="eventType", description="the event type")
+    access_request: Optional[AccessRequestResponse] = Field(
+        None, alias="accessRequest")
+    identity_id: Optional[StrictStr] = Field(None,
+                                             alias="identityId",
+                                             description="the identity id")
+    event_type: Optional[StrictStr] = Field(None,
+                                            alias="eventType",
+                                            description="the event type")
     dt: Optional[StrictStr] = Field(None, description="the date of event")
     __properties = ["accessRequest", "identityId", "eventType", "dt"]
 
@@ -52,10 +56,7 @@ class AccessRequested(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of access_request
         if self.access_request:
             _dict['accessRequest'] = self.access_request.to_dict()
@@ -71,11 +72,14 @@ class AccessRequested(BaseModel):
             return AccessRequested.parse_obj(obj)
 
         _obj = AccessRequested.parse_obj({
-            "access_request": AccessRequestResponse.from_dict(obj.get("accessRequest")) if obj.get("accessRequest") is not None else None,
-            "identity_id": obj.get("identityId"),
-            "event_type": obj.get("eventType"),
-            "dt": obj.get("dt")
+            "access_request":
+            AccessRequestResponse.from_dict(obj.get("accessRequest"))
+            if obj.get("accessRequest") is not None else None,
+            "identity_id":
+            obj.get("identityId"),
+            "event_type":
+            obj.get("eventType"),
+            "dt":
+            obj.get("dt")
         })
         return _obj
-
-

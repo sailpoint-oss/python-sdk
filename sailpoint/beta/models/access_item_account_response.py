@@ -11,28 +11,46 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class AccessItemAccountResponse(BaseModel):
     """
     AccessItemAccountResponse
     """
-    access_type: Optional[StrictStr] = Field(None, alias="accessType", description="the access item type. account in this case")
+    access_type: Optional[StrictStr] = Field(
+        None,
+        alias="accessType",
+        description="the access item type. account in this case")
     id: Optional[StrictStr] = Field(None, description="the access item id")
-    native_identity: Optional[StrictStr] = Field(None, alias="nativeIdentity", description="the native identifier used to uniquely identify an acccount")
-    source_name: Optional[StrictStr] = Field(None, alias="sourceName", description="the name of the source")
-    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="the id of the source")
-    entitlement_count: Optional[StrictStr] = Field(None, alias="entitlementCount", description="the number of entitlements the account will create")
-    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="the display name of the identity")
-    __properties = ["accessType", "id", "nativeIdentity", "sourceName", "sourceId", "entitlementCount", "displayName"]
+    native_identity: Optional[StrictStr] = Field(
+        None,
+        alias="nativeIdentity",
+        description=
+        "the native identifier used to uniquely identify an acccount")
+    source_name: Optional[StrictStr] = Field(
+        None, alias="sourceName", description="the name of the source")
+    source_id: Optional[StrictStr] = Field(None,
+                                           alias="sourceId",
+                                           description="the id of the source")
+    entitlement_count: Optional[StrictStr] = Field(
+        None,
+        alias="entitlementCount",
+        description="the number of entitlements the account will create")
+    display_name: Optional[StrictStr] = Field(
+        None,
+        alias="displayName",
+        description="the display name of the identity")
+    __properties = [
+        "accessType", "id", "nativeIdentity", "sourceName", "sourceId",
+        "entitlementCount", "displayName"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -54,10 +72,7 @@ class AccessItemAccountResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -70,14 +85,19 @@ class AccessItemAccountResponse(BaseModel):
             return AccessItemAccountResponse.parse_obj(obj)
 
         _obj = AccessItemAccountResponse.parse_obj({
-            "access_type": obj.get("accessType"),
-            "id": obj.get("id"),
-            "native_identity": obj.get("nativeIdentity"),
-            "source_name": obj.get("sourceName"),
-            "source_id": obj.get("sourceId"),
-            "entitlement_count": obj.get("entitlementCount"),
-            "display_name": obj.get("displayName")
+            "access_type":
+            obj.get("accessType"),
+            "id":
+            obj.get("id"),
+            "native_identity":
+            obj.get("nativeIdentity"),
+            "source_name":
+            obj.get("sourceName"),
+            "source_id":
+            obj.get("sourceId"),
+            "entitlement_count":
+            obj.get("entitlementCount"),
+            "display_name":
+            obj.get("displayName")
         })
         return _obj
-
-

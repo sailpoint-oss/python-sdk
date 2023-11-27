@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -22,16 +21,14 @@ from pydantic import StrictStr
 
 from typing import Any, Dict, List, Optional
 
-from cc.models.create_application_request import CreateApplicationRequest
-from cc.models.get_application200_response import GetApplication200Response
-from cc.models.list_applications200_response_inner import ListApplications200ResponseInner
+from sailpoint.cc.models.create_application_request import CreateApplicationRequest
+from sailpoint.cc.models.get_application200_response import GetApplication200Response
+from sailpoint.cc.models.list_applications200_response_inner import ListApplications200ResponseInner
 
-from cc.api_client import ApiClient
-from cc.api_response import ApiResponse
-from cc.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.cc.api_client import ApiClient
+from sailpoint.cc.api_response import ApiResponse
+from sailpoint.cc.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class ApplicationsApi:
@@ -47,7 +44,10 @@ class ApplicationsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_application(self, create_application_request : Optional[CreateApplicationRequest] = None, **kwargs) -> Dict[str, object]:  # noqa: E501
+    def create_application(self,
+                           create_application_request: Optional[
+                               CreateApplicationRequest] = None,
+                           **kwargs) -> Dict[str, object]:  # noqa: E501
         """Create Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -73,10 +73,15 @@ class ApplicationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_application_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_application_with_http_info(create_application_request, **kwargs)  # noqa: E501
+        return self.create_application_with_http_info(
+            create_application_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_application_with_http_info(self, create_application_request : Optional[CreateApplicationRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_application_with_http_info(
+            self,
+            create_application_request: Optional[
+                CreateApplicationRequest] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -114,28 +119,17 @@ class ApplicationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'create_application_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['create_application_request']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_application" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_application" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -161,11 +155,11 @@ class ApplicationsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -175,7 +169,8 @@ class ApplicationsApi:
         }
 
         return self.api_client.call_api(
-            '/cc/api/app/create', 'POST',
+            '/cc/api/app/create',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -185,14 +180,16 @@ class ApplicationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_application(self, id : StrictStr, **kwargs) -> None:  # noqa: E501
+    def delete_application(self, id: StrictStr,
+                           **kwargs) -> None:  # noqa: E501
         """Delete Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -218,10 +215,12 @@ class ApplicationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_application_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_application_with_http_info(id, **kwargs)  # noqa: E501
+        return self.delete_application_with_http_info(id,
+                                                      **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_application_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_application_with_http_info(
+            self, id: StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -259,28 +258,17 @@ class ApplicationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_application" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_application" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -290,7 +278,6 @@ class ApplicationsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -311,7 +298,8 @@ class ApplicationsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/cc/api/app/delete/{id}', 'POST',
+            '/cc/api/app/delete/{id}',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -321,14 +309,16 @@ class ApplicationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_application(self, id : StrictStr, **kwargs) -> GetApplication200Response:  # noqa: E501
+    def get_application(self, id: StrictStr,
+                        **kwargs) -> GetApplication200Response:  # noqa: E501
         """Get Single Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -357,7 +347,8 @@ class ApplicationsApi:
         return self.get_application_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_application_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_application_with_http_info(self, id: StrictStr,
+                                       **kwargs) -> ApiResponse:  # noqa: E501
         """Get Single Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -395,28 +386,17 @@ class ApplicationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_application" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_application" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -426,7 +406,6 @@ class ApplicationsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -449,7 +428,8 @@ class ApplicationsApi:
         }
 
         return self.api_client.call_api(
-            '/cc/api/app/get/{id}', 'GET',
+            '/cc/api/app/get/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -459,14 +439,16 @@ class ApplicationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_application_access_profiles(self, id : StrictStr, **kwargs) -> Dict[str, object]:  # noqa: E501
+    def get_application_access_profiles(
+            self, id: StrictStr, **kwargs) -> Dict[str, object]:  # noqa: E501
         """Get Access Profiles for Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -492,10 +474,12 @@ class ApplicationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_application_access_profiles_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_application_access_profiles_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_application_access_profiles_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_application_access_profiles_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_application_access_profiles_with_http_info(
+            self, id: StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
         """Get Access Profiles for Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -533,28 +517,18 @@ class ApplicationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_application_access_profiles" % _key
-                )
+                    " to method get_application_access_profiles" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -564,7 +538,6 @@ class ApplicationsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -587,7 +560,8 @@ class ApplicationsApi:
         }
 
         return self.api_client.call_api(
-            '/cc/api/app/getAccessProfiles/{id}', 'GET',
+            '/cc/api/app/getAccessProfiles/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -597,14 +571,17 @@ class ApplicationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_applications(self, **kwargs) -> List[ListApplications200ResponseInner]:  # noqa: E501
+    def list_applications(
+            self,
+            **kwargs) -> List[ListApplications200ResponseInner]:  # noqa: E501
         """List Applications  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -631,7 +608,8 @@ class ApplicationsApi:
         return self.list_applications_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_applications_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_applications_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """List Applications  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -667,27 +645,17 @@ class ApplicationsApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_applications" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_applications" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -717,7 +685,8 @@ class ApplicationsApi:
         }
 
         return self.api_client.call_api(
-            '/cc/api/app/list', 'GET',
+            '/cc/api/app/list',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -727,14 +696,18 @@ class ApplicationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_application(self, id : StrictStr, request_body : Optional[Dict[str, Any]] = None, **kwargs) -> Dict[str, object]:  # noqa: E501
+    def update_application(self,
+                           id: StrictStr,
+                           request_body: Optional[Dict[str, Any]] = None,
+                           **kwargs) -> Dict[str, object]:  # noqa: E501
         """Update Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -762,10 +735,15 @@ class ApplicationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_application_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_application_with_http_info(id, request_body, **kwargs)  # noqa: E501
+        return self.update_application_with_http_info(id, request_body,
+                                                      **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_application_with_http_info(self, id : StrictStr, request_body : Optional[Dict[str, Any]] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def update_application_with_http_info(
+            self,
+            id: StrictStr,
+            request_body: Optional[Dict[str, Any]] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Update Application  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -805,29 +783,17 @@ class ApplicationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'request_body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'request_body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_application" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method update_application" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -837,7 +803,6 @@ class ApplicationsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -856,11 +821,11 @@ class ApplicationsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -870,7 +835,8 @@ class ApplicationsApi:
         }
 
         return self.api_client.call_api(
-            '/cc/api/app/update/{id}', 'POST',
+            '/cc/api/app/update/{id}',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -880,7 +846,8 @@ class ApplicationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

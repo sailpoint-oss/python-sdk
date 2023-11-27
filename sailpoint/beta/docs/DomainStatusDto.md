@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.domain_status_dto import DomainStatusDto
+from sailpoint.beta.models.domain_status_dto import DomainStatusDto
 
 # TODO update the JSON string below
 json = "{}"

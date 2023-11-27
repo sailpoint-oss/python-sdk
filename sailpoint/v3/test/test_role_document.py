@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.role_document import RoleDocument  # noqa: E501
+from sailpoint.v3.models.role_document import RoleDocument  # noqa: E501
+
 
 class TestRoleDocument(unittest.TestCase):
     """RoleDocument unit test stubs"""
@@ -48,7 +48,7 @@ class TestRoleDocument(unittest.TestCase):
                 request_comments_required = False,
                 owner = None,
                 access_profiles = [
-                    v3.models.reference.Reference(
+                    sailpoint.v3.models.reference.Reference(
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'John Doe', )
                     ],
@@ -67,6 +67,7 @@ class TestRoleDocument(unittest.TestCase):
         """Test RoleDocument"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

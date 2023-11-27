@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.non_employee_identity_reference_with_id import NonEmployeeIdentityReferenceWithId
+from sailpoint.v3.models.non_employee_identity_reference_with_id import NonEmployeeIdentityReferenceWithId
 
 # TODO update the JSON string below
 json = "{}"

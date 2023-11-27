@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.access_request_dynamic_approver import AccessRequestDynamicApprover
+from sailpoint.beta.models.access_request_dynamic_approver import AccessRequestDynamicApprover
 
 # TODO update the JSON string below
 json = "{}"

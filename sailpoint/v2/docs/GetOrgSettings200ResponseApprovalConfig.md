@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v2.models.get_org_settings200_response_approval_config import GetOrgSettings200ResponseApprovalConfig
+from sailpoint.v2.models.get_org_settings200_response_approval_config import GetOrgSettings200ResponseApprovalConfig
 
 # TODO update the JSON string below
 json = "{}"

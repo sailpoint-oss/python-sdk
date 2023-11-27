@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.account_aggregation_completed import AccountAggregationCompleted  # noqa: E501
+from sailpoint.beta.models.account_aggregation_completed import AccountAggregationCompleted  # noqa: E501
+
 
 class TestAccountAggregationCompleted(unittest.TestCase):
     """AccountAggregationCompleted unit test stubs"""
@@ -36,7 +36,7 @@ class TestAccountAggregationCompleted(unittest.TestCase):
         model = AccountAggregationCompleted()  # noqa: E501
         if include_optional:
             return AccountAggregationCompleted(
-                source = beta.models.account_aggregation_completed_source.AccountAggregationCompleted_source(
+                source = sailpoint.beta.models.account_aggregation_completed_source.AccountAggregationCompleted_source(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', ),
@@ -49,7 +49,7 @@ class TestAccountAggregationCompleted(unittest.TestCase):
                 warnings = [
                     'Account Skipped'
                     ],
-                stats = beta.models.account_aggregation_completed_stats.AccountAggregationCompleted_stats(
+                stats = sailpoint.beta.models.account_aggregation_completed_stats.AccountAggregationCompleted_stats(
                     scanned = 200, 
                     unchanged = 190, 
                     changed = 6, 
@@ -58,7 +58,7 @@ class TestAccountAggregationCompleted(unittest.TestCase):
             )
         else:
             return AccountAggregationCompleted(
-                source = beta.models.account_aggregation_completed_source.AccountAggregationCompleted_source(
+                source = sailpoint.beta.models.account_aggregation_completed_source.AccountAggregationCompleted_source(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', ),
@@ -71,7 +71,7 @@ class TestAccountAggregationCompleted(unittest.TestCase):
                 warnings = [
                     'Account Skipped'
                     ],
-                stats = beta.models.account_aggregation_completed_stats.AccountAggregationCompleted_stats(
+                stats = sailpoint.beta.models.account_aggregation_completed_stats.AccountAggregationCompleted_stats(
                     scanned = 200, 
                     unchanged = 190, 
                     changed = 6, 
@@ -84,6 +84,7 @@ class TestAccountAggregationCompleted(unittest.TestCase):
         """Test AccountAggregationCompleted"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

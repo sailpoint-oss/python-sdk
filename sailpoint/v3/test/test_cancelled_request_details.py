@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.cancelled_request_details import CancelledRequestDetails  # noqa: E501
+from sailpoint.v3.models.cancelled_request_details import CancelledRequestDetails  # noqa: E501
+
 
 class TestCancelledRequestDetails(unittest.TestCase):
     """CancelledRequestDetails unit test stubs"""
@@ -37,7 +37,7 @@ class TestCancelledRequestDetails(unittest.TestCase):
         if include_optional:
             return CancelledRequestDetails(
                 comment = 'This request must be cancelled.',
-                owner = v3.models.owner_dto.OwnerDto(
+                owner = sailpoint.v3.models.owner_dto.OwnerDto(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Support', ),
@@ -52,6 +52,7 @@ class TestCancelledRequestDetails(unittest.TestCase):
         """Test CancelledRequestDetails"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

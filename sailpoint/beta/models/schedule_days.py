@@ -11,23 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist, validator
+
 
 class ScheduleDays(BaseModel):
     """
     Specifies which day(s) a schedule is active for. This is required for all schedule types. The \"values\" field holds different data depending on the type of schedule: * WEEKLY: days of the week (1-7) * MONTHLY: days of the month (1-31, L, L-1...) * ANNUALLY: if the \"months\" field is also set: days of the month (1-31, L, L-1...); otherwise: ISO-8601 dates without year (\"--12-31\") * CALENDAR: ISO-8601 dates (\"2020-12-31\")  Note that CALENDAR only supports the LIST type, and ANNUALLY does not support the RANGE type when provided with ISO-8601 dates without year.  Examples:  On Sundays: * type LIST * values \"1\"  The second to last day of the month: * type LIST * values \"L-1\"  From the 20th to the last day of the month: * type RANGE * values \"20\", \"L\"  Every March 2nd: * type LIST * values \"--03-02\"  On March 2nd, 2021: * type: LIST * values \"2021-03-02\"   # noqa: E501
     """
     type: StrictStr = Field(..., description="Enum type to specify days value")
-    values: conlist(StrictStr) = Field(..., description="Values of the days based on the enum type mentioned above")
-    interval: Optional[StrictInt] = Field(None, description="Interval between the cert generations")
+    values: conlist(StrictStr) = Field(
+        ...,
+        description="Values of the days based on the enum type mentioned above"
+    )
+    interval: Optional[StrictInt] = Field(
+        None, description="Interval between the cert generations")
     __properties = ["type", "values", "interval"]
 
     @validator('type')
@@ -57,10 +60,7 @@ class ScheduleDays(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -78,5 +78,3 @@ class ScheduleDays(BaseModel):
             "interval": obj.get("interval")
         })
         return _obj
-
-

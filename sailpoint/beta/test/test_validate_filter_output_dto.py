@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.validate_filter_output_dto import ValidateFilterOutputDto  # noqa: E501
+from sailpoint.beta.models.validate_filter_output_dto import ValidateFilterOutputDto  # noqa: E501
+
 
 class TestValidateFilterOutputDto(unittest.TestCase):
     """ValidateFilterOutputDto unit test stubs"""
@@ -49,6 +49,7 @@ class TestValidateFilterOutputDto(unittest.TestCase):
         """Test ValidateFilterOutputDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

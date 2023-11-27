@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.outlier_feature_summary import OutlierFeatureSummary
+from sailpoint.beta.models.outlier_feature_summary import OutlierFeatureSummary
 
 # TODO update the JSON string below
 json = "{}"

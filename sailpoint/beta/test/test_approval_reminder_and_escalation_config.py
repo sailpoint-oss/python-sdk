@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.approval_reminder_and_escalation_config import ApprovalReminderAndEscalationConfig  # noqa: E501
+from sailpoint.beta.models.approval_reminder_and_escalation_config import ApprovalReminderAndEscalationConfig  # noqa: E501
+
 
 class TestApprovalReminderAndEscalationConfig(unittest.TestCase):
     """ApprovalReminderAndEscalationConfig unit test stubs"""
@@ -26,7 +26,8 @@ class TestApprovalReminderAndEscalationConfig(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ApprovalReminderAndEscalationConfig:
+    def make_instance(self,
+                      include_optional) -> ApprovalReminderAndEscalationConfig:
         """Test ApprovalReminderAndEscalationConfig
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -39,7 +40,7 @@ class TestApprovalReminderAndEscalationConfig(unittest.TestCase):
                 days_until_escalation = 0,
                 days_between_reminders = 0,
                 max_reminders = 1,
-                fallback_approver_ref = beta.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
+                fallback_approver_ref = sailpoint.beta.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
                     type = 'IDENTITY', 
                     id = '5168015d32f890ca15812c9180835d2e', 
                     name = 'Alison Ferguso', 
@@ -54,6 +55,7 @@ class TestApprovalReminderAndEscalationConfig(unittest.TestCase):
         """Test ApprovalReminderAndEscalationConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

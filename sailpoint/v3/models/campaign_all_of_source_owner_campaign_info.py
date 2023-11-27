@@ -11,21 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
+
 
 class CampaignAllOfSourceOwnerCampaignInfo(BaseModel):
     """
     Must be set only if the campaign type is SOURCE_OWNER.  # noqa: E501
     """
-    source_ids: Optional[conlist(StrictStr)] = Field(None, alias="sourceIds", description="The list of sources to be included in the campaign.")
+    source_ids: Optional[conlist(StrictStr)] = Field(
+        None,
+        alias="sourceIds",
+        description="The list of sources to be included in the campaign.")
     __properties = ["sourceIds"]
 
     class Config:
@@ -48,10 +50,7 @@ class CampaignAllOfSourceOwnerCampaignInfo(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +62,6 @@ class CampaignAllOfSourceOwnerCampaignInfo(BaseModel):
         if not isinstance(obj, dict):
             return CampaignAllOfSourceOwnerCampaignInfo.parse_obj(obj)
 
-        _obj = CampaignAllOfSourceOwnerCampaignInfo.parse_obj({
-            "source_ids": obj.get("sourceIds")
-        })
+        _obj = CampaignAllOfSourceOwnerCampaignInfo.parse_obj(
+            {"source_ids": obj.get("sourceIds")})
         return _obj
-
-

@@ -11,23 +11,28 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt
+
 
 class NonEmployeeApprovalSummary(BaseModel):
     """
     NonEmployeeApprovalSummary
     """
-    approved: Optional[StrictInt] = Field(None, description="The number of approved non-employee approval requests.")
-    pending: Optional[StrictInt] = Field(None, description="The number of pending non-employee approval requests.")
-    rejected: Optional[StrictInt] = Field(None, description="The number of rejected non-employee approval requests.")
+    approved: Optional[StrictInt] = Field(
+        None,
+        description="The number of approved non-employee approval requests.")
+    pending: Optional[StrictInt] = Field(
+        None,
+        description="The number of pending non-employee approval requests.")
+    rejected: Optional[StrictInt] = Field(
+        None,
+        description="The number of rejected non-employee approval requests.")
     __properties = ["approved", "pending", "rejected"]
 
     class Config:
@@ -50,10 +55,7 @@ class NonEmployeeApprovalSummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,10 +68,11 @@ class NonEmployeeApprovalSummary(BaseModel):
             return NonEmployeeApprovalSummary.parse_obj(obj)
 
         _obj = NonEmployeeApprovalSummary.parse_obj({
-            "approved": obj.get("approved"),
-            "pending": obj.get("pending"),
-            "rejected": obj.get("rejected")
+            "approved":
+            obj.get("approved"),
+            "pending":
+            obj.get("pending"),
+            "rejected":
+            obj.get("rejected")
         })
         return _obj
-
-

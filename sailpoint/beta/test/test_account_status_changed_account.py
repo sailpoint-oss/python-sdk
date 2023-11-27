@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.account_status_changed_account import AccountStatusChangedAccount  # noqa: E501
+from sailpoint.beta.models.account_status_changed_account import AccountStatusChangedAccount  # noqa: E501
+
 
 class TestAccountStatusChangedAccount(unittest.TestCase):
     """AccountStatusChangedAccount unit test stubs"""
@@ -53,6 +53,7 @@ class TestAccountStatusChangedAccount(unittest.TestCase):
         """Test AccountStatusChangedAccount"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

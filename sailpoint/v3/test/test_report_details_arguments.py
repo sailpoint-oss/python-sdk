@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.report_details_arguments import ReportDetailsArguments  # noqa: E501
+from sailpoint.v3.models.report_details_arguments import ReportDetailsArguments  # noqa: E501
+
 
 class TestReportDetailsArguments(unittest.TestCase):
     """ReportDetailsArguments unit test stubs"""
@@ -45,10 +45,10 @@ class TestReportDetailsArguments(unittest.TestCase):
                 selected_formats = [CSV],
                 indices = [entitlements],
                 filters = {source.id={type=TERMS, terms=[2c9180897termsId780bd2920576]}, source.name.exact={type=TERMS, terms=[IdentityNow], exclude=true}},
-                query = v3.models.query.Query(
+                query = sailpoint.v3.models.query.Query(
                     fields = [name], 
                     time_zone = 'America/Chicago', 
-                    inner_hit = v3.models.inner_hit.InnerHit(
+                    inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
                         query = 'source.name:\"Active Directory\"', 
                         type = 'access', ), ),
                 include_nested = True,
@@ -61,10 +61,10 @@ class TestReportDetailsArguments(unittest.TestCase):
                 default_s3_bucket = True,
                 correlated_only = True,
                 authoritative_source = '1234sourceId5678902',
-                query = v3.models.query.Query(
+                query = sailpoint.v3.models.query.Query(
                     fields = [name], 
                     time_zone = 'America/Chicago', 
-                    inner_hit = v3.models.inner_hit.InnerHit(
+                    inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
                         query = 'source.name:\"Active Directory\"', 
                         type = 'access', ), ),
         )
@@ -74,6 +74,7 @@ class TestReportDetailsArguments(unittest.TestCase):
         """Test ReportDetailsArguments"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

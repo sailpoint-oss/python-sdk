@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class RoleMiningPotentialRoleProvisionState(str, Enum):
     """
     Provision state
     """
-
     """
     allowed enum values
     """
@@ -38,5 +33,3 @@ class RoleMiningPotentialRoleProvisionState(str, Enum):
     def from_json(cls, json_str: str) -> RoleMiningPotentialRoleProvisionState:
         """Create an instance of RoleMiningPotentialRoleProvisionState from a JSON string"""
         return RoleMiningPotentialRoleProvisionState(json.loads(json_str))
-
-

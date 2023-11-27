@@ -11,23 +11,36 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class CustomPasswordInstruction(BaseModel):
     """
     CustomPasswordInstruction
     """
-    page_id: Optional[StrictStr] = Field(None, alias="pageId", description="The page ID that represents the page for forget user name, reset password and unlock account flow.")
-    page_content: Optional[StrictStr] = Field(None, alias="pageContent", description="The custom instructions for the specified page. Allow basic HTML format and maximum length is 1000 characters. The custom instructions will be sanitized to avoid attacks. If the customization text includes a link, like <A HREF=\\\"URL\\\">...</A> clicking on this will open the link on the current browser page. If you want your link to be redirected to a different page, please redirect it to \"_blank\" like this: <a href=\\\"URL\" target=\\\"_blank\\\" >link</a>. This will open a new tab when the link is clicked. Notice we're only supporting _blank as the redirection target.")
-    locale: Optional[StrictStr] = Field(None, description="The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\".")
+    page_id: Optional[StrictStr] = Field(
+        None,
+        alias="pageId",
+        description=
+        "The page ID that represents the page for forget user name, reset password and unlock account flow."
+    )
+    page_content: Optional[StrictStr] = Field(
+        None,
+        alias="pageContent",
+        description=
+        "The custom instructions for the specified page. Allow basic HTML format and maximum length is 1000 characters. The custom instructions will be sanitized to avoid attacks. If the customization text includes a link, like <A HREF=\\\"URL\\\">...</A> clicking on this will open the link on the current browser page. If you want your link to be redirected to a different page, please redirect it to \"_blank\" like this: <a href=\\\"URL\" target=\\\"_blank\\\" >link</a>. This will open a new tab when the link is clicked. Notice we're only supporting _blank as the redirection target."
+    )
+    locale: Optional[StrictStr] = Field(
+        None,
+        description=
+        "The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\"."
+    )
     __properties = ["pageId", "pageContent", "locale"]
 
     @validator('page_id')
@@ -36,8 +49,18 @@ class CustomPasswordInstruction(BaseModel):
         if value is None:
             return value
 
-        if value not in ('change-password:enter-password', 'change-password:finish', 'flow-selection:select', 'forget-username:user-email', 'mfa:enter-code', 'mfa:enter-kba', 'mfa:select', 'reset-password:enter-password', 'reset-password:enter-username', 'reset-password:finish', 'unlock-account:enter-username', 'unlock-account:finish'):
-            raise ValueError("must be one of enum values ('change-password:enter-password', 'change-password:finish', 'flow-selection:select', 'forget-username:user-email', 'mfa:enter-code', 'mfa:enter-kba', 'mfa:select', 'reset-password:enter-password', 'reset-password:enter-username', 'reset-password:finish', 'unlock-account:enter-username', 'unlock-account:finish')")
+        if value not in ('change-password:enter-password',
+                         'change-password:finish', 'flow-selection:select',
+                         'forget-username:user-email', 'mfa:enter-code',
+                         'mfa:enter-kba', 'mfa:select',
+                         'reset-password:enter-password',
+                         'reset-password:enter-username',
+                         'reset-password:finish',
+                         'unlock-account:enter-username',
+                         'unlock-account:finish'):
+            raise ValueError(
+                "must be one of enum values ('change-password:enter-password', 'change-password:finish', 'flow-selection:select', 'forget-username:user-email', 'mfa:enter-code', 'mfa:enter-kba', 'mfa:select', 'reset-password:enter-password', 'reset-password:enter-username', 'reset-password:finish', 'unlock-account:enter-username', 'unlock-account:finish')"
+            )
         return value
 
     class Config:
@@ -60,10 +83,7 @@ class CustomPasswordInstruction(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,10 +96,11 @@ class CustomPasswordInstruction(BaseModel):
             return CustomPasswordInstruction.parse_obj(obj)
 
         _obj = CustomPasswordInstruction.parse_obj({
-            "page_id": obj.get("pageId"),
-            "page_content": obj.get("pageContent"),
-            "locale": obj.get("locale")
+            "page_id":
+            obj.get("pageId"),
+            "page_content":
+            obj.get("pageContent"),
+            "locale":
+            obj.get("locale")
         })
         return _obj
-
-

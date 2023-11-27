@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.workgroup_connection_dto import WorkgroupConnectionDto
+from sailpoint.beta.models.workgroup_connection_dto import WorkgroupConnectionDto
 
 # TODO update the JSON string below
 json = "{}"

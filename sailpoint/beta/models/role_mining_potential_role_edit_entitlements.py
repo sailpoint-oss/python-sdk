@@ -11,22 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+
 
 class RoleMiningPotentialRoleEditEntitlements(BaseModel):
     """
     RoleMiningPotentialRoleEditEntitlements
     """
-    ids: Optional[conlist(StrictStr)] = Field(None, description="The list of entitlement ids to be edited")
-    exclude: Optional[StrictBool] = Field(None, description="If true, add ids to be exclusion list. If false, remove ids from the exclusion list.")
+    ids: Optional[conlist(StrictStr)] = Field(
+        None, description="The list of entitlement ids to be edited")
+    exclude: Optional[StrictBool] = Field(
+        None,
+        description=
+        "If true, add ids to be exclusion list. If false, remove ids from the exclusion list."
+    )
     __properties = ["ids", "exclude"]
 
     class Config:
@@ -43,16 +47,14 @@ class RoleMiningPotentialRoleEditEntitlements(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RoleMiningPotentialRoleEditEntitlements:
+    def from_json(cls,
+                  json_str: str) -> RoleMiningPotentialRoleEditEntitlements:
         """Create an instance of RoleMiningPotentialRoleEditEntitlements from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +67,9 @@ class RoleMiningPotentialRoleEditEntitlements(BaseModel):
             return RoleMiningPotentialRoleEditEntitlements.parse_obj(obj)
 
         _obj = RoleMiningPotentialRoleEditEntitlements.parse_obj({
-            "ids": obj.get("ids"),
-            "exclude": obj.get("exclude")
+            "ids":
+            obj.get("ids"),
+            "exclude":
+            obj.get("exclude")
         })
         return _obj
-
-

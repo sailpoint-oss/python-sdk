@@ -1,4 +1,4 @@
-# beta.RoleInsightsApi
+# sailpoint.beta.RoleInsightsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -29,14 +29,14 @@ Submits a create role insights request to the role insights application. At this
 ```python
 import time
 import os
-import beta
-from beta.models.role_insights_response import RoleInsightsResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_insights_response import RoleInsightsResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -50,9 +50,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.RoleInsightsApi(api_client)
+    api_instance = sailpoint.beta.RoleInsightsApi(api_client)
 
     try:
         # Generate insights for roles
@@ -107,13 +107,13 @@ This endpoint returns the entitlement insights for a role.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -127,9 +127,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.RoleInsightsApi(api_client)
+    api_instance = sailpoint.beta.RoleInsightsApi(api_client)
     insight_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insight id
     sorters = 'identitiesWithAccess' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order. (optional)
     filters = 'name sw \"r\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* (optional)
@@ -191,14 +191,14 @@ Role insights suggests entitlements to be added for a role. This endpoint return
 ```python
 import time
 import os
-import beta
-from beta.models.role_insights_identities import RoleInsightsIdentities
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_insights_identities import RoleInsightsIdentities
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -212,9 +212,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.RoleInsightsApi(api_client)
+    api_instance = sailpoint.beta.RoleInsightsApi(api_client)
     insight_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insight id
     entitlement_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The entitlement id
     has_entitlement = False # bool | Identity has this entitlement or not (optional) (default to False)
@@ -286,14 +286,14 @@ This endpoint gets role insights information for a role.
 ```python
 import time
 import os
-import beta
-from beta.models.role_insight import RoleInsight
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_insight import RoleInsight
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -307,9 +307,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.RoleInsightsApi(api_client)
+    api_instance = sailpoint.beta.RoleInsightsApi(api_client)
     insight_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insight id
 
     try:
@@ -367,14 +367,14 @@ This method returns detailed role insights for each role.
 ```python
 import time
 import os
-import beta
-from beta.models.role_insight import RoleInsight
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_insight import RoleInsight
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -388,9 +388,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.RoleInsightsApi(api_client)
+    api_instance = sailpoint.beta.RoleInsightsApi(api_client)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -456,14 +456,14 @@ This endpoint gets the entitlements for a role. The term \"current\" is to disti
 ```python
 import time
 import os
-import beta
-from beta.models.role_insights_entitlement import RoleInsightsEntitlement
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_insights_entitlement import RoleInsightsEntitlement
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -477,9 +477,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.RoleInsightsApi(api_client)
+    api_instance = sailpoint.beta.RoleInsightsApi(api_client)
     insight_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insight id
     filters = 'name sw \"r\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* (optional)
 
@@ -539,14 +539,14 @@ This endpoint returns entitlement insights for a role.
 ```python
 import time
 import os
-import beta
-from beta.models.role_insights_entitlement_changes import RoleInsightsEntitlementChanges
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_insights_entitlement_changes import RoleInsightsEntitlementChanges
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -560,9 +560,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.RoleInsightsApi(api_client)
+    api_instance = sailpoint.beta.RoleInsightsApi(api_client)
     insight_id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insight id
     sorters = 'sorters_example' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name** (optional)
     filters = 'name sw \"Admin\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* (optional)
@@ -624,14 +624,14 @@ This endpoint returns details of a prior role insights request.
 ```python
 import time
 import os
-import beta
-from beta.models.role_insights_response import RoleInsightsResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_insights_response import RoleInsightsResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -645,9 +645,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.RoleInsightsApi(api_client)
+    api_instance = sailpoint.beta.RoleInsightsApi(api_client)
     id = '8c190e67-87aa-4ed9-a90b-d9d5344523fb' # str | The role insights request id
 
     try:
@@ -706,14 +706,14 @@ This method returns high level summary information for role insights for a custo
 ```python
 import time
 import os
-import beta
-from beta.models.role_insights_summary import RoleInsightsSummary
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.role_insights_summary import RoleInsightsSummary
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -727,9 +727,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.RoleInsightsApi(api_client)
+    api_instance = sailpoint.beta.RoleInsightsApi(api_client)
 
     try:
         # Get role insights summary information

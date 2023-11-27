@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.non_employee_request_body import NonEmployeeRequestBody
+from sailpoint.beta.models.non_employee_request_body import NonEmployeeRequestBody
 
 # TODO update the JSON string below
 json = "{}"

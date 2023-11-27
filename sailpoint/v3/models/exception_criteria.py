@@ -11,22 +11,28 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
-from v3.models.exception_criteria_criteria_list_inner import ExceptionCriteriaCriteriaListInner
+from sailpoint.v3.models.exception_criteria_criteria_list_inner import ExceptionCriteriaCriteriaListInner
+
 
 class ExceptionCriteria(BaseModel):
     """
     ExceptionCriteria
     """
-    criteria_list: Optional[conlist(ExceptionCriteriaCriteriaListInner)] = Field(None, alias="criteriaList", description="List of exception criteria. There is a min of 1 and max of 50 items in the list.")
+    criteria_list: Optional[conlist(
+        ExceptionCriteriaCriteriaListInner
+    )] = Field(
+        None,
+        alias="criteriaList",
+        description=
+        "List of exception criteria. There is a min of 1 and max of 50 items in the list."
+    )
     __properties = ["criteriaList"]
 
     class Config:
@@ -49,10 +55,7 @@ class ExceptionCriteria(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in criteria_list (list)
         _items = []
         if self.criteria_list:
@@ -72,8 +75,9 @@ class ExceptionCriteria(BaseModel):
             return ExceptionCriteria.parse_obj(obj)
 
         _obj = ExceptionCriteria.parse_obj({
-            "criteria_list": [ExceptionCriteriaCriteriaListInner.from_dict(_item) for _item in obj.get("criteriaList")] if obj.get("criteriaList") is not None else None
+            "criteria_list": [
+                ExceptionCriteriaCriteriaListInner.from_dict(_item)
+                for _item in obj.get("criteriaList")
+            ] if obj.get("criteriaList") is not None else None
         })
         return _obj
-
-

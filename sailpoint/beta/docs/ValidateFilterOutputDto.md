@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.validate_filter_output_dto import ValidateFilterOutputDto
+from sailpoint.beta.models.validate_filter_output_dto import ValidateFilterOutputDto
 
 # TODO update the JSON string below
 json = "{}"

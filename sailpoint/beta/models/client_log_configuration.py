@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,18 +19,32 @@ import json
 from datetime import datetime
 from typing import Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, conint
-from beta.models.standard_level import StandardLevel
+from sailpoint.beta.models.standard_level import StandardLevel
+
 
 class ClientLogConfiguration(BaseModel):
     """
     Client Runtime Logging Configuration  # noqa: E501
     """
-    client_id: Optional[StrictStr] = Field(None, alias="clientId", description="Log configuration's client ID")
-    duration_minutes: conint(strict=True, le=1440, ge=5) = Field(..., alias="durationMinutes", description="Duration in minutes for log configuration to remain in effect before resetting to defaults")
-    expiration: Optional[datetime] = Field(None, description="Expiration date-time of the log configuration request")
+    client_id: Optional[StrictStr] = Field(
+        None, alias="clientId", description="Log configuration's client ID")
+    duration_minutes: conint(strict=True, le=1440, ge=5) = Field(
+        ...,
+        alias="durationMinutes",
+        description=
+        "Duration in minutes for log configuration to remain in effect before resetting to defaults"
+    )
+    expiration: Optional[datetime] = Field(
+        None,
+        description="Expiration date-time of the log configuration request")
     root_level: StandardLevel = Field(..., alias="rootLevel")
-    log_levels: Optional[Dict[str, StandardLevel]] = Field(None, alias="logLevels", description="Mapping of identifiers to Standard Log Level values")
-    __properties = ["clientId", "durationMinutes", "expiration", "rootLevel", "logLevels"]
+    log_levels: Optional[Dict[str, StandardLevel]] = Field(
+        None,
+        alias="logLevels",
+        description="Mapping of identifiers to Standard Log Level values")
+    __properties = [
+        "clientId", "durationMinutes", "expiration", "rootLevel", "logLevels"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -53,10 +66,7 @@ class ClientLogConfiguration(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,12 +79,15 @@ class ClientLogConfiguration(BaseModel):
             return ClientLogConfiguration.parse_obj(obj)
 
         _obj = ClientLogConfiguration.parse_obj({
-            "client_id": obj.get("clientId"),
-            "duration_minutes": obj.get("durationMinutes"),
-            "expiration": obj.get("expiration"),
-            "root_level": obj.get("rootLevel"),
-            "log_levels": dict((_k, _v) for _k, _v in obj.get("logLevels").items())
+            "client_id":
+            obj.get("clientId"),
+            "duration_minutes":
+            obj.get("durationMinutes"),
+            "expiration":
+            obj.get("expiration"),
+            "root_level":
+            obj.get("rootLevel"),
+            "log_levels":
+            dict((_k, _v) for _k, _v in obj.get("logLevels").items())
         })
         return _obj
-
-

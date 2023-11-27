@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.iai_outliers_api import IAIOutliersApi  # noqa: E501
+from sailpoint.beta.api.iai_outliers_api import IAIOutliersApi  # noqa: E501
 
 
 class TestIAIOutliersApi(unittest.TestCase):

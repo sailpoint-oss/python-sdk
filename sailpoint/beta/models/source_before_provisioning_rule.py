@@ -11,23 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class SourceBeforeProvisioningRule(BaseModel):
     """
     Rule that runs on the CCG and allows for customization of provisioning plans before the connector is called.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="The type of object being referenced")
+    type: Optional[StrictStr] = Field(
+        None, description="The type of object being referenced")
     id: Optional[StrictStr] = Field(None, description="ID of the rule")
-    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the rule")
+    name: Optional[StrictStr] = Field(
+        None, description="Human-readable display name of the rule")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -60,10 +61,7 @@ class SourceBeforeProvisioningRule(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,5 +79,3 @@ class SourceBeforeProvisioningRule(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

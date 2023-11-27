@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.search import Search  # noqa: E501
+from sailpoint.v3.models.search import Search  # noqa: E501
+
 
 class TestSearch(unittest.TestCase):
     """Search unit test stubs"""
@@ -39,20 +39,20 @@ class TestSearch(unittest.TestCase):
                 indices = [identities],
                 query_type = 'SAILPOINT',
                 query_version = None,
-                query = v3.models.query.Query(
+                query = sailpoint.v3.models.query.Query(
                     query = 'name:a*', 
                     fields = [name], 
                     time_zone = 'America/Chicago', 
-                    inner_hit = v3.models.inner_hit.InnerHit(
+                    inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
                         query = 'source.name:\"Active Directory\"', 
                         type = 'access', ), ),
                 query_dsl = {match={name=john.doe}},
-                text_query = v3.models.text_query.TextQuery(
+                text_query = sailpoint.v3.models.text_query.TextQuery(
                     terms = [The quick brown fox, 3141592, 7], 
                     fields = [displayName, employeeNumber, roleCount], 
                     match_any = False, 
                     contains = True, ),
-                type_ahead_query = v3.models.type_ahead_query.TypeAheadQuery(
+                type_ahead_query = sailpoint.v3.models.type_ahead_query.TypeAheadQuery(
                     query = 'Work', 
                     field = 'source.name', 
                     nested_type = 'access', 
@@ -61,7 +61,7 @@ class TestSearch(unittest.TestCase):
                     sort = 'desc', 
                     sort_by_value = True, ),
                 include_nested = True,
-                query_result_filter = v3.models.query_result_filter.QueryResultFilter(
+                query_result_filter = sailpoint.v3.models.query_result_filter.QueryResultFilter(
                     includes = [name, displayName], 
                     excludes = [stacktrace], ),
                 aggregation_type = 'DSL',
@@ -81,6 +81,7 @@ class TestSearch(unittest.TestCase):
         """Test Search"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v2.models.modify_workgroup_members_request import ModifyWorkgroupMembersRequest
+from sailpoint.v2.models.modify_workgroup_members_request import ModifyWorkgroupMembersRequest
 
 # TODO update the JSON string below
 json = "{}"

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
+from sailpoint.beta.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
 
 # TODO update the JSON string below
 json = "{}"

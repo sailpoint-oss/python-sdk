@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.access_request_config import AccessRequestConfig
+from sailpoint.v3.models.access_request_config import AccessRequestConfig
 
 # TODO update the JSON string below
 json = "{}"

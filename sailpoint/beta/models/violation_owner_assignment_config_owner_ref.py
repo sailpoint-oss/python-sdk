@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class ViolationOwnerAssignmentConfigOwnerRef(BaseModel):
     """
@@ -27,7 +26,8 @@ class ViolationOwnerAssignmentConfigOwnerRef(BaseModel):
     """
     type: Optional[StrictStr] = Field(None, description="Owner's DTO type.")
     id: Optional[StrictStr] = Field(None, description="Owner's identity ID.")
-    name: Optional[StrictStr] = Field(None, description="Owner's display name.")
+    name: Optional[StrictStr] = Field(None,
+                                      description="Owner's display name.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -54,16 +54,14 @@ class ViolationOwnerAssignmentConfigOwnerRef(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ViolationOwnerAssignmentConfigOwnerRef:
+    def from_json(cls,
+                  json_str: str) -> ViolationOwnerAssignmentConfigOwnerRef:
         """Create an instance of ViolationOwnerAssignmentConfigOwnerRef from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,10 +74,11 @@ class ViolationOwnerAssignmentConfigOwnerRef(BaseModel):
             return ViolationOwnerAssignmentConfigOwnerRef.parse_obj(obj)
 
         _obj = ViolationOwnerAssignmentConfigOwnerRef.parse_obj({
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "type":
+            obj.get("type"),
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name")
         })
         return _obj
-
-

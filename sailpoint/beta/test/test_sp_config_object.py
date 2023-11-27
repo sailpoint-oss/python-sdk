@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.sp_config_object import SpConfigObject  # noqa: E501
+from sailpoint.beta.models.sp_config_object import SpConfigObject  # noqa: E501
+
 
 class TestSpConfigObject(unittest.TestCase):
     """SpConfigObject unit test stubs"""
@@ -37,22 +37,22 @@ class TestSpConfigObject(unittest.TestCase):
         if include_optional:
             return SpConfigObject(
                 object_type = 'TRIGGER_SUBSCRIPTION',
-                resolve_by_id_url = beta.models.resolver_url_format_for_object_configuration/.Resolver URL Format for Object Configuration.(
+                resolve_by_id_url = sailpoint.beta.models.resolver_url_format_for_object_configuration/.Resolver URL Format for Object Configuration.(
                     url = 'ets://trigger-subscriptions/$id', 
-                    query = beta.models.query.query(), ),
+                    query = sailpoint.beta.models.query.query(), ),
                 resolve_by_name_url = [
-                    beta.models.resolver_url_format_for_object_configuration/.Resolver URL Format for Object Configuration.(
+                    sailpoint.beta.models.resolver_url_format_for_object_configuration/.Resolver URL Format for Object Configuration.(
                         url = 'ets://trigger-subscriptions/$id', 
-                        query = beta.models.query.query(), )
+                        query = sailpoint.beta.models.query.query(), )
                     ],
-                export_url = beta.models.resolver_url_format_for_object_configuration/.Resolver URL Format for Object Configuration.(
+                export_url = sailpoint.beta.models.resolver_url_format_for_object_configuration/.Resolver URL Format for Object Configuration.(
                     url = 'ets://trigger-subscriptions/$id', 
-                    query = beta.models.query.query(), ),
+                    query = sailpoint.beta.models.query.query(), ),
                 export_right = 'idn:trigger-service-subscriptions:read',
                 export_limit = 10,
-                import_url = beta.models.resolver_url_format_for_object_configuration/.Resolver URL Format for Object Configuration.(
+                import_url = sailpoint.beta.models.resolver_url_format_for_object_configuration/.Resolver URL Format for Object Configuration.(
                     url = 'ets://trigger-subscriptions/$id', 
-                    query = beta.models.query.query(), ),
+                    query = sailpoint.beta.models.query.query(), ),
                 import_right = 'idn:trigger-service-subscriptions:create',
                 import_limit = 10,
                 reference_extractors = [$.owner],
@@ -67,6 +67,7 @@ class TestSpConfigObject(unittest.TestCase):
         """Test SpConfigObject"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

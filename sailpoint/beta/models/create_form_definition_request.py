@@ -11,33 +11,56 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist, constr
-from beta.models.form_condition import FormCondition
-from beta.models.form_definition_input import FormDefinitionInput
-from beta.models.form_element import FormElement
-from beta.models.form_owner import FormOwner
-from beta.models.form_used_by import FormUsedBy
+from sailpoint.beta.models.form_condition import FormCondition
+from sailpoint.beta.models.form_definition_input import FormDefinitionInput
+from sailpoint.beta.models.form_element import FormElement
+from sailpoint.beta.models.form_owner import FormOwner
+from sailpoint.beta.models.form_used_by import FormUsedBy
+
 
 class CreateFormDefinitionRequest(BaseModel):
     """
     CreateFormDefinitionRequest
     """
-    description: Optional[constr(strict=True, max_length=2000, min_length=0)] = Field(None, description="Description is the form definition description")
-    form_conditions: Optional[conlist(FormCondition)] = Field(None, alias="formConditions", description="FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form")
-    form_elements: Optional[conlist(FormElement)] = Field(None, alias="formElements", description="FormElements is a list of nested form elements")
-    form_input: Optional[conlist(FormDefinitionInput)] = Field(None, alias="formInput", description="FormInput is a list of form inputs that are required when creating a form-instance object")
-    name: constr(strict=True, max_length=255) = Field(..., description="Name is the form definition name")
+    description: Optional[constr(
+        strict=True, max_length=2000, min_length=0)] = Field(
+            None, description="Description is the form definition description")
+    form_conditions: Optional[conlist(FormCondition)] = Field(
+        None,
+        alias="formConditions",
+        description=
+        "FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form"
+    )
+    form_elements: Optional[conlist(FormElement)] = Field(
+        None,
+        alias="formElements",
+        description="FormElements is a list of nested form elements")
+    form_input: Optional[conlist(FormDefinitionInput)] = Field(
+        None,
+        alias="formInput",
+        description=
+        "FormInput is a list of form inputs that are required when creating a form-instance object"
+    )
+    name: constr(strict=True, max_length=255) = Field(
+        ..., description="Name is the form definition name")
     owner: FormOwner = Field(...)
-    used_by: Optional[conlist(FormUsedBy)] = Field(None, alias="usedBy", description="UsedBy is a list of objects where when any system uses a particular form it reaches out to the form service to record it is currently being used")
-    __properties = ["description", "formConditions", "formElements", "formInput", "name", "owner", "usedBy"]
+    used_by: Optional[conlist(FormUsedBy)] = Field(
+        None,
+        alias="usedBy",
+        description=
+        "UsedBy is a list of objects where when any system uses a particular form it reaches out to the form service to record it is currently being used"
+    )
+    __properties = [
+        "description", "formConditions", "formElements", "formInput", "name",
+        "owner", "usedBy"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -59,10 +82,7 @@ class CreateFormDefinitionRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in form_conditions (list)
         _items = []
         if self.form_conditions:
@@ -106,14 +126,27 @@ class CreateFormDefinitionRequest(BaseModel):
             return CreateFormDefinitionRequest.parse_obj(obj)
 
         _obj = CreateFormDefinitionRequest.parse_obj({
-            "description": obj.get("description"),
-            "form_conditions": [FormCondition.from_dict(_item) for _item in obj.get("formConditions")] if obj.get("formConditions") is not None else None,
-            "form_elements": [FormElement.from_dict(_item) for _item in obj.get("formElements")] if obj.get("formElements") is not None else None,
-            "form_input": [FormDefinitionInput.from_dict(_item) for _item in obj.get("formInput")] if obj.get("formInput") is not None else None,
-            "name": obj.get("name"),
-            "owner": FormOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "used_by": [FormUsedBy.from_dict(_item) for _item in obj.get("usedBy")] if obj.get("usedBy") is not None else None
+            "description":
+            obj.get("description"),
+            "form_conditions": [
+                FormCondition.from_dict(_item)
+                for _item in obj.get("formConditions")
+            ] if obj.get("formConditions") is not None else None,
+            "form_elements": [
+                FormElement.from_dict(_item)
+                for _item in obj.get("formElements")
+            ] if obj.get("formElements") is not None else None,
+            "form_input": [
+                FormDefinitionInput.from_dict(_item)
+                for _item in obj.get("formInput")
+            ] if obj.get("formInput") is not None else None,
+            "name":
+            obj.get("name"),
+            "owner":
+            FormOwner.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "used_by":
+            [FormUsedBy.from_dict(_item) for _item in obj.get("usedBy")]
+            if obj.get("usedBy") is not None else None
         })
         return _obj
-
-

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.account_activity_document import AccountActivityDocument  # noqa: E501
+from sailpoint.v3.models.account_activity_document import AccountActivityDocument  # noqa: E501
+
 
 class TestAccountActivityDocument(unittest.TestCase):
     """AccountActivityDocument unit test stubs"""
@@ -55,9 +55,9 @@ class TestAccountActivityDocument(unittest.TestCase):
                     ''
                     ],
                 approvals = [
-                    v3.models.approval.Approval(
+                    sailpoint.v3.models.approval.Approval(
                         comments = [
-                            v3.models.approval_comment.ApprovalComment(
+                            sailpoint.v3.models.approval_comment.ApprovalComment(
                                 comment = 'This request was autoapproved by our automated ETS subscriber.', 
                                 commenter = 'Automated AR Approval', 
                                 date = '2018-06-25T20:22:28.104Z', )
@@ -69,10 +69,10 @@ class TestAccountActivityDocument(unittest.TestCase):
                         type = '', )
                     ],
                 original_requests = [
-                    v3.models.original_request.OriginalRequest(
+                    sailpoint.v3.models.original_request.OriginalRequest(
                         account_id = 'CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com', 
                         attribute_requests = [
-                            v3.models.attribute_request.AttributeRequest(
+                            sailpoint.v3.models.attribute_request.AttributeRequest(
                                 name = 'groups', 
                                 op = 'Add', 
                                 value = '3203537556531076', )
@@ -81,12 +81,12 @@ class TestAccountActivityDocument(unittest.TestCase):
                         source = null, )
                     ],
                 expansion_items = [
-                    v3.models.expansion_item.ExpansionItem(
+                    sailpoint.v3.models.expansion_item.ExpansionItem(
                         account_id = '2c91808981f58ea601821c3e93482e6f', 
                         cause = 'Role', 
                         name = 'smartsheet-role', 
                         attribute_requests = [
-                            v3.models.attribute_request.AttributeRequest(
+                            sailpoint.v3.models.attribute_request.AttributeRequest(
                                 name = 'groups', 
                                 op = 'Add', 
                                 value = '3203537556531076', )
@@ -94,17 +94,17 @@ class TestAccountActivityDocument(unittest.TestCase):
                         source = null, )
                     ],
                 account_requests = [
-                    v3.models.account_request.AccountRequest(
+                    sailpoint.v3.models.account_request.AccountRequest(
                         account_id = 'John.Doe', 
                         attribute_requests = [
-                            v3.models.attribute_request.AttributeRequest(
+                            sailpoint.v3.models.attribute_request.AttributeRequest(
                                 name = 'groups', 
                                 op = 'Add', 
                                 value = '3203537556531076', )
                             ], 
                         op = 'Modify', 
                         provisioning_target = null, 
-                        result = v3.models.account_request_result.AccountRequest_result(
+                        result = sailpoint.v3.models.account_request_result.AccountRequest_result(
                             errors = [
                                 '[ConnectorError] [
   {
@@ -135,6 +135,7 @@ class TestAccountActivityDocument(unittest.TestCase):
         """Test AccountActivityDocument"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

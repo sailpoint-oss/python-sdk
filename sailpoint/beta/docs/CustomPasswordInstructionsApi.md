@@ -1,4 +1,4 @@
-# beta.CustomPasswordInstructionsApi
+# sailpoint.beta.CustomPasswordInstructionsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -23,14 +23,14 @@ This API creates the custom password instructions for the specified page ID. A t
 ```python
 import time
 import os
-import beta
-from beta.models.custom_password_instruction import CustomPasswordInstruction
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.custom_password_instruction import CustomPasswordInstruction
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -44,9 +44,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomPasswordInstructionsApi(api_client)
+    api_instance = sailpoint.beta.CustomPasswordInstructionsApi(api_client)
     custom_password_instruction = {pageId=reset-password:enter-password, pageContent=See company password policies for details by clicking <a href="url">here</a>} # CustomPasswordInstruction | 
 
     try:
@@ -103,13 +103,13 @@ This API delete the custom password instructions for the specified page ID. A to
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -123,9 +123,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomPasswordInstructionsApi(api_client)
+    api_instance = sailpoint.beta.CustomPasswordInstructionsApi(api_client)
     page_id = 'mfa:select' # str | The page ID of custom password instructions to delete.
     locale = 'locale_example' # str | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\". (optional)
 
@@ -183,14 +183,14 @@ This API returns the custom password instructions for the specified page ID. A t
 ```python
 import time
 import os
-import beta
-from beta.models.custom_password_instruction import CustomPasswordInstruction
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.custom_password_instruction import CustomPasswordInstruction
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -204,9 +204,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomPasswordInstructionsApi(api_client)
+    api_instance = sailpoint.beta.CustomPasswordInstructionsApi(api_client)
     page_id = 'mfa:select' # str | The page ID of custom password instructions to query.
     locale = 'locale_example' # str | The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\". (optional)
 

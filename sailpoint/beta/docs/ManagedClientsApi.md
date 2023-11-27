@@ -1,4 +1,4 @@
-# beta.ManagedClientsApi
+# sailpoint.beta.ManagedClientsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -22,15 +22,15 @@ Retrieve Managed Client Status by ID.
 ```python
 import time
 import os
-import beta
-from beta.models.managed_client_status import ManagedClientStatus
-from beta.models.managed_client_type import ManagedClientType
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.managed_client_status import ManagedClientStatus
+from sailpoint.beta.models.managed_client_type import ManagedClientType
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -44,11 +44,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ManagedClientsApi(api_client)
+    api_instance = sailpoint.beta.ManagedClientsApi(api_client)
     id = 'aClientId' # str | ID of the Managed Client Status to get
-    type = beta.ManagedClientType() # ManagedClientType | Type of the Managed Client Status to get
+    type = sailpoint.beta.ManagedClientType() # ManagedClientType | Type of the Managed Client Status to get
 
     try:
         # Specified Managed Client Status.
@@ -108,15 +108,15 @@ Update a status detail passed in from the client
 ```python
 import time
 import os
-import beta
-from beta.models.managed_client_status import ManagedClientStatus
-from beta.models.managed_client_status_agg_response import ManagedClientStatusAggResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.managed_client_status import ManagedClientStatus
+from sailpoint.beta.models.managed_client_status_agg_response import ManagedClientStatusAggResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -130,11 +130,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ManagedClientsApi(api_client)
+    api_instance = sailpoint.beta.ManagedClientsApi(api_client)
     id = 'aClientId' # str | ID of the Managed Client Status to update
-    managed_client_status = beta.ManagedClientStatus() # ManagedClientStatus | 
+    managed_client_status = sailpoint.beta.ManagedClientStatus() # ManagedClientStatus | 
 
     try:
         # Handle status request from client

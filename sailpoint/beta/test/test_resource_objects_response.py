@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.resource_objects_response import ResourceObjectsResponse  # noqa: E501
+from sailpoint.beta.models.resource_objects_response import ResourceObjectsResponse  # noqa: E501
+
 
 class TestResourceObjectsResponse(unittest.TestCase):
     """ResourceObjectsResponse unit test stubs"""
@@ -41,7 +41,7 @@ class TestResourceObjectsResponse(unittest.TestCase):
                 object_count = 25,
                 elapsed_millis = 1055,
                 resource_objects = [
-                    beta.models.resource_object.Resource Object(
+                    sailpoint.beta.models.resource_object.Resource Object(
                         instance = '', 
                         identity = 'CN=Aaron Carr,OU=test1,DC=test2,DC=test', 
                         uuid = '{abf7bd9b-68b4-4d21-9b70-870c58ebf844}', 
@@ -66,6 +66,7 @@ class TestResourceObjectsResponse(unittest.TestCase):
         """Test ResourceObjectsResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

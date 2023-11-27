@@ -11,18 +11,17 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt
-from beta.models.account_uncorrelated_account import AccountUncorrelatedAccount
-from beta.models.account_uncorrelated_identity import AccountUncorrelatedIdentity
-from beta.models.account_uncorrelated_source import AccountUncorrelatedSource
+from sailpoint.beta.models.account_uncorrelated_account import AccountUncorrelatedAccount
+from sailpoint.beta.models.account_uncorrelated_identity import AccountUncorrelatedIdentity
+from sailpoint.beta.models.account_uncorrelated_source import AccountUncorrelatedSource
+
 
 class AccountUncorrelated(BaseModel):
     """
@@ -31,7 +30,10 @@ class AccountUncorrelated(BaseModel):
     identity: AccountUncorrelatedIdentity = Field(...)
     source: AccountUncorrelatedSource = Field(...)
     account: AccountUncorrelatedAccount = Field(...)
-    entitlement_count: Optional[StrictInt] = Field(None, alias="entitlementCount", description="The number of entitlements associated with this account.")
+    entitlement_count: Optional[StrictInt] = Field(
+        None,
+        alias="entitlementCount",
+        description="The number of entitlements associated with this account.")
     __properties = ["identity", "source", "account", "entitlementCount"]
 
     class Config:
@@ -54,10 +56,7 @@ class AccountUncorrelated(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of identity
         if self.identity:
             _dict['identity'] = self.identity.to_dict()
@@ -79,11 +78,16 @@ class AccountUncorrelated(BaseModel):
             return AccountUncorrelated.parse_obj(obj)
 
         _obj = AccountUncorrelated.parse_obj({
-            "identity": AccountUncorrelatedIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
-            "source": AccountUncorrelatedSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
-            "account": AccountUncorrelatedAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None,
-            "entitlement_count": obj.get("entitlementCount")
+            "identity":
+            AccountUncorrelatedIdentity.from_dict(obj.get("identity"))
+            if obj.get("identity") is not None else None,
+            "source":
+            AccountUncorrelatedSource.from_dict(obj.get("source"))
+            if obj.get("source") is not None else None,
+            "account":
+            AccountUncorrelatedAccount.from_dict(obj.get("account"))
+            if obj.get("account") is not None else None,
+            "entitlement_count":
+            obj.get("entitlementCount")
         })
         return _obj
-
-

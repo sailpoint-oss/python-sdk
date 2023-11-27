@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class RoleMiningSessionScopingMethod(str, Enum):
     """
     The scoping method used in the current role mining session.
     """
-
     """
     allowed enum values
     """
@@ -36,5 +31,3 @@ class RoleMiningSessionScopingMethod(str, Enum):
     def from_json(cls, json_str: str) -> RoleMiningSessionScopingMethod:
         """Create an instance of RoleMiningSessionScopingMethod from a JSON string"""
         return RoleMiningSessionScopingMethod(json.loads(json_str))
-
-

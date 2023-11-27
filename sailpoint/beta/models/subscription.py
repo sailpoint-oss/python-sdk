@@ -11,18 +11,17 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-from beta.models.event_bridge_config import EventBridgeConfig
-from beta.models.http_config import HttpConfig
-from beta.models.subscription_type import SubscriptionType
+from sailpoint.beta.models.event_bridge_config import EventBridgeConfig
+from sailpoint.beta.models.http_config import HttpConfig
+from sailpoint.beta.models.subscription_type import SubscriptionType
+
 
 class Subscription(BaseModel):
     """
@@ -30,16 +29,40 @@ class Subscription(BaseModel):
     """
     id: StrictStr = Field(..., description="Subscription ID.")
     name: StrictStr = Field(..., description="Subscription name.")
-    description: Optional[StrictStr] = Field(None, description="Subscription description.")
-    trigger_id: StrictStr = Field(..., alias="triggerId", description="ID of trigger subscribed to.")
-    trigger_name: StrictStr = Field(..., alias="triggerName", description="Trigger name of trigger subscribed to.")
+    description: Optional[StrictStr] = Field(
+        None, description="Subscription description.")
+    trigger_id: StrictStr = Field(...,
+                                  alias="triggerId",
+                                  description="ID of trigger subscribed to.")
+    trigger_name: StrictStr = Field(
+        ...,
+        alias="triggerName",
+        description="Trigger name of trigger subscribed to.")
     type: SubscriptionType = Field(...)
-    response_deadline: StrictStr = Field(..., alias="responseDeadline", description="Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format.")
+    response_deadline: StrictStr = Field(
+        ...,
+        alias="responseDeadline",
+        description=
+        "Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format."
+    )
     http_config: Optional[HttpConfig] = Field(None, alias="httpConfig")
-    event_bridge_config: Optional[EventBridgeConfig] = Field(None, alias="eventBridgeConfig")
-    enabled: StrictBool = Field(..., description="Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option.")
-    filter: Optional[StrictStr] = Field(None, description="JSONPath filter to conditionally invoke trigger when expression evaluates to true.")
-    __properties = ["id", "name", "description", "triggerId", "triggerName", "type", "responseDeadline", "httpConfig", "eventBridgeConfig", "enabled", "filter"]
+    event_bridge_config: Optional[EventBridgeConfig] = Field(
+        None, alias="eventBridgeConfig")
+    enabled: StrictBool = Field(
+        ...,
+        description=
+        "Whether subscription should receive real-time trigger invocations or not. Test trigger invocations are always enabled regardless of this option."
+    )
+    filter: Optional[StrictStr] = Field(
+        None,
+        description=
+        "JSONPath filter to conditionally invoke trigger when expression evaluates to true."
+    )
+    __properties = [
+        "id", "name", "description", "triggerId", "triggerName", "type",
+        "responseDeadline", "httpConfig", "eventBridgeConfig", "enabled",
+        "filter"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -61,10 +84,7 @@ class Subscription(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of http_config
         if self.http_config:
             _dict['httpConfig'] = self.http_config.to_dict()
@@ -83,18 +103,30 @@ class Subscription(BaseModel):
             return Subscription.parse_obj(obj)
 
         _obj = Subscription.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "trigger_id": obj.get("triggerId"),
-            "trigger_name": obj.get("triggerName"),
-            "type": obj.get("type"),
-            "response_deadline": obj.get("responseDeadline") if obj.get("responseDeadline") is not None else 'PT1H',
-            "http_config": HttpConfig.from_dict(obj.get("httpConfig")) if obj.get("httpConfig") is not None else None,
-            "event_bridge_config": EventBridgeConfig.from_dict(obj.get("eventBridgeConfig")) if obj.get("eventBridgeConfig") is not None else None,
-            "enabled": obj.get("enabled") if obj.get("enabled") is not None else True,
-            "filter": obj.get("filter")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "trigger_id":
+            obj.get("triggerId"),
+            "trigger_name":
+            obj.get("triggerName"),
+            "type":
+            obj.get("type"),
+            "response_deadline":
+            obj.get("responseDeadline")
+            if obj.get("responseDeadline") is not None else 'PT1H',
+            "http_config":
+            HttpConfig.from_dict(obj.get("httpConfig"))
+            if obj.get("httpConfig") is not None else None,
+            "event_bridge_config":
+            EventBridgeConfig.from_dict(obj.get("eventBridgeConfig"))
+            if obj.get("eventBridgeConfig") is not None else None,
+            "enabled":
+            obj.get("enabled") if obj.get("enabled") is not None else True,
+            "filter":
+            obj.get("filter")
         })
         return _obj
-
-

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.password_info_query_dto import PasswordInfoQueryDTO
+from sailpoint.v3.models.password_info_query_dto import PasswordInfoQueryDTO
 
 # TODO update the JSON string below
 json = "{}"

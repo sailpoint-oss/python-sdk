@@ -1,4 +1,4 @@
-# v3.SearchApi
+# sailpoint.v3.SearchApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -24,15 +24,15 @@ Performs a search query aggregation and returns the aggregation result. By defau
 ```python
 import time
 import os
-import v3
-from v3.models.aggregation_result import AggregationResult
-from v3.models.search import Search
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.aggregation_result import AggregationResult
+from sailpoint.v3.models.search import Search
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -46,10 +46,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SearchApi(api_client)
-    search = v3.Search() # Search | 
+    api_instance = sailpoint.v3.SearchApi(api_client)
+    search = sailpoint.v3.Search() # Search | 
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -113,14 +113,14 @@ Performs a search with a provided query and returns the count of results in the 
 ```python
 import time
 import os
-import v3
-from v3.models.search import Search
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.search import Search
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -134,10 +134,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SearchApi(api_client)
-    search = v3.Search() # Search | 
+    api_instance = sailpoint.v3.SearchApi(api_client)
+    search = sailpoint.v3.Search() # Search | 
 
     try:
         # Count Documents Satisfying a Query
@@ -193,13 +193,13 @@ Fetches a single document from the specified index, using the specified document
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -213,9 +213,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SearchApi(api_client)
+    api_instance = sailpoint.v3.SearchApi(api_client)
     index = 'accounts' # str | The index from which to fetch the specified document.  The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*. 
     id = '2c91808568c529c60168cca6f90c1313' # str | ID of the requested document.
 
@@ -277,14 +277,14 @@ Performs a search with the provided query and returns a matching result collecti
 ```python
 import time
 import os
-import v3
-from v3.models.search import Search
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.search import Search
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -298,10 +298,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SearchApi(api_client)
-    search = v3.Search() # Search | 
+    api_instance = sailpoint.v3.SearchApi(api_client)
+    search = sailpoint.v3.Search() # Search | 
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)

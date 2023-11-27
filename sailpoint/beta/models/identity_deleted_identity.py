@@ -11,15 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class IdentityDeletedIdentity(BaseModel):
     """
@@ -27,7 +25,8 @@ class IdentityDeletedIdentity(BaseModel):
     """
     type: StrictStr = Field(..., description="Deleted identity's DTO type.")
     id: StrictStr = Field(..., description="Deleted identity ID.")
-    name: StrictStr = Field(..., description="Deleted identity's display name.")
+    name: StrictStr = Field(...,
+                            description="Deleted identity's display name.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -57,10 +56,7 @@ class IdentityDeletedIdentity(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -78,5 +74,3 @@ class IdentityDeletedIdentity(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

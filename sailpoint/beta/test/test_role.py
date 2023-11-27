@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.role import Role  # noqa: E501
+from sailpoint.beta.models.role import Role  # noqa: E501
+
 
 class TestRole(unittest.TestCase):
     """Role unit test stubs"""
@@ -41,31 +41,31 @@ class TestRole(unittest.TestCase):
                 created = '2021-03-01T22:32:58.104Z',
                 modified = '2021-03-02T20:22:28.104Z',
                 description = 'Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod fusce morbi placerat adipiscing maecenas nisi tristique et metus et lacus sed morbi nunc nisl maximus magna arcu varius sollicitudin elementum enim maecenas nisi id ipsum tempus fusce diam ipsum tortor.',
-                owner = beta.models.owner_reference.OwnerReference(
+                owner = sailpoint.beta.models.owner_reference.OwnerReference(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'support', ),
                 access_profiles = [
-                    beta.models.access_profile_ref.AccessProfileRef(
+                    sailpoint.beta.models.access_profile_ref.AccessProfileRef(
                         id = 'ff808081751e6e129f1518161919ecca', 
                         type = 'ACCESS_PROFILE', 
                         name = 'Access Profile 2567', )
                     ],
-                membership = beta.models.role_membership_selector.RoleMembershipSelector(
+                membership = sailpoint.beta.models.role_membership_selector.RoleMembershipSelector(
                     type = 'IDENTITY_LIST', 
-                    criteria = beta.models.role_criteria_level1.RoleCriteriaLevel1(
+                    criteria = sailpoint.beta.models.role_criteria_level1.RoleCriteriaLevel1(
                         operation = 'EQUALS', 
-                        key = beta.models.role_criteria_key.RoleCriteriaKey(
+                        key = sailpoint.beta.models.role_criteria_key.RoleCriteriaKey(
                             type = 'ACCOUNT', 
                             property = 'attribute.email', 
                             source_id = '2c9180867427f3a301745aec18211519', ), 
                         string_value = 'carlee.cert1c9f9b6fd@mailinator.com', 
                         children = [
-                            beta.models.role_criteria_level2.RoleCriteriaLevel2(
+                            sailpoint.beta.models.role_criteria_level2.RoleCriteriaLevel2(
                                 string_value = 'carlee.cert1c9f9b6fd@mailinator.com', )
                             ], ), 
                     identities = [
-                        beta.models.role_membership_identity.RoleMembershipIdentity(
+                        sailpoint.beta.models.role_membership_identity.RoleMembershipIdentity(
                             id = '2c9180a46faadee4016fb4e018c20639', 
                             name = 'Thomas Edison', 
                             alias_name = 't.edison', )
@@ -73,19 +73,19 @@ class TestRole(unittest.TestCase):
                 legacy_membership_info = {type=IDENTITY_LIST},
                 enabled = True,
                 requestable = True,
-                access_request_config = beta.models.requestability_for_role.RequestabilityForRole(
+                access_request_config = sailpoint.beta.models.requestability_for_role.RequestabilityForRole(
                     comments_required = True, 
                     denial_comments_required = True, 
                     approval_schemes = [
-                        beta.models.approval_scheme_for_role.ApprovalSchemeForRole(
+                        sailpoint.beta.models.approval_scheme_for_role.ApprovalSchemeForRole(
                             approver_type = 'GOVERNANCE_GROUP', 
                             approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                         ], ),
-                revocation_request_config = beta.models.revocability.Revocability(
+                revocation_request_config = sailpoint.beta.models.revocability.Revocability(
                     comments_required = False, 
                     denial_comments_required = False, 
                     approval_schemes = [
-                        beta.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
+                        sailpoint.beta.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
                             approver_type = 'GOVERNANCE_GROUP', 
                             approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                         ], ),
@@ -94,7 +94,7 @@ class TestRole(unittest.TestCase):
         else:
             return Role(
                 name = 'Role 2567',
-                owner = beta.models.owner_reference.OwnerReference(
+                owner = sailpoint.beta.models.owner_reference.OwnerReference(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'support', ),
@@ -105,6 +105,7 @@ class TestRole(unittest.TestCase):
         """Test Role"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

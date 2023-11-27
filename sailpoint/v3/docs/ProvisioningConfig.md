@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.provisioning_config import ProvisioningConfig
+from sailpoint.v3.models.provisioning_config import ProvisioningConfig
 
 # TODO update the JSON string below
 json = "{}"

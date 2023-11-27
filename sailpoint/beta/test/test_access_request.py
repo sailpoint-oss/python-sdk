@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.access_request import AccessRequest  # noqa: E501
+from sailpoint.beta.models.access_request import AccessRequest  # noqa: E501
+
 
 class TestAccessRequest(unittest.TestCase):
     """AccessRequest unit test stubs"""
@@ -41,7 +41,7 @@ class TestAccessRequest(unittest.TestCase):
                     ],
                 request_type = 'GRANT_ACCESS',
                 requested_items = [
-                    beta.models.access_request_item.AccessRequestItem(
+                    sailpoint.beta.models.access_request_item.AccessRequestItem(
                         type = 'ACCESS_PROFILE', 
                         id = '2c9180835d2e5168015d32f890ca1581', 
                         comment = 'Requesting access profile for John Doe', 
@@ -56,7 +56,7 @@ class TestAccessRequest(unittest.TestCase):
                     '2c918084660f45d6016617daa9210584'
                     ],
                 requested_items = [
-                    beta.models.access_request_item.AccessRequestItem(
+                    sailpoint.beta.models.access_request_item.AccessRequestItem(
                         type = 'ACCESS_PROFILE', 
                         id = '2c9180835d2e5168015d32f890ca1581', 
                         comment = 'Requesting access profile for John Doe', 
@@ -70,6 +70,7 @@ class TestAccessRequest(unittest.TestCase):
         """Test AccessRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

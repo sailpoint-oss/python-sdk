@@ -11,15 +11,13 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr
+
 
 class AccountsAsyncResult(BaseModel):
     """
@@ -48,10 +46,7 @@ class AccountsAsyncResult(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +58,5 @@ class AccountsAsyncResult(BaseModel):
         if not isinstance(obj, dict):
             return AccountsAsyncResult.parse_obj(obj)
 
-        _obj = AccountsAsyncResult.parse_obj({
-            "id": obj.get("id")
-        })
+        _obj = AccountsAsyncResult.parse_obj({"id": obj.get("id")})
         return _obj
-
-

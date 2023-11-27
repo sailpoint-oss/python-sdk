@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity import Identity  # noqa: E501
+from sailpoint.beta.models.identity import Identity  # noqa: E501
+
 
 class TestIdentity(unittest.TestCase):
     """Identity unit test stubs"""
@@ -44,14 +44,14 @@ class TestIdentity(unittest.TestCase):
                 email_address = 'sender@example.com',
                 processing_state = 'ERROR',
                 identity_status = 'LOCKED',
-                manager_ref = beta.models.identity_dto_manager_ref.IdentityDto_managerRef(
+                manager_ref = sailpoint.beta.models.identity_dto_manager_ref.IdentityDto_managerRef(
                     type = 'IDENTITY', 
                     id = '2c4180a46faadee4016fb4e018c20626', 
                     name = 'Robert Robinson', ),
                 is_manager = True,
                 last_refresh = '2020-11-22T15:42:31.123Z',
                 attributes = {"uid":"Walter White","firstname":"walter","cloudStatus":"UNREGISTERED","displayName":"Walter White","identificationNumber":"942","lastSyncDate":1470348809380,"email":"walter@gmail.com","lastname":"white"},
-                lifecycle_state = beta.models.lifecycle_state_dto.LifecycleStateDto(
+                lifecycle_state = sailpoint.beta.models.lifecycle_state_dto.LifecycleStateDto(
                     state_name = 'active', 
                     manually_updated = True, )
             )
@@ -65,6 +65,7 @@ class TestIdentity(unittest.TestCase):
         """Test Identity"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

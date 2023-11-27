@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,23 +19,38 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
-from beta.models.schedule1 import Schedule1
-from beta.models.sod_recipient import SodRecipient
+from sailpoint.beta.models.schedule1 import Schedule1
+from sailpoint.beta.models.sod_recipient import SodRecipient
+
 
 class SodPolicySchedule(BaseModel):
     """
     SodPolicySchedule
     """
-    name: Optional[StrictStr] = Field(None, description="SOD Policy schedule name")
-    created: Optional[datetime] = Field(None, description="The time when this SOD policy schedule is created.")
-    modified: Optional[datetime] = Field(None, description="The time when this SOD policy schedule is modified.")
-    description: Optional[StrictStr] = Field(None, description="SOD Policy schedule description")
+    name: Optional[StrictStr] = Field(None,
+                                      description="SOD Policy schedule name")
+    created: Optional[datetime] = Field(
+        None, description="The time when this SOD policy schedule is created.")
+    modified: Optional[datetime] = Field(
+        None,
+        description="The time when this SOD policy schedule is modified.")
+    description: Optional[StrictStr] = Field(
+        None, description="SOD Policy schedule description")
     schedule: Optional[Schedule1] = None
     recipients: Optional[conlist(SodRecipient)] = None
-    email_empty_results: Optional[StrictBool] = Field(None, alias="emailEmptyResults", description="Indicates if empty results need to be emailed")
-    creator_id: Optional[StrictStr] = Field(None, alias="creatorId", description="Policy's creator ID")
-    modifier_id: Optional[StrictStr] = Field(None, alias="modifierId", description="Policy's modifier ID")
-    __properties = ["name", "created", "modified", "description", "schedule", "recipients", "emailEmptyResults", "creatorId", "modifierId"]
+    email_empty_results: Optional[StrictBool] = Field(
+        None,
+        alias="emailEmptyResults",
+        description="Indicates if empty results need to be emailed")
+    creator_id: Optional[StrictStr] = Field(None,
+                                            alias="creatorId",
+                                            description="Policy's creator ID")
+    modifier_id: Optional[StrictStr] = Field(
+        None, alias="modifierId", description="Policy's modifier ID")
+    __properties = [
+        "name", "created", "modified", "description", "schedule", "recipients",
+        "emailEmptyResults", "creatorId", "modifierId"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -58,10 +72,7 @@ class SodPolicySchedule(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of schedule
         if self.schedule:
             _dict['schedule'] = self.schedule.to_dict()
@@ -84,16 +95,25 @@ class SodPolicySchedule(BaseModel):
             return SodPolicySchedule.parse_obj(obj)
 
         _obj = SodPolicySchedule.parse_obj({
-            "name": obj.get("name"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "description": obj.get("description"),
-            "schedule": Schedule1.from_dict(obj.get("schedule")) if obj.get("schedule") is not None else None,
-            "recipients": [SodRecipient.from_dict(_item) for _item in obj.get("recipients")] if obj.get("recipients") is not None else None,
-            "email_empty_results": obj.get("emailEmptyResults"),
-            "creator_id": obj.get("creatorId"),
-            "modifier_id": obj.get("modifierId")
+            "name":
+            obj.get("name"),
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified"),
+            "description":
+            obj.get("description"),
+            "schedule":
+            Schedule1.from_dict(obj.get("schedule"))
+            if obj.get("schedule") is not None else None,
+            "recipients":
+            [SodRecipient.from_dict(_item) for _item in obj.get("recipients")]
+            if obj.get("recipients") is not None else None,
+            "email_empty_results":
+            obj.get("emailEmptyResults"),
+            "creator_id":
+            obj.get("creatorId"),
+            "modifier_id":
+            obj.get("modifierId")
         })
         return _obj
-
-

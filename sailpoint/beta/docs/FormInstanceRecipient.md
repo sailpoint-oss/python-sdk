@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.form_instance_recipient import FormInstanceRecipient
+from sailpoint.beta.models.form_instance_recipient import FormInstanceRecipient
 
 # TODO update the JSON string below
 json = "{}"

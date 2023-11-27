@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.subscription_patch_request_inner_value_any_of_inner import SubscriptionPatchRequestInnerValueAnyOfInner
+from sailpoint.beta.models.subscription_patch_request_inner_value_any_of_inner import SubscriptionPatchRequestInnerValueAnyOfInner
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.provisioning_config_managed_resource_refs_inner import ProvisioningConfigManagedResourceRefsInner
+from sailpoint.beta.models.provisioning_config_managed_resource_refs_inner import ProvisioningConfigManagedResourceRefsInner
 
 # TODO update the JSON string below
 json = "{}"

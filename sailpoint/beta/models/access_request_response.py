@@ -11,23 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.access_request_item_response import AccessRequestItemResponse
+from sailpoint.beta.models.access_request_item_response import AccessRequestItemResponse
+
 
 class AccessRequestResponse(BaseModel):
     """
     AccessRequestResponse
     """
-    requester_id: Optional[StrictStr] = Field(None, alias="requesterId", description="the requester Id")
-    requester_name: Optional[StrictStr] = Field(None, alias="requesterName", description="the requesterName")
+    requester_id: Optional[StrictStr] = Field(None,
+                                              alias="requesterId",
+                                              description="the requester Id")
+    requester_name: Optional[StrictStr] = Field(
+        None, alias="requesterName", description="the requesterName")
     items: Optional[conlist(AccessRequestItemResponse)] = None
     __properties = ["requesterId", "requesterName", "items"]
 
@@ -51,10 +53,7 @@ class AccessRequestResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in items (list)
         _items = []
         if self.items:
@@ -74,10 +73,13 @@ class AccessRequestResponse(BaseModel):
             return AccessRequestResponse.parse_obj(obj)
 
         _obj = AccessRequestResponse.parse_obj({
-            "requester_id": obj.get("requesterId"),
-            "requester_name": obj.get("requesterName"),
-            "items": [AccessRequestItemResponse.from_dict(_item) for _item in obj.get("items")] if obj.get("items") is not None else None
+            "requester_id":
+            obj.get("requesterId"),
+            "requester_name":
+            obj.get("requesterName"),
+            "items": [
+                AccessRequestItemResponse.from_dict(_item)
+                for _item in obj.get("items")
+            ] if obj.get("items") is not None else None
         })
         return _obj
-
-

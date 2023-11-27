@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.transform import Transform  # noqa: E501
+from sailpoint.beta.models.transform import Transform  # noqa: E501
+
 
 class TestTransform(unittest.TestCase):
     """Transform unit test stubs"""
@@ -38,13 +38,13 @@ class TestTransform(unittest.TestCase):
             return Transform(
                 name = 'Timestamp To Date',
                 type = 'dateFormat',
-                attributes = beta.models.attributes.attributes()
+                attributes = sailpoint.beta.models.attributes.attributes()
             )
         else:
             return Transform(
                 name = 'Timestamp To Date',
                 type = 'dateFormat',
-                attributes = beta.models.attributes.attributes(),
+                attributes = sailpoint.beta.models.attributes.attributes(),
         )
         """
 
@@ -52,6 +52,7 @@ class TestTransform(unittest.TestCase):
         """Test Transform"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

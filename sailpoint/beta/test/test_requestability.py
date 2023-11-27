@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.requestability import Requestability  # noqa: E501
+from sailpoint.beta.models.requestability import Requestability  # noqa: E501
+
 
 class TestRequestability(unittest.TestCase):
     """Requestability unit test stubs"""
@@ -39,7 +39,7 @@ class TestRequestability(unittest.TestCase):
                 comments_required = True,
                 denial_comments_required = True,
                 approval_schemes = [
-                    beta.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
+                    sailpoint.beta.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
                         approver_type = 'GOVERNANCE_GROUP', 
                         approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                     ]
@@ -53,6 +53,7 @@ class TestRequestability(unittest.TestCase):
         """Test Requestability"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

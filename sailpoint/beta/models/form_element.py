@@ -11,25 +11,34 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class FormElement(BaseModel):
     """
     FormElement
     """
-    id: Optional[StrictStr] = Field(None, description="Form element identifier.")
-    element_type: Optional[StrictStr] = Field(None, alias="elementType", description="FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns")
-    config: Optional[Dict[str, Dict[str, Any]]] = Field(None, description="Config object.")
+    id: Optional[StrictStr] = Field(None,
+                                    description="Form element identifier.")
+    element_type: Optional[StrictStr] = Field(
+        None,
+        alias="elementType",
+        description=
+        "FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns"
+    )
+    config: Optional[Dict[str,
+                          Dict[str,
+                               Any]]] = Field(None,
+                                              description="Config object.")
     key: Optional[StrictStr] = Field(None, description="Technical key.")
-    validations: Optional[Dict[str, Any]] = Field(None, description="Set of FormElementValidation items.")
+    validations: Optional[Dict[str, Any]] = Field(
+        None, description="Set of FormElementValidation items.")
     __properties = ["id", "elementType", "config", "key", "validations"]
 
     @validator('element_type')
@@ -38,8 +47,11 @@ class FormElement(BaseModel):
         if value is None:
             return value
 
-        if value not in ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMNS'):
-            raise ValueError("must be one of enum values ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMNS')")
+        if value not in ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE',
+                         'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMNS'):
+            raise ValueError(
+                "must be one of enum values ('TEXT', 'TOGGLE', 'TEXTAREA', 'HIDDEN', 'PHONE', 'EMAIL', 'SELECT', 'DATE', 'SECTION', 'COLUMNS')"
+            )
         return value
 
     class Config:
@@ -62,10 +74,7 @@ class FormElement(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -85,5 +94,3 @@ class FormElement(BaseModel):
             "validations": obj.get("validations")
         })
         return _obj
-
-

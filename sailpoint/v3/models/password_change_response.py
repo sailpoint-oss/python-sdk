@@ -11,22 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class PasswordChangeResponse(BaseModel):
     """
     PasswordChangeResponse
     """
-    request_id: Optional[StrictStr] = Field(None, alias="requestId", description="The password change request ID")
-    state: Optional[StrictStr] = Field(None, description="Password change state")
+    request_id: Optional[StrictStr] = Field(
+        None, alias="requestId", description="The password change request ID")
+    state: Optional[StrictStr] = Field(None,
+                                       description="Password change state")
     __properties = ["requestId", "state"]
 
     @validator('state')
@@ -36,7 +37,9 @@ class PasswordChangeResponse(BaseModel):
             return value
 
         if value not in ('IN_PROGRESS', 'FINISHED', 'FAILED'):
-            raise ValueError("must be one of enum values ('IN_PROGRESS', 'FINISHED', 'FAILED')")
+            raise ValueError(
+                "must be one of enum values ('IN_PROGRESS', 'FINISHED', 'FAILED')"
+            )
         return value
 
     class Config:
@@ -59,10 +62,7 @@ class PasswordChangeResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if request_id (nullable) is None
         # and __fields_set__ contains the field
         if self.request_id is None and "request_id" in self.__fields_set__:
@@ -80,9 +80,9 @@ class PasswordChangeResponse(BaseModel):
             return PasswordChangeResponse.parse_obj(obj)
 
         _obj = PasswordChangeResponse.parse_obj({
-            "request_id": obj.get("requestId"),
-            "state": obj.get("state")
+            "request_id":
+            obj.get("requestId"),
+            "state":
+            obj.get("state")
         })
         return _obj
-
-

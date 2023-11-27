@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.workflow_o_auth_client import WorkflowOAuthClient
+from sailpoint.beta.models.workflow_o_auth_client import WorkflowOAuthClient
 
 # TODO update the JSON string below
 json = "{}"

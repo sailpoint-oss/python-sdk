@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_entities import IdentityEntities  # noqa: E501
+from sailpoint.beta.models.identity_entities import IdentityEntities  # noqa: E501
+
 
 class TestIdentityEntities(unittest.TestCase):
     """IdentityEntities unit test stubs"""
@@ -36,7 +36,7 @@ class TestIdentityEntities(unittest.TestCase):
         model = IdentityEntities()  # noqa: E501
         if include_optional:
             return IdentityEntities(
-                identity_entity = beta.models.identity_entities_identity_entity.IdentityEntities_identityEntity(
+                identity_entity = sailpoint.beta.models.identity_entities_identity_entity.IdentityEntities_identityEntity(
                     id = '031034e97f094a4096c1be53f75f6b91', 
                     name = 'Gaston.800ddf9640a', 
                     type = 'CAMPAIGN_CAMPAIGNER', )
@@ -50,6 +50,7 @@ class TestIdentityEntities(unittest.TestCase):
         """Test IdentityEntities"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

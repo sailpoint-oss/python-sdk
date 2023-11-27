@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.data_access import DataAccess  # noqa: E501
+from sailpoint.v3.models.data_access import DataAccess  # noqa: E501
+
 
 class TestDataAccess(unittest.TestCase):
     """DataAccess unit test stubs"""
@@ -37,15 +37,15 @@ class TestDataAccess(unittest.TestCase):
         if include_optional:
             return DataAccess(
                 policies = [
-                    v3.models.data_access_policies_inner.DataAccess_policies_inner(
+                    sailpoint.v3.models.data_access_policies_inner.DataAccess_policies_inner(
                         value = 'GDPR-20', )
                     ],
                 categories = [
-                    v3.models.data_access_categories_inner.DataAccess_categories_inner(
+                    sailpoint.v3.models.data_access_categories_inner.DataAccess_categories_inner(
                         value = 'email-7', 
                         match_count = 10, )
                     ],
-                impact_score = v3.models.data_access_impact_score.DataAccess_impactScore(
+                impact_score = sailpoint.v3.models.data_access_impact_score.DataAccess_impactScore(
                     value = 'Medium', )
             )
         else:
@@ -57,6 +57,7 @@ class TestDataAccess(unittest.TestCase):
         """Test DataAccess"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

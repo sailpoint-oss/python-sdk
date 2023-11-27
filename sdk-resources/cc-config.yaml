@@ -1,4 +1,4 @@
 templateDir: ./sdk-resources/resources
-packageName: cc
+packageName: sailpoint.cc
 packageVersion: 1.0.0
 generateSourceCodeOnly: true

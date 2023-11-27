@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.latest_outlier_summary import LatestOutlierSummary  # noqa: E501
+from sailpoint.beta.models.latest_outlier_summary import LatestOutlierSummary  # noqa: E501
+
 
 class TestLatestOutlierSummary(unittest.TestCase):
     """LatestOutlierSummary unit test stubs"""
@@ -51,6 +51,7 @@ class TestLatestOutlierSummary(unittest.TestCase):
         """Test LatestOutlierSummary"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

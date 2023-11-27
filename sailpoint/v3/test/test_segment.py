@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.segment import Segment  # noqa: E501
+from sailpoint.v3.models.segment import Segment  # noqa: E501
+
 
 class TestSegment(unittest.TestCase):
     """Segment unit test stubs"""
@@ -41,15 +41,15 @@ class TestSegment(unittest.TestCase):
                 created = '2020-01-01T00:00Z',
                 modified = '2020-01-01T00:00Z',
                 description = 'This segment represents xyz',
-                owner = v3.models.owner_reference_segments.OwnerReferenceSegments(
+                owner = sailpoint.v3.models.owner_reference_segments.OwnerReferenceSegments(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'support', ),
-                visibility_criteria = v3.models.visibility_criteria.VisibilityCriteria(
-                    expression = v3.models.expression.Expression(
+                visibility_criteria = sailpoint.v3.models.visibility_criteria.VisibilityCriteria(
+                    expression = sailpoint.v3.models.expression.Expression(
                         operator = 'EQUALS', 
                         attribute = 'location', 
-                        value = v3.models.value.Value(
+                        value = sailpoint.v3.models.value.Value(
                             type = 'STRING', ), 
                         children = [], ), ),
                 active = True
@@ -63,6 +63,7 @@ class TestSegment(unittest.TestCase):
         """Test Segment"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.sp_config_api import SPConfigApi  # noqa: E501
+from sailpoint.beta.api.sp_config_api import SPConfigApi  # noqa: E501
 
 
 class TestSPConfigApi(unittest.TestCase):

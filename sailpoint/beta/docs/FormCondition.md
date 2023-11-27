@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.form_condition import FormCondition
+from sailpoint.beta.models.form_condition import FormCondition
 
 # TODO update the JSON string below
 json = "{}"

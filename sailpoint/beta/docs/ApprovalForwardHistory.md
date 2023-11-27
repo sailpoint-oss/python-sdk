@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.approval_forward_history import ApprovalForwardHistory
+from sailpoint.beta.models.approval_forward_history import ApprovalForwardHistory
 
 # TODO update the JSON string below
 json = "{}"

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.access_summary import AccessSummary
+from sailpoint.v3.models.access_summary import AccessSummary
 
 # TODO update the JSON string below
 json = "{}"

@@ -1,4 +1,4 @@
-# beta.IAIOutliersApi
+# sailpoint.beta.IAIOutliersApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -29,13 +29,13 @@ This API exports a list of ignored outliers to a CSV as well as list of non-igno
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -49,9 +49,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIOutliersApi(api_client)
+    api_instance = sailpoint.beta.IAIOutliersApi(api_client)
     type = 'type_example' # str | Type of the identity outliers snapshot to filter on (optional)
 
     try:
@@ -110,14 +110,14 @@ This API receives a summary containing: the number of identities that customer h
 ```python
 import time
 import os
-import beta
-from beta.models.outlier_summary import OutlierSummary
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.outlier_summary import OutlierSummary
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -131,9 +131,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIOutliersApi(api_client)
+    api_instance = sailpoint.beta.IAIOutliersApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     type = 'type_example' # str | Type of the identity outliers snapshot to filter on (optional)
@@ -201,14 +201,14 @@ This API receives a list of outliers, containing data such as: identityId, outli
 ```python
 import time
 import os
-import beta
-from beta.models.outlier import Outlier
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.outlier import Outlier
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -222,9 +222,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIOutliersApi(api_client)
+    api_instance = sailpoint.beta.IAIOutliersApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -293,14 +293,14 @@ This API returns a most recent snapshot of each outlier type, each containing: t
 ```python
 import time
 import os
-import beta
-from beta.models.latest_outlier_summary import LatestOutlierSummary
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.latest_outlier_summary import LatestOutlierSummary
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -314,9 +314,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIOutliersApi(api_client)
+    api_instance = sailpoint.beta.IAIOutliersApi(api_client)
     type = 'type_example' # str | Type of the identity outliers snapshot to filter on (optional)
 
     try:
@@ -376,14 +376,14 @@ This API returns a summary of a contributing feature for an identity outlier. Th
 ```python
 import time
 import os
-import beta
-from beta.models.outlier_feature_summary import OutlierFeatureSummary
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.outlier_feature_summary import OutlierFeatureSummary
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -397,9 +397,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIOutliersApi(api_client)
+    api_instance = sailpoint.beta.IAIOutliersApi(api_client)
     outlier_feature_id = '04654b66-7561-4090-94f9-abee0722a1af' # str | Contributing feature id
 
     try:
@@ -459,14 +459,14 @@ This API returns a list of contributing feature objects for a single outlier. Th
 ```python
 import time
 import os
-import beta
-from beta.models.outlier_contributing_feature import OutlierContributingFeature
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.outlier_contributing_feature import OutlierContributingFeature
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -480,9 +480,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIOutliersApi(api_client)
+    api_instance = sailpoint.beta.IAIOutliersApi(api_client)
     outlier_id = '2c918085842e69ae018432d22ccb212f' # str | The outlier id
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -552,13 +552,13 @@ This API receives a list of IdentityIDs in the request, changes the outliers to 
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -572,9 +572,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIOutliersApi(api_client)
+    api_instance = sailpoint.beta.IAIOutliersApi(api_client)
     request_body = ['request_body_example'] # List[str] | 
 
     try:
@@ -631,14 +631,14 @@ This API returns a list of the enriched access items associated with each featur
 ```python
 import time
 import os
-import beta
-from beta.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -652,9 +652,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIOutliersApi(api_client)
+    api_instance = sailpoint.beta.IAIOutliersApi(api_client)
     outlier_id = '2c918085842e69ae018432d22ccb212f' # str | The outlier id
     contributing_feature_name = 'entitlement_count' # str | The name of contributing feature
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
@@ -726,13 +726,13 @@ This API receives a list of IdentityIDs in the request, changes the outliers to 
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -746,9 +746,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIOutliersApi(api_client)
+    api_instance = sailpoint.beta.IAIOutliersApi(api_client)
     request_body = ['request_body_example'] # List[str] | 
 
     try:

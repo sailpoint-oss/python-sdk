@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.attribute_definition_schema import AttributeDefinitionSchema
+from sailpoint.v3.models.attribute_definition_schema import AttributeDefinitionSchema
 
 # TODO update the JSON string below
 json = "{}"

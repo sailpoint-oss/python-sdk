@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.role_mining_session_parameters_dto import RoleMiningSessionParametersDto  # noqa: E501
+from sailpoint.beta.models.role_mining_session_parameters_dto import RoleMiningSessionParametersDto  # noqa: E501
+
 
 class TestRoleMiningSessionParametersDto(unittest.TestCase):
     """RoleMiningSessionParametersDto unit test stubs"""
@@ -26,7 +26,8 @@ class TestRoleMiningSessionParametersDto(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RoleMiningSessionParametersDto:
+    def make_instance(self,
+                      include_optional) -> RoleMiningSessionParametersDto:
         """Test RoleMiningSessionParametersDto
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -41,7 +42,7 @@ class TestRoleMiningSessionParametersDto(unittest.TestCase):
                 min_num_identities_in_potential_role = 20,
                 prune_threshold = 5,
                 saved = True,
-                scope = beta.models.role_mining_session_scope.RoleMiningSessionScope(
+                scope = sailpoint.beta.models.role_mining_session_scope.RoleMiningSessionScope(
                     identity_ids = [2c918090761a5aac0176215c46a62d58, 2c918090761a5aac01722015c46a62d42], 
                     criteria = 'source.name:DataScienceDataset', 
                     attribute_filter_criteria = {displayName={untranslated=Location: Miami}, ariaLabel={untranslated=Location: Miami}, data={displayName={translateKey=IDN.IDENTITY_ATTRIBUTES.LOCATION}, name=location, operator=EQUALS, values=[Miami]}}, ),
@@ -58,6 +59,7 @@ class TestRoleMiningSessionParametersDto(unittest.TestCase):
         """Test RoleMiningSessionParametersDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

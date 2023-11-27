@@ -11,22 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
-from beta.models.identity_ownership_association_details_association_details_inner import IdentityOwnershipAssociationDetailsAssociationDetailsInner
+from sailpoint.beta.models.identity_ownership_association_details_association_details_inner import IdentityOwnershipAssociationDetailsAssociationDetailsInner
+
 
 class IdentityOwnershipAssociationDetails(BaseModel):
     """
     IdentityOwnershipAssociationDetails
     """
-    association_details: Optional[conlist(IdentityOwnershipAssociationDetailsAssociationDetailsInner)] = Field(None, alias="associationDetails", description="list of all the resource associations for the identity")
+    association_details: Optional[conlist(
+        IdentityOwnershipAssociationDetailsAssociationDetailsInner
+    )] = Field(
+        None,
+        alias="associationDetails",
+        description="list of all the resource associations for the identity")
     __properties = ["associationDetails"]
 
     class Config:
@@ -49,10 +53,7 @@ class IdentityOwnershipAssociationDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in association_details (list)
         _items = []
         if self.association_details:
@@ -72,8 +73,9 @@ class IdentityOwnershipAssociationDetails(BaseModel):
             return IdentityOwnershipAssociationDetails.parse_obj(obj)
 
         _obj = IdentityOwnershipAssociationDetails.parse_obj({
-            "association_details": [IdentityOwnershipAssociationDetailsAssociationDetailsInner.from_dict(_item) for _item in obj.get("associationDetails")] if obj.get("associationDetails") is not None else None
+            "association_details": [
+                IdentityOwnershipAssociationDetailsAssociationDetailsInner.
+                from_dict(_item) for _item in obj.get("associationDetails")
+            ] if obj.get("associationDetails") is not None else None
         })
         return _obj
-
-

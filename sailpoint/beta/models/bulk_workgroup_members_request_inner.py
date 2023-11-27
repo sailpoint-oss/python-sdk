@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class BulkWorkgroupMembersRequestInner(BaseModel):
     """
@@ -27,7 +26,8 @@ class BulkWorkgroupMembersRequestInner(BaseModel):
     """
     type: Optional[StrictStr] = Field(None, description="Identity's DTO type.")
     id: Optional[StrictStr] = Field(None, description="Identity ID.")
-    name: Optional[StrictStr] = Field(None, description="Identity's display name.")
+    name: Optional[StrictStr] = Field(None,
+                                      description="Identity's display name.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -60,10 +60,7 @@ class BulkWorkgroupMembersRequestInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,10 +73,11 @@ class BulkWorkgroupMembersRequestInner(BaseModel):
             return BulkWorkgroupMembersRequestInner.parse_obj(obj)
 
         _obj = BulkWorkgroupMembersRequestInner.parse_obj({
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "type":
+            obj.get("type"),
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name")
         })
         return _obj
-
-

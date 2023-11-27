@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v2.models.get_org_settings200_response_system_notification_config import GetOrgSettings200ResponseSystemNotificationConfig
+from sailpoint.v2.models.get_org_settings200_response_system_notification_config import GetOrgSettings200ResponseSystemNotificationConfig
 
 # TODO update the JSON string below
 json = "{}"

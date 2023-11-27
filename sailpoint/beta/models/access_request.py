@@ -11,27 +11,40 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.access_request_item import AccessRequestItem
-from beta.models.access_request_type import AccessRequestType
+from sailpoint.beta.models.access_request_item import AccessRequestItem
+from sailpoint.beta.models.access_request_type import AccessRequestType
+
 
 class AccessRequest(BaseModel):
     """
     AccessRequest
     """
-    requested_for: conlist(StrictStr) = Field(..., alias="requestedFor", description="A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID.")
-    request_type: Optional[AccessRequestType] = Field(None, alias="requestType")
-    requested_items: conlist(AccessRequestItem) = Field(..., alias="requestedItems")
-    client_metadata: Optional[Dict[str, StrictStr]] = Field(None, alias="clientMetadata", description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.")
-    __properties = ["requestedFor", "requestType", "requestedItems", "clientMetadata"]
+    requested_for: conlist(StrictStr) = Field(
+        ...,
+        alias="requestedFor",
+        description=
+        "A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID."
+    )
+    request_type: Optional[AccessRequestType] = Field(None,
+                                                      alias="requestType")
+    requested_items: conlist(AccessRequestItem) = Field(
+        ..., alias="requestedItems")
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(
+        None,
+        alias="clientMetadata",
+        description=
+        "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities."
+    )
+    __properties = [
+        "requestedFor", "requestType", "requestedItems", "clientMetadata"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -53,10 +66,7 @@ class AccessRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in requested_items (list)
         _items = []
         if self.requested_items:
@@ -76,11 +86,15 @@ class AccessRequest(BaseModel):
             return AccessRequest.parse_obj(obj)
 
         _obj = AccessRequest.parse_obj({
-            "requested_for": obj.get("requestedFor"),
-            "request_type": obj.get("requestType"),
-            "requested_items": [AccessRequestItem.from_dict(_item) for _item in obj.get("requestedItems")] if obj.get("requestedItems") is not None else None,
-            "client_metadata": obj.get("clientMetadata")
+            "requested_for":
+            obj.get("requestedFor"),
+            "request_type":
+            obj.get("requestType"),
+            "requested_items": [
+                AccessRequestItem.from_dict(_item)
+                for _item in obj.get("requestedItems")
+            ] if obj.get("requestedItems") is not None else None,
+            "client_metadata":
+            obj.get("clientMetadata")
         })
         return _obj
-
-

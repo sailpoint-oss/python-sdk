@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.list_connectors200_response import ListConnectors200Response
+from sailpoint.cc.models.list_connectors200_response import ListConnectors200Response
 
 # TODO update the JSON string below
 json = "{}"

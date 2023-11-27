@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.custom_forms_api import CustomFormsApi  # noqa: E501
+from sailpoint.beta.api.custom_forms_api import CustomFormsApi  # noqa: E501
 
 
 class TestCustomFormsApi(unittest.TestCase):
@@ -40,6 +39,13 @@ class TestCustomFormsApi(unittest.TestCase):
         """
         pass
 
+    def test_create_form_definition_file_request(self) -> None:
+        """Test case for create_form_definition_file_request
+
+        Upload new form definition file.  # noqa: E501
+        """
+        pass
+
     def test_create_form_instance(self) -> None:
         """Test case for create_form_instance
 
@@ -61,6 +67,13 @@ class TestCustomFormsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_file_from_s3(self) -> None:
+        """Test case for get_file_from_s3
+
+        Download definition file by fileId.  # noqa: E501
+        """
+        pass
+
     def test_get_form_definition_by_key(self) -> None:
         """Test case for get_form_definition_by_key
 
@@ -72,6 +85,13 @@ class TestCustomFormsApi(unittest.TestCase):
         """Test case for get_form_instance_by_key
 
         Returns a form instance.  # noqa: E501
+        """
+        pass
+
+    def test_get_form_instance_file(self) -> None:
+        """Test case for get_form_instance_file
+
+        Download instance file by fileId.  # noqa: E501
         """
         pass
 

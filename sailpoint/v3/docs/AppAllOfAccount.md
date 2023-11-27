@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.app_all_of_account import AppAllOfAccount
+from sailpoint.v3.models.app_all_of_account import AppAllOfAccount
 
 # TODO update the JSON string below
 json = "{}"

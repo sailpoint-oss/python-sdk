@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.transform_definition import TransformDefinition
+from sailpoint.v3.models.transform_definition import TransformDefinition
 
 # TODO update the JSON string below
 json = "{}"

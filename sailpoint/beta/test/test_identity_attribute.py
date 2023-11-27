@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_attribute import IdentityAttribute  # noqa: E501
+from sailpoint.beta.models.identity_attribute import IdentityAttribute  # noqa: E501
+
 
 class TestIdentityAttribute(unittest.TestCase):
     """IdentityAttribute unit test stubs"""
@@ -44,7 +44,7 @@ class TestIdentityAttribute(unittest.TestCase):
                 searchable = True,
                 system = False,
                 sources = [
-                    beta.models.source_1.Source_1(
+                    sailpoint.beta.models.source_1.Source_1(
                         type = 'rule', 
                         properties = {attribute=null, sourceName=Employees}, )
                     ]
@@ -58,6 +58,7 @@ class TestIdentityAttribute(unittest.TestCase):
         """Test IdentityAttribute"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

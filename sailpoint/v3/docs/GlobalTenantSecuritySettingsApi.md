@@ -1,4 +1,4 @@
-# v3.GlobalTenantSecuritySettingsApi
+# sailpoint.v3.GlobalTenantSecuritySettingsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -23,14 +23,14 @@ This API returns the details of an org's network auth configuration. Requires se
 ```python
 import time
 import os
-import v3
-from v3.models.network_configuration import NetworkConfiguration
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.network_configuration import NetworkConfiguration
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -44,10 +44,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.GlobalTenantSecuritySettingsApi(api_client)
-    network_configuration = v3.NetworkConfiguration() # NetworkConfiguration | Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
+    api_instance = sailpoint.v3.GlobalTenantSecuritySettingsApi(api_client)
+    network_configuration = sailpoint.v3.NetworkConfiguration() # NetworkConfiguration | Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
 
     try:
         # Create security network configuration.
@@ -106,14 +106,14 @@ This API returns the details of an org's network auth configuration. Requires se
 ```python
 import time
 import os
-import v3
-from v3.models.network_configuration import NetworkConfiguration
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.network_configuration import NetworkConfiguration
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -127,9 +127,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.GlobalTenantSecuritySettingsApi(api_client)
+    api_instance = sailpoint.v3.GlobalTenantSecuritySettingsApi(api_client)
 
     try:
         # Get security network configuration.
@@ -185,15 +185,15 @@ This API updates an existing network configuration for an org using PATCH  Requi
 ```python
 import time
 import os
-import v3
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.models.network_configuration import NetworkConfiguration
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.network_configuration import NetworkConfiguration
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -207,9 +207,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.GlobalTenantSecuritySettingsApi(api_client)
+    api_instance = sailpoint.v3.GlobalTenantSecuritySettingsApi(api_client)
     json_patch_operation = [{op=replace, path=/whitelisted, value=false,}, {op=add, path=/geolocation, value=[AF, HN, ES]}] # List[JsonPatchOperation] | A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Ensures that the patched Network Config conforms to certain logical guidelines, which are:   1. Each string element in the range array must be a valid ip address or ip subnet mask.   2. Each string element in the geolocation array must be 2 characters, and they can only be uppercase letters.
 
     try:

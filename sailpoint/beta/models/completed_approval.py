@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,44 +19,90 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
-from beta.models.access_item_owner_dto import AccessItemOwnerDto
-from beta.models.access_item_requested_for_dto import AccessItemRequestedForDto
-from beta.models.access_item_requester_dto import AccessItemRequesterDto
-from beta.models.access_request_type import AccessRequestType
-from beta.models.approval_forward_history import ApprovalForwardHistory
-from beta.models.comment_dto import CommentDto
-from beta.models.completed_approval_reviewed_by import CompletedApprovalReviewedBy
-from beta.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment
-from beta.models.completed_approval_state import CompletedApprovalState
-from beta.models.requestable_object_reference import RequestableObjectReference
-from beta.models.sod_violation_context_check_completed1 import SodViolationContextCheckCompleted1
+from sailpoint.beta.models.access_item_owner_dto import AccessItemOwnerDto
+from sailpoint.beta.models.access_item_requested_for_dto import AccessItemRequestedForDto
+from sailpoint.beta.models.access_item_requester_dto import AccessItemRequesterDto
+from sailpoint.beta.models.access_request_type import AccessRequestType
+from sailpoint.beta.models.approval_forward_history import ApprovalForwardHistory
+from sailpoint.beta.models.comment_dto import CommentDto
+from sailpoint.beta.models.completed_approval_reviewed_by import CompletedApprovalReviewedBy
+from sailpoint.beta.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment
+from sailpoint.beta.models.completed_approval_state import CompletedApprovalState
+from sailpoint.beta.models.requestable_object_reference import RequestableObjectReference
+from sailpoint.beta.models.sod_violation_context_check_completed1 import SodViolationContextCheckCompleted1
+
 
 class CompletedApproval(BaseModel):
     """
     CompletedApproval
     """
     id: Optional[StrictStr] = Field(None, description="The approval id.")
-    name: Optional[StrictStr] = Field(None, description="The name of the approval.")
-    created: Optional[datetime] = Field(None, description="When the approval was created.")
-    modified: Optional[datetime] = Field(None, description="When the approval was modified last time.")
-    request_created: Optional[datetime] = Field(None, alias="requestCreated", description="When the access-request was created.")
-    request_type: Optional[AccessRequestType] = Field(None, alias="requestType")
+    name: Optional[StrictStr] = Field(None,
+                                      description="The name of the approval.")
+    created: Optional[datetime] = Field(
+        None, description="When the approval was created.")
+    modified: Optional[datetime] = Field(
+        None, description="When the approval was modified last time.")
+    request_created: Optional[datetime] = Field(
+        None,
+        alias="requestCreated",
+        description="When the access-request was created.")
+    request_type: Optional[AccessRequestType] = Field(None,
+                                                      alias="requestType")
     requester: Optional[AccessItemRequesterDto] = None
-    requested_for: Optional[AccessItemRequestedForDto] = Field(None, alias="requestedFor")
-    reviewed_by: Optional[CompletedApprovalReviewedBy] = Field(None, alias="reviewedBy")
+    requested_for: Optional[AccessItemRequestedForDto] = Field(
+        None, alias="requestedFor")
+    reviewed_by: Optional[CompletedApprovalReviewedBy] = Field(
+        None, alias="reviewedBy")
     owner: Optional[AccessItemOwnerDto] = None
-    requested_object: Optional[RequestableObjectReference] = Field(None, alias="requestedObject")
-    requester_comment: Optional[CommentDto] = Field(None, alias="requesterComment")
-    reviewer_comment: Optional[CompletedApprovalReviewerComment] = Field(None, alias="reviewerComment")
-    previous_reviewers_comments: Optional[conlist(CommentDto)] = Field(None, alias="previousReviewersComments", description="The history of the previous reviewers comments.")
-    forward_history: Optional[conlist(ApprovalForwardHistory)] = Field(None, alias="forwardHistory", description="The history of approval forward action.")
-    comment_required_when_rejected: Optional[StrictBool] = Field(None, alias="commentRequiredWhenRejected", description="When true the rejector has to provide comments when rejecting")
+    requested_object: Optional[RequestableObjectReference] = Field(
+        None, alias="requestedObject")
+    requester_comment: Optional[CommentDto] = Field(None,
+                                                    alias="requesterComment")
+    reviewer_comment: Optional[CompletedApprovalReviewerComment] = Field(
+        None, alias="reviewerComment")
+    previous_reviewers_comments: Optional[conlist(CommentDto)] = Field(
+        None,
+        alias="previousReviewersComments",
+        description="The history of the previous reviewers comments.")
+    forward_history: Optional[conlist(ApprovalForwardHistory)] = Field(
+        None,
+        alias="forwardHistory",
+        description="The history of approval forward action.")
+    comment_required_when_rejected: Optional[StrictBool] = Field(
+        None,
+        alias="commentRequiredWhenRejected",
+        description=
+        "When true the rejector has to provide comments when rejecting")
     state: Optional[CompletedApprovalState] = None
-    remove_date: Optional[datetime] = Field(None, alias="removeDate", description="The date the role or access profile is no longer assigned to the specified identity.")
-    remove_date_update_requested: Optional[StrictBool] = Field(None, alias="removeDateUpdateRequested", description="If true, then the request was to change the remove date or sunset date.")
-    current_remove_date: Optional[datetime] = Field(None, alias="currentRemoveDate", description="The remove date or sunset date that was assigned at the time of the request.")
-    sod_violation_context: Optional[SodViolationContextCheckCompleted1] = Field(None, alias="sodViolationContext")
-    __properties = ["id", "name", "created", "modified", "requestCreated", "requestType", "requester", "requestedFor", "reviewedBy", "owner", "requestedObject", "requesterComment", "reviewerComment", "previousReviewersComments", "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate", "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext"]
+    remove_date: Optional[datetime] = Field(
+        None,
+        alias="removeDate",
+        description=
+        "The date the role or access profile is no longer assigned to the specified identity."
+    )
+    remove_date_update_requested: Optional[StrictBool] = Field(
+        None,
+        alias="removeDateUpdateRequested",
+        description=
+        "If true, then the request was to change the remove date or sunset date."
+    )
+    current_remove_date: Optional[datetime] = Field(
+        None,
+        alias="currentRemoveDate",
+        description=
+        "The remove date or sunset date that was assigned at the time of the request."
+    )
+    sod_violation_context: Optional[
+        SodViolationContextCheckCompleted1] = Field(
+            None, alias="sodViolationContext")
+    __properties = [
+        "id", "name", "created", "modified", "requestCreated", "requestType",
+        "requester", "requestedFor", "reviewedBy", "owner", "requestedObject",
+        "requesterComment", "reviewerComment", "previousReviewersComments",
+        "forwardHistory", "commentRequiredWhenRejected", "state", "removeDate",
+        "removeDateUpdateRequested", "currentRemoveDate", "sodViolationContext"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -79,10 +124,7 @@ class CompletedApproval(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of requester
         if self.requester:
             _dict['requester'] = self.requester.to_dict()
@@ -148,28 +190,61 @@ class CompletedApproval(BaseModel):
             return CompletedApproval.parse_obj(obj)
 
         _obj = CompletedApproval.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "request_created": obj.get("requestCreated"),
-            "request_type": obj.get("requestType"),
-            "requester": AccessItemRequesterDto.from_dict(obj.get("requester")) if obj.get("requester") is not None else None,
-            "requested_for": AccessItemRequestedForDto.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
-            "reviewed_by": CompletedApprovalReviewedBy.from_dict(obj.get("reviewedBy")) if obj.get("reviewedBy") is not None else None,
-            "owner": AccessItemOwnerDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "requested_object": RequestableObjectReference.from_dict(obj.get("requestedObject")) if obj.get("requestedObject") is not None else None,
-            "requester_comment": CommentDto.from_dict(obj.get("requesterComment")) if obj.get("requesterComment") is not None else None,
-            "reviewer_comment": CompletedApprovalReviewerComment.from_dict(obj.get("reviewerComment")) if obj.get("reviewerComment") is not None else None,
-            "previous_reviewers_comments": [CommentDto.from_dict(_item) for _item in obj.get("previousReviewersComments")] if obj.get("previousReviewersComments") is not None else None,
-            "forward_history": [ApprovalForwardHistory.from_dict(_item) for _item in obj.get("forwardHistory")] if obj.get("forwardHistory") is not None else None,
-            "comment_required_when_rejected": obj.get("commentRequiredWhenRejected"),
-            "state": obj.get("state"),
-            "remove_date": obj.get("removeDate"),
-            "remove_date_update_requested": obj.get("removeDateUpdateRequested"),
-            "current_remove_date": obj.get("currentRemoveDate"),
-            "sod_violation_context": SodViolationContextCheckCompleted1.from_dict(obj.get("sodViolationContext")) if obj.get("sodViolationContext") is not None else None
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified"),
+            "request_created":
+            obj.get("requestCreated"),
+            "request_type":
+            obj.get("requestType"),
+            "requester":
+            AccessItemRequesterDto.from_dict(obj.get("requester"))
+            if obj.get("requester") is not None else None,
+            "requested_for":
+            AccessItemRequestedForDto.from_dict(obj.get("requestedFor"))
+            if obj.get("requestedFor") is not None else None,
+            "reviewed_by":
+            CompletedApprovalReviewedBy.from_dict(obj.get("reviewedBy"))
+            if obj.get("reviewedBy") is not None else None,
+            "owner":
+            AccessItemOwnerDto.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "requested_object":
+            RequestableObjectReference.from_dict(obj.get("requestedObject"))
+            if obj.get("requestedObject") is not None else None,
+            "requester_comment":
+            CommentDto.from_dict(obj.get("requesterComment"))
+            if obj.get("requesterComment") is not None else None,
+            "reviewer_comment":
+            CompletedApprovalReviewerComment.from_dict(
+                obj.get("reviewerComment"))
+            if obj.get("reviewerComment") is not None else None,
+            "previous_reviewers_comments": [
+                CommentDto.from_dict(_item)
+                for _item in obj.get("previousReviewersComments")
+            ] if obj.get("previousReviewersComments") is not None else None,
+            "forward_history": [
+                ApprovalForwardHistory.from_dict(_item)
+                for _item in obj.get("forwardHistory")
+            ] if obj.get("forwardHistory") is not None else None,
+            "comment_required_when_rejected":
+            obj.get("commentRequiredWhenRejected"),
+            "state":
+            obj.get("state"),
+            "remove_date":
+            obj.get("removeDate"),
+            "remove_date_update_requested":
+            obj.get("removeDateUpdateRequested"),
+            "current_remove_date":
+            obj.get("currentRemoveDate"),
+            "sod_violation_context":
+            SodViolationContextCheckCompleted1.from_dict(
+                obj.get("sodViolationContext"))
+            if obj.get("sodViolationContext") is not None else None
         })
         return _obj
-
-

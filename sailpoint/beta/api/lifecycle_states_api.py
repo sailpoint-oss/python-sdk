@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -21,15 +20,13 @@ from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 from pydantic import Field, StrictStr, conlist
 
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.models.lifecycle_state import LifecycleState
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.lifecycle_state import LifecycleState
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class LifecycleStatesApi:
@@ -45,7 +42,14 @@ class LifecycleStatesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def list_lifecycle_states(self, identity_profile_id : Annotated[StrictStr, Field(..., description="Identity Profile ID")], lifecycle_state_id : Annotated[StrictStr, Field(..., description="Lifecycle State ID")], **kwargs) -> LifecycleState:  # noqa: E501
+    def list_lifecycle_states(
+            self, identity_profile_id: Annotated[
+                StrictStr,
+                Field(..., description="Identity Profile ID")],
+            lifecycle_state_id: Annotated[
+                StrictStr,
+                Field(..., description="Lifecycle State ID")],
+            **kwargs) -> LifecycleState:  # noqa: E501
         """Lifecycle State  # noqa: E501
 
         This endpoint returns a lifecycle state.  A token with ORG_ADMIN or API authority is required to call this API.   # noqa: E501
@@ -74,10 +78,18 @@ class LifecycleStatesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_lifecycle_states_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_lifecycle_states_with_http_info(identity_profile_id, lifecycle_state_id, **kwargs)  # noqa: E501
+        return self.list_lifecycle_states_with_http_info(
+            identity_profile_id, lifecycle_state_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_lifecycle_states_with_http_info(self, identity_profile_id : Annotated[StrictStr, Field(..., description="Identity Profile ID")], lifecycle_state_id : Annotated[StrictStr, Field(..., description="Lifecycle State ID")], **kwargs) -> ApiResponse:  # noqa: E501
+    def list_lifecycle_states_with_http_info(
+            self, identity_profile_id: Annotated[
+                StrictStr,
+                Field(..., description="Identity Profile ID")],
+            lifecycle_state_id: Annotated[
+                StrictStr,
+                Field(..., description="Lifecycle State ID")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Lifecycle State  # noqa: E501
 
         This endpoint returns a lifecycle state.  A token with ORG_ADMIN or API authority is required to call this API.   # noqa: E501
@@ -118,29 +130,17 @@ class LifecycleStatesApi:
 
         _params = locals()
 
-        _all_params = [
-            'identity_profile_id',
-            'lifecycle_state_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['identity_profile_id', 'lifecycle_state_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_lifecycle_states" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_lifecycle_states" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -149,11 +149,11 @@ class LifecycleStatesApi:
         # process the path parameters
         _path_params = {}
         if _params['identity_profile_id']:
-            _path_params['identity-profile-id'] = _params['identity_profile_id']
+            _path_params['identity-profile-id'] = _params[
+                'identity_profile_id']
 
         if _params['lifecycle_state_id']:
             _path_params['lifecycle-state-id'] = _params['lifecycle_state_id']
-
 
         # process the query parameters
         _query_params = []
@@ -181,7 +181,8 @@ class LifecycleStatesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}', 'GET',
+            '/identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -191,14 +192,29 @@ class LifecycleStatesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_lifecycle_states(self, identity_profile_id : Annotated[StrictStr, Field(..., description="Identity Profile ID")], lifecycle_state_id : Annotated[StrictStr, Field(..., description="Lifecycle State ID")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption ")], **kwargs) -> LifecycleState:  # noqa: E501
+    def update_lifecycle_states(
+            self, identity_profile_id: Annotated[
+                StrictStr,
+                Field(..., description="Identity Profile ID")],
+            lifecycle_state_id: Annotated[
+                StrictStr,
+                Field(..., description="Lifecycle State ID")],
+            json_patch_operation:
+        Annotated[
+            conlist(JsonPatchOperation),
+            Field(
+                ...,
+                description=
+                "A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption "
+            )], **kwargs) -> LifecycleState:  # noqa: E501
         """Update Lifecycle State  # noqa: E501
 
         This API updates individual lifecycle state fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  A token with ORG_ADMIN or API authority is required to call this API.   # noqa: E501
@@ -229,10 +245,26 @@ class LifecycleStatesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_lifecycle_states_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_lifecycle_states_with_http_info(identity_profile_id, lifecycle_state_id, json_patch_operation, **kwargs)  # noqa: E501
+        return self.update_lifecycle_states_with_http_info(
+            identity_profile_id, lifecycle_state_id, json_patch_operation,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_lifecycle_states_with_http_info(self, identity_profile_id : Annotated[StrictStr, Field(..., description="Identity Profile ID")], lifecycle_state_id : Annotated[StrictStr, Field(..., description="Lifecycle State ID")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption ")], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_lifecycle_states_with_http_info(
+            self, identity_profile_id: Annotated[
+                StrictStr,
+                Field(..., description="Identity Profile ID")],
+            lifecycle_state_id: Annotated[
+                StrictStr,
+                Field(..., description="Lifecycle State ID")],
+            json_patch_operation:
+        Annotated[
+            conlist(JsonPatchOperation),
+            Field(
+                ...,
+                description=
+                "A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption "
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Update Lifecycle State  # noqa: E501
 
         This API updates individual lifecycle state fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  A token with ORG_ADMIN or API authority is required to call this API.   # noqa: E501
@@ -276,29 +308,18 @@ class LifecycleStatesApi:
         _params = locals()
 
         _all_params = [
-            'identity_profile_id',
-            'lifecycle_state_id',
-            'json_patch_operation'
+            'identity_profile_id', 'lifecycle_state_id', 'json_patch_operation'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_lifecycle_states" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method update_lifecycle_states" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -307,11 +328,11 @@ class LifecycleStatesApi:
         # process the path parameters
         _path_params = {}
         if _params['identity_profile_id']:
-            _path_params['identity-profile-id'] = _params['identity_profile_id']
+            _path_params['identity-profile-id'] = _params[
+                'identity_profile_id']
 
         if _params['lifecycle_state_id']:
             _path_params['lifecycle-state-id'] = _params['lifecycle_state_id']
-
 
         # process the query parameters
         _query_params = []
@@ -330,11 +351,12 @@ class LifecycleStatesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
+        _content_types_list = _params.get(
+            '_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -349,7 +371,8 @@ class LifecycleStatesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}', 'PATCH',
+            '/identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}',
+            'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -359,7 +382,8 @@ class LifecycleStatesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

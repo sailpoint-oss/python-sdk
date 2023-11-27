@@ -11,30 +11,36 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from v3.models.account_request_result import AccountRequestResult
-from v3.models.account_source import AccountSource
-from v3.models.attribute_request import AttributeRequest
+from sailpoint.v3.models.account_request_result import AccountRequestResult
+from sailpoint.v3.models.account_source import AccountSource
+from sailpoint.v3.models.attribute_request import AttributeRequest
+
 
 class AccountRequest(BaseModel):
     """
     AccountRequest
     """
-    account_id: Optional[StrictStr] = Field(None, alias="accountId", description="Unique ID of the account")
-    attribute_requests: Optional[conlist(AttributeRequest)] = Field(None, alias="attributeRequests")
-    op: Optional[StrictStr] = Field(None, description="The operation that was performed")
-    provisioning_target: Optional[AccountSource] = Field(None, alias="provisioningTarget")
+    account_id: Optional[StrictStr] = Field(
+        None, alias="accountId", description="Unique ID of the account")
+    attribute_requests: Optional[conlist(AttributeRequest)] = Field(
+        None, alias="attributeRequests")
+    op: Optional[StrictStr] = Field(
+        None, description="The operation that was performed")
+    provisioning_target: Optional[AccountSource] = Field(
+        None, alias="provisioningTarget")
     result: Optional[AccountRequestResult] = None
     source: Optional[AccountSource] = None
-    __properties = ["accountId", "attributeRequests", "op", "provisioningTarget", "result", "source"]
+    __properties = [
+        "accountId", "attributeRequests", "op", "provisioningTarget", "result",
+        "source"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -56,10 +62,7 @@ class AccountRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in attribute_requests (list)
         _items = []
         if self.attribute_requests:
@@ -88,13 +91,22 @@ class AccountRequest(BaseModel):
             return AccountRequest.parse_obj(obj)
 
         _obj = AccountRequest.parse_obj({
-            "account_id": obj.get("accountId"),
-            "attribute_requests": [AttributeRequest.from_dict(_item) for _item in obj.get("attributeRequests")] if obj.get("attributeRequests") is not None else None,
-            "op": obj.get("op"),
-            "provisioning_target": AccountSource.from_dict(obj.get("provisioningTarget")) if obj.get("provisioningTarget") is not None else None,
-            "result": AccountRequestResult.from_dict(obj.get("result")) if obj.get("result") is not None else None,
-            "source": AccountSource.from_dict(obj.get("source")) if obj.get("source") is not None else None
+            "account_id":
+            obj.get("accountId"),
+            "attribute_requests": [
+                AttributeRequest.from_dict(_item)
+                for _item in obj.get("attributeRequests")
+            ] if obj.get("attributeRequests") is not None else None,
+            "op":
+            obj.get("op"),
+            "provisioning_target":
+            AccountSource.from_dict(obj.get("provisioningTarget"))
+            if obj.get("provisioningTarget") is not None else None,
+            "result":
+            AccountRequestResult.from_dict(obj.get("result"))
+            if obj.get("result") is not None else None,
+            "source":
+            AccountSource.from_dict(obj.get("source"))
+            if obj.get("source") is not None else None
         })
         return _obj
-
-

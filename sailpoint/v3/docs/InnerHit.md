@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.inner_hit import InnerHit
+from sailpoint.v3.models.inner_hit import InnerHit
 
 # TODO update the JSON string below
 json = "{}"

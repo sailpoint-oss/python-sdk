@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,24 +19,45 @@ import json
 from datetime import datetime
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-from v3.models.account_source import AccountSource
+from sailpoint.v3.models.account_source import AccountSource
+
 
 class BaseAccount(BaseModel):
     """
     BaseAccount
     """
-    id: Optional[StrictStr] = Field(None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(None, description="The human readable name of the referenced object.")
-    account_id: Optional[StrictStr] = Field(None, alias="accountId", description="The ID of the account")
+    id: Optional[StrictStr] = Field(
+        None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(
+        None, description="The human readable name of the referenced object.")
+    account_id: Optional[StrictStr] = Field(
+        None, alias="accountId", description="The ID of the account")
     source: Optional[AccountSource] = None
-    disabled: Optional[StrictBool] = Field(None, description="Indicates if the account is disabled")
-    locked: Optional[StrictBool] = Field(None, description="Indicates if the account is locked")
+    disabled: Optional[StrictBool] = Field(
+        None, description="Indicates if the account is disabled")
+    locked: Optional[StrictBool] = Field(
+        None, description="Indicates if the account is locked")
     privileged: Optional[StrictBool] = None
-    manually_correlated: Optional[StrictBool] = Field(None, alias="manuallyCorrelated", description="Indicates if the account has been manually correlated to an identity")
-    password_last_set: Optional[datetime] = Field(None, alias="passwordLastSet", description="A date-time in ISO-8601 format")
-    entitlement_attributes: Optional[Dict[str, Any]] = Field(None, alias="entitlementAttributes", description="a map or dictionary of key/value pairs")
-    created: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
-    __properties = ["id", "name", "accountId", "source", "disabled", "locked", "privileged", "manuallyCorrelated", "passwordLastSet", "entitlementAttributes", "created"]
+    manually_correlated: Optional[StrictBool] = Field(
+        None,
+        alias="manuallyCorrelated",
+        description=
+        "Indicates if the account has been manually correlated to an identity")
+    password_last_set: Optional[datetime] = Field(
+        None,
+        alias="passwordLastSet",
+        description="A date-time in ISO-8601 format")
+    entitlement_attributes: Optional[Dict[str, Any]] = Field(
+        None,
+        alias="entitlementAttributes",
+        description="a map or dictionary of key/value pairs")
+    created: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
+    __properties = [
+        "id", "name", "accountId", "source", "disabled", "locked",
+        "privileged", "manuallyCorrelated", "passwordLastSet",
+        "entitlementAttributes", "created"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -59,10 +79,7 @@ class BaseAccount(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -93,18 +110,28 @@ class BaseAccount(BaseModel):
             return BaseAccount.parse_obj(obj)
 
         _obj = BaseAccount.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "account_id": obj.get("accountId"),
-            "source": AccountSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
-            "disabled": obj.get("disabled"),
-            "locked": obj.get("locked"),
-            "privileged": obj.get("privileged"),
-            "manually_correlated": obj.get("manuallyCorrelated"),
-            "password_last_set": obj.get("passwordLastSet"),
-            "entitlement_attributes": obj.get("entitlementAttributes"),
-            "created": obj.get("created")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "account_id":
+            obj.get("accountId"),
+            "source":
+            AccountSource.from_dict(obj.get("source"))
+            if obj.get("source") is not None else None,
+            "disabled":
+            obj.get("disabled"),
+            "locked":
+            obj.get("locked"),
+            "privileged":
+            obj.get("privileged"),
+            "manually_correlated":
+            obj.get("manuallyCorrelated"),
+            "password_last_set":
+            obj.get("passwordLastSet"),
+            "entitlement_attributes":
+            obj.get("entitlementAttributes"),
+            "created":
+            obj.get("created")
         })
         return _obj
-
-

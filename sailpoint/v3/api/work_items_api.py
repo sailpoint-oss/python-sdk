@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,16 +22,14 @@ from pydantic import Field, StrictBool, StrictStr, conint
 
 from typing import Any, Dict, List, Optional
 
-from v3.models.work_items import WorkItems
-from v3.models.work_items_count import WorkItemsCount
-from v3.models.work_items_summary import WorkItemsSummary
+from sailpoint.v3.models.work_items import WorkItems
+from sailpoint.v3.models.work_items_count import WorkItemsCount
+from sailpoint.v3.models.work_items_summary import WorkItemsSummary
 
-from v3.api_client import ApiClient
-from v3.api_response import ApiResponse
-from v3.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.v3.api_client import ApiClient
+from sailpoint.v3.api_response import ApiResponse
+from sailpoint.v3.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class WorkItemsApi:
@@ -48,7 +45,14 @@ class WorkItemsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def approve_approval_item(self, id : Annotated[StrictStr, Field(..., description="The ID of the work item")], approval_item_id : Annotated[StrictStr, Field(..., description="The ID of the approval item.")], **kwargs) -> WorkItems:  # noqa: E501
+    def approve_approval_item(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The ID of the work item")],
+            approval_item_id: Annotated[
+                StrictStr,
+                Field(..., description="The ID of the approval item.")],
+            **kwargs) -> WorkItems:  # noqa: E501
         """Approve an Approval Item  # noqa: E501
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.  # noqa: E501
@@ -77,10 +81,18 @@ class WorkItemsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the approve_approval_item_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.approve_approval_item_with_http_info(id, approval_item_id, **kwargs)  # noqa: E501
+        return self.approve_approval_item_with_http_info(
+            id, approval_item_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def approve_approval_item_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the work item")], approval_item_id : Annotated[StrictStr, Field(..., description="The ID of the approval item.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def approve_approval_item_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The ID of the work item")],
+            approval_item_id: Annotated[
+                StrictStr,
+                Field(..., description="The ID of the approval item.")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Approve an Approval Item  # noqa: E501
 
         This API approves an Approval Item. Either an admin, or the owning/current user must make this request.  # noqa: E501
@@ -121,29 +133,17 @@ class WorkItemsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'approval_item_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'approval_item_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method approve_approval_item" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method approve_approval_item" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -156,7 +156,6 @@ class WorkItemsApi:
 
         if _params['approval_item_id']:
             _path_params['approvalItemId'] = _params['approval_item_id']
-
 
         # process the query parameters
         _query_params = []
@@ -185,7 +184,8 @@ class WorkItemsApi:
         }
 
         return self.api_client.call_api(
-            '/work-items/{id}/approve/{approvalItemId}', 'POST',
+            '/work-items/{id}/approve/{approvalItemId}',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -195,14 +195,18 @@ class WorkItemsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def approve_approval_items_in_bulk(self, id : Annotated[StrictStr, Field(..., description="The ID of the work item")], **kwargs) -> WorkItems:  # noqa: E501
+    def approve_approval_items_in_bulk(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The ID of the work item")],
+                                       **kwargs) -> WorkItems:  # noqa: E501
         """Bulk approve Approval Items  # noqa: E501
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.  # noqa: E501
@@ -229,10 +233,15 @@ class WorkItemsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the approve_approval_items_in_bulk_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.approve_approval_items_in_bulk_with_http_info(id, **kwargs)  # noqa: E501
+        return self.approve_approval_items_in_bulk_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def approve_approval_items_in_bulk_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the work item")], **kwargs) -> ApiResponse:  # noqa: E501
+    def approve_approval_items_in_bulk_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The ID of the work item")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Bulk approve Approval Items  # noqa: E501
 
         This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.  # noqa: E501
@@ -271,28 +280,18 @@ class WorkItemsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method approve_approval_items_in_bulk" % _key
-                )
+                    " to method approve_approval_items_in_bulk" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -302,7 +301,6 @@ class WorkItemsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -331,7 +329,8 @@ class WorkItemsApi:
         }
 
         return self.api_client.call_api(
-            '/work-items/bulk-approve/{id}', 'POST',
+            '/work-items/bulk-approve/{id}',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -341,14 +340,18 @@ class WorkItemsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def complete_work_item(self, id : Annotated[StrictStr, Field(..., description="The ID of the work item")], **kwargs) -> WorkItems:  # noqa: E501
+    def complete_work_item(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The ID of the work item")],
+                           **kwargs) -> WorkItems:  # noqa: E501
         """Complete a Work Item  # noqa: E501
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.  # noqa: E501
@@ -375,10 +378,15 @@ class WorkItemsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the complete_work_item_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.complete_work_item_with_http_info(id, **kwargs)  # noqa: E501
+        return self.complete_work_item_with_http_info(id,
+                                                      **kwargs)  # noqa: E501
 
     @validate_arguments
-    def complete_work_item_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the work item")], **kwargs) -> ApiResponse:  # noqa: E501
+    def complete_work_item_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The ID of the work item")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Complete a Work Item  # noqa: E501
 
         This API completes a work item. Either an admin, or the owning/current user must make this request.  # noqa: E501
@@ -417,28 +425,17 @@ class WorkItemsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method complete_work_item" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method complete_work_item" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -448,7 +445,6 @@ class WorkItemsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -477,7 +473,8 @@ class WorkItemsApi:
         }
 
         return self.api_client.call_api(
-            '/work-items/{id}', 'POST',
+            '/work-items/{id}',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -487,14 +484,45 @@ class WorkItemsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_completed_work_items(self, owner_id : Annotated[Optional[StrictStr], Field(description="The id of the owner of the work item list being requested.  Either an admin, or the owning/current user must make this request.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[WorkItems]:  # noqa: E501
+    def get_completed_work_items(
+            self,
+            owner_id:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The id of the owner of the work item list being requested.  Either an admin, or the owning/current user must make this request."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> List[WorkItems]:  # noqa: E501
         """Completed Work Items  # noqa: E501
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.  # noqa: E501
@@ -527,10 +555,41 @@ class WorkItemsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_completed_work_items_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_completed_work_items_with_http_info(owner_id, limit, offset, count, **kwargs)  # noqa: E501
+        return self.get_completed_work_items_with_http_info(
+            owner_id, limit, offset, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_completed_work_items_with_http_info(self, owner_id : Annotated[Optional[StrictStr], Field(description="The id of the owner of the work item list being requested.  Either an admin, or the owning/current user must make this request.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_completed_work_items_with_http_info(
+            self,
+            owner_id:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The id of the owner of the work item list being requested.  Either an admin, or the owning/current user must make this request."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Completed Work Items  # noqa: E501
 
         This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.  # noqa: E501
@@ -575,31 +634,18 @@ class WorkItemsApi:
 
         _params = locals()
 
-        _all_params = [
-            'owner_id',
-            'limit',
-            'offset',
-            'count'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['owner_id', 'limit', 'offset', 'count']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_completed_work_items" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_completed_work_items" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -646,7 +692,8 @@ class WorkItemsApi:
         }
 
         return self.api_client.call_api(
-            '/work-items/completed', 'GET',
+            '/work-items/completed',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -656,14 +703,20 @@ class WorkItemsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_count_completed_work_items(self, owner_id : Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None, **kwargs) -> WorkItemsCount:  # noqa: E501
+    def get_count_completed_work_items(
+            self,
+            owner_id: Annotated[
+                Optional[StrictStr],
+                Field(description="ID of the work item owner.")] = None,
+            **kwargs) -> WorkItemsCount:  # noqa: E501
         """Count Completed Work Items  # noqa: E501
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.  # noqa: E501
@@ -690,10 +743,16 @@ class WorkItemsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_count_completed_work_items_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_count_completed_work_items_with_http_info(owner_id, **kwargs)  # noqa: E501
+        return self.get_count_completed_work_items_with_http_info(
+            owner_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_count_completed_work_items_with_http_info(self, owner_id : Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_count_completed_work_items_with_http_info(
+            self,
+            owner_id: Annotated[
+                Optional[StrictStr],
+                Field(description="ID of the work item owner.")] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Count Completed Work Items  # noqa: E501
 
         This gets a count of completed work items belonging to either the specified user(admin required), or the current user.  # noqa: E501
@@ -732,28 +791,18 @@ class WorkItemsApi:
 
         _params = locals()
 
-        _all_params = [
-            'owner_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['owner_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_count_completed_work_items" % _key
-                )
+                    " to method get_count_completed_work_items" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -791,7 +840,8 @@ class WorkItemsApi:
         }
 
         return self.api_client.call_api(
-            '/work-items/completed/count', 'GET',
+            '/work-items/completed/count',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -801,14 +851,20 @@ class WorkItemsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_count_work_items(self, owner_id : Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None, **kwargs) -> WorkItemsCount:  # noqa: E501
+    def get_count_work_items(
+            self,
+            owner_id: Annotated[
+                Optional[StrictStr],
+                Field(description="ID of the work item owner.")] = None,
+            **kwargs) -> WorkItemsCount:  # noqa: E501
         """Count Work Items  # noqa: E501
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.  # noqa: E501
@@ -835,10 +891,16 @@ class WorkItemsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_count_work_items_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_count_work_items_with_http_info(owner_id, **kwargs)  # noqa: E501
+        return self.get_count_work_items_with_http_info(owner_id,
+                                                        **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_count_work_items_with_http_info(self, owner_id : Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_count_work_items_with_http_info(
+            self,
+            owner_id: Annotated[
+                Optional[StrictStr],
+                Field(description="ID of the work item owner.")] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Count Work Items  # noqa: E501
 
         This gets a count of work items belonging to either the specified user(admin required), or the current user.  # noqa: E501
@@ -877,28 +939,17 @@ class WorkItemsApi:
 
         _params = locals()
 
-        _all_params = [
-            'owner_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['owner_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_count_work_items" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_count_work_items" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -936,7 +987,8 @@ class WorkItemsApi:
         }
 
         return self.api_client.call_api(
-            '/work-items/count', 'GET',
+            '/work-items/count',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -946,14 +998,17 @@ class WorkItemsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_work_item(self, id : Annotated[StrictStr, Field(..., description="ID of the work item.")], **kwargs) -> WorkItems:  # noqa: E501
+    def get_work_item(self, id: Annotated[
+        StrictStr, Field(..., description="ID of the work item.")],
+                      **kwargs) -> WorkItems:  # noqa: E501
         """Get a Work Item  # noqa: E501
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.  # noqa: E501
@@ -983,7 +1038,9 @@ class WorkItemsApi:
         return self.get_work_item_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_work_item_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the work item.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_work_item_with_http_info(self, id: Annotated[
+        StrictStr, Field(..., description="ID of the work item.")],
+                                     **kwargs) -> ApiResponse:  # noqa: E501
         """Get a Work Item  # noqa: E501
 
         This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.  # noqa: E501
@@ -1022,28 +1079,17 @@ class WorkItemsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_work_item" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_work_item" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1053,7 +1099,6 @@ class WorkItemsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1081,7 +1126,8 @@ class WorkItemsApi:
         }
 
         return self.api_client.call_api(
-            '/work-items/{id}', 'GET',
+            '/work-items/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1091,14 +1137,20 @@ class WorkItemsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_work_items_summary(self, owner_id : Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None, **kwargs) -> WorkItemsSummary:  # noqa: E501
+    def get_work_items_summary(
+            self,
+            owner_id: Annotated[
+                Optional[StrictStr],
+                Field(description="ID of the work item owner.")] = None,
+            **kwargs) -> WorkItemsSummary:  # noqa: E501
         """Work Items Summary  # noqa: E501
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.  # noqa: E501
@@ -1125,10 +1177,16 @@ class WorkItemsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_work_items_summary_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_work_items_summary_with_http_info(owner_id, **kwargs)  # noqa: E501
+        return self.get_work_items_summary_with_http_info(
+            owner_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_work_items_summary_with_http_info(self, owner_id : Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_work_items_summary_with_http_info(
+            self,
+            owner_id: Annotated[
+                Optional[StrictStr],
+                Field(description="ID of the work item owner.")] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Work Items Summary  # noqa: E501
 
         This gets a summary of work items belonging to either the specified user(admin required), or the current user.  # noqa: E501
@@ -1167,28 +1225,17 @@ class WorkItemsApi:
 
         _params = locals()
 
-        _all_params = [
-            'owner_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['owner_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_work_items_summary" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_work_items_summary" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1226,7 +1273,8 @@ class WorkItemsApi:
         }
 
         return self.api_client.call_api(
-            '/work-items/summary', 'GET',
+            '/work-items/summary',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1236,14 +1284,41 @@ class WorkItemsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_work_items(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, owner_id : Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None, **kwargs) -> List[WorkItems]:  # noqa: E501
+    def list_work_items(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            owner_id: Annotated[
+                Optional[StrictStr],
+                Field(description="ID of the work item owner.")] = None,
+            **kwargs) -> List[WorkItems]:  # noqa: E501
         """List Work Items  # noqa: E501
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.  # noqa: E501
@@ -1276,10 +1351,38 @@ class WorkItemsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_work_items_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_work_items_with_http_info(limit, offset, count, owner_id, **kwargs)  # noqa: E501
+        return self.list_work_items_with_http_info(limit, offset, count,
+                                                   owner_id,
+                                                   **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_work_items_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, owner_id : Annotated[Optional[StrictStr], Field(description="ID of the work item owner.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_work_items_with_http_info(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            owner_id: Annotated[
+                Optional[StrictStr],
+                Field(description="ID of the work item owner.")] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List Work Items  # noqa: E501
 
         This gets a collection of work items belonging to either the specified user(admin required), or the current user.  # noqa: E501
@@ -1324,31 +1427,17 @@ class WorkItemsApi:
 
         _params = locals()
 
-        _all_params = [
-            'limit',
-            'offset',
-            'count',
-            'owner_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['limit', 'offset', 'count', 'owner_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_work_items" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_work_items" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1395,7 +1484,8 @@ class WorkItemsApi:
         }
 
         return self.api_client.call_api(
-            '/work-items', 'GET',
+            '/work-items',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1405,14 +1495,22 @@ class WorkItemsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def reject_approval_item(self, id : Annotated[StrictStr, Field(..., description="The ID of the work item")], approval_item_id : Annotated[StrictStr, Field(..., description="The ID of the approval item.")], **kwargs) -> WorkItems:  # noqa: E501
+    def reject_approval_item(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The ID of the work item")],
+            approval_item_id: Annotated[
+                StrictStr,
+                Field(..., description="The ID of the approval item.")],
+            **kwargs) -> WorkItems:  # noqa: E501
         """Reject an Approval Item  # noqa: E501
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.  # noqa: E501
@@ -1441,10 +1539,18 @@ class WorkItemsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the reject_approval_item_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.reject_approval_item_with_http_info(id, approval_item_id, **kwargs)  # noqa: E501
+        return self.reject_approval_item_with_http_info(
+            id, approval_item_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def reject_approval_item_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the work item")], approval_item_id : Annotated[StrictStr, Field(..., description="The ID of the approval item.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def reject_approval_item_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The ID of the work item")],
+            approval_item_id: Annotated[
+                StrictStr,
+                Field(..., description="The ID of the approval item.")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Reject an Approval Item  # noqa: E501
 
         This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.  # noqa: E501
@@ -1485,29 +1591,17 @@ class WorkItemsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'approval_item_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'approval_item_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method reject_approval_item" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method reject_approval_item" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1520,7 +1614,6 @@ class WorkItemsApi:
 
         if _params['approval_item_id']:
             _path_params['approvalItemId'] = _params['approval_item_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1549,7 +1642,8 @@ class WorkItemsApi:
         }
 
         return self.api_client.call_api(
-            '/work-items/{id}/reject/{approvalItemId}', 'POST',
+            '/work-items/{id}/reject/{approvalItemId}',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1559,14 +1653,18 @@ class WorkItemsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def reject_approval_items_in_bulk(self, id : Annotated[StrictStr, Field(..., description="The ID of the work item")], **kwargs) -> WorkItems:  # noqa: E501
+    def reject_approval_items_in_bulk(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The ID of the work item")],
+                                      **kwargs) -> WorkItems:  # noqa: E501
         """Bulk reject Approval Items  # noqa: E501
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.  # noqa: E501
@@ -1593,10 +1691,15 @@ class WorkItemsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the reject_approval_items_in_bulk_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.reject_approval_items_in_bulk_with_http_info(id, **kwargs)  # noqa: E501
+        return self.reject_approval_items_in_bulk_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def reject_approval_items_in_bulk_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the work item")], **kwargs) -> ApiResponse:  # noqa: E501
+    def reject_approval_items_in_bulk_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The ID of the work item")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Bulk reject Approval Items  # noqa: E501
 
         This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.  # noqa: E501
@@ -1635,28 +1738,18 @@ class WorkItemsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method reject_approval_items_in_bulk" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method reject_approval_items_in_bulk" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1666,7 +1759,6 @@ class WorkItemsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1695,7 +1787,8 @@ class WorkItemsApi:
         }
 
         return self.api_client.call_api(
-            '/work-items/bulk-reject/{id}', 'POST',
+            '/work-items/bulk-reject/{id}',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1705,14 +1798,23 @@ class WorkItemsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def submit_account_selection(self, id : Annotated[StrictStr, Field(..., description="The ID of the work item")], request_body : Annotated[Dict[str, Any], Field(..., description="Account Selection Data map, keyed on fieldName")], **kwargs) -> WorkItems:  # noqa: E501
+    def submit_account_selection(self, id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="The ID of the work item"
+        )], request_body: Annotated[
+            Dict[str, Any],
+            Field(...,
+                  description="Account Selection Data map, keyed on fieldName"
+                  )], **kwargs) -> WorkItems:  # noqa: E501
         """Submit Account Selections  # noqa: E501
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.  # noqa: E501
@@ -1741,10 +1843,19 @@ class WorkItemsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the submit_account_selection_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.submit_account_selection_with_http_info(id, request_body, **kwargs)  # noqa: E501
+        return self.submit_account_selection_with_http_info(
+            id, request_body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def submit_account_selection_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the work item")], request_body : Annotated[Dict[str, Any], Field(..., description="Account Selection Data map, keyed on fieldName")], **kwargs) -> ApiResponse:  # noqa: E501
+    def submit_account_selection_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="The ID of the work item"
+        )], request_body: Annotated[
+            Dict[str, Any],
+            Field(...,
+                  description="Account Selection Data map, keyed on fieldName"
+                  )], **kwargs) -> ApiResponse:  # noqa: E501
         """Submit Account Selections  # noqa: E501
 
         This API submits account selections. Either an admin, or the owning/current user must make this request.  # noqa: E501
@@ -1785,29 +1896,18 @@ class WorkItemsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'request_body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'request_body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method submit_account_selection" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method submit_account_selection" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1817,7 +1917,6 @@ class WorkItemsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1836,11 +1935,11 @@ class WorkItemsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1856,7 +1955,8 @@ class WorkItemsApi:
         }
 
         return self.api_client.call_api(
-            '/work-items/{id}/submit-account-selection', 'POST',
+            '/work-items/{id}/submit-account-selection',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1866,7 +1966,8 @@ class WorkItemsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

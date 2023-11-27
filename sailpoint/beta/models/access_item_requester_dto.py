@@ -11,23 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class AccessItemRequesterDto(BaseModel):
     """
     Access item requester's identity.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="Access item requester's DTO type.")
-    id: Optional[StrictStr] = Field(None, description="Access item requester's identity ID.")
-    name: Optional[StrictStr] = Field(None, description="Access item owner's human-readable display name.")
+    type: Optional[StrictStr] = Field(
+        None, description="Access item requester's DTO type.")
+    id: Optional[StrictStr] = Field(
+        None, description="Access item requester's identity ID.")
+    name: Optional[StrictStr] = Field(
+        None, description="Access item owner's human-readable display name.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -60,10 +62,7 @@ class AccessItemRequesterDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,5 +80,3 @@ class AccessItemRequesterDto(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

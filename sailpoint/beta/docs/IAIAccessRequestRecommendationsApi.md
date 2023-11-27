@@ -1,4 +1,4 @@
-# beta.IAIAccessRequestRecommendationsApi
+# sailpoint.beta.IAIAccessRequestRecommendationsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -29,15 +29,15 @@ This API ignores a recommended access request item. Once an item is ignored, it 
 ```python
 import time
 import os
-import beta
-from beta.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
-from beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+from sailpoint.beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -51,10 +51,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIAccessRequestRecommendationsApi(api_client)
-    access_request_recommendation_action_item_dto = beta.AccessRequestRecommendationActionItemDto() # AccessRequestRecommendationActionItemDto | The recommended access item to ignore for an identity.
+    api_instance = sailpoint.beta.IAIAccessRequestRecommendationsApi(api_client)
+    access_request_recommendation_action_item_dto = sailpoint.beta.AccessRequestRecommendationActionItemDto() # AccessRequestRecommendationActionItemDto | The recommended access item to ignore for an identity.
 
     try:
         # Notification of Ignored Access Request Recommendations
@@ -112,15 +112,15 @@ This API consumes a notification that a recommended access request item was requ
 ```python
 import time
 import os
-import beta
-from beta.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
-from beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+from sailpoint.beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -134,10 +134,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIAccessRequestRecommendationsApi(api_client)
-    access_request_recommendation_action_item_dto = beta.AccessRequestRecommendationActionItemDto() # AccessRequestRecommendationActionItemDto | The recommended access item that was requested for an identity.
+    api_instance = sailpoint.beta.IAIAccessRequestRecommendationsApi(api_client)
+    access_request_recommendation_action_item_dto = sailpoint.beta.AccessRequestRecommendationActionItemDto() # AccessRequestRecommendationActionItemDto | The recommended access item that was requested for an identity.
 
     try:
         # Notification of Requested Access Request Recommendations
@@ -195,15 +195,15 @@ This API consumes a notification that a recommended access request item was view
 ```python
 import time
 import os
-import beta
-from beta.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
-from beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+from sailpoint.beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -217,10 +217,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIAccessRequestRecommendationsApi(api_client)
-    access_request_recommendation_action_item_dto = beta.AccessRequestRecommendationActionItemDto() # AccessRequestRecommendationActionItemDto | The recommended access that was viewed for an identity.
+    api_instance = sailpoint.beta.IAIAccessRequestRecommendationsApi(api_client)
+    access_request_recommendation_action_item_dto = sailpoint.beta.AccessRequestRecommendationActionItemDto() # AccessRequestRecommendationActionItemDto | The recommended access that was viewed for an identity.
 
     try:
         # Notification of Viewed Access Request Recommendations
@@ -278,15 +278,15 @@ This API consumes a notification that a set of recommended access request item w
 ```python
 import time
 import os
-import beta
-from beta.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
-from beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_request_recommendation_action_item_dto import AccessRequestRecommendationActionItemDto
+from sailpoint.beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -300,10 +300,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIAccessRequestRecommendationsApi(api_client)
-    access_request_recommendation_action_item_dto = [beta.AccessRequestRecommendationActionItemDto()] # List[AccessRequestRecommendationActionItemDto] | The recommended access items that were viewed for an identity.
+    api_instance = sailpoint.beta.IAIAccessRequestRecommendationsApi(api_client)
+    access_request_recommendation_action_item_dto = [sailpoint.beta.AccessRequestRecommendationActionItemDto()] # List[AccessRequestRecommendationActionItemDto] | The recommended access items that were viewed for an identity.
 
     try:
         # Notification of Viewed Access Request Recommendations in Bulk
@@ -361,14 +361,14 @@ This API returns the access request recommendations for the specified identity. 
 ```python
 import time
 import os
-import beta
-from beta.models.access_request_recommendation_item_detail import AccessRequestRecommendationItemDetail
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_request_recommendation_item_detail import AccessRequestRecommendationItemDetail
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -382,9 +382,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIAccessRequestRecommendationsApi(api_client)
+    api_instance = sailpoint.beta.IAIAccessRequestRecommendationsApi(api_client)
     identity_id = 'me' # str | Get access request recommendations for an identityId. *me* indicates the current user. (optional) (default to 'me')
     limit = 15 # int | Max number of results to return. (optional) (default to 15)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -455,14 +455,14 @@ This API returns the list of ignored access request recommendations.
 ```python
 import time
 import os
-import beta
-from beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -476,9 +476,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIAccessRequestRecommendationsApi(api_client)
+    api_instance = sailpoint.beta.IAIAccessRequestRecommendationsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -545,14 +545,14 @@ This API returns a list of requested access request recommendations.
 ```python
 import time
 import os
-import beta
-from beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -566,9 +566,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIAccessRequestRecommendationsApi(api_client)
+    api_instance = sailpoint.beta.IAIAccessRequestRecommendationsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -635,14 +635,14 @@ This API returns the list of viewed access request recommendations.
 ```python
 import time
 import os
-import beta
-from beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -656,9 +656,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIAccessRequestRecommendationsApi(api_client)
+    api_instance = sailpoint.beta.IAIAccessRequestRecommendationsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -725,14 +725,14 @@ The getMessageCatalogs API returns message catalog based on the language headers
 ```python
 import time
 import os
-import beta
-from beta.models.message_catalog_dto import MessageCatalogDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.message_catalog_dto import MessageCatalogDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -746,9 +746,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAIAccessRequestRecommendationsApi(api_client)
+    api_instance = sailpoint.beta.IAIAccessRequestRecommendationsApi(api_client)
     catalog_id = 'catalog_id_example' # str | The ID of the message catalog.
 
     try:

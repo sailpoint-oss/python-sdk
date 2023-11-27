@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,9 +19,10 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field
-from beta.models.audit_details import AuditDetails
-from beta.models.config_type_enum import ConfigTypeEnum
-from beta.models.identity1 import Identity1
+from sailpoint.beta.models.audit_details import AuditDetails
+from sailpoint.beta.models.config_type_enum import ConfigTypeEnum
+from sailpoint.beta.models.identity1 import Identity1
+
 
 class ConfigurationDetailsResponse(BaseModel):
     """
@@ -30,10 +30,20 @@ class ConfigurationDetailsResponse(BaseModel):
     """
     config_type: Optional[ConfigTypeEnum] = Field(None, alias="configType")
     target_identity: Optional[Identity1] = Field(None, alias="targetIdentity")
-    start_date: Optional[datetime] = Field(None, alias="startDate", description="The date from which to start reassigning work items")
-    end_date: Optional[datetime] = Field(None, alias="endDate", description="The date from which to stop reassigning work items.  If this is an empty string it indicates a permanent reassignment.")
+    start_date: Optional[datetime] = Field(
+        None,
+        alias="startDate",
+        description="The date from which to start reassigning work items")
+    end_date: Optional[datetime] = Field(
+        None,
+        alias="endDate",
+        description=
+        "The date from which to stop reassigning work items.  If this is an empty string it indicates a permanent reassignment."
+    )
     audit_details: Optional[AuditDetails] = Field(None, alias="auditDetails")
-    __properties = ["configType", "targetIdentity", "startDate", "endDate", "auditDetails"]
+    __properties = [
+        "configType", "targetIdentity", "startDate", "endDate", "auditDetails"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -55,10 +65,7 @@ class ConfigurationDetailsResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of target_identity
         if self.target_identity:
             _dict['targetIdentity'] = self.target_identity.to_dict()
@@ -77,12 +84,17 @@ class ConfigurationDetailsResponse(BaseModel):
             return ConfigurationDetailsResponse.parse_obj(obj)
 
         _obj = ConfigurationDetailsResponse.parse_obj({
-            "config_type": obj.get("configType"),
-            "target_identity": Identity1.from_dict(obj.get("targetIdentity")) if obj.get("targetIdentity") is not None else None,
-            "start_date": obj.get("startDate"),
-            "end_date": obj.get("endDate"),
-            "audit_details": AuditDetails.from_dict(obj.get("auditDetails")) if obj.get("auditDetails") is not None else None
+            "config_type":
+            obj.get("configType"),
+            "target_identity":
+            Identity1.from_dict(obj.get("targetIdentity"))
+            if obj.get("targetIdentity") is not None else None,
+            "start_date":
+            obj.get("startDate"),
+            "end_date":
+            obj.get("endDate"),
+            "audit_details":
+            AuditDetails.from_dict(obj.get("auditDetails"))
+            if obj.get("auditDetails") is not None else None
         })
         return _obj
-
-

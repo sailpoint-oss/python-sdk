@@ -11,35 +11,59 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-from beta.models.access_constraint import AccessConstraint
-from beta.models.fullcampaign_all_of_search_campaign_info_reviewer import FullcampaignAllOfSearchCampaignInfoReviewer
+from sailpoint.beta.models.access_constraint import AccessConstraint
+from sailpoint.beta.models.fullcampaign_all_of_search_campaign_info_reviewer import FullcampaignAllOfSearchCampaignInfoReviewer
+
 
 class FullcampaignAllOfSearchCampaignInfo(BaseModel):
     """
     Must be set only if the campaign type is SEARCH.  # noqa: E501
     """
-    type: StrictStr = Field(..., description="The type of search campaign represented.")
-    description: Optional[StrictStr] = Field(None, description="Describes this search campaign. Intended for storing the query used, and possibly the number of identities selected/available.")
+    type: StrictStr = Field(
+        ..., description="The type of search campaign represented.")
+    description: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Describes this search campaign. Intended for storing the query used, and possibly the number of identities selected/available."
+    )
     reviewer: Optional[FullcampaignAllOfSearchCampaignInfoReviewer] = None
-    query: Optional[StrictStr] = Field(None, description="The scope for the campaign. The campaign will cover identities returned by the query and identities that have access items returned by the query. One of `query` or `identityIds` must be set.")
-    identity_ids: Optional[conlist(StrictStr, max_items=1000)] = Field(None, alias="identityIds", description="A direct list of identities to include in this campaign. One of `identityIds` or `query` must be set.")
-    access_constraints: Optional[conlist(AccessConstraint, max_items=1000)] = Field(None, alias="accessConstraints", description="Further reduces the scope of the campaign by excluding identities (from `query` or `identityIds`) that do not have this access.")
-    __properties = ["type", "description", "reviewer", "query", "identityIds", "accessConstraints"]
+    query: Optional[StrictStr] = Field(
+        None,
+        description=
+        "The scope for the campaign. The campaign will cover identities returned by the query and identities that have access items returned by the query. One of `query` or `identityIds` must be set."
+    )
+    identity_ids: Optional[conlist(StrictStr, max_items=1000)] = Field(
+        None,
+        alias="identityIds",
+        description=
+        "A direct list of identities to include in this campaign. One of `identityIds` or `query` must be set."
+    )
+    access_constraints: Optional[conlist(
+        AccessConstraint, max_items=1000
+    )] = Field(
+        None,
+        alias="accessConstraints",
+        description=
+        "Further reduces the scope of the campaign by excluding identities (from `query` or `identityIds`) that do not have this access."
+    )
+    __properties = [
+        "type", "description", "reviewer", "query", "identityIds",
+        "accessConstraints"
+    ]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('IDENTITY', 'ACCESS'):
-            raise ValueError("must be one of enum values ('IDENTITY', 'ACCESS')")
+            raise ValueError(
+                "must be one of enum values ('IDENTITY', 'ACCESS')")
         return value
 
     class Config:
@@ -62,10 +86,7 @@ class FullcampaignAllOfSearchCampaignInfo(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of reviewer
         if self.reviewer:
             _dict['reviewer'] = self.reviewer.to_dict()
@@ -88,13 +109,21 @@ class FullcampaignAllOfSearchCampaignInfo(BaseModel):
             return FullcampaignAllOfSearchCampaignInfo.parse_obj(obj)
 
         _obj = FullcampaignAllOfSearchCampaignInfo.parse_obj({
-            "type": obj.get("type"),
-            "description": obj.get("description"),
-            "reviewer": FullcampaignAllOfSearchCampaignInfoReviewer.from_dict(obj.get("reviewer")) if obj.get("reviewer") is not None else None,
-            "query": obj.get("query"),
-            "identity_ids": obj.get("identityIds"),
-            "access_constraints": [AccessConstraint.from_dict(_item) for _item in obj.get("accessConstraints")] if obj.get("accessConstraints") is not None else None
+            "type":
+            obj.get("type"),
+            "description":
+            obj.get("description"),
+            "reviewer":
+            FullcampaignAllOfSearchCampaignInfoReviewer.from_dict(
+                obj.get("reviewer"))
+            if obj.get("reviewer") is not None else None,
+            "query":
+            obj.get("query"),
+            "identity_ids":
+            obj.get("identityIds"),
+            "access_constraints": [
+                AccessConstraint.from_dict(_item)
+                for _item in obj.get("accessConstraints")
+            ] if obj.get("accessConstraints") is not None else None
         })
         return _obj
-
-

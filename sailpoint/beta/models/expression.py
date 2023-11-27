@@ -11,25 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-from beta.models.value import Value
+from sailpoint.beta.models.value import Value
+
 
 class Expression(BaseModel):
     """
     Expression
     """
-    operator: Optional[StrictStr] = Field(None, description="Operator for the expression")
-    attribute: Optional[StrictStr] = Field(None, description="Name for the attribute")
+    operator: Optional[StrictStr] = Field(
+        None, description="Operator for the expression")
+    attribute: Optional[StrictStr] = Field(
+        None, description="Name for the attribute")
     value: Optional[Value] = None
-    children: Optional[conlist(Value)] = Field(None, description="List of expressions")
+    children: Optional[conlist(Value)] = Field(
+        None, description="List of expressions")
     __properties = ["operator", "attribute", "value", "children"]
 
     @validator('operator')
@@ -62,10 +64,7 @@ class Expression(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of value
         if self.value:
             _dict['value'] = self.value.to_dict()
@@ -88,11 +87,15 @@ class Expression(BaseModel):
             return Expression.parse_obj(obj)
 
         _obj = Expression.parse_obj({
-            "operator": obj.get("operator"),
-            "attribute": obj.get("attribute"),
-            "value": Value.from_dict(obj.get("value")) if obj.get("value") is not None else None,
-            "children": [Value.from_dict(_item) for _item in obj.get("children")] if obj.get("children") is not None else None
+            "operator":
+            obj.get("operator"),
+            "attribute":
+            obj.get("attribute"),
+            "value":
+            Value.from_dict(obj.get("value"))
+            if obj.get("value") is not None else None,
+            "children":
+            [Value.from_dict(_item) for _item in obj.get("children")]
+            if obj.get("children") is not None else None
         })
         return _obj
-
-

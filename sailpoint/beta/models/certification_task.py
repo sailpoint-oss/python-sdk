@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,20 +19,38 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-from beta.models.error_message_dto import ErrorMessageDto
+from sailpoint.beta.models.error_message_dto import ErrorMessageDto
+
 
 class CertificationTask(BaseModel):
     """
     CertificationTask
     """
-    id: Optional[StrictStr] = Field(None, description="The ID of the certification task.")
-    type: Optional[StrictStr] = Field(None, description="The type of the certification task. More values may be added in the future.")
-    target_type: Optional[StrictStr] = Field(None, alias="targetType", description="The type of item that is being operated on by this task whose ID is stored in the targetId field.")
-    target_id: Optional[StrictStr] = Field(None, alias="targetId", description="The ID of the item being operated on by this task.")
-    status: Optional[StrictStr] = Field(None, description="The status of the task.")
+    id: Optional[StrictStr] = Field(
+        None, description="The ID of the certification task.")
+    type: Optional[StrictStr] = Field(
+        None,
+        description=
+        "The type of the certification task. More values may be added in the future."
+    )
+    target_type: Optional[StrictStr] = Field(
+        None,
+        alias="targetType",
+        description=
+        "The type of item that is being operated on by this task whose ID is stored in the targetId field."
+    )
+    target_id: Optional[StrictStr] = Field(
+        None,
+        alias="targetId",
+        description="The ID of the item being operated on by this task.")
+    status: Optional[StrictStr] = Field(None,
+                                        description="The status of the task.")
     errors: Optional[conlist(ErrorMessageDto)] = None
-    created: Optional[datetime] = Field(None, description="The date and time on which this task was created.")
-    __properties = ["id", "type", "targetType", "targetId", "status", "errors", "created"]
+    created: Optional[datetime] = Field(
+        None, description="The date and time on which this task was created.")
+    __properties = [
+        "id", "type", "targetType", "targetId", "status", "errors", "created"
+    ]
 
     @validator('type')
     def type_validate_enum(cls, value):
@@ -41,8 +58,13 @@ class CertificationTask(BaseModel):
         if value is None:
             return value
 
-        if value not in ('REASSIGN', 'ADMIN_REASSIGN', 'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION', 'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN', 'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE'):
-            raise ValueError("must be one of enum values ('REASSIGN', 'ADMIN_REASSIGN', 'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION', 'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN', 'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE')")
+        if value not in ('REASSIGN', 'ADMIN_REASSIGN',
+                         'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION',
+                         'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN',
+                         'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE'):
+            raise ValueError(
+                "must be one of enum values ('REASSIGN', 'ADMIN_REASSIGN', 'COMPLETE_CERTIFICATION', 'FINISH_CERTIFICATION', 'COMPLETE_CAMPAIGN', 'ACTIVATE_CAMPAIGN', 'CAMPAIGN_CREATE', 'CAMPAIGN_DELETE')"
+            )
         return value
 
     @validator('target_type')
@@ -52,7 +74,8 @@ class CertificationTask(BaseModel):
             return value
 
         if value not in ('CERTIFICATION', 'CAMPAIGN'):
-            raise ValueError("must be one of enum values ('CERTIFICATION', 'CAMPAIGN')")
+            raise ValueError(
+                "must be one of enum values ('CERTIFICATION', 'CAMPAIGN')")
         return value
 
     @validator('status')
@@ -62,7 +85,9 @@ class CertificationTask(BaseModel):
             return value
 
         if value not in ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR'):
-            raise ValueError("must be one of enum values ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR')")
+            raise ValueError(
+                "must be one of enum values ('QUEUED', 'IN_PROGRESS', 'SUCCESS', 'ERROR')"
+            )
         return value
 
     class Config:
@@ -85,10 +110,7 @@ class CertificationTask(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
         _items = []
         if self.errors:
@@ -108,14 +130,20 @@ class CertificationTask(BaseModel):
             return CertificationTask.parse_obj(obj)
 
         _obj = CertificationTask.parse_obj({
-            "id": obj.get("id"),
-            "type": obj.get("type"),
-            "target_type": obj.get("targetType"),
-            "target_id": obj.get("targetId"),
-            "status": obj.get("status"),
-            "errors": [ErrorMessageDto.from_dict(_item) for _item in obj.get("errors")] if obj.get("errors") is not None else None,
-            "created": obj.get("created")
+            "id":
+            obj.get("id"),
+            "type":
+            obj.get("type"),
+            "target_type":
+            obj.get("targetType"),
+            "target_id":
+            obj.get("targetId"),
+            "status":
+            obj.get("status"),
+            "errors":
+            [ErrorMessageDto.from_dict(_item) for _item in obj.get("errors")]
+            if obj.get("errors") is not None else None,
+            "created":
+            obj.get("created")
         })
         return _obj
-
-

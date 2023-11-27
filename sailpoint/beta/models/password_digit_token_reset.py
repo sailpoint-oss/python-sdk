@@ -11,23 +11,34 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
+
 
 class PasswordDigitTokenReset(BaseModel):
     """
     PasswordDigitTokenReset
     """
-    user_id: StrictStr = Field(..., alias="userId", description="The uid of the user requested for digit token")
-    length: Optional[StrictInt] = Field(None, description="The length of digit token. It should be from 6 to 18, inclusive. The default value is 6.")
-    duration_minutes: Optional[StrictInt] = Field(None, alias="durationMinutes", description="The time to live for the digit token in minutes. The default value is 5 minutes.")
+    user_id: StrictStr = Field(
+        ...,
+        alias="userId",
+        description="The uid of the user requested for digit token")
+    length: Optional[StrictInt] = Field(
+        None,
+        description=
+        "The length of digit token. It should be from 6 to 18, inclusive. The default value is 6."
+    )
+    duration_minutes: Optional[StrictInt] = Field(
+        None,
+        alias="durationMinutes",
+        description=
+        "The time to live for the digit token in minutes. The default value is 5 minutes."
+    )
     __properties = ["userId", "length", "durationMinutes"]
 
     class Config:
@@ -50,10 +61,7 @@ class PasswordDigitTokenReset(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,10 +74,11 @@ class PasswordDigitTokenReset(BaseModel):
             return PasswordDigitTokenReset.parse_obj(obj)
 
         _obj = PasswordDigitTokenReset.parse_obj({
-            "user_id": obj.get("userId"),
-            "length": obj.get("length"),
-            "duration_minutes": obj.get("durationMinutes")
+            "user_id":
+            obj.get("userId"),
+            "length":
+            obj.get("length"),
+            "duration_minutes":
+            obj.get("durationMinutes")
         })
         return _obj
-
-

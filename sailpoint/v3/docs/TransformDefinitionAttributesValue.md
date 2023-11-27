@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.transform_definition_attributes_value import TransformDefinitionAttributesValue
+from sailpoint.v3.models.transform_definition_attributes_value import TransformDefinitionAttributesValue
 
 # TODO update the JSON string below
 json = "{}"

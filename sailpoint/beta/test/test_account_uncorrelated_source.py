@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.account_uncorrelated_source import AccountUncorrelatedSource  # noqa: E501
+from sailpoint.beta.models.account_uncorrelated_source import AccountUncorrelatedSource  # noqa: E501
+
 
 class TestAccountUncorrelatedSource(unittest.TestCase):
     """AccountUncorrelatedSource unit test stubs"""
@@ -52,6 +52,7 @@ class TestAccountUncorrelatedSource(unittest.TestCase):
         """Test AccountUncorrelatedSource"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

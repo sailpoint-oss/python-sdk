@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.basic_auth_config import BasicAuthConfig
+from sailpoint.beta.models.basic_auth_config import BasicAuthConfig
 
 # TODO update the JSON string below
 json = "{}"

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.object_export_import_options import ObjectExportImportOptions
+from sailpoint.beta.models.object_export_import_options import ObjectExportImportOptions
 
 # TODO update the JSON string below
 json = "{}"

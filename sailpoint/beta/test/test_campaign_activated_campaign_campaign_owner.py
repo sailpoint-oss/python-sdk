@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.campaign_activated_campaign_campaign_owner import CampaignActivatedCampaignCampaignOwner  # noqa: E501
+from sailpoint.beta.models.campaign_activated_campaign_campaign_owner import CampaignActivatedCampaignCampaignOwner  # noqa: E501
+
 
 class TestCampaignActivatedCampaignCampaignOwner(unittest.TestCase):
     """CampaignActivatedCampaignCampaignOwner unit test stubs"""
@@ -26,7 +26,8 @@ class TestCampaignActivatedCampaignCampaignOwner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> CampaignActivatedCampaignCampaignOwner:
+    def make_instance(
+            self, include_optional) -> CampaignActivatedCampaignCampaignOwner:
         """Test CampaignActivatedCampaignCampaignOwner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -52,6 +53,7 @@ class TestCampaignActivatedCampaignCampaignOwner(unittest.TestCase):
         """Test CampaignActivatedCampaignCampaignOwner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

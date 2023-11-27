@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
+
 
 class RoleMiningIdentityDistribution(BaseModel):
     """
     RoleMiningIdentityDistribution
     """
-    attribute_name: Optional[StrictStr] = Field(None, alias="attributeName", description="Id of the potential role")
+    attribute_name: Optional[StrictStr] = Field(
+        None, alias="attributeName", description="Id of the potential role")
     distribution: Optional[conlist(Dict[str, StrictStr])] = None
     __properties = ["attributeName", "distribution"]
 
@@ -49,10 +49,7 @@ class RoleMiningIdentityDistribution(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +62,9 @@ class RoleMiningIdentityDistribution(BaseModel):
             return RoleMiningIdentityDistribution.parse_obj(obj)
 
         _obj = RoleMiningIdentityDistribution.parse_obj({
-            "attribute_name": obj.get("attributeName"),
-            "distribution": obj.get("distribution")
+            "attribute_name":
+            obj.get("attributeName"),
+            "distribution":
+            obj.get("distribution")
         })
         return _obj
-
-

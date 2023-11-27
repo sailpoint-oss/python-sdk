@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.campaign_template_owner_ref import CampaignTemplateOwnerRef
+from sailpoint.v3.models.campaign_template_owner_ref import CampaignTemplateOwnerRef
 
 # TODO update the JSON string below
 json = "{}"

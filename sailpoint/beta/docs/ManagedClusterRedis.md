@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.managed_cluster_redis import ManagedClusterRedis
+from sailpoint.beta.models.managed_cluster_redis import ManagedClusterRedis
 
 # TODO update the JSON string below
 json = "{}"

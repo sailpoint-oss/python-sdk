@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.account_aggregation_completed_source import AccountAggregationCompletedSource  # noqa: E501
+from sailpoint.beta.models.account_aggregation_completed_source import AccountAggregationCompletedSource  # noqa: E501
+
 
 class TestAccountAggregationCompletedSource(unittest.TestCase):
     """AccountAggregationCompletedSource unit test stubs"""
@@ -26,7 +26,8 @@ class TestAccountAggregationCompletedSource(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccountAggregationCompletedSource:
+    def make_instance(self,
+                      include_optional) -> AccountAggregationCompletedSource:
         """Test AccountAggregationCompletedSource
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -52,6 +53,7 @@ class TestAccountAggregationCompletedSource(unittest.TestCase):
         """Test AccountAggregationCompletedSource"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

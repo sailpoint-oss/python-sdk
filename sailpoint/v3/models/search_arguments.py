@@ -11,24 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from v3.models.typed_reference import TypedReference
+from sailpoint.v3.models.typed_reference import TypedReference
+
 
 class SearchArguments(BaseModel):
     """
     SearchArguments
     """
-    schedule_id: Optional[StrictStr] = Field(None, alias="scheduleId", description="The ID of the scheduled search that triggered the saved search execution. ")
+    schedule_id: Optional[StrictStr] = Field(
+        None,
+        alias="scheduleId",
+        description=
+        "The ID of the scheduled search that triggered the saved search execution. "
+    )
     owner: Optional[TypedReference] = None
-    recipients: Optional[conlist(TypedReference)] = Field(None, description="The email recipients of the scheduled search being tested. ")
+    recipients: Optional[conlist(TypedReference)] = Field(
+        None,
+        description=
+        "The email recipients of the scheduled search being tested. ")
     __properties = ["scheduleId", "owner", "recipients"]
 
     class Config:
@@ -51,10 +58,7 @@ class SearchArguments(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -77,10 +81,14 @@ class SearchArguments(BaseModel):
             return SearchArguments.parse_obj(obj)
 
         _obj = SearchArguments.parse_obj({
-            "schedule_id": obj.get("scheduleId"),
-            "owner": TypedReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "recipients": [TypedReference.from_dict(_item) for _item in obj.get("recipients")] if obj.get("recipients") is not None else None
+            "schedule_id":
+            obj.get("scheduleId"),
+            "owner":
+            TypedReference.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "recipients": [
+                TypedReference.from_dict(_item)
+                for _item in obj.get("recipients")
+            ] if obj.get("recipients") is not None else None
         })
         return _obj
-
-

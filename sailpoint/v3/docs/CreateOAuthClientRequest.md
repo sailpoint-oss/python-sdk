@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.create_o_auth_client_request import CreateOAuthClientRequest
+from sailpoint.v3.models.create_o_auth_client_request import CreateOAuthClientRequest
 
 # TODO update the JSON string below
 json = "{}"

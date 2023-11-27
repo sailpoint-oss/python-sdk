@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.name_type import NameType
+from sailpoint.v3.models.name_type import NameType
 
 # TODO update the JSON string below
 json = "{}"

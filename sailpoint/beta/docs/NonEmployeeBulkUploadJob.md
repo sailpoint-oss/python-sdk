@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.non_employee_bulk_upload_job import NonEmployeeBulkUploadJob
+from sailpoint.beta.models.non_employee_bulk_upload_job import NonEmployeeBulkUploadJob
 
 # TODO update the JSON string below
 json = "{}"

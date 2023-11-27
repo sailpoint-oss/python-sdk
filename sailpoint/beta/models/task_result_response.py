@@ -11,23 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class TaskResultResponse(BaseModel):
     """
     TaskResultResponse
     """
-    type: Optional[StrictStr] = Field(None, description="the type of response reference")
+    type: Optional[StrictStr] = Field(
+        None, description="the type of response reference")
     id: Optional[StrictStr] = Field(None, description="the task ID")
-    name: Optional[StrictStr] = Field(None, description="the task name (not used in this endpoint, always null)")
+    name: Optional[StrictStr] = Field(
+        None,
+        description="the task name (not used in this endpoint, always null)")
     __properties = ["type", "id", "name"]
 
     class Config:
@@ -50,10 +52,7 @@ class TaskResultResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,5 +70,3 @@ class TaskResultResponse(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

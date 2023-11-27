@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems  # noqa: E501
+from sailpoint.beta.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems  # noqa: E501
+
 
 class TestOutliersContributingFeatureAccessItems(unittest.TestCase):
     """OutliersContributingFeatureAccessItems unit test stubs"""
@@ -26,7 +26,8 @@ class TestOutliersContributingFeatureAccessItems(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> OutliersContributingFeatureAccessItems:
+    def make_instance(
+            self, include_optional) -> OutliersContributingFeatureAccessItems:
         """Test OutliersContributingFeatureAccessItems
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -52,6 +53,7 @@ class TestOutliersContributingFeatureAccessItems(unittest.TestCase):
         """Test OutliersContributingFeatureAccessItems"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

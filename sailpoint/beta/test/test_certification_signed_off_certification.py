@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.certification_signed_off_certification import CertificationSignedOffCertification  # noqa: E501
+from sailpoint.beta.models.certification_signed_off_certification import CertificationSignedOffCertification  # noqa: E501
+
 
 class TestCertificationSignedOffCertification(unittest.TestCase):
     """CertificationSignedOffCertification unit test stubs"""
@@ -26,7 +26,8 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> CertificationSignedOffCertification:
+    def make_instance(self,
+                      include_optional) -> CertificationSignedOffCertification:
         """Test CertificationSignedOffCertification
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -40,7 +41,7 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
                 name = 'Manager Access Review for Alice Baker',
                 created = '2020-02-16T03:04:45.815Z',
                 modified = '2020-02-16T03:06:45.815Z',
-                campaign_ref = beta.models.campaign_reference.CampaignReference(
+                campaign_ref = sailpoint.beta.models.campaign_reference.CampaignReference(
                     id = 'ef38f94347e94562b5bb8424a56397d8', 
                     name = 'Campaign Name', 
                     type = 'CAMPAIGN', 
@@ -51,13 +52,13 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
                 phase = 'ACTIVE',
                 due = '2018-10-19T13:49:37.385Z',
                 signed = '2018-10-19T13:49:37.385Z',
-                reviewer = beta.models.reviewer.Reviewer(
+                reviewer = sailpoint.beta.models.reviewer.Reviewer(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', 
                     email = 'reviewer@test.com', ),
-                reassignment = beta.models.reassignment.Reassignment(
-                    from = beta.models.certification_reference.CertificationReference(), 
+                reassignment = sailpoint.beta.models.reassignment.Reassignment(
+                    from = sailpoint.beta.models.certification_reference.CertificationReference(), 
                     comment = 'Please review', ),
                 has_errors = False,
                 error_message = 'The certification has an error',
@@ -72,7 +73,7 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
                 id = '2c91808576f886190176f88caf0d0067',
                 name = 'Manager Access Review for Alice Baker',
                 created = '2020-02-16T03:04:45.815Z',
-                campaign_ref = beta.models.campaign_reference.CampaignReference(
+                campaign_ref = sailpoint.beta.models.campaign_reference.CampaignReference(
                     id = 'ef38f94347e94562b5bb8424a56397d8', 
                     name = 'Campaign Name', 
                     type = 'CAMPAIGN', 
@@ -83,7 +84,7 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
                 phase = 'ACTIVE',
                 due = '2018-10-19T13:49:37.385Z',
                 signed = '2018-10-19T13:49:37.385Z',
-                reviewer = beta.models.reviewer.Reviewer(
+                reviewer = sailpoint.beta.models.reviewer.Reviewer(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', 
@@ -101,6 +102,7 @@ class TestCertificationSignedOffCertification(unittest.TestCase):
         """Test CertificationSignedOffCertification"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

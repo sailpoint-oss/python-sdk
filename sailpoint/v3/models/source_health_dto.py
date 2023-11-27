@@ -11,31 +11,47 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, validator
+
 
 class SourceHealthDto(BaseModel):
     """
     Dto for source health data  # noqa: E501
     """
     id: Optional[StrictStr] = Field(None, description="the id of the Source")
-    type: Optional[StrictStr] = Field(None, description="Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a Delimited File source, you must set the `provisionasCsv` query parameter to `true`. ")
-    name: Optional[StrictStr] = Field(None, description="the name of the source")
+    type: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a Delimited File source, you must set the `provisionasCsv` query parameter to `true`. "
+    )
+    name: Optional[StrictStr] = Field(None,
+                                      description="the name of the source")
     org: Optional[StrictStr] = Field(None, description="source's org")
-    is_authoritative: Optional[StrictBool] = Field(None, alias="isAuthoritative", description="Is the source authoritative")
-    is_cluster: Optional[StrictBool] = Field(None, alias="isCluster", description="Is the source in a cluster")
-    hostname: Optional[StrictStr] = Field(None, description="source's hostname")
+    is_authoritative: Optional[StrictBool] = Field(
+        None,
+        alias="isAuthoritative",
+        description="Is the source authoritative")
+    is_cluster: Optional[StrictBool] = Field(
+        None, alias="isCluster", description="Is the source in a cluster")
+    hostname: Optional[StrictStr] = Field(None,
+                                          description="source's hostname")
     pod: Optional[StrictStr] = Field(None, description="source's pod")
-    iq_service_version: Optional[StrictStr] = Field(None, alias="iqServiceVersion", description="The version of the iqService")
-    status: Optional[StrictStr] = Field(None, description="connection test result")
-    __properties = ["id", "type", "name", "org", "isAuthoritative", "isCluster", "hostname", "pod", "iqServiceVersion", "status"]
+    iq_service_version: Optional[StrictStr] = Field(
+        None,
+        alias="iqServiceVersion",
+        description="The version of the iqService")
+    status: Optional[StrictStr] = Field(None,
+                                        description="connection test result")
+    __properties = [
+        "id", "type", "name", "org", "isAuthoritative", "isCluster",
+        "hostname", "pod", "iqServiceVersion", "status"
+    ]
 
     @validator('status')
     def status_validate_enum(cls, value):
@@ -43,8 +59,17 @@ class SourceHealthDto(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SOURCE_STATE_ERROR_CLUSTER', 'SOURCE_STATE_ERROR_SOURCE', 'SOURCE_STATE_ERROR_VA', 'SOURCE_STATE_FAILURE_CLUSTER', 'SOURCE_STATE_FAILURE_SOURCE', 'SOURCE_STATE_HEALTHY', 'SOURCE_STATE_UNCHECKED_CLUSTER', 'SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES', 'SOURCE_STATE_UNCHECKED_SOURCE', 'SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS'):
-            raise ValueError("must be one of enum values ('SOURCE_STATE_ERROR_CLUSTER', 'SOURCE_STATE_ERROR_SOURCE', 'SOURCE_STATE_ERROR_VA', 'SOURCE_STATE_FAILURE_CLUSTER', 'SOURCE_STATE_FAILURE_SOURCE', 'SOURCE_STATE_HEALTHY', 'SOURCE_STATE_UNCHECKED_CLUSTER', 'SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES', 'SOURCE_STATE_UNCHECKED_SOURCE', 'SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS')")
+        if value not in ('SOURCE_STATE_ERROR_CLUSTER',
+                         'SOURCE_STATE_ERROR_SOURCE', 'SOURCE_STATE_ERROR_VA',
+                         'SOURCE_STATE_FAILURE_CLUSTER',
+                         'SOURCE_STATE_FAILURE_SOURCE', 'SOURCE_STATE_HEALTHY',
+                         'SOURCE_STATE_UNCHECKED_CLUSTER',
+                         'SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES',
+                         'SOURCE_STATE_UNCHECKED_SOURCE',
+                         'SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS'):
+            raise ValueError(
+                "must be one of enum values ('SOURCE_STATE_ERROR_CLUSTER', 'SOURCE_STATE_ERROR_SOURCE', 'SOURCE_STATE_ERROR_VA', 'SOURCE_STATE_FAILURE_CLUSTER', 'SOURCE_STATE_FAILURE_SOURCE', 'SOURCE_STATE_HEALTHY', 'SOURCE_STATE_UNCHECKED_CLUSTER', 'SOURCE_STATE_UNCHECKED_CLUSTER_NO_SOURCES', 'SOURCE_STATE_UNCHECKED_SOURCE', 'SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS')"
+            )
         return value
 
     class Config:
@@ -67,11 +92,9 @@ class SourceHealthDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                            "id",
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={
+            "id",
+        }, exclude_none=True)
         return _dict
 
     @classmethod
@@ -84,17 +107,25 @@ class SourceHealthDto(BaseModel):
             return SourceHealthDto.parse_obj(obj)
 
         _obj = SourceHealthDto.parse_obj({
-            "id": obj.get("id"),
-            "type": obj.get("type"),
-            "name": obj.get("name"),
-            "org": obj.get("org"),
-            "is_authoritative": obj.get("isAuthoritative"),
-            "is_cluster": obj.get("isCluster"),
-            "hostname": obj.get("hostname"),
-            "pod": obj.get("pod"),
-            "iq_service_version": obj.get("iqServiceVersion"),
-            "status": obj.get("status")
+            "id":
+            obj.get("id"),
+            "type":
+            obj.get("type"),
+            "name":
+            obj.get("name"),
+            "org":
+            obj.get("org"),
+            "is_authoritative":
+            obj.get("isAuthoritative"),
+            "is_cluster":
+            obj.get("isCluster"),
+            "hostname":
+            obj.get("hostname"),
+            "pod":
+            obj.get("pod"),
+            "iq_service_version":
+            obj.get("iqServiceVersion"),
+            "status":
+            obj.get("status")
         })
         return _obj
-
-

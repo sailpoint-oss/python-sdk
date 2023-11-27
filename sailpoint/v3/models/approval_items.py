@@ -11,29 +11,34 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from v3.models.work_item_state import WorkItemState
+from sailpoint.v3.models.work_item_state import WorkItemState
+
 
 class ApprovalItems(BaseModel):
     """
     ApprovalItems
     """
     id: Optional[StrictStr] = Field(None, description="The approval item's ID")
-    account: Optional[StrictStr] = Field(None, description="The account referenced by the approval item")
-    application: Optional[StrictStr] = Field(None, description="The name of the application/source")
+    account: Optional[StrictStr] = Field(
+        None, description="The account referenced by the approval item")
+    application: Optional[StrictStr] = Field(
+        None, description="The name of the application/source")
     name: Optional[StrictStr] = Field(None, description="The attribute's name")
-    operation: Optional[StrictStr] = Field(None, description="The attribute's operation")
-    value: Optional[StrictStr] = Field(None, description="The attribute's value")
+    operation: Optional[StrictStr] = Field(
+        None, description="The attribute's operation")
+    value: Optional[StrictStr] = Field(None,
+                                       description="The attribute's value")
     state: Optional[WorkItemState] = None
-    __properties = ["id", "account", "application", "name", "operation", "value", "state"]
+    __properties = [
+        "id", "account", "application", "name", "operation", "value", "state"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -55,10 +60,7 @@ class ApprovalItems(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -80,5 +82,3 @@ class ApprovalItems(BaseModel):
             "state": obj.get("state")
         })
         return _obj
-
-

@@ -11,24 +11,36 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from v3.models.entitlement_ref import EntitlementRef
+from sailpoint.v3.models.entitlement_ref import EntitlementRef
+
 
 class IdentityWithNewAccess1(BaseModel):
     """
     An identity with a set of access to be added  # noqa: E501
     """
-    identity_id: StrictStr = Field(..., alias="identityId", description="Set of identity IDs to be checked.")
-    access_refs: conlist(EntitlementRef) = Field(..., alias="accessRefs", description="The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type.")
-    client_metadata: Optional[Dict[str, StrictStr]] = Field(None, alias="clientMetadata", description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.")
+    identity_id: StrictStr = Field(
+        ...,
+        alias="identityId",
+        description="Set of identity IDs to be checked.")
+    access_refs: conlist(EntitlementRef) = Field(
+        ...,
+        alias="accessRefs",
+        description=
+        "The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type."
+    )
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(
+        None,
+        alias="clientMetadata",
+        description=
+        "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check."
+    )
     __properties = ["identityId", "accessRefs", "clientMetadata"]
 
     class Config:
@@ -51,10 +63,7 @@ class IdentityWithNewAccess1(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in access_refs (list)
         _items = []
         if self.access_refs:
@@ -74,10 +83,13 @@ class IdentityWithNewAccess1(BaseModel):
             return IdentityWithNewAccess1.parse_obj(obj)
 
         _obj = IdentityWithNewAccess1.parse_obj({
-            "identity_id": obj.get("identityId"),
-            "access_refs": [EntitlementRef.from_dict(_item) for _item in obj.get("accessRefs")] if obj.get("accessRefs") is not None else None,
-            "client_metadata": obj.get("clientMetadata")
+            "identity_id":
+            obj.get("identityId"),
+            "access_refs": [
+                EntitlementRef.from_dict(_item)
+                for _item in obj.get("accessRefs")
+            ] if obj.get("accessRefs") is not None else None,
+            "client_metadata":
+            obj.get("clientMetadata")
         })
         return _obj
-
-

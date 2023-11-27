@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig
+from sailpoint.beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig
 
 # TODO update the JSON string below
 json = "{}"

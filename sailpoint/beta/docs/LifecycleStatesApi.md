@@ -1,4 +1,4 @@
-# beta.LifecycleStatesApi
+# sailpoint.beta.LifecycleStatesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -22,14 +22,14 @@ This endpoint returns a lifecycle state.  A token with ORG_ADMIN or API authorit
 ```python
 import time
 import os
-import beta
-from beta.models.lifecycle_state import LifecycleState
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.lifecycle_state import LifecycleState
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -43,9 +43,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.LifecycleStatesApi(api_client)
+    api_instance = sailpoint.beta.LifecycleStatesApi(api_client)
     identity_profile_id = 'identity_profile_id_example' # str | Identity Profile ID
     lifecycle_state_id = 'lifecycle_state_id_example' # str | Lifecycle State ID
 
@@ -106,15 +106,15 @@ This API updates individual lifecycle state fields using the [JSON Patch](https:
 ```python
 import time
 import os
-import beta
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.models.lifecycle_state import LifecycleState
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.lifecycle_state import LifecycleState
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -128,9 +128,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.LifecycleStatesApi(api_client)
+    api_instance = sailpoint.beta.LifecycleStatesApi(api_client)
     identity_profile_id = 'identity_profile_id_example' # str | Identity Profile ID
     lifecycle_state_id = 'lifecycle_state_id_example' # str | Lifecycle State ID
     json_patch_operation = [{op=replace, path=/description, value=Updated description!}, {op=replace, path=/accessProfileIds, value=[2c918087742bab150174407a80f3125e, 2c918087742bab150174407a80f3124f]}, {op=replace, path=/accountActions, value=[{action=ENABLE, sourceIds=[2c9180846a2f82fb016a481c1b1560c5, 2c9180846a2f82fb016a481c1b1560cc]}, {action=DISABLE, sourceIds=[2c91808869a0c9980169a207258513fb]}]}, {op=replace, path=/emailNotificationOption, value={notifyManagers=true, notifyAllAdmins=false, notifySpecificUsers=false, emailAddressList=[]}}] # List[JsonPatchOperation] | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption 

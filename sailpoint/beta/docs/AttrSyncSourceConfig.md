@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.attr_sync_source_config import AttrSyncSourceConfig
+from sailpoint.beta.models.attr_sync_source_config import AttrSyncSourceConfig
 
 # TODO update the JSON string below
 json = "{}"

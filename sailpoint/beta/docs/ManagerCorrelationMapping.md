@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.manager_correlation_mapping import ManagerCorrelationMapping
+from sailpoint.beta.models.manager_correlation_mapping import ManagerCorrelationMapping
 
 # TODO update the JSON string below
 json = "{}"

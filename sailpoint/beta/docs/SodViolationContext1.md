@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.sod_violation_context1 import SodViolationContext1
+from sailpoint.beta.models.sod_violation_context1 import SodViolationContext1
 
 # TODO update the JSON string below
 json = "{}"

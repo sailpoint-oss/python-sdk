@@ -11,22 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+
 
 class Bound(BaseModel):
     """
     Bound
     """
-    value: StrictStr = Field(..., description="The value of the range's endpoint.")
-    inclusive: Optional[StrictBool] = Field(False, description="Indicates if the endpoint is included in the range.")
+    value: StrictStr = Field(...,
+                             description="The value of the range's endpoint.")
+    inclusive: Optional[StrictBool] = Field(
+        False,
+        description="Indicates if the endpoint is included in the range.")
     __properties = ["value", "inclusive"]
 
     class Config:
@@ -49,10 +51,7 @@ class Bound(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +64,9 @@ class Bound(BaseModel):
             return Bound.parse_obj(obj)
 
         _obj = Bound.parse_obj({
-            "value": obj.get("value"),
-            "inclusive": obj.get("inclusive") if obj.get("inclusive") is not None else False
+            "value":
+            obj.get("value"),
+            "inclusive":
+            obj.get("inclusive") if obj.get("inclusive") is not None else False
         })
         return _obj
-
-

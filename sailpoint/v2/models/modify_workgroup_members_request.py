@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, StrictStr, conlist
+
 
 class ModifyWorkgroupMembersRequest(BaseModel):
     """
@@ -49,10 +48,7 @@ class ModifyWorkgroupMembersRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +61,9 @@ class ModifyWorkgroupMembersRequest(BaseModel):
             return ModifyWorkgroupMembersRequest.parse_obj(obj)
 
         _obj = ModifyWorkgroupMembersRequest.parse_obj({
-            "add": obj.get("add"),
-            "remove": obj.get("remove")
+            "add":
+            obj.get("add"),
+            "remove":
+            obj.get("remove")
         })
         return _obj
-
-

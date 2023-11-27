@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.preview_data_source_response import PreviewDataSourceResponse
+from sailpoint.beta.models.preview_data_source_response import PreviewDataSourceResponse
 
 # TODO update the JSON string below
 json = "{}"

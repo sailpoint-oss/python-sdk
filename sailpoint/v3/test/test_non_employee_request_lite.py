@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.non_employee_request_lite import NonEmployeeRequestLite  # noqa: E501
+from sailpoint.v3.models.non_employee_request_lite import NonEmployeeRequestLite  # noqa: E501
+
 
 class TestNonEmployeeRequestLite(unittest.TestCase):
     """NonEmployeeRequestLite unit test stubs"""
@@ -37,7 +37,7 @@ class TestNonEmployeeRequestLite(unittest.TestCase):
         if include_optional:
             return NonEmployeeRequestLite(
                 id = 'ac110005-7156-1150-8171-5b292e3e0084',
-                requester = v3.models.non_employee_identity_reference_with_id.NonEmployeeIdentityReferenceWithId(
+                requester = sailpoint.v3.models.non_employee_identity_reference_with_id.NonEmployeeIdentityReferenceWithId(
                     type = 'IDENTITY', 
                     id = '5168015d32f890ca15812c9180835d2e', )
             )
@@ -50,6 +50,7 @@ class TestNonEmployeeRequestLite(unittest.TestCase):
         """Test NonEmployeeRequestLite"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

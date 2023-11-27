@@ -1,4 +1,4 @@
-# beta.IdentitiesApi
+# sailpoint.beta.IdentitiesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -26,13 +26,13 @@ The API returns successful response if the requested identity was deleted.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -46,9 +46,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentitiesApi(api_client)
+    api_instance = sailpoint.beta.IdentitiesApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity Id
 
     try:
@@ -106,14 +106,14 @@ This API returns a single identity using the Identity ID.
 ```python
 import time
 import os
-import beta
-from beta.models.identity import Identity
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity import Identity
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -127,9 +127,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentitiesApi(api_client)
+    api_instance = sailpoint.beta.IdentitiesApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity Id
 
     try:
@@ -189,14 +189,14 @@ Get Ownership association details of an Identity
 ```python
 import time
 import os
-import beta
-from beta.models.identity_ownership_association_details import IdentityOwnershipAssociationDetails
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_ownership_association_details import IdentityOwnershipAssociationDetails
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -210,9 +210,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentitiesApi(api_client)
+    api_instance = sailpoint.beta.IdentitiesApi(api_client)
     identity_id = 'ff8081814d2a8036014d701f3fbf53fa' # str | The identity id
 
     try:
@@ -272,14 +272,14 @@ This API returns a list of identities.
 ```python
 import time
 import os
-import beta
-from beta.models.identity import Identity
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity import Identity
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -293,9 +293,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentitiesApi(api_client)
+    api_instance = sailpoint.beta.IdentitiesApi(api_client)
     filters = 'id eq \"6c9079b270a266a60170a2779fcb0006\" or correlated eq false' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **alias**: *eq, sw*  **firstname**: *eq, sw*  **lastname**: *eq, sw*  **email**: *eq, sw*  **cloudStatus**: *eq*  **processingState**: *eq*  **correlated**: *eq*  **protected**: *eq* (optional)
     sorters = 'name,-cloudStatus' # str | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, alias, cloudStatus** (optional)
     default_filter = 'CORRELATED_ONLY' # str | Adds additional filter to filters query parameter.  CORRELATED_ONLY adds correlated=true and returns only identities that are correlated.  NONE does not add any and returns all identities that satisfy filters query parameter. (optional) (default to 'CORRELATED_ONLY')
@@ -364,15 +364,15 @@ You could use this endpoint to: 1. Calculate identity attributes, including appl
 ```python
 import time
 import os
-import beta
-from beta.models.process_identities_request import ProcessIdentitiesRequest
-from beta.models.task_result_response import TaskResultResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.process_identities_request import ProcessIdentitiesRequest
+from sailpoint.beta.models.task_result_response import TaskResultResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -386,10 +386,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentitiesApi(api_client)
-    process_identities_request = beta.ProcessIdentitiesRequest() # ProcessIdentitiesRequest | 
+    api_instance = sailpoint.beta.IdentitiesApi(api_client)
+    process_identities_request = sailpoint.beta.ProcessIdentitiesRequest() # ProcessIdentitiesRequest | 
 
     try:
         # Process a list of identityIds
@@ -448,14 +448,14 @@ This end-point performs attribute synchronization for a selected identity. The e
 ```python
 import time
 import os
-import beta
-from beta.models.identity_sync_job import IdentitySyncJob
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_sync_job import IdentitySyncJob
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -469,9 +469,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentitiesApi(api_client)
+    api_instance = sailpoint.beta.IdentitiesApi(api_client)
     identity_id = 'identity_id_example' # str | The Identity id
 
     try:

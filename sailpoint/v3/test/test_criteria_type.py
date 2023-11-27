@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.criteria_type import CriteriaType  # noqa: E501
+from sailpoint.v3.models.criteria_type import CriteriaType  # noqa: E501
+
 
 class TestCriteriaType(unittest.TestCase):
     """CriteriaType unit test stubs"""
@@ -29,6 +29,7 @@ class TestCriteriaType(unittest.TestCase):
     def testCriteriaType(self):
         """Test CriteriaType"""
         # inst = CriteriaType()
+
 
 if __name__ == '__main__':
     unittest.main()

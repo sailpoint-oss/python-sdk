@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_certified import IdentityCertified  # noqa: E501
+from sailpoint.beta.models.identity_certified import IdentityCertified  # noqa: E501
+
 
 class TestIdentityCertified(unittest.TestCase):
     """IdentityCertified unit test stubs"""
@@ -41,7 +41,7 @@ class TestIdentityCertified(unittest.TestCase):
                 signed_date = '2019-03-08T22:37:33.901Z',
                 certifiers = [{id=8a80828f643d484f01643e14202e206f, displayName=John Snow}],
                 reviewers = [{id=8a80828f643d484f01643e14202e206f, displayName=John Snow}],
-                signer = beta.models.certifier_response.CertifierResponse(
+                signer = sailpoint.beta.models.certifier_response.CertifierResponse(
                     id = '8a80828f643d484f01643e14202e206f', 
                     display_name = 'John Snow', ),
                 event_type = 'IdentityCertified',
@@ -56,6 +56,7 @@ class TestIdentityCertified(unittest.TestCase):
         """Test IdentityCertified"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

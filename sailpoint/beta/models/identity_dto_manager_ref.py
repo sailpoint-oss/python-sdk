@@ -11,23 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class IdentityDtoManagerRef(BaseModel):
     """
     Identity's manager.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="DTO type of identity's manager.")
-    id: Optional[StrictStr] = Field(None, description="ID of identity's manager.")
-    name: Optional[StrictStr] = Field(None, description="Human-readable display name of identity's manager.")
+    type: Optional[StrictStr] = Field(
+        None, description="DTO type of identity's manager.")
+    id: Optional[StrictStr] = Field(None,
+                                    description="ID of identity's manager.")
+    name: Optional[StrictStr] = Field(
+        None, description="Human-readable display name of identity's manager.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -60,10 +62,7 @@ class IdentityDtoManagerRef(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,5 +80,3 @@ class IdentityDtoManagerRef(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

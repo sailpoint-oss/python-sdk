@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.access_item_entitlement_response import AccessItemEntitlementResponse
+from sailpoint.beta.models.access_item_entitlement_response import AccessItemEntitlementResponse
 
 # TODO update the JSON string below
 json = "{}"

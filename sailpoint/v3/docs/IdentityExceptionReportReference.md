@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.identity_exception_report_reference import IdentityExceptionReportReference
+from sailpoint.v3.models.identity_exception_report_reference import IdentityExceptionReportReference
 
 # TODO update the JSON string below
 json = "{}"

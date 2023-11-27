@@ -1,4 +1,4 @@
-# beta.PasswordDictionaryApi
+# sailpoint.beta.PasswordDictionaryApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -22,13 +22,13 @@ This gets password dictionary for the organization. A token with ORG_ADMIN autho
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -42,9 +42,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.PasswordDictionaryApi(api_client)
+    api_instance = sailpoint.beta.PasswordDictionaryApi(api_client)
 
     try:
         # Get Password Dictionary
@@ -100,13 +100,13 @@ This updates password dictionary for the organization. A token with ORG_ADMIN au
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -120,9 +120,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.PasswordDictionaryApi(api_client)
+    api_instance = sailpoint.beta.PasswordDictionaryApi(api_client)
     file = None # bytearray |  (optional)
 
     try:

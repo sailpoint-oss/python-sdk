@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class Reviewer(BaseModel):
     """
@@ -28,14 +27,18 @@ class Reviewer(BaseModel):
     type: StrictStr = Field(..., description="The reviewer's DTO type.")
     id: StrictStr = Field(..., description="The reviewer's ID.")
     name: StrictStr = Field(..., description="The reviewer's display name.")
-    email: Optional[StrictStr] = Field(None, description="The reviewing identity's email. Only applicable to `IDENTITY`.")
+    email: Optional[StrictStr] = Field(
+        None,
+        description=
+        "The reviewing identity's email. Only applicable to `IDENTITY`.")
     __properties = ["type", "id", "name", "email"]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('IDENTITY', 'GOVERNANCE_GROUP'):
-            raise ValueError("must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP')")
+            raise ValueError(
+                "must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP')")
         return value
 
     class Config:
@@ -58,10 +61,7 @@ class Reviewer(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if email (nullable) is None
         # and __fields_set__ contains the field
         if self.email is None and "email" in self.__fields_set__:
@@ -85,5 +85,3 @@ class Reviewer(BaseModel):
             "email": obj.get("email")
         })
         return _obj
-
-

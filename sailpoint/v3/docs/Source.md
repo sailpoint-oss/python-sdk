@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.source import Source
+from sailpoint.v3.models.source import Source
 
 # TODO update the JSON string below
 json = "{}"

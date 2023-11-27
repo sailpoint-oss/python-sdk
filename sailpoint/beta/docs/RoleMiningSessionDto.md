@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.role_mining_session_dto import RoleMiningSessionDto
+from sailpoint.beta.models.role_mining_session_dto import RoleMiningSessionDto
 
 # TODO update the JSON string below
 json = "{}"

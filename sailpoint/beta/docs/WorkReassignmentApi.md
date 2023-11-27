@@ -1,4 +1,4 @@
-# beta.WorkReassignmentApi
+# sailpoint.beta.WorkReassignmentApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -29,15 +29,15 @@ Creates a new Reassignment Configuration for the specified identity.
 ```python
 import time
 import os
-import beta
-from beta.models.configuration_item_request import ConfigurationItemRequest
-from beta.models.configuration_item_response import ConfigurationItemResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.configuration_item_request import ConfigurationItemRequest
+from sailpoint.beta.models.configuration_item_response import ConfigurationItemResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -51,10 +51,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkReassignmentApi(api_client)
-    configuration_item_request = beta.ConfigurationItemRequest() # ConfigurationItemRequest | 
+    api_instance = sailpoint.beta.WorkReassignmentApi(api_client)
+    configuration_item_request = sailpoint.beta.ConfigurationItemRequest() # ConfigurationItemRequest | 
 
     try:
         # Create a Reassignment Configuration
@@ -112,13 +112,13 @@ Deletes all Reassignment Configuration for the specified identity
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -132,9 +132,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkReassignmentApi(api_client)
+    api_instance = sailpoint.beta.WorkReassignmentApi(api_client)
     identity_id = '2c91808781a71ddb0181b9090b5c504e' # str | unique identity id
 
     try:
@@ -191,15 +191,15 @@ Evaluates the Reassignment Configuration for an `Identity` to determine if work 
 ```python
 import time
 import os
-import beta
-from beta.models.config_type_enum import ConfigTypeEnum
-from beta.models.evaluate_response import EvaluateResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.config_type_enum import ConfigTypeEnum
+from sailpoint.beta.models.evaluate_response import EvaluateResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -213,11 +213,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkReassignmentApi(api_client)
+    api_instance = sailpoint.beta.WorkReassignmentApi(api_client)
     identity_id = '2c91808781a71ddb0181b9090b5c504e' # str | unique identity id
-    config_type = beta.ConfigTypeEnum() # ConfigTypeEnum | Reassignment work type
+    config_type = sailpoint.beta.ConfigTypeEnum() # ConfigTypeEnum | Reassignment work type
     exclusion_filters = ['SELF_REVIEW_DELEGATION'] # List[str] | Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments (optional)
 
     try:
@@ -278,14 +278,14 @@ Gets a collection of types which are available in the Reassignment Configuration
 ```python
 import time
 import os
-import beta
-from beta.models.config_type import ConfigType
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.config_type import ConfigType
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -299,9 +299,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkReassignmentApi(api_client)
+    api_instance = sailpoint.beta.WorkReassignmentApi(api_client)
 
     try:
         # List Reassignment Config Types
@@ -356,14 +356,14 @@ Gets the Reassignment Configuration for an identity.
 ```python
 import time
 import os
-import beta
-from beta.models.configuration_response import ConfigurationResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.configuration_response import ConfigurationResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -377,9 +377,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkReassignmentApi(api_client)
+    api_instance = sailpoint.beta.WorkReassignmentApi(api_client)
     identity_id = '2c91808781a71ddb0181b9090b5c504f' # str | unique identity id
 
     try:
@@ -439,14 +439,14 @@ Gets the global Reassignment Configuration settings for the requestor's tenant.
 ```python
 import time
 import os
-import beta
-from beta.models.tenant_configuration_response import TenantConfigurationResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.tenant_configuration_response import TenantConfigurationResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -460,9 +460,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkReassignmentApi(api_client)
+    api_instance = sailpoint.beta.WorkReassignmentApi(api_client)
 
     try:
         # Get Tenant-wide Reassignment Configuration settings
@@ -518,14 +518,14 @@ Gets all Reassignment configuration for the current org.
 ```python
 import time
 import os
-import beta
-from beta.models.configuration_response import ConfigurationResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.configuration_response import ConfigurationResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -539,9 +539,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkReassignmentApi(api_client)
+    api_instance = sailpoint.beta.WorkReassignmentApi(api_client)
 
     try:
         # List Reassignment Configurations
@@ -597,15 +597,15 @@ Replaces existing Reassignment configuration for an identity with the newly prov
 ```python
 import time
 import os
-import beta
-from beta.models.configuration_item_request import ConfigurationItemRequest
-from beta.models.configuration_item_response import ConfigurationItemResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.configuration_item_request import ConfigurationItemRequest
+from sailpoint.beta.models.configuration_item_response import ConfigurationItemResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -619,11 +619,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkReassignmentApi(api_client)
+    api_instance = sailpoint.beta.WorkReassignmentApi(api_client)
     identity_id = '2c91808781a71ddb0181b9090b5c504e' # str | unique identity id
-    configuration_item_request = beta.ConfigurationItemRequest() # ConfigurationItemRequest | 
+    configuration_item_request = sailpoint.beta.ConfigurationItemRequest() # ConfigurationItemRequest | 
 
     try:
         # Update Reassignment Configuration
@@ -682,15 +682,15 @@ Replaces existing Tenant-wide Reassignment Configuration settings with the newly
 ```python
 import time
 import os
-import beta
-from beta.models.tenant_configuration_request import TenantConfigurationRequest
-from beta.models.tenant_configuration_response import TenantConfigurationResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.tenant_configuration_request import TenantConfigurationRequest
+from sailpoint.beta.models.tenant_configuration_response import TenantConfigurationResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -704,10 +704,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkReassignmentApi(api_client)
-    tenant_configuration_request = beta.TenantConfigurationRequest() # TenantConfigurationRequest | 
+    api_instance = sailpoint.beta.WorkReassignmentApi(api_client)
+    tenant_configuration_request = sailpoint.beta.TenantConfigurationRequest() # TenantConfigurationRequest | 
 
     try:
         # Update Tenant-wide Reassignment Configuration settings

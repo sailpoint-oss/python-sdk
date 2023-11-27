@@ -11,24 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt
-from v3.models.identity_profile import IdentityProfile
-from v3.models.identity_profile_exported_object_self import IdentityProfileExportedObjectSelf
+from sailpoint.v3.models.identity_profile import IdentityProfile
+from sailpoint.v3.models.identity_profile_exported_object_self import IdentityProfileExportedObjectSelf
+
 
 class IdentityProfileExportedObject(BaseModel):
     """
     Identity profile exported object.  # noqa: E501
     """
-    version: Optional[StrictInt] = Field(None, description="Version or object from the target service.")
-    var_self: Optional[IdentityProfileExportedObjectSelf] = Field(None, alias="self")
+    version: Optional[StrictInt] = Field(
+        None, description="Version or object from the target service.")
+    var_self: Optional[IdentityProfileExportedObjectSelf] = Field(None,
+                                                                  alias="self")
     object: Optional[IdentityProfile] = None
     __properties = ["version", "self", "object"]
 
@@ -52,10 +53,7 @@ class IdentityProfileExportedObject(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of var_self
         if self.var_self:
             _dict['self'] = self.var_self.to_dict()
@@ -74,10 +72,13 @@ class IdentityProfileExportedObject(BaseModel):
             return IdentityProfileExportedObject.parse_obj(obj)
 
         _obj = IdentityProfileExportedObject.parse_obj({
-            "version": obj.get("version"),
-            "var_self": IdentityProfileExportedObjectSelf.from_dict(obj.get("self")) if obj.get("self") is not None else None,
-            "object": IdentityProfile.from_dict(obj.get("object")) if obj.get("object") is not None else None
+            "version":
+            obj.get("version"),
+            "var_self":
+            IdentityProfileExportedObjectSelf.from_dict(obj.get("self"))
+            if obj.get("self") is not None else None,
+            "object":
+            IdentityProfile.from_dict(obj.get("object"))
+            if obj.get("object") is not None else None
         })
         return _obj
-
-

@@ -11,24 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from v3.models.app_all_of_account import AppAllOfAccount
-from v3.models.reference import Reference
+from sailpoint.v3.models.app_all_of_account import AppAllOfAccount
+from sailpoint.v3.models.reference import Reference
+
 
 class App(BaseModel):
     """
     App
     """
-    id: Optional[StrictStr] = Field(None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(None, description="The human readable name of the referenced object.")
+    id: Optional[StrictStr] = Field(
+        None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(
+        None, description="The human readable name of the referenced object.")
     source: Optional[Reference] = None
     account: Optional[AppAllOfAccount] = None
     __properties = ["id", "name", "source", "account"]
@@ -53,10 +54,7 @@ class App(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -75,11 +73,15 @@ class App(BaseModel):
             return App.parse_obj(obj)
 
         _obj = App.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "source": Reference.from_dict(obj.get("source")) if obj.get("source") is not None else None,
-            "account": AppAllOfAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "source":
+            Reference.from_dict(obj.get("source"))
+            if obj.get("source") is not None else None,
+            "account":
+            AppAllOfAccount.from_dict(obj.get("account"))
+            if obj.get("account") is not None else None
         })
         return _obj
-
-

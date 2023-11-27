@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.attr_sync_source_config import AttrSyncSourceConfig  # noqa: E501
+from sailpoint.beta.models.attr_sync_source_config import AttrSyncSourceConfig  # noqa: E501
+
 
 class TestAttrSyncSourceConfig(unittest.TestCase):
     """AttrSyncSourceConfig unit test stubs"""
@@ -36,7 +36,7 @@ class TestAttrSyncSourceConfig(unittest.TestCase):
         model = AttrSyncSourceConfig()  # noqa: E501
         if include_optional:
             return AttrSyncSourceConfig(
-                source = beta.models.attr_sync_source.AttrSyncSource(
+                source = sailpoint.beta.models.attr_sync_source.AttrSyncSource(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', ),
@@ -44,7 +44,7 @@ class TestAttrSyncSourceConfig(unittest.TestCase):
             )
         else:
             return AttrSyncSourceConfig(
-                source = beta.models.attr_sync_source.AttrSyncSource(
+                source = sailpoint.beta.models.attr_sync_source.AttrSyncSource(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', ),
@@ -56,6 +56,7 @@ class TestAttrSyncSourceConfig(unittest.TestCase):
         """Test AttrSyncSourceConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

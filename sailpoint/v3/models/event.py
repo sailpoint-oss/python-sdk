@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,8 +19,9 @@ import json
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from v3.models.document_type import DocumentType
-from v3.models.name_type import NameType
+from sailpoint.v3.models.document_type import DocumentType
+from sailpoint.v3.models.name_type import NameType
+
 
 class Event(BaseModel):
     """
@@ -30,9 +30,12 @@ class Event(BaseModel):
     id: StrictStr = Field(...)
     name: StrictStr = Field(...)
     type: DocumentType = Field(..., alias="_type")
-    created: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
-    synced: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
-    action: Optional[StrictStr] = Field(None, description="The action that was performed")
+    created: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
+    synced: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
+    action: Optional[StrictStr] = Field(
+        None, description="The action that was performed")
     type: Optional[StrictStr] = Field(None, description="The type of event")
     actor: Optional[NameType] = None
     target: Optional[NameType] = None
@@ -45,7 +48,11 @@ class Event(BaseModel):
     operation: Optional[StrictStr] = None
     status: Optional[StrictStr] = None
     technical_name: Optional[StrictStr] = Field(None, alias="technicalName")
-    __properties = ["id", "name", "_type", "created", "synced", "action", "type", "actor", "target", "stack", "trackingNumber", "ipAddress", "details", "attributes", "objects", "operation", "status", "technicalName"]
+    __properties = [
+        "id", "name", "_type", "created", "synced", "action", "type", "actor",
+        "target", "stack", "trackingNumber", "ipAddress", "details",
+        "attributes", "objects", "operation", "status", "technicalName"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -67,10 +74,7 @@ class Event(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of actor
         if self.actor:
             _dict['actor'] = self.actor.to_dict()
@@ -99,25 +103,43 @@ class Event(BaseModel):
             return Event.parse_obj(obj)
 
         _obj = Event.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "type": obj.get("_type"),
-            "created": obj.get("created"),
-            "synced": obj.get("synced"),
-            "action": obj.get("action"),
-            "type": obj.get("type"),
-            "actor": NameType.from_dict(obj.get("actor")) if obj.get("actor") is not None else None,
-            "target": NameType.from_dict(obj.get("target")) if obj.get("target") is not None else None,
-            "stack": obj.get("stack"),
-            "tracking_number": obj.get("trackingNumber"),
-            "ip_address": obj.get("ipAddress"),
-            "details": obj.get("details"),
-            "attributes": obj.get("attributes"),
-            "objects": obj.get("objects"),
-            "operation": obj.get("operation"),
-            "status": obj.get("status"),
-            "technical_name": obj.get("technicalName")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "type":
+            obj.get("_type"),
+            "created":
+            obj.get("created"),
+            "synced":
+            obj.get("synced"),
+            "action":
+            obj.get("action"),
+            "type":
+            obj.get("type"),
+            "actor":
+            NameType.from_dict(obj.get("actor"))
+            if obj.get("actor") is not None else None,
+            "target":
+            NameType.from_dict(obj.get("target"))
+            if obj.get("target") is not None else None,
+            "stack":
+            obj.get("stack"),
+            "tracking_number":
+            obj.get("trackingNumber"),
+            "ip_address":
+            obj.get("ipAddress"),
+            "details":
+            obj.get("details"),
+            "attributes":
+            obj.get("attributes"),
+            "objects":
+            obj.get("objects"),
+            "operation":
+            obj.get("operation"),
+            "status":
+            obj.get("status"),
+            "technical_name":
+            obj.get("technicalName")
         })
         return _obj
-
-

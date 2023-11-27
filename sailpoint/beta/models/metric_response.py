@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional, Union
 from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr
+
 
 class MetricResponse(BaseModel):
     """
     MetricResponse
     """
     name: Optional[StrictStr] = Field(None, description="the name of metric")
-    value: Optional[Union[StrictFloat, StrictInt]] = Field(None, description="the value associated to the metric")
+    value: Optional[Union[StrictFloat, StrictInt]] = Field(
+        None, description="the value associated to the metric")
     __properties = ["name", "value"]
 
     class Config:
@@ -49,10 +49,7 @@ class MetricResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,5 +66,3 @@ class MetricResponse(BaseModel):
             "value": obj.get("value")
         })
         return _obj
-
-

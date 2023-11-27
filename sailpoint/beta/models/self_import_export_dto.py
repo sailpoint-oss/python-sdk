@@ -11,23 +11,28 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class SelfImportExportDto(BaseModel):
     """
     Self block for imported/exported object.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="Imported/exported object's DTO type. Import is currently only possible with the IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, RULE, SOURCE, TRANSFORM, and TRIGGER_SUBSCRIPTION object types.")
-    id: Optional[StrictStr] = Field(None, description="Imported/exported object's ID.")
-    name: Optional[StrictStr] = Field(None, description="Imported/exported object's display name.")
+    type: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Imported/exported object's DTO type. Import is currently only possible with the IDENTITY_OBJECT_CONFIG, IDENTITY_PROFILE, RULE, SOURCE, TRANSFORM, and TRIGGER_SUBSCRIPTION object types."
+    )
+    id: Optional[StrictStr] = Field(
+        None, description="Imported/exported object's ID.")
+    name: Optional[StrictStr] = Field(
+        None, description="Imported/exported object's display name.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -36,8 +41,19 @@ class SelfImportExportDto(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW'):
-            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW')")
+        if value not in ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG',
+                         'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG',
+                         'CAMPAIGN_FILTER', 'FORM_DEFINITION',
+                         'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG',
+                         'IDENTITY_PROFILE', 'LIFECYCLE_STATE',
+                         'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY',
+                         'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG',
+                         'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION',
+                         'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM',
+                         'TRIGGER_SUBSCRIPTION', 'WORKFLOW'):
+            raise ValueError(
+                "must be one of enum values ('ACCESS_PROFILE', 'ACCESS_REQUEST_CONFIG', 'ATTR_SYNC_SOURCE_CONFIG', 'AUTH_ORG', 'CAMPAIGN_FILTER', 'FORM_DEFINITION', 'GOVERNANCE_GROUP', 'IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'LIFECYCLE_STATE', 'NOTIFICATION_TEMPLATE', 'PASSWORD_POLICY', 'PASSWORD_SYNC_GROUP', 'PUBLIC_IDENTITIES_CONFIG', 'ROLE', 'RULE', 'SEGMENT', 'SERVICE_DESK_INTEGRATION', 'SOD_POLICY', 'SOURCE', 'TAG', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION', 'WORKFLOW')"
+            )
         return value
 
     class Config:
@@ -60,10 +76,7 @@ class SelfImportExportDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,5 +94,3 @@ class SelfImportExportDto(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

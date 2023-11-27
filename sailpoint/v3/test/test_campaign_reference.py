@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.campaign_reference import CampaignReference  # noqa: E501
+from sailpoint.v3.models.campaign_reference import CampaignReference  # noqa: E501
+
 
 class TestCampaignReference(unittest.TestCase):
     """CampaignReference unit test stubs"""
@@ -60,6 +60,7 @@ class TestCampaignReference(unittest.TestCase):
         """Test CampaignReference"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from v3.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi  # noqa: E501
+from sailpoint.v3.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi  # noqa: E501
 
 
 class TestGlobalTenantSecuritySettingsApi(unittest.TestCase):

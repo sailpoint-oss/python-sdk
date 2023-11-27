@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.role_criteria_key_type import RoleCriteriaKeyType  # noqa: E501
+from sailpoint.v3.models.role_criteria_key_type import RoleCriteriaKeyType  # noqa: E501
+
 
 class TestRoleCriteriaKeyType(unittest.TestCase):
     """RoleCriteriaKeyType unit test stubs"""
@@ -29,6 +29,7 @@ class TestRoleCriteriaKeyType(unittest.TestCase):
     def testRoleCriteriaKeyType(self):
         """Test RoleCriteriaKeyType"""
         # inst = RoleCriteriaKeyType()
+
 
 if __name__ == '__main__':
     unittest.main()

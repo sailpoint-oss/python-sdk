@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class ApprovalInfoResponse(BaseModel):
     """
@@ -27,7 +26,8 @@ class ApprovalInfoResponse(BaseModel):
     """
     id: Optional[StrictStr] = Field(None, description="the id of approver")
     name: Optional[StrictStr] = Field(None, description="the name of approver")
-    status: Optional[StrictStr] = Field(None, description="the status of the approval request")
+    status: Optional[StrictStr] = Field(
+        None, description="the status of the approval request")
     __properties = ["id", "name", "status"]
 
     class Config:
@@ -50,10 +50,7 @@ class ApprovalInfoResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,5 +68,3 @@ class ApprovalInfoResponse(BaseModel):
             "status": obj.get("status")
         })
         return _obj
-
-

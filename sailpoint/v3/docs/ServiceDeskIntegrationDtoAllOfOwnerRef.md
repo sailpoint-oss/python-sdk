@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.service_desk_integration_dto_all_of_owner_ref import ServiceDeskIntegrationDtoAllOfOwnerRef
+from sailpoint.v3.models.service_desk_integration_dto_all_of_owner_ref import ServiceDeskIntegrationDtoAllOfOwnerRef
 
 # TODO update the JSON string below
 json = "{}"

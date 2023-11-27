@@ -1,4 +1,4 @@
-# v3.RolesApi
+# sailpoint.v3.RolesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -27,14 +27,14 @@ This API creates a role. You must have a token with API, ORG_ADMIN, ROLE_ADMIN, 
 ```python
 import time
 import os
-import v3
-from v3.models.role import Role
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.role import Role
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -48,10 +48,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.RolesApi(api_client)
-    role = v3.Role() # Role | 
+    api_instance = sailpoint.v3.RolesApi(api_client)
+    role = sailpoint.v3.Role() # Role | 
 
     try:
         # Create a Role
@@ -109,15 +109,15 @@ This API initiates a bulk deletion of one or more Roles.  A token with API, ORG_
 ```python
 import time
 import os
-import v3
-from v3.models.role_bulk_delete_request import RoleBulkDeleteRequest
-from v3.models.task_result_dto import TaskResultDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.role_bulk_delete_request import RoleBulkDeleteRequest
+from sailpoint.v3.models.task_result_dto import TaskResultDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -131,9 +131,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.RolesApi(api_client)
+    api_instance = sailpoint.v3.RolesApi(api_client)
     role_bulk_delete_request = {roleIds=[2c91808876438bb2017668b91919ecca, 2c91808876438ba801766e129f151816]} # RoleBulkDeleteRequest | 
 
     try:
@@ -192,13 +192,13 @@ This API deletes a Role by its ID. A token with API, ORG_ADMIN, ROLE_ADMIN, or R
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -212,9 +212,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.RolesApi(api_client)
+    api_instance = sailpoint.v3.RolesApi(api_client)
     id = '2c91808a7813090a017814121e121518' # str | ID of the Role
 
     try:
@@ -271,14 +271,14 @@ This API returns a Role by its ID.  A token with API, ORG_ADMIN, ROLE_ADMIN, or 
 ```python
 import time
 import os
-import v3
-from v3.models.role import Role
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.role import Role
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -292,9 +292,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.RolesApi(api_client)
+    api_instance = sailpoint.v3.RolesApi(api_client)
     id = '2c91808a7813090a017814121e121518' # str | ID of the Role
 
     try:
@@ -351,14 +351,14 @@ List Identities assigned a Role
 ```python
 import time
 import os
-import v3
-from v3.models.role_identity import RoleIdentity
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.role_identity import RoleIdentity
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -372,9 +372,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.RolesApi(api_client)
+    api_instance = sailpoint.v3.RolesApi(api_client)
     id = '2c91808a7813090a017814121e121518' # str | ID of the Role for which the assigned Identities are to be listed
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -443,14 +443,14 @@ This API returns a list of Roles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or R
 ```python
 import time
 import os
-import v3
-from v3.models.role import Role
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.role import Role
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -464,9 +464,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.RolesApi(api_client)
+    api_instance = sailpoint.v3.RolesApi(api_client)
     for_subadmin = '5168015d32f890ca15812c9180835d2e' # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional)
     limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -539,15 +539,15 @@ This API updates an existing Role using [JSON Patch](https://tools.ietf.org/html
 ```python
 import time
 import os
-import v3
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.models.role import Role
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.role import Role
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -561,9 +561,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.RolesApi(api_client)
+    api_instance = sailpoint.v3.RolesApi(api_client)
     id = '2c91808a7813090a017814121e121518' # str | ID of the Role to patch
     json_patch_operation = [{op=replace, path=/requestable, value=true}, {op=replace, path=/enabled, value=true}] # List[JsonPatchOperation] | 
 

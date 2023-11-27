@@ -1,4 +1,4 @@
-# beta.IdentityHistoryApi
+# sailpoint.beta.IdentityHistoryApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -31,14 +31,14 @@ This method gets a difference of count for each access item types for the given 
 ```python
 import time
 import os
-import beta
-from beta.models.identity_compare_response import IdentityCompareResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_compare_response import IdentityCompareResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -52,9 +52,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityHistoryApi(api_client)
+    api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
     snapshot1 = '2007-03-01T13:00:00Z' # str | The snapshot 1 of identity (optional)
     snapshot2 = '2008-03-01T13:00:00Z' # str | The snapshot 2 of identity (optional)
@@ -125,14 +125,14 @@ This method gets a list of differences of specific accessType for the given iden
 ```python
 import time
 import os
-import beta
-from beta.models.access_item_diff import AccessItemDiff
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_item_diff import AccessItemDiff
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -146,9 +146,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityHistoryApi(api_client)
+    api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
     access_type = 'role' # str | The specific type which needs to be compared
     access_associated = 2007-03-01T13:00:00Z # bool | Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed (optional)
@@ -221,14 +221,14 @@ This method retrieves a specified identity Requires authorization scope of 'idn:
 ```python
 import time
 import os
-import beta
-from beta.models.identity_history_response import IdentityHistoryResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_history_response import IdentityHistoryResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -242,9 +242,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityHistoryApi(api_client)
+    api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
 
     try:
@@ -303,14 +303,14 @@ This method retrieves all access events for the identity Requires authorization 
 ```python
 import time
 import os
-import beta
-from beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -324,9 +324,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityHistoryApi(api_client)
+    api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
     var_from = '2007-03-01T13:00:00Z' # str | The optional instant from which to return the access events (optional)
     event_types = ['[AccessAddedEvent, AccessRemovedEvent]'] # List[str] | An optional list of event types to return.  If null or empty, all events are returned (optional)
@@ -398,14 +398,14 @@ This method retrieves a specified identity snapshot at a given date Requires aut
 ```python
 import time
 import os
-import beta
-from beta.models.identity_history_response import IdentityHistoryResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_history_response import IdentityHistoryResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -419,9 +419,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityHistoryApi(api_client)
+    api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
     var_date = '2007-03-01T13:00:00Z' # str | The specified date
 
@@ -482,14 +482,14 @@ This method gets the summary for the event count for a specific identity by mont
 ```python
 import time
 import os
-import beta
-from beta.models.metric_response import MetricResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.metric_response import MetricResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -503,9 +503,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityHistoryApi(api_client)
+    api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
     before = '2007-03-01T13:00:00Z' # str | The date before which snapshot summary is required (optional)
     interval = 'interval_example' # str | The interval indicating day or month. Defaults to month if not specified (optional)
@@ -576,13 +576,13 @@ This method retrieves start date of the identity Requires authorization scope of
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -596,9 +596,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityHistoryApi(api_client)
+    api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
 
     try:
@@ -657,14 +657,14 @@ This gets the list of identities for the customer. This list end point does not 
 ```python
 import time
 import os
-import beta
-from beta.models.identity_list_item import IdentityListItem
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_list_item import IdentityListItem
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -678,9 +678,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityHistoryApi(api_client)
+    api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     starts_with_query = 'Ada' # str | This param is used for starts-with search for first, last and display name of the identity (optional)
     is_deleted = true # bool | Indicates if we want to only list down deleted identities or not. (optional)
     is_active = true # bool | Indicates if we want to only list active or inactive identities. (optional)
@@ -747,14 +747,14 @@ This method retrieves a list of access item for the identity filtered by the acc
 ```python
 import time
 import os
-import beta
-from beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -768,9 +768,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityHistoryApi(api_client)
+    api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
     type = 'account' # str | The type of access item for the identity. If not provided, it defaults to account (optional)
 
@@ -831,14 +831,14 @@ This method retrieves the list of identity access items at a given date filterd 
 ```python
 import time
 import os
-import beta
-from beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -852,9 +852,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityHistoryApi(api_client)
+    api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
     var_date = '2007-03-01T13:00:00Z' # str | The specified date
     type = 'account' # str | The access item type (optional)
@@ -917,14 +917,14 @@ This method retrieves all the snapshots for the identity Requires authorization 
 ```python
 import time
 import os
-import beta
-from beta.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -938,9 +938,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityHistoryApi(api_client)
+    api_instance = sailpoint.beta.IdentityHistoryApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | The identity id
     start = '2007-03-01T13:00:00Z' # str | The specified start date (optional)
     interval = 'interval_example' # str | The interval indicating the range in day or month for the specified interval-name (optional)

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.certification_dto import CertificationDto  # noqa: E501
+from sailpoint.beta.models.certification_dto import CertificationDto  # noqa: E501
+
 
 class TestCertificationDto(unittest.TestCase):
     """CertificationDto unit test stubs"""
@@ -36,7 +36,7 @@ class TestCertificationDto(unittest.TestCase):
         model = CertificationDto()  # noqa: E501
         if include_optional:
             return CertificationDto(
-                campaign_ref = beta.models.campaign_reference.CampaignReference(
+                campaign_ref = sailpoint.beta.models.campaign_reference.CampaignReference(
                     id = 'ef38f94347e94562b5bb8424a56397d8', 
                     name = 'Campaign Name', 
                     type = 'CAMPAIGN', 
@@ -47,13 +47,13 @@ class TestCertificationDto(unittest.TestCase):
                 phase = 'ACTIVE',
                 due = '2018-10-19T13:49:37.385Z',
                 signed = '2018-10-19T13:49:37.385Z',
-                reviewer = beta.models.reviewer.Reviewer(
+                reviewer = sailpoint.beta.models.reviewer.Reviewer(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', 
                     email = 'reviewer@test.com', ),
-                reassignment = beta.models.reassignment.Reassignment(
-                    from = beta.models.certification_reference.CertificationReference(), 
+                reassignment = sailpoint.beta.models.reassignment.Reassignment(
+                    from = sailpoint.beta.models.certification_reference.CertificationReference(), 
                     comment = 'Please review', ),
                 has_errors = False,
                 error_message = 'The certification has an error',
@@ -65,7 +65,7 @@ class TestCertificationDto(unittest.TestCase):
             )
         else:
             return CertificationDto(
-                campaign_ref = beta.models.campaign_reference.CampaignReference(
+                campaign_ref = sailpoint.beta.models.campaign_reference.CampaignReference(
                     id = 'ef38f94347e94562b5bb8424a56397d8', 
                     name = 'Campaign Name', 
                     type = 'CAMPAIGN', 
@@ -76,7 +76,7 @@ class TestCertificationDto(unittest.TestCase):
                 phase = 'ACTIVE',
                 due = '2018-10-19T13:49:37.385Z',
                 signed = '2018-10-19T13:49:37.385Z',
-                reviewer = beta.models.reviewer.Reviewer(
+                reviewer = sailpoint.beta.models.reviewer.Reviewer(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', 
@@ -94,6 +94,7 @@ class TestCertificationDto(unittest.TestCase):
         """Test CertificationDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

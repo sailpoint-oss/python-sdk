@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.comment_dto_author import CommentDtoAuthor
+from sailpoint.v3.models.comment_dto_author import CommentDtoAuthor
 
 # TODO update the JSON string below
 json = "{}"

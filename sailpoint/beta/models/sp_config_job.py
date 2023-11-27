@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,26 +20,47 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field, StrictStr, validator
 
+
 class SpConfigJob(BaseModel):
     """
     SpConfigJob
     """
-    job_id: StrictStr = Field(..., alias="jobId", description="Unique id assigned to this job.")
+    job_id: StrictStr = Field(...,
+                              alias="jobId",
+                              description="Unique id assigned to this job.")
     status: StrictStr = Field(..., description="Status of the job.")
-    type: StrictStr = Field(..., description="Type of the job, either export or import.")
-    message: StrictStr = Field(..., description="This message contains additional information about the overall status of the job.")
-    description: StrictStr = Field(..., description="Optional user defined description/name for export job.")
-    expiration: datetime = Field(..., description="The time until which the artifacts will be available for download.")
+    type: StrictStr = Field(
+        ..., description="Type of the job, either export or import.")
+    message: StrictStr = Field(
+        ...,
+        description=
+        "This message contains additional information about the overall status of the job."
+    )
+    description: StrictStr = Field(
+        ...,
+        description="Optional user defined description/name for export job.")
+    expiration: datetime = Field(
+        ...,
+        description=
+        "The time until which the artifacts will be available for download.")
     created: datetime = Field(..., description="The time the job was started.")
-    modified: datetime = Field(..., description="The time of the last update to the job.")
-    completed: datetime = Field(..., description="The time the job was completed.")
-    __properties = ["jobId", "status", "type", "message", "description", "expiration", "created", "modified", "completed"]
+    modified: datetime = Field(
+        ..., description="The time of the last update to the job.")
+    completed: datetime = Field(...,
+                                description="The time the job was completed.")
+    __properties = [
+        "jobId", "status", "type", "message", "description", "expiration",
+        "created", "modified", "completed"
+    ]
 
     @validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED'):
-            raise ValueError("must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED')")
+        if value not in ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED',
+                         'FAILED'):
+            raise ValueError(
+                "must be one of enum values ('NOT_STARTED', 'IN_PROGRESS', 'COMPLETE', 'CANCELLED', 'FAILED')"
+            )
         return value
 
     @validator('type')
@@ -70,10 +90,7 @@ class SpConfigJob(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -97,5 +114,3 @@ class SpConfigJob(BaseModel):
             "completed": obj.get("completed")
         })
         return _obj
-
-

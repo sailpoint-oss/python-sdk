@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.localized_message import LocalizedMessage  # noqa: E501
+from sailpoint.beta.models.localized_message import LocalizedMessage  # noqa: E501
+
 
 class TestLocalizedMessage(unittest.TestCase):
     """LocalizedMessage unit test stubs"""
@@ -50,6 +50,7 @@ class TestLocalizedMessage(unittest.TestCase):
         """Test LocalizedMessage"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

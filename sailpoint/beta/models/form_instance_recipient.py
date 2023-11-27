@@ -11,22 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class FormInstanceRecipient(BaseModel):
     """
     FormInstanceRecipient
     """
-    id: Optional[StrictStr] = Field(None, description="ID is a unique identifier")
-    type: Optional[StrictStr] = Field(None, description="Type is a FormInstanceRecipientType value IDENTITY FormInstanceRecipientIdentity")
+    id: Optional[StrictStr] = Field(None,
+                                    description="ID is a unique identifier")
+    type: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Type is a FormInstanceRecipientType value IDENTITY FormInstanceRecipientIdentity"
+    )
     __properties = ["id", "type"]
 
     @validator('type')
@@ -59,10 +63,7 @@ class FormInstanceRecipient(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -79,5 +80,3 @@ class FormInstanceRecipient(BaseModel):
             "type": obj.get("type")
         })
         return _obj
-
-

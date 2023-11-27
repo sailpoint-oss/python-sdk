@@ -1,4 +1,4 @@
-# beta.AccountUsagesApi
+# sailpoint.beta.AccountUsagesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -21,14 +21,14 @@ This API returns a summary of account usage insights for past 12 months.
 ```python
 import time
 import os
-import beta
-from beta.models.account_usage import AccountUsage
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.account_usage import AccountUsage
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -42,9 +42,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountUsagesApi(api_client)
+    api_instance = sailpoint.beta.AccountUsagesApi(api_client)
     account_id = 'ef38f94347e94562b5bb8424a56397d8' # str | ID of IDN account
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)

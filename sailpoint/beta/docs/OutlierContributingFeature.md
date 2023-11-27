@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.outlier_contributing_feature import OutlierContributingFeature
+from sailpoint.beta.models.outlier_contributing_feature import OutlierContributingFeature
 
 # TODO update the JSON string below
 json = "{}"

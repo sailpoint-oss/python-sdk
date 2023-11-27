@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.aggregations import Aggregations  # noqa: E501
+from sailpoint.v3.models.aggregations import Aggregations  # noqa: E501
+
 
 class TestAggregations(unittest.TestCase):
     """Aggregations unit test stubs"""
@@ -36,19 +36,19 @@ class TestAggregations(unittest.TestCase):
         model = Aggregations()  # noqa: E501
         if include_optional:
             return Aggregations(
-                nested = v3.models.nested_aggregation.NestedAggregation(
+                nested = sailpoint.v3.models.nested_aggregation.NestedAggregation(
                     name = 'id', 
                     type = 'access', ),
-                metric = v3.models.metric_aggregation.MetricAggregation(
+                metric = sailpoint.v3.models.metric_aggregation.MetricAggregation(
                     name = 'Access Name Count', 
                     type = 'UNIQUE_COUNT', 
                     field = '@access.name', ),
-                filter = v3.models.filter_aggregation.FilterAggregation(
+                filter = sailpoint.v3.models.filter_aggregation.FilterAggregation(
                     name = 'Entitlements', 
                     type = 'TERM', 
                     field = 'access.type', 
                     value = 'ENTITLEMENT', ),
-                bucket = v3.models.bucket_aggregation.BucketAggregation(
+                bucket = sailpoint.v3.models.bucket_aggregation.BucketAggregation(
                     name = 'Identity Locations', 
                     type = 'TERMS', 
                     field = 'attributes.city', 
@@ -64,6 +64,7 @@ class TestAggregations(unittest.TestCase):
         """Test Aggregations"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.query_type import QueryType  # noqa: E501
+from sailpoint.v3.models.query_type import QueryType  # noqa: E501
+
 
 class TestQueryType(unittest.TestCase):
     """QueryType unit test stubs"""
@@ -29,6 +29,7 @@ class TestQueryType(unittest.TestCase):
     def testQueryType(self):
         """Test QueryType"""
         # inst = QueryType()
+
 
 if __name__ == '__main__':
     unittest.main()

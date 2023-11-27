@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
+from sailpoint.beta.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
 
 # TODO update the JSON string below
 json = "{}"

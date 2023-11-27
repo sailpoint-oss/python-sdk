@@ -11,23 +11,37 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+
 
 class IdentitiesReportArguments(BaseModel):
     """
     Arguments for Identities report (IDENTITIES)  # noqa: E501
     """
-    correlated_only: Optional[StrictBool] = Field(False, alias="correlatedOnly", description="Boolean FLAG to specify if only correlated identities should be used in report processing")
-    default_s3_bucket: StrictBool = Field(..., alias="defaultS3Bucket", description="Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.")
-    s3_bucket: Optional[StrictStr] = Field(None, alias="s3Bucket", description="If you want to be specific you could use this argument with defaultS3Bucket = false.")
+    correlated_only: Optional[StrictBool] = Field(
+        False,
+        alias="correlatedOnly",
+        description=
+        "Boolean FLAG to specify if only correlated identities should be used in report processing"
+    )
+    default_s3_bucket: StrictBool = Field(
+        ...,
+        alias="defaultS3Bucket",
+        description=
+        "Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report."
+    )
+    s3_bucket: Optional[StrictStr] = Field(
+        None,
+        alias="s3Bucket",
+        description=
+        "If you want to be specific you could use this argument with defaultS3Bucket = false."
+    )
     __properties = ["correlatedOnly", "defaultS3Bucket", "s3Bucket"]
 
     class Config:
@@ -50,10 +64,7 @@ class IdentitiesReportArguments(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,10 +77,12 @@ class IdentitiesReportArguments(BaseModel):
             return IdentitiesReportArguments.parse_obj(obj)
 
         _obj = IdentitiesReportArguments.parse_obj({
-            "correlated_only": obj.get("correlatedOnly") if obj.get("correlatedOnly") is not None else False,
-            "default_s3_bucket": obj.get("defaultS3Bucket"),
-            "s3_bucket": obj.get("s3Bucket")
+            "correlated_only":
+            obj.get("correlatedOnly")
+            if obj.get("correlatedOnly") is not None else False,
+            "default_s3_bucket":
+            obj.get("defaultS3Bucket"),
+            "s3_bucket":
+            obj.get("s3Bucket")
         })
         return _obj
-
-

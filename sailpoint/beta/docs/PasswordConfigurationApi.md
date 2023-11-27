@@ -1,4 +1,4 @@
-# beta.PasswordConfigurationApi
+# sailpoint.beta.PasswordConfigurationApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -23,14 +23,14 @@ This API creates the password org config. Unspecified fields will use default va
 ```python
 import time
 import os
-import beta
-from beta.models.password_org_config import PasswordOrgConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.password_org_config import PasswordOrgConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -44,9 +44,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.PasswordConfigurationApi(api_client)
+    api_instance = sailpoint.beta.PasswordConfigurationApi(api_client)
     password_org_config = {customInstructionsEnabled=true, digitTokenEnabled=true, digitTokenDurationMinutes=12, digitTokenLength=9} # PasswordOrgConfig | 
 
     try:
@@ -105,14 +105,14 @@ This API returns the password org config . Requires ORG_ADMIN, API role or autho
 ```python
 import time
 import os
-import beta
-from beta.models.password_org_config import PasswordOrgConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.password_org_config import PasswordOrgConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -126,9 +126,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.PasswordConfigurationApi(api_client)
+    api_instance = sailpoint.beta.PasswordConfigurationApi(api_client)
 
     try:
         # Get Password Org Config
@@ -183,14 +183,14 @@ This API updates the password org config for specified fields. Other fields will
 ```python
 import time
 import os
-import beta
-from beta.models.password_org_config import PasswordOrgConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.password_org_config import PasswordOrgConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -204,9 +204,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.PasswordConfigurationApi(api_client)
+    api_instance = sailpoint.beta.PasswordConfigurationApi(api_client)
     password_org_config = {digitTokenEnabled=true, digitTokenDurationMinutes=12} # PasswordOrgConfig | 
 
     try:

@@ -11,24 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class AccessItemDiff(BaseModel):
     """
     AccessItemDiff
     """
-    id: Optional[StrictStr] = Field(None, description="the id of the access item")
+    id: Optional[StrictStr] = Field(None,
+                                    description="the id of the access item")
     event_type: Optional[StrictStr] = Field(None, alias="eventType")
-    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="the display name of the access item")
-    source_name: Optional[StrictStr] = Field(None, alias="sourceName", description="the source name of the access item")
+    display_name: Optional[StrictStr] = Field(
+        None,
+        alias="displayName",
+        description="the display name of the access item")
+    source_name: Optional[StrictStr] = Field(
+        None,
+        alias="sourceName",
+        description="the source name of the access item")
     __properties = ["id", "eventType", "displayName", "sourceName"]
 
     @validator('event_type')
@@ -61,10 +67,7 @@ class AccessItemDiff(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -83,5 +86,3 @@ class AccessItemDiff(BaseModel):
             "source_name": obj.get("sourceName")
         })
         return _obj
-
-

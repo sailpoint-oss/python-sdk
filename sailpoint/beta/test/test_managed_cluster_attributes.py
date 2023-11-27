@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.managed_cluster_attributes import ManagedClusterAttributes  # noqa: E501
+from sailpoint.beta.models.managed_cluster_attributes import ManagedClusterAttributes  # noqa: E501
+
 
 class TestManagedClusterAttributes(unittest.TestCase):
     """ManagedClusterAttributes unit test stubs"""
@@ -36,7 +36,7 @@ class TestManagedClusterAttributes(unittest.TestCase):
         model = ManagedClusterAttributes()  # noqa: E501
         if include_optional:
             return ManagedClusterAttributes(
-                queue = beta.models.managed_cluster_queue.ManagedClusterQueue(
+                queue = sailpoint.beta.models.managed_cluster_queue.ManagedClusterQueue(
                     name = 'megapod-useast1-denali-lwt-cluster-1533', 
                     region = 'us-east-1', ),
                 keystore = '/u3+7QAAAAIAAAABAAAAAQAvL3Byb3h5LWNsdXN0ZXIvMmM5MTgwODc3Yjg3MW'
@@ -50,6 +50,7 @@ class TestManagedClusterAttributes(unittest.TestCase):
         """Test ManagedClusterAttributes"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

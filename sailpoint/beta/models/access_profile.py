@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,32 +19,60 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
-from beta.models.access_profile_source_ref import AccessProfileSourceRef
-from beta.models.entitlement_ref import EntitlementRef
-from beta.models.owner_reference import OwnerReference
-from beta.models.provisioning_criteria_level1 import ProvisioningCriteriaLevel1
-from beta.models.requestability import Requestability
-from beta.models.revocability import Revocability
+from sailpoint.beta.models.access_profile_source_ref import AccessProfileSourceRef
+from sailpoint.beta.models.entitlement_ref import EntitlementRef
+from sailpoint.beta.models.owner_reference import OwnerReference
+from sailpoint.beta.models.provisioning_criteria_level1 import ProvisioningCriteriaLevel1
+from sailpoint.beta.models.requestability import Requestability
+from sailpoint.beta.models.revocability import Revocability
+
 
 class AccessProfile(BaseModel):
     """
     AccessProfile
     """
-    id: Optional[StrictStr] = Field(None, description="The ID of the Access Profile")
+    id: Optional[StrictStr] = Field(None,
+                                    description="The ID of the Access Profile")
     name: StrictStr = Field(..., description="Name of the Access Profile")
-    description: Optional[StrictStr] = Field(None, description="Information about the Access Profile")
-    created: Optional[datetime] = Field(None, description="Date the Access Profile was created")
-    modified: Optional[datetime] = Field(None, description="Date the Access Profile was last modified.")
-    enabled: Optional[StrictBool] = Field(None, description="Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement.")
+    description: Optional[StrictStr] = Field(
+        None, description="Information about the Access Profile")
+    created: Optional[datetime] = Field(
+        None, description="Date the Access Profile was created")
+    modified: Optional[datetime] = Field(
+        None, description="Date the Access Profile was last modified.")
+    enabled: Optional[StrictBool] = Field(
+        None,
+        description=
+        "Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement."
+    )
     owner: OwnerReference = Field(...)
     source: AccessProfileSourceRef = Field(...)
-    entitlements: Optional[conlist(EntitlementRef)] = Field(None, description="A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement.")
-    requestable: Optional[StrictBool] = Field(None, description="Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error.")
-    access_request_config: Optional[Requestability] = Field(None, alias="accessRequestConfig")
-    revocation_request_config: Optional[Revocability] = Field(None, alias="revocationRequestConfig")
-    segments: Optional[conlist(StrictStr)] = Field(None, description="List of IDs of segments, if any, to which this Access Profile is assigned.")
-    provisioning_criteria: Optional[ProvisioningCriteriaLevel1] = Field(None, alias="provisioningCriteria")
-    __properties = ["id", "name", "description", "created", "modified", "enabled", "owner", "source", "entitlements", "requestable", "accessRequestConfig", "revocationRequestConfig", "segments", "provisioningCriteria"]
+    entitlements: Optional[conlist(EntitlementRef)] = Field(
+        None,
+        description=
+        "A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement."
+    )
+    requestable: Optional[StrictBool] = Field(
+        None,
+        description=
+        "Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error."
+    )
+    access_request_config: Optional[Requestability] = Field(
+        None, alias="accessRequestConfig")
+    revocation_request_config: Optional[Revocability] = Field(
+        None, alias="revocationRequestConfig")
+    segments: Optional[conlist(StrictStr)] = Field(
+        None,
+        description=
+        "List of IDs of segments, if any, to which this Access Profile is assigned."
+    )
+    provisioning_criteria: Optional[ProvisioningCriteriaLevel1] = Field(
+        None, alias="provisioningCriteria")
+    __properties = [
+        "id", "name", "description", "created", "modified", "enabled", "owner",
+        "source", "entitlements", "requestable", "accessRequestConfig",
+        "revocationRequestConfig", "segments", "provisioningCriteria"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -69,9 +96,9 @@ class AccessProfile(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "id",
-                            "created",
-                            "modified",
+                              "id",
+                              "created",
+                              "modified",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -92,10 +119,13 @@ class AccessProfile(BaseModel):
             _dict['accessRequestConfig'] = self.access_request_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of revocation_request_config
         if self.revocation_request_config:
-            _dict['revocationRequestConfig'] = self.revocation_request_config.to_dict()
+            _dict[
+                'revocationRequestConfig'] = self.revocation_request_config.to_dict(
+                )
         # override the default output from pydantic by calling `to_dict()` of provisioning_criteria
         if self.provisioning_criteria:
-            _dict['provisioningCriteria'] = self.provisioning_criteria.to_dict()
+            _dict['provisioningCriteria'] = self.provisioning_criteria.to_dict(
+            )
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -128,21 +158,41 @@ class AccessProfile(BaseModel):
             return AccessProfile.parse_obj(obj)
 
         _obj = AccessProfile.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "enabled": obj.get("enabled"),
-            "owner": OwnerReference.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "source": AccessProfileSourceRef.from_dict(obj.get("source")) if obj.get("source") is not None else None,
-            "entitlements": [EntitlementRef.from_dict(_item) for _item in obj.get("entitlements")] if obj.get("entitlements") is not None else None,
-            "requestable": obj.get("requestable"),
-            "access_request_config": Requestability.from_dict(obj.get("accessRequestConfig")) if obj.get("accessRequestConfig") is not None else None,
-            "revocation_request_config": Revocability.from_dict(obj.get("revocationRequestConfig")) if obj.get("revocationRequestConfig") is not None else None,
-            "segments": obj.get("segments"),
-            "provisioning_criteria": ProvisioningCriteriaLevel1.from_dict(obj.get("provisioningCriteria")) if obj.get("provisioningCriteria") is not None else None
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified"),
+            "enabled":
+            obj.get("enabled"),
+            "owner":
+            OwnerReference.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "source":
+            AccessProfileSourceRef.from_dict(obj.get("source"))
+            if obj.get("source") is not None else None,
+            "entitlements": [
+                EntitlementRef.from_dict(_item)
+                for _item in obj.get("entitlements")
+            ] if obj.get("entitlements") is not None else None,
+            "requestable":
+            obj.get("requestable"),
+            "access_request_config":
+            Requestability.from_dict(obj.get("accessRequestConfig"))
+            if obj.get("accessRequestConfig") is not None else None,
+            "revocation_request_config":
+            Revocability.from_dict(obj.get("revocationRequestConfig"))
+            if obj.get("revocationRequestConfig") is not None else None,
+            "segments":
+            obj.get("segments"),
+            "provisioning_criteria":
+            ProvisioningCriteriaLevel1.from_dict(
+                obj.get("provisioningCriteria"))
+            if obj.get("provisioningCriteria") is not None else None
         })
         return _obj
-
-

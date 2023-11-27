@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,8 +19,9 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist, validator
-from v2.models.get_org_settings200_response_approval_config import GetOrgSettings200ResponseApprovalConfig
-from v2.models.get_org_settings200_response_system_notification_config import GetOrgSettings200ResponseSystemNotificationConfig
+from sailpoint.v2.models.get_org_settings200_response_approval_config import GetOrgSettings200ResponseApprovalConfig
+from sailpoint.v2.models.get_org_settings200_response_system_notification_config import GetOrgSettings200ResponseSystemNotificationConfig
+
 
 class GetOrgSettings200Response(BaseModel):
     """
@@ -35,34 +35,66 @@ class GetOrgSettings200Response(BaseModel):
     script_name: Optional[StrictStr] = Field(None, alias="scriptName")
     sso_domain: Optional[StrictStr] = Field(None, alias="ssoDomain")
     status: Optional[StrictStr] = None
-    max_registered_identities: Optional[StrictInt] = Field(None, alias="maxRegisteredIdentities")
+    max_registered_identities: Optional[StrictInt] = Field(
+        None, alias="maxRegisteredIdentities")
     identity_count: Optional[StrictInt] = Field(None, alias="identityCount")
-    kba_req_for_authn: Optional[StrictInt] = Field(None, alias="kbaReqForAuthn")
+    kba_req_for_authn: Optional[StrictInt] = Field(None,
+                                                   alias="kbaReqForAuthn")
     kba_req_answers: Optional[StrictInt] = Field(None, alias="kbaReqAnswers")
-    lockout_attempt_threshold: Optional[StrictInt] = Field(None, alias="lockoutAttemptThreshold")
-    lockout_time_minutes: Optional[StrictInt] = Field(None, alias="lockoutTimeMinutes")
-    usage_cert_required: Optional[StrictBool] = Field(None, alias="usageCertRequired")
-    admin_strong_auth_required: Optional[StrictBool] = Field(None, alias="adminStrongAuthRequired")
-    enable_external_password_change: Optional[StrictBool] = Field(None, alias="enableExternalPasswordChange")
-    enable_password_replay: Optional[StrictBool] = Field(None, alias="enablePasswordReplay")
-    enable_automatic_password_replay: Optional[StrictBool] = Field(None, alias="enableAutomaticPasswordReplay")
+    lockout_attempt_threshold: Optional[StrictInt] = Field(
+        None, alias="lockoutAttemptThreshold")
+    lockout_time_minutes: Optional[StrictInt] = Field(
+        None, alias="lockoutTimeMinutes")
+    usage_cert_required: Optional[StrictBool] = Field(
+        None, alias="usageCertRequired")
+    admin_strong_auth_required: Optional[StrictBool] = Field(
+        None, alias="adminStrongAuthRequired")
+    enable_external_password_change: Optional[StrictBool] = Field(
+        None, alias="enableExternalPasswordChange")
+    enable_password_replay: Optional[StrictBool] = Field(
+        None, alias="enablePasswordReplay")
+    enable_automatic_password_replay: Optional[StrictBool] = Field(
+        None, alias="enableAutomaticPasswordReplay")
     netmasks: Optional[conlist(StrictStr)] = None
-    country_codes: Optional[conlist(StrictStr)] = Field(None, alias="countryCodes")
+    country_codes: Optional[conlist(StrictStr)] = Field(None,
+                                                        alias="countryCodes")
     white_list: Optional[StrictBool] = Field(None, alias="whiteList")
     email_test_mode: Optional[StrictBool] = Field(None, alias="emailTestMode")
-    email_test_address: Optional[StrictStr] = Field(None, alias="emailTestAddress")
-    username_empty_text: Optional[StrictStr] = Field(None, alias="usernameEmptyText")
+    email_test_address: Optional[StrictStr] = Field(None,
+                                                    alias="emailTestAddress")
+    username_empty_text: Optional[StrictStr] = Field(None,
+                                                     alias="usernameEmptyText")
     username_label: Optional[StrictStr] = Field(None, alias="usernameLabel")
-    enable_automation_generation: Optional[StrictBool] = Field(None, alias="enableAutomationGeneration")
-    password_replay_state: Optional[StrictStr] = Field(None, alias="passwordReplayState")
-    system_notification_config: Optional[GetOrgSettings200ResponseSystemNotificationConfig] = Field(None, alias="systemNotificationConfig")
-    system_notification_emails: Optional[conlist(StrictStr)] = Field(None, alias="systemNotificationEmails")
+    enable_automation_generation: Optional[StrictBool] = Field(
+        None, alias="enableAutomationGeneration")
+    password_replay_state: Optional[StrictStr] = Field(
+        None, alias="passwordReplayState")
+    system_notification_config: Optional[
+        GetOrgSettings200ResponseSystemNotificationConfig] = Field(
+            None, alias="systemNotificationConfig")
+    system_notification_emails: Optional[conlist(StrictStr)] = Field(
+        None, alias="systemNotificationEmails")
     login_url: Optional[StrictStr] = Field(None, alias="loginUrl")
-    redirect_patterns: Optional[conlist(StrictStr)] = Field(None, alias="redirectPatterns")
+    redirect_patterns: Optional[conlist(StrictStr)] = Field(
+        None, alias="redirectPatterns")
     style_hash: Optional[StrictStr] = Field(None, alias="styleHash")
-    approval_config: Optional[GetOrgSettings200ResponseApprovalConfig] = Field(None, alias="approvalConfig")
-    sso_partner_source: Optional[StrictStr] = Field(None, alias="ssoPartnerSource")
-    __properties = ["id", "name", "description", "dateCreated", "lastUpdated", "scriptName", "ssoDomain", "status", "maxRegisteredIdentities", "identityCount", "kbaReqForAuthn", "kbaReqAnswers", "lockoutAttemptThreshold", "lockoutTimeMinutes", "usageCertRequired", "adminStrongAuthRequired", "enableExternalPasswordChange", "enablePasswordReplay", "enableAutomaticPasswordReplay", "netmasks", "countryCodes", "whiteList", "emailTestMode", "emailTestAddress", "usernameEmptyText", "usernameLabel", "enableAutomationGeneration", "passwordReplayState", "systemNotificationConfig", "systemNotificationEmails", "loginUrl", "redirectPatterns", "styleHash", "approvalConfig", "ssoPartnerSource"]
+    approval_config: Optional[GetOrgSettings200ResponseApprovalConfig] = Field(
+        None, alias="approvalConfig")
+    sso_partner_source: Optional[StrictStr] = Field(None,
+                                                    alias="ssoPartnerSource")
+    __properties = [
+        "id", "name", "description", "dateCreated", "lastUpdated",
+        "scriptName", "ssoDomain", "status", "maxRegisteredIdentities",
+        "identityCount", "kbaReqForAuthn", "kbaReqAnswers",
+        "lockoutAttemptThreshold", "lockoutTimeMinutes", "usageCertRequired",
+        "adminStrongAuthRequired", "enableExternalPasswordChange",
+        "enablePasswordReplay", "enableAutomaticPasswordReplay", "netmasks",
+        "countryCodes", "whiteList", "emailTestMode", "emailTestAddress",
+        "usernameEmptyText", "usernameLabel", "enableAutomationGeneration",
+        "passwordReplayState", "systemNotificationConfig",
+        "systemNotificationEmails", "loginUrl", "redirectPatterns",
+        "styleHash", "approvalConfig", "ssoPartnerSource"
+    ]
 
     @validator('status')
     def status_validate_enum(cls, value):
@@ -71,7 +103,9 @@ class GetOrgSettings200Response(BaseModel):
             return value
 
         if value not in ('inactive', 'active', 'demo', 'test'):
-            raise ValueError("must be one of enum values ('inactive', 'active', 'demo', 'test')")
+            raise ValueError(
+                "must be one of enum values ('inactive', 'active', 'demo', 'test')"
+            )
         return value
 
     @validator('password_replay_state')
@@ -81,7 +115,9 @@ class GetOrgSettings200Response(BaseModel):
             return value
 
         if value not in ('enabled', 'passive', 'disabled'):
-            raise ValueError("must be one of enum values ('enabled', 'passive', 'disabled')")
+            raise ValueError(
+                "must be one of enum values ('enabled', 'passive', 'disabled')"
+            )
         return value
 
     class Config:
@@ -104,13 +140,12 @@ class GetOrgSettings200Response(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of system_notification_config
         if self.system_notification_config:
-            _dict['systemNotificationConfig'] = self.system_notification_config.to_dict()
+            _dict[
+                'systemNotificationConfig'] = self.system_notification_config.to_dict(
+                )
         # override the default output from pydantic by calling `to_dict()` of approval_config
         if self.approval_config:
             _dict['approvalConfig'] = self.approval_config.to_dict()
@@ -126,42 +161,79 @@ class GetOrgSettings200Response(BaseModel):
             return GetOrgSettings200Response.parse_obj(obj)
 
         _obj = GetOrgSettings200Response.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "date_created": obj.get("dateCreated"),
-            "last_updated": obj.get("lastUpdated"),
-            "script_name": obj.get("scriptName"),
-            "sso_domain": obj.get("ssoDomain"),
-            "status": obj.get("status"),
-            "max_registered_identities": obj.get("maxRegisteredIdentities"),
-            "identity_count": obj.get("identityCount"),
-            "kba_req_for_authn": obj.get("kbaReqForAuthn"),
-            "kba_req_answers": obj.get("kbaReqAnswers"),
-            "lockout_attempt_threshold": obj.get("lockoutAttemptThreshold"),
-            "lockout_time_minutes": obj.get("lockoutTimeMinutes"),
-            "usage_cert_required": obj.get("usageCertRequired"),
-            "admin_strong_auth_required": obj.get("adminStrongAuthRequired"),
-            "enable_external_password_change": obj.get("enableExternalPasswordChange"),
-            "enable_password_replay": obj.get("enablePasswordReplay"),
-            "enable_automatic_password_replay": obj.get("enableAutomaticPasswordReplay"),
-            "netmasks": obj.get("netmasks"),
-            "country_codes": obj.get("countryCodes"),
-            "white_list": obj.get("whiteList"),
-            "email_test_mode": obj.get("emailTestMode"),
-            "email_test_address": obj.get("emailTestAddress"),
-            "username_empty_text": obj.get("usernameEmptyText"),
-            "username_label": obj.get("usernameLabel"),
-            "enable_automation_generation": obj.get("enableAutomationGeneration"),
-            "password_replay_state": obj.get("passwordReplayState"),
-            "system_notification_config": GetOrgSettings200ResponseSystemNotificationConfig.from_dict(obj.get("systemNotificationConfig")) if obj.get("systemNotificationConfig") is not None else None,
-            "system_notification_emails": obj.get("systemNotificationEmails"),
-            "login_url": obj.get("loginUrl"),
-            "redirect_patterns": obj.get("redirectPatterns"),
-            "style_hash": obj.get("styleHash"),
-            "approval_config": GetOrgSettings200ResponseApprovalConfig.from_dict(obj.get("approvalConfig")) if obj.get("approvalConfig") is not None else None,
-            "sso_partner_source": obj.get("ssoPartnerSource")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "date_created":
+            obj.get("dateCreated"),
+            "last_updated":
+            obj.get("lastUpdated"),
+            "script_name":
+            obj.get("scriptName"),
+            "sso_domain":
+            obj.get("ssoDomain"),
+            "status":
+            obj.get("status"),
+            "max_registered_identities":
+            obj.get("maxRegisteredIdentities"),
+            "identity_count":
+            obj.get("identityCount"),
+            "kba_req_for_authn":
+            obj.get("kbaReqForAuthn"),
+            "kba_req_answers":
+            obj.get("kbaReqAnswers"),
+            "lockout_attempt_threshold":
+            obj.get("lockoutAttemptThreshold"),
+            "lockout_time_minutes":
+            obj.get("lockoutTimeMinutes"),
+            "usage_cert_required":
+            obj.get("usageCertRequired"),
+            "admin_strong_auth_required":
+            obj.get("adminStrongAuthRequired"),
+            "enable_external_password_change":
+            obj.get("enableExternalPasswordChange"),
+            "enable_password_replay":
+            obj.get("enablePasswordReplay"),
+            "enable_automatic_password_replay":
+            obj.get("enableAutomaticPasswordReplay"),
+            "netmasks":
+            obj.get("netmasks"),
+            "country_codes":
+            obj.get("countryCodes"),
+            "white_list":
+            obj.get("whiteList"),
+            "email_test_mode":
+            obj.get("emailTestMode"),
+            "email_test_address":
+            obj.get("emailTestAddress"),
+            "username_empty_text":
+            obj.get("usernameEmptyText"),
+            "username_label":
+            obj.get("usernameLabel"),
+            "enable_automation_generation":
+            obj.get("enableAutomationGeneration"),
+            "password_replay_state":
+            obj.get("passwordReplayState"),
+            "system_notification_config":
+            GetOrgSettings200ResponseSystemNotificationConfig.from_dict(
+                obj.get("systemNotificationConfig"))
+            if obj.get("systemNotificationConfig") is not None else None,
+            "system_notification_emails":
+            obj.get("systemNotificationEmails"),
+            "login_url":
+            obj.get("loginUrl"),
+            "redirect_patterns":
+            obj.get("redirectPatterns"),
+            "style_hash":
+            obj.get("styleHash"),
+            "approval_config":
+            GetOrgSettings200ResponseApprovalConfig.from_dict(
+                obj.get("approvalConfig"))
+            if obj.get("approvalConfig") is not None else None,
+            "sso_partner_source":
+            obj.get("ssoPartnerSource")
         })
         return _obj
-
-

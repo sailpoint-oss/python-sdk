@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,14 +20,30 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, validator
 
+
 class AccountAggregation(BaseModel):
     """
     AccountAggregation
     """
-    start: Optional[datetime] = Field(None, description="When the aggregation started.")
-    status: Optional[StrictStr] = Field(None, description="STARTED - Aggregation started, but source account iteration has not completed.  ACCOUNTS_COLLECTED - Source account iteration completed, but all accounts have not yet been processed.  COMPLETED - Aggregation completed (*possibly with errors*).  CANCELLED - Aggregation cancelled by user.  RETRIED - Aggregation retried because of connectivity issues with the Virtual Appliance.  TERMINATED - Aggregation marked as failed after 3 tries after connectivity issues with the Virtual Appliance. ")
-    total_accounts: Optional[StrictInt] = Field(None, alias="totalAccounts", description="The total number of *NEW, CHANGED and DELETED* accounts that need to be processed for this aggregation. This does not include accounts that were unchanged since the previous aggregation. This can be zero if there were no new, changed or deleted accounts since the previous aggregation. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*")
-    processed_accounts: Optional[StrictInt] = Field(None, alias="processedAccounts", description="The number of *NEW, CHANGED and DELETED* accounts that have been processed so far. This reflects the number of accounts that have been processed at the time of the API call, and may increase on subsequent API calls while the status is ACCOUNTS_COLLECTED. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*")
+    start: Optional[datetime] = Field(
+        None, description="When the aggregation started.")
+    status: Optional[StrictStr] = Field(
+        None,
+        description=
+        "STARTED - Aggregation started, but source account iteration has not completed.  ACCOUNTS_COLLECTED - Source account iteration completed, but all accounts have not yet been processed.  COMPLETED - Aggregation completed (*possibly with errors*).  CANCELLED - Aggregation cancelled by user.  RETRIED - Aggregation retried because of connectivity issues with the Virtual Appliance.  TERMINATED - Aggregation marked as failed after 3 tries after connectivity issues with the Virtual Appliance. "
+    )
+    total_accounts: Optional[StrictInt] = Field(
+        None,
+        alias="totalAccounts",
+        description=
+        "The total number of *NEW, CHANGED and DELETED* accounts that need to be processed for this aggregation. This does not include accounts that were unchanged since the previous aggregation. This can be zero if there were no new, changed or deleted accounts since the previous aggregation. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*"
+    )
+    processed_accounts: Optional[StrictInt] = Field(
+        None,
+        alias="processedAccounts",
+        description=
+        "The number of *NEW, CHANGED and DELETED* accounts that have been processed so far. This reflects the number of accounts that have been processed at the time of the API call, and may increase on subsequent API calls while the status is ACCOUNTS_COLLECTED. *Only available when status is ACCOUNTS_COLLECTED or COMPLETED.*"
+    )
     __properties = ["start", "status", "totalAccounts", "processedAccounts"]
 
     @validator('status')
@@ -37,8 +52,11 @@ class AccountAggregation(BaseModel):
         if value is None:
             return value
 
-        if value not in ('STARTED', 'ACCOUNTS_COLLECTED', 'COMPLETED', 'CANCELLED', 'RETRIED', 'TERMINATED'):
-            raise ValueError("must be one of enum values ('STARTED', 'ACCOUNTS_COLLECTED', 'COMPLETED', 'CANCELLED', 'RETRIED', 'TERMINATED')")
+        if value not in ('STARTED', 'ACCOUNTS_COLLECTED', 'COMPLETED',
+                         'CANCELLED', 'RETRIED', 'TERMINATED'):
+            raise ValueError(
+                "must be one of enum values ('STARTED', 'ACCOUNTS_COLLECTED', 'COMPLETED', 'CANCELLED', 'RETRIED', 'TERMINATED')"
+            )
         return value
 
     class Config:
@@ -61,10 +79,7 @@ class AccountAggregation(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -77,11 +92,13 @@ class AccountAggregation(BaseModel):
             return AccountAggregation.parse_obj(obj)
 
         _obj = AccountAggregation.parse_obj({
-            "start": obj.get("start"),
-            "status": obj.get("status"),
-            "total_accounts": obj.get("totalAccounts"),
-            "processed_accounts": obj.get("processedAccounts")
+            "start":
+            obj.get("start"),
+            "status":
+            obj.get("status"),
+            "total_accounts":
+            obj.get("totalAccounts"),
+            "processed_accounts":
+            obj.get("processedAccounts")
         })
         return _obj
-
-

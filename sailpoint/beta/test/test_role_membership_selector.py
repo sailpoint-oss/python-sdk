@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.role_membership_selector import RoleMembershipSelector  # noqa: E501
+from sailpoint.beta.models.role_membership_selector import RoleMembershipSelector  # noqa: E501
+
 
 class TestRoleMembershipSelector(unittest.TestCase):
     """RoleMembershipSelector unit test stubs"""
@@ -37,19 +37,19 @@ class TestRoleMembershipSelector(unittest.TestCase):
         if include_optional:
             return RoleMembershipSelector(
                 type = 'IDENTITY_LIST',
-                criteria = beta.models.role_criteria_level1.RoleCriteriaLevel1(
+                criteria = sailpoint.beta.models.role_criteria_level1.RoleCriteriaLevel1(
                     operation = 'EQUALS', 
-                    key = beta.models.role_criteria_key.RoleCriteriaKey(
+                    key = sailpoint.beta.models.role_criteria_key.RoleCriteriaKey(
                         type = 'ACCOUNT', 
                         property = 'attribute.email', 
                         source_id = '2c9180867427f3a301745aec18211519', ), 
                     string_value = 'carlee.cert1c9f9b6fd@mailinator.com', 
                     children = [
-                        beta.models.role_criteria_level2.RoleCriteriaLevel2(
+                        sailpoint.beta.models.role_criteria_level2.RoleCriteriaLevel2(
                             string_value = 'carlee.cert1c9f9b6fd@mailinator.com', )
                         ], ),
                 identities = [
-                    beta.models.role_membership_identity.RoleMembershipIdentity(
+                    sailpoint.beta.models.role_membership_identity.RoleMembershipIdentity(
                         type = 'IDENTITY', 
                         id = '2c9180a46faadee4016fb4e018c20639', 
                         name = 'Thomas Edison', 
@@ -65,6 +65,7 @@ class TestRoleMembershipSelector(unittest.TestCase):
         """Test RoleMembershipSelector"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

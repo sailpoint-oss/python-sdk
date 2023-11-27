@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.slim_campaign import SlimCampaign
+from sailpoint.v3.models.slim_campaign import SlimCampaign
 
 # TODO update the JSON string below
 json = "{}"

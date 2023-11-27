@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.role_criteria_level2 import RoleCriteriaLevel2
+from sailpoint.v3.models.role_criteria_level2 import RoleCriteriaLevel2
 
 # TODO update the JSON string below
 json = "{}"

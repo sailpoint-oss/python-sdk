@@ -11,21 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class ActivateCampaignOptions(BaseModel):
     """
     ActivateCampaignOptions
     """
-    time_zone: Optional[StrictStr] = Field('Z', alias="timeZone", description="The timezone must be in a valid ISO 8601 format. Timezones in ISO 8601 are represented as UTC (represented as 'Z') or as an offset from UTC. The offset format can be +/-hh:mm, +/-hhmm, or +/-hh.")
+    time_zone: Optional[StrictStr] = Field(
+        'Z',
+        alias="timeZone",
+        description=
+        "The timezone must be in a valid ISO 8601 format. Timezones in ISO 8601 are represented as UTC (represented as 'Z') or as an offset from UTC. The offset format can be +/-hh:mm, +/-hhmm, or +/-hh."
+    )
     __properties = ["timeZone"]
 
     class Config:
@@ -48,10 +52,7 @@ class ActivateCampaignOptions(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -64,8 +65,7 @@ class ActivateCampaignOptions(BaseModel):
             return ActivateCampaignOptions.parse_obj(obj)
 
         _obj = ActivateCampaignOptions.parse_obj({
-            "time_zone": obj.get("timeZone") if obj.get("timeZone") is not None else 'Z'
+            "time_zone":
+            obj.get("timeZone") if obj.get("timeZone") is not None else 'Z'
         })
         return _obj
-
-

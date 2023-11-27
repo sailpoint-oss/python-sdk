@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.non_employee_record import NonEmployeeRecord
+from sailpoint.beta.models.non_employee_record import NonEmployeeRecord
 
 # TODO update the JSON string below
 json = "{}"

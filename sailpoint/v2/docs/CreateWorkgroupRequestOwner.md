@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v2.models.create_workgroup_request_owner import CreateWorkgroupRequestOwner
+from sailpoint.v2.models.create_workgroup_request_owner import CreateWorkgroupRequestOwner
 
 # TODO update the JSON string below
 json = "{}"

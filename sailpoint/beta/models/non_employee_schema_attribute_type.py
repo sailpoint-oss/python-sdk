@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class NonEmployeeSchemaAttributeType(str, Enum):
     """
     Enum representing the type of data a schema attribute accepts.
     """
-
     """
     allowed enum values
     """
@@ -37,5 +32,3 @@ class NonEmployeeSchemaAttributeType(str, Enum):
     def from_json(cls, json_str: str) -> NonEmployeeSchemaAttributeType:
         """Create an instance of NonEmployeeSchemaAttributeType from a JSON string"""
         return NonEmployeeSchemaAttributeType(json.loads(json_str))
-
-

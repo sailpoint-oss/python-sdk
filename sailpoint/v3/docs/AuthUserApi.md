@@ -1,4 +1,4 @@
-# v3.AuthUserApi
+# sailpoint.v3.AuthUserApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -22,14 +22,14 @@ This API returns the specified user's authentication system details. Requires se
 ```python
 import time
 import os
-import v3
-from v3.models.auth_user import AuthUser
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.auth_user import AuthUser
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -43,9 +43,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AuthUserApi(api_client)
+    api_instance = sailpoint.v3.AuthUserApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity ID
 
     try:
@@ -105,15 +105,15 @@ Update an existing user in the authentication system with a PATCH request.
 ```python
 import time
 import os
-import v3
-from v3.models.auth_user import AuthUser
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.auth_user import AuthUser
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -127,9 +127,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AuthUserApi(api_client)
+    api_instance = sailpoint.v3.AuthUserApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity ID
     json_patch_operation = [{op=replace, path=/capabilities, value=[ORG_ADMIN]}] # List[JsonPatchOperation] | A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   *   \"capabilities\"  A list of valid capabilities can be found using the GET ams/v3/authorization/authorization-capabilities/ endpoint. Capabilities can only be patched if they are administrator assignable, as indicated by the 'adminAssignable' field from the output of list authorization-capabilities. Capabilities that have a legacy group ('legacyGroup' field) need to be patched using the legacyGroup name (e.g. 'ORG_ADMIN'). Capabilities that are adminAssignable but do not have a legacyGroup can be patched using the ams id (e.g. 'cam:new-role').  A 400.1.1 Illegal update attempt detail code indicates that you attempted to PATCH a field that is not allowed.  Requires security scope of 'sp:auth-user:update' 
 

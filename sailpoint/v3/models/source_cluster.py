@@ -11,23 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class SourceCluster(BaseModel):
     """
     Reference to the associated Cluster  # noqa: E501
     """
-    type: StrictStr = Field(..., description="The type of object being referenced")
+    type: StrictStr = Field(...,
+                            description="The type of object being referenced")
     id: StrictStr = Field(..., description="ID of the cluster")
-    name: StrictStr = Field(..., description="Human-readable display name of the cluster")
+    name: StrictStr = Field(
+        ..., description="Human-readable display name of the cluster")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -57,10 +57,7 @@ class SourceCluster(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -78,5 +75,3 @@ class SourceCluster(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

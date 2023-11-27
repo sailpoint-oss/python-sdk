@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.iai_common_access_api import IAICommonAccessApi  # noqa: E501
+from sailpoint.beta.api.iai_common_access_api import IAICommonAccessApi  # noqa: E501
 
 
 class TestIAICommonAccessApi(unittest.TestCase):

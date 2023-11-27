@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+
 
 class ListConnectors200ResponseItemsInner(BaseModel):
     """
@@ -27,8 +26,11 @@ class ListConnectors200ResponseItemsInner(BaseModel):
     """
     application_xml: Optional[StrictStr] = Field(None, alias="applicationXml")
     class_name: Optional[StrictStr] = Field(None, alias="className")
-    connector_metadata: Optional[Dict[str, Any]] = Field(None, alias="connectorMetadata")
-    correlation_config_xml: Optional[StrictStr] = Field(None, alias="correlationConfigXml")
+    connector_metadata: Optional[Dict[str,
+                                      Any]] = Field(None,
+                                                    alias="connectorMetadata")
+    correlation_config_xml: Optional[StrictStr] = Field(
+        None, alias="correlationConfigXml")
     direct_connect: Optional[StrictBool] = Field(None, alias="directConnect")
     file_upload: Optional[StrictBool] = Field(None, alias="fileUpload")
     id: Optional[StrictInt] = None
@@ -37,13 +39,24 @@ class ListConnectors200ResponseItemsInner(BaseModel):
     scope: Optional[StrictStr] = None
     script_name: Optional[StrictStr] = Field(None, alias="scriptName")
     source_config: Optional[StrictStr] = Field(None, alias="sourceConfig")
-    source_config_from: Optional[StrictStr] = Field(None, alias="sourceConfigFrom")
-    source_config_xml: Optional[StrictStr] = Field(None, alias="sourceConfigXml")
+    source_config_from: Optional[StrictStr] = Field(None,
+                                                    alias="sourceConfigFrom")
+    source_config_xml: Optional[StrictStr] = Field(None,
+                                                   alias="sourceConfigXml")
     status: Optional[StrictStr] = None
-    translation_properties: Optional[Dict[str, Any]] = Field(None, alias="translationProperties")
+    translation_properties: Optional[Dict[str, Any]] = Field(
+        None, alias="translationProperties")
     type: Optional[StrictStr] = None
-    uploaded_files: Optional[conlist(Dict[str, Any])] = Field(None, alias="uploadedFiles")
-    __properties = ["applicationXml", "className", "connectorMetadata", "correlationConfigXml", "directConnect", "fileUpload", "id", "name", "s3Location", "scope", "scriptName", "sourceConfig", "sourceConfigFrom", "sourceConfigXml", "status", "translationProperties", "type", "uploadedFiles"]
+    uploaded_files: Optional[conlist(Dict[str,
+                                          Any])] = Field(None,
+                                                         alias="uploadedFiles")
+    __properties = [
+        "applicationXml", "className", "connectorMetadata",
+        "correlationConfigXml", "directConnect", "fileUpload", "id", "name",
+        "s3Location", "scope", "scriptName", "sourceConfig",
+        "sourceConfigFrom", "sourceConfigXml", "status",
+        "translationProperties", "type", "uploadedFiles"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -65,10 +78,7 @@ class ListConnectors200ResponseItemsInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if application_xml (nullable) is None
         # and __fields_set__ contains the field
         if self.application_xml is None and "application_xml" in self.__fields_set__:
@@ -116,25 +126,41 @@ class ListConnectors200ResponseItemsInner(BaseModel):
             return ListConnectors200ResponseItemsInner.parse_obj(obj)
 
         _obj = ListConnectors200ResponseItemsInner.parse_obj({
-            "application_xml": obj.get("applicationXml"),
-            "class_name": obj.get("className"),
-            "connector_metadata": obj.get("connectorMetadata"),
-            "correlation_config_xml": obj.get("correlationConfigXml"),
-            "direct_connect": obj.get("directConnect"),
-            "file_upload": obj.get("fileUpload"),
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "s3_location": obj.get("s3Location"),
-            "scope": obj.get("scope"),
-            "script_name": obj.get("scriptName"),
-            "source_config": obj.get("sourceConfig"),
-            "source_config_from": obj.get("sourceConfigFrom"),
-            "source_config_xml": obj.get("sourceConfigXml"),
-            "status": obj.get("status"),
-            "translation_properties": obj.get("translationProperties"),
-            "type": obj.get("type"),
-            "uploaded_files": obj.get("uploadedFiles")
+            "application_xml":
+            obj.get("applicationXml"),
+            "class_name":
+            obj.get("className"),
+            "connector_metadata":
+            obj.get("connectorMetadata"),
+            "correlation_config_xml":
+            obj.get("correlationConfigXml"),
+            "direct_connect":
+            obj.get("directConnect"),
+            "file_upload":
+            obj.get("fileUpload"),
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "s3_location":
+            obj.get("s3Location"),
+            "scope":
+            obj.get("scope"),
+            "script_name":
+            obj.get("scriptName"),
+            "source_config":
+            obj.get("sourceConfig"),
+            "source_config_from":
+            obj.get("sourceConfigFrom"),
+            "source_config_xml":
+            obj.get("sourceConfigXml"),
+            "status":
+            obj.get("status"),
+            "translation_properties":
+            obj.get("translationProperties"),
+            "type":
+            obj.get("type"),
+            "uploaded_files":
+            obj.get("uploadedFiles")
         })
         return _obj
-
-

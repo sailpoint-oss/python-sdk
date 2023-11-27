@@ -11,23 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.access_profile_usage_used_by_inner import AccessProfileUsageUsedByInner
+from sailpoint.beta.models.access_profile_usage_used_by_inner import AccessProfileUsageUsedByInner
+
 
 class AccessProfileUsage(BaseModel):
     """
     AccessProfileUsage
     """
-    access_profile_id: Optional[StrictStr] = Field(None, alias="accessProfileId", description="ID of the Access Profile that is in use")
-    used_by: Optional[conlist(AccessProfileUsageUsedByInner)] = Field(None, alias="usedBy", description="List of references to objects which are using the indicated Access Profile")
+    access_profile_id: Optional[StrictStr] = Field(
+        None,
+        alias="accessProfileId",
+        description="ID of the Access Profile that is in use")
+    used_by: Optional[conlist(AccessProfileUsageUsedByInner)] = Field(
+        None,
+        alias="usedBy",
+        description=
+        "List of references to objects which are using the indicated Access Profile"
+    )
     __properties = ["accessProfileId", "usedBy"]
 
     class Config:
@@ -50,10 +57,7 @@ class AccessProfileUsage(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in used_by (list)
         _items = []
         if self.used_by:
@@ -73,9 +77,11 @@ class AccessProfileUsage(BaseModel):
             return AccessProfileUsage.parse_obj(obj)
 
         _obj = AccessProfileUsage.parse_obj({
-            "access_profile_id": obj.get("accessProfileId"),
-            "used_by": [AccessProfileUsageUsedByInner.from_dict(_item) for _item in obj.get("usedBy")] if obj.get("usedBy") is not None else None
+            "access_profile_id":
+            obj.get("accessProfileId"),
+            "used_by": [
+                AccessProfileUsageUsedByInner.from_dict(_item)
+                for _item in obj.get("usedBy")
+            ] if obj.get("usedBy") is not None else None
         })
         return _obj
-
-

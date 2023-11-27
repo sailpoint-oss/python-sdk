@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.attribute_definition import AttributeDefinition  # noqa: E501
+from sailpoint.beta.models.attribute_definition import AttributeDefinition  # noqa: E501
+
 
 class TestAttributeDefinition(unittest.TestCase):
     """AttributeDefinition unit test stubs"""
@@ -38,7 +38,7 @@ class TestAttributeDefinition(unittest.TestCase):
             return AttributeDefinition(
                 name = 'sAMAccountName',
                 type = 'STRING',
-                var_schema = beta.models.attribute_definition_schema.AttributeDefinition_schema(
+                var_schema = sailpoint.beta.models.attribute_definition_schema.AttributeDefinition_schema(
                     type = 'CONNECTOR_SCHEMA', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'group', ),
@@ -56,6 +56,7 @@ class TestAttributeDefinition(unittest.TestCase):
         """Test AttributeDefinition"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

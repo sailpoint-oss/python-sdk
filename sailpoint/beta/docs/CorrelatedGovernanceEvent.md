@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.correlated_governance_event import CorrelatedGovernanceEvent
+from sailpoint.beta.models.correlated_governance_event import CorrelatedGovernanceEvent
 
 # TODO update the JSON string below
 json = "{}"

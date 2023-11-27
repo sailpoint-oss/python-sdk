@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted
+from sailpoint.beta.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted
 
 # TODO update the JSON string below
 json = "{}"

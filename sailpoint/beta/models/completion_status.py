@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class CompletionStatus(str, Enum):
     """
     The status after completion.
     """
-
     """
     allowed enum values
     """
@@ -38,5 +33,3 @@ class CompletionStatus(str, Enum):
     def from_json(cls, json_str: str) -> CompletionStatus:
         """Create an instance of CompletionStatus from a JSON string"""
         return CompletionStatus(json.loads(json_str))
-
-

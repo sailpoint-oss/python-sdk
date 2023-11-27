@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.message_catalog_dto import MessageCatalogDto  # noqa: E501
+from sailpoint.beta.models.message_catalog_dto import MessageCatalogDto  # noqa: E501
+
 
 class TestMessageCatalogDto(unittest.TestCase):
     """MessageCatalogDto unit test stubs"""
@@ -38,7 +38,7 @@ class TestMessageCatalogDto(unittest.TestCase):
             return MessageCatalogDto(
                 locale = 'en_US',
                 messages = [
-                    beta.models.resource_bundle_message.ResourceBundleMessage(
+                    sailpoint.beta.models.resource_bundle_message.ResourceBundleMessage(
                         key = 'recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_LOW', 
                         format = '{0,,\"i18n hint: percentage\"}% of identities with the same {1,,\"i18n hint: name of category feature\"} have this access. This information had a low impact on the overall score.', )
                     ]
@@ -52,6 +52,7 @@ class TestMessageCatalogDto(unittest.TestCase):
         """Test MessageCatalogDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

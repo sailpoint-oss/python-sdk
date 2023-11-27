@@ -1,4 +1,4 @@
-# cc.ApplicationsApi
+# sailpoint.cc.ApplicationsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
@@ -24,14 +24,14 @@ Create Application
 ```python
 import time
 import os
-import cc
-from cc.models.create_application_request import CreateApplicationRequest
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.models.create_application_request import CreateApplicationRequest
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -45,10 +45,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.ApplicationsApi(api_client)
-    create_application_request = cc.CreateApplicationRequest() # CreateApplicationRequest |  (optional)
+    api_instance = sailpoint.cc.ApplicationsApi(api_client)
+    create_application_request = sailpoint.cc.CreateApplicationRequest() # CreateApplicationRequest |  (optional)
 
     try:
         # Create Application
@@ -99,13 +99,13 @@ Delete Application
 ```python
 import time
 import os
-import cc
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -119,9 +119,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.ApplicationsApi(api_client)
+    api_instance = sailpoint.cc.ApplicationsApi(api_client)
     id = '12345' # str | 
 
     try:
@@ -171,14 +171,14 @@ Get Single Application
 ```python
 import time
 import os
-import cc
-from cc.models.get_application200_response import GetApplication200Response
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.models.get_application200_response import GetApplication200Response
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -192,9 +192,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.ApplicationsApi(api_client)
+    api_instance = sailpoint.cc.ApplicationsApi(api_client)
     id = '12345' # str | 
 
     try:
@@ -244,21 +244,21 @@ Get Access Profiles for Application
 ```python
 import time
 import os
-import cc
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.ApplicationsApi(api_client)
+    api_instance = sailpoint.cc.ApplicationsApi(api_client)
     id = '12345' # str | 
 
     try:
@@ -310,14 +310,14 @@ List Applications
 ```python
 import time
 import os
-import cc
-from cc.models.list_applications200_response_inner import ListApplications200ResponseInner
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.models.list_applications200_response_inner import ListApplications200ResponseInner
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -331,9 +331,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.ApplicationsApi(api_client)
+    api_instance = sailpoint.cc.ApplicationsApi(api_client)
 
     try:
         # List Applications
@@ -381,13 +381,13 @@ Update Application
 ```python
 import time
 import os
-import cc
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -401,9 +401,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.ApplicationsApi(api_client)
+    api_instance = sailpoint.cc.ApplicationsApi(api_client)
     id = '12345' # str | 
     request_body = None # Dict[str, object] |  (optional)
 

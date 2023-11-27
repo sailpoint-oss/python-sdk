@@ -11,21 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class SetLifecycleState200Response(BaseModel):
     """
     SetLifecycleState200Response
     """
-    account_activity_id: Optional[StrictStr] = Field(None, alias="accountActivityId", description="The ID of the IdentityRequest object that was generated when the workflow launches")
+    account_activity_id: Optional[StrictStr] = Field(
+        None,
+        alias="accountActivityId",
+        description=
+        "The ID of the IdentityRequest object that was generated when the workflow launches"
+    )
     __properties = ["accountActivityId"]
 
     class Config:
@@ -48,10 +52,7 @@ class SetLifecycleState200Response(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +64,6 @@ class SetLifecycleState200Response(BaseModel):
         if not isinstance(obj, dict):
             return SetLifecycleState200Response.parse_obj(obj)
 
-        _obj = SetLifecycleState200Response.parse_obj({
-            "account_activity_id": obj.get("accountActivityId")
-        })
+        _obj = SetLifecycleState200Response.parse_obj(
+            {"account_activity_id": obj.get("accountActivityId")})
         return _obj
-
-

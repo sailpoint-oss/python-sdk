@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class RoleInsightsIdentities(BaseModel):
     """
@@ -50,10 +49,7 @@ class RoleInsightsIdentities(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,10 +62,11 @@ class RoleInsightsIdentities(BaseModel):
             return RoleInsightsIdentities.parse_obj(obj)
 
         _obj = RoleInsightsIdentities.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "attributes": obj.get("attributes")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "attributes":
+            obj.get("attributes")
         })
         return _obj
-
-

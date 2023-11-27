@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.create_form_definition_request import CreateFormDefinitionRequest
+from sailpoint.beta.models.create_form_definition_request import CreateFormDefinitionRequest
 
 # TODO update the JSON string below
 json = "{}"

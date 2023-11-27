@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.aggregation_result import AggregationResult
+from sailpoint.v3.models.aggregation_result import AggregationResult
 
 # TODO update the JSON string below
 json = "{}"

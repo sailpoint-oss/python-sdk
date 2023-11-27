@@ -11,23 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class AccountAttributesChangedSource(BaseModel):
     """
     The source that contains the account.  # noqa: E501
     """
-    id: StrictStr = Field(..., description="ID of the object to which this reference applies")
-    type: StrictStr = Field(..., description="The type of object that is referenced")
-    name: StrictStr = Field(..., description="Human-readable display name of the object to which this reference applies")
+    id: StrictStr = Field(
+        ..., description="ID of the object to which this reference applies")
+    type: StrictStr = Field(
+        ..., description="The type of object that is referenced")
+    name: StrictStr = Field(
+        ...,
+        description=
+        "Human-readable display name of the object to which this reference applies"
+    )
     __properties = ["id", "type", "name"]
 
     @validator('type')
@@ -57,10 +61,7 @@ class AccountAttributesChangedSource(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -78,5 +79,3 @@ class AccountAttributesChangedSource(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

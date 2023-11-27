@@ -11,24 +11,33 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+
 
 class AttrSyncSourceAttributeConfig(BaseModel):
     """
     Specification of source attribute sync mapping configuration for an identity attribute  # noqa: E501
     """
     name: StrictStr = Field(..., description="Name of the identity attribute")
-    display_name: StrictStr = Field(..., alias="displayName", description="Display name of the identity attribute")
-    enabled: StrictBool = Field(..., description="Determines whether or not the attribute is enabled for synchronization")
-    target: StrictStr = Field(..., description="Name of the source account attribute to which the identity attribute value will be synchronized if enabled")
+    display_name: StrictStr = Field(
+        ...,
+        alias="displayName",
+        description="Display name of the identity attribute")
+    enabled: StrictBool = Field(
+        ...,
+        description=
+        "Determines whether or not the attribute is enabled for synchronization"
+    )
+    target: StrictStr = Field(
+        ...,
+        description=
+        "Name of the source account attribute to which the identity attribute value will be synchronized if enabled"
+    )
     __properties = ["name", "displayName", "enabled", "target"]
 
     class Config:
@@ -51,10 +60,7 @@ class AttrSyncSourceAttributeConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,11 +73,13 @@ class AttrSyncSourceAttributeConfig(BaseModel):
             return AttrSyncSourceAttributeConfig.parse_obj(obj)
 
         _obj = AttrSyncSourceAttributeConfig.parse_obj({
-            "name": obj.get("name"),
-            "display_name": obj.get("displayName"),
-            "enabled": obj.get("enabled"),
-            "target": obj.get("target")
+            "name":
+            obj.get("name"),
+            "display_name":
+            obj.get("displayName"),
+            "enabled":
+            obj.get("enabled"),
+            "target":
+            obj.get("target")
         })
         return _obj
-
-

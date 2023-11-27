@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
+from sailpoint.beta.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
 
 # TODO update the JSON string below
 json = "{}"

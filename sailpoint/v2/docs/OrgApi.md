@@ -1,4 +1,4 @@
-# v2.OrgApi
+# sailpoint.v2.OrgApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v2*
 
@@ -20,22 +20,22 @@ Retrieves information and operational settings for your org (as determined by th
 ```python
 import time
 import os
-import v2
-from v2.models.get_org_settings200_response import GetOrgSettings200Response
-from v2.rest import ApiException
+import sailpoint.v2
+from sailpoint.v2.models.get_org_settings200_response import GetOrgSettings200Response
+from sailpoint.v2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v2.Configuration(
+configuration = sailpoint.v2.Configuration(
     host = "https://sailpoint.api.identitynow.com/v2"
 )
 
 
 # Enter a context with an instance of the API client
-with v2.ApiClient(configuration) as api_client:
+with sailpoint.v2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v2.OrgApi(api_client)
+    api_instance = sailpoint.v2.OrgApi(api_client)
 
     try:
         # Retrieves your org settings.
@@ -83,24 +83,24 @@ Updates one or more attributes for your org.
 ```python
 import time
 import os
-import v2
-from v2.models.get_org_settings200_response import GetOrgSettings200Response
-from v2.models.update_org_settings_request import UpdateOrgSettingsRequest
-from v2.rest import ApiException
+import sailpoint.v2
+from sailpoint.v2.models.get_org_settings200_response import GetOrgSettings200Response
+from sailpoint.v2.models.update_org_settings_request import UpdateOrgSettingsRequest
+from sailpoint.v2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v2.Configuration(
+configuration = sailpoint.v2.Configuration(
     host = "https://sailpoint.api.identitynow.com/v2"
 )
 
 
 # Enter a context with an instance of the API client
-with v2.ApiClient(configuration) as api_client:
+with sailpoint.v2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v2.OrgApi(api_client)
-    update_org_settings_request = v2.UpdateOrgSettingsRequest() # UpdateOrgSettingsRequest | Org settings to update.
+    api_instance = sailpoint.v2.OrgApi(api_client)
+    update_org_settings_request = sailpoint.v2.UpdateOrgSettingsRequest() # UpdateOrgSettingsRequest | Org settings to update.
 
     try:
         # Updates one or more org attributes.

@@ -1,10 +1,10 @@
-# beta.IdentityAttributesApi
+# sailpoint.beta.IdentityAttributesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_identity_attribute**](IdentityAttributesApi.md#create_identity_attribute) | **POST** /identity-attributes/{name} | Create Identity Attribute
+[**create_identity_attribute**](IdentityAttributesApi.md#create_identity_attribute) | **POST** /identity-attributes | Create Identity Attribute
 [**delete_identity_attribute**](IdentityAttributesApi.md#delete_identity_attribute) | **DELETE** /identity-attributes/{name} | Delete Identity Attribute
 [**delete_identity_attributes_in_bulk**](IdentityAttributesApi.md#delete_identity_attributes_in_bulk) | **POST** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
 [**get_identity_attribute**](IdentityAttributesApi.md#get_identity_attribute) | **GET** /identity-attributes/{name} | Get Identity Attribute
@@ -26,14 +26,14 @@ This creates a new identity attribute.
 ```python
 import time
 import os
-import beta
-from beta.models.identity_attribute import IdentityAttribute
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_attribute import IdentityAttribute
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -47,10 +47,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityAttributesApi(api_client)
-    identity_attribute = beta.IdentityAttribute() # IdentityAttribute | 
+    api_instance = sailpoint.beta.IdentityAttributesApi(api_client)
+    identity_attribute = sailpoint.beta.IdentityAttribute() # IdentityAttribute | 
 
     try:
         # Create Identity Attribute
@@ -109,13 +109,13 @@ This deletes an identity attribute for a given technical name.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -129,9 +129,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityAttributesApi(api_client)
+    api_instance = sailpoint.beta.IdentityAttributesApi(api_client)
     name = 'displayName' # str | The attribute's technical name.
 
     try:
@@ -189,14 +189,14 @@ This deletes identity attributes for a given set of technical names.
 ```python
 import time
 import os
-import beta
-from beta.models.identity_attribute_names import IdentityAttributeNames
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_attribute_names import IdentityAttributeNames
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -210,10 +210,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityAttributesApi(api_client)
-    identity_attribute_names = beta.IdentityAttributeNames() # IdentityAttributeNames | 
+    api_instance = sailpoint.beta.IdentityAttributesApi(api_client)
+    identity_attribute_names = sailpoint.beta.IdentityAttributeNames() # IdentityAttributeNames | 
 
     try:
         # Bulk delete Identity Attributes
@@ -270,14 +270,14 @@ This gets an identity attribute for a given technical name.
 ```python
 import time
 import os
-import beta
-from beta.models.identity_attribute import IdentityAttribute
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_attribute import IdentityAttribute
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -291,9 +291,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityAttributesApi(api_client)
+    api_instance = sailpoint.beta.IdentityAttributesApi(api_client)
     name = 'displayName' # str | The attribute's technical name.
 
     try:
@@ -353,14 +353,14 @@ This gets a collection of identity attributes.
 ```python
 import time
 import os
-import beta
-from beta.models.identity_attribute import IdentityAttribute
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_attribute import IdentityAttribute
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -374,9 +374,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityAttributesApi(api_client)
+    api_instance = sailpoint.beta.IdentityAttributesApi(api_client)
     include_system = False # bool | Include \"system\" attributes in the response. (optional) (default to False)
     include_silent = False # bool | Include \"silent\" attributes in the response. (optional) (default to False)
     searchable_only = False # bool | Include only \"searchable\" attributes in the response. (optional) (default to False)
@@ -441,14 +441,14 @@ This updates an existing identity attribute.
 ```python
 import time
 import os
-import beta
-from beta.models.identity_attribute import IdentityAttribute
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_attribute import IdentityAttribute
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -462,11 +462,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityAttributesApi(api_client)
+    api_instance = sailpoint.beta.IdentityAttributesApi(api_client)
     name = 'displayName' # str | The attribute's technical name.
-    identity_attribute = beta.IdentityAttribute() # IdentityAttribute | 
+    identity_attribute = sailpoint.beta.IdentityAttribute() # IdentityAttribute | 
 
     try:
         # Update Identity Attribute
@@ -502,7 +502,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | The identity attribute was created successfully |  -  |
+**202** | The identity attribute was updated successfully |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

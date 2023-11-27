@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.sp_config_message import SpConfigMessage  # noqa: E501
+from sailpoint.v3.models.sp_config_message import SpConfigMessage  # noqa: E501
+
 
 class TestSpConfigMessage(unittest.TestCase):
     """SpConfigMessage unit test stubs"""
@@ -52,6 +52,7 @@ class TestSpConfigMessage(unittest.TestCase):
         """Test SpConfigMessage"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

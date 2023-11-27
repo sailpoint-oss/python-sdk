@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.condition_rule import ConditionRule
+from sailpoint.beta.models.condition_rule import ConditionRule
 
 # TODO update the JSON string below
 json = "{}"

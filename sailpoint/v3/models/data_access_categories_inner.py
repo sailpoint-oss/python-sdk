@@ -11,22 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
+
 
 class DataAccessCategoriesInner(BaseModel):
     """
     DataAccessCategoriesInner
     """
-    value: Optional[StrictStr] = Field(None, description="Value of the category")
-    match_count: Optional[StrictInt] = Field(None, alias="matchCount", description="Number of matched for each category")
+    value: Optional[StrictStr] = Field(None,
+                                       description="Value of the category")
+    match_count: Optional[StrictInt] = Field(
+        None,
+        alias="matchCount",
+        description="Number of matched for each category")
     __properties = ["value", "matchCount"]
 
     class Config:
@@ -49,10 +52,7 @@ class DataAccessCategoriesInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +65,9 @@ class DataAccessCategoriesInner(BaseModel):
             return DataAccessCategoriesInner.parse_obj(obj)
 
         _obj = DataAccessCategoriesInner.parse_obj({
-            "value": obj.get("value"),
-            "match_count": obj.get("matchCount")
+            "value":
+            obj.get("value"),
+            "match_count":
+            obj.get("matchCount")
         })
         return _obj
-
-

@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.event import Event
+from sailpoint.v3.models.event import Event
 
 # TODO update the JSON string below
 json = "{}"

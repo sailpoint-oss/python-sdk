@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class SearchFilterType(str, Enum):
     """
     Enum representing the currently supported filter aggregation types. Additional values may be added in the future without notice.
     """
-
     """
     allowed enum values
     """
@@ -35,5 +30,3 @@ class SearchFilterType(str, Enum):
     def from_json(cls, json_str: str) -> SearchFilterType:
         """Create an instance of SearchFilterType from a JSON string"""
         return SearchFilterType(json.loads(json_str))
-
-

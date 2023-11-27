@@ -11,21 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class CampaignCompleteOptions(BaseModel):
     """
     CampaignCompleteOptions
     """
-    auto_complete_action: Optional[StrictStr] = Field('APPROVE', alias="autoCompleteAction", description="Determines whether to auto-approve(APPROVE) or auto-revoke(REVOKE) upon campaign completion.")
+    auto_complete_action: Optional[StrictStr] = Field(
+        'APPROVE',
+        alias="autoCompleteAction",
+        description=
+        "Determines whether to auto-approve(APPROVE) or auto-revoke(REVOKE) upon campaign completion."
+    )
     __properties = ["autoCompleteAction"]
 
     @validator('auto_complete_action')
@@ -35,7 +39,8 @@ class CampaignCompleteOptions(BaseModel):
             return value
 
         if value not in ('APPROVE', 'REVOKE'):
-            raise ValueError("must be one of enum values ('APPROVE', 'REVOKE')")
+            raise ValueError(
+                "must be one of enum values ('APPROVE', 'REVOKE')")
         return value
 
     class Config:
@@ -58,10 +63,7 @@ class CampaignCompleteOptions(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -74,8 +76,8 @@ class CampaignCompleteOptions(BaseModel):
             return CampaignCompleteOptions.parse_obj(obj)
 
         _obj = CampaignCompleteOptions.parse_obj({
-            "auto_complete_action": obj.get("autoCompleteAction") if obj.get("autoCompleteAction") is not None else 'APPROVE'
+            "auto_complete_action":
+            obj.get("autoCompleteAction")
+            if obj.get("autoCompleteAction") is not None else 'APPROVE'
         })
         return _obj
-
-

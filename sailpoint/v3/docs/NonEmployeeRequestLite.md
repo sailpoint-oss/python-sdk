@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.non_employee_request_lite import NonEmployeeRequestLite
+from sailpoint.v3.models.non_employee_request_lite import NonEmployeeRequestLite
 
 # TODO update the JSON string below
 json = "{}"

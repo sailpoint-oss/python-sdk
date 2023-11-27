@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.entitlement_dto import EntitlementDto  # noqa: E501
+from sailpoint.v3.models.entitlement_dto import EntitlementDto  # noqa: E501
+
 
 class TestEntitlementDto(unittest.TestCase):
     """EntitlementDto unit test stubs"""
@@ -47,7 +47,7 @@ class TestEntitlementDto(unittest.TestCase):
                 source_schema_object_type = 'group',
                 privileged = False,
                 cloud_governed = False,
-                source = v3.models.entitlement_source.EntitlementSource(
+                source = sailpoint.v3.models.entitlement_source.EntitlementSource(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', )
@@ -62,6 +62,7 @@ class TestEntitlementDto(unittest.TestCase):
         """Test EntitlementDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

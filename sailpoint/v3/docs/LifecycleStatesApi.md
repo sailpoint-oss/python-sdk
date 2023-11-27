@@ -1,4 +1,4 @@
-# v3.LifecycleStatesApi
+# sailpoint.v3.LifecycleStatesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -26,14 +26,14 @@ This API creates a new Lifecycle State. A token with ORG_ADMIN or API authority 
 ```python
 import time
 import os
-import v3
-from v3.models.lifecycle_state import LifecycleState
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.lifecycle_state import LifecycleState
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -47,11 +47,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.LifecycleStatesApi(api_client)
+    api_instance = sailpoint.v3.LifecycleStatesApi(api_client)
     identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Identity Profile ID
-    lifecycle_state = v3.LifecycleState() # LifecycleState | Lifecycle State
+    lifecycle_state = sailpoint.v3.LifecycleState() # LifecycleState | Lifecycle State
 
     try:
         # Create Lifecycle State
@@ -110,14 +110,14 @@ This endpoint deletes the Lifecycle State using its ID. A token with API, or ORG
 ```python
 import time
 import os
-import v3
-from v3.models.lifecyclestate_deleted import LifecyclestateDeleted
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.lifecyclestate_deleted import LifecyclestateDeleted
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -131,9 +131,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.LifecycleStatesApi(api_client)
+    api_instance = sailpoint.v3.LifecycleStatesApi(api_client)
     identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity Profile ID
     lifecycle_state_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Lifecycle State ID
 
@@ -195,14 +195,14 @@ This endpoint retrieves a Lifecycle State. A token with ORG_ADMIN or API authori
 ```python
 import time
 import os
-import v3
-from v3.models.lifecycle_state import LifecycleState
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.lifecycle_state import LifecycleState
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -216,9 +216,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.LifecycleStatesApi(api_client)
+    api_instance = sailpoint.v3.LifecycleStatesApi(api_client)
     identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity Profile ID
     lifecycle_state_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Lifecycle State ID
 
@@ -280,14 +280,14 @@ This end-point lists all the LifecycleStates associated with IdentityProfiles. A
 ```python
 import time
 import os
-import v3
-from v3.models.lifecycle_state import LifecycleState
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.lifecycle_state import LifecycleState
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -301,9 +301,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.LifecycleStatesApi(api_client)
+    api_instance = sailpoint.v3.LifecycleStatesApi(api_client)
     identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The IdentityProfile id
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -370,15 +370,15 @@ This endpoint will set/update an identity's lifecycle state to the one provided 
 ```python
 import time
 import os
-import v3
-from v3.models.set_lifecycle_state200_response import SetLifecycleState200Response
-from v3.models.set_lifecycle_state_request import SetLifecycleStateRequest
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.set_lifecycle_state200_response import SetLifecycleState200Response
+from sailpoint.v3.models.set_lifecycle_state_request import SetLifecycleStateRequest
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -392,11 +392,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.LifecycleStatesApi(api_client)
+    api_instance = sailpoint.v3.LifecycleStatesApi(api_client)
     identity_id = '2c9180857893f1290178944561990364' # str | The ID of the identity to update
-    set_lifecycle_state_request = v3.SetLifecycleStateRequest() # SetLifecycleStateRequest | 
+    set_lifecycle_state_request = sailpoint.v3.SetLifecycleStateRequest() # SetLifecycleStateRequest | 
 
     try:
         # Set Lifecycle State
@@ -456,15 +456,15 @@ This endpoint updates individual Lifecycle State fields using the [JSON Patch](h
 ```python
 import time
 import os
-import v3
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.models.lifecycle_state import LifecycleState
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.lifecycle_state import LifecycleState
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -478,9 +478,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.LifecycleStatesApi(api_client)
+    api_instance = sailpoint.v3.LifecycleStatesApi(api_client)
     identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | Identity Profile ID
     lifecycle_state_id = 'ef38f94347e94562b5bb8424a56397d8' # str | Lifecycle State ID
     json_patch_operation = [{op=replace, path=/description, value=Updated description!}, {op=replace, path=/accessProfileIds, value=[2c918087742bab150174407a80f3125e, 2c918087742bab150174407a80f3124f]}, {op=replace, path=/accountActions, value=[{action=ENABLE, sourceIds=[2c9180846a2f82fb016a481c1b1560c5, 2c9180846a2f82fb016a481c1b1560cc]}, {action=DISABLE, sourceIds=[2c91808869a0c9980169a207258513fb]}]}, {op=replace, path=/emailNotificationOption, value={notifyManagers=true, notifyAllAdmins=false, notifySpecificUsers=false, emailAddressList=[]}}] # List[JsonPatchOperation] | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption 

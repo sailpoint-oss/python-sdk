@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig  # noqa: E501
+from sailpoint.beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig  # noqa: E501
+
 
 class TestSourceEntitlementRequestConfig(unittest.TestCase):
     """SourceEntitlementRequestConfig unit test stubs"""
@@ -26,7 +26,8 @@ class TestSourceEntitlementRequestConfig(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SourceEntitlementRequestConfig:
+    def make_instance(self,
+                      include_optional) -> SourceEntitlementRequestConfig:
         """Test SourceEntitlementRequestConfig
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -36,9 +37,9 @@ class TestSourceEntitlementRequestConfig(unittest.TestCase):
         model = SourceEntitlementRequestConfig()  # noqa: E501
         if include_optional:
             return SourceEntitlementRequestConfig(
-                access_request_config = beta.models.entitlement_access_request_config.EntitlementAccessRequestConfig(
+                access_request_config = sailpoint.beta.models.entitlement_access_request_config.EntitlementAccessRequestConfig(
                     approval_schemes = [
-                        beta.models.entitlement_approval_scheme.EntitlementApprovalScheme(
+                        sailpoint.beta.models.entitlement_approval_scheme.EntitlementApprovalScheme(
                             approver_type = 'GOVERNANCE_GROUP', 
                             approver_id = 'e3eab852-8315-467f-9de7-70eda97f63c8', )
                         ], 
@@ -54,6 +55,7 @@ class TestSourceEntitlementRequestConfig(unittest.TestCase):
         """Test SourceEntitlementRequestConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

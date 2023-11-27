@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class StandardLevel(str, Enum):
     """
     Standard Log4j log level
     """
-
     """
     allowed enum values
     """
@@ -41,5 +36,3 @@ class StandardLevel(str, Enum):
     def from_json(cls, json_str: str) -> StandardLevel:
         """Create an instance of StandardLevel from a JSON string"""
         return StandardLevel(json.loads(json_str))
-
-

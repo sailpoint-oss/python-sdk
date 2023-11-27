@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.expansion_item import ExpansionItem  # noqa: E501
+from sailpoint.v3.models.expansion_item import ExpansionItem  # noqa: E501
+
 
 class TestExpansionItem(unittest.TestCase):
     """ExpansionItem unit test stubs"""
@@ -40,7 +40,7 @@ class TestExpansionItem(unittest.TestCase):
                 cause = 'Role',
                 name = 'smartsheet-role',
                 attribute_requests = [
-                    v3.models.attribute_request.AttributeRequest(
+                    sailpoint.v3.models.attribute_request.AttributeRequest(
                         name = 'groups', 
                         op = 'Add', 
                         value = '3203537556531076', )
@@ -56,6 +56,7 @@ class TestExpansionItem(unittest.TestCase):
         """Test ExpansionItem"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

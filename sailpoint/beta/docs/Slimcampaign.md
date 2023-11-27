@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.slimcampaign import Slimcampaign
+from sailpoint.beta.models.slimcampaign import Slimcampaign
 
 # TODO update the JSON string below
 json = "{}"

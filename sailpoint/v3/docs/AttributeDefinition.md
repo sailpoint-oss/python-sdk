@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.attribute_definition import AttributeDefinition
+from sailpoint.v3.models.attribute_definition import AttributeDefinition
 
 # TODO update the JSON string below
 json = "{}"

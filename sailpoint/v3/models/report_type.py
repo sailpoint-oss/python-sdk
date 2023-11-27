@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class ReportType(str, Enum):
     """
     type of a Report
     """
-
     """
     allowed enum values
     """
@@ -38,5 +33,3 @@ class ReportType(str, Enum):
     def from_json(cls, json_str: str) -> ReportType:
         """Create an instance of ReportType from a JSON string"""
         return ReportType(json.loads(json_str))
-
-

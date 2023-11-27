@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,29 +19,58 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
-from beta.models.identity_attribute_config1 import IdentityAttributeConfig1
-from beta.models.identity_exception_report_reference1 import IdentityExceptionReportReference1
-from beta.models.identity_profile1_all_of_authoritative_source import IdentityProfile1AllOfAuthoritativeSource
-from beta.models.identity_profile_all_of_owner import IdentityProfileAllOfOwner
+from sailpoint.beta.models.identity_attribute_config1 import IdentityAttributeConfig1
+from sailpoint.beta.models.identity_exception_report_reference1 import IdentityExceptionReportReference1
+from sailpoint.beta.models.identity_profile1_all_of_authoritative_source import IdentityProfile1AllOfAuthoritativeSource
+from sailpoint.beta.models.identity_profile_all_of_owner import IdentityProfileAllOfOwner
+
 
 class IdentityProfile1(BaseModel):
     """
     IdentityProfile1
     """
-    id: Optional[StrictStr] = Field(None, description="System-generated unique ID of the Object")
+    id: Optional[StrictStr] = Field(
+        None, description="System-generated unique ID of the Object")
     name: StrictStr = Field(..., description="Name of the Object")
-    created: Optional[datetime] = Field(None, description="Creation date of the Object")
-    modified: Optional[datetime] = Field(None, description="Last modification date of the Object")
-    description: Optional[StrictStr] = Field(None, description="The description of the Identity Profile.")
+    created: Optional[datetime] = Field(
+        None, description="Creation date of the Object")
+    modified: Optional[datetime] = Field(
+        None, description="Last modification date of the Object")
+    description: Optional[StrictStr] = Field(
+        None, description="The description of the Identity Profile.")
     owner: Optional[IdentityProfileAllOfOwner] = None
-    priority: Optional[StrictInt] = Field(None, description="The priority for an Identity Profile.")
-    authoritative_source: IdentityProfile1AllOfAuthoritativeSource = Field(..., alias="authoritativeSource")
-    identity_refresh_required: Optional[StrictBool] = Field(False, alias="identityRefreshRequired", description="True if a identity refresh is needed. Typically triggered when a change on the source has been made.")
-    identity_count: Optional[StrictInt] = Field(None, alias="identityCount", description="The number of identities that belong to the Identity Profile.")
-    identity_attribute_config: Optional[IdentityAttributeConfig1] = Field(None, alias="identityAttributeConfig")
-    identity_exception_report_reference: Optional[IdentityExceptionReportReference1] = Field(None, alias="identityExceptionReportReference")
-    has_time_based_attr: Optional[StrictBool] = Field(False, alias="hasTimeBasedAttr", description="Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile.")
-    __properties = ["id", "name", "created", "modified", "description", "owner", "priority", "authoritativeSource", "identityRefreshRequired", "identityCount", "identityAttributeConfig", "identityExceptionReportReference", "hasTimeBasedAttr"]
+    priority: Optional[StrictInt] = Field(
+        None, description="The priority for an Identity Profile.")
+    authoritative_source: IdentityProfile1AllOfAuthoritativeSource = Field(
+        ..., alias="authoritativeSource")
+    identity_refresh_required: Optional[StrictBool] = Field(
+        False,
+        alias="identityRefreshRequired",
+        description=
+        "True if a identity refresh is needed. Typically triggered when a change on the source has been made."
+    )
+    identity_count: Optional[StrictInt] = Field(
+        None,
+        alias="identityCount",
+        description=
+        "The number of identities that belong to the Identity Profile.")
+    identity_attribute_config: Optional[IdentityAttributeConfig1] = Field(
+        None, alias="identityAttributeConfig")
+    identity_exception_report_reference: Optional[
+        IdentityExceptionReportReference1] = Field(
+            None, alias="identityExceptionReportReference")
+    has_time_based_attr: Optional[StrictBool] = Field(
+        False,
+        alias="hasTimeBasedAttr",
+        description=
+        "Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile."
+    )
+    __properties = [
+        "id", "name", "created", "modified", "description", "owner",
+        "priority", "authoritativeSource", "identityRefreshRequired",
+        "identityCount", "identityAttributeConfig",
+        "identityExceptionReportReference", "hasTimeBasedAttr"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -66,9 +94,9 @@ class IdentityProfile1(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "id",
-                            "created",
-                            "modified",
+                              "id",
+                              "created",
+                              "modified",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -79,10 +107,14 @@ class IdentityProfile1(BaseModel):
             _dict['authoritativeSource'] = self.authoritative_source.to_dict()
         # override the default output from pydantic by calling `to_dict()` of identity_attribute_config
         if self.identity_attribute_config:
-            _dict['identityAttributeConfig'] = self.identity_attribute_config.to_dict()
+            _dict[
+                'identityAttributeConfig'] = self.identity_attribute_config.to_dict(
+                )
         # override the default output from pydantic by calling `to_dict()` of identity_exception_report_reference
         if self.identity_exception_report_reference:
-            _dict['identityExceptionReportReference'] = self.identity_exception_report_reference.to_dict()
+            _dict[
+                'identityExceptionReportReference'] = self.identity_exception_report_reference.to_dict(
+                )
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -110,20 +142,40 @@ class IdentityProfile1(BaseModel):
             return IdentityProfile1.parse_obj(obj)
 
         _obj = IdentityProfile1.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "description": obj.get("description"),
-            "owner": IdentityProfileAllOfOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "priority": obj.get("priority"),
-            "authoritative_source": IdentityProfile1AllOfAuthoritativeSource.from_dict(obj.get("authoritativeSource")) if obj.get("authoritativeSource") is not None else None,
-            "identity_refresh_required": obj.get("identityRefreshRequired") if obj.get("identityRefreshRequired") is not None else False,
-            "identity_count": obj.get("identityCount"),
-            "identity_attribute_config": IdentityAttributeConfig1.from_dict(obj.get("identityAttributeConfig")) if obj.get("identityAttributeConfig") is not None else None,
-            "identity_exception_report_reference": IdentityExceptionReportReference1.from_dict(obj.get("identityExceptionReportReference")) if obj.get("identityExceptionReportReference") is not None else None,
-            "has_time_based_attr": obj.get("hasTimeBasedAttr") if obj.get("hasTimeBasedAttr") is not None else False
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified"),
+            "description":
+            obj.get("description"),
+            "owner":
+            IdentityProfileAllOfOwner.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "priority":
+            obj.get("priority"),
+            "authoritative_source":
+            IdentityProfile1AllOfAuthoritativeSource.from_dict(
+                obj.get("authoritativeSource"))
+            if obj.get("authoritativeSource") is not None else None,
+            "identity_refresh_required":
+            obj.get("identityRefreshRequired")
+            if obj.get("identityRefreshRequired") is not None else False,
+            "identity_count":
+            obj.get("identityCount"),
+            "identity_attribute_config":
+            IdentityAttributeConfig1.from_dict(
+                obj.get("identityAttributeConfig"))
+            if obj.get("identityAttributeConfig") is not None else None,
+            "identity_exception_report_reference":
+            IdentityExceptionReportReference1.from_dict(
+                obj.get("identityExceptionReportReference")) if
+            obj.get("identityExceptionReportReference") is not None else None,
+            "has_time_based_attr":
+            obj.get("hasTimeBasedAttr")
+            if obj.get("hasTimeBasedAttr") is not None else False
         })
         return _obj
-
-

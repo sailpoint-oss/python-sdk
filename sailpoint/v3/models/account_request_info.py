@@ -11,25 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from v3.models.requestable_object_type import RequestableObjectType
+from sailpoint.v3.models.requestable_object_type import RequestableObjectType
+
 
 class AccountRequestInfo(BaseModel):
     """
     If an account activity item is associated with an access request, captures details of that request.  # noqa: E501
     """
-    requested_object_id: Optional[StrictStr] = Field(None, alias="requestedObjectId", description="Id of requested object")
-    requested_object_name: Optional[StrictStr] = Field(None, alias="requestedObjectName", description="Human-readable name of requested object")
-    requested_object_type: Optional[RequestableObjectType] = Field(None, alias="requestedObjectType")
-    __properties = ["requestedObjectId", "requestedObjectName", "requestedObjectType"]
+    requested_object_id: Optional[StrictStr] = Field(
+        None, alias="requestedObjectId", description="Id of requested object")
+    requested_object_name: Optional[StrictStr] = Field(
+        None,
+        alias="requestedObjectName",
+        description="Human-readable name of requested object")
+    requested_object_type: Optional[RequestableObjectType] = Field(
+        None, alias="requestedObjectType")
+    __properties = [
+        "requestedObjectId", "requestedObjectName", "requestedObjectType"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -51,10 +57,7 @@ class AccountRequestInfo(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,10 +70,11 @@ class AccountRequestInfo(BaseModel):
             return AccountRequestInfo.parse_obj(obj)
 
         _obj = AccountRequestInfo.parse_obj({
-            "requested_object_id": obj.get("requestedObjectId"),
-            "requested_object_name": obj.get("requestedObjectName"),
-            "requested_object_type": obj.get("requestedObjectType")
+            "requested_object_id":
+            obj.get("requestedObjectId"),
+            "requested_object_name":
+            obj.get("requestedObjectName"),
+            "requested_object_type":
+            obj.get("requestedObjectType")
         })
         return _obj
-
-

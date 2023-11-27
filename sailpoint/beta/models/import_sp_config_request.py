@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional, Union
 from pydantic import BaseModel, Field, StrictBytes, StrictStr
-from beta.models.import_options import ImportOptions
+from sailpoint.beta.models.import_options import ImportOptions
+
 
 class ImportSpConfigRequest(BaseModel):
     """
     ImportSpConfigRequest
     """
-    data: Union[StrictBytes, StrictStr] = Field(..., description="JSON file containing the objects to be imported.")
+    data: Union[StrictBytes, StrictStr] = Field(
+        ..., description="JSON file containing the objects to be imported.")
     options: Optional[ImportOptions] = None
     __properties = ["data", "options"]
 
@@ -50,10 +50,7 @@ class ImportSpConfigRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of options
         if self.options:
             _dict['options'] = self.options.to_dict()
@@ -69,9 +66,10 @@ class ImportSpConfigRequest(BaseModel):
             return ImportSpConfigRequest.parse_obj(obj)
 
         _obj = ImportSpConfigRequest.parse_obj({
-            "data": obj.get("data"),
-            "options": ImportOptions.from_dict(obj.get("options")) if obj.get("options") is not None else None
+            "data":
+            obj.get("data"),
+            "options":
+            ImportOptions.from_dict(obj.get("options"))
+            if obj.get("options") is not None else None
         })
         return _obj
-
-

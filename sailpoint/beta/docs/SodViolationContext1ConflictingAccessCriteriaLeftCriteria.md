@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.sod_violation_context1_conflicting_access_criteria_left_criteria import SodViolationContext1ConflictingAccessCriteriaLeftCriteria
+from sailpoint.beta.models.sod_violation_context1_conflicting_access_criteria_left_criteria import SodViolationContext1ConflictingAccessCriteriaLeftCriteria
 
 # TODO update the JSON string below
 json = "{}"

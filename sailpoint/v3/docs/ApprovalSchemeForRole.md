@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.approval_scheme_for_role import ApprovalSchemeForRole
+from sailpoint.v3.models.approval_scheme_for_role import ApprovalSchemeForRole
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,17 +19,21 @@ import json
 from datetime import datetime
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field
-from beta.models.managed_client_status_enum import ManagedClientStatusEnum
-from beta.models.managed_client_type import ManagedClientType
+from sailpoint.beta.models.managed_client_status_enum import ManagedClientStatusEnum
+from sailpoint.beta.models.managed_client_type import ManagedClientType
+
 
 class ManagedClientStatus(BaseModel):
     """
     Managed Client Status  # noqa: E501
     """
-    body: Dict[str, Any] = Field(..., description="ManagedClientStatus body information")
+    body: Dict[str,
+               Any] = Field(...,
+                            description="ManagedClientStatus body information")
     status: ManagedClientStatusEnum = Field(...)
     type: Optional[ManagedClientType] = Field(...)
-    timestamp: datetime = Field(..., description="timestamp on the Client Status update")
+    timestamp: datetime = Field(
+        ..., description="timestamp on the Client Status update")
     __properties = ["body", "status", "type", "timestamp"]
 
     class Config:
@@ -53,10 +56,7 @@ class ManagedClientStatus(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if type (nullable) is None
         # and __fields_set__ contains the field
         if self.type is None and "type" in self.__fields_set__:
@@ -80,5 +80,3 @@ class ManagedClientStatus(BaseModel):
             "timestamp": obj.get("timestamp")
         })
         return _obj
-
-

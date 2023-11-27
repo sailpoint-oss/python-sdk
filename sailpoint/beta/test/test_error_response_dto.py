@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.error_response_dto import ErrorResponseDto  # noqa: E501
+from sailpoint.beta.models.error_response_dto import ErrorResponseDto  # noqa: E501
+
 
 class TestErrorResponseDto(unittest.TestCase):
     """ErrorResponseDto unit test stubs"""
@@ -39,13 +39,13 @@ class TestErrorResponseDto(unittest.TestCase):
                 detail_code = '400.1 Bad Request Content',
                 tracking_id = 'e7eab60924f64aa284175b9fa3309599',
                 messages = [
-                    beta.models.error_message_dto.ErrorMessageDto(
+                    sailpoint.beta.models.error_message_dto.ErrorMessageDto(
                         locale = 'en-US', 
                         locale_origin = 'DEFAULT', 
                         text = 'The request was syntactically correct but its content is semantically invalid.', )
                     ],
                 causes = [
-                    beta.models.error_message_dto.ErrorMessageDto(
+                    sailpoint.beta.models.error_message_dto.ErrorMessageDto(
                         locale = 'en-US', 
                         locale_origin = 'DEFAULT', 
                         text = 'The request was syntactically correct but its content is semantically invalid.', )
@@ -60,6 +60,7 @@ class TestErrorResponseDto(unittest.TestCase):
         """Test ErrorResponseDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

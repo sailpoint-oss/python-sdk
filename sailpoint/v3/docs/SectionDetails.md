@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.section_details import SectionDetails
+from sailpoint.v3.models.section_details import SectionDetails
 
 # TODO update the JSON string below
 json = "{}"

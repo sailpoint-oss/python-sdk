@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class ProvisioningState(str, Enum):
     """
     Provisioning state of an account activity item
     """
-
     """
     allowed enum values
     """
@@ -40,5 +35,3 @@ class ProvisioningState(str, Enum):
     def from_json(cls, json_str: str) -> ProvisioningState:
         """Create an instance of ProvisioningState from a JSON string"""
         return ProvisioningState(json.loads(json_str))
-
-

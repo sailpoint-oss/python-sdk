@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.form_element_preview_request import FormElementPreviewRequest
+from sailpoint.beta.models.form_element_preview_request import FormElementPreviewRequest
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,22 +20,43 @@ from datetime import datetime
 from typing import Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, validator
 
+
 class AccessRequestItem(BaseModel):
     """
     AccessRequestItem
     """
-    type: StrictStr = Field(..., description="The type of the item being requested.")
-    id: StrictStr = Field(..., description="ID of Role, Access Profile or Entitlement being requested.")
-    comment: Optional[StrictStr] = Field(None, description="Comment provided by requester. * Comment is required when the request is of type Revoke Access. ")
-    client_metadata: Optional[Dict[str, StrictStr]] = Field(None, alias="clientMetadata", description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status.")
-    remove_date: Optional[datetime] = Field(None, alias="removeDate", description="The date the role or access profile is no longer assigned to the specified identity. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. * Currently it is not supported for entitlements. ")
+    type: StrictStr = Field(
+        ..., description="The type of the item being requested.")
+    id: StrictStr = Field(
+        ...,
+        description="ID of Role, Access Profile or Entitlement being requested."
+    )
+    comment: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Comment provided by requester. * Comment is required when the request is of type Revoke Access. "
+    )
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(
+        None,
+        alias="clientMetadata",
+        description=
+        "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status."
+    )
+    remove_date: Optional[datetime] = Field(
+        None,
+        alias="removeDate",
+        description=
+        "The date the role or access profile is no longer assigned to the specified identity. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. * Currently it is not supported for entitlements. "
+    )
     __properties = ["type", "id", "comment", "clientMetadata", "removeDate"]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT'):
-            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')")
+            raise ValueError(
+                "must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')"
+            )
         return value
 
     class Config:
@@ -59,10 +79,7 @@ class AccessRequestItem(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -75,12 +92,15 @@ class AccessRequestItem(BaseModel):
             return AccessRequestItem.parse_obj(obj)
 
         _obj = AccessRequestItem.parse_obj({
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "comment": obj.get("comment"),
-            "client_metadata": obj.get("clientMetadata"),
-            "remove_date": obj.get("removeDate")
+            "type":
+            obj.get("type"),
+            "id":
+            obj.get("id"),
+            "comment":
+            obj.get("comment"),
+            "client_metadata":
+            obj.get("clientMetadata"),
+            "remove_date":
+            obj.get("removeDate")
         })
         return _obj
-
-

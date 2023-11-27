@@ -11,24 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-from v3.models.dto_type import DtoType
-from v3.models.reference import Reference
+from sailpoint.v3.models.dto_type import DtoType
+from sailpoint.v3.models.reference import Reference
+
 
 class AccessProfileEntitlement(BaseModel):
     """
     EntitlementReference  # noqa: E501
     """
-    id: Optional[StrictStr] = Field(None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(None, description="The human readable name of the referenced object.")
+    id: Optional[StrictStr] = Field(
+        None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(
+        None, description="The human readable name of the referenced object.")
     display_name: Optional[StrictStr] = Field(None, alias="displayName")
     type: Optional[DtoType] = None
     description: Optional[StrictStr] = None
@@ -37,7 +38,10 @@ class AccessProfileEntitlement(BaseModel):
     attribute: Optional[StrictStr] = None
     value: Optional[StrictStr] = None
     standalone: Optional[StrictBool] = None
-    __properties = ["id", "name", "displayName", "type", "description", "source", "privileged", "attribute", "value", "standalone"]
+    __properties = [
+        "id", "name", "displayName", "type", "description", "source",
+        "privileged", "attribute", "value", "standalone"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -59,10 +63,7 @@ class AccessProfileEntitlement(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -83,17 +84,26 @@ class AccessProfileEntitlement(BaseModel):
             return AccessProfileEntitlement.parse_obj(obj)
 
         _obj = AccessProfileEntitlement.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "display_name": obj.get("displayName"),
-            "type": obj.get("type"),
-            "description": obj.get("description"),
-            "source": Reference.from_dict(obj.get("source")) if obj.get("source") is not None else None,
-            "privileged": obj.get("privileged"),
-            "attribute": obj.get("attribute"),
-            "value": obj.get("value"),
-            "standalone": obj.get("standalone")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "display_name":
+            obj.get("displayName"),
+            "type":
+            obj.get("type"),
+            "description":
+            obj.get("description"),
+            "source":
+            Reference.from_dict(obj.get("source"))
+            if obj.get("source") is not None else None,
+            "privileged":
+            obj.get("privileged"),
+            "attribute":
+            obj.get("attribute"),
+            "value":
+            obj.get("value"),
+            "standalone":
+            obj.get("standalone")
         })
         return _obj
-
-

@@ -11,26 +11,34 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
-from beta.models.form_definition_dynamic_schema_request_attributes import FormDefinitionDynamicSchemaRequestAttributes
+from sailpoint.beta.models.form_definition_dynamic_schema_request_attributes import FormDefinitionDynamicSchemaRequestAttributes
+
 
 class FormDefinitionDynamicSchemaRequest(BaseModel):
     """
     FormDefinitionDynamicSchemaRequest
     """
     attributes: Optional[FormDefinitionDynamicSchemaRequestAttributes] = None
-    description: Optional[StrictStr] = Field(None, description="Description is the form definition dynamic schema description text")
-    id: Optional[StrictStr] = Field(None, description="ID is a unique identifier")
-    type: Optional[StrictStr] = Field(None, description="Type is the form definition dynamic schema type")
-    version_number: Optional[StrictInt] = Field(None, alias="versionNumber", description="VersionNumber is the form definition dynamic schema version number")
+    description: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Description is the form definition dynamic schema description text")
+    id: Optional[StrictStr] = Field(None,
+                                    description="ID is a unique identifier")
+    type: Optional[StrictStr] = Field(
+        None, description="Type is the form definition dynamic schema type")
+    version_number: Optional[StrictInt] = Field(
+        None,
+        alias="versionNumber",
+        description=
+        "VersionNumber is the form definition dynamic schema version number")
     __properties = ["attributes", "description", "id", "type", "versionNumber"]
 
     class Config:
@@ -53,10 +61,7 @@ class FormDefinitionDynamicSchemaRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of attributes
         if self.attributes:
             _dict['attributes'] = self.attributes.to_dict()
@@ -72,12 +77,17 @@ class FormDefinitionDynamicSchemaRequest(BaseModel):
             return FormDefinitionDynamicSchemaRequest.parse_obj(obj)
 
         _obj = FormDefinitionDynamicSchemaRequest.parse_obj({
-            "attributes": FormDefinitionDynamicSchemaRequestAttributes.from_dict(obj.get("attributes")) if obj.get("attributes") is not None else None,
-            "description": obj.get("description"),
-            "id": obj.get("id"),
-            "type": obj.get("type"),
-            "version_number": obj.get("versionNumber")
+            "attributes":
+            FormDefinitionDynamicSchemaRequestAttributes.from_dict(
+                obj.get("attributes"))
+            if obj.get("attributes") is not None else None,
+            "description":
+            obj.get("description"),
+            "id":
+            obj.get("id"),
+            "type":
+            obj.get("type"),
+            "version_number":
+            obj.get("versionNumber")
         })
         return _obj
-
-

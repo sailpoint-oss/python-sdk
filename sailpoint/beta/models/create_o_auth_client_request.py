@@ -11,39 +11,92 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
-from beta.models.access_type import AccessType
-from beta.models.client_type import ClientType
-from beta.models.grant_type import GrantType
+from sailpoint.beta.models.access_type import AccessType
+from sailpoint.beta.models.client_type import ClientType
+from sailpoint.beta.models.grant_type import GrantType
+
 
 class CreateOAuthClientRequest(BaseModel):
     """
     CreateOAuthClientRequest
     """
-    business_name: Optional[StrictStr] = Field(None, alias="businessName", description="The name of the business the API Client should belong to")
-    homepage_url: Optional[StrictStr] = Field(None, alias="homepageUrl", description="The homepage URL associated with the owner of the API Client")
-    name: Optional[StrictStr] = Field(..., description="A human-readable name for the API Client")
-    description: Optional[StrictStr] = Field(..., description="A description of the API Client")
-    access_token_validity_seconds: StrictInt = Field(..., alias="accessTokenValiditySeconds", description="The number of seconds an access token generated for this API Client is valid for")
-    refresh_token_validity_seconds: Optional[StrictInt] = Field(None, alias="refreshTokenValiditySeconds", description="The number of seconds a refresh token generated for this API Client is valid for")
-    redirect_uris: Optional[conlist(StrictStr)] = Field(None, alias="redirectUris", description="A list of the approved redirect URIs. Provide one or more URIs when assigning the AUTHORIZATION_CODE grant type to a new OAuth Client.")
-    grant_types: Optional[conlist(GrantType)] = Field(..., alias="grantTypes", description="A list of OAuth 2.0 grant types this API Client can be used with")
+    business_name: Optional[StrictStr] = Field(
+        None,
+        alias="businessName",
+        description="The name of the business the API Client should belong to")
+    homepage_url: Optional[StrictStr] = Field(
+        None,
+        alias="homepageUrl",
+        description=
+        "The homepage URL associated with the owner of the API Client")
+    name: Optional[StrictStr] = Field(
+        ..., description="A human-readable name for the API Client")
+    description: Optional[StrictStr] = Field(
+        ..., description="A description of the API Client")
+    access_token_validity_seconds: StrictInt = Field(
+        ...,
+        alias="accessTokenValiditySeconds",
+        description=
+        "The number of seconds an access token generated for this API Client is valid for"
+    )
+    refresh_token_validity_seconds: Optional[StrictInt] = Field(
+        None,
+        alias="refreshTokenValiditySeconds",
+        description=
+        "The number of seconds a refresh token generated for this API Client is valid for"
+    )
+    redirect_uris: Optional[conlist(StrictStr)] = Field(
+        None,
+        alias="redirectUris",
+        description=
+        "A list of the approved redirect URIs. Provide one or more URIs when assigning the AUTHORIZATION_CODE grant type to a new OAuth Client."
+    )
+    grant_types: Optional[conlist(GrantType)] = Field(
+        ...,
+        alias="grantTypes",
+        description=
+        "A list of OAuth 2.0 grant types this API Client can be used with")
     access_type: AccessType = Field(..., alias="accessType")
     type: Optional[ClientType] = None
-    internal: Optional[StrictBool] = Field(None, description="An indicator of whether the API Client can be used for requests internal within the product.")
-    enabled: StrictBool = Field(..., description="An indicator of whether the API Client is enabled for use")
-    strong_auth_supported: Optional[StrictBool] = Field(None, alias="strongAuthSupported", description="An indicator of whether the API Client supports strong authentication")
-    claims_supported: Optional[StrictBool] = Field(None, alias="claimsSupported", description="An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow")
-    scope: Optional[conlist(StrictStr)] = Field(None, description="Scopes of the API Client. If no scope is specified, the client will be created with the default scope \"sp:scopes:all\". This means the API Client will have all the rights of the owner who created it.")
-    __properties = ["businessName", "homepageUrl", "name", "description", "accessTokenValiditySeconds", "refreshTokenValiditySeconds", "redirectUris", "grantTypes", "accessType", "type", "internal", "enabled", "strongAuthSupported", "claimsSupported", "scope"]
+    internal: Optional[StrictBool] = Field(
+        None,
+        description=
+        "An indicator of whether the API Client can be used for requests internal within the product."
+    )
+    enabled: StrictBool = Field(
+        ...,
+        description="An indicator of whether the API Client is enabled for use"
+    )
+    strong_auth_supported: Optional[StrictBool] = Field(
+        None,
+        alias="strongAuthSupported",
+        description=
+        "An indicator of whether the API Client supports strong authentication"
+    )
+    claims_supported: Optional[StrictBool] = Field(
+        None,
+        alias="claimsSupported",
+        description=
+        "An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow"
+    )
+    scope: Optional[conlist(StrictStr)] = Field(
+        None,
+        description=
+        "Scopes of the API Client. If no scope is specified, the client will be created with the default scope \"sp:scopes:all\". This means the API Client will have all the rights of the owner who created it."
+    )
+    __properties = [
+        "businessName", "homepageUrl", "name", "description",
+        "accessTokenValiditySeconds", "refreshTokenValiditySeconds",
+        "redirectUris", "grantTypes", "accessType", "type", "internal",
+        "enabled", "strongAuthSupported", "claimsSupported", "scope"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -65,10 +118,7 @@ class CreateOAuthClientRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if business_name (nullable) is None
         # and __fields_set__ contains the field
         if self.business_name is None and "business_name" in self.__fields_set__:
@@ -116,22 +166,35 @@ class CreateOAuthClientRequest(BaseModel):
             return CreateOAuthClientRequest.parse_obj(obj)
 
         _obj = CreateOAuthClientRequest.parse_obj({
-            "business_name": obj.get("businessName"),
-            "homepage_url": obj.get("homepageUrl"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "access_token_validity_seconds": obj.get("accessTokenValiditySeconds"),
-            "refresh_token_validity_seconds": obj.get("refreshTokenValiditySeconds"),
-            "redirect_uris": obj.get("redirectUris"),
-            "grant_types": obj.get("grantTypes"),
-            "access_type": obj.get("accessType"),
-            "type": obj.get("type"),
-            "internal": obj.get("internal"),
-            "enabled": obj.get("enabled"),
-            "strong_auth_supported": obj.get("strongAuthSupported"),
-            "claims_supported": obj.get("claimsSupported"),
-            "scope": obj.get("scope")
+            "business_name":
+            obj.get("businessName"),
+            "homepage_url":
+            obj.get("homepageUrl"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "access_token_validity_seconds":
+            obj.get("accessTokenValiditySeconds"),
+            "refresh_token_validity_seconds":
+            obj.get("refreshTokenValiditySeconds"),
+            "redirect_uris":
+            obj.get("redirectUris"),
+            "grant_types":
+            obj.get("grantTypes"),
+            "access_type":
+            obj.get("accessType"),
+            "type":
+            obj.get("type"),
+            "internal":
+            obj.get("internal"),
+            "enabled":
+            obj.get("enabled"),
+            "strong_auth_supported":
+            obj.get("strongAuthSupported"),
+            "claims_supported":
+            obj.get("claimsSupported"),
+            "scope":
+            obj.get("scope")
         })
         return _obj
-
-

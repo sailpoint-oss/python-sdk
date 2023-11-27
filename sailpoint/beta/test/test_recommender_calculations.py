@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.recommender_calculations import RecommenderCalculations  # noqa: E501
+from sailpoint.beta.models.recommender_calculations import RecommenderCalculations  # noqa: E501
+
 
 class TestRecommenderCalculations(unittest.TestCase):
     """RecommenderCalculations unit test stubs"""
@@ -45,10 +45,10 @@ class TestRecommenderCalculations(unittest.TestCase):
                     },
                 threshold = 1.337,
                 identity_attributes = {
-                    'key' : beta.models.recommender_calculations_identity_attributes_value.RecommenderCalculations_identityAttributes_value(
+                    'key' : sailpoint.beta.models.recommender_calculations_identity_attributes_value.RecommenderCalculations_identityAttributes_value(
                         value = '', )
                     },
-                feature_values = beta.models.feature_value_dto.FeatureValueDto(
+                feature_values = sailpoint.beta.models.feature_value_dto.FeatureValueDto(
                     feature = 'department', 
                     numerator = 14, 
                     denominator = 14, )
@@ -62,6 +62,7 @@ class TestRecommenderCalculations(unittest.TestCase):
         """Test RecommenderCalculations"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

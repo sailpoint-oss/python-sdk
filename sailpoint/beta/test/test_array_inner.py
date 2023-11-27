@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.array_inner import ArrayInner  # noqa: E501
+from sailpoint.beta.models.array_inner import ArrayInner  # noqa: E501
+
 
 class TestArrayInner(unittest.TestCase):
     """ArrayInner unit test stubs"""
@@ -46,6 +46,7 @@ class TestArrayInner(unittest.TestCase):
         """Test ArrayInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

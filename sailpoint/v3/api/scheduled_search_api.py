@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,16 +22,14 @@ from pydantic import Field, StrictBool, StrictStr, conint
 
 from typing import List, Optional
 
-from v3.models.create_scheduled_search_request import CreateScheduledSearchRequest
-from v3.models.scheduled_search import ScheduledSearch
-from v3.models.typed_reference import TypedReference
+from sailpoint.v3.models.create_scheduled_search_request import CreateScheduledSearchRequest
+from sailpoint.v3.models.scheduled_search import ScheduledSearch
+from sailpoint.v3.models.typed_reference import TypedReference
 
-from v3.api_client import ApiClient
-from v3.api_response import ApiResponse
-from v3.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.v3.api_client import ApiClient
+from sailpoint.v3.api_response import ApiResponse
+from sailpoint.v3.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class ScheduledSearchApi:
@@ -48,7 +45,11 @@ class ScheduledSearchApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_scheduled_search(self, create_scheduled_search_request : Annotated[CreateScheduledSearchRequest, Field(..., description="The scheduled search to persist.")], **kwargs) -> ScheduledSearch:  # noqa: E501
+    def create_scheduled_search(
+            self, create_scheduled_search_request: Annotated[
+                CreateScheduledSearchRequest,
+                Field(..., description="The scheduled search to persist.")],
+            **kwargs) -> ScheduledSearch:  # noqa: E501
         """Create a new scheduled search  # noqa: E501
 
         Creates a new scheduled search.   # noqa: E501
@@ -75,10 +76,15 @@ class ScheduledSearchApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_scheduled_search_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_scheduled_search_with_http_info(create_scheduled_search_request, **kwargs)  # noqa: E501
+        return self.create_scheduled_search_with_http_info(
+            create_scheduled_search_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_scheduled_search_with_http_info(self, create_scheduled_search_request : Annotated[CreateScheduledSearchRequest, Field(..., description="The scheduled search to persist.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_scheduled_search_with_http_info(
+            self, create_scheduled_search_request: Annotated[
+                CreateScheduledSearchRequest,
+                Field(..., description="The scheduled search to persist.")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create a new scheduled search  # noqa: E501
 
         Creates a new scheduled search.   # noqa: E501
@@ -117,28 +123,17 @@ class ScheduledSearchApi:
 
         _params = locals()
 
-        _all_params = [
-            'create_scheduled_search_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['create_scheduled_search_request']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_scheduled_search" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_scheduled_search" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -164,11 +159,11 @@ class ScheduledSearchApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -184,7 +179,8 @@ class ScheduledSearchApi:
         }
 
         return self.api_client.call_api(
-            '/scheduled-searches', 'POST',
+            '/scheduled-searches',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -194,14 +190,18 @@ class ScheduledSearchApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_scheduled_search(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], **kwargs) -> None:  # noqa: E501
+    def delete_scheduled_search(self, id: Annotated[
+        StrictStr,
+        Field(..., description="ID of the requested document.")],
+                                **kwargs) -> None:  # noqa: E501
         """Delete a Scheduled Search  # noqa: E501
 
         Deletes the specified scheduled search.   # noqa: E501
@@ -228,10 +228,15 @@ class ScheduledSearchApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_scheduled_search_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_scheduled_search_with_http_info(id, **kwargs)  # noqa: E501
+        return self.delete_scheduled_search_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_scheduled_search_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_scheduled_search_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="ID of the requested document.")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Delete a Scheduled Search  # noqa: E501
 
         Deletes the specified scheduled search.   # noqa: E501
@@ -270,28 +275,17 @@ class ScheduledSearchApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_scheduled_search" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_scheduled_search" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -301,7 +295,6 @@ class ScheduledSearchApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -322,7 +315,8 @@ class ScheduledSearchApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/scheduled-searches/{id}', 'DELETE',
+            '/scheduled-searches/{id}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -332,14 +326,18 @@ class ScheduledSearchApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_scheduled_search(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], **kwargs) -> ScheduledSearch:  # noqa: E501
+    def get_scheduled_search(self, id: Annotated[
+        StrictStr,
+        Field(..., description="ID of the requested document.")],
+                             **kwargs) -> ScheduledSearch:  # noqa: E501
         """Get a Scheduled Search  # noqa: E501
 
         Returns the specified scheduled search.  # noqa: E501
@@ -366,10 +364,15 @@ class ScheduledSearchApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_scheduled_search_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_scheduled_search_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_scheduled_search_with_http_info(id,
+                                                        **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_scheduled_search_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_scheduled_search_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="ID of the requested document.")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get a Scheduled Search  # noqa: E501
 
         Returns the specified scheduled search.  # noqa: E501
@@ -408,28 +411,17 @@ class ScheduledSearchApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_scheduled_search" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_scheduled_search" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -439,7 +431,6 @@ class ScheduledSearchApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -468,7 +459,8 @@ class ScheduledSearchApi:
         }
 
         return self.api_client.call_api(
-            '/scheduled-searches/{id}', 'GET',
+            '/scheduled-searches/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -478,14 +470,45 @@ class ScheduledSearchApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_scheduled_search(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*  **savedSearchId**: *eq*")] = None, **kwargs) -> List[ScheduledSearch]:  # noqa: E501
+    def list_scheduled_search(
+            self,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*  **savedSearchId**: *eq*"
+            )] = None,
+            **kwargs) -> List[ScheduledSearch]:  # noqa: E501
         """List scheduled searches  # noqa: E501
 
         Returns a list of scheduled searches.   # noqa: E501
@@ -518,10 +541,41 @@ class ScheduledSearchApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_scheduled_search_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_scheduled_search_with_http_info(offset, limit, count, filters, **kwargs)  # noqa: E501
+        return self.list_scheduled_search_with_http_info(
+            offset, limit, count, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_scheduled_search_with_http_info(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*  **savedSearchId**: *eq*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_scheduled_search_with_http_info(
+            self,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*  **savedSearchId**: *eq*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List scheduled searches  # noqa: E501
 
         Returns a list of scheduled searches.   # noqa: E501
@@ -566,31 +620,17 @@ class ScheduledSearchApi:
 
         _params = locals()
 
-        _all_params = [
-            'offset',
-            'limit',
-            'count',
-            'filters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['offset', 'limit', 'count', 'filters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_scheduled_search" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_scheduled_search" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -638,7 +678,8 @@ class ScheduledSearchApi:
         }
 
         return self.api_client.call_api(
-            '/scheduled-searches', 'GET',
+            '/scheduled-searches',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -648,14 +689,25 @@ class ScheduledSearchApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def unsubscribe_scheduled_search(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], typed_reference : Annotated[TypedReference, Field(..., description="The recipient to be removed from the scheduled search. ")], **kwargs) -> None:  # noqa: E501
+    def unsubscribe_scheduled_search(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="ID of the requested document.")],
+            typed_reference: Annotated[
+                TypedReference,
+                Field(
+                    ...,
+                    description=
+                    "The recipient to be removed from the scheduled search. "
+                )], **kwargs) -> None:  # noqa: E501
         """Unsubscribe a recipient from Scheduled Search  # noqa: E501
 
         Unsubscribes a recipient from the specified scheduled search.   # noqa: E501
@@ -684,10 +736,21 @@ class ScheduledSearchApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the unsubscribe_scheduled_search_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.unsubscribe_scheduled_search_with_http_info(id, typed_reference, **kwargs)  # noqa: E501
+        return self.unsubscribe_scheduled_search_with_http_info(
+            id, typed_reference, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def unsubscribe_scheduled_search_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], typed_reference : Annotated[TypedReference, Field(..., description="The recipient to be removed from the scheduled search. ")], **kwargs) -> ApiResponse:  # noqa: E501
+    def unsubscribe_scheduled_search_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="ID of the requested document.")],
+            typed_reference: Annotated[
+                TypedReference,
+                Field(
+                    ...,
+                    description=
+                    "The recipient to be removed from the scheduled search. "
+                )], **kwargs) -> ApiResponse:  # noqa: E501
         """Unsubscribe a recipient from Scheduled Search  # noqa: E501
 
         Unsubscribes a recipient from the specified scheduled search.   # noqa: E501
@@ -728,29 +791,18 @@ class ScheduledSearchApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'typed_reference'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'typed_reference']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method unsubscribe_scheduled_search" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method unsubscribe_scheduled_search" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -760,7 +812,6 @@ class ScheduledSearchApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -779,11 +830,11 @@ class ScheduledSearchApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -791,7 +842,8 @@ class ScheduledSearchApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/scheduled-searches/{id}/unsubscribe', 'POST',
+            '/scheduled-searches/{id}/unsubscribe',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -801,14 +853,22 @@ class ScheduledSearchApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_scheduled_search(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], scheduled_search : Annotated[ScheduledSearch, Field(..., description="The scheduled search to persist.")], **kwargs) -> ScheduledSearch:  # noqa: E501
+    def update_scheduled_search(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="ID of the requested document.")],
+            scheduled_search: Annotated[
+                ScheduledSearch,
+                Field(..., description="The scheduled search to persist.")],
+            **kwargs) -> ScheduledSearch:  # noqa: E501
         """Update an existing Scheduled Search  # noqa: E501
 
         Updates an existing scheduled search.   # noqa: E501
@@ -837,10 +897,18 @@ class ScheduledSearchApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_scheduled_search_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_scheduled_search_with_http_info(id, scheduled_search, **kwargs)  # noqa: E501
+        return self.update_scheduled_search_with_http_info(
+            id, scheduled_search, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_scheduled_search_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the requested document.")], scheduled_search : Annotated[ScheduledSearch, Field(..., description="The scheduled search to persist.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_scheduled_search_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="ID of the requested document.")],
+            scheduled_search: Annotated[
+                ScheduledSearch,
+                Field(..., description="The scheduled search to persist.")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Update an existing Scheduled Search  # noqa: E501
 
         Updates an existing scheduled search.   # noqa: E501
@@ -881,29 +949,17 @@ class ScheduledSearchApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'scheduled_search'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'scheduled_search']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_scheduled_search" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method update_scheduled_search" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -913,7 +969,6 @@ class ScheduledSearchApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -932,11 +987,11 @@ class ScheduledSearchApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -952,7 +1007,8 @@ class ScheduledSearchApi:
         }
 
         return self.api_client.call_api(
-            '/scheduled-searches/{id}', 'PUT',
+            '/scheduled-searches/{id}',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -962,7 +1018,8 @@ class ScheduledSearchApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

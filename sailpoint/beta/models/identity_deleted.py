@@ -11,23 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict
 from pydantic import BaseModel, Field
-from beta.models.identity_deleted_identity import IdentityDeletedIdentity
+from sailpoint.beta.models.identity_deleted_identity import IdentityDeletedIdentity
+
 
 class IdentityDeleted(BaseModel):
     """
     IdentityDeleted
     """
     identity: IdentityDeletedIdentity = Field(...)
-    attributes: Dict[str, Any] = Field(..., description="The attributes assigned to the identity. Attributes are determined by the identity profile.")
+    attributes: Dict[str, Any] = Field(
+        ...,
+        description=
+        "The attributes assigned to the identity. Attributes are determined by the identity profile."
+    )
     __properties = ["identity", "attributes"]
 
     class Config:
@@ -50,10 +53,7 @@ class IdentityDeleted(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of identity
         if self.identity:
             _dict['identity'] = self.identity.to_dict()
@@ -69,9 +69,10 @@ class IdentityDeleted(BaseModel):
             return IdentityDeleted.parse_obj(obj)
 
         _obj = IdentityDeleted.parse_obj({
-            "identity": IdentityDeletedIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
-            "attributes": obj.get("attributes")
+            "identity":
+            IdentityDeletedIdentity.from_dict(obj.get("identity"))
+            if obj.get("identity") is not None else None,
+            "attributes":
+            obj.get("attributes")
         })
         return _obj
-
-

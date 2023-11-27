@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.typed_reference import TypedReference
+from sailpoint.v3.models.typed_reference import TypedReference
 
 # TODO update the JSON string below
 json = "{}"

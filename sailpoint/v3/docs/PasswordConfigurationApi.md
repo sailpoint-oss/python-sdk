@@ -1,4 +1,4 @@
-# v3.PasswordConfigurationApi
+# sailpoint.v3.PasswordConfigurationApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -23,14 +23,14 @@ This API creates the password org config. Unspecified fields will use default va
 ```python
 import time
 import os
-import v3
-from v3.models.password_org_config import PasswordOrgConfig
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.password_org_config import PasswordOrgConfig
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -44,9 +44,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.PasswordConfigurationApi(api_client)
+    api_instance = sailpoint.v3.PasswordConfigurationApi(api_client)
     password_org_config = {customInstructionsEnabled=true, digitTokenEnabled=true, digitTokenDurationMinutes=12, digitTokenLength=9} # PasswordOrgConfig | 
 
     try:
@@ -105,14 +105,14 @@ This API returns the password org config . Requires ORG_ADMIN, API role or autho
 ```python
 import time
 import os
-import v3
-from v3.models.password_org_config import PasswordOrgConfig
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.password_org_config import PasswordOrgConfig
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -126,9 +126,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.PasswordConfigurationApi(api_client)
+    api_instance = sailpoint.v3.PasswordConfigurationApi(api_client)
 
     try:
         # Get Password Org Config
@@ -183,14 +183,14 @@ This API updates the password org config for specified fields. Other fields will
 ```python
 import time
 import os
-import v3
-from v3.models.password_org_config import PasswordOrgConfig
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.password_org_config import PasswordOrgConfig
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -204,9 +204,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.PasswordConfigurationApi(api_client)
+    api_instance = sailpoint.v3.PasswordConfigurationApi(api_client)
     password_org_config = {digitTokenEnabled=true, digitTokenDurationMinutes=12} # PasswordOrgConfig | 
 
     try:

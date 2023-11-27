@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.non_employee_request_without_approval_item import NonEmployeeRequestWithoutApprovalItem
+from sailpoint.beta.models.non_employee_request_without_approval_item import NonEmployeeRequestWithoutApprovalItem
 
 # TODO update the JSON string below
 json = "{}"

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.managed_cluster_key_pair import ManagedClusterKeyPair
+from sailpoint.beta.models.managed_cluster_key_pair import ManagedClusterKeyPair
 
 # TODO update the JSON string below
 json = "{}"

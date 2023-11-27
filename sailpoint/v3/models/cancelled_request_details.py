@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,15 +19,23 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from v3.models.owner_dto import OwnerDto
+from sailpoint.v3.models.owner_dto import OwnerDto
+
 
 class CancelledRequestDetails(BaseModel):
     """
     Provides additional details for a request that has been cancelled.  # noqa: E501
     """
-    comment: Optional[StrictStr] = Field(None, description="Comment made by the owner when cancelling the associated request.")
+    comment: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Comment made by the owner when cancelling the associated request.")
     owner: Optional[OwnerDto] = None
-    modified: Optional[datetime] = Field(None, description="Date comment was added by the owner when cancelling the associated request.")
+    modified: Optional[datetime] = Field(
+        None,
+        description=
+        "Date comment was added by the owner when cancelling the associated request."
+    )
     __properties = ["comment", "owner", "modified"]
 
     class Config:
@@ -51,10 +58,7 @@ class CancelledRequestDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -70,10 +74,12 @@ class CancelledRequestDetails(BaseModel):
             return CancelledRequestDetails.parse_obj(obj)
 
         _obj = CancelledRequestDetails.parse_obj({
-            "comment": obj.get("comment"),
-            "owner": OwnerDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "modified": obj.get("modified")
+            "comment":
+            obj.get("comment"),
+            "owner":
+            OwnerDto.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "modified":
+            obj.get("modified")
         })
         return _obj
-
-

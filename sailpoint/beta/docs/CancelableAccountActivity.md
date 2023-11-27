@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.cancelable_account_activity import CancelableAccountActivity
+from sailpoint.beta.models.cancelable_account_activity import CancelableAccountActivity
 
 # TODO update the JSON string below
 json = "{}"

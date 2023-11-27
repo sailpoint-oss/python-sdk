@@ -11,21 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr
+
 
 class AccountAttributesCreateAttributes(BaseModel):
     """
     The schema attribute values for the account  # noqa: E501
     """
-    source_id: StrictStr = Field(..., alias="sourceId", description="Target source to create an account")
+    source_id: StrictStr = Field(
+        ...,
+        alias="sourceId",
+        description="Target source to create an account")
     additional_properties: Dict[str, Any] = {}
     __properties = ["sourceId"]
 
@@ -50,9 +51,7 @@ class AccountAttributesCreateAttributes(BaseModel):
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
-                          exclude={
-                            "additional_properties"
-                          },
+                          exclude={"additional_properties"},
                           exclude_none=True)
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
@@ -70,14 +69,11 @@ class AccountAttributesCreateAttributes(BaseModel):
         if not isinstance(obj, dict):
             return AccountAttributesCreateAttributes.parse_obj(obj)
 
-        _obj = AccountAttributesCreateAttributes.parse_obj({
-            "source_id": obj.get("sourceId")
-        })
+        _obj = AccountAttributesCreateAttributes.parse_obj(
+            {"source_id": obj.get("sourceId")})
         # store additional fields in additional_properties
         for _key in obj.keys():
             if _key not in cls.__properties:
                 _obj.additional_properties[_key] = obj.get(_key)
 
         return _obj
-
-

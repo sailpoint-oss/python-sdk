@@ -1,4 +1,4 @@
-# cc.AccountsApi
+# sailpoint.cc.AccountsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
@@ -20,14 +20,14 @@ List Accounts
 ```python
 import time
 import os
-import cc
-from cc.models.list_accounts200_response_inner import ListAccounts200ResponseInner
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.models.list_accounts200_response_inner import ListAccounts200ResponseInner
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -41,9 +41,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.AccountsApi(api_client)
+    api_instance = sailpoint.cc.AccountsApi(api_client)
 
     try:
         # List Accounts
@@ -91,13 +91,13 @@ Remove Account
 ```python
 import time
 import os
-import cc
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -111,9 +111,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.AccountsApi(api_client)
+    api_instance = sailpoint.cc.AccountsApi(api_client)
     id = '12345' # str | 
 
     try:

@@ -11,21 +11,18 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
 
 from pydantic import validate_arguments, ValidationError
 
-from v3.models.password_org_config import PasswordOrgConfig
+from sailpoint.v3.models.password_org_config import PasswordOrgConfig
 
-from v3.api_client import ApiClient
-from v3.api_response import ApiResponse
-from v3.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.v3.api_client import ApiClient
+from sailpoint.v3.api_response import ApiResponse
+from sailpoint.v3.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class PasswordConfigurationApi:
@@ -41,7 +38,9 @@ class PasswordConfigurationApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_password_org_config(self, password_org_config : PasswordOrgConfig, **kwargs) -> PasswordOrgConfig:  # noqa: E501
+    def create_password_org_config(
+            self, password_org_config: PasswordOrgConfig,
+            **kwargs) -> PasswordOrgConfig:  # noqa: E501
         """Create Password Org Config  # noqa: E501
 
         This API creates the password org config. Unspecified fields will use default value. To be able to use the custom password instructions, you must set the `customInstructionsEnabled` field to \"true\". Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'  # noqa: E501
@@ -68,10 +67,13 @@ class PasswordConfigurationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_password_org_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_password_org_config_with_http_info(password_org_config, **kwargs)  # noqa: E501
+        return self.create_password_org_config_with_http_info(
+            password_org_config, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_password_org_config_with_http_info(self, password_org_config : PasswordOrgConfig, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_password_org_config_with_http_info(
+            self, password_org_config: PasswordOrgConfig,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create Password Org Config  # noqa: E501
 
         This API creates the password org config. Unspecified fields will use default value. To be able to use the custom password instructions, you must set the `customInstructionsEnabled` field to \"true\". Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'  # noqa: E501
@@ -110,28 +112,18 @@ class PasswordConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-            'password_org_config'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['password_org_config']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_password_org_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_password_org_config" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -157,11 +149,11 @@ class PasswordConfigurationApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -176,7 +168,8 @@ class PasswordConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/password-org-config', 'POST',
+            '/password-org-config',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -186,14 +179,16 @@ class PasswordConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_password_org_config(self, **kwargs) -> PasswordOrgConfig:  # noqa: E501
+    def get_password_org_config(self,
+                                **kwargs) -> PasswordOrgConfig:  # noqa: E501
         """Get Password Org Config  # noqa: E501
 
         This API returns the password org config . Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:read'  # noqa: E501
@@ -218,10 +213,12 @@ class PasswordConfigurationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_password_org_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_password_org_config_with_http_info(**kwargs)  # noqa: E501
+        return self.get_password_org_config_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_password_org_config_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_password_org_config_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """Get Password Org Config  # noqa: E501
 
         This API returns the password org config . Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:read'  # noqa: E501
@@ -258,27 +255,17 @@ class PasswordConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_password_org_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_password_org_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -313,7 +300,8 @@ class PasswordConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/password-org-config', 'GET',
+            '/password-org-config',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -323,14 +311,16 @@ class PasswordConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_password_org_config(self, password_org_config : PasswordOrgConfig, **kwargs) -> PasswordOrgConfig:  # noqa: E501
+    def put_password_org_config(self, password_org_config: PasswordOrgConfig,
+                                **kwargs) -> PasswordOrgConfig:  # noqa: E501
         """Update Password Org Config  # noqa: E501
 
         This API updates the password org config for specified fields. Other fields will keep original value. You must set the `customInstructionsEnabled` field to \"true\" to be able to use custom password instructions.  Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'  # noqa: E501
@@ -357,10 +347,13 @@ class PasswordConfigurationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_password_org_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_password_org_config_with_http_info(password_org_config, **kwargs)  # noqa: E501
+        return self.put_password_org_config_with_http_info(
+            password_org_config, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_password_org_config_with_http_info(self, password_org_config : PasswordOrgConfig, **kwargs) -> ApiResponse:  # noqa: E501
+    def put_password_org_config_with_http_info(
+            self, password_org_config: PasswordOrgConfig,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Update Password Org Config  # noqa: E501
 
         This API updates the password org config for specified fields. Other fields will keep original value. You must set the `customInstructionsEnabled` field to \"true\" to be able to use custom password instructions.  Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'  # noqa: E501
@@ -399,28 +392,17 @@ class PasswordConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-            'password_org_config'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['password_org_config']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_password_org_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method put_password_org_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -446,11 +428,11 @@ class PasswordConfigurationApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -465,7 +447,8 @@ class PasswordConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/password-org-config', 'PUT',
+            '/password-org-config',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -475,7 +458,8 @@ class PasswordConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

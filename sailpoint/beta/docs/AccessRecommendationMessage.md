@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.access_recommendation_message import AccessRecommendationMessage
+from sailpoint.beta.models.access_recommendation_message import AccessRecommendationMessage
 
 # TODO update the JSON string below
 json = "{}"

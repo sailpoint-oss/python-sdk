@@ -1,4 +1,4 @@
-# v3.TaggedObjectsApi
+# sailpoint.v3.TaggedObjectsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -28,13 +28,13 @@ This deletes a tagged object for the specified type.
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -48,9 +48,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.TaggedObjectsApi(api_client)
+    api_instance = sailpoint.v3.TaggedObjectsApi(api_client)
     type = 'ROLE' # str | The type of tagged object to delete.
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the object reference to delete.
 
@@ -109,14 +109,14 @@ This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_
 ```python
 import time
 import os
-import v3
-from v3.models.bulk_tagged_object import BulkTaggedObject
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -130,10 +130,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.TaggedObjectsApi(api_client)
-    bulk_tagged_object = v3.BulkTaggedObject() # BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    api_instance = sailpoint.v3.TaggedObjectsApi(api_client)
+    bulk_tagged_object = sailpoint.v3.BulkTaggedObject() # BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
     try:
         # Remove Tags from Multiple Objects
@@ -189,14 +189,14 @@ This gets a tagged object for the specified type.
 ```python
 import time
 import os
-import v3
-from v3.models.tagged_object import TaggedObject
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.tagged_object import TaggedObject
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -210,9 +210,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.TaggedObjectsApi(api_client)
+    api_instance = sailpoint.v3.TaggedObjectsApi(api_client)
     type = 'ROLE' # str | The type of tagged object to retrieve.
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the object reference to retrieve.
 
@@ -273,14 +273,14 @@ This API returns a list of all tagged objects.  Any authenticated token may be u
 ```python
 import time
 import os
-import v3
-from v3.models.tagged_object import TaggedObject
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.tagged_object import TaggedObject
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -294,9 +294,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.TaggedObjectsApi(api_client)
+    api_instance = sailpoint.v3.TaggedObjectsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -361,14 +361,14 @@ This API returns a list of all tagged objects by type.  Any authenticated token 
 ```python
 import time
 import os
-import v3
-from v3.models.tagged_object import TaggedObject
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.tagged_object import TaggedObject
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -382,9 +382,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.TaggedObjectsApi(api_client)
+    api_instance = sailpoint.v3.TaggedObjectsApi(api_client)
     type = 'ROLE' # str | The type of tagged object to retrieve.
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -451,14 +451,14 @@ This updates a tagged object for the specified type.
 ```python
 import time
 import os
-import v3
-from v3.models.tagged_object import TaggedObject
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.tagged_object import TaggedObject
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -472,12 +472,12 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.TaggedObjectsApi(api_client)
+    api_instance = sailpoint.v3.TaggedObjectsApi(api_client)
     type = 'ROLE' # str | The type of tagged object to update.
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the object reference to update.
-    tagged_object = v3.TaggedObject() # TaggedObject | 
+    tagged_object = sailpoint.v3.TaggedObject() # TaggedObject | 
 
     try:
         # Update Tagged Object
@@ -537,14 +537,14 @@ This adds a tag to an object.  Any authenticated token may be used to call this 
 ```python
 import time
 import os
-import v3
-from v3.models.tagged_object import TaggedObject
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.tagged_object import TaggedObject
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -558,10 +558,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.TaggedObjectsApi(api_client)
-    tagged_object = v3.TaggedObject() # TaggedObject | 
+    api_instance = sailpoint.v3.TaggedObjectsApi(api_client)
+    tagged_object = sailpoint.v3.TaggedObject() # TaggedObject | 
 
     try:
         # Add Tag to Object
@@ -617,14 +617,14 @@ This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN
 ```python
 import time
 import os
-import v3
-from v3.models.bulk_tagged_object import BulkTaggedObject
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -638,10 +638,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.TaggedObjectsApi(api_client)
-    bulk_tagged_object = v3.BulkTaggedObject() # BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    api_instance = sailpoint.v3.TaggedObjectsApi(api_client)
+    bulk_tagged_object = sailpoint.v3.BulkTaggedObject() # BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
     try:
         # Tag Multiple Objects

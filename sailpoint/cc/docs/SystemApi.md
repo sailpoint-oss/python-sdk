@@ -1,4 +1,4 @@
-# cc.SystemApi
+# sailpoint.cc.SystemApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
@@ -21,14 +21,14 @@ This kicks off an identity refresh for a specified set of identity attributes.  
 ```python
 import time
 import os
-import cc
-from cc.models.refresh_identities_request import RefreshIdentitiesRequest
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.models.refresh_identities_request import RefreshIdentitiesRequest
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -42,11 +42,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.SystemApi(api_client)
+    api_instance = sailpoint.cc.SystemApi(api_client)
     content_type = 'application/json' # str |  (optional)
-    refresh_identities_request = cc.RefreshIdentitiesRequest() # RefreshIdentitiesRequest |  (optional)
+    refresh_identities_request = sailpoint.cc.RefreshIdentitiesRequest() # RefreshIdentitiesRequest |  (optional)
 
     try:
         # Refresh Identities

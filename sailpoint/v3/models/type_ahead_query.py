@@ -11,28 +11,48 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conint
+
 
 class TypeAheadQuery(BaseModel):
     """
     Query parameters used to construct an Elasticsearch type ahead query object.  The typeAheadQuery performs a search for top values beginning with the typed values. For example, typing \"Jo\" results in top hits matching \"Jo.\" Typing \"Job\" results in top hits matching \"Job.\"   # noqa: E501
     """
-    query: StrictStr = Field(..., description="The type ahead query string used to construct a phrase prefix match query.")
-    field: StrictStr = Field(..., description="The field on which to perform the type ahead search.")
-    nested_type: Optional[StrictStr] = Field(None, alias="nestedType", description="The nested type.")
-    max_expansions: Optional[conint(strict=True, le=1000, ge=1)] = Field(10, alias="maxExpansions", description="The number of suffixes the last term will be expanded into. Influences the performance of the query and the number results returned. Valid values: 1 to 1000.")
-    size: Optional[conint(strict=True, ge=1)] = Field(100, description="The max amount of records the search will return.")
-    sort: Optional[StrictStr] = Field('desc', description="The sort order of the returned records.")
-    sort_by_value: Optional[StrictBool] = Field(False, alias="sortByValue", description="The flag that defines the sort type, by count or value.")
-    __properties = ["query", "field", "nestedType", "maxExpansions", "size", "sort", "sortByValue"]
+    query: StrictStr = Field(
+        ...,
+        description=
+        "The type ahead query string used to construct a phrase prefix match query."
+    )
+    field: StrictStr = Field(
+        ...,
+        description="The field on which to perform the type ahead search.")
+    nested_type: Optional[StrictStr] = Field(None,
+                                             alias="nestedType",
+                                             description="The nested type.")
+    max_expansions: Optional[conint(strict=True, le=1000, ge=1)] = Field(
+        10,
+        alias="maxExpansions",
+        description=
+        "The number of suffixes the last term will be expanded into. Influences the performance of the query and the number results returned. Valid values: 1 to 1000."
+    )
+    size: Optional[conint(strict=True, ge=1)] = Field(
+        100, description="The max amount of records the search will return.")
+    sort: Optional[StrictStr] = Field(
+        'desc', description="The sort order of the returned records.")
+    sort_by_value: Optional[StrictBool] = Field(
+        False,
+        alias="sortByValue",
+        description="The flag that defines the sort type, by count or value.")
+    __properties = [
+        "query", "field", "nestedType", "maxExpansions", "size", "sort",
+        "sortByValue"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -54,10 +74,7 @@ class TypeAheadQuery(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -70,14 +87,21 @@ class TypeAheadQuery(BaseModel):
             return TypeAheadQuery.parse_obj(obj)
 
         _obj = TypeAheadQuery.parse_obj({
-            "query": obj.get("query"),
-            "field": obj.get("field"),
-            "nested_type": obj.get("nestedType"),
-            "max_expansions": obj.get("maxExpansions") if obj.get("maxExpansions") is not None else 10,
-            "size": obj.get("size") if obj.get("size") is not None else 100,
-            "sort": obj.get("sort") if obj.get("sort") is not None else 'desc',
-            "sort_by_value": obj.get("sortByValue") if obj.get("sortByValue") is not None else False
+            "query":
+            obj.get("query"),
+            "field":
+            obj.get("field"),
+            "nested_type":
+            obj.get("nestedType"),
+            "max_expansions":
+            obj.get("maxExpansions")
+            if obj.get("maxExpansions") is not None else 10,
+            "size":
+            obj.get("size") if obj.get("size") is not None else 100,
+            "sort":
+            obj.get("sort") if obj.get("sort") is not None else 'desc',
+            "sort_by_value":
+            obj.get("sortByValue")
+            if obj.get("sortByValue") is not None else False
         })
         return _obj
-
-

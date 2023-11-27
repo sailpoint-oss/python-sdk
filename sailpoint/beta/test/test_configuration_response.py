@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.configuration_response import ConfigurationResponse  # noqa: E501
+from sailpoint.beta.models.configuration_response import ConfigurationResponse  # noqa: E501
+
 
 class TestConfigurationResponse(unittest.TestCase):
     """ConfigurationResponse unit test stubs"""
@@ -36,20 +36,20 @@ class TestConfigurationResponse(unittest.TestCase):
         model = ConfigurationResponse()  # noqa: E501
         if include_optional:
             return ConfigurationResponse(
-                identity = beta.models.identity_1.Identity_1(
+                identity = sailpoint.beta.models.identity_1.Identity_1(
                     id = '2c91808380aa05580180aaaaf1940410', 
                     name = 'William Wilson', ),
                 config_details = [
-                    beta.models.configuration_details_response.ConfigurationDetailsResponse(
+                    sailpoint.beta.models.configuration_details_response.ConfigurationDetailsResponse(
                         config_type = 'ACCESS_REQUESTS', 
-                        target_identity = beta.models.identity_1.Identity_1(
+                        target_identity = sailpoint.beta.models.identity_1.Identity_1(
                             id = '2c91808380aa05580180aaaaf1940410', 
                             name = 'William Wilson', ), 
                         start_date = '2022-07-21T11:13:12.345Z', 
                         end_date = '0001-01-01T00:00Z', 
-                        audit_details = beta.models.audit_details.AuditDetails(
+                        audit_details = sailpoint.beta.models.audit_details.AuditDetails(
                             created = '2022-07-21T11:13:12.345Z', 
-                            created_by = beta.models.identity_1.Identity_1(
+                            created_by = sailpoint.beta.models.identity_1.Identity_1(
                                 id = '2c91808380aa05580180aaaaf1940410', 
                                 name = 'William Wilson', ), 
                             modified = '2022-07-21T11:13:12.345Z', 
@@ -65,6 +65,7 @@ class TestConfigurationResponse(unittest.TestCase):
         """Test ConfigurationResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

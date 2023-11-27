@@ -11,16 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, conlist
-from beta.models.recommendation_response import RecommendationResponse
+from sailpoint.beta.models.recommendation_response import RecommendationResponse
+
 
 class RecommendationResponseDto(BaseModel):
     """
@@ -49,10 +48,7 @@ class RecommendationResponseDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in response (list)
         _items = []
         if self.response:
@@ -72,8 +68,9 @@ class RecommendationResponseDto(BaseModel):
             return RecommendationResponseDto.parse_obj(obj)
 
         _obj = RecommendationResponseDto.parse_obj({
-            "response": [RecommendationResponse.from_dict(_item) for _item in obj.get("response")] if obj.get("response") is not None else None
+            "response": [
+                RecommendationResponse.from_dict(_item)
+                for _item in obj.get("response")
+            ] if obj.get("response") is not None else None
         })
         return _obj
-
-

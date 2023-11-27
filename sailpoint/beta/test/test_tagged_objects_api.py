@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.tagged_objects_api import TaggedObjectsApi  # noqa: E501
+from sailpoint.beta.api.tagged_objects_api import TaggedObjectsApi  # noqa: E501
 
 
 class TestTaggedObjectsApi(unittest.TestCase):

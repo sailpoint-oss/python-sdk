@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.forward_approval_dto import ForwardApprovalDto
+from sailpoint.v3.models.forward_approval_dto import ForwardApprovalDto
 
 # TODO update the JSON string below
 json = "{}"

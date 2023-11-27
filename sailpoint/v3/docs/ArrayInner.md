@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.array_inner import ArrayInner
+from sailpoint.v3.models.array_inner import ArrayInner
 
 # TODO update the JSON string below
 json = "{}"

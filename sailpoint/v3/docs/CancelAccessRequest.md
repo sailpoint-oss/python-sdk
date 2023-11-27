@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.cancel_access_request import CancelAccessRequest
+from sailpoint.v3.models.cancel_access_request import CancelAccessRequest
 
 # TODO update the JSON string below
 json = "{}"

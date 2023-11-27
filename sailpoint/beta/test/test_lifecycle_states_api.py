@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.lifecycle_states_api import LifecycleStatesApi  # noqa: E501
+from sailpoint.beta.api.lifecycle_states_api import LifecycleStatesApi  # noqa: E501
 
 
 class TestLifecycleStatesApi(unittest.TestCase):

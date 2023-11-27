@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.approval_reminder_and_escalation_config import ApprovalReminderAndEscalationConfig
+from sailpoint.beta.models.approval_reminder_and_escalation_config import ApprovalReminderAndEscalationConfig
 
 # TODO update the JSON string below
 json = "{}"

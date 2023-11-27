@@ -58,7 +58,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.trigger_example_input import TriggerExampleInput
+from sailpoint.beta.models.trigger_example_input import TriggerExampleInput
 
 # TODO update the JSON string below
 json = "{}"

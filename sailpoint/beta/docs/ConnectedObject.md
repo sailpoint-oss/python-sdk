@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.connected_object import ConnectedObject
+from sailpoint.beta.models.connected_object import ConnectedObject
 
 # TODO update the JSON string below
 json = "{}"

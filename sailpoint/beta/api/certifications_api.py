@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,17 +22,15 @@ from pydantic import Field, StrictBool, StrictStr, conint
 
 from typing import List, Optional
 
-from beta.models.identity_certification_task import IdentityCertificationTask
-from beta.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
-from beta.models.permission_dto import PermissionDto
-from beta.models.review_reassign import ReviewReassign
+from sailpoint.beta.models.identity_certification_task import IdentityCertificationTask
+from sailpoint.beta.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
+from sailpoint.beta.models.permission_dto import PermissionDto
+from sailpoint.beta.models.review_reassign import ReviewReassign
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class CertificationsApi:
@@ -49,7 +46,43 @@ class CertificationsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_identity_certification_item_permissions(self, certification_id : Annotated[StrictStr, Field(..., description="The certification ID")], item_id : Annotated[StrictStr, Field(..., description="The certification item ID")], filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **target**: *eq, sw*  **rights**: *ca*  All field values (second filter operands) are case-insensitive for this API.  Only a single *and* or *or* composite filter operator may be used. It must also be used between a target filter and a rights filter, not between 2 filters for the same field.  For example, the following is valid: `?filters=rights+ca+(%22CREATE%22)+and+target+eq+%22SYS.OBJAUTH2%22`  The following is invalid: `?filters=rights+ca+(%22CREATE%22)+and+rights+ca+(%SELECT%22)`")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[PermissionDto]:  # noqa: E501
+    def get_identity_certification_item_permissions(
+            self,
+            certification_id: Annotated[
+                StrictStr,
+                Field(..., description="The certification ID")],
+            item_id: Annotated[
+                StrictStr,
+                Field(..., description="The certification item ID")],
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **target**: *eq, sw*  **rights**: *ca*  All field values (second filter operands) are case-insensitive for this API.  Only a single *and* or *or* composite filter operator may be used. It must also be used between a target filter and a rights filter, not between 2 filters for the same field.  For example, the following is valid: `?filters=rights+ca+(%22CREATE%22)+and+target+eq+%22SYS.OBJAUTH2%22`  The following is invalid: `?filters=rights+ca+(%22CREATE%22)+and+rights+ca+(%SELECT%22)`"
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> List[PermissionDto]:  # noqa: E501
         """(Deprecated) Permissions for Entitlement Certification Item  # noqa: E501
 
         This API returns the permissions associated with an entitlement certification item based on the certification item's ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -86,10 +119,48 @@ class CertificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_certification_item_permissions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_certification_item_permissions_with_http_info(certification_id, item_id, filters, limit, offset, count, **kwargs)  # noqa: E501
+        return self.get_identity_certification_item_permissions_with_http_info(
+            certification_id, item_id, filters, limit, offset, count,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_certification_item_permissions_with_http_info(self, certification_id : Annotated[StrictStr, Field(..., description="The certification ID")], item_id : Annotated[StrictStr, Field(..., description="The certification item ID")], filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **target**: *eq, sw*  **rights**: *ca*  All field values (second filter operands) are case-insensitive for this API.  Only a single *and* or *or* composite filter operator may be used. It must also be used between a target filter and a rights filter, not between 2 filters for the same field.  For example, the following is valid: `?filters=rights+ca+(%22CREATE%22)+and+target+eq+%22SYS.OBJAUTH2%22`  The following is invalid: `?filters=rights+ca+(%22CREATE%22)+and+rights+ca+(%SELECT%22)`")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_certification_item_permissions_with_http_info(
+            self,
+            certification_id: Annotated[
+                StrictStr,
+                Field(..., description="The certification ID")],
+            item_id: Annotated[
+                StrictStr,
+                Field(..., description="The certification item ID")],
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **target**: *eq, sw*  **rights**: *ca*  All field values (second filter operands) are case-insensitive for this API.  Only a single *and* or *or* composite filter operator may be used. It must also be used between a target filter and a rights filter, not between 2 filters for the same field.  For example, the following is valid: `?filters=rights+ca+(%22CREATE%22)+and+target+eq+%22SYS.OBJAUTH2%22`  The following is invalid: `?filters=rights+ca+(%22CREATE%22)+and+rights+ca+(%SELECT%22)`"
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """(Deprecated) Permissions for Entitlement Certification Item  # noqa: E501
 
         This API returns the permissions associated with an entitlement certification item based on the certification item's ID. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -136,37 +207,28 @@ class CertificationsApi:
         :rtype: tuple(List[PermissionDto], status_code(int), headers(HTTPHeaderDict))
         """
 
-        warnings.warn("GET /certifications/{certificationId}/access-review-items/{itemId}/permissions is deprecated.", DeprecationWarning)
+        warnings.warn(
+            "GET /certifications/{certificationId}/access-review-items/{itemId}/permissions is deprecated.",
+            DeprecationWarning)
 
         _params = locals()
 
         _all_params = [
-            'certification_id',
-            'item_id',
-            'filters',
-            'limit',
-            'offset',
+            'certification_id', 'item_id', 'filters', 'limit', 'offset',
             'count'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_identity_certification_item_permissions" % _key
-                )
+                    " to method get_identity_certification_item_permissions" %
+                    _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -179,7 +241,6 @@ class CertificationsApi:
 
         if _params['item_id']:
             _path_params['itemId'] = _params['item_id']
-
 
         # process the query parameters
         _query_params = []
@@ -220,7 +281,8 @@ class CertificationsApi:
         }
 
         return self.api_client.call_api(
-            '/certifications/{certificationId}/access-review-items/{itemId}/permissions', 'GET',
+            '/certifications/{certificationId}/access-review-items/{itemId}/permissions',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -230,14 +292,18 @@ class CertificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identity_certification_pending_tasks(self, id : Annotated[StrictStr, Field(..., description="The identity campaign certification ID")], **kwargs) -> List[IdentityCertificationTask]:  # noqa: E501
+    def get_identity_certification_pending_tasks(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The identity campaign certification ID"
+              )], **kwargs) -> List[IdentityCertificationTask]:  # noqa: E501
         """Pending Certification Tasks  # noqa: E501
 
         This API returns the status of all pending (`QUEUED` or `IN_PROGRESS`) tasks for an identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -264,10 +330,16 @@ class CertificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_certification_pending_tasks_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_certification_pending_tasks_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_identity_certification_pending_tasks_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_certification_pending_tasks_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity campaign certification ID")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_certification_pending_tasks_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(...,
+                      description="The identity campaign certification ID")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Pending Certification Tasks  # noqa: E501
 
         This API returns the status of all pending (`QUEUED` or `IN_PROGRESS`) tasks for an identity campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -306,28 +378,19 @@ class CertificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_identity_certification_pending_tasks" % _key
-                )
+                    " to method get_identity_certification_pending_tasks" %
+                    _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -337,7 +400,6 @@ class CertificationsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -366,7 +428,8 @@ class CertificationsApi:
         }
 
         return self.api_client.call_api(
-            '/certifications/{id}/tasks-pending', 'GET',
+            '/certifications/{id}/tasks-pending',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -376,14 +439,23 @@ class CertificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identity_certification_task_status(self, id : Annotated[StrictStr, Field(..., description="The identity campaign certification ID")], task_id : Annotated[StrictStr, Field(..., description="The certification task ID")], **kwargs) -> IdentityCertificationTask:  # noqa: E501
+    def get_identity_certification_task_status(
+            self, id: Annotated[
+                StrictStr,
+                Field(...,
+                      description="The identity campaign certification ID")],
+            task_id: Annotated[
+                StrictStr,
+                Field(..., description="The certification task ID")],
+            **kwargs) -> IdentityCertificationTask:  # noqa: E501
         """Certification Task Status  # noqa: E501
 
         This API returns the status of a certification task. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -412,10 +484,19 @@ class CertificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_certification_task_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_certification_task_status_with_http_info(id, task_id, **kwargs)  # noqa: E501
+        return self.get_identity_certification_task_status_with_http_info(
+            id, task_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_certification_task_status_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity campaign certification ID")], task_id : Annotated[StrictStr, Field(..., description="The certification task ID")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_certification_task_status_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(...,
+                      description="The identity campaign certification ID")],
+            task_id: Annotated[
+                StrictStr,
+                Field(..., description="The certification task ID")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Certification Task Status  # noqa: E501
 
         This API returns the status of a certification task. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -456,29 +537,18 @@ class CertificationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'task_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'task_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_identity_certification_task_status" % _key
-                )
+                    " to method get_identity_certification_task_status" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -491,7 +561,6 @@ class CertificationsApi:
 
         if _params['task_id']:
             _path_params['taskId'] = _params['task_id']
-
 
         # process the query parameters
         _query_params = []
@@ -520,7 +589,8 @@ class CertificationsApi:
         }
 
         return self.api_client.call_api(
-            '/certifications/{id}/tasks/{taskId}', 'GET',
+            '/certifications/{id}/tasks/{taskId}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -530,14 +600,54 @@ class CertificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_certification_reviewers(self, id : Annotated[StrictStr, Field(..., description="The certification ID")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **email**: *eq, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email**")] = None, **kwargs) -> List[IdentityReferenceWithNameAndEmail]:  # noqa: E501
+    def list_certification_reviewers(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The certification ID")],
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **email**: *eq, sw*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email**"
+            )] = None,
+            **kwargs) -> List[IdentityReferenceWithNameAndEmail]:  # noqa: E501
         """(Deprecated) List of Reviewers for certification  # noqa: E501
 
         This API returns a list of reviewers for the certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -574,10 +684,50 @@ class CertificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_certification_reviewers_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_certification_reviewers_with_http_info(id, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.list_certification_reviewers_with_http_info(
+            id, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_certification_reviewers_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The certification ID")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **email**: *eq, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_certification_reviewers_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The certification ID")],
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **email**: *eq, sw*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """(Deprecated) List of Reviewers for certification  # noqa: E501
 
         This API returns a list of reviewers for the certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -624,37 +774,23 @@ class CertificationsApi:
         :rtype: tuple(List[IdentityReferenceWithNameAndEmail], status_code(int), headers(HTTPHeaderDict))
         """
 
-        warnings.warn("GET /certifications/{id}/reviewers is deprecated.", DeprecationWarning)
+        warnings.warn("GET /certifications/{id}/reviewers is deprecated.",
+                      DeprecationWarning)
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'limit',
-            'offset',
-            'count',
-            'filters',
-            'sorters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'limit', 'offset', 'count', 'filters', 'sorters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_certification_reviewers" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_certification_reviewers" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -664,7 +800,6 @@ class CertificationsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -708,7 +843,8 @@ class CertificationsApi:
         }
 
         return self.api_client.call_api(
-            '/certifications/{id}/reviewers', 'GET',
+            '/certifications/{id}/reviewers',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -718,14 +854,21 @@ class CertificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def submit_reassign_certs_async(self, id : Annotated[StrictStr, Field(..., description="The identity campaign certification ID")], review_reassign : ReviewReassign, **kwargs) -> IdentityCertificationTask:  # noqa: E501
+    def submit_reassign_certs_async(
+            self, id: Annotated[
+                StrictStr,
+                Field(...,
+                      description="The identity campaign certification ID")],
+            review_reassign: ReviewReassign,
+            **kwargs) -> IdentityCertificationTask:  # noqa: E501
         """(Deprecated) Reassign Certifications Asynchronously  # noqa: E501
 
         This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -754,10 +897,17 @@ class CertificationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the submit_reassign_certs_async_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.submit_reassign_certs_async_with_http_info(id, review_reassign, **kwargs)  # noqa: E501
+        return self.submit_reassign_certs_async_with_http_info(
+            id, review_reassign, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def submit_reassign_certs_async_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity campaign certification ID")], review_reassign : ReviewReassign, **kwargs) -> ApiResponse:  # noqa: E501
+    def submit_reassign_certs_async_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(...,
+                      description="The identity campaign certification ID")],
+            review_reassign: ReviewReassign,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """(Deprecated) Reassign Certifications Asynchronously  # noqa: E501
 
         This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.  # noqa: E501
@@ -796,33 +946,24 @@ class CertificationsApi:
         :rtype: tuple(IdentityCertificationTask, status_code(int), headers(HTTPHeaderDict))
         """
 
-        warnings.warn("POST /certifications/{id}/reassign-async is deprecated.", DeprecationWarning)
+        warnings.warn(
+            "POST /certifications/{id}/reassign-async is deprecated.",
+            DeprecationWarning)
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'review_reassign'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'review_reassign']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method submit_reassign_certs_async" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method submit_reassign_certs_async" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -832,7 +973,6 @@ class CertificationsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -851,11 +991,11 @@ class CertificationsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -871,7 +1011,8 @@ class CertificationsApi:
         }
 
         return self.api_client.call_api(
-            '/certifications/{id}/reassign-async', 'POST',
+            '/certifications/{id}/reassign-async',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -881,7 +1022,8 @@ class CertificationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

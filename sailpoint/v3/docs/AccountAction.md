@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.account_action import AccountAction
+from sailpoint.v3.models.account_action import AccountAction
 
 # TODO update the JSON string below
 json = "{}"

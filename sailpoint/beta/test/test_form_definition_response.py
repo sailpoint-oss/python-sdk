@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.form_definition_response import FormDefinitionResponse  # noqa: E501
+from sailpoint.beta.models.form_definition_response import FormDefinitionResponse  # noqa: E501
+
 
 class TestFormDefinitionResponse(unittest.TestCase):
     """FormDefinitionResponse unit test stubs"""
@@ -39,23 +39,23 @@ class TestFormDefinitionResponse(unittest.TestCase):
                 id = '00000000-0000-0000-0000-000000000000',
                 name = 'My form',
                 description = 'My form description',
-                owner = beta.models.form_owner.FormOwner(
+                owner = sailpoint.beta.models.form_owner.FormOwner(
                     type = 'IDENTITY', 
                     id = '00000000-0000-0000-0000-000000000000', ),
                 used_by = [
-                    beta.models.form_used_by.FormUsedBy(
+                    sailpoint.beta.models.form_used_by.FormUsedBy(
                         type = 'WORKFLOW', 
                         id = '00000000-0000-0000-0000-000000000000', )
                     ],
                 form_input = [
-                    beta.models.form_definition_input.FormDefinitionInput(
+                    sailpoint.beta.models.form_definition_input.FormDefinitionInput(
                         id = '00000000-0000-0000-0000-000000000000', 
                         type = 'STRING', 
                         label = 'input1', 
                         description = 'A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic', )
                     ],
                 form_elements = [
-                    beta.models.form_element.FormElement(
+                    sailpoint.beta.models.form_element.FormElement(
                         id = '00000000-0000-0000-0000-000000000000', 
                         element_type = 'TEXT', 
                         config = {label=Department}, 
@@ -63,10 +63,10 @@ class TestFormDefinitionResponse(unittest.TestCase):
                         validations = [{validationType=REQUIRED}], )
                     ],
                 form_conditions = [
-                    beta.models.form_condition.FormCondition(
+                    sailpoint.beta.models.form_condition.FormCondition(
                         rule_operator = 'AND', 
                         rules = [
-                            beta.models.condition_rule.ConditionRule(
+                            sailpoint.beta.models.condition_rule.ConditionRule(
                                 source_type = 'ELEMENT', 
                                 source = 'department', 
                                 operator = 'EQ', 
@@ -74,9 +74,9 @@ class TestFormDefinitionResponse(unittest.TestCase):
                                 value = Engineering, )
                             ], 
                         effects = [
-                            beta.models.condition_effect.ConditionEffect(
+                            sailpoint.beta.models.condition_effect.ConditionEffect(
                                 effect_type = 'HIDE', 
-                                config = beta.models.condition_effect_config.ConditionEffect_config(
+                                config = sailpoint.beta.models.condition_effect_config.ConditionEffect_config(
                                     default_value_label = 'Access to Remove', 
                                     element = '8110662963316867', ), )
                             ], )
@@ -93,6 +93,7 @@ class TestFormDefinitionResponse(unittest.TestCase):
         """Test FormDefinitionResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

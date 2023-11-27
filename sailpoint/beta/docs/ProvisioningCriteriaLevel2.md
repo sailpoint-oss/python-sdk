@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.provisioning_criteria_level2 import ProvisioningCriteriaLevel2
+from sailpoint.beta.models.provisioning_criteria_level2 import ProvisioningCriteriaLevel2
 
 # TODO update the JSON string below
 json = "{}"

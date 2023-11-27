@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.bulk_tagged_object import BulkTaggedObject  # noqa: E501
+from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject  # noqa: E501
+
 
 class TestBulkTaggedObject(unittest.TestCase):
     """BulkTaggedObject unit test stubs"""
@@ -37,7 +37,7 @@ class TestBulkTaggedObject(unittest.TestCase):
         if include_optional:
             return BulkTaggedObject(
                 object_refs = [
-                    v3.models.tagged_object_dto.TaggedObjectDto(
+                    sailpoint.v3.models.tagged_object_dto.TaggedObjectDto(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', 
                         name = 'William Wilson', )
@@ -54,6 +54,7 @@ class TestBulkTaggedObject(unittest.TestCase):
         """Test BulkTaggedObject"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

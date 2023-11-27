@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, StrictStr
+
 
 class ImportFormDefinitions202ResponseErrorsInner(BaseModel):
     """
@@ -44,20 +43,19 @@ class ImportFormDefinitions202ResponseErrorsInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ImportFormDefinitions202ResponseErrorsInner:
+    def from_json(
+            cls, json_str: str) -> ImportFormDefinitions202ResponseErrorsInner:
         """Create an instance of ImportFormDefinitions202ResponseErrorsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ImportFormDefinitions202ResponseErrorsInner:
+    def from_dict(cls,
+                  obj: dict) -> ImportFormDefinitions202ResponseErrorsInner:
         """Create an instance of ImportFormDefinitions202ResponseErrorsInner from a dict"""
         if obj is None:
             return None
@@ -66,10 +64,11 @@ class ImportFormDefinitions202ResponseErrorsInner(BaseModel):
             return ImportFormDefinitions202ResponseErrorsInner.parse_obj(obj)
 
         _obj = ImportFormDefinitions202ResponseErrorsInner.parse_obj({
-            "detail": obj.get("detail"),
-            "key": obj.get("key"),
-            "text": obj.get("text")
+            "detail":
+            obj.get("detail"),
+            "key":
+            obj.get("key"),
+            "text":
+            obj.get("text")
         })
         return _obj
-
-

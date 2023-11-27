@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.email_notification_option import EmailNotificationOption  # noqa: E501
+from sailpoint.beta.models.email_notification_option import EmailNotificationOption  # noqa: E501
+
 
 class TestEmailNotificationOption(unittest.TestCase):
     """EmailNotificationOption unit test stubs"""
@@ -50,6 +50,7 @@ class TestEmailNotificationOption(unittest.TestCase):
         """Test EmailNotificationOption"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

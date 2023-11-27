@@ -11,28 +11,43 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from v3.models.campaign_all_of_role_composition_campaign_info_remediator_ref import CampaignAllOfRoleCompositionCampaignInfoRemediatorRef
-from v3.models.campaign_all_of_search_campaign_info_reviewer import CampaignAllOfSearchCampaignInfoReviewer
+from sailpoint.v3.models.campaign_all_of_role_composition_campaign_info_remediator_ref import CampaignAllOfRoleCompositionCampaignInfoRemediatorRef
+from sailpoint.v3.models.campaign_all_of_search_campaign_info_reviewer import CampaignAllOfSearchCampaignInfoReviewer
+
 
 class CampaignAllOfRoleCompositionCampaignInfo(BaseModel):
     """
     Optional configuration options for role composition campaigns.  # noqa: E501
     """
     reviewer: Optional[CampaignAllOfSearchCampaignInfoReviewer] = None
-    role_ids: Optional[conlist(StrictStr)] = Field(None, alias="roleIds", description="Optional list of roles to include in this campaign. Only one of `roleIds` and `query` may be set; if neither are set, all roles are included.")
-    remediator_ref: CampaignAllOfRoleCompositionCampaignInfoRemediatorRef = Field(..., alias="remediatorRef")
-    query: Optional[StrictStr] = Field(None, description="Optional search query to scope this campaign to a set of roles. Only one of `roleIds` and `query` may be set; if neither are set, all roles are included.")
-    description: Optional[StrictStr] = Field(None, description="Describes this role composition campaign. Intended for storing the query used, and possibly the number of roles selected/available.")
-    __properties = ["reviewer", "roleIds", "remediatorRef", "query", "description"]
+    role_ids: Optional[conlist(StrictStr)] = Field(
+        None,
+        alias="roleIds",
+        description=
+        "Optional list of roles to include in this campaign. Only one of `roleIds` and `query` may be set; if neither are set, all roles are included."
+    )
+    remediator_ref: CampaignAllOfRoleCompositionCampaignInfoRemediatorRef = Field(
+        ..., alias="remediatorRef")
+    query: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Optional search query to scope this campaign to a set of roles. Only one of `roleIds` and `query` may be set; if neither are set, all roles are included."
+    )
+    description: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Describes this role composition campaign. Intended for storing the query used, and possibly the number of roles selected/available."
+    )
+    __properties = [
+        "reviewer", "roleIds", "remediatorRef", "query", "description"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -48,16 +63,14 @@ class CampaignAllOfRoleCompositionCampaignInfo(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CampaignAllOfRoleCompositionCampaignInfo:
+    def from_json(cls,
+                  json_str: str) -> CampaignAllOfRoleCompositionCampaignInfo:
         """Create an instance of CampaignAllOfRoleCompositionCampaignInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of reviewer
         if self.reviewer:
             _dict['reviewer'] = self.reviewer.to_dict()
@@ -76,12 +89,19 @@ class CampaignAllOfRoleCompositionCampaignInfo(BaseModel):
             return CampaignAllOfRoleCompositionCampaignInfo.parse_obj(obj)
 
         _obj = CampaignAllOfRoleCompositionCampaignInfo.parse_obj({
-            "reviewer": CampaignAllOfSearchCampaignInfoReviewer.from_dict(obj.get("reviewer")) if obj.get("reviewer") is not None else None,
-            "role_ids": obj.get("roleIds"),
-            "remediator_ref": CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.from_dict(obj.get("remediatorRef")) if obj.get("remediatorRef") is not None else None,
-            "query": obj.get("query"),
-            "description": obj.get("description")
+            "reviewer":
+            CampaignAllOfSearchCampaignInfoReviewer.from_dict(
+                obj.get("reviewer"))
+            if obj.get("reviewer") is not None else None,
+            "role_ids":
+            obj.get("roleIds"),
+            "remediator_ref":
+            CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.from_dict(
+                obj.get("remediatorRef"))
+            if obj.get("remediatorRef") is not None else None,
+            "query":
+            obj.get("query"),
+            "description":
+            obj.get("description")
         })
         return _obj
-
-

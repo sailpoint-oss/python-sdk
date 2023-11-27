@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.recommendation_response import RecommendationResponse  # noqa: E501
+from sailpoint.beta.models.recommendation_response import RecommendationResponse  # noqa: E501
+
 
 class TestRecommendationResponse(unittest.TestCase):
     """RecommendationResponse unit test stubs"""
@@ -36,15 +36,15 @@ class TestRecommendationResponse(unittest.TestCase):
         model = RecommendationResponse()  # noqa: E501
         if include_optional:
             return RecommendationResponse(
-                request = beta.models.recommendation_request.RecommendationRequest(
+                request = sailpoint.beta.models.recommendation_request.RecommendationRequest(
                     identity_id = '2c938083633d259901633d25c68c00fa', 
-                    item = beta.models.access_item_ref.AccessItemRef(
+                    item = sailpoint.beta.models.access_item_ref.AccessItemRef(
                         id = '2c938083633d259901633d2623ec0375', 
                         type = 'ENTITLEMENT', ), ),
                 recommendation = 'true',
                 interpretations = [75% of identities with the same department have this access. This information had a high impact on the overall score., 67% of identities with the same peer group have this access. This information had a low impact on the overall score., 42% of identities with the same location have this access. This information had a low impact on the overall score.],
                 translation_messages = [{key=recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH, values=[75, department]}],
-                recommender_calculations = beta.models.recommender_calculations.RecommenderCalculations(
+                recommender_calculations = sailpoint.beta.models.recommender_calculations.RecommenderCalculations(
                     identity_id = '2c91808457d8f3ab0157e3e62cb4213c', 
                     entitlement_id = '2c91809050db617d0150e0bf3215385e', 
                     recommendation = 'YES', 
@@ -54,10 +54,10 @@ class TestRecommendationResponse(unittest.TestCase):
                         }, 
                     threshold = 1.337, 
                     identity_attributes = {
-                        'key' : beta.models.recommender_calculations_identity_attributes_value.RecommenderCalculations_identityAttributes_value(
+                        'key' : sailpoint.beta.models.recommender_calculations_identity_attributes_value.RecommenderCalculations_identityAttributes_value(
                             value = '', )
                         }, 
-                    feature_values = beta.models.feature_value_dto.FeatureValueDto(
+                    feature_values = sailpoint.beta.models.feature_value_dto.FeatureValueDto(
                         feature = 'department', 
                         numerator = 14, 
                         denominator = 14, ), )
@@ -71,6 +71,7 @@ class TestRecommendationResponse(unittest.TestCase):
         """Test RecommendationResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

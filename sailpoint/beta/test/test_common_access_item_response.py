@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.common_access_item_response import CommonAccessItemResponse  # noqa: E501
+from sailpoint.beta.models.common_access_item_response import CommonAccessItemResponse  # noqa: E501
+
 
 class TestCommonAccessItemResponse(unittest.TestCase):
     """CommonAccessItemResponse unit test stubs"""
@@ -37,7 +37,7 @@ class TestCommonAccessItemResponse(unittest.TestCase):
         if include_optional:
             return CommonAccessItemResponse(
                 id = '',
-                access = beta.models.common_access_item_access.CommonAccessItemAccess(
+                access = sailpoint.beta.models.common_access_item_access.CommonAccessItemAccess(
                     id = '', 
                     type = 'ACCESS_PROFILE', 
                     name = '', 
@@ -59,6 +59,7 @@ class TestCommonAccessItemResponse(unittest.TestCase):
         """Test CommonAccessItemResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

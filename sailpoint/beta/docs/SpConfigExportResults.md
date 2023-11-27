@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.sp_config_export_results import SpConfigExportResults
+from sailpoint.beta.models.sp_config_export_results import SpConfigExportResults
 
 # TODO update the JSON string below
 json = "{}"

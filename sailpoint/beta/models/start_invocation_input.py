@@ -11,23 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class StartInvocationInput(BaseModel):
     """
     StartInvocationInput
     """
-    trigger_id: Optional[StrictStr] = Field(None, alias="triggerId", description="Trigger ID")
-    input: Optional[Dict[str, Any]] = Field(None, description="Trigger input payload. Its schema is defined in the trigger definition.")
-    content_json: Optional[Dict[str, Any]] = Field(None, alias="contentJson", description="JSON map of invocation metadata")
+    trigger_id: Optional[StrictStr] = Field(None,
+                                            alias="triggerId",
+                                            description="Trigger ID")
+    input: Optional[Dict[str, Any]] = Field(
+        None,
+        description=
+        "Trigger input payload. Its schema is defined in the trigger definition."
+    )
+    content_json: Optional[Dict[str, Any]] = Field(
+        None,
+        alias="contentJson",
+        description="JSON map of invocation metadata")
     __properties = ["triggerId", "input", "contentJson"]
 
     class Config:
@@ -50,10 +58,7 @@ class StartInvocationInput(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,10 +71,11 @@ class StartInvocationInput(BaseModel):
             return StartInvocationInput.parse_obj(obj)
 
         _obj = StartInvocationInput.parse_obj({
-            "trigger_id": obj.get("triggerId"),
-            "input": obj.get("input"),
-            "content_json": obj.get("contentJson")
+            "trigger_id":
+            obj.get("triggerId"),
+            "input":
+            obj.get("input"),
+            "content_json":
+            obj.get("contentJson")
         })
         return _obj
-
-

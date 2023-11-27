@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.subscription_post_request import SubscriptionPostRequest  # noqa: E501
+from sailpoint.beta.models.subscription_post_request import SubscriptionPostRequest  # noqa: E501
+
 
 class TestSubscriptionPostRequest(unittest.TestCase):
     """SubscriptionPostRequest unit test stubs"""
@@ -41,16 +41,16 @@ class TestSubscriptionPostRequest(unittest.TestCase):
                 trigger_id = 'idn:access-requested',
                 type = 'HTTP',
                 response_deadline = 'PT1H',
-                http_config = beta.models.http_config.HttpConfig(
+                http_config = sailpoint.beta.models.http_config.HttpConfig(
                     url = 'https://www.example.com', 
                     http_dispatch_mode = 'SYNC', 
                     http_authentication_type = 'NO_AUTH', 
-                    basic_auth_config = beta.models.basic_auth_config.BasicAuthConfig(
+                    basic_auth_config = sailpoint.beta.models.basic_auth_config.BasicAuthConfig(
                         user_name = 'user@example.com', 
                         password = '', ), 
-                    bearer_token_auth_config = beta.models.bearer_token_auth_config.BearerTokenAuthConfig(
+                    bearer_token_auth_config = sailpoint.beta.models.bearer_token_auth_config.BearerTokenAuthConfig(
                         bearer_token = '', ), ),
-                event_bridge_config = beta.models.event_bridge_config.EventBridgeConfig(
+                event_bridge_config = sailpoint.beta.models.event_bridge_config.EventBridgeConfig(
                     aws_account = '123456789012', 
                     aws_region = 'us-west-1', ),
                 enabled = True,
@@ -68,6 +68,7 @@ class TestSubscriptionPostRequest(unittest.TestCase):
         """Test SubscriptionPostRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,18 +19,28 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-from v3.models.report_type import ReportType
+from sailpoint.v3.models.report_type import ReportType
+
 
 class CampaignReport(BaseModel):
     """
     CampaignReport
     """
-    type: Optional[StrictStr] = Field(None, description="SOD policy violation report result DTO type.")
-    id: Optional[StrictStr] = Field(None, description="SOD policy violation report result ID.")
-    name: Optional[StrictStr] = Field(None, description="Human-readable name of the SOD policy violation report result.")
-    status: Optional[StrictStr] = Field(None, description="Status of a SOD policy violation report.")
+    type: Optional[StrictStr] = Field(
+        None, description="SOD policy violation report result DTO type.")
+    id: Optional[StrictStr] = Field(
+        None, description="SOD policy violation report result ID.")
+    name: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Human-readable name of the SOD policy violation report result.")
+    status: Optional[StrictStr] = Field(
+        None, description="Status of a SOD policy violation report.")
     report_type: ReportType = Field(..., alias="reportType")
-    last_run_at: Optional[datetime] = Field(None, alias="lastRunAt", description="The most recent date and time this report was run")
+    last_run_at: Optional[datetime] = Field(
+        None,
+        alias="lastRunAt",
+        description="The most recent date and time this report was run")
     __properties = ["type", "id", "name", "status", "reportType", "lastRunAt"]
 
     @validator('type')
@@ -50,8 +59,11 @@ class CampaignReport(BaseModel):
         if value is None:
             return value
 
-        if value not in ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING'):
-            raise ValueError("must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING')")
+        if value not in ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED',
+                         'TEMP_ERROR', 'PENDING'):
+            raise ValueError(
+                "must be one of enum values ('SUCCESS', 'WARNING', 'ERROR', 'TERMINATED', 'TEMP_ERROR', 'PENDING')"
+            )
         return value
 
     class Config:
@@ -76,7 +88,7 @@ class CampaignReport(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "last_run_at",
+                              "last_run_at",
                           },
                           exclude_none=True)
         return _dict
@@ -99,5 +111,3 @@ class CampaignReport(BaseModel):
             "last_run_at": obj.get("lastRunAt")
         })
         return _obj
-
-

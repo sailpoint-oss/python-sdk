@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.identity_profile_all_of_owner import IdentityProfileAllOfOwner
+from sailpoint.beta.models.identity_profile_all_of_owner import IdentityProfileAllOfOwner
 
 # TODO update the JSON string below
 json = "{}"

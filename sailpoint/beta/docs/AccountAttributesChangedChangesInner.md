@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.account_attributes_changed_changes_inner import AccountAttributesChangedChangesInner
+from sailpoint.beta.models.account_attributes_changed_changes_inner import AccountAttributesChangedChangesInner
 
 # TODO update the JSON string below
 json = "{}"

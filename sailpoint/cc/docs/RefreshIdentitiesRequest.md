@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.refresh_identities_request import RefreshIdentitiesRequest
+from sailpoint.cc.models.refresh_identities_request import RefreshIdentitiesRequest
 
 # TODO update the JSON string below
 json = "{}"

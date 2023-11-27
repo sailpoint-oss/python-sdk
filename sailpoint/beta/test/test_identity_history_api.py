@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.identity_history_api import IdentityHistoryApi  # noqa: E501
+from sailpoint.beta.api.identity_history_api import IdentityHistoryApi  # noqa: E501
 
 
 class TestIdentityHistoryApi(unittest.TestCase):

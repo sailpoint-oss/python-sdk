@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class CriteriaType(str, Enum):
     """
     Type of the criteria in the filter.
     """
-
     """
     allowed enum values
     """
@@ -45,5 +40,3 @@ class CriteriaType(str, Enum):
     def from_json(cls, json_str: str) -> CriteriaType:
         """Create an instance of CriteriaType from a JSON string"""
         return CriteriaType(json.loads(json_str))
-
-

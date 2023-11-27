@@ -1,4 +1,4 @@
-# v3.CertificationCampaignFiltersApi
+# sailpoint.v3.CertificationCampaignFiltersApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -25,14 +25,14 @@ Create a campaign Filter based on filter details and criteria.
 ```python
 import time
 import os
-import v3
-from v3.models.campaign_filter_details import CampaignFilterDetails
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.campaign_filter_details import CampaignFilterDetails
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -46,10 +46,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationCampaignFiltersApi(api_client)
-    campaign_filter_details = v3.CampaignFilterDetails() # CampaignFilterDetails | 
+    api_instance = sailpoint.v3.CertificationCampaignFiltersApi(api_client)
+    campaign_filter_details = sailpoint.v3.CampaignFilterDetails() # CampaignFilterDetails | 
 
     try:
         # Create a Campaign Filter
@@ -107,13 +107,13 @@ Deletes campaign filters whose Ids are specified in the provided list of campaig
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -127,9 +127,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationCampaignFiltersApi(api_client)
+    api_instance = sailpoint.v3.CertificationCampaignFiltersApi(api_client)
     request_body = ['request_body_example'] # List[str] | A json list of IDs of campaign filters to delete.
 
     try:
@@ -187,14 +187,14 @@ Retrieves information for an existing campaign filter using the filter's ID.
 ```python
 import time
 import os
-import v3
-from v3.models.campaign_filter_details import CampaignFilterDetails
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.campaign_filter_details import CampaignFilterDetails
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -208,9 +208,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationCampaignFiltersApi(api_client)
+    api_instance = sailpoint.v3.CertificationCampaignFiltersApi(api_client)
     filter_id = 'e9f9a1397b842fd5a65842087040d3ac' # str | The ID of the campaign filter to be retrieved.
 
     try:
@@ -270,14 +270,14 @@ Lists all Campaign Filters. Scope can be reduced via standard V3 query params.  
 ```python
 import time
 import os
-import v3
-from v3.models.campaign_filter_details import CampaignFilterDetails
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.campaign_filter_details import CampaignFilterDetails
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -291,9 +291,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationCampaignFiltersApi(api_client)
+    api_instance = sailpoint.v3.CertificationCampaignFiltersApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     start = 0 # int | Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     include_system_filters = True # bool | If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true. (optional) (default to True)
@@ -356,14 +356,14 @@ Updates an existing campaign filter using the filter's ID.
 ```python
 import time
 import os
-import v3
-from v3.models.campaign_filter_details import CampaignFilterDetails
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.campaign_filter_details import CampaignFilterDetails
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -377,11 +377,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationCampaignFiltersApi(api_client)
+    api_instance = sailpoint.v3.CertificationCampaignFiltersApi(api_client)
     filter_id = 'e9f9a1397b842fd5a65842087040d3ac' # str | The ID of the campaign filter being modified.
-    campaign_filter_details = v3.CampaignFilterDetails() # CampaignFilterDetails | A campaign filter details with updated field values.
+    campaign_filter_details = sailpoint.v3.CampaignFilterDetails() # CampaignFilterDetails | A campaign filter details with updated field values.
 
     try:
         # Updates a Campaign Filter

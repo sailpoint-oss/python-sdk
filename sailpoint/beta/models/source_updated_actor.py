@@ -11,23 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class SourceUpdatedActor(BaseModel):
     """
     Identity who updated the source.  # noqa: E501
     """
-    type: StrictStr = Field(..., description="DTO type of identity who updated the source.")
-    id: Optional[StrictStr] = Field(None, description="ID of identity who updated the source.")
-    name: StrictStr = Field(..., description="Display name of identity who updated the source.")
+    type: StrictStr = Field(
+        ..., description="DTO type of identity who updated the source.")
+    id: Optional[StrictStr] = Field(
+        None, description="ID of identity who updated the source.")
+    name: StrictStr = Field(
+        ..., description="Display name of identity who updated the source.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -57,10 +59,7 @@ class SourceUpdatedActor(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -78,5 +77,3 @@ class SourceUpdatedActor(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

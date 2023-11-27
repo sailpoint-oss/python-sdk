@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.comment_dto import CommentDto  # noqa: E501
+from sailpoint.v3.models.comment_dto import CommentDto  # noqa: E501
+
 
 class TestCommentDto(unittest.TestCase):
     """CommentDto unit test stubs"""
@@ -37,7 +37,7 @@ class TestCommentDto(unittest.TestCase):
         if include_optional:
             return CommentDto(
                 comment = 'This is a comment.',
-                author = v3.models.comment_dto_author.CommentDto_author(
+                author = sailpoint.v3.models.comment_dto_author.CommentDto_author(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'Adam Kennedy', ),
@@ -52,6 +52,7 @@ class TestCommentDto(unittest.TestCase):
         """Test CommentDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

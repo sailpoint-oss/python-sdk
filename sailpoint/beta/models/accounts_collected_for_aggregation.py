@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,27 +19,42 @@ import json
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-from beta.models.accounts_collected_for_aggregation_source import AccountsCollectedForAggregationSource
-from beta.models.accounts_collected_for_aggregation_stats import AccountsCollectedForAggregationStats
+from sailpoint.beta.models.accounts_collected_for_aggregation_source import AccountsCollectedForAggregationSource
+from sailpoint.beta.models.accounts_collected_for_aggregation_stats import AccountsCollectedForAggregationStats
+
 
 class AccountsCollectedForAggregation(BaseModel):
     """
     AccountsCollectedForAggregation
     """
     source: AccountsCollectedForAggregationSource = Field(...)
-    status: Dict[str, Any] = Field(..., description="The overall status of the collection.")
-    started: datetime = Field(..., description="The date and time when the account collection started.")
-    completed: datetime = Field(..., description="The date and time when the account collection finished.")
-    errors: Optional[conlist(StrictStr)] = Field(..., description="A list of errors that occurred during the collection.")
-    warnings: Optional[conlist(StrictStr)] = Field(..., description="A list of warnings that occurred during the collection.")
+    status: Dict[str, Any] = Field(
+        ..., description="The overall status of the collection.")
+    started: datetime = Field(
+        ...,
+        description="The date and time when the account collection started.")
+    completed: datetime = Field(
+        ...,
+        description="The date and time when the account collection finished.")
+    errors: Optional[conlist(StrictStr)] = Field(
+        ...,
+        description="A list of errors that occurred during the collection.")
+    warnings: Optional[conlist(StrictStr)] = Field(
+        ...,
+        description="A list of warnings that occurred during the collection.")
     stats: AccountsCollectedForAggregationStats = Field(...)
-    __properties = ["source", "status", "started", "completed", "errors", "warnings", "stats"]
+    __properties = [
+        "source", "status", "started", "completed", "errors", "warnings",
+        "stats"
+    ]
 
     @validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('Success', 'Failed', 'Terminated'):
-            raise ValueError("must be one of enum values ('Success', 'Failed', 'Terminated')")
+            raise ValueError(
+                "must be one of enum values ('Success', 'Failed', 'Terminated')"
+            )
         return value
 
     class Config:
@@ -63,10 +77,7 @@ class AccountsCollectedForAggregation(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -95,14 +106,21 @@ class AccountsCollectedForAggregation(BaseModel):
             return AccountsCollectedForAggregation.parse_obj(obj)
 
         _obj = AccountsCollectedForAggregation.parse_obj({
-            "source": AccountsCollectedForAggregationSource.from_dict(obj.get("source")) if obj.get("source") is not None else None,
-            "status": obj.get("status"),
-            "started": obj.get("started"),
-            "completed": obj.get("completed"),
-            "errors": obj.get("errors"),
-            "warnings": obj.get("warnings"),
-            "stats": AccountsCollectedForAggregationStats.from_dict(obj.get("stats")) if obj.get("stats") is not None else None
+            "source":
+            AccountsCollectedForAggregationSource.from_dict(obj.get("source"))
+            if obj.get("source") is not None else None,
+            "status":
+            obj.get("status"),
+            "started":
+            obj.get("started"),
+            "completed":
+            obj.get("completed"),
+            "errors":
+            obj.get("errors"),
+            "warnings":
+            obj.get("warnings"),
+            "stats":
+            AccountsCollectedForAggregationStats.from_dict(obj.get("stats"))
+            if obj.get("stats") is not None else None
         })
         return _obj
-
-

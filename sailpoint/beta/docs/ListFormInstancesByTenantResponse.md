@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
+from sailpoint.beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
 
 # TODO update the JSON string below
 json = "{}"

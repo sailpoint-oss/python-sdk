@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.search_form_definitions_by_tenant400_response import SearchFormDefinitionsByTenant400Response  # noqa: E501
+from sailpoint.beta.models.search_form_definitions_by_tenant400_response import SearchFormDefinitionsByTenant400Response  # noqa: E501
+
 
 class TestSearchFormDefinitionsByTenant400Response(unittest.TestCase):
     """SearchFormDefinitionsByTenant400Response unit test stubs"""
@@ -26,7 +26,9 @@ class TestSearchFormDefinitionsByTenant400Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SearchFormDefinitionsByTenant400Response:
+    def make_instance(
+            self,
+            include_optional) -> SearchFormDefinitionsByTenant400Response:
         """Test SearchFormDefinitionsByTenant400Response
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -38,7 +40,7 @@ class TestSearchFormDefinitionsByTenant400Response(unittest.TestCase):
             return SearchFormDefinitionsByTenant400Response(
                 detail_code = '',
                 messages = [
-                    beta.models.error_message_is_the_standard_api_error_response_message_type/.ErrorMessage is the standard API error response message type.(
+                    sailpoint.beta.models.error_message_is_the_standard_api_error_response_message_type/.ErrorMessage is the standard API error response message type.(
                         locale = 'en-US', 
                         locale_origin = 'DEFAULT', 
                         text = 'This is an error', )
@@ -55,6 +57,7 @@ class TestSearchFormDefinitionsByTenant400Response(unittest.TestCase):
         """Test SearchFormDefinitionsByTenant400Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

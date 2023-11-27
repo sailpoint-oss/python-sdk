@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.sub_search_aggregation_specification import SubSearchAggregationSpecification
+from sailpoint.v3.models.sub_search_aggregation_specification import SubSearchAggregationSpecification
 
 # TODO update the JSON string below
 json = "{}"

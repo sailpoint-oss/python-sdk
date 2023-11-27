@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.reviewer import Reviewer
+from sailpoint.v3.models.reviewer import Reviewer
 
 # TODO update the JSON string below
 json = "{}"

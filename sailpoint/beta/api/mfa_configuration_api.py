@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -21,16 +20,14 @@ from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 
-from beta.models.mfa_config_test_response import MfaConfigTestResponse
-from beta.models.mfa_duo_config import MfaDuoConfig
-from beta.models.mfa_okta_config import MfaOktaConfig
+from sailpoint.beta.models.mfa_config_test_response import MfaConfigTestResponse
+from sailpoint.beta.models.mfa_duo_config import MfaDuoConfig
+from sailpoint.beta.models.mfa_okta_config import MfaOktaConfig
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class MFAConfigurationApi:
@@ -46,7 +43,13 @@ class MFAConfigurationApi:
         self.api_client = api_client
 
     @validate_arguments
-    def delete_mfa_config(self, method : Annotated[StrictStr, Field(..., description="The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.")], **kwargs) -> MfaOktaConfig:  # noqa: E501
+    def delete_mfa_config(self, method: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'."
+        )], **kwargs) -> MfaOktaConfig:  # noqa: E501
         """Delete MFA method configuration  # noqa: E501
 
         This API removes the configuration for the specified MFA method. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -73,10 +76,17 @@ class MFAConfigurationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_mfa_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_mfa_config_with_http_info(method, **kwargs)  # noqa: E501
+        return self.delete_mfa_config_with_http_info(method,
+                                                     **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_mfa_config_with_http_info(self, method : Annotated[StrictStr, Field(..., description="The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_mfa_config_with_http_info(self, method: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'."
+        )], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete MFA method configuration  # noqa: E501
 
         This API removes the configuration for the specified MFA method. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -115,28 +125,17 @@ class MFAConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-            'method'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['method']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_mfa_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_mfa_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -146,7 +145,6 @@ class MFAConfigurationApi:
         _path_params = {}
         if _params['method']:
             _path_params['method'] = _params['method']
-
 
         # process the query parameters
         _query_params = []
@@ -174,7 +172,8 @@ class MFAConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/mfa/{method}/delete', 'DELETE',
+            '/mfa/{method}/delete',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -184,7 +183,8 @@ class MFAConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
@@ -219,7 +219,8 @@ class MFAConfigurationApi:
         return self.get_mfa_duo_config_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_mfa_duo_config_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_mfa_duo_config_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """Configuration of Duo MFA method  # noqa: E501
 
         This API returns the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -256,27 +257,17 @@ class MFAConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_mfa_duo_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_mfa_duo_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -311,7 +302,8 @@ class MFAConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/mfa/duo-web/config', 'GET',
+            '/mfa/duo-web/config',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -321,7 +313,8 @@ class MFAConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
@@ -356,7 +349,8 @@ class MFAConfigurationApi:
         return self.get_mfa_okta_config_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_mfa_okta_config_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_mfa_okta_config_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """Configuration of Okta MFA method  # noqa: E501
 
         This API returns the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -393,27 +387,17 @@ class MFAConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_mfa_okta_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_mfa_okta_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -448,7 +432,8 @@ class MFAConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/mfa/okta-verify/config', 'GET',
+            '/mfa/okta-verify/config',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -458,14 +443,16 @@ class MFAConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def set_mfa_duo_config(self, mfa_duo_config : MfaDuoConfig, **kwargs) -> MfaDuoConfig:  # noqa: E501
+    def set_mfa_duo_config(self, mfa_duo_config: MfaDuoConfig,
+                           **kwargs) -> MfaDuoConfig:  # noqa: E501
         """Set Duo MFA configuration  # noqa: E501
 
         This API sets the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -492,10 +479,13 @@ class MFAConfigurationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the set_mfa_duo_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.set_mfa_duo_config_with_http_info(mfa_duo_config, **kwargs)  # noqa: E501
+        return self.set_mfa_duo_config_with_http_info(mfa_duo_config,
+                                                      **kwargs)  # noqa: E501
 
     @validate_arguments
-    def set_mfa_duo_config_with_http_info(self, mfa_duo_config : MfaDuoConfig, **kwargs) -> ApiResponse:  # noqa: E501
+    def set_mfa_duo_config_with_http_info(
+            self, mfa_duo_config: MfaDuoConfig,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Set Duo MFA configuration  # noqa: E501
 
         This API sets the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -534,28 +524,17 @@ class MFAConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-            'mfa_duo_config'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['mfa_duo_config']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method set_mfa_duo_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method set_mfa_duo_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -581,11 +560,11 @@ class MFAConfigurationApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -600,7 +579,8 @@ class MFAConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/mfa/duo-web/config', 'PUT',
+            '/mfa/duo-web/config',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -610,14 +590,16 @@ class MFAConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def set_mfa_okta_config(self, mfa_okta_config : MfaOktaConfig, **kwargs) -> MfaOktaConfig:  # noqa: E501
+    def set_mfa_okta_config(self, mfa_okta_config: MfaOktaConfig,
+                            **kwargs) -> MfaOktaConfig:  # noqa: E501
         """Set Okta MFA configuration  # noqa: E501
 
         This API sets the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -644,10 +626,13 @@ class MFAConfigurationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the set_mfa_okta_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.set_mfa_okta_config_with_http_info(mfa_okta_config, **kwargs)  # noqa: E501
+        return self.set_mfa_okta_config_with_http_info(mfa_okta_config,
+                                                       **kwargs)  # noqa: E501
 
     @validate_arguments
-    def set_mfa_okta_config_with_http_info(self, mfa_okta_config : MfaOktaConfig, **kwargs) -> ApiResponse:  # noqa: E501
+    def set_mfa_okta_config_with_http_info(
+            self, mfa_okta_config: MfaOktaConfig,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Set Okta MFA configuration  # noqa: E501
 
         This API sets the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -686,28 +671,17 @@ class MFAConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-            'mfa_okta_config'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['mfa_okta_config']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method set_mfa_okta_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method set_mfa_okta_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -733,11 +707,11 @@ class MFAConfigurationApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -752,7 +726,8 @@ class MFAConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/mfa/okta-verify/config', 'PUT',
+            '/mfa/okta-verify/config',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -762,14 +737,21 @@ class MFAConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def test_mfa_config(self, method : Annotated[StrictStr, Field(..., description="The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.")], **kwargs) -> MfaConfigTestResponse:  # noqa: E501
+    def test_mfa_config(self, method: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'."
+        )], **kwargs) -> MfaConfigTestResponse:  # noqa: E501
         """MFA method's test configuration  # noqa: E501
 
         This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -796,10 +778,17 @@ class MFAConfigurationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the test_mfa_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.test_mfa_config_with_http_info(method, **kwargs)  # noqa: E501
+        return self.test_mfa_config_with_http_info(method,
+                                                   **kwargs)  # noqa: E501
 
     @validate_arguments
-    def test_mfa_config_with_http_info(self, method : Annotated[StrictStr, Field(..., description="The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def test_mfa_config_with_http_info(self, method: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'."
+        )], **kwargs) -> ApiResponse:  # noqa: E501
         """MFA method's test configuration  # noqa: E501
 
         This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -838,28 +827,17 @@ class MFAConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-            'method'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['method']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method test_mfa_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method test_mfa_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -869,7 +847,6 @@ class MFAConfigurationApi:
         _path_params = {}
         if _params['method']:
             _path_params['method'] = _params['method']
-
 
         # process the query parameters
         _query_params = []
@@ -897,7 +874,8 @@ class MFAConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/mfa/{method}/test', 'GET',
+            '/mfa/{method}/test',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -907,7 +885,8 @@ class MFAConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

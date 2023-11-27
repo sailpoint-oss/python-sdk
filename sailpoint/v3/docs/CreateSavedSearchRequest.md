@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.create_saved_search_request import CreateSavedSearchRequest
+from sailpoint.v3.models.create_saved_search_request import CreateSavedSearchRequest
 
 # TODO update the JSON string below
 json = "{}"

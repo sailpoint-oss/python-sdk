@@ -1,4 +1,4 @@
-# beta.AccessProfilesApi
+# sailpoint.beta.AccessProfilesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -27,14 +27,14 @@ This API creates an Access Profile. A token with API, ORG_ADMIN, ROLE_ADMIN, ROL
 ```python
 import time
 import os
-import beta
-from beta.models.access_profile import AccessProfile
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_profile import AccessProfile
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -48,10 +48,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessProfilesApi(api_client)
-    access_profile = beta.AccessProfile() # AccessProfile | 
+    api_instance = sailpoint.beta.AccessProfilesApi(api_client)
+    access_profile = sailpoint.beta.AccessProfile() # AccessProfile | 
 
     try:
         # Create an Access Profile
@@ -109,13 +109,13 @@ This API deletes an existing Access Profile.  The Access Profile must not be in 
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -129,9 +129,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessProfilesApi(api_client)
+    api_instance = sailpoint.beta.AccessProfilesApi(api_client)
     id = '2c91808a7813090a017814121919ecca' # str | ID of the Access Profile to delete
 
     try:
@@ -188,15 +188,15 @@ This API initiates a bulk deletion of one or more Access Profiles.  By default, 
 ```python
 import time
 import os
-import beta
-from beta.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
-from beta.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_profile_bulk_delete_request import AccessProfileBulkDeleteRequest
+from sailpoint.beta.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -210,9 +210,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessProfilesApi(api_client)
+    api_instance = sailpoint.beta.AccessProfilesApi(api_client)
     access_profile_bulk_delete_request = {bestEffortOnly=true, accessProfileIds=[2c91808876438bb2017668b91919ecca, 2c91808876438ba801766e129f151816]} # AccessProfileBulkDeleteRequest | 
 
     try:
@@ -272,14 +272,14 @@ This API returns an Access Profile by its ID.  A token with API, ORG_ADMIN, ROLE
 ```python
 import time
 import os
-import beta
-from beta.models.access_profile import AccessProfile
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_profile import AccessProfile
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -293,9 +293,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessProfilesApi(api_client)
+    api_instance = sailpoint.beta.AccessProfilesApi(api_client)
     id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Access Profile
 
     try:
@@ -354,14 +354,14 @@ This API lists the Entitlements associated with a given Access Profile  A token 
 ```python
 import time
 import os
-import beta
-from beta.models.entitlement import Entitlement
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.entitlement import Entitlement
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -375,9 +375,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessProfilesApi(api_client)
+    api_instance = sailpoint.beta.AccessProfilesApi(api_client)
     id = '2c91808a7813090a017814121919ecca' # str | ID of the containing Access Profile
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -446,14 +446,14 @@ This API returns a list of Access Profiles.  A token with API, ORG_ADMIN, ROLE_A
 ```python
 import time
 import os
-import beta
-from beta.models.access_profile import AccessProfile
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_profile import AccessProfile
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -467,9 +467,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessProfilesApi(api_client)
+    api_instance = sailpoint.beta.AccessProfilesApi(api_client)
     for_subadmin = '8c190e6787aa4ed9a90bd9d5344523fb' # str | If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN or SOURCE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID.  A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. (optional)
     limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -542,15 +542,15 @@ This API updates an existing Access Profile. The following fields are patchable:
 ```python
 import time
 import os
-import beta
-from beta.models.access_profile import AccessProfile
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_profile import AccessProfile
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -564,9 +564,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessProfilesApi(api_client)
+    api_instance = sailpoint.beta.AccessProfilesApi(api_client)
     id = '2c91808a7813090a017814121919ecca' # str | ID of the Access Profile to patch
     json_patch_operation = [{op=add, path=/entitlements, value=[{id=2c9180857725c14301772a93bb77242d, type=ENTITLEMENT, name=AD User Group}]}] # List[JsonPatchOperation] | 
 

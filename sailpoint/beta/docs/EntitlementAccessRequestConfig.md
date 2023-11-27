@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.entitlement_access_request_config import EntitlementAccessRequestConfig
+from sailpoint.beta.models.entitlement_access_request_config import EntitlementAccessRequestConfig
 
 # TODO update the JSON string below
 json = "{}"

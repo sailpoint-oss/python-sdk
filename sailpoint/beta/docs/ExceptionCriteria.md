@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.exception_criteria import ExceptionCriteria
+from sailpoint.beta.models.exception_criteria import ExceptionCriteria
 
 # TODO update the JSON string below
 json = "{}"

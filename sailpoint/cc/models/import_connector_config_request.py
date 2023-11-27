@@ -11,21 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional, Union
 from pydantic import BaseModel, Field, StrictBytes, StrictStr
+
 
 class ImportConnectorConfigRequest(BaseModel):
     """
     ImportConnectorConfigRequest
     """
-    file: Optional[Union[StrictBytes, StrictStr]] = Field(None, description="This is the connector config zip bundle which gets uploaded.")
+    file: Optional[Union[StrictBytes, StrictStr]] = Field(
+        None,
+        description=
+        "This is the connector config zip bundle which gets uploaded.")
     __properties = ["file"]
 
     class Config:
@@ -48,10 +50,7 @@ class ImportConnectorConfigRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +62,6 @@ class ImportConnectorConfigRequest(BaseModel):
         if not isinstance(obj, dict):
             return ImportConnectorConfigRequest.parse_obj(obj)
 
-        _obj = ImportConnectorConfigRequest.parse_obj({
-            "file": obj.get("file")
-        })
+        _obj = ImportConnectorConfigRequest.parse_obj(
+            {"file": obj.get("file")})
         return _obj
-
-

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.workflow_o_auth_client import WorkflowOAuthClient  # noqa: E501
+from sailpoint.beta.models.workflow_o_auth_client import WorkflowOAuthClient  # noqa: E501
+
 
 class TestWorkflowOAuthClient(unittest.TestCase):
     """WorkflowOAuthClient unit test stubs"""
@@ -49,6 +49,7 @@ class TestWorkflowOAuthClient(unittest.TestCase):
         """Test WorkflowOAuthClient"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

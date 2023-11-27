@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.base_entitlement import BaseEntitlement
+from sailpoint.v3.models.base_entitlement import BaseEntitlement
 
 # TODO update the JSON string below
 json = "{}"

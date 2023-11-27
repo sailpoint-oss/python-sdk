@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.task_management_api import TaskManagementApi  # noqa: E501
+from sailpoint.beta.api.task_management_api import TaskManagementApi  # noqa: E501
 
 
 class TestTaskManagementApi(unittest.TestCase):

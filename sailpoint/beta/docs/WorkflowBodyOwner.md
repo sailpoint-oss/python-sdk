@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.workflow_body_owner import WorkflowBodyOwner
+from sailpoint.beta.models.workflow_body_owner import WorkflowBodyOwner
 
 # TODO update the JSON string below
 json = "{}"

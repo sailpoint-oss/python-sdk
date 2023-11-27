@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.http_config import HttpConfig  # noqa: E501
+from sailpoint.beta.models.http_config import HttpConfig  # noqa: E501
+
 
 class TestHttpConfig(unittest.TestCase):
     """HttpConfig unit test stubs"""
@@ -39,10 +39,10 @@ class TestHttpConfig(unittest.TestCase):
                 url = 'https://www.example.com',
                 http_dispatch_mode = 'SYNC',
                 http_authentication_type = 'NO_AUTH',
-                basic_auth_config = beta.models.basic_auth_config.BasicAuthConfig(
+                basic_auth_config = sailpoint.beta.models.basic_auth_config.BasicAuthConfig(
                     user_name = 'user@example.com', 
                     password = '', ),
-                bearer_token_auth_config = beta.models.bearer_token_auth_config.BearerTokenAuthConfig(
+                bearer_token_auth_config = sailpoint.beta.models.bearer_token_auth_config.BearerTokenAuthConfig(
                     bearer_token = '', )
             )
         else:
@@ -56,6 +56,7 @@ class TestHttpConfig(unittest.TestCase):
         """Test HttpConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.app_all_of_account import AppAllOfAccount  # noqa: E501
+from sailpoint.v3.models.app_all_of_account import AppAllOfAccount  # noqa: E501
+
 
 class TestAppAllOfAccount(unittest.TestCase):
     """AppAllOfAccount unit test stubs"""
@@ -48,6 +48,7 @@ class TestAppAllOfAccount(unittest.TestCase):
         """Test AppAllOfAccount"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

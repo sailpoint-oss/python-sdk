@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.service_desk_source import ServiceDeskSource
+from sailpoint.v3.models.service_desk_source import ServiceDeskSource
 
 # TODO update the JSON string below
 json = "{}"

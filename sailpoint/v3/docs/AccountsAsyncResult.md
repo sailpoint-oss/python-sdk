@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
 
 # TODO update the JSON string below
 json = "{}"

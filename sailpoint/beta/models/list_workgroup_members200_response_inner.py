@@ -11,23 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class ListWorkgroupMembers200ResponseInner(BaseModel):
     """
     Identity of workgroup member.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="Workgroup member identity DTO type.")
-    id: Optional[StrictStr] = Field(None, description="Workgroup member identity ID.")
-    name: Optional[StrictStr] = Field(None, description="Workgroup member identity display name.")
+    type: Optional[StrictStr] = Field(
+        None, description="Workgroup member identity DTO type.")
+    id: Optional[StrictStr] = Field(
+        None, description="Workgroup member identity ID.")
+    name: Optional[StrictStr] = Field(
+        None, description="Workgroup member identity display name.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -60,10 +62,7 @@ class ListWorkgroupMembers200ResponseInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,10 +75,11 @@ class ListWorkgroupMembers200ResponseInner(BaseModel):
             return ListWorkgroupMembers200ResponseInner.parse_obj(obj)
 
         _obj = ListWorkgroupMembers200ResponseInner.parse_obj({
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "type":
+            obj.get("type"),
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name")
         })
         return _obj
-
-

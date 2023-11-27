@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.requestable_object_reference import RequestableObjectReference
+from sailpoint.beta.models.requestable_object_reference import RequestableObjectReference
 
 # TODO update the JSON string below
 json = "{}"

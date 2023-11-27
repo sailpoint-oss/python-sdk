@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.password_org_config import PasswordOrgConfig
+from sailpoint.v3.models.password_org_config import PasswordOrgConfig
 
 # TODO update the JSON string below
 json = "{}"

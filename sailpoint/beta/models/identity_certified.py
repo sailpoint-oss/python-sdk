@@ -11,30 +11,46 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.certifier_response import CertifierResponse
+from sailpoint.beta.models.certifier_response import CertifierResponse
+
 
 class IdentityCertified(BaseModel):
     """
     IdentityCertified
     """
-    certification_id: Optional[StrictStr] = Field(None, alias="certificationId", description="the id of the certification item")
-    certification_name: Optional[StrictStr] = Field(None, alias="certificationName", description="the certification item name")
-    signed_date: Optional[StrictStr] = Field(None, alias="signedDate", description="the date ceritification was signed")
-    certifiers: Optional[conlist(CertifierResponse)] = Field(None, description="this field is deprecated and may go away")
-    reviewers: Optional[conlist(CertifierResponse)] = Field(None, description="The list of identities who review this certification")
+    certification_id: Optional[StrictStr] = Field(
+        None,
+        alias="certificationId",
+        description="the id of the certification item")
+    certification_name: Optional[StrictStr] = Field(
+        None,
+        alias="certificationName",
+        description="the certification item name")
+    signed_date: Optional[StrictStr] = Field(
+        None,
+        alias="signedDate",
+        description="the date ceritification was signed")
+    certifiers: Optional[conlist(CertifierResponse)] = Field(
+        None, description="this field is deprecated and may go away")
+    reviewers: Optional[conlist(CertifierResponse)] = Field(
+        None,
+        description="The list of identities who review this certification")
     signer: Optional[CertifierResponse] = None
-    event_type: Optional[StrictStr] = Field(None, alias="eventType", description="the event type")
+    event_type: Optional[StrictStr] = Field(None,
+                                            alias="eventType",
+                                            description="the event type")
     dt: Optional[StrictStr] = Field(None, description="the date of event")
-    __properties = ["certificationId", "certificationName", "signedDate", "certifiers", "reviewers", "signer", "eventType", "dt"]
+    __properties = [
+        "certificationId", "certificationName", "signedDate", "certifiers",
+        "reviewers", "signer", "eventType", "dt"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -56,10 +72,7 @@ class IdentityCertified(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in certifiers (list)
         _items = []
         if self.certifiers:
@@ -89,15 +102,26 @@ class IdentityCertified(BaseModel):
             return IdentityCertified.parse_obj(obj)
 
         _obj = IdentityCertified.parse_obj({
-            "certification_id": obj.get("certificationId"),
-            "certification_name": obj.get("certificationName"),
-            "signed_date": obj.get("signedDate"),
-            "certifiers": [CertifierResponse.from_dict(_item) for _item in obj.get("certifiers")] if obj.get("certifiers") is not None else None,
-            "reviewers": [CertifierResponse.from_dict(_item) for _item in obj.get("reviewers")] if obj.get("reviewers") is not None else None,
-            "signer": CertifierResponse.from_dict(obj.get("signer")) if obj.get("signer") is not None else None,
-            "event_type": obj.get("eventType"),
-            "dt": obj.get("dt")
+            "certification_id":
+            obj.get("certificationId"),
+            "certification_name":
+            obj.get("certificationName"),
+            "signed_date":
+            obj.get("signedDate"),
+            "certifiers": [
+                CertifierResponse.from_dict(_item)
+                for _item in obj.get("certifiers")
+            ] if obj.get("certifiers") is not None else None,
+            "reviewers": [
+                CertifierResponse.from_dict(_item)
+                for _item in obj.get("reviewers")
+            ] if obj.get("reviewers") is not None else None,
+            "signer":
+            CertifierResponse.from_dict(obj.get("signer"))
+            if obj.get("signer") is not None else None,
+            "event_type":
+            obj.get("eventType"),
+            "dt":
+            obj.get("dt")
         })
         return _obj
-
-

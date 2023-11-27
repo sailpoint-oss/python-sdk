@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.complete_invocation_input import CompleteInvocationInput  # noqa: E501
+from sailpoint.beta.models.complete_invocation_input import CompleteInvocationInput  # noqa: E501
+
 
 class TestCompleteInvocationInput(unittest.TestCase):
     """CompleteInvocationInput unit test stubs"""
@@ -36,7 +36,7 @@ class TestCompleteInvocationInput(unittest.TestCase):
         model = CompleteInvocationInput()  # noqa: E501
         if include_optional:
             return CompleteInvocationInput(
-                localized_error = beta.models.localized_message.LocalizedMessage(
+                localized_error = sailpoint.beta.models.localized_message.LocalizedMessage(
                     locale = 'An error has occurred!', 
                     message = 'Error has occurred!', ),
                 output = {approved=false}
@@ -50,6 +50,7 @@ class TestCompleteInvocationInput(unittest.TestCase):
         """Test CompleteInvocationInput"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

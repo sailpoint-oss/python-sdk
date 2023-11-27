@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,11 +20,13 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
 
+
 class ProcessingDetails(BaseModel):
     """
     ProcessingDetails
     """
-    var_date: Optional[datetime] = Field(None, alias="date", description="A date-time in ISO-8601 format")
+    var_date: Optional[datetime] = Field(
+        None, alias="date", description="A date-time in ISO-8601 format")
     stage: Optional[StrictStr] = None
     retry_count: Optional[StrictInt] = Field(None, alias="retryCount")
     stack_trace: Optional[StrictStr] = Field(None, alias="stackTrace")
@@ -52,10 +53,7 @@ class ProcessingDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if var_date (nullable) is None
         # and __fields_set__ contains the field
         if self.var_date is None and "var_date" in self.__fields_set__:
@@ -80,5 +78,3 @@ class ProcessingDetails(BaseModel):
             "message": obj.get("message")
         })
         return _obj
-
-

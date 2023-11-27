@@ -11,22 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class FormInstanceCreatedBy(BaseModel):
     """
     FormInstanceCreatedBy
     """
-    id: Optional[StrictStr] = Field(None, description="ID is a unique identifier")
-    type: Optional[StrictStr] = Field(None, description="Type is a form instance created by type enum value WORKFLOW_EXECUTION FormInstanceCreatedByTypeWorkflowExecution SOURCE FormInstanceCreatedByTypeSource")
+    id: Optional[StrictStr] = Field(None,
+                                    description="ID is a unique identifier")
+    type: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Type is a form instance created by type enum value WORKFLOW_EXECUTION FormInstanceCreatedByTypeWorkflowExecution SOURCE FormInstanceCreatedByTypeSource"
+    )
     __properties = ["id", "type"]
 
     @validator('type')
@@ -36,7 +40,8 @@ class FormInstanceCreatedBy(BaseModel):
             return value
 
         if value not in ('WORKFLOW_EXECUTION', 'SOURCE'):
-            raise ValueError("must be one of enum values ('WORKFLOW_EXECUTION', 'SOURCE')")
+            raise ValueError(
+                "must be one of enum values ('WORKFLOW_EXECUTION', 'SOURCE')")
         return value
 
     class Config:
@@ -59,10 +64,7 @@ class FormInstanceCreatedBy(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -79,5 +81,3 @@ class FormInstanceCreatedBy(BaseModel):
             "type": obj.get("type")
         })
         return _obj
-
-

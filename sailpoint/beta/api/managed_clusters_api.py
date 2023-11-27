@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,15 +22,13 @@ from pydantic import Field, StrictBool, StrictStr, conint
 
 from typing import List, Optional
 
-from beta.models.client_log_configuration import ClientLogConfiguration
-from beta.models.managed_cluster import ManagedCluster
+from sailpoint.beta.models.client_log_configuration import ClientLogConfiguration
+from sailpoint.beta.models.managed_cluster import ManagedCluster
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class ManagedClustersApi:
@@ -47,7 +44,11 @@ class ManagedClustersApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_client_log_configuration(self, id : Annotated[StrictStr, Field(..., description="ID of ManagedCluster to get log configuration for")], **kwargs) -> ClientLogConfiguration:  # noqa: E501
+    def get_client_log_configuration(self, id: Annotated[
+        StrictStr,
+        Field(...,
+              description="ID of ManagedCluster to get log configuration for"
+              )], **kwargs) -> ClientLogConfiguration:  # noqa: E501
         """Get managed cluster's log configuration  # noqa: E501
 
         Get managed cluster's log configuration.  # noqa: E501
@@ -74,10 +75,15 @@ class ManagedClustersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_client_log_configuration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_client_log_configuration_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_client_log_configuration_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_client_log_configuration_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of ManagedCluster to get log configuration for")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_client_log_configuration_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(...,
+              description="ID of ManagedCluster to get log configuration for"
+              )], **kwargs) -> ApiResponse:  # noqa: E501
         """Get managed cluster's log configuration  # noqa: E501
 
         Get managed cluster's log configuration.  # noqa: E501
@@ -116,28 +122,18 @@ class ManagedClustersApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_client_log_configuration" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_client_log_configuration" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -147,7 +143,6 @@ class ManagedClustersApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -176,7 +171,8 @@ class ManagedClustersApi:
         }
 
         return self.api_client.call_api(
-            '/managed-clusters/{id}/log-config', 'GET',
+            '/managed-clusters/{id}/log-config',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -186,14 +182,18 @@ class ManagedClustersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_managed_cluster(self, id : Annotated[StrictStr, Field(..., description="ID of the ManagedCluster to get")], **kwargs) -> ManagedCluster:  # noqa: E501
+    def get_managed_cluster(self, id: Annotated[
+        StrictStr,
+        Field(..., description="ID of the ManagedCluster to get")],
+                            **kwargs) -> ManagedCluster:  # noqa: E501
         """Get a specified ManagedCluster.  # noqa: E501
 
         Retrieve a ManagedCluster by ID.  # noqa: E501
@@ -220,10 +220,15 @@ class ManagedClustersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_managed_cluster_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_managed_cluster_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_managed_cluster_with_http_info(id,
+                                                       **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_managed_cluster_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the ManagedCluster to get")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_managed_cluster_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="ID of the ManagedCluster to get")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get a specified ManagedCluster.  # noqa: E501
 
         Retrieve a ManagedCluster by ID.  # noqa: E501
@@ -262,28 +267,17 @@ class ManagedClustersApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_managed_cluster" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_managed_cluster" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -293,7 +287,6 @@ class ManagedClustersApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -322,7 +315,8 @@ class ManagedClustersApi:
         }
 
         return self.api_client.call_api(
-            '/managed-clusters/{id}', 'GET',
+            '/managed-clusters/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -332,14 +326,45 @@ class ManagedClustersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_managed_clusters(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **operational**: *eq*")] = None, **kwargs) -> List[ManagedCluster]:  # noqa: E501
+    def get_managed_clusters(
+            self,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **operational**: *eq*"
+            )] = None,
+            **kwargs) -> List[ManagedCluster]:  # noqa: E501
         """Retrieve all Managed Clusters.  # noqa: E501
 
         Retrieve all Managed Clusters for the current Org, based on request context.  # noqa: E501
@@ -372,10 +397,41 @@ class ManagedClustersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_managed_clusters_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_managed_clusters_with_http_info(offset, limit, count, filters, **kwargs)  # noqa: E501
+        return self.get_managed_clusters_with_http_info(
+            offset, limit, count, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_managed_clusters_with_http_info(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **operational**: *eq*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_managed_clusters_with_http_info(
+            self,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **operational**: *eq*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieve all Managed Clusters.  # noqa: E501
 
         Retrieve all Managed Clusters for the current Org, based on request context.  # noqa: E501
@@ -420,31 +476,17 @@ class ManagedClustersApi:
 
         _params = locals()
 
-        _all_params = [
-            'offset',
-            'limit',
-            'count',
-            'filters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['offset', 'limit', 'count', 'filters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_managed_clusters" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_managed_clusters" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -491,7 +533,8 @@ class ManagedClustersApi:
         }
 
         return self.api_client.call_api(
-            '/managed-clusters', 'GET',
+            '/managed-clusters',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -501,14 +544,25 @@ class ManagedClustersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_client_log_configuration(self, id : Annotated[StrictStr, Field(..., description="ID of ManagedCluster to update log configuration for")], client_log_configuration : Annotated[Optional[ClientLogConfiguration], Field(..., description="ClientLogConfiguration for given ManagedCluster")], **kwargs) -> ClientLogConfiguration:  # noqa: E501
+    def put_client_log_configuration(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description="ID of ManagedCluster to update log configuration for"
+        )], client_log_configuration: Annotated[
+            Optional[ClientLogConfiguration],
+            Field(
+                ...,
+                description="ClientLogConfiguration for given ManagedCluster"
+            )], **kwargs) -> ClientLogConfiguration:  # noqa: E501
         """Update managed cluster's log configuration  # noqa: E501
 
         Update managed cluster's log configuration  # noqa: E501
@@ -537,10 +591,21 @@ class ManagedClustersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_client_log_configuration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_client_log_configuration_with_http_info(id, client_log_configuration, **kwargs)  # noqa: E501
+        return self.put_client_log_configuration_with_http_info(
+            id, client_log_configuration, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_client_log_configuration_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of ManagedCluster to update log configuration for")], client_log_configuration : Annotated[Optional[ClientLogConfiguration], Field(..., description="ClientLogConfiguration for given ManagedCluster")], **kwargs) -> ApiResponse:  # noqa: E501
+    def put_client_log_configuration_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description="ID of ManagedCluster to update log configuration for"
+        )], client_log_configuration: Annotated[
+            Optional[ClientLogConfiguration],
+            Field(
+                ...,
+                description="ClientLogConfiguration for given ManagedCluster"
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Update managed cluster's log configuration  # noqa: E501
 
         Update managed cluster's log configuration  # noqa: E501
@@ -581,29 +646,18 @@ class ManagedClustersApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'client_log_configuration'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'client_log_configuration']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_client_log_configuration" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method put_client_log_configuration" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -613,7 +667,6 @@ class ManagedClustersApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -632,11 +685,11 @@ class ManagedClustersApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -652,7 +705,8 @@ class ManagedClustersApi:
         }
 
         return self.api_client.call_api(
-            '/managed-clusters/{id}/log-config', 'PUT',
+            '/managed-clusters/{id}/log-config',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -662,7 +716,8 @@ class ManagedClustersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

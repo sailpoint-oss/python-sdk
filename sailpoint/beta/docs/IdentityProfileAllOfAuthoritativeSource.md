@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.identity_profile_all_of_authoritative_source import IdentityProfileAllOfAuthoritativeSource
+from sailpoint.beta.models.identity_profile_all_of_authoritative_source import IdentityProfileAllOfAuthoritativeSource
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.update_user_permissions_request import UpdateUserPermissionsRequest
+from sailpoint.cc.models.update_user_permissions_request import UpdateUserPermissionsRequest
 
 # TODO update the JSON string below
 json = "{}"

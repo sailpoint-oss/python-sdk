@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.provisioning_policy_dto import ProvisioningPolicyDto  # noqa: E501
+from sailpoint.beta.models.provisioning_policy_dto import ProvisioningPolicyDto  # noqa: E501
+
 
 class TestProvisioningPolicyDto(unittest.TestCase):
     """ProvisioningPolicyDto unit test stubs"""
@@ -40,7 +40,7 @@ class TestProvisioningPolicyDto(unittest.TestCase):
                 description = 'this provisioning policy creates access based on an identity going inactive',
                 usage_type = 'CREATE',
                 fields = [
-                    beta.models.field_details_dto.FieldDetailsDto(
+                    sailpoint.beta.models.field_details_dto.FieldDetailsDto(
                         name = 'userName', 
                         transform = {type=rule, attributes={name=Create Unique LDAP Attribute}}, 
                         attributes = {template=${firstname}.${lastname}${uniqueCounter}, cloudMaxUniqueChecks=50, cloudMaxSize=20, cloudRequired=true}, 
@@ -59,6 +59,7 @@ class TestProvisioningPolicyDto(unittest.TestCase):
         """Test ProvisioningPolicyDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

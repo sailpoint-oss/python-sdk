@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.conflicting_access_criteria import ConflictingAccessCriteria  # noqa: E501
+from sailpoint.v3.models.conflicting_access_criteria import ConflictingAccessCriteria  # noqa: E501
+
 
 class TestConflictingAccessCriteria(unittest.TestCase):
     """ConflictingAccessCriteria unit test stubs"""
@@ -36,10 +36,10 @@ class TestConflictingAccessCriteria(unittest.TestCase):
         model = ConflictingAccessCriteria()  # noqa: E501
         if include_optional:
             return ConflictingAccessCriteria(
-                left_criteria = v3.models.access_criteria.AccessCriteria(
+                left_criteria = sailpoint.v3.models.access_criteria.AccessCriteria(
                     name = 'money-in', 
                     criteria_list = [{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66, name=Administrator}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67, name=Administrator}], ),
-                right_criteria = v3.models.access_criteria.AccessCriteria(
+                right_criteria = sailpoint.v3.models.access_criteria.AccessCriteria(
                     name = 'money-in', 
                     criteria_list = [{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66, name=Administrator}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67, name=Administrator}], )
             )
@@ -52,6 +52,7 @@ class TestConflictingAccessCriteria(unittest.TestCase):
         """Test ConflictingAccessCriteria"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.owner_reference_dto import OwnerReferenceDto
+from sailpoint.beta.models.owner_reference_dto import OwnerReferenceDto
 
 # TODO update the JSON string below
 json = "{}"

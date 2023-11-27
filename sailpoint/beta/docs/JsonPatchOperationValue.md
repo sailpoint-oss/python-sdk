@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.beta.models.json_patch_operation_value import JsonPatchOperationValue
 
 # TODO update the JSON string below
 json = "{}"

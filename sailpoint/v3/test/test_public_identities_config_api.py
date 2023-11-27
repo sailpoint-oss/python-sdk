@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from v3.api.public_identities_config_api import PublicIdentitiesConfigApi  # noqa: E501
+from sailpoint.v3.api.public_identities_config_api import PublicIdentitiesConfigApi  # noqa: E501
 
 
 class TestPublicIdentitiesConfigApi(unittest.TestCase):

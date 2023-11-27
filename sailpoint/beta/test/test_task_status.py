@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.task_status import TaskStatus  # noqa: E501
+from sailpoint.beta.models.task_status import TaskStatus  # noqa: E501
+
 
 class TestTaskStatus(unittest.TestCase):
     """TaskStatus unit test stubs"""
@@ -48,16 +48,16 @@ class TestTaskStatus(unittest.TestCase):
                 completed = '2020-07-11T21:23:15Z',
                 completion_status = 'Success',
                 messages = [
-                    beta.models.task_status_message.TaskStatusMessage(
+                    sailpoint.beta.models.task_status_message.TaskStatusMessage(
                         type = 'INFO', 
-                        localized_text = beta.models.localized_message.LocalizedMessage(
+                        localized_text = sailpoint.beta.models.localized_message.LocalizedMessage(
                             locale = 'An error has occurred!', 
                             message = 'Error has occurred!', ), 
                         key = 'akey', 
                         parameters = [{name=value}], )
                     ],
                 returns = [
-                    beta.models.task_return_details.TaskReturnDetails(
+                    sailpoint.beta.models.task_return_details.TaskReturnDetails(
                         name = 'label', 
                         attribute_name = 'identityCount', )
                     ],
@@ -79,16 +79,16 @@ class TestTaskStatus(unittest.TestCase):
                 completed = '2020-07-11T21:23:15Z',
                 completion_status = 'Success',
                 messages = [
-                    beta.models.task_status_message.TaskStatusMessage(
+                    sailpoint.beta.models.task_status_message.TaskStatusMessage(
                         type = 'INFO', 
-                        localized_text = beta.models.localized_message.LocalizedMessage(
+                        localized_text = sailpoint.beta.models.localized_message.LocalizedMessage(
                             locale = 'An error has occurred!', 
                             message = 'Error has occurred!', ), 
                         key = 'akey', 
                         parameters = [{name=value}], )
                     ],
                 returns = [
-                    beta.models.task_return_details.TaskReturnDetails(
+                    sailpoint.beta.models.task_return_details.TaskReturnDetails(
                         name = 'label', 
                         attribute_name = 'identityCount', )
                     ],
@@ -102,6 +102,7 @@ class TestTaskStatus(unittest.TestCase):
         """Test TaskStatus"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

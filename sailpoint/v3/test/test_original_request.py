@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.original_request import OriginalRequest  # noqa: E501
+from sailpoint.v3.models.original_request import OriginalRequest  # noqa: E501
+
 
 class TestOriginalRequest(unittest.TestCase):
     """OriginalRequest unit test stubs"""
@@ -38,7 +38,7 @@ class TestOriginalRequest(unittest.TestCase):
             return OriginalRequest(
                 account_id = 'CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com',
                 attribute_requests = [
-                    v3.models.attribute_request.AttributeRequest(
+                    sailpoint.v3.models.attribute_request.AttributeRequest(
                         name = 'groups', 
                         op = 'Add', 
                         value = '3203537556531076', )
@@ -55,6 +55,7 @@ class TestOriginalRequest(unittest.TestCase):
         """Test OriginalRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

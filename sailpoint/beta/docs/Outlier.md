@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.outlier import Outlier
+from sailpoint.beta.models.outlier import Outlier
 
 # TODO update the JSON string below
 json = "{}"

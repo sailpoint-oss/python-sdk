@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.access_request_config import AccessRequestConfig  # noqa: E501
+from sailpoint.v3.models.access_request_config import AccessRequestConfig  # noqa: E501
+
 
 class TestAccessRequestConfig(unittest.TestCase):
     """AccessRequestConfig unit test stubs"""
@@ -38,19 +38,19 @@ class TestAccessRequestConfig(unittest.TestCase):
             return AccessRequestConfig(
                 approvals_must_be_external = True,
                 auto_approval_enabled = True,
-                request_on_behalf_of_config = v3.models.request_on_behalf_of_config.RequestOnBehalfOfConfig(
+                request_on_behalf_of_config = sailpoint.v3.models.request_on_behalf_of_config.RequestOnBehalfOfConfig(
                     allow_request_on_behalf_of_anyone_by_anyone = True, 
                     allow_request_on_behalf_of_employee_by_manager = True, ),
-                approval_reminder_and_escalation_config = v3.models.approval_reminder_and_escalation_config.ApprovalReminderAndEscalationConfig(
+                approval_reminder_and_escalation_config = sailpoint.v3.models.approval_reminder_and_escalation_config.ApprovalReminderAndEscalationConfig(
                     days_until_escalation = 0, 
                     days_between_reminders = 0, 
                     max_reminders = 1, 
-                    fallback_approver_ref = v3.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
+                    fallback_approver_ref = sailpoint.v3.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
                         type = 'IDENTITY', 
                         id = '5168015d32f890ca15812c9180835d2e', 
                         name = 'Alison Ferguso', 
                         email = 'alison.ferguso@identitysoon.com', ), ),
-                entitlement_request_config = v3.models.entitlement_request_config.EntitlementRequestConfig(
+                entitlement_request_config = sailpoint.v3.models.entitlement_request_config.EntitlementRequestConfig(
                     allow_entitlement_request = True, 
                     request_comments_required = False, 
                     denied_comments_required = False, 
@@ -65,6 +65,7 @@ class TestAccessRequestConfig(unittest.TestCase):
         """Test AccessRequestConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

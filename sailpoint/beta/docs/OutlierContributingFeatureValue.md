@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.outlier_contributing_feature_value import OutlierContributingFeatureValue
+from sailpoint.beta.models.outlier_contributing_feature_value import OutlierContributingFeatureValue
 
 # TODO update the JSON string below
 json = "{}"

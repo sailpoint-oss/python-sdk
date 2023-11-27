@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.account_attributes_create_attributes import AccountAttributesCreateAttributes  # noqa: E501
+from sailpoint.v3.models.account_attributes_create_attributes import AccountAttributesCreateAttributes  # noqa: E501
+
 
 class TestAccountAttributesCreateAttributes(unittest.TestCase):
     """AccountAttributesCreateAttributes unit test stubs"""
@@ -26,7 +26,8 @@ class TestAccountAttributesCreateAttributes(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccountAttributesCreateAttributes:
+    def make_instance(self,
+                      include_optional) -> AccountAttributesCreateAttributes:
         """Test AccountAttributesCreateAttributes
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -48,6 +49,7 @@ class TestAccountAttributesCreateAttributes(unittest.TestCase):
         """Test AccountAttributesCreateAttributes"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

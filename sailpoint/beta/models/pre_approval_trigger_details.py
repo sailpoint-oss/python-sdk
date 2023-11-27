@@ -11,23 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class PreApprovalTriggerDetails(BaseModel):
     """
     Provides additional details about the pre-approval trigger for this request.  # noqa: E501
     """
-    comment: Optional[StrictStr] = Field(None, description="Comment left for the pre-approval decision")
-    reviewer: Optional[StrictStr] = Field(None, description="The reviewer of the pre-approval decision")
-    decision: Optional[StrictStr] = Field(None, description="The decision of the pre-approval trigger")
+    comment: Optional[StrictStr] = Field(
+        None, description="Comment left for the pre-approval decision")
+    reviewer: Optional[StrictStr] = Field(
+        None, description="The reviewer of the pre-approval decision")
+    decision: Optional[StrictStr] = Field(
+        None, description="The decision of the pre-approval trigger")
     __properties = ["comment", "reviewer", "decision"]
 
     @validator('decision')
@@ -37,7 +39,8 @@ class PreApprovalTriggerDetails(BaseModel):
             return value
 
         if value not in ('APPROVED', 'REJECTED'):
-            raise ValueError("must be one of enum values ('APPROVED', 'REJECTED')")
+            raise ValueError(
+                "must be one of enum values ('APPROVED', 'REJECTED')")
         return value
 
     class Config:
@@ -60,10 +63,7 @@ class PreApprovalTriggerDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,10 +76,11 @@ class PreApprovalTriggerDetails(BaseModel):
             return PreApprovalTriggerDetails.parse_obj(obj)
 
         _obj = PreApprovalTriggerDetails.parse_obj({
-            "comment": obj.get("comment"),
-            "reviewer": obj.get("reviewer"),
-            "decision": obj.get("decision")
+            "comment":
+            obj.get("comment"),
+            "reviewer":
+            obj.get("reviewer"),
+            "decision":
+            obj.get("decision")
         })
         return _obj
-
-

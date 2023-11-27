@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.import_connector_config_request import ImportConnectorConfigRequest
+from sailpoint.cc.models.import_connector_config_request import ImportConnectorConfigRequest
 
 # TODO update the JSON string below
 json = "{}"

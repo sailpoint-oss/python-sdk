@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner  # noqa: E501
+from sailpoint.beta.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner  # noqa: E501
+
 
 class TestAccessCriteriaCriteriaListInner(unittest.TestCase):
     """AccessCriteriaCriteriaListInner unit test stubs"""
@@ -26,7 +26,8 @@ class TestAccessCriteriaCriteriaListInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccessCriteriaCriteriaListInner:
+    def make_instance(self,
+                      include_optional) -> AccessCriteriaCriteriaListInner:
         """Test AccessCriteriaCriteriaListInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -49,6 +50,7 @@ class TestAccessCriteriaCriteriaListInner(unittest.TestCase):
         """Test AccessCriteriaCriteriaListInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

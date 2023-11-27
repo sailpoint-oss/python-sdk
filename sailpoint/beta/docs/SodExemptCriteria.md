@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.sod_exempt_criteria import SodExemptCriteria
+from sailpoint.beta.models.sod_exempt_criteria import SodExemptCriteria
 
 # TODO update the JSON string below
 json = "{}"

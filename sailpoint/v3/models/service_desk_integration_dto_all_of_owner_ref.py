@@ -11,23 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class ServiceDeskIntegrationDtoAllOfOwnerRef(BaseModel):
     """
     Source for Service Desk integration template.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="DTO type of source for service desk integration template.")
-    id: Optional[StrictStr] = Field(None, description="ID of source for service desk integration template.")
-    name: Optional[StrictStr] = Field(None, description="Human-readable name of source for service desk integration template.")
+    type: Optional[StrictStr] = Field(
+        None,
+        description="DTO type of source for service desk integration template."
+    )
+    id: Optional[StrictStr] = Field(
+        None,
+        description="ID of source for service desk integration template.")
+    name: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Human-readable name of source for service desk integration template.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -54,16 +61,14 @@ class ServiceDeskIntegrationDtoAllOfOwnerRef(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ServiceDeskIntegrationDtoAllOfOwnerRef:
+    def from_json(cls,
+                  json_str: str) -> ServiceDeskIntegrationDtoAllOfOwnerRef:
         """Create an instance of ServiceDeskIntegrationDtoAllOfOwnerRef from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,10 +81,11 @@ class ServiceDeskIntegrationDtoAllOfOwnerRef(BaseModel):
             return ServiceDeskIntegrationDtoAllOfOwnerRef.parse_obj(obj)
 
         _obj = ServiceDeskIntegrationDtoAllOfOwnerRef.parse_obj({
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "type":
+            obj.get("type"),
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name")
         })
         return _obj
-
-

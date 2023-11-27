@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.public_identity_config import PublicIdentityConfig  # noqa: E501
+from sailpoint.v3.models.public_identity_config import PublicIdentityConfig  # noqa: E501
+
 
 class TestPublicIdentityConfig(unittest.TestCase):
     """PublicIdentityConfig unit test stubs"""
@@ -37,12 +37,12 @@ class TestPublicIdentityConfig(unittest.TestCase):
         if include_optional:
             return PublicIdentityConfig(
                 attributes = [
-                    v3.models.public_identity_attribute_config.PublicIdentityAttributeConfig(
+                    sailpoint.v3.models.public_identity_attribute_config.PublicIdentityAttributeConfig(
                         key = 'country', 
                         name = 'Country', )
                     ],
                 modified = '2018-06-25T20:22:28.104Z',
-                modified_by = v3.models.identity_reference.IdentityReference(
+                modified_by = sailpoint.v3.models.identity_reference.IdentityReference(
                     type = 'IDENTITY', 
                     id = '2c9180a46faadee4016fb4e018c20639', 
                     name = 'Thomas Edison', )
@@ -56,6 +56,7 @@ class TestPublicIdentityConfig(unittest.TestCase):
         """Test PublicIdentityConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

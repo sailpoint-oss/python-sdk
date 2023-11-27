@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v2.models.get_org_settings200_response_system_notification_config_notifications_inner import GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner
+from sailpoint.v2.models.get_org_settings200_response_system_notification_config_notifications_inner import GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner
 
 # TODO update the JSON string below
 json = "{}"

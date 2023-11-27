@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.workflow_execution_event import WorkflowExecutionEvent
+from sailpoint.beta.models.workflow_execution_event import WorkflowExecutionEvent
 
 # TODO update the JSON string below
 json = "{}"

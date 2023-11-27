@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.connector_rule_validation_response_details_inner import ConnectorRuleValidationResponseDetailsInner
+from sailpoint.beta.models.connector_rule_validation_response_details_inner import ConnectorRuleValidationResponseDetailsInner
 
 # TODO update the JSON string below
 json = "{}"

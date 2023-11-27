@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.queued_check_config_details import QueuedCheckConfigDetails
+from sailpoint.beta.models.queued_check_config_details import QueuedCheckConfigDetails
 
 # TODO update the JSON string below
 json = "{}"

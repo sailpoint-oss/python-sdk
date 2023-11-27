@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v2.models.bulk_delete_work_groups200_response import BulkDeleteWorkGroups200Response
+from sailpoint.v2.models.bulk_delete_work_groups200_response import BulkDeleteWorkGroups200Response
 
 # TODO update the JSON string below
 json = "{}"

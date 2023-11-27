@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v2.models.create_workgroup_request import CreateWorkgroupRequest  # noqa: E501
+from sailpoint.v2.models.create_workgroup_request import CreateWorkgroupRequest  # noqa: E501
+
 
 class TestCreateWorkgroupRequest(unittest.TestCase):
     """CreateWorkgroupRequest unit test stubs"""
@@ -38,7 +38,7 @@ class TestCreateWorkgroupRequest(unittest.TestCase):
             return CreateWorkgroupRequest(
                 name = 'Test group 3',
                 description = 'This is a test',
-                owner = v2.models.create_workgroup_request_owner.createWorkgroup_request_owner(
+                owner = sailpoint.v2.models.create_workgroup_request_owner.createWorkgroup_request_owner(
                     id = '2c9180867624cbd7017642d8c8c81f67', )
             )
         else:
@@ -50,6 +50,7 @@ class TestCreateWorkgroupRequest(unittest.TestCase):
         """Test CreateWorkgroupRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

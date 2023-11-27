@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.form_definition_dynamic_schema_request import FormDefinitionDynamicSchemaRequest  # noqa: E501
+from sailpoint.beta.models.form_definition_dynamic_schema_request import FormDefinitionDynamicSchemaRequest  # noqa: E501
+
 
 class TestFormDefinitionDynamicSchemaRequest(unittest.TestCase):
     """FormDefinitionDynamicSchemaRequest unit test stubs"""
@@ -26,7 +26,8 @@ class TestFormDefinitionDynamicSchemaRequest(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> FormDefinitionDynamicSchemaRequest:
+    def make_instance(self,
+                      include_optional) -> FormDefinitionDynamicSchemaRequest:
         """Test FormDefinitionDynamicSchemaRequest
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -36,7 +37,7 @@ class TestFormDefinitionDynamicSchemaRequest(unittest.TestCase):
         model = FormDefinitionDynamicSchemaRequest()  # noqa: E501
         if include_optional:
             return FormDefinitionDynamicSchemaRequest(
-                attributes = beta.models.form_definition_dynamic_schema_request_attributes.FormDefinitionDynamicSchemaRequest_attributes(
+                attributes = sailpoint.beta.models.form_definition_dynamic_schema_request_attributes.FormDefinitionDynamicSchemaRequest_attributes(
                     form_definition_id = '00000000-0000-0000-0000-000000000000', ),
                 description = 'A description',
                 id = '00000000-0000-0000-0000-000000000000',
@@ -52,6 +53,7 @@ class TestFormDefinitionDynamicSchemaRequest(unittest.TestCase):
         """Test FormDefinitionDynamicSchemaRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

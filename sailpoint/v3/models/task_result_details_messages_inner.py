@@ -11,25 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, validator
+
 
 class TaskResultDetailsMessagesInner(BaseModel):
     """
     TaskResultDetailsMessagesInner
     """
     type: Optional[StrictStr] = Field(None, description="Type of the message.")
-    error: Optional[StrictBool] = Field(False, description="Flag whether message is an error.")
-    warning: Optional[StrictBool] = Field(False, description="Flag whether message is a warning.")
-    key: Optional[StrictStr] = Field(None, description="Message string identifier.")
-    localized_text: Optional[StrictStr] = Field(None, alias="localizedText", description="Message context with the locale based language.")
+    error: Optional[StrictBool] = Field(
+        False, description="Flag whether message is an error.")
+    warning: Optional[StrictBool] = Field(
+        False, description="Flag whether message is a warning.")
+    key: Optional[StrictStr] = Field(None,
+                                     description="Message string identifier.")
+    localized_text: Optional[StrictStr] = Field(
+        None,
+        alias="localizedText",
+        description="Message context with the locale based language.")
     __properties = ["type", "error", "warning", "key", "localizedText"]
 
     @validator('type')
@@ -39,7 +44,8 @@ class TaskResultDetailsMessagesInner(BaseModel):
             return value
 
         if value not in ('INFO', 'WARN', 'ERROR'):
-            raise ValueError("must be one of enum values ('INFO', 'WARN', 'ERROR')")
+            raise ValueError(
+                "must be one of enum values ('INFO', 'WARN', 'ERROR')")
         return value
 
     class Config:
@@ -62,10 +68,7 @@ class TaskResultDetailsMessagesInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -78,12 +81,15 @@ class TaskResultDetailsMessagesInner(BaseModel):
             return TaskResultDetailsMessagesInner.parse_obj(obj)
 
         _obj = TaskResultDetailsMessagesInner.parse_obj({
-            "type": obj.get("type"),
-            "error": obj.get("error") if obj.get("error") is not None else False,
-            "warning": obj.get("warning") if obj.get("warning") is not None else False,
-            "key": obj.get("key"),
-            "localized_text": obj.get("localizedText")
+            "type":
+            obj.get("type"),
+            "error":
+            obj.get("error") if obj.get("error") is not None else False,
+            "warning":
+            obj.get("warning") if obj.get("warning") is not None else False,
+            "key":
+            obj.get("key"),
+            "localized_text":
+            obj.get("localizedText")
         })
         return _obj
-
-

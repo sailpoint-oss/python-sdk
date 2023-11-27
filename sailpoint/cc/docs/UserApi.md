@@ -1,4 +1,4 @@
-# cc.UserApi
+# sailpoint.cc.UserApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
@@ -20,14 +20,14 @@ Get Single Identity
 ```python
 import time
 import os
-import cc
-from cc.models.get_identity200_response import GetIdentity200Response
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.models.get_identity200_response import GetIdentity200Response
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -41,9 +41,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.UserApi(api_client)
+    api_instance = sailpoint.cc.UserApi(api_client)
     id = '5433236' # str | 
 
     try:
@@ -95,14 +95,14 @@ Update User Permissions
 ```python
 import time
 import os
-import cc
-from cc.models.update_user_permissions_request import UpdateUserPermissionsRequest
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.models.update_user_permissions_request import UpdateUserPermissionsRequest
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -116,10 +116,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.UserApi(api_client)
-    update_user_permissions_request = cc.UpdateUserPermissionsRequest() # UpdateUserPermissionsRequest |  (optional)
+    api_instance = sailpoint.cc.UserApi(api_client)
+    update_user_permissions_request = sailpoint.cc.UpdateUserPermissionsRequest() # UpdateUserPermissionsRequest |  (optional)
 
     try:
         # Update User Permissions

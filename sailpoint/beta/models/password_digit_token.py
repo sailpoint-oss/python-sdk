@@ -11,22 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class PasswordDigitToken(BaseModel):
     """
     PasswordDigitToken
     """
-    digit_token: Optional[StrictStr] = Field(None, alias="digitToken", description="The digit token for password management")
-    request_id: Optional[StrictStr] = Field(None, alias="requestId", description="The reference ID of the digit token generation request")
+    digit_token: Optional[StrictStr] = Field(
+        None,
+        alias="digitToken",
+        description="The digit token for password management")
+    request_id: Optional[StrictStr] = Field(
+        None,
+        alias="requestId",
+        description="The reference ID of the digit token generation request")
     __properties = ["digitToken", "requestId"]
 
     class Config:
@@ -49,10 +54,7 @@ class PasswordDigitToken(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +67,9 @@ class PasswordDigitToken(BaseModel):
             return PasswordDigitToken.parse_obj(obj)
 
         _obj = PasswordDigitToken.parse_obj({
-            "digit_token": obj.get("digitToken"),
-            "request_id": obj.get("requestId")
+            "digit_token":
+            obj.get("digitToken"),
+            "request_id":
+            obj.get("requestId")
         })
         return _obj
-
-

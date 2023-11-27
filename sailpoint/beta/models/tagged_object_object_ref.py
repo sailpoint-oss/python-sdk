@@ -11,23 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class TaggedObjectObjectRef(BaseModel):
     """
     TaggedObjectObjectRef
     """
     type: Optional[StrictStr] = Field(None, description="DTO type")
-    id: Optional[StrictStr] = Field(None, description="ID of the object to which this reference applies")
-    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the object to which this reference applies")
+    id: Optional[StrictStr] = Field(
+        None, description="ID of the object to which this reference applies")
+    name: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Human-readable display name of the object to which this reference applies"
+    )
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -36,8 +40,12 @@ class TaggedObjectObjectRef(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ACCESS_PROFILE', 'APPLICATION', 'CAMPAIGN', 'ENTITLEMENT', 'IDENTITY', 'ROLE', 'SOD_POLICY', 'SOURCE'):
-            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'APPLICATION', 'CAMPAIGN', 'ENTITLEMENT', 'IDENTITY', 'ROLE', 'SOD_POLICY', 'SOURCE')")
+        if value not in ('ACCESS_PROFILE', 'APPLICATION', 'CAMPAIGN',
+                         'ENTITLEMENT', 'IDENTITY', 'ROLE', 'SOD_POLICY',
+                         'SOURCE'):
+            raise ValueError(
+                "must be one of enum values ('ACCESS_PROFILE', 'APPLICATION', 'CAMPAIGN', 'ENTITLEMENT', 'IDENTITY', 'ROLE', 'SOD_POLICY', 'SOURCE')"
+            )
         return value
 
     class Config:
@@ -60,10 +68,7 @@ class TaggedObjectObjectRef(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if name (nullable) is None
         # and __fields_set__ contains the field
         if self.name is None and "name" in self.__fields_set__:
@@ -86,5 +91,3 @@ class TaggedObjectObjectRef(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

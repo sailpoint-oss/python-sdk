@@ -1,4 +1,4 @@
-# v3.NonEmployeeLifecycleManagementApi
+# sailpoint.v3.NonEmployeeLifecycleManagementApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -52,15 +52,15 @@ Approves a non-employee approval request and notifies the next approver. The cur
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_approval_decision import NonEmployeeApprovalDecision
-from v3.models.non_employee_approval_item import NonEmployeeApprovalItem
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_approval_decision import NonEmployeeApprovalDecision
+from sailpoint.v3.models.non_employee_approval_item import NonEmployeeApprovalItem
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -74,11 +74,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'e136567de87e4d029e60b3c3c55db56d' # str | Non-Employee approval item id (UUID)
-    non_employee_approval_decision = v3.NonEmployeeApprovalDecision() # NonEmployeeApprovalDecision | 
+    non_employee_approval_decision = sailpoint.v3.NonEmployeeApprovalDecision() # NonEmployeeApprovalDecision | 
 
     try:
         # Approve a Non-Employee Request
@@ -137,15 +137,15 @@ This request will create a non-employee record. Requires role context of `idn:ne
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_record import NonEmployeeRecord
-from v3.models.non_employee_request_body import NonEmployeeRequestBody
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_record import NonEmployeeRecord
+from sailpoint.v3.models.non_employee_request_body import NonEmployeeRequestBody
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -159,10 +159,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
-    non_employee_request_body = v3.NonEmployeeRequestBody() # NonEmployeeRequestBody | Non-Employee record creation request body.
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
+    non_employee_request_body = sailpoint.v3.NonEmployeeRequestBody() # NonEmployeeRequestBody | Non-Employee record creation request body.
 
     try:
         # Create Non-Employee Record
@@ -220,15 +220,15 @@ This request will create a non-employee request and notify the approver. Require
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_request import NonEmployeeRequest
-from v3.models.non_employee_request_body import NonEmployeeRequestBody
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_request import NonEmployeeRequest
+from sailpoint.v3.models.non_employee_request_body import NonEmployeeRequestBody
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -242,10 +242,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
-    non_employee_request_body = v3.NonEmployeeRequestBody() # NonEmployeeRequestBody | Non-Employee creation request body
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
+    non_employee_request_body = sailpoint.v3.NonEmployeeRequestBody() # NonEmployeeRequestBody | Non-Employee creation request body
 
     try:
         # Create Non-Employee Request
@@ -303,15 +303,15 @@ This request will create a non-employee source. Requires role context of `idn:ne
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_source_request_body import NonEmployeeSourceRequestBody
-from v3.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_source_request_body import NonEmployeeSourceRequestBody
+from sailpoint.v3.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -325,10 +325,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
-    non_employee_source_request_body = v3.NonEmployeeSourceRequestBody() # NonEmployeeSourceRequestBody | Non-Employee source creation request body.
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
+    non_employee_source_request_body = sailpoint.v3.NonEmployeeSourceRequestBody() # NonEmployeeSourceRequestBody | Non-Employee source creation request body.
 
     try:
         # Create Non-Employee Source
@@ -386,15 +386,15 @@ This API creates a new schema attribute for Non-Employee Source. The schema tech
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
-from v3.models.non_employee_schema_attribute_body import NonEmployeeSchemaAttributeBody
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
+from sailpoint.v3.models.non_employee_schema_attribute_body import NonEmployeeSchemaAttributeBody
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -408,11 +408,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Source id
-    non_employee_schema_attribute_body = v3.NonEmployeeSchemaAttributeBody() # NonEmployeeSchemaAttributeBody | 
+    non_employee_schema_attribute_body = sailpoint.v3.NonEmployeeSchemaAttributeBody() # NonEmployeeSchemaAttributeBody | 
 
     try:
         # Create a new Schema Attribute for Non-Employee Source
@@ -471,13 +471,13 @@ This request will delete a non-employee record. Requires role context of `idn:ne
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -491,9 +491,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-Employee record id (UUID)
 
     try:
@@ -550,14 +550,14 @@ This request will delete multiple non-employee records based on the non-employee
 ```python
 import time
 import os
-import v3
-from v3.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -571,10 +571,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
-    delete_non_employee_records_in_bulk_request = v3.DeleteNonEmployeeRecordsInBulkRequest() # DeleteNonEmployeeRecordsInBulkRequest | Non-Employee bulk delete request body.
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
+    delete_non_employee_records_in_bulk_request = sailpoint.v3.DeleteNonEmployeeRecordsInBulkRequest() # DeleteNonEmployeeRecordsInBulkRequest | Non-Employee bulk delete request body.
 
     try:
         # Delete Multiple Non-Employee Records
@@ -630,13 +630,13 @@ This request will delete a non-employee request.  Requires role context of `idn:
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -650,9 +650,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'ac110005-7156-1150-8171-5b292e3e0084' # str | Non-Employee request id in the UUID format
 
     try:
@@ -710,13 +710,13 @@ This end-point deletes a specific schema attribute for a non-employee source. Re
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -730,9 +730,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     attribute_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Schema Attribute Id (UUID)
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Source id
 
@@ -791,13 +791,13 @@ This request will delete a non-employee source. Requires role context of `idn:ne
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -811,9 +811,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     source_id = 'e136567de87e4d029e60b3c3c55db56d' # str | Source Id
 
     try:
@@ -870,13 +870,13 @@ This end-point deletes all custom schema attributes for a non-employee source. R
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -890,9 +890,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Source id
 
     try:
@@ -949,13 +949,13 @@ This requests a CSV download for all non-employees from a provided source. Requi
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -969,9 +969,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'e136567de87e4d029e60b3c3c55db56d' # str | Source Id (UUID)
 
     try:
@@ -1029,13 +1029,13 @@ This requests a download for the Source Schema Template for a provided source. R
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1049,9 +1049,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Source Id (UUID)
 
     try:
@@ -1109,14 +1109,14 @@ Gets a non-employee approval item detail. There are two contextual uses for this
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_approval_item_detail import NonEmployeeApprovalItemDetail
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_approval_item_detail import NonEmployeeApprovalItemDetail
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1130,9 +1130,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'e136567de87e4d029e60b3c3c55db56d' # str | Non-Employee approval item id (UUID)
     include_detail = true # bool | The object nonEmployeeRequest will not be included detail when set to false. *Default value is true* (optional)
 
@@ -1193,14 +1193,14 @@ This request will retrieve a summary of non-employee approval requests. There ar
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_approval_summary import NonEmployeeApprovalSummary
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_approval_summary import NonEmployeeApprovalSummary
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1214,9 +1214,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     requested_for = '2c91808280430dfb0180431a59440460' # str | The identity (UUID) of the approver for whom for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
 
     try:
@@ -1275,14 +1275,14 @@ The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_bulk_upload_status import NonEmployeeBulkUploadStatus
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_bulk_upload_status import NonEmployeeBulkUploadStatus
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1296,9 +1296,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'e136567de87e4d029e60b3c3c55db56d' # str | Source ID (UUID)
 
     try:
@@ -1357,14 +1357,14 @@ This gets a non-employee record. Requires role context of `idn:nesr:read`
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_record import NonEmployeeRecord
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_record import NonEmployeeRecord
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1378,9 +1378,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-Employee record id (UUID)
 
     try:
@@ -1439,14 +1439,14 @@ This gets a non-employee request. There are two contextual uses for this endpoin
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_request import NonEmployeeRequest
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_request import NonEmployeeRequest
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1460,9 +1460,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'ac110005-7156-1150-8171-5b292e3e0084' # str | Non-Employee request id (UUID)
 
     try:
@@ -1522,14 +1522,14 @@ This request will retrieve a summary of non-employee requests. There are two con
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_request_summary import NonEmployeeRequestSummary
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_request_summary import NonEmployeeRequestSummary
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1543,9 +1543,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     requested_for = '2c91808280430dfb0180431a59440460' # str | The identity (UUID) of the non-employee account manager for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
 
     try:
@@ -1604,14 +1604,14 @@ This API gets a schema attribute by Id for the specified Non-Employee SourceId. 
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1625,9 +1625,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     attribute_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Schema Attribute Id (UUID)
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Source id
 
@@ -1688,14 +1688,14 @@ This gets a non-employee source. There are two contextual uses for the requested
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_source import NonEmployeeSource
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_source import NonEmployeeSource
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1709,9 +1709,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     source_id = '2c91808b7c28b350017c2a2ec5790aa1' # str | Source Id
 
     try:
@@ -1770,14 +1770,14 @@ This API gets the list of schema attributes for the specified Non-Employee Sourc
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1791,9 +1791,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Source id
 
     try:
@@ -1853,14 +1853,14 @@ This post will import, or update, Non-Employee records found in the CSV. Require
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_bulk_upload_job import NonEmployeeBulkUploadJob
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_bulk_upload_job import NonEmployeeBulkUploadJob
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1874,9 +1874,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'e136567de87e4d029e60b3c3c55db56d' # str | Source Id (UUID)
     data = None # bytearray | 
 
@@ -1938,14 +1938,14 @@ This gets a list of non-employee approval requests. There are two contextual use
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_approval_item import NonEmployeeApprovalItem
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_approval_item import NonEmployeeApprovalItem
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -1959,9 +1959,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     requested_for = '2c91808280430dfb0180431a59440460' # str | The identity for whom the request was made. *me* indicates the current user. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -2030,14 +2030,14 @@ This gets a list of non-employee records. There are two contextual uses for this
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_record import NonEmployeeRecord
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_record import NonEmployeeRecord
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -2051,9 +2051,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -2120,14 +2120,14 @@ This gets a list of non-employee requests. There are two contextual uses for the
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_request import NonEmployeeRequest
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_request import NonEmployeeRequest
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -2141,9 +2141,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     requested_for = 'e136567de87e4d029e60b3c3c55db56d' # str | The identity for whom the request was made. *me* indicates the current user.
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -2212,14 +2212,14 @@ This gets a list of non-employee sources. There are two contextual uses for the 
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -2233,9 +2233,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     requested_for = 'me' # str | The identity for whom the request was made. *me* indicates the current user.
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -2304,15 +2304,15 @@ This request will patch a non-employee record. There are two contextual uses for
 ```python
 import time
 import os
-import v3
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.models.non_employee_record import NonEmployeeRecord
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.non_employee_record import NonEmployeeRecord
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -2326,9 +2326,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-employee record id (UUID)
     json_patch_operation = [{op=replace, path=/endDate, value=2019-08-23T18:40:35.772Z}] # List[JsonPatchOperation] | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
@@ -2390,15 +2390,15 @@ This end-point patches a specific schema attribute for a non-employee SourceId. 
 ```python
 import time
 import os
-import v3
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -2412,9 +2412,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     attribute_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Schema Attribute Id (UUID)
     source_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Source id
     json_patch_operation = [{op=replace, path=/label, value={new attribute label=null}}] # List[JsonPatchOperation] | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
@@ -2478,15 +2478,15 @@ patch a non-employee source. (partial update) <br/> Patchable field: **name, des
 ```python
 import time
 import os
-import v3
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.models.non_employee_source import NonEmployeeSource
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.non_employee_source import NonEmployeeSource
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -2500,9 +2500,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     source_id = 'e136567de87e4d029e60b3c3c55db56d' # str | Source Id
     json_patch_operation = [{op=replace, path=/name, value={new name=null}}, {op=replace, path=/approvers, value=[2c91809f703bb37a017040a2fe8748c7, 48b1f463c9e8427db5a5071bd81914b8]}] # List[JsonPatchOperation] | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
@@ -2563,15 +2563,15 @@ This endpoint will reject an approval item request and notify user. The current 
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_approval_item import NonEmployeeApprovalItem
-from v3.models.non_employee_reject_approval_decision import NonEmployeeRejectApprovalDecision
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_approval_item import NonEmployeeApprovalItem
+from sailpoint.v3.models.non_employee_reject_approval_decision import NonEmployeeRejectApprovalDecision
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -2585,11 +2585,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'e136567de87e4d029e60b3c3c55db56d' # str | Non-Employee approval item id (UUID)
-    non_employee_reject_approval_decision = v3.NonEmployeeRejectApprovalDecision() # NonEmployeeRejectApprovalDecision | 
+    non_employee_reject_approval_decision = sailpoint.v3.NonEmployeeRejectApprovalDecision() # NonEmployeeRejectApprovalDecision | 
 
     try:
         # Reject a Non-Employee Request
@@ -2648,15 +2648,15 @@ This request will update a non-employee record. There are two contextual uses fo
 ```python
 import time
 import os
-import v3
-from v3.models.non_employee_record import NonEmployeeRecord
-from v3.models.non_employee_request_body import NonEmployeeRequestBody
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.non_employee_record import NonEmployeeRecord
+from sailpoint.v3.models.non_employee_request_body import NonEmployeeRequestBody
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -2670,11 +2670,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.NonEmployeeLifecycleManagementApi(api_client)
+    api_instance = sailpoint.v3.NonEmployeeLifecycleManagementApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | Non-employee record id (UUID)
-    non_employee_request_body = v3.NonEmployeeRequestBody() # NonEmployeeRequestBody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
+    non_employee_request_body = sailpoint.v3.NonEmployeeRequestBody() # NonEmployeeRequestBody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
     try:
         # Update Non-Employee Record

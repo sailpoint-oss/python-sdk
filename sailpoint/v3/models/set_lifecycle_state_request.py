@@ -11,21 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class SetLifecycleStateRequest(BaseModel):
     """
     SetLifecycleStateRequest
     """
-    lifecycle_state_id: Optional[StrictStr] = Field(None, alias="lifecycleStateId", description="The ID of the lifecycle state to set")
+    lifecycle_state_id: Optional[StrictStr] = Field(
+        None,
+        alias="lifecycleStateId",
+        description="The ID of the lifecycle state to set")
     __properties = ["lifecycleStateId"]
 
     class Config:
@@ -48,10 +50,7 @@ class SetLifecycleStateRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +62,6 @@ class SetLifecycleStateRequest(BaseModel):
         if not isinstance(obj, dict):
             return SetLifecycleStateRequest.parse_obj(obj)
 
-        _obj = SetLifecycleStateRequest.parse_obj({
-            "lifecycle_state_id": obj.get("lifecycleStateId")
-        })
+        _obj = SetLifecycleStateRequest.parse_obj(
+            {"lifecycle_state_id": obj.get("lifecycleStateId")})
         return _obj
-
-

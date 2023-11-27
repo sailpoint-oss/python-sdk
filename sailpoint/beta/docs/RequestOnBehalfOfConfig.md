@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.request_on_behalf_of_config import RequestOnBehalfOfConfig
+from sailpoint.beta.models.request_on_behalf_of_config import RequestOnBehalfOfConfig
 
 # TODO update the JSON string below
 json = "{}"

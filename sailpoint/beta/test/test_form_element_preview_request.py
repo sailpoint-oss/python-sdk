@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.form_element_preview_request import FormElementPreviewRequest  # noqa: E501
+from sailpoint.beta.models.form_element_preview_request import FormElementPreviewRequest  # noqa: E501
+
 
 class TestFormElementPreviewRequest(unittest.TestCase):
     """FormElementPreviewRequest unit test stubs"""
@@ -36,8 +36,8 @@ class TestFormElementPreviewRequest(unittest.TestCase):
         model = FormElementPreviewRequest()  # noqa: E501
         if include_optional:
             return FormElementPreviewRequest(
-                data_source = beta.models.form_element_dynamic_data_source.FormElementDynamicDataSource(
-                    config = beta.models.form_element_dynamic_data_source_config.FormElementDynamicDataSourceConfig(
+                data_source = sailpoint.beta.models.form_element_dynamic_data_source.FormElementDynamicDataSource(
+                    config = sailpoint.beta.models.form_element_dynamic_data_source_config.FormElementDynamicDataSourceConfig(
                         aggregation_bucket_field = 'attributes.cloudStatus.exact', 
                         indices = [identities], 
                         object_type = 'IDENTITY', 
@@ -53,6 +53,7 @@ class TestFormElementPreviewRequest(unittest.TestCase):
         """Test FormElementPreviewRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse  # noqa: E501
+from sailpoint.beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse  # noqa: E501
+
 
 class TestListFormInstancesByTenantResponse(unittest.TestCase):
     """ListFormInstancesByTenantResponse unit test stubs"""
@@ -26,7 +26,8 @@ class TestListFormInstancesByTenantResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ListFormInstancesByTenantResponse:
+    def make_instance(self,
+                      include_optional) -> ListFormInstancesByTenantResponse:
         """Test ListFormInstancesByTenantResponse
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -38,17 +39,17 @@ class TestListFormInstancesByTenantResponse(unittest.TestCase):
             return ListFormInstancesByTenantResponse(
                 count = 1,
                 results = [
-                    beta.models.form_instance_response.FormInstanceResponse(
+                    sailpoint.beta.models.form_instance_response.FormInstanceResponse(
                         created = '2023-07-12T20:14:57.744860Z', 
-                        created_by = beta.models.form_instance_created_by.FormInstanceCreatedBy(
+                        created_by = sailpoint.beta.models.form_instance_created_by.FormInstanceCreatedBy(
                             id = '00000000-0000-0000-0000-000000000000', 
                             type = 'WORKFLOW_EXECUTION', ), 
                         expire = '2023-08-12T20:14:57.74486Z', 
                         form_conditions = [
-                            beta.models.form_condition.FormCondition(
+                            sailpoint.beta.models.form_condition.FormCondition(
                                 rule_operator = 'AND', 
                                 rules = [
-                                    beta.models.condition_rule.ConditionRule(
+                                    sailpoint.beta.models.condition_rule.ConditionRule(
                                         source_type = 'ELEMENT', 
                                         source = 'department', 
                                         operator = 'EQ', 
@@ -56,9 +57,9 @@ class TestListFormInstancesByTenantResponse(unittest.TestCase):
                                         value = Engineering, )
                                     ], 
                                 effects = [
-                                    beta.models.condition_effect.ConditionEffect(
+                                    sailpoint.beta.models.condition_effect.ConditionEffect(
                                         effect_type = 'HIDE', 
-                                        config = beta.models.condition_effect_config.ConditionEffect_config(
+                                        config = sailpoint.beta.models.condition_effect_config.ConditionEffect_config(
                                             default_value_label = 'Access to Remove', 
                                             element = '8110662963316867', ), )
                                     ], )
@@ -66,17 +67,17 @@ class TestListFormInstancesByTenantResponse(unittest.TestCase):
                         form_data = {department=Engineering}, 
                         form_definition_id = '00000000-0000-0000-0000-000000000000', 
                         form_elements = [
-                            beta.models.form_element.FormElement(
+                            sailpoint.beta.models.form_element.FormElement(
                                 id = '00000000-0000-0000-0000-000000000000', 
                                 element_type = 'TEXT', 
                                 key = 'department', 
                                 validations = [{validationType=REQUIRED}], )
                             ], 
                         form_errors = [
-                            beta.models.form_error.FormError(
+                            sailpoint.beta.models.form_error.FormError(
                                 key = 'department', 
                                 messages = [
-                                    beta.models.error_message_is_the_standard_api_error_response_message_type/.ErrorMessage is the standard API error response message type.(
+                                    sailpoint.beta.models.error_message_is_the_standard_api_error_response_message_type/.ErrorMessage is the standard API error response message type.(
                                         locale = 'en-US', 
                                         locale_origin = 'DEFAULT', 
                                         text = 'This is an error', )
@@ -87,7 +88,7 @@ class TestListFormInstancesByTenantResponse(unittest.TestCase):
                         id = '00000000-0000-0000-0000-000000000000', 
                         modified = '2023-07-12T20:14:57.744860Z', 
                         recipients = [
-                            beta.models.form_instance_recipient.FormInstanceRecipient(
+                            sailpoint.beta.models.form_instance_recipient.FormInstanceRecipient(
                                 id = '00000000-0000-0000-0000-000000000000', 
                                 type = 'IDENTITY', )
                             ], 
@@ -105,6 +106,7 @@ class TestListFormInstancesByTenantResponse(unittest.TestCase):
         """Test ListFormInstancesByTenantResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

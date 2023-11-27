@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.provisioning_config import ProvisioningConfig  # noqa: E501
+from sailpoint.v3.models.provisioning_config import ProvisioningConfig  # noqa: E501
+
 
 class TestProvisioningConfig(unittest.TestCase):
     """ProvisioningConfig unit test stubs"""
@@ -38,7 +38,7 @@ class TestProvisioningConfig(unittest.TestCase):
             return ProvisioningConfig(
                 universal_manager = True,
                 managed_resource_refs = [{type=SOURCE, id=2c9180855d191c59015d291ceb051111, name=My Source 1}, {type=SOURCE, id=2c9180855d191c59015d291ceb052222, name=My Source 2}],
-                plan_initializer_script = v3.models.provisioning_config_plan_initializer_script.ProvisioningConfig_planInitializerScript(
+                plan_initializer_script = sailpoint.v3.models.provisioning_config_plan_initializer_script.ProvisioningConfig_planInitializerScript(
                     source = '<?xml version='1.0' encoding='UTF-8'?>\r\n<!DOCTYPE Rule PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\r\n<Rule name=\"Example Rule\" type=\"BeforeProvisioning\">\r\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\r\n  <Source><![CDATA[\r\nimport sailpoint.object.*;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\r\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\r\nimport sailpoint.object.ProvisioningPlan;\r\nimport sailpoint.object.ProvisioningPlan.Operation;\r\n\r\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n}\r\n\r\n  ]]></Source>
 ', ),
                 no_provisioning_requests = True,
@@ -53,6 +53,7 @@ class TestProvisioningConfig(unittest.TestCase):
         """Test ProvisioningConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

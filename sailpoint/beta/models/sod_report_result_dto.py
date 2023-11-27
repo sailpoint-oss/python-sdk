@@ -11,23 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class SodReportResultDto(BaseModel):
     """
     SOD policy violation report result.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="SOD policy violation report result DTO type.")
-    id: Optional[StrictStr] = Field(None, description="SOD policy violation report result ID.")
-    name: Optional[StrictStr] = Field(None, description="Human-readable name of the SOD policy violation report result.")
+    type: Optional[StrictStr] = Field(
+        None, description="SOD policy violation report result DTO type.")
+    id: Optional[StrictStr] = Field(
+        None, description="SOD policy violation report result ID.")
+    name: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Human-readable name of the SOD policy violation report result.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -60,10 +64,7 @@ class SodReportResultDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,5 +82,3 @@ class SodReportResultDto(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

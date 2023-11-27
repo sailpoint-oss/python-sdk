@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.access_profile import AccessProfile
+from sailpoint.beta.models.access_profile import AccessProfile
 
 # TODO update the JSON string below
 json = "{}"

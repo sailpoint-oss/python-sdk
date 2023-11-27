@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.set_lifecycle_state_request import SetLifecycleStateRequest
+from sailpoint.v3.models.set_lifecycle_state_request import SetLifecycleStateRequest
 
 # TODO update the JSON string below
 json = "{}"

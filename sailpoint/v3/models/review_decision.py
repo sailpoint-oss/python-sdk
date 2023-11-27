@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,8 +19,9 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-from v3.models.certification_decision import CertificationDecision
-from v3.models.review_recommendation import ReviewRecommendation
+from sailpoint.v3.models.certification_decision import CertificationDecision
+from sailpoint.v3.models.review_recommendation import ReviewRecommendation
+
 
 class ReviewDecision(BaseModel):
     """
@@ -29,11 +29,24 @@ class ReviewDecision(BaseModel):
     """
     id: StrictStr = Field(..., description="The id of the review decision")
     decision: CertificationDecision = Field(...)
-    proposed_end_date: Optional[datetime] = Field(None, alias="proposedEndDate", description="The date at which a user's access should be taken away. Should only be set for `REVOKE` decisions.")
-    bulk: StrictBool = Field(..., description="Indicates whether decision should be marked as part of a larger bulk decision")
+    proposed_end_date: Optional[datetime] = Field(
+        None,
+        alias="proposedEndDate",
+        description=
+        "The date at which a user's access should be taken away. Should only be set for `REVOKE` decisions."
+    )
+    bulk: StrictBool = Field(
+        ...,
+        description=
+        "Indicates whether decision should be marked as part of a larger bulk decision"
+    )
     recommendation: Optional[ReviewRecommendation] = None
-    comments: Optional[StrictStr] = Field(None, description="Comments recorded when the decision was made")
-    __properties = ["id", "decision", "proposedEndDate", "bulk", "recommendation", "comments"]
+    comments: Optional[StrictStr] = Field(
+        None, description="Comments recorded when the decision was made")
+    __properties = [
+        "id", "decision", "proposedEndDate", "bulk", "recommendation",
+        "comments"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -55,10 +68,7 @@ class ReviewDecision(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of recommendation
         if self.recommendation:
             _dict['recommendation'] = self.recommendation.to_dict()
@@ -74,13 +84,18 @@ class ReviewDecision(BaseModel):
             return ReviewDecision.parse_obj(obj)
 
         _obj = ReviewDecision.parse_obj({
-            "id": obj.get("id"),
-            "decision": obj.get("decision"),
-            "proposed_end_date": obj.get("proposedEndDate"),
-            "bulk": obj.get("bulk"),
-            "recommendation": ReviewRecommendation.from_dict(obj.get("recommendation")) if obj.get("recommendation") is not None else None,
-            "comments": obj.get("comments")
+            "id":
+            obj.get("id"),
+            "decision":
+            obj.get("decision"),
+            "proposed_end_date":
+            obj.get("proposedEndDate"),
+            "bulk":
+            obj.get("bulk"),
+            "recommendation":
+            ReviewRecommendation.from_dict(obj.get("recommendation"))
+            if obj.get("recommendation") is not None else None,
+            "comments":
+            obj.get("comments")
         })
         return _obj
-
-

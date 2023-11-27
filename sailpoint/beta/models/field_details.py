@@ -11,27 +11,36 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+
 
 class FieldDetails(BaseModel):
     """
     FieldDetails
     """
     name: Optional[StrictStr] = Field(None, description="Name of the FormItem")
-    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="Display name of the field")
-    display_type: Optional[StrictStr] = Field(None, alias="displayType", description="Type of the field to display")
-    required: Optional[StrictBool] = Field(None, description="True if the field is required")
-    allowed_values_list: Optional[conlist(Dict[str, Any])] = Field(None, alias="allowedValuesList", description="List of allowed values for the field")
-    value: Optional[Dict[str, Any]] = Field(None, description="Value of the field")
-    __properties = ["name", "displayName", "displayType", "required", "allowedValuesList", "value"]
+    display_name: Optional[StrictStr] = Field(
+        None, alias="displayName", description="Display name of the field")
+    display_type: Optional[StrictStr] = Field(
+        None, alias="displayType", description="Type of the field to display")
+    required: Optional[StrictBool] = Field(
+        None, description="True if the field is required")
+    allowed_values_list: Optional[conlist(Dict[str, Any])] = Field(
+        None,
+        alias="allowedValuesList",
+        description="List of allowed values for the field")
+    value: Optional[Dict[str, Any]] = Field(None,
+                                            description="Value of the field")
+    __properties = [
+        "name", "displayName", "displayType", "required", "allowedValuesList",
+        "value"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -53,10 +62,7 @@ class FieldDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,13 +75,17 @@ class FieldDetails(BaseModel):
             return FieldDetails.parse_obj(obj)
 
         _obj = FieldDetails.parse_obj({
-            "name": obj.get("name"),
-            "display_name": obj.get("displayName"),
-            "display_type": obj.get("displayType"),
-            "required": obj.get("required"),
-            "allowed_values_list": obj.get("allowedValuesList"),
-            "value": obj.get("value")
+            "name":
+            obj.get("name"),
+            "display_name":
+            obj.get("displayName"),
+            "display_type":
+            obj.get("displayType"),
+            "required":
+            obj.get("required"),
+            "allowed_values_list":
+            obj.get("allowedValuesList"),
+            "value":
+            obj.get("value")
         })
         return _obj
-
-

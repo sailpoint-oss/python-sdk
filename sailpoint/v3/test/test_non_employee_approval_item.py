@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.non_employee_approval_item import NonEmployeeApprovalItem  # noqa: E501
+from sailpoint.v3.models.non_employee_approval_item import NonEmployeeApprovalItem  # noqa: E501
+
 
 class TestNonEmployeeApprovalItem(unittest.TestCase):
     """NonEmployeeApprovalItem unit test stubs"""
@@ -37,7 +37,7 @@ class TestNonEmployeeApprovalItem(unittest.TestCase):
         if include_optional:
             return NonEmployeeApprovalItem(
                 id = '2c1e388b-1e55-4b0a-ab5c-897f1204159c',
-                approver = v3.models.non_employee_identity_reference_with_id.NonEmployeeIdentityReferenceWithId(
+                approver = sailpoint.v3.models.non_employee_identity_reference_with_id.NonEmployeeIdentityReferenceWithId(
                     type = 'IDENTITY', 
                     id = '5168015d32f890ca15812c9180835d2e', ),
                 account_name = 'test.account',
@@ -46,9 +46,9 @@ class TestNonEmployeeApprovalItem(unittest.TestCase):
                 comment = 'I approve',
                 modified = '2019-08-23T18:52:59.162Z',
                 created = '2019-08-23T18:40:35.772Z',
-                non_employee_request = v3.models.non_employee_request_lite.NonEmployeeRequestLite(
+                non_employee_request = sailpoint.v3.models.non_employee_request_lite.NonEmployeeRequestLite(
                     id = 'ac110005-7156-1150-8171-5b292e3e0084', 
-                    requester = v3.models.non_employee_identity_reference_with_id.NonEmployeeIdentityReferenceWithId(
+                    requester = sailpoint.v3.models.non_employee_identity_reference_with_id.NonEmployeeIdentityReferenceWithId(
                         type = 'IDENTITY', 
                         id = '5168015d32f890ca15812c9180835d2e', ), )
             )
@@ -61,6 +61,7 @@ class TestNonEmployeeApprovalItem(unittest.TestCase):
         """Test NonEmployeeApprovalItem"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.workflow import Workflow
+from sailpoint.beta.models.workflow import Workflow
 
 # TODO update the JSON string below
 json = "{}"

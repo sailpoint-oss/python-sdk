@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.scheduled_search import ScheduledSearch
+from sailpoint.v3.models.scheduled_search import ScheduledSearch
 
 # TODO update the JSON string below
 json = "{}"

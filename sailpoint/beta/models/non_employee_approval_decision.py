@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, constr
+
 
 class NonEmployeeApprovalDecision(BaseModel):
     """
     NonEmployeeApprovalDecision
     """
-    comment: Optional[constr(strict=True, max_length=4000)] = Field(None, description="Comment on the approval item.")
+    comment: Optional[constr(strict=True, max_length=4000)] = Field(
+        None, description="Comment on the approval item.")
     __properties = ["comment"]
 
     class Config:
@@ -48,10 +48,7 @@ class NonEmployeeApprovalDecision(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +60,6 @@ class NonEmployeeApprovalDecision(BaseModel):
         if not isinstance(obj, dict):
             return NonEmployeeApprovalDecision.parse_obj(obj)
 
-        _obj = NonEmployeeApprovalDecision.parse_obj({
-            "comment": obj.get("comment")
-        })
+        _obj = NonEmployeeApprovalDecision.parse_obj(
+            {"comment": obj.get("comment")})
         return _obj
-
-

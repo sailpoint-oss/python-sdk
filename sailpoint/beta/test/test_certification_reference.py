@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.certification_reference import CertificationReference  # noqa: E501
+from sailpoint.beta.models.certification_reference import CertificationReference  # noqa: E501
+
 
 class TestCertificationReference(unittest.TestCase):
     """CertificationReference unit test stubs"""
@@ -39,7 +39,7 @@ class TestCertificationReference(unittest.TestCase):
                 type = 'IDENTITY',
                 id = '7589a83cec4b4f138ce56c1a5ef0756d',
                 name = 'Manager Access for Michael Michaels',
-                reviewer = beta.models.reviewer.Reviewer(
+                reviewer = sailpoint.beta.models.reviewer.Reviewer(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', 
@@ -54,6 +54,7 @@ class TestCertificationReference(unittest.TestCase):
         """Test CertificationReference"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

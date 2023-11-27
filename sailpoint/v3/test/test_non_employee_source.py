@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.non_employee_source import NonEmployeeSource  # noqa: E501
+from sailpoint.v3.models.non_employee_source import NonEmployeeSource  # noqa: E501
+
 
 class TestNonEmployeeSource(unittest.TestCase):
     """NonEmployeeSource unit test stubs"""
@@ -41,12 +41,12 @@ class TestNonEmployeeSource(unittest.TestCase):
                 name = 'Retail',
                 description = 'Source description',
                 approvers = [
-                    v3.models.non_employee_identity_reference_with_id.NonEmployeeIdentityReferenceWithId(
+                    sailpoint.v3.models.non_employee_identity_reference_with_id.NonEmployeeIdentityReferenceWithId(
                         type = 'IDENTITY', 
                         id = '5168015d32f890ca15812c9180835d2e', )
                     ],
                 account_managers = [
-                    v3.models.non_employee_identity_reference_with_id.NonEmployeeIdentityReferenceWithId(
+                    sailpoint.v3.models.non_employee_identity_reference_with_id.NonEmployeeIdentityReferenceWithId(
                         type = 'IDENTITY', 
                         id = '5168015d32f890ca15812c9180835d2e', )
                     ],
@@ -62,6 +62,7 @@ class TestNonEmployeeSource(unittest.TestCase):
         """Test NonEmployeeSource"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

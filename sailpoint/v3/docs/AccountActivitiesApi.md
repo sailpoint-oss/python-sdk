@@ -1,4 +1,4 @@
-# v3.AccountActivitiesApi
+# sailpoint.v3.AccountActivitiesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -22,14 +22,14 @@ This gets a single account activity by its id.
 ```python
 import time
 import os
-import v3
-from v3.models.account_activity import AccountActivity
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.account_activity import AccountActivity
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -43,9 +43,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountActivitiesApi(api_client)
+    api_instance = sailpoint.v3.AccountActivitiesApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account activity id
 
     try:
@@ -105,14 +105,14 @@ This gets a collection of account activities that satisfy the given query parame
 ```python
 import time
 import os
-import v3
-from v3.models.account_activity import AccountActivity
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.account_activity import AccountActivity
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -126,9 +126,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountActivitiesApi(api_client)
+    api_instance = sailpoint.v3.AccountActivitiesApi(api_client)
     requested_for = '2c91808568c529c60168cca6f90c1313' # str | The identity that the activity was requested for. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     requested_by = '2c91808568c529c60168cca6f90c1313' # str | The identity that requested the activity. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     regarding_identity = '2c91808568c529c60168cca6f90c1313' # str | The specified identity will be either the requester or target of the account activity. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional)

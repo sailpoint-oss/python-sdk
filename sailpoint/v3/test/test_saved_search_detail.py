@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.saved_search_detail import SavedSearchDetail  # noqa: E501
+from sailpoint.v3.models.saved_search_detail import SavedSearchDetail  # noqa: E501
+
 
 class TestSavedSearchDetail(unittest.TestCase):
     """SavedSearchDetail unit test stubs"""
@@ -57,6 +57,7 @@ class TestSavedSearchDetail(unittest.TestCase):
         """Test SavedSearchDetail"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

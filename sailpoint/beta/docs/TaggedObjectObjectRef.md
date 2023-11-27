@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.tagged_object_object_ref import TaggedObjectObjectRef
+from sailpoint.beta.models.tagged_object_object_ref import TaggedObjectObjectRef
 
 # TODO update the JSON string below
 json = "{}"

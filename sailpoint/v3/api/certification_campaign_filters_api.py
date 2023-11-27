@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,14 +22,12 @@ from pydantic import Field, StrictBool, StrictStr, conint, conlist
 
 from typing import List, Optional
 
-from v3.models.campaign_filter_details import CampaignFilterDetails
+from sailpoint.v3.models.campaign_filter_details import CampaignFilterDetails
 
-from v3.api_client import ApiClient
-from v3.api_response import ApiResponse
-from v3.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.v3.api_client import ApiClient
+from sailpoint.v3.api_response import ApiResponse
+from sailpoint.v3.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class CertificationCampaignFiltersApi:
@@ -46,7 +43,9 @@ class CertificationCampaignFiltersApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_campaign_filter(self, campaign_filter_details : CampaignFilterDetails, **kwargs) -> CampaignFilterDetails:  # noqa: E501
+    def create_campaign_filter(
+            self, campaign_filter_details: CampaignFilterDetails,
+            **kwargs) -> CampaignFilterDetails:  # noqa: E501
         """Create a Campaign Filter  # noqa: E501
 
         Create a campaign Filter based on filter details and criteria.  # noqa: E501
@@ -73,10 +72,13 @@ class CertificationCampaignFiltersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_campaign_filter_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_campaign_filter_with_http_info(campaign_filter_details, **kwargs)  # noqa: E501
+        return self.create_campaign_filter_with_http_info(
+            campaign_filter_details, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_campaign_filter_with_http_info(self, campaign_filter_details : CampaignFilterDetails, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_campaign_filter_with_http_info(
+            self, campaign_filter_details: CampaignFilterDetails,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create a Campaign Filter  # noqa: E501
 
         Create a campaign Filter based on filter details and criteria.  # noqa: E501
@@ -115,28 +117,17 @@ class CertificationCampaignFiltersApi:
 
         _params = locals()
 
-        _all_params = [
-            'campaign_filter_details'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['campaign_filter_details']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_campaign_filter" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_campaign_filter" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -162,11 +153,11 @@ class CertificationCampaignFiltersApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -181,7 +172,8 @@ class CertificationCampaignFiltersApi:
         }
 
         return self.api_client.call_api(
-            '/campaign-filters', 'POST',
+            '/campaign-filters',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -191,14 +183,19 @@ class CertificationCampaignFiltersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_campaign_filters(self, request_body : Annotated[conlist(StrictStr), Field(..., description="A json list of IDs of campaign filters to delete.")], **kwargs) -> None:  # noqa: E501
+    def delete_campaign_filters(self, request_body: Annotated[
+        conlist(StrictStr),
+        Field(...,
+              description="A json list of IDs of campaign filters to delete."
+              )], **kwargs) -> None:  # noqa: E501
         """Deletes Campaign Filters  # noqa: E501
 
         Deletes campaign filters whose Ids are specified in the provided list of campaign filter Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.  # noqa: E501
@@ -225,10 +222,15 @@ class CertificationCampaignFiltersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_campaign_filters_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_campaign_filters_with_http_info(request_body, **kwargs)  # noqa: E501
+        return self.delete_campaign_filters_with_http_info(
+            request_body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_campaign_filters_with_http_info(self, request_body : Annotated[conlist(StrictStr), Field(..., description="A json list of IDs of campaign filters to delete.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_campaign_filters_with_http_info(self, request_body: Annotated[
+        conlist(StrictStr),
+        Field(...,
+              description="A json list of IDs of campaign filters to delete."
+              )], **kwargs) -> ApiResponse:  # noqa: E501
         """Deletes Campaign Filters  # noqa: E501
 
         Deletes campaign filters whose Ids are specified in the provided list of campaign filter Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.  # noqa: E501
@@ -267,28 +269,17 @@ class CertificationCampaignFiltersApi:
 
         _params = locals()
 
-        _all_params = [
-            'request_body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['request_body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_campaign_filters" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_campaign_filters" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -314,11 +305,11 @@ class CertificationCampaignFiltersApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -326,7 +317,8 @@ class CertificationCampaignFiltersApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/campaign-filters/delete', 'POST',
+            '/campaign-filters/delete',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -336,14 +328,19 @@ class CertificationCampaignFiltersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_campaign_filter_by_id(self, filter_id : Annotated[StrictStr, Field(..., description="The ID of the campaign filter to be retrieved.")], **kwargs) -> List[CampaignFilterDetails]:  # noqa: E501
+    def get_campaign_filter_by_id(self, filter_id: Annotated[
+        StrictStr,
+        Field(...,
+              description="The ID of the campaign filter to be retrieved."
+              )], **kwargs) -> List[CampaignFilterDetails]:  # noqa: E501
         """Get Campaign Filter by ID  # noqa: E501
 
         Retrieves information for an existing campaign filter using the filter's ID.  # noqa: E501
@@ -370,10 +367,15 @@ class CertificationCampaignFiltersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_campaign_filter_by_id_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_campaign_filter_by_id_with_http_info(filter_id, **kwargs)  # noqa: E501
+        return self.get_campaign_filter_by_id_with_http_info(
+            filter_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_campaign_filter_by_id_with_http_info(self, filter_id : Annotated[StrictStr, Field(..., description="The ID of the campaign filter to be retrieved.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_campaign_filter_by_id_with_http_info(self, filter_id: Annotated[
+        StrictStr,
+        Field(...,
+              description="The ID of the campaign filter to be retrieved."
+              )], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Campaign Filter by ID  # noqa: E501
 
         Retrieves information for an existing campaign filter using the filter's ID.  # noqa: E501
@@ -412,28 +414,18 @@ class CertificationCampaignFiltersApi:
 
         _params = locals()
 
-        _all_params = [
-            'filter_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['filter_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_campaign_filter_by_id" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_campaign_filter_by_id" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -443,7 +435,6 @@ class CertificationCampaignFiltersApi:
         _path_params = {}
         if _params['filter_id']:
             _path_params['filterId'] = _params['filter_id']
-
 
         # process the query parameters
         _query_params = []
@@ -472,7 +463,8 @@ class CertificationCampaignFiltersApi:
         }
 
         return self.api_client.call_api(
-            '/campaign-filters/{id}', 'GET',
+            '/campaign-filters/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -482,14 +474,39 @@ class CertificationCampaignFiltersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_campaign_filters(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, start : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, include_system_filters : Annotated[Optional[StrictBool], Field(description="If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true.")] = None, **kwargs) -> List[CampaignFilterDetails]:  # noqa: E501
+    def list_campaign_filters(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            start:
+        Annotated[
+            Optional[conint(strict=True, ge=0
+                            )],
+            Field(
+                description=
+                "Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            include_system_filters:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true."
+            )] = None,
+            **kwargs) -> List[CampaignFilterDetails]:  # noqa: E501
         """List Campaign Filters  # noqa: E501
 
         Lists all Campaign Filters. Scope can be reduced via standard V3 query params.  All Campaign Filters matching the query params  # noqa: E501
@@ -520,10 +537,34 @@ class CertificationCampaignFiltersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_campaign_filters_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_campaign_filters_with_http_info(limit, start, include_system_filters, **kwargs)  # noqa: E501
+        return self.list_campaign_filters_with_http_info(
+            limit, start, include_system_filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_campaign_filters_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, start : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, include_system_filters : Annotated[Optional[StrictBool], Field(description="If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_campaign_filters_with_http_info(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            start:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Start/Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            include_system_filters:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If true, include system filters in the count and results, exclude them otherwise. If not provided any value for it then by default it is true."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List Campaign Filters  # noqa: E501
 
         Lists all Campaign Filters. Scope can be reduced via standard V3 query params.  All Campaign Filters matching the query params  # noqa: E501
@@ -566,30 +607,17 @@ class CertificationCampaignFiltersApi:
 
         _params = locals()
 
-        _all_params = [
-            'limit',
-            'start',
-            'include_system_filters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['limit', 'start', 'include_system_filters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_campaign_filters" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_campaign_filters" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -607,7 +635,8 @@ class CertificationCampaignFiltersApi:
             _query_params.append(('start', _params['start']))
 
         if _params.get('include_system_filters') is not None:  # noqa: E501
-            _query_params.append(('includeSystemFilters', _params['include_system_filters']))
+            _query_params.append(
+                ('includeSystemFilters', _params['include_system_filters']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -633,7 +662,8 @@ class CertificationCampaignFiltersApi:
         }
 
         return self.api_client.call_api(
-            '/campaign-filters', 'GET',
+            '/campaign-filters',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -643,14 +673,25 @@ class CertificationCampaignFiltersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_campaign_filter(self, filter_id : Annotated[StrictStr, Field(..., description="The ID of the campaign filter being modified.")], campaign_filter_details : Annotated[CampaignFilterDetails, Field(..., description="A campaign filter details with updated field values.")], **kwargs) -> CampaignFilterDetails:  # noqa: E501
+    def update_campaign_filter(self, filter_id: Annotated[
+        StrictStr,
+        Field(..., description="The ID of the campaign filter being modified."
+              )], campaign_filter_details: Annotated[
+                  CampaignFilterDetails,
+                  Field(
+                      ...,
+                      description=
+                      "A campaign filter details with updated field values.")],
+                               **kwargs
+                               ) -> CampaignFilterDetails:  # noqa: E501
         """Updates a Campaign Filter  # noqa: E501
 
         Updates an existing campaign filter using the filter's ID.  # noqa: E501
@@ -679,10 +720,21 @@ class CertificationCampaignFiltersApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_campaign_filter_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_campaign_filter_with_http_info(filter_id, campaign_filter_details, **kwargs)  # noqa: E501
+        return self.update_campaign_filter_with_http_info(
+            filter_id, campaign_filter_details, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_campaign_filter_with_http_info(self, filter_id : Annotated[StrictStr, Field(..., description="The ID of the campaign filter being modified.")], campaign_filter_details : Annotated[CampaignFilterDetails, Field(..., description="A campaign filter details with updated field values.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_campaign_filter_with_http_info(self, filter_id: Annotated[
+        StrictStr,
+        Field(..., description="The ID of the campaign filter being modified."
+              )], campaign_filter_details: Annotated[
+                  CampaignFilterDetails,
+                  Field(
+                      ...,
+                      description=
+                      "A campaign filter details with updated field values.")],
+                                              **kwargs
+                                              ) -> ApiResponse:  # noqa: E501
         """Updates a Campaign Filter  # noqa: E501
 
         Updates an existing campaign filter using the filter's ID.  # noqa: E501
@@ -723,29 +775,17 @@ class CertificationCampaignFiltersApi:
 
         _params = locals()
 
-        _all_params = [
-            'filter_id',
-            'campaign_filter_details'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['filter_id', 'campaign_filter_details']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_campaign_filter" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method update_campaign_filter" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -755,7 +795,6 @@ class CertificationCampaignFiltersApi:
         _path_params = {}
         if _params['filter_id']:
             _path_params['filterId'] = _params['filter_id']
-
 
         # process the query parameters
         _query_params = []
@@ -774,11 +813,11 @@ class CertificationCampaignFiltersApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -793,7 +832,8 @@ class CertificationCampaignFiltersApi:
         }
 
         return self.api_client.call_api(
-            '/campaign-filters/{id}', 'POST',
+            '/campaign-filters/{id}',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -803,7 +843,8 @@ class CertificationCampaignFiltersApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

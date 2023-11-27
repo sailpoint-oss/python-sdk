@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.range import Range  # noqa: E501
+from sailpoint.v3.models.range import Range  # noqa: E501
+
 
 class TestRange(unittest.TestCase):
     """Range unit test stubs"""
@@ -36,10 +36,10 @@ class TestRange(unittest.TestCase):
         model = Range()  # noqa: E501
         if include_optional:
             return Range(
-                lower = v3.models.bound.Bound(
+                lower = sailpoint.v3.models.bound.Bound(
                     value = '1', 
                     inclusive = False, ),
-                upper = v3.models.bound.Bound(
+                upper = sailpoint.v3.models.bound.Bound(
                     value = '1', 
                     inclusive = False, )
             )
@@ -52,6 +52,7 @@ class TestRange(unittest.TestCase):
         """Test Range"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

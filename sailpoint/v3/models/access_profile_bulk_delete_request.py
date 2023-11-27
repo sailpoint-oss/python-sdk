@@ -11,22 +11,29 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+
 
 class AccessProfileBulkDeleteRequest(BaseModel):
     """
     AccessProfileBulkDeleteRequest
     """
-    access_profile_ids: Optional[conlist(StrictStr)] = Field(None, alias="accessProfileIds", description="List of IDs of Access Profiles to be deleted.")
-    best_effort_only: Optional[StrictBool] = Field(None, alias="bestEffortOnly", description="If **true**, silently skip over any of the specified Access Profiles if they cannot be deleted because they are in use. If **false**, no deletions will be attempted if any of the Access Profiles are in use.")
+    access_profile_ids: Optional[conlist(StrictStr)] = Field(
+        None,
+        alias="accessProfileIds",
+        description="List of IDs of Access Profiles to be deleted.")
+    best_effort_only: Optional[StrictBool] = Field(
+        None,
+        alias="bestEffortOnly",
+        description=
+        "If **true**, silently skip over any of the specified Access Profiles if they cannot be deleted because they are in use. If **false**, no deletions will be attempted if any of the Access Profiles are in use."
+    )
     __properties = ["accessProfileIds", "bestEffortOnly"]
 
     class Config:
@@ -49,10 +56,7 @@ class AccessProfileBulkDeleteRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +69,9 @@ class AccessProfileBulkDeleteRequest(BaseModel):
             return AccessProfileBulkDeleteRequest.parse_obj(obj)
 
         _obj = AccessProfileBulkDeleteRequest.parse_obj({
-            "access_profile_ids": obj.get("accessProfileIds"),
-            "best_effort_only": obj.get("bestEffortOnly")
+            "access_profile_ids":
+            obj.get("accessProfileIds"),
+            "best_effort_only":
+            obj.get("bestEffortOnly")
         })
         return _obj
-
-

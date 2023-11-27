@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v2.models.update_org_settings_request import UpdateOrgSettingsRequest
+from sailpoint.v2.models.update_org_settings_request import UpdateOrgSettingsRequest
 
 # TODO update the JSON string below
 json = "{}"

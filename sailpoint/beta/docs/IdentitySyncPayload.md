@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.identity_sync_payload import IdentitySyncPayload
+from sailpoint.beta.models.identity_sync_payload import IdentitySyncPayload
 
 # TODO update the JSON string below
 json = "{}"

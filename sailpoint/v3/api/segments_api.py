@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,14 +22,12 @@ from pydantic import Field, StrictBool, StrictStr, conint, conlist
 
 from typing import Any, Dict, List, Optional
 
-from v3.models.segment import Segment
+from sailpoint.v3.models.segment import Segment
 
-from v3.api_client import ApiClient
-from v3.api_response import ApiResponse
-from v3.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.v3.api_client import ApiClient
+from sailpoint.v3.api_response import ApiResponse
+from sailpoint.v3.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class SegmentsApi:
@@ -46,7 +43,8 @@ class SegmentsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_segment(self, segment : Segment, **kwargs) -> Segment:  # noqa: E501
+    def create_segment(self, segment: Segment,
+                       **kwargs) -> Segment:  # noqa: E501
         """Create Segment  # noqa: E501
 
         This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -73,10 +71,12 @@ class SegmentsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_segment_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_segment_with_http_info(segment, **kwargs)  # noqa: E501
+        return self.create_segment_with_http_info(segment,
+                                                  **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_segment_with_http_info(self, segment : Segment, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_segment_with_http_info(self, segment: Segment,
+                                      **kwargs) -> ApiResponse:  # noqa: E501
         """Create Segment  # noqa: E501
 
         This API creates a segment.  >**Note:** Segment definitions may take time to propagate to all identities. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -115,28 +115,17 @@ class SegmentsApi:
 
         _params = locals()
 
-        _all_params = [
-            'segment'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['segment']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_segment" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_segment" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -162,11 +151,11 @@ class SegmentsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -181,7 +170,8 @@ class SegmentsApi:
         }
 
         return self.api_client.call_api(
-            '/segments', 'POST',
+            '/segments',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -191,14 +181,18 @@ class SegmentsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_segment(self, id : Annotated[StrictStr, Field(..., description="The segment ID to delete.")], **kwargs) -> None:  # noqa: E501
+    def delete_segment(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The segment ID to delete.")],
+                       **kwargs) -> None:  # noqa: E501
         """Delete Segment by ID  # noqa: E501
 
         This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -228,7 +222,10 @@ class SegmentsApi:
         return self.delete_segment_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_segment_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The segment ID to delete.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_segment_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The segment ID to delete.")],
+                                      **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Segment by ID  # noqa: E501
 
         This API deletes the segment specified by the given ID. >**Note:** that segment deletion may take some time to become effective. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -267,28 +264,17 @@ class SegmentsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_segment" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_segment" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -298,7 +284,6 @@ class SegmentsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -319,7 +304,8 @@ class SegmentsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/segments/{id}', 'DELETE',
+            '/segments/{id}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -329,14 +315,18 @@ class SegmentsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_segment(self, id : Annotated[StrictStr, Field(..., description="The segment ID to retrieve.")], **kwargs) -> Segment:  # noqa: E501
+    def get_segment(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The segment ID to retrieve.")],
+                    **kwargs) -> Segment:  # noqa: E501
         """Get Segment by ID  # noqa: E501
 
         This API returns the segment specified by the given ID. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -366,7 +356,10 @@ class SegmentsApi:
         return self.get_segment_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_segment_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The segment ID to retrieve.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_segment_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The segment ID to retrieve.")],
+                                   **kwargs) -> ApiResponse:  # noqa: E501
         """Get Segment by ID  # noqa: E501
 
         This API returns the segment specified by the given ID. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -405,28 +398,17 @@ class SegmentsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_segment" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_segment" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -436,7 +418,6 @@ class SegmentsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -465,7 +446,8 @@ class SegmentsApi:
         }
 
         return self.api_client.call_api(
-            '/segments/{id}', 'GET',
+            '/segments/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -475,14 +457,38 @@ class SegmentsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_segments(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[Segment]:  # noqa: E501
+    def list_segments(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> List[Segment]:  # noqa: E501
         """List Segments  # noqa: E501
 
         This API returns a list of all segments.  A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -513,10 +519,34 @@ class SegmentsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_segments_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_segments_with_http_info(limit, offset, count, **kwargs)  # noqa: E501
+        return self.list_segments_with_http_info(limit, offset, count,
+                                                 **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_segments_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_segments_with_http_info(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List Segments  # noqa: E501
 
         This API returns a list of all segments.  A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -559,30 +589,17 @@ class SegmentsApi:
 
         _params = locals()
 
-        _all_params = [
-            'limit',
-            'offset',
-            'count'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['limit', 'offset', 'count']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_segments" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_segments" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -626,7 +643,8 @@ class SegmentsApi:
         }
 
         return self.api_client.call_api(
-            '/segments', 'GET',
+            '/segments',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -636,14 +654,25 @@ class SegmentsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_segment(self, id : Annotated[StrictStr, Field(..., description="The segment ID to modify.")], request_body : Annotated[conlist(Dict[str, Any]), Field(..., description="A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * owner * visibilityCriteria * active ")], **kwargs) -> Segment:  # noqa: E501
+    def patch_segment(self, id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="The segment ID to modify."
+        )], request_body: Annotated[
+            conlist(Dict[str, Any]),
+            Field(
+                ...,
+                description=
+                "A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * owner * visibilityCriteria * active "
+            )], **kwargs) -> Segment:  # noqa: E501
         """Update Segment  # noqa: E501
 
         Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -672,10 +701,21 @@ class SegmentsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_segment_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_segment_with_http_info(id, request_body, **kwargs)  # noqa: E501
+        return self.patch_segment_with_http_info(id, request_body,
+                                                 **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_segment_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The segment ID to modify.")], request_body : Annotated[conlist(Dict[str, Any]), Field(..., description="A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * owner * visibilityCriteria * active ")], **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_segment_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="The segment ID to modify."
+        )], request_body: Annotated[
+            conlist(Dict[str, Any]),
+            Field(
+                ...,
+                description=
+                "A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * owner * visibilityCriteria * active "
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Update Segment  # noqa: E501
 
         Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. >**Note:** Changes to a segment may take some time to propagate to all identities. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
@@ -716,29 +756,17 @@ class SegmentsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'request_body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'request_body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_segment" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method patch_segment" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -748,7 +776,6 @@ class SegmentsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -767,11 +794,12 @@ class SegmentsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
+        _content_types_list = _params.get(
+            '_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -787,7 +815,8 @@ class SegmentsApi:
         }
 
         return self.api_client.call_api(
-            '/segments/{id}', 'PATCH',
+            '/segments/{id}',
+            'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -797,7 +826,8 @@ class SegmentsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

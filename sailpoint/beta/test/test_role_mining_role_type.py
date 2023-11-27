@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.role_mining_role_type import RoleMiningRoleType  # noqa: E501
+from sailpoint.beta.models.role_mining_role_type import RoleMiningRoleType  # noqa: E501
+
 
 class TestRoleMiningRoleType(unittest.TestCase):
     """RoleMiningRoleType unit test stubs"""
@@ -29,6 +29,7 @@ class TestRoleMiningRoleType(unittest.TestCase):
     def testRoleMiningRoleType(self):
         """Test RoleMiningRoleType"""
         # inst = RoleMiningRoleType()
+
 
 if __name__ == '__main__':
     unittest.main()

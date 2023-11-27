@@ -11,13 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v2.models.get_org_settings200_response_system_notification_config_notifications_inner_thresholds import GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds  # noqa: E501
+from sailpoint.v2.models.get_org_settings200_response_system_notification_config_notifications_inner_thresholds import GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds  # noqa: E501
 
-class TestGetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds(unittest.TestCase):
+
+class TestGetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds(
+        unittest.TestCase):
     """GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds unit test stubs"""
 
     def setUp(self):
@@ -26,7 +27,9 @@ class TestGetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThr
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds:
+    def make_instance(
+        self, include_optional
+    ) -> GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds:
         """Test GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -44,10 +47,12 @@ class TestGetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThr
         )
         """
 
-    def testGetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds(self):
+    def testGetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds(
+            self):
         """Test GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

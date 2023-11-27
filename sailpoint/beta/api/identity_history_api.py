@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,21 +22,19 @@ from pydantic import Field, StrictBool, StrictStr, conint, conlist
 
 from typing import List, Optional
 
-from beta.models.access_item_diff import AccessItemDiff
-from beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
-from beta.models.identity_compare_response import IdentityCompareResponse
-from beta.models.identity_history_response import IdentityHistoryResponse
-from beta.models.identity_list_item import IdentityListItem
-from beta.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse
-from beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
-from beta.models.metric_response import MetricResponse
+from sailpoint.beta.models.access_item_diff import AccessItemDiff
+from sailpoint.beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
+from sailpoint.beta.models.identity_compare_response import IdentityCompareResponse
+from sailpoint.beta.models.identity_history_response import IdentityHistoryResponse
+from sailpoint.beta.models.identity_list_item import IdentityListItem
+from sailpoint.beta.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse
+from sailpoint.beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
+from sailpoint.beta.models.metric_response import MetricResponse
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class IdentityHistoryApi:
@@ -53,7 +50,45 @@ class IdentityHistoryApi:
         self.api_client = api_client
 
     @validate_arguments
-    def compare_identity_snapshots(self, id : Annotated[StrictStr, Field(..., description="The identity id")], snapshot1 : Annotated[Optional[StrictStr], Field(description="The snapshot 1 of identity")] = None, snapshot2 : Annotated[Optional[StrictStr], Field(description="The snapshot 2 of identity")] = None, access_item_types : Annotated[Optional[conlist(StrictStr)], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned ")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[IdentityCompareResponse]:  # noqa: E501
+    def compare_identity_snapshots(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The identity id")],
+            snapshot1: Annotated[
+                Optional[StrictStr],
+                Field(description="The snapshot 1 of identity")] = None,
+            snapshot2: Annotated[
+                Optional[StrictStr],
+                Field(description="The snapshot 2 of identity")] = None,
+            access_item_types:
+        Annotated[
+            Optional[conlist(StrictStr)],
+            Field(
+                description=
+                "An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned "
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> List[IdentityCompareResponse]:  # noqa: E501
         """Gets a difference of count for each access item types for the given identity between 2 snapshots  # noqa: E501
 
         This method gets a difference of count for each access item types for the given identity between 2 snapshots Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -92,10 +127,50 @@ class IdentityHistoryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the compare_identity_snapshots_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.compare_identity_snapshots_with_http_info(id, snapshot1, snapshot2, access_item_types, limit, offset, count, **kwargs)  # noqa: E501
+        return self.compare_identity_snapshots_with_http_info(
+            id, snapshot1, snapshot2, access_item_types, limit, offset, count,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def compare_identity_snapshots_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity id")], snapshot1 : Annotated[Optional[StrictStr], Field(description="The snapshot 1 of identity")] = None, snapshot2 : Annotated[Optional[StrictStr], Field(description="The snapshot 2 of identity")] = None, access_item_types : Annotated[Optional[conlist(StrictStr)], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned ")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def compare_identity_snapshots_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The identity id")],
+            snapshot1: Annotated[
+                Optional[StrictStr],
+                Field(description="The snapshot 1 of identity")] = None,
+            snapshot2: Annotated[
+                Optional[StrictStr],
+                Field(description="The snapshot 2 of identity")] = None,
+            access_item_types:
+        Annotated[
+            Optional[conlist(StrictStr)],
+            Field(
+                description=
+                "An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned "
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Gets a difference of count for each access item types for the given identity between 2 snapshots  # noqa: E501
 
         This method gets a difference of count for each access item types for the given identity between 2 snapshots Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -147,33 +222,20 @@ class IdentityHistoryApi:
         _params = locals()
 
         _all_params = [
-            'id',
-            'snapshot1',
-            'snapshot2',
-            'access_item_types',
-            'limit',
-            'offset',
-            'count'
+            'id', 'snapshot1', 'snapshot2', 'access_item_types', 'limit',
+            'offset', 'count'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method compare_identity_snapshots" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method compare_identity_snapshots" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -184,7 +246,6 @@ class IdentityHistoryApi:
         if _params['id']:
             _path_params['id'] = _params['id']
 
-
         # process the query parameters
         _query_params = []
         if _params.get('snapshot1') is not None:  # noqa: E501
@@ -194,7 +255,8 @@ class IdentityHistoryApi:
             _query_params.append(('snapshot2', _params['snapshot2']))
 
         if _params.get('access_item_types') is not None:  # noqa: E501
-            _query_params.append(('accessItemTypes', _params['access_item_types']))
+            _query_params.append(
+                ('accessItemTypes', _params['access_item_types']))
             _collection_formats['accessItemTypes'] = 'csv'
 
         if _params.get('limit') is not None:  # noqa: E501
@@ -230,7 +292,8 @@ class IdentityHistoryApi:
         }
 
         return self.api_client.call_api(
-            '/historical-identities/{id}/compare', 'GET',
+            '/historical-identities/{id}/compare',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -240,14 +303,59 @@ class IdentityHistoryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def compare_identity_snapshots_access_type(self, id : Annotated[StrictStr, Field(..., description="The identity id")], access_type : Annotated[StrictStr, Field(..., description="The specific type which needs to be compared")], access_associated : Annotated[Optional[StrictBool], Field(description="Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed")] = None, snapshot1 : Annotated[Optional[StrictStr], Field(description="The snapshot 1 of identity")] = None, snapshot2 : Annotated[Optional[StrictStr], Field(description="The snapshot 2 of identity")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[AccessItemDiff]:  # noqa: E501
+    def compare_identity_snapshots_access_type(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The identity id")],
+            access_type: Annotated[
+                StrictStr,
+                Field(
+                    ...,
+                    description="The specific type which needs to be compared"
+                )],
+            access_associated:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed"
+            )] = None,
+            snapshot1: Annotated[
+                Optional[StrictStr],
+                Field(description="The snapshot 1 of identity")] = None,
+            snapshot2: Annotated[
+                Optional[StrictStr],
+                Field(description="The snapshot 2 of identity")] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> List[AccessItemDiff]:  # noqa: E501
         """Gets a list of differences of specific accessType for the given identity between 2 snapshots  # noqa: E501
 
         This method gets a list of differences of specific accessType for the given identity between 2 snapshots Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -288,10 +396,56 @@ class IdentityHistoryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the compare_identity_snapshots_access_type_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.compare_identity_snapshots_access_type_with_http_info(id, access_type, access_associated, snapshot1, snapshot2, limit, offset, count, **kwargs)  # noqa: E501
+        return self.compare_identity_snapshots_access_type_with_http_info(
+            id, access_type, access_associated, snapshot1, snapshot2, limit,
+            offset, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def compare_identity_snapshots_access_type_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity id")], access_type : Annotated[StrictStr, Field(..., description="The specific type which needs to be compared")], access_associated : Annotated[Optional[StrictBool], Field(description="Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed")] = None, snapshot1 : Annotated[Optional[StrictStr], Field(description="The snapshot 1 of identity")] = None, snapshot2 : Annotated[Optional[StrictStr], Field(description="The snapshot 2 of identity")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def compare_identity_snapshots_access_type_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The identity id")],
+            access_type: Annotated[
+                StrictStr,
+                Field(
+                    ...,
+                    description="The specific type which needs to be compared"
+                )],
+            access_associated:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "Indicates if added or removed access needs to be returned. true - added, false - removed, null - both added & removed"
+            )] = None,
+            snapshot1: Annotated[
+                Optional[StrictStr],
+                Field(description="The snapshot 1 of identity")] = None,
+            snapshot2: Annotated[
+                Optional[StrictStr],
+                Field(description="The snapshot 2 of identity")] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Gets a list of differences of specific accessType for the given identity between 2 snapshots  # noqa: E501
 
         This method gets a list of differences of specific accessType for the given identity between 2 snapshots Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -345,34 +499,20 @@ class IdentityHistoryApi:
         _params = locals()
 
         _all_params = [
-            'id',
-            'access_type',
-            'access_associated',
-            'snapshot1',
-            'snapshot2',
-            'limit',
-            'offset',
-            'count'
+            'id', 'access_type', 'access_associated', 'snapshot1', 'snapshot2',
+            'limit', 'offset', 'count'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method compare_identity_snapshots_access_type" % _key
-                )
+                    " to method compare_identity_snapshots_access_type" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -386,11 +526,11 @@ class IdentityHistoryApi:
         if _params['access_type']:
             _path_params['accessType'] = _params['access_type']
 
-
         # process the query parameters
         _query_params = []
         if _params.get('access_associated') is not None:  # noqa: E501
-            _query_params.append(('access-associated', _params['access_associated']))
+            _query_params.append(
+                ('access-associated', _params['access_associated']))
 
         if _params.get('snapshot1') is not None:  # noqa: E501
             _query_params.append(('snapshot1', _params['snapshot1']))
@@ -431,7 +571,8 @@ class IdentityHistoryApi:
         }
 
         return self.api_client.call_api(
-            '/historical-identities/{id}/compare/{access-type}', 'GET',
+            '/historical-identities/{id}/compare/{access-type}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -441,14 +582,18 @@ class IdentityHistoryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_historical_identity(self, id : Annotated[StrictStr, Field(..., description="The identity id")], **kwargs) -> IdentityHistoryResponse:  # noqa: E501
+    def get_historical_identity(
+            self, id: Annotated[StrictStr,
+                                Field(..., description="The identity id")],
+            **kwargs) -> IdentityHistoryResponse:  # noqa: E501
         """Get latest snapshot of identity  # noqa: E501
 
         This method retrieves a specified identity Requires authorization scope of 'idn:identity-history:read'  # noqa: E501
@@ -475,10 +620,14 @@ class IdentityHistoryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_historical_identity_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_historical_identity_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_historical_identity_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_historical_identity_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_historical_identity_with_http_info(
+            self, id: Annotated[StrictStr,
+                                Field(..., description="The identity id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get latest snapshot of identity  # noqa: E501
 
         This method retrieves a specified identity Requires authorization scope of 'idn:identity-history:read'  # noqa: E501
@@ -517,28 +666,17 @@ class IdentityHistoryApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_historical_identity" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_historical_identity" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -548,7 +686,6 @@ class IdentityHistoryApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -576,7 +713,8 @@ class IdentityHistoryApi:
         }
 
         return self.api_client.call_api(
-            '/historical-identities/{id}', 'GET',
+            '/historical-identities/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -586,14 +724,55 @@ class IdentityHistoryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_historical_identity_events(self, id : Annotated[StrictStr, Field(..., description="The identity id")], var_from : Annotated[Optional[StrictStr], Field(description="The optional instant from which to return the access events")] = None, event_types : Annotated[Optional[conlist(StrictStr)], Field(description="An optional list of event types to return.  If null or empty, all events are returned")] = None, access_item_types : Annotated[Optional[conlist(StrictStr)], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[GetHistoricalIdentityEvents200ResponseInner]:  # noqa: E501
+    def get_historical_identity_events(
+        self,
+        id: Annotated[StrictStr,
+                      Field(..., description="The identity id")],
+        var_from: Annotated[
+            Optional[StrictStr],
+            Field(description=
+                  "The optional instant from which to return the access events"
+                  )] = None,
+        event_types: Annotated[
+            Optional[conlist(StrictStr)],
+            Field(
+                description=
+                "An optional list of event types to return.  If null or empty, all events are returned"
+            )] = None,
+        access_item_types: Annotated[
+            Optional[conlist(StrictStr)],
+            Field(
+                description=
+                "An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned"
+            )] = None,
+        limit: Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        offset: Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        count: Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        **kwargs
+    ) -> List[GetHistoricalIdentityEvents200ResponseInner]:  # noqa: E501
         """Lists all events for the given identity  # noqa: E501
 
         This method retrieves all access events for the identity Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -632,10 +811,57 @@ class IdentityHistoryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_historical_identity_events_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_historical_identity_events_with_http_info(id, var_from, event_types, access_item_types, limit, offset, count, **kwargs)  # noqa: E501
+        return self.get_historical_identity_events_with_http_info(
+            id, var_from, event_types, access_item_types, limit, offset, count,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_historical_identity_events_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity id")], var_from : Annotated[Optional[StrictStr], Field(description="The optional instant from which to return the access events")] = None, event_types : Annotated[Optional[conlist(StrictStr)], Field(description="An optional list of event types to return.  If null or empty, all events are returned")] = None, access_item_types : Annotated[Optional[conlist(StrictStr)], Field(description="An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_historical_identity_events_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The identity id")],
+            var_from: Annotated[
+                Optional[StrictStr],
+                Field(
+                    description=
+                    "The optional instant from which to return the access events"
+                )] = None,
+            event_types:
+        Annotated[
+            Optional[conlist(StrictStr)],
+            Field(
+                description=
+                "An optional list of event types to return.  If null or empty, all events are returned"
+            )] = None,
+            access_item_types:
+        Annotated[
+            Optional[conlist(StrictStr)],
+            Field(
+                description=
+                "An optional list of access item types (app, account, entitlement, etc...) to return.   If null or empty, all access items types are returned"
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Lists all events for the given identity  # noqa: E501
 
         This method retrieves all access events for the identity Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -687,33 +913,20 @@ class IdentityHistoryApi:
         _params = locals()
 
         _all_params = [
-            'id',
-            'var_from',
-            'event_types',
-            'access_item_types',
-            'limit',
-            'offset',
-            'count'
+            'id', 'var_from', 'event_types', 'access_item_types', 'limit',
+            'offset', 'count'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_historical_identity_events" % _key
-                )
+                    " to method get_historical_identity_events" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -723,7 +936,6 @@ class IdentityHistoryApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -735,7 +947,8 @@ class IdentityHistoryApi:
             _collection_formats['eventTypes'] = 'csv'
 
         if _params.get('access_item_types') is not None:  # noqa: E501
-            _query_params.append(('accessItemTypes', _params['access_item_types']))
+            _query_params.append(
+                ('accessItemTypes', _params['access_item_types']))
             _collection_formats['accessItemTypes'] = 'csv'
 
         if _params.get('limit') is not None:  # noqa: E501
@@ -772,7 +985,8 @@ class IdentityHistoryApi:
         }
 
         return self.api_client.call_api(
-            '/historical-identities/{id}/events', 'GET',
+            '/historical-identities/{id}/events',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -782,14 +996,20 @@ class IdentityHistoryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identity_snapshot(self, id : Annotated[StrictStr, Field(..., description="The identity id")], var_date : Annotated[StrictStr, Field(..., description="The specified date")], **kwargs) -> IdentityHistoryResponse:  # noqa: E501
+    def get_identity_snapshot(
+            self, id: Annotated[StrictStr,
+                                Field(..., description="The identity id")],
+            var_date: Annotated[StrictStr,
+                                Field(..., description="The specified date")],
+            **kwargs) -> IdentityHistoryResponse:  # noqa: E501
         """Gets an identity snapshot at a given date  # noqa: E501
 
         This method retrieves a specified identity snapshot at a given date Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -818,10 +1038,16 @@ class IdentityHistoryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_snapshot_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_snapshot_with_http_info(id, var_date, **kwargs)  # noqa: E501
+        return self.get_identity_snapshot_with_http_info(
+            id, var_date, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_snapshot_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity id")], var_date : Annotated[StrictStr, Field(..., description="The specified date")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_snapshot_with_http_info(
+            self, id: Annotated[StrictStr,
+                                Field(..., description="The identity id")],
+            var_date: Annotated[StrictStr,
+                                Field(..., description="The specified date")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Gets an identity snapshot at a given date  # noqa: E501
 
         This method retrieves a specified identity snapshot at a given date Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -862,29 +1088,17 @@ class IdentityHistoryApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'var_date'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'var_date']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_identity_snapshot" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_identity_snapshot" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -897,7 +1111,6 @@ class IdentityHistoryApi:
 
         if _params['var_date']:
             _path_params['date'] = _params['var_date']
-
 
         # process the query parameters
         _query_params = []
@@ -925,7 +1138,8 @@ class IdentityHistoryApi:
         }
 
         return self.api_client.call_api(
-            '/historical-identities/{id}/snapshots/{date}', 'GET',
+            '/historical-identities/{id}/snapshots/{date}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -935,14 +1149,57 @@ class IdentityHistoryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identity_snapshot_summary(self, id : Annotated[StrictStr, Field(..., description="The identity id")], before : Annotated[Optional[StrictStr], Field(description="The date before which snapshot summary is required")] = None, interval : Annotated[Optional[StrictStr], Field(description="The interval indicating day or month. Defaults to month if not specified")] = None, time_zone : Annotated[Optional[StrictStr], Field(description="The time zone. Defaults to UTC if not provided")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[MetricResponse]:  # noqa: E501
+    def get_identity_snapshot_summary(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The identity id")],
+            before: Annotated[
+                Optional[StrictStr],
+                Field(description=
+                      "The date before which snapshot summary is required"
+                      )] = None,
+            interval:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The interval indicating day or month. Defaults to month if not specified"
+            )] = None,
+            time_zone: Annotated[
+                Optional[StrictStr],
+                Field(
+                    description="The time zone. Defaults to UTC if not provided"
+                )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> List[MetricResponse]:  # noqa: E501
         """Gets the summary for the event count for a specific identity  # noqa: E501
 
         This method gets the summary for the event count for a specific identity by month/day Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -981,10 +1238,54 @@ class IdentityHistoryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_snapshot_summary_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_snapshot_summary_with_http_info(id, before, interval, time_zone, limit, offset, count, **kwargs)  # noqa: E501
+        return self.get_identity_snapshot_summary_with_http_info(
+            id, before, interval, time_zone, limit, offset, count,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_snapshot_summary_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity id")], before : Annotated[Optional[StrictStr], Field(description="The date before which snapshot summary is required")] = None, interval : Annotated[Optional[StrictStr], Field(description="The interval indicating day or month. Defaults to month if not specified")] = None, time_zone : Annotated[Optional[StrictStr], Field(description="The time zone. Defaults to UTC if not provided")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_snapshot_summary_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The identity id")],
+            before: Annotated[
+                Optional[StrictStr],
+                Field(description=
+                      "The date before which snapshot summary is required"
+                      )] = None,
+            interval:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The interval indicating day or month. Defaults to month if not specified"
+            )] = None,
+            time_zone: Annotated[
+                Optional[StrictStr],
+                Field(
+                    description="The time zone. Defaults to UTC if not provided"
+                )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Gets the summary for the event count for a specific identity  # noqa: E501
 
         This method gets the summary for the event count for a specific identity by month/day Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -1036,33 +1337,19 @@ class IdentityHistoryApi:
         _params = locals()
 
         _all_params = [
-            'id',
-            'before',
-            'interval',
-            'time_zone',
-            'limit',
-            'offset',
-            'count'
+            'id', 'before', 'interval', 'time_zone', 'limit', 'offset', 'count'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_identity_snapshot_summary" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_identity_snapshot_summary" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1072,7 +1359,6 @@ class IdentityHistoryApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1118,7 +1404,8 @@ class IdentityHistoryApi:
         }
 
         return self.api_client.call_api(
-            '/historical-identities/{id}/snapshot-summary', 'GET',
+            '/historical-identities/{id}/snapshot-summary',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1128,14 +1415,17 @@ class IdentityHistoryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identity_start_date(self, id : Annotated[StrictStr, Field(..., description="The identity id")], **kwargs) -> str:  # noqa: E501
+    def get_identity_start_date(self, id: Annotated[
+        StrictStr, Field(..., description="The identity id")],
+                                **kwargs) -> str:  # noqa: E501
         """Gets the start date of the identity  # noqa: E501
 
         This method retrieves start date of the identity Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -1162,10 +1452,14 @@ class IdentityHistoryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_start_date_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_start_date_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_identity_start_date_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_start_date_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_start_date_with_http_info(
+            self, id: Annotated[StrictStr,
+                                Field(..., description="The identity id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Gets the start date of the identity  # noqa: E501
 
         This method retrieves start date of the identity Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -1204,28 +1498,17 @@ class IdentityHistoryApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_identity_start_date" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_identity_start_date" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1235,7 +1518,6 @@ class IdentityHistoryApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1263,7 +1545,8 @@ class IdentityHistoryApi:
         }
 
         return self.api_client.call_api(
-            '/historical-identities/{id}/start-date', 'GET',
+            '/historical-identities/{id}/start-date',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1273,14 +1556,52 @@ class IdentityHistoryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_historical_identities(self, starts_with_query : Annotated[Optional[StrictStr], Field(description="This param is used for starts-with search for first, last and display name of the identity")] = None, is_deleted : Annotated[Optional[StrictBool], Field(description="Indicates if we want to only list down deleted identities or not.")] = None, is_active : Annotated[Optional[StrictBool], Field(description="Indicates if we want to only list active or inactive identities.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[IdentityListItem]:  # noqa: E501
+    def list_historical_identities(
+            self,
+            starts_with_query:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "This param is used for starts-with search for first, last and display name of the identity"
+            )] = None,
+            is_deleted:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "Indicates if we want to only list down deleted identities or not."
+            )] = None,
+            is_active:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "Indicates if we want to only list active or inactive identities."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> List[IdentityListItem]:  # noqa: E501
         """Lists all the identities  # noqa: E501
 
         This gets the list of identities for the customer. This list end point does not support count=true request param. The total  count of identities would never be returned even if the count param is specified in the request Requires authorization scope of 'idn:identity-history:read'  # noqa: E501
@@ -1315,10 +1636,49 @@ class IdentityHistoryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_historical_identities_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_historical_identities_with_http_info(starts_with_query, is_deleted, is_active, limit, offset, **kwargs)  # noqa: E501
+        return self.list_historical_identities_with_http_info(
+            starts_with_query, is_deleted, is_active, limit, offset,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_historical_identities_with_http_info(self, starts_with_query : Annotated[Optional[StrictStr], Field(description="This param is used for starts-with search for first, last and display name of the identity")] = None, is_deleted : Annotated[Optional[StrictBool], Field(description="Indicates if we want to only list down deleted identities or not.")] = None, is_active : Annotated[Optional[StrictBool], Field(description="Indicates if we want to only list active or inactive identities.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_historical_identities_with_http_info(
+            self,
+            starts_with_query:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "This param is used for starts-with search for first, last and display name of the identity"
+            )] = None,
+            is_deleted:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "Indicates if we want to only list down deleted identities or not."
+            )] = None,
+            is_active:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "Indicates if we want to only list active or inactive identities."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Lists all the identities  # noqa: E501
 
         This gets the list of identities for the customer. This list end point does not support count=true request param. The total  count of identities would never be returned even if the count param is specified in the request Requires authorization scope of 'idn:identity-history:read'  # noqa: E501
@@ -1366,31 +1726,19 @@ class IdentityHistoryApi:
         _params = locals()
 
         _all_params = [
-            'starts_with_query',
-            'is_deleted',
-            'is_active',
-            'limit',
-            'offset'
+            'starts_with_query', 'is_deleted', 'is_active', 'limit', 'offset'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_historical_identities" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_historical_identities" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1402,7 +1750,8 @@ class IdentityHistoryApi:
         # process the query parameters
         _query_params = []
         if _params.get('starts_with_query') is not None:  # noqa: E501
-            _query_params.append(('starts-with-query', _params['starts_with_query']))
+            _query_params.append(
+                ('starts-with-query', _params['starts_with_query']))
 
         if _params.get('is_deleted') is not None:  # noqa: E501
             _query_params.append(('is-deleted', _params['is_deleted']))
@@ -1440,7 +1789,8 @@ class IdentityHistoryApi:
         }
 
         return self.api_client.call_api(
-            '/historical-identities', 'GET',
+            '/historical-identities',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1450,14 +1800,26 @@ class IdentityHistoryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_identity_access_items(self, id : Annotated[StrictStr, Field(..., description="The identity id")], type : Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account")] = None, **kwargs) -> List[ListIdentityAccessItems200ResponseInner]:  # noqa: E501
+    def list_identity_access_items(
+        self,
+        id: Annotated[StrictStr,
+                      Field(..., description="The identity id")],
+        type: Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The type of access item for the identity. If not provided, it defaults to account"
+            )] = None,
+        **kwargs
+    ) -> List[ListIdentityAccessItems200ResponseInner]:  # noqa: E501
         """Gets a list of access items for the identity filtered by item type  # noqa: E501
 
         This method retrieves a list of access item for the identity filtered by the access item type Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -1486,10 +1848,22 @@ class IdentityHistoryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_identity_access_items_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_identity_access_items_with_http_info(id, type, **kwargs)  # noqa: E501
+        return self.list_identity_access_items_with_http_info(
+            id, type, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_identity_access_items_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity id")], type : Annotated[Optional[StrictStr], Field(description="The type of access item for the identity. If not provided, it defaults to account")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_identity_access_items_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The identity id")],
+            type:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The type of access item for the identity. If not provided, it defaults to account"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Gets a list of access items for the identity filtered by item type  # noqa: E501
 
         This method retrieves a list of access item for the identity filtered by the access item type Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -1530,29 +1904,18 @@ class IdentityHistoryApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'type'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'type']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_identity_access_items" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_identity_access_items" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1562,7 +1925,6 @@ class IdentityHistoryApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1593,7 +1955,8 @@ class IdentityHistoryApi:
         }
 
         return self.api_client.call_api(
-            '/historical-identities/{id}/access-items', 'GET',
+            '/historical-identities/{id}/access-items',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1603,14 +1966,24 @@ class IdentityHistoryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_identity_snapshot_access_items(self, id : Annotated[StrictStr, Field(..., description="The identity id")], var_date : Annotated[StrictStr, Field(..., description="The specified date")], type : Annotated[Optional[StrictStr], Field(description="The access item type")] = None, **kwargs) -> List[ListIdentityAccessItems200ResponseInner]:  # noqa: E501
+    def list_identity_snapshot_access_items(
+        self,
+        id: Annotated[StrictStr,
+                      Field(..., description="The identity id")],
+        var_date: Annotated[StrictStr,
+                            Field(..., description="The specified date")],
+        type: Annotated[Optional[StrictStr],
+                        Field(description="The access item type")] = None,
+        **kwargs
+    ) -> List[ListIdentityAccessItems200ResponseInner]:  # noqa: E501
         """Gets the list of identity access items at a given date filterd by item type  # noqa: E501
 
         This method retrieves the list of identity access items at a given date filterd by item type Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -1641,10 +2014,19 @@ class IdentityHistoryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_identity_snapshot_access_items_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_identity_snapshot_access_items_with_http_info(id, var_date, type, **kwargs)  # noqa: E501
+        return self.list_identity_snapshot_access_items_with_http_info(
+            id, var_date, type, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_identity_snapshot_access_items_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity id")], var_date : Annotated[StrictStr, Field(..., description="The specified date")], type : Annotated[Optional[StrictStr], Field(description="The access item type")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_identity_snapshot_access_items_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The identity id")],
+            var_date: Annotated[StrictStr,
+                                Field(..., description="The specified date")],
+            type: Annotated[Optional[StrictStr],
+                            Field(description="The access item type")] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Gets the list of identity access items at a given date filterd by item type  # noqa: E501
 
         This method retrieves the list of identity access items at a given date filterd by item type Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -1687,30 +2069,18 @@ class IdentityHistoryApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'var_date',
-            'type'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'var_date', 'type']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list_identity_snapshot_access_items" % _key
-                )
+                    " to method list_identity_snapshot_access_items" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1723,7 +2093,6 @@ class IdentityHistoryApi:
 
         if _params['var_date']:
             _path_params['date'] = _params['var_date']
-
 
         # process the query parameters
         _query_params = []
@@ -1754,7 +2123,8 @@ class IdentityHistoryApi:
         }
 
         return self.api_client.call_api(
-            '/historical-identities/{id}/snapshots/{date}/access-items', 'GET',
+            '/historical-identities/{id}/snapshots/{date}/access-items',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1764,14 +2134,50 @@ class IdentityHistoryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_identity_snapshots(self, id : Annotated[StrictStr, Field(..., description="The identity id")], start : Annotated[Optional[StrictStr], Field(description="The specified start date")] = None, interval : Annotated[Optional[StrictStr], Field(description="The interval indicating the range in day or month for the specified interval-name")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[IdentitySnapshotSummaryResponse]:  # noqa: E501
+    def list_identity_snapshots(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The identity id")],
+            start: Annotated[
+                Optional[StrictStr],
+                Field(description="The specified start date")] = None,
+            interval:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The interval indicating the range in day or month for the specified interval-name"
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> List[IdentitySnapshotSummaryResponse]:  # noqa: E501
         """Lists all the snapshots for the identity  # noqa: E501
 
         This method retrieves all the snapshots for the identity Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -1808,10 +2214,46 @@ class IdentityHistoryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_identity_snapshots_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_identity_snapshots_with_http_info(id, start, interval, limit, offset, count, **kwargs)  # noqa: E501
+        return self.list_identity_snapshots_with_http_info(
+            id, start, interval, limit, offset, count, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_identity_snapshots_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The identity id")], start : Annotated[Optional[StrictStr], Field(description="The specified start date")] = None, interval : Annotated[Optional[StrictStr], Field(description="The interval indicating the range in day or month for the specified interval-name")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_identity_snapshots_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The identity id")],
+            start: Annotated[
+                Optional[StrictStr],
+                Field(description="The specified start date")] = None,
+            interval:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The interval indicating the range in day or month for the specified interval-name"
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Lists all the snapshots for the identity  # noqa: E501
 
         This method retrieves all the snapshots for the identity Requires authorization scope of 'idn:identity-history:read'   # noqa: E501
@@ -1860,33 +2302,17 @@ class IdentityHistoryApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'start',
-            'interval',
-            'limit',
-            'offset',
-            'count'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'start', 'interval', 'limit', 'offset', 'count']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_identity_snapshots" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_identity_snapshots" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1896,7 +2322,6 @@ class IdentityHistoryApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1939,7 +2364,8 @@ class IdentityHistoryApi:
         }
 
         return self.api_client.call_api(
-            '/historical-identities/{id}/snapshots', 'GET',
+            '/historical-identities/{id}/snapshots',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1949,7 +2375,8 @@ class IdentityHistoryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

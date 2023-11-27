@@ -11,23 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
+
 
 class FeatureValueDto(BaseModel):
     """
     FeatureValueDto
     """
-    feature: Optional[StrictStr] = Field(None, description="The type of feature")
-    numerator: Optional[StrictInt] = Field(None, description="The number of identities that have access to the feature")
-    denominator: Optional[StrictInt] = Field(None, description="The number of identities with the corresponding feature")
+    feature: Optional[StrictStr] = Field(None,
+                                         description="The type of feature")
+    numerator: Optional[StrictInt] = Field(
+        None,
+        description="The number of identities that have access to the feature")
+    denominator: Optional[StrictInt] = Field(
+        None,
+        description="The number of identities with the corresponding feature")
     __properties = ["feature", "numerator", "denominator"]
 
     class Config:
@@ -50,10 +54,7 @@ class FeatureValueDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,5 +72,3 @@ class FeatureValueDto(BaseModel):
             "denominator": obj.get("denominator")
         })
         return _obj
-
-

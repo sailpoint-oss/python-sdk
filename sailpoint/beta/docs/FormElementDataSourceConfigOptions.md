@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.form_element_data_source_config_options import FormElementDataSourceConfigOptions
+from sailpoint.beta.models.form_element_data_source_config_options import FormElementDataSourceConfigOptions
 
 # TODO update the JSON string below
 json = "{}"

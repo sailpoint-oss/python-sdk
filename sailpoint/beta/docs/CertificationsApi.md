@@ -1,4 +1,4 @@
-# beta.CertificationsApi
+# sailpoint.beta.CertificationsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -25,14 +25,14 @@ This API returns the permissions associated with an entitlement certification it
 ```python
 import time
 import os
-import beta
-from beta.models.permission_dto import PermissionDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.permission_dto import PermissionDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -46,9 +46,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationsApi(api_client)
+    api_instance = sailpoint.beta.CertificationsApi(api_client)
     certification_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The certification ID
     item_id = '2c91808671bcbab40171bd945d961227' # str | The certification item ID
     filters = 'target eq \"SYS.OBJAUTH2\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **target**: *eq, sw*  **rights**: *ca*  All field values (second filter operands) are case-insensitive for this API.  Only a single *and* or *or* composite filter operator may be used. It must also be used between a target filter and a rights filter, not between 2 filters for the same field.  For example, the following is valid: `?filters=rights+ca+(%22CREATE%22)+and+target+eq+%22SYS.OBJAUTH2%22`  The following is invalid: `?filters=rights+ca+(%22CREATE%22)+and+rights+ca+(%SELECT%22)` (optional)
@@ -118,14 +118,14 @@ This API returns the status of all pending (`QUEUED` or `IN_PROGRESS`) tasks for
 ```python
 import time
 import os
-import beta
-from beta.models.identity_certification_task import IdentityCertificationTask
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_certification_task import IdentityCertificationTask
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -139,9 +139,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationsApi(api_client)
+    api_instance = sailpoint.beta.CertificationsApi(api_client)
     id = 'id_example' # str | The identity campaign certification ID
 
     try:
@@ -201,14 +201,14 @@ This API returns the status of a certification task. A token with ORG_ADMIN or C
 ```python
 import time
 import os
-import beta
-from beta.models.identity_certification_task import IdentityCertificationTask
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_certification_task import IdentityCertificationTask
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -222,9 +222,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationsApi(api_client)
+    api_instance = sailpoint.beta.CertificationsApi(api_client)
     id = 'id_example' # str | The identity campaign certification ID
     task_id = 'task_id_example' # str | The certification task ID
 
@@ -286,14 +286,14 @@ This API returns a list of reviewers for the certification. A token with ORG_ADM
 ```python
 import time
 import os
-import beta
-from beta.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -307,9 +307,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationsApi(api_client)
+    api_instance = sailpoint.beta.CertificationsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The certification ID
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -379,15 +379,15 @@ This API initiates a task to reassign up to 500 identities or items in an identi
 ```python
 import time
 import os
-import beta
-from beta.models.identity_certification_task import IdentityCertificationTask
-from beta.models.review_reassign import ReviewReassign
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_certification_task import IdentityCertificationTask
+from sailpoint.beta.models.review_reassign import ReviewReassign
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -401,11 +401,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CertificationsApi(api_client)
+    api_instance = sailpoint.beta.CertificationsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID
-    review_reassign = beta.ReviewReassign() # ReviewReassign | 
+    review_reassign = sailpoint.beta.ReviewReassign() # ReviewReassign | 
 
     try:
         # Reassign Certifications Asynchronously

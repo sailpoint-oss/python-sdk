@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,27 +19,56 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.form_condition import FormCondition
-from beta.models.form_definition_input import FormDefinitionInput
-from beta.models.form_element import FormElement
-from beta.models.form_owner import FormOwner
-from beta.models.form_used_by import FormUsedBy
+from sailpoint.beta.models.form_condition import FormCondition
+from sailpoint.beta.models.form_definition_input import FormDefinitionInput
+from sailpoint.beta.models.form_element import FormElement
+from sailpoint.beta.models.form_owner import FormOwner
+from sailpoint.beta.models.form_used_by import FormUsedBy
+
 
 class FormDefinitionResponse(BaseModel):
     """
     FormDefinitionResponse
     """
-    id: Optional[StrictStr] = Field(None, description="Unique guid identifying the form definition.")
-    name: Optional[StrictStr] = Field(None, description="Name of the form definition.")
-    description: Optional[StrictStr] = Field(None, description="Form definition's description.")
+    id: Optional[StrictStr] = Field(
+        None, description="Unique guid identifying the form definition.")
+    name: Optional[StrictStr] = Field(
+        None, description="Name of the form definition.")
+    description: Optional[StrictStr] = Field(
+        None, description="Form definition's description.")
     owner: Optional[FormOwner] = None
-    used_by: Optional[conlist(FormUsedBy)] = Field(None, alias="usedBy", description="List of objects using the form definition. Whenever a system uses a form, the API reaches out to the form service to record that the system is currently using it.")
-    form_input: Optional[conlist(FormDefinitionInput)] = Field(None, alias="formInput", description="List of form inputs required to create a form-instance object.")
-    form_elements: Optional[conlist(FormElement)] = Field(None, alias="formElements", description="List of nested form elements.")
-    form_conditions: Optional[conlist(FormCondition)] = Field(None, alias="formConditions", description="Conditional logic that can dynamically modify the form as the recipient is interacting with it.")
-    created: Optional[datetime] = Field(None, description="Created is the date the form definition was created")
-    modified: Optional[datetime] = Field(None, description="Modified is the last date the form definition was modified")
-    __properties = ["id", "name", "description", "owner", "usedBy", "formInput", "formElements", "formConditions", "created", "modified"]
+    used_by: Optional[conlist(FormUsedBy)] = Field(
+        None,
+        alias="usedBy",
+        description=
+        "List of objects using the form definition. Whenever a system uses a form, the API reaches out to the form service to record that the system is currently using it."
+    )
+    form_input: Optional[conlist(FormDefinitionInput)] = Field(
+        None,
+        alias="formInput",
+        description=
+        "List of form inputs required to create a form-instance object.")
+    form_elements: Optional[conlist(FormElement)] = Field(
+        None,
+        alias="formElements",
+        description="List of nested form elements.")
+    form_conditions: Optional[conlist(FormCondition)] = Field(
+        None,
+        alias="formConditions",
+        description=
+        "Conditional logic that can dynamically modify the form as the recipient is interacting with it."
+    )
+    created: Optional[datetime] = Field(
+        None,
+        description="Created is the date the form definition was created")
+    modified: Optional[datetime] = Field(
+        None,
+        description="Modified is the last date the form definition was modified"
+    )
+    __properties = [
+        "id", "name", "description", "owner", "usedBy", "formInput",
+        "formElements", "formConditions", "created", "modified"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -62,10 +90,7 @@ class FormDefinitionResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -109,17 +134,33 @@ class FormDefinitionResponse(BaseModel):
             return FormDefinitionResponse.parse_obj(obj)
 
         _obj = FormDefinitionResponse.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "owner": FormOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "used_by": [FormUsedBy.from_dict(_item) for _item in obj.get("usedBy")] if obj.get("usedBy") is not None else None,
-            "form_input": [FormDefinitionInput.from_dict(_item) for _item in obj.get("formInput")] if obj.get("formInput") is not None else None,
-            "form_elements": [FormElement.from_dict(_item) for _item in obj.get("formElements")] if obj.get("formElements") is not None else None,
-            "form_conditions": [FormCondition.from_dict(_item) for _item in obj.get("formConditions")] if obj.get("formConditions") is not None else None,
-            "created": obj.get("created"),
-            "modified": obj.get("modified")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "owner":
+            FormOwner.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "used_by":
+            [FormUsedBy.from_dict(_item) for _item in obj.get("usedBy")]
+            if obj.get("usedBy") is not None else None,
+            "form_input": [
+                FormDefinitionInput.from_dict(_item)
+                for _item in obj.get("formInput")
+            ] if obj.get("formInput") is not None else None,
+            "form_elements": [
+                FormElement.from_dict(_item)
+                for _item in obj.get("formElements")
+            ] if obj.get("formElements") is not None else None,
+            "form_conditions": [
+                FormCondition.from_dict(_item)
+                for _item in obj.get("formConditions")
+            ] if obj.get("formConditions") is not None else None,
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified")
         })
         return _obj
-
-

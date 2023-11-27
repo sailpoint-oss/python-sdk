@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
+from sailpoint.beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
 
 # TODO update the JSON string below
 json = "{}"

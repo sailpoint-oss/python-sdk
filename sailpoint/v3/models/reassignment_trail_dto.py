@@ -11,23 +11,29 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class ReassignmentTrailDTO(BaseModel):
     """
     ReassignmentTrailDTO
     """
-    previous_owner: Optional[StrictStr] = Field(None, alias="previousOwner", description="The ID of previous owner identity.")
-    new_owner: Optional[StrictStr] = Field(None, alias="newOwner", description="The ID of new owner identity.")
-    reassignment_type: Optional[StrictStr] = Field(None, alias="reassignmentType", description="The type of reassignment.")
+    previous_owner: Optional[StrictStr] = Field(
+        None,
+        alias="previousOwner",
+        description="The ID of previous owner identity.")
+    new_owner: Optional[StrictStr] = Field(
+        None, alias="newOwner", description="The ID of new owner identity.")
+    reassignment_type: Optional[StrictStr] = Field(
+        None,
+        alias="reassignmentType",
+        description="The type of reassignment.")
     __properties = ["previousOwner", "newOwner", "reassignmentType"]
 
     class Config:
@@ -50,10 +56,7 @@ class ReassignmentTrailDTO(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,10 +69,11 @@ class ReassignmentTrailDTO(BaseModel):
             return ReassignmentTrailDTO.parse_obj(obj)
 
         _obj = ReassignmentTrailDTO.parse_obj({
-            "previous_owner": obj.get("previousOwner"),
-            "new_owner": obj.get("newOwner"),
-            "reassignment_type": obj.get("reassignmentType")
+            "previous_owner":
+            obj.get("previousOwner"),
+            "new_owner":
+            obj.get("newOwner"),
+            "reassignment_type":
+            obj.get("reassignmentType")
         })
         return _obj
-
-

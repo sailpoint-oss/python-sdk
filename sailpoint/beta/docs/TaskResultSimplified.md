@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.task_result_simplified import TaskResultSimplified
+from sailpoint.beta.models.task_result_simplified import TaskResultSimplified
 
 # TODO update the JSON string below
 json = "{}"

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.campaign_alert import CampaignAlert
+from sailpoint.v3.models.campaign_alert import CampaignAlert
 
 # TODO update the JSON string below
 json = "{}"

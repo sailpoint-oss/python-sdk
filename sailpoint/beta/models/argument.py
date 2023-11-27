@@ -11,23 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class Argument(BaseModel):
     """
     Argument
     """
     name: StrictStr = Field(..., description="the name of the argument")
-    description: Optional[StrictStr] = Field(None, description="the description of the argument")
-    type: Optional[StrictStr] = Field(None, description="the programmatic type of the argument")
+    description: Optional[StrictStr] = Field(
+        None, description="the description of the argument")
+    type: Optional[StrictStr] = Field(
+        None, description="the programmatic type of the argument")
     __properties = ["name", "description", "type"]
 
     class Config:
@@ -50,10 +51,7 @@ class Argument(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if type (nullable) is None
         # and __fields_set__ contains the field
         if self.type is None and "type" in self.__fields_set__:
@@ -76,5 +74,3 @@ class Argument(BaseModel):
             "type": obj.get("type")
         })
         return _obj
-
-

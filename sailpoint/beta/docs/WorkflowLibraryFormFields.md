@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.workflow_library_form_fields import WorkflowLibraryFormFields
+from sailpoint.beta.models.workflow_library_form_fields import WorkflowLibraryFormFields
 
 # TODO update the JSON string below
 json = "{}"

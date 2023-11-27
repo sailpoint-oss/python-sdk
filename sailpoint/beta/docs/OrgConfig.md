@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.org_config import OrgConfig
+from sailpoint.beta.models.org_config import OrgConfig
 
 # TODO update the JSON string below
 json = "{}"

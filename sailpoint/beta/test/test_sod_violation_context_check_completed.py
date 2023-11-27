@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted  # noqa: E501
+from sailpoint.beta.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted  # noqa: E501
+
 
 class TestSodViolationContextCheckCompleted(unittest.TestCase):
     """SodViolationContextCheckCompleted unit test stubs"""
@@ -26,7 +26,8 @@ class TestSodViolationContextCheckCompleted(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SodViolationContextCheckCompleted:
+    def make_instance(self,
+                      include_optional) -> SodViolationContextCheckCompleted:
         """Test SodViolationContextCheckCompleted
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -38,31 +39,31 @@ class TestSodViolationContextCheckCompleted(unittest.TestCase):
             return SodViolationContextCheckCompleted(
                 state = 'SUCCESS',
                 uuid = 'f73d16e9-a038-46c5-b217-1246e15fdbdd',
-                violation_check_result = beta.models.sod_violation_check_result.SodViolationCheckResult(
-                    message = beta.models.error_message_dto.ErrorMessageDto(
+                violation_check_result = sailpoint.beta.models.sod_violation_check_result.SodViolationCheckResult(
+                    message = sailpoint.beta.models.error_message_dto.ErrorMessageDto(
                         locale = 'en-US', 
                         locale_origin = 'DEFAULT', 
                         text = 'The request was syntactically correct but its content is semantically invalid.', ), 
                     client_metadata = {requestedAppName=test-app, requestedAppId=2c91808f7892918f0178b78da4a305a1}, 
                     violation_contexts = [
-                        beta.models.sod_violation_context.SodViolationContext(
-                            policy = beta.models.sod_policy_dto.SodPolicyDto(
+                        sailpoint.beta.models.sod_violation_context.SodViolationContext(
+                            policy = sailpoint.beta.models.sod_policy_dto.SodPolicyDto(
                                 type = 'SOD_POLICY', 
                                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                                 name = 'Business SOD Policy', ), 
-                            conflicting_access_criteria = beta.models.sod_violation_context_conflicting_access_criteria.SodViolationContext_conflictingAccessCriteria(
-                                left_criteria = beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(
+                            conflicting_access_criteria = sailpoint.beta.models.sod_violation_context_conflicting_access_criteria.SodViolationContext_conflictingAccessCriteria(
+                                left_criteria = sailpoint.beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(
                                     criteria_list = [
-                                        beta.models.sod_exempt_criteria.SodExemptCriteria(
+                                        sailpoint.beta.models.sod_exempt_criteria.SodExemptCriteria(
                                             existing = True, 
                                             type = 'IDENTITY', 
                                             id = '2c918085771e9d3301773b3cb66f6398', 
                                             name = 'My HR Entitlement', )
                                         ], ), 
-                                right_criteria = beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(), ), )
+                                right_criteria = sailpoint.beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(), ), )
                         ], 
                     violated_policies = [
-                        beta.models.sod_policy_dto.SodPolicyDto(
+                        sailpoint.beta.models.sod_policy_dto.SodPolicyDto(
                             id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                             name = 'Business SOD Policy', )
                         ], )
@@ -76,6 +77,7 @@ class TestSodViolationContextCheckCompleted(unittest.TestCase):
         """Test SodViolationContextCheckCompleted"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.identity_attributes_changed_changes_inner_old_value_one_of_value import IdentityAttributesChangedChangesInnerOldValueOneOfValue
+from sailpoint.beta.models.identity_attributes_changed_changes_inner_old_value_one_of_value import IdentityAttributesChangedChangesInnerOldValueOneOfValue
 
 # TODO update the JSON string below
 json = "{}"

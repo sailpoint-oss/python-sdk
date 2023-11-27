@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.delete202_response import Delete202Response  # noqa: E501
+from sailpoint.beta.models.delete202_response import Delete202Response  # noqa: E501
+
 
 class TestDelete202Response(unittest.TestCase):
     """Delete202Response unit test stubs"""
@@ -49,6 +49,7 @@ class TestDelete202Response(unittest.TestCase):
         """Test Delete202Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

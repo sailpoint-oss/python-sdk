@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.managed_cluster import ManagedCluster  # noqa: E501
+from sailpoint.beta.models.managed_cluster import ManagedCluster  # noqa: E501
+
 
 class TestManagedCluster(unittest.TestCase):
     """ManagedCluster unit test stubs"""
@@ -42,23 +42,23 @@ class TestManagedCluster(unittest.TestCase):
                 org = 'denali',
                 type = 'idn',
                 configuration = {clusterExternalId=externalId, ccgVersion=77.0.0},
-                key_pair = beta.models.managed_cluster_key_pair.ManagedClusterKeyPair(
+                key_pair = sailpoint.beta.models.managed_cluster_key_pair.ManagedClusterKeyPair(
                     public_key = '-----BEGIN PUBLIC KEY-----******-----END PUBLIC KEY-----', 
                     public_key_thumbprint = '6CMlaJIV44-xJxcB3CJBjDUUn54', 
                     public_key_certificate = '-----BEGIN CERTIFICATE-----****-----END CERTIFICATE-----', ),
-                attributes = beta.models.managed_cluster_attributes.ManagedClusterAttributes(
-                    queue = beta.models.managed_cluster_queue.ManagedClusterQueue(
+                attributes = sailpoint.beta.models.managed_cluster_attributes.ManagedClusterAttributes(
+                    queue = sailpoint.beta.models.managed_cluster_queue.ManagedClusterQueue(
                         name = 'megapod-useast1-denali-lwt-cluster-1533', 
                         region = 'us-east-1', ), 
                     keystore = '/u3+7QAAAAIAAAABAAAAAQAvL3Byb3h5LWNsdXN0ZXIvMmM5MTgwODc3Yjg3MW', ),
                 description = 'A short description of the managed cluster.',
-                redis = beta.models.managed_cluster_redis.ManagedClusterRedis(
+                redis = sailpoint.beta.models.managed_cluster_redis.ManagedClusterRedis(
                     redis_host = 'megapod-useast1-shared-redis.cloud.sailpoint.com', 
                     redis_port = 6379, ),
                 client_type = 'CCG',
                 ccg_version = 'v01',
                 pinned_config = False,
-                log_configuration = beta.models.client_log_configuration.ClientLogConfiguration(
+                log_configuration = sailpoint.beta.models.client_log_configuration.ClientLogConfiguration(
                     client_id = 'aClientId', 
                     duration_minutes = 120, 
                     expiration = '2020-12-15T19:13:36.079Z', 
@@ -86,6 +86,7 @@ class TestManagedCluster(unittest.TestCase):
         """Test ManagedCluster"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

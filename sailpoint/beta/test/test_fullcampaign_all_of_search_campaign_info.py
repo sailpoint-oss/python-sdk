@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.fullcampaign_all_of_search_campaign_info import FullcampaignAllOfSearchCampaignInfo  # noqa: E501
+from sailpoint.beta.models.fullcampaign_all_of_search_campaign_info import FullcampaignAllOfSearchCampaignInfo  # noqa: E501
+
 
 class TestFullcampaignAllOfSearchCampaignInfo(unittest.TestCase):
     """FullcampaignAllOfSearchCampaignInfo unit test stubs"""
@@ -26,7 +26,8 @@ class TestFullcampaignAllOfSearchCampaignInfo(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> FullcampaignAllOfSearchCampaignInfo:
+    def make_instance(self,
+                      include_optional) -> FullcampaignAllOfSearchCampaignInfo:
         """Test FullcampaignAllOfSearchCampaignInfo
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -38,14 +39,14 @@ class TestFullcampaignAllOfSearchCampaignInfo(unittest.TestCase):
             return FullcampaignAllOfSearchCampaignInfo(
                 type = 'ACCESS',
                 description = 'Search Campaign description',
-                reviewer = beta.models.fullcampaign_all_of_search_campaign_info_reviewer.fullcampaign_allOf_searchCampaignInfo_reviewer(
+                reviewer = sailpoint.beta.models.fullcampaign_all_of_search_campaign_info_reviewer.fullcampaign_allOf_searchCampaignInfo_reviewer(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
                 query = 'Search Campaign query description',
                 identity_ids = [0fbe863c063c4c88a35fd7f17e8a3df5],
                 access_constraints = [
-                    beta.models.access_constraint.AccessConstraint(
+                    sailpoint.beta.models.access_constraint.AccessConstraint(
                         type = 'ENTITLEMENT', 
                         ids = [2c90ad2a70ace7d50170acf22ca90010], 
                         operator = 'SELECTED', )
@@ -61,6 +62,7 @@ class TestFullcampaignAllOfSearchCampaignInfo(unittest.TestCase):
         """Test FullcampaignAllOfSearchCampaignInfo"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

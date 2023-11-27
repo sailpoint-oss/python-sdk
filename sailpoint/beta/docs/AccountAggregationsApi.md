@@ -1,4 +1,4 @@
-# beta.AccountAggregationsApi
+# sailpoint.beta.AccountAggregationsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -21,14 +21,14 @@ This API returns the status of an *in-progress* account aggregation, along with 
 ```python
 import time
 import os
-import beta
-from beta.models.account_aggregation_status import AccountAggregationStatus
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.account_aggregation_status import AccountAggregationStatus
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -42,9 +42,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountAggregationsApi(api_client)
+    api_instance = sailpoint.beta.AccountAggregationsApi(api_client)
     id = '2c91808477a6b0c60177a81146b8110b' # str | The account aggregation id
 
     try:

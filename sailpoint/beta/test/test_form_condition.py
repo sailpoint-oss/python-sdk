@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.form_condition import FormCondition  # noqa: E501
+from sailpoint.beta.models.form_condition import FormCondition  # noqa: E501
+
 
 class TestFormCondition(unittest.TestCase):
     """FormCondition unit test stubs"""
@@ -38,7 +38,7 @@ class TestFormCondition(unittest.TestCase):
             return FormCondition(
                 rule_operator = 'AND',
                 rules = [
-                    beta.models.condition_rule.ConditionRule(
+                    sailpoint.beta.models.condition_rule.ConditionRule(
                         source_type = 'ELEMENT', 
                         source = 'department', 
                         operator = 'EQ', 
@@ -46,9 +46,9 @@ class TestFormCondition(unittest.TestCase):
                         value = Engineering, )
                     ],
                 effects = [
-                    beta.models.condition_effect.ConditionEffect(
+                    sailpoint.beta.models.condition_effect.ConditionEffect(
                         effect_type = 'HIDE', 
-                        config = beta.models.condition_effect_config.ConditionEffect_config(
+                        config = sailpoint.beta.models.condition_effect_config.ConditionEffect_config(
                             default_value_label = 'Access to Remove', 
                             element = '8110662963316867', ), )
                     ]
@@ -62,6 +62,7 @@ class TestFormCondition(unittest.TestCase):
         """Test FormCondition"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.provisioning_completed import ProvisioningCompleted  # noqa: E501
+from sailpoint.beta.models.provisioning_completed import ProvisioningCompleted  # noqa: E501
+
 
 class TestProvisioningCompleted(unittest.TestCase):
     """ProvisioningCompleted unit test stubs"""
@@ -45,17 +45,17 @@ class TestProvisioningCompleted(unittest.TestCase):
                 warnings = [
                     'Notification Skipped due to invalid email'
                     ],
-                recipient = beta.models.provisioning_completed_recipient.ProvisioningCompleted_recipient(
+                recipient = sailpoint.beta.models.provisioning_completed_recipient.ProvisioningCompleted_recipient(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                requester = beta.models.provisioning_completed_requester.ProvisioningCompleted_requester(
+                requester = sailpoint.beta.models.provisioning_completed_requester.ProvisioningCompleted_requester(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20648', 
                     name = 'William Wilson', ),
                 account_requests = [
-                    beta.models.provisioning_completed_account_requests_inner.ProvisioningCompleted_accountRequests_inner(
-                        source = beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
+                    sailpoint.beta.models.provisioning_completed_account_requests_inner.ProvisioningCompleted_accountRequests_inner(
+                        source = sailpoint.beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
                             id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                             type = 'SOURCE', 
                             name = 'Corporate Active Directory', ), 
@@ -65,7 +65,7 @@ class TestProvisioningCompleted(unittest.TestCase):
                         provisioning_target = 'Corp AD', 
                         ticket_id = '72619262', 
                         attribute_requests = [
-                            beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner.ProvisioningCompleted_accountRequests_inner_attributeRequests_inner(
+                            sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner.ProvisioningCompleted_accountRequests_inner_attributeRequests_inner(
                                 attribute_name = 'memberOf', 
                                 attribute_value = 'CN=jedi,DC=starwars,DC=com', 
                                 operation = Add, )
@@ -76,13 +76,13 @@ class TestProvisioningCompleted(unittest.TestCase):
             return ProvisioningCompleted(
                 tracking_number = '4b4d982dddff4267ab12f0f1e72b5a6d',
                 sources = 'Corp AD, Corp LDAP, Corp Salesforce',
-                recipient = beta.models.provisioning_completed_recipient.ProvisioningCompleted_recipient(
+                recipient = sailpoint.beta.models.provisioning_completed_recipient.ProvisioningCompleted_recipient(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
                 account_requests = [
-                    beta.models.provisioning_completed_account_requests_inner.ProvisioningCompleted_accountRequests_inner(
-                        source = beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
+                    sailpoint.beta.models.provisioning_completed_account_requests_inner.ProvisioningCompleted_accountRequests_inner(
+                        source = sailpoint.beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(
                             id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                             type = 'SOURCE', 
                             name = 'Corporate Active Directory', ), 
@@ -92,7 +92,7 @@ class TestProvisioningCompleted(unittest.TestCase):
                         provisioning_target = 'Corp AD', 
                         ticket_id = '72619262', 
                         attribute_requests = [
-                            beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner.ProvisioningCompleted_accountRequests_inner_attributeRequests_inner(
+                            sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner.ProvisioningCompleted_accountRequests_inner_attributeRequests_inner(
                                 attribute_name = 'memberOf', 
                                 attribute_value = 'CN=jedi,DC=starwars,DC=com', 
                                 operation = Add, )
@@ -105,6 +105,7 @@ class TestProvisioningCompleted(unittest.TestCase):
         """Test ProvisioningCompleted"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

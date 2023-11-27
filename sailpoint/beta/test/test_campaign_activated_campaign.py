@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.campaign_activated_campaign import CampaignActivatedCampaign  # noqa: E501
+from sailpoint.beta.models.campaign_activated_campaign import CampaignActivatedCampaign  # noqa: E501
+
 
 class TestCampaignActivatedCampaign(unittest.TestCase):
     """CampaignActivatedCampaign unit test stubs"""
@@ -43,7 +43,7 @@ class TestCampaignActivatedCampaign(unittest.TestCase):
                 modified = '2021-02-16T03:06:45.815Z',
                 deadline = '2021-03-16T03:04:45.815Z',
                 type = MANAGER,
-                campaign_owner = beta.models.campaign_activated_campaign_campaign_owner.CampaignActivated_campaign_campaignOwner(
+                campaign_owner = sailpoint.beta.models.campaign_activated_campaign_campaign_owner.CampaignActivated_campaign_campaignOwner(
                     id = '37f080867702c1910177031320c40n27', 
                     display_name = 'John Snow', 
                     email = 'john.snow@example.com', ),
@@ -57,7 +57,7 @@ class TestCampaignActivatedCampaign(unittest.TestCase):
                 created = '2021-02-16T03:04:45.815Z',
                 deadline = '2021-03-16T03:04:45.815Z',
                 type = MANAGER,
-                campaign_owner = beta.models.campaign_activated_campaign_campaign_owner.CampaignActivated_campaign_campaignOwner(
+                campaign_owner = sailpoint.beta.models.campaign_activated_campaign_campaign_owner.CampaignActivated_campaign_campaignOwner(
                     id = '37f080867702c1910177031320c40n27', 
                     display_name = 'John Snow', 
                     email = 'john.snow@example.com', ),
@@ -69,6 +69,7 @@ class TestCampaignActivatedCampaign(unittest.TestCase):
         """Test CampaignActivatedCampaign"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

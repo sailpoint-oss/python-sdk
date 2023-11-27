@@ -11,22 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt
+
 
 class RoleMiningPotentialRoleExportRequest(BaseModel):
     """
     RoleMiningPotentialRoleExportRequest
     """
-    min_entitlement_popularity: Optional[StrictInt] = Field(None, alias="minEntitlementPopularity", description="The minimum popularity among identities in the role which an entitlement must have to be included in the report")
-    include_common_access: Optional[StrictBool] = Field(None, alias="includeCommonAccess", description="If false, do not include entitlements that are highly popular among the entire orginization")
+    min_entitlement_popularity: Optional[StrictInt] = Field(
+        None,
+        alias="minEntitlementPopularity",
+        description=
+        "The minimum popularity among identities in the role which an entitlement must have to be included in the report"
+    )
+    include_common_access: Optional[StrictBool] = Field(
+        None,
+        alias="includeCommonAccess",
+        description=
+        "If false, do not include entitlements that are highly popular among the entire orginization"
+    )
     __properties = ["minEntitlementPopularity", "includeCommonAccess"]
 
     class Config:
@@ -49,10 +58,7 @@ class RoleMiningPotentialRoleExportRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +71,9 @@ class RoleMiningPotentialRoleExportRequest(BaseModel):
             return RoleMiningPotentialRoleExportRequest.parse_obj(obj)
 
         _obj = RoleMiningPotentialRoleExportRequest.parse_obj({
-            "min_entitlement_popularity": obj.get("minEntitlementPopularity"),
-            "include_common_access": obj.get("includeCommonAccess")
+            "min_entitlement_popularity":
+            obj.get("minEntitlementPopularity"),
+            "include_common_access":
+            obj.get("includeCommonAccess")
         })
         return _obj
-
-

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,8 +19,9 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
-from beta.models.identity_reference import IdentityReference
-from beta.models.public_identity_attribute_config import PublicIdentityAttributeConfig
+from sailpoint.beta.models.identity_reference import IdentityReference
+from sailpoint.beta.models.public_identity_attribute_config import PublicIdentityAttributeConfig
+
 
 class PublicIdentityConfig(BaseModel):
     """
@@ -29,7 +29,8 @@ class PublicIdentityConfig(BaseModel):
     """
     attributes: Optional[conlist(PublicIdentityAttributeConfig)] = None
     modified_by: Optional[IdentityReference] = Field(None, alias="modifiedBy")
-    modified: Optional[datetime] = Field(None, description="the date/time of the modification")
+    modified: Optional[datetime] = Field(
+        None, description="the date/time of the modification")
     __properties = ["attributes", "modifiedBy", "modified"]
 
     class Config:
@@ -52,10 +53,7 @@ class PublicIdentityConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in attributes (list)
         _items = []
         if self.attributes:
@@ -83,10 +81,14 @@ class PublicIdentityConfig(BaseModel):
             return PublicIdentityConfig.parse_obj(obj)
 
         _obj = PublicIdentityConfig.parse_obj({
-            "attributes": [PublicIdentityAttributeConfig.from_dict(_item) for _item in obj.get("attributes")] if obj.get("attributes") is not None else None,
-            "modified_by": IdentityReference.from_dict(obj.get("modifiedBy")) if obj.get("modifiedBy") is not None else None,
-            "modified": obj.get("modified")
+            "attributes": [
+                PublicIdentityAttributeConfig.from_dict(_item)
+                for _item in obj.get("attributes")
+            ] if obj.get("attributes") is not None else None,
+            "modified_by":
+            IdentityReference.from_dict(obj.get("modifiedBy"))
+            if obj.get("modifiedBy") is not None else None,
+            "modified":
+            obj.get("modified")
         })
         return _obj
-
-

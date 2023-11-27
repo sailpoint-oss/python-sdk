@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.saved_search import SavedSearch  # noqa: E501
+from sailpoint.v3.models.saved_search import SavedSearch  # noqa: E501
+
 
 class TestSavedSearch(unittest.TestCase):
     """SavedSearch unit test stubs"""
@@ -48,7 +48,7 @@ class TestSavedSearch(unittest.TestCase):
                 sort = [displayName],
                 filters = None,
                 id = '0de46054-fe90-434a-b84e-c6b3359d0c64',
-                owner = v3.models.typed_reference.TypedReference(
+                owner = sailpoint.v3.models.typed_reference.TypedReference(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', )
             )
@@ -63,6 +63,7 @@ class TestSavedSearch(unittest.TestCase):
         """Test SavedSearch"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

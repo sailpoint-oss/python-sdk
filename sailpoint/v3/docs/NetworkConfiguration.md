@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.network_configuration import NetworkConfiguration
+from sailpoint.v3.models.network_configuration import NetworkConfiguration
 
 # TODO update the JSON string below
 json = "{}"

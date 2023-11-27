@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v2.models.list_workgroup_connections200_response_inner import ListWorkgroupConnections200ResponseInner
+from sailpoint.v2.models.list_workgroup_connections200_response_inner import ListWorkgroupConnections200ResponseInner
 
 # TODO update the JSON string below
 json = "{}"

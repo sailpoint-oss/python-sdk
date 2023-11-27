@@ -11,24 +11,29 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-from v3.models.tagged_object_dto import TaggedObjectDto
+from sailpoint.v3.models.tagged_object_dto import TaggedObjectDto
+
 
 class BulkTaggedObject(BaseModel):
     """
     BulkTaggedObject
     """
-    object_refs: Optional[conlist(TaggedObjectDto)] = Field(None, alias="objectRefs")
-    tags: Optional[conlist(StrictStr)] = Field(None, description="Label to be applied to an Object")
-    operation: Optional[StrictStr] = Field('APPEND', description="If APPEND, tags are appended to the list of tags for the object. A 400 error is returned if this would add duplicate tags to the object.  If MERGE, tags are merged with the existing tags. Duplicate tags are silently ignored.")
+    object_refs: Optional[conlist(TaggedObjectDto)] = Field(None,
+                                                            alias="objectRefs")
+    tags: Optional[conlist(StrictStr)] = Field(
+        None, description="Label to be applied to an Object")
+    operation: Optional[StrictStr] = Field(
+        'APPEND',
+        description=
+        "If APPEND, tags are appended to the list of tags for the object. A 400 error is returned if this would add duplicate tags to the object.  If MERGE, tags are merged with the existing tags. Duplicate tags are silently ignored."
+    )
     __properties = ["objectRefs", "tags", "operation"]
 
     @validator('operation')
@@ -61,10 +66,7 @@ class BulkTaggedObject(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in object_refs (list)
         _items = []
         if self.object_refs:
@@ -84,10 +86,14 @@ class BulkTaggedObject(BaseModel):
             return BulkTaggedObject.parse_obj(obj)
 
         _obj = BulkTaggedObject.parse_obj({
-            "object_refs": [TaggedObjectDto.from_dict(_item) for _item in obj.get("objectRefs")] if obj.get("objectRefs") is not None else None,
-            "tags": obj.get("tags"),
-            "operation": obj.get("operation") if obj.get("operation") is not None else 'APPEND'
+            "object_refs": [
+                TaggedObjectDto.from_dict(_item)
+                for _item in obj.get("objectRefs")
+            ] if obj.get("objectRefs") is not None else None,
+            "tags":
+            obj.get("tags"),
+            "operation":
+            obj.get("operation")
+            if obj.get("operation") is not None else 'APPEND'
         })
         return _obj
-
-

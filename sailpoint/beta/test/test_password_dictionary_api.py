@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.password_dictionary_api import PasswordDictionaryApi  # noqa: E501
+from sailpoint.beta.api.password_dictionary_api import PasswordDictionaryApi  # noqa: E501
 
 
 class TestPasswordDictionaryApi(unittest.TestCase):

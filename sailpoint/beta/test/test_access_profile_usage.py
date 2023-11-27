@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.access_profile_usage import AccessProfileUsage  # noqa: E501
+from sailpoint.beta.models.access_profile_usage import AccessProfileUsage  # noqa: E501
+
 
 class TestAccessProfileUsage(unittest.TestCase):
     """AccessProfileUsage unit test stubs"""
@@ -38,7 +38,7 @@ class TestAccessProfileUsage(unittest.TestCase):
             return AccessProfileUsage(
                 access_profile_id = '2c91808876438bbb017668c21919ecca',
                 used_by = [
-                    beta.models.access_profile_usage_used_by_inner.AccessProfileUsage_usedBy_inner(
+                    sailpoint.beta.models.access_profile_usage_used_by_inner.AccessProfileUsage_usedBy_inner(
                         type = 'ROLE', 
                         id = '2c8180857a9b3da0017aa03418480f9d', 
                         name = 'Manager Role', )
@@ -53,6 +53,7 @@ class TestAccessProfileUsage(unittest.TestCase):
         """Test AccessProfileUsage"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

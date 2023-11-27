@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute  # noqa: E501
+from sailpoint.beta.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute  # noqa: E501
+
 
 class TestNonEmployeeSchemaAttribute(unittest.TestCase):
     """NonEmployeeSchemaAttribute unit test stubs"""
@@ -59,6 +59,7 @@ class TestNonEmployeeSchemaAttribute(unittest.TestCase):
         """Test NonEmployeeSchemaAttribute"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

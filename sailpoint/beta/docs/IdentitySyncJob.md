@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.identity_sync_job import IdentitySyncJob
+from sailpoint.beta.models.identity_sync_job import IdentitySyncJob
 
 # TODO update the JSON string below
 json = "{}"

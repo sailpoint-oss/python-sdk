@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.argument import Argument
+from sailpoint.beta.models.argument import Argument
 
 # TODO update the JSON string below
 json = "{}"

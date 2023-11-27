@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field
+
 
 class ListAccessProfiles429Response(BaseModel):
     """
     ListAccessProfiles429Response
     """
-    message: Optional[Dict[str, Any]] = Field(None, description="A message describing the error")
+    message: Optional[Dict[str, Any]] = Field(
+        None, description="A message describing the error")
     __properties = ["message"]
 
     class Config:
@@ -48,10 +48,7 @@ class ListAccessProfiles429Response(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +60,6 @@ class ListAccessProfiles429Response(BaseModel):
         if not isinstance(obj, dict):
             return ListAccessProfiles429Response.parse_obj(obj)
 
-        _obj = ListAccessProfiles429Response.parse_obj({
-            "message": obj.get("message")
-        })
+        _obj = ListAccessProfiles429Response.parse_obj(
+            {"message": obj.get("message")})
         return _obj
-
-

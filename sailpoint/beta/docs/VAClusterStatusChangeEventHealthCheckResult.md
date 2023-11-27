@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.va_cluster_status_change_event_health_check_result import VAClusterStatusChangeEventHealthCheckResult
+from sailpoint.beta.models.va_cluster_status_change_event_health_check_result import VAClusterStatusChangeEventHealthCheckResult
 
 # TODO update the JSON string below
 json = "{}"

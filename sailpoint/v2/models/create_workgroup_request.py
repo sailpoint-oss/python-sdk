@@ -11,16 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, StrictStr
-from v2.models.create_workgroup_request_owner import CreateWorkgroupRequestOwner
+from sailpoint.v2.models.create_workgroup_request_owner import CreateWorkgroupRequestOwner
+
 
 class CreateWorkgroupRequest(BaseModel):
     """
@@ -51,10 +50,7 @@ class CreateWorkgroupRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -70,10 +66,12 @@ class CreateWorkgroupRequest(BaseModel):
             return CreateWorkgroupRequest.parse_obj(obj)
 
         _obj = CreateWorkgroupRequest.parse_obj({
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "owner": CreateWorkgroupRequestOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "owner":
+            CreateWorkgroupRequestOwner.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None
         })
         return _obj
-
-

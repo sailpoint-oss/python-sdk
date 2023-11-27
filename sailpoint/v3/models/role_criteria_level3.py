@@ -11,17 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from v3.models.role_criteria_key import RoleCriteriaKey
-from v3.models.role_criteria_operation import RoleCriteriaOperation
+from sailpoint.v3.models.role_criteria_key import RoleCriteriaKey
+from sailpoint.v3.models.role_criteria_operation import RoleCriteriaOperation
+
 
 class RoleCriteriaLevel3(BaseModel):
     """
@@ -29,7 +28,12 @@ class RoleCriteriaLevel3(BaseModel):
     """
     operation: Optional[RoleCriteriaOperation] = None
     key: Optional[RoleCriteriaKey] = None
-    string_value: Optional[StrictStr] = Field(None, alias="stringValue", description="String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.")
+    string_value: Optional[StrictStr] = Field(
+        None,
+        alias="stringValue",
+        description=
+        "String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error."
+    )
     __properties = ["operation", "key", "stringValue"]
 
     class Config:
@@ -52,10 +56,7 @@ class RoleCriteriaLevel3(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of key
         if self.key:
             _dict['key'] = self.key.to_dict()
@@ -76,10 +77,12 @@ class RoleCriteriaLevel3(BaseModel):
             return RoleCriteriaLevel3.parse_obj(obj)
 
         _obj = RoleCriteriaLevel3.parse_obj({
-            "operation": obj.get("operation"),
-            "key": RoleCriteriaKey.from_dict(obj.get("key")) if obj.get("key") is not None else None,
-            "string_value": obj.get("stringValue")
+            "operation":
+            obj.get("operation"),
+            "key":
+            RoleCriteriaKey.from_dict(obj.get("key"))
+            if obj.get("key") is not None else None,
+            "string_value":
+            obj.get("stringValue")
         })
         return _obj
-
-

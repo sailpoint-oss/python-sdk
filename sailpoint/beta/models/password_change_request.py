@@ -11,26 +11,45 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class PasswordChangeRequest(BaseModel):
     """
     PasswordChangeRequest
     """
-    identity_id: Optional[StrictStr] = Field(None, alias="identityId", description="The identity ID that requested the password change")
-    encrypted_password: Optional[StrictStr] = Field(None, alias="encryptedPassword", description="The RSA encrypted password")
-    public_key_id: Optional[StrictStr] = Field(None, alias="publicKeyId", description="The encryption key ID")
-    account_id: Optional[StrictStr] = Field(None, alias="accountId", description="Account ID of the account This is specified per account schema in the source configuration. It is used to distinguish accounts. More info can be found here https://community.sailpoint.com/t5/IdentityNow-Connectors/How-do-I-designate-an-account-attribute-as-the-Account-ID-for-a/ta-p/80350")
-    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="The ID of the source for which identity is requesting the password change")
-    __properties = ["identityId", "encryptedPassword", "publicKeyId", "accountId", "sourceId"]
+    identity_id: Optional[StrictStr] = Field(
+        None,
+        alias="identityId",
+        description="The identity ID that requested the password change")
+    encrypted_password: Optional[StrictStr] = Field(
+        None,
+        alias="encryptedPassword",
+        description="The RSA encrypted password")
+    public_key_id: Optional[StrictStr] = Field(
+        None, alias="publicKeyId", description="The encryption key ID")
+    account_id: Optional[StrictStr] = Field(
+        None,
+        alias="accountId",
+        description=
+        "Account ID of the account This is specified per account schema in the source configuration. It is used to distinguish accounts. More info can be found here https://community.sailpoint.com/t5/IdentityNow-Connectors/How-do-I-designate-an-account-attribute-as-the-Account-ID-for-a/ta-p/80350"
+    )
+    source_id: Optional[StrictStr] = Field(
+        None,
+        alias="sourceId",
+        description=
+        "The ID of the source for which identity is requesting the password change"
+    )
+    __properties = [
+        "identityId", "encryptedPassword", "publicKeyId", "accountId",
+        "sourceId"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -52,10 +71,7 @@ class PasswordChangeRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -68,12 +84,15 @@ class PasswordChangeRequest(BaseModel):
             return PasswordChangeRequest.parse_obj(obj)
 
         _obj = PasswordChangeRequest.parse_obj({
-            "identity_id": obj.get("identityId"),
-            "encrypted_password": obj.get("encryptedPassword"),
-            "public_key_id": obj.get("publicKeyId"),
-            "account_id": obj.get("accountId"),
-            "source_id": obj.get("sourceId")
+            "identity_id":
+            obj.get("identityId"),
+            "encrypted_password":
+            obj.get("encryptedPassword"),
+            "public_key_id":
+            obj.get("publicKeyId"),
+            "account_id":
+            obj.get("accountId"),
+            "source_id":
+            obj.get("sourceId")
         })
         return _obj
-
-

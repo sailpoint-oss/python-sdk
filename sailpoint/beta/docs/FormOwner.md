@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.form_owner import FormOwner
+from sailpoint.beta.models.form_owner import FormOwner
 
 # TODO update the JSON string below
 json = "{}"

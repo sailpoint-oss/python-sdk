@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.app import App  # noqa: E501
+from sailpoint.v3.models.app import App  # noqa: E501
+
 
 class TestApp(unittest.TestCase):
     """App unit test stubs"""
@@ -38,10 +38,10 @@ class TestApp(unittest.TestCase):
             return App(
                 id = '2c91808568c529c60168cca6f90c1313',
                 name = 'John Doe',
-                source = v3.models.reference.Reference(
+                source = sailpoint.v3.models.reference.Reference(
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'John Doe', ),
-                account = v3.models.app_all_of_account.App_allOf_account(
+                account = sailpoint.v3.models.app_all_of_account.App_allOf_account(
                     id = '2c9180837dfe6949017e21f3d8cd6d49', 
                     account_id = 'CN=Carol Adams,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=sailpointdemo,DC=com', )
             )
@@ -54,6 +54,7 @@ class TestApp(unittest.TestCase):
         """Test App"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

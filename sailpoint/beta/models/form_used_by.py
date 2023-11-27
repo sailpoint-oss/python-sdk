@@ -11,22 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class FormUsedBy(BaseModel):
     """
     FormUsedBy
     """
-    type: Optional[StrictStr] = Field(None, description="FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource")
-    id: Optional[StrictStr] = Field(None, description="Unique identifier of the system using the form.")
+    type: Optional[StrictStr] = Field(
+        None,
+        description=
+        "FormUsedByType value.  WORKFLOW FormUsedByTypeWorkflow SOURCE FormUsedByTypeSource"
+    )
+    id: Optional[StrictStr] = Field(
+        None, description="Unique identifier of the system using the form.")
     __properties = ["type", "id"]
 
     @validator('type')
@@ -36,7 +40,8 @@ class FormUsedBy(BaseModel):
             return value
 
         if value not in ('WORKFLOW', 'SOURCE'):
-            raise ValueError("must be one of enum values ('WORKFLOW', 'SOURCE')")
+            raise ValueError(
+                "must be one of enum values ('WORKFLOW', 'SOURCE')")
         return value
 
     class Config:
@@ -59,10 +64,7 @@ class FormUsedBy(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -79,5 +81,3 @@ class FormUsedBy(BaseModel):
             "id": obj.get("id")
         })
         return _obj
-
-

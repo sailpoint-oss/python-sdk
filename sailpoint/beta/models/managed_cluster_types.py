@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class ManagedClusterTypes(str, Enum):
     """
     The Type of Cluster
     """
-
     """
     allowed enum values
     """
@@ -36,5 +31,3 @@ class ManagedClusterTypes(str, Enum):
     def from_json(cls, json_str: str) -> ManagedClusterTypes:
         """Create an instance of ManagedClusterTypes from a JSON string"""
         return ManagedClusterTypes(json.loads(json_str))
-
-

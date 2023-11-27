@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -24,6 +23,7 @@ from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
 TRANSFORMDEFINITIONATTRIBUTESVALUE_ANY_OF_SCHEMAS = ["object", "str"]
+
 
 class TransformDefinitionAttributesValue(BaseModel):
     """
@@ -38,7 +38,8 @@ class TransformDefinitionAttributesValue(BaseModel):
         actual_instance: Union[object, str]
     else:
         actual_instance: Any
-    any_of_schemas: List[str] = Field(TRANSFORMDEFINITIONATTRIBUTESVALUE_ANY_OF_SCHEMAS, const=True)
+    any_of_schemas: List[str] = Field(
+        TRANSFORMDEFINITIONATTRIBUTESVALUE_ANY_OF_SCHEMAS, const=True)
 
     class Config:
         validate_assignment = True
@@ -46,9 +47,13 @@ class TransformDefinitionAttributesValue(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
+                raise ValueError(
+                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
+                )
             if kwargs:
-                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
+                raise ValueError(
+                    "If a position argument is used, keyword arguments cannot be used."
+                )
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -71,7 +76,9 @@ class TransformDefinitionAttributesValue(BaseModel):
             error_messages.append(str(e))
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in TransformDefinitionAttributesValue with anyOf schemas: object, str. Details: " + ", ".join(error_messages))
+            raise ValueError(
+                "No match found when setting the actual_instance in TransformDefinitionAttributesValue with anyOf schemas: object, str. Details: "
+                + ", ".join(error_messages))
         else:
             return v
 
@@ -105,7 +112,9 @@ class TransformDefinitionAttributesValue(BaseModel):
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into TransformDefinitionAttributesValue with anyOf schemas: object, str. Details: " + ", ".join(error_messages))
+            raise ValueError(
+                "No match found when deserializing the JSON string into TransformDefinitionAttributesValue with anyOf schemas: object, str. Details: "
+                + ", ".join(error_messages))
         else:
             return instance
 
@@ -134,5 +143,3 @@ class TransformDefinitionAttributesValue(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.dict())
-
-

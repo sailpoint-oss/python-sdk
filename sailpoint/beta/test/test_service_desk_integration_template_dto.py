@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto  # noqa: E501
+from sailpoint.beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto  # noqa: E501
+
 
 class TestServiceDeskIntegrationTemplateDto(unittest.TestCase):
     """ServiceDeskIntegrationTemplateDto unit test stubs"""
@@ -26,7 +26,8 @@ class TestServiceDeskIntegrationTemplateDto(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ServiceDeskIntegrationTemplateDto:
+    def make_instance(self,
+                      include_optional) -> ServiceDeskIntegrationTemplateDto:
         """Test ServiceDeskIntegrationTemplateDto
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -42,10 +43,10 @@ class TestServiceDeskIntegrationTemplateDto(unittest.TestCase):
                 modified = '2023-01-03T21:16:22.432Z',
                 type = 'Web Service SDIM',
                 attributes = { },
-                provisioning_config = beta.models.provisioning_config.ProvisioningConfig(
+                provisioning_config = sailpoint.beta.models.provisioning_config.ProvisioningConfig(
                     universal_manager = True, 
                     managed_resource_refs = [{type=SOURCE, id=2c9180855d191c59015d291ceb051111, name=My Source 1}, {type=SOURCE, id=2c9180855d191c59015d291ceb052222, name=My Source 2}], 
-                    plan_initializer_script = beta.models.provisioning_config_plan_initializer_script.ProvisioningConfig_planInitializerScript(
+                    plan_initializer_script = sailpoint.beta.models.provisioning_config_plan_initializer_script.ProvisioningConfig_planInitializerScript(
                         source = '<?xml version='1.0' encoding='UTF-8'?>\r\n<!DOCTYPE Rule PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\r\n<Rule name=\"Example Rule\" type=\"BeforeProvisioning\">\r\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\r\n  <Source><![CDATA[\r\nimport sailpoint.object.*;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\r\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\r\nimport sailpoint.object.ProvisioningPlan;\r\nimport sailpoint.object.ProvisioningPlan.Operation;\r\n\r\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n}\r\n\r\n  ]]></Source>
 ', ), 
                     no_provisioning_requests = True, 
@@ -56,10 +57,10 @@ class TestServiceDeskIntegrationTemplateDto(unittest.TestCase):
                 name = 'aName',
                 type = 'Web Service SDIM',
                 attributes = { },
-                provisioning_config = beta.models.provisioning_config.ProvisioningConfig(
+                provisioning_config = sailpoint.beta.models.provisioning_config.ProvisioningConfig(
                     universal_manager = True, 
                     managed_resource_refs = [{type=SOURCE, id=2c9180855d191c59015d291ceb051111, name=My Source 1}, {type=SOURCE, id=2c9180855d191c59015d291ceb052222, name=My Source 2}], 
-                    plan_initializer_script = beta.models.provisioning_config_plan_initializer_script.ProvisioningConfig_planInitializerScript(
+                    plan_initializer_script = sailpoint.beta.models.provisioning_config_plan_initializer_script.ProvisioningConfig_planInitializerScript(
                         source = '<?xml version='1.0' encoding='UTF-8'?>\r\n<!DOCTYPE Rule PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\r\n<Rule name=\"Example Rule\" type=\"BeforeProvisioning\">\r\n  <Description>Before Provisioning Rule which changes disables and enables to a modify.</Description>\r\n  <Source><![CDATA[\r\nimport sailpoint.object.*;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest;\r\nimport sailpoint.object.ProvisioningPlan.AccountRequest.Operation;\r\nimport sailpoint.object.ProvisioningPlan.AttributeRequest;\r\nimport sailpoint.object.ProvisioningPlan;\r\nimport sailpoint.object.ProvisioningPlan.Operation;\r\n\r\nfor ( AccountRequest accountRequest : plan.getAccountRequests() ) {\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Disable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n  if ( accountRequest.getOp().equals( ProvisioningPlan.ObjectOperation.Enable ) ) {\r\n    accountRequest.setOp( ProvisioningPlan.ObjectOperation.Modify );\r\n  }\r\n}\r\n\r\n  ]]></Source>
 ', ), 
                     no_provisioning_requests = True, 
@@ -71,6 +72,7 @@ class TestServiceDeskIntegrationTemplateDto(unittest.TestCase):
         """Test ServiceDeskIntegrationTemplateDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

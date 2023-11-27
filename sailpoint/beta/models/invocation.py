@@ -11,24 +11,29 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class Invocation(BaseModel):
     """
     Invocation
     """
     id: Optional[StrictStr] = Field(None, description="Invocation ID")
-    trigger_id: Optional[StrictStr] = Field(None, alias="triggerId", description="Trigger ID")
-    secret: Optional[StrictStr] = Field(None, description="Unique invocation secret.")
-    content_json: Optional[Dict[str, Any]] = Field(None, alias="contentJson", description="JSON map of invocation metadata.")
+    trigger_id: Optional[StrictStr] = Field(None,
+                                            alias="triggerId",
+                                            description="Trigger ID")
+    secret: Optional[StrictStr] = Field(
+        None, description="Unique invocation secret.")
+    content_json: Optional[Dict[str, Any]] = Field(
+        None,
+        alias="contentJson",
+        description="JSON map of invocation metadata.")
     __properties = ["id", "triggerId", "secret", "contentJson"]
 
     class Config:
@@ -51,10 +56,7 @@ class Invocation(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -73,5 +75,3 @@ class Invocation(BaseModel):
             "content_json": obj.get("contentJson")
         })
         return _obj
-
-

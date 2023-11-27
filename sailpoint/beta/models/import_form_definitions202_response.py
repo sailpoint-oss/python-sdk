@@ -11,26 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
-from beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
-from beta.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner
+from sailpoint.beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
+from sailpoint.beta.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner
+
 
 class ImportFormDefinitions202Response(BaseModel):
     """
     ImportFormDefinitions202Response
     """
-    errors: Optional[conlist(ImportFormDefinitions202ResponseErrorsInner)] = None
-    imported_objects: Optional[conlist(ExportFormDefinitionsByTenant200ResponseInner)] = Field(None, alias="importedObjects")
-    infos: Optional[conlist(ImportFormDefinitions202ResponseErrorsInner)] = None
-    warnings: Optional[conlist(ImportFormDefinitions202ResponseErrorsInner)] = None
+    errors: Optional[conlist(
+        ImportFormDefinitions202ResponseErrorsInner)] = None
+    imported_objects: Optional[conlist(
+        ExportFormDefinitionsByTenant200ResponseInner)] = Field(
+            None, alias="importedObjects")
+    infos: Optional[conlist(
+        ImportFormDefinitions202ResponseErrorsInner)] = None
+    warnings: Optional[conlist(
+        ImportFormDefinitions202ResponseErrorsInner)] = None
     __properties = ["errors", "importedObjects", "infos", "warnings"]
 
     class Config:
@@ -53,10 +57,7 @@ class ImportFormDefinitions202Response(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
         _items = []
         if self.errors:
@@ -97,11 +98,21 @@ class ImportFormDefinitions202Response(BaseModel):
             return ImportFormDefinitions202Response.parse_obj(obj)
 
         _obj = ImportFormDefinitions202Response.parse_obj({
-            "errors": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj.get("errors")] if obj.get("errors") is not None else None,
-            "imported_objects": [ExportFormDefinitionsByTenant200ResponseInner.from_dict(_item) for _item in obj.get("importedObjects")] if obj.get("importedObjects") is not None else None,
-            "infos": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj.get("infos")] if obj.get("infos") is not None else None,
-            "warnings": [ImportFormDefinitions202ResponseErrorsInner.from_dict(_item) for _item in obj.get("warnings")] if obj.get("warnings") is not None else None
+            "errors": [
+                ImportFormDefinitions202ResponseErrorsInner.from_dict(_item)
+                for _item in obj.get("errors")
+            ] if obj.get("errors") is not None else None,
+            "imported_objects": [
+                ExportFormDefinitionsByTenant200ResponseInner.from_dict(_item)
+                for _item in obj.get("importedObjects")
+            ] if obj.get("importedObjects") is not None else None,
+            "infos": [
+                ImportFormDefinitions202ResponseErrorsInner.from_dict(_item)
+                for _item in obj.get("infos")
+            ] if obj.get("infos") is not None else None,
+            "warnings": [
+                ImportFormDefinitions202ResponseErrorsInner.from_dict(_item)
+                for _item in obj.get("warnings")
+            ] if obj.get("warnings") is not None else None
         })
         return _obj
-
-

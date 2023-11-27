@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.sod_violation_context_conflicting_access_criteria import SodViolationContextConflictingAccessCriteria
+from sailpoint.v3.models.sod_violation_context_conflicting_access_criteria import SodViolationContextConflictingAccessCriteria
 
 # TODO update the JSON string below
 json = "{}"

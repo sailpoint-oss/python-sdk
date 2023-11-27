@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.create_workflow_request import CreateWorkflowRequest
+from sailpoint.beta.models.create_workflow_request import CreateWorkflowRequest
 
 # TODO update the JSON string below
 json = "{}"

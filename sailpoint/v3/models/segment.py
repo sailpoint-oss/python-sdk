@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,22 +19,35 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-from v3.models.owner_reference_segments import OwnerReferenceSegments
-from v3.models.visibility_criteria import VisibilityCriteria
+from sailpoint.v3.models.owner_reference_segments import OwnerReferenceSegments
+from sailpoint.v3.models.visibility_criteria import VisibilityCriteria
+
 
 class Segment(BaseModel):
     """
     Segment
     """
     id: Optional[StrictStr] = Field(None, description="The segment's ID.")
-    name: Optional[StrictStr] = Field(None, description="The segment's business name.")
-    created: Optional[datetime] = Field(None, description="The time when the segment is created.")
-    modified: Optional[datetime] = Field(None, description="The time when the segment is modified.")
-    description: Optional[StrictStr] = Field(None, description="The segment's optional description.")
+    name: Optional[StrictStr] = Field(
+        None, description="The segment's business name.")
+    created: Optional[datetime] = Field(
+        None, description="The time when the segment is created.")
+    modified: Optional[datetime] = Field(
+        None, description="The time when the segment is modified.")
+    description: Optional[StrictStr] = Field(
+        None, description="The segment's optional description.")
     owner: Optional[OwnerReferenceSegments] = None
-    visibility_criteria: Optional[VisibilityCriteria] = Field(None, alias="visibilityCriteria")
-    active: Optional[StrictBool] = Field(False, description="This boolean indicates whether the segment is currently active. Inactive segments have no effect.")
-    __properties = ["id", "name", "created", "modified", "description", "owner", "visibilityCriteria", "active"]
+    visibility_criteria: Optional[VisibilityCriteria] = Field(
+        None, alias="visibilityCriteria")
+    active: Optional[StrictBool] = Field(
+        False,
+        description=
+        "This boolean indicates whether the segment is currently active. Inactive segments have no effect."
+    )
+    __properties = [
+        "id", "name", "created", "modified", "description", "owner",
+        "visibilityCriteria", "active"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -57,10 +69,7 @@ class Segment(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -84,15 +93,23 @@ class Segment(BaseModel):
             return Segment.parse_obj(obj)
 
         _obj = Segment.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "description": obj.get("description"),
-            "owner": OwnerReferenceSegments.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "visibility_criteria": VisibilityCriteria.from_dict(obj.get("visibilityCriteria")) if obj.get("visibilityCriteria") is not None else None,
-            "active": obj.get("active") if obj.get("active") is not None else False
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified"),
+            "description":
+            obj.get("description"),
+            "owner":
+            OwnerReferenceSegments.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "visibility_criteria":
+            VisibilityCriteria.from_dict(obj.get("visibilityCriteria"))
+            if obj.get("visibilityCriteria") is not None else None,
+            "active":
+            obj.get("active") if obj.get("active") is not None else False
         })
         return _obj
-
-

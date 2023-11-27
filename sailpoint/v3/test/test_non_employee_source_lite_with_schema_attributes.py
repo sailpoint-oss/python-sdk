@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.non_employee_source_lite_with_schema_attributes import NonEmployeeSourceLiteWithSchemaAttributes  # noqa: E501
+from sailpoint.v3.models.non_employee_source_lite_with_schema_attributes import NonEmployeeSourceLiteWithSchemaAttributes  # noqa: E501
+
 
 class TestNonEmployeeSourceLiteWithSchemaAttributes(unittest.TestCase):
     """NonEmployeeSourceLiteWithSchemaAttributes unit test stubs"""
@@ -26,7 +26,9 @@ class TestNonEmployeeSourceLiteWithSchemaAttributes(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> NonEmployeeSourceLiteWithSchemaAttributes:
+    def make_instance(
+            self,
+            include_optional) -> NonEmployeeSourceLiteWithSchemaAttributes:
         """Test NonEmployeeSourceLiteWithSchemaAttributes
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -41,7 +43,7 @@ class TestNonEmployeeSourceLiteWithSchemaAttributes(unittest.TestCase):
                 name = 'Retail',
                 description = 'Source description',
                 schema_attributes = [
-                    v3.models.non_employee_schema_attribute.NonEmployeeSchemaAttribute(
+                    sailpoint.v3.models.non_employee_schema_attribute.NonEmployeeSchemaAttribute(
                         id = 'ac110005-7156-1150-8171-5b292e3e0084', 
                         system = True, 
                         modified = '2019-08-23T18:52:59.162Z', 
@@ -63,6 +65,7 @@ class TestNonEmployeeSourceLiteWithSchemaAttributes(unittest.TestCase):
         """Test NonEmployeeSourceLiteWithSchemaAttributes"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

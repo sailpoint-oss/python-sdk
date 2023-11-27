@@ -1,4 +1,4 @@
-# beta.AccessRequestApprovalsApi
+# sailpoint.beta.AccessRequestApprovalsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -26,14 +26,14 @@ This endpoint approves an access request approval. Only the owner of the approva
 ```python
 import time
 import os
-import beta
-from beta.models.comment_dto import CommentDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.comment_dto import CommentDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -47,11 +47,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessRequestApprovalsApi(api_client)
+    api_instance = sailpoint.beta.AccessRequestApprovalsApi(api_client)
     approval_id = '2c91808b7294bea301729568c68c002e' # str | The id of the approval.
-    comment_dto = beta.CommentDto() # CommentDto | Reviewer's comment. (optional)
+    comment_dto = sailpoint.beta.CommentDto() # CommentDto | Reviewer's comment. (optional)
 
     try:
         # Approves an access request approval.
@@ -110,14 +110,14 @@ This endpoint forwards an access request approval. Only the owner of the approva
 ```python
 import time
 import os
-import beta
-from beta.models.forward_approval_dto import ForwardApprovalDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.forward_approval_dto import ForwardApprovalDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -131,11 +131,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessRequestApprovalsApi(api_client)
+    api_instance = sailpoint.beta.AccessRequestApprovalsApi(api_client)
     approval_id = '2c91808b7294bea301729568c68c002e' # str | The id of the approval.
-    forward_approval_dto = beta.ForwardApprovalDto() # ForwardApprovalDto | Information about the forwarded approval.
+    forward_approval_dto = sailpoint.beta.ForwardApprovalDto() # ForwardApprovalDto | Information about the forwarded approval.
 
     try:
         # Forwards an access request approval to a new owner.
@@ -195,14 +195,14 @@ This endpoint returns the number of pending, approved and rejected access reques
 ```python
 import time
 import os
-import beta
-from beta.models.approval_summary import ApprovalSummary
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.approval_summary import ApprovalSummary
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -216,9 +216,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessRequestApprovalsApi(api_client)
+    api_instance = sailpoint.beta.AccessRequestApprovalsApi(api_client)
     owner_id = 'owner_id_example' # str | The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
     from_date = 'from_date_example' # str | From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date=2020-03-19T19:59:11Z (optional)
 
@@ -279,14 +279,14 @@ This endpoint returns list of completed approvals. See *owner-id* query paramete
 ```python
 import time
 import os
-import beta
-from beta.models.completed_approval import CompletedApproval
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.completed_approval import CompletedApproval
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -300,9 +300,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessRequestApprovalsApi(api_client)
+    api_instance = sailpoint.beta.AccessRequestApprovalsApi(api_client)
     owner_id = 'owner_id_example' # str | If present, the value returns only completed approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -370,14 +370,14 @@ This endpoint returns a list of pending approvals. See \"owner-id\" query parame
 ```python
 import time
 import os
-import beta
-from beta.models.pending_approval import PendingApproval
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.pending_approval import PendingApproval
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -391,9 +391,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessRequestApprovalsApi(api_client)
+    api_instance = sailpoint.beta.AccessRequestApprovalsApi(api_client)
     owner_id = 'owner_id_example' # str | If present, the value returns only pending approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -461,14 +461,14 @@ This endpoint rejects an access request approval. Only the owner of the approval
 ```python
 import time
 import os
-import beta
-from beta.models.comment_dto import CommentDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.comment_dto import CommentDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -482,11 +482,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessRequestApprovalsApi(api_client)
+    api_instance = sailpoint.beta.AccessRequestApprovalsApi(api_client)
     approval_id = '2c91808b7294bea301729568c68c002e' # str | The id of the approval.
-    comment_dto = beta.CommentDto() # CommentDto | Reviewer's comment. (optional)
+    comment_dto = sailpoint.beta.CommentDto() # CommentDto | Reviewer's comment. (optional)
 
     try:
         # Rejects an access request approval.

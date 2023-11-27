@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
+from sailpoint.beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 
 # TODO update the JSON string below
 json = "{}"

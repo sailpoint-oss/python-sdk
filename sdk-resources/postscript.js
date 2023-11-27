@@ -26,8 +26,8 @@ const fixFiles = function (myArray) {
     // fix syntax error in model_patch 
     if (file.includes("export_payload.py")) {
       for (const line of rawDataArra) {
-        if (line.includes("from beta.models.dict[str,_object_export_import_options] import Dict[str, ObjectExportImportOptions]")) {
-          fileOut.push(line.replaceAll("from beta.models.dict[str,_object_export_import_options] import Dict[str, ObjectExportImportOptions]", ""));
+        if (line.includes("from sailpoint.beta.models.dict[str,_object_export_import_options] import Dict[str, ObjectExportImportOptions]")) {
+          fileOut.push(line.replaceAll("from sailpoint.beta.models.dict[str,_object_export_import_options] import Dict[str, ObjectExportImportOptions]", ""));
           madeChange = true;
         } else {
           fileOut.push(line);

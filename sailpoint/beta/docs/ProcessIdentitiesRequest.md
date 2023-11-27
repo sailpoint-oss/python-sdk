@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.process_identities_request import ProcessIdentitiesRequest
+from sailpoint.beta.models.process_identities_request import ProcessIdentitiesRequest
 
 # TODO update the JSON string below
 json = "{}"

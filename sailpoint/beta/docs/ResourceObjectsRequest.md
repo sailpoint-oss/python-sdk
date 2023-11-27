@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.resource_objects_request import ResourceObjectsRequest
+from sailpoint.beta.models.resource_objects_request import ResourceObjectsRequest
 
 # TODO update the JSON string below
 json = "{}"

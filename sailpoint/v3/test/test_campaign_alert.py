@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.campaign_alert import CampaignAlert  # noqa: E501
+from sailpoint.v3.models.campaign_alert import CampaignAlert  # noqa: E501
+
 
 class TestCampaignAlert(unittest.TestCase):
     """CampaignAlert unit test stubs"""
@@ -38,7 +38,7 @@ class TestCampaignAlert(unittest.TestCase):
             return CampaignAlert(
                 level = 'ERROR',
                 localizations = [
-                    v3.models.error_message_dto.ErrorMessageDto(
+                    sailpoint.v3.models.error_message_dto.ErrorMessageDto(
                         locale = 'en-US', 
                         locale_origin = 'DEFAULT', 
                         text = 'The request was syntactically correct but its content is semantically invalid.', )
@@ -53,6 +53,7 @@ class TestCampaignAlert(unittest.TestCase):
         """Test CampaignAlert"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.sp_config_object import SpConfigObject
+from sailpoint.beta.models.sp_config_object import SpConfigObject
 
 # TODO update the JSON string below
 json = "{}"

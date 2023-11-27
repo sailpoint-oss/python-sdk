@@ -11,23 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt
+
 
 class WorkItemsSummary(BaseModel):
     """
     WorkItemsSummary
     """
-    open: Optional[StrictInt] = Field(None, description="The count of open work items")
-    completed: Optional[StrictInt] = Field(None, description="The count of completed work items")
-    total: Optional[StrictInt] = Field(None, description="The count of total work items")
+    open: Optional[StrictInt] = Field(
+        None, description="The count of open work items")
+    completed: Optional[StrictInt] = Field(
+        None, description="The count of completed work items")
+    total: Optional[StrictInt] = Field(
+        None, description="The count of total work items")
     __properties = ["open", "completed", "total"]
 
     class Config:
@@ -50,10 +52,7 @@ class WorkItemsSummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,5 +70,3 @@ class WorkItemsSummary(BaseModel):
             "total": obj.get("total")
         })
         return _obj
-
-

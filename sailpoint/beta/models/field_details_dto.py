@@ -11,27 +11,41 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+
 
 class FieldDetailsDto(BaseModel):
     """
     FieldDetailsDto
     """
-    name: Optional[StrictStr] = Field(None, description="The name of the attribute.")
-    transform: Optional[Dict[str, Any]] = Field(None, description="The transform to apply to the field")
-    attributes: Optional[Dict[str, Any]] = Field(None, description="Attributes required for the transform")
-    is_required: Optional[StrictBool] = Field(False, alias="isRequired", description="Flag indicating whether or not the attribute is required.")
-    type: Optional[StrictStr] = Field(None, description="The type of the attribute.")
-    is_multi_valued: Optional[StrictBool] = Field(False, alias="isMultiValued", description="Flag indicating whether or not the attribute is multi-valued.")
-    __properties = ["name", "transform", "attributes", "isRequired", "type", "isMultiValued"]
+    name: Optional[StrictStr] = Field(None,
+                                      description="The name of the attribute.")
+    transform: Optional[Dict[str, Any]] = Field(
+        None, description="The transform to apply to the field")
+    attributes: Optional[Dict[str, Any]] = Field(
+        None, description="Attributes required for the transform")
+    is_required: Optional[StrictBool] = Field(
+        False,
+        alias="isRequired",
+        description="Flag indicating whether or not the attribute is required."
+    )
+    type: Optional[StrictStr] = Field(None,
+                                      description="The type of the attribute.")
+    is_multi_valued: Optional[StrictBool] = Field(
+        False,
+        alias="isMultiValued",
+        description=
+        "Flag indicating whether or not the attribute is multi-valued.")
+    __properties = [
+        "name", "transform", "attributes", "isRequired", "type",
+        "isMultiValued"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -55,7 +69,7 @@ class FieldDetailsDto(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "is_required",
+                              "is_required",
                           },
                           exclude_none=True)
         return _dict
@@ -70,13 +84,19 @@ class FieldDetailsDto(BaseModel):
             return FieldDetailsDto.parse_obj(obj)
 
         _obj = FieldDetailsDto.parse_obj({
-            "name": obj.get("name"),
-            "transform": obj.get("transform"),
-            "attributes": obj.get("attributes"),
-            "is_required": obj.get("isRequired") if obj.get("isRequired") is not None else False,
-            "type": obj.get("type"),
-            "is_multi_valued": obj.get("isMultiValued") if obj.get("isMultiValued") is not None else False
+            "name":
+            obj.get("name"),
+            "transform":
+            obj.get("transform"),
+            "attributes":
+            obj.get("attributes"),
+            "is_required":
+            obj.get("isRequired")
+            if obj.get("isRequired") is not None else False,
+            "type":
+            obj.get("type"),
+            "is_multi_valued":
+            obj.get("isMultiValued")
+            if obj.get("isMultiValued") is not None else False
         })
         return _obj
-
-

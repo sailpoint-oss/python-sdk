@@ -1,4 +1,4 @@
-# cc.SourcesAccountsApi
+# sailpoint.cc.SourcesAccountsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
@@ -21,13 +21,13 @@ Exports a CSV of the accounts for a particular source.
 ```python
 import time
 import os
-import cc
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -41,9 +41,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.SourcesAccountsApi(api_client)
+    api_instance = sailpoint.cc.SourcesAccountsApi(api_client)
     id = 'id_example' # str | 
 
     try:

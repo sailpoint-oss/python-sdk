@@ -11,24 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.error_message import ErrorMessage
+from sailpoint.beta.models.error_message import ErrorMessage
+
 
 class FormError(BaseModel):
     """
     FormError
     """
-    key: Optional[StrictStr] = Field(None, description="Key is the technical key")
-    messages: Optional[conlist(ErrorMessage)] = Field(None, description="Messages is a list of web.ErrorMessage items")
-    value: Optional[Dict[str, Any]] = Field(None, description="Value is the value associated with a Key")
+    key: Optional[StrictStr] = Field(None,
+                                     description="Key is the technical key")
+    messages: Optional[conlist(ErrorMessage)] = Field(
+        None, description="Messages is a list of web.ErrorMessage items")
+    value: Optional[Dict[str, Any]] = Field(
+        None, description="Value is the value associated with a Key")
     __properties = ["key", "messages", "value"]
 
     class Config:
@@ -51,10 +53,7 @@ class FormError(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
@@ -74,10 +73,12 @@ class FormError(BaseModel):
             return FormError.parse_obj(obj)
 
         _obj = FormError.parse_obj({
-            "key": obj.get("key"),
-            "messages": [ErrorMessage.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
-            "value": obj.get("value")
+            "key":
+            obj.get("key"),
+            "messages":
+            [ErrorMessage.from_dict(_item) for _item in obj.get("messages")]
+            if obj.get("messages") is not None else None,
+            "value":
+            obj.get("value")
         })
         return _obj
-
-

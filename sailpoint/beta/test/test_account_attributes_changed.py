@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.account_attributes_changed import AccountAttributesChanged  # noqa: E501
+from sailpoint.beta.models.account_attributes_changed import AccountAttributesChanged  # noqa: E501
+
 
 class TestAccountAttributesChanged(unittest.TestCase):
     """AccountAttributesChanged unit test stubs"""
@@ -36,22 +36,22 @@ class TestAccountAttributesChanged(unittest.TestCase):
         model = AccountAttributesChanged()  # noqa: E501
         if include_optional:
             return AccountAttributesChanged(
-                identity = beta.models.account_attributes_changed_identity.AccountAttributesChanged_identity(
+                identity = sailpoint.beta.models.account_attributes_changed_identity.AccountAttributesChanged_identity(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                source = beta.models.account_attributes_changed_source.AccountAttributesChanged_source(
+                source = sailpoint.beta.models.account_attributes_changed_source.AccountAttributesChanged_source(
                     id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                     type = 'SOURCE', 
                     name = 'Corporate Active Directory', ),
-                account = beta.models.account_attributes_changed_account.AccountAttributesChanged_account(
+                account = sailpoint.beta.models.account_attributes_changed_account.AccountAttributesChanged_account(
                     id = '52170a74-ca89-11ea-87d0-0242ac130003', 
                     uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108', 
                     name = 'john.doe', 
                     native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com', 
                     type = ACCOUNT, ),
                 changes = [
-                    beta.models.account_attributes_changed_changes_inner.AccountAttributesChanged_changes_inner(
+                    sailpoint.beta.models.account_attributes_changed_changes_inner.AccountAttributesChanged_changes_inner(
                         attribute = 'sn', 
                         old_value = doe, 
                         new_value = ryans, )
@@ -59,22 +59,22 @@ class TestAccountAttributesChanged(unittest.TestCase):
             )
         else:
             return AccountAttributesChanged(
-                identity = beta.models.account_attributes_changed_identity.AccountAttributesChanged_identity(
+                identity = sailpoint.beta.models.account_attributes_changed_identity.AccountAttributesChanged_identity(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                source = beta.models.account_attributes_changed_source.AccountAttributesChanged_source(
+                source = sailpoint.beta.models.account_attributes_changed_source.AccountAttributesChanged_source(
                     id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                     type = 'SOURCE', 
                     name = 'Corporate Active Directory', ),
-                account = beta.models.account_attributes_changed_account.AccountAttributesChanged_account(
+                account = sailpoint.beta.models.account_attributes_changed_account.AccountAttributesChanged_account(
                     id = '52170a74-ca89-11ea-87d0-0242ac130003', 
                     uuid = '1cb1f07d-3e5a-4431-becd-234fa4306108', 
                     name = 'john.doe', 
                     native_identity = 'cn=john.doe,ou=users,dc=acme,dc=com', 
                     type = ACCOUNT, ),
                 changes = [
-                    beta.models.account_attributes_changed_changes_inner.AccountAttributesChanged_changes_inner(
+                    sailpoint.beta.models.account_attributes_changed_changes_inner.AccountAttributesChanged_changes_inner(
                         attribute = 'sn', 
                         old_value = doe, 
                         new_value = ryans, )
@@ -86,6 +86,7 @@ class TestAccountAttributesChanged(unittest.TestCase):
         """Test AccountAttributesChanged"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

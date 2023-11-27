@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.fullcampaign_all_of_sources_with_orphan_entitlements import FullcampaignAllOfSourcesWithOrphanEntitlements
+from sailpoint.beta.models.fullcampaign_all_of_sources_with_orphan_entitlements import FullcampaignAllOfSourcesWithOrphanEntitlements
 
 # TODO update the JSON string below
 json = "{}"

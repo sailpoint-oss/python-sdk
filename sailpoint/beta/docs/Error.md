@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.error import Error
+from sailpoint.beta.models.error import Error
 
 # TODO update the JSON string below
 json = "{}"

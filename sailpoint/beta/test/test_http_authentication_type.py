@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.http_authentication_type import HttpAuthenticationType  # noqa: E501
+from sailpoint.beta.models.http_authentication_type import HttpAuthenticationType  # noqa: E501
+
 
 class TestHttpAuthenticationType(unittest.TestCase):
     """HttpAuthenticationType unit test stubs"""
@@ -29,6 +29,7 @@ class TestHttpAuthenticationType(unittest.TestCase):
     def testHttpAuthenticationType(self):
         """Test HttpAuthenticationType"""
         # inst = HttpAuthenticationType()
+
 
 if __name__ == '__main__':
     unittest.main()

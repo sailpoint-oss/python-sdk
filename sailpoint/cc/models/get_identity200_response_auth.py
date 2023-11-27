@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, StrictStr
+
 
 class GetIdentity200ResponseAuth(BaseModel):
     """
@@ -49,10 +48,7 @@ class GetIdentity200ResponseAuth(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +61,9 @@ class GetIdentity200ResponseAuth(BaseModel):
             return GetIdentity200ResponseAuth.parse_obj(obj)
 
         _obj = GetIdentity200ResponseAuth.parse_obj({
-            "service": obj.get("service"),
-            "encryption": obj.get("encryption")
+            "service":
+            obj.get("service"),
+            "encryption":
+            obj.get("encryption")
         })
         return _obj
-
-

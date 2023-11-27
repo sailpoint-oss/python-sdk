@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner
+from sailpoint.beta.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner
 
 # TODO update the JSON string below
 json = "{}"

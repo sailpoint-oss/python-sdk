@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_exception_report_reference1 import IdentityExceptionReportReference1  # noqa: E501
+from sailpoint.beta.models.identity_exception_report_reference1 import IdentityExceptionReportReference1  # noqa: E501
+
 
 class TestIdentityExceptionReportReference1(unittest.TestCase):
     """IdentityExceptionReportReference1 unit test stubs"""
@@ -26,7 +26,8 @@ class TestIdentityExceptionReportReference1(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> IdentityExceptionReportReference1:
+    def make_instance(self,
+                      include_optional) -> IdentityExceptionReportReference1:
         """Test IdentityExceptionReportReference1
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -48,6 +49,7 @@ class TestIdentityExceptionReportReference1(unittest.TestCase):
         """Test IdentityExceptionReportReference1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

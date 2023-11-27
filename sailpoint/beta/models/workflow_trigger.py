@@ -11,29 +11,32 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class WorkflowTrigger(BaseModel):
     """
     The trigger that starts the workflow  # noqa: E501
     """
     type: StrictStr = Field(..., description="The trigger type")
-    attributes: Dict[str, Any] = Field(..., description="Workflow Trigger Attributes.")
+    attributes: Dict[str,
+                     Any] = Field(...,
+                                  description="Workflow Trigger Attributes.")
     __properties = ["type", "attributes"]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('EVENT', 'EXTERNAL', 'SCHEDULED'):
-            raise ValueError("must be one of enum values ('EVENT', 'EXTERNAL', 'SCHEDULED')")
+            raise ValueError(
+                "must be one of enum values ('EVENT', 'EXTERNAL', 'SCHEDULED')"
+            )
         return value
 
     class Config:
@@ -56,10 +59,7 @@ class WorkflowTrigger(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,5 +76,3 @@ class WorkflowTrigger(BaseModel):
             "attributes": obj.get("attributes")
         })
         return _obj
-
-

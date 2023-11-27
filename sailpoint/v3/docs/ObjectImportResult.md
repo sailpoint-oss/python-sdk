@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.object_import_result import ObjectImportResult
+from sailpoint.v3.models.object_import_result import ObjectImportResult
 
 # TODO update the JSON string below
 json = "{}"

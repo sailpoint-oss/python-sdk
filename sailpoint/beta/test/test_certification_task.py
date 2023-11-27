@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.certification_task import CertificationTask  # noqa: E501
+from sailpoint.beta.models.certification_task import CertificationTask  # noqa: E501
+
 
 class TestCertificationTask(unittest.TestCase):
     """CertificationTask unit test stubs"""
@@ -42,7 +42,7 @@ class TestCertificationTask(unittest.TestCase):
                 target_id = '2c918086719eec070171a7e3355a834c',
                 status = 'QUEUED',
                 errors = [
-                    beta.models.error_message_dto.ErrorMessageDto(
+                    sailpoint.beta.models.error_message_dto.ErrorMessageDto(
                         locale = 'en-US', 
                         locale_origin = 'DEFAULT', 
                         text = 'The request was syntactically correct but its content is semantically invalid.', )
@@ -58,6 +58,7 @@ class TestCertificationTask(unittest.TestCase):
         """Test CertificationTask"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

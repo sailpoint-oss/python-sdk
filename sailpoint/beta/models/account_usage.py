@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,12 +20,21 @@ from datetime import date
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt
 
+
 class AccountUsage(BaseModel):
     """
     AccountUsage
     """
-    var_date: Optional[date] = Field(None, alias="date", description="The first day of the month for which activity is aggregated.")
-    count: Optional[StrictInt] = Field(None, description="The number of days within the month that the account was active in a source.")
+    var_date: Optional[date] = Field(
+        None,
+        alias="date",
+        description=
+        "The first day of the month for which activity is aggregated.")
+    count: Optional[StrictInt] = Field(
+        None,
+        description=
+        "The number of days within the month that the account was active in a source."
+    )
     __properties = ["date", "count"]
 
     class Config:
@@ -49,10 +57,7 @@ class AccountUsage(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,5 +74,3 @@ class AccountUsage(BaseModel):
             "count": obj.get("count")
         })
         return _obj
-
-

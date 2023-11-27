@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.request_on_behalf_of_config import RequestOnBehalfOfConfig  # noqa: E501
+from sailpoint.beta.models.request_on_behalf_of_config import RequestOnBehalfOfConfig  # noqa: E501
+
 
 class TestRequestOnBehalfOfConfig(unittest.TestCase):
     """RequestOnBehalfOfConfig unit test stubs"""
@@ -48,6 +48,7 @@ class TestRequestOnBehalfOfConfig(unittest.TestCase):
         """Test RequestOnBehalfOfConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

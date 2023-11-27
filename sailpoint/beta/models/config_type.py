@@ -11,24 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from beta.models.config_type_enum import ConfigTypeEnum
+from sailpoint.beta.models.config_type_enum import ConfigTypeEnum
+
 
 class ConfigType(BaseModel):
     """
     Type of Reassignment Configuration.  # noqa: E501
     """
     internal_name: Optional[ConfigTypeEnum] = Field(None, alias="internalName")
-    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="Human readable display name of the type to be shown on UI")
-    description: Optional[StrictStr] = Field(None, description="Description of the type of work to be reassigned, displayed by the UI.")
+    display_name: Optional[StrictStr] = Field(
+        None,
+        alias="displayName",
+        description="Human readable display name of the type to be shown on UI"
+    )
+    description: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Description of the type of work to be reassigned, displayed by the UI."
+    )
     __properties = ["internalName", "displayName", "description"]
 
     class Config:
@@ -51,10 +58,7 @@ class ConfigType(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -72,5 +76,3 @@ class ConfigType(BaseModel):
             "description": obj.get("description")
         })
         return _obj
-
-

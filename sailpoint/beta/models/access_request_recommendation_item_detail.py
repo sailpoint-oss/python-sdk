@@ -11,31 +11,50 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
-from beta.models.access_recommendation_message import AccessRecommendationMessage
-from beta.models.access_request_recommendation_item_detail_access import AccessRequestRecommendationItemDetailAccess
-from beta.models.translation_message import TranslationMessage
+from sailpoint.beta.models.access_recommendation_message import AccessRecommendationMessage
+from sailpoint.beta.models.access_request_recommendation_item_detail_access import AccessRequestRecommendationItemDetailAccess
+from sailpoint.beta.models.translation_message import TranslationMessage
+
 
 class AccessRequestRecommendationItemDetail(BaseModel):
     """
     AccessRequestRecommendationItemDetail
     """
-    identity_id: Optional[StrictStr] = Field(None, alias="identityId", description="Identity ID for the recommendation")
+    identity_id: Optional[StrictStr] = Field(
+        None,
+        alias="identityId",
+        description="Identity ID for the recommendation")
     access: Optional[AccessRequestRecommendationItemDetailAccess] = None
-    ignored: Optional[StrictBool] = Field(None, description="Whether or not the identity has already chosen to ignore this recommendation.")
-    requested: Optional[StrictBool] = Field(None, description="Whether or not the identity has already chosen to request this recommendation.")
-    viewed: Optional[StrictBool] = Field(None, description="Whether or not the identity reportedly viewed this recommendation.")
+    ignored: Optional[StrictBool] = Field(
+        None,
+        description=
+        "Whether or not the identity has already chosen to ignore this recommendation."
+    )
+    requested: Optional[StrictBool] = Field(
+        None,
+        description=
+        "Whether or not the identity has already chosen to request this recommendation."
+    )
+    viewed: Optional[StrictBool] = Field(
+        None,
+        description=
+        "Whether or not the identity reportedly viewed this recommendation.")
     messages: Optional[conlist(AccessRecommendationMessage)] = None
-    translation_messages: Optional[conlist(TranslationMessage)] = Field(None, alias="translationMessages", description="The list of translation messages")
-    __properties = ["identityId", "access", "ignored", "requested", "viewed", "messages", "translationMessages"]
+    translation_messages: Optional[conlist(TranslationMessage)] = Field(
+        None,
+        alias="translationMessages",
+        description="The list of translation messages")
+    __properties = [
+        "identityId", "access", "ignored", "requested", "viewed", "messages",
+        "translationMessages"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -57,10 +76,7 @@ class AccessRequestRecommendationItemDetail(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of access
         if self.access:
             _dict['access'] = self.access.to_dict()
@@ -90,14 +106,24 @@ class AccessRequestRecommendationItemDetail(BaseModel):
             return AccessRequestRecommendationItemDetail.parse_obj(obj)
 
         _obj = AccessRequestRecommendationItemDetail.parse_obj({
-            "identity_id": obj.get("identityId"),
-            "access": AccessRequestRecommendationItemDetailAccess.from_dict(obj.get("access")) if obj.get("access") is not None else None,
-            "ignored": obj.get("ignored"),
-            "requested": obj.get("requested"),
-            "viewed": obj.get("viewed"),
-            "messages": [AccessRecommendationMessage.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
-            "translation_messages": [TranslationMessage.from_dict(_item) for _item in obj.get("translationMessages")] if obj.get("translationMessages") is not None else None
+            "identity_id":
+            obj.get("identityId"),
+            "access":
+            AccessRequestRecommendationItemDetailAccess.from_dict(
+                obj.get("access")) if obj.get("access") is not None else None,
+            "ignored":
+            obj.get("ignored"),
+            "requested":
+            obj.get("requested"),
+            "viewed":
+            obj.get("viewed"),
+            "messages": [
+                AccessRecommendationMessage.from_dict(_item)
+                for _item in obj.get("messages")
+            ] if obj.get("messages") is not None else None,
+            "translation_messages": [
+                TranslationMessage.from_dict(_item)
+                for _item in obj.get("translationMessages")
+            ] if obj.get("translationMessages") is not None else None
         })
         return _obj
-
-

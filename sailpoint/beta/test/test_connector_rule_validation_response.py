@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.connector_rule_validation_response import ConnectorRuleValidationResponse  # noqa: E501
+from sailpoint.beta.models.connector_rule_validation_response import ConnectorRuleValidationResponse  # noqa: E501
+
 
 class TestConnectorRuleValidationResponse(unittest.TestCase):
     """ConnectorRuleValidationResponse unit test stubs"""
@@ -26,7 +26,8 @@ class TestConnectorRuleValidationResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ConnectorRuleValidationResponse:
+    def make_instance(self,
+                      include_optional) -> ConnectorRuleValidationResponse:
         """Test ConnectorRuleValidationResponse
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -38,7 +39,7 @@ class TestConnectorRuleValidationResponse(unittest.TestCase):
             return ConnectorRuleValidationResponse(
                 state = 'ERROR',
                 details = [
-                    beta.models.connector_rule_validation_response_details_inner.ConnectorRuleValidationResponse_details_inner(
+                    sailpoint.beta.models.connector_rule_validation_response_details_inner.ConnectorRuleValidationResponse_details_inner(
                         line = 2, 
                         column = 5, 
                         messsage = 'Remove reference to .decrypt(', )
@@ -48,7 +49,7 @@ class TestConnectorRuleValidationResponse(unittest.TestCase):
             return ConnectorRuleValidationResponse(
                 state = 'ERROR',
                 details = [
-                    beta.models.connector_rule_validation_response_details_inner.ConnectorRuleValidationResponse_details_inner(
+                    sailpoint.beta.models.connector_rule_validation_response_details_inner.ConnectorRuleValidationResponse_details_inner(
                         line = 2, 
                         column = 5, 
                         messsage = 'Remove reference to .decrypt(', )
@@ -60,6 +61,7 @@ class TestConnectorRuleValidationResponse(unittest.TestCase):
         """Test ConnectorRuleValidationResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

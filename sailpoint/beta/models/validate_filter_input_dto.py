@@ -11,22 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict
 from pydantic import BaseModel, Field, StrictStr
+
 
 class ValidateFilterInputDto(BaseModel):
     """
     ValidateFilterInputDto
     """
-    input: Dict[str, Any] = Field(..., description="Mock input to evaluate filter expression against.")
-    filter: StrictStr = Field(..., description="JSONPath filter to conditionally invoke trigger when expression evaluates to true.")
+    input: Dict[str, Any] = Field(
+        ..., description="Mock input to evaluate filter expression against.")
+    filter: StrictStr = Field(
+        ...,
+        description=
+        "JSONPath filter to conditionally invoke trigger when expression evaluates to true."
+    )
     __properties = ["input", "filter"]
 
     class Config:
@@ -49,10 +53,7 @@ class ValidateFilterInputDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,5 +70,3 @@ class ValidateFilterInputDto(BaseModel):
             "filter": obj.get("filter")
         })
         return _obj
-
-

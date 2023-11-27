@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.connector_rule_management_api import ConnectorRuleManagementApi  # noqa: E501
+from sailpoint.beta.api.connector_rule_management_api import ConnectorRuleManagementApi  # noqa: E501
 
 
 class TestConnectorRuleManagementApi(unittest.TestCase):

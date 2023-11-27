@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.create_scheduled_search_request import CreateScheduledSearchRequest
+from sailpoint.v3.models.create_scheduled_search_request import CreateScheduledSearchRequest
 
 # TODO update the JSON string below
 json = "{}"

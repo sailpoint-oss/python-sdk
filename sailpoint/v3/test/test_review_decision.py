@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.review_decision import ReviewDecision  # noqa: E501
+from sailpoint.v3.models.review_decision import ReviewDecision  # noqa: E501
+
 
 class TestReviewDecision(unittest.TestCase):
     """ReviewDecision unit test stubs"""
@@ -40,7 +40,7 @@ class TestReviewDecision(unittest.TestCase):
                 decision = 'APPROVE',
                 proposed_end_date = '2017-07-11T18:45:37.098Z',
                 bulk = True,
-                recommendation = v3.models.review_recommendation.ReviewRecommendation(
+                recommendation = sailpoint.v3.models.review_recommendation.ReviewRecommendation(
                     recommendation = '', 
                     reasons = [Reason 1, Reason 2], 
                     timestamp = '2020-06-01T13:49:37.385Z', ),
@@ -58,6 +58,7 @@ class TestReviewDecision(unittest.TestCase):
         """Test ReviewDecision"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

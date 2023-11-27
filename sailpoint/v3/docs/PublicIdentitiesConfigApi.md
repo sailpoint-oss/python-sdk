@@ -1,4 +1,4 @@
-# v3.PublicIdentitiesConfigApi
+# sailpoint.v3.PublicIdentitiesConfigApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -22,14 +22,14 @@ Returns the publicly visible attributes of an identity available to request appr
 ```python
 import time
 import os
-import v3
-from v3.models.public_identity_config import PublicIdentityConfig
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.public_identity_config import PublicIdentityConfig
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -43,9 +43,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.PublicIdentitiesConfigApi(api_client)
+    api_instance = sailpoint.v3.PublicIdentitiesConfigApi(api_client)
 
     try:
         # Get the Public Identities Configuration
@@ -100,14 +100,14 @@ Updates the publicly visible attributes of an identity available to request appr
 ```python
 import time
 import os
-import v3
-from v3.models.public_identity_config import PublicIdentityConfig
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.public_identity_config import PublicIdentityConfig
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -121,10 +121,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.PublicIdentitiesConfigApi(api_client)
-    public_identity_config = v3.PublicIdentityConfig() # PublicIdentityConfig | 
+    api_instance = sailpoint.v3.PublicIdentitiesConfigApi(api_client)
+    public_identity_config = sailpoint.v3.PublicIdentityConfig() # PublicIdentityConfig | 
 
     try:
         # Update the Public Identities Configuration

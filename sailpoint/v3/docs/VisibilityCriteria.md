@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.visibility_criteria import VisibilityCriteria
+from sailpoint.v3.models.visibility_criteria import VisibilityCriteria
 
 # TODO update the JSON string below
 json = "{}"

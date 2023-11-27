@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,27 +19,55 @@ import json
 from datetime import datetime
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, validator
-from beta.models.identity_dto_manager_ref import IdentityDtoManagerRef
-from beta.models.lifecycle_state_dto import LifecycleStateDto
+from sailpoint.beta.models.identity_dto_manager_ref import IdentityDtoManagerRef
+from sailpoint.beta.models.lifecycle_state_dto import LifecycleStateDto
+
 
 class Identity(BaseModel):
     """
     Identity
     """
-    id: Optional[StrictStr] = Field(None, description="System-generated unique ID of the Object")
+    id: Optional[StrictStr] = Field(
+        None, description="System-generated unique ID of the Object")
     name: StrictStr = Field(..., description="Name of the Object")
-    created: Optional[datetime] = Field(None, description="Creation date of the Object")
-    modified: Optional[datetime] = Field(None, description="Last modification date of the Object")
-    alias: Optional[StrictStr] = Field(None, description="Alternate unique identifier for the identity")
-    email_address: Optional[StrictStr] = Field(None, alias="emailAddress", description="The email address of the identity")
-    processing_state: Optional[StrictStr] = Field(None, alias="processingState", description="The processing state of the identity")
-    identity_status: Optional[StrictStr] = Field(None, alias="identityStatus", description="The identity's status in the system")
-    manager_ref: Optional[IdentityDtoManagerRef] = Field(None, alias="managerRef")
-    is_manager: Optional[StrictBool] = Field(False, alias="isManager", description="Whether this identity is a manager of another identity")
-    last_refresh: Optional[datetime] = Field(None, alias="lastRefresh", description="The last time the identity was refreshed by the system")
-    attributes: Optional[Dict[str, Any]] = Field(None, description="A map with the identity attributes for the identity")
-    lifecycle_state: Optional[LifecycleStateDto] = Field(None, alias="lifecycleState")
-    __properties = ["id", "name", "created", "modified", "alias", "emailAddress", "processingState", "identityStatus", "managerRef", "isManager", "lastRefresh", "attributes", "lifecycleState"]
+    created: Optional[datetime] = Field(
+        None, description="Creation date of the Object")
+    modified: Optional[datetime] = Field(
+        None, description="Last modification date of the Object")
+    alias: Optional[StrictStr] = Field(
+        None, description="Alternate unique identifier for the identity")
+    email_address: Optional[StrictStr] = Field(
+        None,
+        alias="emailAddress",
+        description="The email address of the identity")
+    processing_state: Optional[StrictStr] = Field(
+        None,
+        alias="processingState",
+        description="The processing state of the identity")
+    identity_status: Optional[StrictStr] = Field(
+        None,
+        alias="identityStatus",
+        description="The identity's status in the system")
+    manager_ref: Optional[IdentityDtoManagerRef] = Field(None,
+                                                         alias="managerRef")
+    is_manager: Optional[StrictBool] = Field(
+        False,
+        alias="isManager",
+        description="Whether this identity is a manager of another identity")
+    last_refresh: Optional[datetime] = Field(
+        None,
+        alias="lastRefresh",
+        description="The last time the identity was refreshed by the system")
+    attributes: Optional[Dict[str, Any]] = Field(
+        None,
+        description="A map with the identity attributes for the identity")
+    lifecycle_state: Optional[LifecycleStateDto] = Field(
+        None, alias="lifecycleState")
+    __properties = [
+        "id", "name", "created", "modified", "alias", "emailAddress",
+        "processingState", "identityStatus", "managerRef", "isManager",
+        "lastRefresh", "attributes", "lifecycleState"
+    ]
 
     @validator('processing_state')
     def processing_state_validate_enum(cls, value):
@@ -58,8 +85,12 @@ class Identity(BaseModel):
         if value is None:
             return value
 
-        if value not in ('UNREGISTERED', 'REGISTERED', 'PENDING', 'WARNING', 'DISABLED', 'ACTIVE', 'DEACTIVATED', 'TERMINATED', 'ERROR', 'LOCKED'):
-            raise ValueError("must be one of enum values ('UNREGISTERED', 'REGISTERED', 'PENDING', 'WARNING', 'DISABLED', 'ACTIVE', 'DEACTIVATED', 'TERMINATED', 'ERROR', 'LOCKED')")
+        if value not in ('UNREGISTERED', 'REGISTERED', 'PENDING', 'WARNING',
+                         'DISABLED', 'ACTIVE', 'DEACTIVATED', 'TERMINATED',
+                         'ERROR', 'LOCKED'):
+            raise ValueError(
+                "must be one of enum values ('UNREGISTERED', 'REGISTERED', 'PENDING', 'WARNING', 'DISABLED', 'ACTIVE', 'DEACTIVATED', 'TERMINATED', 'ERROR', 'LOCKED')"
+            )
         return value
 
     class Config:
@@ -84,9 +115,9 @@ class Identity(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "id",
-                            "created",
-                            "modified",
+                              "id",
+                              "created",
+                              "modified",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of manager_ref
@@ -112,20 +143,34 @@ class Identity(BaseModel):
             return Identity.parse_obj(obj)
 
         _obj = Identity.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "alias": obj.get("alias"),
-            "email_address": obj.get("emailAddress"),
-            "processing_state": obj.get("processingState"),
-            "identity_status": obj.get("identityStatus"),
-            "manager_ref": IdentityDtoManagerRef.from_dict(obj.get("managerRef")) if obj.get("managerRef") is not None else None,
-            "is_manager": obj.get("isManager") if obj.get("isManager") is not None else False,
-            "last_refresh": obj.get("lastRefresh"),
-            "attributes": obj.get("attributes"),
-            "lifecycle_state": LifecycleStateDto.from_dict(obj.get("lifecycleState")) if obj.get("lifecycleState") is not None else None
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified"),
+            "alias":
+            obj.get("alias"),
+            "email_address":
+            obj.get("emailAddress"),
+            "processing_state":
+            obj.get("processingState"),
+            "identity_status":
+            obj.get("identityStatus"),
+            "manager_ref":
+            IdentityDtoManagerRef.from_dict(obj.get("managerRef"))
+            if obj.get("managerRef") is not None else None,
+            "is_manager":
+            obj.get("isManager")
+            if obj.get("isManager") is not None else False,
+            "last_refresh":
+            obj.get("lastRefresh"),
+            "attributes":
+            obj.get("attributes"),
+            "lifecycle_state":
+            LifecycleStateDto.from_dict(obj.get("lifecycleState"))
+            if obj.get("lifecycleState") is not None else None
         })
         return _obj
-
-

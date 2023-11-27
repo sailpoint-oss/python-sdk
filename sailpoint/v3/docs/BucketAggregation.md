@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.bucket_aggregation import BucketAggregation
+from sailpoint.v3.models.bucket_aggregation import BucketAggregation
 
 # TODO update the JSON string below
 json = "{}"

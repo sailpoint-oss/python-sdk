@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class CampaignAllOfRoleCompositionCampaignInfoRemediatorRef(BaseModel):
     """
@@ -27,7 +26,8 @@ class CampaignAllOfRoleCompositionCampaignInfoRemediatorRef(BaseModel):
     """
     type: StrictStr = Field(..., description="Legal Remediator Type")
     id: StrictStr = Field(..., description="The ID of the remediator.")
-    name: Optional[StrictStr] = Field(None, description="The name of the remediator.")
+    name: Optional[StrictStr] = Field(
+        None, description="The name of the remediator.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -51,33 +51,35 @@ class CampaignAllOfRoleCompositionCampaignInfoRemediatorRef(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CampaignAllOfRoleCompositionCampaignInfoRemediatorRef:
+    def from_json(
+        cls, json_str: str
+    ) -> CampaignAllOfRoleCompositionCampaignInfoRemediatorRef:
         """Create an instance of CampaignAllOfRoleCompositionCampaignInfoRemediatorRef from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                            "name",
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={
+            "name",
+        }, exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CampaignAllOfRoleCompositionCampaignInfoRemediatorRef:
+    def from_dict(
+            cls, obj: dict
+    ) -> CampaignAllOfRoleCompositionCampaignInfoRemediatorRef:
         """Create an instance of CampaignAllOfRoleCompositionCampaignInfoRemediatorRef from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.parse_obj(obj)
+            return CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.parse_obj(
+                obj)
 
-        _obj = CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.parse_obj({
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
-        })
+        _obj = CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.parse_obj(
+            {
+                "type": obj.get("type"),
+                "id": obj.get("id"),
+                "name": obj.get("name")
+            })
         return _obj
-
-

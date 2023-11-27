@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_association_details import IdentityAssociationDetails  # noqa: E501
+from sailpoint.beta.models.identity_association_details import IdentityAssociationDetails  # noqa: E501
+
 
 class TestIdentityAssociationDetails(unittest.TestCase):
     """IdentityAssociationDetails unit test stubs"""
@@ -38,7 +38,7 @@ class TestIdentityAssociationDetails(unittest.TestCase):
             return IdentityAssociationDetails(
                 message = 'Identity cannot be deleted as it is owner of following resources',
                 association_details = [
-                    beta.models.identity_association_details_association_details_inner.IdentityAssociationDetails_associationDetails_inner(
+                    sailpoint.beta.models.identity_association_details_association_details_inner.IdentityAssociationDetails_associationDetails_inner(
                         association_type = 'CAMPAIGN_OWNER', 
                         entities = {id=b660a232f05b4e04812ca974b3011e0f, name=Gaston.800ddf9640a, type=CAMPAIGN_CAMPAIGNER}, )
                     ]
@@ -52,6 +52,7 @@ class TestIdentityAssociationDetails(unittest.TestCase):
         """Test IdentityAssociationDetails"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,4 +1,4 @@
-# v2.GovernanceGroupsApi
+# sailpoint.v2.GovernanceGroupsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v2*
 
@@ -29,15 +29,15 @@ This API allows you to bulk-delete work groups
 ```python
 import time
 import os
-import v2
-from v2.models.bulk_delete_work_groups200_response import BulkDeleteWorkGroups200Response
-from v2.models.bulk_delete_work_groups_request import BulkDeleteWorkGroupsRequest
-from v2.rest import ApiException
+import sailpoint.v2
+from sailpoint.v2.models.bulk_delete_work_groups200_response import BulkDeleteWorkGroups200Response
+from sailpoint.v2.models.bulk_delete_work_groups_request import BulkDeleteWorkGroupsRequest
+from sailpoint.v2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v2.Configuration(
+configuration = sailpoint.v2.Configuration(
     host = "https://sailpoint.api.identitynow.com/v2"
 )
 
@@ -51,10 +51,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v2.ApiClient(configuration) as api_client:
+with sailpoint.v2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v2.GovernanceGroupsApi(api_client)
-    bulk_delete_work_groups_request = v2.BulkDeleteWorkGroupsRequest() # BulkDeleteWorkGroupsRequest | Work group ids to delete
+    api_instance = sailpoint.v2.GovernanceGroupsApi(api_client)
+    bulk_delete_work_groups_request = sailpoint.v2.BulkDeleteWorkGroupsRequest() # BulkDeleteWorkGroupsRequest | Work group ids to delete
 
     try:
         # Bulk delete work groups
@@ -107,15 +107,15 @@ This API allows you to create a work group
 ```python
 import time
 import os
-import v2
-from v2.models.create_workgroup_request import CreateWorkgroupRequest
-from v2.models.list_workgroups200_response_inner import ListWorkgroups200ResponseInner
-from v2.rest import ApiException
+import sailpoint.v2
+from sailpoint.v2.models.create_workgroup_request import CreateWorkgroupRequest
+from sailpoint.v2.models.list_workgroups200_response_inner import ListWorkgroups200ResponseInner
+from sailpoint.v2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v2.Configuration(
+configuration = sailpoint.v2.Configuration(
     host = "https://sailpoint.api.identitynow.com/v2"
 )
 
@@ -129,10 +129,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v2.ApiClient(configuration) as api_client:
+with sailpoint.v2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v2.GovernanceGroupsApi(api_client)
-    create_workgroup_request = v2.CreateWorkgroupRequest() # CreateWorkgroupRequest | Work group to create.
+    api_instance = sailpoint.v2.GovernanceGroupsApi(api_client)
+    create_workgroup_request = sailpoint.v2.CreateWorkgroupRequest() # CreateWorkgroupRequest | Work group to create.
 
     try:
         # Create Work Group
@@ -185,13 +185,13 @@ This API deletes a single workgroup based on the ID
 ```python
 import time
 import os
-import v2
-from v2.rest import ApiException
+import sailpoint.v2
+from sailpoint.v2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v2.Configuration(
+configuration = sailpoint.v2.Configuration(
     host = "https://sailpoint.api.identitynow.com/v2"
 )
 
@@ -205,9 +205,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v2.ApiClient(configuration) as api_client:
+with sailpoint.v2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v2.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.v2.GovernanceGroupsApi(api_client)
     workgroup_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The workgroup ID
 
     try:
@@ -259,14 +259,14 @@ This API returns the details for a single workgroup based on the ID
 ```python
 import time
 import os
-import v2
-from v2.models.list_workgroups200_response_inner import ListWorkgroups200ResponseInner
-from v2.rest import ApiException
+import sailpoint.v2
+from sailpoint.v2.models.list_workgroups200_response_inner import ListWorkgroups200ResponseInner
+from sailpoint.v2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v2.Configuration(
+configuration = sailpoint.v2.Configuration(
     host = "https://sailpoint.api.identitynow.com/v2"
 )
 
@@ -280,9 +280,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v2.ApiClient(configuration) as api_client:
+with sailpoint.v2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v2.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.v2.GovernanceGroupsApi(api_client)
     workgroup_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The workgroup ID
 
     try:
@@ -336,14 +336,14 @@ This API returns the connections of a work group
 ```python
 import time
 import os
-import v2
-from v2.models.list_workgroup_connections200_response_inner import ListWorkgroupConnections200ResponseInner
-from v2.rest import ApiException
+import sailpoint.v2
+from sailpoint.v2.models.list_workgroup_connections200_response_inner import ListWorkgroupConnections200ResponseInner
+from sailpoint.v2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v2.Configuration(
+configuration = sailpoint.v2.Configuration(
     host = "https://sailpoint.api.identitynow.com/v2"
 )
 
@@ -357,9 +357,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v2.ApiClient(configuration) as api_client:
+with sailpoint.v2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v2.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.v2.GovernanceGroupsApi(api_client)
     workgroup_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The workgroup ID
 
     try:
@@ -413,14 +413,14 @@ This API returns the members of a work group
 ```python
 import time
 import os
-import v2
-from v2.models.list_workgroup_members200_response_inner import ListWorkgroupMembers200ResponseInner
-from v2.rest import ApiException
+import sailpoint.v2
+from sailpoint.v2.models.list_workgroup_members200_response_inner import ListWorkgroupMembers200ResponseInner
+from sailpoint.v2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v2.Configuration(
+configuration = sailpoint.v2.Configuration(
     host = "https://sailpoint.api.identitynow.com/v2"
 )
 
@@ -434,9 +434,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v2.ApiClient(configuration) as api_client:
+with sailpoint.v2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v2.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.v2.GovernanceGroupsApi(api_client)
     workgroup_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The workgroup ID
     limit = 250 # int | Max number of results to return (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. (optional) (default to 0)
@@ -496,14 +496,14 @@ This API returns a list of work groups
 ```python
 import time
 import os
-import v2
-from v2.models.list_workgroups200_response_inner import ListWorkgroups200ResponseInner
-from v2.rest import ApiException
+import sailpoint.v2
+from sailpoint.v2.models.list_workgroups200_response_inner import ListWorkgroups200ResponseInner
+from sailpoint.v2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v2.Configuration(
+configuration = sailpoint.v2.Configuration(
     host = "https://sailpoint.api.identitynow.com/v2"
 )
 
@@ -517,9 +517,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v2.ApiClient(configuration) as api_client:
+with sailpoint.v2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v2.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.v2.GovernanceGroupsApi(api_client)
     limit = 250 # int | Max number of results to return (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. (optional) (default to 0)
     filters = 'filters_example' # str | Filter results using the following syntax. [{property:name, value: \"Tyler\", operation: EQ}] (optional)
@@ -577,14 +577,14 @@ This API allows you to modify the members of a work group
 ```python
 import time
 import os
-import v2
-from v2.models.modify_workgroup_members_request import ModifyWorkgroupMembersRequest
-from v2.rest import ApiException
+import sailpoint.v2
+from sailpoint.v2.models.modify_workgroup_members_request import ModifyWorkgroupMembersRequest
+from sailpoint.v2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v2.Configuration(
+configuration = sailpoint.v2.Configuration(
     host = "https://sailpoint.api.identitynow.com/v2"
 )
 
@@ -598,11 +598,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v2.ApiClient(configuration) as api_client:
+with sailpoint.v2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v2.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.v2.GovernanceGroupsApi(api_client)
     workgroup_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The workgroup ID
-    modify_workgroup_members_request = v2.ModifyWorkgroupMembersRequest() # ModifyWorkgroupMembersRequest | Add/Remove workgroup member ids.
+    modify_workgroup_members_request = sailpoint.v2.ModifyWorkgroupMembersRequest() # ModifyWorkgroupMembersRequest | Add/Remove workgroup member ids.
 
     try:
         # Modify Work Group Members
@@ -654,15 +654,15 @@ This API updates and returns the details for a single workgroup based on the ID
 ```python
 import time
 import os
-import v2
-from v2.models.create_workgroup_request import CreateWorkgroupRequest
-from v2.models.list_workgroups200_response_inner import ListWorkgroups200ResponseInner
-from v2.rest import ApiException
+import sailpoint.v2
+from sailpoint.v2.models.create_workgroup_request import CreateWorkgroupRequest
+from sailpoint.v2.models.list_workgroups200_response_inner import ListWorkgroups200ResponseInner
+from sailpoint.v2.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v2
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v2.Configuration(
+configuration = sailpoint.v2.Configuration(
     host = "https://sailpoint.api.identitynow.com/v2"
 )
 
@@ -676,11 +676,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v2.ApiClient(configuration) as api_client:
+with sailpoint.v2.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v2.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.v2.GovernanceGroupsApi(api_client)
     workgroup_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The workgroup ID
-    create_workgroup_request = v2.CreateWorkgroupRequest() # CreateWorkgroupRequest | Work group to modify.
+    create_workgroup_request = sailpoint.v2.CreateWorkgroupRequest() # CreateWorkgroupRequest | Work group to modify.
 
     try:
         # Update Work Group By Id

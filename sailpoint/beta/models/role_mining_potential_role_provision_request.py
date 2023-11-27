@@ -11,23 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class RoleMiningPotentialRoleProvisionRequest(BaseModel):
     """
     RoleMiningPotentialRoleProvisionRequest
     """
-    role_name: Optional[StrictStr] = Field(None, alias="roleName", description="Name of the new role being created")
-    role_description: Optional[StrictStr] = Field(None, alias="roleDescription", description="Short description of the new role being created")
-    owner_id: Optional[StrictStr] = Field(None, alias="ownerId", description="ID of the identity that will own this role")
+    role_name: Optional[StrictStr] = Field(
+        None,
+        alias="roleName",
+        description="Name of the new role being created")
+    role_description: Optional[StrictStr] = Field(
+        None,
+        alias="roleDescription",
+        description="Short description of the new role being created")
+    owner_id: Optional[StrictStr] = Field(
+        None,
+        alias="ownerId",
+        description="ID of the identity that will own this role")
     __properties = ["roleName", "roleDescription", "ownerId"]
 
     class Config:
@@ -44,16 +52,14 @@ class RoleMiningPotentialRoleProvisionRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RoleMiningPotentialRoleProvisionRequest:
+    def from_json(cls,
+                  json_str: str) -> RoleMiningPotentialRoleProvisionRequest:
         """Create an instance of RoleMiningPotentialRoleProvisionRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,10 +72,11 @@ class RoleMiningPotentialRoleProvisionRequest(BaseModel):
             return RoleMiningPotentialRoleProvisionRequest.parse_obj(obj)
 
         _obj = RoleMiningPotentialRoleProvisionRequest.parse_obj({
-            "role_name": obj.get("roleName"),
-            "role_description": obj.get("roleDescription"),
-            "owner_id": obj.get("ownerId")
+            "role_name":
+            obj.get("roleName"),
+            "role_description":
+            obj.get("roleDescription"),
+            "owner_id":
+            obj.get("ownerId")
         })
         return _obj
-
-

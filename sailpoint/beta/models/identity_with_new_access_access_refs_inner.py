@@ -11,23 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class IdentityWithNewAccessAccessRefsInner(BaseModel):
     """
     Entitlement including a specific set of access.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="Entitlement's DTO type.")
+    type: Optional[StrictStr] = Field(None,
+                                      description="Entitlement's DTO type.")
     id: Optional[StrictStr] = Field(None, description="Entitlement's ID.")
-    name: Optional[StrictStr] = Field(None, description="Entitlement's display name.")
+    name: Optional[StrictStr] = Field(
+        None, description="Entitlement's display name.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -60,10 +61,7 @@ class IdentityWithNewAccessAccessRefsInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,10 +74,11 @@ class IdentityWithNewAccessAccessRefsInner(BaseModel):
             return IdentityWithNewAccessAccessRefsInner.parse_obj(obj)
 
         _obj = IdentityWithNewAccessAccessRefsInner.parse_obj({
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "type":
+            obj.get("type"),
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name")
         })
         return _obj
-
-

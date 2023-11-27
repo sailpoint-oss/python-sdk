@@ -11,16 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
-from beta.models.form_definition_response import FormDefinitionResponse
+from sailpoint.beta.models.form_definition_response import FormDefinitionResponse
+
 
 class ExportFormDefinitionsByTenant200ResponseInner(BaseModel):
     """
@@ -45,23 +44,23 @@ class ExportFormDefinitionsByTenant200ResponseInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ExportFormDefinitionsByTenant200ResponseInner:
+    def from_json(
+            cls,
+            json_str: str) -> ExportFormDefinitionsByTenant200ResponseInner:
         """Create an instance of ExportFormDefinitionsByTenant200ResponseInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of object
         if self.object:
             _dict['object'] = self.object.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ExportFormDefinitionsByTenant200ResponseInner:
+    def from_dict(cls,
+                  obj: dict) -> ExportFormDefinitionsByTenant200ResponseInner:
         """Create an instance of ExportFormDefinitionsByTenant200ResponseInner from a dict"""
         if obj is None:
             return None
@@ -70,10 +69,12 @@ class ExportFormDefinitionsByTenant200ResponseInner(BaseModel):
             return ExportFormDefinitionsByTenant200ResponseInner.parse_obj(obj)
 
         _obj = ExportFormDefinitionsByTenant200ResponseInner.parse_obj({
-            "object": FormDefinitionResponse.from_dict(obj.get("object")) if obj.get("object") is not None else None,
-            "var_self": obj.get("self"),
-            "version": obj.get("version")
+            "object":
+            FormDefinitionResponse.from_dict(obj.get("object"))
+            if obj.get("object") is not None else None,
+            "var_self":
+            obj.get("self"),
+            "version":
+            obj.get("version")
         })
         return _obj
-
-

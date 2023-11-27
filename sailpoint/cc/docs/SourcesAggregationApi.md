@@ -1,4 +1,4 @@
-# cc.SourcesAggregationApi
+# sailpoint.cc.SourcesAggregationApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
@@ -22,13 +22,13 @@ Aggregates a delimited file for the given source.  This only works for file-base
 ```python
 import time
 import os
-import cc
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -42,9 +42,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.SourcesAggregationApi(api_client)
+    api_instance = sailpoint.cc.SourcesAggregationApi(api_client)
     id = 'id_example' # str | 
     content_type = 'application/x-www-form-urlencoded' # str |  (optional)
     disable_optimization = True # bool |  (optional)
@@ -104,13 +104,13 @@ Aggregates a delimited file for the given source.  This only works for file-base
 ```python
 import time
 import os
-import cc
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -124,9 +124,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.SourcesAggregationApi(api_client)
+    api_instance = sailpoint.cc.SourcesAggregationApi(api_client)
     id = 'id_example' # str | 
     content_type = 'application/x-www-form-urlencoded' # str |  (optional)
     file = None # bytearray |  (optional)

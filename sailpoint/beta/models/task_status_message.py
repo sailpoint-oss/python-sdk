@@ -11,16 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, List
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-from beta.models.localized_message import LocalizedMessage
+from sailpoint.beta.models.localized_message import LocalizedMessage
+
 
 class TaskStatusMessage(BaseModel):
     """
@@ -29,14 +28,16 @@ class TaskStatusMessage(BaseModel):
     type: StrictStr = Field(..., description="Type of the message")
     localized_text: LocalizedMessage = Field(..., alias="localizedText")
     key: StrictStr = Field(..., description="Key of the message")
-    parameters: conlist(Dict[str, Any]) = Field(..., description="Message parameters for internationalization")
+    parameters: conlist(Dict[str, Any]) = Field(
+        ..., description="Message parameters for internationalization")
     __properties = ["type", "localizedText", "key", "parameters"]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('INFO', 'WARN', 'ERROR'):
-            raise ValueError("must be one of enum values ('INFO', 'WARN', 'ERROR')")
+            raise ValueError(
+                "must be one of enum values ('INFO', 'WARN', 'ERROR')")
         return value
 
     class Config:
@@ -59,10 +60,7 @@ class TaskStatusMessage(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of localized_text
         if self.localized_text:
             _dict['localizedText'] = self.localized_text.to_dict()
@@ -78,11 +76,14 @@ class TaskStatusMessage(BaseModel):
             return TaskStatusMessage.parse_obj(obj)
 
         _obj = TaskStatusMessage.parse_obj({
-            "type": obj.get("type"),
-            "localized_text": LocalizedMessage.from_dict(obj.get("localizedText")) if obj.get("localizedText") is not None else None,
-            "key": obj.get("key"),
-            "parameters": obj.get("parameters")
+            "type":
+            obj.get("type"),
+            "localized_text":
+            LocalizedMessage.from_dict(obj.get("localizedText"))
+            if obj.get("localizedText") is not None else None,
+            "key":
+            obj.get("key"),
+            "parameters":
+            obj.get("parameters")
         })
         return _obj
-
-

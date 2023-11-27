@@ -11,30 +11,48 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
-from beta.models.source1 import Source1
+from sailpoint.beta.models.source1 import Source1
+
 
 class IdentityAttribute(BaseModel):
     """
     IdentityAttribute
     """
-    name: Optional[StrictStr] = Field(None, description="The technical name of the identity attribute")
-    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="The business-friendly name of the identity attribute")
-    standard: Optional[StrictBool] = Field(False, description="Shows if the attribute is 'standard' or default")
-    type: Optional[StrictStr] = Field(None, description="The type of the identity attribute")
-    multi: Optional[StrictBool] = Field(False, description="Shows if the identity attribute is multi-valued")
-    searchable: Optional[StrictBool] = Field(False, description="Shows if the identity attribute is searchable")
-    system: Optional[StrictBool] = Field(False, description="Shows this is 'system' identity attribute that does not have a source and is not configurable.")
-    sources: Optional[conlist(Source1)] = Field(None, description="List of sources for an attribute, this specifies how the value of the rule is derived")
-    __properties = ["name", "displayName", "standard", "type", "multi", "searchable", "system", "sources"]
+    name: Optional[StrictStr] = Field(
+        None, description="The technical name of the identity attribute")
+    display_name: Optional[StrictStr] = Field(
+        None,
+        alias="displayName",
+        description="The business-friendly name of the identity attribute")
+    standard: Optional[StrictBool] = Field(
+        False, description="Shows if the attribute is 'standard' or default")
+    type: Optional[StrictStr] = Field(
+        None, description="The type of the identity attribute")
+    multi: Optional[StrictBool] = Field(
+        False, description="Shows if the identity attribute is multi-valued")
+    searchable: Optional[StrictBool] = Field(
+        False, description="Shows if the identity attribute is searchable")
+    system: Optional[StrictBool] = Field(
+        False,
+        description=
+        "Shows this is 'system' identity attribute that does not have a source and is not configurable."
+    )
+    sources: Optional[conlist(Source1)] = Field(
+        None,
+        description=
+        "List of sources for an attribute, this specifies how the value of the rule is derived"
+    )
+    __properties = [
+        "name", "displayName", "standard", "type", "multi", "searchable",
+        "system", "sources"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -56,10 +74,7 @@ class IdentityAttribute(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in sources (list)
         _items = []
         if self.sources:
@@ -79,15 +94,23 @@ class IdentityAttribute(BaseModel):
             return IdentityAttribute.parse_obj(obj)
 
         _obj = IdentityAttribute.parse_obj({
-            "name": obj.get("name"),
-            "display_name": obj.get("displayName"),
-            "standard": obj.get("standard") if obj.get("standard") is not None else False,
-            "type": obj.get("type"),
-            "multi": obj.get("multi") if obj.get("multi") is not None else False,
-            "searchable": obj.get("searchable") if obj.get("searchable") is not None else False,
-            "system": obj.get("system") if obj.get("system") is not None else False,
-            "sources": [Source1.from_dict(_item) for _item in obj.get("sources")] if obj.get("sources") is not None else None
+            "name":
+            obj.get("name"),
+            "display_name":
+            obj.get("displayName"),
+            "standard":
+            obj.get("standard") if obj.get("standard") is not None else False,
+            "type":
+            obj.get("type"),
+            "multi":
+            obj.get("multi") if obj.get("multi") is not None else False,
+            "searchable":
+            obj.get("searchable")
+            if obj.get("searchable") is not None else False,
+            "system":
+            obj.get("system") if obj.get("system") is not None else False,
+            "sources":
+            [Source1.from_dict(_item) for _item in obj.get("sources")]
+            if obj.get("sources") is not None else None
         })
         return _obj
-
-

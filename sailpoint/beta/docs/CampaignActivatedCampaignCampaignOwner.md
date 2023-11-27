@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.campaign_activated_campaign_campaign_owner import CampaignActivatedCampaignCampaignOwner
+from sailpoint.beta.models.campaign_activated_campaign_campaign_owner import CampaignActivatedCampaignCampaignOwner
 
 # TODO update the JSON string below
 json = "{}"

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.review_reassign import ReviewReassign  # noqa: E501
+from sailpoint.beta.models.review_reassign import ReviewReassign  # noqa: E501
+
 
 class TestReviewReassign(unittest.TestCase):
     """ReviewReassign unit test stubs"""
@@ -37,7 +37,7 @@ class TestReviewReassign(unittest.TestCase):
         if include_optional:
             return ReviewReassign(
                 reassign = [
-                    beta.models.reassign_reference.ReassignReference(
+                    sailpoint.beta.models.reassign_reference.ReassignReference(
                         id = 'ef38f94347e94562b5bb8424a56397d8', 
                         type = 'ITEM', )
                     ],
@@ -47,7 +47,7 @@ class TestReviewReassign(unittest.TestCase):
         else:
             return ReviewReassign(
                 reassign = [
-                    beta.models.reassign_reference.ReassignReference(
+                    sailpoint.beta.models.reassign_reference.ReassignReference(
                         id = 'ef38f94347e94562b5bb8424a56397d8', 
                         type = 'ITEM', )
                     ],
@@ -60,6 +60,7 @@ class TestReviewReassign(unittest.TestCase):
         """Test ReviewReassign"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

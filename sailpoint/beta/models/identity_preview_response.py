@@ -11,24 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
-from beta.models.identity_attribute_preview import IdentityAttributePreview
-from beta.models.identity_preview_response_identity import IdentityPreviewResponseIdentity
+from sailpoint.beta.models.identity_attribute_preview import IdentityAttributePreview
+from sailpoint.beta.models.identity_preview_response_identity import IdentityPreviewResponseIdentity
+
 
 class IdentityPreviewResponse(BaseModel):
     """
     IdentityPreviewResponse
     """
     identity: Optional[IdentityPreviewResponseIdentity] = None
-    preview_attributes: Optional[conlist(IdentityAttributePreview)] = Field(None, alias="previewAttributes")
+    preview_attributes: Optional[conlist(IdentityAttributePreview)] = Field(
+        None, alias="previewAttributes")
     __properties = ["identity", "previewAttributes"]
 
     class Config:
@@ -51,10 +51,7 @@ class IdentityPreviewResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of identity
         if self.identity:
             _dict['identity'] = self.identity.to_dict()
@@ -77,9 +74,12 @@ class IdentityPreviewResponse(BaseModel):
             return IdentityPreviewResponse.parse_obj(obj)
 
         _obj = IdentityPreviewResponse.parse_obj({
-            "identity": IdentityPreviewResponseIdentity.from_dict(obj.get("identity")) if obj.get("identity") is not None else None,
-            "preview_attributes": [IdentityAttributePreview.from_dict(_item) for _item in obj.get("previewAttributes")] if obj.get("previewAttributes") is not None else None
+            "identity":
+            IdentityPreviewResponseIdentity.from_dict(obj.get("identity"))
+            if obj.get("identity") is not None else None,
+            "preview_attributes": [
+                IdentityAttributePreview.from_dict(_item)
+                for _item in obj.get("previewAttributes")
+            ] if obj.get("previewAttributes") is not None else None
         })
         return _obj
-
-

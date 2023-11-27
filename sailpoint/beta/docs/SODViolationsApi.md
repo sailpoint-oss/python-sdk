@@ -1,4 +1,4 @@
-# beta.SODViolationsApi
+# sailpoint.beta.SODViolationsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -21,15 +21,15 @@ This API is used to check if granting some additional accesses would cause the s
 ```python
 import time
 import os
-import beta
-from beta.models.identity_with_new_access import IdentityWithNewAccess
-from beta.models.violation_prediction import ViolationPrediction
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_with_new_access import IdentityWithNewAccess
+from sailpoint.beta.models.violation_prediction import ViolationPrediction
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -43,9 +43,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SODViolationsApi(api_client)
+    api_instance = sailpoint.beta.SODViolationsApi(api_client)
     identity_with_new_access = {identityId=2c91808568c529c60168cca6f90c1313, accessRefs=[{type=ENTITLEMENT, id=2c918087682f9a86016839c050861ab1, name=CN=Information Access,OU=test,OU=test-service,DC=TestAD,DC=local}, {type=ENTITLEMENT, id=2c918087682f9a86016839c0509c1ab2, name=CN=Information Technology,OU=test,OU=test-service,DC=TestAD,DC=local}]} # IdentityWithNewAccess | 
 
     try:

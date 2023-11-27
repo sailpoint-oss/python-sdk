@@ -11,23 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class AccountAggregationCompletedSource(BaseModel):
     """
     The source the accounts are being aggregated from.  # noqa: E501
     """
-    type: StrictStr = Field(..., description="The DTO type of the source the accounts are being aggregated from.")
-    id: StrictStr = Field(..., description="The ID of the source the accounts are being aggregated from.")
-    name: StrictStr = Field(..., description="Display name of the source the accounts are being aggregated from.")
+    type: StrictStr = Field(
+        ...,
+        description=
+        "The DTO type of the source the accounts are being aggregated from.")
+    id: StrictStr = Field(
+        ...,
+        description=
+        "The ID of the source the accounts are being aggregated from.")
+    name: StrictStr = Field(
+        ...,
+        description=
+        "Display name of the source the accounts are being aggregated from.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -57,10 +64,7 @@ class AccountAggregationCompletedSource(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -73,10 +77,11 @@ class AccountAggregationCompletedSource(BaseModel):
             return AccountAggregationCompletedSource.parse_obj(obj)
 
         _obj = AccountAggregationCompletedSource.parse_obj({
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "type":
+            obj.get("type"),
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name")
         })
         return _obj
-
-

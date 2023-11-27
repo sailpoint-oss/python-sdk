@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.subscription_post_request import SubscriptionPostRequest
+from sailpoint.beta.models.subscription_post_request import SubscriptionPostRequest
 
 # TODO update the JSON string below
 json = "{}"

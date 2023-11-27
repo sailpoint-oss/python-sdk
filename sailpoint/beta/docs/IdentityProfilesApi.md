@@ -1,4 +1,4 @@
-# beta.IdentityProfilesApi
+# sailpoint.beta.IdentityProfilesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -31,14 +31,14 @@ This creates an Identity Profile A token with ORG_ADMIN authority is required to
 ```python
 import time
 import os
-import beta
-from beta.models.identity_profile import IdentityProfile
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_profile import IdentityProfile
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -52,10 +52,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityProfilesApi(api_client)
-    identity_profile = beta.IdentityProfile() # IdentityProfile | 
+    api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
+    identity_profile = sailpoint.beta.IdentityProfile() # IdentityProfile | 
 
     try:
         # Create an Identity Profile
@@ -113,14 +113,14 @@ This deletes an Identity Profile based on ID.  On success, this endpoint will re
 ```python
 import time
 import os
-import beta
-from beta.models.task_result_simplified import TaskResultSimplified
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.task_result_simplified import TaskResultSimplified
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -134,9 +134,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
     identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Identity Profile ID.
 
     try:
@@ -196,14 +196,14 @@ This deletes multiple Identity Profiles via a list of supplied IDs.  On success,
 ```python
 import time
 import os
-import beta
-from beta.models.task_result_simplified import TaskResultSimplified
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.task_result_simplified import TaskResultSimplified
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -217,9 +217,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
     request_body = ['request_body_example'] # List[str] | Identity Profile bulk delete request body.
 
     try:
@@ -278,14 +278,14 @@ This exports existing identity profiles in the format specified by the sp-config
 ```python
 import time
 import os
-import beta
-from beta.models.identity_profile_exported_object import IdentityProfileExportedObject
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_profile_exported_object import IdentityProfileExportedObject
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -299,9 +299,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -369,15 +369,15 @@ This generates a non-persisted IdentityDetails object that will represent as the
 ```python
 import time
 import os
-import beta
-from beta.models.identity_preview_request import IdentityPreviewRequest
-from beta.models.identity_preview_response import IdentityPreviewResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_preview_request import IdentityPreviewRequest
+from sailpoint.beta.models.identity_preview_response import IdentityPreviewResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -391,10 +391,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityProfilesApi(api_client)
-    identity_preview_request = beta.IdentityPreviewRequest() # IdentityPreviewRequest | Identity Preview request body.
+    api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
+    identity_preview_request = sailpoint.beta.IdentityPreviewRequest() # IdentityPreviewRequest | Identity Preview request body.
 
     try:
         # Generate Identity Profile Preview
@@ -452,14 +452,14 @@ This returns the default identity attribute config A token with ORG_ADMIN author
 ```python
 import time
 import os
-import beta
-from beta.models.identity_attribute_config import IdentityAttributeConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_attribute_config import IdentityAttributeConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -473,9 +473,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
     identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Identity Profile ID
 
     try:
@@ -535,14 +535,14 @@ This returns a single Identity Profile based on ID. A token with ORG_ADMIN or AP
 ```python
 import time
 import os
-import beta
-from beta.models.identity_profile import IdentityProfile
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_profile import IdentityProfile
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -556,9 +556,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
     identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Identity Profile ID
 
     try:
@@ -618,15 +618,15 @@ This imports previously exported identity profiles.
 ```python
 import time
 import os
-import beta
-from beta.models.identity_profile_exported_object import IdentityProfileExportedObject
-from beta.models.object_import_result import ObjectImportResult
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_profile_exported_object import IdentityProfileExportedObject
+from sailpoint.beta.models.object_import_result import ObjectImportResult
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -640,10 +640,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityProfilesApi(api_client)
-    identity_profile_exported_object = [beta.IdentityProfileExportedObject()] # List[IdentityProfileExportedObject] | Previously exported Identity Profiles.
+    api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
+    identity_profile_exported_object = [sailpoint.beta.IdentityProfileExportedObject()] # List[IdentityProfileExportedObject] | Previously exported Identity Profiles.
 
     try:
         # Import Identity Profiles
@@ -701,14 +701,14 @@ This returns a list of Identity Profiles based on the specified query parameters
 ```python
 import time
 import os
-import beta
-from beta.models.identity_profile import IdentityProfile
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_profile import IdentityProfile
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -722,9 +722,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -791,13 +791,13 @@ Process identities under the profile  A token with ORG_ADMIN authority is requir
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -811,9 +811,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
     identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Identity Profile ID to be processed
 
     try:
@@ -873,15 +873,15 @@ This updates the specified Identity Profile. A token with ORG_ADMIN authority is
 ```python
 import time
 import os
-import beta
-from beta.models.identity_profile import IdentityProfile
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.identity_profile import IdentityProfile
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -895,9 +895,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.beta.IdentityProfilesApi(api_client)
     identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Identity Profile ID
     json_patch_operation = [{op=add, path=/identityAttributeConfig/attributeTransforms/0, value={identityAttributeName=location, transformDefinition={type=accountAttribute, attributes={sourceName=Employees, attributeName=location, sourceId=2c91808878b7d63b0178c66ffcdc4ce4}}}}] # List[JsonPatchOperation] | A list of Identity Profile update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 

@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class FullcampaignAllOfSearchCampaignInfoReviewer(BaseModel):
     """
     If specified, this identity or governance group will be the reviewer for all certifications in this campaign. The allowed DTO types are IDENTITY and GOVERNANCE_GROUP.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="The reviewer's DTO type.")
+    type: Optional[StrictStr] = Field(None,
+                                      description="The reviewer's DTO type.")
     id: Optional[StrictStr] = Field(None, description="The reviewer's ID.")
     name: Optional[StrictStr] = Field(None, description="The reviewer's name.")
     __properties = ["type", "id", "name"]
@@ -37,7 +37,8 @@ class FullcampaignAllOfSearchCampaignInfoReviewer(BaseModel):
             return value
 
         if value not in ('GOVERNANCE_GROUP', 'IDENTITY'):
-            raise ValueError("must be one of enum values ('GOVERNANCE_GROUP', 'IDENTITY')")
+            raise ValueError(
+                "must be one of enum values ('GOVERNANCE_GROUP', 'IDENTITY')")
         return value
 
     class Config:
@@ -54,20 +55,19 @@ class FullcampaignAllOfSearchCampaignInfoReviewer(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> FullcampaignAllOfSearchCampaignInfoReviewer:
+    def from_json(
+            cls, json_str: str) -> FullcampaignAllOfSearchCampaignInfoReviewer:
         """Create an instance of FullcampaignAllOfSearchCampaignInfoReviewer from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> FullcampaignAllOfSearchCampaignInfoReviewer:
+    def from_dict(cls,
+                  obj: dict) -> FullcampaignAllOfSearchCampaignInfoReviewer:
         """Create an instance of FullcampaignAllOfSearchCampaignInfoReviewer from a dict"""
         if obj is None:
             return None
@@ -76,10 +76,11 @@ class FullcampaignAllOfSearchCampaignInfoReviewer(BaseModel):
             return FullcampaignAllOfSearchCampaignInfoReviewer.parse_obj(obj)
 
         _obj = FullcampaignAllOfSearchCampaignInfoReviewer.parse_obj({
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name")
+            "type":
+            obj.get("type"),
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name")
         })
         return _obj
-
-

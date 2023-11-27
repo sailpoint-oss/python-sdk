@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class CampaignAllOfSourcesWithOrphanEntitlements(BaseModel):
     """
@@ -54,20 +53,19 @@ class CampaignAllOfSourcesWithOrphanEntitlements(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CampaignAllOfSourcesWithOrphanEntitlements:
+    def from_json(cls,
+                  json_str: str) -> CampaignAllOfSourcesWithOrphanEntitlements:
         """Create an instance of CampaignAllOfSourcesWithOrphanEntitlements from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CampaignAllOfSourcesWithOrphanEntitlements:
+    def from_dict(cls,
+                  obj: dict) -> CampaignAllOfSourcesWithOrphanEntitlements:
         """Create an instance of CampaignAllOfSourcesWithOrphanEntitlements from a dict"""
         if obj is None:
             return None
@@ -76,10 +74,11 @@ class CampaignAllOfSourcesWithOrphanEntitlements(BaseModel):
             return CampaignAllOfSourcesWithOrphanEntitlements.parse_obj(obj)
 
         _obj = CampaignAllOfSourcesWithOrphanEntitlements.parse_obj({
-            "id": obj.get("id"),
-            "type": obj.get("type"),
-            "name": obj.get("name")
+            "id":
+            obj.get("id"),
+            "type":
+            obj.get("type"),
+            "name":
+            obj.get("name")
         })
         return _obj
-
-

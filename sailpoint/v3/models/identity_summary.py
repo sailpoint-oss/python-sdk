@@ -11,24 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+
 
 class IdentitySummary(BaseModel):
     """
     IdentitySummary
     """
-    id: Optional[StrictStr] = Field(None, description="ID of this identity summary")
-    name: Optional[StrictStr] = Field(None, description="Human-readable display name of identity")
-    identity_id: Optional[StrictStr] = Field(None, alias="identityId", description="ID of the identity that this summary represents")
-    completed: Optional[StrictBool] = Field(None, description="Indicates if all access items for this summary have been decided on")
+    id: Optional[StrictStr] = Field(None,
+                                    description="ID of this identity summary")
+    name: Optional[StrictStr] = Field(
+        None, description="Human-readable display name of identity")
+    identity_id: Optional[StrictStr] = Field(
+        None,
+        alias="identityId",
+        description="ID of the identity that this summary represents")
+    completed: Optional[StrictBool] = Field(
+        None,
+        description=
+        "Indicates if all access items for this summary have been decided on")
     __properties = ["id", "name", "identityId", "completed"]
 
     class Config:
@@ -51,10 +58,7 @@ class IdentitySummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -73,5 +77,3 @@ class IdentitySummary(BaseModel):
             "completed": obj.get("completed")
         })
         return _obj
-
-

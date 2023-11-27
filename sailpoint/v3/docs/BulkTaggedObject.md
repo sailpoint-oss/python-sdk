@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.bulk_tagged_object import BulkTaggedObject
+from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
 
 # TODO update the JSON string below
 json = "{}"

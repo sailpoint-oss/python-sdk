@@ -11,22 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
-from beta.models.form_element_data_source_config_options import FormElementDataSourceConfigOptions
+from sailpoint.beta.models.form_element_data_source_config_options import FormElementDataSourceConfigOptions
+
 
 class PreviewDataSourceResponse(BaseModel):
     """
     PreviewDataSourceResponse is the response sent by /form-definitions/{formDefinitionID}/data-source endpoint  # noqa: E501
     """
-    results: Optional[conlist(FormElementDataSourceConfigOptions)] = Field(None, description="Results holds a list of FormElementDataSourceConfigOptions items")
+    results: Optional[conlist(FormElementDataSourceConfigOptions)] = Field(
+        None,
+        description=
+        "Results holds a list of FormElementDataSourceConfigOptions items")
     __properties = ["results"]
 
     class Config:
@@ -49,10 +51,7 @@ class PreviewDataSourceResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in results (list)
         _items = []
         if self.results:
@@ -72,8 +71,9 @@ class PreviewDataSourceResponse(BaseModel):
             return PreviewDataSourceResponse.parse_obj(obj)
 
         _obj = PreviewDataSourceResponse.parse_obj({
-            "results": [FormElementDataSourceConfigOptions.from_dict(_item) for _item in obj.get("results")] if obj.get("results") is not None else None
+            "results": [
+                FormElementDataSourceConfigOptions.from_dict(_item)
+                for _item in obj.get("results")
+            ] if obj.get("results") is not None else None
         })
         return _obj
-
-

@@ -11,25 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictInt, StrictStr
+
 
 class GetOrgSettings200ResponseApprovalConfig(BaseModel):
     """
     GetOrgSettings200ResponseApprovalConfig
     """
     days_till_escalation: StrictInt = Field(..., alias="daysTillEscalation")
-    days_between_reminders: StrictInt = Field(..., alias="daysBetweenReminders")
+    days_between_reminders: StrictInt = Field(...,
+                                              alias="daysBetweenReminders")
     max_reminders: StrictInt = Field(..., alias="maxReminders")
     fallback_approver: StrictStr = Field(..., alias="fallbackApprover")
-    __properties = ["daysTillEscalation", "daysBetweenReminders", "maxReminders", "fallbackApprover"]
+    __properties = [
+        "daysTillEscalation", "daysBetweenReminders", "maxReminders",
+        "fallbackApprover"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -45,16 +47,14 @@ class GetOrgSettings200ResponseApprovalConfig(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> GetOrgSettings200ResponseApprovalConfig:
+    def from_json(cls,
+                  json_str: str) -> GetOrgSettings200ResponseApprovalConfig:
         """Create an instance of GetOrgSettings200ResponseApprovalConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,11 +67,13 @@ class GetOrgSettings200ResponseApprovalConfig(BaseModel):
             return GetOrgSettings200ResponseApprovalConfig.parse_obj(obj)
 
         _obj = GetOrgSettings200ResponseApprovalConfig.parse_obj({
-            "days_till_escalation": obj.get("daysTillEscalation"),
-            "days_between_reminders": obj.get("daysBetweenReminders"),
-            "max_reminders": obj.get("maxReminders"),
-            "fallback_approver": obj.get("fallbackApprover")
+            "days_till_escalation":
+            obj.get("daysTillEscalation"),
+            "days_between_reminders":
+            obj.get("daysBetweenReminders"),
+            "max_reminders":
+            obj.get("maxReminders"),
+            "fallback_approver":
+            obj.get("fallbackApprover")
         })
         return _obj
-
-

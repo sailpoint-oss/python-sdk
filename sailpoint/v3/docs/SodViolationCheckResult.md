@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.sod_violation_check_result import SodViolationCheckResult
+from sailpoint.v3.models.sod_violation_check_result import SodViolationCheckResult
 
 # TODO update the JSON string below
 json = "{}"

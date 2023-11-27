@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.account_uncorrelated_source import AccountUncorrelatedSource
+from sailpoint.beta.models.account_uncorrelated_source import AccountUncorrelatedSource
 
 # TODO update the JSON string below
 json = "{}"

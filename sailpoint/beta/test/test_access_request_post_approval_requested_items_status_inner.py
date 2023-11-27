@@ -11,13 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.access_request_post_approval_requested_items_status_inner import AccessRequestPostApprovalRequestedItemsStatusInner  # noqa: E501
+from sailpoint.beta.models.access_request_post_approval_requested_items_status_inner import AccessRequestPostApprovalRequestedItemsStatusInner  # noqa: E501
 
-class TestAccessRequestPostApprovalRequestedItemsStatusInner(unittest.TestCase):
+
+class TestAccessRequestPostApprovalRequestedItemsStatusInner(
+        unittest.TestCase):
     """AccessRequestPostApprovalRequestedItemsStatusInner unit test stubs"""
 
     def setUp(self):
@@ -26,7 +27,9 @@ class TestAccessRequestPostApprovalRequestedItemsStatusInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccessRequestPostApprovalRequestedItemsStatusInner:
+    def make_instance(
+        self, include_optional
+    ) -> AccessRequestPostApprovalRequestedItemsStatusInner:
         """Test AccessRequestPostApprovalRequestedItemsStatusInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -44,11 +47,11 @@ class TestAccessRequestPostApprovalRequestedItemsStatusInner(unittest.TestCase):
                 comment = 'William needs this access to do his job.',
                 client_metadata = {applicationName=My application},
                 approval_info = [
-                    beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
+                    sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
                         approval_comment = 'This access looks good.  Approved.', 
                         approval_decision = APPROVED, 
                         approver_name = 'Stephen.Austin', 
-                        approver = beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
+                        approver = sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
                             type = IDENTITY, ), )
                     ]
             )
@@ -59,11 +62,11 @@ class TestAccessRequestPostApprovalRequestedItemsStatusInner(unittest.TestCase):
                 type = ACCESS_PROFILE,
                 operation = Add,
                 approval_info = [
-                    beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
+                    sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner(
                         approval_comment = 'This access looks good.  Approved.', 
                         approval_decision = APPROVED, 
                         approver_name = 'Stephen.Austin', 
-                        approver = beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
+                        approver = sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver.AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver(
                             type = IDENTITY, ), )
                     ],
         )
@@ -73,6 +76,7 @@ class TestAccessRequestPostApprovalRequestedItemsStatusInner(unittest.TestCase):
         """Test AccessRequestPostApprovalRequestedItemsStatusInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.form_element_dynamic_data_source_config import FormElementDynamicDataSourceConfig  # noqa: E501
+from sailpoint.beta.models.form_element_dynamic_data_source_config import FormElementDynamicDataSourceConfig  # noqa: E501
+
 
 class TestFormElementDynamicDataSourceConfig(unittest.TestCase):
     """FormElementDynamicDataSourceConfig unit test stubs"""
@@ -26,7 +26,8 @@ class TestFormElementDynamicDataSourceConfig(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> FormElementDynamicDataSourceConfig:
+    def make_instance(self,
+                      include_optional) -> FormElementDynamicDataSourceConfig:
         """Test FormElementDynamicDataSourceConfig
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -50,6 +51,7 @@ class TestFormElementDynamicDataSourceConfig(unittest.TestCase):
         """Test FormElementDynamicDataSourceConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

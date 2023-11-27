@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.report_details_arguments import ReportDetailsArguments
+from sailpoint.v3.models.report_details_arguments import ReportDetailsArguments
 
 # TODO update the JSON string below
 json = "{}"

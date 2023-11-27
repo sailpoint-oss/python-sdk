@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, List, Optional, Union
 from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist
+
 
 class GetIdentity200ResponseOrg(BaseModel):
     """
@@ -28,54 +27,108 @@ class GetIdentity200ResponseOrg(BaseModel):
     name: Optional[StrictStr] = None
     script_name: Optional[StrictStr] = Field(None, alias="scriptName")
     mode: Optional[StrictStr] = None
-    num_questions: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="numQuestions")
+    num_questions: Optional[Union[StrictFloat,
+                                  StrictInt]] = Field(None,
+                                                      alias="numQuestions")
     status: Optional[StrictStr] = None
-    max_registered_users: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="maxRegisteredUsers")
+    max_registered_users: Optional[Union[StrictFloat, StrictInt]] = Field(
+        None, alias="maxRegisteredUsers")
     pod: Optional[StrictStr] = None
-    pwd_reset_personal_phone: Optional[StrictBool] = Field(None, alias="pwdResetPersonalPhone")
-    pwd_reset_personal_email: Optional[StrictBool] = Field(None, alias="pwdResetPersonalEmail")
+    pwd_reset_personal_phone: Optional[StrictBool] = Field(
+        None, alias="pwdResetPersonalPhone")
+    pwd_reset_personal_email: Optional[StrictBool] = Field(
+        None, alias="pwdResetPersonalEmail")
     pwd_reset_kba: Optional[StrictBool] = Field(None, alias="pwdResetKba")
     pwd_reset_email: Optional[StrictBool] = Field(None, alias="pwdResetEmail")
     pwd_reset_duo: Optional[StrictBool] = Field(None, alias="pwdResetDuo")
-    pwd_reset_phone_mask: Optional[StrictBool] = Field(None, alias="pwdResetPhoneMask")
-    auth_error_text: Optional[Dict[str, Any]] = Field(None, alias="authErrorText")
+    pwd_reset_phone_mask: Optional[StrictBool] = Field(
+        None, alias="pwdResetPhoneMask")
+    auth_error_text: Optional[Dict[str, Any]] = Field(None,
+                                                      alias="authErrorText")
     strong_auth_kba: Optional[StrictBool] = Field(None, alias="strongAuthKba")
-    strong_auth_personal_phone: Optional[StrictBool] = Field(None, alias="strongAuthPersonalPhone")
-    strong_auth_personal_email: Optional[StrictBool] = Field(None, alias="strongAuthPersonalEmail")
+    strong_auth_personal_phone: Optional[StrictBool] = Field(
+        None, alias="strongAuthPersonalPhone")
+    strong_auth_personal_email: Optional[StrictBool] = Field(
+        None, alias="strongAuthPersonalEmail")
     integrations: Optional[conlist(Dict[str, Any])] = None
     product_name: Optional[StrictStr] = Field(None, alias="productName")
-    kba_req_for_authn: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="kbaReqForAuthn")
-    kba_req_answers: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="kbaReqAnswers")
-    lockout_attempt_threshold: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="lockoutAttemptThreshold")
-    lockout_time_minutes: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="lockoutTimeMinutes")
-    usage_cert_required: Optional[StrictBool] = Field(None, alias="usageCertRequired")
-    admin_strong_auth_required: Optional[StrictBool] = Field(None, alias="adminStrongAuthRequired")
-    enable_external_password_change: Optional[StrictBool] = Field(None, alias="enableExternalPasswordChange")
-    enable_password_replay: Optional[StrictBool] = Field(None, alias="enablePasswordReplay")
-    enable_automatic_password_replay: Optional[StrictBool] = Field(None, alias="enableAutomaticPasswordReplay")
-    notify_authentication_setting_change: Optional[StrictBool] = Field(None, alias="notifyAuthenticationSettingChange")
+    kba_req_for_authn: Optional[Union[StrictFloat, StrictInt]] = Field(
+        None, alias="kbaReqForAuthn")
+    kba_req_answers: Optional[Union[StrictFloat,
+                                    StrictInt]] = Field(None,
+                                                        alias="kbaReqAnswers")
+    lockout_attempt_threshold: Optional[Union[StrictFloat, StrictInt]] = Field(
+        None, alias="lockoutAttemptThreshold")
+    lockout_time_minutes: Optional[Union[StrictFloat, StrictInt]] = Field(
+        None, alias="lockoutTimeMinutes")
+    usage_cert_required: Optional[StrictBool] = Field(
+        None, alias="usageCertRequired")
+    admin_strong_auth_required: Optional[StrictBool] = Field(
+        None, alias="adminStrongAuthRequired")
+    enable_external_password_change: Optional[StrictBool] = Field(
+        None, alias="enableExternalPasswordChange")
+    enable_password_replay: Optional[StrictBool] = Field(
+        None, alias="enablePasswordReplay")
+    enable_automatic_password_replay: Optional[StrictBool] = Field(
+        None, alias="enableAutomaticPasswordReplay")
+    notify_authentication_setting_change: Optional[StrictBool] = Field(
+        None, alias="notifyAuthenticationSettingChange")
     netmasks: Optional[Dict[str, Any]] = None
     country_codes: Optional[Dict[str, Any]] = Field(None, alias="countryCodes")
     white_list: Optional[StrictBool] = Field(None, alias="whiteList")
-    username_empty_text: Optional[Dict[str, Any]] = Field(None, alias="usernameEmptyText")
-    username_label: Optional[Dict[str, Any]] = Field(None, alias="usernameLabel")
-    enable_automation_generation: Optional[StrictBool] = Field(None, alias="enableAutomationGeneration")
+    username_empty_text: Optional[Dict[str,
+                                       Any]] = Field(None,
+                                                     alias="usernameEmptyText")
+    username_label: Optional[Dict[str, Any]] = Field(None,
+                                                     alias="usernameLabel")
+    enable_automation_generation: Optional[StrictBool] = Field(
+        None, alias="enableAutomationGeneration")
     email_test_mode: Optional[StrictBool] = Field(None, alias="emailTestMode")
-    email_test_address: Optional[StrictStr] = Field(None, alias="emailTestAddress")
+    email_test_address: Optional[StrictStr] = Field(None,
+                                                    alias="emailTestAddress")
     org_type: Optional[StrictStr] = Field(None, alias="orgType")
-    password_replay_state: Optional[StrictStr] = Field(None, alias="passwordReplayState")
-    system_notification_config: Optional[StrictStr] = Field(None, alias="systemNotificationConfig")
-    redirect_patterns: Optional[StrictStr] = Field(None, alias="redirectPatterns")
-    max_cluster_debug_hours: Optional[StrictStr] = Field(None, alias="maxClusterDebugHours")
+    password_replay_state: Optional[StrictStr] = Field(
+        None, alias="passwordReplayState")
+    system_notification_config: Optional[StrictStr] = Field(
+        None, alias="systemNotificationConfig")
+    redirect_patterns: Optional[StrictStr] = Field(None,
+                                                   alias="redirectPatterns")
+    max_cluster_debug_hours: Optional[StrictStr] = Field(
+        None, alias="maxClusterDebugHours")
     brand_name: Optional[StrictStr] = Field(None, alias="brandName")
     logo: Optional[Dict[str, Any]] = None
-    email_from_address: Optional[Dict[str, Any]] = Field(None, alias="emailFromAddress")
-    standard_logo_url: Optional[Dict[str, Any]] = Field(None, alias="standardLogoUrl")
-    narrow_logo_url: Optional[Dict[str, Any]] = Field(None, alias="narrowLogoUrl")
-    action_button_color: Optional[StrictStr] = Field(None, alias="actionButtonColor")
-    active_link_color: Optional[StrictStr] = Field(None, alias="activeLinkColor")
-    navigation_color: Optional[StrictStr] = Field(None, alias="navigationColor")
-    __properties = ["name", "scriptName", "mode", "numQuestions", "status", "maxRegisteredUsers", "pod", "pwdResetPersonalPhone", "pwdResetPersonalEmail", "pwdResetKba", "pwdResetEmail", "pwdResetDuo", "pwdResetPhoneMask", "authErrorText", "strongAuthKba", "strongAuthPersonalPhone", "strongAuthPersonalEmail", "integrations", "productName", "kbaReqForAuthn", "kbaReqAnswers", "lockoutAttemptThreshold", "lockoutTimeMinutes", "usageCertRequired", "adminStrongAuthRequired", "enableExternalPasswordChange", "enablePasswordReplay", "enableAutomaticPasswordReplay", "notifyAuthenticationSettingChange", "netmasks", "countryCodes", "whiteList", "usernameEmptyText", "usernameLabel", "enableAutomationGeneration", "emailTestMode", "emailTestAddress", "orgType", "passwordReplayState", "systemNotificationConfig", "redirectPatterns", "maxClusterDebugHours", "brandName", "logo", "emailFromAddress", "standardLogoUrl", "narrowLogoUrl", "actionButtonColor", "activeLinkColor", "navigationColor"]
+    email_from_address: Optional[Dict[str,
+                                      Any]] = Field(None,
+                                                    alias="emailFromAddress")
+    standard_logo_url: Optional[Dict[str,
+                                     Any]] = Field(None,
+                                                   alias="standardLogoUrl")
+    narrow_logo_url: Optional[Dict[str, Any]] = Field(None,
+                                                      alias="narrowLogoUrl")
+    action_button_color: Optional[StrictStr] = Field(None,
+                                                     alias="actionButtonColor")
+    active_link_color: Optional[StrictStr] = Field(None,
+                                                   alias="activeLinkColor")
+    navigation_color: Optional[StrictStr] = Field(None,
+                                                  alias="navigationColor")
+    __properties = [
+        "name", "scriptName", "mode", "numQuestions", "status",
+        "maxRegisteredUsers", "pod", "pwdResetPersonalPhone",
+        "pwdResetPersonalEmail", "pwdResetKba", "pwdResetEmail", "pwdResetDuo",
+        "pwdResetPhoneMask", "authErrorText", "strongAuthKba",
+        "strongAuthPersonalPhone", "strongAuthPersonalEmail", "integrations",
+        "productName", "kbaReqForAuthn", "kbaReqAnswers",
+        "lockoutAttemptThreshold", "lockoutTimeMinutes", "usageCertRequired",
+        "adminStrongAuthRequired", "enableExternalPasswordChange",
+        "enablePasswordReplay", "enableAutomaticPasswordReplay",
+        "notifyAuthenticationSettingChange", "netmasks", "countryCodes",
+        "whiteList", "usernameEmptyText", "usernameLabel",
+        "enableAutomationGeneration", "emailTestMode", "emailTestAddress",
+        "orgType", "passwordReplayState", "systemNotificationConfig",
+        "redirectPatterns", "maxClusterDebugHours", "brandName", "logo",
+        "emailFromAddress", "standardLogoUrl", "narrowLogoUrl",
+        "actionButtonColor", "activeLinkColor", "navigationColor"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -97,10 +150,7 @@ class GetIdentity200ResponseOrg(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -113,57 +163,105 @@ class GetIdentity200ResponseOrg(BaseModel):
             return GetIdentity200ResponseOrg.parse_obj(obj)
 
         _obj = GetIdentity200ResponseOrg.parse_obj({
-            "name": obj.get("name"),
-            "script_name": obj.get("scriptName"),
-            "mode": obj.get("mode"),
-            "num_questions": obj.get("numQuestions"),
-            "status": obj.get("status"),
-            "max_registered_users": obj.get("maxRegisteredUsers"),
-            "pod": obj.get("pod"),
-            "pwd_reset_personal_phone": obj.get("pwdResetPersonalPhone"),
-            "pwd_reset_personal_email": obj.get("pwdResetPersonalEmail"),
-            "pwd_reset_kba": obj.get("pwdResetKba"),
-            "pwd_reset_email": obj.get("pwdResetEmail"),
-            "pwd_reset_duo": obj.get("pwdResetDuo"),
-            "pwd_reset_phone_mask": obj.get("pwdResetPhoneMask"),
-            "auth_error_text": obj.get("authErrorText"),
-            "strong_auth_kba": obj.get("strongAuthKba"),
-            "strong_auth_personal_phone": obj.get("strongAuthPersonalPhone"),
-            "strong_auth_personal_email": obj.get("strongAuthPersonalEmail"),
-            "integrations": obj.get("integrations"),
-            "product_name": obj.get("productName"),
-            "kba_req_for_authn": obj.get("kbaReqForAuthn"),
-            "kba_req_answers": obj.get("kbaReqAnswers"),
-            "lockout_attempt_threshold": obj.get("lockoutAttemptThreshold"),
-            "lockout_time_minutes": obj.get("lockoutTimeMinutes"),
-            "usage_cert_required": obj.get("usageCertRequired"),
-            "admin_strong_auth_required": obj.get("adminStrongAuthRequired"),
-            "enable_external_password_change": obj.get("enableExternalPasswordChange"),
-            "enable_password_replay": obj.get("enablePasswordReplay"),
-            "enable_automatic_password_replay": obj.get("enableAutomaticPasswordReplay"),
-            "notify_authentication_setting_change": obj.get("notifyAuthenticationSettingChange"),
-            "netmasks": obj.get("netmasks"),
-            "country_codes": obj.get("countryCodes"),
-            "white_list": obj.get("whiteList"),
-            "username_empty_text": obj.get("usernameEmptyText"),
-            "username_label": obj.get("usernameLabel"),
-            "enable_automation_generation": obj.get("enableAutomationGeneration"),
-            "email_test_mode": obj.get("emailTestMode"),
-            "email_test_address": obj.get("emailTestAddress"),
-            "org_type": obj.get("orgType"),
-            "password_replay_state": obj.get("passwordReplayState"),
-            "system_notification_config": obj.get("systemNotificationConfig"),
-            "redirect_patterns": obj.get("redirectPatterns"),
-            "max_cluster_debug_hours": obj.get("maxClusterDebugHours"),
-            "brand_name": obj.get("brandName"),
-            "logo": obj.get("logo"),
-            "email_from_address": obj.get("emailFromAddress"),
-            "standard_logo_url": obj.get("standardLogoUrl"),
-            "narrow_logo_url": obj.get("narrowLogoUrl"),
-            "action_button_color": obj.get("actionButtonColor"),
-            "active_link_color": obj.get("activeLinkColor"),
-            "navigation_color": obj.get("navigationColor")
+            "name":
+            obj.get("name"),
+            "script_name":
+            obj.get("scriptName"),
+            "mode":
+            obj.get("mode"),
+            "num_questions":
+            obj.get("numQuestions"),
+            "status":
+            obj.get("status"),
+            "max_registered_users":
+            obj.get("maxRegisteredUsers"),
+            "pod":
+            obj.get("pod"),
+            "pwd_reset_personal_phone":
+            obj.get("pwdResetPersonalPhone"),
+            "pwd_reset_personal_email":
+            obj.get("pwdResetPersonalEmail"),
+            "pwd_reset_kba":
+            obj.get("pwdResetKba"),
+            "pwd_reset_email":
+            obj.get("pwdResetEmail"),
+            "pwd_reset_duo":
+            obj.get("pwdResetDuo"),
+            "pwd_reset_phone_mask":
+            obj.get("pwdResetPhoneMask"),
+            "auth_error_text":
+            obj.get("authErrorText"),
+            "strong_auth_kba":
+            obj.get("strongAuthKba"),
+            "strong_auth_personal_phone":
+            obj.get("strongAuthPersonalPhone"),
+            "strong_auth_personal_email":
+            obj.get("strongAuthPersonalEmail"),
+            "integrations":
+            obj.get("integrations"),
+            "product_name":
+            obj.get("productName"),
+            "kba_req_for_authn":
+            obj.get("kbaReqForAuthn"),
+            "kba_req_answers":
+            obj.get("kbaReqAnswers"),
+            "lockout_attempt_threshold":
+            obj.get("lockoutAttemptThreshold"),
+            "lockout_time_minutes":
+            obj.get("lockoutTimeMinutes"),
+            "usage_cert_required":
+            obj.get("usageCertRequired"),
+            "admin_strong_auth_required":
+            obj.get("adminStrongAuthRequired"),
+            "enable_external_password_change":
+            obj.get("enableExternalPasswordChange"),
+            "enable_password_replay":
+            obj.get("enablePasswordReplay"),
+            "enable_automatic_password_replay":
+            obj.get("enableAutomaticPasswordReplay"),
+            "notify_authentication_setting_change":
+            obj.get("notifyAuthenticationSettingChange"),
+            "netmasks":
+            obj.get("netmasks"),
+            "country_codes":
+            obj.get("countryCodes"),
+            "white_list":
+            obj.get("whiteList"),
+            "username_empty_text":
+            obj.get("usernameEmptyText"),
+            "username_label":
+            obj.get("usernameLabel"),
+            "enable_automation_generation":
+            obj.get("enableAutomationGeneration"),
+            "email_test_mode":
+            obj.get("emailTestMode"),
+            "email_test_address":
+            obj.get("emailTestAddress"),
+            "org_type":
+            obj.get("orgType"),
+            "password_replay_state":
+            obj.get("passwordReplayState"),
+            "system_notification_config":
+            obj.get("systemNotificationConfig"),
+            "redirect_patterns":
+            obj.get("redirectPatterns"),
+            "max_cluster_debug_hours":
+            obj.get("maxClusterDebugHours"),
+            "brand_name":
+            obj.get("brandName"),
+            "logo":
+            obj.get("logo"),
+            "email_from_address":
+            obj.get("emailFromAddress"),
+            "standard_logo_url":
+            obj.get("standardLogoUrl"),
+            "narrow_logo_url":
+            obj.get("narrowLogoUrl"),
+            "action_button_color":
+            obj.get("actionButtonColor"),
+            "active_link_color":
+            obj.get("activeLinkColor"),
+            "navigation_color":
+            obj.get("navigationColor")
         })
         return _obj
-
-

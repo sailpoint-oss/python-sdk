@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class EmailStatusDto(BaseModel):
     """
@@ -27,7 +26,8 @@ class EmailStatusDto(BaseModel):
     """
     id: Optional[StrictStr] = None
     email: Optional[StrictStr] = None
-    verification_status: Optional[StrictStr] = Field(None, alias="verificationStatus")
+    verification_status: Optional[StrictStr] = Field(
+        None, alias="verificationStatus")
     __properties = ["id", "email", "verificationStatus"]
 
     @validator('verification_status')
@@ -37,7 +37,8 @@ class EmailStatusDto(BaseModel):
             return value
 
         if value not in ('PENDING', 'SUCCESS', 'FAILED'):
-            raise ValueError("must be one of enum values ('PENDING', 'SUCCESS', 'FAILED')")
+            raise ValueError(
+                "must be one of enum values ('PENDING', 'SUCCESS', 'FAILED')")
         return value
 
     class Config:
@@ -60,10 +61,7 @@ class EmailStatusDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,10 +74,11 @@ class EmailStatusDto(BaseModel):
             return EmailStatusDto.parse_obj(obj)
 
         _obj = EmailStatusDto.parse_obj({
-            "id": obj.get("id"),
-            "email": obj.get("email"),
-            "verification_status": obj.get("verificationStatus")
+            "id":
+            obj.get("id"),
+            "email":
+            obj.get("email"),
+            "verification_status":
+            obj.get("verificationStatus")
         })
         return _obj
-
-

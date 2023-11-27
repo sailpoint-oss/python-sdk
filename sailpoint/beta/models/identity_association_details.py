@@ -11,23 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.identity_association_details_association_details_inner import IdentityAssociationDetailsAssociationDetailsInner
+from sailpoint.beta.models.identity_association_details_association_details_inner import IdentityAssociationDetailsAssociationDetailsInner
+
 
 class IdentityAssociationDetails(BaseModel):
     """
     IdentityAssociationDetails
     """
-    message: Optional[StrictStr] = Field(None, description="any additional context information of the http call result")
-    association_details: Optional[conlist(IdentityAssociationDetailsAssociationDetailsInner)] = Field(None, alias="associationDetails", description="list of all the resource associations for the identity")
+    message: Optional[StrictStr] = Field(
+        None,
+        description="any additional context information of the http call result"
+    )
+    association_details: Optional[conlist(
+        IdentityAssociationDetailsAssociationDetailsInner
+    )] = Field(
+        None,
+        alias="associationDetails",
+        description="list of all the resource associations for the identity")
     __properties = ["message", "associationDetails"]
 
     class Config:
@@ -50,10 +57,7 @@ class IdentityAssociationDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in association_details (list)
         _items = []
         if self.association_details:
@@ -73,9 +77,11 @@ class IdentityAssociationDetails(BaseModel):
             return IdentityAssociationDetails.parse_obj(obj)
 
         _obj = IdentityAssociationDetails.parse_obj({
-            "message": obj.get("message"),
-            "association_details": [IdentityAssociationDetailsAssociationDetailsInner.from_dict(_item) for _item in obj.get("associationDetails")] if obj.get("associationDetails") is not None else None
+            "message":
+            obj.get("message"),
+            "association_details": [
+                IdentityAssociationDetailsAssociationDetailsInner.from_dict(
+                    _item) for _item in obj.get("associationDetails")
+            ] if obj.get("associationDetails") is not None else None
         })
         return _obj
-
-

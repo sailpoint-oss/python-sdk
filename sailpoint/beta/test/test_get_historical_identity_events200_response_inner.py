@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner  # noqa: E501
+from sailpoint.beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner  # noqa: E501
+
 
 class TestGetHistoricalIdentityEvents200ResponseInner(unittest.TestCase):
     """GetHistoricalIdentityEvents200ResponseInner unit test stubs"""
@@ -26,7 +26,9 @@ class TestGetHistoricalIdentityEvents200ResponseInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> GetHistoricalIdentityEvents200ResponseInner:
+    def make_instance(
+            self,
+            include_optional) -> GetHistoricalIdentityEvents200ResponseInner:
         """Test GetHistoricalIdentityEvents200ResponseInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -40,20 +42,20 @@ class TestGetHistoricalIdentityEvents200ResponseInner(unittest.TestCase):
                 identity_id = '',
                 event_type = '',
                 dt = '',
-                governance_event = beta.models.correlated_governance_event.CorrelatedGovernanceEvent(
+                governance_event = sailpoint.beta.models.correlated_governance_event.CorrelatedGovernanceEvent(
                     name = 'Manager Certification for Jon Snow', 
                     dt = '2019-03-08T22:37:33.901Z', 
                     type = 'certification', 
                     governance_id = '2c91808a77ff216301782327a50f09bf', 
                     owners = [{id=8a80828f643d484f01643e14202e206f, displayName=John Snow}], 
                     reviewers = [{id=8a80828f643d484f01643e14202e206f, displayName=John Snow}], 
-                    decision_maker = beta.models.certifier_response.CertifierResponse(
+                    decision_maker = sailpoint.beta.models.certifier_response.CertifierResponse(
                         id = '8a80828f643d484f01643e14202e206f', 
                         display_name = 'John Snow', ), ),
                 changes = [
                     {name=firstname, previousValue=adam, newValue=zampa}
                     ],
-                access_request = beta.models.access_request_response.AccessRequestResponse(
+                access_request = sailpoint.beta.models.access_request_response.AccessRequestResponse(
                     requester_id = '2c91808a77ff216301782327a50f09bf', 
                     requester_name = 'Bing C', 
                     items = [{operation=Add, accessItemType=role, name=Role-1, decision=APPROVED, description=The role descrition, sourceId=8a80828f643d484f01643e14202e206f, sourceName=Source1, approvalInfos=[{name=John Snow, id=8a80828f643d484f01643e14202e2000, status=Approved}]}], ),
@@ -62,10 +64,10 @@ class TestGetHistoricalIdentityEvents200ResponseInner(unittest.TestCase):
                 signed_date = '2019-03-08T22:37:33.901Z',
                 certifiers = [{id=8a80828f643d484f01643e14202e206f, displayName=John Snow}],
                 reviewers = [{id=8a80828f643d484f01643e14202e206f, displayName=John Snow}],
-                signer = beta.models.certifier_response.CertifierResponse(
+                signer = sailpoint.beta.models.certifier_response.CertifierResponse(
                     id = '8a80828f643d484f01643e14202e206f', 
                     display_name = 'John Snow', ),
-                account = beta.models.account_status_changed_account.AccountStatusChanged_account(
+                account = sailpoint.beta.models.account_status_changed_account.AccountStatusChanged_account(
                     id = '', 
                     native_identity = '', 
                     display_name = '', 
@@ -73,7 +75,7 @@ class TestGetHistoricalIdentityEvents200ResponseInner(unittest.TestCase):
                     source_name = '', 
                     entitlement_count = 56, 
                     access_type = '', ),
-                status_change = beta.models.account_status_changed_status_change.AccountStatusChanged_statusChange(
+                status_change = sailpoint.beta.models.account_status_changed_status_change.AccountStatusChanged_statusChange(
                     previous_status = 'enabled', 
                     new_status = 'enabled', )
             )
@@ -86,6 +88,7 @@ class TestGetHistoricalIdentityEvents200ResponseInner(unittest.TestCase):
         """Test GetHistoricalIdentityEvents200ResponseInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

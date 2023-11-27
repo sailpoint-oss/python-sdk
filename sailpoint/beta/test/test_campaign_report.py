@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.campaign_report import CampaignReport  # noqa: E501
+from sailpoint.beta.models.campaign_report import CampaignReport  # noqa: E501
+
 
 class TestCampaignReport(unittest.TestCase):
     """CampaignReport unit test stubs"""
@@ -53,6 +53,7 @@ class TestCampaignReport(unittest.TestCase):
         """Test CampaignReport"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

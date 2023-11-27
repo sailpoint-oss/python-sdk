@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class Index(str, Enum):
     """
     Enum representing the currently supported indices. Additional values may be added in the future without notice.
     """
-
     """
     allowed enum values
     """
@@ -41,5 +36,3 @@ class Index(str, Enum):
     def from_json(cls, json_str: str) -> Index:
         """Create an instance of Index from a JSON string"""
         return Index(json.loads(json_str))
-
-

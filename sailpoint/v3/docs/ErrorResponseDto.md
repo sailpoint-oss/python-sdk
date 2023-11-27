@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.error_response_dto import ErrorResponseDto
+from sailpoint.v3.models.error_response_dto import ErrorResponseDto
 
 # TODO update the JSON string below
 json = "{}"

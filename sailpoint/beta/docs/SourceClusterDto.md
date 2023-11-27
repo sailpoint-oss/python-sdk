@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.source_cluster_dto import SourceClusterDto
+from sailpoint.beta.models.source_cluster_dto import SourceClusterDto
 
 # TODO update the JSON string below
 json = "{}"

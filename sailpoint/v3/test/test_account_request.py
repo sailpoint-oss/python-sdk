@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.account_request import AccountRequest  # noqa: E501
+from sailpoint.v3.models.account_request import AccountRequest  # noqa: E501
+
 
 class TestAccountRequest(unittest.TestCase):
     """AccountRequest unit test stubs"""
@@ -38,14 +38,14 @@ class TestAccountRequest(unittest.TestCase):
             return AccountRequest(
                 account_id = 'John.Doe',
                 attribute_requests = [
-                    v3.models.attribute_request.AttributeRequest(
+                    sailpoint.v3.models.attribute_request.AttributeRequest(
                         name = 'groups', 
                         op = 'Add', 
                         value = '3203537556531076', )
                     ],
                 op = 'Modify',
                 provisioning_target = None,
-                result = v3.models.account_request_result.AccountRequest_result(
+                result = sailpoint.v3.models.account_request_result.AccountRequest_result(
                     errors = [
                         '[ConnectorError] [
   {
@@ -71,6 +71,7 @@ class TestAccountRequest(unittest.TestCase):
         """Test AccountRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

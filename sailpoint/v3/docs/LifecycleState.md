@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.lifecycle_state import LifecycleState
+from sailpoint.v3.models.lifecycle_state import LifecycleState
 
 # TODO update the JSON string below
 json = "{}"

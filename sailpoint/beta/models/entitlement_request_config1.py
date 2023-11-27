@@ -11,25 +11,43 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+
 
 class EntitlementRequestConfig1(BaseModel):
     """
     EntitlementRequestConfig1
     """
-    allow_entitlement_request: Optional[StrictBool] = Field(None, alias="allowEntitlementRequest", description="Flag for allowing entitlement request.")
-    request_comments_required: Optional[StrictBool] = Field(False, alias="requestCommentsRequired", description="Flag for requiring comments while submitting an entitlement request.")
-    denied_comments_required: Optional[StrictBool] = Field(False, alias="deniedCommentsRequired", description="Flag for requiring comments while rejecting an entitlement request.")
-    grant_request_approval_schemes: Optional[StrictStr] = Field('sourceOwner', alias="grantRequestApprovalSchemes", description="Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"workgroup:{id}\". Multiple workgroups (governance groups) can be used. ")
-    __properties = ["allowEntitlementRequest", "requestCommentsRequired", "deniedCommentsRequired", "grantRequestApprovalSchemes"]
+    allow_entitlement_request: Optional[StrictBool] = Field(
+        None,
+        alias="allowEntitlementRequest",
+        description="Flag for allowing entitlement request.")
+    request_comments_required: Optional[StrictBool] = Field(
+        False,
+        alias="requestCommentsRequired",
+        description=
+        "Flag for requiring comments while submitting an entitlement request.")
+    denied_comments_required: Optional[StrictBool] = Field(
+        False,
+        alias="deniedCommentsRequired",
+        description=
+        "Flag for requiring comments while rejecting an entitlement request.")
+    grant_request_approval_schemes: Optional[StrictStr] = Field(
+        'sourceOwner',
+        alias="grantRequestApprovalSchemes",
+        description=
+        "Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \"entitlementOwner\", \"sourceOwner\", \"manager\" and \"workgroup:{id}\". Multiple workgroups (governance groups) can be used. "
+    )
+    __properties = [
+        "allowEntitlementRequest", "requestCommentsRequired",
+        "deniedCommentsRequired", "grantRequestApprovalSchemes"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -51,10 +69,7 @@ class EntitlementRequestConfig1(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,11 +82,17 @@ class EntitlementRequestConfig1(BaseModel):
             return EntitlementRequestConfig1.parse_obj(obj)
 
         _obj = EntitlementRequestConfig1.parse_obj({
-            "allow_entitlement_request": obj.get("allowEntitlementRequest"),
-            "request_comments_required": obj.get("requestCommentsRequired") if obj.get("requestCommentsRequired") is not None else False,
-            "denied_comments_required": obj.get("deniedCommentsRequired") if obj.get("deniedCommentsRequired") is not None else False,
-            "grant_request_approval_schemes": obj.get("grantRequestApprovalSchemes") if obj.get("grantRequestApprovalSchemes") is not None else 'sourceOwner'
+            "allow_entitlement_request":
+            obj.get("allowEntitlementRequest"),
+            "request_comments_required":
+            obj.get("requestCommentsRequired")
+            if obj.get("requestCommentsRequired") is not None else False,
+            "denied_comments_required":
+            obj.get("deniedCommentsRequired")
+            if obj.get("deniedCommentsRequired") is not None else False,
+            "grant_request_approval_schemes":
+            obj.get("grantRequestApprovalSchemes")
+            if obj.get("grantRequestApprovalSchemes") is not None else
+            'sourceOwner'
         })
         return _obj
-
-

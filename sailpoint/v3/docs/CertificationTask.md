@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.certification_task import CertificationTask
+from sailpoint.v3.models.certification_task import CertificationTask
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.subscription_patch_request_inner_value_any_of_inner import SubscriptionPatchRequestInnerValueAnyOfInner  # noqa: E501
+from sailpoint.beta.models.subscription_patch_request_inner_value_any_of_inner import SubscriptionPatchRequestInnerValueAnyOfInner  # noqa: E501
+
 
 class TestSubscriptionPatchRequestInnerValueAnyOfInner(unittest.TestCase):
     """SubscriptionPatchRequestInnerValueAnyOfInner unit test stubs"""
@@ -26,7 +26,9 @@ class TestSubscriptionPatchRequestInnerValueAnyOfInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SubscriptionPatchRequestInnerValueAnyOfInner:
+    def make_instance(
+            self,
+            include_optional) -> SubscriptionPatchRequestInnerValueAnyOfInner:
         """Test SubscriptionPatchRequestInnerValueAnyOfInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -46,6 +48,7 @@ class TestSubscriptionPatchRequestInnerValueAnyOfInner(unittest.TestCase):
         """Test SubscriptionPatchRequestInnerValueAnyOfInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

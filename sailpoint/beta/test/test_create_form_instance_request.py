@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.create_form_instance_request import CreateFormInstanceRequest  # noqa: E501
+from sailpoint.beta.models.create_form_instance_request import CreateFormInstanceRequest  # noqa: E501
+
 
 class TestCreateFormInstanceRequest(unittest.TestCase):
     """CreateFormInstanceRequest unit test stubs"""
@@ -36,14 +36,14 @@ class TestCreateFormInstanceRequest(unittest.TestCase):
         model = CreateFormInstanceRequest()  # noqa: E501
         if include_optional:
             return CreateFormInstanceRequest(
-                created_by = beta.models.form_instance_created_by.FormInstanceCreatedBy(
+                created_by = sailpoint.beta.models.form_instance_created_by.FormInstanceCreatedBy(
                     id = '00000000-0000-0000-0000-000000000000', 
                     type = 'WORKFLOW_EXECUTION', ),
                 expire = '2023-08-12T20:14:57.74486Z',
                 form_definition_id = '00000000-0000-0000-0000-000000000000',
                 form_input = {input1=Sales},
                 recipients = [
-                    beta.models.form_instance_recipient.FormInstanceRecipient(
+                    sailpoint.beta.models.form_instance_recipient.FormInstanceRecipient(
                         id = '00000000-0000-0000-0000-000000000000', 
                         type = 'IDENTITY', )
                     ],
@@ -53,13 +53,13 @@ class TestCreateFormInstanceRequest(unittest.TestCase):
             )
         else:
             return CreateFormInstanceRequest(
-                created_by = beta.models.form_instance_created_by.FormInstanceCreatedBy(
+                created_by = sailpoint.beta.models.form_instance_created_by.FormInstanceCreatedBy(
                     id = '00000000-0000-0000-0000-000000000000', 
                     type = 'WORKFLOW_EXECUTION', ),
                 expire = '2023-08-12T20:14:57.74486Z',
                 form_definition_id = '00000000-0000-0000-0000-000000000000',
                 recipients = [
-                    beta.models.form_instance_recipient.FormInstanceRecipient(
+                    sailpoint.beta.models.form_instance_recipient.FormInstanceRecipient(
                         id = '00000000-0000-0000-0000-000000000000', 
                         type = 'IDENTITY', )
                     ],
@@ -70,6 +70,7 @@ class TestCreateFormInstanceRequest(unittest.TestCase):
         """Test CreateFormInstanceRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

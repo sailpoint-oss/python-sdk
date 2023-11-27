@@ -11,22 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+
 
 class EntitlementBulkUpdateRequest(BaseModel):
     """
     EntitlementBulkUpdateRequest
     """
-    entitlement_ids: conlist(StrictStr, max_items=50) = Field(..., alias="entitlementIds", description="List of entitlement ids to update")
+    entitlement_ids: conlist(StrictStr, max_items=50) = Field(
+        ...,
+        alias="entitlementIds",
+        description="List of entitlement ids to update")
     json_patch: conlist(JsonPatchOperation) = Field(..., alias="jsonPatch")
     __properties = ["entitlementIds", "jsonPatch"]
 
@@ -50,10 +52,7 @@ class EntitlementBulkUpdateRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in json_patch (list)
         _items = []
         if self.json_patch:
@@ -73,9 +72,11 @@ class EntitlementBulkUpdateRequest(BaseModel):
             return EntitlementBulkUpdateRequest.parse_obj(obj)
 
         _obj = EntitlementBulkUpdateRequest.parse_obj({
-            "entitlement_ids": obj.get("entitlementIds"),
-            "json_patch": [JsonPatchOperation.from_dict(_item) for _item in obj.get("jsonPatch")] if obj.get("jsonPatch") is not None else None
+            "entitlement_ids":
+            obj.get("entitlementIds"),
+            "json_patch": [
+                JsonPatchOperation.from_dict(_item)
+                for _item in obj.get("jsonPatch")
+            ] if obj.get("jsonPatch") is not None else None
         })
         return _obj
-
-

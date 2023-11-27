@@ -11,27 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from beta.models.account_status_changed_account import AccountStatusChangedAccount
-from beta.models.account_status_changed_status_change import AccountStatusChangedStatusChange
+from sailpoint.beta.models.account_status_changed_account import AccountStatusChangedAccount
+from sailpoint.beta.models.account_status_changed_status_change import AccountStatusChangedStatusChange
+
 
 class AccountStatusChanged(BaseModel):
     """
     AccountStatusChanged
     """
-    event_type: Optional[StrictStr] = Field(None, alias="eventType", description="the event type")
-    identity_id: Optional[StrictStr] = Field(None, alias="identityId", description="the identity id")
+    event_type: Optional[StrictStr] = Field(None,
+                                            alias="eventType",
+                                            description="the event type")
+    identity_id: Optional[StrictStr] = Field(None,
+                                             alias="identityId",
+                                             description="the identity id")
     dt: Optional[StrictStr] = Field(None, description="the date of event")
     account: Optional[AccountStatusChangedAccount] = None
-    status_change: Optional[AccountStatusChangedStatusChange] = Field(None, alias="statusChange")
+    status_change: Optional[AccountStatusChangedStatusChange] = Field(
+        None, alias="statusChange")
     __properties = ["eventType", "identityId", "dt", "account", "statusChange"]
 
     class Config:
@@ -54,10 +58,7 @@ class AccountStatusChanged(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of account
         if self.account:
             _dict['account'] = self.account.to_dict()
@@ -76,12 +77,17 @@ class AccountStatusChanged(BaseModel):
             return AccountStatusChanged.parse_obj(obj)
 
         _obj = AccountStatusChanged.parse_obj({
-            "event_type": obj.get("eventType"),
-            "identity_id": obj.get("identityId"),
-            "dt": obj.get("dt"),
-            "account": AccountStatusChangedAccount.from_dict(obj.get("account")) if obj.get("account") is not None else None,
-            "status_change": AccountStatusChangedStatusChange.from_dict(obj.get("statusChange")) if obj.get("statusChange") is not None else None
+            "event_type":
+            obj.get("eventType"),
+            "identity_id":
+            obj.get("identityId"),
+            "dt":
+            obj.get("dt"),
+            "account":
+            AccountStatusChangedAccount.from_dict(obj.get("account"))
+            if obj.get("account") is not None else None,
+            "status_change":
+            AccountStatusChangedStatusChange.from_dict(obj.get("statusChange"))
+            if obj.get("statusChange") is not None else None
         })
         return _obj
-
-

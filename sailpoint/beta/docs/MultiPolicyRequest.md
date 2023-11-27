@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.multi_policy_request import MultiPolicyRequest
+from sailpoint.beta.models.multi_policy_request import MultiPolicyRequest
 
 # TODO update the JSON string below
 json = "{}"

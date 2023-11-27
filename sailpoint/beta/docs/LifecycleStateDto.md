@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.lifecycle_state_dto import LifecycleStateDto
+from sailpoint.beta.models.lifecycle_state_dto import LifecycleStateDto
 
 # TODO update the JSON string below
 json = "{}"

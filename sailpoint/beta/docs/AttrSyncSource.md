@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.attr_sync_source import AttrSyncSource
+from sailpoint.beta.models.attr_sync_source import AttrSyncSource
 
 # TODO update the JSON string below
 json = "{}"

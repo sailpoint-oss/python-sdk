@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.violation_context import ViolationContext
+from sailpoint.v3.models.violation_context import ViolationContext
 
 # TODO update the JSON string below
 json = "{}"

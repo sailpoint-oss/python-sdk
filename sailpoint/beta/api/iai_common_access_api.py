@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,17 +22,15 @@ from pydantic import Field, StrictBool, StrictStr, conint, conlist
 
 from typing import Any, Dict, List, Optional
 
-from beta.models.common_access_id_status import CommonAccessIDStatus
-from beta.models.common_access_item_request import CommonAccessItemRequest
-from beta.models.common_access_item_response import CommonAccessItemResponse
-from beta.models.common_access_response import CommonAccessResponse
+from sailpoint.beta.models.common_access_id_status import CommonAccessIDStatus
+from sailpoint.beta.models.common_access_item_request import CommonAccessItemRequest
+from sailpoint.beta.models.common_access_item_response import CommonAccessItemResponse
+from sailpoint.beta.models.common_access_response import CommonAccessResponse
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class IAICommonAccessApi:
@@ -49,7 +46,9 @@ class IAICommonAccessApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_common_access(self, common_access_item_request : CommonAccessItemRequest, **kwargs) -> CommonAccessItemResponse:  # noqa: E501
+    def create_common_access(
+            self, common_access_item_request: CommonAccessItemRequest,
+            **kwargs) -> CommonAccessItemResponse:  # noqa: E501
         """Create common access items  # noqa: E501
 
         This API is used to add roles/access profiles to the list of common access for a customer. Requires authorization scope of iai:access-modeling:create  # noqa: E501
@@ -76,10 +75,13 @@ class IAICommonAccessApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_common_access_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_common_access_with_http_info(common_access_item_request, **kwargs)  # noqa: E501
+        return self.create_common_access_with_http_info(
+            common_access_item_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_common_access_with_http_info(self, common_access_item_request : CommonAccessItemRequest, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_common_access_with_http_info(
+            self, common_access_item_request: CommonAccessItemRequest,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create common access items  # noqa: E501
 
         This API is used to add roles/access profiles to the list of common access for a customer. Requires authorization scope of iai:access-modeling:create  # noqa: E501
@@ -118,28 +120,17 @@ class IAICommonAccessApi:
 
         _params = locals()
 
-        _all_params = [
-            'common_access_item_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['common_access_item_request']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_common_access" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_common_access" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -165,11 +156,11 @@ class IAICommonAccessApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -184,7 +175,8 @@ class IAICommonAccessApi:
         }
 
         return self.api_client.call_api(
-            '/common-access', 'POST',
+            '/common-access',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -194,14 +186,52 @@ class IAICommonAccessApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_common_access(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, sw*  **reviewedByUser** *eq*  **access.id**: *eq, sw*  **access.type**: *eq*  **access.name**: *sw, eq*  **access.description**: *sw, eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, status**  By default the common access items are sorted by name, ascending.")] = None, **kwargs) -> List[CommonAccessResponse]:  # noqa: E501
+    def get_common_access(
+            self,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, sw*  **reviewedByUser** *eq*  **access.id**: *eq, sw*  **access.type**: *eq*  **access.name**: *sw, eq*  **access.description**: *sw, eq*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, status**  By default the common access items are sorted by name, ascending."
+            )] = None,
+            **kwargs) -> List[CommonAccessResponse]:  # noqa: E501
         """Get a paginated list of common access  # noqa: E501
 
         This endpoint returns the current common access for a customer. The returned items can be filtered and sorted. Requires authorization scope of iai:access-modeling:read  # noqa: E501
@@ -236,10 +266,49 @@ class IAICommonAccessApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_common_access_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_common_access_with_http_info(offset, limit, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.get_common_access_with_http_info(offset, limit, count,
+                                                     filters, sorters,
+                                                     **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_common_access_with_http_info(self, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, sw*  **reviewedByUser** *eq*  **access.id**: *eq, sw*  **access.type**: *eq*  **access.name**: *sw, eq*  **access.description**: *sw, eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, status**  By default the common access items are sorted by name, ascending.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_common_access_with_http_info(
+            self,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, sw*  **reviewedByUser** *eq*  **access.id**: *eq, sw*  **access.type**: *eq*  **access.name**: *sw, eq*  **access.description**: *sw, eq*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, status**  By default the common access items are sorted by name, ascending."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get a paginated list of common access  # noqa: E501
 
         This endpoint returns the current common access for a customer. The returned items can be filtered and sorted. Requires authorization scope of iai:access-modeling:read  # noqa: E501
@@ -286,32 +355,17 @@ class IAICommonAccessApi:
 
         _params = locals()
 
-        _all_params = [
-            'offset',
-            'limit',
-            'count',
-            'filters',
-            'sorters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['offset', 'limit', 'count', 'filters', 'sorters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_common_access" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_common_access" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -360,7 +414,8 @@ class IAICommonAccessApi:
         }
 
         return self.api_client.call_api(
-            '/common-access', 'GET',
+            '/common-access',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -370,14 +425,23 @@ class IAICommonAccessApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_common_access_status_in_bulk(self, common_access_id_status : Annotated[conlist(CommonAccessIDStatus), Field(..., description="Confirm or deny in bulk the common access ids that are (or aren't) common access")], **kwargs) -> object:  # noqa: E501
+    def update_common_access_status_in_bulk(
+            self, common_access_id_status:
+        Annotated[
+            conlist(CommonAccessIDStatus),
+            Field(
+                ...,
+                description=
+                "Confirm or deny in bulk the common access ids that are (or aren't) common access"
+            )], **kwargs) -> object:  # noqa: E501
         """Bulk update common access status  # noqa: E501
 
         This submits an update request to the common access application. At this time there are no parameters. Requires authorization scope of iai:access-modeling:update  # noqa: E501
@@ -404,10 +468,19 @@ class IAICommonAccessApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_common_access_status_in_bulk_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_common_access_status_in_bulk_with_http_info(common_access_id_status, **kwargs)  # noqa: E501
+        return self.update_common_access_status_in_bulk_with_http_info(
+            common_access_id_status, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_common_access_status_in_bulk_with_http_info(self, common_access_id_status : Annotated[conlist(CommonAccessIDStatus), Field(..., description="Confirm or deny in bulk the common access ids that are (or aren't) common access")], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_common_access_status_in_bulk_with_http_info(
+            self, common_access_id_status:
+        Annotated[
+            conlist(CommonAccessIDStatus),
+            Field(
+                ...,
+                description=
+                "Confirm or deny in bulk the common access ids that are (or aren't) common access"
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Bulk update common access status  # noqa: E501
 
         This submits an update request to the common access application. At this time there are no parameters. Requires authorization scope of iai:access-modeling:update  # noqa: E501
@@ -446,28 +519,18 @@ class IAICommonAccessApi:
 
         _params = locals()
 
-        _all_params = [
-            'common_access_id_status'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['common_access_id_status']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update_common_access_status_in_bulk" % _key
-                )
+                    " to method update_common_access_status_in_bulk" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -493,11 +556,11 @@ class IAICommonAccessApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -512,7 +575,8 @@ class IAICommonAccessApi:
         }
 
         return self.api_client.call_api(
-            '/common-access/update-status', 'POST',
+            '/common-access/update-status',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -522,7 +586,8 @@ class IAICommonAccessApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

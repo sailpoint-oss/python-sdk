@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.common_access_item_request import CommonAccessItemRequest
+from sailpoint.beta.models.common_access_item_request import CommonAccessItemRequest
 
 # TODO update the JSON string below
 json = "{}"

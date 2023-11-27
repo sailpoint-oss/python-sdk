@@ -1,4 +1,4 @@
-# beta.SourceUsagesApi
+# sailpoint.beta.SourceUsagesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -22,14 +22,14 @@ This API returns the status of the source usage insights setup by IDN source ID.
 ```python
 import time
 import os
-import beta
-from beta.models.source_usage_status import SourceUsageStatus
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.source_usage_status import SourceUsageStatus
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -43,9 +43,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourceUsagesApi(api_client)
+    api_instance = sailpoint.beta.SourceUsagesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | ID of IDN source
 
     try:
@@ -104,14 +104,14 @@ This API returns a summary of source usage insights for past 12 months.
 ```python
 import time
 import os
-import beta
-from beta.models.source_usage import SourceUsage
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.source_usage import SourceUsage
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -125,9 +125,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.SourceUsagesApi(api_client)
+    api_instance = sailpoint.beta.SourceUsagesApi(api_client)
     source_id = '2c9180835d191a86015d28455b4a2329' # str | ID of IDN source
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)

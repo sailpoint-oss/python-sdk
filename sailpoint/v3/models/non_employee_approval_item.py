@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,24 +19,38 @@ import json
 from datetime import datetime
 from typing import Optional, Union
 from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr
-from v3.models.approval_status import ApprovalStatus
-from v3.models.non_employee_identity_reference_with_id import NonEmployeeIdentityReferenceWithId
-from v3.models.non_employee_request_lite import NonEmployeeRequestLite
+from sailpoint.v3.models.approval_status import ApprovalStatus
+from sailpoint.v3.models.non_employee_identity_reference_with_id import NonEmployeeIdentityReferenceWithId
+from sailpoint.v3.models.non_employee_request_lite import NonEmployeeRequestLite
+
 
 class NonEmployeeApprovalItem(BaseModel):
     """
     NonEmployeeApprovalItem
     """
-    id: Optional[StrictStr] = Field(None, description="Non-Employee approval item id")
+    id: Optional[StrictStr] = Field(
+        None, description="Non-Employee approval item id")
     approver: Optional[NonEmployeeIdentityReferenceWithId] = None
-    account_name: Optional[StrictStr] = Field(None, alias="accountName", description="Requested identity account name")
-    approval_status: Optional[ApprovalStatus] = Field(None, alias="approvalStatus")
-    approval_order: Optional[Union[StrictFloat, StrictInt]] = Field(None, alias="approvalOrder", description="Approval order")
-    comment: Optional[StrictStr] = Field(None, description="comment of approver")
-    modified: Optional[datetime] = Field(None, description="When the request was last modified.")
-    created: Optional[datetime] = Field(None, description="When the request was created.")
-    non_employee_request: Optional[NonEmployeeRequestLite] = Field(None, alias="nonEmployeeRequest")
-    __properties = ["id", "approver", "accountName", "approvalStatus", "approvalOrder", "comment", "modified", "created", "nonEmployeeRequest"]
+    account_name: Optional[StrictStr] = Field(
+        None,
+        alias="accountName",
+        description="Requested identity account name")
+    approval_status: Optional[ApprovalStatus] = Field(None,
+                                                      alias="approvalStatus")
+    approval_order: Optional[Union[StrictFloat, StrictInt]] = Field(
+        None, alias="approvalOrder", description="Approval order")
+    comment: Optional[StrictStr] = Field(None,
+                                         description="comment of approver")
+    modified: Optional[datetime] = Field(
+        None, description="When the request was last modified.")
+    created: Optional[datetime] = Field(
+        None, description="When the request was created.")
+    non_employee_request: Optional[NonEmployeeRequestLite] = Field(
+        None, alias="nonEmployeeRequest")
+    __properties = [
+        "id", "approver", "accountName", "approvalStatus", "approvalOrder",
+        "comment", "modified", "created", "nonEmployeeRequest"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -59,10 +72,7 @@ class NonEmployeeApprovalItem(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of approver
         if self.approver:
             _dict['approver'] = self.approver.to_dict()
@@ -81,16 +91,25 @@ class NonEmployeeApprovalItem(BaseModel):
             return NonEmployeeApprovalItem.parse_obj(obj)
 
         _obj = NonEmployeeApprovalItem.parse_obj({
-            "id": obj.get("id"),
-            "approver": NonEmployeeIdentityReferenceWithId.from_dict(obj.get("approver")) if obj.get("approver") is not None else None,
-            "account_name": obj.get("accountName"),
-            "approval_status": obj.get("approvalStatus"),
-            "approval_order": obj.get("approvalOrder"),
-            "comment": obj.get("comment"),
-            "modified": obj.get("modified"),
-            "created": obj.get("created"),
-            "non_employee_request": NonEmployeeRequestLite.from_dict(obj.get("nonEmployeeRequest")) if obj.get("nonEmployeeRequest") is not None else None
+            "id":
+            obj.get("id"),
+            "approver":
+            NonEmployeeIdentityReferenceWithId.from_dict(obj.get("approver"))
+            if obj.get("approver") is not None else None,
+            "account_name":
+            obj.get("accountName"),
+            "approval_status":
+            obj.get("approvalStatus"),
+            "approval_order":
+            obj.get("approvalOrder"),
+            "comment":
+            obj.get("comment"),
+            "modified":
+            obj.get("modified"),
+            "created":
+            obj.get("created"),
+            "non_employee_request":
+            NonEmployeeRequestLite.from_dict(obj.get("nonEmployeeRequest"))
+            if obj.get("nonEmployeeRequest") is not None else None
         })
         return _obj
-
-

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
+from sailpoint.beta.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
 
 # TODO update the JSON string below
 json = "{}"

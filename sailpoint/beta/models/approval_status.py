@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class ApprovalStatus(str, Enum):
     """
     Enum representing the non-employee request approval status
     """
-
     """
     allowed enum values
     """
@@ -39,5 +34,3 @@ class ApprovalStatus(str, Enum):
     def from_json(cls, json_str: str) -> ApprovalStatus:
         """Create an instance of ApprovalStatus from a JSON string"""
         return ApprovalStatus(json.loads(json_str))
-
-

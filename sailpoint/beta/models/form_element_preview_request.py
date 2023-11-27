@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field
-from beta.models.form_element_dynamic_data_source import FormElementDynamicDataSource
+from sailpoint.beta.models.form_element_dynamic_data_source import FormElementDynamicDataSource
+
 
 class FormElementPreviewRequest(BaseModel):
     """
     FormElementPreviewRequest
     """
-    data_source: Optional[FormElementDynamicDataSource] = Field(None, alias="dataSource")
+    data_source: Optional[FormElementDynamicDataSource] = Field(
+        None, alias="dataSource")
     __properties = ["dataSource"]
 
     class Config:
@@ -49,10 +49,7 @@ class FormElementPreviewRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of data_source
         if self.data_source:
             _dict['dataSource'] = self.data_source.to_dict()
@@ -68,8 +65,8 @@ class FormElementPreviewRequest(BaseModel):
             return FormElementPreviewRequest.parse_obj(obj)
 
         _obj = FormElementPreviewRequest.parse_obj({
-            "data_source": FormElementDynamicDataSource.from_dict(obj.get("dataSource")) if obj.get("dataSource") is not None else None
+            "data_source":
+            FormElementDynamicDataSource.from_dict(obj.get("dataSource"))
+            if obj.get("dataSource") is not None else None
         })
         return _obj
-
-

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto  # noqa: E501
+from sailpoint.beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto  # noqa: E501
+
 
 class TestAccessRequestRecommendationActionItemResponseDto(unittest.TestCase):
     """AccessRequestRecommendationActionItemResponseDto unit test stubs"""
@@ -26,7 +26,9 @@ class TestAccessRequestRecommendationActionItemResponseDto(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccessRequestRecommendationActionItemResponseDto:
+    def make_instance(
+            self, include_optional
+    ) -> AccessRequestRecommendationActionItemResponseDto:
         """Test AccessRequestRecommendationActionItemResponseDto
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -37,7 +39,7 @@ class TestAccessRequestRecommendationActionItemResponseDto(unittest.TestCase):
         if include_optional:
             return AccessRequestRecommendationActionItemResponseDto(
                 identity_id = '2c91808570313110017040b06f344ec9',
-                access = beta.models.access_request_recommendation_item.AccessRequestRecommendationItem(
+                access = sailpoint.beta.models.access_request_recommendation_item.AccessRequestRecommendationItem(
                     id = '2c9180835d2e5168015d32f890ca1581', 
                     type = 'ACCESS_PROFILE', ),
                 timestamp = '2017-07-11T18:45:37.098Z'
@@ -51,6 +53,7 @@ class TestAccessRequestRecommendationActionItemResponseDto(unittest.TestCase):
         """Test AccessRequestRecommendationActionItemResponseDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

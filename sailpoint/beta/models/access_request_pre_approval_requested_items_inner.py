@@ -11,33 +11,41 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class AccessRequestPreApprovalRequestedItemsInner(BaseModel):
     """
     AccessRequestPreApprovalRequestedItemsInner
     """
-    id: StrictStr = Field(..., description="The unique ID of the access item being requested.")
-    name: StrictStr = Field(..., description="The human friendly name of the access item.")
-    description: Optional[StrictStr] = Field(None, description="Detailed description of the access item.")
+    id: StrictStr = Field(
+        ..., description="The unique ID of the access item being requested.")
+    name: StrictStr = Field(
+        ..., description="The human friendly name of the access item.")
+    description: Optional[StrictStr] = Field(
+        None, description="Detailed description of the access item.")
     type: Dict[str, Any] = Field(..., description="The type of access item.")
-    operation: Dict[str, Any] = Field(..., description="The action to perform on the access item.")
-    comment: Optional[StrictStr] = Field(None, description="A comment from the identity requesting the access.")
-    __properties = ["id", "name", "description", "type", "operation", "comment"]
+    operation: Dict[str, Any] = Field(
+        ..., description="The action to perform on the access item.")
+    comment: Optional[StrictStr] = Field(
+        None, description="A comment from the identity requesting the access.")
+    __properties = [
+        "id", "name", "description", "type", "operation", "comment"
+    ]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT'):
-            raise ValueError("must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')")
+            raise ValueError(
+                "must be one of enum values ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT')"
+            )
         return value
 
     @validator('operation')
@@ -61,16 +69,14 @@ class AccessRequestPreApprovalRequestedItemsInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccessRequestPreApprovalRequestedItemsInner:
+    def from_json(
+            cls, json_str: str) -> AccessRequestPreApprovalRequestedItemsInner:
         """Create an instance of AccessRequestPreApprovalRequestedItemsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -84,7 +90,8 @@ class AccessRequestPreApprovalRequestedItemsInner(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccessRequestPreApprovalRequestedItemsInner:
+    def from_dict(cls,
+                  obj: dict) -> AccessRequestPreApprovalRequestedItemsInner:
         """Create an instance of AccessRequestPreApprovalRequestedItemsInner from a dict"""
         if obj is None:
             return None
@@ -93,13 +100,17 @@ class AccessRequestPreApprovalRequestedItemsInner(BaseModel):
             return AccessRequestPreApprovalRequestedItemsInner.parse_obj(obj)
 
         _obj = AccessRequestPreApprovalRequestedItemsInner.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "type": obj.get("type"),
-            "operation": obj.get("operation"),
-            "comment": obj.get("comment")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "type":
+            obj.get("type"),
+            "operation":
+            obj.get("operation"),
+            "comment":
+            obj.get("comment")
         })
         return _obj
-
-

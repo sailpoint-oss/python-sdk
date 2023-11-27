@@ -11,25 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from beta.models.identity_attributes_changed_changes_inner_new_value import IdentityAttributesChangedChangesInnerNewValue
-from beta.models.identity_attributes_changed_changes_inner_old_value import IdentityAttributesChangedChangesInnerOldValue
+from sailpoint.beta.models.identity_attributes_changed_changes_inner_new_value import IdentityAttributesChangedChangesInnerNewValue
+from sailpoint.beta.models.identity_attributes_changed_changes_inner_old_value import IdentityAttributesChangedChangesInnerOldValue
+
 
 class IdentityAttributesChangedChangesInner(BaseModel):
     """
     IdentityAttributesChangedChangesInner
     """
-    attribute: StrictStr = Field(..., description="The name of the identity attribute that changed.")
-    old_value: Optional[IdentityAttributesChangedChangesInnerOldValue] = Field(None, alias="oldValue")
-    new_value: Optional[IdentityAttributesChangedChangesInnerNewValue] = Field(None, alias="newValue")
+    attribute: StrictStr = Field(
+        ..., description="The name of the identity attribute that changed.")
+    old_value: Optional[IdentityAttributesChangedChangesInnerOldValue] = Field(
+        None, alias="oldValue")
+    new_value: Optional[IdentityAttributesChangedChangesInnerNewValue] = Field(
+        None, alias="newValue")
     __properties = ["attribute", "oldValue", "newValue"]
 
     class Config:
@@ -52,10 +54,7 @@ class IdentityAttributesChangedChangesInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of old_value
         if self.old_value:
             _dict['oldValue'] = self.old_value.to_dict()
@@ -79,10 +78,15 @@ class IdentityAttributesChangedChangesInner(BaseModel):
             return IdentityAttributesChangedChangesInner.parse_obj(obj)
 
         _obj = IdentityAttributesChangedChangesInner.parse_obj({
-            "attribute": obj.get("attribute"),
-            "old_value": IdentityAttributesChangedChangesInnerOldValue.from_dict(obj.get("oldValue")) if obj.get("oldValue") is not None else None,
-            "new_value": IdentityAttributesChangedChangesInnerNewValue.from_dict(obj.get("newValue")) if obj.get("newValue") is not None else None
+            "attribute":
+            obj.get("attribute"),
+            "old_value":
+            IdentityAttributesChangedChangesInnerOldValue.from_dict(
+                obj.get("oldValue"))
+            if obj.get("oldValue") is not None else None,
+            "new_value":
+            IdentityAttributesChangedChangesInnerNewValue.from_dict(
+                obj.get("newValue"))
+            if obj.get("newValue") is not None else None
         })
         return _obj
-
-

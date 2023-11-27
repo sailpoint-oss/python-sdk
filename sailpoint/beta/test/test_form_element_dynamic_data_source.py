@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.form_element_dynamic_data_source import FormElementDynamicDataSource  # noqa: E501
+from sailpoint.beta.models.form_element_dynamic_data_source import FormElementDynamicDataSource  # noqa: E501
+
 
 class TestFormElementDynamicDataSource(unittest.TestCase):
     """FormElementDynamicDataSource unit test stubs"""
@@ -36,7 +36,7 @@ class TestFormElementDynamicDataSource(unittest.TestCase):
         model = FormElementDynamicDataSource()  # noqa: E501
         if include_optional:
             return FormElementDynamicDataSource(
-                config = beta.models.form_element_dynamic_data_source_config.FormElementDynamicDataSourceConfig(
+                config = sailpoint.beta.models.form_element_dynamic_data_source_config.FormElementDynamicDataSourceConfig(
                     aggregation_bucket_field = 'attributes.cloudStatus.exact', 
                     indices = [identities], 
                     object_type = 'IDENTITY', 
@@ -52,6 +52,7 @@ class TestFormElementDynamicDataSource(unittest.TestCase):
         """Test FormElementDynamicDataSource"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.admin_review_reassign import AdminReviewReassign  # noqa: E501
+from sailpoint.v3.models.admin_review_reassign import AdminReviewReassign  # noqa: E501
+
 
 class TestAdminReviewReassign(unittest.TestCase):
     """AdminReviewReassign unit test stubs"""
@@ -37,7 +37,7 @@ class TestAdminReviewReassign(unittest.TestCase):
         if include_optional:
             return AdminReviewReassign(
                 certification_ids = [af3859464779471211bb8424a563abc1, af3859464779471211bb8424a563abc2, af3859464779471211bb8424a563abc3],
-                reassign_to = v3.models.admin_review_reassign_reassign_to.AdminReviewReassign_reassignTo(
+                reassign_to = sailpoint.v3.models.admin_review_reassign_reassign_to.AdminReviewReassign_reassignTo(
                     id = 'ef38f94347e94562b5bb8424a56397d8', 
                     type = 'IDENTITY', ),
                 reason = 'reassigned for some reason'
@@ -51,6 +51,7 @@ class TestAdminReviewReassign(unittest.TestCase):
         """Test AdminReviewReassign"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

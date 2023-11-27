@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class GrantType(str, Enum):
     """
     OAuth2 Grant Type
     """
-
     """
     allowed enum values
     """
@@ -37,5 +32,3 @@ class GrantType(str, Enum):
     def from_json(cls, json_str: str) -> GrantType:
         """Create an instance of GrantType from a JSON string"""
         return GrantType(json.loads(json_str))
-
-

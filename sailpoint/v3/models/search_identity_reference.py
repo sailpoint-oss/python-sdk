@@ -11,23 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from v3.models.dto_type import DtoType
+from sailpoint.v3.models.dto_type import DtoType
+
 
 class SearchIdentityReference(BaseModel):
     """
     SearchIdentityReference
     """
-    id: Optional[StrictStr] = Field(None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(None, description="The human readable name of the referenced object.")
+    id: Optional[StrictStr] = Field(
+        None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(
+        None, description="The human readable name of the referenced object.")
     type: Optional[DtoType] = None
     __properties = ["id", "name", "type"]
 
@@ -51,10 +52,7 @@ class SearchIdentityReference(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -72,5 +70,3 @@ class SearchIdentityReference(BaseModel):
             "type": obj.get("type")
         })
         return _obj
-
-

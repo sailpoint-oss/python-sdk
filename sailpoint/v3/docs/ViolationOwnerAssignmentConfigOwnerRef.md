@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.violation_owner_assignment_config_owner_ref import ViolationOwnerAssignmentConfigOwnerRef
+from sailpoint.v3.models.violation_owner_assignment_config_owner_ref import ViolationOwnerAssignmentConfigOwnerRef
 
 # TODO update the JSON string below
 json = "{}"

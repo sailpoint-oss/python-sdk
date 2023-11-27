@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.post_external_execute_workflow_request import PostExternalExecuteWorkflowRequest
+from sailpoint.beta.models.post_external_execute_workflow_request import PostExternalExecuteWorkflowRequest
 
 # TODO update the JSON string below
 json = "{}"

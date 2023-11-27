@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.password_sync_groups_api import PasswordSyncGroupsApi  # noqa: E501
+from sailpoint.beta.api.password_sync_groups_api import PasswordSyncGroupsApi  # noqa: E501
 
 
 class TestPasswordSyncGroupsApi(unittest.TestCase):

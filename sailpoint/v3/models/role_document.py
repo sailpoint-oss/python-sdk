@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,29 +19,47 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
-from v3.models.document_type import DocumentType
-from v3.models.owner import Owner
-from v3.models.reference import Reference
+from sailpoint.v3.models.document_type import DocumentType
+from sailpoint.v3.models.owner import Owner
+from sailpoint.v3.models.reference import Reference
+
 
 class RoleDocument(BaseModel):
     """
     Role  # noqa: E501
     """
-    id: StrictStr = Field(..., description="The unique ID of the referenced object.")
-    name: StrictStr = Field(..., description="The human readable name of the referenced object.")
+    id: StrictStr = Field(
+        ..., description="The unique ID of the referenced object.")
+    name: StrictStr = Field(
+        ..., description="The human readable name of the referenced object.")
     type: DocumentType = Field(..., alias="_type")
-    description: Optional[StrictStr] = Field(None, description="The description of the access item")
-    created: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
-    synced: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
+    description: Optional[StrictStr] = Field(
+        None, description="The description of the access item")
+    created: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
+    modified: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
+    synced: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
     enabled: Optional[StrictBool] = None
-    requestable: Optional[StrictBool] = Field(None, description="Indicates if the access can be requested")
-    request_comments_required: Optional[StrictBool] = Field(None, alias="requestCommentsRequired", description="Indicates if comments are required when requesting access")
+    requestable: Optional[StrictBool] = Field(
+        None, description="Indicates if the access can be requested")
+    request_comments_required: Optional[StrictBool] = Field(
+        None,
+        alias="requestCommentsRequired",
+        description="Indicates if comments are required when requesting access"
+    )
     owner: Optional[Owner] = None
-    access_profiles: Optional[conlist(Reference)] = Field(None, alias="accessProfiles")
-    access_profile_count: Optional[StrictInt] = Field(None, alias="accessProfileCount")
+    access_profiles: Optional[conlist(Reference)] = Field(
+        None, alias="accessProfiles")
+    access_profile_count: Optional[StrictInt] = Field(
+        None, alias="accessProfileCount")
     tags: Optional[conlist(StrictStr)] = None
-    __properties = ["id", "name", "_type", "description", "created", "modified", "synced", "enabled", "requestable", "requestCommentsRequired", "owner", "accessProfiles", "accessProfileCount", "tags"]
+    __properties = [
+        "id", "name", "_type", "description", "created", "modified", "synced",
+        "enabled", "requestable", "requestCommentsRequired", "owner",
+        "accessProfiles", "accessProfileCount", "tags"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -64,10 +81,7 @@ class RoleDocument(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -105,21 +119,36 @@ class RoleDocument(BaseModel):
             return RoleDocument.parse_obj(obj)
 
         _obj = RoleDocument.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "type": obj.get("_type"),
-            "description": obj.get("description"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "synced": obj.get("synced"),
-            "enabled": obj.get("enabled"),
-            "requestable": obj.get("requestable"),
-            "request_comments_required": obj.get("requestCommentsRequired"),
-            "owner": Owner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "access_profiles": [Reference.from_dict(_item) for _item in obj.get("accessProfiles")] if obj.get("accessProfiles") is not None else None,
-            "access_profile_count": obj.get("accessProfileCount"),
-            "tags": obj.get("tags")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "type":
+            obj.get("_type"),
+            "description":
+            obj.get("description"),
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified"),
+            "synced":
+            obj.get("synced"),
+            "enabled":
+            obj.get("enabled"),
+            "requestable":
+            obj.get("requestable"),
+            "request_comments_required":
+            obj.get("requestCommentsRequired"),
+            "owner":
+            Owner.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "access_profiles": [
+                Reference.from_dict(_item)
+                for _item in obj.get("accessProfiles")
+            ] if obj.get("accessProfiles") is not None else None,
+            "access_profile_count":
+            obj.get("accessProfileCount"),
+            "tags":
+            obj.get("tags")
         })
         return _obj
-
-

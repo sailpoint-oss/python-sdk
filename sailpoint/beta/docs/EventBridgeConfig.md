@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.event_bridge_config import EventBridgeConfig
+from sailpoint.beta.models.event_bridge_config import EventBridgeConfig
 
 # TODO update the JSON string below
 json = "{}"

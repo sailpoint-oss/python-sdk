@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.sp_config_message import SpConfigMessage
+from sailpoint.v3.models.sp_config_message import SpConfigMessage
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class ScheduleType(str, Enum):
     """
     Enum representing the currently supported schedule types.  Additional values may be added in the future without notice. 
     """
-
     """
     allowed enum values
     """
@@ -38,5 +33,3 @@ class ScheduleType(str, Enum):
     def from_json(cls, json_str: str) -> ScheduleType:
         """Create an instance of ScheduleType from a JSON string"""
         return ScheduleType(json.loads(json_str))
-
-

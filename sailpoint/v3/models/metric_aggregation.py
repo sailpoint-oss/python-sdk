@@ -11,24 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from v3.models.metric_type import MetricType
+from sailpoint.v3.models.metric_type import MetricType
+
 
 class MetricAggregation(BaseModel):
     """
     The calculation done on the results of the query  # noqa: E501
     """
-    name: StrictStr = Field(..., description="The name of the metric aggregate to be included in the result. If the metric aggregation is omitted, the resulting aggregation will be a count of the documents in the search results.")
+    name: StrictStr = Field(
+        ...,
+        description=
+        "The name of the metric aggregate to be included in the result. If the metric aggregation is omitted, the resulting aggregation will be a count of the documents in the search results."
+    )
     type: Optional[MetricType] = None
-    field: StrictStr = Field(..., description="The field the calculation is performed on.  Prefix the field name with '@' to reference a nested object. ")
+    field: StrictStr = Field(
+        ...,
+        description=
+        "The field the calculation is performed on.  Prefix the field name with '@' to reference a nested object. "
+    )
     __properties = ["name", "type", "field"]
 
     class Config:
@@ -51,10 +58,7 @@ class MetricAggregation(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -72,5 +76,3 @@ class MetricAggregation(BaseModel):
             "field": obj.get("field")
         })
         return _obj
-
-

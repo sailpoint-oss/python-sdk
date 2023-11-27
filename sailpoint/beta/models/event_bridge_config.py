@@ -11,22 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr
+
 
 class EventBridgeConfig(BaseModel):
     """
     EventBridgeConfig
     """
-    aws_account: StrictStr = Field(..., alias="awsAccount", description="AWS Account Number (12-digit number) that has the EventBridge Partner Event Source Resource.")
-    aws_region: StrictStr = Field(..., alias="awsRegion", description="AWS Region that has the EventBridge Partner Event Source Resource. See https://docs.aws.amazon.com/general/latest/gr/rande.html for a full list of available values.")
+    aws_account: StrictStr = Field(
+        ...,
+        alias="awsAccount",
+        description=
+        "AWS Account Number (12-digit number) that has the EventBridge Partner Event Source Resource."
+    )
+    aws_region: StrictStr = Field(
+        ...,
+        alias="awsRegion",
+        description=
+        "AWS Region that has the EventBridge Partner Event Source Resource. See https://docs.aws.amazon.com/general/latest/gr/rande.html for a full list of available values."
+    )
     __properties = ["awsAccount", "awsRegion"]
 
     class Config:
@@ -49,10 +57,7 @@ class EventBridgeConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,5 +74,3 @@ class EventBridgeConfig(BaseModel):
             "aws_region": obj.get("awsRegion")
         })
         return _obj
-
-

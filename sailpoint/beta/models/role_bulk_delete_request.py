@@ -11,21 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List
 from pydantic import BaseModel, Field, StrictStr, conlist
+
 
 class RoleBulkDeleteRequest(BaseModel):
     """
     RoleBulkDeleteRequest
     """
-    role_ids: conlist(StrictStr) = Field(..., alias="roleIds", description="List of IDs of Roles to be deleted.")
+    role_ids: conlist(StrictStr) = Field(
+        ...,
+        alias="roleIds",
+        description="List of IDs of Roles to be deleted.")
     __properties = ["roleIds"]
 
     class Config:
@@ -48,10 +50,7 @@ class RoleBulkDeleteRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +62,6 @@ class RoleBulkDeleteRequest(BaseModel):
         if not isinstance(obj, dict):
             return RoleBulkDeleteRequest.parse_obj(obj)
 
-        _obj = RoleBulkDeleteRequest.parse_obj({
-            "role_ids": obj.get("roleIds")
-        })
+        _obj = RoleBulkDeleteRequest.parse_obj(
+            {"role_ids": obj.get("roleIds")})
         return _obj
-
-

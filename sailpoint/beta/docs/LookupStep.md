@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.lookup_step import LookupStep
+from sailpoint.beta.models.lookup_step import LookupStep
 
 # TODO update the JSON string below
 json = "{}"

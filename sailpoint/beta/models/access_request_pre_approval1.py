@@ -11,23 +11,28 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+
 
 class AccessRequestPreApproval1(BaseModel):
     """
     AccessRequestPreApproval1
     """
-    approved: StrictBool = Field(..., description="Whether or not to approve the access request.")
-    comment: StrictStr = Field(..., description="A comment about the decision to approve or deny the request.")
-    approver: StrictStr = Field(..., description="The name of the entity that approved or denied the request.")
+    approved: StrictBool = Field(
+        ..., description="Whether or not to approve the access request.")
+    comment: StrictStr = Field(
+        ...,
+        description=
+        "A comment about the decision to approve or deny the request.")
+    approver: StrictStr = Field(
+        ...,
+        description=
+        "The name of the entity that approved or denied the request.")
     __properties = ["approved", "comment", "approver"]
 
     class Config:
@@ -50,10 +55,7 @@ class AccessRequestPreApproval1(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,10 +68,11 @@ class AccessRequestPreApproval1(BaseModel):
             return AccessRequestPreApproval1.parse_obj(obj)
 
         _obj = AccessRequestPreApproval1.parse_obj({
-            "approved": obj.get("approved"),
-            "comment": obj.get("comment"),
-            "approver": obj.get("approver")
+            "approved":
+            obj.get("approved"),
+            "comment":
+            obj.get("comment"),
+            "approver":
+            obj.get("approver")
         })
         return _obj
-
-

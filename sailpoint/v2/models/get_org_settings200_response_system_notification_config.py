@@ -11,22 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-from v2.models.get_org_settings200_response_system_notification_config_notifications_inner import GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner
+from sailpoint.v2.models.get_org_settings200_response_system_notification_config_notifications_inner import GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner
+
 
 class GetOrgSettings200ResponseSystemNotificationConfig(BaseModel):
     """
     GetOrgSettings200ResponseSystemNotificationConfig
     """
-    notifications: Optional[conlist(GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner)] = None
+    notifications: Optional[conlist(
+        GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner
+    )] = None
     recipient_type: Optional[StrictStr] = Field(None, alias="recipientType")
     __properties = ["notifications", "recipientType"]
 
@@ -37,7 +38,9 @@ class GetOrgSettings200ResponseSystemNotificationConfig(BaseModel):
             return value
 
         if value not in ('allAdmins', 'specificIdentities'):
-            raise ValueError("must be one of enum values ('allAdmins', 'specificIdentities')")
+            raise ValueError(
+                "must be one of enum values ('allAdmins', 'specificIdentities')"
+            )
         return value
 
     class Config:
@@ -54,16 +57,15 @@ class GetOrgSettings200ResponseSystemNotificationConfig(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> GetOrgSettings200ResponseSystemNotificationConfig:
+    def from_json(
+            cls, json_str: str
+    ) -> GetOrgSettings200ResponseSystemNotificationConfig:
         """Create an instance of GetOrgSettings200ResponseSystemNotificationConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in notifications (list)
         _items = []
         if self.notifications:
@@ -74,18 +76,23 @@ class GetOrgSettings200ResponseSystemNotificationConfig(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> GetOrgSettings200ResponseSystemNotificationConfig:
+    def from_dict(
+            cls,
+            obj: dict) -> GetOrgSettings200ResponseSystemNotificationConfig:
         """Create an instance of GetOrgSettings200ResponseSystemNotificationConfig from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return GetOrgSettings200ResponseSystemNotificationConfig.parse_obj(obj)
+            return GetOrgSettings200ResponseSystemNotificationConfig.parse_obj(
+                obj)
 
         _obj = GetOrgSettings200ResponseSystemNotificationConfig.parse_obj({
-            "notifications": [GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner.from_dict(_item) for _item in obj.get("notifications")] if obj.get("notifications") is not None else None,
-            "recipient_type": obj.get("recipientType")
+            "notifications": [
+                GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner
+                .from_dict(_item) for _item in obj.get("notifications")
+            ] if obj.get("notifications") is not None else None,
+            "recipient_type":
+            obj.get("recipientType")
         })
         return _obj
-
-

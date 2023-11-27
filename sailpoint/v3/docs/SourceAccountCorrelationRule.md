@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.source_account_correlation_rule import SourceAccountCorrelationRule
+from sailpoint.v3.models.source_account_correlation_rule import SourceAccountCorrelationRule
 
 # TODO update the JSON string below
 json = "{}"

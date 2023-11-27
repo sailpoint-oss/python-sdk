@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.outlier_feature_translation import OutlierFeatureTranslation  # noqa: E501
+from sailpoint.beta.models.outlier_feature_translation import OutlierFeatureTranslation  # noqa: E501
+
 
 class TestOutlierFeatureTranslation(unittest.TestCase):
     """OutlierFeatureTranslation unit test stubs"""
@@ -36,10 +36,10 @@ class TestOutlierFeatureTranslation(unittest.TestCase):
         model = OutlierFeatureTranslation()  # noqa: E501
         if include_optional:
             return OutlierFeatureTranslation(
-                display_name = beta.models.translation_message.TranslationMessage(
+                display_name = sailpoint.beta.models.translation_message.TranslationMessage(
                     key = 'recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH', 
                     values = [75, department], ),
-                description = beta.models.translation_message.TranslationMessage(
+                description = sailpoint.beta.models.translation_message.TranslationMessage(
                     key = 'recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH', 
                     values = [75, department], )
             )
@@ -52,6 +52,7 @@ class TestOutlierFeatureTranslation(unittest.TestCase):
         """Test OutlierFeatureTranslation"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

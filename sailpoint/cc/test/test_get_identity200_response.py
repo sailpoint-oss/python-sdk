@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from cc.models.get_identity200_response import GetIdentity200Response  # noqa: E501
+from sailpoint.cc.models.get_identity200_response import GetIdentity200Response  # noqa: E501
+
 
 class TestGetIdentity200Response(unittest.TestCase):
     """GetIdentity200Response unit test stubs"""
@@ -73,7 +73,7 @@ class TestGetIdentity200Response(unittest.TestCase):
                 org_encryption_key = '',
                 org_encryption_key_id = '',
                 meta = None,
-                org = cc.models.get_identity_200_response_org.GetIdentity_200_response_org(
+                org = sailpoint.cc.models.get_identity_200_response_org.GetIdentity_200_response_org(
                     name = '', 
                     script_name = '', 
                     mode = '', 
@@ -87,7 +87,7 @@ class TestGetIdentity200Response(unittest.TestCase):
                     pwd_reset_email = True, 
                     pwd_reset_duo = True, 
                     pwd_reset_phone_mask = True, 
-                    auth_error_text = cc.models.auth_error_text.authErrorText(), 
+                    auth_error_text = sailpoint.cc.models.auth_error_text.authErrorText(), 
                     strong_auth_kba = True, 
                     strong_auth_personal_phone = True, 
                     strong_auth_personal_email = True, 
@@ -105,11 +105,11 @@ class TestGetIdentity200Response(unittest.TestCase):
                     enable_password_replay = True, 
                     enable_automatic_password_replay = True, 
                     notify_authentication_setting_change = True, 
-                    netmasks = cc.models.netmasks.netmasks(), 
-                    country_codes = cc.models.country_codes.countryCodes(), 
+                    netmasks = sailpoint.cc.models.netmasks.netmasks(), 
+                    country_codes = sailpoint.cc.models.country_codes.countryCodes(), 
                     white_list = True, 
-                    username_empty_text = cc.models.username_empty_text.usernameEmptyText(), 
-                    username_label = cc.models.username_label.usernameLabel(), 
+                    username_empty_text = sailpoint.cc.models.username_empty_text.usernameEmptyText(), 
+                    username_label = sailpoint.cc.models.username_label.usernameLabel(), 
                     enable_automation_generation = True, 
                     email_test_mode = True, 
                     email_test_address = '', 
@@ -119,17 +119,17 @@ class TestGetIdentity200Response(unittest.TestCase):
                     redirect_patterns = '', 
                     max_cluster_debug_hours = '', 
                     brand_name = '', 
-                    logo = cc.models.logo.logo(), 
-                    email_from_address = cc.models.email_from_address.emailFromAddress(), 
-                    standard_logo_url = cc.models.standard_logo_url.standardLogoUrl(), 
-                    narrow_logo_url = cc.models.narrow_logo_url.narrowLogoUrl(), 
+                    logo = sailpoint.cc.models.logo.logo(), 
+                    email_from_address = sailpoint.cc.models.email_from_address.emailFromAddress(), 
+                    standard_logo_url = sailpoint.cc.models.standard_logo_url.standardLogoUrl(), 
+                    narrow_logo_url = sailpoint.cc.models.narrow_logo_url.narrowLogoUrl(), 
                     action_button_color = '', 
                     active_link_color = '', 
                     navigation_color = '', ),
                 step_up_auth = True,
                 bx_install_prompted = True,
                 federated_login = True,
-                auth = cc.models.get_identity_200_response_auth.GetIdentity_200_response_auth(
+                auth = sailpoint.cc.models.get_identity_200_response_auth.GetIdentity_200_response_auth(
                     service = '', 
                     encryption = '', ),
                 on_network = True,
@@ -145,6 +145,7 @@ class TestGetIdentity200Response(unittest.TestCase):
         """Test GetIdentity200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

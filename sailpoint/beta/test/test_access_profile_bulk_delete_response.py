@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse  # noqa: E501
+from sailpoint.beta.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse  # noqa: E501
+
 
 class TestAccessProfileBulkDeleteResponse(unittest.TestCase):
     """AccessProfileBulkDeleteResponse unit test stubs"""
@@ -26,7 +26,8 @@ class TestAccessProfileBulkDeleteResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccessProfileBulkDeleteResponse:
+    def make_instance(self,
+                      include_optional) -> AccessProfileBulkDeleteResponse:
         """Test AccessProfileBulkDeleteResponse
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -39,10 +40,10 @@ class TestAccessProfileBulkDeleteResponse(unittest.TestCase):
                 task_id = '2c9180867817ac4d017817c491119a20',
                 pending = [2c91808876438bbb017668c21919ecca, 2c91808876438bb201766e129f151816],
                 in_use = [
-                    beta.models.access_profile_usage.AccessProfileUsage(
+                    sailpoint.beta.models.access_profile_usage.AccessProfileUsage(
                         access_profile_id = '2c91808876438bbb017668c21919ecca', 
                         used_by = [
-                            beta.models.access_profile_usage_used_by_inner.AccessProfileUsage_usedBy_inner(
+                            sailpoint.beta.models.access_profile_usage_used_by_inner.AccessProfileUsage_usedBy_inner(
                                 type = 'ROLE', 
                                 id = '2c8180857a9b3da0017aa03418480f9d', 
                                 name = 'Manager Role', )
@@ -58,6 +59,7 @@ class TestAccessProfileBulkDeleteResponse(unittest.TestCase):
         """Test AccessProfileBulkDeleteResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

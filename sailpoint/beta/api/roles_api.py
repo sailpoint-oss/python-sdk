@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,18 +22,16 @@ from pydantic import Field, StrictBool, StrictStr, conint, conlist
 
 from typing import List, Optional
 
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.models.role import Role
-from beta.models.role_bulk_delete_request import RoleBulkDeleteRequest
-from beta.models.role_identity import RoleIdentity
-from beta.models.task_result_dto import TaskResultDto
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.role import Role
+from sailpoint.beta.models.role_bulk_delete_request import RoleBulkDeleteRequest
+from sailpoint.beta.models.role_identity import RoleIdentity
+from sailpoint.beta.models.task_result_dto import TaskResultDto
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class RolesApi:
@@ -50,7 +47,9 @@ class RolesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def bulk_delete_roles(self, role_bulk_delete_request : RoleBulkDeleteRequest, **kwargs) -> TaskResultDto:  # noqa: E501
+    def bulk_delete_roles(self,
+                          role_bulk_delete_request: RoleBulkDeleteRequest,
+                          **kwargs) -> TaskResultDto:  # noqa: E501
         """Delete Role(s)  # noqa: E501
 
         This API initiates a bulk deletion of one or more Roles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Roles included in the request are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.  # noqa: E501
@@ -77,10 +76,13 @@ class RolesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the bulk_delete_roles_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.bulk_delete_roles_with_http_info(role_bulk_delete_request, **kwargs)  # noqa: E501
+        return self.bulk_delete_roles_with_http_info(role_bulk_delete_request,
+                                                     **kwargs)  # noqa: E501
 
     @validate_arguments
-    def bulk_delete_roles_with_http_info(self, role_bulk_delete_request : RoleBulkDeleteRequest, **kwargs) -> ApiResponse:  # noqa: E501
+    def bulk_delete_roles_with_http_info(
+            self, role_bulk_delete_request: RoleBulkDeleteRequest,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Role(s)  # noqa: E501
 
         This API initiates a bulk deletion of one or more Roles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Roles included in the request are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.  # noqa: E501
@@ -119,28 +121,17 @@ class RolesApi:
 
         _params = locals()
 
-        _all_params = [
-            'role_bulk_delete_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['role_bulk_delete_request']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method bulk_delete_roles" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method bulk_delete_roles" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -166,11 +157,11 @@ class RolesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -185,7 +176,8 @@ class RolesApi:
         }
 
         return self.api_client.call_api(
-            '/roles/bulk-delete', 'POST',
+            '/roles/bulk-delete',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -195,14 +187,15 @@ class RolesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_role(self, role : Role, **kwargs) -> Role:  # noqa: E501
+    def create_role(self, role: Role, **kwargs) -> Role:  # noqa: E501
         """Create a Role  # noqa: E501
 
         This API creates a role. You must have a token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority to call this API.  In addition, a ROLE_SUBADMIN may not create a role including an access profile if that access profile is associated with a source the ROLE_SUBADMIN is not associated with themselves.  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles. However, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.  # noqa: E501
@@ -232,7 +225,8 @@ class RolesApi:
         return self.create_role_with_http_info(role, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_role_with_http_info(self, role : Role, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_role_with_http_info(self, role: Role,
+                                   **kwargs) -> ApiResponse:  # noqa: E501
         """Create a Role  # noqa: E501
 
         This API creates a role. You must have a token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority to call this API.  In addition, a ROLE_SUBADMIN may not create a role including an access profile if that access profile is associated with a source the ROLE_SUBADMIN is not associated with themselves.  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles. However, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.  # noqa: E501
@@ -271,28 +265,17 @@ class RolesApi:
 
         _params = locals()
 
-        _all_params = [
-            'role'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['role']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_role" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_role" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -318,11 +301,11 @@ class RolesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -337,7 +320,8 @@ class RolesApi:
         }
 
         return self.api_client.call_api(
-            '/roles', 'POST',
+            '/roles',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -347,14 +331,18 @@ class RolesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_role(self, id : Annotated[StrictStr, Field(..., description="ID of the Role")], **kwargs) -> None:  # noqa: E501
+    def delete_role(self,
+                    id: Annotated[StrictStr,
+                                  Field(..., description="ID of the Role")],
+                    **kwargs) -> None:  # noqa: E501
         """Delete a Role  # noqa: E501
 
         This API deletes a Role by its ID. A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.  # noqa: E501
@@ -384,7 +372,9 @@ class RolesApi:
         return self.delete_role_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_role_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Role")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_role_with_http_info(self, id: Annotated[
+        StrictStr, Field(..., description="ID of the Role")],
+                                   **kwargs) -> ApiResponse:  # noqa: E501
         """Delete a Role  # noqa: E501
 
         This API deletes a Role by its ID. A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.  # noqa: E501
@@ -423,28 +413,17 @@ class RolesApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_role" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_role" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -454,7 +433,6 @@ class RolesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -475,7 +453,8 @@ class RolesApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/roles/{id}', 'DELETE',
+            '/roles/{id}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -485,14 +464,17 @@ class RolesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role(self, id : Annotated[StrictStr, Field(..., description="ID of the Role")], **kwargs) -> Role:  # noqa: E501
+    def get_role(self, id: Annotated[StrictStr,
+                                     Field(..., description="ID of the Role")],
+                 **kwargs) -> Role:  # noqa: E501
         """Get a Role  # noqa: E501
 
         This API returns a Role by its ID.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.  # noqa: E501
@@ -522,7 +504,9 @@ class RolesApi:
         return self.get_role_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Role")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_with_http_info(self, id: Annotated[
+        StrictStr, Field(..., description="ID of the Role")],
+                                **kwargs) -> ApiResponse:  # noqa: E501
         """Get a Role  # noqa: E501
 
         This API returns a Role by its ID.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.  # noqa: E501
@@ -561,28 +545,17 @@ class RolesApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_role" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_role" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -592,7 +565,6 @@ class RolesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -620,7 +592,8 @@ class RolesApi:
         }
 
         return self.api_client.call_api(
-            '/roles/{id}', 'GET',
+            '/roles/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -630,14 +603,60 @@ class RolesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_role_assigned_identities(self, id : Annotated[StrictStr, Field(..., description="ID of the Role for which the assigned Identities are to be listed")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **aliasName**: *eq, sw*  **email**: *eq, sw*  **name**: *eq, sw, co*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, aliasName, email**")] = None, **kwargs) -> List[RoleIdentity]:  # noqa: E501
+    def get_role_assigned_identities(
+            self,
+            id:
+        Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "ID of the Role for which the assigned Identities are to be listed"
+            )],
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **aliasName**: *eq, sw*  **email**: *eq, sw*  **name**: *eq, sw, co*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, aliasName, email**"
+            )] = None,
+            **kwargs) -> List[RoleIdentity]:  # noqa: E501
         """Identities assigned a Role  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -673,10 +692,56 @@ class RolesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_role_assigned_identities_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_role_assigned_identities_with_http_info(id, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.get_role_assigned_identities_with_http_info(
+            id, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_role_assigned_identities_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Role for which the assigned Identities are to be listed")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **aliasName**: *eq, sw*  **email**: *eq, sw*  **name**: *eq, sw, co*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, aliasName, email**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_role_assigned_identities_with_http_info(
+            self,
+            id:
+        Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "ID of the Role for which the assigned Identities are to be listed"
+            )],
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **aliasName**: *eq, sw*  **email**: *eq, sw*  **name**: *eq, sw, co*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, aliasName, email**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Identities assigned a Role  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -724,33 +789,18 @@ class RolesApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'limit',
-            'offset',
-            'count',
-            'filters',
-            'sorters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'limit', 'offset', 'count', 'filters', 'sorters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_role_assigned_identities" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_role_assigned_identities" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -760,7 +810,6 @@ class RolesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -803,7 +852,8 @@ class RolesApi:
         }
 
         return self.api_client.call_api(
-            '/roles/{id}/assigned-identities', 'GET',
+            '/roles/{id}/assigned-identities',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -813,14 +863,73 @@ class RolesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_roles(self, for_subadmin : Annotated[Optional[StrictStr], Field(description="If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.")] = None, limit : Annotated[Optional[conint(strict=True, le=50, ge=0)], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None, for_segment_ids : Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.")] = None, include_unsegmented : Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None, **kwargs) -> List[Role]:  # noqa: E501
+    def list_roles(
+            self,
+            for_subadmin:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=50, ge=0)],
+            Field(
+                description=
+                "Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**"
+            )] = None,
+            for_segment_ids:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error."
+            )] = None,
+            include_unsegmented:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error."
+            )] = None,
+            **kwargs) -> List[Role]:  # noqa: E501
         """List Roles  # noqa: E501
 
         This API returns a list of Roles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -861,10 +970,72 @@ class RolesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_roles_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_roles_with_http_info(for_subadmin, limit, offset, count, filters, sorters, for_segment_ids, include_unsegmented, **kwargs)  # noqa: E501
+        return self.list_roles_with_http_info(for_subadmin, limit, offset,
+                                              count, filters, sorters,
+                                              for_segment_ids,
+                                              include_unsegmented,
+                                              **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_roles_with_http_info(self, for_subadmin : Annotated[Optional[StrictStr], Field(description="If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin.")] = None, limit : Annotated[Optional[conint(strict=True, le=50, ge=0)], Field(description="Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**")] = None, for_segment_ids : Annotated[Optional[StrictStr], Field(description="If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error.")] = None, include_unsegmented : Annotated[Optional[StrictBool], Field(description="Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_roles_with_http_info(
+            self,
+            for_subadmin:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity's ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=50, ge=0)],
+            Field(
+                description=
+                "Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**"
+            )] = None,
+            for_segment_ids:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "If present and not empty, additionally filters Roles to those which are assigned to the Segment(s) with the specified IDs.  If segmentation is currently unavailable, specifying this parameter results in an error."
+            )] = None,
+            include_unsegmented:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "Whether or not the response list should contain unsegmented Roles. If *for-segment-ids* is absent or empty, specifying *include-unsegmented* as false results in an error."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List Roles  # noqa: E501
 
         This API returns a list of Roles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API.  # noqa: E501
@@ -918,34 +1089,19 @@ class RolesApi:
         _params = locals()
 
         _all_params = [
-            'for_subadmin',
-            'limit',
-            'offset',
-            'count',
-            'filters',
-            'sorters',
-            'for_segment_ids',
-            'include_unsegmented'
+            'for_subadmin', 'limit', 'offset', 'count', 'filters', 'sorters',
+            'for_segment_ids', 'include_unsegmented'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_roles" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_roles" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -975,10 +1131,12 @@ class RolesApi:
             _query_params.append(('sorters', _params['sorters']))
 
         if _params.get('for_segment_ids') is not None:  # noqa: E501
-            _query_params.append(('for-segment-ids', _params['for_segment_ids']))
+            _query_params.append(
+                ('for-segment-ids', _params['for_segment_ids']))
 
         if _params.get('include_unsegmented') is not None:  # noqa: E501
-            _query_params.append(('include-unsegmented', _params['include_unsegmented']))
+            _query_params.append(
+                ('include-unsegmented', _params['include_unsegmented']))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -1004,7 +1162,8 @@ class RolesApi:
         }
 
         return self.api_client.call_api(
-            '/roles', 'GET',
+            '/roles',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1014,14 +1173,19 @@ class RolesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_role(self, id : Annotated[StrictStr, Field(..., description="ID of the Role to patch")], json_patch_operation : conlist(JsonPatchOperation), **kwargs) -> Role:  # noqa: E501
+    def patch_role(self, id: Annotated[
+        StrictStr,
+        Field(..., description="ID of the Role to patch")],
+                   json_patch_operation: conlist(JsonPatchOperation),
+                   **kwargs) -> Role:  # noqa: E501
         """Patch a specified Role  # noqa: E501
 
         This API updates an existing Role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable: **name**, **description**, **enabled**, **owner**, **accessProfiles**, **membership**, **requestable**, **accessRequestConfig**, **revokeRequestConfig**, **segments** A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles, however, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.  # noqa: E501
@@ -1050,10 +1214,16 @@ class RolesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_role_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_role_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
+        return self.patch_role_with_http_info(id, json_patch_operation,
+                                              **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_role_with_http_info(self, id : Annotated[StrictStr, Field(..., description="ID of the Role to patch")], json_patch_operation : conlist(JsonPatchOperation), **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_role_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="ID of the Role to patch")],
+            json_patch_operation: conlist(JsonPatchOperation),
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Patch a specified Role  # noqa: E501
 
         This API updates an existing Role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.  The following fields are patchable: **name**, **description**, **enabled**, **owner**, **accessProfiles**, **membership**, **requestable**, **accessRequestConfig**, **revokeRequestConfig**, **segments** A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member. The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles, however, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.  # noqa: E501
@@ -1094,29 +1264,17 @@ class RolesApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'json_patch_operation'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'json_patch_operation']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_role" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method patch_role" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1126,7 +1284,6 @@ class RolesApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1145,11 +1302,12 @@ class RolesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
+        _content_types_list = _params.get(
+            '_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1164,7 +1322,8 @@ class RolesApi:
         }
 
         return self.api_client.call_api(
-            '/roles/{id}', 'PATCH',
+            '/roles/{id}',
+            'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -1174,7 +1333,8 @@ class RolesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

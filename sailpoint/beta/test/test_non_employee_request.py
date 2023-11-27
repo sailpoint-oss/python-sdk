@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.non_employee_request import NonEmployeeRequest  # noqa: E501
+from sailpoint.beta.models.non_employee_request import NonEmployeeRequest  # noqa: E501
+
 
 class TestNonEmployeeRequest(unittest.TestCase):
     """NonEmployeeRequest unit test stubs"""
@@ -46,7 +46,7 @@ class TestNonEmployeeRequest(unittest.TestCase):
                 email = 'william.smith@example.com',
                 phone = '5555555555',
                 manager = 'jane.doe',
-                non_employee_source = beta.models.non_employee_source_lite.NonEmployeeSourceLite(
+                non_employee_source = sailpoint.beta.models.non_employee_source_lite.NonEmployeeSourceLite(
                     id = 'a0303682-5e4a-44f7-bdc2-6ce6112549c1', 
                     source_id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'Retail', 
@@ -55,9 +55,9 @@ class TestNonEmployeeRequest(unittest.TestCase):
                     'key' : ''
                     },
                 approval_items = [
-                    beta.models.non_employee_approval_item_base.NonEmployeeApprovalItemBase(
+                    sailpoint.beta.models.non_employee_approval_item_base.NonEmployeeApprovalItemBase(
                         id = '2c1e388b-1e55-4b0a-ab5c-897f1204159c', 
-                        approver = beta.models.identity_reference_with_id.IdentityReferenceWithId(
+                        approver = sailpoint.beta.models.identity_reference_with_id.IdentityReferenceWithId(
                             type = 'IDENTITY', 
                             id = '5168015d32f890ca15812c9180835d2e', ), 
                         account_name = 'test.account', 
@@ -84,6 +84,7 @@ class TestNonEmployeeRequest(unittest.TestCase):
         """Test NonEmployeeRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

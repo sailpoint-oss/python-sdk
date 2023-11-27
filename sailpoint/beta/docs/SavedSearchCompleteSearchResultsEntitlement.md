@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.saved_search_complete_search_results_entitlement import SavedSearchCompleteSearchResultsEntitlement
+from sailpoint.beta.models.saved_search_complete_search_results_entitlement import SavedSearchCompleteSearchResultsEntitlement
 
 # TODO update the JSON string below
 json = "{}"

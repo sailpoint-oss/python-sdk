@@ -58,7 +58,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.get_identity200_response_org import GetIdentity200ResponseOrg
+from sailpoint.cc.models.get_identity200_response_org import GetIdentity200ResponseOrg
 
 # TODO update the JSON string below
 json = "{}"

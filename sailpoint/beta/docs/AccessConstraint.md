@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.access_constraint import AccessConstraint
+from sailpoint.beta.models.access_constraint import AccessConstraint
 
 # TODO update the JSON string below
 json = "{}"

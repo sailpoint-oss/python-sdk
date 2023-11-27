@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.connector_rule_create_request_signature import ConnectorRuleCreateRequestSignature
+from sailpoint.beta.models.connector_rule_create_request_signature import ConnectorRuleCreateRequestSignature
 
 # TODO update the JSON string below
 json = "{}"

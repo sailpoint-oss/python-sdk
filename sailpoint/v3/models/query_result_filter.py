@@ -11,22 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
+
 
 class QueryResultFilter(BaseModel):
     """
     Allows the query results to be filtered by specifying a list of fields to include and/or exclude from the result documents.  # noqa: E501
     """
-    includes: Optional[conlist(StrictStr)] = Field(None, description="The list of field names to include in the result documents.")
-    excludes: Optional[conlist(StrictStr)] = Field(None, description="The list of field names to exclude from the result documents.")
+    includes: Optional[conlist(StrictStr)] = Field(
+        None,
+        description=
+        "The list of field names to include in the result documents.")
+    excludes: Optional[conlist(StrictStr)] = Field(
+        None,
+        description=
+        "The list of field names to exclude from the result documents.")
     __properties = ["includes", "excludes"]
 
     class Config:
@@ -49,10 +54,7 @@ class QueryResultFilter(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,5 +71,3 @@ class QueryResultFilter(BaseModel):
             "excludes": obj.get("excludes")
         })
         return _obj
-
-

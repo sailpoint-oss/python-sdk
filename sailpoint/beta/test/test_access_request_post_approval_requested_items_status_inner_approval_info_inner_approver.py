@@ -11,13 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover  # noqa: E501
+from sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover  # noqa: E501
 
-class TestAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover(unittest.TestCase):
+
+class TestAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover(
+        unittest.TestCase):
     """AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover unit test stubs"""
 
     def setUp(self):
@@ -26,7 +27,9 @@ class TestAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApp
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover:
+    def make_instance(
+        self, include_optional
+    ) -> AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover:
         """Test AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -48,10 +51,12 @@ class TestAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApp
         )
         """
 
-    def testAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover(self):
+    def testAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover(
+            self):
         """Test AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

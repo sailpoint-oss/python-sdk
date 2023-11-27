@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.source_usage_status import SourceUsageStatus
+from sailpoint.v3.models.source_usage_status import SourceUsageStatus
 
 # TODO update the JSON string below
 json = "{}"

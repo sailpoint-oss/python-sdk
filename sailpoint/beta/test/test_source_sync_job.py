@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.source_sync_job import SourceSyncJob  # noqa: E501
+from sailpoint.beta.models.source_sync_job import SourceSyncJob  # noqa: E501
+
 
 class TestSourceSyncJob(unittest.TestCase):
     """SourceSyncJob unit test stubs"""
@@ -38,7 +38,7 @@ class TestSourceSyncJob(unittest.TestCase):
             return SourceSyncJob(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 status = 'IN_PROGRESS',
-                payload = beta.models.source_sync_payload.SourceSyncPayload(
+                payload = sailpoint.beta.models.source_sync_payload.SourceSyncPayload(
                     type = 'SYNCHRONIZE_SOURCE_ATTRIBUTES', 
                     data_json = '{"sourceId":"2c918083746f642c01746f990884012a"}', )
             )
@@ -46,7 +46,7 @@ class TestSourceSyncJob(unittest.TestCase):
             return SourceSyncJob(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 status = 'IN_PROGRESS',
-                payload = beta.models.source_sync_payload.SourceSyncPayload(
+                payload = sailpoint.beta.models.source_sync_payload.SourceSyncPayload(
                     type = 'SYNCHRONIZE_SOURCE_ATTRIBUTES', 
                     data_json = '{"sourceId":"2c918083746f642c01746f990884012a"}', ),
         )
@@ -56,6 +56,7 @@ class TestSourceSyncJob(unittest.TestCase):
         """Test SourceSyncJob"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

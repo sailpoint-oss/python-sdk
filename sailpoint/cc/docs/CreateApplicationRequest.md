@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.create_application_request import CreateApplicationRequest
+from sailpoint.cc.models.create_application_request import CreateApplicationRequest
 
 # TODO update the JSON string below
 json = "{}"

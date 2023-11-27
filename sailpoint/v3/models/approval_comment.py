@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,13 +20,16 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
 
+
 class ApprovalComment(BaseModel):
     """
     ApprovalComment
     """
     comment: Optional[StrictStr] = Field(None, description="The comment text")
-    commenter: Optional[StrictStr] = Field(None, description="The name of the commenter")
-    var_date: Optional[datetime] = Field(None, alias="date", description="A date-time in ISO-8601 format")
+    commenter: Optional[StrictStr] = Field(
+        None, description="The name of the commenter")
+    var_date: Optional[datetime] = Field(
+        None, alias="date", description="A date-time in ISO-8601 format")
     __properties = ["comment", "commenter", "date"]
 
     class Config:
@@ -50,10 +52,7 @@ class ApprovalComment(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if var_date (nullable) is None
         # and __fields_set__ contains the field
         if self.var_date is None and "var_date" in self.__fields_set__:
@@ -76,5 +75,3 @@ class ApprovalComment(BaseModel):
             "var_date": obj.get("date")
         })
         return _obj
-
-

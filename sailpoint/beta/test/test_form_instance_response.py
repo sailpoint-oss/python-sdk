@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.form_instance_response import FormInstanceResponse  # noqa: E501
+from sailpoint.beta.models.form_instance_response import FormInstanceResponse  # noqa: E501
+
 
 class TestFormInstanceResponse(unittest.TestCase):
     """FormInstanceResponse unit test stubs"""
@@ -37,15 +37,15 @@ class TestFormInstanceResponse(unittest.TestCase):
         if include_optional:
             return FormInstanceResponse(
                 created = '2023-07-12T20:14:57.744860Z',
-                created_by = beta.models.form_instance_created_by.FormInstanceCreatedBy(
+                created_by = sailpoint.beta.models.form_instance_created_by.FormInstanceCreatedBy(
                     id = '00000000-0000-0000-0000-000000000000', 
                     type = 'WORKFLOW_EXECUTION', ),
                 expire = '2023-08-12T20:14:57.74486Z',
                 form_conditions = [
-                    beta.models.form_condition.FormCondition(
+                    sailpoint.beta.models.form_condition.FormCondition(
                         rule_operator = 'AND', 
                         rules = [
-                            beta.models.condition_rule.ConditionRule(
+                            sailpoint.beta.models.condition_rule.ConditionRule(
                                 source_type = 'ELEMENT', 
                                 source = 'department', 
                                 operator = 'EQ', 
@@ -53,9 +53,9 @@ class TestFormInstanceResponse(unittest.TestCase):
                                 value = Engineering, )
                             ], 
                         effects = [
-                            beta.models.condition_effect.ConditionEffect(
+                            sailpoint.beta.models.condition_effect.ConditionEffect(
                                 effect_type = 'HIDE', 
-                                config = beta.models.condition_effect_config.ConditionEffect_config(
+                                config = sailpoint.beta.models.condition_effect_config.ConditionEffect_config(
                                     default_value_label = 'Access to Remove', 
                                     element = '8110662963316867', ), )
                             ], )
@@ -63,7 +63,7 @@ class TestFormInstanceResponse(unittest.TestCase):
                 form_data = {department=Engineering},
                 form_definition_id = '00000000-0000-0000-0000-000000000000',
                 form_elements = [
-                    beta.models.form_element.FormElement(
+                    sailpoint.beta.models.form_element.FormElement(
                         id = '00000000-0000-0000-0000-000000000000', 
                         element_type = 'TEXT', 
                         config = {label=Department}, 
@@ -71,10 +71,10 @@ class TestFormInstanceResponse(unittest.TestCase):
                         validations = [{validationType=REQUIRED}], )
                     ],
                 form_errors = [
-                    beta.models.form_error.FormError(
+                    sailpoint.beta.models.form_error.FormError(
                         key = 'department', 
                         messages = [
-                            beta.models.error_message_is_the_standard_api_error_response_message_type/.ErrorMessage is the standard API error response message type.(
+                            sailpoint.beta.models.error_message_is_the_standard_api_error_response_message_type/.ErrorMessage is the standard API error response message type.(
                                 locale = 'en-US', 
                                 locale_origin = 'DEFAULT', 
                                 text = 'This is an error', )
@@ -85,7 +85,7 @@ class TestFormInstanceResponse(unittest.TestCase):
                 id = '00000000-0000-0000-0000-000000000000',
                 modified = '2023-07-12T20:14:57.744860Z',
                 recipients = [
-                    beta.models.form_instance_recipient.FormInstanceRecipient(
+                    sailpoint.beta.models.form_instance_recipient.FormInstanceRecipient(
                         id = '00000000-0000-0000-0000-000000000000', 
                         type = 'IDENTITY', )
                     ],
@@ -102,6 +102,7 @@ class TestFormInstanceResponse(unittest.TestCase):
         """Test FormInstanceResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

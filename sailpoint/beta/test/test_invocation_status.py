@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.invocation_status import InvocationStatus  # noqa: E501
+from sailpoint.beta.models.invocation_status import InvocationStatus  # noqa: E501
+
 
 class TestInvocationStatus(unittest.TestCase):
     """InvocationStatus unit test stubs"""
@@ -42,12 +42,12 @@ class TestInvocationStatus(unittest.TestCase):
                 type = 'TEST',
                 created = '2020-03-27T20:40:10.738Z',
                 completed = '2020-03-27T20:42:14.738Z',
-                start_invocation_input = beta.models.start_invocation_input.StartInvocationInput(
+                start_invocation_input = sailpoint.beta.models.start_invocation_input.StartInvocationInput(
                     trigger_id = 'idn:access-requested', 
                     input = {identityId=201327fda1c44704ac01181e963d463c}, 
                     content_json = {workflowId=1234}, ),
-                complete_invocation_input = beta.models.complete_invocation_input.CompleteInvocationInput(
-                    localized_error = beta.models.localized_message.LocalizedMessage(
+                complete_invocation_input = sailpoint.beta.models.complete_invocation_input.CompleteInvocationInput(
+                    localized_error = sailpoint.beta.models.localized_message.LocalizedMessage(
                         locale = 'An error has occurred!', 
                         message = 'Error has occurred!', ), 
                     output = {approved=false}, )
@@ -59,7 +59,7 @@ class TestInvocationStatus(unittest.TestCase):
                 subscription_id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 type = 'TEST',
                 created = '2020-03-27T20:40:10.738Z',
-                start_invocation_input = beta.models.start_invocation_input.StartInvocationInput(
+                start_invocation_input = sailpoint.beta.models.start_invocation_input.StartInvocationInput(
                     trigger_id = 'idn:access-requested', 
                     input = {identityId=201327fda1c44704ac01181e963d463c}, 
                     content_json = {workflowId=1234}, ),
@@ -70,6 +70,7 @@ class TestInvocationStatus(unittest.TestCase):
         """Test InvocationStatus"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

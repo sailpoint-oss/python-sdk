@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.client_type import ClientType  # noqa: E501
+from sailpoint.beta.models.client_type import ClientType  # noqa: E501
+
 
 class TestClientType(unittest.TestCase):
     """ClientType unit test stubs"""
@@ -29,6 +29,7 @@ class TestClientType(unittest.TestCase):
     def testClientType(self):
         """Test ClientType"""
         # inst = ClientType()
+
 
 if __name__ == '__main__':
     unittest.main()

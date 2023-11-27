@@ -11,29 +11,52 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
-from beta.models.certifier_response import CertifierResponse
+from sailpoint.beta.models.certifier_response import CertifierResponse
+
 
 class CorrelatedGovernanceEvent(BaseModel):
     """
     CorrelatedGovernanceEvent
     """
-    name: Optional[StrictStr] = Field(None, description="The name of the governance event, such as the certification name or access request ID.")
-    dt: Optional[StrictStr] = Field(None, description="The date that the certification or access request was completed.")
-    type: Optional[StrictStr] = Field(None, description="The type of governance event.")
-    governance_id: Optional[StrictStr] = Field(None, alias="governanceId", description="The ID of the instance that caused the event - either the certification ID or access request ID.")
-    owners: Optional[conlist(CertifierResponse)] = Field(None, description="The owners of the governance event (the certifiers or approvers)")
-    reviewers: Optional[conlist(CertifierResponse)] = Field(None, description="The owners of the governance event (the certifiers or approvers), this field should be preferred over owners")
-    decision_maker: Optional[CertifierResponse] = Field(None, alias="decisionMaker")
-    __properties = ["name", "dt", "type", "governanceId", "owners", "reviewers", "decisionMaker"]
+    name: Optional[StrictStr] = Field(
+        None,
+        description=
+        "The name of the governance event, such as the certification name or access request ID."
+    )
+    dt: Optional[StrictStr] = Field(
+        None,
+        description=
+        "The date that the certification or access request was completed.")
+    type: Optional[StrictStr] = Field(
+        None, description="The type of governance event.")
+    governance_id: Optional[StrictStr] = Field(
+        None,
+        alias="governanceId",
+        description=
+        "The ID of the instance that caused the event - either the certification ID or access request ID."
+    )
+    owners: Optional[conlist(CertifierResponse)] = Field(
+        None,
+        description=
+        "The owners of the governance event (the certifiers or approvers)")
+    reviewers: Optional[conlist(CertifierResponse)] = Field(
+        None,
+        description=
+        "The owners of the governance event (the certifiers or approvers), this field should be preferred over owners"
+    )
+    decision_maker: Optional[CertifierResponse] = Field(None,
+                                                        alias="decisionMaker")
+    __properties = [
+        "name", "dt", "type", "governanceId", "owners", "reviewers",
+        "decisionMaker"
+    ]
 
     @validator('type')
     def type_validate_enum(cls, value):
@@ -42,7 +65,9 @@ class CorrelatedGovernanceEvent(BaseModel):
             return value
 
         if value not in ('certification', 'accessRequest'):
-            raise ValueError("must be one of enum values ('certification', 'accessRequest')")
+            raise ValueError(
+                "must be one of enum values ('certification', 'accessRequest')"
+            )
         return value
 
     class Config:
@@ -65,10 +90,7 @@ class CorrelatedGovernanceEvent(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in owners (list)
         _items = []
         if self.owners:
@@ -98,14 +120,24 @@ class CorrelatedGovernanceEvent(BaseModel):
             return CorrelatedGovernanceEvent.parse_obj(obj)
 
         _obj = CorrelatedGovernanceEvent.parse_obj({
-            "name": obj.get("name"),
-            "dt": obj.get("dt"),
-            "type": obj.get("type"),
-            "governance_id": obj.get("governanceId"),
-            "owners": [CertifierResponse.from_dict(_item) for _item in obj.get("owners")] if obj.get("owners") is not None else None,
-            "reviewers": [CertifierResponse.from_dict(_item) for _item in obj.get("reviewers")] if obj.get("reviewers") is not None else None,
-            "decision_maker": CertifierResponse.from_dict(obj.get("decisionMaker")) if obj.get("decisionMaker") is not None else None
+            "name":
+            obj.get("name"),
+            "dt":
+            obj.get("dt"),
+            "type":
+            obj.get("type"),
+            "governance_id":
+            obj.get("governanceId"),
+            "owners": [
+                CertifierResponse.from_dict(_item)
+                for _item in obj.get("owners")
+            ] if obj.get("owners") is not None else None,
+            "reviewers": [
+                CertifierResponse.from_dict(_item)
+                for _item in obj.get("reviewers")
+            ] if obj.get("reviewers") is not None else None,
+            "decision_maker":
+            CertifierResponse.from_dict(obj.get("decisionMaker"))
+            if obj.get("decisionMaker") is not None else None
         })
         return _obj
-
-

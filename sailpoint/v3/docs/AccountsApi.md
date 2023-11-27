@@ -1,4 +1,4 @@
-# v3.AccountsApi
+# sailpoint.v3.AccountsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -31,15 +31,15 @@ This API submits an account creation task and returns the task ID.   The `source
 ```python
 import time
 import os
-import v3
-from v3.models.account_attributes_create import AccountAttributesCreate
-from v3.models.accounts_async_result import AccountsAsyncResult
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.account_attributes_create import AccountAttributesCreate
+from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -53,10 +53,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountsApi(api_client)
-    account_attributes_create = v3.AccountAttributesCreate() # AccountAttributesCreate | 
+    api_instance = sailpoint.v3.AccountsApi(api_client)
+    account_attributes_create = sailpoint.v3.AccountAttributesCreate() # AccountAttributesCreate | 
 
     try:
         # Create Account
@@ -114,14 +114,14 @@ This API submits an account delete task and returns the task ID. This operation 
 ```python
 import time
 import os
-import v3
-from v3.models.accounts_async_result import AccountsAsyncResult
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -135,9 +135,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountsApi(api_client)
+    api_instance = sailpoint.v3.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID
 
     try:
@@ -197,15 +197,15 @@ This API submits a task to disable the account and returns the task ID.   A toke
 ```python
 import time
 import os
-import v3
-from v3.models.account_toggle_request import AccountToggleRequest
-from v3.models.accounts_async_result import AccountsAsyncResult
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.account_toggle_request import AccountToggleRequest
+from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -219,11 +219,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountsApi(api_client)
+    api_instance = sailpoint.v3.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id
-    account_toggle_request = v3.AccountToggleRequest() # AccountToggleRequest | 
+    account_toggle_request = sailpoint.v3.AccountToggleRequest() # AccountToggleRequest | 
 
     try:
         # Disable Account
@@ -283,15 +283,15 @@ This API submits a task to enable account and returns the task ID.   A token wit
 ```python
 import time
 import os
-import v3
-from v3.models.account_toggle_request import AccountToggleRequest
-from v3.models.accounts_async_result import AccountsAsyncResult
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.account_toggle_request import AccountToggleRequest
+from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -305,11 +305,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountsApi(api_client)
+    api_instance = sailpoint.v3.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id
-    account_toggle_request = v3.AccountToggleRequest() # AccountToggleRequest | 
+    account_toggle_request = sailpoint.v3.AccountToggleRequest() # AccountToggleRequest | 
 
     try:
         # Enable Account
@@ -369,14 +369,14 @@ This API returns the details for a single account based on the ID.   A token wit
 ```python
 import time
 import os
-import v3
-from v3.models.account import Account
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.account import Account
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -390,9 +390,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountsApi(api_client)
+    api_instance = sailpoint.v3.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID
 
     try:
@@ -452,14 +452,14 @@ This API returns entitlements of the account.   A token with ORG_ADMIN authority
 ```python
 import time
 import os
-import v3
-from v3.models.entitlement_dto import EntitlementDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.entitlement_dto import EntitlementDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -473,9 +473,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountsApi(api_client)
+    api_instance = sailpoint.v3.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -541,14 +541,14 @@ This returns a list of accounts.   A token with ORG_ADMIN authority is required 
 ```python
 import time
 import os
-import v3
-from v3.models.account import Account
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.account import Account
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -562,9 +562,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountsApi(api_client)
+    api_instance = sailpoint.v3.AccountsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -631,15 +631,15 @@ This API submits an account update task and returns the task ID.   A token with 
 ```python
 import time
 import os
-import v3
-from v3.models.account_attributes import AccountAttributes
-from v3.models.accounts_async_result import AccountsAsyncResult
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.account_attributes import AccountAttributes
+from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -653,11 +653,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountsApi(api_client)
+    api_instance = sailpoint.v3.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID
-    account_attributes = v3.AccountAttributes() # AccountAttributes | 
+    account_attributes = sailpoint.v3.AccountAttributes() # AccountAttributes | 
 
     try:
         # Update Account
@@ -717,14 +717,14 @@ This API asynchronously reloads the account directly from the connector and perf
 ```python
 import time
 import os
-import v3
-from v3.models.accounts_async_result import AccountsAsyncResult
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -738,9 +738,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountsApi(api_client)
+    api_instance = sailpoint.v3.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id
 
     try:
@@ -800,15 +800,15 @@ This API submits a task to unlock an account and returns the task ID.   A token 
 ```python
 import time
 import os
-import v3
-from v3.models.account_unlock_request import AccountUnlockRequest
-from v3.models.accounts_async_result import AccountsAsyncResult
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.account_unlock_request import AccountUnlockRequest
+from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -822,11 +822,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountsApi(api_client)
+    api_instance = sailpoint.v3.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account id
-    account_unlock_request = v3.AccountUnlockRequest() # AccountUnlockRequest | 
+    account_unlock_request = sailpoint.v3.AccountUnlockRequest() # AccountUnlockRequest | 
 
     try:
         # Unlock Account
@@ -886,14 +886,14 @@ Use this API to modify the following fields: * `identityId`  * `manuallyCorrelat
 ```python
 import time
 import os
-import v3
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -907,9 +907,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccountsApi(api_client)
+    api_instance = sailpoint.v3.AccountsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID
     json_patch_operation = [{op=replace, path=/identityId, value=2c9180845d1edece015d27a975983e21}] # List[JsonPatchOperation] | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 

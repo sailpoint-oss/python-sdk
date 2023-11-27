@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.violation_context_policy import ViolationContextPolicy
+from sailpoint.beta.models.violation_context_policy import ViolationContextPolicy
 
 # TODO update the JSON string below
 json = "{}"

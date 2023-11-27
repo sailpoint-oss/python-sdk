@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class RoleAssignmentSourceType(str, Enum):
     """
     Type which indicates how a particular Identity obtained a particular Role
     """
-
     """
     allowed enum values
     """
@@ -36,5 +31,3 @@ class RoleAssignmentSourceType(str, Enum):
     def from_json(cls, json_str: str) -> RoleAssignmentSourceType:
         """Create an instance of RoleAssignmentSourceType from a JSON string"""
         return RoleAssignmentSourceType(json.loads(json_str))
-
-

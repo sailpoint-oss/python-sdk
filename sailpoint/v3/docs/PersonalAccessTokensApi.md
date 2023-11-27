@@ -1,4 +1,4 @@
-# v3.PersonalAccessTokensApi
+# sailpoint.v3.PersonalAccessTokensApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -24,15 +24,15 @@ This creates a personal access token.
 ```python
 import time
 import os
-import v3
-from v3.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest
-from v3.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest
+from sailpoint.v3.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -46,10 +46,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.PersonalAccessTokensApi(api_client)
-    create_personal_access_token_request = v3.CreatePersonalAccessTokenRequest() # CreatePersonalAccessTokenRequest | Name and scope of personal access token.
+    api_instance = sailpoint.v3.PersonalAccessTokensApi(api_client)
+    create_personal_access_token_request = sailpoint.v3.CreatePersonalAccessTokenRequest() # CreatePersonalAccessTokenRequest | Name and scope of personal access token.
 
     try:
         # Create Personal Access Token
@@ -107,13 +107,13 @@ This deletes a personal access token.
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -127,9 +127,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.PersonalAccessTokensApi(api_client)
+    api_instance = sailpoint.v3.PersonalAccessTokensApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The personal access token id
 
     try:
@@ -187,14 +187,14 @@ This gets a collection of personal access tokens associated with the optional `o
 ```python
 import time
 import os
-import v3
-from v3.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -208,9 +208,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.PersonalAccessTokensApi(api_client)
+    api_instance = sailpoint.v3.PersonalAccessTokensApi(api_client)
     owner_id = '2c9180867b50d088017b554662fb281e' # str | The identity ID of the owner whose personal access tokens should be listed.  If \"me\", the caller should have the following right: 'idn:my-personal-access-tokens:read' If an actual owner ID or if the `owner-id` parameter is omitted in the request,  the caller should have the following right: 'idn:all-personal-access-tokens:read'.  If the caller has the following right, then managed personal access tokens associated with `owner-id`  will be retrieved: 'idn:managed-personal-access-tokens:read' (optional)
     filters = 'lastUsed le 2023-02-05T10:59:27.214Z' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull* (optional)
 
@@ -271,15 +271,15 @@ This performs a targeted update to the field(s) of a Personal Access Token.
 ```python
 import time
 import os
-import v3
-from v3.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.get_personal_access_token_response import GetPersonalAccessTokenResponse
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -293,9 +293,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.PersonalAccessTokensApi(api_client)
+    api_instance = sailpoint.v3.PersonalAccessTokensApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Personal Access Token id
     json_patch_operation = [{op=replace, path=/name, value=New name}, {op=replace, path=/scope, value=[sp:scopes:all]}] # List[JsonPatchOperation] | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope 
 

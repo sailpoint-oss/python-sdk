@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.managed_client_status_agg_response import ManagedClientStatusAggResponse
+from sailpoint.beta.models.managed_client_status_agg_response import ManagedClientStatusAggResponse
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,20 +19,37 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.role_mining_role_type import RoleMiningRoleType
+from sailpoint.beta.models.role_mining_role_type import RoleMiningRoleType
+
 
 class RoleMiningSessionDraftRoleDto(BaseModel):
     """
     RoleMiningSessionDraftRoleDto
     """
-    description: Optional[StrictStr] = Field(None, description="Draft role description")
-    identity_ids: Optional[conlist(StrictStr)] = Field(None, alias="identityIds", description="The list of identities for this role mining session.")
-    entitlement_ids: Optional[conlist(StrictStr)] = Field(None, alias="entitlementIds", description="The list of entitlement ids for this role mining session.")
-    excluded_entitlements: Optional[conlist(StrictStr)] = Field(None, alias="excludedEntitlements", description="The list of excluded entitlement ids.")
-    modified: Optional[datetime] = Field(None, description="Last modified date")
-    name: Optional[StrictStr] = Field(None, description="Name of the draft role")
+    description: Optional[StrictStr] = Field(
+        None, description="Draft role description")
+    identity_ids: Optional[conlist(StrictStr)] = Field(
+        None,
+        alias="identityIds",
+        description="The list of identities for this role mining session.")
+    entitlement_ids: Optional[conlist(StrictStr)] = Field(
+        None,
+        alias="entitlementIds",
+        description="The list of entitlement ids for this role mining session."
+    )
+    excluded_entitlements: Optional[conlist(StrictStr)] = Field(
+        None,
+        alias="excludedEntitlements",
+        description="The list of excluded entitlement ids.")
+    modified: Optional[datetime] = Field(None,
+                                         description="Last modified date")
+    name: Optional[StrictStr] = Field(None,
+                                      description="Name of the draft role")
     type: Optional[RoleMiningRoleType] = None
-    __properties = ["description", "identityIds", "entitlementIds", "excludedEntitlements", "modified", "name", "type"]
+    __properties = [
+        "description", "identityIds", "entitlementIds", "excludedEntitlements",
+        "modified", "name", "type"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -55,10 +71,7 @@ class RoleMiningSessionDraftRoleDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,14 +84,19 @@ class RoleMiningSessionDraftRoleDto(BaseModel):
             return RoleMiningSessionDraftRoleDto.parse_obj(obj)
 
         _obj = RoleMiningSessionDraftRoleDto.parse_obj({
-            "description": obj.get("description"),
-            "identity_ids": obj.get("identityIds"),
-            "entitlement_ids": obj.get("entitlementIds"),
-            "excluded_entitlements": obj.get("excludedEntitlements"),
-            "modified": obj.get("modified"),
-            "name": obj.get("name"),
-            "type": obj.get("type")
+            "description":
+            obj.get("description"),
+            "identity_ids":
+            obj.get("identityIds"),
+            "entitlement_ids":
+            obj.get("entitlementIds"),
+            "excluded_entitlements":
+            obj.get("excludedEntitlements"),
+            "modified":
+            obj.get("modified"),
+            "name":
+            obj.get("name"),
+            "type":
+            obj.get("type")
         })
         return _obj
-
-

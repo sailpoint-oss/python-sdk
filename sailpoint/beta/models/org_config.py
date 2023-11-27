@@ -11,32 +11,64 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
-from beta.models.report_config_dto import ReportConfigDTO
+from sailpoint.beta.models.report_config_dto import ReportConfigDTO
+
 
 class OrgConfig(BaseModel):
     """
     DTO class for OrgConfig data accessible by customer external org admin (\"ORG_ADMIN\") users  # noqa: E501
     """
-    org_name: Optional[StrictStr] = Field(None, alias="orgName", description="The name of the org.")
-    time_zone: Optional[StrictStr] = Field(None, alias="timeZone", description="The selected time zone which is to be used for the org.  This directly affects when scheduled tasks are executed.  Valid options can be found at /beta/org-config/valid-time-zones")
-    lcs_change_honors_source_enable_feature: Optional[StrictBool] = Field(None, alias="lcsChangeHonorsSourceEnableFeature", description="Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org.")
-    arm_customer_id: Optional[StrictStr] = Field(None, alias="armCustomerId", description="ARM Customer ID")
-    arm_sap_system_id_mappings: Optional[StrictStr] = Field(None, alias="armSapSystemIdMappings", description="A list of IDN::sourceId to ARM::systemId mappings.")
-    arm_auth: Optional[StrictStr] = Field(None, alias="armAuth", description="ARM authentication string")
-    arm_db: Optional[StrictStr] = Field(None, alias="armDb", description="ARM database name")
-    arm_sso_url: Optional[StrictStr] = Field(None, alias="armSsoUrl", description="ARM SSO URL")
-    iai_enable_certification_recommendations: Optional[StrictBool] = Field(None, alias="iaiEnableCertificationRecommendations", description="Flag to determine whether IAI Certification Recommendations are enabled for the current org")
-    sod_report_configs: Optional[conlist(ReportConfigDTO)] = Field(None, alias="sodReportConfigs")
-    __properties = ["orgName", "timeZone", "lcsChangeHonorsSourceEnableFeature", "armCustomerId", "armSapSystemIdMappings", "armAuth", "armDb", "armSsoUrl", "iaiEnableCertificationRecommendations", "sodReportConfigs"]
+    org_name: Optional[StrictStr] = Field(None,
+                                          alias="orgName",
+                                          description="The name of the org.")
+    time_zone: Optional[StrictStr] = Field(
+        None,
+        alias="timeZone",
+        description=
+        "The selected time zone which is to be used for the org.  This directly affects when scheduled tasks are executed.  Valid options can be found at /beta/org-config/valid-time-zones"
+    )
+    lcs_change_honors_source_enable_feature: Optional[StrictBool] = Field(
+        None,
+        alias="lcsChangeHonorsSourceEnableFeature",
+        description=
+        "Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org."
+    )
+    arm_customer_id: Optional[StrictStr] = Field(None,
+                                                 alias="armCustomerId",
+                                                 description="ARM Customer ID")
+    arm_sap_system_id_mappings: Optional[StrictStr] = Field(
+        None,
+        alias="armSapSystemIdMappings",
+        description="A list of IDN::sourceId to ARM::systemId mappings.")
+    arm_auth: Optional[StrictStr] = Field(
+        None, alias="armAuth", description="ARM authentication string")
+    arm_db: Optional[StrictStr] = Field(None,
+                                        alias="armDb",
+                                        description="ARM database name")
+    arm_sso_url: Optional[StrictStr] = Field(None,
+                                             alias="armSsoUrl",
+                                             description="ARM SSO URL")
+    iai_enable_certification_recommendations: Optional[StrictBool] = Field(
+        None,
+        alias="iaiEnableCertificationRecommendations",
+        description=
+        "Flag to determine whether IAI Certification Recommendations are enabled for the current org"
+    )
+    sod_report_configs: Optional[conlist(ReportConfigDTO)] = Field(
+        None, alias="sodReportConfigs")
+    __properties = [
+        "orgName", "timeZone", "lcsChangeHonorsSourceEnableFeature",
+        "armCustomerId", "armSapSystemIdMappings", "armAuth", "armDb",
+        "armSsoUrl", "iaiEnableCertificationRecommendations",
+        "sodReportConfigs"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -58,10 +90,7 @@ class OrgConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in sod_report_configs (list)
         _items = []
         if self.sod_report_configs:
@@ -106,17 +135,27 @@ class OrgConfig(BaseModel):
             return OrgConfig.parse_obj(obj)
 
         _obj = OrgConfig.parse_obj({
-            "org_name": obj.get("orgName"),
-            "time_zone": obj.get("timeZone"),
-            "lcs_change_honors_source_enable_feature": obj.get("lcsChangeHonorsSourceEnableFeature"),
-            "arm_customer_id": obj.get("armCustomerId"),
-            "arm_sap_system_id_mappings": obj.get("armSapSystemIdMappings"),
-            "arm_auth": obj.get("armAuth"),
-            "arm_db": obj.get("armDb"),
-            "arm_sso_url": obj.get("armSsoUrl"),
-            "iai_enable_certification_recommendations": obj.get("iaiEnableCertificationRecommendations"),
-            "sod_report_configs": [ReportConfigDTO.from_dict(_item) for _item in obj.get("sodReportConfigs")] if obj.get("sodReportConfigs") is not None else None
+            "org_name":
+            obj.get("orgName"),
+            "time_zone":
+            obj.get("timeZone"),
+            "lcs_change_honors_source_enable_feature":
+            obj.get("lcsChangeHonorsSourceEnableFeature"),
+            "arm_customer_id":
+            obj.get("armCustomerId"),
+            "arm_sap_system_id_mappings":
+            obj.get("armSapSystemIdMappings"),
+            "arm_auth":
+            obj.get("armAuth"),
+            "arm_db":
+            obj.get("armDb"),
+            "arm_sso_url":
+            obj.get("armSsoUrl"),
+            "iai_enable_certification_recommendations":
+            obj.get("iaiEnableCertificationRecommendations"),
+            "sod_report_configs": [
+                ReportConfigDTO.from_dict(_item)
+                for _item in obj.get("sodReportConfigs")
+            ] if obj.get("sodReportConfigs") is not None else None
         })
         return _obj
-
-

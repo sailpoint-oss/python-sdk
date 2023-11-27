@@ -1,4 +1,4 @@
-# beta.WorkItemsApi
+# sailpoint.beta.WorkItemsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -33,14 +33,14 @@ This API approves an Approval Item. Either an admin, or the owning/current user 
 ```python
 import time
 import os
-import beta
-from beta.models.work_items import WorkItems
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_items import WorkItems
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -54,9 +54,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
     approval_item_id = '1211bcaa32112bcef6122adb21cef1ac' # str | The ID of the approval item.
 
@@ -115,14 +115,14 @@ This API bulk approves Approval Items. Either an admin, or the owning/current us
 ```python
 import time
 import os
-import beta
-from beta.models.work_items import WorkItems
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_items import WorkItems
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -136,9 +136,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
 
     try:
@@ -195,14 +195,14 @@ This API completes a work item. Either an admin, or the owning/current user must
 ```python
 import time
 import os
-import beta
-from beta.models.work_items import WorkItems
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_items import WorkItems
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -216,9 +216,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
 
     try:
@@ -275,14 +275,14 @@ This API forwards a work item to a new owner. Either an admin, or the owning/cur
 ```python
 import time
 import os
-import beta
-from beta.models.work_item_forward import WorkItemForward
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_item_forward import WorkItemForward
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -296,11 +296,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
-    work_item_forward = beta.WorkItemForward() # WorkItemForward | 
+    work_item_forward = sailpoint.beta.WorkItemForward() # WorkItemForward | 
 
     try:
         # Forward a Work Item
@@ -357,14 +357,14 @@ This gets a collection of completed work items belonging to either the specified
 ```python
 import time
 import os
-import beta
-from beta.models.work_items import WorkItems
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_items import WorkItems
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -378,9 +378,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     owner_id = 'owner_id_example' # str | The id of the owner of the work item list being requested.  Either an admin, or the owning/current user must make this request. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -443,14 +443,14 @@ This gets a count of completed work items belonging to either the specified user
 ```python
 import time
 import os
-import beta
-from beta.models.work_items_count import WorkItemsCount
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_items_count import WorkItemsCount
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -464,9 +464,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     owner_id = 'owner_id_example' # str | ID of the work item owner. (optional)
 
     try:
@@ -523,14 +523,14 @@ This gets a count of work items belonging to either the specified user(admin req
 ```python
 import time
 import os
-import beta
-from beta.models.work_items_count import WorkItemsCount
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_items_count import WorkItemsCount
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -544,9 +544,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     owner_id = 'owner_id_example' # str | ID of the work item owner. (optional)
 
     try:
@@ -603,14 +603,14 @@ This gets the details of a Work Item belonging to either the specified user(admi
 ```python
 import time
 import os
-import beta
-from beta.models.work_items import WorkItems
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_items import WorkItems
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -624,9 +624,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     id = 'id_example' # str | ID of the work item.
     owner_id = 'owner_id_example' # str | ID of the work item owner. (optional)
 
@@ -685,14 +685,14 @@ This gets a summary of work items belonging to either the specified user(admin r
 ```python
 import time
 import os
-import beta
-from beta.models.work_items_summary import WorkItemsSummary
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_items_summary import WorkItemsSummary
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -706,9 +706,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     owner_id = 'owner_id_example' # str | ID of the work item owner. (optional)
 
     try:
@@ -765,14 +765,14 @@ This gets a collection of work items belonging to either the specified user(admi
 ```python
 import time
 import os
-import beta
-from beta.models.work_items import WorkItems
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_items import WorkItems
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -786,9 +786,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -851,14 +851,14 @@ This API rejects an Approval Item. Either an admin, or the owning/current user m
 ```python
 import time
 import os
-import beta
-from beta.models.work_items import WorkItems
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_items import WorkItems
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -872,9 +872,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
     approval_item_id = '1211bcaa32112bcef6122adb21cef1ac' # str | The ID of the approval item.
 
@@ -933,14 +933,14 @@ This API bulk rejects Approval Items. Either an admin, or the owning/current use
 ```python
 import time
 import os
-import beta
-from beta.models.work_items import WorkItems
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_items import WorkItems
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -954,9 +954,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
 
     try:
@@ -1013,14 +1013,14 @@ This API submits account selections. Either an admin, or the owning/current user
 ```python
 import time
 import os
-import beta
-from beta.models.work_items import WorkItems
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.work_items import WorkItems
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1034,9 +1034,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkItemsApi(api_client)
+    api_instance = sailpoint.beta.WorkItemsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the work item
     request_body = {fieldName=fieldValue} # Dict[str, object] | Account Selection Data map, keyed on fieldName
 

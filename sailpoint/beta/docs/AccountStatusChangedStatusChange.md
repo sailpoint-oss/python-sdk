@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.account_status_changed_status_change import AccountStatusChangedStatusChange
+from sailpoint.beta.models.account_status_changed_status_change import AccountStatusChangedStatusChange
 
 # TODO update the JSON string below
 json = "{}"

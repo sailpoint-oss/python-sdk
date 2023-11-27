@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+
 
 class CreateConnectorRequest(BaseModel):
     """
@@ -30,7 +29,9 @@ class CreateConnectorRequest(BaseModel):
     class_name: Optional[StrictStr] = Field(None, alias="className")
     direct_connect: Optional[StrictBool] = Field(None, alias="directConnect")
     status: Optional[StrictStr] = None
-    __properties = ["name", "description", "className", "directConnect", "status"]
+    __properties = [
+        "name", "description", "className", "directConnect", "status"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -52,10 +53,7 @@ class CreateConnectorRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -68,12 +66,15 @@ class CreateConnectorRequest(BaseModel):
             return CreateConnectorRequest.parse_obj(obj)
 
         _obj = CreateConnectorRequest.parse_obj({
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "class_name": obj.get("className"),
-            "direct_connect": obj.get("directConnect"),
-            "status": obj.get("status")
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "class_name":
+            obj.get("className"),
+            "direct_connect":
+            obj.get("directConnect"),
+            "status":
+            obj.get("status")
         })
         return _obj
-
-

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.permission_dto import PermissionDto
+from sailpoint.v3.models.permission_dto import PermissionDto
 
 # TODO update the JSON string below
 json = "{}"

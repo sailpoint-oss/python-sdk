@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.account_uncorrelated_identity import AccountUncorrelatedIdentity  # noqa: E501
+from sailpoint.beta.models.account_uncorrelated_identity import AccountUncorrelatedIdentity  # noqa: E501
+
 
 class TestAccountUncorrelatedIdentity(unittest.TestCase):
     """AccountUncorrelatedIdentity unit test stubs"""
@@ -52,6 +52,7 @@ class TestAccountUncorrelatedIdentity(unittest.TestCase):
         """Test AccountUncorrelatedIdentity"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.password_digit_token_reset import PasswordDigitTokenReset
+from sailpoint.beta.models.password_digit_token_reset import PasswordDigitTokenReset
 
 # TODO update the JSON string below
 json = "{}"

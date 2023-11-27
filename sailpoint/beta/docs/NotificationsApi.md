@@ -1,4 +1,4 @@
-# beta.NotificationsApi
+# sailpoint.beta.NotificationsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -36,15 +36,15 @@ Create a domain to be verified via DKIM (DomainKeys Identified Mail)
 ```python
 import time
 import os
-import beta
-from beta.models.domain_address import DomainAddress
-from beta.models.domain_status_dto import DomainStatusDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.domain_address import DomainAddress
+from sailpoint.beta.models.domain_status_dto import DomainStatusDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -58,10 +58,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
-    domain_address = beta.DomainAddress() # DomainAddress | 
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
+    domain_address = sailpoint.beta.DomainAddress() # DomainAddress | 
 
     try:
         # Verify domain address via DKIM
@@ -120,14 +120,14 @@ This creates a template for your site.   You can also use this endpoint to updat
 ```python
 import time
 import os
-import beta
-from beta.models.template_dto import TemplateDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.template_dto import TemplateDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -141,10 +141,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
-    template_dto = beta.TemplateDto() # TemplateDto | 
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
+    template_dto = sailpoint.beta.TemplateDto() # TemplateDto | 
 
     try:
         # Create Notification Template
@@ -202,14 +202,14 @@ Create a new sender email address and initiate verification process.
 ```python
 import time
 import os
-import beta
-from beta.models.email_status_dto import EmailStatusDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.email_status_dto import EmailStatusDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -223,9 +223,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
     email_status_dto = {email=sender@example.com} # EmailStatusDto | 
 
     try:
@@ -284,14 +284,14 @@ This lets you bulk delete templates that you previously created for your site. S
 ```python
 import time
 import os
-import beta
-from beta.models.template_bulk_delete_dto import TemplateBulkDeleteDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.template_bulk_delete_dto import TemplateBulkDeleteDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -305,10 +305,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
-    template_bulk_delete_dto = [beta.TemplateBulkDeleteDto()] # List[TemplateBulkDeleteDto] | 
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
+    template_bulk_delete_dto = [sailpoint.beta.TemplateBulkDeleteDto()] # List[TemplateBulkDeleteDto] | 
 
     try:
         # Bulk Delete Notification Templates
@@ -364,13 +364,13 @@ Delete a verified sender email address
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -384,9 +384,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
     id = 'id_example' # str | 
 
     try:
@@ -444,14 +444,14 @@ Retrieve DKIM (DomainKeys Identified Mail) attributes for all your tenants' AWS 
 ```python
 import time
 import os
-import beta
-from beta.models.dkim_attributes import DkimAttributes
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.dkim_attributes import DkimAttributes
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -465,9 +465,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
 
     try:
         # Get DKIM Attributes
@@ -522,14 +522,14 @@ Retrieve MAIL FROM attributes for a given AWS SES identity.
 ```python
 import time
 import os
-import beta
-from beta.models.mail_from_attributes import MailFromAttributes
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.mail_from_attributes import MailFromAttributes
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -543,9 +543,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
     id = 'bobsmith@sailpoint.com' # str | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
 
     try:
@@ -604,14 +604,14 @@ Returns the notification preferences for tenant.  Note that if the key doesn't e
 ```python
 import time
 import os
-import beta
-from beta.models.preferences_dto import PreferencesDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.preferences_dto import PreferencesDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -625,9 +625,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
     key = 'key_example' # str | The notification key.
 
     try:
@@ -686,14 +686,14 @@ This gets a template that you have modified for your site by Id.
 ```python
 import time
 import os
-import beta
-from beta.models.template_dto import TemplateDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.template_dto import TemplateDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -707,9 +707,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the Notification Template
 
     try:
@@ -768,14 +768,14 @@ The notification service (Hermes) maintains metadata to construct the notificati
 ```python
 import time
 import os
-import beta
-from beta.models.notification_template_context import NotificationTemplateContext
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.notification_template_context import NotificationTemplateContext
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -789,9 +789,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
 
     try:
         # Get Notification Template Context
@@ -846,14 +846,14 @@ Retrieve a list of sender email addresses and their verification statuses
 ```python
 import time
 import os
-import beta
-from beta.models.email_status_dto import EmailStatusDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.email_status_dto import EmailStatusDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -867,9 +867,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -935,14 +935,14 @@ This lists the default templates used for notifications, such as emails from Ide
 ```python
 import time
 import os
-import beta
-from beta.models.template_dto_default import TemplateDtoDefault
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.template_dto_default import TemplateDtoDefault
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -956,9 +956,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     filters = 'filters_example' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, co, sw*  **medium**: *eq, co, sw*  **locale**: *eq, co, sw* (optional)
@@ -1021,14 +1021,14 @@ This lists the templates that you have modified for your site. Since this is a b
 ```python
 import time
 import os
-import beta
-from beta.models.template_dto import TemplateDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.template_dto import TemplateDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1042,9 +1042,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     filters = 'medium eq \"EMAIL\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, co, sw*  **medium**: *eq, co, sw*  **locale**: *eq, co, sw* (optional)
@@ -1107,15 +1107,15 @@ Change the MAIL FROM domain of an AWS SES email identity and provide the MX and 
 ```python
 import time
 import os
-import beta
-from beta.models.mail_from_attributes import MailFromAttributes
-from beta.models.mail_from_attributes_dto import MailFromAttributesDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.mail_from_attributes import MailFromAttributes
+from sailpoint.beta.models.mail_from_attributes_dto import MailFromAttributesDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1129,9 +1129,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
     mail_from_attributes_dto = {identity=BobSmith@sailpoint.com, mailFromDomain=example.sailpoint.com} # MailFromAttributesDto | 
 
     try:
@@ -1190,14 +1190,14 @@ In the notification world, a notification flows through these salient stages -  
 ```python
 import time
 import os
-import beta
-from beta.models.preferences_dto import PreferencesDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.preferences_dto import PreferencesDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1211,11 +1211,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
     key = 'key_example' # str | The notification key.
-    preferences_dto = beta.PreferencesDto() # PreferencesDto | 
+    preferences_dto = sailpoint.beta.PreferencesDto() # PreferencesDto | 
 
     try:
         # Overwrite the preferences for the given notification key.
@@ -1274,14 +1274,14 @@ Send a Test Notification
 ```python
 import time
 import os
-import beta
-from beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1295,9 +1295,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.NotificationsApi(api_client)
+    api_instance = sailpoint.beta.NotificationsApi(api_client)
     send_test_notification_request_dto = {key=cloud_manual_work_item_summary, medium=EMAIL, context={numberOfPendingTasks=4, ownerId=201327fda1c44704ac01181e963d463c}} # SendTestNotificationRequestDto | 
 
     try:

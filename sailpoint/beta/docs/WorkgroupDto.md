@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.workgroup_dto import WorkgroupDto
+from sailpoint.beta.models.workgroup_dto import WorkgroupDto
 
 # TODO update the JSON string below
 json = "{}"

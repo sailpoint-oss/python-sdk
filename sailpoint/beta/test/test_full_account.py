@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.full_account import FullAccount  # noqa: E501
+from sailpoint.beta.models.full_account import FullAccount  # noqa: E501
+
 
 class TestFullAccount(unittest.TestCase):
     """FullAccount unit test stubs"""
@@ -66,6 +66,7 @@ class TestFullAccount(unittest.TestCase):
         """Test FullAccount"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

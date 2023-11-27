@@ -11,23 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class AccountCorrelatedIdentity(BaseModel):
     """
     Identity the account is correlated with.  # noqa: E501
     """
-    type: StrictStr = Field(..., description="DTO type of the identity the account is correlated with.")
-    id: StrictStr = Field(..., description="ID of the identity the account is correlated with.")
-    name: StrictStr = Field(..., description="Display name of the identity the account is correlated with.")
+    type: StrictStr = Field(
+        ...,
+        description="DTO type of the identity the account is correlated with.")
+    id: StrictStr = Field(
+        ..., description="ID of the identity the account is correlated with.")
+    name: StrictStr = Field(
+        ...,
+        description=
+        "Display name of the identity the account is correlated with.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -57,10 +61,7 @@ class AccountCorrelatedIdentity(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -78,5 +79,3 @@ class AccountCorrelatedIdentity(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

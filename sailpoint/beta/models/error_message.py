@@ -11,23 +11,28 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class ErrorMessage(BaseModel):
     """
     ErrorMessage
     """
-    locale: Optional[StrictStr] = Field(None, description="Locale is the current Locale")
-    locale_origin: Optional[StrictStr] = Field(None, alias="localeOrigin", description="LocaleOrigin holds possible values of how the locale was selected")
-    text: Optional[StrictStr] = Field(None, description="Text is the actual text of the error message")
+    locale: Optional[StrictStr] = Field(
+        None, description="Locale is the current Locale")
+    locale_origin: Optional[StrictStr] = Field(
+        None,
+        alias="localeOrigin",
+        description=
+        "LocaleOrigin holds possible values of how the locale was selected")
+    text: Optional[StrictStr] = Field(
+        None, description="Text is the actual text of the error message")
     __properties = ["locale", "localeOrigin", "text"]
 
     class Config:
@@ -50,10 +55,7 @@ class ErrorMessage(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,5 +73,3 @@ class ErrorMessage(BaseModel):
             "text": obj.get("text")
         })
         return _obj
-
-

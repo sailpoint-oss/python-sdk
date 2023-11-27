@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,18 +19,36 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.pat_owner import PatOwner
+from sailpoint.beta.models.pat_owner import PatOwner
+
 
 class CreatePersonalAccessTokenResponse(BaseModel):
     """
     CreatePersonalAccessTokenResponse
     """
-    id: StrictStr = Field(..., description="The ID of the personal access token (to be used as the username for Basic Auth).")
-    secret: StrictStr = Field(..., description="The secret of the personal access token (to be used as the password for Basic Auth).")
-    scope: Optional[conlist(StrictStr)] = Field(..., description="Scopes of the personal  access token.")
-    name: StrictStr = Field(..., description="The name of the personal access token. Cannot be the same as other personal access tokens owned by a user.")
+    id: StrictStr = Field(
+        ...,
+        description=
+        "The ID of the personal access token (to be used as the username for Basic Auth)."
+    )
+    secret: StrictStr = Field(
+        ...,
+        description=
+        "The secret of the personal access token (to be used as the password for Basic Auth)."
+    )
+    scope: Optional[conlist(StrictStr)] = Field(
+        ..., description="Scopes of the personal  access token.")
+    name: StrictStr = Field(
+        ...,
+        description=
+        "The name of the personal access token. Cannot be the same as other personal access tokens owned by a user."
+    )
     owner: PatOwner = Field(...)
-    created: datetime = Field(..., description="The date and time, down to the millisecond, when this personal access token was created.")
+    created: datetime = Field(
+        ...,
+        description=
+        "The date and time, down to the millisecond, when this personal access token was created."
+    )
     __properties = ["id", "secret", "scope", "name", "owner", "created"]
 
     class Config:
@@ -54,10 +71,7 @@ class CreatePersonalAccessTokenResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -78,13 +92,18 @@ class CreatePersonalAccessTokenResponse(BaseModel):
             return CreatePersonalAccessTokenResponse.parse_obj(obj)
 
         _obj = CreatePersonalAccessTokenResponse.parse_obj({
-            "id": obj.get("id"),
-            "secret": obj.get("secret"),
-            "scope": obj.get("scope"),
-            "name": obj.get("name"),
-            "owner": PatOwner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "created": obj.get("created")
+            "id":
+            obj.get("id"),
+            "secret":
+            obj.get("secret"),
+            "scope":
+            obj.get("scope"),
+            "name":
+            obj.get("name"),
+            "owner":
+            PatOwner.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "created":
+            obj.get("created")
         })
         return _obj
-
-

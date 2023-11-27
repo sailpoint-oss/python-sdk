@@ -1,4 +1,4 @@
-# beta.TransformsApi
+# sailpoint.beta.TransformsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -25,15 +25,15 @@ Creates a new transform object immediately. By default, the internal flag is set
 ```python
 import time
 import os
-import beta
-from beta.models.transform import Transform
-from beta.models.transform_read import TransformRead
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.transform import Transform
+from sailpoint.beta.models.transform_read import TransformRead
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -47,9 +47,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TransformsApi(api_client)
+    api_instance = sailpoint.beta.TransformsApi(api_client)
     transform = {name=Timestamp To Date, type=dateFormat, attributes={inputFormat=MMM dd yyyy, HH:mm:ss.SSS, outputFormat=yyyy/dd/MM}} # Transform | The transform to be created.
 
     try:
@@ -109,13 +109,13 @@ Deletes the transform specified by the given ID. Attempting to delete a transfor
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -129,9 +129,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TransformsApi(api_client)
+    api_instance = sailpoint.beta.TransformsApi(api_client)
     id = '2cd78adghjkja34jh2b1hkjhasuecd' # str | ID of the transform to delete
 
     try:
@@ -189,14 +189,14 @@ This API returns the transform specified by the given ID. A token with transform
 ```python
 import time
 import os
-import beta
-from beta.models.transform_read import TransformRead
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.transform_read import TransformRead
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -210,9 +210,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TransformsApi(api_client)
+    api_instance = sailpoint.beta.TransformsApi(api_client)
     id = '2cd78adghjkja34jh2b1hkjhasuecd' # str | ID of the transform to retrieve
 
     try:
@@ -272,14 +272,14 @@ Gets a list of all saved transform objects. A token with transforms-list read au
 ```python
 import time
 import os
-import beta
-from beta.models.transform_read import TransformRead
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.transform_read import TransformRead
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -293,9 +293,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TransformsApi(api_client)
+    api_instance = sailpoint.beta.TransformsApi(api_client)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -363,15 +363,15 @@ Replaces the transform specified by the given ID with the transform provided in 
 ```python
 import time
 import os
-import beta
-from beta.models.transform import Transform
-from beta.models.transform_read import TransformRead
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.transform import Transform
+from sailpoint.beta.models.transform_read import TransformRead
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -385,9 +385,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TransformsApi(api_client)
+    api_instance = sailpoint.beta.TransformsApi(api_client)
     id = '2cd78adghjkja34jh2b1hkjhasuecd' # str | ID of the transform to update
     transform = {name=Timestamp To Date, type=dateFormat, attributes={inputFormat=MMM-dd-yyyy, HH:mm:ss.SSS, outputFormat=yyyy/dd/MM}} # Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
 

@@ -11,22 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class SpConfigUrl(BaseModel):
     """
     Format of resolver URLs for Object Configurations  # noqa: E501
     """
-    url: Optional[StrictStr] = Field(None, description="URL for the target object endpoint.")
-    query: Optional[Dict[str, Any]] = Field(None, description="Any query parameters that are needed for the URL.")
+    url: Optional[StrictStr] = Field(
+        None, description="URL for the target object endpoint.")
+    query: Optional[Dict[str, Any]] = Field(
+        None, description="Any query parameters that are needed for the URL.")
     __properties = ["url", "query"]
 
     class Config:
@@ -49,10 +50,7 @@ class SpConfigUrl(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if query (nullable) is None
         # and __fields_set__ contains the field
         if self.query is None and "query" in self.__fields_set__:
@@ -74,5 +72,3 @@ class SpConfigUrl(BaseModel):
             "query": obj.get("query")
         })
         return _obj
-
-

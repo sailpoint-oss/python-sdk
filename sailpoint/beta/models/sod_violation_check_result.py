@@ -11,28 +11,38 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.error_message_dto import ErrorMessageDto
-from beta.models.sod_policy_dto import SodPolicyDto
-from beta.models.sod_violation_context import SodViolationContext
+from sailpoint.beta.models.error_message_dto import ErrorMessageDto
+from sailpoint.beta.models.sod_policy_dto import SodPolicyDto
+from sailpoint.beta.models.sod_violation_context import SodViolationContext
+
 
 class SodViolationCheckResult(BaseModel):
     """
     The inner object representing the completed SOD Violation check  # noqa: E501
     """
     message: Optional[ErrorMessageDto] = None
-    client_metadata: Optional[Dict[str, StrictStr]] = Field(None, alias="clientMetadata", description="Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.")
-    violation_contexts: Optional[conlist(SodViolationContext)] = Field(None, alias="violationContexts")
-    violated_policies: Optional[conlist(SodPolicyDto)] = Field(None, alias="violatedPolicies", description="A list of the SOD policies that were violated.")
-    __properties = ["message", "clientMetadata", "violationContexts", "violatedPolicies"]
+    client_metadata: Optional[Dict[str, StrictStr]] = Field(
+        None,
+        alias="clientMetadata",
+        description=
+        "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check."
+    )
+    violation_contexts: Optional[conlist(SodViolationContext)] = Field(
+        None, alias="violationContexts")
+    violated_policies: Optional[conlist(SodPolicyDto)] = Field(
+        None,
+        alias="violatedPolicies",
+        description="A list of the SOD policies that were violated.")
+    __properties = [
+        "message", "clientMetadata", "violationContexts", "violatedPolicies"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -54,10 +64,7 @@ class SodViolationCheckResult(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of message
         if self.message:
             _dict['message'] = self.message.to_dict()
@@ -87,11 +94,18 @@ class SodViolationCheckResult(BaseModel):
             return SodViolationCheckResult.parse_obj(obj)
 
         _obj = SodViolationCheckResult.parse_obj({
-            "message": ErrorMessageDto.from_dict(obj.get("message")) if obj.get("message") is not None else None,
-            "client_metadata": obj.get("clientMetadata"),
-            "violation_contexts": [SodViolationContext.from_dict(_item) for _item in obj.get("violationContexts")] if obj.get("violationContexts") is not None else None,
-            "violated_policies": [SodPolicyDto.from_dict(_item) for _item in obj.get("violatedPolicies")] if obj.get("violatedPolicies") is not None else None
+            "message":
+            ErrorMessageDto.from_dict(obj.get("message"))
+            if obj.get("message") is not None else None,
+            "client_metadata":
+            obj.get("clientMetadata"),
+            "violation_contexts": [
+                SodViolationContext.from_dict(_item)
+                for _item in obj.get("violationContexts")
+            ] if obj.get("violationContexts") is not None else None,
+            "violated_policies": [
+                SodPolicyDto.from_dict(_item)
+                for _item in obj.get("violatedPolicies")
+            ] if obj.get("violatedPolicies") is not None else None
         })
         return _obj
-
-

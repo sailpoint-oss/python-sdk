@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_sync_job import IdentitySyncJob  # noqa: E501
+from sailpoint.beta.models.identity_sync_job import IdentitySyncJob  # noqa: E501
+
 
 class TestIdentitySyncJob(unittest.TestCase):
     """IdentitySyncJob unit test stubs"""
@@ -38,7 +38,7 @@ class TestIdentitySyncJob(unittest.TestCase):
             return IdentitySyncJob(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 status = 'IN_PROGRESS',
-                payload = beta.models.identity_sync_payload.IdentitySyncPayload(
+                payload = sailpoint.beta.models.identity_sync_payload.IdentitySyncPayload(
                     type = 'SYNCHRONIZE_IDENTITY_ATTRIBUTES', 
                     data_json = '{"identityId":"2c918083746f642c01746f990884012a"}', )
             )
@@ -46,7 +46,7 @@ class TestIdentitySyncJob(unittest.TestCase):
             return IdentitySyncJob(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',
                 status = 'IN_PROGRESS',
-                payload = beta.models.identity_sync_payload.IdentitySyncPayload(
+                payload = sailpoint.beta.models.identity_sync_payload.IdentitySyncPayload(
                     type = 'SYNCHRONIZE_IDENTITY_ATTRIBUTES', 
                     data_json = '{"identityId":"2c918083746f642c01746f990884012a"}', ),
         )
@@ -56,6 +56,7 @@ class TestIdentitySyncJob(unittest.TestCase):
         """Test IdentitySyncJob"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

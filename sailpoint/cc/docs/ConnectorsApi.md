@@ -1,4 +1,4 @@
-# cc.ConnectorsApi
+# sailpoint.cc.ConnectorsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
@@ -23,13 +23,13 @@ Create Connector
 ```python
 import time
 import os
-import cc
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -43,9 +43,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.ConnectorsApi(api_client)
+    api_instance = sailpoint.cc.ConnectorsApi(api_client)
     content_type = 'application/x-www-form-urlencoded' # str |  (optional)
     name = 'name_example' # str |  (optional)
     description = 'description_example' # str |  (optional)
@@ -105,13 +105,13 @@ Delete Connector
 ```python
 import time
 import os
-import cc
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -125,9 +125,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.ConnectorsApi(api_client)
+    api_instance = sailpoint.cc.ConnectorsApi(api_client)
     id = 'id_example' # str | 
 
     try:
@@ -177,13 +177,13 @@ Export Connector Config
 ```python
 import time
 import os
-import cc
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -197,9 +197,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.ConnectorsApi(api_client)
+    api_instance = sailpoint.cc.ConnectorsApi(api_client)
     id = 'id_example' # str | 
 
     try:
@@ -249,13 +249,13 @@ Import Connector Config
 ```python
 import time
 import os
-import cc
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -269,9 +269,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.ConnectorsApi(api_client)
+    api_instance = sailpoint.cc.ConnectorsApi(api_client)
     id = 'id_example' # str | 
     file = None # bytearray | This is the connector config zip bundle which gets uploaded. (optional)
 
@@ -323,14 +323,14 @@ List Connectors
 ```python
 import time
 import os
-import cc
-from cc.models.list_connectors200_response import ListConnectors200Response
-from cc.rest import ApiException
+import sailpoint.cc
+from sailpoint.cc.models.list_connectors200_response import ListConnectors200Response
+from sailpoint.cc.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = cc.Configuration(
+configuration = sailpoint.cc.Configuration(
     host = "https://sailpoint.api.identitynow.com"
 )
 
@@ -344,9 +344,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with cc.ApiClient(configuration) as api_client:
+with sailpoint.cc.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = cc.ConnectorsApi(api_client)
+    api_instance = sailpoint.cc.ConnectorsApi(api_client)
 
     try:
         # List Connectors

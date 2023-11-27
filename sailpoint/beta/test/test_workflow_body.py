@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.workflow_body import WorkflowBody  # noqa: E501
+from sailpoint.beta.models.workflow_body import WorkflowBody  # noqa: E501
+
 
 class TestWorkflowBody(unittest.TestCase):
     """WorkflowBody unit test stubs"""
@@ -37,18 +37,18 @@ class TestWorkflowBody(unittest.TestCase):
         if include_optional:
             return WorkflowBody(
                 name = 'Send Email',
-                owner = beta.models.workflow_body_owner.WorkflowBody_owner(
+                owner = sailpoint.beta.models.workflow_body_owner.WorkflowBody_owner(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'William Wilson', ),
                 description = 'Send an email to the identity who's attributes changed.',
-                definition = beta.models.workflow_definition.WorkflowDefinition(
+                definition = sailpoint.beta.models.workflow_definition.WorkflowDefinition(
                     start = 'Send Email Test', 
                     steps = {Send Email={actionId=sp:send-email, attributes={body=This is a test, from=sailpoint@sailpoint.com, recipientId.$=$.identity.id, subject=test}, nextStep=success, selectResult=null, type=ACTION}, success={type=success}}, ),
                 enabled = False,
-                trigger = beta.models.workflow_trigger.WorkflowTrigger(
+                trigger = sailpoint.beta.models.workflow_trigger.WorkflowTrigger(
                     type = 'EVENT', 
-                    attributes = beta.models.attributes.attributes(), )
+                    attributes = sailpoint.beta.models.attributes.attributes(), )
             )
         else:
             return WorkflowBody(
@@ -59,6 +59,7 @@ class TestWorkflowBody(unittest.TestCase):
         """Test WorkflowBody"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

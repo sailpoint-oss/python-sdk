@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -20,13 +19,10 @@ from pydantic import validate_arguments, ValidationError
 
 from pydantic import StrictStr
 
-
-from cc.api_client import ApiClient
-from cc.api_response import ApiResponse
-from cc.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.cc.api_client import ApiClient
+from sailpoint.cc.api_response import ApiResponse
+from sailpoint.cc.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class SourcesAccountsApi:
@@ -42,7 +38,8 @@ class SourcesAccountsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def export_account_feed(self, id : StrictStr, **kwargs) -> None:  # noqa: E501
+    def export_account_feed(self, id: StrictStr,
+                            **kwargs) -> None:  # noqa: E501
         """Export Account Feed  # noqa: E501
 
         Exports a CSV of the accounts for a particular source.  # noqa: E501
@@ -69,10 +66,12 @@ class SourcesAccountsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the export_account_feed_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.export_account_feed_with_http_info(id, **kwargs)  # noqa: E501
+        return self.export_account_feed_with_http_info(id,
+                                                       **kwargs)  # noqa: E501
 
     @validate_arguments
-    def export_account_feed_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
+    def export_account_feed_with_http_info(
+            self, id: StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
         """Export Account Feed  # noqa: E501
 
         Exports a CSV of the accounts for a particular source.  # noqa: E501
@@ -111,28 +110,17 @@ class SourcesAccountsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method export_account_feed" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method export_account_feed" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -142,7 +130,6 @@ class SourcesAccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -163,7 +150,8 @@ class SourcesAccountsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/cc/api/source/exportAccountFeed/{id}', 'GET',
+            '/cc/api/source/exportAccountFeed/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -173,7 +161,8 @@ class SourcesAccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse  # noqa: E501
+from sailpoint.beta.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse  # noqa: E501
+
 
 class TestListFormDefinitionsByTenantResponse(unittest.TestCase):
     """ListFormDefinitionsByTenantResponse unit test stubs"""
@@ -26,7 +26,8 @@ class TestListFormDefinitionsByTenantResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ListFormDefinitionsByTenantResponse:
+    def make_instance(self,
+                      include_optional) -> ListFormDefinitionsByTenantResponse:
         """Test ListFormDefinitionsByTenantResponse
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -38,27 +39,27 @@ class TestListFormDefinitionsByTenantResponse(unittest.TestCase):
             return ListFormDefinitionsByTenantResponse(
                 count = 1,
                 results = [
-                    beta.models.form_definition_response.FormDefinitionResponse(
+                    sailpoint.beta.models.form_definition_response.FormDefinitionResponse(
                         id = '00000000-0000-0000-0000-000000000000', 
                         name = 'My form', 
                         description = 'My form description', 
-                        owner = beta.models.form_owner.FormOwner(
+                        owner = sailpoint.beta.models.form_owner.FormOwner(
                             type = 'IDENTITY', 
                             id = '00000000-0000-0000-0000-000000000000', ), 
                         used_by = [
-                            beta.models.form_used_by.FormUsedBy(
+                            sailpoint.beta.models.form_used_by.FormUsedBy(
                                 type = 'WORKFLOW', 
                                 id = '00000000-0000-0000-0000-000000000000', )
                             ], 
                         form_input = [
-                            beta.models.form_definition_input.FormDefinitionInput(
+                            sailpoint.beta.models.form_definition_input.FormDefinitionInput(
                                 id = '00000000-0000-0000-0000-000000000000', 
                                 type = 'STRING', 
                                 label = 'input1', 
                                 description = 'A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic', )
                             ], 
                         form_elements = [
-                            beta.models.form_element.FormElement(
+                            sailpoint.beta.models.form_element.FormElement(
                                 id = '00000000-0000-0000-0000-000000000000', 
                                 element_type = 'TEXT', 
                                 config = {label=Department}, 
@@ -66,10 +67,10 @@ class TestListFormDefinitionsByTenantResponse(unittest.TestCase):
                                 validations = [{validationType=REQUIRED}], )
                             ], 
                         form_conditions = [
-                            beta.models.form_condition.FormCondition(
+                            sailpoint.beta.models.form_condition.FormCondition(
                                 rule_operator = 'AND', 
                                 rules = [
-                                    beta.models.condition_rule.ConditionRule(
+                                    sailpoint.beta.models.condition_rule.ConditionRule(
                                         source_type = 'ELEMENT', 
                                         source = 'department', 
                                         operator = 'EQ', 
@@ -77,9 +78,9 @@ class TestListFormDefinitionsByTenantResponse(unittest.TestCase):
                                         value = Engineering, )
                                     ], 
                                 effects = [
-                                    beta.models.condition_effect.ConditionEffect(
+                                    sailpoint.beta.models.condition_effect.ConditionEffect(
                                         effect_type = 'HIDE', 
-                                        config = beta.models.condition_effect_config.ConditionEffect_config(
+                                        config = sailpoint.beta.models.condition_effect_config.ConditionEffect_config(
                                             default_value_label = 'Access to Remove', 
                                             element = '8110662963316867', ), )
                                     ], )
@@ -97,6 +98,7 @@ class TestListFormDefinitionsByTenantResponse(unittest.TestCase):
         """Test ListFormDefinitionsByTenantResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

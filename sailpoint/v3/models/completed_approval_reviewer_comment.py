@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,7 +19,8 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from v3.models.comment_dto_author import CommentDtoAuthor
+from sailpoint.v3.models.comment_dto_author import CommentDtoAuthor
+
 
 class CompletedApprovalReviewerComment(BaseModel):
     """
@@ -28,7 +28,8 @@ class CompletedApprovalReviewerComment(BaseModel):
     """
     comment: Optional[StrictStr] = Field(None, description="Comment content.")
     author: Optional[CommentDtoAuthor] = None
-    created: Optional[datetime] = Field(None, description="Date and time comment was created.")
+    created: Optional[datetime] = Field(
+        None, description="Date and time comment was created.")
     __properties = ["comment", "author", "created"]
 
     class Config:
@@ -51,10 +52,7 @@ class CompletedApprovalReviewerComment(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of author
         if self.author:
             _dict['author'] = self.author.to_dict()
@@ -75,10 +73,12 @@ class CompletedApprovalReviewerComment(BaseModel):
             return CompletedApprovalReviewerComment.parse_obj(obj)
 
         _obj = CompletedApprovalReviewerComment.parse_obj({
-            "comment": obj.get("comment"),
-            "author": CommentDtoAuthor.from_dict(obj.get("author")) if obj.get("author") is not None else None,
-            "created": obj.get("created")
+            "comment":
+            obj.get("comment"),
+            "author":
+            CommentDtoAuthor.from_dict(obj.get("author"))
+            if obj.get("author") is not None else None,
+            "created":
+            obj.get("created")
         })
         return _obj
-
-

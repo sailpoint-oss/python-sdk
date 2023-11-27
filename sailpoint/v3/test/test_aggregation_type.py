@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.aggregation_type import AggregationType  # noqa: E501
+from sailpoint.v3.models.aggregation_type import AggregationType  # noqa: E501
+
 
 class TestAggregationType(unittest.TestCase):
     """AggregationType unit test stubs"""
@@ -29,6 +29,7 @@ class TestAggregationType(unittest.TestCase):
     def testAggregationType(self):
         """Test AggregationType"""
         # inst = AggregationType()
+
 
 if __name__ == '__main__':
     unittest.main()

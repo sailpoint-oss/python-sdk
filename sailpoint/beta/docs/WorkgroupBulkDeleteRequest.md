@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.workgroup_bulk_delete_request import WorkgroupBulkDeleteRequest
+from sailpoint.beta.models.workgroup_bulk_delete_request import WorkgroupBulkDeleteRequest
 
 # TODO update the JSON string below
 json = "{}"

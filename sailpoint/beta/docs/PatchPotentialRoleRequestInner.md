@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
+from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,23 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from beta.models.managed_cluster_queue import ManagedClusterQueue
+from sailpoint.beta.models.managed_cluster_queue import ManagedClusterQueue
+
 
 class ManagedClusterAttributes(BaseModel):
     """
     Managed Cluster Attributes for Cluster Configuration. Supported Cluster Types [sqsCluster, spConnectCluster]  # noqa: E501
     """
     queue: Optional[ManagedClusterQueue] = None
-    keystore: Optional[StrictStr] = Field(None, description="ManagedCluster keystore for spConnectCluster type")
+    keystore: Optional[StrictStr] = Field(
+        None, description="ManagedCluster keystore for spConnectCluster type")
     __properties = ["queue", "keystore"]
 
     class Config:
@@ -50,10 +50,7 @@ class ManagedClusterAttributes(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of queue
         if self.queue:
             _dict['queue'] = self.queue.to_dict()
@@ -74,9 +71,10 @@ class ManagedClusterAttributes(BaseModel):
             return ManagedClusterAttributes.parse_obj(obj)
 
         _obj = ManagedClusterAttributes.parse_obj({
-            "queue": ManagedClusterQueue.from_dict(obj.get("queue")) if obj.get("queue") is not None else None,
-            "keystore": obj.get("keystore")
+            "queue":
+            ManagedClusterQueue.from_dict(obj.get("queue"))
+            if obj.get("queue") is not None else None,
+            "keystore":
+            obj.get("keystore")
         })
         return _obj
-
-

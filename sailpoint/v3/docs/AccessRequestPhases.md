@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.access_request_phases import AccessRequestPhases
+from sailpoint.v3.models.access_request_phases import AccessRequestPhases
 
 # TODO update the JSON string below
 json = "{}"

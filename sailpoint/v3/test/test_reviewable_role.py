@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.reviewable_role import ReviewableRole  # noqa: E501
+from sailpoint.v3.models.reviewable_role import ReviewableRole  # noqa: E501
+
 
 class TestReviewableRole(unittest.TestCase):
     """ReviewableRole unit test stubs"""
@@ -40,7 +40,7 @@ class TestReviewableRole(unittest.TestCase):
                 name = 'Accounting-Employees',
                 description = 'Role for members of the accounting department with the necessary Access Profiles',
                 privileged = False,
-                owner = v3.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
+                owner = sailpoint.v3.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
                     type = 'IDENTITY', 
                     id = '5168015d32f890ca15812c9180835d2e', 
                     name = 'Alison Ferguso', 
@@ -48,20 +48,20 @@ class TestReviewableRole(unittest.TestCase):
                 revocable = False,
                 end_date = '2021-12-25T00:00Z',
                 access_profiles = [
-                    v3.models.reviewable_access_profile.ReviewableAccessProfile(
+                    sailpoint.v3.models.reviewable_access_profile.ReviewableAccessProfile(
                         id = '2c91808a7190d06e01719938fcd20792', 
                         name = 'Employee-database-read-write', 
                         description = 'Collection of entitlements to read/write the employee database', 
                         privileged = False, 
                         cloud_governed = False, 
                         end_date = '2021-12-25T00:00Z', 
-                        owner = v3.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
+                        owner = sailpoint.v3.models.identity_reference_with_name_and_email.IdentityReferenceWithNameAndEmail(
                             type = 'IDENTITY', 
                             id = '5168015d32f890ca15812c9180835d2e', 
                             name = 'Alison Ferguso', 
                             email = 'alison.ferguso@identitysoon.com', ), 
                         entitlements = [
-                            v3.models.reviewable_entitlement.ReviewableEntitlement(
+                            sailpoint.v3.models.reviewable_entitlement.ReviewableEntitlement(
                                 id = '2c918085718230600171993742c63558', 
                                 name = 'CN=entitlement.bbb7c650', 
                                 description = 'Gives read/write access to the company database', 
@@ -77,19 +77,19 @@ class TestReviewableRole(unittest.TestCase):
                                 revocable = True, 
                                 cloud_governed = False, 
                                 contains_data_access = True, 
-                                data_access = v3.models.data_access.DataAccess(
+                                data_access = sailpoint.v3.models.data_access.DataAccess(
                                     policies = [
-                                        v3.models.data_access_policies_inner.DataAccess_policies_inner(
+                                        sailpoint.v3.models.data_access_policies_inner.DataAccess_policies_inner(
                                             value = 'GDPR-20', )
                                         ], 
                                     categories = [
-                                        v3.models.data_access_categories_inner.DataAccess_categories_inner(
+                                        sailpoint.v3.models.data_access_categories_inner.DataAccess_categories_inner(
                                             value = 'email-7', 
                                             match_count = 10, )
                                         ], 
-                                    impact_score = v3.models.data_access_impact_score.DataAccess_impactScore(
+                                    impact_score = sailpoint.v3.models.data_access_impact_score.DataAccess_impactScore(
                                         value = 'Medium', ), ), 
-                                account = v3.models.reviewable_entitlement_account.ReviewableEntitlement_account(
+                                account = sailpoint.v3.models.reviewable_entitlement_account.ReviewableEntitlement_account(
                                     native_identity = 'CN=Alison Ferguso', 
                                     disabled = False, 
                                     locked = False, 
@@ -112,6 +112,7 @@ class TestReviewableRole(unittest.TestCase):
         """Test ReviewableRole"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

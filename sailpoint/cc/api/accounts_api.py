@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -22,14 +21,12 @@ from pydantic import StrictStr
 
 from typing import List
 
-from cc.models.list_accounts200_response_inner import ListAccounts200ResponseInner
+from sailpoint.cc.models.list_accounts200_response_inner import ListAccounts200ResponseInner
 
-from cc.api_client import ApiClient
-from cc.api_response import ApiResponse
-from cc.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.cc.api_client import ApiClient
+from sailpoint.cc.api_response import ApiResponse
+from sailpoint.cc.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class AccountsApi:
@@ -45,7 +42,9 @@ class AccountsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def list_accounts(self, **kwargs) -> List[ListAccounts200ResponseInner]:  # noqa: E501
+    def list_accounts(
+            self,
+            **kwargs) -> List[ListAccounts200ResponseInner]:  # noqa: E501
         """List Accounts  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -72,7 +71,8 @@ class AccountsApi:
         return self.list_accounts_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_accounts_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_accounts_with_http_info(self,
+                                     **kwargs) -> ApiResponse:  # noqa: E501
         """List Accounts  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -108,27 +108,17 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_accounts" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_accounts" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -158,7 +148,8 @@ class AccountsApi:
         }
 
         return self.api_client.call_api(
-            '/cc/api/account/list', 'GET',
+            '/cc/api/account/list',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -168,14 +159,15 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def remove_account(self, id : StrictStr, **kwargs) -> None:  # noqa: E501
+    def remove_account(self, id: StrictStr, **kwargs) -> None:  # noqa: E501
         """Remove Account  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -204,7 +196,8 @@ class AccountsApi:
         return self.remove_account_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def remove_account_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
+    def remove_account_with_http_info(self, id: StrictStr,
+                                      **kwargs) -> ApiResponse:  # noqa: E501
         """Remove Account  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -242,28 +235,17 @@ class AccountsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method remove_account" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method remove_account" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -273,7 +255,6 @@ class AccountsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -294,7 +275,8 @@ class AccountsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/cc/api/account/remove/{id}', 'POST',
+            '/cc/api/account/remove/{id}',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -304,7 +286,8 @@ class AccountsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

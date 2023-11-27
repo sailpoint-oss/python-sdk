@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.campaign_all_of_search_campaign_info_reviewer import CampaignAllOfSearchCampaignInfoReviewer  # noqa: E501
+from sailpoint.v3.models.campaign_all_of_search_campaign_info_reviewer import CampaignAllOfSearchCampaignInfoReviewer  # noqa: E501
+
 
 class TestCampaignAllOfSearchCampaignInfoReviewer(unittest.TestCase):
     """CampaignAllOfSearchCampaignInfoReviewer unit test stubs"""
@@ -26,7 +26,8 @@ class TestCampaignAllOfSearchCampaignInfoReviewer(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> CampaignAllOfSearchCampaignInfoReviewer:
+    def make_instance(
+            self, include_optional) -> CampaignAllOfSearchCampaignInfoReviewer:
         """Test CampaignAllOfSearchCampaignInfoReviewer
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -49,6 +50,7 @@ class TestCampaignAllOfSearchCampaignInfoReviewer(unittest.TestCase):
         """Test CampaignAllOfSearchCampaignInfoReviewer"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

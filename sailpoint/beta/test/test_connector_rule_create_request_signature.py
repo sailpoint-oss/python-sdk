@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.connector_rule_create_request_signature import ConnectorRuleCreateRequestSignature  # noqa: E501
+from sailpoint.beta.models.connector_rule_create_request_signature import ConnectorRuleCreateRequestSignature  # noqa: E501
+
 
 class TestConnectorRuleCreateRequestSignature(unittest.TestCase):
     """ConnectorRuleCreateRequestSignature unit test stubs"""
@@ -26,7 +26,8 @@ class TestConnectorRuleCreateRequestSignature(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ConnectorRuleCreateRequestSignature:
+    def make_instance(self,
+                      include_optional) -> ConnectorRuleCreateRequestSignature:
         """Test ConnectorRuleCreateRequestSignature
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -37,12 +38,12 @@ class TestConnectorRuleCreateRequestSignature(unittest.TestCase):
         if include_optional:
             return ConnectorRuleCreateRequestSignature(
                 input = [
-                    beta.models.argument.Argument(
+                    sailpoint.beta.models.argument.Argument(
                         name = 'firstName', 
                         description = 'the first name of the identity', 
                         type = 'String', )
                     ],
-                output = beta.models.argument.Argument(
+                output = sailpoint.beta.models.argument.Argument(
                     name = 'firstName', 
                     description = 'the first name of the identity', 
                     type = 'String', )
@@ -50,7 +51,7 @@ class TestConnectorRuleCreateRequestSignature(unittest.TestCase):
         else:
             return ConnectorRuleCreateRequestSignature(
                 input = [
-                    beta.models.argument.Argument(
+                    sailpoint.beta.models.argument.Argument(
                         name = 'firstName', 
                         description = 'the first name of the identity', 
                         type = 'String', )
@@ -62,6 +63,7 @@ class TestConnectorRuleCreateRequestSignature(unittest.TestCase):
         """Test ConnectorRuleCreateRequestSignature"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

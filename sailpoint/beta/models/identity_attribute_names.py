@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
+
 
 class IdentityAttributeNames(BaseModel):
     """
     Identity Attribute IDs  # noqa: E501
     """
-    ids: Optional[conlist(StrictStr)] = Field(None, description="List of identity attributes' technical names")
+    ids: Optional[conlist(StrictStr)] = Field(
+        None, description="List of identity attributes' technical names")
     __properties = ["ids"]
 
     class Config:
@@ -48,10 +48,7 @@ class IdentityAttributeNames(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +60,5 @@ class IdentityAttributeNames(BaseModel):
         if not isinstance(obj, dict):
             return IdentityAttributeNames.parse_obj(obj)
 
-        _obj = IdentityAttributeNames.parse_obj({
-            "ids": obj.get("ids")
-        })
+        _obj = IdentityAttributeNames.parse_obj({"ids": obj.get("ids")})
         return _obj
-
-

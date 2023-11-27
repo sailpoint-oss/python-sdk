@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.recommendation_request_dto import RecommendationRequestDto  # noqa: E501
+from sailpoint.beta.models.recommendation_request_dto import RecommendationRequestDto  # noqa: E501
+
 
 class TestRecommendationRequestDto(unittest.TestCase):
     """RecommendationRequestDto unit test stubs"""
@@ -37,9 +37,9 @@ class TestRecommendationRequestDto(unittest.TestCase):
         if include_optional:
             return RecommendationRequestDto(
                 requests = [
-                    beta.models.recommendation_request.RecommendationRequest(
+                    sailpoint.beta.models.recommendation_request.RecommendationRequest(
                         identity_id = '2c938083633d259901633d25c68c00fa', 
-                        item = beta.models.access_item_ref.AccessItemRef(
+                        item = sailpoint.beta.models.access_item_ref.AccessItemRef(
                             id = '2c938083633d259901633d2623ec0375', 
                             type = 'ENTITLEMENT', ), )
                     ],
@@ -57,6 +57,7 @@ class TestRecommendationRequestDto(unittest.TestCase):
         """Test RecommendationRequestDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

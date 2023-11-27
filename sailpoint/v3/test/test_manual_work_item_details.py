@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.manual_work_item_details import ManualWorkItemDetails  # noqa: E501
+from sailpoint.v3.models.manual_work_item_details import ManualWorkItemDetails  # noqa: E501
+
 
 class TestManualWorkItemDetails(unittest.TestCase):
     """ManualWorkItemDetails unit test stubs"""
@@ -37,18 +37,18 @@ class TestManualWorkItemDetails(unittest.TestCase):
         if include_optional:
             return ManualWorkItemDetails(
                 forwarded = True,
-                original_owner = v3.models.manual_work_item_details_original_owner.ManualWorkItemDetails_originalOwner(
+                original_owner = sailpoint.v3.models.manual_work_item_details_original_owner.ManualWorkItemDetails_originalOwner(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                current_owner = v3.models.manual_work_item_details_current_owner.ManualWorkItemDetails_currentOwner(
+                current_owner = sailpoint.v3.models.manual_work_item_details_current_owner.ManualWorkItemDetails_currentOwner(
                     type = 'IDENTITY', 
                     id = '2c3780a46faadee4016fb4e018c20652', 
                     name = 'Allen Albertson', ),
                 modified = '2019-08-23T18:52:57.398Z',
                 status = 'PENDING',
                 forward_history = [
-                    v3.models.approval_forward_history.ApprovalForwardHistory(
+                    sailpoint.v3.models.approval_forward_history.ApprovalForwardHistory(
                         old_approver_name = 'Frank Mir', 
                         new_approver_name = 'Al Volta', 
                         comment = 'Forwarding from Frank to Al', 
@@ -66,6 +66,7 @@ class TestManualWorkItemDetails(unittest.TestCase):
         """Test ManualWorkItemDetails"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

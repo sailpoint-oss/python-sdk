@@ -1,4 +1,4 @@
-# beta.AccessRequestsApi
+# sailpoint.beta.AccessRequestsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -26,14 +26,14 @@ This API endpoint cancels a pending access request. An access request can be can
 ```python
 import time
 import os
-import beta
-from beta.models.cancel_access_request import CancelAccessRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.cancel_access_request import CancelAccessRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -47,9 +47,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessRequestsApi(api_client)
+    api_instance = sailpoint.beta.AccessRequestsApi(api_client)
     cancel_access_request = {accountActivityId=2c91808568c529c60168cca6f90c1313, comment=I requested this role by mistake.} # CancelAccessRequest | 
 
     try:
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 Close Access Request
 
-This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle (even after the approval state, unlike <a href=\"https://developer.sailpoint.com/idn/api/v3/cancel-access-request\">Cancel Access Request</a>). A token with ORG_ADMIN authority is required.  To find pending access requests via the UI, navigate to Search and use this query: status: Pending AND \"Access Request\". Use the Column Chooser to select \"Tracking Number,\" and the Download button to export a CSV containing the Tracking Numbers.  To find pending access requests via the API, use <a href=\"https://developer.sailpoint.com/idn/api/v3/list-account-activities\">List Account Activities</a>.  Input the ids from either source  To track the status of endpoint requests, navigate to Search and use this query: name:\"Close Identity Requests\". Search will include \"Close Identity Requests Started\" audits when requests are initiated, and \"Close Identity Requests Completed\" audits when requests are completed. The completion audit will list the Identity Request IDs that finished in error.  This API triggers the <a href=\"https://developer.sailpoint.com/idn/docs/event-triggers/triggers/provisioning-action-completed\">Provisioning Action Completed</a> event trigger for each access request that is closed. 
+This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/). A token with ORG_ADMIN authority is required.  To find pending access requests with the UI, navigate to Search and use this query: status: Pending AND \"Access Request\". Use the Column Chooser to select 'Tracking Number', and use the 'Download' button to export a CSV containing the tracking numbers.  To find pending access requests with the API, use the [List Account Activities endpoint](https://developer.sailpoint.com/idn/api/v3/list-account-activities/).  Input the IDs from either source.  To track the status of endpoint requests, navigate to Search and use this query: name:\"Close Identity Requests\". Search will include \"Close Identity Requests Started\" audits when requests are initiated and \"Close Identity Requests Completed\" audits when requests are completed. The completion audit will list the identity request IDs that finished in error.  This API triggers the [Provisioning Completed event trigger](https://developer.sailpoint.com/idn/docs/event-triggers/triggers/provisioning-completed/) for each access request that is closed. 
 
 ### Example
 
@@ -109,14 +109,14 @@ This endpoint closes access requests that are stuck in a pending state. It can b
 ```python
 import time
 import os
-import beta
-from beta.models.close_access_request import CloseAccessRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.close_access_request import CloseAccessRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -130,9 +130,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessRequestsApi(api_client)
+    api_instance = sailpoint.beta.AccessRequestsApi(api_client)
     close_access_request = {accessRequestIds=[2c90ad2a70ace7d50170acf22ca90010], executionStatus=Terminated, completionStatus=Failure, message=The IdentityNow Administrator manually closed this request.} # CloseAccessRequest | 
 
     try:
@@ -191,14 +191,14 @@ This submits the access request into IdentityNow, where it will follow any Ident
 ```python
 import time
 import os
-import beta
-from beta.models.access_request import AccessRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_request import AccessRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -212,10 +212,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessRequestsApi(api_client)
-    access_request = beta.AccessRequest() # AccessRequest | 
+    api_instance = sailpoint.beta.AccessRequestsApi(api_client)
+    access_request = sailpoint.beta.AccessRequest() # AccessRequest | 
 
     try:
         # Submit an Access Request
@@ -273,14 +273,14 @@ This endpoint returns the current access-request configuration.
 ```python
 import time
 import os
-import beta
-from beta.models.access_request_config import AccessRequestConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_request_config import AccessRequestConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -294,9 +294,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessRequestsApi(api_client)
+    api_instance = sailpoint.beta.AccessRequestsApi(api_client)
 
     try:
         # Get Access Request Configuration
@@ -351,14 +351,14 @@ The Access Request Status API returns a list of access request statuses based on
 ```python
 import time
 import os
-import beta
-from beta.models.requested_item_status import RequestedItemStatus
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.requested_item_status import RequestedItemStatus
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -372,9 +372,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessRequestsApi(api_client)
+    api_instance = sailpoint.beta.AccessRequestsApi(api_client)
     requested_for = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     requested_by = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     regarding_identity = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional)
@@ -449,14 +449,14 @@ This endpoint replaces the current access-request configuration. A token with OR
 ```python
 import time
 import os
-import beta
-from beta.models.access_request_config import AccessRequestConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.access_request_config import AccessRequestConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -470,10 +470,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccessRequestsApi(api_client)
-    access_request_config = beta.AccessRequestConfig() # AccessRequestConfig | 
+    api_instance = sailpoint.beta.AccessRequestsApi(api_client)
+    access_request_config = sailpoint.beta.AccessRequestConfig() # AccessRequestConfig | 
 
     try:
         # Update Access Request Configuration

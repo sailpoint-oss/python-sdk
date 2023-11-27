@@ -1,4 +1,4 @@
-# beta.ConnectorRuleManagementApi
+# sailpoint.beta.ConnectorRuleManagementApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -26,15 +26,15 @@ Creates a new connector rule. A token with ORG_ADMIN authority is required to ca
 ```python
 import time
 import os
-import beta
-from beta.models.connector_rule_create_request import ConnectorRuleCreateRequest
-from beta.models.connector_rule_response import ConnectorRuleResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.connector_rule_create_request import ConnectorRuleCreateRequest
+from sailpoint.beta.models.connector_rule_response import ConnectorRuleResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -48,10 +48,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ConnectorRuleManagementApi(api_client)
-    connector_rule_create_request = beta.ConnectorRuleCreateRequest() # ConnectorRuleCreateRequest | The connector rule to create
+    api_instance = sailpoint.beta.ConnectorRuleManagementApi(api_client)
+    connector_rule_create_request = sailpoint.beta.ConnectorRuleCreateRequest() # ConnectorRuleCreateRequest | The connector rule to create
 
     try:
         # Create Connector Rule
@@ -109,13 +109,13 @@ Deletes the connector rule specified by the given ID. A token with ORG_ADMIN aut
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -129,9 +129,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ConnectorRuleManagementApi(api_client)
+    api_instance = sailpoint.beta.ConnectorRuleManagementApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | ID of the connector rule to delete
 
     try:
@@ -189,14 +189,14 @@ Returns the connector rule specified by ID. A token with ORG_ADMIN authority is 
 ```python
 import time
 import os
-import beta
-from beta.models.connector_rule_response import ConnectorRuleResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.connector_rule_response import ConnectorRuleResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -210,9 +210,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ConnectorRuleManagementApi(api_client)
+    api_instance = sailpoint.beta.ConnectorRuleManagementApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | ID of the connector rule to retrieve
 
     try:
@@ -272,14 +272,14 @@ Returns the list of connector rules. A token with ORG_ADMIN authority is require
 ```python
 import time
 import os
-import beta
-from beta.models.connector_rule_response import ConnectorRuleResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.connector_rule_response import ConnectorRuleResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -293,9 +293,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ConnectorRuleManagementApi(api_client)
+    api_instance = sailpoint.beta.ConnectorRuleManagementApi(api_client)
 
     try:
         # List Connector Rules
@@ -350,15 +350,15 @@ Updates an existing connector rule with the one provided in the request body. No
 ```python
 import time
 import os
-import beta
-from beta.models.connector_rule_response import ConnectorRuleResponse
-from beta.models.connector_rule_update_request import ConnectorRuleUpdateRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.connector_rule_response import ConnectorRuleResponse
+from sailpoint.beta.models.connector_rule_update_request import ConnectorRuleUpdateRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -372,11 +372,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ConnectorRuleManagementApi(api_client)
+    api_instance = sailpoint.beta.ConnectorRuleManagementApi(api_client)
     id = '8c190e6787aa4ed9a90bd9d5344523fb' # str | ID of the connector rule to update
-    connector_rule_update_request = beta.ConnectorRuleUpdateRequest() # ConnectorRuleUpdateRequest | The connector rule with updated data (optional)
+    connector_rule_update_request = sailpoint.beta.ConnectorRuleUpdateRequest() # ConnectorRuleUpdateRequest | The connector rule with updated data (optional)
 
     try:
         # Update a Connector Rule
@@ -436,15 +436,15 @@ Returns a list of issues within the code to fix, if any. A token with ORG_ADMIN 
 ```python
 import time
 import os
-import beta
-from beta.models.connector_rule_validation_response import ConnectorRuleValidationResponse
-from beta.models.source_code import SourceCode
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.connector_rule_validation_response import ConnectorRuleValidationResponse
+from sailpoint.beta.models.source_code import SourceCode
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -458,10 +458,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.ConnectorRuleManagementApi(api_client)
-    source_code = beta.SourceCode() # SourceCode | The code to validate
+    api_instance = sailpoint.beta.ConnectorRuleManagementApi(api_client)
+    source_code = sailpoint.beta.SourceCode() # SourceCode | The code to validate
 
     try:
         # Validate Connector Rule

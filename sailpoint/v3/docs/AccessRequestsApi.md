@@ -1,4 +1,4 @@
-# v3.AccessRequestsApi
+# sailpoint.v3.AccessRequestsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -25,14 +25,14 @@ This API endpoint cancels a pending access request. An access request can be can
 ```python
 import time
 import os
-import v3
-from v3.models.cancel_access_request import CancelAccessRequest
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.cancel_access_request import CancelAccessRequest
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -46,9 +46,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccessRequestsApi(api_client)
+    api_instance = sailpoint.v3.AccessRequestsApi(api_client)
     cancel_access_request = {accountActivityId=2c91808568c529c60168cca6f90c1313, comment=I requested this role by mistake.} # CancelAccessRequest | 
 
     try:
@@ -108,14 +108,14 @@ This submits the access request into IdentityNow, where it will follow any Ident
 ```python
 import time
 import os
-import v3
-from v3.models.access_request import AccessRequest
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.access_request import AccessRequest
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -129,10 +129,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccessRequestsApi(api_client)
-    access_request = v3.AccessRequest() # AccessRequest | 
+    api_instance = sailpoint.v3.AccessRequestsApi(api_client)
+    access_request = sailpoint.v3.AccessRequest() # AccessRequest | 
 
     try:
         # Submit an Access Request
@@ -190,14 +190,14 @@ This endpoint returns the current access-request configuration.
 ```python
 import time
 import os
-import v3
-from v3.models.access_request_config import AccessRequestConfig
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.access_request_config import AccessRequestConfig
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -211,9 +211,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccessRequestsApi(api_client)
+    api_instance = sailpoint.v3.AccessRequestsApi(api_client)
 
     try:
         # Get Access Request Configuration
@@ -268,14 +268,14 @@ The Access Request Status API returns a list of access request statuses based on
 ```python
 import time
 import os
-import v3
-from v3.models.requested_item_status import RequestedItemStatus
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.requested_item_status import RequestedItemStatus
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -289,9 +289,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccessRequestsApi(api_client)
+    api_instance = sailpoint.v3.AccessRequestsApi(api_client)
     requested_for = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     requested_by = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     regarding_identity = '2c9180877b2b6ea4017b2c545f971429' # str | Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional)
@@ -366,14 +366,14 @@ This endpoint replaces the current access-request configuration. A token with OR
 ```python
 import time
 import os
-import v3
-from v3.models.access_request_config import AccessRequestConfig
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.access_request_config import AccessRequestConfig
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -387,10 +387,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccessRequestsApi(api_client)
-    access_request_config = v3.AccessRequestConfig() # AccessRequestConfig | 
+    api_instance = sailpoint.v3.AccessRequestsApi(api_client)
+    access_request_config = sailpoint.v3.AccessRequestConfig() # AccessRequestConfig | 
 
     try:
         # Update Access Request Configuration

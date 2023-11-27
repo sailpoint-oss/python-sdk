@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class CommonAccessType(str, Enum):
     """
     The type of access item.
     """
-
     """
     allowed enum values
     """
@@ -36,5 +31,3 @@ class CommonAccessType(str, Enum):
     def from_json(cls, json_str: str) -> CommonAccessType:
         """Create an instance of CommonAccessType from a JSON string"""
         return CommonAccessType(json.loads(json_str))
-
-

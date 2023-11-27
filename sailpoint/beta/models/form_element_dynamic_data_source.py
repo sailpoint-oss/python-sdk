@@ -11,23 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-from beta.models.form_element_dynamic_data_source_config import FormElementDynamicDataSourceConfig
+from sailpoint.beta.models.form_element_dynamic_data_source_config import FormElementDynamicDataSourceConfig
+
 
 class FormElementDynamicDataSource(BaseModel):
     """
     FormElementDynamicDataSource
     """
     config: Optional[FormElementDynamicDataSourceConfig] = None
-    data_source_type: Optional[StrictStr] = Field(None, alias="dataSourceType", description="DataSourceType is a FormElementDataSourceType value STATIC FormElementDataSourceTypeStatic INTERNAL FormElementDataSourceTypeInternal SEARCH FormElementDataSourceTypeSearch")
+    data_source_type: Optional[StrictStr] = Field(
+        None,
+        alias="dataSourceType",
+        description=
+        "DataSourceType is a FormElementDataSourceType value STATIC FormElementDataSourceTypeStatic INTERNAL FormElementDataSourceTypeInternal SEARCH FormElementDataSourceTypeSearch"
+    )
     __properties = ["config", "dataSourceType"]
 
     @validator('data_source_type')
@@ -37,7 +41,8 @@ class FormElementDynamicDataSource(BaseModel):
             return value
 
         if value not in ('STATIC', 'INTERNAL', 'SEARCH'):
-            raise ValueError("must be one of enum values ('STATIC', 'INTERNAL', 'SEARCH')")
+            raise ValueError(
+                "must be one of enum values ('STATIC', 'INTERNAL', 'SEARCH')")
         return value
 
     class Config:
@@ -60,10 +65,7 @@ class FormElementDynamicDataSource(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of config
         if self.config:
             _dict['config'] = self.config.to_dict()
@@ -79,9 +81,10 @@ class FormElementDynamicDataSource(BaseModel):
             return FormElementDynamicDataSource.parse_obj(obj)
 
         _obj = FormElementDynamicDataSource.parse_obj({
-            "config": FormElementDynamicDataSourceConfig.from_dict(obj.get("config")) if obj.get("config") is not None else None,
-            "data_source_type": obj.get("dataSourceType")
+            "config":
+            FormElementDynamicDataSourceConfig.from_dict(obj.get("config"))
+            if obj.get("config") is not None else None,
+            "data_source_type":
+            obj.get("dataSourceType")
         })
         return _obj
-
-

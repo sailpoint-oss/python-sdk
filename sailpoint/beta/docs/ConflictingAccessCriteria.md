@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.conflicting_access_criteria import ConflictingAccessCriteria
+from sailpoint.beta.models.conflicting_access_criteria import ConflictingAccessCriteria
 
 # TODO update the JSON string below
 json = "{}"

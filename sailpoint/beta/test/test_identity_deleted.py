@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_deleted import IdentityDeleted  # noqa: E501
+from sailpoint.beta.models.identity_deleted import IdentityDeleted  # noqa: E501
+
 
 class TestIdentityDeleted(unittest.TestCase):
     """IdentityDeleted unit test stubs"""
@@ -36,7 +36,7 @@ class TestIdentityDeleted(unittest.TestCase):
         model = IdentityDeleted()  # noqa: E501
         if include_optional:
             return IdentityDeleted(
-                identity = beta.models.identity_deleted_identity.IdentityDeleted_identity(
+                identity = sailpoint.beta.models.identity_deleted_identity.IdentityDeleted_identity(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
@@ -44,7 +44,7 @@ class TestIdentityDeleted(unittest.TestCase):
             )
         else:
             return IdentityDeleted(
-                identity = beta.models.identity_deleted_identity.IdentityDeleted_identity(
+                identity = sailpoint.beta.models.identity_deleted_identity.IdentityDeleted_identity(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
@@ -56,6 +56,7 @@ class TestIdentityDeleted(unittest.TestCase):
         """Test IdentityDeleted"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

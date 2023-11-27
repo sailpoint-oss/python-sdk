@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,21 +22,19 @@ from pydantic import Field, StrictStr, conlist
 
 from typing import List, Optional
 
-from beta.models.config_type import ConfigType
-from beta.models.config_type_enum import ConfigTypeEnum
-from beta.models.configuration_item_request import ConfigurationItemRequest
-from beta.models.configuration_item_response import ConfigurationItemResponse
-from beta.models.configuration_response import ConfigurationResponse
-from beta.models.evaluate_response import EvaluateResponse
-from beta.models.tenant_configuration_request import TenantConfigurationRequest
-from beta.models.tenant_configuration_response import TenantConfigurationResponse
+from sailpoint.beta.models.config_type import ConfigType
+from sailpoint.beta.models.config_type_enum import ConfigTypeEnum
+from sailpoint.beta.models.configuration_item_request import ConfigurationItemRequest
+from sailpoint.beta.models.configuration_item_response import ConfigurationItemResponse
+from sailpoint.beta.models.configuration_response import ConfigurationResponse
+from sailpoint.beta.models.evaluate_response import EvaluateResponse
+from sailpoint.beta.models.tenant_configuration_request import TenantConfigurationRequest
+from sailpoint.beta.models.tenant_configuration_response import TenantConfigurationResponse
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class WorkReassignmentApi:
@@ -53,7 +50,9 @@ class WorkReassignmentApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_reassignment_configuration(self, configuration_item_request : ConfigurationItemRequest, **kwargs) -> ConfigurationItemResponse:  # noqa: E501
+    def create_reassignment_configuration(
+            self, configuration_item_request: ConfigurationItemRequest,
+            **kwargs) -> ConfigurationItemResponse:  # noqa: E501
         """Create a Reassignment Configuration  # noqa: E501
 
         Creates a new Reassignment Configuration for the specified identity.  # noqa: E501
@@ -80,10 +79,13 @@ class WorkReassignmentApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_reassignment_configuration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_reassignment_configuration_with_http_info(configuration_item_request, **kwargs)  # noqa: E501
+        return self.create_reassignment_configuration_with_http_info(
+            configuration_item_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_reassignment_configuration_with_http_info(self, configuration_item_request : ConfigurationItemRequest, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_reassignment_configuration_with_http_info(
+            self, configuration_item_request: ConfigurationItemRequest,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create a Reassignment Configuration  # noqa: E501
 
         Creates a new Reassignment Configuration for the specified identity.  # noqa: E501
@@ -122,28 +124,18 @@ class WorkReassignmentApi:
 
         _params = locals()
 
-        _all_params = [
-            'configuration_item_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['configuration_item_request']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_reassignment_configuration" % _key
-                )
+                    " to method create_reassignment_configuration" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -169,11 +161,11 @@ class WorkReassignmentApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -188,7 +180,8 @@ class WorkReassignmentApi:
         }
 
         return self.api_client.call_api(
-            '/reassignment-configurations', 'POST',
+            '/reassignment-configurations',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -198,14 +191,17 @@ class WorkReassignmentApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_reassignment_configuration(self, identity_id : Annotated[StrictStr, Field(..., description="unique identity id")], **kwargs) -> None:  # noqa: E501
+    def delete_reassignment_configuration(self, identity_id: Annotated[
+        StrictStr, Field(..., description="unique identity id")],
+                                          **kwargs) -> None:  # noqa: E501
         """Delete Reassignment Configuration  # noqa: E501
 
         Deletes all Reassignment Configuration for the specified identity  # noqa: E501
@@ -232,10 +228,15 @@ class WorkReassignmentApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_reassignment_configuration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_reassignment_configuration_with_http_info(identity_id, **kwargs)  # noqa: E501
+        return self.delete_reassignment_configuration_with_http_info(
+            identity_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_reassignment_configuration_with_http_info(self, identity_id : Annotated[StrictStr, Field(..., description="unique identity id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_reassignment_configuration_with_http_info(
+            self, identity_id: Annotated[
+                StrictStr,
+                Field(..., description="unique identity id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Reassignment Configuration  # noqa: E501
 
         Deletes all Reassignment Configuration for the specified identity  # noqa: E501
@@ -274,28 +275,18 @@ class WorkReassignmentApi:
 
         _params = locals()
 
-        _all_params = [
-            'identity_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['identity_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete_reassignment_configuration" % _key
-                )
+                    " to method delete_reassignment_configuration" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -305,7 +296,6 @@ class WorkReassignmentApi:
         _path_params = {}
         if _params['identity_id']:
             _path_params['identityId'] = _params['identity_id']
-
 
         # process the query parameters
         _query_params = []
@@ -326,7 +316,8 @@ class WorkReassignmentApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/reassignment-configurations/{identityId}', 'DELETE',
+            '/reassignment-configurations/{identityId}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -336,14 +327,30 @@ class WorkReassignmentApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_evaluate_reassignment_configuration(self, identity_id : Annotated[StrictStr, Field(..., description="unique identity id")], config_type : Annotated[ConfigTypeEnum, Field(..., description="Reassignment work type")], exclusion_filters : Annotated[Optional[conlist(StrictStr)], Field(description="Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments")] = None, **kwargs) -> List[EvaluateResponse]:  # noqa: E501
+    def get_evaluate_reassignment_configuration(
+            self,
+            identity_id: Annotated[
+                StrictStr,
+                Field(..., description="unique identity id")],
+            config_type: Annotated[
+                ConfigTypeEnum,
+                Field(..., description="Reassignment work type")],
+            exclusion_filters:
+        Annotated[
+            Optional[conlist(StrictStr)],
+            Field(
+                description=
+                "Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments"
+            )] = None,
+            **kwargs) -> List[EvaluateResponse]:  # noqa: E501
         """Evaluate Reassignment Configuration  # noqa: E501
 
         Evaluates the Reassignment Configuration for an `Identity` to determine if work items for the specified type should be reassigned. If a valid Reassignment Configuration is found for the identity & work type, then a lookup is initiated which recursively fetches the Reassignment Configuration for the next `TargetIdentity` until no more results are found or a max depth of 5. That lookup trail is provided in the response and the final reassigned identity in the lookup list is returned as the `reassignToId` property. If no Reassignment Configuration is found for the specified identity & config type then the requested Identity ID will be used as the `reassignToId` value and the lookupTrail node will be empty.  # noqa: E501
@@ -374,10 +381,27 @@ class WorkReassignmentApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_evaluate_reassignment_configuration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_evaluate_reassignment_configuration_with_http_info(identity_id, config_type, exclusion_filters, **kwargs)  # noqa: E501
+        return self.get_evaluate_reassignment_configuration_with_http_info(
+            identity_id, config_type, exclusion_filters,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_evaluate_reassignment_configuration_with_http_info(self, identity_id : Annotated[StrictStr, Field(..., description="unique identity id")], config_type : Annotated[ConfigTypeEnum, Field(..., description="Reassignment work type")], exclusion_filters : Annotated[Optional[conlist(StrictStr)], Field(description="Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_evaluate_reassignment_configuration_with_http_info(
+            self,
+            identity_id: Annotated[
+                StrictStr,
+                Field(..., description="unique identity id")],
+            config_type: Annotated[
+                ConfigTypeEnum,
+                Field(..., description="Reassignment work type")],
+            exclusion_filters:
+        Annotated[
+            Optional[conlist(StrictStr)],
+            Field(
+                description=
+                "Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Evaluate Reassignment Configuration  # noqa: E501
 
         Evaluates the Reassignment Configuration for an `Identity` to determine if work items for the specified type should be reassigned. If a valid Reassignment Configuration is found for the identity & work type, then a lookup is initiated which recursively fetches the Reassignment Configuration for the next `TargetIdentity` until no more results are found or a max depth of 5. That lookup trail is provided in the response and the final reassigned identity in the lookup list is returned as the `reassignToId` property. If no Reassignment Configuration is found for the specified identity & config type then the requested Identity ID will be used as the `reassignToId` value and the lookupTrail node will be empty.  # noqa: E501
@@ -420,30 +444,19 @@ class WorkReassignmentApi:
 
         _params = locals()
 
-        _all_params = [
-            'identity_id',
-            'config_type',
-            'exclusion_filters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['identity_id', 'config_type', 'exclusion_filters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_evaluate_reassignment_configuration" % _key
-                )
+                    " to method get_evaluate_reassignment_configuration" %
+                    _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -457,11 +470,11 @@ class WorkReassignmentApi:
         if _params['config_type']:
             _path_params['configType'] = _params['config_type']
 
-
         # process the query parameters
         _query_params = []
         if _params.get('exclusion_filters') is not None:  # noqa: E501
-            _query_params.append(('exclusionFilters', _params['exclusion_filters']))
+            _query_params.append(
+                ('exclusionFilters', _params['exclusion_filters']))
             _collection_formats['exclusionFilters'] = 'csv'
 
         # process the header parameters
@@ -488,7 +501,8 @@ class WorkReassignmentApi:
         }
 
         return self.api_client.call_api(
-            '/reassignment-configurations/{identityId}/evaluate/{configType}', 'GET',
+            '/reassignment-configurations/{identityId}/evaluate/{configType}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -498,14 +512,16 @@ class WorkReassignmentApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_reassignment_config_types(self, **kwargs) -> List[ConfigType]:  # noqa: E501
+    def get_reassignment_config_types(
+            self, **kwargs) -> List[ConfigType]:  # noqa: E501
         """List Reassignment Config Types  # noqa: E501
 
         Gets a collection of types which are available in the Reassignment Configuration UI.  # noqa: E501
@@ -530,10 +546,12 @@ class WorkReassignmentApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_reassignment_config_types_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_reassignment_config_types_with_http_info(**kwargs)  # noqa: E501
+        return self.get_reassignment_config_types_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_reassignment_config_types_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_reassignment_config_types_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """List Reassignment Config Types  # noqa: E501
 
         Gets a collection of types which are available in the Reassignment Configuration UI.  # noqa: E501
@@ -570,27 +588,18 @@ class WorkReassignmentApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_reassignment_config_types" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_reassignment_config_types" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -625,7 +634,8 @@ class WorkReassignmentApi:
         }
 
         return self.api_client.call_api(
-            '/reassignment-configurations/types', 'GET',
+            '/reassignment-configurations/types',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -635,14 +645,19 @@ class WorkReassignmentApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_reassignment_configuration(self, identity_id : Annotated[StrictStr, Field(..., description="unique identity id")], **kwargs) -> ConfigurationResponse:  # noqa: E501
+    def get_reassignment_configuration(
+            self, identity_id: Annotated[
+                StrictStr,
+                Field(..., description="unique identity id")],
+            **kwargs) -> ConfigurationResponse:  # noqa: E501
         """Get Reassignment Configuration  # noqa: E501
 
         Gets the Reassignment Configuration for an identity.  # noqa: E501
@@ -669,10 +684,15 @@ class WorkReassignmentApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_reassignment_configuration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_reassignment_configuration_with_http_info(identity_id, **kwargs)  # noqa: E501
+        return self.get_reassignment_configuration_with_http_info(
+            identity_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_reassignment_configuration_with_http_info(self, identity_id : Annotated[StrictStr, Field(..., description="unique identity id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_reassignment_configuration_with_http_info(
+            self, identity_id: Annotated[
+                StrictStr,
+                Field(..., description="unique identity id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get Reassignment Configuration  # noqa: E501
 
         Gets the Reassignment Configuration for an identity.  # noqa: E501
@@ -711,28 +731,18 @@ class WorkReassignmentApi:
 
         _params = locals()
 
-        _all_params = [
-            'identity_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['identity_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_reassignment_configuration" % _key
-                )
+                    " to method get_reassignment_configuration" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -742,7 +752,6 @@ class WorkReassignmentApi:
         _path_params = {}
         if _params['identity_id']:
             _path_params['identityId'] = _params['identity_id']
-
 
         # process the query parameters
         _query_params = []
@@ -771,7 +780,8 @@ class WorkReassignmentApi:
         }
 
         return self.api_client.call_api(
-            '/reassignment-configurations/{identityId}', 'GET',
+            '/reassignment-configurations/{identityId}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -781,14 +791,16 @@ class WorkReassignmentApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_tenant_config_configuration(self, **kwargs) -> TenantConfigurationResponse:  # noqa: E501
+    def get_tenant_config_configuration(
+            self, **kwargs) -> TenantConfigurationResponse:  # noqa: E501
         """Get Tenant-wide Reassignment Configuration settings  # noqa: E501
 
         Gets the global Reassignment Configuration settings for the requestor's tenant.  # noqa: E501
@@ -813,10 +825,12 @@ class WorkReassignmentApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_tenant_config_configuration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_tenant_config_configuration_with_http_info(**kwargs)  # noqa: E501
+        return self.get_tenant_config_configuration_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_tenant_config_configuration_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_tenant_config_configuration_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """Get Tenant-wide Reassignment Configuration settings  # noqa: E501
 
         Gets the global Reassignment Configuration settings for the requestor's tenant.  # noqa: E501
@@ -853,27 +867,18 @@ class WorkReassignmentApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_tenant_config_configuration" % _key
-                )
+                    " to method get_tenant_config_configuration" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -909,7 +914,8 @@ class WorkReassignmentApi:
         }
 
         return self.api_client.call_api(
-            '/reassignment-configurations/tenant-config', 'GET',
+            '/reassignment-configurations/tenant-config',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -919,14 +925,16 @@ class WorkReassignmentApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_reassignment_configurations(self, **kwargs) -> List[ConfigurationResponse]:  # noqa: E501
+    def list_reassignment_configurations(
+            self, **kwargs) -> List[ConfigurationResponse]:  # noqa: E501
         """List Reassignment Configurations  # noqa: E501
 
         Gets all Reassignment configuration for the current org.  # noqa: E501
@@ -951,10 +959,12 @@ class WorkReassignmentApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_reassignment_configurations_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_reassignment_configurations_with_http_info(**kwargs)  # noqa: E501
+        return self.list_reassignment_configurations_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_reassignment_configurations_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_reassignment_configurations_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """List Reassignment Configurations  # noqa: E501
 
         Gets all Reassignment configuration for the current org.  # noqa: E501
@@ -991,27 +1001,18 @@ class WorkReassignmentApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list_reassignment_configurations" % _key
-                )
+                    " to method list_reassignment_configurations" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1047,7 +1048,8 @@ class WorkReassignmentApi:
         }
 
         return self.api_client.call_api(
-            '/reassignment-configurations', 'GET',
+            '/reassignment-configurations',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1057,14 +1059,20 @@ class WorkReassignmentApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_reassignment_config(self, identity_id : Annotated[StrictStr, Field(..., description="unique identity id")], configuration_item_request : ConfigurationItemRequest, **kwargs) -> ConfigurationItemResponse:  # noqa: E501
+    def put_reassignment_config(
+            self, identity_id: Annotated[
+                StrictStr,
+                Field(..., description="unique identity id")],
+            configuration_item_request: ConfigurationItemRequest,
+            **kwargs) -> ConfigurationItemResponse:  # noqa: E501
         """Update Reassignment Configuration  # noqa: E501
 
         Replaces existing Reassignment configuration for an identity with the newly provided configuration.  # noqa: E501
@@ -1093,10 +1101,16 @@ class WorkReassignmentApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_reassignment_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_reassignment_config_with_http_info(identity_id, configuration_item_request, **kwargs)  # noqa: E501
+        return self.put_reassignment_config_with_http_info(
+            identity_id, configuration_item_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_reassignment_config_with_http_info(self, identity_id : Annotated[StrictStr, Field(..., description="unique identity id")], configuration_item_request : ConfigurationItemRequest, **kwargs) -> ApiResponse:  # noqa: E501
+    def put_reassignment_config_with_http_info(
+            self, identity_id: Annotated[
+                StrictStr,
+                Field(..., description="unique identity id")],
+            configuration_item_request: ConfigurationItemRequest,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Update Reassignment Configuration  # noqa: E501
 
         Replaces existing Reassignment configuration for an identity with the newly provided configuration.  # noqa: E501
@@ -1137,29 +1151,17 @@ class WorkReassignmentApi:
 
         _params = locals()
 
-        _all_params = [
-            'identity_id',
-            'configuration_item_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['identity_id', 'configuration_item_request']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_reassignment_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method put_reassignment_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1169,7 +1171,6 @@ class WorkReassignmentApi:
         _path_params = {}
         if _params['identity_id']:
             _path_params['identityId'] = _params['identity_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1188,11 +1189,11 @@ class WorkReassignmentApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1207,7 +1208,8 @@ class WorkReassignmentApi:
         }
 
         return self.api_client.call_api(
-            '/reassignment-configurations/{identityId}', 'PUT',
+            '/reassignment-configurations/{identityId}',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -1217,14 +1219,17 @@ class WorkReassignmentApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_tenant_configuration(self, tenant_configuration_request : TenantConfigurationRequest, **kwargs) -> TenantConfigurationResponse:  # noqa: E501
+    def put_tenant_configuration(
+            self, tenant_configuration_request: TenantConfigurationRequest,
+            **kwargs) -> TenantConfigurationResponse:  # noqa: E501
         """Update Tenant-wide Reassignment Configuration settings  # noqa: E501
 
         Replaces existing Tenant-wide Reassignment Configuration settings with the newly provided settings.  # noqa: E501
@@ -1251,10 +1256,13 @@ class WorkReassignmentApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_tenant_configuration_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_tenant_configuration_with_http_info(tenant_configuration_request, **kwargs)  # noqa: E501
+        return self.put_tenant_configuration_with_http_info(
+            tenant_configuration_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_tenant_configuration_with_http_info(self, tenant_configuration_request : TenantConfigurationRequest, **kwargs) -> ApiResponse:  # noqa: E501
+    def put_tenant_configuration_with_http_info(
+            self, tenant_configuration_request: TenantConfigurationRequest,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Update Tenant-wide Reassignment Configuration settings  # noqa: E501
 
         Replaces existing Tenant-wide Reassignment Configuration settings with the newly provided settings.  # noqa: E501
@@ -1293,28 +1301,18 @@ class WorkReassignmentApi:
 
         _params = locals()
 
-        _all_params = [
-            'tenant_configuration_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['tenant_configuration_request']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_tenant_configuration" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method put_tenant_configuration" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1340,11 +1338,11 @@ class WorkReassignmentApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1359,7 +1357,8 @@ class WorkReassignmentApi:
         }
 
         return self.api_client.call_api(
-            '/reassignment-configurations/tenant-config', 'PUT',
+            '/reassignment-configurations/tenant-config',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -1369,7 +1368,8 @@ class WorkReassignmentApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

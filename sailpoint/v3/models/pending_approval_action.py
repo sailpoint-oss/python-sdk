@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class PendingApprovalAction(str, Enum):
     """
     Enum represents action that is being processed on an approval.
     """
-
     """
     allowed enum values
     """
@@ -37,5 +32,3 @@ class PendingApprovalAction(str, Enum):
     def from_json(cls, json_str: str) -> PendingApprovalAction:
         """Create an instance of PendingApprovalAction from a JSON string"""
         return PendingApprovalAction(json.loads(json_str))
-
-

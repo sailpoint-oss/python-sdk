@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
+from sailpoint.beta.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 
 # TODO update the JSON string below
 json = "{}"

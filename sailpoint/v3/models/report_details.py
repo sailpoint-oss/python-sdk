@@ -11,22 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-from v3.models.report_details_arguments import ReportDetailsArguments
+from sailpoint.v3.models.report_details_arguments import ReportDetailsArguments
+
 
 class ReportDetails(BaseModel):
     """
     Details about report to be processed.  # noqa: E501
     """
-    report_type: Optional[StrictStr] = Field(None, alias="reportType", description="Use this property to define what report should be processed in the RDE service.")
+    report_type: Optional[StrictStr] = Field(
+        None,
+        alias="reportType",
+        description=
+        "Use this property to define what report should be processed in the RDE service."
+    )
     arguments: Optional[ReportDetailsArguments] = None
     __properties = ["reportType", "arguments"]
 
@@ -36,8 +40,13 @@ class ReportDetails(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS'):
-            raise ValueError("must be one of enum values ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS')")
+        if value not in ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES',
+                         'IDENTITY_PROFILE_IDENTITY_ERROR',
+                         'ORPHAN_IDENTITIES', 'SEARCH_EXPORT',
+                         'UNCORRELATED_ACCOUNTS'):
+            raise ValueError(
+                "must be one of enum values ('ACCOUNTS', 'IDENTITIES_DETAILS', 'IDENTITIES', 'IDENTITY_PROFILE_IDENTITY_ERROR', 'ORPHAN_IDENTITIES', 'SEARCH_EXPORT', 'UNCORRELATED_ACCOUNTS')"
+            )
         return value
 
     class Config:
@@ -60,10 +69,7 @@ class ReportDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of arguments
         if self.arguments:
             _dict['arguments'] = self.arguments.to_dict()
@@ -79,9 +85,10 @@ class ReportDetails(BaseModel):
             return ReportDetails.parse_obj(obj)
 
         _obj = ReportDetails.parse_obj({
-            "report_type": obj.get("reportType"),
-            "arguments": ReportDetailsArguments.from_dict(obj.get("arguments")) if obj.get("arguments") is not None else None
+            "report_type":
+            obj.get("reportType"),
+            "arguments":
+            ReportDetailsArguments.from_dict(obj.get("arguments"))
+            if obj.get("arguments") is not None else None
         })
         return _obj
-
-

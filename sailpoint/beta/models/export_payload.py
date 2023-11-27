@@ -21,7 +21,7 @@ import json
 from typing import Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
 
-from beta.models.object_export_import_options import ObjectExportImportOptions
+from sailpoint.beta.models.object_export_import_options import ObjectExportImportOptions
 
 class ExportPayload(BaseModel):
     """

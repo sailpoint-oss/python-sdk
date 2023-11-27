@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
+from sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
 
 # TODO update the JSON string below
 json = "{}"

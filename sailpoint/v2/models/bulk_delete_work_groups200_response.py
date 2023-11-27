@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
+
 
 class BulkDeleteWorkGroups200Response(BaseModel):
     """
@@ -50,10 +49,7 @@ class BulkDeleteWorkGroups200Response(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,10 +62,11 @@ class BulkDeleteWorkGroups200Response(BaseModel):
             return BulkDeleteWorkGroups200Response.parse_obj(obj)
 
         _obj = BulkDeleteWorkGroups200Response.parse_obj({
-            "deleted": obj.get("deleted"),
-            "in_use": obj.get("inUse"),
-            "not_found": obj.get("notFound")
+            "deleted":
+            obj.get("deleted"),
+            "in_use":
+            obj.get("inUse"),
+            "not_found":
+            obj.get("notFound")
         })
         return _obj
-
-

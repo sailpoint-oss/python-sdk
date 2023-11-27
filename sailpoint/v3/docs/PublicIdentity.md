@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.public_identity import PublicIdentity
+from sailpoint.v3.models.public_identity import PublicIdentity
 
 # TODO update the JSON string below
 json = "{}"

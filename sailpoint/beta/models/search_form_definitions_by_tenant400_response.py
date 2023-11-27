@@ -11,16 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
-from beta.models.error_message import ErrorMessage
+from sailpoint.beta.models.error_message import ErrorMessage
+
 
 class SearchFormDefinitionsByTenant400Response(BaseModel):
     """
@@ -46,16 +45,14 @@ class SearchFormDefinitionsByTenant400Response(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SearchFormDefinitionsByTenant400Response:
+    def from_json(cls,
+                  json_str: str) -> SearchFormDefinitionsByTenant400Response:
         """Create an instance of SearchFormDefinitionsByTenant400Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
@@ -75,11 +72,14 @@ class SearchFormDefinitionsByTenant400Response(BaseModel):
             return SearchFormDefinitionsByTenant400Response.parse_obj(obj)
 
         _obj = SearchFormDefinitionsByTenant400Response.parse_obj({
-            "detail_code": obj.get("detailCode"),
-            "messages": [ErrorMessage.from_dict(_item) for _item in obj.get("messages")] if obj.get("messages") is not None else None,
-            "status_code": obj.get("statusCode"),
-            "tracking_id": obj.get("trackingId")
+            "detail_code":
+            obj.get("detailCode"),
+            "messages":
+            [ErrorMessage.from_dict(_item) for _item in obj.get("messages")]
+            if obj.get("messages") is not None else None,
+            "status_code":
+            obj.get("statusCode"),
+            "tracking_id":
+            obj.get("trackingId")
         })
         return _obj
-
-

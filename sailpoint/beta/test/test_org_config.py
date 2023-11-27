@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.org_config import OrgConfig  # noqa: E501
+from sailpoint.beta.models.org_config import OrgConfig  # noqa: E501
+
 
 class TestOrgConfig(unittest.TestCase):
     """OrgConfig unit test stubs"""
@@ -46,7 +46,7 @@ class TestOrgConfig(unittest.TestCase):
                 arm_sso_url = 'https://your-arm-sso-url',
                 iai_enable_certification_recommendations = True,
                 sod_report_configs = [
-                    beta.models.report_config_dto.ReportConfigDTO(
+                    sailpoint.beta.models.report_config_dto.ReportConfigDTO(
                         column_name = 'SOD Business Name', 
                         required = True, 
                         included = False, 
@@ -62,6 +62,7 @@ class TestOrgConfig(unittest.TestCase):
         """Test OrgConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

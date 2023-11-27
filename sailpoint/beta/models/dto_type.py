@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class DtoType(str, Enum):
     """
     An enumeration of the types of DTOs supported within the IdentityNow infrastructure.
     """
-
     """
     allowed enum values
     """
@@ -62,5 +57,3 @@ class DtoType(str, Enum):
     def from_json(cls, json_str: str) -> DtoType:
         """Create an instance of DtoType from a JSON string"""
         return DtoType(json.loads(json_str))
-
-

@@ -11,28 +11,52 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, conlist
-from v3.models.provisioning_config_plan_initializer_script import ProvisioningConfigPlanInitializerScript
-from v3.models.service_desk_source import ServiceDeskSource
+from sailpoint.v3.models.provisioning_config_plan_initializer_script import ProvisioningConfigPlanInitializerScript
+from sailpoint.v3.models.service_desk_source import ServiceDeskSource
+
 
 class ProvisioningConfig(BaseModel):
     """
     Specification of a Service Desk integration provisioning configuration.  # noqa: E501
     """
-    universal_manager: Optional[StrictBool] = Field(None, alias="universalManager", description="Specifies whether this configuration is used to manage provisioning requests for all sources from the org.  If true, no managedResourceRefs are allowed.")
-    managed_resource_refs: Optional[conlist(ServiceDeskSource)] = Field(None, alias="managedResourceRefs", description="References to sources for the Service Desk integration template.  May only be specified if universalManager is false.")
-    plan_initializer_script: Optional[ProvisioningConfigPlanInitializerScript] = Field(None, alias="planInitializerScript")
-    no_provisioning_requests: Optional[StrictBool] = Field(None, alias="noProvisioningRequests", description="Name of an attribute that when true disables the saving of ProvisioningRequest objects whenever plans are sent through this integration.")
-    provisioning_request_expiration: Optional[StrictInt] = Field(None, alias="provisioningRequestExpiration", description="When saving pending requests is enabled, this defines the number of hours the request is allowed to live before it is considered expired and no longer affects plan compilation.")
-    __properties = ["universalManager", "managedResourceRefs", "planInitializerScript", "noProvisioningRequests", "provisioningRequestExpiration"]
+    universal_manager: Optional[StrictBool] = Field(
+        None,
+        alias="universalManager",
+        description=
+        "Specifies whether this configuration is used to manage provisioning requests for all sources from the org.  If true, no managedResourceRefs are allowed."
+    )
+    managed_resource_refs: Optional[conlist(ServiceDeskSource)] = Field(
+        None,
+        alias="managedResourceRefs",
+        description=
+        "References to sources for the Service Desk integration template.  May only be specified if universalManager is false."
+    )
+    plan_initializer_script: Optional[
+        ProvisioningConfigPlanInitializerScript] = Field(
+            None, alias="planInitializerScript")
+    no_provisioning_requests: Optional[StrictBool] = Field(
+        None,
+        alias="noProvisioningRequests",
+        description=
+        "Name of an attribute that when true disables the saving of ProvisioningRequest objects whenever plans are sent through this integration."
+    )
+    provisioning_request_expiration: Optional[StrictInt] = Field(
+        None,
+        alias="provisioningRequestExpiration",
+        description=
+        "When saving pending requests is enabled, this defines the number of hours the request is allowed to live before it is considered expired and no longer affects plan compilation."
+    )
+    __properties = [
+        "universalManager", "managedResourceRefs", "planInitializerScript",
+        "noProvisioningRequests", "provisioningRequestExpiration"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -56,7 +80,7 @@ class ProvisioningConfig(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "universal_manager",
+                              "universal_manager",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in managed_resource_refs (list)
@@ -68,7 +92,9 @@ class ProvisioningConfig(BaseModel):
             _dict['managedResourceRefs'] = _items
         # override the default output from pydantic by calling `to_dict()` of plan_initializer_script
         if self.plan_initializer_script:
-            _dict['planInitializerScript'] = self.plan_initializer_script.to_dict()
+            _dict[
+                'planInitializerScript'] = self.plan_initializer_script.to_dict(
+                )
         return _dict
 
     @classmethod
@@ -81,12 +107,19 @@ class ProvisioningConfig(BaseModel):
             return ProvisioningConfig.parse_obj(obj)
 
         _obj = ProvisioningConfig.parse_obj({
-            "universal_manager": obj.get("universalManager"),
-            "managed_resource_refs": [ServiceDeskSource.from_dict(_item) for _item in obj.get("managedResourceRefs")] if obj.get("managedResourceRefs") is not None else None,
-            "plan_initializer_script": ProvisioningConfigPlanInitializerScript.from_dict(obj.get("planInitializerScript")) if obj.get("planInitializerScript") is not None else None,
-            "no_provisioning_requests": obj.get("noProvisioningRequests"),
-            "provisioning_request_expiration": obj.get("provisioningRequestExpiration")
+            "universal_manager":
+            obj.get("universalManager"),
+            "managed_resource_refs": [
+                ServiceDeskSource.from_dict(_item)
+                for _item in obj.get("managedResourceRefs")
+            ] if obj.get("managedResourceRefs") is not None else None,
+            "plan_initializer_script":
+            ProvisioningConfigPlanInitializerScript.from_dict(
+                obj.get("planInitializerScript"))
+            if obj.get("planInitializerScript") is not None else None,
+            "no_provisioning_requests":
+            obj.get("noProvisioningRequests"),
+            "provisioning_request_expiration":
+            obj.get("provisioningRequestExpiration")
         })
         return _obj
-
-

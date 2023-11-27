@@ -1,4 +1,4 @@
-# beta.EntitlementsApi
+# sailpoint.beta.EntitlementsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -28,14 +28,14 @@ This API returns an entitlement by its ID.
 ```python
 import time
 import os
-import beta
-from beta.models.entitlement import Entitlement
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.entitlement import Entitlement
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -49,9 +49,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.EntitlementsApi(api_client)
+    api_instance = sailpoint.beta.EntitlementsApi(api_client)
     id = '2c91808874ff91550175097daaec161c' # str | The entitlement ID
 
     try:
@@ -111,14 +111,14 @@ This API returns the entitlement request config for a specified entitlement.
 ```python
 import time
 import os
-import beta
-from beta.models.entitlement_request_config import EntitlementRequestConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.entitlement_request_config import EntitlementRequestConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -132,9 +132,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.EntitlementsApi(api_client)
+    api_instance = sailpoint.beta.EntitlementsApi(api_client)
     id = '2c91808874ff91550175097daaec161c' # str | Entitlement Id
 
     try:
@@ -194,14 +194,14 @@ This API returns a list of all child entitlements of a given entitlement.
 ```python
 import time
 import os
-import beta
-from beta.models.entitlement import Entitlement
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.entitlement import Entitlement
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -215,9 +215,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.EntitlementsApi(api_client)
+    api_instance = sailpoint.beta.EntitlementsApi(api_client)
     id = '2c91808874ff91550175097daaec161c' # str | Entitlement Id
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -287,14 +287,14 @@ This API returns a list of all parent entitlements of a given entitlement.
 ```python
 import time
 import os
-import beta
-from beta.models.entitlement import Entitlement
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.entitlement import Entitlement
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -308,9 +308,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.EntitlementsApi(api_client)
+    api_instance = sailpoint.beta.EntitlementsApi(api_client)
     id = '2c91808c74ff913f0175097daa9d59cd' # str | Entitlement Id
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -380,14 +380,14 @@ This API returns a list of entitlements.  This API can be used in one of the two
 ```python
 import time
 import os
-import beta
-from beta.models.entitlement import Entitlement
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.entitlement import Entitlement
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -401,9 +401,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.EntitlementsApi(api_client)
+    api_instance = sailpoint.beta.EntitlementsApi(api_client)
     account_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s). (optional)
     segmented_for_identity = 'me' # str | If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. By convention, the value **me** can stand in for the current user's Identity ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user's Identity. (optional)
     for_segment_ids = '041727d4-7d95-4779-b891-93cf41e98249,a378c9fa-bae5-494c-804e-a1e30f69f649' # str | If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s). (optional)
@@ -478,15 +478,15 @@ This API updates an existing entitlement using [JSON Patch](https://tools.ietf.o
 ```python
 import time
 import os
-import beta
-from beta.models.entitlement import Entitlement
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.entitlement import Entitlement
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -500,9 +500,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.EntitlementsApi(api_client)
+    api_instance = sailpoint.beta.EntitlementsApi(api_client)
     id = '2c91808a7813090a017814121e121518' # str | ID of the entitlement to patch
     json_patch_operation = [{op=replace, path=/requestable, value=true}, {op=replace, path=/privileged, value=true}] # List[JsonPatchOperation] |  (optional)
 
@@ -564,14 +564,14 @@ This API replaces the entitlement request config for a specified entitlement.
 ```python
 import time
 import os
-import beta
-from beta.models.entitlement_request_config import EntitlementRequestConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.entitlement_request_config import EntitlementRequestConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -585,11 +585,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.EntitlementsApi(api_client)
+    api_instance = sailpoint.beta.EntitlementsApi(api_client)
     id = '2c91808a7813090a017814121e121518' # str | Entitlement ID
-    entitlement_request_config = beta.EntitlementRequestConfig() # EntitlementRequestConfig | 
+    entitlement_request_config = sailpoint.beta.EntitlementRequestConfig() # EntitlementRequestConfig | 
 
     try:
         # Replace Entitlement Request Config
@@ -649,14 +649,14 @@ This API applies an update to every entitlement of the list.  The number of enti
 ```python
 import time
 import os
-import beta
-from beta.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -670,10 +670,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.EntitlementsApi(api_client)
-    entitlement_bulk_update_request = beta.EntitlementBulkUpdateRequest() # EntitlementBulkUpdateRequest | 
+    api_instance = sailpoint.beta.EntitlementsApi(api_client)
+    entitlement_bulk_update_request = sailpoint.beta.EntitlementBulkUpdateRequest() # EntitlementBulkUpdateRequest | 
 
     try:
         # Bulk update an entitlement list

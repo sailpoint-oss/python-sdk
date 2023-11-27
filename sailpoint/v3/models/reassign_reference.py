@@ -11,29 +11,31 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class ReassignReference(BaseModel):
     """
     ReassignReference
     """
-    id: StrictStr = Field(..., description="The ID of item or identity being reassigned.")
-    type: StrictStr = Field(..., description="The type of item or identity being reassigned.")
+    id: StrictStr = Field(
+        ..., description="The ID of item or identity being reassigned.")
+    type: StrictStr = Field(
+        ..., description="The type of item or identity being reassigned.")
     __properties = ["id", "type"]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('TARGET_SUMMARY', 'ITEM', 'IDENTITY_SUMMARY'):
-            raise ValueError("must be one of enum values ('TARGET_SUMMARY', 'ITEM', 'IDENTITY_SUMMARY')")
+            raise ValueError(
+                "must be one of enum values ('TARGET_SUMMARY', 'ITEM', 'IDENTITY_SUMMARY')"
+            )
         return value
 
     class Config:
@@ -56,10 +58,7 @@ class ReassignReference(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,5 +75,3 @@ class ReassignReference(BaseModel):
             "type": obj.get("type")
         })
         return _obj
-
-

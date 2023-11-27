@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from cc.models.refresh_identities_request import RefreshIdentitiesRequest  # noqa: E501
+from sailpoint.cc.models.refresh_identities_request import RefreshIdentitiesRequest  # noqa: E501
+
 
 class TestRefreshIdentitiesRequest(unittest.TestCase):
     """RefreshIdentitiesRequest unit test stubs"""
@@ -37,7 +37,7 @@ class TestRefreshIdentitiesRequest(unittest.TestCase):
         if include_optional:
             return RefreshIdentitiesRequest(
                 filter = '',
-                refresh_args = cc.models.refresh_identities_request_refresh_args.refreshIdentities_request_refreshArgs(
+                refresh_args = sailpoint.cc.models.refresh_identities_request_refresh_args.refreshIdentities_request_refreshArgs(
                     correlate_entitlements = True, 
                     promote_attributes = True, 
                     refresh_manager_status = False, 
@@ -54,6 +54,7 @@ class TestRefreshIdentitiesRequest(unittest.TestCase):
         """Test RefreshIdentitiesRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

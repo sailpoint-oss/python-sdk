@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from cc.models.list_connectors200_response_items_inner import ListConnectors200ResponseItemsInner  # noqa: E501
+from sailpoint.cc.models.list_connectors200_response_items_inner import ListConnectors200ResponseItemsInner  # noqa: E501
+
 
 class TestListConnectors200ResponseItemsInner(unittest.TestCase):
     """ListConnectors200ResponseItemsInner unit test stubs"""
@@ -26,7 +26,8 @@ class TestListConnectors200ResponseItemsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ListConnectors200ResponseItemsInner:
+    def make_instance(self,
+                      include_optional) -> ListConnectors200ResponseItemsInner:
         """Test ListConnectors200ResponseItemsInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -64,6 +65,7 @@ class TestListConnectors200ResponseItemsInner(unittest.TestCase):
         """Test ListConnectors200ResponseItemsInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

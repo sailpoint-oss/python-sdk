@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.source_password_policies_inner import SourcePasswordPoliciesInner  # noqa: E501
+from sailpoint.beta.models.source_password_policies_inner import SourcePasswordPoliciesInner  # noqa: E501
+
 
 class TestSourcePasswordPoliciesInner(unittest.TestCase):
     """SourcePasswordPoliciesInner unit test stubs"""
@@ -49,6 +49,7 @@ class TestSourcePasswordPoliciesInner(unittest.TestCase):
         """Test SourcePasswordPoliciesInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

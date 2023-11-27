@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.form_element_dynamic_data_source_config import FormElementDynamicDataSourceConfig
+from sailpoint.beta.models.form_element_dynamic_data_source_config import FormElementDynamicDataSourceConfig
 
 # TODO update the JSON string below
 json = "{}"

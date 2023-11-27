@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.requestability_for_role import RequestabilityForRole
+from sailpoint.beta.models.requestability_for_role import RequestabilityForRole
 
 # TODO update the JSON string below
 json = "{}"

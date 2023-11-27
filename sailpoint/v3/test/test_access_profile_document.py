@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.access_profile_document import AccessProfileDocument  # noqa: E501
+from sailpoint.v3.models.access_profile_document import AccessProfileDocument  # noqa: E501
+
 
 class TestAccessProfileDocument(unittest.TestCase):
     """AccessProfileDocument unit test stubs"""
@@ -47,7 +47,7 @@ class TestAccessProfileDocument(unittest.TestCase):
                 requestable = True,
                 request_comments_required = False,
                 owner = None,
-                source = v3.models.reference.Reference(
+                source = sailpoint.v3.models.reference.Reference(
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'John Doe', ),
                 entitlements = [
@@ -68,6 +68,7 @@ class TestAccessProfileDocument(unittest.TestCase):
         """Test AccessProfileDocument"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

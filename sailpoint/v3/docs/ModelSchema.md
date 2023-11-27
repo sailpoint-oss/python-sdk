@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.model_schema import ModelSchema
+from sailpoint.v3.models.model_schema import ModelSchema
 
 # TODO update the JSON string below
 json = "{}"

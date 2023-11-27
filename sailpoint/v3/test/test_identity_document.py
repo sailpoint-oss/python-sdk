@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.identity_document import IdentityDocument  # noqa: E501
+from sailpoint.v3.models.identity_document import IdentityDocument  # noqa: E501
+
 
 class TestIdentityDocument(unittest.TestCase):
     """IdentityDocument unit test stubs"""
@@ -53,15 +53,15 @@ class TestIdentityDocument(unittest.TestCase):
                 employee_number = '1a2a3d4e',
                 manager = None,
                 is_manager = False,
-                identity_profile = v3.models.reference.Reference(
+                identity_profile = sailpoint.v3.models.reference.Reference(
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'John Doe', ),
-                source = v3.models.reference.Reference(
+                source = sailpoint.v3.models.reference.Reference(
                     id = '2c91808568c529c60168cca6f90c1313', 
                     name = 'John Doe', ),
                 attributes = {country=US, firstname=Carol, cloudStatus=UNREGISTERED},
                 processing_state = '',
-                processing_details = v3.models.processing_details.ProcessingDetails(
+                processing_details = sailpoint.v3.models.processing_details.ProcessingDetails(
                     date = '2018-06-25T20:22:28.104Z', 
                     stage = 'In Process', 
                     retry_count = 0, 
@@ -82,14 +82,14 @@ class TestIdentityDocument(unittest.TestCase):
                 access_profile_count = 1,
                 entitlement_count = 10,
                 role_count = 1,
-                owns = v3.models.owns.Owns(
+                owns = sailpoint.v3.models.owns.Owns(
                     sources = [
-                        v3.models.reference.Reference(
+                        sailpoint.v3.models.reference.Reference(
                             id = '2c91808568c529c60168cca6f90c1313', 
                             name = 'John Doe', )
                         ], 
                     entitlements = [
-                        v3.models.reference.Reference(
+                        sailpoint.v3.models.reference.Reference(
                             id = '2c91808568c529c60168cca6f90c1313', 
                             name = 'John Doe', )
                         ], 
@@ -120,6 +120,7 @@ class TestIdentityDocument(unittest.TestCase):
         """Test IdentityDocument"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

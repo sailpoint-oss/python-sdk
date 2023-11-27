@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.access_item_requester_dto import AccessItemRequesterDto  # noqa: E501
+from sailpoint.beta.models.access_item_requester_dto import AccessItemRequesterDto  # noqa: E501
+
 
 class TestAccessItemRequesterDto(unittest.TestCase):
     """AccessItemRequesterDto unit test stubs"""
@@ -49,6 +49,7 @@ class TestAccessItemRequesterDto(unittest.TestCase):
         """Test AccessItemRequesterDto"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

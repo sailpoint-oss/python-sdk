@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.identity_ownership_association_details import IdentityOwnershipAssociationDetails
+from sailpoint.beta.models.identity_ownership_association_details import IdentityOwnershipAssociationDetails
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,22 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class MfaConfigTestResponse(BaseModel):
     """
     Response model for configuration test of a given MFA method  # noqa: E501
     """
-    state: Optional[StrictStr] = Field(None, description="The configuration test result.")
-    error: Optional[StrictStr] = Field(None, description="The error message to indicate the failure of configuration test.")
+    state: Optional[StrictStr] = Field(
+        None, description="The configuration test result.")
+    error: Optional[StrictStr] = Field(
+        None,
+        description=
+        "The error message to indicate the failure of configuration test.")
     __properties = ["state", "error"]
 
     @validator('state')
@@ -36,7 +39,8 @@ class MfaConfigTestResponse(BaseModel):
             return value
 
         if value not in ('SUCCESS', 'FAILED'):
-            raise ValueError("must be one of enum values ('SUCCESS', 'FAILED')")
+            raise ValueError(
+                "must be one of enum values ('SUCCESS', 'FAILED')")
         return value
 
     class Config:
@@ -61,8 +65,8 @@ class MfaConfigTestResponse(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "state",
-                            "error",
+                              "state",
+                              "error",
                           },
                           exclude_none=True)
         return _dict
@@ -81,5 +85,3 @@ class MfaConfigTestResponse(BaseModel):
             "error": obj.get("error")
         })
         return _obj
-
-

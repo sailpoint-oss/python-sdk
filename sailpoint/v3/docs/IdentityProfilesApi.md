@@ -1,4 +1,4 @@
-# v3.IdentityProfilesApi
+# sailpoint.v3.IdentityProfilesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -28,14 +28,14 @@ This deletes an Identity Profile based on ID.  On success, this endpoint will re
 ```python
 import time
 import os
-import v3
-from v3.models.task_result_simplified import TaskResultSimplified
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.task_result_simplified import TaskResultSimplified
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -49,9 +49,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.v3.IdentityProfilesApi(api_client)
     identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Identity Profile ID.
 
     try:
@@ -111,14 +111,14 @@ This deletes multiple Identity Profiles via a list of supplied IDs.  On success,
 ```python
 import time
 import os
-import v3
-from v3.models.task_result_simplified import TaskResultSimplified
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.task_result_simplified import TaskResultSimplified
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -132,9 +132,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.v3.IdentityProfilesApi(api_client)
     request_body = ['request_body_example'] # List[str] | Identity Profile bulk delete request body.
 
     try:
@@ -193,14 +193,14 @@ This exports existing identity profiles in the format specified by the sp-config
 ```python
 import time
 import os
-import v3
-from v3.models.identity_profile_exported_object import IdentityProfileExportedObject
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_profile_exported_object import IdentityProfileExportedObject
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -214,9 +214,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.v3.IdentityProfilesApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -283,14 +283,14 @@ This returns the default identity attribute config. A token with ORG_ADMIN autho
 ```python
 import time
 import os
-import v3
-from v3.models.identity_attribute_config import IdentityAttributeConfig
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_attribute_config import IdentityAttributeConfig
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -304,9 +304,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.v3.IdentityProfilesApi(api_client)
     identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | The Identity Profile ID.
 
     try:
@@ -366,14 +366,14 @@ This returns a single Identity Profile based on ID. A token with ORG_ADMIN or AP
 ```python
 import time
 import os
-import v3
-from v3.models.identity_profile import IdentityProfile
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_profile import IdentityProfile
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -387,9 +387,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.v3.IdentityProfilesApi(api_client)
     identity_profile_id = '2b838de9-db9b-abcf-e646-d4f274ad4238' # str | The Identity Profile ID.
 
     try:
@@ -449,15 +449,15 @@ This imports previously exported identity profiles.
 ```python
 import time
 import os
-import v3
-from v3.models.identity_profile_exported_object import IdentityProfileExportedObject
-from v3.models.object_import_result import ObjectImportResult
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_profile_exported_object import IdentityProfileExportedObject
+from sailpoint.v3.models.object_import_result import ObjectImportResult
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -471,10 +471,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.IdentityProfilesApi(api_client)
-    identity_profile_exported_object = [v3.IdentityProfileExportedObject()] # List[IdentityProfileExportedObject] | Previously exported Identity Profiles.
+    api_instance = sailpoint.v3.IdentityProfilesApi(api_client)
+    identity_profile_exported_object = [sailpoint.v3.IdentityProfileExportedObject()] # List[IdentityProfileExportedObject] | Previously exported Identity Profiles.
 
     try:
         # Import Identity Profiles
@@ -532,14 +532,14 @@ This returns a list of Identity Profiles based on the specified query parameters
 ```python
 import time
 import os
-import v3
-from v3.models.identity_profile import IdentityProfile
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_profile import IdentityProfile
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -553,9 +553,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.v3.IdentityProfilesApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -622,13 +622,13 @@ Process identities under the profile  A token with ORG_ADMIN authority is requir
 ```python
 import time
 import os
-import v3
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -642,9 +642,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.IdentityProfilesApi(api_client)
+    api_instance = sailpoint.v3.IdentityProfilesApi(api_client)
     identity_profile_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The Identity Profile ID to be processed
 
     try:

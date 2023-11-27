@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.import_sp_config_request import ImportSpConfigRequest  # noqa: E501
+from sailpoint.beta.models.import_sp_config_request import ImportSpConfigRequest  # noqa: E501
+
 
 class TestImportSpConfigRequest(unittest.TestCase):
     """ImportSpConfigRequest unit test stubs"""
@@ -37,7 +37,7 @@ class TestImportSpConfigRequest(unittest.TestCase):
         if include_optional:
             return ImportSpConfigRequest(
                 data = bytes(b'blah'),
-                options = beta.models.import_options.ImportOptions(
+                options = sailpoint.beta.models.import_options.ImportOptions(
                     exclude_types = [
                         'SOURCE'
                         ], 
@@ -60,6 +60,7 @@ class TestImportSpConfigRequest(unittest.TestCase):
         """Test ImportSpConfigRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

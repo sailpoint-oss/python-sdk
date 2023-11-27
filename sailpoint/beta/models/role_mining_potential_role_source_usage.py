@@ -11,24 +11,30 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
+
 
 class RoleMiningPotentialRoleSourceUsage(BaseModel):
     """
     RoleMiningPotentialRoleSourceUsage
     """
     id: Optional[StrictStr] = Field(None, description="The identity ID")
-    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="Display name for the identity")
-    email: Optional[StrictStr] = Field(None, description="Email address for the identity")
-    usage_count: Optional[StrictInt] = Field(None, alias="usageCount", description="The number of days there has been usage of the source by the identity.")
+    display_name: Optional[StrictStr] = Field(
+        None, alias="displayName", description="Display name for the identity")
+    email: Optional[StrictStr] = Field(
+        None, description="Email address for the identity")
+    usage_count: Optional[StrictInt] = Field(
+        None,
+        alias="usageCount",
+        description=
+        "The number of days there has been usage of the source by the identity."
+    )
     __properties = ["id", "displayName", "email", "usageCount"]
 
     class Config:
@@ -51,10 +57,7 @@ class RoleMiningPotentialRoleSourceUsage(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,11 +70,13 @@ class RoleMiningPotentialRoleSourceUsage(BaseModel):
             return RoleMiningPotentialRoleSourceUsage.parse_obj(obj)
 
         _obj = RoleMiningPotentialRoleSourceUsage.parse_obj({
-            "id": obj.get("id"),
-            "display_name": obj.get("displayName"),
-            "email": obj.get("email"),
-            "usage_count": obj.get("usageCount")
+            "id":
+            obj.get("id"),
+            "display_name":
+            obj.get("displayName"),
+            "email":
+            obj.get("email"),
+            "usage_count":
+            obj.get("usageCount")
         })
         return _obj
-
-

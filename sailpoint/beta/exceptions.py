@@ -17,7 +17,11 @@ class OpenApiException(Exception):
 
 
 class ApiTypeError(OpenApiException, TypeError):
-    def __init__(self, msg, path_to_item=None, valid_classes=None,
+
+    def __init__(self,
+                 msg,
+                 path_to_item=None,
+                 valid_classes=None,
                  key_type=None) -> None:
         """ Raises an exception for TypeErrors
 
@@ -46,6 +50,7 @@ class ApiTypeError(OpenApiException, TypeError):
 
 
 class ApiValueError(OpenApiException, ValueError):
+
     def __init__(self, msg, path_to_item=None) -> None:
         """
         Args:
@@ -64,6 +69,7 @@ class ApiValueError(OpenApiException, ValueError):
 
 
 class ApiAttributeError(OpenApiException, AttributeError):
+
     def __init__(self, msg, path_to_item=None) -> None:
         """
         Raised when an attribute reference or assignment fails.
@@ -83,6 +89,7 @@ class ApiAttributeError(OpenApiException, AttributeError):
 
 
 class ApiKeyError(OpenApiException, KeyError):
+
     def __init__(self, msg, path_to_item=None) -> None:
         """
         Args:
@@ -126,10 +133,12 @@ class ApiException(OpenApiException):
 
         return error_message
 
+
 class BadRequestException(ApiException):
 
     def __init__(self, status=None, reason=None, http_resp=None) -> None:
         super(BadRequestException, self).__init__(status, reason, http_resp)
+
 
 class NotFoundException(ApiException):
 

@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.create_form_instance_request import CreateFormInstanceRequest
+from sailpoint.beta.models.create_form_instance_request import CreateFormInstanceRequest
 
 # TODO update the JSON string below
 json = "{}"

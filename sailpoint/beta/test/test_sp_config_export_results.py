@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.sp_config_export_results import SpConfigExportResults  # noqa: E501
+from sailpoint.beta.models.sp_config_export_results import SpConfigExportResults  # noqa: E501
+
 
 class TestSpConfigExportResults(unittest.TestCase):
     """SpConfigExportResults unit test stubs"""
@@ -40,7 +40,7 @@ class TestSpConfigExportResults(unittest.TestCase):
                 timestamp = '2021-05-11T22:23:16Z',
                 tenant = 'sample-tenant',
                 description = 'Export Job 1 Test',
-                options = beta.models.export_options.ExportOptions(
+                options = sailpoint.beta.models.export_options.ExportOptions(
                     exclude_types = [
                         'SOURCE'
                         ], 
@@ -49,9 +49,9 @@ class TestSpConfigExportResults(unittest.TestCase):
                         ], 
                     object_options = {TRIGGER_SUBSCRIPTION={includedIds=[be9e116d-08e1-49fc-ab7f-fa585e96c9e4], includedNames=[Test 2]}}, ),
                 objects = [
-                    beta.models.config_object_for_export_and_import.Config Object for Export and Import(
+                    sailpoint.beta.models.config_object_for_export_and_import.Config Object for Export and Import(
                         version = 1, 
-                        self = beta.models.self_import_export_dto.SelfImportExportDto(
+                        self = sailpoint.beta.models.self_import_export_dto.SelfImportExportDto(
                             type = 'SOURCE', 
                             id = '2c9180835d191a86015d28455b4b232a', 
                             name = 'HR Active Directory', ), 
@@ -67,6 +67,7 @@ class TestSpConfigExportResults(unittest.TestCase):
         """Test SpConfigExportResults"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

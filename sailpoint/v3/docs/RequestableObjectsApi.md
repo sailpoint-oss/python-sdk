@@ -1,4 +1,4 @@
-# v3.RequestableObjectsApi
+# sailpoint.v3.RequestableObjectsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -21,16 +21,16 @@ This endpoint returns a list of acccess items that that can be requested through
 ```python
 import time
 import os
-import v3
-from v3.models.requestable_object import RequestableObject
-from v3.models.requestable_object_request_status import RequestableObjectRequestStatus
-from v3.models.requestable_object_type import RequestableObjectType
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.requestable_object import RequestableObject
+from sailpoint.v3.models.requestable_object_request_status import RequestableObjectRequestStatus
+from sailpoint.v3.models.requestable_object_type import RequestableObjectType
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -44,13 +44,13 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.RequestableObjectsApi(api_client)
+    api_instance = sailpoint.v3.RequestableObjectsApi(api_client)
     identity_id = 'e7eab60924f64aa284175b9fa3309599' # str | If present, the value returns only requestable objects for the specified identity.  * Admin users can call this with any identity ID value.  * Non-admin users can only specify *me* or pass their own identity ID value.  * If absent, returns a list of all requestable objects for the tenant. Only admin users can make such a call. In this case, the available, pending, assigned accesses will not be annotated in the result. (optional)
-    types = [v3.RequestableObjectType()] # List[RequestableObjectType] | Filters the results to the specified type/types, where each type is one of ROLE or ACCESS_PROFILE. If absent, all types are returned. Support for additional types may be added in the future without notice. (optional)
+    types = [sailpoint.v3.RequestableObjectType()] # List[RequestableObjectType] | Filters the results to the specified type/types, where each type is one of ROLE or ACCESS_PROFILE. If absent, all types are returned. Support for additional types may be added in the future without notice. (optional)
     term = 'Finance Role' # str | It allows searching requestable access items with a partial match on the name or description. If term is provided, then the *filter* query parameter will be ignored. (optional)
-    statuses = [v3.RequestableObjectRequestStatus()] # List[RequestableObjectRequestStatus] | Filters the result to the specified status/statuses, where each status is one of AVAILABLE, ASSIGNED, or PENDING. It is an error to specify this parameter without also specifying an *identity-id* parameter. Additional statuses may be added in the future without notice. (optional)
+    statuses = [sailpoint.v3.RequestableObjectRequestStatus()] # List[RequestableObjectRequestStatus] | Filters the result to the specified status/statuses, where each status is one of AVAILABLE, ASSIGNED, or PENDING. It is an error to specify this parameter without also specifying an *identity-id* parameter. Additional statuses may be added in the future without notice. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)

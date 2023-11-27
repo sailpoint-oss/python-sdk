@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.approval_summary import ApprovalSummary
+from sailpoint.v3.models.approval_summary import ApprovalSummary
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field
-from beta.models.tenant_configuration_details import TenantConfigurationDetails
+from sailpoint.beta.models.tenant_configuration_details import TenantConfigurationDetails
+
 
 class TenantConfigurationRequest(BaseModel):
     """
     Tenant-wide Reassignment Configuration settings  # noqa: E501
     """
-    config_details: Optional[TenantConfigurationDetails] = Field(None, alias="configDetails")
+    config_details: Optional[TenantConfigurationDetails] = Field(
+        None, alias="configDetails")
     __properties = ["configDetails"]
 
     class Config:
@@ -49,10 +49,7 @@ class TenantConfigurationRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of config_details
         if self.config_details:
             _dict['configDetails'] = self.config_details.to_dict()
@@ -68,8 +65,8 @@ class TenantConfigurationRequest(BaseModel):
             return TenantConfigurationRequest.parse_obj(obj)
 
         _obj = TenantConfigurationRequest.parse_obj({
-            "config_details": TenantConfigurationDetails.from_dict(obj.get("configDetails")) if obj.get("configDetails") is not None else None
+            "config_details":
+            TenantConfigurationDetails.from_dict(obj.get("configDetails"))
+            if obj.get("configDetails") is not None else None
         })
         return _obj
-
-

@@ -11,13 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_ownership_association_details_association_details_inner import IdentityOwnershipAssociationDetailsAssociationDetailsInner  # noqa: E501
+from sailpoint.beta.models.identity_ownership_association_details_association_details_inner import IdentityOwnershipAssociationDetailsAssociationDetailsInner  # noqa: E501
 
-class TestIdentityOwnershipAssociationDetailsAssociationDetailsInner(unittest.TestCase):
+
+class TestIdentityOwnershipAssociationDetailsAssociationDetailsInner(
+        unittest.TestCase):
     """IdentityOwnershipAssociationDetailsAssociationDetailsInner unit test stubs"""
 
     def setUp(self):
@@ -26,7 +27,9 @@ class TestIdentityOwnershipAssociationDetailsAssociationDetailsInner(unittest.Te
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> IdentityOwnershipAssociationDetailsAssociationDetailsInner:
+    def make_instance(
+        self, include_optional
+    ) -> IdentityOwnershipAssociationDetailsAssociationDetailsInner:
         """Test IdentityOwnershipAssociationDetailsAssociationDetailsInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -48,6 +51,7 @@ class TestIdentityOwnershipAssociationDetailsAssociationDetailsInner(unittest.Te
         """Test IdentityOwnershipAssociationDetailsAssociationDetailsInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,4 +1,4 @@
-# beta.GovernanceGroupsApi
+# sailpoint.beta.GovernanceGroupsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -30,14 +30,14 @@ This API creates a new Governance Group.
 ```python
 import time
 import os
-import beta
-from beta.models.workgroup_dto import WorkgroupDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workgroup_dto import WorkgroupDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -51,10 +51,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.GovernanceGroupsApi(api_client)
-    workgroup_dto = beta.WorkgroupDto() # WorkgroupDto | 
+    api_instance = sailpoint.beta.GovernanceGroupsApi(api_client)
+    workgroup_dto = sailpoint.beta.WorkgroupDto() # WorkgroupDto | 
 
     try:
         # Create a new Governance Group.
@@ -112,13 +112,13 @@ This API deletes a Governance Group by its ID.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -132,9 +132,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.beta.GovernanceGroupsApi(api_client)
     id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group
 
     try:
@@ -191,15 +191,15 @@ This API removes one or more  members from a Governance Group.  A token with API
 ```python
 import time
 import os
-import beta
-from beta.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner
-from beta.models.workgroup_member_delete_item import WorkgroupMemberDeleteItem
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner
+from sailpoint.beta.models.workgroup_member_delete_item import WorkgroupMemberDeleteItem
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -213,11 +213,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.beta.GovernanceGroupsApi(api_client)
     workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group.
-    bulk_workgroup_members_request_inner = [beta.BulkWorkgroupMembersRequestInner()] # List[BulkWorkgroupMembersRequestInner] | List of identities to be removed from  a Governance Group members list.
+    bulk_workgroup_members_request_inner = [sailpoint.beta.BulkWorkgroupMembersRequestInner()] # List[BulkWorkgroupMembersRequestInner] | List of identities to be removed from  a Governance Group members list.
 
     try:
         # Remove members from Governance Group
@@ -276,15 +276,15 @@ Delete Governance Group(s)
 ```python
 import time
 import os
-import beta
-from beta.models.workgroup_bulk_delete_request import WorkgroupBulkDeleteRequest
-from beta.models.workgroup_delete_item import WorkgroupDeleteItem
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workgroup_bulk_delete_request import WorkgroupBulkDeleteRequest
+from sailpoint.beta.models.workgroup_delete_item import WorkgroupDeleteItem
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -298,9 +298,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.beta.GovernanceGroupsApi(api_client)
     workgroup_bulk_delete_request = {ids=[567a697e-885b-495a-afc5-d55e1c23a302, c7b0f7b2-1e78-4063-b294-a555333dacd2]} # WorkgroupBulkDeleteRequest | 
 
     try:
@@ -359,14 +359,14 @@ This API returns a Governance Groups by its ID.
 ```python
 import time
 import os
-import beta
-from beta.models.workgroup_dto import WorkgroupDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workgroup_dto import WorkgroupDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -380,9 +380,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.beta.GovernanceGroupsApi(api_client)
     id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group
 
     try:
@@ -441,14 +441,14 @@ This API returns list of connections associated with a Governance Group.
 ```python
 import time
 import os
-import beta
-from beta.models.workgroup_connection_dto import WorkgroupConnectionDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workgroup_connection_dto import WorkgroupConnectionDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -462,9 +462,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.beta.GovernanceGroupsApi(api_client)
     workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group.
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
@@ -531,14 +531,14 @@ This API returns list of members associated with a Governance Group.
 ```python
 import time
 import os
-import beta
-from beta.models.list_workgroup_members200_response_inner import ListWorkgroupMembers200ResponseInner
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.list_workgroup_members200_response_inner import ListWorkgroupMembers200ResponseInner
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -552,9 +552,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.beta.GovernanceGroupsApi(api_client)
     workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group.
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
@@ -621,14 +621,14 @@ This API returns list of Governance Groups
 ```python
 import time
 import os
-import beta
-from beta.models.workgroup_dto import WorkgroupDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workgroup_dto import WorkgroupDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -642,9 +642,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.beta.GovernanceGroupsApi(api_client)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 50 # int | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -711,15 +711,15 @@ This API updates existing Governance Group by its ID. Following fields are patch
 ```python
 import time
 import os
-import beta
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.models.workgroup_dto import WorkgroupDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.workgroup_dto import WorkgroupDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -733,9 +733,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.beta.GovernanceGroupsApi(api_client)
     id = '2c9180837ca6693d017ca8d097500149' # str | ID of the Governance Group
     json_patch_operation = [{op=replace, path=/description, value=Governance Group new description.}] # List[JsonPatchOperation] |  (optional)
 
@@ -796,15 +796,15 @@ This API adds one or more members to a Governance Group.  A token with API, ORG_
 ```python
 import time
 import os
-import beta
-from beta.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner
-from beta.models.workgroup_member_add_item import WorkgroupMemberAddItem
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner
+from sailpoint.beta.models.workgroup_member_add_item import WorkgroupMemberAddItem
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -818,11 +818,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.GovernanceGroupsApi(api_client)
+    api_instance = sailpoint.beta.GovernanceGroupsApi(api_client)
     workgroup_id = '2c91808a7813090a017814121919ecca' # str | ID of the Governance Group.
-    bulk_workgroup_members_request_inner = [beta.BulkWorkgroupMembersRequestInner()] # List[BulkWorkgroupMembersRequestInner] | List of identities to be added to a Governance Group members list.
+    bulk_workgroup_members_request_inner = [sailpoint.beta.BulkWorkgroupMembersRequestInner()] # List[BulkWorkgroupMembersRequestInner] | List of identities to be added to a Governance Group members list.
 
     try:
         # Add members to Governance Group

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.mfa_okta_config import MfaOktaConfig
+from sailpoint.beta.models.mfa_okta_config import MfaOktaConfig
 
 # TODO update the JSON string below
 json = "{}"

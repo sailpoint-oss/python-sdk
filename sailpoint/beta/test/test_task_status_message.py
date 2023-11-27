@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.task_status_message import TaskStatusMessage  # noqa: E501
+from sailpoint.beta.models.task_status_message import TaskStatusMessage  # noqa: E501
+
 
 class TestTaskStatusMessage(unittest.TestCase):
     """TaskStatusMessage unit test stubs"""
@@ -37,7 +37,7 @@ class TestTaskStatusMessage(unittest.TestCase):
         if include_optional:
             return TaskStatusMessage(
                 type = 'INFO',
-                localized_text = beta.models.localized_message.LocalizedMessage(
+                localized_text = sailpoint.beta.models.localized_message.LocalizedMessage(
                     locale = 'An error has occurred!', 
                     message = 'Error has occurred!', ),
                 key = 'akey',
@@ -46,7 +46,7 @@ class TestTaskStatusMessage(unittest.TestCase):
         else:
             return TaskStatusMessage(
                 type = 'INFO',
-                localized_text = beta.models.localized_message.LocalizedMessage(
+                localized_text = sailpoint.beta.models.localized_message.LocalizedMessage(
                     locale = 'An error has occurred!', 
                     message = 'Error has occurred!', ),
                 key = 'akey',
@@ -58,6 +58,7 @@ class TestTaskStatusMessage(unittest.TestCase):
         """Test TaskStatusMessage"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

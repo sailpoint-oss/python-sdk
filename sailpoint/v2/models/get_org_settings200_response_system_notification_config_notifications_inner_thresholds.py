@@ -11,17 +11,17 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, StrictStr
 
-class GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds(BaseModel):
+
+class GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds(
+        BaseModel):
     """
     GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds
     """
@@ -43,31 +43,32 @@ class GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresho
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds:
+    def from_json(
+        cls, json_str: str
+    ) -> GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds:
         """Create an instance of GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds:
+    def from_dict(
+        cls, obj: dict
+    ) -> GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds:
         """Create an instance of GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds.parse_obj(obj)
+            return GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds.parse_obj(
+                obj)
 
-        _obj = GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds.parse_obj({
-            "healthy": obj.get("healthy"),
-            "unhealthy": obj.get("unhealthy")
-        })
+        _obj = GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds.parse_obj(
+            {
+                "healthy": obj.get("healthy"),
+                "unhealthy": obj.get("unhealthy")
+            })
         return _obj
-
-

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.object_import_result import ObjectImportResult  # noqa: E501
+from sailpoint.v3.models.object_import_result import ObjectImportResult  # noqa: E501
+
 
 class TestObjectImportResult(unittest.TestCase):
     """ObjectImportResult unit test stubs"""
@@ -37,25 +37,25 @@ class TestObjectImportResult(unittest.TestCase):
         if include_optional:
             return ObjectImportResult(
                 infos = [
-                    v3.models.config_import/export_message.Config Import/Export Message(
+                    sailpoint.v3.models.config_import/export_message.Config Import/Export Message(
                         key = 'UNKNOWN_REFERENCE_RESOLVER', 
                         text = 'Unable to resolve reference for object [type: IDENTITY, id: 2c91808c746e9c9601747d6507332ecz, name: random identity]', 
                         details = {details=message details}, )
                     ],
                 warnings = [
-                    v3.models.config_import/export_message.Config Import/Export Message(
+                    sailpoint.v3.models.config_import/export_message.Config Import/Export Message(
                         key = 'UNKNOWN_REFERENCE_RESOLVER', 
                         text = 'Unable to resolve reference for object [type: IDENTITY, id: 2c91808c746e9c9601747d6507332ecz, name: random identity]', 
                         details = {details=message details}, )
                     ],
                 errors = [
-                    v3.models.config_import/export_message.Config Import/Export Message(
+                    sailpoint.v3.models.config_import/export_message.Config Import/Export Message(
                         key = 'UNKNOWN_REFERENCE_RESOLVER', 
                         text = 'Unable to resolve reference for object [type: IDENTITY, id: 2c91808c746e9c9601747d6507332ecz, name: random identity]', 
                         details = {details=message details}, )
                     ],
                 imported_objects = [
-                    v3.models.import_object.ImportObject(
+                    sailpoint.v3.models.import_object.ImportObject(
                         type = 'SOURCE', 
                         id = '2c9180835d191a86015d28455b4b232a', 
                         name = 'HR Active Directory', )
@@ -64,25 +64,25 @@ class TestObjectImportResult(unittest.TestCase):
         else:
             return ObjectImportResult(
                 infos = [
-                    v3.models.config_import/export_message.Config Import/Export Message(
+                    sailpoint.v3.models.config_import/export_message.Config Import/Export Message(
                         key = 'UNKNOWN_REFERENCE_RESOLVER', 
                         text = 'Unable to resolve reference for object [type: IDENTITY, id: 2c91808c746e9c9601747d6507332ecz, name: random identity]', 
                         details = {details=message details}, )
                     ],
                 warnings = [
-                    v3.models.config_import/export_message.Config Import/Export Message(
+                    sailpoint.v3.models.config_import/export_message.Config Import/Export Message(
                         key = 'UNKNOWN_REFERENCE_RESOLVER', 
                         text = 'Unable to resolve reference for object [type: IDENTITY, id: 2c91808c746e9c9601747d6507332ecz, name: random identity]', 
                         details = {details=message details}, )
                     ],
                 errors = [
-                    v3.models.config_import/export_message.Config Import/Export Message(
+                    sailpoint.v3.models.config_import/export_message.Config Import/Export Message(
                         key = 'UNKNOWN_REFERENCE_RESOLVER', 
                         text = 'Unable to resolve reference for object [type: IDENTITY, id: 2c91808c746e9c9601747d6507332ecz, name: random identity]', 
                         details = {details=message details}, )
                     ],
                 imported_objects = [
-                    v3.models.import_object.ImportObject(
+                    sailpoint.v3.models.import_object.ImportObject(
                         type = 'SOURCE', 
                         id = '2c9180835d191a86015d28455b4b232a', 
                         name = 'HR Active Directory', )
@@ -94,6 +94,7 @@ class TestObjectImportResult(unittest.TestCase):
         """Test ObjectImportResult"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

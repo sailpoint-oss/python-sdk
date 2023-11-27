@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.segment import Segment
+from sailpoint.v3.models.segment import Segment
 
 # TODO update the JSON string below
 json = "{}"

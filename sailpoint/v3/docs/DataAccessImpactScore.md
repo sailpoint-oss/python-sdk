@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.data_access_impact_score import DataAccessImpactScore
+from sailpoint.v3.models.data_access_impact_score import DataAccessImpactScore
 
 # TODO update the JSON string below
 json = "{}"

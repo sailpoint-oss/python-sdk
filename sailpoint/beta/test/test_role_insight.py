@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.role_insight import RoleInsight  # noqa: E501
+from sailpoint.beta.models.role_insight import RoleInsight  # noqa: E501
+
 
 class TestRoleInsight(unittest.TestCase):
     """RoleInsight unit test stubs"""
@@ -39,13 +39,13 @@ class TestRoleInsight(unittest.TestCase):
                 id = '1467e61e-f284-439c-ba2d-c6cc11cf0941',
                 number_of_updates = 5,
                 created_date = '2020-05-19T13:49:37.385Z',
-                role = beta.models.role_insights_role.RoleInsightsRole(
+                role = sailpoint.beta.models.role_insights_role.RoleInsightsRole(
                     name = 'Software Engineer', 
                     id = '1467e61e-f284-439c-ba2d-c6cc11cf0941', 
                     description = 'Person who develops software', 
                     owner_name = 'Bob', 
                     owner_id = '1467e61e-f284-439c-ba2d-c6cc11cf0941', ),
-                insight = beta.models.role_insights_insight.RoleInsightsInsight(
+                insight = sailpoint.beta.models.role_insights_insight.RoleInsightsInsight(
                     type = 'ADD', 
                     identities_with_access = 850, 
                     identities_impacted = 150, 
@@ -60,6 +60,7 @@ class TestRoleInsight(unittest.TestCase):
         """Test RoleInsight"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.search_arguments import SearchArguments
+from sailpoint.v3.models.search_arguments import SearchArguments
 
 # TODO update the JSON string below
 json = "{}"

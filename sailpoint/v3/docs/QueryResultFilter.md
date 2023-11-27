@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.query_result_filter import QueryResultFilter
+from sailpoint.v3.models.query_result_filter import QueryResultFilter
 
 # TODO update the JSON string below
 json = "{}"

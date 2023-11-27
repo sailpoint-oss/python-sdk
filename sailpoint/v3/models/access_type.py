@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class AccessType(str, Enum):
     """
     Access type of API Client indicating online or offline use
     """
-
     """
     allowed enum values
     """
@@ -36,5 +31,3 @@ class AccessType(str, Enum):
     def from_json(cls, json_str: str) -> AccessType:
         """Create an instance of AccessType from a JSON string"""
         return AccessType(json.loads(json_str))
-
-

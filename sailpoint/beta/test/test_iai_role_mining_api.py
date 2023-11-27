@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.iai_role_mining_api import IAIRoleMiningApi  # noqa: E501
+from sailpoint.beta.api.iai_role_mining_api import IAIRoleMiningApi  # noqa: E501
 
 
 class TestIAIRoleMiningApi(unittest.TestCase):

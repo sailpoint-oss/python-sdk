@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class IdentityAttribute(BaseModel):
     """
     IdentityAttribute
     """
     key: Optional[StrictStr] = Field(None, description="The attribute key")
-    name: Optional[StrictStr] = Field(None, description="Human-readable display name of the attribute")
+    name: Optional[StrictStr] = Field(
+        None, description="Human-readable display name of the attribute")
     value: Optional[StrictStr] = Field(None, description="The attribute value")
     __properties = ["key", "name", "value"]
 
@@ -50,10 +50,7 @@ class IdentityAttribute(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,5 +68,3 @@ class IdentityAttribute(BaseModel):
             "value": obj.get("value")
         })
         return _obj
-
-

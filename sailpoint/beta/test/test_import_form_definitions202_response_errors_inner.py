@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner  # noqa: E501
+from sailpoint.beta.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner  # noqa: E501
+
 
 class TestImportFormDefinitions202ResponseErrorsInner(unittest.TestCase):
     """ImportFormDefinitions202ResponseErrorsInner unit test stubs"""
@@ -26,7 +26,9 @@ class TestImportFormDefinitions202ResponseErrorsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ImportFormDefinitions202ResponseErrorsInner:
+    def make_instance(
+            self,
+            include_optional) -> ImportFormDefinitions202ResponseErrorsInner:
         """Test ImportFormDefinitions202ResponseErrorsInner
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -51,6 +53,7 @@ class TestImportFormDefinitions202ResponseErrorsInner(unittest.TestCase):
         """Test ImportFormDefinitions202ResponseErrorsInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

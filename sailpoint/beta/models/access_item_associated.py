@@ -11,28 +11,35 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from beta.models.access_item_associated_access_item import AccessItemAssociatedAccessItem
-from beta.models.correlated_governance_event import CorrelatedGovernanceEvent
+from sailpoint.beta.models.access_item_associated_access_item import AccessItemAssociatedAccessItem
+from sailpoint.beta.models.correlated_governance_event import CorrelatedGovernanceEvent
+
 
 class AccessItemAssociated(BaseModel):
     """
     AccessItemAssociated
     """
-    access_item: Optional[AccessItemAssociatedAccessItem] = Field(None, alias="accessItem")
-    identity_id: Optional[StrictStr] = Field(None, alias="identityId", description="the identity id")
-    event_type: Optional[StrictStr] = Field(None, alias="eventType", description="the event type")
+    access_item: Optional[AccessItemAssociatedAccessItem] = Field(
+        None, alias="accessItem")
+    identity_id: Optional[StrictStr] = Field(None,
+                                             alias="identityId",
+                                             description="the identity id")
+    event_type: Optional[StrictStr] = Field(None,
+                                            alias="eventType",
+                                            description="the event type")
     dt: Optional[StrictStr] = Field(None, description="the date of event")
-    governance_event: Optional[CorrelatedGovernanceEvent] = Field(None, alias="governanceEvent")
-    __properties = ["accessItem", "identityId", "eventType", "dt", "governanceEvent"]
+    governance_event: Optional[CorrelatedGovernanceEvent] = Field(
+        None, alias="governanceEvent")
+    __properties = [
+        "accessItem", "identityId", "eventType", "dt", "governanceEvent"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -54,10 +61,7 @@ class AccessItemAssociated(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of access_item
         if self.access_item:
             _dict['accessItem'] = self.access_item.to_dict()
@@ -76,12 +80,17 @@ class AccessItemAssociated(BaseModel):
             return AccessItemAssociated.parse_obj(obj)
 
         _obj = AccessItemAssociated.parse_obj({
-            "access_item": AccessItemAssociatedAccessItem.from_dict(obj.get("accessItem")) if obj.get("accessItem") is not None else None,
-            "identity_id": obj.get("identityId"),
-            "event_type": obj.get("eventType"),
-            "dt": obj.get("dt"),
-            "governance_event": CorrelatedGovernanceEvent.from_dict(obj.get("governanceEvent")) if obj.get("governanceEvent") is not None else None
+            "access_item":
+            AccessItemAssociatedAccessItem.from_dict(obj.get("accessItem"))
+            if obj.get("accessItem") is not None else None,
+            "identity_id":
+            obj.get("identityId"),
+            "event_type":
+            obj.get("eventType"),
+            "dt":
+            obj.get("dt"),
+            "governance_event":
+            CorrelatedGovernanceEvent.from_dict(obj.get("governanceEvent"))
+            if obj.get("governanceEvent") is not None else None
         })
         return _obj
-
-

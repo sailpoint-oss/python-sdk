@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.source_created_actor import SourceCreatedActor
+from sailpoint.beta.models.source_created_actor import SourceCreatedActor
 
 # TODO update the JSON string below
 json = "{}"

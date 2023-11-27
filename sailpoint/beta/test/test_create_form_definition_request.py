@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.create_form_definition_request import CreateFormDefinitionRequest  # noqa: E501
+from sailpoint.beta.models.create_form_definition_request import CreateFormDefinitionRequest  # noqa: E501
+
 
 class TestCreateFormDefinitionRequest(unittest.TestCase):
     """CreateFormDefinitionRequest unit test stubs"""
@@ -38,10 +38,10 @@ class TestCreateFormDefinitionRequest(unittest.TestCase):
             return CreateFormDefinitionRequest(
                 description = 'My form description',
                 form_conditions = [
-                    beta.models.form_condition.FormCondition(
+                    sailpoint.beta.models.form_condition.FormCondition(
                         rule_operator = 'AND', 
                         rules = [
-                            beta.models.condition_rule.ConditionRule(
+                            sailpoint.beta.models.condition_rule.ConditionRule(
                                 source_type = 'ELEMENT', 
                                 source = 'department', 
                                 operator = 'EQ', 
@@ -49,15 +49,15 @@ class TestCreateFormDefinitionRequest(unittest.TestCase):
                                 value = Engineering, )
                             ], 
                         effects = [
-                            beta.models.condition_effect.ConditionEffect(
+                            sailpoint.beta.models.condition_effect.ConditionEffect(
                                 effect_type = 'HIDE', 
-                                config = beta.models.condition_effect_config.ConditionEffect_config(
+                                config = sailpoint.beta.models.condition_effect_config.ConditionEffect_config(
                                     default_value_label = 'Access to Remove', 
                                     element = '8110662963316867', ), )
                             ], )
                     ],
                 form_elements = [
-                    beta.models.form_element.FormElement(
+                    sailpoint.beta.models.form_element.FormElement(
                         id = '00000000-0000-0000-0000-000000000000', 
                         element_type = 'TEXT', 
                         config = {label=Department}, 
@@ -65,18 +65,18 @@ class TestCreateFormDefinitionRequest(unittest.TestCase):
                         validations = [{validationType=REQUIRED}], )
                     ],
                 form_input = [
-                    beta.models.form_definition_input.FormDefinitionInput(
+                    sailpoint.beta.models.form_definition_input.FormDefinitionInput(
                         id = '00000000-0000-0000-0000-000000000000', 
                         type = 'STRING', 
                         label = 'input1', 
                         description = 'A single dynamic scalar value (i.e. number, string, date, etc.) that can be passed into the form for use in conditional logic', )
                     ],
                 name = 'My form',
-                owner = beta.models.form_owner.FormOwner(
+                owner = sailpoint.beta.models.form_owner.FormOwner(
                     type = 'IDENTITY', 
                     id = '00000000-0000-0000-0000-000000000000', ),
                 used_by = [
-                    beta.models.form_used_by.FormUsedBy(
+                    sailpoint.beta.models.form_used_by.FormUsedBy(
                         type = 'WORKFLOW', 
                         id = '00000000-0000-0000-0000-000000000000', )
                     ]
@@ -84,7 +84,7 @@ class TestCreateFormDefinitionRequest(unittest.TestCase):
         else:
             return CreateFormDefinitionRequest(
                 name = 'My form',
-                owner = beta.models.form_owner.FormOwner(
+                owner = sailpoint.beta.models.form_owner.FormOwner(
                     type = 'IDENTITY', 
                     id = '00000000-0000-0000-0000-000000000000', ),
         )
@@ -94,6 +94,7 @@ class TestCreateFormDefinitionRequest(unittest.TestCase):
         """Test CreateFormDefinitionRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

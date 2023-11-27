@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class IdentitySnapshotSummaryResponse(BaseModel):
     """
     IdentitySnapshotSummaryResponse
     """
-    snapshot: Optional[StrictStr] = Field(None, description="the date when the identity record was created")
+    snapshot: Optional[StrictStr] = Field(
+        None, description="the date when the identity record was created")
     __properties = ["snapshot"]
 
     class Config:
@@ -48,10 +48,7 @@ class IdentitySnapshotSummaryResponse(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +60,6 @@ class IdentitySnapshotSummaryResponse(BaseModel):
         if not isinstance(obj, dict):
             return IdentitySnapshotSummaryResponse.parse_obj(obj)
 
-        _obj = IdentitySnapshotSummaryResponse.parse_obj({
-            "snapshot": obj.get("snapshot")
-        })
+        _obj = IdentitySnapshotSummaryResponse.parse_obj(
+            {"snapshot": obj.get("snapshot")})
         return _obj
-
-

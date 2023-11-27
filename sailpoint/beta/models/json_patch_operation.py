@@ -11,23 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
-from beta.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.beta.models.json_patch_operation_value import JsonPatchOperationValue
+
 
 class JsonPatchOperation(BaseModel):
     """
     A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)  # noqa: E501
     """
     op: StrictStr = Field(..., description="The operation to be performed")
-    path: StrictStr = Field(..., description="A string JSON Pointer representing the target path to an element to be affected by the operation")
+    path: StrictStr = Field(
+        ...,
+        description=
+        "A string JSON Pointer representing the target path to an element to be affected by the operation"
+    )
     value: Optional[JsonPatchOperationValue] = None
     __properties = ["op", "path", "value"]
 
@@ -35,7 +38,9 @@ class JsonPatchOperation(BaseModel):
     def op_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('add', 'remove', 'replace', 'move', 'copy', 'test'):
-            raise ValueError("must be one of enum values ('add', 'remove', 'replace', 'move', 'copy', 'test')")
+            raise ValueError(
+                "must be one of enum values ('add', 'remove', 'replace', 'move', 'copy', 'test')"
+            )
         return value
 
     class Config:
@@ -58,10 +63,7 @@ class JsonPatchOperation(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of value
         if self.value:
             _dict['value'] = self.value.to_dict()
@@ -77,10 +79,12 @@ class JsonPatchOperation(BaseModel):
             return JsonPatchOperation.parse_obj(obj)
 
         _obj = JsonPatchOperation.parse_obj({
-            "op": obj.get("op"),
-            "path": obj.get("path"),
-            "value": JsonPatchOperationValue.from_dict(obj.get("value")) if obj.get("value") is not None else None
+            "op":
+            obj.get("op"),
+            "path":
+            obj.get("path"),
+            "value":
+            JsonPatchOperationValue.from_dict(obj.get("value"))
+            if obj.get("value") is not None else None
         })
         return _obj
-
-

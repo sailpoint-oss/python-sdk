@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.data_access_categories_inner import DataAccessCategoriesInner
+from sailpoint.v3.models.data_access_categories_inner import DataAccessCategoriesInner
 
 # TODO update the JSON string below
 json = "{}"

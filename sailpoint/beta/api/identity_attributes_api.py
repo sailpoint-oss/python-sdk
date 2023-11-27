@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,15 +22,13 @@ from pydantic import Field, StrictBool, StrictStr
 
 from typing import List, Optional
 
-from beta.models.identity_attribute import IdentityAttribute
-from beta.models.identity_attribute_names import IdentityAttributeNames
+from sailpoint.beta.models.identity_attribute import IdentityAttribute
+from sailpoint.beta.models.identity_attribute_names import IdentityAttributeNames
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class IdentityAttributesApi:
@@ -47,7 +44,8 @@ class IdentityAttributesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_identity_attribute(self, identity_attribute : IdentityAttribute, **kwargs) -> IdentityAttribute:  # noqa: E501
+    def create_identity_attribute(self, identity_attribute: IdentityAttribute,
+                                  **kwargs) -> IdentityAttribute:  # noqa: E501
         """Create Identity Attribute  # noqa: E501
 
         This creates a new identity attribute.  # noqa: E501
@@ -74,10 +72,13 @@ class IdentityAttributesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_identity_attribute_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_identity_attribute_with_http_info(identity_attribute, **kwargs)  # noqa: E501
+        return self.create_identity_attribute_with_http_info(
+            identity_attribute, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_identity_attribute_with_http_info(self, identity_attribute : IdentityAttribute, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_identity_attribute_with_http_info(
+            self, identity_attribute: IdentityAttribute,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create Identity Attribute  # noqa: E501
 
         This creates a new identity attribute.  # noqa: E501
@@ -116,28 +117,18 @@ class IdentityAttributesApi:
 
         _params = locals()
 
-        _all_params = [
-            'identity_attribute'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['identity_attribute']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_identity_attribute" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_identity_attribute" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -163,11 +154,11 @@ class IdentityAttributesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -183,7 +174,8 @@ class IdentityAttributesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-attributes/{name}', 'POST',
+            '/identity-attributes',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -193,14 +185,18 @@ class IdentityAttributesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_identity_attribute(self, name : Annotated[StrictStr, Field(..., description="The attribute's technical name.")], **kwargs) -> None:  # noqa: E501
+    def delete_identity_attribute(self, name: Annotated[
+        StrictStr,
+        Field(..., description="The attribute's technical name.")],
+                                  **kwargs) -> None:  # noqa: E501
         """Delete Identity Attribute  # noqa: E501
 
         This deletes an identity attribute for a given technical name.  # noqa: E501
@@ -227,10 +223,15 @@ class IdentityAttributesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_identity_attribute_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_identity_attribute_with_http_info(name, **kwargs)  # noqa: E501
+        return self.delete_identity_attribute_with_http_info(
+            name, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_identity_attribute_with_http_info(self, name : Annotated[StrictStr, Field(..., description="The attribute's technical name.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_identity_attribute_with_http_info(
+            self, name: Annotated[
+                StrictStr,
+                Field(..., description="The attribute's technical name.")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Identity Attribute  # noqa: E501
 
         This deletes an identity attribute for a given technical name.  # noqa: E501
@@ -269,28 +270,18 @@ class IdentityAttributesApi:
 
         _params = locals()
 
-        _all_params = [
-            'name'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['name']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_identity_attribute" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_identity_attribute" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -300,7 +291,6 @@ class IdentityAttributesApi:
         _path_params = {}
         if _params['name']:
             _path_params['name'] = _params['name']
-
 
         # process the query parameters
         _query_params = []
@@ -321,7 +311,8 @@ class IdentityAttributesApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/identity-attributes/{name}', 'DELETE',
+            '/identity-attributes/{name}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -331,14 +322,17 @@ class IdentityAttributesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_identity_attributes_in_bulk(self, identity_attribute_names : IdentityAttributeNames, **kwargs) -> None:  # noqa: E501
+    def delete_identity_attributes_in_bulk(
+            self, identity_attribute_names: IdentityAttributeNames,
+            **kwargs) -> None:  # noqa: E501
         """Bulk delete Identity Attributes  # noqa: E501
 
         This deletes identity attributes for a given set of technical names.  # noqa: E501
@@ -365,10 +359,13 @@ class IdentityAttributesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_identity_attributes_in_bulk_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_identity_attributes_in_bulk_with_http_info(identity_attribute_names, **kwargs)  # noqa: E501
+        return self.delete_identity_attributes_in_bulk_with_http_info(
+            identity_attribute_names, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_identity_attributes_in_bulk_with_http_info(self, identity_attribute_names : IdentityAttributeNames, **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_identity_attributes_in_bulk_with_http_info(
+            self, identity_attribute_names: IdentityAttributeNames,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Bulk delete Identity Attributes  # noqa: E501
 
         This deletes identity attributes for a given set of technical names.  # noqa: E501
@@ -407,28 +404,18 @@ class IdentityAttributesApi:
 
         _params = locals()
 
-        _all_params = [
-            'identity_attribute_names'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['identity_attribute_names']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete_identity_attributes_in_bulk" % _key
-                )
+                    " to method delete_identity_attributes_in_bulk" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -454,11 +441,11 @@ class IdentityAttributesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -466,7 +453,8 @@ class IdentityAttributesApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/identity-attributes/bulk-delete', 'POST',
+            '/identity-attributes/bulk-delete',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -476,14 +464,18 @@ class IdentityAttributesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_identity_attribute(self, name : Annotated[StrictStr, Field(..., description="The attribute's technical name.")], **kwargs) -> IdentityAttribute:  # noqa: E501
+    def get_identity_attribute(self, name: Annotated[
+        StrictStr,
+        Field(..., description="The attribute's technical name.")],
+                               **kwargs) -> IdentityAttribute:  # noqa: E501
         """Get Identity Attribute  # noqa: E501
 
         This gets an identity attribute for a given technical name.  # noqa: E501
@@ -510,10 +502,15 @@ class IdentityAttributesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_identity_attribute_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_identity_attribute_with_http_info(name, **kwargs)  # noqa: E501
+        return self.get_identity_attribute_with_http_info(
+            name, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_identity_attribute_with_http_info(self, name : Annotated[StrictStr, Field(..., description="The attribute's technical name.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_identity_attribute_with_http_info(
+            self, name: Annotated[
+                StrictStr,
+                Field(..., description="The attribute's technical name.")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get Identity Attribute  # noqa: E501
 
         This gets an identity attribute for a given technical name.  # noqa: E501
@@ -552,28 +549,17 @@ class IdentityAttributesApi:
 
         _params = locals()
 
-        _all_params = [
-            'name'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['name']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_identity_attribute" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_identity_attribute" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -583,7 +569,6 @@ class IdentityAttributesApi:
         _path_params = {}
         if _params['name']:
             _path_params['name'] = _params['name']
-
 
         # process the query parameters
         _query_params = []
@@ -612,7 +597,8 @@ class IdentityAttributesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-attributes/{name}', 'GET',
+            '/identity-attributes/{name}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -622,14 +608,39 @@ class IdentityAttributesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_identity_attributes(self, include_system : Annotated[Optional[StrictBool], Field(description="Include \"system\" attributes in the response.")] = None, include_silent : Annotated[Optional[StrictBool], Field(description="Include \"silent\" attributes in the response.")] = None, searchable_only : Annotated[Optional[StrictBool], Field(description="Include only \"searchable\" attributes in the response.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> List[IdentityAttribute]:  # noqa: E501
+    def list_identity_attributes(
+            self,
+            include_system: Annotated[
+                Optional[StrictBool],
+                Field(
+                    description="Include \"system\" attributes in the response."
+                )] = None,
+            include_silent: Annotated[
+                Optional[StrictBool],
+                Field(
+                    description="Include \"silent\" attributes in the response."
+                )] = None,
+            searchable_only: Annotated[
+                Optional[StrictBool],
+                Field(description=
+                      "Include only \"searchable\" attributes in the response."
+                      )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> List[IdentityAttribute]:  # noqa: E501
         """List Identity Attributes  # noqa: E501
 
         This gets a collection of identity attributes.  # noqa: E501
@@ -662,10 +673,36 @@ class IdentityAttributesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_identity_attributes_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_identity_attributes_with_http_info(include_system, include_silent, searchable_only, count, **kwargs)  # noqa: E501
+        return self.list_identity_attributes_with_http_info(
+            include_system, include_silent, searchable_only, count,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_identity_attributes_with_http_info(self, include_system : Annotated[Optional[StrictBool], Field(description="Include \"system\" attributes in the response.")] = None, include_silent : Annotated[Optional[StrictBool], Field(description="Include \"silent\" attributes in the response.")] = None, searchable_only : Annotated[Optional[StrictBool], Field(description="Include only \"searchable\" attributes in the response.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_identity_attributes_with_http_info(
+            self,
+            include_system: Annotated[
+                Optional[StrictBool],
+                Field(
+                    description="Include \"system\" attributes in the response."
+                )] = None,
+            include_silent: Annotated[
+                Optional[StrictBool],
+                Field(
+                    description="Include \"silent\" attributes in the response."
+                )] = None,
+            searchable_only: Annotated[
+                Optional[StrictBool],
+                Field(description=
+                      "Include only \"searchable\" attributes in the response."
+                      )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List Identity Attributes  # noqa: E501
 
         This gets a collection of identity attributes.  # noqa: E501
@@ -711,30 +748,19 @@ class IdentityAttributesApi:
         _params = locals()
 
         _all_params = [
-            'include_system',
-            'include_silent',
-            'searchable_only',
-            'count'
+            'include_system', 'include_silent', 'searchable_only', 'count'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_identity_attributes" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_identity_attributes" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -752,7 +778,8 @@ class IdentityAttributesApi:
             _query_params.append(('includeSilent', _params['include_silent']))
 
         if _params.get('searchable_only') is not None:  # noqa: E501
-            _query_params.append(('searchableOnly', _params['searchable_only']))
+            _query_params.append(
+                ('searchableOnly', _params['searchable_only']))
 
         if _params.get('count') is not None:  # noqa: E501
             _query_params.append(('count', _params['count']))
@@ -781,7 +808,8 @@ class IdentityAttributesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-attributes', 'GET',
+            '/identity-attributes',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -791,14 +819,19 @@ class IdentityAttributesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_identity_attribute(self, name : Annotated[StrictStr, Field(..., description="The attribute's technical name.")], identity_attribute : IdentityAttribute, **kwargs) -> IdentityAttribute:  # noqa: E501
+    def put_identity_attribute(self, name: Annotated[
+        StrictStr,
+        Field(..., description="The attribute's technical name.")],
+                               identity_attribute: IdentityAttribute,
+                               **kwargs) -> IdentityAttribute:  # noqa: E501
         """Update Identity Attribute  # noqa: E501
 
         This updates an existing identity attribute.  # noqa: E501
@@ -827,10 +860,16 @@ class IdentityAttributesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_identity_attribute_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_identity_attribute_with_http_info(name, identity_attribute, **kwargs)  # noqa: E501
+        return self.put_identity_attribute_with_http_info(
+            name, identity_attribute, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_identity_attribute_with_http_info(self, name : Annotated[StrictStr, Field(..., description="The attribute's technical name.")], identity_attribute : IdentityAttribute, **kwargs) -> ApiResponse:  # noqa: E501
+    def put_identity_attribute_with_http_info(
+            self, name: Annotated[
+                StrictStr,
+                Field(..., description="The attribute's technical name.")],
+            identity_attribute: IdentityAttribute,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Update Identity Attribute  # noqa: E501
 
         This updates an existing identity attribute.  # noqa: E501
@@ -871,29 +910,17 @@ class IdentityAttributesApi:
 
         _params = locals()
 
-        _all_params = [
-            'name',
-            'identity_attribute'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['name', 'identity_attribute']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_identity_attribute" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method put_identity_attribute" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -903,7 +930,6 @@ class IdentityAttributesApi:
         _path_params = {}
         if _params['name']:
             _path_params['name'] = _params['name']
-
 
         # process the query parameters
         _query_params = []
@@ -922,17 +948,17 @@ class IdentityAttributesApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
 
         _response_types_map = {
-            '201': "IdentityAttribute",
+            '202': "IdentityAttribute",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
@@ -942,7 +968,8 @@ class IdentityAttributesApi:
         }
 
         return self.api_client.call_api(
-            '/identity-attributes/{name}', 'PUT',
+            '/identity-attributes/{name}',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -952,7 +979,8 @@ class IdentityAttributesApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

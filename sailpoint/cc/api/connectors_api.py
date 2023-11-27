@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,14 +22,12 @@ from pydantic import Field, StrictBool, StrictBytes, StrictStr
 
 from typing import Optional, Union
 
-from cc.models.list_connectors200_response import ListConnectors200Response
+from sailpoint.cc.models.list_connectors200_response import ListConnectors200Response
 
-from cc.api_client import ApiClient
-from cc.api_response import ApiResponse
-from cc.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.cc.api_client import ApiClient
+from sailpoint.cc.api_response import ApiResponse
+from sailpoint.cc.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class ConnectorsApi:
@@ -46,7 +43,14 @@ class ConnectorsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_connector(self, content_type : Optional[StrictStr] = None, name : Optional[StrictStr] = None, description : Optional[StrictStr] = None, class_name : Optional[StrictStr] = None, direct_connect : Optional[StrictBool] = None, status : Optional[StrictStr] = None, **kwargs) -> None:  # noqa: E501
+    def create_connector(self,
+                         content_type: Optional[StrictStr] = None,
+                         name: Optional[StrictStr] = None,
+                         description: Optional[StrictStr] = None,
+                         class_name: Optional[StrictStr] = None,
+                         direct_connect: Optional[StrictBool] = None,
+                         status: Optional[StrictStr] = None,
+                         **kwargs) -> None:  # noqa: E501
         """Create Connector  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -82,10 +86,21 @@ class ConnectorsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_connector_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_connector_with_http_info(content_type, name, description, class_name, direct_connect, status, **kwargs)  # noqa: E501
+        return self.create_connector_with_http_info(content_type, name,
+                                                    description, class_name,
+                                                    direct_connect, status,
+                                                    **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_connector_with_http_info(self, content_type : Optional[StrictStr] = None, name : Optional[StrictStr] = None, description : Optional[StrictStr] = None, class_name : Optional[StrictStr] = None, direct_connect : Optional[StrictBool] = None, status : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_connector_with_http_info(
+            self,
+            content_type: Optional[StrictStr] = None,
+            name: Optional[StrictStr] = None,
+            description: Optional[StrictStr] = None,
+            class_name: Optional[StrictStr] = None,
+            direct_connect: Optional[StrictBool] = None,
+            status: Optional[StrictStr] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create Connector  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -134,32 +149,19 @@ class ConnectorsApi:
         _params = locals()
 
         _all_params = [
-            'content_type',
-            'name',
-            'description',
-            'class_name',
-            'direct_connect',
-            'status'
+            'content_type', 'name', 'description', 'class_name',
+            'direct_connect', 'status'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_connector" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_connector" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -200,11 +202,12 @@ class ConnectorsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
+        _content_types_list = _params.get(
+            '_content_type',
             self.api_client.select_header_content_type(
                 ['application/x-www-form-urlencoded']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -212,7 +215,8 @@ class ConnectorsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/cc/api/connector/create', 'POST',
+            '/cc/api/connector/create',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -222,14 +226,15 @@ class ConnectorsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_connector(self, id : StrictStr, **kwargs) -> None:  # noqa: E501
+    def delete_connector(self, id: StrictStr, **kwargs) -> None:  # noqa: E501
         """Delete Connector  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -258,7 +263,8 @@ class ConnectorsApi:
         return self.delete_connector_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_connector_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_connector_with_http_info(self, id: StrictStr,
+                                        **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Connector  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -296,28 +302,17 @@ class ConnectorsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_connector" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_connector" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -327,7 +322,6 @@ class ConnectorsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -348,7 +342,8 @@ class ConnectorsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/cc/api/connector/delete/{id}', 'POST',
+            '/cc/api/connector/delete/{id}',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -358,14 +353,16 @@ class ConnectorsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def export_connector_config(self, id : StrictStr, **kwargs) -> None:  # noqa: E501
+    def export_connector_config(self, id: StrictStr,
+                                **kwargs) -> None:  # noqa: E501
         """Export Connector Config  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -391,10 +388,12 @@ class ConnectorsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the export_connector_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.export_connector_config_with_http_info(id, **kwargs)  # noqa: E501
+        return self.export_connector_config_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def export_connector_config_with_http_info(self, id : StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
+    def export_connector_config_with_http_info(
+            self, id: StrictStr, **kwargs) -> ApiResponse:  # noqa: E501
         """Export Connector Config  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -432,28 +431,17 @@ class ConnectorsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method export_connector_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method export_connector_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -463,7 +451,6 @@ class ConnectorsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -484,7 +471,8 @@ class ConnectorsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/cc/api/connector/export/{id}', 'GET',
+            '/cc/api/connector/export/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -494,14 +482,25 @@ class ConnectorsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def import_connector_config(self, id : StrictStr, file : Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="This is the connector config zip bundle which gets uploaded.")] = None, **kwargs) -> None:  # noqa: E501
+    def import_connector_config(
+            self,
+            id: StrictStr,
+            file:
+        Annotated[
+            Optional[Union[StrictBytes, StrictStr]],
+            Field(
+                description=
+                "This is the connector config zip bundle which gets uploaded."
+            )] = None,
+            **kwargs) -> None:  # noqa: E501
         """Import Connector Config  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -529,10 +528,21 @@ class ConnectorsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the import_connector_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.import_connector_config_with_http_info(id, file, **kwargs)  # noqa: E501
+        return self.import_connector_config_with_http_info(
+            id, file, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def import_connector_config_with_http_info(self, id : StrictStr, file : Annotated[Optional[Union[StrictBytes, StrictStr]], Field(description="This is the connector config zip bundle which gets uploaded.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def import_connector_config_with_http_info(
+            self,
+            id: StrictStr,
+            file:
+        Annotated[
+            Optional[Union[StrictBytes, StrictStr]],
+            Field(
+                description=
+                "This is the connector config zip bundle which gets uploaded."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Import Connector Config  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -572,29 +582,17 @@ class ConnectorsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'file'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'file']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method import_connector_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method import_connector_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -604,7 +602,6 @@ class ConnectorsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -623,11 +620,12 @@ class ConnectorsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['multipart/form-data']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['multipart/form-data'
+                                                        ]))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -635,7 +633,8 @@ class ConnectorsApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/cc/api/connector/import/{id}', 'POST',
+            '/cc/api/connector/import/{id}',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -645,14 +644,16 @@ class ConnectorsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_connectors(self, **kwargs) -> ListConnectors200Response:  # noqa: E501
+    def list_connectors(self,
+                        **kwargs) -> ListConnectors200Response:  # noqa: E501
         """List Connectors  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -679,7 +680,8 @@ class ConnectorsApi:
         return self.list_connectors_with_http_info(**kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_connectors_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_connectors_with_http_info(self,
+                                       **kwargs) -> ApiResponse:  # noqa: E501
         """List Connectors  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -715,27 +717,17 @@ class ConnectorsApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_connectors" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_connectors" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -765,7 +757,8 @@ class ConnectorsApi:
         }
 
         return self.api_client.call_api(
-            '/cc/api/connector/list', 'GET',
+            '/cc/api/connector/list',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -775,7 +768,8 @@ class ConnectorsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.requested_item_status_request_state import RequestedItemStatusRequestState  # noqa: E501
+from sailpoint.v3.models.requested_item_status_request_state import RequestedItemStatusRequestState  # noqa: E501
+
 
 class TestRequestedItemStatusRequestState(unittest.TestCase):
     """RequestedItemStatusRequestState unit test stubs"""
@@ -29,6 +29,7 @@ class TestRequestedItemStatusRequestState(unittest.TestCase):
     def testRequestedItemStatusRequestState(self):
         """Test RequestedItemStatusRequestState"""
         # inst = RequestedItemStatusRequestState()
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,23 +19,45 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-from v3.models.non_employee_schema_attribute_type import NonEmployeeSchemaAttributeType
+from sailpoint.v3.models.non_employee_schema_attribute_type import NonEmployeeSchemaAttributeType
+
 
 class NonEmployeeSchemaAttribute(BaseModel):
     """
     NonEmployeeSchemaAttribute
     """
     id: Optional[StrictStr] = Field(None, description="Schema Attribute Id")
-    system: Optional[StrictBool] = Field(None, description="True if this schema attribute is mandatory on all non-employees sources.")
-    modified: Optional[datetime] = Field(None, description="When the schema attribute was last modified.")
-    created: Optional[datetime] = Field(None, description="When the schema attribute was created.")
+    system: Optional[StrictBool] = Field(
+        None,
+        description=
+        "True if this schema attribute is mandatory on all non-employees sources."
+    )
+    modified: Optional[datetime] = Field(
+        None, description="When the schema attribute was last modified.")
+    created: Optional[datetime] = Field(
+        None, description="When the schema attribute was created.")
     type: NonEmployeeSchemaAttributeType = Field(...)
-    label: StrictStr = Field(..., description="Label displayed on the UI for this schema attribute.")
-    technical_name: StrictStr = Field(..., alias="technicalName", description="The technical name of the attribute. Must be unique per source.")
-    help_text: Optional[StrictStr] = Field(None, alias="helpText", description="help text displayed by UI.")
-    placeholder: Optional[StrictStr] = Field(None, description="Hint text that fills UI box.")
-    required: Optional[StrictBool] = Field(None, description="If true, the schema attribute is required for all non-employees in the source")
-    __properties = ["id", "system", "modified", "created", "type", "label", "technicalName", "helpText", "placeholder", "required"]
+    label: StrictStr = Field(
+        ...,
+        description="Label displayed on the UI for this schema attribute.")
+    technical_name: StrictStr = Field(
+        ...,
+        alias="technicalName",
+        description=
+        "The technical name of the attribute. Must be unique per source.")
+    help_text: Optional[StrictStr] = Field(
+        None, alias="helpText", description="help text displayed by UI.")
+    placeholder: Optional[StrictStr] = Field(
+        None, description="Hint text that fills UI box.")
+    required: Optional[StrictBool] = Field(
+        None,
+        description=
+        "If true, the schema attribute is required for all non-employees in the source"
+    )
+    __properties = [
+        "id", "system", "modified", "created", "type", "label",
+        "technicalName", "helpText", "placeholder", "required"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -58,10 +79,7 @@ class NonEmployeeSchemaAttribute(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -74,17 +92,25 @@ class NonEmployeeSchemaAttribute(BaseModel):
             return NonEmployeeSchemaAttribute.parse_obj(obj)
 
         _obj = NonEmployeeSchemaAttribute.parse_obj({
-            "id": obj.get("id"),
-            "system": obj.get("system"),
-            "modified": obj.get("modified"),
-            "created": obj.get("created"),
-            "type": obj.get("type"),
-            "label": obj.get("label"),
-            "technical_name": obj.get("technicalName"),
-            "help_text": obj.get("helpText"),
-            "placeholder": obj.get("placeholder"),
-            "required": obj.get("required")
+            "id":
+            obj.get("id"),
+            "system":
+            obj.get("system"),
+            "modified":
+            obj.get("modified"),
+            "created":
+            obj.get("created"),
+            "type":
+            obj.get("type"),
+            "label":
+            obj.get("label"),
+            "technical_name":
+            obj.get("technicalName"),
+            "help_text":
+            obj.get("helpText"),
+            "placeholder":
+            obj.get("placeholder"),
+            "required":
+            obj.get("required")
         })
         return _obj
-
-

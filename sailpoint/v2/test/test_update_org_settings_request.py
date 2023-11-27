@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v2.models.update_org_settings_request import UpdateOrgSettingsRequest  # noqa: E501
+from sailpoint.v2.models.update_org_settings_request import UpdateOrgSettingsRequest  # noqa: E501
+
 
 class TestUpdateOrgSettingsRequest(unittest.TestCase):
     """UpdateOrgSettingsRequest unit test stubs"""
@@ -66,7 +66,7 @@ class TestUpdateOrgSettingsRequest(unittest.TestCase):
                 username_empty_text = '',
                 username_label = '',
                 white_list = True,
-                approval_config = v2.models.get_org_settings_200_response_approval_config.getOrgSettings_200_response_approvalConfig(
+                approval_config = sailpoint.v2.models.get_org_settings_200_response_approval_config.getOrgSettings_200_response_approvalConfig(
                     days_till_escalation = 56, 
                     days_between_reminders = 56, 
                     max_reminders = 56, 
@@ -81,6 +81,7 @@ class TestUpdateOrgSettingsRequest(unittest.TestCase):
         """Test UpdateOrgSettingsRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

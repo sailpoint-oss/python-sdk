@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.form_instance_response import FormInstanceResponse
+from sailpoint.beta.models.form_instance_response import FormInstanceResponse
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,23 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class ProvisioningCompletedRecipient(BaseModel):
     """
     Provisioning recpient.  # noqa: E501
     """
-    type: StrictStr = Field(..., description="Provisioning recipient DTO type.")
-    id: StrictStr = Field(..., description="Provisioning recipient's identity ID.")
-    name: StrictStr = Field(..., description="Provisioning recipient's display name.")
+    type: StrictStr = Field(...,
+                            description="Provisioning recipient DTO type.")
+    id: StrictStr = Field(...,
+                          description="Provisioning recipient's identity ID.")
+    name: StrictStr = Field(
+        ..., description="Provisioning recipient's display name.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -57,10 +58,7 @@ class ProvisioningCompletedRecipient(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -78,5 +76,3 @@ class ProvisioningCompletedRecipient(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

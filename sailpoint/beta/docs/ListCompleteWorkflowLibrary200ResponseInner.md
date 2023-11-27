@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
+from sailpoint.beta.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
 
 # TODO update the JSON string below
 json = "{}"

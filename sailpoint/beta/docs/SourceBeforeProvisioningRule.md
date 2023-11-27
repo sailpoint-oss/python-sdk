@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.source_before_provisioning_rule import SourceBeforeProvisioningRule
+from sailpoint.beta.models.source_before_provisioning_rule import SourceBeforeProvisioningRule
 
 # TODO update the JSON string below
 json = "{}"

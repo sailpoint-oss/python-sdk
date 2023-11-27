@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.access_profile_document import AccessProfileDocument
+from sailpoint.v3.models.access_profile_document import AccessProfileDocument
 
 # TODO update the JSON string below
 json = "{}"

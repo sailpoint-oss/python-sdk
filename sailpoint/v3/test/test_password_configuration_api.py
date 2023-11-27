@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from v3.api.password_configuration_api import PasswordConfigurationApi  # noqa: E501
+from sailpoint.v3.api.password_configuration_api import PasswordConfigurationApi  # noqa: E501
 
 
 class TestPasswordConfigurationApi(unittest.TestCase):

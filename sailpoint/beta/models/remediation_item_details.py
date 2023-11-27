@@ -11,30 +11,58 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class RemediationItemDetails(BaseModel):
     """
     RemediationItemDetails
     """
-    id: Optional[StrictStr] = Field(None, description="The ID of the certification")
-    target_id: Optional[StrictStr] = Field(None, alias="targetId", description="The ID of the certification target")
-    target_name: Optional[StrictStr] = Field(None, alias="targetName", description="The name of the certification target")
-    target_display_name: Optional[StrictStr] = Field(None, alias="targetDisplayName", description="The display name of the certification target")
-    application_name: Optional[StrictStr] = Field(None, alias="applicationName", description="The name of the application/source")
-    attribute_name: Optional[StrictStr] = Field(None, alias="attributeName", description="The name of the attribute being certified")
-    attribute_operation: Optional[StrictStr] = Field(None, alias="attributeOperation", description="The operation of the certification on the attribute")
-    attribute_value: Optional[StrictStr] = Field(None, alias="attributeValue", description="The value of the attribute being certified")
-    native_identity: Optional[StrictStr] = Field(None, alias="nativeIdentity", description="The native identity of the target")
-    __properties = ["id", "targetId", "targetName", "targetDisplayName", "applicationName", "attributeName", "attributeOperation", "attributeValue", "nativeIdentity"]
+    id: Optional[StrictStr] = Field(None,
+                                    description="The ID of the certification")
+    target_id: Optional[StrictStr] = Field(
+        None,
+        alias="targetId",
+        description="The ID of the certification target")
+    target_name: Optional[StrictStr] = Field(
+        None,
+        alias="targetName",
+        description="The name of the certification target")
+    target_display_name: Optional[StrictStr] = Field(
+        None,
+        alias="targetDisplayName",
+        description="The display name of the certification target")
+    application_name: Optional[StrictStr] = Field(
+        None,
+        alias="applicationName",
+        description="The name of the application/source")
+    attribute_name: Optional[StrictStr] = Field(
+        None,
+        alias="attributeName",
+        description="The name of the attribute being certified")
+    attribute_operation: Optional[StrictStr] = Field(
+        None,
+        alias="attributeOperation",
+        description="The operation of the certification on the attribute")
+    attribute_value: Optional[StrictStr] = Field(
+        None,
+        alias="attributeValue",
+        description="The value of the attribute being certified")
+    native_identity: Optional[StrictStr] = Field(
+        None,
+        alias="nativeIdentity",
+        description="The native identity of the target")
+    __properties = [
+        "id", "targetId", "targetName", "targetDisplayName", "applicationName",
+        "attributeName", "attributeOperation", "attributeValue",
+        "nativeIdentity"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -56,10 +84,7 @@ class RemediationItemDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -72,16 +97,23 @@ class RemediationItemDetails(BaseModel):
             return RemediationItemDetails.parse_obj(obj)
 
         _obj = RemediationItemDetails.parse_obj({
-            "id": obj.get("id"),
-            "target_id": obj.get("targetId"),
-            "target_name": obj.get("targetName"),
-            "target_display_name": obj.get("targetDisplayName"),
-            "application_name": obj.get("applicationName"),
-            "attribute_name": obj.get("attributeName"),
-            "attribute_operation": obj.get("attributeOperation"),
-            "attribute_value": obj.get("attributeValue"),
-            "native_identity": obj.get("nativeIdentity")
+            "id":
+            obj.get("id"),
+            "target_id":
+            obj.get("targetId"),
+            "target_name":
+            obj.get("targetName"),
+            "target_display_name":
+            obj.get("targetDisplayName"),
+            "application_name":
+            obj.get("applicationName"),
+            "attribute_name":
+            obj.get("attributeName"),
+            "attribute_operation":
+            obj.get("attributeOperation"),
+            "attribute_value":
+            obj.get("attributeValue"),
+            "native_identity":
+            obj.get("nativeIdentity")
         })
         return _obj
-
-

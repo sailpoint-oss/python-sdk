@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.sp_config_url import SpConfigUrl  # noqa: E501
+from sailpoint.beta.models.sp_config_url import SpConfigUrl  # noqa: E501
+
 
 class TestSpConfigUrl(unittest.TestCase):
     """SpConfigUrl unit test stubs"""
@@ -37,7 +37,7 @@ class TestSpConfigUrl(unittest.TestCase):
         if include_optional:
             return SpConfigUrl(
                 url = 'ets://trigger-subscriptions/$id',
-                query = beta.models.query.query()
+                query = sailpoint.beta.models.query.query()
             )
         else:
             return SpConfigUrl(
@@ -48,6 +48,7 @@ class TestSpConfigUrl(unittest.TestCase):
         """Test SpConfigUrl"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

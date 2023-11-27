@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.sod_policy_api import SODPolicyApi  # noqa: E501
+from sailpoint.beta.api.sod_policy_api import SODPolicyApi  # noqa: E501
 
 
 class TestSODPolicyApi(unittest.TestCase):

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.reassignment_reference import ReassignmentReference  # noqa: E501
+from sailpoint.v3.models.reassignment_reference import ReassignmentReference  # noqa: E501
+
 
 class TestReassignmentReference(unittest.TestCase):
     """ReassignmentReference unit test stubs"""
@@ -50,6 +50,7 @@ class TestReassignmentReference(unittest.TestCase):
         """Test ReassignmentReference"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

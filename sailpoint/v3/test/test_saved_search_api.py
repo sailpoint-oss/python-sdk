@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from v3.api.saved_search_api import SavedSearchApi  # noqa: E501
+from sailpoint.v3.api.saved_search_api import SavedSearchApi  # noqa: E501
 
 
 class TestSavedSearchApi(unittest.TestCase):

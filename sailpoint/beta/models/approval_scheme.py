@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class ApprovalScheme(str, Enum):
     """
     Describes the individual or group that is responsible for an approval step.
     """
-
     """
     allowed enum values
     """
@@ -41,5 +36,3 @@ class ApprovalScheme(str, Enum):
     def from_json(cls, json_str: str) -> ApprovalScheme:
         """Create an instance of ApprovalScheme from a JSON string"""
         return ApprovalScheme(json.loads(json_str))
-
-

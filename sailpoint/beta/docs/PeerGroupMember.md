@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.peer_group_member import PeerGroupMember
+from sailpoint.beta.models.peer_group_member import PeerGroupMember
 
 # TODO update the JSON string below
 json = "{}"

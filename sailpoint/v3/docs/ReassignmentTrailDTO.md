@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.reassignment_trail_dto import ReassignmentTrailDTO
+from sailpoint.v3.models.reassignment_trail_dto import ReassignmentTrailDTO
 
 # TODO update the JSON string below
 json = "{}"

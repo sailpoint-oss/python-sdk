@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.managed_cluster_attributes import ManagedClusterAttributes
+from sailpoint.beta.models.managed_cluster_attributes import ManagedClusterAttributes
 
 # TODO update the JSON string below
 json = "{}"

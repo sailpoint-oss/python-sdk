@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.identity_reference import IdentityReference
+from sailpoint.v3.models.identity_reference import IdentityReference
 
 # TODO update the JSON string below
 json = "{}"

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.workflow_library_trigger import WorkflowLibraryTrigger
+from sailpoint.beta.models.workflow_library_trigger import WorkflowLibraryTrigger
 
 # TODO update the JSON string below
 json = "{}"

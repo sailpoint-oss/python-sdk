@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.exception_access_criteria import ExceptionAccessCriteria
+from sailpoint.v3.models.exception_access_criteria import ExceptionAccessCriteria
 
 # TODO update the JSON string below
 json = "{}"

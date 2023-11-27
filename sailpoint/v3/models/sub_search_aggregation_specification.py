@@ -11,20 +11,19 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field
-from v3.models.aggregations import Aggregations
-from v3.models.bucket_aggregation import BucketAggregation
-from v3.models.filter_aggregation import FilterAggregation
-from v3.models.metric_aggregation import MetricAggregation
-from v3.models.nested_aggregation import NestedAggregation
+from sailpoint.v3.models.aggregations import Aggregations
+from sailpoint.v3.models.bucket_aggregation import BucketAggregation
+from sailpoint.v3.models.filter_aggregation import FilterAggregation
+from sailpoint.v3.models.metric_aggregation import MetricAggregation
+from sailpoint.v3.models.nested_aggregation import NestedAggregation
+
 
 class SubSearchAggregationSpecification(BaseModel):
     """
@@ -34,7 +33,8 @@ class SubSearchAggregationSpecification(BaseModel):
     metric: Optional[MetricAggregation] = None
     filter: Optional[FilterAggregation] = None
     bucket: Optional[BucketAggregation] = None
-    sub_aggregation: Optional[Aggregations] = Field(None, alias="subAggregation")
+    sub_aggregation: Optional[Aggregations] = Field(None,
+                                                    alias="subAggregation")
     __properties = ["nested", "metric", "filter", "bucket", "subAggregation"]
 
     class Config:
@@ -57,10 +57,7 @@ class SubSearchAggregationSpecification(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of nested
         if self.nested:
             _dict['nested'] = self.nested.to_dict()
@@ -88,12 +85,20 @@ class SubSearchAggregationSpecification(BaseModel):
             return SubSearchAggregationSpecification.parse_obj(obj)
 
         _obj = SubSearchAggregationSpecification.parse_obj({
-            "nested": NestedAggregation.from_dict(obj.get("nested")) if obj.get("nested") is not None else None,
-            "metric": MetricAggregation.from_dict(obj.get("metric")) if obj.get("metric") is not None else None,
-            "filter": FilterAggregation.from_dict(obj.get("filter")) if obj.get("filter") is not None else None,
-            "bucket": BucketAggregation.from_dict(obj.get("bucket")) if obj.get("bucket") is not None else None,
-            "sub_aggregation": Aggregations.from_dict(obj.get("subAggregation")) if obj.get("subAggregation") is not None else None
+            "nested":
+            NestedAggregation.from_dict(obj.get("nested"))
+            if obj.get("nested") is not None else None,
+            "metric":
+            MetricAggregation.from_dict(obj.get("metric"))
+            if obj.get("metric") is not None else None,
+            "filter":
+            FilterAggregation.from_dict(obj.get("filter"))
+            if obj.get("filter") is not None else None,
+            "bucket":
+            BucketAggregation.from_dict(obj.get("bucket"))
+            if obj.get("bucket") is not None else None,
+            "sub_aggregation":
+            Aggregations.from_dict(obj.get("subAggregation"))
+            if obj.get("subAggregation") is not None else None
         })
         return _obj
-
-

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,26 +19,35 @@ import json
 from datetime import datetime
 from typing import Any, Dict
 from pydantic import BaseModel, Field, validator
-from beta.models.va_cluster_status_change_event_application import VAClusterStatusChangeEventApplication
-from beta.models.va_cluster_status_change_event_health_check_result import VAClusterStatusChangeEventHealthCheckResult
-from beta.models.va_cluster_status_change_event_previous_health_check_result import VAClusterStatusChangeEventPreviousHealthCheckResult
+from sailpoint.beta.models.va_cluster_status_change_event_application import VAClusterStatusChangeEventApplication
+from sailpoint.beta.models.va_cluster_status_change_event_health_check_result import VAClusterStatusChangeEventHealthCheckResult
+from sailpoint.beta.models.va_cluster_status_change_event_previous_health_check_result import VAClusterStatusChangeEventPreviousHealthCheckResult
+
 
 class VAClusterStatusChangeEvent(BaseModel):
     """
     VAClusterStatusChangeEvent
     """
-    created: datetime = Field(..., description="The date and time the status change occurred.")
-    type: Dict[str, Any] = Field(..., description="The type of the object that initiated this event.")
+    created: datetime = Field(
+        ..., description="The date and time the status change occurred.")
+    type: Dict[str, Any] = Field(
+        ..., description="The type of the object that initiated this event.")
     application: VAClusterStatusChangeEventApplication = Field(...)
-    health_check_result: VAClusterStatusChangeEventHealthCheckResult = Field(..., alias="healthCheckResult")
-    previous_health_check_result: VAClusterStatusChangeEventPreviousHealthCheckResult = Field(..., alias="previousHealthCheckResult")
-    __properties = ["created", "type", "application", "healthCheckResult", "previousHealthCheckResult"]
+    health_check_result: VAClusterStatusChangeEventHealthCheckResult = Field(
+        ..., alias="healthCheckResult")
+    previous_health_check_result: VAClusterStatusChangeEventPreviousHealthCheckResult = Field(
+        ..., alias="previousHealthCheckResult")
+    __properties = [
+        "created", "type", "application", "healthCheckResult",
+        "previousHealthCheckResult"
+    ]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('SOURCE', 'CLUSTER'):
-            raise ValueError("must be one of enum values ('SOURCE', 'CLUSTER')")
+            raise ValueError(
+                "must be one of enum values ('SOURCE', 'CLUSTER')")
         return value
 
     class Config:
@@ -62,10 +70,7 @@ class VAClusterStatusChangeEvent(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of application
         if self.application:
             _dict['application'] = self.application.to_dict()
@@ -74,7 +79,9 @@ class VAClusterStatusChangeEvent(BaseModel):
             _dict['healthCheckResult'] = self.health_check_result.to_dict()
         # override the default output from pydantic by calling `to_dict()` of previous_health_check_result
         if self.previous_health_check_result:
-            _dict['previousHealthCheckResult'] = self.previous_health_check_result.to_dict()
+            _dict[
+                'previousHealthCheckResult'] = self.previous_health_check_result.to_dict(
+                )
         return _dict
 
     @classmethod
@@ -87,12 +94,21 @@ class VAClusterStatusChangeEvent(BaseModel):
             return VAClusterStatusChangeEvent.parse_obj(obj)
 
         _obj = VAClusterStatusChangeEvent.parse_obj({
-            "created": obj.get("created"),
-            "type": obj.get("type"),
-            "application": VAClusterStatusChangeEventApplication.from_dict(obj.get("application")) if obj.get("application") is not None else None,
-            "health_check_result": VAClusterStatusChangeEventHealthCheckResult.from_dict(obj.get("healthCheckResult")) if obj.get("healthCheckResult") is not None else None,
-            "previous_health_check_result": VAClusterStatusChangeEventPreviousHealthCheckResult.from_dict(obj.get("previousHealthCheckResult")) if obj.get("previousHealthCheckResult") is not None else None
+            "created":
+            obj.get("created"),
+            "type":
+            obj.get("type"),
+            "application":
+            VAClusterStatusChangeEventApplication.from_dict(
+                obj.get("application"))
+            if obj.get("application") is not None else None,
+            "health_check_result":
+            VAClusterStatusChangeEventHealthCheckResult.from_dict(
+                obj.get("healthCheckResult"))
+            if obj.get("healthCheckResult") is not None else None,
+            "previous_health_check_result":
+            VAClusterStatusChangeEventPreviousHealthCheckResult.from_dict(
+                obj.get("previousHealthCheckResult"))
+            if obj.get("previousHealthCheckResult") is not None else None
         })
         return _obj
-
-

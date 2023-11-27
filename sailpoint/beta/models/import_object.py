@@ -11,23 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class ImportObject(BaseModel):
     """
     Object created or updated by import.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="DTO type of object created or updated by import.")
-    id: Optional[StrictStr] = Field(None, description="ID of object created or updated by import.")
-    name: Optional[StrictStr] = Field(None, description="Display name of object created or updated by import.")
+    type: Optional[StrictStr] = Field(
+        None, description="DTO type of object created or updated by import.")
+    id: Optional[StrictStr] = Field(
+        None, description="ID of object created or updated by import.")
+    name: Optional[StrictStr] = Field(
+        None,
+        description="Display name of object created or updated by import.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -36,8 +39,11 @@ class ImportObject(BaseModel):
         if value is None:
             return value
 
-        if value not in ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION'):
-            raise ValueError("must be one of enum values ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')")
+        if value not in ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE',
+                         'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION'):
+            raise ValueError(
+                "must be one of enum values ('IDENTITY_OBJECT_CONFIG', 'IDENTITY_PROFILE', 'RULE', 'SOURCE', 'TRANSFORM', 'TRIGGER_SUBSCRIPTION')"
+            )
         return value
 
     class Config:
@@ -60,10 +66,7 @@ class ImportObject(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,5 +84,3 @@ class ImportObject(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

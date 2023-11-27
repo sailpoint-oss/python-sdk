@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -21,15 +20,13 @@ from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 from pydantic import Field, StrictStr, conlist
 
-from v3.models.auth_user import AuthUser
-from v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.auth_user import AuthUser
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 
-from v3.api_client import ApiClient
-from v3.api_response import ApiResponse
-from v3.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.v3.api_client import ApiClient
+from sailpoint.v3.api_response import ApiResponse
+from sailpoint.v3.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class AuthUserApi:
@@ -45,7 +42,10 @@ class AuthUserApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_auth_user(self, id : Annotated[StrictStr, Field(..., description="Identity ID")], **kwargs) -> AuthUser:  # noqa: E501
+    def get_auth_user(self,
+                      id: Annotated[StrictStr,
+                                    Field(..., description="Identity ID")],
+                      **kwargs) -> AuthUser:  # noqa: E501
         """Auth User Details  # noqa: E501
 
         This API returns the specified user's authentication system details. Requires security scope of:  'sp:auth-user:read'  # noqa: E501
@@ -75,7 +75,9 @@ class AuthUserApi:
         return self.get_auth_user_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_auth_user_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Identity ID")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_auth_user_with_http_info(self, id: Annotated[
+        StrictStr, Field(..., description="Identity ID")],
+                                     **kwargs) -> ApiResponse:  # noqa: E501
         """Auth User Details  # noqa: E501
 
         This API returns the specified user's authentication system details. Requires security scope of:  'sp:auth-user:read'  # noqa: E501
@@ -114,28 +116,17 @@ class AuthUserApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_auth_user" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_auth_user" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -145,7 +136,6 @@ class AuthUserApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -174,7 +164,8 @@ class AuthUserApi:
         }
 
         return self.api_client.call_api(
-            '/auth-users/{id}', 'GET',
+            '/auth-users/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -184,14 +175,23 @@ class AuthUserApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_auth_user(self, id : Annotated[StrictStr, Field(..., description="Identity ID")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   *   \"capabilities\"  A list of valid capabilities can be found using the GET ams/v3/authorization/authorization-capabilities/ endpoint. Capabilities can only be patched if they are administrator assignable, as indicated by the 'adminAssignable' field from the output of list authorization-capabilities. Capabilities that have a legacy group ('legacyGroup' field) need to be patched using the legacyGroup name (e.g. 'ORG_ADMIN'). Capabilities that are adminAssignable but do not have a legacyGroup can be patched using the ams id (e.g. 'cam:new-role').  A 400.1.1 Illegal update attempt detail code indicates that you attempted to PATCH a field that is not allowed.  Requires security scope of 'sp:auth-user:update' ")], **kwargs) -> AuthUser:  # noqa: E501
+    def patch_auth_user(self, id: Annotated[
+        StrictStr,
+        Field(..., description="Identity ID")], json_patch_operation: Annotated[
+            conlist(JsonPatchOperation),
+            Field(
+                ...,
+                description=
+                "A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   *   \"capabilities\"  A list of valid capabilities can be found using the GET ams/v3/authorization/authorization-capabilities/ endpoint. Capabilities can only be patched if they are administrator assignable, as indicated by the 'adminAssignable' field from the output of list authorization-capabilities. Capabilities that have a legacy group ('legacyGroup' field) need to be patched using the legacyGroup name (e.g. 'ORG_ADMIN'). Capabilities that are adminAssignable but do not have a legacyGroup can be patched using the ams id (e.g. 'cam:new-role').  A 400.1.1 Illegal update attempt detail code indicates that you attempted to PATCH a field that is not allowed.  Requires security scope of 'sp:auth-user:update' "
+            )], **kwargs) -> AuthUser:  # noqa: E501
         """Auth User Update  # noqa: E501
 
         Update an existing user in the authentication system with a PATCH request.  # noqa: E501
@@ -220,10 +220,19 @@ class AuthUserApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_auth_user_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_auth_user_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
+        return self.patch_auth_user_with_http_info(id, json_patch_operation,
+                                                   **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_auth_user_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Identity ID")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   *   \"capabilities\"  A list of valid capabilities can be found using the GET ams/v3/authorization/authorization-capabilities/ endpoint. Capabilities can only be patched if they are administrator assignable, as indicated by the 'adminAssignable' field from the output of list authorization-capabilities. Capabilities that have a legacy group ('legacyGroup' field) need to be patched using the legacyGroup name (e.g. 'ORG_ADMIN'). Capabilities that are adminAssignable but do not have a legacyGroup can be patched using the ams id (e.g. 'cam:new-role').  A 400.1.1 Illegal update attempt detail code indicates that you attempted to PATCH a field that is not allowed.  Requires security scope of 'sp:auth-user:update' ")], **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_auth_user_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(..., description="Identity ID")], json_patch_operation: Annotated[
+            conlist(JsonPatchOperation),
+            Field(
+                ...,
+                description=
+                "A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   *   \"capabilities\"  A list of valid capabilities can be found using the GET ams/v3/authorization/authorization-capabilities/ endpoint. Capabilities can only be patched if they are administrator assignable, as indicated by the 'adminAssignable' field from the output of list authorization-capabilities. Capabilities that have a legacy group ('legacyGroup' field) need to be patched using the legacyGroup name (e.g. 'ORG_ADMIN'). Capabilities that are adminAssignable but do not have a legacyGroup can be patched using the ams id (e.g. 'cam:new-role').  A 400.1.1 Illegal update attempt detail code indicates that you attempted to PATCH a field that is not allowed.  Requires security scope of 'sp:auth-user:update' "
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Auth User Update  # noqa: E501
 
         Update an existing user in the authentication system with a PATCH request.  # noqa: E501
@@ -264,29 +273,17 @@ class AuthUserApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'json_patch_operation'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'json_patch_operation']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_auth_user" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method patch_auth_user" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -296,7 +293,6 @@ class AuthUserApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -315,11 +311,12 @@ class AuthUserApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
+        _content_types_list = _params.get(
+            '_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -335,7 +332,8 @@ class AuthUserApi:
         }
 
         return self.api_client.call_api(
-            '/auth-users/{id}', 'PATCH',
+            '/auth-users/{id}',
+            'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -345,7 +343,8 @@ class AuthUserApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

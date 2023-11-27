@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.work_items import WorkItems
+from sailpoint.beta.models.work_items import WorkItems
 
 # TODO update the JSON string below
 json = "{}"

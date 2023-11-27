@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.role_insights_entitlement_changes import RoleInsightsEntitlementChanges  # noqa: E501
+from sailpoint.beta.models.role_insights_entitlement_changes import RoleInsightsEntitlementChanges  # noqa: E501
+
 
 class TestRoleInsightsEntitlementChanges(unittest.TestCase):
     """RoleInsightsEntitlementChanges unit test stubs"""
@@ -26,7 +26,8 @@ class TestRoleInsightsEntitlementChanges(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RoleInsightsEntitlementChanges:
+    def make_instance(self,
+                      include_optional) -> RoleInsightsEntitlementChanges:
         """Test RoleInsightsEntitlementChanges
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -42,7 +43,7 @@ class TestRoleInsightsEntitlementChanges(unittest.TestCase):
                 attribute = '',
                 value = '',
                 source = '',
-                insight = beta.models.role_insights_insight.RoleInsightsInsight(
+                insight = sailpoint.beta.models.role_insights_insight.RoleInsightsInsight(
                     type = 'ADD', 
                     identities_with_access = 850, 
                     identities_impacted = 150, 
@@ -57,6 +58,7 @@ class TestRoleInsightsEntitlementChanges(unittest.TestCase):
         """Test RoleInsightsEntitlementChanges"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

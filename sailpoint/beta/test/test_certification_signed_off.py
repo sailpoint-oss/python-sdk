@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.certification_signed_off import CertificationSignedOff  # noqa: E501
+from sailpoint.beta.models.certification_signed_off import CertificationSignedOff  # noqa: E501
+
 
 class TestCertificationSignedOff(unittest.TestCase):
     """CertificationSignedOff unit test stubs"""
@@ -36,7 +36,7 @@ class TestCertificationSignedOff(unittest.TestCase):
         model = CertificationSignedOff()  # noqa: E501
         if include_optional:
             return CertificationSignedOff(
-                certification = beta.models.certification_signed_off_certification.CertificationSignedOff_certification(
+                certification = sailpoint.beta.models.certification_signed_off_certification.CertificationSignedOff_certification(
                     id = '2c91808576f886190176f88caf0d0067', 
                     name = 'Manager Access Review for Alice Baker', 
                     created = '2020-02-16T03:04:45.815Z', 
@@ -44,7 +44,7 @@ class TestCertificationSignedOff(unittest.TestCase):
             )
         else:
             return CertificationSignedOff(
-                certification = beta.models.certification_signed_off_certification.CertificationSignedOff_certification(
+                certification = sailpoint.beta.models.certification_signed_off_certification.CertificationSignedOff_certification(
                     id = '2c91808576f886190176f88caf0d0067', 
                     name = 'Manager Access Review for Alice Baker', 
                     created = '2020-02-16T03:04:45.815Z', 
@@ -56,6 +56,7 @@ class TestCertificationSignedOff(unittest.TestCase):
         """Test CertificationSignedOff"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

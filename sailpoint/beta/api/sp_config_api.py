@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,19 +22,17 @@ from pydantic import Field, StrictBool, StrictBytes, StrictStr
 
 from typing import List, Optional, Union
 
-from beta.models.export_payload import ExportPayload
-from beta.models.import_options import ImportOptions
-from beta.models.sp_config_export_results import SpConfigExportResults
-from beta.models.sp_config_import_results import SpConfigImportResults
-from beta.models.sp_config_job import SpConfigJob
-from beta.models.sp_config_object import SpConfigObject
+from sailpoint.beta.models.export_payload import ExportPayload
+from sailpoint.beta.models.import_options import ImportOptions
+from sailpoint.beta.models.sp_config_export_results import SpConfigExportResults
+from sailpoint.beta.models.sp_config_import_results import SpConfigImportResults
+from sailpoint.beta.models.sp_config_job import SpConfigJob
+from sailpoint.beta.models.sp_config_object import SpConfigObject
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class SPConfigApi:
@@ -51,7 +48,13 @@ class SPConfigApi:
         self.api_client = api_client
 
     @validate_arguments
-    def export_sp_config(self, export_payload : Annotated[ExportPayload, Field(..., description="Export options control what will be included in the export.")], **kwargs) -> SpConfigJob:  # noqa: E501
+    def export_sp_config(self, export_payload: Annotated[
+        ExportPayload,
+        Field(
+            ...,
+            description=
+            "Export options control what will be included in the export.")],
+                         **kwargs) -> SpConfigJob:  # noqa: E501
         """Initiates configuration objects export job  # noqa: E501
 
         This post will export objects from the tenant to a JSON configuration file. For more information about the object types that currently support export functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).  # noqa: E501
@@ -78,10 +81,17 @@ class SPConfigApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the export_sp_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.export_sp_config_with_http_info(export_payload, **kwargs)  # noqa: E501
+        return self.export_sp_config_with_http_info(export_payload,
+                                                    **kwargs)  # noqa: E501
 
     @validate_arguments
-    def export_sp_config_with_http_info(self, export_payload : Annotated[ExportPayload, Field(..., description="Export options control what will be included in the export.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def export_sp_config_with_http_info(self, export_payload: Annotated[
+        ExportPayload,
+        Field(
+            ...,
+            description=
+            "Export options control what will be included in the export.")],
+                                        **kwargs) -> ApiResponse:  # noqa: E501
         """Initiates configuration objects export job  # noqa: E501
 
         This post will export objects from the tenant to a JSON configuration file. For more information about the object types that currently support export functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects).  # noqa: E501
@@ -120,28 +130,17 @@ class SPConfigApi:
 
         _params = locals()
 
-        _all_params = [
-            'export_payload'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['export_payload']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method export_sp_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method export_sp_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -167,11 +166,11 @@ class SPConfigApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -187,7 +186,8 @@ class SPConfigApi:
         }
 
         return self.api_client.call_api(
-            '/sp-config/export', 'POST',
+            '/sp-config/export',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -197,14 +197,21 @@ class SPConfigApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_sp_config_export(self, id : Annotated[StrictStr, Field(..., description="The ID of the export job whose results will be downloaded.")], **kwargs) -> SpConfigExportResults:  # noqa: E501
+    def get_sp_config_export(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The ID of the export job whose results will be downloaded.")],
+                             **kwargs) -> SpConfigExportResults:  # noqa: E501
         """Download export job result.  # noqa: E501
 
         This endpoint gets the export file resulting from the export job with the requested `id` and downloads it to a file. The request will need one of the following security scopes: - sp:config:read - sp:config:manage  # noqa: E501
@@ -231,10 +238,18 @@ class SPConfigApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_sp_config_export_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_sp_config_export_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_sp_config_export_with_http_info(id,
+                                                        **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_sp_config_export_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the export job whose results will be downloaded.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_sp_config_export_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The ID of the export job whose results will be downloaded.")],
+                                            **kwargs
+                                            ) -> ApiResponse:  # noqa: E501
         """Download export job result.  # noqa: E501
 
         This endpoint gets the export file resulting from the export job with the requested `id` and downloads it to a file. The request will need one of the following security scopes: - sp:config:read - sp:config:manage  # noqa: E501
@@ -273,28 +288,17 @@ class SPConfigApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_sp_config_export" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_sp_config_export" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -304,7 +308,6 @@ class SPConfigApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -333,7 +336,8 @@ class SPConfigApi:
         }
 
         return self.api_client.call_api(
-            '/sp-config/export/{id}/download', 'GET',
+            '/sp-config/export/{id}/download',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -343,14 +347,21 @@ class SPConfigApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_sp_config_export_status(self, id : Annotated[StrictStr, Field(..., description="The ID of the export job whose status will be returned.")], **kwargs) -> SpConfigJob:  # noqa: E501
+    def get_sp_config_export_status(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The ID of the export job whose status will be returned.")],
+                                    **kwargs) -> SpConfigJob:  # noqa: E501
         """Get export job status  # noqa: E501
 
         This gets the status of the export job identified by the `id` parameter. The request will need one of the following security scopes: - sp:config:read - sp:config:manage  # noqa: E501
@@ -377,10 +388,16 @@ class SPConfigApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_sp_config_export_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_sp_config_export_status_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_sp_config_export_status_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_sp_config_export_status_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the export job whose status will be returned.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_sp_config_export_status_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description="The ID of the export job whose status will be returned."
+        )], **kwargs) -> ApiResponse:  # noqa: E501
         """Get export job status  # noqa: E501
 
         This gets the status of the export job identified by the `id` parameter. The request will need one of the following security scopes: - sp:config:read - sp:config:manage  # noqa: E501
@@ -419,28 +436,18 @@ class SPConfigApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_sp_config_export_status" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_sp_config_export_status" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -450,7 +457,6 @@ class SPConfigApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -479,7 +485,8 @@ class SPConfigApi:
         }
 
         return self.api_client.call_api(
-            '/sp-config/export/{id}', 'GET',
+            '/sp-config/export/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -489,14 +496,21 @@ class SPConfigApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_sp_config_import(self, id : Annotated[StrictStr, Field(..., description="The ID of the import job whose results will be downloaded.")], **kwargs) -> SpConfigImportResults:  # noqa: E501
+    def get_sp_config_import(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The ID of the import job whose results will be downloaded.")],
+                             **kwargs) -> SpConfigImportResults:  # noqa: E501
         """Download import job result  # noqa: E501
 
         This gets import file resulting from the import job with the requested id and downloads it to a file. The downloaded file will contain the results of the import operation, including any error, warning or informational messages associated with the import. The request will need the following security scope: - sp:config:manage  # noqa: E501
@@ -523,10 +537,18 @@ class SPConfigApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_sp_config_import_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_sp_config_import_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_sp_config_import_with_http_info(id,
+                                                        **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_sp_config_import_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the import job whose results will be downloaded.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_sp_config_import_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The ID of the import job whose results will be downloaded.")],
+                                            **kwargs
+                                            ) -> ApiResponse:  # noqa: E501
         """Download import job result  # noqa: E501
 
         This gets import file resulting from the import job with the requested id and downloads it to a file. The downloaded file will contain the results of the import operation, including any error, warning or informational messages associated with the import. The request will need the following security scope: - sp:config:manage  # noqa: E501
@@ -565,28 +587,17 @@ class SPConfigApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_sp_config_import" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_sp_config_import" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -596,7 +607,6 @@ class SPConfigApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -625,7 +635,8 @@ class SPConfigApi:
         }
 
         return self.api_client.call_api(
-            '/sp-config/import/{id}/download', 'GET',
+            '/sp-config/import/{id}/download',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -635,14 +646,21 @@ class SPConfigApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_sp_config_import_status(self, id : Annotated[StrictStr, Field(..., description="The ID of the import job whose status will be returned.")], **kwargs) -> SpConfigJob:  # noqa: E501
+    def get_sp_config_import_status(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The ID of the import job whose status will be returned.")],
+                                    **kwargs) -> SpConfigJob:  # noqa: E501
         """Get import job status  # noqa: E501
 
         This gets the status of the import job identified by the `id` parameter. For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects). The request will need the following security scope: - sp:config:manage  # noqa: E501
@@ -669,10 +687,16 @@ class SPConfigApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_sp_config_import_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_sp_config_import_status_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_sp_config_import_status_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_sp_config_import_status_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the import job whose status will be returned.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_sp_config_import_status_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description="The ID of the import job whose status will be returned."
+        )], **kwargs) -> ApiResponse:  # noqa: E501
         """Get import job status  # noqa: E501
 
         This gets the status of the import job identified by the `id` parameter. For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects). The request will need the following security scope: - sp:config:manage  # noqa: E501
@@ -711,28 +735,18 @@ class SPConfigApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_sp_config_import_status" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_sp_config_import_status" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -742,7 +756,6 @@ class SPConfigApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -771,7 +784,8 @@ class SPConfigApi:
         }
 
         return self.api_client.call_api(
-            '/sp-config/import/{id}', 'GET',
+            '/sp-config/import/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -781,14 +795,31 @@ class SPConfigApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def import_sp_config(self, data : Annotated[Union[StrictBytes, StrictStr], Field(..., description="JSON file containing the objects to be imported.")], preview : Annotated[Optional[StrictBool], Field(description="This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.")] = None, options : Optional[ImportOptions] = None, **kwargs) -> SpConfigJob:  # noqa: E501
+    def import_sp_config(
+            self,
+            data: Annotated[
+                Union[StrictBytes, StrictStr],
+                Field(
+                    ...,
+                    description=
+                    "JSON file containing the objects to be imported.")],
+            preview:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported."
+            )] = None,
+            options: Optional[ImportOptions] = None,
+            **kwargs) -> SpConfigJob:  # noqa: E501
         """Initiates configuration objects import job  # noqa: E501
 
         This post will import objects from a JSON configuration file into a tenant. By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. The backup is provided so that the state of the configuration prior to the import is available for inspection or restore if needed. The backup can be skipped by setting \"excludeBackup\" to true in the import options. If a backup is performed, the id of the backup will be provided in the ImportResult as the \"exportJobId\". This can be downloaded  using the /sp-config/export/{exportJobId}/download endpoint. You cannot currently import from the Non-Employee Lifecycle Management (NELM) source. You cannot use this endpoint to back up or store NELM data.  For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects). The request will need the following security scope: - sp:config:manage  # noqa: E501
@@ -819,10 +850,27 @@ class SPConfigApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the import_sp_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.import_sp_config_with_http_info(data, preview, options, **kwargs)  # noqa: E501
+        return self.import_sp_config_with_http_info(data, preview, options,
+                                                    **kwargs)  # noqa: E501
 
     @validate_arguments
-    def import_sp_config_with_http_info(self, data : Annotated[Union[StrictBytes, StrictStr], Field(..., description="JSON file containing the objects to be imported.")], preview : Annotated[Optional[StrictBool], Field(description="This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported.")] = None, options : Optional[ImportOptions] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def import_sp_config_with_http_info(
+            self,
+            data: Annotated[
+                Union[StrictBytes, StrictStr],
+                Field(
+                    ...,
+                    description=
+                    "JSON file containing the objects to be imported.")],
+            preview:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported."
+            )] = None,
+            options: Optional[ImportOptions] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Initiates configuration objects import job  # noqa: E501
 
         This post will import objects from a JSON configuration file into a tenant. By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. The backup is provided so that the state of the configuration prior to the import is available for inspection or restore if needed. The backup can be skipped by setting \"excludeBackup\" to true in the import options. If a backup is performed, the id of the backup will be provided in the ImportResult as the \"exportJobId\". This can be downloaded  using the /sp-config/export/{exportJobId}/download endpoint. You cannot currently import from the Non-Employee Lifecycle Management (NELM) source. You cannot use this endpoint to back up or store NELM data.  For more information about the object types that currently support import functionality, refer to [SaaS Configuration](https://developer.sailpoint.com/idn/docs/saas-configuration/#supported-objects). The request will need the following security scope: - sp:config:manage  # noqa: E501
@@ -865,30 +913,17 @@ class SPConfigApi:
 
         _params = locals()
 
-        _all_params = [
-            'data',
-            'preview',
-            'options'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['data', 'preview', 'options']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method import_sp_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method import_sp_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -920,11 +955,12 @@ class SPConfigApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['multipart/form-data']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['multipart/form-data'
+                                                        ]))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -940,7 +976,8 @@ class SPConfigApi:
         }
 
         return self.api_client.call_api(
-            '/sp-config/import', 'POST',
+            '/sp-config/import',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -950,14 +987,16 @@ class SPConfigApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_sp_config_objects(self, **kwargs) -> List[SpConfigObject]:  # noqa: E501
+    def list_sp_config_objects(self,
+                               **kwargs) -> List[SpConfigObject]:  # noqa: E501
         """Get config object details  # noqa: E501
 
         This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain \"importUrl\" and \"exportUrl\" are available for export/import.  # noqa: E501
@@ -982,10 +1021,12 @@ class SPConfigApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_sp_config_objects_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_sp_config_objects_with_http_info(**kwargs)  # noqa: E501
+        return self.list_sp_config_objects_with_http_info(**
+                                                          kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_sp_config_objects_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_sp_config_objects_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """Get config object details  # noqa: E501
 
         This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain \"importUrl\" and \"exportUrl\" are available for export/import.  # noqa: E501
@@ -1022,27 +1063,17 @@ class SPConfigApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_sp_config_objects" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_sp_config_objects" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1078,7 +1109,8 @@ class SPConfigApi:
         }
 
         return self.api_client.call_api(
-            '/sp-config/config-objects', 'GET',
+            '/sp-config/config-objects',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1088,7 +1120,8 @@ class SPConfigApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.condition_effect import ConditionEffect
+from sailpoint.beta.models.condition_effect import ConditionEffect
 
 # TODO update the JSON string below
 json = "{}"

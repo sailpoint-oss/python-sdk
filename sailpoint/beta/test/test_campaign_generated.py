@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.campaign_generated import CampaignGenerated  # noqa: E501
+from sailpoint.beta.models.campaign_generated import CampaignGenerated  # noqa: E501
+
 
 class TestCampaignGenerated(unittest.TestCase):
     """CampaignGenerated unit test stubs"""
@@ -36,7 +36,7 @@ class TestCampaignGenerated(unittest.TestCase):
         model = CampaignGenerated()  # noqa: E501
         if include_optional:
             return CampaignGenerated(
-                campaign = beta.models.campaign_generated_campaign.CampaignGenerated_campaign(
+                campaign = sailpoint.beta.models.campaign_generated_campaign.CampaignGenerated_campaign(
                     id = '2c91808576f886190176f88cac5a0010', 
                     name = 'Manager Access Campaign', 
                     description = 'Audit access for all employees.', 
@@ -44,7 +44,7 @@ class TestCampaignGenerated(unittest.TestCase):
                     modified = '2021-02-17T03:04:45.815Z', 
                     deadline = '2021-02-18T03:04:45.815Z', 
                     type = MANAGER, 
-                    campaign_owner = beta.models.campaign_generated_campaign_campaign_owner.CampaignGenerated_campaign_campaignOwner(
+                    campaign_owner = sailpoint.beta.models.campaign_generated_campaign_campaign_owner.CampaignGenerated_campaign_campaignOwner(
                         id = '37f080867702c1910177031320c40n27', 
                         display_name = 'John Snow', 
                         email = 'john.snow@example.com', ), 
@@ -52,7 +52,7 @@ class TestCampaignGenerated(unittest.TestCase):
             )
         else:
             return CampaignGenerated(
-                campaign = beta.models.campaign_generated_campaign.CampaignGenerated_campaign(
+                campaign = sailpoint.beta.models.campaign_generated_campaign.CampaignGenerated_campaign(
                     id = '2c91808576f886190176f88cac5a0010', 
                     name = 'Manager Access Campaign', 
                     description = 'Audit access for all employees.', 
@@ -60,7 +60,7 @@ class TestCampaignGenerated(unittest.TestCase):
                     modified = '2021-02-17T03:04:45.815Z', 
                     deadline = '2021-02-18T03:04:45.815Z', 
                     type = MANAGER, 
-                    campaign_owner = beta.models.campaign_generated_campaign_campaign_owner.CampaignGenerated_campaign_campaignOwner(
+                    campaign_owner = sailpoint.beta.models.campaign_generated_campaign_campaign_owner.CampaignGenerated_campaign_campaignOwner(
                         id = '37f080867702c1910177031320c40n27', 
                         display_name = 'John Snow', 
                         email = 'john.snow@example.com', ), 
@@ -72,6 +72,7 @@ class TestCampaignGenerated(unittest.TestCase):
         """Test CampaignGenerated"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

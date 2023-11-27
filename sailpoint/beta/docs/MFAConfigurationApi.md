@@ -1,4 +1,4 @@
-# beta.MFAConfigurationApi
+# sailpoint.beta.MFAConfigurationApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -26,14 +26,14 @@ This API removes the configuration for the specified MFA method. A token with OR
 ```python
 import time
 import os
-import beta
-from beta.models.mfa_okta_config import MfaOktaConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.mfa_okta_config import MfaOktaConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -47,9 +47,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.MFAConfigurationApi(api_client)
+    api_instance = sailpoint.beta.MFAConfigurationApi(api_client)
     method = 'okta-verify' # str | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
 
     try:
@@ -108,14 +108,14 @@ This API returns the configuration of an Duo MFA method. A token with ORG_ADMIN 
 ```python
 import time
 import os
-import beta
-from beta.models.mfa_duo_config import MfaDuoConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.mfa_duo_config import MfaDuoConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -129,9 +129,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.MFAConfigurationApi(api_client)
+    api_instance = sailpoint.beta.MFAConfigurationApi(api_client)
 
     try:
         # Configuration of Duo MFA method
@@ -186,14 +186,14 @@ This API returns the configuration of an Okta MFA method. A token with ORG_ADMIN
 ```python
 import time
 import os
-import beta
-from beta.models.mfa_okta_config import MfaOktaConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.mfa_okta_config import MfaOktaConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -207,9 +207,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.MFAConfigurationApi(api_client)
+    api_instance = sailpoint.beta.MFAConfigurationApi(api_client)
 
     try:
         # Configuration of Okta MFA method
@@ -264,14 +264,14 @@ This API sets the configuration of an Duo MFA method. A token with ORG_ADMIN aut
 ```python
 import time
 import os
-import beta
-from beta.models.mfa_duo_config import MfaDuoConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.mfa_duo_config import MfaDuoConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -285,9 +285,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.MFAConfigurationApi(api_client)
+    api_instance = sailpoint.beta.MFAConfigurationApi(api_client)
     mfa_duo_config = {mfaMethod=duo-web, enabled=true, host=www.example.com, accessKey=qw123Y3QlA5UqocYpdU3rEkzrK2D497y, identityAttribute=email, configProperties={skey=12q3WERlcUHWJmiMqyCXI3uOF7EaDJTbdeOp6E2B, ikey=Q123WE45R6TY7890ZXCV}} # MfaDuoConfig | 
 
     try:
@@ -346,14 +346,14 @@ This API sets the configuration of an Okta MFA method. A token with ORG_ADMIN au
 ```python
 import time
 import os
-import beta
-from beta.models.mfa_okta_config import MfaOktaConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.mfa_okta_config import MfaOktaConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -367,9 +367,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.MFAConfigurationApi(api_client)
+    api_instance = sailpoint.beta.MFAConfigurationApi(api_client)
     mfa_okta_config = {mfaMethod=okta-verify, enabled=true, host=www.example.com, accessKey=dk778Y3QlA5UqocYpdU3rEkzrK2D497y, identityAttribute=email} # MfaOktaConfig | 
 
     try:
@@ -428,14 +428,14 @@ This API validates that the configuration is valid and will properly authenticat
 ```python
 import time
 import os
-import beta
-from beta.models.mfa_config_test_response import MfaConfigTestResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.mfa_config_test_response import MfaConfigTestResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -449,9 +449,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.MFAConfigurationApi(api_client)
+    api_instance = sailpoint.beta.MFAConfigurationApi(api_client)
     method = 'okta-verify' # str | The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
 
     try:

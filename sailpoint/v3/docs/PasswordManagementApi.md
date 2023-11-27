@@ -1,4 +1,4 @@
-# v3.PasswordManagementApi
+# sailpoint.v3.PasswordManagementApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -23,14 +23,14 @@ This API returns the status of a password change request. A token with identity 
 ```python
 import time
 import os
-import v3
-from v3.models.password_status import PasswordStatus
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.password_status import PasswordStatus
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -44,9 +44,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.PasswordManagementApi(api_client)
+    api_instance = sailpoint.v3.PasswordManagementApi(api_client)
     id = '089899f13a8f4da7824996191587bab9' # str | Password change request ID
 
     try:
@@ -106,15 +106,15 @@ This API is used to query password related information.   A token with [API auth
 ```python
 import time
 import os
-import v3
-from v3.models.password_info import PasswordInfo
-from v3.models.password_info_query_dto import PasswordInfoQueryDTO
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.password_info import PasswordInfo
+from sailpoint.v3.models.password_info_query_dto import PasswordInfoQueryDTO
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -128,10 +128,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.PasswordManagementApi(api_client)
-    password_info_query_dto = v3.PasswordInfoQueryDTO() # PasswordInfoQueryDTO | 
+    api_instance = sailpoint.v3.PasswordManagementApi(api_client)
+    password_info_query_dto = sailpoint.v3.PasswordInfoQueryDTO() # PasswordInfoQueryDTO | 
 
     try:
         # Query Password Info
@@ -189,15 +189,15 @@ This API is used to set a password for an identity.   An identity can change the
 ```python
 import time
 import os
-import v3
-from v3.models.password_change_request import PasswordChangeRequest
-from v3.models.password_change_response import PasswordChangeResponse
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.password_change_request import PasswordChangeRequest
+from sailpoint.v3.models.password_change_response import PasswordChangeResponse
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -211,10 +211,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.PasswordManagementApi(api_client)
-    password_change_request = v3.PasswordChangeRequest() # PasswordChangeRequest | 
+    api_instance = sailpoint.v3.PasswordManagementApi(api_client)
+    password_change_request = sailpoint.v3.PasswordChangeRequest() # PasswordChangeRequest | 
 
     try:
         # Set Identity's Password

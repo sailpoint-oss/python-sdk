@@ -11,24 +11,26 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class RoleMiningEntitlementRef(BaseModel):
     """
     RoleMiningEntitlementRef
     """
     id: Optional[StrictStr] = Field(None, description="Id of the entitlement")
-    name: Optional[StrictStr] = Field(None, description="Name of the entitlement")
-    description: Optional[StrictStr] = Field(None, description="Description forthe entitlement")
-    attribute: Optional[StrictStr] = Field(None, description="The entitlement attribute")
+    name: Optional[StrictStr] = Field(None,
+                                      description="Name of the entitlement")
+    description: Optional[StrictStr] = Field(
+        None, description="Description forthe entitlement")
+    attribute: Optional[StrictStr] = Field(
+        None, description="The entitlement attribute")
     __properties = ["id", "name", "description", "attribute"]
 
     class Config:
@@ -51,10 +53,7 @@ class RoleMiningEntitlementRef(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if description (nullable) is None
         # and __fields_set__ contains the field
         if self.description is None and "description" in self.__fields_set__:
@@ -72,11 +71,13 @@ class RoleMiningEntitlementRef(BaseModel):
             return RoleMiningEntitlementRef.parse_obj(obj)
 
         _obj = RoleMiningEntitlementRef.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "attribute": obj.get("attribute")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "attribute":
+            obj.get("attribute")
         })
         return _obj
-
-

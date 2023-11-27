@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.workflow_library_operator import WorkflowLibraryOperator
+from sailpoint.beta.models.workflow_library_operator import WorkflowLibraryOperator
 
 # TODO update the JSON string below
 json = "{}"

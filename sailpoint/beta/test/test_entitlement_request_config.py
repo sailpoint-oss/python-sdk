@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.entitlement_request_config import EntitlementRequestConfig  # noqa: E501
+from sailpoint.beta.models.entitlement_request_config import EntitlementRequestConfig  # noqa: E501
+
 
 class TestEntitlementRequestConfig(unittest.TestCase):
     """EntitlementRequestConfig unit test stubs"""
@@ -36,9 +36,9 @@ class TestEntitlementRequestConfig(unittest.TestCase):
         model = EntitlementRequestConfig()  # noqa: E501
         if include_optional:
             return EntitlementRequestConfig(
-                access_request_config = beta.models.entitlement_access_request_config.EntitlementAccessRequestConfig(
+                access_request_config = sailpoint.beta.models.entitlement_access_request_config.EntitlementAccessRequestConfig(
                     approval_schemes = [
-                        beta.models.entitlement_approval_scheme.EntitlementApprovalScheme(
+                        sailpoint.beta.models.entitlement_approval_scheme.EntitlementApprovalScheme(
                             approver_type = 'GOVERNANCE_GROUP', 
                             approver_id = 'e3eab852-8315-467f-9de7-70eda97f63c8', )
                         ], 
@@ -54,6 +54,7 @@ class TestEntitlementRequestConfig(unittest.TestCase):
         """Test EntitlementRequestConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

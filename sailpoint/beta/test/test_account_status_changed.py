@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.account_status_changed import AccountStatusChanged  # noqa: E501
+from sailpoint.beta.models.account_status_changed import AccountStatusChanged  # noqa: E501
+
 
 class TestAccountStatusChanged(unittest.TestCase):
     """AccountStatusChanged unit test stubs"""
@@ -39,7 +39,7 @@ class TestAccountStatusChanged(unittest.TestCase):
                 event_type = '',
                 identity_id = '',
                 dt = '',
-                account = beta.models.account_status_changed_account.AccountStatusChanged_account(
+                account = sailpoint.beta.models.account_status_changed_account.AccountStatusChanged_account(
                     id = '', 
                     native_identity = '', 
                     display_name = '', 
@@ -47,7 +47,7 @@ class TestAccountStatusChanged(unittest.TestCase):
                     source_name = '', 
                     entitlement_count = 56, 
                     access_type = '', ),
-                status_change = beta.models.account_status_changed_status_change.AccountStatusChanged_statusChange(
+                status_change = sailpoint.beta.models.account_status_changed_status_change.AccountStatusChanged_statusChange(
                     previous_status = 'enabled', 
                     new_status = 'enabled', )
             )
@@ -60,6 +60,7 @@ class TestAccountStatusChanged(unittest.TestCase):
         """Test AccountStatusChanged"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_profile import IdentityProfile  # noqa: E501
+from sailpoint.beta.models.identity_profile import IdentityProfile  # noqa: E501
+
 
 class TestIdentityProfile(unittest.TestCase):
     """IdentityProfile unit test stubs"""
@@ -41,27 +41,27 @@ class TestIdentityProfile(unittest.TestCase):
                 created = '2023-01-03T21:16:22.432Z',
                 modified = '2023-01-03T21:16:22.432Z',
                 description = 'My custom flat file profile',
-                owner = beta.models.identity_profile_all_of_owner.IdentityProfile_allOf_owner(
+                owner = sailpoint.beta.models.identity_profile_all_of_owner.IdentityProfile_allOf_owner(
                     type = 'IDENTITY', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'William Wilson', ),
                 priority = 10,
-                authoritative_source = beta.models.identity_profile_all_of_authoritative_source.IdentityProfile_allOf_authoritativeSource(
+                authoritative_source = sailpoint.beta.models.identity_profile_all_of_authoritative_source.IdentityProfile_allOf_authoritativeSource(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', ),
                 identity_refresh_required = True,
                 identity_count = 8,
-                identity_attribute_config = beta.models.identity_attribute_config.IdentityAttributeConfig(
+                identity_attribute_config = sailpoint.beta.models.identity_attribute_config.IdentityAttributeConfig(
                     enabled = True, 
                     attribute_transforms = [
-                        beta.models.identity_attribute_transform.IdentityAttributeTransform(
+                        sailpoint.beta.models.identity_attribute_transform.IdentityAttributeTransform(
                             identity_attribute_name = 'email', 
-                            transform_definition = beta.models.transform_definition.TransformDefinition(
+                            transform_definition = sailpoint.beta.models.transform_definition.TransformDefinition(
                                 type = 'accountAttribute', 
                                 attributes = {attributeName=e-mail, sourceName=MySource, sourceId=2c9180877a826e68017a8c0b03da1a53}, ), )
                         ], ),
-                identity_exception_report_reference = beta.models.identity_exception_report_reference.IdentityExceptionReportReference(
+                identity_exception_report_reference = sailpoint.beta.models.identity_exception_report_reference.IdentityExceptionReportReference(
                     task_result_id = '', 
                     report_name = 'My annual report', ),
                 has_time_based_attr = True
@@ -69,7 +69,7 @@ class TestIdentityProfile(unittest.TestCase):
         else:
             return IdentityProfile(
                 name = 'aName',
-                authoritative_source = beta.models.identity_profile_all_of_authoritative_source.IdentityProfile_allOf_authoritativeSource(
+                authoritative_source = sailpoint.beta.models.identity_profile_all_of_authoritative_source.IdentityProfile_allOf_authoritativeSource(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', ),
@@ -80,6 +80,7 @@ class TestIdentityProfile(unittest.TestCase):
         """Test IdentityProfile"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

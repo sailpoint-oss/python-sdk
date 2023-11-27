@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.schedule import Schedule  # noqa: E501
+from sailpoint.v3.models.schedule import Schedule  # noqa: E501
+
 
 class TestSchedule(unittest.TestCase):
     """Schedule unit test stubs"""
@@ -37,15 +37,15 @@ class TestSchedule(unittest.TestCase):
         if include_optional:
             return Schedule(
                 type = 'WEEKLY',
-                months = v3.models.schedule_months.Schedule_months(
+                months = sailpoint.v3.models.schedule_months.Schedule_months(
                     type = 'LIST', 
                     values = [1], 
                     interval = 2, ),
-                days = v3.models.schedule_days.Schedule_days(
+                days = sailpoint.v3.models.schedule_days.Schedule_days(
                     type = 'LIST', 
                     values = [1], 
                     interval = 2, ),
-                hours = v3.models.schedule_hours.Schedule_hours(
+                hours = sailpoint.v3.models.schedule_hours.Schedule_hours(
                     type = 'LIST', 
                     values = [1], 
                     interval = 2, ),
@@ -55,7 +55,7 @@ class TestSchedule(unittest.TestCase):
         else:
             return Schedule(
                 type = 'WEEKLY',
-                hours = v3.models.schedule_hours.Schedule_hours(
+                hours = sailpoint.v3.models.schedule_hours.Schedule_hours(
                     type = 'LIST', 
                     values = [1], 
                     interval = 2, ),
@@ -66,6 +66,7 @@ class TestSchedule(unittest.TestCase):
         """Test Schedule"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -23,7 +22,10 @@ from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, Stric
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-IDENTITYATTRIBUTESCHANGEDCHANGESINNEROLDVALUEONEOFVALUE_ONE_OF_SCHEMAS = ["bool", "float", "int", "str"]
+IDENTITYATTRIBUTESCHANGEDCHANGESINNEROLDVALUEONEOFVALUE_ONE_OF_SCHEMAS = [
+    "bool", "float", "int", "str"
+]
+
 
 class IdentityAttributesChangedChangesInnerOldValueOneOfValue(BaseModel):
     """
@@ -41,7 +43,9 @@ class IdentityAttributesChangedChangesInnerOldValueOneOfValue(BaseModel):
         actual_instance: Union[bool, float, int, str]
     else:
         actual_instance: Any
-    one_of_schemas: List[str] = Field(IDENTITYATTRIBUTESCHANGEDCHANGESINNEROLDVALUEONEOFVALUE_ONE_OF_SCHEMAS, const=True)
+    one_of_schemas: List[str] = Field(
+        IDENTITYATTRIBUTESCHANGEDCHANGESINNEROLDVALUEONEOFVALUE_ONE_OF_SCHEMAS,
+        const=True)
 
     class Config:
         validate_assignment = True
@@ -49,16 +53,21 @@ class IdentityAttributesChangedChangesInnerOldValueOneOfValue(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
+                raise ValueError(
+                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
+                )
             if kwargs:
-                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
+                raise ValueError(
+                    "If a position argument is used, keyword arguments cannot be used."
+                )
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
 
     @validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
-        instance = IdentityAttributesChangedChangesInnerOldValueOneOfValue.construct()
+        instance = IdentityAttributesChangedChangesInnerOldValueOneOfValue.construct(
+        )
         error_messages = []
         match = 0
         # validate data type: str
@@ -87,21 +96,30 @@ class IdentityAttributesChangedChangesInnerOldValueOneOfValue(BaseModel):
             error_messages.append(str(e))
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in IdentityAttributesChangedChangesInnerOldValueOneOfValue with oneOf schemas: bool, float, int, str. Details: " + ", ".join(error_messages))
+            raise ValueError(
+                "Multiple matches found when setting `actual_instance` in IdentityAttributesChangedChangesInnerOldValueOneOfValue with oneOf schemas: bool, float, int, str. Details: "
+                + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in IdentityAttributesChangedChangesInnerOldValueOneOfValue with oneOf schemas: bool, float, int, str. Details: " + ", ".join(error_messages))
+            raise ValueError(
+                "No match found when setting `actual_instance` in IdentityAttributesChangedChangesInnerOldValueOneOfValue with oneOf schemas: bool, float, int, str. Details: "
+                + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> IdentityAttributesChangedChangesInnerOldValueOneOfValue:
+    def from_dict(
+            cls, obj: dict
+    ) -> IdentityAttributesChangedChangesInnerOldValueOneOfValue:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> IdentityAttributesChangedChangesInnerOldValueOneOfValue:
+    def from_json(
+        cls, json_str: str
+    ) -> IdentityAttributesChangedChangesInnerOldValueOneOfValue:
         """Returns the object represented by the json string"""
-        instance = IdentityAttributesChangedChangesInnerOldValueOneOfValue.construct()
+        instance = IdentityAttributesChangedChangesInnerOldValueOneOfValue.construct(
+        )
         error_messages = []
         match = 0
 
@@ -144,10 +162,14 @@ class IdentityAttributesChangedChangesInnerOldValueOneOfValue(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into IdentityAttributesChangedChangesInnerOldValueOneOfValue with oneOf schemas: bool, float, int, str. Details: " + ", ".join(error_messages))
+            raise ValueError(
+                "Multiple matches found when deserializing the JSON string into IdentityAttributesChangedChangesInnerOldValueOneOfValue with oneOf schemas: bool, float, int, str. Details: "
+                + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into IdentityAttributesChangedChangesInnerOldValueOneOfValue with oneOf schemas: bool, float, int, str. Details: " + ", ".join(error_messages))
+            raise ValueError(
+                "No match found when deserializing the JSON string into IdentityAttributesChangedChangesInnerOldValueOneOfValue with oneOf schemas: bool, float, int, str. Details: "
+                + ", ".join(error_messages))
         else:
             return instance
 
@@ -177,5 +199,3 @@ class IdentityAttributesChangedChangesInnerOldValueOneOfValue(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.dict())
-
-

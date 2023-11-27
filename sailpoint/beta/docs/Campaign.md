@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.campaign import Campaign
+from sailpoint.beta.models.campaign import Campaign
 
 # TODO update the JSON string below
 json = "{}"

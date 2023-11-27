@@ -11,22 +11,28 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr
+
 
 class InnerHit(BaseModel):
     """
     Inner Hit query object that will cause the specified nested type to be returned as the result matching the supplied query.  # noqa: E501
     """
-    query: StrictStr = Field(..., description="The search query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries.")
-    type: StrictStr = Field(..., description="The nested type to use in the inner hits query.  The nested type [Nested Type](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) refers to a document \"nested\" within another document. For example, an identity can have nested documents for access, accounts, and apps.")
+    query: StrictStr = Field(
+        ...,
+        description=
+        "The search query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries."
+    )
+    type: StrictStr = Field(
+        ...,
+        description=
+        "The nested type to use in the inner hits query.  The nested type [Nested Type](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) refers to a document \"nested\" within another document. For example, an identity can have nested documents for access, accounts, and apps."
+    )
     __properties = ["query", "type"]
 
     class Config:
@@ -49,10 +55,7 @@ class InnerHit(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -69,5 +72,3 @@ class InnerHit(BaseModel):
             "type": obj.get("type")
         })
         return _obj
-
-

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.source_password_policies_inner import SourcePasswordPoliciesInner
+from sailpoint.v3.models.source_password_policies_inner import SourcePasswordPoliciesInner
 
 # TODO update the JSON string below
 json = "{}"

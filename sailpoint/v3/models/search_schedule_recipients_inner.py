@@ -11,21 +11,20 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class SearchScheduleRecipientsInner(BaseModel):
     """
     SearchScheduleRecipientsInner
     """
-    type: StrictStr = Field(..., description="The type of object being referenced")
+    type: StrictStr = Field(...,
+                            description="The type of object being referenced")
     id: StrictStr = Field(..., description="The ID of the referenced object")
     __properties = ["type", "id"]
 
@@ -56,10 +55,7 @@ class SearchScheduleRecipientsInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -76,5 +72,3 @@ class SearchScheduleRecipientsInner(BaseModel):
             "id": obj.get("id")
         })
         return _obj
-
-

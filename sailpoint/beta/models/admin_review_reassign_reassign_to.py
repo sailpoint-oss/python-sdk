@@ -11,22 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class AdminReviewReassignReassignTo(BaseModel):
     """
     AdminReviewReassignReassignTo
     """
-    id: Optional[StrictStr] = Field(None, description="The identity ID to which the review is being assigned.")
-    type: Optional[StrictStr] = Field(None, description="The type of the ID provided.")
+    id: Optional[StrictStr] = Field(
+        None,
+        description="The identity ID to which the review is being assigned.")
+    type: Optional[StrictStr] = Field(
+        None, description="The type of the ID provided.")
     __properties = ["id", "type"]
 
     @validator('type')
@@ -59,10 +61,7 @@ class AdminReviewReassignReassignTo(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -79,5 +78,3 @@ class AdminReviewReassignReassignTo(BaseModel):
             "type": obj.get("type")
         })
         return _obj
-
-

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.form_definition_dynamic_schema_request_attributes import FormDefinitionDynamicSchemaRequestAttributes
+from sailpoint.beta.models.form_definition_dynamic_schema_request_attributes import FormDefinitionDynamicSchemaRequestAttributes
 
 # TODO update the JSON string below
 json = "{}"

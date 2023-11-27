@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.campaign_template import CampaignTemplate  # noqa: E501
+from sailpoint.v3.models.campaign_template import CampaignTemplate  # noqa: E501
+
 
 class TestCampaignTemplate(unittest.TestCase):
     """CampaignTemplate unit test stubs"""
@@ -42,13 +42,13 @@ class TestCampaignTemplate(unittest.TestCase):
                 created = '2020-03-05T22:44:00.364Z',
                 modified = '2020-03-05T22:52:09.969Z',
                 scheduled = False,
-                owner_ref = v3.models.campaign_template_owner_ref.CampaignTemplate_ownerRef(
+                owner_ref = sailpoint.v3.models.campaign_template_owner_ref.CampaignTemplate_ownerRef(
                     id = '2c918086676d3e0601677611dbde220f', 
                     type = 'IDENTITY', 
                     name = 'Mister Manager', 
                     email = 'mr.manager@example.com', ),
                 deadline_duration = 'P2W',
-                campaign = v3.models.campaign.Campaign()
+                campaign = sailpoint.v3.models.campaign.Campaign()
             )
         else:
             return CampaignTemplate(
@@ -56,7 +56,7 @@ class TestCampaignTemplate(unittest.TestCase):
                 description = 'Template for the annual manager campaign.',
                 created = '2020-03-05T22:44:00.364Z',
                 modified = '2020-03-05T22:52:09.969Z',
-                campaign = v3.models.campaign.Campaign(),
+                campaign = sailpoint.v3.models.campaign.Campaign(),
         )
         """
 
@@ -64,6 +64,7 @@ class TestCampaignTemplate(unittest.TestCase):
         """Test CampaignTemplate"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

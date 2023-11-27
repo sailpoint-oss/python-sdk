@@ -11,22 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class IdentityExceptionReportReference(BaseModel):
     """
     IdentityExceptionReportReference
     """
-    task_result_id: Optional[StrictStr] = Field(None, alias="taskResultId", description="The id of the task result")
-    report_name: Optional[StrictStr] = Field(None, alias="reportName", description="The name of the report")
+    task_result_id: Optional[StrictStr] = Field(
+        None, alias="taskResultId", description="The id of the task result")
+    report_name: Optional[StrictStr] = Field(
+        None, alias="reportName", description="The name of the report")
     __properties = ["taskResultId", "reportName"]
 
     class Config:
@@ -49,10 +50,7 @@ class IdentityExceptionReportReference(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +63,9 @@ class IdentityExceptionReportReference(BaseModel):
             return IdentityExceptionReportReference.parse_obj(obj)
 
         _obj = IdentityExceptionReportReference.parse_obj({
-            "task_result_id": obj.get("taskResultId"),
-            "report_name": obj.get("reportName")
+            "task_result_id":
+            obj.get("taskResultId"),
+            "report_name":
+            obj.get("reportName")
         })
         return _obj
-
-

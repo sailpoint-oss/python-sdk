@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId  # noqa: E501
+from sailpoint.beta.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId  # noqa: E501
+
 
 class TestNonEmployeeSourceWithCloudExternalId(unittest.TestCase):
     """NonEmployeeSourceWithCloudExternalId unit test stubs"""
@@ -26,7 +26,8 @@ class TestNonEmployeeSourceWithCloudExternalId(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> NonEmployeeSourceWithCloudExternalId:
+    def make_instance(
+            self, include_optional) -> NonEmployeeSourceWithCloudExternalId:
         """Test NonEmployeeSourceWithCloudExternalId
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -41,12 +42,12 @@ class TestNonEmployeeSourceWithCloudExternalId(unittest.TestCase):
                 name = 'Retail',
                 description = 'Source description',
                 approvers = [
-                    beta.models.identity_reference_with_id.IdentityReferenceWithId(
+                    sailpoint.beta.models.identity_reference_with_id.IdentityReferenceWithId(
                         type = 'IDENTITY', 
                         id = '5168015d32f890ca15812c9180835d2e', )
                     ],
                 account_managers = [
-                    beta.models.identity_reference_with_id.IdentityReferenceWithId(
+                    sailpoint.beta.models.identity_reference_with_id.IdentityReferenceWithId(
                         type = 'IDENTITY', 
                         id = '5168015d32f890ca15812c9180835d2e', )
                     ],
@@ -64,6 +65,7 @@ class TestNonEmployeeSourceWithCloudExternalId(unittest.TestCase):
         """Test NonEmployeeSourceWithCloudExternalId"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,32 +22,30 @@ from pydantic import Field, StrictBool, StrictBytes, StrictStr, conint, conlist
 
 from typing import List, Optional, Union
 
-from v3.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.models.non_employee_approval_decision import NonEmployeeApprovalDecision
-from v3.models.non_employee_approval_item import NonEmployeeApprovalItem
-from v3.models.non_employee_approval_item_detail import NonEmployeeApprovalItemDetail
-from v3.models.non_employee_approval_summary import NonEmployeeApprovalSummary
-from v3.models.non_employee_bulk_upload_job import NonEmployeeBulkUploadJob
-from v3.models.non_employee_bulk_upload_status import NonEmployeeBulkUploadStatus
-from v3.models.non_employee_record import NonEmployeeRecord
-from v3.models.non_employee_reject_approval_decision import NonEmployeeRejectApprovalDecision
-from v3.models.non_employee_request import NonEmployeeRequest
-from v3.models.non_employee_request_body import NonEmployeeRequestBody
-from v3.models.non_employee_request_summary import NonEmployeeRequestSummary
-from v3.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
-from v3.models.non_employee_schema_attribute_body import NonEmployeeSchemaAttributeBody
-from v3.models.non_employee_source import NonEmployeeSource
-from v3.models.non_employee_source_request_body import NonEmployeeSourceRequestBody
-from v3.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
-from v3.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
+from sailpoint.v3.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.non_employee_approval_decision import NonEmployeeApprovalDecision
+from sailpoint.v3.models.non_employee_approval_item import NonEmployeeApprovalItem
+from sailpoint.v3.models.non_employee_approval_item_detail import NonEmployeeApprovalItemDetail
+from sailpoint.v3.models.non_employee_approval_summary import NonEmployeeApprovalSummary
+from sailpoint.v3.models.non_employee_bulk_upload_job import NonEmployeeBulkUploadJob
+from sailpoint.v3.models.non_employee_bulk_upload_status import NonEmployeeBulkUploadStatus
+from sailpoint.v3.models.non_employee_record import NonEmployeeRecord
+from sailpoint.v3.models.non_employee_reject_approval_decision import NonEmployeeRejectApprovalDecision
+from sailpoint.v3.models.non_employee_request import NonEmployeeRequest
+from sailpoint.v3.models.non_employee_request_body import NonEmployeeRequestBody
+from sailpoint.v3.models.non_employee_request_summary import NonEmployeeRequestSummary
+from sailpoint.v3.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
+from sailpoint.v3.models.non_employee_schema_attribute_body import NonEmployeeSchemaAttributeBody
+from sailpoint.v3.models.non_employee_source import NonEmployeeSource
+from sailpoint.v3.models.non_employee_source_request_body import NonEmployeeSourceRequestBody
+from sailpoint.v3.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
+from sailpoint.v3.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
 
-from v3.api_client import ApiClient
-from v3.api_response import ApiResponse
-from v3.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.v3.api_client import ApiClient
+from sailpoint.v3.api_response import ApiResponse
+from sailpoint.v3.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class NonEmployeeLifecycleManagementApi:
@@ -64,7 +61,13 @@ class NonEmployeeLifecycleManagementApi:
         self.api_client = api_client
 
     @validate_arguments
-    def approve_non_employee_request(self, id : Annotated[StrictStr, Field(..., description="Non-Employee approval item id (UUID)")], non_employee_approval_decision : NonEmployeeApprovalDecision, **kwargs) -> NonEmployeeApprovalItem:  # noqa: E501
+    def approve_non_employee_request(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="Non-Employee approval item id (UUID)"
+                      )],
+            non_employee_approval_decision: NonEmployeeApprovalDecision,
+            **kwargs) -> NonEmployeeApprovalItem:  # noqa: E501
         """Approve a Non-Employee Request  # noqa: E501
 
         Approves a non-employee approval request and notifies the next approver. The current user must be the requested approver.  # noqa: E501
@@ -93,10 +96,17 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the approve_non_employee_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.approve_non_employee_request_with_http_info(id, non_employee_approval_decision, **kwargs)  # noqa: E501
+        return self.approve_non_employee_request_with_http_info(
+            id, non_employee_approval_decision, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def approve_non_employee_request_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Non-Employee approval item id (UUID)")], non_employee_approval_decision : NonEmployeeApprovalDecision, **kwargs) -> ApiResponse:  # noqa: E501
+    def approve_non_employee_request_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="Non-Employee approval item id (UUID)"
+                      )],
+            non_employee_approval_decision: NonEmployeeApprovalDecision,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Approve a Non-Employee Request  # noqa: E501
 
         Approves a non-employee approval request and notifies the next approver. The current user must be the requested approver.  # noqa: E501
@@ -137,29 +147,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'non_employee_approval_decision'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'non_employee_approval_decision']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method approve_non_employee_request" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method approve_non_employee_request" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -169,7 +168,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -188,11 +186,11 @@ class NonEmployeeLifecycleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -207,7 +205,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-approvals/{id}/approve', 'POST',
+            '/non-employee-approvals/{id}/approve',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -217,14 +216,19 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_non_employee_record(self, non_employee_request_body : Annotated[NonEmployeeRequestBody, Field(..., description="Non-Employee record creation request body.")], **kwargs) -> NonEmployeeRecord:  # noqa: E501
+    def create_non_employee_record(self, non_employee_request_body: Annotated[
+        NonEmployeeRequestBody,
+        Field(..., description="Non-Employee record creation request body.")],
+                                   **kwargs
+                                   ) -> NonEmployeeRecord:  # noqa: E501
         """Create Non-Employee Record  # noqa: E501
 
         This request will create a non-employee record. Requires role context of `idn:nesr:create`  # noqa: E501
@@ -251,10 +255,16 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_non_employee_record_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_non_employee_record_with_http_info(non_employee_request_body, **kwargs)  # noqa: E501
+        return self.create_non_employee_record_with_http_info(
+            non_employee_request_body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_non_employee_record_with_http_info(self, non_employee_request_body : Annotated[NonEmployeeRequestBody, Field(..., description="Non-Employee record creation request body.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_non_employee_record_with_http_info(
+            self, non_employee_request_body: Annotated[
+                NonEmployeeRequestBody,
+                Field(...,
+                      description="Non-Employee record creation request body."
+                      )], **kwargs) -> ApiResponse:  # noqa: E501
         """Create Non-Employee Record  # noqa: E501
 
         This request will create a non-employee record. Requires role context of `idn:nesr:create`  # noqa: E501
@@ -293,28 +303,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'non_employee_request_body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['non_employee_request_body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_non_employee_record" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_non_employee_record" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -340,11 +340,11 @@ class NonEmployeeLifecycleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -359,7 +359,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-records', 'POST',
+            '/non-employee-records',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -369,14 +370,19 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_non_employee_request(self, non_employee_request_body : Annotated[NonEmployeeRequestBody, Field(..., description="Non-Employee creation request body")], **kwargs) -> NonEmployeeRequest:  # noqa: E501
+    def create_non_employee_request(
+            self, non_employee_request_body: Annotated[
+                NonEmployeeRequestBody,
+                Field(..., description="Non-Employee creation request body")],
+            **kwargs) -> NonEmployeeRequest:  # noqa: E501
         """Create Non-Employee Request  # noqa: E501
 
         This request will create a non-employee request and notify the approver. Requires role context of `idn:nesr:create` or the user must own the source.  # noqa: E501
@@ -403,10 +409,15 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_non_employee_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_non_employee_request_with_http_info(non_employee_request_body, **kwargs)  # noqa: E501
+        return self.create_non_employee_request_with_http_info(
+            non_employee_request_body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_non_employee_request_with_http_info(self, non_employee_request_body : Annotated[NonEmployeeRequestBody, Field(..., description="Non-Employee creation request body")], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_non_employee_request_with_http_info(
+            self, non_employee_request_body: Annotated[
+                NonEmployeeRequestBody,
+                Field(..., description="Non-Employee creation request body")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create Non-Employee Request  # noqa: E501
 
         This request will create a non-employee request and notify the approver. Requires role context of `idn:nesr:create` or the user must own the source.  # noqa: E501
@@ -445,28 +456,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'non_employee_request_body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['non_employee_request_body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_non_employee_request" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_non_employee_request" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -492,11 +493,11 @@ class NonEmployeeLifecycleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -511,7 +512,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-requests', 'POST',
+            '/non-employee-requests',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -521,14 +523,21 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_non_employee_source(self, non_employee_source_request_body : Annotated[NonEmployeeSourceRequestBody, Field(..., description="Non-Employee source creation request body.")], **kwargs) -> NonEmployeeSourceWithCloudExternalId:  # noqa: E501
+    def create_non_employee_source(
+            self, non_employee_source_request_body: Annotated[
+                NonEmployeeSourceRequestBody,
+                Field(...,
+                      description="Non-Employee source creation request body."
+                      )],
+            **kwargs) -> NonEmployeeSourceWithCloudExternalId:  # noqa: E501
         """Create Non-Employee Source  # noqa: E501
 
         This request will create a non-employee source. Requires role context of `idn:nesr:create`  # noqa: E501
@@ -555,10 +564,16 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_non_employee_source_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_non_employee_source_with_http_info(non_employee_source_request_body, **kwargs)  # noqa: E501
+        return self.create_non_employee_source_with_http_info(
+            non_employee_source_request_body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_non_employee_source_with_http_info(self, non_employee_source_request_body : Annotated[NonEmployeeSourceRequestBody, Field(..., description="Non-Employee source creation request body.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_non_employee_source_with_http_info(
+            self, non_employee_source_request_body: Annotated[
+                NonEmployeeSourceRequestBody,
+                Field(...,
+                      description="Non-Employee source creation request body."
+                      )], **kwargs) -> ApiResponse:  # noqa: E501
         """Create Non-Employee Source  # noqa: E501
 
         This request will create a non-employee source. Requires role context of `idn:nesr:create`  # noqa: E501
@@ -597,28 +612,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'non_employee_source_request_body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['non_employee_source_request_body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_non_employee_source" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_non_employee_source" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -644,11 +649,11 @@ class NonEmployeeLifecycleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -663,7 +668,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-sources', 'POST',
+            '/non-employee-sources',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -673,14 +679,20 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_non_employee_source_schema_attributes(self, source_id : Annotated[StrictStr, Field(..., description="The Source id")], non_employee_schema_attribute_body : NonEmployeeSchemaAttributeBody, **kwargs) -> NonEmployeeSchemaAttribute:  # noqa: E501
+    def create_non_employee_source_schema_attributes(
+            self,
+            source_id: Annotated[StrictStr,
+                                 Field(..., description="The Source id")],
+            non_employee_schema_attribute_body: NonEmployeeSchemaAttributeBody,
+            **kwargs) -> NonEmployeeSchemaAttribute:  # noqa: E501
         """Create a new Schema Attribute for Non-Employee Source  # noqa: E501
 
         This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a \"400.1.409 Reference conflict\" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a \"400.1.4 Limit violation\" response. Requires role context of `idn:nesr:create`  # noqa: E501
@@ -709,10 +721,17 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_non_employee_source_schema_attributes_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_non_employee_source_schema_attributes_with_http_info(source_id, non_employee_schema_attribute_body, **kwargs)  # noqa: E501
+        return self.create_non_employee_source_schema_attributes_with_http_info(
+            source_id, non_employee_schema_attribute_body,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_non_employee_source_schema_attributes_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id")], non_employee_schema_attribute_body : NonEmployeeSchemaAttributeBody, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_non_employee_source_schema_attributes_with_http_info(
+            self,
+            source_id: Annotated[StrictStr,
+                                 Field(..., description="The Source id")],
+            non_employee_schema_attribute_body: NonEmployeeSchemaAttributeBody,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create a new Schema Attribute for Non-Employee Source  # noqa: E501
 
         This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a \"400.1.409 Reference conflict\" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a \"400.1.4 Limit violation\" response. Requires role context of `idn:nesr:create`  # noqa: E501
@@ -753,29 +772,19 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'source_id',
-            'non_employee_schema_attribute_body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['source_id', 'non_employee_schema_attribute_body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_non_employee_source_schema_attributes" % _key
-                )
+                    " to method create_non_employee_source_schema_attributes" %
+                    _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -785,7 +794,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
-
 
         # process the query parameters
         _query_params = []
@@ -804,11 +812,11 @@ class NonEmployeeLifecycleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -823,7 +831,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-sources/{sourceId}/schema-attributes', 'POST',
+            '/non-employee-sources/{sourceId}/schema-attributes',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -833,14 +842,18 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_non_employee_record(self, id : Annotated[StrictStr, Field(..., description="Non-Employee record id (UUID)")], **kwargs) -> None:  # noqa: E501
+    def delete_non_employee_record(self, id: Annotated[
+        StrictStr,
+        Field(..., description="Non-Employee record id (UUID)")],
+                                   **kwargs) -> None:  # noqa: E501
         """Delete Non-Employee Record  # noqa: E501
 
         This request will delete a non-employee record. Requires role context of `idn:nesr:delete`  # noqa: E501
@@ -867,10 +880,15 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_non_employee_record_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_non_employee_record_with_http_info(id, **kwargs)  # noqa: E501
+        return self.delete_non_employee_record_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_non_employee_record_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Non-Employee record id (UUID)")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_non_employee_record_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="Non-Employee record id (UUID)")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Non-Employee Record  # noqa: E501
 
         This request will delete a non-employee record. Requires role context of `idn:nesr:delete`  # noqa: E501
@@ -909,28 +927,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_non_employee_record" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_non_employee_record" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -940,7 +948,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -961,7 +968,8 @@ class NonEmployeeLifecycleManagementApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/non-employee-records/{id}', 'DELETE',
+            '/non-employee-records/{id}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -971,14 +979,20 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_non_employee_records_in_bulk(self, delete_non_employee_records_in_bulk_request : Annotated[DeleteNonEmployeeRecordsInBulkRequest, Field(..., description="Non-Employee bulk delete request body.")], **kwargs) -> None:  # noqa: E501
+    def delete_non_employee_records_in_bulk(
+            self, delete_non_employee_records_in_bulk_request: Annotated[
+                DeleteNonEmployeeRecordsInBulkRequest,
+                Field(...,
+                      description="Non-Employee bulk delete request body.")],
+            **kwargs) -> None:  # noqa: E501
         """Delete Multiple Non-Employee Records  # noqa: E501
 
         This request will delete multiple non-employee records based on the non-employee ids provided. Requires role context of `idn:nesr:delete`  # noqa: E501
@@ -1005,10 +1019,17 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_non_employee_records_in_bulk_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_non_employee_records_in_bulk_with_http_info(delete_non_employee_records_in_bulk_request, **kwargs)  # noqa: E501
+        return self.delete_non_employee_records_in_bulk_with_http_info(
+            delete_non_employee_records_in_bulk_request,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_non_employee_records_in_bulk_with_http_info(self, delete_non_employee_records_in_bulk_request : Annotated[DeleteNonEmployeeRecordsInBulkRequest, Field(..., description="Non-Employee bulk delete request body.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_non_employee_records_in_bulk_with_http_info(
+            self, delete_non_employee_records_in_bulk_request: Annotated[
+                DeleteNonEmployeeRecordsInBulkRequest,
+                Field(...,
+                      description="Non-Employee bulk delete request body.")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Multiple Non-Employee Records  # noqa: E501
 
         This request will delete multiple non-employee records based on the non-employee ids provided. Requires role context of `idn:nesr:delete`  # noqa: E501
@@ -1047,28 +1068,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'delete_non_employee_records_in_bulk_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['delete_non_employee_records_in_bulk_request']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete_non_employee_records_in_bulk" % _key
-                )
+                    " to method delete_non_employee_records_in_bulk" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1087,18 +1098,19 @@ class NonEmployeeLifecycleManagementApi:
         # process the body parameter
         _body_params = None
         if _params['delete_non_employee_records_in_bulk_request'] is not None:
-            _body_params = _params['delete_non_employee_records_in_bulk_request']
+            _body_params = _params[
+                'delete_non_employee_records_in_bulk_request']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1106,7 +1118,8 @@ class NonEmployeeLifecycleManagementApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/non-employee-records/bulk-delete', 'POST',
+            '/non-employee-records/bulk-delete',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1116,14 +1129,18 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_non_employee_request(self, id : Annotated[StrictStr, Field(..., description="Non-Employee request id in the UUID format")], **kwargs) -> None:  # noqa: E501
+    def delete_non_employee_request(self, id: Annotated[
+        StrictStr,
+        Field(..., description="Non-Employee request id in the UUID format")],
+                                    **kwargs) -> None:  # noqa: E501
         """Delete Non-Employee Request  # noqa: E501
 
         This request will delete a non-employee request.  Requires role context of `idn:nesr:delete`  # noqa: E501
@@ -1150,10 +1167,14 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_non_employee_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_non_employee_request_with_http_info(id, **kwargs)  # noqa: E501
+        return self.delete_non_employee_request_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_non_employee_request_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Non-Employee request id in the UUID format")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_non_employee_request_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(..., description="Non-Employee request id in the UUID format"
+              )], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Non-Employee Request  # noqa: E501
 
         This request will delete a non-employee request.  Requires role context of `idn:nesr:delete`  # noqa: E501
@@ -1192,28 +1213,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_non_employee_request" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_non_employee_request" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1223,7 +1234,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1244,7 +1254,8 @@ class NonEmployeeLifecycleManagementApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/non-employee-requests/{id}', 'DELETE',
+            '/non-employee-requests/{id}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -1254,14 +1265,21 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_non_employee_schema_attribute(self, attribute_id : Annotated[StrictStr, Field(..., description="The Schema Attribute Id (UUID)")], source_id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> None:  # noqa: E501
+    def delete_non_employee_schema_attribute(
+            self, attribute_id: Annotated[
+                StrictStr,
+                Field(..., description="The Schema Attribute Id (UUID)")],
+            source_id: Annotated[StrictStr,
+                                 Field(..., description="The Source id")],
+            **kwargs) -> None:  # noqa: E501
         """Delete a Schema Attribute for Non-Employee Source  # noqa: E501
 
         This end-point deletes a specific schema attribute for a non-employee source. Requires role context of `idn:nesr:delete`   # noqa: E501
@@ -1290,10 +1308,17 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_non_employee_schema_attribute_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_non_employee_schema_attribute_with_http_info(attribute_id, source_id, **kwargs)  # noqa: E501
+        return self.delete_non_employee_schema_attribute_with_http_info(
+            attribute_id, source_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_non_employee_schema_attribute_with_http_info(self, attribute_id : Annotated[StrictStr, Field(..., description="The Schema Attribute Id (UUID)")], source_id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_non_employee_schema_attribute_with_http_info(
+            self, attribute_id: Annotated[
+                StrictStr,
+                Field(..., description="The Schema Attribute Id (UUID)")],
+            source_id: Annotated[StrictStr,
+                                 Field(..., description="The Source id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Delete a Schema Attribute for Non-Employee Source  # noqa: E501
 
         This end-point deletes a specific schema attribute for a non-employee source. Requires role context of `idn:nesr:delete`   # noqa: E501
@@ -1334,29 +1359,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'attribute_id',
-            'source_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['attribute_id', 'source_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete_non_employee_schema_attribute" % _key
-                )
+                    " to method delete_non_employee_schema_attribute" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1369,7 +1383,6 @@ class NonEmployeeLifecycleManagementApi:
 
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1390,7 +1403,8 @@ class NonEmployeeLifecycleManagementApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/non-employee-sources/{sourceId}/schema-attributes/{attributeId}', 'DELETE',
+            '/non-employee-sources/{sourceId}/schema-attributes/{attributeId}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -1400,14 +1414,17 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_non_employee_source(self, source_id : Annotated[StrictStr, Field(..., description="Source Id")], **kwargs) -> None:  # noqa: E501
+    def delete_non_employee_source(self, source_id: Annotated[
+        StrictStr, Field(..., description="Source Id")],
+                                   **kwargs) -> None:  # noqa: E501
         """Delete Non-Employee Source  # noqa: E501
 
         This request will delete a non-employee source. Requires role context of `idn:nesr:delete`.  # noqa: E501
@@ -1434,10 +1451,14 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_non_employee_source_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_non_employee_source_with_http_info(source_id, **kwargs)  # noqa: E501
+        return self.delete_non_employee_source_with_http_info(
+            source_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_non_employee_source_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="Source Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_non_employee_source_with_http_info(
+            self, source_id: Annotated[StrictStr,
+                                       Field(..., description="Source Id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Delete Non-Employee Source  # noqa: E501
 
         This request will delete a non-employee source. Requires role context of `idn:nesr:delete`.  # noqa: E501
@@ -1476,28 +1497,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'source_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['source_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_non_employee_source" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_non_employee_source" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1507,7 +1518,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1528,7 +1538,8 @@ class NonEmployeeLifecycleManagementApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/non-employee-sources/{sourceId}', 'DELETE',
+            '/non-employee-sources/{sourceId}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -1538,14 +1549,19 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_non_employee_source_schema_attributes(self, source_id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> None:  # noqa: E501
+    def delete_non_employee_source_schema_attributes(
+            self,
+            source_id: Annotated[StrictStr,
+                                 Field(..., description="The Source id")],
+            **kwargs) -> None:  # noqa: E501
         """Delete all custom schema attributes for Non-Employee Source  # noqa: E501
 
         This end-point deletes all custom schema attributes for a non-employee source. Requires role context of `idn:nesr:delete`  # noqa: E501
@@ -1572,10 +1588,15 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_non_employee_source_schema_attributes_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_non_employee_source_schema_attributes_with_http_info(source_id, **kwargs)  # noqa: E501
+        return self.delete_non_employee_source_schema_attributes_with_http_info(
+            source_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_non_employee_source_schema_attributes_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_non_employee_source_schema_attributes_with_http_info(
+            self,
+            source_id: Annotated[StrictStr,
+                                 Field(..., description="The Source id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Delete all custom schema attributes for Non-Employee Source  # noqa: E501
 
         This end-point deletes all custom schema attributes for a non-employee source. Requires role context of `idn:nesr:delete`  # noqa: E501
@@ -1614,28 +1635,19 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'source_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['source_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete_non_employee_source_schema_attributes" % _key
-                )
+                    " to method delete_non_employee_source_schema_attributes" %
+                    _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1645,7 +1657,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1666,7 +1677,8 @@ class NonEmployeeLifecycleManagementApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/non-employee-sources/{sourceId}/schema-attributes', 'DELETE',
+            '/non-employee-sources/{sourceId}/schema-attributes',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -1676,14 +1688,17 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def export_non_employee_records(self, id : Annotated[StrictStr, Field(..., description="Source Id (UUID)")], **kwargs) -> None:  # noqa: E501
+    def export_non_employee_records(self, id: Annotated[
+        StrictStr, Field(..., description="Source Id (UUID)")],
+                                    **kwargs) -> None:  # noqa: E501
         """Exports Non-Employee Records to CSV  # noqa: E501
 
         This requests a CSV download for all non-employees from a provided source. Requires role context of `idn:nesr:read`  # noqa: E501
@@ -1710,10 +1725,14 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the export_non_employee_records_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.export_non_employee_records_with_http_info(id, **kwargs)  # noqa: E501
+        return self.export_non_employee_records_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def export_non_employee_records_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Source Id (UUID)")], **kwargs) -> ApiResponse:  # noqa: E501
+    def export_non_employee_records_with_http_info(
+            self, id: Annotated[StrictStr,
+                                Field(..., description="Source Id (UUID)")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Exports Non-Employee Records to CSV  # noqa: E501
 
         This requests a CSV download for all non-employees from a provided source. Requires role context of `idn:nesr:read`  # noqa: E501
@@ -1752,28 +1771,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method export_non_employee_records" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method export_non_employee_records" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1783,7 +1792,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1804,7 +1812,8 @@ class NonEmployeeLifecycleManagementApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/non-employee-sources/{id}/non-employees/download', 'GET',
+            '/non-employee-sources/{id}/non-employees/download',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1814,14 +1823,18 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def export_non_employee_source_schema_template(self, id : Annotated[StrictStr, Field(..., description="Source Id (UUID)")], **kwargs) -> None:  # noqa: E501
+    def export_non_employee_source_schema_template(
+            self, id: Annotated[StrictStr,
+                                Field(..., description="Source Id (UUID)")],
+            **kwargs) -> None:  # noqa: E501
         """Exports Source Schema Template  # noqa: E501
 
         This requests a download for the Source Schema Template for a provided source. Requires role context of `idn:nesr:read`  # noqa: E501
@@ -1848,10 +1861,14 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the export_non_employee_source_schema_template_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.export_non_employee_source_schema_template_with_http_info(id, **kwargs)  # noqa: E501
+        return self.export_non_employee_source_schema_template_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def export_non_employee_source_schema_template_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Source Id (UUID)")], **kwargs) -> ApiResponse:  # noqa: E501
+    def export_non_employee_source_schema_template_with_http_info(
+            self, id: Annotated[StrictStr,
+                                Field(..., description="Source Id (UUID)")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Exports Source Schema Template  # noqa: E501
 
         This requests a download for the Source Schema Template for a provided source. Requires role context of `idn:nesr:read`  # noqa: E501
@@ -1890,28 +1907,19 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method export_non_employee_source_schema_template" % _key
-                )
+                    " to method export_non_employee_source_schema_template" %
+                    _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1921,7 +1929,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1942,7 +1949,8 @@ class NonEmployeeLifecycleManagementApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/non-employee-sources/{id}/schema-attributes-template/download', 'GET',
+            '/non-employee-sources/{id}/schema-attributes-template/download',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1952,14 +1960,28 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_non_employee_approval(self, id : Annotated[StrictStr, Field(..., description="Non-Employee approval item id (UUID)")], include_detail : Annotated[Optional[StrictBool], Field(description="The object nonEmployeeRequest will not be included detail when set to false. *Default value is true*")] = None, **kwargs) -> NonEmployeeApprovalItemDetail:  # noqa: E501
+    def get_non_employee_approval(
+            self,
+            id: Annotated[
+                StrictStr,
+                Field(..., description="Non-Employee approval item id (UUID)"
+                      )],
+            include_detail:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "The object nonEmployeeRequest will not be included detail when set to false. *Default value is true*"
+            )] = None,
+            **kwargs) -> NonEmployeeApprovalItemDetail:  # noqa: E501
         """Get a non-employee approval item detail  # noqa: E501
 
         Gets a non-employee approval item detail. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can get any approval.   2. The user owns the requested approval.  # noqa: E501
@@ -1988,10 +2010,24 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_non_employee_approval_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_non_employee_approval_with_http_info(id, include_detail, **kwargs)  # noqa: E501
+        return self.get_non_employee_approval_with_http_info(
+            id, include_detail, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_non_employee_approval_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Non-Employee approval item id (UUID)")], include_detail : Annotated[Optional[StrictBool], Field(description="The object nonEmployeeRequest will not be included detail when set to false. *Default value is true*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_non_employee_approval_with_http_info(
+            self,
+            id: Annotated[
+                StrictStr,
+                Field(..., description="Non-Employee approval item id (UUID)"
+                      )],
+            include_detail:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "The object nonEmployeeRequest will not be included detail when set to false. *Default value is true*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get a non-employee approval item detail  # noqa: E501
 
         Gets a non-employee approval item detail. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can get any approval.   2. The user owns the requested approval.  # noqa: E501
@@ -2032,29 +2068,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'include_detail'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'include_detail']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_non_employee_approval" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_non_employee_approval" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2064,7 +2089,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -2095,7 +2119,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-approvals/{id}', 'GET',
+            '/non-employee-approvals/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2105,14 +2130,21 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_non_employee_approval_summary(self, requested_for : Annotated[StrictStr, Field(..., description="The identity (UUID) of the approver for whom for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.")], **kwargs) -> NonEmployeeApprovalSummary:  # noqa: E501
+    def get_non_employee_approval_summary(self, requested_for: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The identity (UUID) of the approver for whom for whom the summary is being retrieved. Use \"me\" instead to indicate the current user."
+        )], **kwargs) -> NonEmployeeApprovalSummary:  # noqa: E501
         """Get Summary of Non-Employee Approval Requests  # noqa: E501
 
         This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id.   2. The current user is an approver, in which case \"me\" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.  # noqa: E501
@@ -2139,10 +2171,19 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_non_employee_approval_summary_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_non_employee_approval_summary_with_http_info(requested_for, **kwargs)  # noqa: E501
+        return self.get_non_employee_approval_summary_with_http_info(
+            requested_for, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_non_employee_approval_summary_with_http_info(self, requested_for : Annotated[StrictStr, Field(..., description="The identity (UUID) of the approver for whom for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_non_employee_approval_summary_with_http_info(
+            self, requested_for:
+        Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "The identity (UUID) of the approver for whom for whom the summary is being retrieved. Use \"me\" instead to indicate the current user."
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Summary of Non-Employee Approval Requests  # noqa: E501
 
         This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id.   2. The current user is an approver, in which case \"me\" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.  # noqa: E501
@@ -2181,28 +2222,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'requested_for'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['requested_for']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_non_employee_approval_summary" % _key
-                )
+                    " to method get_non_employee_approval_summary" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2212,7 +2243,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['requested_for']:
             _path_params['requested-for'] = _params['requested_for']
-
 
         # process the query parameters
         _query_params = []
@@ -2240,7 +2270,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-approvals/summary/{requested-for}', 'GET',
+            '/non-employee-approvals/summary/{requested-for}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2250,14 +2281,18 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_non_employee_bulk_upload_status(self, id : Annotated[StrictStr, Field(..., description="Source ID (UUID)")], **kwargs) -> NonEmployeeBulkUploadStatus:  # noqa: E501
+    def get_non_employee_bulk_upload_status(
+            self, id: Annotated[StrictStr,
+                                Field(..., description="Source ID (UUID)")],
+            **kwargs) -> NonEmployeeBulkUploadStatus:  # noqa: E501
         """Obtain the status of bulk upload on the source  # noqa: E501
 
         The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload job for the specified source. Requires role context of `idn:nesr:read`   # noqa: E501
@@ -2284,10 +2319,14 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_non_employee_bulk_upload_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_non_employee_bulk_upload_status_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_non_employee_bulk_upload_status_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_non_employee_bulk_upload_status_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Source ID (UUID)")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_non_employee_bulk_upload_status_with_http_info(
+            self, id: Annotated[StrictStr,
+                                Field(..., description="Source ID (UUID)")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Obtain the status of bulk upload on the source  # noqa: E501
 
         The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload job for the specified source. Requires role context of `idn:nesr:read`   # noqa: E501
@@ -2326,28 +2365,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_non_employee_bulk_upload_status" % _key
-                )
+                    " to method get_non_employee_bulk_upload_status" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2357,7 +2386,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -2385,7 +2413,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-sources/{id}/non-employee-bulk-upload/status', 'GET',
+            '/non-employee-sources/{id}/non-employee-bulk-upload/status',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2395,14 +2424,18 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_non_employee_record(self, id : Annotated[StrictStr, Field(..., description="Non-Employee record id (UUID)")], **kwargs) -> NonEmployeeRecord:  # noqa: E501
+    def get_non_employee_record(self, id: Annotated[
+        StrictStr,
+        Field(..., description="Non-Employee record id (UUID)")],
+                                **kwargs) -> NonEmployeeRecord:  # noqa: E501
         """Get a Non-Employee Record  # noqa: E501
 
         This gets a non-employee record. Requires role context of `idn:nesr:read`  # noqa: E501
@@ -2429,10 +2462,15 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_non_employee_record_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_non_employee_record_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_non_employee_record_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_non_employee_record_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Non-Employee record id (UUID)")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_non_employee_record_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="Non-Employee record id (UUID)")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get a Non-Employee Record  # noqa: E501
 
         This gets a non-employee record. Requires role context of `idn:nesr:read`  # noqa: E501
@@ -2471,28 +2509,17 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_non_employee_record" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_non_employee_record" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2502,7 +2529,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -2530,7 +2556,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-records/{id}', 'GET',
+            '/non-employee-records/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2540,14 +2567,18 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_non_employee_request(self, id : Annotated[StrictStr, Field(..., description="Non-Employee request id (UUID)")], **kwargs) -> NonEmployeeRequest:  # noqa: E501
+    def get_non_employee_request(self, id: Annotated[
+        StrictStr,
+        Field(..., description="Non-Employee request id (UUID)")],
+                                 **kwargs) -> NonEmployeeRequest:  # noqa: E501
         """Get a Non-Employee Request  # noqa: E501
 
         This gets a non-employee request. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in this case the user can get the non-employee request for any user.   2. The user must be the owner of the non-employee request.  # noqa: E501
@@ -2574,10 +2605,15 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_non_employee_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_non_employee_request_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_non_employee_request_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_non_employee_request_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Non-Employee request id (UUID)")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_non_employee_request_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="Non-Employee request id (UUID)")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get a Non-Employee Request  # noqa: E501
 
         This gets a non-employee request. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in this case the user can get the non-employee request for any user.   2. The user must be the owner of the non-employee request.  # noqa: E501
@@ -2616,28 +2652,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_non_employee_request" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_non_employee_request" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2647,7 +2673,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -2676,7 +2701,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-requests/{id}', 'GET',
+            '/non-employee-requests/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2686,14 +2712,21 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_non_employee_request_summary(self, requested_for : Annotated[StrictStr, Field(..., description="The identity (UUID) of the non-employee account manager for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.")], **kwargs) -> NonEmployeeRequestSummary:  # noqa: E501
+    def get_non_employee_request_summary(self, requested_for: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The identity (UUID) of the non-employee account manager for whom the summary is being retrieved. Use \"me\" instead to indicate the current user."
+        )], **kwargs) -> NonEmployeeRequestSummary:  # noqa: E501
         """Get Summary of Non-Employee Requests  # noqa: E501
 
         This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.  # noqa: E501
@@ -2720,10 +2753,19 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_non_employee_request_summary_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_non_employee_request_summary_with_http_info(requested_for, **kwargs)  # noqa: E501
+        return self.get_non_employee_request_summary_with_http_info(
+            requested_for, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_non_employee_request_summary_with_http_info(self, requested_for : Annotated[StrictStr, Field(..., description="The identity (UUID) of the non-employee account manager for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_non_employee_request_summary_with_http_info(
+            self, requested_for:
+        Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "The identity (UUID) of the non-employee account manager for whom the summary is being retrieved. Use \"me\" instead to indicate the current user."
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Get Summary of Non-Employee Requests  # noqa: E501
 
         This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.  # noqa: E501
@@ -2762,28 +2804,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'requested_for'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['requested_for']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_non_employee_request_summary" % _key
-                )
+                    " to method get_non_employee_request_summary" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2793,7 +2825,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['requested_for']:
             _path_params['requested-for'] = _params['requested_for']
-
 
         # process the query parameters
         _query_params = []
@@ -2821,7 +2852,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-requests/summary/{requested-for}', 'GET',
+            '/non-employee-requests/summary/{requested-for}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2831,14 +2863,21 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_non_employee_schema_attribute(self, attribute_id : Annotated[StrictStr, Field(..., description="The Schema Attribute Id (UUID)")], source_id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> NonEmployeeSchemaAttribute:  # noqa: E501
+    def get_non_employee_schema_attribute(
+            self, attribute_id: Annotated[
+                StrictStr,
+                Field(..., description="The Schema Attribute Id (UUID)")],
+            source_id: Annotated[StrictStr,
+                                 Field(..., description="The Source id")],
+            **kwargs) -> NonEmployeeSchemaAttribute:  # noqa: E501
         """Get Schema Attribute Non-Employee Source  # noqa: E501
 
         This API gets a schema attribute by Id for the specified Non-Employee SourceId. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.  # noqa: E501
@@ -2867,10 +2906,17 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_non_employee_schema_attribute_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_non_employee_schema_attribute_with_http_info(attribute_id, source_id, **kwargs)  # noqa: E501
+        return self.get_non_employee_schema_attribute_with_http_info(
+            attribute_id, source_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_non_employee_schema_attribute_with_http_info(self, attribute_id : Annotated[StrictStr, Field(..., description="The Schema Attribute Id (UUID)")], source_id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_non_employee_schema_attribute_with_http_info(
+            self, attribute_id: Annotated[
+                StrictStr,
+                Field(..., description="The Schema Attribute Id (UUID)")],
+            source_id: Annotated[StrictStr,
+                                 Field(..., description="The Source id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get Schema Attribute Non-Employee Source  # noqa: E501
 
         This API gets a schema attribute by Id for the specified Non-Employee SourceId. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.  # noqa: E501
@@ -2911,29 +2957,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'attribute_id',
-            'source_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['attribute_id', 'source_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_non_employee_schema_attribute" % _key
-                )
+                    " to method get_non_employee_schema_attribute" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2946,7 +2981,6 @@ class NonEmployeeLifecycleManagementApi:
 
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
-
 
         # process the query parameters
         _query_params = []
@@ -2974,7 +3008,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-sources/{sourceId}/schema-attributes/{attributeId}', 'GET',
+            '/non-employee-sources/{sourceId}/schema-attributes/{attributeId}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2984,14 +3019,17 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_non_employee_source(self, source_id : Annotated[StrictStr, Field(..., description="Source Id")], **kwargs) -> NonEmployeeSource:  # noqa: E501
+    def get_non_employee_source(self, source_id: Annotated[
+        StrictStr, Field(..., description="Source Id")],
+                                **kwargs) -> NonEmployeeSource:  # noqa: E501
         """Get a Non-Employee Source  # noqa: E501
 
         This gets a non-employee source. There are two contextual uses for the requested-for path parameter:    1. The user has the role context of `idn:nesr:read`, in which case he or she may request any source.   2. The current user is an account manager, in which case the user can only request sources that they own.  # noqa: E501
@@ -3018,10 +3056,14 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_non_employee_source_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_non_employee_source_with_http_info(source_id, **kwargs)  # noqa: E501
+        return self.get_non_employee_source_with_http_info(
+            source_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_non_employee_source_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="Source Id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_non_employee_source_with_http_info(
+            self, source_id: Annotated[StrictStr,
+                                       Field(..., description="Source Id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get a Non-Employee Source  # noqa: E501
 
         This gets a non-employee source. There are two contextual uses for the requested-for path parameter:    1. The user has the role context of `idn:nesr:read`, in which case he or she may request any source.   2. The current user is an account manager, in which case the user can only request sources that they own.  # noqa: E501
@@ -3060,28 +3102,17 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'source_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['source_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_non_employee_source" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_non_employee_source" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3091,7 +3122,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
-
 
         # process the query parameters
         _query_params = []
@@ -3119,7 +3149,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-sources/{sourceId}', 'GET',
+            '/non-employee-sources/{sourceId}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -3129,14 +3160,19 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_non_employee_source_schema_attributes(self, source_id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> List[NonEmployeeSchemaAttribute]:  # noqa: E501
+    def get_non_employee_source_schema_attributes(
+            self,
+            source_id: Annotated[StrictStr,
+                                 Field(..., description="The Source id")],
+            **kwargs) -> List[NonEmployeeSchemaAttribute]:  # noqa: E501
         """List Schema Attributes Non-Employee Source  # noqa: E501
 
         This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.  # noqa: E501
@@ -3163,10 +3199,15 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_non_employee_source_schema_attributes_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_non_employee_source_schema_attributes_with_http_info(source_id, **kwargs)  # noqa: E501
+        return self.get_non_employee_source_schema_attributes_with_http_info(
+            source_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_non_employee_source_schema_attributes_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="The Source id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_non_employee_source_schema_attributes_with_http_info(
+            self,
+            source_id: Annotated[StrictStr,
+                                 Field(..., description="The Source id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List Schema Attributes Non-Employee Source  # noqa: E501
 
         This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.  # noqa: E501
@@ -3205,28 +3246,19 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'source_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['source_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_non_employee_source_schema_attributes" % _key
-                )
+                    " to method get_non_employee_source_schema_attributes" %
+                    _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3236,7 +3268,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
-
 
         # process the query parameters
         _query_params = []
@@ -3265,7 +3296,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-sources/{sourceId}/schema-attributes', 'GET',
+            '/non-employee-sources/{sourceId}/schema-attributes',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -3275,14 +3307,19 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def import_non_employee_records_in_bulk(self, id : Annotated[StrictStr, Field(..., description="Source Id (UUID)")], data : Union[StrictBytes, StrictStr], **kwargs) -> NonEmployeeBulkUploadJob:  # noqa: E501
+    def import_non_employee_records_in_bulk(
+            self, id: Annotated[StrictStr,
+                                Field(..., description="Source Id (UUID)")],
+            data: Union[StrictBytes, StrictStr],
+            **kwargs) -> NonEmployeeBulkUploadJob:  # noqa: E501
         """Imports, or Updates, Non-Employee Records  # noqa: E501
 
         This post will import, or update, Non-Employee records found in the CSV. Requires role context of `idn:nesr:create`  # noqa: E501
@@ -3311,10 +3348,15 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the import_non_employee_records_in_bulk_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.import_non_employee_records_in_bulk_with_http_info(id, data, **kwargs)  # noqa: E501
+        return self.import_non_employee_records_in_bulk_with_http_info(
+            id, data, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def import_non_employee_records_in_bulk_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Source Id (UUID)")], data : Union[StrictBytes, StrictStr], **kwargs) -> ApiResponse:  # noqa: E501
+    def import_non_employee_records_in_bulk_with_http_info(
+            self, id: Annotated[StrictStr,
+                                Field(..., description="Source Id (UUID)")],
+            data: Union[StrictBytes,
+                        StrictStr], **kwargs) -> ApiResponse:  # noqa: E501
         """Imports, or Updates, Non-Employee Records  # noqa: E501
 
         This post will import, or update, Non-Employee records found in the CSV. Requires role context of `idn:nesr:create`  # noqa: E501
@@ -3355,29 +3397,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'data'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'data']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method import_non_employee_records_in_bulk" % _key
-                )
+                    " to method import_non_employee_records_in_bulk" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3387,7 +3418,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -3406,11 +3436,12 @@ class NonEmployeeLifecycleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['multipart/form-data']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['multipart/form-data'
+                                                        ]))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -3426,7 +3457,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-sources/{id}/non-employee-bulk-upload', 'POST',
+            '/non-employee-sources/{id}/non-employee-bulk-upload',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -3436,14 +3468,59 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_non_employee_approvals(self, requested_for : Annotated[Optional[StrictStr], Field(description="The identity for whom the request was made. *me* indicates the current user.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **approvalStatus**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**")] = None, **kwargs) -> List[NonEmployeeApprovalItem]:  # noqa: E501
+    def list_non_employee_approvals(
+            self,
+            requested_for:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The identity for whom the request was made. *me* indicates the current user."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **approvalStatus**: *eq*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**"
+            )] = None,
+            **kwargs) -> List[NonEmployeeApprovalItem]:  # noqa: E501
         """Get List of Non-Employee Approval Requests  # noqa: E501
 
         This gets a list of non-employee approval requests. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can list the approvals for any approver.   2. The user owns the requested approval.  # noqa: E501
@@ -3480,10 +3557,56 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_non_employee_approvals_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_non_employee_approvals_with_http_info(requested_for, limit, offset, count, filters, sorters, **kwargs)  # noqa: E501
+        return self.list_non_employee_approvals_with_http_info(
+            requested_for, limit, offset, count, filters, sorters,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_non_employee_approvals_with_http_info(self, requested_for : Annotated[Optional[StrictStr], Field(description="The identity for whom the request was made. *me* indicates the current user.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **approvalStatus**: *eq*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_non_employee_approvals_with_http_info(
+            self,
+            requested_for:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "The identity for whom the request was made. *me* indicates the current user."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **approvalStatus**: *eq*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Get List of Non-Employee Approval Requests  # noqa: E501
 
         This gets a list of non-employee approval requests. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can list the approvals for any approver.   2. The user owns the requested approval.  # noqa: E501
@@ -3533,32 +3656,19 @@ class NonEmployeeLifecycleManagementApi:
         _params = locals()
 
         _all_params = [
-            'requested_for',
-            'limit',
-            'offset',
-            'count',
-            'filters',
-            'sorters'
+            'requested_for', 'limit', 'offset', 'count', 'filters', 'sorters'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_non_employee_approvals" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_non_employee_approvals" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3611,7 +3721,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-approvals', 'GET',
+            '/non-employee-approvals',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -3621,14 +3732,52 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_non_employee_records(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, accountName, sourceId, manager, firstName, lastName, email, phone, startDate, endDate, created, modified**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*")] = None, **kwargs) -> List[NonEmployeeRecord]:  # noqa: E501
+    def list_non_employee_records(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, accountName, sourceId, manager, firstName, lastName, email, phone, startDate, endDate, created, modified**"
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*"
+            )] = None,
+            **kwargs) -> List[NonEmployeeRecord]:  # noqa: E501
         """List Non-Employee Records  # noqa: E501
 
         This gets a list of non-employee records. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can get a list of all of the non-employees.   2. The user is an account manager, in which case they can get a list of the non-employees that they manage.  # noqa: E501
@@ -3663,10 +3812,48 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_non_employee_records_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_non_employee_records_with_http_info(limit, offset, count, sorters, filters, **kwargs)  # noqa: E501
+        return self.list_non_employee_records_with_http_info(
+            limit, offset, count, sorters, filters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_non_employee_records_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, accountName, sourceId, manager, firstName, lastName, email, phone, startDate, endDate, created, modified**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_non_employee_records_with_http_info(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, accountName, sourceId, manager, firstName, lastName, email, phone, startDate, endDate, created, modified**"
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List Non-Employee Records  # noqa: E501
 
         This gets a list of non-employee records. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:read`, in which case they can get a list of all of the non-employees.   2. The user is an account manager, in which case they can get a list of the non-employees that they manage.  # noqa: E501
@@ -3713,32 +3900,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'limit',
-            'offset',
-            'count',
-            'sorters',
-            'filters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['limit', 'offset', 'count', 'sorters', 'filters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_non_employee_records" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_non_employee_records" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3788,7 +3961,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-records', 'GET',
+            '/non-employee-records',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -3798,14 +3972,60 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_non_employee_requests(self, requested_for : Annotated[StrictStr, Field(..., description="The identity for whom the request was made. *me* indicates the current user.")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, approvalStatus, firstName, lastName, email, phone, accountName, startDate, endDate**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq* ")] = None, **kwargs) -> List[NonEmployeeRequest]:  # noqa: E501
+    def list_non_employee_requests(
+            self,
+            requested_for:
+        Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "The identity for whom the request was made. *me* indicates the current user."
+            )],
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, approvalStatus, firstName, lastName, email, phone, accountName, startDate, endDate**"
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq* "
+            )] = None,
+            **kwargs) -> List[NonEmployeeRequest]:  # noqa: E501
         """List Non-Employee Requests  # noqa: E501
 
         This gets a list of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list non-employee requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a list of the non-employee requests in the source(s) he or she manages.  # noqa: E501
@@ -3842,10 +4062,57 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_non_employee_requests_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_non_employee_requests_with_http_info(requested_for, limit, offset, count, sorters, filters, **kwargs)  # noqa: E501
+        return self.list_non_employee_requests_with_http_info(
+            requested_for, limit, offset, count, sorters, filters,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_non_employee_requests_with_http_info(self, requested_for : Annotated[StrictStr, Field(..., description="The identity for whom the request was made. *me* indicates the current user.")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, approvalStatus, firstName, lastName, email, phone, accountName, startDate, endDate**")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq* ")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_non_employee_requests_with_http_info(
+            self,
+            requested_for:
+        Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "The identity for whom the request was made. *me* indicates the current user."
+            )],
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, approvalStatus, firstName, lastName, email, phone, accountName, startDate, endDate**"
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq* "
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List Non-Employee Requests  # noqa: E501
 
         This gets a list of non-employee requests. There are two contextual uses for the `requested-for` path parameter:   1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list non-employee requests assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a list of the non-employee requests in the source(s) he or she manages.  # noqa: E501
@@ -3895,32 +4162,19 @@ class NonEmployeeLifecycleManagementApi:
         _params = locals()
 
         _all_params = [
-            'requested_for',
-            'limit',
-            'offset',
-            'count',
-            'sorters',
-            'filters'
+            'requested_for', 'limit', 'offset', 'count', 'sorters', 'filters'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_non_employee_requests" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_non_employee_requests" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -3973,7 +4227,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-requests', 'GET',
+            '/non-employee-requests',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -3983,14 +4238,60 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_non_employee_sources(self, requested_for : Annotated[StrictStr, Field(..., description="The identity for whom the request was made. *me* indicates the current user.")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, non_employee_count : Annotated[Optional[StrictBool], Field(description="The flag to determine whether return a non-employee count associate with source.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId**")] = None, **kwargs) -> List[NonEmployeeSourceWithNECount]:  # noqa: E501
+    def list_non_employee_sources(
+            self,
+            requested_for:
+        Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "The identity for whom the request was made. *me* indicates the current user."
+            )],
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            non_employee_count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "The flag to determine whether return a non-employee count associate with source."
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId**"
+            )] = None,
+            **kwargs) -> List[NonEmployeeSourceWithNECount]:  # noqa: E501
         """List Non-Employee Sources  # noqa: E501
 
         This gets a list of non-employee sources. There are two contextual uses for the requested-for path parameter:    1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list sources assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a list of the sources that he or she owns.  # noqa: E501
@@ -4027,10 +4328,57 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_non_employee_sources_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_non_employee_sources_with_http_info(requested_for, limit, offset, count, non_employee_count, sorters, **kwargs)  # noqa: E501
+        return self.list_non_employee_sources_with_http_info(
+            requested_for, limit, offset, count, non_employee_count, sorters,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_non_employee_sources_with_http_info(self, requested_for : Annotated[StrictStr, Field(..., description="The identity for whom the request was made. *me* indicates the current user.")], limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, non_employee_count : Annotated[Optional[StrictBool], Field(description="The flag to determine whether return a non-employee count associate with source.")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_non_employee_sources_with_http_info(
+            self,
+            requested_for:
+        Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "The identity for whom the request was made. *me* indicates the current user."
+            )],
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            non_employee_count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "The flag to determine whether return a non-employee count associate with source."
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List Non-Employee Sources  # noqa: E501
 
         This gets a list of non-employee sources. There are two contextual uses for the requested-for path parameter:    1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list sources assigned to a particular account manager by passing in that manager's id.   2. The current user is an account manager, in which case \"me\" should be provided as the `requested-for` value. This will provide the user with a list of the sources that he or she owns.  # noqa: E501
@@ -4080,32 +4428,20 @@ class NonEmployeeLifecycleManagementApi:
         _params = locals()
 
         _all_params = [
-            'requested_for',
-            'limit',
-            'offset',
-            'count',
-            'non_employee_count',
+            'requested_for', 'limit', 'offset', 'count', 'non_employee_count',
             'sorters'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_non_employee_sources" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_non_employee_sources" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -4129,7 +4465,8 @@ class NonEmployeeLifecycleManagementApi:
             _query_params.append(('requested-for', _params['requested_for']))
 
         if _params.get('non_employee_count') is not None:  # noqa: E501
-            _query_params.append(('non-employee-count', _params['non_employee_count']))
+            _query_params.append(
+                ('non-employee-count', _params['non_employee_count']))
 
         if _params.get('sorters') is not None:  # noqa: E501
             _query_params.append(('sorters', _params['sorters']))
@@ -4158,7 +4495,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-sources', 'GET',
+            '/non-employee-sources',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -4168,14 +4506,25 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_non_employee_record(self, id : Annotated[StrictStr, Field(..., description="Non-employee record id (UUID)")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")], **kwargs) -> NonEmployeeRecord:  # noqa: E501
+    def patch_non_employee_record(self, id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="Non-employee record id (UUID)"
+        )], json_patch_operation: Annotated[
+            conlist(JsonPatchOperation),
+            Field(
+                ...,
+                description=
+                "A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields."
+            )], **kwargs) -> NonEmployeeRecord:  # noqa: E501
         """Patch Non-Employee Record  # noqa: E501
 
         This request will patch a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.  # noqa: E501
@@ -4204,10 +4553,21 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_non_employee_record_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_non_employee_record_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
+        return self.patch_non_employee_record_with_http_info(
+            id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_non_employee_record_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Non-employee record id (UUID)")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_non_employee_record_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="Non-employee record id (UUID)"
+        )], json_patch_operation: Annotated[
+            conlist(JsonPatchOperation),
+            Field(
+                ...,
+                description=
+                "A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields."
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Patch Non-Employee Record  # noqa: E501
 
         This request will patch a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.  # noqa: E501
@@ -4248,29 +4608,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'json_patch_operation'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'json_patch_operation']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_non_employee_record" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method patch_non_employee_record" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -4280,7 +4629,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -4299,11 +4647,12 @@ class NonEmployeeLifecycleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
+        _content_types_list = _params.get(
+            '_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -4319,7 +4668,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-records/{id}', 'PATCH',
+            '/non-employee-records/{id}',
+            'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -4329,14 +4679,28 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_non_employee_schema_attribute(self, attribute_id : Annotated[StrictStr, Field(..., description="The Schema Attribute Id (UUID)")], source_id : Annotated[StrictStr, Field(..., description="The Source id")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.")], **kwargs) -> NonEmployeeSchemaAttribute:  # noqa: E501
+    def patch_non_employee_schema_attribute(
+            self, attribute_id: Annotated[
+                StrictStr,
+                Field(..., description="The Schema Attribute Id (UUID)")],
+            source_id: Annotated[StrictStr,
+                                 Field(..., description="The Source id")],
+            json_patch_operation:
+        Annotated[
+            conlist(JsonPatchOperation),
+            Field(
+                ...,
+                description=
+                "A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'."
+            )], **kwargs) -> NonEmployeeSchemaAttribute:  # noqa: E501
         """Patch a Schema Attribute for Non-Employee Source  # noqa: E501
 
         This end-point patches a specific schema attribute for a non-employee SourceId. Requires role context of `idn:nesr:update`   # noqa: E501
@@ -4367,10 +4731,25 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_non_employee_schema_attribute_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_non_employee_schema_attribute_with_http_info(attribute_id, source_id, json_patch_operation, **kwargs)  # noqa: E501
+        return self.patch_non_employee_schema_attribute_with_http_info(
+            attribute_id, source_id, json_patch_operation,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_non_employee_schema_attribute_with_http_info(self, attribute_id : Annotated[StrictStr, Field(..., description="The Schema Attribute Id (UUID)")], source_id : Annotated[StrictStr, Field(..., description="The Source id")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_non_employee_schema_attribute_with_http_info(
+            self, attribute_id: Annotated[
+                StrictStr,
+                Field(..., description="The Schema Attribute Id (UUID)")],
+            source_id: Annotated[StrictStr,
+                                 Field(..., description="The Source id")],
+            json_patch_operation:
+        Annotated[
+            conlist(JsonPatchOperation),
+            Field(
+                ...,
+                description=
+                "A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'."
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Patch a Schema Attribute for Non-Employee Source  # noqa: E501
 
         This end-point patches a specific schema attribute for a non-employee SourceId. Requires role context of `idn:nesr:update`   # noqa: E501
@@ -4413,30 +4792,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'attribute_id',
-            'source_id',
-            'json_patch_operation'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['attribute_id', 'source_id', 'json_patch_operation']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method patch_non_employee_schema_attribute" % _key
-                )
+                    " to method patch_non_employee_schema_attribute" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -4449,7 +4816,6 @@ class NonEmployeeLifecycleManagementApi:
 
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
-
 
         # process the query parameters
         _query_params = []
@@ -4468,11 +4834,12 @@ class NonEmployeeLifecycleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
+        _content_types_list = _params.get(
+            '_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -4488,7 +4855,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-sources/{sourceId}/schema-attributes/{attributeId}', 'PATCH',
+            '/non-employee-sources/{sourceId}/schema-attributes/{attributeId}',
+            'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -4498,14 +4866,23 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_non_employee_source(self, source_id : Annotated[StrictStr, Field(..., description="Source Id")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")], **kwargs) -> NonEmployeeSource:  # noqa: E501
+    def patch_non_employee_source(self, source_id: Annotated[
+        StrictStr,
+        Field(..., description="Source Id")], json_patch_operation: Annotated[
+            conlist(JsonPatchOperation),
+            Field(
+                ...,
+                description=
+                "A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
+            )], **kwargs) -> NonEmployeeSource:  # noqa: E501
         """Patch a Non-Employee Source  # noqa: E501
 
         patch a non-employee source. (partial update) <br/> Patchable field: **name, description, approvers, accountManagers** Requires role context of `idn:nesr:update`.  # noqa: E501
@@ -4534,10 +4911,19 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_non_employee_source_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_non_employee_source_with_http_info(source_id, json_patch_operation, **kwargs)  # noqa: E501
+        return self.patch_non_employee_source_with_http_info(
+            source_id, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_non_employee_source_with_http_info(self, source_id : Annotated[StrictStr, Field(..., description="Source Id")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_non_employee_source_with_http_info(self, source_id: Annotated[
+        StrictStr,
+        Field(..., description="Source Id")], json_patch_operation: Annotated[
+            conlist(JsonPatchOperation),
+            Field(
+                ...,
+                description=
+                "A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Patch a Non-Employee Source  # noqa: E501
 
         patch a non-employee source. (partial update) <br/> Patchable field: **name, description, approvers, accountManagers** Requires role context of `idn:nesr:update`.  # noqa: E501
@@ -4578,29 +4964,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'source_id',
-            'json_patch_operation'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['source_id', 'json_patch_operation']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_non_employee_source" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method patch_non_employee_source" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -4610,7 +4985,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['source_id']:
             _path_params['sourceId'] = _params['source_id']
-
 
         # process the query parameters
         _query_params = []
@@ -4629,11 +5003,12 @@ class NonEmployeeLifecycleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
+        _content_types_list = _params.get(
+            '_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -4648,7 +5023,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-sources/{sourceId}', 'PATCH',
+            '/non-employee-sources/{sourceId}',
+            'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -4658,14 +5034,20 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def reject_non_employee_request(self, id : Annotated[StrictStr, Field(..., description="Non-Employee approval item id (UUID)")], non_employee_reject_approval_decision : NonEmployeeRejectApprovalDecision, **kwargs) -> NonEmployeeApprovalItem:  # noqa: E501
+    def reject_non_employee_request(self, id: Annotated[
+        StrictStr,
+        Field(..., description="Non-Employee approval item id (UUID)")],
+                                    non_employee_reject_approval_decision:
+                                    NonEmployeeRejectApprovalDecision, **kwargs
+                                    ) -> NonEmployeeApprovalItem:  # noqa: E501
         """Reject a Non-Employee Request  # noqa: E501
 
         This endpoint will reject an approval item request and notify user. The current user must be the requested approver.  # noqa: E501
@@ -4694,10 +5076,17 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the reject_non_employee_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.reject_non_employee_request_with_http_info(id, non_employee_reject_approval_decision, **kwargs)  # noqa: E501
+        return self.reject_non_employee_request_with_http_info(
+            id, non_employee_reject_approval_decision, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def reject_non_employee_request_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Non-Employee approval item id (UUID)")], non_employee_reject_approval_decision : NonEmployeeRejectApprovalDecision, **kwargs) -> ApiResponse:  # noqa: E501
+    def reject_non_employee_request_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="Non-Employee approval item id (UUID)"
+                      )], non_employee_reject_approval_decision:
+        NonEmployeeRejectApprovalDecision,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Reject a Non-Employee Request  # noqa: E501
 
         This endpoint will reject an approval item request and notify user. The current user must be the requested approver.  # noqa: E501
@@ -4738,29 +5127,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'non_employee_reject_approval_decision'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'non_employee_reject_approval_decision']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method reject_non_employee_request" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method reject_non_employee_request" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -4770,7 +5148,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -4789,11 +5166,11 @@ class NonEmployeeLifecycleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -4808,7 +5185,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-approvals/{id}/reject', 'POST',
+            '/non-employee-approvals/{id}/reject',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -4818,14 +5196,25 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_non_employee_record(self, id : Annotated[StrictStr, Field(..., description="Non-employee record id (UUID)")], non_employee_request_body : Annotated[NonEmployeeRequestBody, Field(..., description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")], **kwargs) -> NonEmployeeRecord:  # noqa: E501
+    def update_non_employee_record(self, id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="Non-employee record id (UUID)"
+        )], non_employee_request_body: Annotated[
+            NonEmployeeRequestBody,
+            Field(
+                ...,
+                description=
+                "Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields."
+            )], **kwargs) -> NonEmployeeRecord:  # noqa: E501
         """Update Non-Employee Record  # noqa: E501
 
         This request will update a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.  # noqa: E501
@@ -4854,10 +5243,21 @@ class NonEmployeeLifecycleManagementApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_non_employee_record_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_non_employee_record_with_http_info(id, non_employee_request_body, **kwargs)  # noqa: E501
+        return self.update_non_employee_record_with_http_info(
+            id, non_employee_request_body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_non_employee_record_with_http_info(self, id : Annotated[StrictStr, Field(..., description="Non-employee record id (UUID)")], non_employee_request_body : Annotated[NonEmployeeRequestBody, Field(..., description="Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def update_non_employee_record_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="Non-employee record id (UUID)"
+        )], non_employee_request_body: Annotated[
+            NonEmployeeRequestBody,
+            Field(
+                ...,
+                description=
+                "Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields."
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Update Non-Employee Record  # noqa: E501
 
         This request will update a non-employee record. There are two contextual uses for this endpoint:   1. The user has the role context of `idn:nesr:update`, in which case they update all available fields.   2. The user is owner of the source, in this case they can only update the end date.  # noqa: E501
@@ -4898,29 +5298,18 @@ class NonEmployeeLifecycleManagementApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'non_employee_request_body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'non_employee_request_body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_non_employee_record" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method update_non_employee_record" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -4930,7 +5319,6 @@ class NonEmployeeLifecycleManagementApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -4949,11 +5337,11 @@ class NonEmployeeLifecycleManagementApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -4969,7 +5357,8 @@ class NonEmployeeLifecycleManagementApi:
         }
 
         return self.api_client.call_api(
-            '/non-employee-records/{id}', 'PUT',
+            '/non-employee-records/{id}',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -4979,7 +5368,8 @@ class NonEmployeeLifecycleManagementApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

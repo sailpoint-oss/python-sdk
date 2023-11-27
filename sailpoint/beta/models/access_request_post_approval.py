@@ -11,28 +11,37 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.access_item_requested_for_dto import AccessItemRequestedForDto
-from beta.models.access_item_requester_dto import AccessItemRequesterDto
-from beta.models.access_request_post_approval_requested_items_status_inner import AccessRequestPostApprovalRequestedItemsStatusInner
+from sailpoint.beta.models.access_item_requested_for_dto import AccessItemRequestedForDto
+from sailpoint.beta.models.access_item_requester_dto import AccessItemRequesterDto
+from sailpoint.beta.models.access_request_post_approval_requested_items_status_inner import AccessRequestPostApprovalRequestedItemsStatusInner
+
 
 class AccessRequestPostApproval(BaseModel):
     """
     AccessRequestPostApproval
     """
-    access_request_id: StrictStr = Field(..., alias="accessRequestId", description="The unique ID of the access request.")
+    access_request_id: StrictStr = Field(
+        ...,
+        alias="accessRequestId",
+        description="The unique ID of the access request.")
     requested_for: AccessItemRequestedForDto = Field(..., alias="requestedFor")
-    requested_items_status: conlist(AccessRequestPostApprovalRequestedItemsStatusInner) = Field(..., alias="requestedItemsStatus", description="Details on the outcome of each access item.")
+    requested_items_status: conlist(
+        AccessRequestPostApprovalRequestedItemsStatusInner) = Field(
+            ...,
+            alias="requestedItemsStatus",
+            description="Details on the outcome of each access item.")
     requested_by: AccessItemRequesterDto = Field(..., alias="requestedBy")
-    __properties = ["accessRequestId", "requestedFor", "requestedItemsStatus", "requestedBy"]
+    __properties = [
+        "accessRequestId", "requestedFor", "requestedItemsStatus",
+        "requestedBy"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -54,10 +63,7 @@ class AccessRequestPostApproval(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of requested_for
         if self.requested_for:
             _dict['requestedFor'] = self.requested_for.to_dict()
@@ -83,11 +89,17 @@ class AccessRequestPostApproval(BaseModel):
             return AccessRequestPostApproval.parse_obj(obj)
 
         _obj = AccessRequestPostApproval.parse_obj({
-            "access_request_id": obj.get("accessRequestId"),
-            "requested_for": AccessItemRequestedForDto.from_dict(obj.get("requestedFor")) if obj.get("requestedFor") is not None else None,
-            "requested_items_status": [AccessRequestPostApprovalRequestedItemsStatusInner.from_dict(_item) for _item in obj.get("requestedItemsStatus")] if obj.get("requestedItemsStatus") is not None else None,
-            "requested_by": AccessItemRequesterDto.from_dict(obj.get("requestedBy")) if obj.get("requestedBy") is not None else None
+            "access_request_id":
+            obj.get("accessRequestId"),
+            "requested_for":
+            AccessItemRequestedForDto.from_dict(obj.get("requestedFor"))
+            if obj.get("requestedFor") is not None else None,
+            "requested_items_status": [
+                AccessRequestPostApprovalRequestedItemsStatusInner.from_dict(
+                    _item) for _item in obj.get("requestedItemsStatus")
+            ] if obj.get("requestedItemsStatus") is not None else None,
+            "requested_by":
+            AccessItemRequesterDto.from_dict(obj.get("requestedBy"))
+            if obj.get("requestedBy") is not None else None
         })
         return _obj
-
-

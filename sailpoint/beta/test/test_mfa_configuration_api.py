@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.mfa_configuration_api import MFAConfigurationApi  # noqa: E501
+from sailpoint.beta.api.mfa_configuration_api import MFAConfigurationApi  # noqa: E501
 
 
 class TestMFAConfigurationApi(unittest.TestCase):

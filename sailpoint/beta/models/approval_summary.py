@@ -11,23 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt
+
 
 class ApprovalSummary(BaseModel):
     """
     ApprovalSummary
     """
-    pending: Optional[StrictInt] = Field(None, description="The number of pending access requests approvals.")
-    approved: Optional[StrictInt] = Field(None, description="The number of approved access requests approvals.")
-    rejected: Optional[StrictInt] = Field(None, description="The number of rejected access requests approvals.")
+    pending: Optional[StrictInt] = Field(
+        None, description="The number of pending access requests approvals.")
+    approved: Optional[StrictInt] = Field(
+        None, description="The number of approved access requests approvals.")
+    rejected: Optional[StrictInt] = Field(
+        None, description="The number of rejected access requests approvals.")
     __properties = ["pending", "approved", "rejected"]
 
     class Config:
@@ -50,10 +52,7 @@ class ApprovalSummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,5 +70,3 @@ class ApprovalSummary(BaseModel):
             "rejected": obj.get("rejected")
         })
         return _obj
-
-

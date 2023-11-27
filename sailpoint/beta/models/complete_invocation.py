@@ -11,23 +11,33 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class CompleteInvocation(BaseModel):
     """
     CompleteInvocation
     """
-    secret: StrictStr = Field(..., description="Unique invocation secret that was generated when the invocation was created. Required to authenticate to the endpoint.")
-    error: Optional[StrictStr] = Field(None, description="The error message to indicate a failed invocation or error if any.")
-    output: Dict[str, Any] = Field(..., description="Trigger output to complete the invocation. Its schema is defined in the trigger definition.")
+    secret: StrictStr = Field(
+        ...,
+        description=
+        "Unique invocation secret that was generated when the invocation was created. Required to authenticate to the endpoint."
+    )
+    error: Optional[StrictStr] = Field(
+        None,
+        description=
+        "The error message to indicate a failed invocation or error if any.")
+    output: Dict[str, Any] = Field(
+        ...,
+        description=
+        "Trigger output to complete the invocation. Its schema is defined in the trigger definition."
+    )
     __properties = ["secret", "error", "output"]
 
     class Config:
@@ -50,10 +60,7 @@ class CompleteInvocation(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -71,5 +78,3 @@ class CompleteInvocation(BaseModel):
             "output": obj.get("output")
         })
         return _obj
-
-

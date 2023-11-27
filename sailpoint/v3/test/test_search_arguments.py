@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.search_arguments import SearchArguments  # noqa: E501
+from sailpoint.v3.models.search_arguments import SearchArguments  # noqa: E501
+
 
 class TestSearchArguments(unittest.TestCase):
     """SearchArguments unit test stubs"""
@@ -37,11 +37,11 @@ class TestSearchArguments(unittest.TestCase):
         if include_optional:
             return SearchArguments(
                 schedule_id = '7a724640-0c17-4ce9-a8c3-4a89738459c8',
-                owner = v3.models.typed_reference.TypedReference(
+                owner = sailpoint.v3.models.typed_reference.TypedReference(
                     type = 'IDENTITY', 
                     id = '2c91808568c529c60168cca6f90c1313', ),
                 recipients = [
-                    v3.models.typed_reference.TypedReference(
+                    sailpoint.v3.models.typed_reference.TypedReference(
                         type = 'IDENTITY', 
                         id = '2c91808568c529c60168cca6f90c1313', )
                     ]
@@ -55,6 +55,7 @@ class TestSearchArguments(unittest.TestCase):
         """Test SearchArguments"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

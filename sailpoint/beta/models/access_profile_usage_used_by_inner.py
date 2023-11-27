@@ -11,23 +11,25 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class AccessProfileUsageUsedByInner(BaseModel):
     """
     Role using the access profile.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="DTO type of role using the access profile.")
-    id: Optional[StrictStr] = Field(None, description="ID of role using the access profile.")
-    name: Optional[StrictStr] = Field(None, description="Display name of role using the access profile.")
+    type: Optional[StrictStr] = Field(
+        None, description="DTO type of role using the access profile.")
+    id: Optional[StrictStr] = Field(
+        None, description="ID of role using the access profile.")
+    name: Optional[StrictStr] = Field(
+        None, description="Display name of role using the access profile.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -60,10 +62,7 @@ class AccessProfileUsageUsedByInner(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,5 +80,3 @@ class AccessProfileUsageUsedByInner(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

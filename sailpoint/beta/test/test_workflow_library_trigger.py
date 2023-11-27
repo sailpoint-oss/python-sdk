@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.workflow_library_trigger import WorkflowLibraryTrigger  # noqa: E501
+from sailpoint.beta.models.workflow_library_trigger import WorkflowLibraryTrigger  # noqa: E501
+
 
 class TestWorkflowLibraryTrigger(unittest.TestCase):
     """WorkflowLibraryTrigger unit test stubs"""
@@ -53,6 +53,7 @@ class TestWorkflowLibraryTrigger(unittest.TestCase):
         """Test WorkflowLibraryTrigger"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

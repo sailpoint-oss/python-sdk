@@ -11,24 +11,28 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from beta.models.locale_origin import LocaleOrigin
+from sailpoint.beta.models.locale_origin import LocaleOrigin
+
 
 class ErrorMessageDto(BaseModel):
     """
     ErrorMessageDto
     """
-    locale: Optional[StrictStr] = Field(None, description="The locale for the message text, a BCP 47 language tag.")
+    locale: Optional[StrictStr] = Field(
+        None,
+        description="The locale for the message text, a BCP 47 language tag.")
     locale_origin: Optional[LocaleOrigin] = Field(None, alias="localeOrigin")
-    text: Optional[StrictStr] = Field(None, description="Actual text of the error message in the indicated locale.")
+    text: Optional[StrictStr] = Field(
+        None,
+        description="Actual text of the error message in the indicated locale."
+    )
     __properties = ["locale", "localeOrigin", "text"]
 
     class Config:
@@ -51,10 +55,7 @@ class ErrorMessageDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,10 +68,11 @@ class ErrorMessageDto(BaseModel):
             return ErrorMessageDto.parse_obj(obj)
 
         _obj = ErrorMessageDto.parse_obj({
-            "locale": obj.get("locale"),
-            "locale_origin": obj.get("localeOrigin"),
-            "text": obj.get("text")
+            "locale":
+            obj.get("locale"),
+            "locale_origin":
+            obj.get("localeOrigin"),
+            "text":
+            obj.get("text")
         })
         return _obj
-
-

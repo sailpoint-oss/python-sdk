@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.native_change_detection_config import NativeChangeDetectionConfig
+from sailpoint.beta.models.native_change_detection_config import NativeChangeDetectionConfig
 
 # TODO update the JSON string below
 json = "{}"

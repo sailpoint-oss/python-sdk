@@ -11,24 +11,40 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+
 
 class AccountsExportReportArguments(BaseModel):
     """
     Arguments for Account Export (ACCOUNTS)  # noqa: E501
     """
-    application: StrictStr = Field(..., description="Id of the authoritative source to export related accounts e.g. identities")
-    source_name: StrictStr = Field(..., alias="sourceName", description="Name of the authoritative source for accounts export")
-    default_s3_bucket: StrictBool = Field(..., alias="defaultS3Bucket", description="Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.")
-    s3_bucket: Optional[StrictStr] = Field(None, alias="s3Bucket", description="If you want to be specific you could use this argument with defaultS3Bucket = false.")
+    application: StrictStr = Field(
+        ...,
+        description=
+        "Id of the authoritative source to export related accounts e.g. identities"
+    )
+    source_name: StrictStr = Field(
+        ...,
+        alias="sourceName",
+        description="Name of the authoritative source for accounts export")
+    default_s3_bucket: StrictBool = Field(
+        ...,
+        alias="defaultS3Bucket",
+        description=
+        "Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report."
+    )
+    s3_bucket: Optional[StrictStr] = Field(
+        None,
+        alias="s3Bucket",
+        description=
+        "If you want to be specific you could use this argument with defaultS3Bucket = false."
+    )
     __properties = ["application", "sourceName", "defaultS3Bucket", "s3Bucket"]
 
     class Config:
@@ -51,10 +67,7 @@ class AccountsExportReportArguments(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,11 +80,13 @@ class AccountsExportReportArguments(BaseModel):
             return AccountsExportReportArguments.parse_obj(obj)
 
         _obj = AccountsExportReportArguments.parse_obj({
-            "application": obj.get("application"),
-            "source_name": obj.get("sourceName"),
-            "default_s3_bucket": obj.get("defaultS3Bucket"),
-            "s3_bucket": obj.get("s3Bucket")
+            "application":
+            obj.get("application"),
+            "source_name":
+            obj.get("sourceName"),
+            "default_s3_bucket":
+            obj.get("defaultS3Bucket"),
+            "s3_bucket":
+            obj.get("s3Bucket")
         })
         return _obj
-
-

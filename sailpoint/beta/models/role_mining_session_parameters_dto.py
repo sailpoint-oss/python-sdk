@@ -11,34 +11,48 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
-from beta.models.role_mining_role_type import RoleMiningRoleType
-from beta.models.role_mining_session_scope import RoleMiningSessionScope
-from beta.models.role_mining_session_scoping_method import RoleMiningSessionScopingMethod
-from beta.models.role_mining_session_state import RoleMiningSessionState
+from sailpoint.beta.models.role_mining_role_type import RoleMiningRoleType
+from sailpoint.beta.models.role_mining_session_scope import RoleMiningSessionScope
+from sailpoint.beta.models.role_mining_session_scoping_method import RoleMiningSessionScopingMethod
+from sailpoint.beta.models.role_mining_session_state import RoleMiningSessionState
+
 
 class RoleMiningSessionParametersDto(BaseModel):
     """
     RoleMiningSessionParametersDto
     """
-    id: Optional[StrictStr] = Field(None, description="The ID of the role mining session")
-    name: Optional[StrictStr] = Field(None, description="The session's saved name")
-    min_num_identities_in_potential_role: Optional[StrictInt] = Field(None, alias="minNumIdentitiesInPotentialRole", description="Minimum number of identities in a potential role")
-    prune_threshold: Optional[StrictInt] = Field(None, alias="pruneThreshold", description="The prune threshold to be used or null to calculate prescribedPruneThreshold")
-    saved: Optional[StrictBool] = Field(True, description="The session's saved status")
+    id: Optional[StrictStr] = Field(
+        None, description="The ID of the role mining session")
+    name: Optional[StrictStr] = Field(None,
+                                      description="The session's saved name")
+    min_num_identities_in_potential_role: Optional[StrictInt] = Field(
+        None,
+        alias="minNumIdentitiesInPotentialRole",
+        description="Minimum number of identities in a potential role")
+    prune_threshold: Optional[StrictInt] = Field(
+        None,
+        alias="pruneThreshold",
+        description=
+        "The prune threshold to be used or null to calculate prescribedPruneThreshold"
+    )
+    saved: Optional[StrictBool] = Field(
+        True, description="The session's saved status")
     scope: Optional[RoleMiningSessionScope] = None
     type: Optional[RoleMiningRoleType] = None
     state: Optional[RoleMiningSessionState] = None
-    scoping_method: Optional[RoleMiningSessionScopingMethod] = Field(None, alias="scopingMethod")
-    __properties = ["id", "name", "minNumIdentitiesInPotentialRole", "pruneThreshold", "saved", "scope", "type", "state", "scopingMethod"]
+    scoping_method: Optional[RoleMiningSessionScopingMethod] = Field(
+        None, alias="scopingMethod")
+    __properties = [
+        "id", "name", "minNumIdentitiesInPotentialRole", "pruneThreshold",
+        "saved", "scope", "type", "state", "scopingMethod"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -60,10 +74,7 @@ class RoleMiningSessionParametersDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of scope
         if self.scope:
             _dict['scope'] = self.scope.to_dict()
@@ -94,16 +105,24 @@ class RoleMiningSessionParametersDto(BaseModel):
             return RoleMiningSessionParametersDto.parse_obj(obj)
 
         _obj = RoleMiningSessionParametersDto.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "min_num_identities_in_potential_role": obj.get("minNumIdentitiesInPotentialRole"),
-            "prune_threshold": obj.get("pruneThreshold"),
-            "saved": obj.get("saved") if obj.get("saved") is not None else True,
-            "scope": RoleMiningSessionScope.from_dict(obj.get("scope")) if obj.get("scope") is not None else None,
-            "type": obj.get("type"),
-            "state": obj.get("state"),
-            "scoping_method": obj.get("scopingMethod")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "min_num_identities_in_potential_role":
+            obj.get("minNumIdentitiesInPotentialRole"),
+            "prune_threshold":
+            obj.get("pruneThreshold"),
+            "saved":
+            obj.get("saved") if obj.get("saved") is not None else True,
+            "scope":
+            RoleMiningSessionScope.from_dict(obj.get("scope"))
+            if obj.get("scope") is not None else None,
+            "type":
+            obj.get("type"),
+            "state":
+            obj.get("state"),
+            "scoping_method":
+            obj.get("scopingMethod")
         })
         return _obj
-
-

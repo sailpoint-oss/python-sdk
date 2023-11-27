@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.template_dto import TemplateDto
+from sailpoint.beta.models.template_dto import TemplateDto
 
 # TODO update the JSON string below
 json = "{}"

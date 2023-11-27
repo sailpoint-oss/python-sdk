@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.refresh_identities_request_refresh_args import RefreshIdentitiesRequestRefreshArgs
+from sailpoint.cc.models.refresh_identities_request_refresh_args import RefreshIdentitiesRequestRefreshArgs
 
 # TODO update the JSON string below
 json = "{}"

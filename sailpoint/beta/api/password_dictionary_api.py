@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -22,13 +21,10 @@ from pydantic import StrictBytes, StrictStr
 
 from typing import Optional, Union
 
-
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class PasswordDictionaryApi:
@@ -69,10 +65,12 @@ class PasswordDictionaryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_password_dictionary_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_password_dictionary_with_http_info(**kwargs)  # noqa: E501
+        return self.get_password_dictionary_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_password_dictionary_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_password_dictionary_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """Get Password Dictionary  # noqa: E501
 
         This gets password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -109,27 +107,17 @@ class PasswordDictionaryApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_password_dictionary" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_password_dictionary" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -165,7 +153,8 @@ class PasswordDictionaryApi:
         }
 
         return self.api_client.call_api(
-            '/password-dictionary', 'GET',
+            '/password-dictionary',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -175,14 +164,18 @@ class PasswordDictionaryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def update_password_dictionary(self, file : Optional[Union[StrictBytes, StrictStr]] = None, **kwargs) -> None:  # noqa: E501
+    def update_password_dictionary(self,
+                                   file: Optional[Union[StrictBytes,
+                                                        StrictStr]] = None,
+                                   **kwargs) -> None:  # noqa: E501
         """Update Password Dictionary  # noqa: E501
 
         This updates password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -209,10 +202,14 @@ class PasswordDictionaryApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the update_password_dictionary_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.update_password_dictionary_with_http_info(file, **kwargs)  # noqa: E501
+        return self.update_password_dictionary_with_http_info(
+            file, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def update_password_dictionary_with_http_info(self, file : Optional[Union[StrictBytes, StrictStr]] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def update_password_dictionary_with_http_info(
+            self,
+            file: Optional[Union[StrictBytes, StrictStr]] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Update Password Dictionary  # noqa: E501
 
         This updates password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -251,28 +248,18 @@ class PasswordDictionaryApi:
 
         _params = locals()
 
-        _all_params = [
-            'file'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['file']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_password_dictionary" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method update_password_dictionary" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -298,11 +285,12 @@ class PasswordDictionaryApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['multipart/form-data']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['multipart/form-data'
+                                                        ]))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -310,7 +298,8 @@ class PasswordDictionaryApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/password-dictionary', 'PUT',
+            '/password-dictionary',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -320,7 +309,8 @@ class PasswordDictionaryApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

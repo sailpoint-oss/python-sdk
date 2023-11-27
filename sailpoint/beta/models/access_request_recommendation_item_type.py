@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class AccessRequestRecommendationItemType(str, Enum):
     """
     The type of access item.
     """
-
     """
     allowed enum values
     """
@@ -36,5 +31,3 @@ class AccessRequestRecommendationItemType(str, Enum):
     def from_json(cls, json_str: str) -> AccessRequestRecommendationItemType:
         """Create an instance of AccessRequestRecommendationItemType from a JSON string"""
         return AccessRequestRecommendationItemType(json.loads(json_str))
-
-

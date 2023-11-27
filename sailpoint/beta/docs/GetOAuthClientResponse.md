@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.get_o_auth_client_response import GetOAuthClientResponse
+from sailpoint.beta.models.get_o_auth_client_response import GetOAuthClientResponse
 
 # TODO update the JSON string below
 json = "{}"

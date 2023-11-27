@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.create_domain_dkim405_response import CreateDomainDkim405Response
+from sailpoint.beta.models.create_domain_dkim405_response import CreateDomainDkim405Response
 
 # TODO update the JSON string below
 json = "{}"

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.provisioning_policy import ProvisioningPolicy
+from sailpoint.v3.models.provisioning_policy import ProvisioningPolicy
 
 # TODO update the JSON string below
 json = "{}"

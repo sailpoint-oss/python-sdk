@@ -11,22 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class BeforeProvisioningRuleDto(BaseModel):
     """
     Before Provisioning Rule.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="Before Provisioning Rule DTO type.")
-    id: Optional[StrictStr] = Field(None, description="Before Provisioning Rule ID.")
+    type: Optional[StrictStr] = Field(
+        None, description="Before Provisioning Rule DTO type.")
+    id: Optional[StrictStr] = Field(None,
+                                    description="Before Provisioning Rule ID.")
     name: Optional[StrictStr] = Field(None, description="Rule display name.")
     __properties = ["type", "id", "name"]
 
@@ -60,10 +61,7 @@ class BeforeProvisioningRuleDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,5 +79,3 @@ class BeforeProvisioningRuleDto(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

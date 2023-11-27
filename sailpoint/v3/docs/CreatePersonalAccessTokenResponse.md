@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
+from sailpoint.v3.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
 
 # TODO update the JSON string below
 json = "{}"

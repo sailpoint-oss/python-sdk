@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.identity_attribute_config1 import IdentityAttributeConfig1  # noqa: E501
+from sailpoint.beta.models.identity_attribute_config1 import IdentityAttributeConfig1  # noqa: E501
+
 
 class TestIdentityAttributeConfig1(unittest.TestCase):
     """IdentityAttributeConfig1 unit test stubs"""
@@ -38,9 +38,9 @@ class TestIdentityAttributeConfig1(unittest.TestCase):
             return IdentityAttributeConfig1(
                 enabled = True,
                 attribute_transforms = [
-                    beta.models.identity_attribute_transform_1.IdentityAttributeTransform_1(
+                    sailpoint.beta.models.identity_attribute_transform_1.IdentityAttributeTransform_1(
                         identity_attribute_name = 'email', 
-                        transform_definition = beta.models.transform_definition_1.TransformDefinition_1(
+                        transform_definition = sailpoint.beta.models.transform_definition_1.TransformDefinition_1(
                             type = 'accountAttribute', 
                             attributes = {attributeName=e-mail, sourceName=MySource, sourceId=2c9180877a826e68017a8c0b03da1a53}, ), )
                     ]
@@ -54,6 +54,7 @@ class TestIdentityAttributeConfig1(unittest.TestCase):
         """Test IdentityAttributeConfig1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

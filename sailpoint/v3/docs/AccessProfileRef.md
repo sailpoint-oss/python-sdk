@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.access_profile_ref import AccessProfileRef
+from sailpoint.v3.models.access_profile_ref import AccessProfileRef
 
 # TODO update the JSON string below
 json = "{}"

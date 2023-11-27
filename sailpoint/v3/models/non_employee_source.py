@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,21 +19,41 @@ import json
 from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from v3.models.non_employee_identity_reference_with_id import NonEmployeeIdentityReferenceWithId
+from sailpoint.v3.models.non_employee_identity_reference_with_id import NonEmployeeIdentityReferenceWithId
+
 
 class NonEmployeeSource(BaseModel):
     """
     NonEmployeeSource
     """
-    id: Optional[StrictStr] = Field(None, description="Non-Employee source id.")
-    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="Source Id associated with this non-employee source.")
-    name: Optional[StrictStr] = Field(None, description="Source name associated with this non-employee source.")
-    description: Optional[StrictStr] = Field(None, description="Source description associated with this non-employee source.")
-    approvers: Optional[conlist(NonEmployeeIdentityReferenceWithId)] = Field(None, description="List of approvers")
-    account_managers: Optional[conlist(NonEmployeeIdentityReferenceWithId)] = Field(None, alias="accountManagers", description="List of account managers")
-    modified: Optional[datetime] = Field(None, description="When the request was last modified.")
-    created: Optional[datetime] = Field(None, description="When the request was created.")
-    __properties = ["id", "sourceId", "name", "description", "approvers", "accountManagers", "modified", "created"]
+    id: Optional[StrictStr] = Field(None,
+                                    description="Non-Employee source id.")
+    source_id: Optional[StrictStr] = Field(
+        None,
+        alias="sourceId",
+        description="Source Id associated with this non-employee source.")
+    name: Optional[StrictStr] = Field(
+        None,
+        description="Source name associated with this non-employee source.")
+    description: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Source description associated with this non-employee source.")
+    approvers: Optional[conlist(NonEmployeeIdentityReferenceWithId)] = Field(
+        None, description="List of approvers")
+    account_managers: Optional[conlist(
+        NonEmployeeIdentityReferenceWithId)] = Field(
+            None,
+            alias="accountManagers",
+            description="List of account managers")
+    modified: Optional[datetime] = Field(
+        None, description="When the request was last modified.")
+    created: Optional[datetime] = Field(
+        None, description="When the request was created.")
+    __properties = [
+        "id", "sourceId", "name", "description", "approvers",
+        "accountManagers", "modified", "created"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -56,10 +75,7 @@ class NonEmployeeSource(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in approvers (list)
         _items = []
         if self.approvers:
@@ -86,15 +102,25 @@ class NonEmployeeSource(BaseModel):
             return NonEmployeeSource.parse_obj(obj)
 
         _obj = NonEmployeeSource.parse_obj({
-            "id": obj.get("id"),
-            "source_id": obj.get("sourceId"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "approvers": [NonEmployeeIdentityReferenceWithId.from_dict(_item) for _item in obj.get("approvers")] if obj.get("approvers") is not None else None,
-            "account_managers": [NonEmployeeIdentityReferenceWithId.from_dict(_item) for _item in obj.get("accountManagers")] if obj.get("accountManagers") is not None else None,
-            "modified": obj.get("modified"),
-            "created": obj.get("created")
+            "id":
+            obj.get("id"),
+            "source_id":
+            obj.get("sourceId"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "approvers": [
+                NonEmployeeIdentityReferenceWithId.from_dict(_item)
+                for _item in obj.get("approvers")
+            ] if obj.get("approvers") is not None else None,
+            "account_managers": [
+                NonEmployeeIdentityReferenceWithId.from_dict(_item)
+                for _item in obj.get("accountManagers")
+            ] if obj.get("accountManagers") is not None else None,
+            "modified":
+            obj.get("modified"),
+            "created":
+            obj.get("created")
         })
         return _obj
-
-

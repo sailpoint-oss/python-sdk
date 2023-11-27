@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.evaluate_response import EvaluateResponse  # noqa: E501
+from sailpoint.beta.models.evaluate_response import EvaluateResponse  # noqa: E501
+
 
 class TestEvaluateResponse(unittest.TestCase):
     """EvaluateResponse unit test stubs"""
@@ -38,7 +38,7 @@ class TestEvaluateResponse(unittest.TestCase):
             return EvaluateResponse(
                 reassign_to_id = '869320b6b6f34a169b6178b1a865e66f',
                 lookup_trail = [
-                    beta.models.lookup_step.LookupStep(
+                    sailpoint.beta.models.lookup_step.LookupStep(
                         reassigned_to_id = '869320b6b6f34a169b6178b1a865e66f', 
                         reassigned_from_id = '51948a8f306a4e7a9a6f8f5d032fa59e', 
                         reassignment_type = 'AUTOMATIC_REASSIGNMENT', )
@@ -53,6 +53,7 @@ class TestEvaluateResponse(unittest.TestCase):
         """Test EvaluateResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

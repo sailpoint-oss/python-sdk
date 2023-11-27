@@ -11,16 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional, Union
 from pydantic import BaseModel, StrictFloat, StrictInt, conlist
-from cc.models.list_connectors200_response_items_inner import ListConnectors200ResponseItemsInner
+from sailpoint.cc.models.list_connectors200_response_items_inner import ListConnectors200ResponseItemsInner
+
 
 class ListConnectors200Response(BaseModel):
     """
@@ -50,10 +49,7 @@ class ListConnectors200Response(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in items (list)
         _items = []
         if self.items:
@@ -73,9 +69,11 @@ class ListConnectors200Response(BaseModel):
             return ListConnectors200Response.parse_obj(obj)
 
         _obj = ListConnectors200Response.parse_obj({
-            "total": obj.get("total"),
-            "items": [ListConnectors200ResponseItemsInner.from_dict(_item) for _item in obj.get("items")] if obj.get("items") is not None else None
+            "total":
+            obj.get("total"),
+            "items": [
+                ListConnectors200ResponseItemsInner.from_dict(_item)
+                for _item in obj.get("items")
+            ] if obj.get("items") is not None else None
         })
         return _obj
-
-

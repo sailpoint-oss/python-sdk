@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.start_invocation_input import StartInvocationInput
+from sailpoint.beta.models.start_invocation_input import StartInvocationInput
 
 # TODO update the JSON string below
 json = "{}"

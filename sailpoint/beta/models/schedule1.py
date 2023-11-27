@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,9 +19,10 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from beta.models.schedule1_days import Schedule1Days
-from beta.models.schedule1_hours import Schedule1Hours
-from beta.models.schedule_type import ScheduleType
+from sailpoint.beta.models.schedule1_days import Schedule1Days
+from sailpoint.beta.models.schedule1_hours import Schedule1Hours
+from sailpoint.beta.models.schedule_type import ScheduleType
+
 
 class Schedule1(BaseModel):
     """
@@ -31,8 +31,14 @@ class Schedule1(BaseModel):
     type: ScheduleType = Field(...)
     days: Optional[Schedule1Days] = None
     hours: Schedule1Hours = Field(...)
-    expiration: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
-    time_zone_id: Optional[StrictStr] = Field(None, alias="timeZoneId", description="The GMT formatted timezone the schedule will run in (ex. GMT-06:00).  If no timezone is specified, the org's default timezone is used.")
+    expiration: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
+    time_zone_id: Optional[StrictStr] = Field(
+        None,
+        alias="timeZoneId",
+        description=
+        "The GMT formatted timezone the schedule will run in (ex. GMT-06:00).  If no timezone is specified, the org's default timezone is used."
+    )
     __properties = ["type", "days", "hours", "expiration", "timeZoneId"]
 
     class Config:
@@ -55,10 +61,7 @@ class Schedule1(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of days
         if self.days:
             _dict['days'] = self.days.to_dict()
@@ -87,12 +90,17 @@ class Schedule1(BaseModel):
             return Schedule1.parse_obj(obj)
 
         _obj = Schedule1.parse_obj({
-            "type": obj.get("type"),
-            "days": Schedule1Days.from_dict(obj.get("days")) if obj.get("days") is not None else None,
-            "hours": Schedule1Hours.from_dict(obj.get("hours")) if obj.get("hours") is not None else None,
-            "expiration": obj.get("expiration"),
-            "time_zone_id": obj.get("timeZoneId")
+            "type":
+            obj.get("type"),
+            "days":
+            Schedule1Days.from_dict(obj.get("days"))
+            if obj.get("days") is not None else None,
+            "hours":
+            Schedule1Hours.from_dict(obj.get("hours"))
+            if obj.get("hours") is not None else None,
+            "expiration":
+            obj.get("expiration"),
+            "time_zone_id":
+            obj.get("timeZoneId")
         })
         return _obj
-
-

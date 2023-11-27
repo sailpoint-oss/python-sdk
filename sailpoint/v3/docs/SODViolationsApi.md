@@ -1,4 +1,4 @@
-# v3.SODViolationsApi
+# sailpoint.v3.SODViolationsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -22,15 +22,15 @@ This API is used to check if granting some additional accesses would cause the s
 ```python
 import time
 import os
-import v3
-from v3.models.identity_with_new_access import IdentityWithNewAccess
-from v3.models.violation_prediction import ViolationPrediction
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_with_new_access import IdentityWithNewAccess
+from sailpoint.v3.models.violation_prediction import ViolationPrediction
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -44,9 +44,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SODViolationsApi(api_client)
+    api_instance = sailpoint.v3.SODViolationsApi(api_client)
     identity_with_new_access = {identityId=2c91808568c529c60168cca6f90c1313, accessRefs=[{type=ENTITLEMENT, id=2c918087682f9a86016839c050861ab1, name=CN=Information Access,OU=test,OU=test-service,DC=TestAD,DC=local}, {type=ENTITLEMENT, id=2c918087682f9a86016839c0509c1ab2, name=CN=Information Technology,OU=test,OU=test-service,DC=TestAD,DC=local}]} # IdentityWithNewAccess | 
 
     try:
@@ -106,15 +106,15 @@ This API initiates a SOD policy verification asynchronously.  A token with ORG_A
 ```python
 import time
 import os
-import v3
-from v3.models.identity_with_new_access1 import IdentityWithNewAccess1
-from v3.models.sod_violation_check import SodViolationCheck
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_with_new_access1 import IdentityWithNewAccess1
+from sailpoint.v3.models.sod_violation_check import SodViolationCheck
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -128,9 +128,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.SODViolationsApi(api_client)
+    api_instance = sailpoint.v3.SODViolationsApi(api_client)
     identity_with_new_access1 = {identityId=2c91808568c529c60168cca6f90c1313, accessRefs=[{type=ENTITLEMENT, id=2c918087682f9a86016839c050861ab1, name=CN=Information Access,OU=test,OU=test-service,DC=TestAD,DC=local}, {type=ENTITLEMENT, id=2c918087682f9a86016839c0509c1ab2, name=CN=Information Technology,OU=test,OU=test-service,DC=TestAD,DC=local}], clientMetadata={additionalProp1=string, additionalProp2=string, additionalProp3=string}} # IdentityWithNewAccess1 | 
 
     try:

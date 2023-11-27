@@ -11,28 +11,50 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+
 
 class ConnectorDetail(BaseModel):
     """
     ConnectorDetail
     """
     name: Optional[StrictStr] = Field(None, description="The connector name")
-    source_config_xml: Optional[StrictStr] = Field(None, alias="sourceConfigXml", description="XML representation of the source config data")
-    source_config: Optional[StrictStr] = Field(None, alias="sourceConfig", description="JSON representation of the source config data")
-    direct_connect: Optional[StrictBool] = Field(None, alias="directConnect", description="true if the source is a direct connect source")
-    file_upload: Optional[StrictBool] = Field(None, alias="fileUpload", description="Connector config's file upload attribute, false if not there")
-    uploaded_files: Optional[StrictStr] = Field(None, alias="uploadedFiles", description="List of uploaded file strings for the connector")
-    connector_metadata: Optional[Dict[str, Any]] = Field(None, alias="connectorMetadata", description="Object containing metadata pertinent to the UI to be used")
-    __properties = ["name", "sourceConfigXml", "sourceConfig", "directConnect", "fileUpload", "uploadedFiles", "connectorMetadata"]
+    source_config_xml: Optional[StrictStr] = Field(
+        None,
+        alias="sourceConfigXml",
+        description="XML representation of the source config data")
+    source_config: Optional[StrictStr] = Field(
+        None,
+        alias="sourceConfig",
+        description="JSON representation of the source config data")
+    direct_connect: Optional[StrictBool] = Field(
+        None,
+        alias="directConnect",
+        description="true if the source is a direct connect source")
+    file_upload: Optional[StrictBool] = Field(
+        None,
+        alias="fileUpload",
+        description=
+        "Connector config's file upload attribute, false if not there")
+    uploaded_files: Optional[StrictStr] = Field(
+        None,
+        alias="uploadedFiles",
+        description="List of uploaded file strings for the connector")
+    connector_metadata: Optional[Dict[str, Any]] = Field(
+        None,
+        alias="connectorMetadata",
+        description="Object containing metadata pertinent to the UI to be used"
+    )
+    __properties = [
+        "name", "sourceConfigXml", "sourceConfig", "directConnect",
+        "fileUpload", "uploadedFiles", "connectorMetadata"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -54,10 +76,7 @@ class ConnectorDetail(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -70,14 +89,19 @@ class ConnectorDetail(BaseModel):
             return ConnectorDetail.parse_obj(obj)
 
         _obj = ConnectorDetail.parse_obj({
-            "name": obj.get("name"),
-            "source_config_xml": obj.get("sourceConfigXml"),
-            "source_config": obj.get("sourceConfig"),
-            "direct_connect": obj.get("directConnect"),
-            "file_upload": obj.get("fileUpload"),
-            "uploaded_files": obj.get("uploadedFiles"),
-            "connector_metadata": obj.get("connectorMetadata")
+            "name":
+            obj.get("name"),
+            "source_config_xml":
+            obj.get("sourceConfigXml"),
+            "source_config":
+            obj.get("sourceConfig"),
+            "direct_connect":
+            obj.get("directConnect"),
+            "file_upload":
+            obj.get("fileUpload"),
+            "uploaded_files":
+            obj.get("uploadedFiles"),
+            "connector_metadata":
+            obj.get("connectorMetadata")
         })
         return _obj
-
-

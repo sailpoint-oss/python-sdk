@@ -1,4 +1,4 @@
-# beta.WorkflowsApi
+# sailpoint.beta.WorkflowsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -38,13 +38,13 @@ Use this API to cancel a running workflow execution.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -58,9 +58,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | The workflow execution ID
 
     try:
@@ -118,15 +118,15 @@ Create a new workflow with the desired trigger and steps specified in the reques
 ```python
 import time
 import os
-import beta
-from beta.models.create_workflow_request import CreateWorkflowRequest
-from beta.models.workflow import Workflow
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.create_workflow_request import CreateWorkflowRequest
+from sailpoint.beta.models.workflow import Workflow
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -140,9 +140,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     create_workflow_request = {name=Send Email, owner={type=IDENTITY, id=2c91808568c529c60168cca6f90c1313, name=William Wilson}, description=Send an email to the identity who's attributes changed., definition={start=Send Email Test, steps={Send Email={actionId=sp:send-email, attributes={body=This is a test, from=sailpoint@sailpoint.com, recipientId.$=$.identity.id, subject=test}, nextStep=success, selectResult=null, type=action}, success={type=success}}}, enabled=false, trigger={type=EVENT, attributes={id=idn:identity-attributes-changed, filter=$.changes[?(@.attribute == 'manager')]}}} # CreateWorkflowRequest | 
 
     try:
@@ -201,13 +201,13 @@ Delete a workflow.  **Enabled workflows cannot be deleted**.  They must first be
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -221,9 +221,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the Workflow
 
     try:
@@ -280,14 +280,14 @@ Get a single workflow by id.
 ```python
 import time
 import os
-import beta
-from beta.models.workflow import Workflow
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workflow import Workflow
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -301,9 +301,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the workflow
 
     try:
@@ -362,13 +362,13 @@ Get a single workflow execution.  Workflow executions are available for up to 90
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -382,9 +382,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the workflow execution
 
     try:
@@ -444,14 +444,14 @@ Get a detailed history of a single workflow execution.  Workflow executions are 
 ```python
 import time
 import os
-import beta
-from beta.models.workflow_execution_event import WorkflowExecutionEvent
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workflow_execution_event import WorkflowExecutionEvent
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -465,9 +465,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the workflow execution
 
     try:
@@ -527,14 +527,14 @@ This lists all triggers, actions, and operators in the library
 ```python
 import time
 import os
-import beta
-from beta.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -548,9 +548,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
 
@@ -611,14 +611,14 @@ This lists the executions for a given workflow. Workflow executions are availabl
 ```python
 import time
 import os
-import beta
-from beta.models.workflow_execution import WorkflowExecution
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workflow_execution import WorkflowExecution
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -632,9 +632,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the workflow
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -702,14 +702,14 @@ This lists the workflow actions available to you.
 ```python
 import time
 import os
-import beta
-from beta.models.workflow_library_action import WorkflowLibraryAction
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workflow_library_action import WorkflowLibraryAction
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -723,9 +723,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     filters = 'id eq \"sp:create-campaign\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq* (optional)
@@ -788,14 +788,14 @@ This lists the workflow operators available to you
 ```python
 import time
 import os
-import beta
-from beta.models.workflow_library_operator import WorkflowLibraryOperator
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workflow_library_operator import WorkflowLibraryOperator
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -809,9 +809,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
 
     try:
         # List Workflow Library Operators
@@ -866,14 +866,14 @@ This lists the workflow triggers available to you
 ```python
 import time
 import os
-import beta
-from beta.models.workflow_library_trigger import WorkflowLibraryTrigger
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workflow_library_trigger import WorkflowLibraryTrigger
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -887,9 +887,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     filters = 'id eq \"idn:identity-attributes-changed\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq* (optional)
@@ -952,14 +952,14 @@ List all workflows in the tenant.
 ```python
 import time
 import os
-import beta
-from beta.models.workflow import Workflow
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workflow import Workflow
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -973,9 +973,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
 
     try:
         # List Workflows
@@ -1030,15 +1030,15 @@ Partially update an existing Workflow using [JSON Patch](https://tools.ietf.org/
 ```python
 import time
 import os
-import beta
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.models.workflow import Workflow
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.workflow import Workflow
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1052,9 +1052,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the Workflow
     json_patch_operation = [{op=replace, path=/name, value=Send Email}, {op=replace, path=/owner, value={type=IDENTITY, id=2c91808568c529c60168cca6f90c1313, name=William Wilson}}, {op=replace, path=/description, value=Send an email to the identity who's attributes changed.}, {op=replace, path=/enabled, value=false}, {op=replace, path=/definition, value={start=Send Email Test, steps={Send Email={actionId=sp:send-email, attributes={body=This is a test, from=sailpoint@sailpoint.com, recipientId.$=$.identity.id, subject=test}, nextStep=success, selectResult=null, type=action}, success={type=success}}}}, {op=replace, path=/trigger, value={type=EVENT, attributes={id=idn:identity-attributes-changed}}}] # List[JsonPatchOperation] | 
 
@@ -1115,15 +1115,15 @@ This endpoint allows a service outside of IdentityNow to initiate a workflow tha
 ```python
 import time
 import os
-import beta
-from beta.models.post_external_execute_workflow200_response import PostExternalExecuteWorkflow200Response
-from beta.models.post_external_execute_workflow_request import PostExternalExecuteWorkflowRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.post_external_execute_workflow200_response import PostExternalExecuteWorkflow200Response
+from sailpoint.beta.models.post_external_execute_workflow_request import PostExternalExecuteWorkflowRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1137,11 +1137,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the workflow
-    post_external_execute_workflow_request = beta.PostExternalExecuteWorkflowRequest() # PostExternalExecuteWorkflowRequest |  (optional)
+    post_external_execute_workflow_request = sailpoint.beta.PostExternalExecuteWorkflowRequest() # PostExternalExecuteWorkflowRequest |  (optional)
 
     try:
         # Execute Workflow via External Trigger
@@ -1200,14 +1200,14 @@ Create OAuth client ID, client secret, and callback URL for use in an external t
 ```python
 import time
 import os
-import beta
-from beta.models.workflow_o_auth_client import WorkflowOAuthClient
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workflow_o_auth_client import WorkflowOAuthClient
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1221,9 +1221,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the workflow
 
     try:
@@ -1282,15 +1282,15 @@ Validate a workflow with an \"External Trigger\" can receive input.  The respons
 ```python
 import time
 import os
-import beta
-from beta.models.test_external_execute_workflow200_response import TestExternalExecuteWorkflow200Response
-from beta.models.test_external_execute_workflow_request import TestExternalExecuteWorkflowRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.test_external_execute_workflow200_response import TestExternalExecuteWorkflow200Response
+from sailpoint.beta.models.test_external_execute_workflow_request import TestExternalExecuteWorkflowRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1304,11 +1304,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the workflow
-    test_external_execute_workflow_request = beta.TestExternalExecuteWorkflowRequest() # TestExternalExecuteWorkflowRequest |  (optional)
+    test_external_execute_workflow_request = sailpoint.beta.TestExternalExecuteWorkflowRequest() # TestExternalExecuteWorkflowRequest |  (optional)
 
     try:
         # Test Workflow via External Trigger
@@ -1367,15 +1367,15 @@ Test a workflow with the provided input data.  The input data should resemble th
 ```python
 import time
 import os
-import beta
-from beta.models.test_workflow200_response import TestWorkflow200Response
-from beta.models.test_workflow_request import TestWorkflowRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.test_workflow200_response import TestWorkflow200Response
+from sailpoint.beta.models.test_workflow_request import TestWorkflowRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1389,9 +1389,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the workflow
     test_workflow_request = {input={identity={id=ee769173319b41d19ccec6cea52f237b, name=john.doe, type=IDENTITY}, changes=[{attribute=department, oldValue=sales, newValue=marketing}, {attribute=manager, oldValue={id=ee769173319b41d19ccec6c235423237b, name=nice.guy, type=IDENTITY}, newValue={id=ee769173319b41d19ccec6c235423236c, name=mean.guy, type=IDENTITY}}, {attribute=email, oldValue=john.doe@hotmail.com, newValue=john.doe@gmail.com}]}} # TestWorkflowRequest | 
 
@@ -1452,15 +1452,15 @@ Perform a full update of a workflow.  The updated workflow object is returned in
 ```python
 import time
 import os
-import beta
-from beta.models.workflow import Workflow
-from beta.models.workflow_body import WorkflowBody
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.workflow import Workflow
+from sailpoint.beta.models.workflow_body import WorkflowBody
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1474,11 +1474,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.WorkflowsApi(api_client)
+    api_instance = sailpoint.beta.WorkflowsApi(api_client)
     id = 'c17bea3a-574d-453c-9e04-4365fbf5af0b' # str | Id of the Workflow
-    workflow_body = beta.WorkflowBody() # WorkflowBody | 
+    workflow_body = sailpoint.beta.WorkflowBody() # WorkflowBody | 
 
     try:
         # Update Workflow

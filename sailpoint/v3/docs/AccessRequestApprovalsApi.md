@@ -1,4 +1,4 @@
-# v3.AccessRequestApprovalsApi
+# sailpoint.v3.AccessRequestApprovalsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -26,14 +26,14 @@ This endpoint approves an access request approval. Only the owner of the approva
 ```python
 import time
 import os
-import v3
-from v3.models.comment_dto import CommentDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.comment_dto import CommentDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -47,11 +47,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccessRequestApprovalsApi(api_client)
+    api_instance = sailpoint.v3.AccessRequestApprovalsApi(api_client)
     approval_id = '2c91808b7294bea301729568c68c002e' # str | The id of the approval.
-    comment_dto = v3.CommentDto() # CommentDto | Reviewer's comment. (optional)
+    comment_dto = sailpoint.v3.CommentDto() # CommentDto | Reviewer's comment. (optional)
 
     try:
         # Approves an access request approval.
@@ -111,14 +111,14 @@ This endpoint forwards an access request approval to a new owner. Only the owner
 ```python
 import time
 import os
-import v3
-from v3.models.forward_approval_dto import ForwardApprovalDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.forward_approval_dto import ForwardApprovalDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -132,11 +132,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccessRequestApprovalsApi(api_client)
+    api_instance = sailpoint.v3.AccessRequestApprovalsApi(api_client)
     approval_id = '2c91808b7294bea301729568c68c002e' # str | The id of the approval.
-    forward_approval_dto = v3.ForwardApprovalDto() # ForwardApprovalDto | Information about the forwarded approval.
+    forward_approval_dto = sailpoint.v3.ForwardApprovalDto() # ForwardApprovalDto | Information about the forwarded approval.
 
     try:
         # Forwards an access request approval.
@@ -196,14 +196,14 @@ This endpoint returns the number of pending, approved and rejected access reques
 ```python
 import time
 import os
-import v3
-from v3.models.approval_summary import ApprovalSummary
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.approval_summary import ApprovalSummary
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -217,9 +217,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccessRequestApprovalsApi(api_client)
+    api_instance = sailpoint.v3.AccessRequestApprovalsApi(api_client)
     owner_id = '2c91808568c529c60168cca6f90c1313' # str | The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
     from_date = 'from-date=2020-03-19T19:59:11Z' # str | From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format (optional)
 
@@ -280,14 +280,14 @@ This endpoint returns list of completed approvals. See *owner-id* query paramete
 ```python
 import time
 import os
-import v3
-from v3.models.completed_approval import CompletedApproval
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.completed_approval import CompletedApproval
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -301,9 +301,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccessRequestApprovalsApi(api_client)
+    api_instance = sailpoint.v3.AccessRequestApprovalsApi(api_client)
     owner_id = '2c91808568c529c60168cca6f90c1313' # str | If present, the value returns only completed approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -372,14 +372,14 @@ This endpoint returns a list of pending approvals. See \"owner-id\" query parame
 ```python
 import time
 import os
-import v3
-from v3.models.pending_approval import PendingApproval
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.pending_approval import PendingApproval
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -393,9 +393,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccessRequestApprovalsApi(api_client)
+    api_instance = sailpoint.v3.AccessRequestApprovalsApi(api_client)
     owner_id = '2c91808568c529c60168cca6f90c1313' # str | If present, the value returns only pending approvals for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN users can also fetch all the approvals in the org, when owner-id is not used.    * Non-ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -464,14 +464,14 @@ This endpoint rejects an access request approval. Only the owner of the approval
 ```python
 import time
 import os
-import v3
-from v3.models.comment_dto import CommentDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.comment_dto import CommentDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -485,11 +485,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.AccessRequestApprovalsApi(api_client)
+    api_instance = sailpoint.v3.AccessRequestApprovalsApi(api_client)
     approval_id = '2c91808b7294bea301729568c68c002e' # str | The id of the approval.
-    comment_dto = v3.CommentDto() # CommentDto | Reviewer's comment. (optional)
+    comment_dto = sailpoint.v3.CommentDto() # CommentDto | Reviewer's comment. (optional)
 
     try:
         # Rejects an access request approval.

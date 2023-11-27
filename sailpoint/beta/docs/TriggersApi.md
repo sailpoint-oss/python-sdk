@@ -1,4 +1,4 @@
-# beta.TriggersApi
+# sailpoint.beta.TriggersApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -30,14 +30,14 @@ Completes an invocation to a REQUEST_RESPONSE type trigger.
 ```python
 import time
 import os
-import beta
-from beta.models.complete_invocation import CompleteInvocation
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.complete_invocation import CompleteInvocation
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -51,9 +51,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TriggersApi(api_client)
+    api_instance = sailpoint.beta.TriggersApi(api_client)
     id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | The ID of the invocation to complete.
     complete_invocation = {secret=0f11f2a4-7c94-4bf3-a2bd-742580fe3bde, output={approved=false}} # CompleteInvocation | 
 
@@ -112,15 +112,15 @@ This API creates a new subscription to a trigger and defines trigger invocation 
 ```python
 import time
 import os
-import beta
-from beta.models.subscription import Subscription
-from beta.models.subscription_post_request import SubscriptionPostRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.subscription import Subscription
+from sailpoint.beta.models.subscription_post_request import SubscriptionPostRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -134,9 +134,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TriggersApi(api_client)
+    api_instance = sailpoint.beta.TriggersApi(api_client)
     subscription_post_request = {name=Access request subscription, description=Access requested to site xyz, triggerId=idn:access-requested, type=HTTP, httpConfig={url=https://www.example.com, httpDispatchMode=SYNC, httpAuthenticationType=BASIC_AUTH, basicAuthConfig={userName=user@example.com, password=eRtg4%6yuI!}}, enabled=true, filter=$[?($.identityId == "201327fda1c44704ac01181e963d463c")]} # SubscriptionPostRequest | 
 
     try:
@@ -195,13 +195,13 @@ Deletes an existing subscription to a trigger.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -215,9 +215,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TriggersApi(api_client)
+    api_instance = sailpoint.beta.TriggersApi(api_client)
     id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | Subscription ID
 
     try:
@@ -275,14 +275,14 @@ Gets a list of all trigger subscriptions.
 ```python
 import time
 import os
-import beta
-from beta.models.subscription import Subscription
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.subscription import Subscription
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -296,9 +296,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TriggersApi(api_client)
+    api_instance = sailpoint.beta.TriggersApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -365,14 +365,14 @@ Gets a list of latest invocation statuses. Statuses of successful invocations ar
 ```python
 import time
 import os
-import beta
-from beta.models.invocation_status import InvocationStatus
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.invocation_status import InvocationStatus
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -386,9 +386,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TriggersApi(api_client)
+    api_instance = sailpoint.beta.TriggersApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -455,14 +455,14 @@ Gets a list of triggers that are available in the tenant.
 ```python
 import time
 import os
-import beta
-from beta.models.trigger import Trigger
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.trigger import Trigger
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -476,9 +476,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TriggersApi(api_client)
+    api_instance = sailpoint.beta.TriggersApi(api_client)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -545,15 +545,15 @@ This API updates a trigger subscription in IdentityNow, using a set of instructi
 ```python
 import time
 import os
-import beta
-from beta.models.subscription import Subscription
-from beta.models.subscription_patch_request_inner import SubscriptionPatchRequestInner
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.subscription import Subscription
+from sailpoint.beta.models.subscription_patch_request_inner import SubscriptionPatchRequestInner
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -567,11 +567,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TriggersApi(api_client)
+    api_instance = sailpoint.beta.TriggersApi(api_client)
     id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | ID of the Subscription to patch
-    subscription_patch_request_inner = [beta.SubscriptionPatchRequestInner()] # List[SubscriptionPatchRequestInner] | 
+    subscription_patch_request_inner = [sailpoint.beta.SubscriptionPatchRequestInner()] # List[SubscriptionPatchRequestInner] | 
 
     try:
         # Patch a Subscription
@@ -631,15 +631,15 @@ Initiate a test event for all subscribers of the specified event trigger.  If th
 ```python
 import time
 import os
-import beta
-from beta.models.invocation import Invocation
-from beta.models.test_invocation import TestInvocation
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.invocation import Invocation
+from sailpoint.beta.models.test_invocation import TestInvocation
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -653,9 +653,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TriggersApi(api_client)
+    api_instance = sailpoint.beta.TriggersApi(api_client)
     test_invocation = {triggerId=idn:access-requested, input={identityId=201327fda1c44704ac01181e963d463c}, contentJson={workflowId=1234}} # TestInvocation | 
 
     try:
@@ -715,15 +715,15 @@ Validates a JSONPath filter expression against a provided mock input. Request re
 ```python
 import time
 import os
-import beta
-from beta.models.validate_filter_input_dto import ValidateFilterInputDto
-from beta.models.validate_filter_output_dto import ValidateFilterOutputDto
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.validate_filter_input_dto import ValidateFilterInputDto
+from sailpoint.beta.models.validate_filter_output_dto import ValidateFilterOutputDto
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -737,9 +737,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TriggersApi(api_client)
+    api_instance = sailpoint.beta.TriggersApi(api_client)
     validate_filter_input_dto = {input={identityId=201327fda1c44704ac01181e963d463c}, filter=$[?($.identityId == "201327fda1c44704ac01181e963d463c")]} # ValidateFilterInputDto | 
 
     try:
@@ -798,15 +798,15 @@ This API updates a trigger subscription in IdentityNow, using a full object repr
 ```python
 import time
 import os
-import beta
-from beta.models.subscription import Subscription
-from beta.models.subscription_put_request import SubscriptionPutRequest
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.subscription import Subscription
+from sailpoint.beta.models.subscription_put_request import SubscriptionPutRequest
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -820,9 +820,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.TriggersApi(api_client)
+    api_instance = sailpoint.beta.TriggersApi(api_client)
     id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde' # str | Subscription ID
     subscription_put_request = {name=Access request subscription, description=Access requested to site xyz, type=HTTP, httpConfig={url=https://www.example.com, httpDispatchMode=SYNC, httpAuthenticationType=BASIC_AUTH, basicAuthConfig={userName=user@example.com, password=eRtg4%6yuI!}}, enabled=true, filter=$[?($.identityId == "201327fda1c44704ac01181e963d463c")]} # SubscriptionPutRequest | 
 

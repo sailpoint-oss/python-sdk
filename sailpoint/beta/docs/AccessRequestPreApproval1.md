@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.access_request_pre_approval1 import AccessRequestPreApproval1
+from sailpoint.beta.models.access_request_pre_approval1 import AccessRequestPreApproval1
 
 # TODO update the JSON string below
 json = "{}"

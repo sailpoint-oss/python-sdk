@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.access_item_removed import AccessItemRemoved  # noqa: E501
+from sailpoint.beta.models.access_item_removed import AccessItemRemoved  # noqa: E501
+
 
 class TestAccessItemRemoved(unittest.TestCase):
     """AccessItemRemoved unit test stubs"""
@@ -40,14 +40,14 @@ class TestAccessItemRemoved(unittest.TestCase):
                 identity_id = '8c190e6787aa4ed9a90bd9d5344523fb',
                 event_type = 'AccessItemRemoved',
                 dt = '2019-03-08T22:37:33.901Z',
-                governance_event = beta.models.correlated_governance_event.CorrelatedGovernanceEvent(
+                governance_event = sailpoint.beta.models.correlated_governance_event.CorrelatedGovernanceEvent(
                     name = 'Manager Certification for Jon Snow', 
                     dt = '2019-03-08T22:37:33.901Z', 
                     type = 'certification', 
                     governance_id = '2c91808a77ff216301782327a50f09bf', 
                     owners = [{id=8a80828f643d484f01643e14202e206f, displayName=John Snow}], 
                     reviewers = [{id=8a80828f643d484f01643e14202e206f, displayName=John Snow}], 
-                    decision_maker = beta.models.certifier_response.CertifierResponse(
+                    decision_maker = sailpoint.beta.models.certifier_response.CertifierResponse(
                         id = '8a80828f643d484f01643e14202e206f', 
                         display_name = 'John Snow', ), )
             )
@@ -60,6 +60,7 @@ class TestAccessItemRemoved(unittest.TestCase):
         """Test AccessItemRemoved"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

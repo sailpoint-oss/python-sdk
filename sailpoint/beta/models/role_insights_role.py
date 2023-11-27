@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class RoleInsightsRole(BaseModel):
     """
@@ -27,9 +26,14 @@ class RoleInsightsRole(BaseModel):
     """
     name: Optional[StrictStr] = Field(None, description="Role name")
     id: Optional[StrictStr] = Field(None, description="Role id")
-    description: Optional[StrictStr] = Field(None, description="Role description")
-    owner_name: Optional[StrictStr] = Field(None, alias="ownerName", description="Role owner name")
-    owner_id: Optional[StrictStr] = Field(None, alias="ownerId", description="Role owner id")
+    description: Optional[StrictStr] = Field(None,
+                                             description="Role description")
+    owner_name: Optional[StrictStr] = Field(None,
+                                            alias="ownerName",
+                                            description="Role owner name")
+    owner_id: Optional[StrictStr] = Field(None,
+                                          alias="ownerId",
+                                          description="Role owner id")
     __properties = ["name", "id", "description", "ownerName", "ownerId"]
 
     class Config:
@@ -52,10 +56,7 @@ class RoleInsightsRole(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -75,5 +76,3 @@ class RoleInsightsRole(BaseModel):
             "owner_id": obj.get("ownerId")
         })
         return _obj
-
-

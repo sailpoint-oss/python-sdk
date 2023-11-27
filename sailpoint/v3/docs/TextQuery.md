@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.text_query import TextQuery
+from sailpoint.v3.models.text_query import TextQuery
 
 # TODO update the JSON string below
 json = "{}"

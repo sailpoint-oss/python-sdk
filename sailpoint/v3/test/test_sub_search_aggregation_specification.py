@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.sub_search_aggregation_specification import SubSearchAggregationSpecification  # noqa: E501
+from sailpoint.v3.models.sub_search_aggregation_specification import SubSearchAggregationSpecification  # noqa: E501
+
 
 class TestSubSearchAggregationSpecification(unittest.TestCase):
     """SubSearchAggregationSpecification unit test stubs"""
@@ -26,7 +26,8 @@ class TestSubSearchAggregationSpecification(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SubSearchAggregationSpecification:
+    def make_instance(self,
+                      include_optional) -> SubSearchAggregationSpecification:
         """Test SubSearchAggregationSpecification
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -36,37 +37,37 @@ class TestSubSearchAggregationSpecification(unittest.TestCase):
         model = SubSearchAggregationSpecification()  # noqa: E501
         if include_optional:
             return SubSearchAggregationSpecification(
-                nested = v3.models.nested_aggregation.NestedAggregation(
+                nested = sailpoint.v3.models.nested_aggregation.NestedAggregation(
                     name = 'id', 
                     type = 'access', ),
-                metric = v3.models.metric_aggregation.MetricAggregation(
+                metric = sailpoint.v3.models.metric_aggregation.MetricAggregation(
                     name = 'Access Name Count', 
                     type = 'UNIQUE_COUNT', 
                     field = '@access.name', ),
-                filter = v3.models.filter_aggregation.FilterAggregation(
+                filter = sailpoint.v3.models.filter_aggregation.FilterAggregation(
                     name = 'Entitlements', 
                     type = 'TERM', 
                     field = 'access.type', 
                     value = 'ENTITLEMENT', ),
-                bucket = v3.models.bucket_aggregation.BucketAggregation(
+                bucket = sailpoint.v3.models.bucket_aggregation.BucketAggregation(
                     name = 'Identity Locations', 
                     type = 'TERMS', 
                     field = 'attributes.city', 
                     size = 100, 
                     min_doc_count = 2, ),
-                sub_aggregation = v3.models.aggregations.Aggregations(
-                    nested = v3.models.nested_aggregation.NestedAggregation(
+                sub_aggregation = sailpoint.v3.models.aggregations.Aggregations(
+                    nested = sailpoint.v3.models.nested_aggregation.NestedAggregation(
                         name = 'id', 
                         type = 'access', ), 
-                    metric = v3.models.metric_aggregation.MetricAggregation(
+                    metric = sailpoint.v3.models.metric_aggregation.MetricAggregation(
                         name = 'Access Name Count', 
                         type = 'UNIQUE_COUNT', 
                         field = '@access.name', ), 
-                    filter = v3.models.filter_aggregation.FilterAggregation(
+                    filter = sailpoint.v3.models.filter_aggregation.FilterAggregation(
                         name = 'Entitlements', 
                         field = 'access.type', 
                         value = 'ENTITLEMENT', ), 
-                    bucket = v3.models.bucket_aggregation.BucketAggregation(
+                    bucket = sailpoint.v3.models.bucket_aggregation.BucketAggregation(
                         name = 'Identity Locations', 
                         field = 'attributes.city', 
                         size = 100, 
@@ -81,6 +82,7 @@ class TestSubSearchAggregationSpecification(unittest.TestCase):
         """Test SubSearchAggregationSpecification"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

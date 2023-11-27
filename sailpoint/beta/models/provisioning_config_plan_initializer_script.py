@@ -11,21 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class ProvisioningConfigPlanInitializerScript(BaseModel):
     """
     This is a reference to a plan initializer script.  # noqa: E501
     """
-    source: Optional[StrictStr] = Field(None, description="This is a Rule that allows provisioning instruction changes.")
+    source: Optional[StrictStr] = Field(
+        None,
+        description=
+        "This is a Rule that allows provisioning instruction changes.")
     __properties = ["source"]
 
     class Config:
@@ -42,16 +44,14 @@ class ProvisioningConfigPlanInitializerScript(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ProvisioningConfigPlanInitializerScript:
+    def from_json(cls,
+                  json_str: str) -> ProvisioningConfigPlanInitializerScript:
         """Create an instance of ProvisioningConfigPlanInitializerScript from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +63,6 @@ class ProvisioningConfigPlanInitializerScript(BaseModel):
         if not isinstance(obj, dict):
             return ProvisioningConfigPlanInitializerScript.parse_obj(obj)
 
-        _obj = ProvisioningConfigPlanInitializerScript.parse_obj({
-            "source": obj.get("source")
-        })
+        _obj = ProvisioningConfigPlanInitializerScript.parse_obj(
+            {"source": obj.get("source")})
         return _obj
-
-

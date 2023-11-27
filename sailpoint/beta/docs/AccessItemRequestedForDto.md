@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.access_item_requested_for_dto import AccessItemRequestedForDto
+from sailpoint.beta.models.access_item_requested_for_dto import AccessItemRequestedForDto
 
 # TODO update the JSON string below
 json = "{}"

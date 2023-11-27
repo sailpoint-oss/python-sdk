@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.work_items import WorkItems  # noqa: E501
+from sailpoint.v3.models.work_items import WorkItems  # noqa: E501
+
 
 class TestWorkItems(unittest.TestCase):
     """WorkItems unit test stubs"""
@@ -46,7 +46,7 @@ class TestWorkItems(unittest.TestCase):
                 description = 'Create account on source 'AD'',
                 state = 'FINISHED',
                 type = 'GENERIC',
-                remediation_items = v3.models.remediation_item_details.RemediationItemDetails(
+                remediation_items = sailpoint.v3.models.remediation_item_details.RemediationItemDetails(
                     id = '2c9180835d2e5168015d32f890ca1581', 
                     target_id = '2c9180835d2e5168015d32f890ca1581', 
                     target_name = 'john.smith', 
@@ -56,7 +56,7 @@ class TestWorkItems(unittest.TestCase):
                     attribute_operation = 'update', 
                     attribute_value = '512-555-1212', 
                     native_identity = 'jason.smith2', ),
-                approval_items = v3.models.approval_item_details.ApprovalItemDetails(
+                approval_items = sailpoint.v3.models.approval_item_details.ApprovalItemDetails(
                     id = '2c9180835d2e5168015d32f890ca1581', 
                     account = 'john.smith', 
                     application = 'Active Directory', 
@@ -67,13 +67,13 @@ class TestWorkItems(unittest.TestCase):
                 name = 'Account Create',
                 completed = '2018-10-19T13:49:37.385Z',
                 num_items = 19,
-                form = v3.models.form_details.FormDetails(
+                form = sailpoint.v3.models.form_details.FormDetails(
                     id = '2c9180835d2e5168015d32f890ca1581', 
                     name = 'AccountSelection Form', 
                     title = 'Account Selection for John.Doe', 
                     subtitle = 'Please select from the following', 
                     target_user = 'Jane.Doe', 
-                    sections = v3.models.section_details.SectionDetails(), ),
+                    sections = sailpoint.v3.models.section_details.SectionDetails(), ),
                 errors = [The work item ID that was specified was not found.]
             )
         else:
@@ -85,6 +85,7 @@ class TestWorkItems(unittest.TestCase):
         """Test WorkItems"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,22 +11,28 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
+
 
 class ResourceObjectsRequest(BaseModel):
     """
     Request model for peek resource objects from source connectors.  # noqa: E501
     """
-    object_type: Optional[StrictStr] = Field('account', alias="objectType", description="The type of resource objects to iterate over.")
-    max_count: Optional[StrictInt] = Field(25, alias="maxCount", description="The maximum number of resource objects to iterate over and return.")
+    object_type: Optional[StrictStr] = Field(
+        'account',
+        alias="objectType",
+        description="The type of resource objects to iterate over.")
+    max_count: Optional[StrictInt] = Field(
+        25,
+        alias="maxCount",
+        description=
+        "The maximum number of resource objects to iterate over and return.")
     __properties = ["objectType", "maxCount"]
 
     class Config:
@@ -49,10 +55,7 @@ class ResourceObjectsRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -65,9 +68,10 @@ class ResourceObjectsRequest(BaseModel):
             return ResourceObjectsRequest.parse_obj(obj)
 
         _obj = ResourceObjectsRequest.parse_obj({
-            "object_type": obj.get("objectType") if obj.get("objectType") is not None else 'account',
-            "max_count": obj.get("maxCount") if obj.get("maxCount") is not None else 25
+            "object_type":
+            obj.get("objectType")
+            if obj.get("objectType") is not None else 'account',
+            "max_count":
+            obj.get("maxCount") if obj.get("maxCount") is not None else 25
         })
         return _obj
-
-

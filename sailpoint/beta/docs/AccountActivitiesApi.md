@@ -1,4 +1,4 @@
-# beta.AccountActivitiesApi
+# sailpoint.beta.AccountActivitiesApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -22,14 +22,14 @@ This gets a single account activity by its id.
 ```python
 import time
 import os
-import beta
-from beta.models.cancelable_account_activity import CancelableAccountActivity
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.cancelable_account_activity import CancelableAccountActivity
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -43,9 +43,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountActivitiesApi(api_client)
+    api_instance = sailpoint.beta.AccountActivitiesApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The account activity id
 
     try:
@@ -105,14 +105,14 @@ This gets a collection of account activities that satisfy the given query parame
 ```python
 import time
 import os
-import beta
-from beta.models.cancelable_account_activity import CancelableAccountActivity
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.cancelable_account_activity import CancelableAccountActivity
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -126,9 +126,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.AccountActivitiesApi(api_client)
+    api_instance = sailpoint.beta.AccountActivitiesApi(api_client)
     requested_for = 'requested_for_example' # str | The identity that the activity was requested for. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     requested_by = 'requested_by_example' # str | The identity that requested the activity. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     regarding_identity = 'regarding_identity_example' # str | The specified identity will be either the requester or target of the account activity. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional)

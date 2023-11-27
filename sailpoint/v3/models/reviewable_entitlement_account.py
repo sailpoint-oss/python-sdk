@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,21 +19,35 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-from v3.models.dto_type import DtoType
+from sailpoint.v3.models.dto_type import DtoType
+
 
 class ReviewableEntitlementAccount(BaseModel):
     """
     Information about the status of the entitlement  # noqa: E501
     """
-    native_identity: Optional[StrictStr] = Field(None, alias="nativeIdentity", description="The native identity for this account")
-    disabled: Optional[StrictBool] = Field(False, description="Indicates whether this account is currently disabled")
-    locked: Optional[StrictBool] = Field(False, description="Indicates whether this account is currently locked")
+    native_identity: Optional[StrictStr] = Field(
+        None,
+        alias="nativeIdentity",
+        description="The native identity for this account")
+    disabled: Optional[StrictBool] = Field(
+        False,
+        description="Indicates whether this account is currently disabled")
+    locked: Optional[StrictBool] = Field(
+        False,
+        description="Indicates whether this account is currently locked")
     type: Optional[DtoType] = None
-    id: Optional[StrictStr] = Field(None, description="The id associated with the account")
+    id: Optional[StrictStr] = Field(
+        None, description="The id associated with the account")
     name: Optional[StrictStr] = Field(None, description="The account name")
-    created: Optional[datetime] = Field(None, description="When the account was created")
-    modified: Optional[datetime] = Field(None, description="When the account was last modified")
-    __properties = ["nativeIdentity", "disabled", "locked", "type", "id", "name", "created", "modified"]
+    created: Optional[datetime] = Field(
+        None, description="When the account was created")
+    modified: Optional[datetime] = Field(
+        None, description="When the account was last modified")
+    __properties = [
+        "nativeIdentity", "disabled", "locked", "type", "id", "name",
+        "created", "modified"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -56,10 +69,7 @@ class ReviewableEntitlementAccount(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if id (nullable) is None
         # and __fields_set__ contains the field
         if self.id is None and "id" in self.__fields_set__:
@@ -92,15 +102,21 @@ class ReviewableEntitlementAccount(BaseModel):
             return ReviewableEntitlementAccount.parse_obj(obj)
 
         _obj = ReviewableEntitlementAccount.parse_obj({
-            "native_identity": obj.get("nativeIdentity"),
-            "disabled": obj.get("disabled") if obj.get("disabled") is not None else False,
-            "locked": obj.get("locked") if obj.get("locked") is not None else False,
-            "type": obj.get("type"),
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified")
+            "native_identity":
+            obj.get("nativeIdentity"),
+            "disabled":
+            obj.get("disabled") if obj.get("disabled") is not None else False,
+            "locked":
+            obj.get("locked") if obj.get("locked") is not None else False,
+            "type":
+            obj.get("type"),
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified")
         })
         return _obj
-
-

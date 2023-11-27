@@ -11,16 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from beta.models.dto_type import DtoType
+from sailpoint.beta.models.dto_type import DtoType
+
 
 class IdentityReference(BaseModel):
     """
@@ -28,7 +27,8 @@ class IdentityReference(BaseModel):
     """
     type: Optional[DtoType] = None
     id: Optional[StrictStr] = Field(None, description="Identity id")
-    name: Optional[StrictStr] = Field(None, description="Human-readable display name of identity.")
+    name: Optional[StrictStr] = Field(
+        None, description="Human-readable display name of identity.")
     __properties = ["type", "id", "name"]
 
     class Config:
@@ -51,10 +51,7 @@ class IdentityReference(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -72,5 +69,3 @@ class IdentityReference(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

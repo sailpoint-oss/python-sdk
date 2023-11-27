@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.selector import Selector
+from sailpoint.v3.models.selector import Selector
 
 # TODO update the JSON string below
 json = "{}"

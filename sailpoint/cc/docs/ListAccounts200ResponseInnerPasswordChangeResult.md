@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from cc.models.list_accounts200_response_inner_password_change_result import ListAccounts200ResponseInnerPasswordChangeResult
+from sailpoint.cc.models.list_accounts200_response_inner_password_change_result import ListAccounts200ResponseInnerPasswordChangeResult
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,15 +22,13 @@ from pydantic import Field, StrictStr, conlist
 
 from typing import Any, Dict, List
 
-from beta.models.json_patch_operation import JsonPatchOperation
-from beta.models.search_attribute_config import SearchAttributeConfig
+from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
+from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class SearchAttributeConfigurationApi:
@@ -47,7 +44,9 @@ class SearchAttributeConfigurationApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_search_attribute_config(self, search_attribute_config : SearchAttributeConfig, **kwargs) -> object:  # noqa: E501
+    def create_search_attribute_config(
+            self, search_attribute_config: SearchAttributeConfig,
+            **kwargs) -> object:  # noqa: E501
         """Configure/create extended search attributes in IdentityNow.  # noqa: E501
 
         This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -74,10 +73,13 @@ class SearchAttributeConfigurationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_search_attribute_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_search_attribute_config_with_http_info(search_attribute_config, **kwargs)  # noqa: E501
+        return self.create_search_attribute_config_with_http_info(
+            search_attribute_config, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_search_attribute_config_with_http_info(self, search_attribute_config : SearchAttributeConfig, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_search_attribute_config_with_http_info(
+            self, search_attribute_config: SearchAttributeConfig,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Configure/create extended search attributes in IdentityNow.  # noqa: E501
 
         This API accepts an attribute name, an attribute display name and a list of name/value pair associates of application IDs to attribute names.  It will then validate the inputs and configure/create and attribute promotion configuration in the Link ObjectConfig. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -116,28 +118,18 @@ class SearchAttributeConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-            'search_attribute_config'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['search_attribute_config']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_search_attribute_config" % _key
-                )
+                    " to method create_search_attribute_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -163,11 +155,11 @@ class SearchAttributeConfigurationApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -183,7 +175,8 @@ class SearchAttributeConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/search-attribute-config', 'POST',
+            '/accounts/search-attribute-config',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -193,14 +186,21 @@ class SearchAttributeConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_search_attribute_config(self, name : Annotated[StrictStr, Field(..., description="Name of the extended search attribute configuration to delete.")], **kwargs) -> None:  # noqa: E501
+    def delete_search_attribute_config(self, name: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "Name of the extended search attribute configuration to delete.")],
+                                       **kwargs) -> None:  # noqa: E501
         """Delete an extended search attribute in IdentityNow.  # noqa: E501
 
         This API accepts an extended attribute name and deletes the corresponding extended attribute configuration. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -227,10 +227,17 @@ class SearchAttributeConfigurationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_search_attribute_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_search_attribute_config_with_http_info(name, **kwargs)  # noqa: E501
+        return self.delete_search_attribute_config_with_http_info(
+            name, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_search_attribute_config_with_http_info(self, name : Annotated[StrictStr, Field(..., description="Name of the extended search attribute configuration to delete.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_search_attribute_config_with_http_info(self, name: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "Name of the extended search attribute configuration to delete."
+        )], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete an extended search attribute in IdentityNow.  # noqa: E501
 
         This API accepts an extended attribute name and deletes the corresponding extended attribute configuration. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -269,28 +276,18 @@ class SearchAttributeConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-            'name'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['name']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete_search_attribute_config" % _key
-                )
+                    " to method delete_search_attribute_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -300,7 +297,6 @@ class SearchAttributeConfigurationApi:
         _path_params = {}
         if _params['name']:
             _path_params['name'] = _params['name']
-
 
         # process the query parameters
         _query_params = []
@@ -321,7 +317,8 @@ class SearchAttributeConfigurationApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/accounts/search-attribute-config/{name}', 'DELETE',
+            '/accounts/search-attribute-config/{name}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -331,14 +328,16 @@ class SearchAttributeConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_search_attribute_config(self, **kwargs) -> List[SearchAttributeConfig]:  # noqa: E501
+    def get_search_attribute_config(
+            self, **kwargs) -> List[SearchAttributeConfig]:  # noqa: E501
         """Retrieve a list of extended search attributes in IdentityNow.  # noqa: E501
 
         This API retrieves a list of attribute/application associates currently configured in IdentityNow. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -363,10 +362,12 @@ class SearchAttributeConfigurationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_search_attribute_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_search_attribute_config_with_http_info(**kwargs)  # noqa: E501
+        return self.get_search_attribute_config_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_search_attribute_config_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_search_attribute_config_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieve a list of extended search attributes in IdentityNow.  # noqa: E501
 
         This API retrieves a list of attribute/application associates currently configured in IdentityNow. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -403,27 +404,18 @@ class SearchAttributeConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_search_attribute_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_search_attribute_config" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -457,7 +449,8 @@ class SearchAttributeConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/search-attribute-config', 'GET',
+            '/accounts/search-attribute-config',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -467,14 +460,21 @@ class SearchAttributeConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_single_search_attribute_config(self, name : Annotated[StrictStr, Field(..., description="Name of the extended search attribute configuration to delete.")], **kwargs) -> List[SearchAttributeConfig]:  # noqa: E501
+    def get_single_search_attribute_config(self, name: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "Name of the extended search attribute configuration to delete."
+        )], **kwargs) -> List[SearchAttributeConfig]:  # noqa: E501
         """Get the details of a specific extended search attribute in IdentityNow.  # noqa: E501
 
         This API accepts an extended attribute name and retrieves the corresponding extended attribute configuration. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -501,10 +501,19 @@ class SearchAttributeConfigurationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_single_search_attribute_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_single_search_attribute_config_with_http_info(name, **kwargs)  # noqa: E501
+        return self.get_single_search_attribute_config_with_http_info(
+            name, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_single_search_attribute_config_with_http_info(self, name : Annotated[StrictStr, Field(..., description="Name of the extended search attribute configuration to delete.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_single_search_attribute_config_with_http_info(
+            self, name:
+        Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "Name of the extended search attribute configuration to delete."
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Get the details of a specific extended search attribute in IdentityNow.  # noqa: E501
 
         This API accepts an extended attribute name and retrieves the corresponding extended attribute configuration. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -543,28 +552,18 @@ class SearchAttributeConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-            'name'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['name']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_single_search_attribute_config" % _key
-                )
+                    " to method get_single_search_attribute_config" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -574,7 +573,6 @@ class SearchAttributeConfigurationApi:
         _path_params = {}
         if _params['name']:
             _path_params['name'] = _params['name']
-
 
         # process the query parameters
         _query_params = []
@@ -603,7 +601,8 @@ class SearchAttributeConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/search-attribute-config/{name}', 'GET',
+            '/accounts/search-attribute-config/{name}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -613,14 +612,21 @@ class SearchAttributeConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_search_attribute_config(self, name : Annotated[StrictStr, Field(..., description="Name of the Search Attribute Configuration to patch.")], json_patch_operation : conlist(JsonPatchOperation), **kwargs) -> SearchAttributeConfig:  # noqa: E501
+    def patch_search_attribute_config(self, name: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description="Name of the Search Attribute Configuration to patch."
+        )], json_patch_operation: conlist(JsonPatchOperation), **kwargs
+                                      ) -> SearchAttributeConfig:  # noqa: E501
         """Update the details of a specific extended search attribute in IdentityNow.  # noqa: E501
 
         This API updates an existing Search Attribute Configuration. The following fields are patchable: **name**, **displayName**, **applicationAttributes** A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -649,10 +655,17 @@ class SearchAttributeConfigurationApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_search_attribute_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_search_attribute_config_with_http_info(name, json_patch_operation, **kwargs)  # noqa: E501
+        return self.patch_search_attribute_config_with_http_info(
+            name, json_patch_operation, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_search_attribute_config_with_http_info(self, name : Annotated[StrictStr, Field(..., description="Name of the Search Attribute Configuration to patch.")], json_patch_operation : conlist(JsonPatchOperation), **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_search_attribute_config_with_http_info(self, name: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description="Name of the Search Attribute Configuration to patch."
+        )], json_patch_operation: conlist(
+            JsonPatchOperation), **kwargs) -> ApiResponse:  # noqa: E501
         """Update the details of a specific extended search attribute in IdentityNow.  # noqa: E501
 
         This API updates an existing Search Attribute Configuration. The following fields are patchable: **name**, **displayName**, **applicationAttributes** A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -693,29 +706,18 @@ class SearchAttributeConfigurationApi:
 
         _params = locals()
 
-        _all_params = [
-            'name',
-            'json_patch_operation'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['name', 'json_patch_operation']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_search_attribute_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method patch_search_attribute_config" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -725,7 +727,6 @@ class SearchAttributeConfigurationApi:
         _path_params = {}
         if _params['name']:
             _path_params['name'] = _params['name']
-
 
         # process the query parameters
         _query_params = []
@@ -744,11 +745,12 @@ class SearchAttributeConfigurationApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
+        _content_types_list = _params.get(
+            '_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -764,7 +766,8 @@ class SearchAttributeConfigurationApi:
         }
 
         return self.api_client.call_api(
-            '/accounts/search-attribute-config/{name}', 'PATCH',
+            '/accounts/search-attribute-config/{name}',
+            'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -774,7 +777,8 @@ class SearchAttributeConfigurationApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

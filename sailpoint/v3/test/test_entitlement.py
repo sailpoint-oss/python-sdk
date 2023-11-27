@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.entitlement import Entitlement  # noqa: E501
+from sailpoint.v3.models.entitlement import Entitlement  # noqa: E501
+
 
 class TestEntitlement(unittest.TestCase):
     """Entitlement unit test stubs"""
@@ -46,14 +46,14 @@ class TestEntitlement(unittest.TestCase):
                 cloud_governed = True,
                 created = '2020-10-08T18:33:52.029Z',
                 modified = '2020-10-08T18:33:52.029Z',
-                source = v3.models.entitlement_source.Entitlement_source(
+                source = sailpoint.v3.models.entitlement_source.Entitlement_source(
                     id = '2c9180827ca885d7017ca8ce28a000eb', 
                     type = 'SOURCE', 
                     name = 'ODS-AD-Source', ),
                 attributes = {fieldName=fieldValue},
                 segments = [f7b1b8a3-5fed-4fd4-ad29-82014e137e19, 29cb6c06-1da8-43ea-8be4-b3125f248f2a],
                 direct_permissions = [
-                    v3.models.permission_dto.PermissionDto(
+                    sailpoint.v3.models.permission_dto.PermissionDto(
                         rights = [
                             'SELECT'
                             ], 
@@ -69,6 +69,7 @@ class TestEntitlement(unittest.TestCase):
         """Test Entitlement"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

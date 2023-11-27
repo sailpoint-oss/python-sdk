@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.connector_rule_create_request import ConnectorRuleCreateRequest  # noqa: E501
+from sailpoint.beta.models.connector_rule_create_request import ConnectorRuleCreateRequest  # noqa: E501
+
 
 class TestConnectorRuleCreateRequest(unittest.TestCase):
     """ConnectorRuleCreateRequest unit test stubs"""
@@ -39,18 +39,18 @@ class TestConnectorRuleCreateRequest(unittest.TestCase):
                 name = 'WebServiceBeforeOperationRule',
                 description = 'This rule does that',
                 type = 'BuildMap',
-                signature = beta.models.connector_rule_create_request_signature.ConnectorRuleCreateRequest_signature(
+                signature = sailpoint.beta.models.connector_rule_create_request_signature.ConnectorRuleCreateRequest_signature(
                     input = [
-                        beta.models.argument.Argument(
+                        sailpoint.beta.models.argument.Argument(
                             name = 'firstName', 
                             description = 'the first name of the identity', 
                             type = 'String', )
                         ], 
-                    output = beta.models.argument.Argument(
+                    output = sailpoint.beta.models.argument.Argument(
                         name = 'firstName', 
                         description = 'the first name of the identity', 
                         type = 'String', ), ),
-                source_code = beta.models.source_code.SourceCode(
+                source_code = sailpoint.beta.models.source_code.SourceCode(
                     version = '1.0', 
                     script = 'return "Mr. " + firstName;', ),
                 attributes = {}
@@ -59,7 +59,7 @@ class TestConnectorRuleCreateRequest(unittest.TestCase):
             return ConnectorRuleCreateRequest(
                 name = 'WebServiceBeforeOperationRule',
                 type = 'BuildMap',
-                source_code = beta.models.source_code.SourceCode(
+                source_code = sailpoint.beta.models.source_code.SourceCode(
                     version = '1.0', 
                     script = 'return "Mr. " + firstName;', ),
         )
@@ -69,6 +69,7 @@ class TestConnectorRuleCreateRequest(unittest.TestCase):
         """Test ConnectorRuleCreateRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

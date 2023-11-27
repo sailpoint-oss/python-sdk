@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.sod_violation_context1 import SodViolationContext1  # noqa: E501
+from sailpoint.beta.models.sod_violation_context1 import SodViolationContext1  # noqa: E501
+
 
 class TestSodViolationContext1(unittest.TestCase):
     """SodViolationContext1 unit test stubs"""
@@ -36,20 +36,20 @@ class TestSodViolationContext1(unittest.TestCase):
         model = SodViolationContext1()  # noqa: E501
         if include_optional:
             return SodViolationContext1(
-                policy = beta.models.sod_policy_dto.SodPolicyDto(
+                policy = sailpoint.beta.models.sod_policy_dto.SodPolicyDto(
                     type = 'SOD_POLICY', 
                     id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde', 
                     name = 'Business SOD Policy', ),
-                conflicting_access_criteria = beta.models.sod_violation_context_1_conflicting_access_criteria.SodViolationContext_1_conflictingAccessCriteria(
-                    left_criteria = beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(
+                conflicting_access_criteria = sailpoint.beta.models.sod_violation_context_1_conflicting_access_criteria.SodViolationContext_1_conflictingAccessCriteria(
+                    left_criteria = sailpoint.beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(
                         criteria_list = [
-                            beta.models.sod_exempt_criteria_1.SodExemptCriteria_1(
+                            sailpoint.beta.models.sod_exempt_criteria_1.SodExemptCriteria_1(
                                 existing = True, 
                                 type = 'IDENTITY', 
                                 id = '2c918085771e9d3301773b3cb66f6398', 
                                 name = 'My HR Entitlement', )
                             ], ), 
-                    right_criteria = beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(), )
+                    right_criteria = sailpoint.beta.models.sod_violation_context_1_conflicting_access_criteria_left_criteria.SodViolationContext_1_conflictingAccessCriteria_leftCriteria(), )
             )
         else:
             return SodViolationContext1(
@@ -60,6 +60,7 @@ class TestSodViolationContext1(unittest.TestCase):
         """Test SodViolationContext1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

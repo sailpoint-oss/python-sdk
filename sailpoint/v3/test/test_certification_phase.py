@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.certification_phase import CertificationPhase  # noqa: E501
+from sailpoint.v3.models.certification_phase import CertificationPhase  # noqa: E501
+
 
 class TestCertificationPhase(unittest.TestCase):
     """CertificationPhase unit test stubs"""
@@ -29,6 +29,7 @@ class TestCertificationPhase(unittest.TestCase):
     def testCertificationPhase(self):
         """Test CertificationPhase"""
         # inst = CertificationPhase()
+
 
 if __name__ == '__main__':
     unittest.main()

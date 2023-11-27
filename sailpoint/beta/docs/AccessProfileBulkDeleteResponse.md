@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
+from sailpoint.beta.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
 
 # TODO update the JSON string below
 json = "{}"

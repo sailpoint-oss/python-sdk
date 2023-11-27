@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -21,14 +20,12 @@ from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 
-from beta.models.account_aggregation_status import AccountAggregationStatus
+from sailpoint.beta.models.account_aggregation_status import AccountAggregationStatus
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class AccountAggregationsApi:
@@ -44,7 +41,11 @@ class AccountAggregationsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_account_aggregation_status(self, id : Annotated[StrictStr, Field(..., description="The account aggregation id")], **kwargs) -> AccountAggregationStatus:  # noqa: E501
+    def get_account_aggregation_status(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="The account aggregation id")],
+            **kwargs) -> AccountAggregationStatus:  # noqa: E501
         """In-progress Account Aggregation status  # noqa: E501
 
         This API returns the status of an *in-progress* account aggregation, along with the total number of **NEW**, **CHANGED** and **DELETED** accounts found since the previous aggregation, and the number of those accounts that have been processed so far.  Accounts that have not changed since the previous aggregation are not included in **totalAccounts** and **processedAccounts** counts returned by this API. This is distinct from **Accounts Scanned** shown in the Aggregation UI, which indicates total accounts scanned regardless of whether they changed or not.  Since this endpoint reports on the status of an *in-progress* account aggregation, totalAccounts and processedAccounts may change between calls to this endpoint.  *Only available up to an hour after the aggregation completes. May respond with *404 Not Found* after that.*  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN or DASHBOARD authority is required to call this API.  # noqa: E501
@@ -71,10 +72,15 @@ class AccountAggregationsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_account_aggregation_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_account_aggregation_status_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_account_aggregation_status_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_account_aggregation_status_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The account aggregation id")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_account_aggregation_status_with_http_info(
+            self, id: Annotated[
+                StrictStr,
+                Field(..., description="The account aggregation id")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """In-progress Account Aggregation status  # noqa: E501
 
         This API returns the status of an *in-progress* account aggregation, along with the total number of **NEW**, **CHANGED** and **DELETED** accounts found since the previous aggregation, and the number of those accounts that have been processed so far.  Accounts that have not changed since the previous aggregation are not included in **totalAccounts** and **processedAccounts** counts returned by this API. This is distinct from **Accounts Scanned** shown in the Aggregation UI, which indicates total accounts scanned regardless of whether they changed or not.  Since this endpoint reports on the status of an *in-progress* account aggregation, totalAccounts and processedAccounts may change between calls to this endpoint.  *Only available up to an hour after the aggregation completes. May respond with *404 Not Found* after that.*  A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN or DASHBOARD authority is required to call this API.  # noqa: E501
@@ -113,28 +119,18 @@ class AccountAggregationsApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_account_aggregation_status" % _key
-                )
+                    " to method get_account_aggregation_status" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -144,7 +140,6 @@ class AccountAggregationsApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -172,7 +167,8 @@ class AccountAggregationsApi:
         }
 
         return self.api_client.call_api(
-            '/account-aggregations/{id}/status', 'GET',
+            '/account-aggregations/{id}/status',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -182,7 +178,8 @@ class AccountAggregationsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

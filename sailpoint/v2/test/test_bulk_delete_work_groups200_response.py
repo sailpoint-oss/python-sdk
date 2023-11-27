@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v2.models.bulk_delete_work_groups200_response import BulkDeleteWorkGroups200Response  # noqa: E501
+from sailpoint.v2.models.bulk_delete_work_groups200_response import BulkDeleteWorkGroups200Response  # noqa: E501
+
 
 class TestBulkDeleteWorkGroups200Response(unittest.TestCase):
     """BulkDeleteWorkGroups200Response unit test stubs"""
@@ -26,7 +26,8 @@ class TestBulkDeleteWorkGroups200Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> BulkDeleteWorkGroups200Response:
+    def make_instance(self,
+                      include_optional) -> BulkDeleteWorkGroups200Response:
         """Test BulkDeleteWorkGroups200Response
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -55,6 +56,7 @@ class TestBulkDeleteWorkGroups200Response(unittest.TestCase):
         """Test BulkDeleteWorkGroups200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

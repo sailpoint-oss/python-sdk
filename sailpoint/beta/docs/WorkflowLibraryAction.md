@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.workflow_library_action import WorkflowLibraryAction
+from sailpoint.beta.models.workflow_library_action import WorkflowLibraryAction
 
 # TODO update the JSON string below
 json = "{}"

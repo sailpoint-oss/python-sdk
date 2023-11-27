@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,18 +22,16 @@ from pydantic import Field, StrictBool, StrictStr, conint
 
 from typing import Any, Dict, List, Optional
 
-from beta.models.access_request import AccessRequest
-from beta.models.access_request_config import AccessRequestConfig
-from beta.models.cancel_access_request import CancelAccessRequest
-from beta.models.close_access_request import CloseAccessRequest
-from beta.models.requested_item_status import RequestedItemStatus
+from sailpoint.beta.models.access_request import AccessRequest
+from sailpoint.beta.models.access_request_config import AccessRequestConfig
+from sailpoint.beta.models.cancel_access_request import CancelAccessRequest
+from sailpoint.beta.models.close_access_request import CloseAccessRequest
+from sailpoint.beta.models.requested_item_status import RequestedItemStatus
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class AccessRequestsApi:
@@ -50,7 +47,8 @@ class AccessRequestsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def cancel_access_request(self, cancel_access_request : CancelAccessRequest, **kwargs) -> object:  # noqa: E501
+    def cancel_access_request(self, cancel_access_request: CancelAccessRequest,
+                              **kwargs) -> object:  # noqa: E501
         """Cancel Access Request  # noqa: E501
 
         This API endpoint cancels a pending access request. An access request can be cancelled only if it has not passed the approval step. Any token with ORG_ADMIN authority or token of the user who originally requested the access request is required to cancel it.  # noqa: E501
@@ -77,10 +75,13 @@ class AccessRequestsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the cancel_access_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.cancel_access_request_with_http_info(cancel_access_request, **kwargs)  # noqa: E501
+        return self.cancel_access_request_with_http_info(
+            cancel_access_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def cancel_access_request_with_http_info(self, cancel_access_request : CancelAccessRequest, **kwargs) -> ApiResponse:  # noqa: E501
+    def cancel_access_request_with_http_info(
+            self, cancel_access_request: CancelAccessRequest,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Cancel Access Request  # noqa: E501
 
         This API endpoint cancels a pending access request. An access request can be cancelled only if it has not passed the approval step. Any token with ORG_ADMIN authority or token of the user who originally requested the access request is required to cancel it.  # noqa: E501
@@ -119,28 +120,17 @@ class AccessRequestsApi:
 
         _params = locals()
 
-        _all_params = [
-            'cancel_access_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['cancel_access_request']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method cancel_access_request" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method cancel_access_request" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -166,11 +156,11 @@ class AccessRequestsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -186,7 +176,8 @@ class AccessRequestsApi:
         }
 
         return self.api_client.call_api(
-            '/access-requests/cancel', 'POST',
+            '/access-requests/cancel',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -196,17 +187,19 @@ class AccessRequestsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def close_access_request(self, close_access_request : CloseAccessRequest, **kwargs) -> object:  # noqa: E501
+    def close_access_request(self, close_access_request: CloseAccessRequest,
+                             **kwargs) -> object:  # noqa: E501
         """Close Access Request  # noqa: E501
 
-        This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle (even after the approval state, unlike <a href=\"https://developer.sailpoint.com/idn/api/v3/cancel-access-request\">Cancel Access Request</a>). A token with ORG_ADMIN authority is required.  To find pending access requests via the UI, navigate to Search and use this query: status: Pending AND \"Access Request\". Use the Column Chooser to select \"Tracking Number,\" and the Download button to export a CSV containing the Tracking Numbers.  To find pending access requests via the API, use <a href=\"https://developer.sailpoint.com/idn/api/v3/list-account-activities\">List Account Activities</a>.  Input the ids from either source  To track the status of endpoint requests, navigate to Search and use this query: name:\"Close Identity Requests\". Search will include \"Close Identity Requests Started\" audits when requests are initiated, and \"Close Identity Requests Completed\" audits when requests are completed. The completion audit will list the Identity Request IDs that finished in error.  This API triggers the <a href=\"https://developer.sailpoint.com/idn/docs/event-triggers/triggers/provisioning-action-completed\">Provisioning Action Completed</a> event trigger for each access request that is closed.   # noqa: E501
+        This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/). A token with ORG_ADMIN authority is required.  To find pending access requests with the UI, navigate to Search and use this query: status: Pending AND \"Access Request\". Use the Column Chooser to select 'Tracking Number', and use the 'Download' button to export a CSV containing the tracking numbers.  To find pending access requests with the API, use the [List Account Activities endpoint](https://developer.sailpoint.com/idn/api/v3/list-account-activities/).  Input the IDs from either source.  To track the status of endpoint requests, navigate to Search and use this query: name:\"Close Identity Requests\". Search will include \"Close Identity Requests Started\" audits when requests are initiated and \"Close Identity Requests Completed\" audits when requests are completed. The completion audit will list the identity request IDs that finished in error.  This API triggers the [Provisioning Completed event trigger](https://developer.sailpoint.com/idn/docs/event-triggers/triggers/provisioning-completed/) for each access request that is closed.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -230,13 +223,16 @@ class AccessRequestsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the close_access_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.close_access_request_with_http_info(close_access_request, **kwargs)  # noqa: E501
+        return self.close_access_request_with_http_info(
+            close_access_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def close_access_request_with_http_info(self, close_access_request : CloseAccessRequest, **kwargs) -> ApiResponse:  # noqa: E501
+    def close_access_request_with_http_info(
+            self, close_access_request: CloseAccessRequest,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Close Access Request  # noqa: E501
 
-        This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle (even after the approval state, unlike <a href=\"https://developer.sailpoint.com/idn/api/v3/cancel-access-request\">Cancel Access Request</a>). A token with ORG_ADMIN authority is required.  To find pending access requests via the UI, navigate to Search and use this query: status: Pending AND \"Access Request\". Use the Column Chooser to select \"Tracking Number,\" and the Download button to export a CSV containing the Tracking Numbers.  To find pending access requests via the API, use <a href=\"https://developer.sailpoint.com/idn/api/v3/list-account-activities\">List Account Activities</a>.  Input the ids from either source  To track the status of endpoint requests, navigate to Search and use this query: name:\"Close Identity Requests\". Search will include \"Close Identity Requests Started\" audits when requests are initiated, and \"Close Identity Requests Completed\" audits when requests are completed. The completion audit will list the Identity Request IDs that finished in error.  This API triggers the <a href=\"https://developer.sailpoint.com/idn/docs/event-triggers/triggers/provisioning-action-completed\">Provisioning Action Completed</a> event trigger for each access request that is closed.   # noqa: E501
+        This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle even after the approval state, unlike the [Cancel Access Request endpoint](https://developer.sailpoint.com/idn/api/v3/cancel-access-request/). A token with ORG_ADMIN authority is required.  To find pending access requests with the UI, navigate to Search and use this query: status: Pending AND \"Access Request\". Use the Column Chooser to select 'Tracking Number', and use the 'Download' button to export a CSV containing the tracking numbers.  To find pending access requests with the API, use the [List Account Activities endpoint](https://developer.sailpoint.com/idn/api/v3/list-account-activities/).  Input the IDs from either source.  To track the status of endpoint requests, navigate to Search and use this query: name:\"Close Identity Requests\". Search will include \"Close Identity Requests Started\" audits when requests are initiated and \"Close Identity Requests Completed\" audits when requests are completed. The completion audit will list the identity request IDs that finished in error.  This API triggers the [Provisioning Completed event trigger](https://developer.sailpoint.com/idn/docs/event-triggers/triggers/provisioning-completed/) for each access request that is closed.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -272,28 +268,17 @@ class AccessRequestsApi:
 
         _params = locals()
 
-        _all_params = [
-            'close_access_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['close_access_request']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method close_access_request" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method close_access_request" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -319,11 +304,11 @@ class AccessRequestsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -338,7 +323,8 @@ class AccessRequestsApi:
         }
 
         return self.api_client.call_api(
-            '/access-requests/close', 'POST',
+            '/access-requests/close',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -348,14 +334,16 @@ class AccessRequestsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_access_request(self, access_request : AccessRequest, **kwargs) -> object:  # noqa: E501
+    def create_access_request(self, access_request: AccessRequest,
+                              **kwargs) -> object:  # noqa: E501
         """Submit an Access Request  # noqa: E501
 
         This submits the access request into IdentityNow, where it will follow any IdentityNow approval processes.  Access requests are processed asynchronously by IdentityNow.  A success response from this endpoint means the request has been submitted to IDN and is queued for processing.  Because this endpoint is asynchronous, it will not return an error if you submit duplicate access requests in quick succession, or you submit an access request for access that is already in progress, approved, or rejected. It is best practice to check for any existing access requests that reference the same access items before submitting a new access request.  This can be accomplished by using the [access request status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status) or the [pending access request approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals) endpoints.  You can also use the [search API](https://developer.sailpoint.com/idn/api/v3/search) to check the existing access items that an identity has before submitting an access request to ensure you are not requesting access that is already granted.  There are two types of access request:  __GRANT_ACCESS__ * Can be requested for multiple identities in a single request. * Supports self request and request on behalf of other users. Refer to the [Get Access Request Configuration](https://developer.sailpoint.com/idn/api/v3/get-access-request-config) endpoint for request configuration options.   * Allows any authenticated token (except API) to call this endpoint to request to grant access to themselves. Depending on the configuration, a user can request access for others. * Roles, access profiles and entitlements can be requested. * While requesting entitlements, maximum of 25 entitlements and 10 recipients are allowed in a request.   __REVOKE_ACCESS__ * Can only be requested for a single identity at a time. * Does not support self request. Only manager can request to revoke access for their directly managed employees. * If a `removeDate` is specified, then the access will be removed on that date and time only for roles and access profiles. Entitlements are currently unsupported for `removeDate`. * Roles, access profiles, and entitlements can be requested for revocation. * Revoke requests for entitlements are limited to 1 entitlement per access request currently. * [Roles, Access Profiles] You can specify a `removeDate` if the access doesn't already have a sunset date. The `removeDate` must be a future date, in the UTC timezone.  * Allows a manager to request to revoke access for direct employees. A token with ORG_ADMIN authority can also request to revoke access from anyone.  >**Note:** There is no indication to the approver in the IdentityNow UI that the approval request is for a revoke action. Take this into consideration when calling this API.  A token with API authority cannot be used to call this endpoint.    # noqa: E501
@@ -382,10 +370,13 @@ class AccessRequestsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_access_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_access_request_with_http_info(access_request, **kwargs)  # noqa: E501
+        return self.create_access_request_with_http_info(
+            access_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_access_request_with_http_info(self, access_request : AccessRequest, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_access_request_with_http_info(
+            self, access_request: AccessRequest,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Submit an Access Request  # noqa: E501
 
         This submits the access request into IdentityNow, where it will follow any IdentityNow approval processes.  Access requests are processed asynchronously by IdentityNow.  A success response from this endpoint means the request has been submitted to IDN and is queued for processing.  Because this endpoint is asynchronous, it will not return an error if you submit duplicate access requests in quick succession, or you submit an access request for access that is already in progress, approved, or rejected. It is best practice to check for any existing access requests that reference the same access items before submitting a new access request.  This can be accomplished by using the [access request status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status) or the [pending access request approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals) endpoints.  You can also use the [search API](https://developer.sailpoint.com/idn/api/v3/search) to check the existing access items that an identity has before submitting an access request to ensure you are not requesting access that is already granted.  There are two types of access request:  __GRANT_ACCESS__ * Can be requested for multiple identities in a single request. * Supports self request and request on behalf of other users. Refer to the [Get Access Request Configuration](https://developer.sailpoint.com/idn/api/v3/get-access-request-config) endpoint for request configuration options.   * Allows any authenticated token (except API) to call this endpoint to request to grant access to themselves. Depending on the configuration, a user can request access for others. * Roles, access profiles and entitlements can be requested. * While requesting entitlements, maximum of 25 entitlements and 10 recipients are allowed in a request.   __REVOKE_ACCESS__ * Can only be requested for a single identity at a time. * Does not support self request. Only manager can request to revoke access for their directly managed employees. * If a `removeDate` is specified, then the access will be removed on that date and time only for roles and access profiles. Entitlements are currently unsupported for `removeDate`. * Roles, access profiles, and entitlements can be requested for revocation. * Revoke requests for entitlements are limited to 1 entitlement per access request currently. * [Roles, Access Profiles] You can specify a `removeDate` if the access doesn't already have a sunset date. The `removeDate` must be a future date, in the UTC timezone.  * Allows a manager to request to revoke access for direct employees. A token with ORG_ADMIN authority can also request to revoke access from anyone.  >**Note:** There is no indication to the approver in the IdentityNow UI that the approval request is for a revoke action. Take this into consideration when calling this API.  A token with API authority cannot be used to call this endpoint.    # noqa: E501
@@ -424,28 +415,17 @@ class AccessRequestsApi:
 
         _params = locals()
 
-        _all_params = [
-            'access_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['access_request']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_access_request" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_access_request" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -471,11 +451,11 @@ class AccessRequestsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -490,7 +470,8 @@ class AccessRequestsApi:
         }
 
         return self.api_client.call_api(
-            '/access-requests', 'POST',
+            '/access-requests',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -500,14 +481,16 @@ class AccessRequestsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_access_request_config(self, **kwargs) -> AccessRequestConfig:  # noqa: E501
+    def get_access_request_config(
+            self, **kwargs) -> AccessRequestConfig:  # noqa: E501
         """Get Access Request Configuration  # noqa: E501
 
         This endpoint returns the current access-request configuration.  # noqa: E501
@@ -532,10 +515,12 @@ class AccessRequestsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_access_request_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_access_request_config_with_http_info(**kwargs)  # noqa: E501
+        return self.get_access_request_config_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_access_request_config_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_access_request_config_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """Get Access Request Configuration  # noqa: E501
 
         This endpoint returns the current access-request configuration.  # noqa: E501
@@ -572,27 +557,18 @@ class AccessRequestsApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_access_request_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_access_request_config" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -627,7 +603,8 @@ class AccessRequestsApi:
         }
 
         return self.api_client.call_api(
-            '/access-request-config', 'GET',
+            '/access-request-config',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -637,14 +614,76 @@ class AccessRequestsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_access_request_status(self, requested_for : Annotated[Optional[StrictStr], Field(description="Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None, requested_by : Annotated[Optional[StrictStr], Field(description="Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None, regarding_identity : Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.")] = None, assigned_to : Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**")] = None, **kwargs) -> List[RequestedItemStatus]:  # noqa: E501
+    def list_access_request_status(
+            self,
+            requested_for:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*."
+            )] = None,
+            requested_by:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*."
+            )] = None,
+            regarding_identity:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*."
+            )] = None,
+            assigned_to:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored."
+            )] = None,
+            limit: Annotated[
+                Optional[conint(strict=True, le=250, ge=0)],
+                Field(description="Max number of results to return.")] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**"
+            )] = None,
+            **kwargs) -> List[RequestedItemStatus]:  # noqa: E501
         """Access Request Status  # noqa: E501
 
         The Access Request Status API returns a list of access request statuses based on the specified query parameters. Any token with any authority can request their own status. A token with ORG_ADMIN authority is required to call this API to get a list of statuses for other users.  # noqa: E501
@@ -687,10 +726,73 @@ class AccessRequestsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_access_request_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_access_request_status_with_http_info(requested_for, requested_by, regarding_identity, assigned_to, count, limit, offset, filters, sorters, **kwargs)  # noqa: E501
+        return self.list_access_request_status_with_http_info(
+            requested_for, requested_by, regarding_identity, assigned_to,
+            count, limit, offset, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_access_request_status_with_http_info(self, requested_for : Annotated[Optional[StrictStr], Field(description="Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None, requested_by : Annotated[Optional[StrictStr], Field(description="Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*.")] = None, regarding_identity : Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*.")] = None, assigned_to : Annotated[Optional[StrictStr], Field(description="Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.")] = None, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_access_request_status_with_http_info(
+            self,
+            requested_for:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*."
+            )] = None,
+            requested_by:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*."
+            )] = None,
+            regarding_identity:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*."
+            )] = None,
+            assigned_to:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored."
+            )] = None,
+            limit: Annotated[
+                Optional[conint(strict=True, le=250, ge=0)],
+                Field(description="Max number of results to return.")] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Access Request Status  # noqa: E501
 
         The Access Request Status API returns a list of access request statuses based on the specified query parameters. Any token with any authority can request their own status. A token with ORG_ADMIN authority is required to call this API to get a list of statuses for other users.  # noqa: E501
@@ -746,35 +848,20 @@ class AccessRequestsApi:
         _params = locals()
 
         _all_params = [
-            'requested_for',
-            'requested_by',
-            'regarding_identity',
-            'assigned_to',
-            'count',
-            'limit',
-            'offset',
-            'filters',
-            'sorters'
+            'requested_for', 'requested_by', 'regarding_identity',
+            'assigned_to', 'count', 'limit', 'offset', 'filters', 'sorters'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_access_request_status" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_access_request_status" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -792,7 +879,8 @@ class AccessRequestsApi:
             _query_params.append(('requested-by', _params['requested_by']))
 
         if _params.get('regarding_identity') is not None:  # noqa: E501
-            _query_params.append(('regarding-identity', _params['regarding_identity']))
+            _query_params.append(
+                ('regarding-identity', _params['regarding_identity']))
 
         if _params.get('assigned_to') is not None:  # noqa: E501
             _query_params.append(('assigned-to', _params['assigned_to']))
@@ -836,7 +924,8 @@ class AccessRequestsApi:
         }
 
         return self.api_client.call_api(
-            '/access-request-status', 'GET',
+            '/access-request-status',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -846,14 +935,17 @@ class AccessRequestsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def set_access_request_config(self, access_request_config : AccessRequestConfig, **kwargs) -> AccessRequestConfig:  # noqa: E501
+    def set_access_request_config(
+            self, access_request_config: AccessRequestConfig,
+            **kwargs) -> AccessRequestConfig:  # noqa: E501
         """Update Access Request Configuration  # noqa: E501
 
         This endpoint replaces the current access-request configuration. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -880,10 +972,13 @@ class AccessRequestsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the set_access_request_config_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.set_access_request_config_with_http_info(access_request_config, **kwargs)  # noqa: E501
+        return self.set_access_request_config_with_http_info(
+            access_request_config, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def set_access_request_config_with_http_info(self, access_request_config : AccessRequestConfig, **kwargs) -> ApiResponse:  # noqa: E501
+    def set_access_request_config_with_http_info(
+            self, access_request_config: AccessRequestConfig,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Update Access Request Configuration  # noqa: E501
 
         This endpoint replaces the current access-request configuration. A token with ORG_ADMIN authority is required to call this API.  # noqa: E501
@@ -922,28 +1017,18 @@ class AccessRequestsApi:
 
         _params = locals()
 
-        _all_params = [
-            'access_request_config'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['access_request_config']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method set_access_request_config" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method set_access_request_config" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -969,11 +1054,11 @@ class AccessRequestsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -988,7 +1073,8 @@ class AccessRequestsApi:
         }
 
         return self.api_client.call_api(
-            '/access-request-config', 'PUT',
+            '/access-request-config',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -998,7 +1084,8 @@ class AccessRequestsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

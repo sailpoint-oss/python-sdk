@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.account_correlated import AccountCorrelated  # noqa: E501
+from sailpoint.beta.models.account_correlated import AccountCorrelated  # noqa: E501
+
 
 class TestAccountCorrelated(unittest.TestCase):
     """AccountCorrelated unit test stubs"""
@@ -36,15 +36,15 @@ class TestAccountCorrelated(unittest.TestCase):
         model = AccountCorrelated()  # noqa: E501
         if include_optional:
             return AccountCorrelated(
-                identity = beta.models.account_correlated_identity.AccountCorrelated_identity(
+                identity = sailpoint.beta.models.account_correlated_identity.AccountCorrelated_identity(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                source = beta.models.account_correlated_source.AccountCorrelated_source(
+                source = sailpoint.beta.models.account_correlated_source.AccountCorrelated_source(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', ),
-                account = beta.models.account_correlated_account.AccountCorrelated_account(
+                account = sailpoint.beta.models.account_correlated_account.AccountCorrelated_account(
                     type = 'ACCOUNT', 
                     id = '98da47c31df444558c211f9b205184f6', 
                     name = 'Brian Mendoza', 
@@ -55,15 +55,15 @@ class TestAccountCorrelated(unittest.TestCase):
             )
         else:
             return AccountCorrelated(
-                identity = beta.models.account_correlated_identity.AccountCorrelated_identity(
+                identity = sailpoint.beta.models.account_correlated_identity.AccountCorrelated_identity(
                     type = 'IDENTITY', 
                     id = '2c7180a46faadee4016fb4e018c20642', 
                     name = 'Michael Michaels', ),
-                source = beta.models.account_correlated_source.AccountCorrelated_source(
+                source = sailpoint.beta.models.account_correlated_source.AccountCorrelated_source(
                     type = 'SOURCE', 
                     id = '2c9180835d191a86015d28455b4b232a', 
                     name = 'HR Active Directory', ),
-                account = beta.models.account_correlated_account.AccountCorrelated_account(
+                account = sailpoint.beta.models.account_correlated_account.AccountCorrelated_account(
                     type = 'ACCOUNT', 
                     id = '98da47c31df444558c211f9b205184f6', 
                     name = 'Brian Mendoza', 
@@ -77,6 +77,7 @@ class TestAccountCorrelated(unittest.TestCase):
         """Test AccountCorrelated"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

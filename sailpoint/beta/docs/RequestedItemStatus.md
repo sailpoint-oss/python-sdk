@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.requested_item_status import RequestedItemStatus
+from sailpoint.beta.models.requested_item_status import RequestedItemStatus
 
 # TODO update the JSON string below
 json = "{}"

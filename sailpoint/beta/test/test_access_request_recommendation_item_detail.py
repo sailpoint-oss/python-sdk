@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.access_request_recommendation_item_detail import AccessRequestRecommendationItemDetail  # noqa: E501
+from sailpoint.beta.models.access_request_recommendation_item_detail import AccessRequestRecommendationItemDetail  # noqa: E501
+
 
 class TestAccessRequestRecommendationItemDetail(unittest.TestCase):
     """AccessRequestRecommendationItemDetail unit test stubs"""
@@ -26,7 +26,8 @@ class TestAccessRequestRecommendationItemDetail(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccessRequestRecommendationItemDetail:
+    def make_instance(
+            self, include_optional) -> AccessRequestRecommendationItemDetail:
         """Test AccessRequestRecommendationItemDetail
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -37,7 +38,7 @@ class TestAccessRequestRecommendationItemDetail(unittest.TestCase):
         if include_optional:
             return AccessRequestRecommendationItemDetail(
                 identity_id = '2c91808570313110017040b06f344ec9',
-                access = beta.models.access_request_recommendation_item_detail_access.AccessRequestRecommendationItemDetail_access(
+                access = sailpoint.beta.models.access_request_recommendation_item_detail_access.AccessRequestRecommendationItemDetail_access(
                     id = '2c9180835d2e5168015d32f890ca1581', 
                     type = 'ACCESS_PROFILE', 
                     name = 'Employee-database-read-write', 
@@ -46,7 +47,7 @@ class TestAccessRequestRecommendationItemDetail(unittest.TestCase):
                 requested = True,
                 viewed = True,
                 messages = [
-                    beta.models.access_recommendation_message.AccessRecommendationMessage(
+                    sailpoint.beta.models.access_recommendation_message.AccessRecommendationMessage(
                         interpretation = '95% of your peers have this access.', )
                     ],
                 translation_messages = [{key=recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH, values=[75, department]}]
@@ -60,6 +61,7 @@ class TestAccessRequestRecommendationItemDetail(unittest.TestCase):
         """Test AccessRequestRecommendationItemDetail"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

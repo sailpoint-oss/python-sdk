@@ -1,4 +1,4 @@
-# beta.CustomFormsApi
+# sailpoint.beta.CustomFormsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -6,11 +6,14 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_form_definition**](CustomFormsApi.md#create_form_definition) | **POST** /form-definitions | Creates a form definition.
 [**create_form_definition_dynamic_schema**](CustomFormsApi.md#create_form_definition_dynamic_schema) | **POST** /form-definitions/forms-action-dynamic-schema | Generate JSON Schema dynamically.
+[**create_form_definition_file_request**](CustomFormsApi.md#create_form_definition_file_request) | **POST** /form-definitions/{formDefinitionID}/upload | Upload new form definition file.
 [**create_form_instance**](CustomFormsApi.md#create_form_instance) | **POST** /form-instances | Creates a form instance.
 [**delete_form_definition**](CustomFormsApi.md#delete_form_definition) | **DELETE** /form-definitions/{formDefinitionID} | Deletes a form definition.
 [**export_form_definitions_by_tenant**](CustomFormsApi.md#export_form_definitions_by_tenant) | **GET** /form-definitions/export | List form definitions by tenant.
+[**get_file_from_s3**](CustomFormsApi.md#get_file_from_s3) | **GET** /form-definitions/{formDefinitionID}/file/{fileID} | Download definition file by fileId.
 [**get_form_definition_by_key**](CustomFormsApi.md#get_form_definition_by_key) | **GET** /form-definitions/{formDefinitionID} | Return a form definition.
 [**get_form_instance_by_key**](CustomFormsApi.md#get_form_instance_by_key) | **GET** /form-instances/{formInstanceID} | Returns a form instance.
+[**get_form_instance_file**](CustomFormsApi.md#get_form_instance_file) | **GET** /form-instances/{formInstanceID}/file/{fileID} | Download instance file by fileId.
 [**import_form_definitions**](CustomFormsApi.md#import_form_definitions) | **POST** /form-definitions/import | Import form definitions from export.
 [**patch_form_definition**](CustomFormsApi.md#patch_form_definition) | **PATCH** /form-definitions/{formDefinitionID} | Patch a form definition.
 [**patch_form_instance**](CustomFormsApi.md#patch_form_instance) | **PATCH** /form-instances/{formInstanceID} | Patch a form instance.
@@ -33,15 +36,15 @@ Creates a form definition.
 ```python
 import time
 import os
-import beta
-from beta.models.create_form_definition_request import CreateFormDefinitionRequest
-from beta.models.form_definition_response import FormDefinitionResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.create_form_definition_request import CreateFormDefinitionRequest
+from sailpoint.beta.models.form_definition_response import FormDefinitionResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -55,9 +58,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     body = {name=my form, description=my form description, owner={type=IDENTITY, id=00000000-0000-0000-0000-000000000000}} # CreateFormDefinitionRequest | Body is the request payload to create form definition request (optional)
 
     try:
@@ -114,15 +117,15 @@ Generate JSON Schema dynamically.
 ```python
 import time
 import os
-import beta
-from beta.models.form_definition_dynamic_schema_request import FormDefinitionDynamicSchemaRequest
-from beta.models.form_definition_dynamic_schema_response import FormDefinitionDynamicSchemaResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.form_definition_dynamic_schema_request import FormDefinitionDynamicSchemaRequest
+from sailpoint.beta.models.form_definition_dynamic_schema_response import FormDefinitionDynamicSchemaResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -136,9 +139,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     body = {id=sp:forms, attributes={formDefinitionId=00000000-0000-0000-0000-000000000000}, description=AnotherDescription, type=action, versionNumber=1} # FormDefinitionDynamicSchemaRequest | Body is the request payload to create a form definition dynamic schema (optional)
 
     try:
@@ -184,10 +187,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **create_form_instance**
-> FormInstanceResponse create_form_instance(body=body)
+# **create_form_definition_file_request**
+> FormDefinitionFileUploadResponse create_form_definition_file_request(form_definition_id, file)
 
-Creates a form instance.
+Upload new form definition file.
+
+Parameter `{formDefinitionID}` should match a form definition ID.
 
 ### Example
 
@@ -196,15 +201,14 @@ Creates a form instance.
 ```python
 import time
 import os
-import beta
-from beta.models.create_form_instance_request import CreateFormInstanceRequest
-from beta.models.form_instance_response import FormInstanceResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.form_definition_file_upload_response import FormDefinitionFileUploadResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -218,9 +222,96 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
+    form_definition_id = '00000000-0000-0000-0000-000000000000' # str | FormDefinitionID  String specifying FormDefinitionID
+    file = None # bytearray | File specifying the multipart
+
+    try:
+        # Upload new form definition file.
+        api_response = api_instance.create_form_definition_file_request(form_definition_id, file)
+        print("The response of CustomFormsApi->create_form_definition_file_request:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CustomFormsApi->create_form_definition_file_request: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **form_definition_id** | **str**| FormDefinitionID  String specifying FormDefinitionID | 
+ **file** | **bytearray**| File specifying the multipart | 
+
+### Return type
+
+[**FormDefinitionFileUploadResponse**](FormDefinitionFileUploadResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Returns a new form definition file |  -  |
+**400** | An error with the request occurred |  -  |
+**401** | An error with the authorization occurred |  -  |
+**403** | An error with the user permissions occurred |  -  |
+**404** | An error with the item not found |  -  |
+**413** | An error with payload size too large |  -  |
+**415** | An error with unsupported media type |  -  |
+**429** | Too many requests |  -  |
+**500** | An internal server error occurred |  -  |
+**503** | An external service is not available |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_form_instance**
+> FormInstanceResponse create_form_instance(body=body)
+
+Creates a form instance.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+```python
+import time
+import os
+import sailpoint.beta
+from sailpoint.beta.models.create_form_instance_request import CreateFormInstanceRequest
+from sailpoint.beta.models.form_instance_response import FormInstanceResponse
+from sailpoint.beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     body = {expire=2023-06-20T15:57:55.332882Z, formDefinitionId=00000000-0000-0000-0000-000000000000, recipients=[{type=IDENTITY, id=an-identity-id}], createdBy={type=WORKFLOW_EXECUTION, id=a-workflow-execution-id}} # CreateFormInstanceRequest | Body is the request payload to create a form instance (optional)
 
     try:
@@ -279,13 +370,13 @@ Parameter `{formDefinitionID}` should match a form definition ID.
 ```python
 import time
 import os
-import beta
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -299,9 +390,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     form_definition_id = '00000000-0000-0000-0000-000000000000' # str | Form definition ID
 
     try:
@@ -361,14 +452,14 @@ No parameters required.
 ```python
 import time
 import os
-import beta
-from beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -382,9 +473,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     offset = 0 # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
     limit = 250 # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
     filters = 'name sw \"my form\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in* (optional)
@@ -435,6 +526,89 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_file_from_s3**
+> bytearray get_file_from_s3(form_definition_id, file_id)
+
+Download definition file by fileId.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+```python
+import time
+import os
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
+    form_definition_id = '00000000-0000-0000-0000-000000000000' # str | FormDefinitionID  Form definition ID
+    file_id = '00000031N0J7R2B57M8YG73J7M.png' # str | FileID  String specifying the hashed name of the uploaded file we are retrieving.
+
+    try:
+        # Download definition file by fileId.
+        api_response = api_instance.get_file_from_s3(form_definition_id, file_id)
+        print("The response of CustomFormsApi->get_file_from_s3:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CustomFormsApi->get_file_from_s3: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **form_definition_id** | **str**| FormDefinitionID  Form definition ID | 
+ **file_id** | **str**| FileID  String specifying the hashed name of the uploaded file we are retrieving. | 
+
+### Return type
+
+**bytearray**
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, image/jpeg, image/png, application/octet-stream
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns a file that is referred to by fileID and associated with the formDefinitionID |  -  |
+**400** | An error with the request occurred |  -  |
+**401** | An error with the authorization occurred |  -  |
+**403** | An error with the user permissions occurred |  -  |
+**404** | An error with the item not found |  -  |
+**429** | Too many requests |  -  |
+**500** | An internal server error occurred |  -  |
+**503** | An external service is not available |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_form_definition_by_key**
 > FormDefinitionResponse get_form_definition_by_key(form_definition_id)
 
@@ -449,14 +623,14 @@ Parameter `{formDefinitionID}` should match a form definition ID.
 ```python
 import time
 import os
-import beta
-from beta.models.form_definition_response import FormDefinitionResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.form_definition_response import FormDefinitionResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -470,9 +644,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     form_definition_id = '00000000-0000-0000-0000-000000000000' # str | Form definition ID
 
     try:
@@ -532,14 +706,14 @@ Parameter `{formInstanceID}` should match a form instance ID.
 ```python
 import time
 import os
-import beta
-from beta.models.form_instance_response import FormInstanceResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.form_instance_response import FormInstanceResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -553,9 +727,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     form_instance_id = '00000000-0000-0000-0000-000000000000' # str | Form instance ID
 
     try:
@@ -601,10 +775,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **import_form_definitions**
-> ImportFormDefinitions202Response import_form_definitions(body=body)
+# **get_form_instance_file**
+> bytearray get_form_instance_file(form_instance_id, file_id)
 
-Import form definitions from export.
+Download instance file by fileId.
 
 ### Example
 
@@ -613,15 +787,13 @@ Import form definitions from export.
 ```python
 import time
 import os
-import beta
-from beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
-from beta.models.import_form_definitions202_response import ImportFormDefinitions202Response
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -635,9 +807,94 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
+    form_instance_id = '00000000-0000-0000-0000-000000000000' # str | FormInstanceID  Form instance ID
+    file_id = '00000031N0J7R2B57M8YG73J7M.png' # str | FileID  String specifying the hashed name of the uploaded file we are retrieving.
+
+    try:
+        # Download instance file by fileId.
+        api_response = api_instance.get_form_instance_file(form_instance_id, file_id)
+        print("The response of CustomFormsApi->get_form_instance_file:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CustomFormsApi->get_form_instance_file: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **form_instance_id** | **str**| FormInstanceID  Form instance ID | 
+ **file_id** | **str**| FileID  String specifying the hashed name of the uploaded file we are retrieving. | 
+
+### Return type
+
+**bytearray**
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, image/jpeg, image/png, application/octet-stream
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns a file that is referred to by fileID and associated with the formInstanceID |  -  |
+**400** | An error with the request occurred |  -  |
+**401** | An error with the authorization occurred |  -  |
+**403** | An error with the user permissions occurred |  -  |
+**404** | An error with the item not found |  -  |
+**429** | Too many requests |  -  |
+**500** | An internal server error occurred |  -  |
+**503** | An external service is not available |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **import_form_definitions**
+> ImportFormDefinitions202Response import_form_definitions(body=body)
+
+Import form definitions from export.
+
+### Example
+
+* OAuth Authentication (UserContextAuth):
+* OAuth Authentication (UserContextAuth):
+```python
+import time
+import os
+import sailpoint.beta
+from sailpoint.beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
+from sailpoint.beta.models.import_form_definitions202_response import ImportFormDefinitions202Response
+from sailpoint.beta.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
+# See configuration.py for a list of all supported configuration parameters.
+configuration = sailpoint.beta.Configuration(
+    host = "https://sailpoint.api.identitynow.com/beta"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with sailpoint.beta.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     body = [{version=1, self={name=All fields not required, id=05ed4edb-d0a9-41d9-ad0c-2f6e486ec4aa, type=FORM_DEFINITION}, object={id=05ed4edb-d0a9-41d9-ad0c-2f6e486ec4aa, name=All fields not required, description=description, owner={type=IDENTITY, id=3447d8ec2602455ab6f1e8408a0f0150}, usedBy=[{type=WORKFLOW, id=5008594c-dacc-4295-8fee-41df60477304}, {type=WORKFLOW, id=97e75a75-c179-4fbc-a2da-b5fa4aaa8743}], formInput=[{type=STRING, label=input1, description=A single dynamic scalar value (i.e. number, string, date, etc) that can be passed into the form for use in conditional logic}], formElements=[{id=3069272797630701, elementType=SECTION, config={label=First Section, formElements=[{id=3069272797630700, elementType=TEXT, key=firstName, config={label=First Name}}, {id=3498415402897539, elementType=TEXT, key=lastName, config={label=Last Name}}]}}], formConditions=[{ruleOperator=AND, rules=[{sourceType=INPUT, source=Department, operator=EQ, valueType=STRING, value=Sales}], effects=[{effectType=HIDE, config={element=2614088730489570}}]}], created=2022-10-04T19:27:04.456Z, modified=2022-11-16T20:45:02.172Z}}] # List[ExportFormDefinitionsByTenant200ResponseInner] | Body is the request payload to import form definitions (optional)
 
     try:
@@ -696,14 +953,14 @@ Parameter `{formDefinitionID}` should match a form definition ID.
 ```python
 import time
 import os
-import beta
-from beta.models.form_definition_response import FormDefinitionResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.form_definition_response import FormDefinitionResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -717,9 +974,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     form_definition_id = '00000000-0000-0000-0000-000000000000' # str | Form definition ID
     body = [{op=replace, path=/description, value=test-description}] # List[Dict[str, object]] | Body is the request payload to patch a form definition, check: https://jsonpatch.com (optional)
 
@@ -781,14 +1038,14 @@ Parameter `{formInstanceID}` should match a form instance ID.
 ```python
 import time
 import os
-import beta
-from beta.models.form_instance_response import FormInstanceResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.form_instance_response import FormInstanceResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -802,9 +1059,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     form_instance_id = '00000000-0000-0000-0000-000000000000' # str | Form instance ID
     body = [{op=replace, path=/state, value=SUBMITTED}, {op=replace, path=/formData, value={a-key-1=a-value-1, a-key-2=true, a-key-3=1}}] # List[Dict[str, object]] | Body is the request payload to patch a form instance, check: https://jsonpatch.com (optional)
 
@@ -867,14 +1124,14 @@ No parameters required.
 ```python
 import time
 import os
-import beta
-from beta.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -888,9 +1145,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     offset = 0 # int | Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0. (optional) (default to 0)
     limit = 250 # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
     filters = 'name sw \"my form\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in* (optional)
@@ -955,14 +1212,14 @@ Parameter `{formInstanceID}` should match a form instance ID. Parameter `{formEl
 ```python
 import time
 import os
-import beta
-from beta.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -976,9 +1233,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     form_instance_id = '00000000-0000-0000-0000-000000000000' # str | Form instance ID
     form_element_id = '1' # str | Form element ID
     limit = 250 # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 250)
@@ -1044,14 +1301,14 @@ No parameters required.
 ```python
 import time
 import os
-import beta
-from beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1065,9 +1322,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
 
     try:
         # List form instances by tenant.
@@ -1122,14 +1379,14 @@ No parameters required.
 ```python
 import time
 import os
-import beta
-from beta.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1143,9 +1400,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
 
     try:
         # List predefined select options.
@@ -1198,15 +1455,15 @@ Preview form definition data source.
 ```python
 import time
 import os
-import beta
-from beta.models.form_element_preview_request import FormElementPreviewRequest
-from beta.models.preview_data_source_response import PreviewDataSourceResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.form_element_preview_request import FormElementPreviewRequest
+from sailpoint.beta.models.preview_data_source_response import PreviewDataSourceResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -1220,14 +1477,14 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.CustomFormsApi(api_client)
+    api_instance = sailpoint.beta.CustomFormsApi(api_client)
     form_definition_id = '00000000-0000-0000-0000-000000000000' # str | Form definition ID
     limit = 10 # int | Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used. (optional) (default to 10)
     filters = 'label sw \"my label\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, gt, sw, in*  **label**: *eq, gt, sw, in*  **subLabel**: *eq, gt, sw, in* (optional)
     query = 'support' # str | Query  String specifying to query against (optional)
-    form_element_preview_request = beta.FormElementPreviewRequest() # FormElementPreviewRequest | Body is the request payload to create a form definition dynamic schema (optional)
+    form_element_preview_request = sailpoint.beta.FormElementPreviewRequest() # FormElementPreviewRequest | Body is the request payload to create a form definition dynamic schema (optional)
 
     try:
         # Preview form definition data source.

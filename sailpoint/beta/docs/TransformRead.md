@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.transform_read import TransformRead
+from sailpoint.beta.models.transform_read import TransformRead
 
 # TODO update the JSON string below
 json = "{}"

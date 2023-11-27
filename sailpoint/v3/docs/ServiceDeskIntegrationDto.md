@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto
+from sailpoint.v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 
 # TODO update the JSON string below
 json = "{}"

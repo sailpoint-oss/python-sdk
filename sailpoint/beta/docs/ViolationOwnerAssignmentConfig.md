@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig
+from sailpoint.beta.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,21 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class FullcampaignAllOfFilter(BaseModel):
     """
     Determines which items will be included in this campaign. The default campaign filter is used if this field is left blank.  # noqa: E501
     """
-    id: Optional[StrictStr] = Field(None, description="The ID of whatever type of filter is being used.")
+    id: Optional[StrictStr] = Field(
+        None, description="The ID of whatever type of filter is being used.")
     type: Optional[StrictStr] = Field(None, description="Type of the filter")
     name: Optional[StrictStr] = Field(None, description="Name of the filter")
     __properties = ["id", "type", "name"]
@@ -37,7 +37,8 @@ class FullcampaignAllOfFilter(BaseModel):
             return value
 
         if value not in ('CAMPAIGN_FILTER', 'RULE'):
-            raise ValueError("must be one of enum values ('CAMPAIGN_FILTER', 'RULE')")
+            raise ValueError(
+                "must be one of enum values ('CAMPAIGN_FILTER', 'RULE')")
         return value
 
     class Config:
@@ -60,10 +61,7 @@ class FullcampaignAllOfFilter(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -81,5 +79,3 @@ class FullcampaignAllOfFilter(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

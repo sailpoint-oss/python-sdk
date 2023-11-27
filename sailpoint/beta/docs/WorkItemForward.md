@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.work_item_forward import WorkItemForward
+from sailpoint.beta.models.work_item_forward import WorkItemForward
 
 # TODO update the JSON string below
 json = "{}"

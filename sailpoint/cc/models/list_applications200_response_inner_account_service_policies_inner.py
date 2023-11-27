@@ -11,15 +11,14 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class ListApplications200ResponseInnerAccountServicePoliciesInner(BaseModel):
     """
@@ -44,32 +43,33 @@ class ListApplications200ResponseInnerAccountServicePoliciesInner(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ListApplications200ResponseInnerAccountServicePoliciesInner:
+    def from_json(
+        cls, json_str: str
+    ) -> ListApplications200ResponseInnerAccountServicePoliciesInner:
         """Create an instance of ListApplications200ResponseInnerAccountServicePoliciesInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ListApplications200ResponseInnerAccountServicePoliciesInner:
+    def from_dict(
+        cls, obj: dict
+    ) -> ListApplications200ResponseInnerAccountServicePoliciesInner:
         """Create an instance of ListApplications200ResponseInnerAccountServicePoliciesInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ListApplications200ResponseInnerAccountServicePoliciesInner.parse_obj(obj)
+            return ListApplications200ResponseInnerAccountServicePoliciesInner.parse_obj(
+                obj)
 
-        _obj = ListApplications200ResponseInnerAccountServicePoliciesInner.parse_obj({
-            "policy_id": obj.get("policyId"),
-            "policy_name": obj.get("policyName"),
-            "selectors": obj.get("selectors")
-        })
+        _obj = ListApplications200ResponseInnerAccountServicePoliciesInner.parse_obj(
+            {
+                "policy_id": obj.get("policyId"),
+                "policy_name": obj.get("policyName"),
+                "selectors": obj.get("selectors")
+            })
         return _obj
-
-

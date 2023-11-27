@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.role_membership_selector import RoleMembershipSelector
+from sailpoint.v3.models.role_membership_selector import RoleMembershipSelector
 
 # TODO update the JSON string below
 json = "{}"

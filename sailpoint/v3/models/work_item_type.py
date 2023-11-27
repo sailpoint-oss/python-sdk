@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class WorkItemType(str, Enum):
     """
     The type of the work item
     """
-
     """
     allowed enum values
     """
@@ -49,5 +44,3 @@ class WorkItemType(str, Enum):
     def from_json(cls, json_str: str) -> WorkItemType:
         """Create an instance of WorkItemType from a JSON string"""
         return WorkItemType(json.loads(json_str))
-
-

@@ -1,4 +1,4 @@
-# v3.CertificationsApi
+# sailpoint.v3.CertificationsApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
@@ -31,14 +31,14 @@ This API returns the certification task for the specified ID. A token with ORG_A
 ```python
 import time
 import os
-import v3
-from v3.models.certification_task import CertificationTask
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.certification_task import CertificationTask
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -52,9 +52,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationsApi(api_client)
+    api_instance = sailpoint.v3.CertificationsApi(api_client)
     id = '63b32151-26c0-42f4-9299-8898dc1c9daa' # str | The task ID
 
     try:
@@ -114,14 +114,14 @@ This API returns a single identity campaign certification by its ID. A token wit
 ```python
 import time
 import os
-import v3
-from v3.models.identity_certification_dto import IdentityCertificationDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -135,9 +135,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationsApi(api_client)
+    api_instance = sailpoint.v3.CertificationsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The certification id
 
     try:
@@ -197,14 +197,14 @@ This API returns the permissions associated with an entitlement certification it
 ```python
 import time
 import os
-import v3
-from v3.models.permission_dto import PermissionDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.permission_dto import PermissionDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -218,9 +218,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationsApi(api_client)
+    api_instance = sailpoint.v3.CertificationsApi(api_client)
     certification_id = 'ef38f94347e94562b5bb8424a56397d8' # str | The certification ID
     item_id = '2c91808671bcbab40171bd945d961227' # str | The certification item ID
     filters = 'target eq \"SYS.OBJAUTH2\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **target**: *eq, sw*  **rights**: *ca*  Supported composite operators: *and, or*  All field values (second filter operands) are case-insensitive for this API.  Only a single *and* or *or* composite filter operator may be used. It must also be used between a target filter and a rights filter, not between 2 filters for the same field.  For example, the following is valid: `?filters=rights+ca+(%22CREATE%22)+and+target+eq+%22SYS.OBJAUTH2%22`  The following is invalid: 1?filters=rights+ca+(%22CREATE%22)+and+rights+ca+(%SELECT%22)1 (optional)
@@ -290,14 +290,14 @@ This API returns a list of pending (`QUEUED` or `IN_PROGRESS`) certification tas
 ```python
 import time
 import os
-import v3
-from v3.models.certification_task import CertificationTask
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.certification_task import CertificationTask
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -311,9 +311,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationsApi(api_client)
+    api_instance = sailpoint.v3.CertificationsApi(api_client)
     reviewer_identity = 'Ada.1de82e55078344' # str | The ID of reviewer identity. *me* indicates the current user. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -381,14 +381,14 @@ This API returns a list of reviewers for the certification. A token with ORG_ADM
 ```python
 import time
 import os
-import v3
-from v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -402,9 +402,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationsApi(api_client)
+    api_instance = sailpoint.v3.CertificationsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The certification ID
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -474,14 +474,14 @@ This API returns a list of access review items for an identity campaign certific
 ```python
 import time
 import os
-import v3
-from v3.models.access_review_item import AccessReviewItem
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.access_review_item import AccessReviewItem
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -495,9 +495,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationsApi(api_client)
+    api_instance = sailpoint.v3.CertificationsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -573,14 +573,14 @@ This API returns a list of identity campaign certifications that satisfy the giv
 ```python
 import time
 import os
-import v3
-from v3.models.identity_certification_dto import IdentityCertificationDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -594,9 +594,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationsApi(api_client)
+    api_instance = sailpoint.v3.CertificationsApi(api_client)
     reviewer_identity = 'me' # str | The ID of reviewer identity. *me* indicates the current user. (optional)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
@@ -665,15 +665,15 @@ The API makes a decision to approve or revoke one or more identity campaign cert
 ```python
 import time
 import os
-import v3
-from v3.models.identity_certification_dto import IdentityCertificationDto
-from v3.models.review_decision import ReviewDecision
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
+from sailpoint.v3.models.review_decision import ReviewDecision
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -687,9 +687,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationsApi(api_client)
+    api_instance = sailpoint.v3.CertificationsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The ID of the identity campaign certification on which to make decisions
     review_decision = [{id=ef38f94347e94562b5bb8424a56396b5, decision=APPROVE, bulk=true, comments=This user still needs access to this source.}, {id=ef38f94347e94562b5bb8424a56397d8, decision=APPROVE, bulk=true, comments=This user still needs access to this source too.}] # List[ReviewDecision] | A non-empty array of decisions to be made.
 
@@ -751,15 +751,15 @@ This API reassigns up to 50 identities or items in an identity campaign certific
 ```python
 import time
 import os
-import v3
-from v3.models.identity_certification_dto import IdentityCertificationDto
-from v3.models.review_reassign import ReviewReassign
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
+from sailpoint.v3.models.review_reassign import ReviewReassign
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -773,11 +773,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationsApi(api_client)
+    api_instance = sailpoint.v3.CertificationsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID
-    review_reassign = v3.ReviewReassign() # ReviewReassign | 
+    review_reassign = sailpoint.v3.ReviewReassign() # ReviewReassign | 
 
     try:
         # Reassign Identities or Items
@@ -837,14 +837,14 @@ This API finalizes all decisions made on an identity campaign certification and 
 ```python
 import time
 import os
-import v3
-from v3.models.identity_certification_dto import IdentityCertificationDto
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -858,9 +858,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationsApi(api_client)
+    api_instance = sailpoint.v3.CertificationsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID
 
     try:
@@ -920,15 +920,15 @@ This API initiates a task to reassign up to 500 identities or items in an identi
 ```python
 import time
 import os
-import v3
-from v3.models.certification_task import CertificationTask
-from v3.models.review_reassign import ReviewReassign
-from v3.rest import ApiException
+import sailpoint.v3
+from sailpoint.v3.models.certification_task import CertificationTask
+from sailpoint.v3.models.review_reassign import ReviewReassign
+from sailpoint.v3.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/v3
 # See configuration.py for a list of all supported configuration parameters.
-configuration = v3.Configuration(
+configuration = sailpoint.v3.Configuration(
     host = "https://sailpoint.api.identitynow.com/v3"
 )
 
@@ -942,11 +942,11 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with v3.ApiClient(configuration) as api_client:
+with sailpoint.v3.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = v3.CertificationsApi(api_client)
+    api_instance = sailpoint.v3.CertificationsApi(api_client)
     id = 'ef38f94347e94562b5bb8424a56397d8' # str | The identity campaign certification ID
-    review_reassign = v3.ReviewReassign() # ReviewReassign | 
+    review_reassign = sailpoint.v3.ReviewReassign() # ReviewReassign | 
 
     try:
         # Reassign Certifications Asynchronously

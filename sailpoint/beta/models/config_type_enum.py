@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class ConfigTypeEnum(str, Enum):
     """
     Enum list of valid work types that can be selected for a Reassignment Configuration
     """
-
     """
     allowed enum values
     """
@@ -37,5 +32,3 @@ class ConfigTypeEnum(str, Enum):
     def from_json(cls, json_str: str) -> ConfigTypeEnum:
         """Create an instance of ConfigTypeEnum from a JSON string"""
         return ConfigTypeEnum(json.loads(json_str))
-
-

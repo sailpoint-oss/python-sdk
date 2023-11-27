@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field
-from beta.models.identity_entities_identity_entity import IdentityEntitiesIdentityEntity
+from sailpoint.beta.models.identity_entities_identity_entity import IdentityEntitiesIdentityEntity
+
 
 class IdentityEntities(BaseModel):
     """
     IdentityEntities
     """
-    identity_entity: Optional[IdentityEntitiesIdentityEntity] = Field(None, alias="identityEntity")
+    identity_entity: Optional[IdentityEntitiesIdentityEntity] = Field(
+        None, alias="identityEntity")
     __properties = ["identityEntity"]
 
     class Config:
@@ -49,10 +49,7 @@ class IdentityEntities(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of identity_entity
         if self.identity_entity:
             _dict['identityEntity'] = self.identity_entity.to_dict()
@@ -68,8 +65,8 @@ class IdentityEntities(BaseModel):
             return IdentityEntities.parse_obj(obj)
 
         _obj = IdentityEntities.parse_obj({
-            "identity_entity": IdentityEntitiesIdentityEntity.from_dict(obj.get("identityEntity")) if obj.get("identityEntity") is not None else None
+            "identity_entity":
+            IdentityEntitiesIdentityEntity.from_dict(obj.get("identityEntity"))
+            if obj.get("identityEntity") is not None else None
         })
         return _obj
-
-

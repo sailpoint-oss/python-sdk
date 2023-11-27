@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.outlier_feature_summary import OutlierFeatureSummary  # noqa: E501
+from sailpoint.beta.models.outlier_feature_summary import OutlierFeatureSummary  # noqa: E501
+
 
 class TestOutlierFeatureSummary(unittest.TestCase):
     """OutlierFeatureSummary unit test stubs"""
@@ -39,7 +39,7 @@ class TestOutlierFeatureSummary(unittest.TestCase):
                 contributing_feature_name = 'Rare Access',
                 identity_outlier_display_name = 'John Smith',
                 outlier_feature_display_values = [
-                    beta.models.outlier_feature_summary_outlier_feature_display_values_inner.OutlierFeatureSummary_outlierFeatureDisplayValues_inner(
+                    sailpoint.beta.models.outlier_feature_summary_outlier_feature_display_values_inner.OutlierFeatureSummary_outlierFeatureDisplayValues_inner(
                         display_name = 'Aliza Chris', 
                         value = '55', 
                         value_type = 'INTEGER', )
@@ -59,6 +59,7 @@ class TestOutlierFeatureSummary(unittest.TestCase):
         """Test OutlierFeatureSummary"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

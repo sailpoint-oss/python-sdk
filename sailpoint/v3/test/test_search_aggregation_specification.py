@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.search_aggregation_specification import SearchAggregationSpecification  # noqa: E501
+from sailpoint.v3.models.search_aggregation_specification import SearchAggregationSpecification  # noqa: E501
+
 
 class TestSearchAggregationSpecification(unittest.TestCase):
     """SearchAggregationSpecification unit test stubs"""
@@ -26,7 +26,8 @@ class TestSearchAggregationSpecification(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SearchAggregationSpecification:
+    def make_instance(self,
+                      include_optional) -> SearchAggregationSpecification:
         """Test SearchAggregationSpecification
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -36,19 +37,19 @@ class TestSearchAggregationSpecification(unittest.TestCase):
         model = SearchAggregationSpecification()  # noqa: E501
         if include_optional:
             return SearchAggregationSpecification(
-                nested = v3.models.nested_aggregation.NestedAggregation(
+                nested = sailpoint.v3.models.nested_aggregation.NestedAggregation(
                     name = 'id', 
                     type = 'access', ),
-                metric = v3.models.metric_aggregation.MetricAggregation(
+                metric = sailpoint.v3.models.metric_aggregation.MetricAggregation(
                     name = 'Access Name Count', 
                     type = 'UNIQUE_COUNT', 
                     field = '@access.name', ),
-                filter = v3.models.filter_aggregation.FilterAggregation(
+                filter = sailpoint.v3.models.filter_aggregation.FilterAggregation(
                     name = 'Entitlements', 
                     type = 'TERM', 
                     field = 'access.type', 
                     value = 'ENTITLEMENT', ),
-                bucket = v3.models.bucket_aggregation.BucketAggregation(
+                bucket = sailpoint.v3.models.bucket_aggregation.BucketAggregation(
                     name = 'Identity Locations', 
                     type = 'TERMS', 
                     field = 'attributes.city', 
@@ -65,6 +66,7 @@ class TestSearchAggregationSpecification(unittest.TestCase):
         """Test SearchAggregationSpecification"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

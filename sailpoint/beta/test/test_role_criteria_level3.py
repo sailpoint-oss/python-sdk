@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.role_criteria_level3 import RoleCriteriaLevel3  # noqa: E501
+from sailpoint.beta.models.role_criteria_level3 import RoleCriteriaLevel3  # noqa: E501
+
 
 class TestRoleCriteriaLevel3(unittest.TestCase):
     """RoleCriteriaLevel3 unit test stubs"""
@@ -37,7 +37,7 @@ class TestRoleCriteriaLevel3(unittest.TestCase):
         if include_optional:
             return RoleCriteriaLevel3(
                 operation = 'EQUALS',
-                key = beta.models.role_criteria_key.RoleCriteriaKey(
+                key = sailpoint.beta.models.role_criteria_key.RoleCriteriaKey(
                     type = 'ACCOUNT', 
                     property = 'attribute.email', 
                     source_id = '2c9180867427f3a301745aec18211519', ),
@@ -52,6 +52,7 @@ class TestRoleCriteriaLevel3(unittest.TestCase):
         """Test RoleCriteriaLevel3"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

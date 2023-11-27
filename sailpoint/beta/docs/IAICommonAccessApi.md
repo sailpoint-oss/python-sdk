@@ -1,4 +1,4 @@
-# beta.IAICommonAccessApi
+# sailpoint.beta.IAICommonAccessApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -23,15 +23,15 @@ This API is used to add roles/access profiles to the list of common access for a
 ```python
 import time
 import os
-import beta
-from beta.models.common_access_item_request import CommonAccessItemRequest
-from beta.models.common_access_item_response import CommonAccessItemResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.common_access_item_request import CommonAccessItemRequest
+from sailpoint.beta.models.common_access_item_response import CommonAccessItemResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -45,10 +45,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAICommonAccessApi(api_client)
-    common_access_item_request = beta.CommonAccessItemRequest() # CommonAccessItemRequest | 
+    api_instance = sailpoint.beta.IAICommonAccessApi(api_client)
+    common_access_item_request = sailpoint.beta.CommonAccessItemRequest() # CommonAccessItemRequest | 
 
     try:
         # Create common access items
@@ -106,14 +106,14 @@ This endpoint returns the current common access for a customer. The returned ite
 ```python
 import time
 import os
-import beta
-from beta.models.common_access_response import CommonAccessResponse
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.common_access_response import CommonAccessResponse
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -127,9 +127,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAICommonAccessApi(api_client)
+    api_instance = sailpoint.beta.IAICommonAccessApi(api_client)
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
@@ -195,14 +195,14 @@ This submits an update request to the common access application. At this time th
 ```python
 import time
 import os
-import beta
-from beta.models.common_access_id_status import CommonAccessIDStatus
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.common_access_id_status import CommonAccessIDStatus
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -216,10 +216,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.IAICommonAccessApi(api_client)
-    common_access_id_status = [beta.CommonAccessIDStatus()] # List[CommonAccessIDStatus] | Confirm or deny in bulk the common access ids that are (or aren't) common access
+    api_instance = sailpoint.beta.IAICommonAccessApi(api_client)
+    common_access_id_status = [sailpoint.beta.CommonAccessIDStatus()] # List[CommonAccessIDStatus] | Confirm or deny in bulk the common access ids that are (or aren't) common access
 
     try:
         # Bulk update common access status

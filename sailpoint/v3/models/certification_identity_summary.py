@@ -11,24 +11,32 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+
 
 class CertificationIdentitySummary(BaseModel):
     """
     CertificationIdentitySummary
     """
-    id: Optional[StrictStr] = Field(None, description="The ID of the identity summary")
-    name: Optional[StrictStr] = Field(None, description="Name of the linked identity")
-    identity_id: Optional[StrictStr] = Field(None, alias="identityId", description="The ID of the identity being certified")
-    completed: Optional[StrictBool] = Field(None, description="Indicates whether the review items for the linked identity's certification have been completed")
+    id: Optional[StrictStr] = Field(
+        None, description="The ID of the identity summary")
+    name: Optional[StrictStr] = Field(
+        None, description="Name of the linked identity")
+    identity_id: Optional[StrictStr] = Field(
+        None,
+        alias="identityId",
+        description="The ID of the identity being certified")
+    completed: Optional[StrictBool] = Field(
+        None,
+        description=
+        "Indicates whether the review items for the linked identity's certification have been completed"
+    )
     __properties = ["id", "name", "identityId", "completed"]
 
     class Config:
@@ -51,10 +59,7 @@ class CertificationIdentitySummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -67,11 +72,13 @@ class CertificationIdentitySummary(BaseModel):
             return CertificationIdentitySummary.parse_obj(obj)
 
         _obj = CertificationIdentitySummary.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "identity_id": obj.get("identityId"),
-            "completed": obj.get("completed")
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "identity_id":
+            obj.get("identityId"),
+            "completed":
+            obj.get("completed")
         })
         return _obj
-
-

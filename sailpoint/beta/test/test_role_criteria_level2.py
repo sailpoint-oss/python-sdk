@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.role_criteria_level2 import RoleCriteriaLevel2  # noqa: E501
+from sailpoint.beta.models.role_criteria_level2 import RoleCriteriaLevel2  # noqa: E501
+
 
 class TestRoleCriteriaLevel2(unittest.TestCase):
     """RoleCriteriaLevel2 unit test stubs"""
@@ -37,15 +37,15 @@ class TestRoleCriteriaLevel2(unittest.TestCase):
         if include_optional:
             return RoleCriteriaLevel2(
                 operation = 'EQUALS',
-                key = beta.models.role_criteria_key.RoleCriteriaKey(
+                key = sailpoint.beta.models.role_criteria_key.RoleCriteriaKey(
                     type = 'ACCOUNT', 
                     property = 'attribute.email', 
                     source_id = '2c9180867427f3a301745aec18211519', ),
                 string_value = 'carlee.cert1c9f9b6fd@mailinator.com',
                 children = [
-                    beta.models.role_criteria_level3.RoleCriteriaLevel3(
+                    sailpoint.beta.models.role_criteria_level3.RoleCriteriaLevel3(
                         operation = 'EQUALS', 
-                        key = beta.models.role_criteria_key.RoleCriteriaKey(
+                        key = sailpoint.beta.models.role_criteria_key.RoleCriteriaKey(
                             type = 'ACCOUNT', 
                             property = 'attribute.email', 
                             source_id = '2c9180867427f3a301745aec18211519', ), 
@@ -61,6 +61,7 @@ class TestRoleCriteriaLevel2(unittest.TestCase):
         """Test RoleCriteriaLevel2"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

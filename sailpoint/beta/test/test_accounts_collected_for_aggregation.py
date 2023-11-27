@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.accounts_collected_for_aggregation import AccountsCollectedForAggregation  # noqa: E501
+from sailpoint.beta.models.accounts_collected_for_aggregation import AccountsCollectedForAggregation  # noqa: E501
+
 
 class TestAccountsCollectedForAggregation(unittest.TestCase):
     """AccountsCollectedForAggregation unit test stubs"""
@@ -26,7 +26,8 @@ class TestAccountsCollectedForAggregation(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> AccountsCollectedForAggregation:
+    def make_instance(self,
+                      include_optional) -> AccountsCollectedForAggregation:
         """Test AccountsCollectedForAggregation
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -36,7 +37,7 @@ class TestAccountsCollectedForAggregation(unittest.TestCase):
         model = AccountsCollectedForAggregation()  # noqa: E501
         if include_optional:
             return AccountsCollectedForAggregation(
-                source = beta.models.accounts_collected_for_aggregation_source.AccountsCollectedForAggregation_source(
+                source = sailpoint.beta.models.accounts_collected_for_aggregation_source.AccountsCollectedForAggregation_source(
                     id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                     type = 'SOURCE', 
                     name = 'Corporate Active Directory', ),
@@ -49,7 +50,7 @@ class TestAccountsCollectedForAggregation(unittest.TestCase):
                 warnings = [
                     'Account Skipped'
                     ],
-                stats = beta.models.accounts_collected_for_aggregation_stats.AccountsCollectedForAggregation_stats(
+                stats = sailpoint.beta.models.accounts_collected_for_aggregation_stats.AccountsCollectedForAggregation_stats(
                     scanned = 200, 
                     unchanged = 190, 
                     changed = 6, 
@@ -58,7 +59,7 @@ class TestAccountsCollectedForAggregation(unittest.TestCase):
             )
         else:
             return AccountsCollectedForAggregation(
-                source = beta.models.accounts_collected_for_aggregation_source.AccountsCollectedForAggregation_source(
+                source = sailpoint.beta.models.accounts_collected_for_aggregation_source.AccountsCollectedForAggregation_source(
                     id = '4e4d982dddff4267ab12f0f1e72b5a6d', 
                     type = 'SOURCE', 
                     name = 'Corporate Active Directory', ),
@@ -71,7 +72,7 @@ class TestAccountsCollectedForAggregation(unittest.TestCase):
                 warnings = [
                     'Account Skipped'
                     ],
-                stats = beta.models.accounts_collected_for_aggregation_stats.AccountsCollectedForAggregation_stats(
+                stats = sailpoint.beta.models.accounts_collected_for_aggregation_stats.AccountsCollectedForAggregation_stats(
                     scanned = 200, 
                     unchanged = 190, 
                     changed = 6, 
@@ -84,6 +85,7 @@ class TestAccountsCollectedForAggregation(unittest.TestCase):
         """Test AccountsCollectedForAggregation"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

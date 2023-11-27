@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
+from sailpoint.beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
 
 # TODO update the JSON string below
 json = "{}"

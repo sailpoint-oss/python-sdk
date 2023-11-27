@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.delete_campaigns_request import DeleteCampaignsRequest
+from sailpoint.beta.models.delete_campaigns_request import DeleteCampaignsRequest
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.role_mining_potential_role_edit_entitlements import RoleMiningPotentialRoleEditEntitlements  # noqa: E501
+from sailpoint.beta.models.role_mining_potential_role_edit_entitlements import RoleMiningPotentialRoleEditEntitlements  # noqa: E501
+
 
 class TestRoleMiningPotentialRoleEditEntitlements(unittest.TestCase):
     """RoleMiningPotentialRoleEditEntitlements unit test stubs"""
@@ -26,7 +26,8 @@ class TestRoleMiningPotentialRoleEditEntitlements(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> RoleMiningPotentialRoleEditEntitlements:
+    def make_instance(
+            self, include_optional) -> RoleMiningPotentialRoleEditEntitlements:
         """Test RoleMiningPotentialRoleEditEntitlements
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -50,6 +51,7 @@ class TestRoleMiningPotentialRoleEditEntitlements(unittest.TestCase):
         """Test RoleMiningPotentialRoleEditEntitlements"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

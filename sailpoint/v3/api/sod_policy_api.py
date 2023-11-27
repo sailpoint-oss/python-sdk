@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -23,18 +22,16 @@ from pydantic import Field, StrictBool, StrictStr, conint, conlist
 
 from typing import List, Optional, Union
 
-from v3.models.json_patch_operation import JsonPatchOperation
-from v3.models.multi_policy_request import MultiPolicyRequest
-from v3.models.report_result_reference import ReportResultReference
-from v3.models.sod_policy import SodPolicy
-from v3.models.sod_policy_schedule import SodPolicySchedule
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
+from sailpoint.v3.models.multi_policy_request import MultiPolicyRequest
+from sailpoint.v3.models.report_result_reference import ReportResultReference
+from sailpoint.v3.models.sod_policy import SodPolicy
+from sailpoint.v3.models.sod_policy_schedule import SodPolicySchedule
 
-from v3.api_client import ApiClient
-from v3.api_response import ApiResponse
-from v3.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.v3.api_client import ApiClient
+from sailpoint.v3.api_response import ApiResponse
+from sailpoint.v3.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class SODPolicyApi:
@@ -50,7 +47,8 @@ class SODPolicyApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_sod_policy(self, sod_policy : SodPolicy, **kwargs) -> SodPolicy:  # noqa: E501
+    def create_sod_policy(self, sod_policy: SodPolicy,
+                          **kwargs) -> SodPolicy:  # noqa: E501
         """Create SOD policy  # noqa: E501
 
         This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy. Requires role of ORG_ADMIN.  # noqa: E501
@@ -77,10 +75,13 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_sod_policy_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_sod_policy_with_http_info(sod_policy, **kwargs)  # noqa: E501
+        return self.create_sod_policy_with_http_info(sod_policy,
+                                                     **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_sod_policy_with_http_info(self, sod_policy : SodPolicy, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_sod_policy_with_http_info(
+            self, sod_policy: SodPolicy,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Create SOD policy  # noqa: E501
 
         This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy. Requires role of ORG_ADMIN.  # noqa: E501
@@ -119,28 +120,17 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'sod_policy'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['sod_policy']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_sod_policy" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_sod_policy" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -166,11 +156,11 @@ class SODPolicyApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -185,7 +175,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-policies', 'POST',
+            '/sod-policies',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -195,14 +186,27 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_sod_policy(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD Policy to delete.")], logical : Annotated[Optional[StrictBool], Field(description="Indicates whether this is a soft delete (logical true) or a hard delete.  Soft delete marks the policy as deleted and just save it with this status. It could be fully deleted or recovered further.  Hard delete vise versa permanently delete SOD request during this call.")] = None, **kwargs) -> None:  # noqa: E501
+    def delete_sod_policy(
+            self,
+            id: Annotated[
+                StrictStr,
+                Field(..., description="The ID of the SOD Policy to delete.")],
+            logical:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "Indicates whether this is a soft delete (logical true) or a hard delete.  Soft delete marks the policy as deleted and just save it with this status. It could be fully deleted or recovered further.  Hard delete vise versa permanently delete SOD request during this call."
+            )] = None,
+            **kwargs) -> None:  # noqa: E501
         """Delete SOD policy by ID  # noqa: E501
 
         This deletes a specified SOD policy. Requires role of ORG_ADMIN.  # noqa: E501
@@ -231,10 +235,23 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_sod_policy_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_sod_policy_with_http_info(id, logical, **kwargs)  # noqa: E501
+        return self.delete_sod_policy_with_http_info(id, logical,
+                                                     **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_sod_policy_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD Policy to delete.")], logical : Annotated[Optional[StrictBool], Field(description="Indicates whether this is a soft delete (logical true) or a hard delete.  Soft delete marks the policy as deleted and just save it with this status. It could be fully deleted or recovered further.  Hard delete vise versa permanently delete SOD request during this call.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_sod_policy_with_http_info(
+            self,
+            id: Annotated[
+                StrictStr,
+                Field(..., description="The ID of the SOD Policy to delete.")],
+            logical:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "Indicates whether this is a soft delete (logical true) or a hard delete.  Soft delete marks the policy as deleted and just save it with this status. It could be fully deleted or recovered further.  Hard delete vise versa permanently delete SOD request during this call."
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Delete SOD policy by ID  # noqa: E501
 
         This deletes a specified SOD policy. Requires role of ORG_ADMIN.  # noqa: E501
@@ -275,29 +292,17 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'logical'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'logical']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_sod_policy" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_sod_policy" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -307,7 +312,6 @@ class SODPolicyApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -331,7 +335,8 @@ class SODPolicyApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/sod-policies/{id}', 'DELETE',
+            '/sod-policies/{id}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -341,14 +346,21 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_sod_policy_schedule(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy the schedule must be deleted for.")], **kwargs) -> None:  # noqa: E501
+    def delete_sod_policy_schedule(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The ID of the SOD policy the schedule must be deleted for.")],
+                                   **kwargs) -> None:  # noqa: E501
         """Delete SOD policy schedule  # noqa: E501
 
         This deletes schedule for a specified SOD policy by ID.  # noqa: E501
@@ -375,10 +387,17 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_sod_policy_schedule_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_sod_policy_schedule_with_http_info(id, **kwargs)  # noqa: E501
+        return self.delete_sod_policy_schedule_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_sod_policy_schedule_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy the schedule must be deleted for.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_sod_policy_schedule_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description=
+            "The ID of the SOD policy the schedule must be deleted for."
+        )], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete SOD policy schedule  # noqa: E501
 
         This deletes schedule for a specified SOD policy by ID.  # noqa: E501
@@ -417,28 +436,18 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_sod_policy_schedule" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_sod_policy_schedule" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -448,7 +457,6 @@ class SODPolicyApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -469,7 +477,8 @@ class SODPolicyApi:
         _response_types_map = {}
 
         return self.api_client.call_api(
-            '/sod-policies/{id}/schedule', 'DELETE',
+            '/sod-policies/{id}/schedule',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -479,14 +488,21 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_custom_violation_report(self, report_result_id : Annotated[StrictStr, Field(..., description="The ID of the report reference to download.")], file_name : Annotated[StrictStr, Field(..., description="Custom Name for the  file.")], **kwargs) -> bytearray:  # noqa: E501
+    def get_custom_violation_report(self, report_result_id: Annotated[
+        StrictStr,
+        Field(..., description="The ID of the report reference to download."
+              )], file_name: Annotated[
+                  StrictStr,
+                  Field(..., description="Custom Name for the  file.")],
+                                    **kwargs) -> bytearray:  # noqa: E501
         """Download custom violation report  # noqa: E501
 
         This allows to download a specified named violation report for a given report reference.  # noqa: E501
@@ -515,10 +531,20 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_custom_violation_report_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_custom_violation_report_with_http_info(report_result_id, file_name, **kwargs)  # noqa: E501
+        return self.get_custom_violation_report_with_http_info(
+            report_result_id, file_name, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_custom_violation_report_with_http_info(self, report_result_id : Annotated[StrictStr, Field(..., description="The ID of the report reference to download.")], file_name : Annotated[StrictStr, Field(..., description="Custom Name for the  file.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_custom_violation_report_with_http_info(
+            self, report_result_id: Annotated[
+                StrictStr,
+                Field(
+                    ...,
+                    description="The ID of the report reference to download."
+                )], file_name: Annotated[
+                    StrictStr,
+                    Field(..., description="Custom Name for the  file.")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Download custom violation report  # noqa: E501
 
         This allows to download a specified named violation report for a given report reference.  # noqa: E501
@@ -559,29 +585,18 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'report_result_id',
-            'file_name'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['report_result_id', 'file_name']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_custom_violation_report" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_custom_violation_report" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -594,7 +609,6 @@ class SODPolicyApi:
 
         if _params['file_name']:
             _path_params['fileName'] = _params['file_name']
-
 
         # process the query parameters
         _query_params = []
@@ -623,7 +637,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-violation-report/{reportResultId}/download/{fileName}', 'GET',
+            '/sod-violation-report/{reportResultId}/download/{fileName}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -633,14 +648,18 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_default_violation_report(self, report_result_id : Annotated[StrictStr, Field(..., description="The ID of the report reference to download.")], **kwargs) -> bytearray:  # noqa: E501
+    def get_default_violation_report(self, report_result_id: Annotated[
+        StrictStr,
+        Field(..., description="The ID of the report reference to download.")],
+                                     **kwargs) -> bytearray:  # noqa: E501
         """Download violation report  # noqa: E501
 
         This allows to download a violation report for a given report reference.  # noqa: E501
@@ -667,10 +686,17 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_default_violation_report_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_default_violation_report_with_http_info(report_result_id, **kwargs)  # noqa: E501
+        return self.get_default_violation_report_with_http_info(
+            report_result_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_default_violation_report_with_http_info(self, report_result_id : Annotated[StrictStr, Field(..., description="The ID of the report reference to download.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_default_violation_report_with_http_info(
+            self, report_result_id: Annotated[
+                StrictStr,
+                Field(
+                    ...,
+                    description="The ID of the report reference to download."
+                )], **kwargs) -> ApiResponse:  # noqa: E501
         """Download violation report  # noqa: E501
 
         This allows to download a violation report for a given report reference.  # noqa: E501
@@ -709,28 +735,18 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'report_result_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['report_result_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_default_violation_report" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_default_violation_report" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -740,7 +756,6 @@ class SODPolicyApi:
         _path_params = {}
         if _params['report_result_id']:
             _path_params['reportResultId'] = _params['report_result_id']
-
 
         # process the query parameters
         _query_params = []
@@ -769,7 +784,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-violation-report/{reportResultId}/download', 'GET',
+            '/sod-violation-report/{reportResultId}/download',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -779,14 +795,16 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_sod_all_report_run_status(self, **kwargs) -> ReportResultReference:  # noqa: E501
+    def get_sod_all_report_run_status(
+            self, **kwargs) -> ReportResultReference:  # noqa: E501
         """Get multi-report run task status  # noqa: E501
 
         This endpoint gets the status for a violation report for all policy run.  # noqa: E501
@@ -811,10 +829,12 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_sod_all_report_run_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_sod_all_report_run_status_with_http_info(**kwargs)  # noqa: E501
+        return self.get_sod_all_report_run_status_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_sod_all_report_run_status_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_sod_all_report_run_status_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """Get multi-report run task status  # noqa: E501
 
         This endpoint gets the status for a violation report for all policy run.  # noqa: E501
@@ -851,27 +871,18 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_sod_all_report_run_status" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_sod_all_report_run_status" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -906,7 +917,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-violation-report', 'GET',
+            '/sod-violation-report',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -916,14 +928,18 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_sod_policy(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD Policy to retrieve.")], **kwargs) -> SodPolicy:  # noqa: E501
+    def get_sod_policy(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The ID of the SOD Policy to retrieve.")],
+                       **kwargs) -> SodPolicy:  # noqa: E501
         """Get SOD policy by ID  # noqa: E501
 
         This gets specified SOD policy. Requires role of ORG_ADMIN.  # noqa: E501
@@ -953,7 +969,10 @@ class SODPolicyApi:
         return self.get_sod_policy_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_sod_policy_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD Policy to retrieve.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_sod_policy_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The ID of the SOD Policy to retrieve.")],
+                                      **kwargs) -> ApiResponse:  # noqa: E501
         """Get SOD policy by ID  # noqa: E501
 
         This gets specified SOD policy. Requires role of ORG_ADMIN.  # noqa: E501
@@ -992,28 +1011,17 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_sod_policy" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_sod_policy" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1023,7 +1031,6 @@ class SODPolicyApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1052,7 +1059,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-policies/{id}', 'GET',
+            '/sod-policies/{id}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1062,14 +1070,19 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_sod_policy_schedule(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy schedule to retrieve.")], **kwargs) -> SodPolicySchedule:  # noqa: E501
+    def get_sod_policy_schedule(self, id: Annotated[
+        StrictStr,
+        Field(...,
+              description="The ID of the SOD policy schedule to retrieve.")],
+                                **kwargs) -> SodPolicySchedule:  # noqa: E501
         """Get SOD policy schedule  # noqa: E501
 
         This endpoint gets a specified SOD policy's schedule.  # noqa: E501
@@ -1096,10 +1109,16 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_sod_policy_schedule_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_sod_policy_schedule_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_sod_policy_schedule_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_sod_policy_schedule_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy schedule to retrieve.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_sod_policy_schedule_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(...,
+              description="The ID of the SOD policy schedule to retrieve.")],
+                                               **kwargs
+                                               ) -> ApiResponse:  # noqa: E501
         """Get SOD policy schedule  # noqa: E501
 
         This endpoint gets a specified SOD policy's schedule.  # noqa: E501
@@ -1138,28 +1157,17 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_sod_policy_schedule" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_sod_policy_schedule" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1169,7 +1177,6 @@ class SODPolicyApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1197,7 +1204,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-policies/{id}/schedule', 'GET',
+            '/sod-policies/{id}/schedule',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1207,14 +1215,18 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_sod_violation_report_run_status(self, report_result_id : Annotated[StrictStr, Field(..., description="The ID of the report reference to retrieve.")], **kwargs) -> ReportResultReference:  # noqa: E501
+    def get_sod_violation_report_run_status(self, report_result_id: Annotated[
+        StrictStr,
+        Field(..., description="The ID of the report reference to retrieve."
+              )], **kwargs) -> ReportResultReference:  # noqa: E501
         """Get violation report run status  # noqa: E501
 
         This gets the status for a violation report run task that has already been invoked.  # noqa: E501
@@ -1241,10 +1253,17 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_sod_violation_report_run_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_sod_violation_report_run_status_with_http_info(report_result_id, **kwargs)  # noqa: E501
+        return self.get_sod_violation_report_run_status_with_http_info(
+            report_result_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_sod_violation_report_run_status_with_http_info(self, report_result_id : Annotated[StrictStr, Field(..., description="The ID of the report reference to retrieve.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_sod_violation_report_run_status_with_http_info(
+            self, report_result_id: Annotated[
+                StrictStr,
+                Field(
+                    ...,
+                    description="The ID of the report reference to retrieve."
+                )], **kwargs) -> ApiResponse:  # noqa: E501
         """Get violation report run status  # noqa: E501
 
         This gets the status for a violation report run task that has already been invoked.  # noqa: E501
@@ -1283,28 +1302,18 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'report_result_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['report_result_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_sod_violation_report_run_status" % _key
-                )
+                    " to method get_sod_violation_report_run_status" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1314,7 +1323,6 @@ class SODPolicyApi:
         _path_params = {}
         if _params['report_result_id']:
             _path_params['reportResultId'] = _params['report_result_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1343,7 +1351,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-policies/sod-violation-report-status/{reportResultId}', 'GET',
+            '/sod-policies/sod-violation-report-status/{reportResultId}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1353,14 +1362,20 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_sod_violation_report_status(self, id : Annotated[StrictStr, Field(..., description="The ID of the violation report to retrieve status for.")], **kwargs) -> ReportResultReference:  # noqa: E501
+    def get_sod_violation_report_status(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description="The ID of the violation report to retrieve status for."
+        )], **kwargs) -> ReportResultReference:  # noqa: E501
         """Get SOD violation report status  # noqa: E501
 
         This gets the status for a violation report run task that has already been invoked.  # noqa: E501
@@ -1387,10 +1402,16 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_sod_violation_report_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_sod_violation_report_status_with_http_info(id, **kwargs)  # noqa: E501
+        return self.get_sod_violation_report_status_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_sod_violation_report_status_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the violation report to retrieve status for.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_sod_violation_report_status_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ...,
+            description="The ID of the violation report to retrieve status for."
+        )], **kwargs) -> ApiResponse:  # noqa: E501
         """Get SOD violation report status  # noqa: E501
 
         This gets the status for a violation report run task that has already been invoked.  # noqa: E501
@@ -1429,28 +1450,18 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_sod_violation_report_status" % _key
-                )
+                    " to method get_sod_violation_report_status" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1460,7 +1471,6 @@ class SODPolicyApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1489,7 +1499,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-policies/{id}/violation-report', 'GET',
+            '/sod-policies/{id}/violation-report',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1499,14 +1510,45 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_sod_policies(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **state**: *eq*")] = None, **kwargs) -> List[SodPolicy]:  # noqa: E501
+    def list_sod_policies(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **state**: *eq*"
+            )] = None,
+            **kwargs) -> List[SodPolicy]:  # noqa: E501
         """List SOD policies  # noqa: E501
 
         This gets list of all SOD policies. Requires role of ORG_ADMIN  # noqa: E501
@@ -1539,10 +1581,42 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_sod_policies_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_sod_policies_with_http_info(limit, offset, count, filters, **kwargs)  # noqa: E501
+        return self.list_sod_policies_with_http_info(limit, offset, count,
+                                                     filters,
+                                                     **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_sod_policies_with_http_info(self, limit : Annotated[Optional[conint(strict=True, le=250, ge=0)], Field(description="Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, offset : Annotated[Optional[conint(strict=True, ge=0)], Field(description="Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, count : Annotated[Optional[StrictBool], Field(description="If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **state**: *eq*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_sod_policies_with_http_info(
+            self,
+            limit:
+        Annotated[
+            Optional[conint(strict=True, le=250, ge=0)],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            offset:
+        Annotated[
+            Optional[conint(strict=True, ge=0)],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            count:
+        Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq*  **name**: *eq*  **state**: *eq*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List SOD policies  # noqa: E501
 
         This gets list of all SOD policies. Requires role of ORG_ADMIN  # noqa: E501
@@ -1587,31 +1661,17 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'limit',
-            'offset',
-            'count',
-            'filters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['limit', 'offset', 'count', 'filters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_sod_policies" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method list_sod_policies" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1658,7 +1718,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-policies', 'GET',
+            '/sod-policies',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1668,14 +1729,25 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_sod_policy(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy being modified.")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria ")], **kwargs) -> SodPolicy:  # noqa: E501
+    def patch_sod_policy(self, id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="The ID of the SOD policy being modified."
+        )], json_patch_operation: Annotated[
+            conlist(JsonPatchOperation),
+            Field(
+                ...,
+                description=
+                "A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria "
+            )], **kwargs) -> SodPolicy:  # noqa: E501
         """Patch SOD policy by ID  # noqa: E501
 
         Allows updating SOD Policy fields other than [\"id\",\"created\",\"creatorId\",\"policyQuery\",\"type\"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Requires role of ORG_ADMIN. This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception.   # noqa: E501
@@ -1704,10 +1776,21 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_sod_policy_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_sod_policy_with_http_info(id, json_patch_operation, **kwargs)  # noqa: E501
+        return self.patch_sod_policy_with_http_info(id, json_patch_operation,
+                                                    **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_sod_policy_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy being modified.")], json_patch_operation : Annotated[conlist(JsonPatchOperation), Field(..., description="A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria ")], **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_sod_policy_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="The ID of the SOD policy being modified."
+        )], json_patch_operation: Annotated[
+            conlist(JsonPatchOperation),
+            Field(
+                ...,
+                description=
+                "A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria "
+            )], **kwargs) -> ApiResponse:  # noqa: E501
         """Patch SOD policy by ID  # noqa: E501
 
         Allows updating SOD Policy fields other than [\"id\",\"created\",\"creatorId\",\"policyQuery\",\"type\"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Requires role of ORG_ADMIN. This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception.   # noqa: E501
@@ -1748,29 +1831,17 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'json_patch_operation'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'json_patch_operation']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_sod_policy" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method patch_sod_policy" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1780,7 +1851,6 @@ class SODPolicyApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1799,11 +1869,12 @@ class SODPolicyApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
+        _content_types_list = _params.get(
+            '_content_type',
             self.api_client.select_header_content_type(
                 ['application/json-patch+json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1819,7 +1890,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-policies/{id}', 'PATCH',
+            '/sod-policies/{id}',
+            'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -1829,14 +1901,20 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_policy_schedule(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy to update its schedule.")], sod_policy_schedule : SodPolicySchedule, **kwargs) -> SodPolicySchedule:  # noqa: E501
+    def put_policy_schedule(self, id: Annotated[
+        StrictStr,
+        Field(...,
+              description="The ID of the SOD policy to update its schedule.")],
+                            sod_policy_schedule: SodPolicySchedule,
+                            **kwargs) -> SodPolicySchedule:  # noqa: E501
         """Update SOD Policy schedule  # noqa: E501
 
         This updates schedule for a specified SOD policy.  # noqa: E501
@@ -1865,10 +1943,16 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_policy_schedule_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_policy_schedule_with_http_info(id, sod_policy_schedule, **kwargs)  # noqa: E501
+        return self.put_policy_schedule_with_http_info(id, sod_policy_schedule,
+                                                       **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_policy_schedule_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy to update its schedule.")], sod_policy_schedule : SodPolicySchedule, **kwargs) -> ApiResponse:  # noqa: E501
+    def put_policy_schedule_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(...,
+              description="The ID of the SOD policy to update its schedule."
+              )], sod_policy_schedule: SodPolicySchedule, **kwargs
+                                           ) -> ApiResponse:  # noqa: E501
         """Update SOD Policy schedule  # noqa: E501
 
         This updates schedule for a specified SOD policy.  # noqa: E501
@@ -1909,29 +1993,17 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'sod_policy_schedule'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'sod_policy_schedule']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_policy_schedule" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method put_policy_schedule" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1941,7 +2013,6 @@ class SODPolicyApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -1960,11 +2031,11 @@ class SODPolicyApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1979,7 +2050,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-policies/{id}/schedule', 'PUT',
+            '/sod-policies/{id}/schedule',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -1989,14 +2061,19 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def put_sod_policy(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy to update.")], sod_policy : SodPolicy, **kwargs) -> SodPolicy:  # noqa: E501
+    def put_sod_policy(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The ID of the SOD policy to update.")],
+                       sod_policy: SodPolicy,
+                       **kwargs) -> SodPolicy:  # noqa: E501
         """Update SOD policy by ID  # noqa: E501
 
         This updates a specified SOD policy. Requires role of ORG_ADMIN.  # noqa: E501
@@ -2025,10 +2102,15 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the put_sod_policy_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.put_sod_policy_with_http_info(id, sod_policy, **kwargs)  # noqa: E501
+        return self.put_sod_policy_with_http_info(id, sod_policy,
+                                                  **kwargs)  # noqa: E501
 
     @validate_arguments
-    def put_sod_policy_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The ID of the SOD policy to update.")], sod_policy : SodPolicy, **kwargs) -> ApiResponse:  # noqa: E501
+    def put_sod_policy_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The ID of the SOD policy to update.")],
+                                      sod_policy: SodPolicy,
+                                      **kwargs) -> ApiResponse:  # noqa: E501
         """Update SOD policy by ID  # noqa: E501
 
         This updates a specified SOD policy. Requires role of ORG_ADMIN.  # noqa: E501
@@ -2069,29 +2151,17 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'id',
-            'sod_policy'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id', 'sod_policy']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method put_sod_policy" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method put_sod_policy" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2101,7 +2171,6 @@ class SODPolicyApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -2120,11 +2189,11 @@ class SODPolicyApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2140,7 +2209,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-policies/{id}', 'PUT',
+            '/sod-policies/{id}',
+            'PUT',
             _path_params,
             _query_params,
             _header_params,
@@ -2150,14 +2220,19 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def start_evaluate_sod_policy(self, id : Annotated[StrictStr, Field(..., description="The SOD policy ID to run.")], **kwargs) -> ReportResultReference:  # noqa: E501
+    def start_evaluate_sod_policy(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The SOD policy ID to run.")],
+            **kwargs) -> ReportResultReference:  # noqa: E501
         """Evaluate one policy by ID  # noqa: E501
 
         Runs the scheduled report for the policy retrieved by passed policy ID.  The report schedule is fetched from the policy retrieved by ID.  # noqa: E501
@@ -2184,10 +2259,15 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the start_evaluate_sod_policy_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.start_evaluate_sod_policy_with_http_info(id, **kwargs)  # noqa: E501
+        return self.start_evaluate_sod_policy_with_http_info(
+            id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def start_evaluate_sod_policy_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The SOD policy ID to run.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def start_evaluate_sod_policy_with_http_info(
+            self,
+            id: Annotated[StrictStr,
+                          Field(..., description="The SOD policy ID to run.")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Evaluate one policy by ID  # noqa: E501
 
         Runs the scheduled report for the policy retrieved by passed policy ID.  The report schedule is fetched from the policy retrieved by ID.  # noqa: E501
@@ -2226,28 +2306,18 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method start_evaluate_sod_policy" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method start_evaluate_sod_policy" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2257,7 +2327,6 @@ class SODPolicyApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -2285,7 +2354,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-policies/{id}/evaluate', 'POST',
+            '/sod-policies/{id}/evaluate',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2295,14 +2365,18 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def start_sod_all_policies_for_org(self, multi_policy_request : Optional[MultiPolicyRequest] = None, **kwargs) -> ReportResultReference:  # noqa: E501
+    def start_sod_all_policies_for_org(
+            self,
+            multi_policy_request: Optional[MultiPolicyRequest] = None,
+            **kwargs) -> ReportResultReference:  # noqa: E501
         """Runs all policies for org  # noqa: E501
 
         Runs multi-policy report for the org. If a policy reports more than 5000 violations, the report mentions that the violation limit was exceeded for that policy. If the request is empty, the report runs for all policies. Otherwise, the report runs for only the filtered policy list provided.  # noqa: E501
@@ -2329,10 +2403,14 @@ class SODPolicyApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the start_sod_all_policies_for_org_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.start_sod_all_policies_for_org_with_http_info(multi_policy_request, **kwargs)  # noqa: E501
+        return self.start_sod_all_policies_for_org_with_http_info(
+            multi_policy_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def start_sod_all_policies_for_org_with_http_info(self, multi_policy_request : Optional[MultiPolicyRequest] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def start_sod_all_policies_for_org_with_http_info(
+            self,
+            multi_policy_request: Optional[MultiPolicyRequest] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Runs all policies for org  # noqa: E501
 
         Runs multi-policy report for the org. If a policy reports more than 5000 violations, the report mentions that the violation limit was exceeded for that policy. If the request is empty, the report runs for all policies. Otherwise, the report runs for only the filtered policy list provided.  # noqa: E501
@@ -2371,28 +2449,18 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'multi_policy_request'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['multi_policy_request']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method start_sod_all_policies_for_org" % _key
-                )
+                    " to method start_sod_all_policies_for_org" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2418,11 +2486,11 @@ class SODPolicyApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2437,7 +2505,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-violation-report/run', 'POST',
+            '/sod-violation-report/run',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2447,14 +2516,18 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def start_sod_policy(self, id : Annotated[StrictStr, Field(..., description="The SOD policy ID to run.")], **kwargs) -> ReportResultReference:  # noqa: E501
+    def start_sod_policy(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The SOD policy ID to run.")],
+                         **kwargs) -> ReportResultReference:  # noqa: E501
         """Runs SOD policy violation report  # noqa: E501
 
         This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message.  # noqa: E501
@@ -2484,7 +2557,10 @@ class SODPolicyApi:
         return self.start_sod_policy_with_http_info(id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def start_sod_policy_with_http_info(self, id : Annotated[StrictStr, Field(..., description="The SOD policy ID to run.")], **kwargs) -> ApiResponse:  # noqa: E501
+    def start_sod_policy_with_http_info(self, id: Annotated[
+        StrictStr,
+        Field(..., description="The SOD policy ID to run.")],
+                                        **kwargs) -> ApiResponse:  # noqa: E501
         """Runs SOD policy violation report  # noqa: E501
 
         This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message.  # noqa: E501
@@ -2523,28 +2599,17 @@ class SODPolicyApi:
 
         _params = locals()
 
-        _all_params = [
-            'id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method start_sod_policy" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method start_sod_policy" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2554,7 +2619,6 @@ class SODPolicyApi:
         _path_params = {}
         if _params['id']:
             _path_params['id'] = _params['id']
-
 
         # process the query parameters
         _query_params = []
@@ -2583,7 +2647,8 @@ class SODPolicyApi:
         }
 
         return self.api_client.call_api(
-            '/sod-policies/{id}/violation-report/run', 'POST',
+            '/sod-policies/{id}/violation-report/run',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2593,7 +2658,8 @@ class SODPolicyApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

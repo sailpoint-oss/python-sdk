@@ -11,21 +11,23 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
+
 
 class FullcampaignAllOfSourceOwnerCampaignInfo(BaseModel):
     """
     Must be set only if the campaign type is SOURCE_OWNER.  # noqa: E501
     """
-    source_ids: Optional[conlist(StrictStr)] = Field(None, alias="sourceIds", description="The list of sources to be included in the campaign.")
+    source_ids: Optional[conlist(StrictStr)] = Field(
+        None,
+        alias="sourceIds",
+        description="The list of sources to be included in the campaign.")
     __properties = ["sourceIds"]
 
     class Config:
@@ -42,16 +44,14 @@ class FullcampaignAllOfSourceOwnerCampaignInfo(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> FullcampaignAllOfSourceOwnerCampaignInfo:
+    def from_json(cls,
+                  json_str: str) -> FullcampaignAllOfSourceOwnerCampaignInfo:
         """Create an instance of FullcampaignAllOfSourceOwnerCampaignInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -63,9 +63,6 @@ class FullcampaignAllOfSourceOwnerCampaignInfo(BaseModel):
         if not isinstance(obj, dict):
             return FullcampaignAllOfSourceOwnerCampaignInfo.parse_obj(obj)
 
-        _obj = FullcampaignAllOfSourceOwnerCampaignInfo.parse_obj({
-            "source_ids": obj.get("sourceIds")
-        })
+        _obj = FullcampaignAllOfSourceOwnerCampaignInfo.parse_obj(
+            {"source_ids": obj.get("sourceIds")})
         return _obj
-
-

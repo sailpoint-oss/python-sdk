@@ -11,30 +11,36 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
+
 
 class AccessConstraint(BaseModel):
     """
     AccessConstraint
     """
     type: StrictStr = Field(..., description="Type of Access")
-    ids: Optional[conlist(StrictStr)] = Field(None, description="Must be set only if operator is SELECTED.")
-    operator: StrictStr = Field(..., description="Used to determine whether the scope of the campaign should be reduced for selected ids or all.")
+    ids: Optional[conlist(StrictStr)] = Field(
+        None, description="Must be set only if operator is SELECTED.")
+    operator: StrictStr = Field(
+        ...,
+        description=
+        "Used to determine whether the scope of the campaign should be reduced for selected ids or all."
+    )
     __properties = ["type", "ids", "operator"]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE'):
-            raise ValueError("must be one of enum values ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE')")
+            raise ValueError(
+                "must be one of enum values ('ENTITLEMENT', 'ACCESS_PROFILE', 'ROLE')"
+            )
         return value
 
     @validator('operator')
@@ -64,10 +70,7 @@ class AccessConstraint(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -85,5 +88,3 @@ class AccessConstraint(BaseModel):
             "operator": obj.get("operator")
         })
         return _obj
-
-

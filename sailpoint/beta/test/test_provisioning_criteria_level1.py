@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.provisioning_criteria_level1 import ProvisioningCriteriaLevel1  # noqa: E501
+from sailpoint.beta.models.provisioning_criteria_level1 import ProvisioningCriteriaLevel1  # noqa: E501
+
 
 class TestProvisioningCriteriaLevel1(unittest.TestCase):
     """ProvisioningCriteriaLevel1 unit test stubs"""
@@ -40,7 +40,7 @@ class TestProvisioningCriteriaLevel1(unittest.TestCase):
                 attribute = 'email',
                 value = 'carlee.cert1c9f9b6fd@mailinator.com',
                 children = [
-                    beta.models.provisioning_criteria_level2.ProvisioningCriteriaLevel2(
+                    sailpoint.beta.models.provisioning_criteria_level2.ProvisioningCriteriaLevel2(
                         operation = 'EQUALS', 
                         attribute = 'email', 
                         value = 'carlee.cert1c9f9b6fd@mailinator.com', )
@@ -55,6 +55,7 @@ class TestProvisioningCriteriaLevel1(unittest.TestCase):
         """Test ProvisioningCriteriaLevel1"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

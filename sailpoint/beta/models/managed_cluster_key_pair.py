@@ -11,23 +11,29 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class ManagedClusterKeyPair(BaseModel):
     """
     Managed Cluster key pair for Cluster  # noqa: E501
     """
-    public_key: Optional[StrictStr] = Field(None, alias="publicKey", description="ManagedCluster publicKey")
-    public_key_thumbprint: Optional[StrictStr] = Field(None, alias="publicKeyThumbprint", description="ManagedCluster publicKeyThumbprint")
-    public_key_certificate: Optional[StrictStr] = Field(None, alias="publicKeyCertificate", description="ManagedCluster publicKeyCertificate")
+    public_key: Optional[StrictStr] = Field(
+        None, alias="publicKey", description="ManagedCluster publicKey")
+    public_key_thumbprint: Optional[StrictStr] = Field(
+        None,
+        alias="publicKeyThumbprint",
+        description="ManagedCluster publicKeyThumbprint")
+    public_key_certificate: Optional[StrictStr] = Field(
+        None,
+        alias="publicKeyCertificate",
+        description="ManagedCluster publicKeyCertificate")
     __properties = ["publicKey", "publicKeyThumbprint", "publicKeyCertificate"]
 
     class Config:
@@ -50,10 +56,7 @@ class ManagedClusterKeyPair(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if public_key (nullable) is None
         # and __fields_set__ contains the field
         if self.public_key is None and "public_key" in self.__fields_set__:
@@ -81,10 +84,11 @@ class ManagedClusterKeyPair(BaseModel):
             return ManagedClusterKeyPair.parse_obj(obj)
 
         _obj = ManagedClusterKeyPair.parse_obj({
-            "public_key": obj.get("publicKey"),
-            "public_key_thumbprint": obj.get("publicKeyThumbprint"),
-            "public_key_certificate": obj.get("publicKeyCertificate")
+            "public_key":
+            obj.get("publicKey"),
+            "public_key_thumbprint":
+            obj.get("publicKeyThumbprint"),
+            "public_key_certificate":
+            obj.get("publicKeyCertificate")
         })
         return _obj
-
-

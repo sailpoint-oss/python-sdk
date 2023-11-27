@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from beta.api.search_attribute_configuration_api import SearchAttributeConfigurationApi  # noqa: E501
+from sailpoint.beta.api.search_attribute_configuration_api import SearchAttributeConfigurationApi  # noqa: E501
 
 
 class TestSearchAttributeConfigurationApi(unittest.TestCase):

@@ -11,27 +11,41 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from v3.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
+from sailpoint.v3.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
+
 
 class NonEmployeeSourceLiteWithSchemaAttributes(BaseModel):
     """
     NonEmployeeSourceLiteWithSchemaAttributes
     """
-    id: Optional[StrictStr] = Field(None, description="Non-Employee source id.")
-    source_id: Optional[StrictStr] = Field(None, alias="sourceId", description="Source Id associated with this non-employee source.")
-    name: Optional[StrictStr] = Field(None, description="Source name associated with this non-employee source.")
-    description: Optional[StrictStr] = Field(None, description="Source description associated with this non-employee source.")
-    schema_attributes: Optional[conlist(NonEmployeeSchemaAttribute)] = Field(None, alias="schemaAttributes", description="List of schema attributes associated with this non-employee source.")
-    __properties = ["id", "sourceId", "name", "description", "schemaAttributes"]
+    id: Optional[StrictStr] = Field(None,
+                                    description="Non-Employee source id.")
+    source_id: Optional[StrictStr] = Field(
+        None,
+        alias="sourceId",
+        description="Source Id associated with this non-employee source.")
+    name: Optional[StrictStr] = Field(
+        None,
+        description="Source name associated with this non-employee source.")
+    description: Optional[StrictStr] = Field(
+        None,
+        description=
+        "Source description associated with this non-employee source.")
+    schema_attributes: Optional[conlist(NonEmployeeSchemaAttribute)] = Field(
+        None,
+        alias="schemaAttributes",
+        description=
+        "List of schema attributes associated with this non-employee source.")
+    __properties = [
+        "id", "sourceId", "name", "description", "schemaAttributes"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -47,16 +61,14 @@ class NonEmployeeSourceLiteWithSchemaAttributes(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> NonEmployeeSourceLiteWithSchemaAttributes:
+    def from_json(cls,
+                  json_str: str) -> NonEmployeeSourceLiteWithSchemaAttributes:
         """Create an instance of NonEmployeeSourceLiteWithSchemaAttributes from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in schema_attributes (list)
         _items = []
         if self.schema_attributes:
@@ -76,12 +88,17 @@ class NonEmployeeSourceLiteWithSchemaAttributes(BaseModel):
             return NonEmployeeSourceLiteWithSchemaAttributes.parse_obj(obj)
 
         _obj = NonEmployeeSourceLiteWithSchemaAttributes.parse_obj({
-            "id": obj.get("id"),
-            "source_id": obj.get("sourceId"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "schema_attributes": [NonEmployeeSchemaAttribute.from_dict(_item) for _item in obj.get("schemaAttributes")] if obj.get("schemaAttributes") is not None else None
+            "id":
+            obj.get("id"),
+            "source_id":
+            obj.get("sourceId"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "schema_attributes": [
+                NonEmployeeSchemaAttribute.from_dict(_item)
+                for _item in obj.get("schemaAttributes")
+            ] if obj.get("schemaAttributes") is not None else None
         })
         return _obj
-
-

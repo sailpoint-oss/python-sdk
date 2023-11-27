@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,15 +19,18 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field
-from beta.models.identity1 import Identity1
+from sailpoint.beta.models.identity1 import Identity1
+
 
 class AuditDetails(BaseModel):
     """
     Audit details for the reassignment configuration of an identity  # noqa: E501
     """
-    created: Optional[datetime] = Field(None, description="Initial date and time when the record was created")
+    created: Optional[datetime] = Field(
+        None, description="Initial date and time when the record was created")
     created_by: Optional[Identity1] = Field(None, alias="createdBy")
-    modified: Optional[datetime] = Field(None, description="Last modified date and time for the record")
+    modified: Optional[datetime] = Field(
+        None, description="Last modified date and time for the record")
     modified_by: Optional[Identity1] = Field(None, alias="modifiedBy")
     __properties = ["created", "createdBy", "modified", "modifiedBy"]
 
@@ -52,10 +54,7 @@ class AuditDetails(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
             _dict['createdBy'] = self.created_by.to_dict()
@@ -74,11 +73,15 @@ class AuditDetails(BaseModel):
             return AuditDetails.parse_obj(obj)
 
         _obj = AuditDetails.parse_obj({
-            "created": obj.get("created"),
-            "created_by": Identity1.from_dict(obj.get("createdBy")) if obj.get("createdBy") is not None else None,
-            "modified": obj.get("modified"),
-            "modified_by": Identity1.from_dict(obj.get("modifiedBy")) if obj.get("modifiedBy") is not None else None
+            "created":
+            obj.get("created"),
+            "created_by":
+            Identity1.from_dict(obj.get("createdBy"))
+            if obj.get("createdBy") is not None else None,
+            "modified":
+            obj.get("modified"),
+            "modified_by":
+            Identity1.from_dict(obj.get("modifiedBy"))
+            if obj.get("modifiedBy") is not None else None
         })
         return _obj
-
-

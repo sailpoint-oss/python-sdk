@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.approval import Approval  # noqa: E501
+from sailpoint.v3.models.approval import Approval  # noqa: E501
+
 
 class TestApproval(unittest.TestCase):
     """Approval unit test stubs"""
@@ -37,7 +37,7 @@ class TestApproval(unittest.TestCase):
         if include_optional:
             return Approval(
                 comments = [
-                    v3.models.approval_comment.ApprovalComment(
+                    sailpoint.v3.models.approval_comment.ApprovalComment(
                         comment = 'This request was autoapproved by our automated ETS subscriber.', 
                         commenter = 'Automated AR Approval', 
                         date = '2018-06-25T20:22:28.104Z', )
@@ -57,6 +57,7 @@ class TestApproval(unittest.TestCase):
         """Test Approval"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

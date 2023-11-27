@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.certification import Certification  # noqa: E501
+from sailpoint.v3.models.certification import Certification  # noqa: E501
+
 
 class TestCertification(unittest.TestCase):
     """Certification unit test stubs"""
@@ -38,7 +38,7 @@ class TestCertification(unittest.TestCase):
             return Certification(
                 id = '2c9180835d2e5168015d32f890ca1581',
                 name = 'Source Owner Access Review for Employees [source]',
-                campaign = v3.models.campaign_reference.CampaignReference(
+                campaign = sailpoint.v3.models.campaign_reference.CampaignReference(
                     id = 'ef38f94347e94562b5bb8424a56397d8', 
                     name = 'Campaign Name', 
                     type = 'CAMPAIGN', 
@@ -55,19 +55,19 @@ class TestCertification(unittest.TestCase):
                 decisions_total = 40,
                 due = '2018-10-19T13:49:37.385Z',
                 signed = '2018-10-19T13:49:37.385Z',
-                reviewer = v3.models.reviewer.Reviewer(
+                reviewer = sailpoint.v3.models.reviewer.Reviewer(
                     id = 'ef38f94347e94562b5bb8424a56397d8', 
                     name = 'Reviewer Name', 
                     email = 'reviewer@test.com', 
                     type = 'IDENTITY', 
                     created = '2018-06-25T20:22:28.104Z', 
                     modified = '2018-06-25T20:22:28.104Z', ),
-                reassignment = v3.models.reassignment.Reassignment(
-                    from = v3.models.certification_reference.CertificationReference(
+                reassignment = sailpoint.v3.models.reassignment.Reassignment(
+                    from = sailpoint.v3.models.certification_reference.CertificationReference(
                         id = 'ef38f94347e94562b5bb8424a56397d8', 
                         name = 'Certification Name', 
                         type = 'CERTIFICATION', 
-                        reviewer = v3.models.reviewer.Reviewer(
+                        reviewer = sailpoint.v3.models.reviewer.Reviewer(
                             id = 'ef38f94347e94562b5bb8424a56397d8', 
                             name = 'Reviewer Name', 
                             email = 'reviewer@test.com', 
@@ -88,6 +88,7 @@ class TestCertification(unittest.TestCase):
         """Test Certification"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.scheduled_search import ScheduledSearch  # noqa: E501
+from sailpoint.v3.models.scheduled_search import ScheduledSearch  # noqa: E501
+
 
 class TestScheduledSearch(unittest.TestCase):
     """ScheduledSearch unit test stubs"""
@@ -41,14 +41,14 @@ class TestScheduledSearch(unittest.TestCase):
                 saved_search_id = '554f1511-f0a1-4744-ab14-599514d3e57c',
                 created = '2018-06-25T20:22:28.104Z',
                 modified = '2018-06-25T20:22:28.104Z',
-                schedule = v3.models.schedule_1.Schedule_1(
+                schedule = sailpoint.v3.models.schedule_1.Schedule_1(
                     type = 'WEEKLY', 
                     days = null, 
                     hours = null, 
                     expiration = '2018-06-25T20:22:28.104Z', 
                     time_zone_id = 'GMT-06:00', ),
                 recipients = [
-                    v3.models.search_schedule_recipients_inner.SearchSchedule_recipients_inner(
+                    sailpoint.v3.models.search_schedule_recipients_inner.SearchSchedule_recipients_inner(
                         type = 'IDENTITY', 
                         id = '2c9180867624cbd7017642d8c8c81f67', )
                     ],
@@ -56,7 +56,7 @@ class TestScheduledSearch(unittest.TestCase):
                 email_empty_results = False,
                 display_query_details = False,
                 id = '0de46054-fe90-434a-b84e-c6b3359d0c64',
-                owner = v3.models.scheduled_search_all_of_owner.ScheduledSearch_allOf_owner(
+                owner = sailpoint.v3.models.scheduled_search_all_of_owner.ScheduledSearch_allOf_owner(
                     type = 'IDENTITY', 
                     id = '2c9180867624cbd7017642d8c8c81f67', ),
                 owner_id = '2c9180867624cbd7017642d8c8c81f67'
@@ -64,19 +64,19 @@ class TestScheduledSearch(unittest.TestCase):
         else:
             return ScheduledSearch(
                 saved_search_id = '554f1511-f0a1-4744-ab14-599514d3e57c',
-                schedule = v3.models.schedule_1.Schedule_1(
+                schedule = sailpoint.v3.models.schedule_1.Schedule_1(
                     type = 'WEEKLY', 
                     days = null, 
                     hours = null, 
                     expiration = '2018-06-25T20:22:28.104Z', 
                     time_zone_id = 'GMT-06:00', ),
                 recipients = [
-                    v3.models.search_schedule_recipients_inner.SearchSchedule_recipients_inner(
+                    sailpoint.v3.models.search_schedule_recipients_inner.SearchSchedule_recipients_inner(
                         type = 'IDENTITY', 
                         id = '2c9180867624cbd7017642d8c8c81f67', )
                     ],
                 id = '0de46054-fe90-434a-b84e-c6b3359d0c64',
-                owner = v3.models.scheduled_search_all_of_owner.ScheduledSearch_allOf_owner(
+                owner = sailpoint.v3.models.scheduled_search_all_of_owner.ScheduledSearch_allOf_owner(
                     type = 'IDENTITY', 
                     id = '2c9180867624cbd7017642d8c8c81f67', ),
                 owner_id = '2c9180867624cbd7017642d8c8c81f67',
@@ -87,6 +87,7 @@ class TestScheduledSearch(unittest.TestCase):
         """Test ScheduledSearch"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,16 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr
-from beta.models.owner_dto import OwnerDto
+from sailpoint.beta.models.owner_dto import OwnerDto
+
 
 class WorkgroupDto(BaseModel):
     """
@@ -28,11 +27,21 @@ class WorkgroupDto(BaseModel):
     """
     owner: Optional[OwnerDto] = None
     id: Optional[StrictStr] = Field(None, description="Governance group ID.")
-    name: Optional[StrictStr] = Field(None, description="Governance group name.")
-    description: Optional[StrictStr] = Field(None, description="Governance group description.")
-    member_count: Optional[StrictInt] = Field(None, alias="memberCount", description="Number of members in the governance group.")
-    connection_count: Optional[StrictInt] = Field(None, alias="connectionCount", description="Number of connections in the governance group.")
-    __properties = ["owner", "id", "name", "description", "memberCount", "connectionCount"]
+    name: Optional[StrictStr] = Field(None,
+                                      description="Governance group name.")
+    description: Optional[StrictStr] = Field(
+        None, description="Governance group description.")
+    member_count: Optional[StrictInt] = Field(
+        None,
+        alias="memberCount",
+        description="Number of members in the governance group.")
+    connection_count: Optional[StrictInt] = Field(
+        None,
+        alias="connectionCount",
+        description="Number of connections in the governance group.")
+    __properties = [
+        "owner", "id", "name", "description", "memberCount", "connectionCount"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -56,9 +65,9 @@ class WorkgroupDto(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "id",
-                            "member_count",
-                            "connection_count",
+                              "id",
+                              "member_count",
+                              "connection_count",
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
@@ -76,13 +85,18 @@ class WorkgroupDto(BaseModel):
             return WorkgroupDto.parse_obj(obj)
 
         _obj = WorkgroupDto.parse_obj({
-            "owner": OwnerDto.from_dict(obj.get("owner")) if obj.get("owner") is not None else None,
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "member_count": obj.get("memberCount"),
-            "connection_count": obj.get("connectionCount")
+            "owner":
+            OwnerDto.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None,
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "member_count":
+            obj.get("memberCount"),
+            "connection_count":
+            obj.get("connectionCount")
         })
         return _obj
-
-

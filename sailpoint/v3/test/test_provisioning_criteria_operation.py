@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from v3.models.provisioning_criteria_operation import ProvisioningCriteriaOperation  # noqa: E501
+from sailpoint.v3.models.provisioning_criteria_operation import ProvisioningCriteriaOperation  # noqa: E501
+
 
 class TestProvisioningCriteriaOperation(unittest.TestCase):
     """ProvisioningCriteriaOperation unit test stubs"""
@@ -29,6 +29,7 @@ class TestProvisioningCriteriaOperation(unittest.TestCase):
     def testProvisioningCriteriaOperation(self):
         """Test ProvisioningCriteriaOperation"""
         # inst = ProvisioningCriteriaOperation()
+
 
 if __name__ == '__main__':
     unittest.main()

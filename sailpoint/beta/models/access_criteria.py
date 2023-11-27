@@ -11,23 +11,28 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from beta.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
+from sailpoint.beta.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
+
 
 class AccessCriteria(BaseModel):
     """
     AccessCriteria
     """
-    name: Optional[StrictStr] = Field(None, description="Business name for the access construct list")
-    criteria_list: Optional[conlist(AccessCriteriaCriteriaListInner)] = Field(None, alias="criteriaList", description="List of criteria.  There is a min of 1 and max of 50 items in the list.")
+    name: Optional[StrictStr] = Field(
+        None, description="Business name for the access construct list")
+    criteria_list: Optional[conlist(AccessCriteriaCriteriaListInner)] = Field(
+        None,
+        alias="criteriaList",
+        description=
+        "List of criteria.  There is a min of 1 and max of 50 items in the list."
+    )
     __properties = ["name", "criteriaList"]
 
     class Config:
@@ -50,10 +55,7 @@ class AccessCriteria(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in criteria_list (list)
         _items = []
         if self.criteria_list:
@@ -73,9 +75,11 @@ class AccessCriteria(BaseModel):
             return AccessCriteria.parse_obj(obj)
 
         _obj = AccessCriteria.parse_obj({
-            "name": obj.get("name"),
-            "criteria_list": [AccessCriteriaCriteriaListInner.from_dict(_item) for _item in obj.get("criteriaList")] if obj.get("criteriaList") is not None else None
+            "name":
+            obj.get("name"),
+            "criteria_list": [
+                AccessCriteriaCriteriaListInner.from_dict(_item)
+                for _item in obj.get("criteriaList")
+            ] if obj.get("criteriaList") is not None else None
         })
         return _obj
-
-

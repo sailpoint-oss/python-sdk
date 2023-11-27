@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class CertificationPhase(str, Enum):
     """
     The current phase of the campaign. * `STAGED`: The campaign is waiting to be activated. * `ACTIVE`: The campaign is active. * `SIGNED`: The reviewer has signed off on the campaign, and it is considered complete. 
     """
-
     """
     allowed enum values
     """
@@ -37,5 +32,3 @@ class CertificationPhase(str, Enum):
     def from_json(cls, json_str: str) -> CertificationPhase:
         """Create an instance of CertificationPhase from a JSON string"""
         return CertificationPhase(json.loads(json_str))
-
-

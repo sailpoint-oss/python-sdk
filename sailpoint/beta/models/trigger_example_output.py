@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -20,12 +19,15 @@ import re  # noqa: F401
 
 from typing import Any, List, Optional
 from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
-from beta.models.access_request_dynamic_approver1 import AccessRequestDynamicApprover1
-from beta.models.access_request_pre_approval1 import AccessRequestPreApproval1
+from sailpoint.beta.models.access_request_dynamic_approver1 import AccessRequestDynamicApprover1
+from sailpoint.beta.models.access_request_pre_approval1 import AccessRequestPreApproval1
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-TRIGGEREXAMPLEOUTPUT_ONE_OF_SCHEMAS = ["AccessRequestDynamicApprover1", "AccessRequestPreApproval1"]
+TRIGGEREXAMPLEOUTPUT_ONE_OF_SCHEMAS = [
+    "AccessRequestDynamicApprover1", "AccessRequestPreApproval1"
+]
+
 
 class TriggerExampleOutput(BaseModel):
     """
@@ -36,10 +38,12 @@ class TriggerExampleOutput(BaseModel):
     # data type: AccessRequestPreApproval1
     oneof_schema_2_validator: Optional[AccessRequestPreApproval1] = None
     if TYPE_CHECKING:
-        actual_instance: Union[AccessRequestDynamicApprover1, AccessRequestPreApproval1]
+        actual_instance: Union[AccessRequestDynamicApprover1,
+                               AccessRequestPreApproval1]
     else:
         actual_instance: Any
-    one_of_schemas: List[str] = Field(TRIGGEREXAMPLEOUTPUT_ONE_OF_SCHEMAS, const=True)
+    one_of_schemas: List[str] = Field(TRIGGEREXAMPLEOUTPUT_ONE_OF_SCHEMAS,
+                                      const=True)
 
     class Config:
         validate_assignment = True
@@ -47,9 +51,13 @@ class TriggerExampleOutput(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
+                raise ValueError(
+                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
+                )
             if kwargs:
-                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
+                raise ValueError(
+                    "If a position argument is used, keyword arguments cannot be used."
+                )
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -64,20 +72,28 @@ class TriggerExampleOutput(BaseModel):
         match = 0
         # validate data type: AccessRequestDynamicApprover1
         if not isinstance(v, AccessRequestDynamicApprover1):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessRequestDynamicApprover1`")
+            error_messages.append(
+                f"Error! Input type `{type(v)}` is not `AccessRequestDynamicApprover1`"
+            )
         else:
             match += 1
         # validate data type: AccessRequestPreApproval1
         if not isinstance(v, AccessRequestPreApproval1):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `AccessRequestPreApproval1`")
+            error_messages.append(
+                f"Error! Input type `{type(v)}` is not `AccessRequestPreApproval1`"
+            )
         else:
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: " + ", ".join(error_messages))
+            raise ValueError(
+                "Multiple matches found when setting `actual_instance` in TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: "
+                + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: " + ", ".join(error_messages))
+            raise ValueError(
+                "No match found when setting `actual_instance` in TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: "
+                + ", ".join(error_messages))
         else:
             return v
 
@@ -97,23 +113,29 @@ class TriggerExampleOutput(BaseModel):
 
         # deserialize data into AccessRequestDynamicApprover1
         try:
-            instance.actual_instance = AccessRequestDynamicApprover1.from_json(json_str)
+            instance.actual_instance = AccessRequestDynamicApprover1.from_json(
+                json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
         # deserialize data into AccessRequestPreApproval1
         try:
-            instance.actual_instance = AccessRequestPreApproval1.from_json(json_str)
+            instance.actual_instance = AccessRequestPreApproval1.from_json(
+                json_str)
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: " + ", ".join(error_messages))
+            raise ValueError(
+                "Multiple matches found when deserializing the JSON string into TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: "
+                + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: " + ", ".join(error_messages))
+            raise ValueError(
+                "No match found when deserializing the JSON string into TriggerExampleOutput with oneOf schemas: AccessRequestDynamicApprover1, AccessRequestPreApproval1. Details: "
+                + ", ".join(error_messages))
         else:
             return instance
 
@@ -143,5 +165,3 @@ class TriggerExampleOutput(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.dict())
-
-

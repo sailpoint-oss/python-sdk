@@ -43,7 +43,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v2.models.get_org_settings200_response import GetOrgSettings200Response
+from sailpoint.v2.models.get_org_settings200_response import GetOrgSettings200Response
 
 # TODO update the JSON string below
 json = "{}"

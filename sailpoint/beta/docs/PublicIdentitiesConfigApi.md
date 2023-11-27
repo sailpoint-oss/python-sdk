@@ -1,4 +1,4 @@
-# beta.PublicIdentitiesConfigApi
+# sailpoint.beta.PublicIdentitiesConfigApi
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
@@ -22,14 +22,14 @@ This gets details of public identity config.
 ```python
 import time
 import os
-import beta
-from beta.models.public_identity_config import PublicIdentityConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.public_identity_config import PublicIdentityConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -43,9 +43,9 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.PublicIdentitiesConfigApi(api_client)
+    api_instance = sailpoint.beta.PublicIdentitiesConfigApi(api_client)
 
     try:
         # Get Public Identity Config
@@ -100,14 +100,14 @@ This updates the details of public identity config.
 ```python
 import time
 import os
-import beta
-from beta.models.public_identity_config import PublicIdentityConfig
-from beta.rest import ApiException
+import sailpoint.beta
+from sailpoint.beta.models.public_identity_config import PublicIdentityConfig
+from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://sailpoint.api.identitynow.com/beta
 # See configuration.py for a list of all supported configuration parameters.
-configuration = beta.Configuration(
+configuration = sailpoint.beta.Configuration(
     host = "https://sailpoint.api.identitynow.com/beta"
 )
 
@@ -121,10 +121,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
-with beta.ApiClient(configuration) as api_client:
+with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = beta.PublicIdentitiesConfigApi(api_client)
-    public_identity_config = beta.PublicIdentityConfig() # PublicIdentityConfig | 
+    api_instance = sailpoint.beta.PublicIdentitiesConfigApi(api_client)
+    public_identity_config = sailpoint.beta.PublicIdentityConfig() # PublicIdentityConfig | 
 
     try:
         # Update Public Identity Config

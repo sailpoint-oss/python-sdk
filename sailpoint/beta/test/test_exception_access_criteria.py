@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.exception_access_criteria import ExceptionAccessCriteria  # noqa: E501
+from sailpoint.beta.models.exception_access_criteria import ExceptionAccessCriteria  # noqa: E501
+
 
 class TestExceptionAccessCriteria(unittest.TestCase):
     """ExceptionAccessCriteria unit test stubs"""
@@ -36,9 +36,9 @@ class TestExceptionAccessCriteria(unittest.TestCase):
         model = ExceptionAccessCriteria()  # noqa: E501
         if include_optional:
             return ExceptionAccessCriteria(
-                left_criteria = beta.models.exception_criteria.ExceptionCriteria(
+                left_criteria = sailpoint.beta.models.exception_criteria.ExceptionCriteria(
                     criteria_list = [{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66, existing=true}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67, existing=false}], ),
-                right_criteria = beta.models.exception_criteria.ExceptionCriteria(
+                right_criteria = sailpoint.beta.models.exception_criteria.ExceptionCriteria(
                     criteria_list = [{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66, existing=true}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67, existing=false}], )
             )
         else:
@@ -50,6 +50,7 @@ class TestExceptionAccessCriteria(unittest.TestCase):
         """Test ExceptionAccessCriteria"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

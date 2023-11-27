@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.resource_object import ResourceObject
+from sailpoint.beta.models.resource_object import ResourceObject
 
 # TODO update the JSON string below
 json = "{}"

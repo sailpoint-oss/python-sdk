@@ -11,35 +11,54 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, constr, validator
-from beta.models.connector_rule_create_request_signature import ConnectorRuleCreateRequestSignature
-from beta.models.source_code import SourceCode
+from sailpoint.beta.models.connector_rule_create_request_signature import ConnectorRuleCreateRequestSignature
+from sailpoint.beta.models.source_code import SourceCode
+
 
 class ConnectorRuleCreateRequest(BaseModel):
     """
     ConnectorRuleCreateRequest  # noqa: E501
     """
-    name: constr(strict=True, max_length=128, min_length=1) = Field(..., description="the name of the rule")
-    description: Optional[StrictStr] = Field(None, description="a description of the rule's purpose")
+    name: constr(strict=True, max_length=128,
+                 min_length=1) = Field(..., description="the name of the rule")
+    description: Optional[StrictStr] = Field(
+        None, description="a description of the rule's purpose")
     type: StrictStr = Field(..., description="the type of rule")
     signature: Optional[ConnectorRuleCreateRequestSignature] = None
     source_code: SourceCode = Field(..., alias="sourceCode")
-    attributes: Optional[Dict[str, Any]] = Field(None, description="a map of string to objects")
-    __properties = ["name", "description", "type", "signature", "sourceCode", "attributes"]
+    attributes: Optional[Dict[str, Any]] = Field(
+        None, description="a map of string to objects")
+    __properties = [
+        "name", "description", "type", "signature", "sourceCode", "attributes"
+    ]
 
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule'):
-            raise ValueError("must be one of enum values ('BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule')")
+        if value not in ('BuildMap', 'ConnectorAfterCreate',
+                         'ConnectorAfterDelete', 'ConnectorAfterModify',
+                         'ConnectorBeforeCreate', 'ConnectorBeforeDelete',
+                         'ConnectorBeforeModify', 'JDBCBuildMap',
+                         'JDBCOperationProvisioning', 'JDBCProvision',
+                         'PeopleSoftHRMSBuildMap',
+                         'PeopleSoftHRMSOperationProvisioning',
+                         'PeopleSoftHRMSProvision',
+                         'RACFPermissionCustomization', 'SAPBuildMap',
+                         'SapHrManagerRule', 'SapHrOperationProvisioning',
+                         'SapHrProvision',
+                         'SuccessFactorsOperationProvisioning',
+                         'WebServiceAfterOperationRule',
+                         'WebServiceBeforeOperationRule'):
+            raise ValueError(
+                "must be one of enum values ('BuildMap', 'ConnectorAfterCreate', 'ConnectorAfterDelete', 'ConnectorAfterModify', 'ConnectorBeforeCreate', 'ConnectorBeforeDelete', 'ConnectorBeforeModify', 'JDBCBuildMap', 'JDBCOperationProvisioning', 'JDBCProvision', 'PeopleSoftHRMSBuildMap', 'PeopleSoftHRMSOperationProvisioning', 'PeopleSoftHRMSProvision', 'RACFPermissionCustomization', 'SAPBuildMap', 'SapHrManagerRule', 'SapHrOperationProvisioning', 'SapHrProvision', 'SuccessFactorsOperationProvisioning', 'WebServiceAfterOperationRule', 'WebServiceBeforeOperationRule')"
+            )
         return value
 
     class Config:
@@ -62,10 +81,7 @@ class ConnectorRuleCreateRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of signature
         if self.signature:
             _dict['signature'] = self.signature.to_dict()
@@ -89,13 +105,19 @@ class ConnectorRuleCreateRequest(BaseModel):
             return ConnectorRuleCreateRequest.parse_obj(obj)
 
         _obj = ConnectorRuleCreateRequest.parse_obj({
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "type": obj.get("type"),
-            "signature": ConnectorRuleCreateRequestSignature.from_dict(obj.get("signature")) if obj.get("signature") is not None else None,
-            "source_code": SourceCode.from_dict(obj.get("sourceCode")) if obj.get("sourceCode") is not None else None,
-            "attributes": obj.get("attributes")
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "type":
+            obj.get("type"),
+            "signature":
+            ConnectorRuleCreateRequestSignature.from_dict(obj.get("signature"))
+            if obj.get("signature") is not None else None,
+            "source_code":
+            SourceCode.from_dict(obj.get("sourceCode"))
+            if obj.get("sourceCode") is not None else None,
+            "attributes":
+            obj.get("attributes")
         })
         return _obj
-
-

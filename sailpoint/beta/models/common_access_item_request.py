@@ -11,17 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel
-from beta.models.common_access_item_access import CommonAccessItemAccess
-from beta.models.common_access_item_state import CommonAccessItemState
+from sailpoint.beta.models.common_access_item_access import CommonAccessItemAccess
+from sailpoint.beta.models.common_access_item_state import CommonAccessItemState
+
 
 class CommonAccessItemRequest(BaseModel):
     """
@@ -51,10 +50,7 @@ class CommonAccessItemRequest(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of access
         if self.access:
             _dict['access'] = self.access.to_dict()
@@ -70,9 +66,10 @@ class CommonAccessItemRequest(BaseModel):
             return CommonAccessItemRequest.parse_obj(obj)
 
         _obj = CommonAccessItemRequest.parse_obj({
-            "access": CommonAccessItemAccess.from_dict(obj.get("access")) if obj.get("access") is not None else None,
-            "status": obj.get("status")
+            "access":
+            CommonAccessItemAccess.from_dict(obj.get("access"))
+            if obj.get("access") is not None else None,
+            "status":
+            obj.get("status")
         })
         return _obj
-
-

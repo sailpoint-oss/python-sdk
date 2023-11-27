@@ -11,22 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, Field, conlist
-from beta.models.violation_context import ViolationContext
+from sailpoint.beta.models.violation_context import ViolationContext
+
 
 class ViolationPrediction(BaseModel):
     """
     An object containing a listing of the SOD violation reasons detected by this check.  # noqa: E501
     """
-    violation_contexts: Optional[conlist(ViolationContext)] = Field(None, alias="violationContexts", description="List of Violation Contexts")
+    violation_contexts: Optional[conlist(ViolationContext)] = Field(
+        None,
+        alias="violationContexts",
+        description="List of Violation Contexts")
     __properties = ["violationContexts"]
 
     class Config:
@@ -49,10 +51,7 @@ class ViolationPrediction(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in violation_contexts (list)
         _items = []
         if self.violation_contexts:
@@ -72,8 +71,9 @@ class ViolationPrediction(BaseModel):
             return ViolationPrediction.parse_obj(obj)
 
         _obj = ViolationPrediction.parse_obj({
-            "violation_contexts": [ViolationContext.from_dict(_item) for _item in obj.get("violationContexts")] if obj.get("violationContexts") is not None else None
+            "violation_contexts": [
+                ViolationContext.from_dict(_item)
+                for _item in obj.get("violationContexts")
+            ] if obj.get("violationContexts") is not None else None
         })
         return _obj
-
-

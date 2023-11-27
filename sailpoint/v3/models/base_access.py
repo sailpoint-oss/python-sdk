@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -20,23 +19,38 @@ import json
 from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
-from v3.models.owner import Owner
+from sailpoint.v3.models.owner import Owner
+
 
 class BaseAccess(BaseModel):
     """
     BaseAccess
     """
-    id: Optional[StrictStr] = Field(None, description="The unique ID of the referenced object.")
-    name: Optional[StrictStr] = Field(None, description="The human readable name of the referenced object.")
-    description: Optional[StrictStr] = Field(None, description="The description of the access item")
-    created: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
-    modified: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
-    synced: Optional[datetime] = Field(None, description="A date-time in ISO-8601 format")
+    id: Optional[StrictStr] = Field(
+        None, description="The unique ID of the referenced object.")
+    name: Optional[StrictStr] = Field(
+        None, description="The human readable name of the referenced object.")
+    description: Optional[StrictStr] = Field(
+        None, description="The description of the access item")
+    created: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
+    modified: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
+    synced: Optional[datetime] = Field(
+        None, description="A date-time in ISO-8601 format")
     enabled: Optional[StrictBool] = None
-    requestable: Optional[StrictBool] = Field(None, description="Indicates if the access can be requested")
-    request_comments_required: Optional[StrictBool] = Field(None, alias="requestCommentsRequired", description="Indicates if comments are required when requesting access")
+    requestable: Optional[StrictBool] = Field(
+        None, description="Indicates if the access can be requested")
+    request_comments_required: Optional[StrictBool] = Field(
+        None,
+        alias="requestCommentsRequired",
+        description="Indicates if comments are required when requesting access"
+    )
     owner: Optional[Owner] = None
-    __properties = ["id", "name", "description", "created", "modified", "synced", "enabled", "requestable", "requestCommentsRequired", "owner"]
+    __properties = [
+        "id", "name", "description", "created", "modified", "synced",
+        "enabled", "requestable", "requestCommentsRequired", "owner"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -58,10 +72,7 @@ class BaseAccess(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -92,17 +103,26 @@ class BaseAccess(BaseModel):
             return BaseAccess.parse_obj(obj)
 
         _obj = BaseAccess.parse_obj({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "created": obj.get("created"),
-            "modified": obj.get("modified"),
-            "synced": obj.get("synced"),
-            "enabled": obj.get("enabled"),
-            "requestable": obj.get("requestable"),
-            "request_comments_required": obj.get("requestCommentsRequired"),
-            "owner": Owner.from_dict(obj.get("owner")) if obj.get("owner") is not None else None
+            "id":
+            obj.get("id"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified"),
+            "synced":
+            obj.get("synced"),
+            "enabled":
+            obj.get("enabled"),
+            "requestable":
+            obj.get("requestable"),
+            "request_comments_required":
+            obj.get("requestCommentsRequired"),
+            "owner":
+            Owner.from_dict(obj.get("owner"))
+            if obj.get("owner") is not None else None
         })
         return _obj
-
-

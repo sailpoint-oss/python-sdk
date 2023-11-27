@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.mfa_okta_config import MfaOktaConfig  # noqa: E501
+from sailpoint.beta.models.mfa_okta_config import MfaOktaConfig  # noqa: E501
+
 
 class TestMfaOktaConfig(unittest.TestCase):
     """MfaOktaConfig unit test stubs"""
@@ -51,6 +51,7 @@ class TestMfaOktaConfig(unittest.TestCase):
         """Test MfaOktaConfig"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

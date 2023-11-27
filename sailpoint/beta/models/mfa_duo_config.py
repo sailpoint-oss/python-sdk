@@ -11,27 +11,48 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictBool, StrictStr
+
 
 class MfaDuoConfig(BaseModel):
     """
     MfaDuoConfig
     """
-    mfa_method: Optional[StrictStr] = Field(None, alias="mfaMethod", description="Mfa method name")
-    enabled: Optional[StrictBool] = Field(False, description="If MFA method is enabled.")
-    host: Optional[StrictStr] = Field(None, description="The server host name or IP address of the MFA provider.")
-    access_key: Optional[StrictStr] = Field(None, alias="accessKey", description="The secret key for authenticating requests to the MFA provider.")
-    identity_attribute: Optional[StrictStr] = Field(None, alias="identityAttribute", description="Optional. The name of the attribute for mapping IdentityNow identity to the MFA provider.")
-    config_properties: Optional[Dict[str, Any]] = Field(None, alias="configProperties", description="A map with additional config properties for the given MFA method - duo-web.")
-    __properties = ["mfaMethod", "enabled", "host", "accessKey", "identityAttribute", "configProperties"]
+    mfa_method: Optional[StrictStr] = Field(None,
+                                            alias="mfaMethod",
+                                            description="Mfa method name")
+    enabled: Optional[StrictBool] = Field(
+        False, description="If MFA method is enabled.")
+    host: Optional[StrictStr] = Field(
+        None,
+        description="The server host name or IP address of the MFA provider.")
+    access_key: Optional[StrictStr] = Field(
+        None,
+        alias="accessKey",
+        description=
+        "The secret key for authenticating requests to the MFA provider.")
+    identity_attribute: Optional[StrictStr] = Field(
+        None,
+        alias="identityAttribute",
+        description=
+        "Optional. The name of the attribute for mapping IdentityNow identity to the MFA provider."
+    )
+    config_properties: Optional[Dict[str, Any]] = Field(
+        None,
+        alias="configProperties",
+        description=
+        "A map with additional config properties for the given MFA method - duo-web."
+    )
+    __properties = [
+        "mfaMethod", "enabled", "host", "accessKey", "identityAttribute",
+        "configProperties"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -53,10 +74,7 @@ class MfaDuoConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if mfa_method (nullable) is None
         # and __fields_set__ contains the field
         if self.mfa_method is None and "mfa_method" in self.__fields_set__:
@@ -94,13 +112,17 @@ class MfaDuoConfig(BaseModel):
             return MfaDuoConfig.parse_obj(obj)
 
         _obj = MfaDuoConfig.parse_obj({
-            "mfa_method": obj.get("mfaMethod"),
-            "enabled": obj.get("enabled") if obj.get("enabled") is not None else False,
-            "host": obj.get("host"),
-            "access_key": obj.get("accessKey"),
-            "identity_attribute": obj.get("identityAttribute"),
-            "config_properties": obj.get("configProperties")
+            "mfa_method":
+            obj.get("mfaMethod"),
+            "enabled":
+            obj.get("enabled") if obj.get("enabled") is not None else False,
+            "host":
+            obj.get("host"),
+            "access_key":
+            obj.get("accessKey"),
+            "identity_attribute":
+            obj.get("identityAttribute"),
+            "config_properties":
+            obj.get("configProperties")
         })
         return _obj
-
-

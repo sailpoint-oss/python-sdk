@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
+from sailpoint.beta.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
 
 # TODO update the JSON string below
 json = "{}"

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.latest_outlier_summary import LatestOutlierSummary
+from sailpoint.beta.models.latest_outlier_summary import LatestOutlierSummary
 
 # TODO update the JSON string below
 json = "{}"

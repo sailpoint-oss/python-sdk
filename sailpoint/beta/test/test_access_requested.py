@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.access_requested import AccessRequested  # noqa: E501
+from sailpoint.beta.models.access_requested import AccessRequested  # noqa: E501
+
 
 class TestAccessRequested(unittest.TestCase):
     """AccessRequested unit test stubs"""
@@ -36,7 +36,7 @@ class TestAccessRequested(unittest.TestCase):
         model = AccessRequested()  # noqa: E501
         if include_optional:
             return AccessRequested(
-                access_request = beta.models.access_request_response.AccessRequestResponse(
+                access_request = sailpoint.beta.models.access_request_response.AccessRequestResponse(
                     requester_id = '2c91808a77ff216301782327a50f09bf', 
                     requester_name = 'Bing C', 
                     items = [{operation=Add, accessItemType=role, name=Role-1, decision=APPROVED, description=The role descrition, sourceId=8a80828f643d484f01643e14202e206f, sourceName=Source1, approvalInfos=[{name=John Snow, id=8a80828f643d484f01643e14202e2000, status=Approved}]}], ),
@@ -53,6 +53,7 @@ class TestAccessRequested(unittest.TestCase):
         """Test AccessRequested"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

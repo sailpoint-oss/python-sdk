@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.outlier_contributing_feature import OutlierContributingFeature  # noqa: E501
+from sailpoint.beta.models.outlier_contributing_feature import OutlierContributingFeature  # noqa: E501
+
 
 class TestOutlierContributingFeature(unittest.TestCase):
     """OutlierContributingFeature unit test stubs"""
@@ -43,11 +43,11 @@ class TestOutlierContributingFeature(unittest.TestCase):
                 importance = -0.15,
                 display_name = 'Number of entitlements',
                 description = 'The total number of entitlements belonging to an identity',
-                translation_messages = beta.models.outlier_feature_translation.OutlierFeatureTranslation(
-                    display_name = beta.models.translation_message.TranslationMessage(
+                translation_messages = sailpoint.beta.models.outlier_feature_translation.OutlierFeatureTranslation(
+                    display_name = sailpoint.beta.models.translation_message.TranslationMessage(
                         key = 'recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH', 
                         values = [75, department], ), 
-                    description = beta.models.translation_message.TranslationMessage(
+                    description = sailpoint.beta.models.translation_message.TranslationMessage(
                         key = 'recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH', 
                         values = [75, department], ), )
             )
@@ -60,6 +60,7 @@ class TestOutlierContributingFeature(unittest.TestCase):
         """Test OutlierContributingFeature"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

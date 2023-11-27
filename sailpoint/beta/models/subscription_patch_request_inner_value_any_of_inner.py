@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 from inspect import getfullargspec
 import json
@@ -23,7 +22,10 @@ from pydantic import BaseModel, Field, StrictInt, StrictStr, ValidationError, va
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
-SUBSCRIPTIONPATCHREQUESTINNERVALUEANYOFINNER_ANY_OF_SCHEMAS = ["int", "object", "str"]
+SUBSCRIPTIONPATCHREQUESTINNERVALUEANYOFINNER_ANY_OF_SCHEMAS = [
+    "int", "object", "str"
+]
+
 
 class SubscriptionPatchRequestInnerValueAnyOfInner(BaseModel):
     """
@@ -40,7 +42,9 @@ class SubscriptionPatchRequestInnerValueAnyOfInner(BaseModel):
         actual_instance: Union[int, object, str]
     else:
         actual_instance: Any
-    any_of_schemas: List[str] = Field(SUBSCRIPTIONPATCHREQUESTINNERVALUEANYOFINNER_ANY_OF_SCHEMAS, const=True)
+    any_of_schemas: List[str] = Field(
+        SUBSCRIPTIONPATCHREQUESTINNERVALUEANYOFINNER_ANY_OF_SCHEMAS,
+        const=True)
 
     class Config:
         validate_assignment = True
@@ -48,9 +52,13 @@ class SubscriptionPatchRequestInnerValueAnyOfInner(BaseModel):
     def __init__(self, *args, **kwargs) -> None:
         if args:
             if len(args) > 1:
-                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
+                raise ValueError(
+                    "If a position argument is used, only 1 is allowed to set `actual_instance`"
+                )
             if kwargs:
-                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
+                raise ValueError(
+                    "If a position argument is used, keyword arguments cannot be used."
+                )
             super().__init__(actual_instance=args[0])
         else:
             super().__init__(**kwargs)
@@ -79,16 +87,21 @@ class SubscriptionPatchRequestInnerValueAnyOfInner(BaseModel):
             error_messages.append(str(e))
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in SubscriptionPatchRequestInnerValueAnyOfInner with anyOf schemas: int, object, str. Details: " + ", ".join(error_messages))
+            raise ValueError(
+                "No match found when setting the actual_instance in SubscriptionPatchRequestInnerValueAnyOfInner with anyOf schemas: int, object, str. Details: "
+                + ", ".join(error_messages))
         else:
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SubscriptionPatchRequestInnerValueAnyOfInner:
+    def from_dict(cls,
+                  obj: dict) -> SubscriptionPatchRequestInnerValueAnyOfInner:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> SubscriptionPatchRequestInnerValueAnyOfInner:
+    def from_json(
+            cls,
+            json_str: str) -> SubscriptionPatchRequestInnerValueAnyOfInner:
         """Returns the object represented by the json string"""
         instance = SubscriptionPatchRequestInnerValueAnyOfInner.construct()
         error_messages = []
@@ -122,7 +135,9 @@ class SubscriptionPatchRequestInnerValueAnyOfInner(BaseModel):
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into SubscriptionPatchRequestInnerValueAnyOfInner with anyOf schemas: int, object, str. Details: " + ", ".join(error_messages))
+            raise ValueError(
+                "No match found when deserializing the JSON string into SubscriptionPatchRequestInnerValueAnyOfInner with anyOf schemas: int, object, str. Details: "
+                + ", ".join(error_messages))
         else:
             return instance
 
@@ -151,5 +166,3 @@ class SubscriptionPatchRequestInnerValueAnyOfInner(BaseModel):
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
         return pprint.pformat(self.dict())
-
-

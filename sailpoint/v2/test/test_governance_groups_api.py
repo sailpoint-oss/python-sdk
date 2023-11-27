@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from v2.api.governance_groups_api import GovernanceGroupsApi  # noqa: E501
+from sailpoint.v2.api.governance_groups_api import GovernanceGroupsApi  # noqa: E501
 
 
 class TestGovernanceGroupsApi(unittest.TestCase):

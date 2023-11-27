@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
+from sailpoint.v3.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
 
 # TODO update the JSON string below
 json = "{}"

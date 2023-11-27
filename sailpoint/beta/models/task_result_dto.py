@@ -11,23 +11,24 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class TaskResultDto(BaseModel):
     """
     Task result.  # noqa: E501
     """
-    type: Optional[StrictStr] = Field(None, description="Task result DTO type.")
+    type: Optional[StrictStr] = Field(None,
+                                      description="Task result DTO type.")
     id: Optional[StrictStr] = Field(None, description="Task result ID.")
-    name: Optional[StrictStr] = Field(None, description="Task result display name.")
+    name: Optional[StrictStr] = Field(None,
+                                      description="Task result display name.")
     __properties = ["type", "id", "name"]
 
     @validator('type')
@@ -60,10 +61,7 @@ class TaskResultDto(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         # set to None if name (nullable) is None
         # and __fields_set__ contains the field
         if self.name is None and "name" in self.__fields_set__:
@@ -86,5 +84,3 @@ class TaskResultDto(BaseModel):
             "name": obj.get("name")
         })
         return _obj
-
-

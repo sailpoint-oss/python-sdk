@@ -11,23 +11,27 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
-
 from pydantic import BaseModel, Field, StrictStr, validator
+
 
 class ProvisioningCompletedAccountRequestsInnerSource(BaseModel):
     """
     Reference to the source being provisioned against.  # noqa: E501
     """
-    id: StrictStr = Field(..., description="ID of the object to which this reference applies")
-    type: StrictStr = Field(..., description="The type of object that is referenced")
-    name: StrictStr = Field(..., description="Human-readable display name of the object to which this reference applies")
+    id: StrictStr = Field(
+        ..., description="ID of the object to which this reference applies")
+    type: StrictStr = Field(
+        ..., description="The type of object that is referenced")
+    name: StrictStr = Field(
+        ...,
+        description=
+        "Human-readable display name of the object to which this reference applies"
+    )
     __properties = ["id", "type", "name"]
 
     @validator('type')
@@ -51,32 +55,34 @@ class ProvisioningCompletedAccountRequestsInnerSource(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ProvisioningCompletedAccountRequestsInnerSource:
+    def from_json(
+            cls,
+            json_str: str) -> ProvisioningCompletedAccountRequestsInnerSource:
         """Create an instance of ProvisioningCompletedAccountRequestsInnerSource from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ProvisioningCompletedAccountRequestsInnerSource:
+    def from_dict(
+            cls, obj: dict) -> ProvisioningCompletedAccountRequestsInnerSource:
         """Create an instance of ProvisioningCompletedAccountRequestsInnerSource from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ProvisioningCompletedAccountRequestsInnerSource.parse_obj(obj)
+            return ProvisioningCompletedAccountRequestsInnerSource.parse_obj(
+                obj)
 
         _obj = ProvisioningCompletedAccountRequestsInnerSource.parse_obj({
-            "id": obj.get("id"),
-            "type": obj.get("type"),
-            "name": obj.get("name")
+            "id":
+            obj.get("id"),
+            "type":
+            obj.get("type"),
+            "name":
+            obj.get("name")
         })
         return _obj
-
-

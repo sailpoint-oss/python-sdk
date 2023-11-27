@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -19,31 +18,30 @@ import warnings
 from pydantic import validate_arguments, ValidationError
 
 from typing_extensions import Annotated
-from pydantic import Field, StrictInt, StrictStr, conint, conlist
+from pydantic import Field, StrictBytes, StrictInt, StrictStr, conint, conlist
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
-from beta.models.create_form_definition_request import CreateFormDefinitionRequest
-from beta.models.create_form_instance_request import CreateFormInstanceRequest
-from beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
-from beta.models.form_definition_dynamic_schema_request import FormDefinitionDynamicSchemaRequest
-from beta.models.form_definition_dynamic_schema_response import FormDefinitionDynamicSchemaResponse
-from beta.models.form_definition_response import FormDefinitionResponse
-from beta.models.form_element_preview_request import FormElementPreviewRequest
-from beta.models.form_instance_response import FormInstanceResponse
-from beta.models.import_form_definitions202_response import ImportFormDefinitions202Response
-from beta.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
-from beta.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
-from beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
-from beta.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
-from beta.models.preview_data_source_response import PreviewDataSourceResponse
+from sailpoint.beta.models.create_form_definition_request import CreateFormDefinitionRequest
+from sailpoint.beta.models.create_form_instance_request import CreateFormInstanceRequest
+from sailpoint.beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
+from sailpoint.beta.models.form_definition_dynamic_schema_request import FormDefinitionDynamicSchemaRequest
+from sailpoint.beta.models.form_definition_dynamic_schema_response import FormDefinitionDynamicSchemaResponse
+from sailpoint.beta.models.form_definition_file_upload_response import FormDefinitionFileUploadResponse
+from sailpoint.beta.models.form_definition_response import FormDefinitionResponse
+from sailpoint.beta.models.form_element_preview_request import FormElementPreviewRequest
+from sailpoint.beta.models.form_instance_response import FormInstanceResponse
+from sailpoint.beta.models.import_form_definitions202_response import ImportFormDefinitions202Response
+from sailpoint.beta.models.list_form_definitions_by_tenant_response import ListFormDefinitionsByTenantResponse
+from sailpoint.beta.models.list_form_element_data_by_element_id_response import ListFormElementDataByElementIDResponse
+from sailpoint.beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
+from sailpoint.beta.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
+from sailpoint.beta.models.preview_data_source_response import PreviewDataSourceResponse
 
-from beta.api_client import ApiClient
-from beta.api_response import ApiResponse
-from beta.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
-)
+from sailpoint.beta.api_client import ApiClient
+from sailpoint.beta.api_response import ApiResponse
+from sailpoint.beta.exceptions import (  # noqa: F401
+    ApiTypeError, ApiValueError)
 
 
 class CustomFormsApi:
@@ -59,7 +57,16 @@ class CustomFormsApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_form_definition(self, body : Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None, **kwargs) -> FormDefinitionResponse:  # noqa: E501
+    def create_form_definition(
+            self,
+            body:
+        Annotated[
+            Optional[CreateFormDefinitionRequest],
+            Field(
+                description=
+                "Body is the request payload to create form definition request"
+            )] = None,
+            **kwargs) -> FormDefinitionResponse:  # noqa: E501
         """Creates a form definition.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -85,10 +92,20 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_form_definition_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_form_definition_with_http_info(body, **kwargs)  # noqa: E501
+        return self.create_form_definition_with_http_info(
+            body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_form_definition_with_http_info(self, body : Annotated[Optional[CreateFormDefinitionRequest], Field(description="Body is the request payload to create form definition request")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_form_definition_with_http_info(
+            self,
+            body:
+        Annotated[
+            Optional[CreateFormDefinitionRequest],
+            Field(
+                description=
+                "Body is the request payload to create form definition request"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Creates a form definition.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -126,28 +143,17 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-            'body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_form_definition" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_form_definition" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -173,11 +179,11 @@ class CustomFormsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -192,7 +198,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-definitions', 'POST',
+            '/form-definitions',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -202,14 +209,24 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_form_definition_dynamic_schema(self, body : Annotated[Optional[FormDefinitionDynamicSchemaRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None, **kwargs) -> FormDefinitionDynamicSchemaResponse:  # noqa: E501
+    def create_form_definition_dynamic_schema(
+            self,
+            body:
+        Annotated[
+            Optional[FormDefinitionDynamicSchemaRequest],
+            Field(
+                description=
+                "Body is the request payload to create a form definition dynamic schema"
+            )] = None,
+            **kwargs) -> FormDefinitionDynamicSchemaResponse:  # noqa: E501
         """Generate JSON Schema dynamically.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -235,10 +252,20 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_form_definition_dynamic_schema_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_form_definition_dynamic_schema_with_http_info(body, **kwargs)  # noqa: E501
+        return self.create_form_definition_dynamic_schema_with_http_info(
+            body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_form_definition_dynamic_schema_with_http_info(self, body : Annotated[Optional[FormDefinitionDynamicSchemaRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_form_definition_dynamic_schema_with_http_info(
+            self,
+            body:
+        Annotated[
+            Optional[FormDefinitionDynamicSchemaRequest],
+            Field(
+                description=
+                "Body is the request payload to create a form definition dynamic schema"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Generate JSON Schema dynamically.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -276,28 +303,18 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-            'body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create_form_definition_dynamic_schema" % _key
-                )
+                    " to method create_form_definition_dynamic_schema" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -323,11 +340,11 @@ class CustomFormsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -343,7 +360,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-definitions/forms-action-dynamic-schema', 'POST',
+            '/form-definitions/forms-action-dynamic-schema',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -353,14 +371,198 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_form_instance(self, body : Annotated[Optional[CreateFormInstanceRequest], Field(description="Body is the request payload to create a form instance")] = None, **kwargs) -> FormInstanceResponse:  # noqa: E501
+    def create_form_definition_file_request(
+            self, form_definition_id: Annotated[
+                StrictStr,
+                Field(
+                    ...,
+                    description=
+                    "FormDefinitionID  String specifying FormDefinitionID")],
+            file: Annotated[
+                Union[StrictBytes, StrictStr],
+                Field(..., description="File specifying the multipart")],
+            **kwargs) -> FormDefinitionFileUploadResponse:  # noqa: E501
+        """Upload new form definition file.  # noqa: E501
+
+        Parameter `{formDefinitionID}` should match a form definition ID.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_form_definition_file_request(form_definition_id, file, async_req=True)
+        >>> result = thread.get()
+
+        :param form_definition_id: FormDefinitionID  String specifying FormDefinitionID (required)
+        :type form_definition_id: str
+        :param file: File specifying the multipart (required)
+        :type file: bytearray
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: FormDefinitionFileUploadResponse
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the create_form_definition_file_request_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.create_form_definition_file_request_with_http_info(
+            form_definition_id, file, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def create_form_definition_file_request_with_http_info(
+            self, form_definition_id: Annotated[
+                StrictStr,
+                Field(
+                    ...,
+                    description=
+                    "FormDefinitionID  String specifying FormDefinitionID")],
+            file: Annotated[
+                Union[StrictBytes, StrictStr],
+                Field(..., description="File specifying the multipart")],
+            **kwargs) -> ApiResponse:  # noqa: E501
+        """Upload new form definition file.  # noqa: E501
+
+        Parameter `{formDefinitionID}` should match a form definition ID.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_form_definition_file_request_with_http_info(form_definition_id, file, async_req=True)
+        >>> result = thread.get()
+
+        :param form_definition_id: FormDefinitionID  String specifying FormDefinitionID (required)
+        :type form_definition_id: str
+        :param file: File specifying the multipart (required)
+        :type file: bytearray
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(FormDefinitionFileUploadResponse, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = ['form_definition_id', 'file']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_form_definition_file_request" % _key)
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['form_definition_id']:
+            _path_params['formDefinitionID'] = _params['form_definition_id']
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        if _params['file']:
+            _files['file'] = _params['file']
+
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['multipart/form-data'
+                                                        ]))
+        if _content_types_list:
+            _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+
+        _response_types_map = {
+            '201': "FormDefinitionFileUploadResponse",
+            '400': "SearchFormDefinitionsByTenant400Response",
+            '401': "SearchFormDefinitionsByTenant400Response",
+            '403': "SearchFormDefinitionsByTenant400Response",
+            '404': "SearchFormDefinitionsByTenant400Response",
+            '413': "SearchFormDefinitionsByTenant400Response",
+            '415': "SearchFormDefinitionsByTenant400Response",
+            '429': "Error",
+            '500': "SearchFormDefinitionsByTenant400Response",
+            '503': "SearchFormDefinitionsByTenant400Response",
+        }
+
+        return self.api_client.call_api(
+            '/form-definitions/{formDefinitionID}/upload',
+            'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def create_form_instance(
+            self,
+            body: Annotated[
+                Optional[CreateFormInstanceRequest],
+                Field(description=
+                      "Body is the request payload to create a form instance"
+                      )] = None,
+            **kwargs) -> FormInstanceResponse:  # noqa: E501
         """Creates a form instance.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -386,10 +588,18 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_form_instance_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_form_instance_with_http_info(body, **kwargs)  # noqa: E501
+        return self.create_form_instance_with_http_info(body,
+                                                        **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_form_instance_with_http_info(self, body : Annotated[Optional[CreateFormInstanceRequest], Field(description="Body is the request payload to create a form instance")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_form_instance_with_http_info(
+            self,
+            body: Annotated[
+                Optional[CreateFormInstanceRequest],
+                Field(description=
+                      "Body is the request payload to create a form instance"
+                      )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Creates a form instance.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -427,28 +637,17 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-            'body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_form_instance" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method create_form_instance" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -474,11 +673,11 @@ class CustomFormsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -493,7 +692,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-instances', 'POST',
+            '/form-instances',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -503,14 +703,17 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_form_definition(self, form_definition_id : Annotated[StrictStr, Field(..., description="Form definition ID")], **kwargs) -> object:  # noqa: E501
+    def delete_form_definition(self, form_definition_id: Annotated[
+        StrictStr, Field(..., description="Form definition ID")],
+                               **kwargs) -> object:  # noqa: E501
         """Deletes a form definition.  # noqa: E501
 
         Parameter `{formDefinitionID}` should match a form definition ID.  # noqa: E501
@@ -537,10 +740,15 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the delete_form_definition_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.delete_form_definition_with_http_info(form_definition_id, **kwargs)  # noqa: E501
+        return self.delete_form_definition_with_http_info(
+            form_definition_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def delete_form_definition_with_http_info(self, form_definition_id : Annotated[StrictStr, Field(..., description="Form definition ID")], **kwargs) -> ApiResponse:  # noqa: E501
+    def delete_form_definition_with_http_info(
+            self, form_definition_id: Annotated[
+                StrictStr,
+                Field(..., description="Form definition ID")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Deletes a form definition.  # noqa: E501
 
         Parameter `{formDefinitionID}` should match a form definition ID.  # noqa: E501
@@ -579,28 +787,17 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-            'form_definition_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['form_definition_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_form_definition" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method delete_form_definition" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -610,7 +807,6 @@ class CustomFormsApi:
         _path_params = {}
         if _params['form_definition_id']:
             _path_params['formDefinitionID'] = _params['form_definition_id']
-
 
         # process the query parameters
         _query_params = []
@@ -639,7 +835,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-definitions/{formDefinitionID}', 'DELETE',
+            '/form-definitions/{formDefinitionID}',
+            'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -649,14 +846,42 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def export_form_definitions_by_tenant(self, offset : Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**")] = None, **kwargs) -> List[ExportFormDefinitionsByTenant200ResponseInner]:  # noqa: E501
+    def export_form_definitions_by_tenant(
+        self,
+        offset: Annotated[
+            Optional[StrictInt],
+            Field(
+                description=
+                "Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0."
+            )] = None,
+        limit: Annotated[
+            Optional[conint(strict=True)],
+            Field(
+                description=
+                "Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used."
+            )] = None,
+        filters: Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*"
+            )] = None,
+        sorters: Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**"
+            )] = None,
+        **kwargs
+    ) -> List[ExportFormDefinitionsByTenant200ResponseInner]:  # noqa: E501
         """List form definitions by tenant.  # noqa: E501
 
         No parameters required.  # noqa: E501
@@ -689,10 +914,41 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the export_form_definitions_by_tenant_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.export_form_definitions_by_tenant_with_http_info(offset, limit, filters, sorters, **kwargs)  # noqa: E501
+        return self.export_form_definitions_by_tenant_with_http_info(
+            offset, limit, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def export_form_definitions_by_tenant_with_http_info(self, offset : Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def export_form_definitions_by_tenant_with_http_info(
+            self,
+            offset:
+        Annotated[
+            Optional[StrictInt],
+            Field(
+                description=
+                "Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True)],
+            Field(
+                description=
+                "Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """List form definitions by tenant.  # noqa: E501
 
         No parameters required.  # noqa: E501
@@ -737,31 +993,18 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-            'offset',
-            'limit',
-            'filters',
-            'sorters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['offset', 'limit', 'filters', 'sorters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method export_form_definitions_by_tenant" % _key
-                )
+                    " to method export_form_definitions_by_tenant" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -808,7 +1051,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-definitions/export', 'GET',
+            '/form-definitions/export',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -818,14 +1062,185 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_form_definition_by_key(self, form_definition_id : Annotated[StrictStr, Field(..., description="Form definition ID")], **kwargs) -> FormDefinitionResponse:  # noqa: E501
+    def get_file_from_s3(self, form_definition_id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="FormDefinitionID  Form definition ID"
+        )], file_id: Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "FileID  String specifying the hashed name of the uploaded file we are retrieving."
+            )], **kwargs) -> bytearray:  # noqa: E501
+        """Download definition file by fileId.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_file_from_s3(form_definition_id, file_id, async_req=True)
+        >>> result = thread.get()
+
+        :param form_definition_id: FormDefinitionID  Form definition ID (required)
+        :type form_definition_id: str
+        :param file_id: FileID  String specifying the hashed name of the uploaded file we are retrieving. (required)
+        :type file_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: bytearray
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the get_file_from_s3_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.get_file_from_s3_with_http_info(form_definition_id,
+                                                    file_id,
+                                                    **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def get_file_from_s3_with_http_info(self, form_definition_id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="FormDefinitionID  Form definition ID"
+        )], file_id: Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "FileID  String specifying the hashed name of the uploaded file we are retrieving."
+            )], **kwargs) -> ApiResponse:  # noqa: E501
+        """Download definition file by fileId.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_file_from_s3_with_http_info(form_definition_id, file_id, async_req=True)
+        >>> result = thread.get()
+
+        :param form_definition_id: FormDefinitionID  Form definition ID (required)
+        :type form_definition_id: str
+        :param file_id: FileID  String specifying the hashed name of the uploaded file we are retrieving. (required)
+        :type file_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(bytearray, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = ['form_definition_id', 'file_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_file_from_s3" % _key)
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['form_definition_id']:
+            _path_params['formDefinitionID'] = _params['form_definition_id']
+
+        if _params['file_id']:
+            _path_params['fileID'] = _params['file_id']
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept([
+            'application/json', 'image/jpeg', 'image/png',
+            'application/octet-stream'
+        ])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "bytearray",
+            '400': "SearchFormDefinitionsByTenant400Response",
+            '401': "SearchFormDefinitionsByTenant400Response",
+            '403': "SearchFormDefinitionsByTenant400Response",
+            '404': "SearchFormDefinitionsByTenant400Response",
+            '429': "Error",
+            '500': "SearchFormDefinitionsByTenant400Response",
+            '503': "SearchFormDefinitionsByTenant400Response",
+        }
+
+        return self.api_client.call_api(
+            '/form-definitions/{formDefinitionID}/file/{fileID}',
+            'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def get_form_definition_by_key(
+            self, form_definition_id: Annotated[
+                StrictStr,
+                Field(..., description="Form definition ID")],
+            **kwargs) -> FormDefinitionResponse:  # noqa: E501
         """Return a form definition.  # noqa: E501
 
         Parameter `{formDefinitionID}` should match a form definition ID.  # noqa: E501
@@ -852,10 +1267,15 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_form_definition_by_key_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_form_definition_by_key_with_http_info(form_definition_id, **kwargs)  # noqa: E501
+        return self.get_form_definition_by_key_with_http_info(
+            form_definition_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_form_definition_by_key_with_http_info(self, form_definition_id : Annotated[StrictStr, Field(..., description="Form definition ID")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_form_definition_by_key_with_http_info(
+            self, form_definition_id: Annotated[
+                StrictStr,
+                Field(..., description="Form definition ID")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Return a form definition.  # noqa: E501
 
         Parameter `{formDefinitionID}` should match a form definition ID.  # noqa: E501
@@ -894,28 +1314,18 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-            'form_definition_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['form_definition_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_form_definition_by_key" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_form_definition_by_key" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -925,7 +1335,6 @@ class CustomFormsApi:
         _path_params = {}
         if _params['form_definition_id']:
             _path_params['formDefinitionID'] = _params['form_definition_id']
-
 
         # process the query parameters
         _query_params = []
@@ -954,7 +1363,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-definitions/{formDefinitionID}', 'GET',
+            '/form-definitions/{formDefinitionID}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -964,14 +1374,19 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_form_instance_by_key(self, form_instance_id : Annotated[StrictStr, Field(..., description="Form instance ID")], **kwargs) -> FormInstanceResponse:  # noqa: E501
+    def get_form_instance_by_key(
+            self, form_instance_id: Annotated[
+                StrictStr,
+                Field(..., description="Form instance ID")],
+            **kwargs) -> FormInstanceResponse:  # noqa: E501
         """Returns a form instance.  # noqa: E501
 
         Parameter `{formInstanceID}` should match a form instance ID.  # noqa: E501
@@ -998,10 +1413,15 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the get_form_instance_by_key_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.get_form_instance_by_key_with_http_info(form_instance_id, **kwargs)  # noqa: E501
+        return self.get_form_instance_by_key_with_http_info(
+            form_instance_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_form_instance_by_key_with_http_info(self, form_instance_id : Annotated[StrictStr, Field(..., description="Form instance ID")], **kwargs) -> ApiResponse:  # noqa: E501
+    def get_form_instance_by_key_with_http_info(
+            self, form_instance_id: Annotated[
+                StrictStr,
+                Field(..., description="Form instance ID")],
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Returns a form instance.  # noqa: E501
 
         Parameter `{formInstanceID}` should match a form instance ID.  # noqa: E501
@@ -1040,28 +1460,18 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-            'form_instance_id'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['form_instance_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_form_instance_by_key" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_form_instance_by_key" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1071,7 +1481,6 @@ class CustomFormsApi:
         _path_params = {}
         if _params['form_instance_id']:
             _path_params['formInstanceID'] = _params['form_instance_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1100,7 +1509,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-instances/{formInstanceID}', 'GET',
+            '/form-instances/{formInstanceID}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1110,14 +1520,189 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def import_form_definitions(self, body : Annotated[Optional[conlist(ExportFormDefinitionsByTenant200ResponseInner)], Field(description="Body is the request payload to import form definitions")] = None, **kwargs) -> ImportFormDefinitions202Response:  # noqa: E501
+    def get_form_instance_file(self, form_instance_id: Annotated[
+        StrictStr,
+        Field(
+            ..., description="FormInstanceID  Form instance ID"
+        )], file_id: Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "FileID  String specifying the hashed name of the uploaded file we are retrieving."
+            )], **kwargs) -> bytearray:  # noqa: E501
+        """Download instance file by fileId.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_form_instance_file(form_instance_id, file_id, async_req=True)
+        >>> result = thread.get()
+
+        :param form_instance_id: FormInstanceID  Form instance ID (required)
+        :type form_instance_id: str
+        :param file_id: FileID  String specifying the hashed name of the uploaded file we are retrieving. (required)
+        :type file_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: bytearray
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the get_form_instance_file_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.get_form_instance_file_with_http_info(
+            form_instance_id, file_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def get_form_instance_file_with_http_info(
+            self, form_instance_id: Annotated[
+                StrictStr,
+                Field(..., description="FormInstanceID  Form instance ID")],
+            file_id:
+        Annotated[
+            StrictStr,
+            Field(
+                ...,
+                description=
+                "FileID  String specifying the hashed name of the uploaded file we are retrieving."
+            )], **kwargs) -> ApiResponse:  # noqa: E501
+        """Download instance file by fileId.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_form_instance_file_with_http_info(form_instance_id, file_id, async_req=True)
+        >>> result = thread.get()
+
+        :param form_instance_id: FormInstanceID  Form instance ID (required)
+        :type form_instance_id: str
+        :param file_id: FileID  String specifying the hashed name of the uploaded file we are retrieving. (required)
+        :type file_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(bytearray, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = ['form_instance_id', 'file_id']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method get_form_instance_file" % _key)
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['form_instance_id']:
+            _path_params['formInstanceID'] = _params['form_instance_id']
+
+        if _params['file_id']:
+            _path_params['fileID'] = _params['file_id']
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept([
+            'application/json', 'image/jpeg', 'image/png',
+            'application/octet-stream'
+        ])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "bytearray",
+            '400': "SearchFormDefinitionsByTenant400Response",
+            '401': "SearchFormDefinitionsByTenant400Response",
+            '403': "SearchFormDefinitionsByTenant400Response",
+            '404': "SearchFormDefinitionsByTenant400Response",
+            '429': "Error",
+            '500': "SearchFormDefinitionsByTenant400Response",
+            '503': "SearchFormDefinitionsByTenant400Response",
+        }
+
+        return self.api_client.call_api(
+            '/form-instances/{formInstanceID}/file/{fileID}',
+            'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def import_form_definitions(
+            self,
+            body: Annotated[
+                Optional[conlist(ExportFormDefinitionsByTenant200ResponseInner
+                                 )],
+                Field(description=
+                      "Body is the request payload to import form definitions"
+                      )] = None,
+            **kwargs) -> ImportFormDefinitions202Response:  # noqa: E501
         """Import form definitions from export.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -1143,10 +1728,19 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the import_form_definitions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.import_form_definitions_with_http_info(body, **kwargs)  # noqa: E501
+        return self.import_form_definitions_with_http_info(
+            body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def import_form_definitions_with_http_info(self, body : Annotated[Optional[conlist(ExportFormDefinitionsByTenant200ResponseInner)], Field(description="Body is the request payload to import form definitions")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def import_form_definitions_with_http_info(
+            self,
+            body: Annotated[
+                Optional[conlist(ExportFormDefinitionsByTenant200ResponseInner
+                                 )],
+                Field(description=
+                      "Body is the request payload to import form definitions"
+                      )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Import form definitions from export.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -1184,28 +1778,17 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-            'body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method import_form_definitions" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method import_form_definitions" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1231,11 +1814,11 @@ class CustomFormsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1250,7 +1833,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-definitions/import', 'POST',
+            '/form-definitions/import',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -1260,14 +1844,27 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_form_definition(self, form_definition_id : Annotated[StrictStr, Field(..., description="Form definition ID")], body : Annotated[Optional[conlist(Dict[str, Dict[str, Any]])], Field(description="Body is the request payload to patch a form definition, check: https://jsonpatch.com")] = None, **kwargs) -> FormDefinitionResponse:  # noqa: E501
+    def patch_form_definition(
+            self,
+            form_definition_id: Annotated[
+                StrictStr,
+                Field(..., description="Form definition ID")],
+            body:
+        Annotated[
+            Optional[conlist(Dict[str, Dict[str, Any]])],
+            Field(
+                description=
+                "Body is the request payload to patch a form definition, check: https://jsonpatch.com"
+            )] = None,
+            **kwargs) -> FormDefinitionResponse:  # noqa: E501
         """Patch a form definition.  # noqa: E501
 
         Parameter `{formDefinitionID}` should match a form definition ID.  # noqa: E501
@@ -1296,10 +1893,23 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_form_definition_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_form_definition_with_http_info(form_definition_id, body, **kwargs)  # noqa: E501
+        return self.patch_form_definition_with_http_info(
+            form_definition_id, body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_form_definition_with_http_info(self, form_definition_id : Annotated[StrictStr, Field(..., description="Form definition ID")], body : Annotated[Optional[conlist(Dict[str, Dict[str, Any]])], Field(description="Body is the request payload to patch a form definition, check: https://jsonpatch.com")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_form_definition_with_http_info(
+            self,
+            form_definition_id: Annotated[
+                StrictStr,
+                Field(..., description="Form definition ID")],
+            body:
+        Annotated[
+            Optional[conlist(Dict[str, Dict[str, Any]])],
+            Field(
+                description=
+                "Body is the request payload to patch a form definition, check: https://jsonpatch.com"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Patch a form definition.  # noqa: E501
 
         Parameter `{formDefinitionID}` should match a form definition ID.  # noqa: E501
@@ -1340,29 +1950,17 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-            'form_definition_id',
-            'body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['form_definition_id', 'body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_form_definition" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method patch_form_definition" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1372,7 +1970,6 @@ class CustomFormsApi:
         _path_params = {}
         if _params['form_definition_id']:
             _path_params['formDefinitionID'] = _params['form_definition_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1391,11 +1988,11 @@ class CustomFormsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1411,7 +2008,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-definitions/{formDefinitionID}', 'PATCH',
+            '/form-definitions/{formDefinitionID}',
+            'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -1421,14 +2019,27 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def patch_form_instance(self, form_instance_id : Annotated[StrictStr, Field(..., description="Form instance ID")], body : Annotated[Optional[conlist(Dict[str, Dict[str, Any]])], Field(description="Body is the request payload to patch a form instance, check: https://jsonpatch.com")] = None, **kwargs) -> FormInstanceResponse:  # noqa: E501
+    def patch_form_instance(
+            self,
+            form_instance_id: Annotated[
+                StrictStr,
+                Field(..., description="Form instance ID")],
+            body:
+        Annotated[
+            Optional[conlist(Dict[str, Dict[str, Any]])],
+            Field(
+                description=
+                "Body is the request payload to patch a form instance, check: https://jsonpatch.com"
+            )] = None,
+            **kwargs) -> FormInstanceResponse:  # noqa: E501
         """Patch a form instance.  # noqa: E501
 
         Parameter `{formInstanceID}` should match a form instance ID.  # noqa: E501
@@ -1457,10 +2068,23 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the patch_form_instance_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.patch_form_instance_with_http_info(form_instance_id, body, **kwargs)  # noqa: E501
+        return self.patch_form_instance_with_http_info(form_instance_id, body,
+                                                       **kwargs)  # noqa: E501
 
     @validate_arguments
-    def patch_form_instance_with_http_info(self, form_instance_id : Annotated[StrictStr, Field(..., description="Form instance ID")], body : Annotated[Optional[conlist(Dict[str, Dict[str, Any]])], Field(description="Body is the request payload to patch a form instance, check: https://jsonpatch.com")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def patch_form_instance_with_http_info(
+            self,
+            form_instance_id: Annotated[
+                StrictStr,
+                Field(..., description="Form instance ID")],
+            body:
+        Annotated[
+            Optional[conlist(Dict[str, Dict[str, Any]])],
+            Field(
+                description=
+                "Body is the request payload to patch a form instance, check: https://jsonpatch.com"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Patch a form instance.  # noqa: E501
 
         Parameter `{formInstanceID}` should match a form instance ID.  # noqa: E501
@@ -1501,29 +2125,17 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-            'form_instance_id',
-            'body'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['form_instance_id', 'body']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_form_instance" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method patch_form_instance" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1533,7 +2145,6 @@ class CustomFormsApi:
         _path_params = {}
         if _params['form_instance_id']:
             _path_params['formInstanceID'] = _params['form_instance_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1552,11 +2163,11 @@ class CustomFormsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -1573,7 +2184,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-instances/{formInstanceID}', 'PATCH',
+            '/form-instances/{formInstanceID}',
+            'PATCH',
             _path_params,
             _query_params,
             _header_params,
@@ -1583,14 +2195,45 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def search_form_definitions_by_tenant(self, offset : Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**")] = None, **kwargs) -> ListFormDefinitionsByTenantResponse:  # noqa: E501
+    def search_form_definitions_by_tenant(
+            self,
+            offset:
+        Annotated[
+            Optional[StrictInt],
+            Field(
+                description=
+                "Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True)],
+            Field(
+                description=
+                "Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**"
+            )] = None,
+            **kwargs) -> ListFormDefinitionsByTenantResponse:  # noqa: E501
         """Export form definitions by tenant.  # noqa: E501
 
         No parameters required.  # noqa: E501
@@ -1623,10 +2266,41 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the search_form_definitions_by_tenant_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.search_form_definitions_by_tenant_with_http_info(offset, limit, filters, sorters, **kwargs)  # noqa: E501
+        return self.search_form_definitions_by_tenant_with_http_info(
+            offset, limit, filters, sorters, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def search_form_definitions_by_tenant_with_http_info(self, offset : Annotated[Optional[StrictInt], Field(description="Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0.")] = None, limit : Annotated[Optional[conint(strict=True)], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*")] = None, sorters : Annotated[Optional[StrictStr], Field(description="Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def search_form_definitions_by_tenant_with_http_info(
+            self,
+            offset:
+        Annotated[
+            Optional[StrictInt],
+            Field(
+                description=
+                "Offset  Integer specifying the offset of the first result from the beginning of the collection. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). The offset value is record-based, not page-based, and the index starts at 0."
+            )] = None,
+            limit:
+        Annotated[
+            Optional[conint(strict=True)],
+            Field(
+                description=
+                "Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*"
+            )] = None,
+            sorters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Export form definitions by tenant.  # noqa: E501
 
         No parameters required.  # noqa: E501
@@ -1671,31 +2345,18 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-            'offset',
-            'limit',
-            'filters',
-            'sorters'
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = ['offset', 'limit', 'filters', 'sorters']
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method search_form_definitions_by_tenant" % _key
-                )
+                    " to method search_form_definitions_by_tenant" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1742,7 +2403,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-definitions', 'GET',
+            '/form-definitions',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1752,14 +2414,37 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def search_form_element_data_by_element_id(self, form_instance_id : Annotated[StrictStr, Field(..., description="Form instance ID")], form_element_id : Annotated[StrictStr, Field(..., description="Form element ID")], limit : Annotated[Optional[conint(strict=True)], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  **label**: *eq, ne, in*  **subLabel**: *eq, ne, in*")] = None, **kwargs) -> ListFormElementDataByElementIDResponse:  # noqa: E501
+    def search_form_element_data_by_element_id(
+            self,
+            form_instance_id: Annotated[
+                StrictStr,
+                Field(..., description="Form instance ID")],
+            form_element_id: Annotated[
+                StrictStr,
+                Field(..., description="Form element ID")],
+            limit:
+        Annotated[
+            Optional[conint(strict=True)],
+            Field(
+                description=
+                "Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  **label**: *eq, ne, in*  **subLabel**: *eq, ne, in*"
+            )] = None,
+            **kwargs) -> ListFormElementDataByElementIDResponse:  # noqa: E501
         """Retrieves dynamic data by element.  # noqa: E501
 
         Parameter `{formInstanceID}` should match a form instance ID. Parameter `{formElementID}` should match a form element ID at the data source configuration.  # noqa: E501
@@ -1792,10 +2477,34 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the search_form_element_data_by_element_id_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.search_form_element_data_by_element_id_with_http_info(form_instance_id, form_element_id, limit, filters, **kwargs)  # noqa: E501
+        return self.search_form_element_data_by_element_id_with_http_info(
+            form_instance_id, form_element_id, limit, filters,
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def search_form_element_data_by_element_id_with_http_info(self, form_instance_id : Annotated[StrictStr, Field(..., description="Form instance ID")], form_element_id : Annotated[StrictStr, Field(..., description="Form element ID")], limit : Annotated[Optional[conint(strict=True)], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  **label**: *eq, ne, in*  **subLabel**: *eq, ne, in*")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def search_form_element_data_by_element_id_with_http_info(
+            self,
+            form_instance_id: Annotated[
+                StrictStr,
+                Field(..., description="Form instance ID")],
+            form_element_id: Annotated[
+                StrictStr,
+                Field(..., description="Form element ID")],
+            limit:
+        Annotated[
+            Optional[conint(strict=True)],
+            Field(
+                description=
+                "Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  **label**: *eq, ne, in*  **subLabel**: *eq, ne, in*"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Retrieves dynamic data by element.  # noqa: E501
 
         Parameter `{formInstanceID}` should match a form instance ID. Parameter `{formElementID}` should match a form element ID at the data source configuration.  # noqa: E501
@@ -1841,30 +2550,19 @@ class CustomFormsApi:
         _params = locals()
 
         _all_params = [
-            'form_instance_id',
-            'form_element_id',
-            'limit',
-            'filters'
+            'form_instance_id', 'form_element_id', 'limit', 'filters'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method search_form_element_data_by_element_id" % _key
-                )
+                    " to method search_form_element_data_by_element_id" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -1877,7 +2575,6 @@ class CustomFormsApi:
 
         if _params['form_element_id']:
             _path_params['formElementID'] = _params['form_element_id']
-
 
         # process the query parameters
         _query_params = []
@@ -1912,7 +2609,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-instances/{formInstanceID}/data-source/{formElementID}', 'GET',
+            '/form-instances/{formInstanceID}/data-source/{formElementID}',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1922,14 +2620,16 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def search_form_instances_by_tenant(self, **kwargs) -> ListFormInstancesByTenantResponse:  # noqa: E501
+    def search_form_instances_by_tenant(
+            self, **kwargs) -> ListFormInstancesByTenantResponse:  # noqa: E501
         """List form instances by tenant.  # noqa: E501
 
         No parameters required.  # noqa: E501
@@ -1954,10 +2654,12 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the search_form_instances_by_tenant_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.search_form_instances_by_tenant_with_http_info(**kwargs)  # noqa: E501
+        return self.search_form_instances_by_tenant_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def search_form_instances_by_tenant_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def search_form_instances_by_tenant_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """List form instances by tenant.  # noqa: E501
 
         No parameters required.  # noqa: E501
@@ -1994,27 +2696,18 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method search_form_instances_by_tenant" % _key
-                )
+                    " to method search_form_instances_by_tenant" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2049,7 +2742,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-instances', 'GET',
+            '/form-instances',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2059,14 +2753,17 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def search_pre_defined_select_options(self, **kwargs) -> ListPredefinedSelectOptionsResponse:  # noqa: E501
+    def search_pre_defined_select_options(
+            self,
+            **kwargs) -> ListPredefinedSelectOptionsResponse:  # noqa: E501
         """List predefined select options.  # noqa: E501
 
         No parameters required.  # noqa: E501
@@ -2091,10 +2788,12 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the search_pre_defined_select_options_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.search_pre_defined_select_options_with_http_info(**kwargs)  # noqa: E501
+        return self.search_pre_defined_select_options_with_http_info(
+            **kwargs)  # noqa: E501
 
     @validate_arguments
-    def search_pre_defined_select_options_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def search_pre_defined_select_options_with_http_info(
+            self, **kwargs) -> ApiResponse:  # noqa: E501
         """List predefined select options.  # noqa: E501
 
         No parameters required.  # noqa: E501
@@ -2131,27 +2830,18 @@ class CustomFormsApi:
 
         _params = locals()
 
-        _all_params = [
-        ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params = []
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method search_pre_defined_select_options" % _key
-                )
+                    " to method search_pre_defined_select_options" % _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2186,7 +2876,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-definitions/predefined-select-options', 'GET',
+            '/form-definitions/predefined-select-options',
+            'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -2196,14 +2887,45 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def show_preview_data_source(self, form_definition_id : Annotated[StrictStr, Field(..., description="Form definition ID")], limit : Annotated[Optional[conint(strict=True)], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, gt, sw, in*  **label**: *eq, gt, sw, in*  **subLabel**: *eq, gt, sw, in*")] = None, query : Annotated[Optional[StrictStr], Field(description="Query  String specifying to query against")] = None, form_element_preview_request : Annotated[Optional[FormElementPreviewRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None, **kwargs) -> PreviewDataSourceResponse:  # noqa: E501
+    def show_preview_data_source(
+            self,
+            form_definition_id: Annotated[
+                StrictStr,
+                Field(..., description="Form definition ID")],
+            limit:
+        Annotated[
+            Optional[conint(strict=True)],
+            Field(
+                description=
+                "Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, gt, sw, in*  **label**: *eq, gt, sw, in*  **subLabel**: *eq, gt, sw, in*"
+            )] = None,
+            query: Annotated[
+                Optional[StrictStr],
+                Field(description="Query  String specifying to query against"
+                      )] = None,
+            form_element_preview_request:
+        Annotated[
+            Optional[FormElementPreviewRequest],
+            Field(
+                description=
+                "Body is the request payload to create a form definition dynamic schema"
+            )] = None,
+            **kwargs) -> PreviewDataSourceResponse:  # noqa: E501
         """Preview form definition data source.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -2237,10 +2959,42 @@ class CustomFormsApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the show_preview_data_source_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.show_preview_data_source_with_http_info(form_definition_id, limit, filters, query, form_element_preview_request, **kwargs)  # noqa: E501
+        return self.show_preview_data_source_with_http_info(
+            form_definition_id, limit, filters, query,
+            form_element_preview_request, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def show_preview_data_source_with_http_info(self, form_definition_id : Annotated[StrictStr, Field(..., description="Form definition ID")], limit : Annotated[Optional[conint(strict=True)], Field(description="Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used.")] = None, filters : Annotated[Optional[StrictStr], Field(description="Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, gt, sw, in*  **label**: *eq, gt, sw, in*  **subLabel**: *eq, gt, sw, in*")] = None, query : Annotated[Optional[StrictStr], Field(description="Query  String specifying to query against")] = None, form_element_preview_request : Annotated[Optional[FormElementPreviewRequest], Field(description="Body is the request payload to create a form definition dynamic schema")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def show_preview_data_source_with_http_info(
+            self,
+            form_definition_id: Annotated[
+                StrictStr,
+                Field(..., description="Form definition ID")],
+            limit:
+        Annotated[
+            Optional[conint(strict=True)],
+            Field(
+                description=
+                "Limit  Integer specifying the maximum number of records to return in a single API call. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-results). If it is not specified, a default limit is used."
+            )] = None,
+            filters:
+        Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, gt, sw, in*  **label**: *eq, gt, sw, in*  **subLabel**: *eq, gt, sw, in*"
+            )] = None,
+            query: Annotated[
+                Optional[StrictStr],
+                Field(description="Query  String specifying to query against"
+                      )] = None,
+            form_element_preview_request:
+        Annotated[
+            Optional[FormElementPreviewRequest],
+            Field(
+                description=
+                "Body is the request payload to create a form definition dynamic schema"
+            )] = None,
+            **kwargs) -> ApiResponse:  # noqa: E501
         """Preview form definition data source.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -2287,31 +3041,20 @@ class CustomFormsApi:
         _params = locals()
 
         _all_params = [
-            'form_definition_id',
-            'limit',
-            'filters',
-            'query',
+            'form_definition_id', 'limit', 'filters', 'query',
             'form_element_preview_request'
         ]
-        _all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout',
-                '_request_auth',
-                '_content_type',
-                '_headers'
-            ]
-        )
+        _all_params.extend([
+            'async_req', '_return_http_data_only', '_preload_content',
+            '_request_timeout', '_request_auth', '_content_type', '_headers'
+        ])
 
         # validate the arguments
         for _key, _val in _params['kwargs'].items():
             if _key not in _all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method show_preview_data_source" % _key
-                )
+                raise ApiTypeError("Got an unexpected keyword argument '%s'"
+                                   " to method show_preview_data_source" %
+                                   _key)
             _params[_key] = _val
         del _params['kwargs']
 
@@ -2321,7 +3064,6 @@ class CustomFormsApi:
         _path_params = {}
         if _params['form_definition_id']:
             _path_params['formDefinitionID'] = _params['form_definition_id']
-
 
         # process the query parameters
         _query_params = []
@@ -2349,11 +3091,11 @@ class CustomFormsApi:
             ['application/json'])  # noqa: E501
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+        _content_types_list = _params.get(
+            '_content_type',
+            self.api_client.select_header_content_type(['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
@@ -2369,7 +3111,8 @@ class CustomFormsApi:
         }
 
         return self.api_client.call_api(
-            '/form-definitions/{formDefinitionID}/data-source', 'POST',
+            '/form-definitions/{formDefinitionID}/data-source',
+            'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2379,7 +3122,8 @@ class CustomFormsApi:
             response_types_map=_response_types_map,
             auth_settings=_auth_settings,
             async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _return_http_data_only=_params.get(
+                '_return_http_data_only'),  # noqa: E501
             _preload_content=_params.get('_preload_content', True),
             _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,

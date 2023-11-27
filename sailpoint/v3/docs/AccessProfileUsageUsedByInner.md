@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.access_profile_usage_used_by_inner import AccessProfileUsageUsedByInner
+from sailpoint.v3.models.access_profile_usage_used_by_inner import AccessProfileUsageUsedByInner
 
 # TODO update the JSON string below
 json = "{}"

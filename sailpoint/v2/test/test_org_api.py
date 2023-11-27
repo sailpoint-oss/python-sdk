@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 
-from v2.api.org_api import OrgApi  # noqa: E501
+from sailpoint.v2.api.org_api import OrgApi  # noqa: E501
 
 
 class TestOrgApi(unittest.TestCase):

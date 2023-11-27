@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.reviewable_entitlement import ReviewableEntitlement
+from sailpoint.v3.models.reviewable_entitlement import ReviewableEntitlement
 
 # TODO update the JSON string below
 json = "{}"

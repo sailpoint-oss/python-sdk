@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.identity_profile_exported_object import IdentityProfileExportedObject
+from sailpoint.v3.models.identity_profile_exported_object import IdentityProfileExportedObject
 
 # TODO update the JSON string below
 json = "{}"

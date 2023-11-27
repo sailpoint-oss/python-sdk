@@ -11,23 +11,29 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
+
 
 class SearchAttributeConfig(BaseModel):
     """
     SearchAttributeConfig
     """
-    name: Optional[StrictStr] = Field(None, description="Name of the new attribute")
-    display_name: Optional[StrictStr] = Field(None, alias="displayName", description="The display name of the new attribute")
-    application_attributes: Optional[Dict[str, Any]] = Field(None, alias="applicationAttributes", description="Map of application id and their associated attribute.")
+    name: Optional[StrictStr] = Field(None,
+                                      description="Name of the new attribute")
+    display_name: Optional[StrictStr] = Field(
+        None,
+        alias="displayName",
+        description="The display name of the new attribute")
+    application_attributes: Optional[Dict[str, Any]] = Field(
+        None,
+        alias="applicationAttributes",
+        description="Map of application id and their associated attribute.")
     __properties = ["name", "displayName", "applicationAttributes"]
 
     class Config:
@@ -50,10 +56,7 @@ class SearchAttributeConfig(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -66,10 +69,11 @@ class SearchAttributeConfig(BaseModel):
             return SearchAttributeConfig.parse_obj(obj)
 
         _obj = SearchAttributeConfig.parse_obj({
-            "name": obj.get("name"),
-            "display_name": obj.get("displayName"),
-            "application_attributes": obj.get("applicationAttributes")
+            "name":
+            obj.get("name"),
+            "display_name":
+            obj.get("displayName"),
+            "application_attributes":
+            obj.get("applicationAttributes")
         })
         return _obj
-
-

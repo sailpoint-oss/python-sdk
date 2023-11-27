@@ -11,16 +11,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr
-from beta.models.common_access_type import CommonAccessType
+from sailpoint.beta.models.common_access_type import CommonAccessType
+
 
 class CommonAccessItemAccess(BaseModel):
     """
@@ -29,10 +28,16 @@ class CommonAccessItemAccess(BaseModel):
     id: Optional[StrictStr] = Field(None, description="Common access ID")
     type: Optional[CommonAccessType] = None
     name: Optional[StrictStr] = Field(None, description="Common access name")
-    description: Optional[StrictStr] = Field(None, description="Common access description")
-    owner_name: Optional[StrictStr] = Field(None, alias="ownerName", description="Common access owner name")
-    owner_id: Optional[StrictStr] = Field(None, alias="ownerId", description="Common access owner ID")
-    __properties = ["id", "type", "name", "description", "ownerName", "ownerId"]
+    description: Optional[StrictStr] = Field(
+        None, description="Common access description")
+    owner_name: Optional[StrictStr] = Field(
+        None, alias="ownerName", description="Common access owner name")
+    owner_id: Optional[StrictStr] = Field(None,
+                                          alias="ownerId",
+                                          description="Common access owner ID")
+    __properties = [
+        "id", "type", "name", "description", "ownerName", "ownerId"
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -54,10 +59,7 @@ class CommonAccessItemAccess(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -70,13 +72,17 @@ class CommonAccessItemAccess(BaseModel):
             return CommonAccessItemAccess.parse_obj(obj)
 
         _obj = CommonAccessItemAccess.parse_obj({
-            "id": obj.get("id"),
-            "type": obj.get("type"),
-            "name": obj.get("name"),
-            "description": obj.get("description"),
-            "owner_name": obj.get("ownerName"),
-            "owner_id": obj.get("ownerId")
+            "id":
+            obj.get("id"),
+            "type":
+            obj.get("type"),
+            "name":
+            obj.get("name"),
+            "description":
+            obj.get("description"),
+            "owner_name":
+            obj.get("ownerName"),
+            "owner_id":
+            obj.get("ownerId")
         })
         return _obj
-
-

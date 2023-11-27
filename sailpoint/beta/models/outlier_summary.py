@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
@@ -21,14 +20,28 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, validator
 
+
 class OutlierSummary(BaseModel):
     """
     OutlierSummary
     """
-    type: Optional[StrictStr] = Field(None, description="The type of outlier summary")
-    snapshot_date: Optional[datetime] = Field(None, alias="snapshotDate", description="The date the bulk outlier detection ran/snapshot was created")
-    total_outliers: Optional[StrictInt] = Field(None, alias="totalOutliers", description="Total number of outliers for the customer making the request")
-    total_identities: Optional[StrictInt] = Field(None, alias="totalIdentities", description="Total number of identities for the customer making the request")
+    type: Optional[StrictStr] = Field(
+        None, description="The type of outlier summary")
+    snapshot_date: Optional[datetime] = Field(
+        None,
+        alias="snapshotDate",
+        description=
+        "The date the bulk outlier detection ran/snapshot was created")
+    total_outliers: Optional[StrictInt] = Field(
+        None,
+        alias="totalOutliers",
+        description=
+        "Total number of outliers for the customer making the request")
+    total_identities: Optional[StrictInt] = Field(
+        None,
+        alias="totalIdentities",
+        description=
+        "Total number of identities for the customer making the request")
     __properties = ["type", "snapshotDate", "totalOutliers", "totalIdentities"]
 
     @validator('type')
@@ -38,7 +51,8 @@ class OutlierSummary(BaseModel):
             return value
 
         if value not in ('LOW_SIMILARITY', 'STRUCTURAL'):
-            raise ValueError("must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
+            raise ValueError(
+                "must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
         return value
 
     class Config:
@@ -61,10 +75,7 @@ class OutlierSummary(BaseModel):
 
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
         return _dict
 
     @classmethod
@@ -77,11 +88,13 @@ class OutlierSummary(BaseModel):
             return OutlierSummary.parse_obj(obj)
 
         _obj = OutlierSummary.parse_obj({
-            "type": obj.get("type"),
-            "snapshot_date": obj.get("snapshotDate"),
-            "total_outliers": obj.get("totalOutliers"),
-            "total_identities": obj.get("totalIdentities")
+            "type":
+            obj.get("type"),
+            "snapshot_date":
+            obj.get("snapshotDate"),
+            "total_outliers":
+            obj.get("totalOutliers"),
+            "total_identities":
+            obj.get("totalIdentities")
         })
         return _obj
-
-

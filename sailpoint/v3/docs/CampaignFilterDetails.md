@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from v3.models.campaign_filter_details import CampaignFilterDetails
+from sailpoint.v3.models.campaign_filter_details import CampaignFilterDetails
 
 # TODO update the JSON string below
 json = "{}"

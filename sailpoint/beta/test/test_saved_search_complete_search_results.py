@@ -11,11 +11,11 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import unittest
 import datetime
 
-from beta.models.saved_search_complete_search_results import SavedSearchCompleteSearchResults  # noqa: E501
+from sailpoint.beta.models.saved_search_complete_search_results import SavedSearchCompleteSearchResults  # noqa: E501
+
 
 class TestSavedSearchCompleteSearchResults(unittest.TestCase):
     """SavedSearchCompleteSearchResults unit test stubs"""
@@ -26,7 +26,8 @@ class TestSavedSearchCompleteSearchResults(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> SavedSearchCompleteSearchResults:
+    def make_instance(self,
+                      include_optional) -> SavedSearchCompleteSearchResults:
         """Test SavedSearchCompleteSearchResults
             include_option is a boolean, when False only required
             params are included, when True both required and
@@ -36,19 +37,19 @@ class TestSavedSearchCompleteSearchResults(unittest.TestCase):
         model = SavedSearchCompleteSearchResults()  # noqa: E501
         if include_optional:
             return SavedSearchCompleteSearchResults(
-                account = beta.models.saved_search_complete_search_results_account.SavedSearchComplete_searchResults_Account(
+                account = sailpoint.beta.models.saved_search_complete_search_results_account.SavedSearchComplete_searchResults_Account(
                     count = '3', 
                     noun = 'accounts', 
                     preview = [
                         []
                         ], ),
-                entitlement = beta.models.saved_search_complete_search_results_entitlement.SavedSearchComplete_searchResults_Entitlement(
+                entitlement = sailpoint.beta.models.saved_search_complete_search_results_entitlement.SavedSearchComplete_searchResults_Entitlement(
                     count = '2', 
                     noun = 'entitlements', 
                     preview = [
                         []
                         ], ),
-                identity = beta.models.saved_search_complete_search_results_identity.SavedSearchComplete_searchResults_Identity(
+                identity = sailpoint.beta.models.saved_search_complete_search_results_identity.SavedSearchComplete_searchResults_Identity(
                     count = '2', 
                     noun = 'identities', 
                     preview = [
@@ -64,6 +65,7 @@ class TestSavedSearchCompleteSearchResults(unittest.TestCase):
         """Test SavedSearchCompleteSearchResults"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
+
 
 if __name__ == '__main__':
     unittest.main()

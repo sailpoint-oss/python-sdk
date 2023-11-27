@@ -11,21 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import json
 import pprint
 import re  # noqa: F401
 from aenum import Enum, no_arg
 
 
-
-
-
 class NonEmployeeIdentityDtoType(str, Enum):
     """
     Identifies if the identity is a normal identity or a governance group
     """
-
     """
     allowed enum values
     """
@@ -36,5 +31,3 @@ class NonEmployeeIdentityDtoType(str, Enum):
     def from_json(cls, json_str: str) -> NonEmployeeIdentityDtoType:
         """Create an instance of NonEmployeeIdentityDtoType from a JSON string"""
         return NonEmployeeIdentityDtoType(json.loads(json_str))
-
-

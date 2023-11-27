@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from beta.models.managed_client import ManagedClient
+from sailpoint.beta.models.managed_client import ManagedClient
 
 # TODO update the JSON string below
 json = "{}"
