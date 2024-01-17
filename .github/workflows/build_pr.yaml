@@ -77,5 +77,5 @@ jobs:
         if: steps.buildCC.outcome == 'success'
         run: |
           pip install -r requirements.txt
-          pip install -e sailpoint
+          pip install -e .
           python validation_test.py -v

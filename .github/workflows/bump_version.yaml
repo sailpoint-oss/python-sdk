@@ -120,7 +120,7 @@ jobs:
         shell: pwsh
         run: |
           pip install -r requirements.txt
-          pip install -e sailpoint
+          pip install -e .
           python validation_test.py -v
         
       - name: Commit changes and create new version tag
