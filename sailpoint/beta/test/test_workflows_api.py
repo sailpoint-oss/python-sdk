@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.workflows_api import WorkflowsApi  # noqa: E501
+from sailpoint.beta.api.workflows_api import WorkflowsApi
 
 
 class TestWorkflowsApi(unittest.TestCase):
     """WorkflowsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = WorkflowsApi()  # noqa: E501
+        self.api = WorkflowsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,126 +28,126 @@ class TestWorkflowsApi(unittest.TestCase):
     def test_cancel_workflow_execution(self) -> None:
         """Test case for cancel_workflow_execution
 
-        Cancel Workflow Execution by ID  # noqa: E501
+        Cancel Workflow Execution by ID
         """
         pass
 
     def test_create_workflow(self) -> None:
         """Test case for create_workflow
 
-        Create Workflow  # noqa: E501
+        Create Workflow
         """
         pass
 
     def test_delete_workflow(self) -> None:
         """Test case for delete_workflow
 
-        Delete Workflow By Id  # noqa: E501
+        Delete Workflow By Id
         """
         pass
 
     def test_get_workflow(self) -> None:
         """Test case for get_workflow
 
-        Get Workflow By Id  # noqa: E501
+        Get Workflow By Id
         """
         pass
 
     def test_get_workflow_execution(self) -> None:
         """Test case for get_workflow_execution
 
-        Get a Workflow Execution  # noqa: E501
+        Get a Workflow Execution
         """
         pass
 
     def test_get_workflow_execution_history(self) -> None:
         """Test case for get_workflow_execution_history
 
-        Get Workflow Execution History  # noqa: E501
+        Get Workflow Execution History
         """
         pass
 
     def test_list_complete_workflow_library(self) -> None:
         """Test case for list_complete_workflow_library
 
-        List Complete Workflow Library  # noqa: E501
+        List Complete Workflow Library
         """
         pass
 
     def test_list_workflow_executions(self) -> None:
         """Test case for list_workflow_executions
 
-        List Workflow Executions  # noqa: E501
+        List Workflow Executions
         """
         pass
 
     def test_list_workflow_library_actions(self) -> None:
         """Test case for list_workflow_library_actions
 
-        List Workflow Library Actions  # noqa: E501
+        List Workflow Library Actions
         """
         pass
 
     def test_list_workflow_library_operators(self) -> None:
         """Test case for list_workflow_library_operators
 
-        List Workflow Library Operators  # noqa: E501
+        List Workflow Library Operators
         """
         pass
 
     def test_list_workflow_library_triggers(self) -> None:
         """Test case for list_workflow_library_triggers
 
-        List Workflow Library Triggers  # noqa: E501
+        List Workflow Library Triggers
         """
         pass
 
     def test_list_workflows(self) -> None:
         """Test case for list_workflows
 
-        List Workflows  # noqa: E501
+        List Workflows
         """
         pass
 
     def test_patch_workflow(self) -> None:
         """Test case for patch_workflow
 
-        Patch Workflow  # noqa: E501
+        Patch Workflow
         """
         pass
 
     def test_post_external_execute_workflow(self) -> None:
         """Test case for post_external_execute_workflow
 
-        Execute Workflow via External Trigger  # noqa: E501
+        Execute Workflow via External Trigger
         """
         pass
 
     def test_post_workflow_external_trigger(self) -> None:
         """Test case for post_workflow_external_trigger
 
-        Generate External Trigger OAuth Client  # noqa: E501
+        Generate External Trigger OAuth Client
         """
         pass
 
     def test_test_external_execute_workflow(self) -> None:
         """Test case for test_external_execute_workflow
 
-        Test Workflow via External Trigger  # noqa: E501
+        Test Workflow via External Trigger
         """
         pass
 
     def test_test_workflow(self) -> None:
         """Test case for test_workflow
 
-        Test Workflow By Id  # noqa: E501
+        Test Workflow By Id
         """
         pass
 
     def test_update_workflow(self) -> None:
         """Test case for update_workflow
 
-        Update Workflow  # noqa: E501
+        Update Workflow
         """
         pass
 

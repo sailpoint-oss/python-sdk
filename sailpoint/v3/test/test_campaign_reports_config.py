@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.campaign_reports_config import CampaignReportsConfig  # noqa: E501
+from sailpoint.v3.models.campaign_reports_config import CampaignReportsConfig
 
 
 class TestCampaignReportsConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCampaignReportsConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CampaignReportsConfig`
         """
-        model = CampaignReportsConfig()  # noqa: E501
+        model = CampaignReportsConfig()
         if include_optional:
             return CampaignReportsConfig(
                 identity_attribute_columns = [firstname, lastname]

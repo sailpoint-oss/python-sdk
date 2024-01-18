@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner  # noqa: E501
+from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
 
 
 class TestPatchPotentialRoleRequestInner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestPatchPotentialRoleRequestInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PatchPotentialRoleRequestInner`
         """
-        model = PatchPotentialRoleRequestInner()  # noqa: E501
+        model = PatchPotentialRoleRequestInner()
         if include_optional:
             return PatchPotentialRoleRequestInner(
                 op = 'replace',

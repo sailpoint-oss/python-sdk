@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.org_config import OrgConfig  # noqa: E501
+from sailpoint.beta.models.org_config import OrgConfig
 
 
 class TestOrgConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestOrgConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `OrgConfig`
         """
-        model = OrgConfig()  # noqa: E501
+        model = OrgConfig()
         if include_optional:
             return OrgConfig(
                 org_name = 'acme-solar',

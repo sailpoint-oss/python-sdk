@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_mining_role_type import RoleMiningRoleType  # noqa: E501
+from sailpoint.beta.models.role_mining_role_type import RoleMiningRoleType
 
 
 class TestRoleMiningRoleType(unittest.TestCase):

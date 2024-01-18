@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_mining_identity_distribution import RoleMiningIdentityDistribution  # noqa: E501
+from sailpoint.beta.models.role_mining_identity_distribution import RoleMiningIdentityDistribution
 
 
 class TestRoleMiningIdentityDistribution(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestRoleMiningIdentityDistribution(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleMiningIdentityDistribution`
         """
-        model = RoleMiningIdentityDistribution()  # noqa: E501
+        model = RoleMiningIdentityDistribution()
         if include_optional:
             return RoleMiningIdentityDistribution(
                 attribute_name = 'department',

@@ -16,67 +16,84 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.access_recommendation_message import AccessRecommendationMessage
 from sailpoint.beta.models.access_request_recommendation_item_detail_access import AccessRequestRecommendationItemDetailAccess
 from sailpoint.beta.models.translation_message import TranslationMessage
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccessRequestRecommendationItemDetail(BaseModel):
     """
     AccessRequestRecommendationItemDetail
     """
+
+  # noqa: E501
     identity_id: Optional[StrictStr] = Field(
-        None,
-        alias="identityId",
-        description="Identity ID for the recommendation")
+        default=None,
+        description="Identity ID for the recommendation",
+        alias="identityId")
     access: Optional[AccessRequestRecommendationItemDetailAccess] = None
     ignored: Optional[StrictBool] = Field(
-        None,
+        default=None,
         description=
         "Whether or not the identity has already chosen to ignore this recommendation."
     )
     requested: Optional[StrictBool] = Field(
-        None,
+        default=None,
         description=
         "Whether or not the identity has already chosen to request this recommendation."
     )
     viewed: Optional[StrictBool] = Field(
-        None,
+        default=None,
         description=
         "Whether or not the identity reportedly viewed this recommendation.")
-    messages: Optional[conlist(AccessRecommendationMessage)] = None
-    translation_messages: Optional[conlist(TranslationMessage)] = Field(
-        None,
-        alias="translationMessages",
-        description="The list of translation messages")
-    __properties = [
+    messages: Optional[List[AccessRecommendationMessage]] = None
+    translation_messages: Optional[List[TranslationMessage]] = Field(
+        default=None,
+        description="The list of translation messages",
+        alias="translationMessages")
+    __properties: ClassVar[List[str]] = [
         "identityId", "access", "ignored", "requested", "viewed", "messages",
         "translationMessages"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccessRequestRecommendationItemDetail:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccessRequestRecommendationItemDetail from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of access
         if self.access:
             _dict['access'] = self.access.to_dict()
@@ -97,16 +114,16 @@ class AccessRequestRecommendationItemDetail(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccessRequestRecommendationItemDetail:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccessRequestRecommendationItemDetail from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccessRequestRecommendationItemDetail.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccessRequestRecommendationItemDetail.parse_obj({
-            "identity_id":
+        _obj = cls.model_validate({
+            "identityId":
             obj.get("identityId"),
             "access":
             AccessRequestRecommendationItemDetailAccess.from_dict(
@@ -121,7 +138,7 @@ class AccessRequestRecommendationItemDetail(BaseModel):
                 AccessRecommendationMessage.from_dict(_item)
                 for _item in obj.get("messages")
             ] if obj.get("messages") is not None else None,
-            "translation_messages": [
+            "translationMessages": [
                 TranslationMessage.from_dict(_item)
                 for _item in obj.get("translationMessages")
             ] if obj.get("translationMessages") is not None else None

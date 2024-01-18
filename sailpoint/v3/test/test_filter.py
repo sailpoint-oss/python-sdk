@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.filter import Filter  # noqa: E501
+from sailpoint.v3.models.filter import Filter
 
 
 class TestFilter(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFilter(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Filter`
         """
-        model = Filter()  # noqa: E501
+        model = Filter()
         if include_optional:
             return Filter(
                 type = 'RANGE',

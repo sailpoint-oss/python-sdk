@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workflow_all_of_creator import WorkflowAllOfCreator  # noqa: E501
+from sailpoint.beta.models.workflow_all_of_creator import WorkflowAllOfCreator
 
 
 class TestWorkflowAllOfCreator(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkflowAllOfCreator(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkflowAllOfCreator`
         """
-        model = WorkflowAllOfCreator()  # noqa: E501
+        model = WorkflowAllOfCreator()
         if include_optional:
             return WorkflowAllOfCreator(
                 type = 'IDENTITY',

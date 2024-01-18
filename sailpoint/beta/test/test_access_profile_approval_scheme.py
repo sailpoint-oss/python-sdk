@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_profile_approval_scheme import AccessProfileApprovalScheme  # noqa: E501
+from sailpoint.beta.models.access_profile_approval_scheme import AccessProfileApprovalScheme
 
 
 class TestAccessProfileApprovalScheme(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessProfileApprovalScheme(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessProfileApprovalScheme`
         """
-        model = AccessProfileApprovalScheme()  # noqa: E501
+        model = AccessProfileApprovalScheme()
         if include_optional:
             return AccessProfileApprovalScheme(
                 approver_type = 'GOVERNANCE_GROUP',

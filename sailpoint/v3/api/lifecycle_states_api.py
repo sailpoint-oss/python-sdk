@@ -11,14 +11,20 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-import re  # noqa: F401
 import io
 import warnings
 
-from pydantic import validate_arguments, ValidationError
+from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
+from typing import Dict, List, Optional, Tuple, Union, Any
 
+try:
+    from typing import Annotated
+except ImportError:
+    from typing_extensions import Annotated
+
+from pydantic import Field
 from typing_extensions import Annotated
-from pydantic import Field, StrictBool, StrictStr, conint, conlist
+from pydantic import StrictBool, StrictStr
 
 from typing import List, Optional
 
@@ -30,8 +36,7 @@ from sailpoint.v3.models.set_lifecycle_state_request import SetLifecycleStateReq
 
 from sailpoint.v3.api_client import ApiClient
 from sailpoint.v3.api_response import ApiResponse
-from sailpoint.v3.exceptions import (  # noqa: F401
-    ApiTypeError, ApiValueError)
+from sailpoint.v3.rest import RESTResponseType
 
 
 class LifecycleStatesApi:
@@ -46,1068 +51,1787 @@ class LifecycleStatesApi:
             api_client = ApiClient.get_default()
         self.api_client = api_client
 
-    @validate_arguments
-    def create_lifecycle_state(self, identity_profile_id: Annotated[
-        StrictStr, Field(..., description="Identity Profile ID")],
-                               lifecycle_state: Annotated[
-                                   LifecycleState,
-                                   Field(..., description="Lifecycle State")],
-                               **kwargs) -> LifecycleState:  # noqa: E501
-        """Create Lifecycle State  # noqa: E501
+    @validate_call
+    def create_lifecycle_state(
+        self,
+        identity_profile_id: Annotated[StrictStr,
+                                       Field(
+                                           description="Identity Profile ID")],
+        lifecycle_state: Annotated[LifecycleState,
+                                   Field(description="Lifecycle State")],
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> LifecycleState:
+        """Create Lifecycle State
 
-        This API creates a new Lifecycle State. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.create_lifecycle_state(identity_profile_id, lifecycle_state, async_req=True)
-        >>> result = thread.get()
-
-        :param identity_profile_id: Identity Profile ID (required)
-        :type identity_profile_id: str
-        :param lifecycle_state: Lifecycle State (required)
-        :type lifecycle_state: LifecycleState
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: LifecycleState
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the create_lifecycle_state_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.create_lifecycle_state_with_http_info(
-            identity_profile_id, lifecycle_state, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def create_lifecycle_state_with_http_info(
-            self, identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="Identity Profile ID")],
-            lifecycle_state: Annotated[
-                LifecycleState,
-                Field(..., description="Lifecycle State")],
-            **kwargs) -> ApiResponse:  # noqa: E501
-        """Create Lifecycle State  # noqa: E501
-
-        This API creates a new Lifecycle State. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.create_lifecycle_state_with_http_info(identity_profile_id, lifecycle_state, async_req=True)
-        >>> result = thread.get()
+        This API creates a new Lifecycle State. A token with ORG_ADMIN or API authority is required to call this API.
 
         :param identity_profile_id: Identity Profile ID (required)
         :type identity_profile_id: str
         :param lifecycle_state: Lifecycle State (required)
         :type lifecycle_state: LifecycleState
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
         :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
         :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(LifecycleState, status_code(int), headers(HTTPHeaderDict))
-        """
+        """ # noqa: E501
 
-        _params = locals()
+        _param = self._create_lifecycle_state_serialize(
+            identity_profile_id=identity_profile_id,
+            lifecycle_state=lifecycle_state,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
 
-        _all_params = ['identity_profile_id', 'lifecycle_state']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
-
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method create_lifecycle_state" % _key)
-            _params[_key] = _val
-        del _params['kwargs']
-
-        _collection_formats = {}
-
-        # process the path parameters
-        _path_params = {}
-        if _params['identity_profile_id']:
-            _path_params['identity-profile-id'] = _params[
-                'identity_profile_id']
-
-        # process the query parameters
-        _query_params = []
-        # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
-        # process the form parameters
-        _form_params = []
-        _files = {}
-        # process the body parameter
-        _body_params = None
-        if _params['lifecycle_state'] is not None:
-            _body_params = _params['lifecycle_state']
-
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
-        if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
-
-        # authentication setting
-        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
-
-        _response_types_map = {
+        _response_types_map: Dict[str, Optional[str]] = {
             '201': "LifecycleState",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto",
+            '500': "ErrorResponseDto"
         }
-
-        return self.api_client.call_api(
-            '/identity-profiles/{identity-profile-id}/lifecycle-states',
-            'POST',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
             response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
+        ).data
 
-    @validate_arguments
-    def delete_lifecycle_state(
-            self, identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="Identity Profile ID")],
-            lifecycle_state_id: Annotated[
-                StrictStr,
-                Field(..., description="Lifecycle State ID")],
-            **kwargs) -> LifecyclestateDeleted:  # noqa: E501
-        """Delete Lifecycle State by ID  # noqa: E501
+    @validate_call
+    def create_lifecycle_state_with_http_info(
+        self,
+        identity_profile_id: Annotated[StrictStr,
+                                       Field(
+                                           description="Identity Profile ID")],
+        lifecycle_state: Annotated[LifecycleState,
+                                   Field(description="Lifecycle State")],
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[LifecycleState]:
+        """Create Lifecycle State
 
-        This endpoint deletes the Lifecycle State using its ID. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.delete_lifecycle_state(identity_profile_id, lifecycle_state_id, async_req=True)
-        >>> result = thread.get()
+        This API creates a new Lifecycle State. A token with ORG_ADMIN or API authority is required to call this API.
 
         :param identity_profile_id: Identity Profile ID (required)
         :type identity_profile_id: str
-        :param lifecycle_state_id: Lifecycle State ID (required)
-        :type lifecycle_state_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: LifecyclestateDeleted
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the delete_lifecycle_state_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.delete_lifecycle_state_with_http_info(
-            identity_profile_id, lifecycle_state_id, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def delete_lifecycle_state_with_http_info(
-            self, identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="Identity Profile ID")],
-            lifecycle_state_id: Annotated[
-                StrictStr,
-                Field(..., description="Lifecycle State ID")],
-            **kwargs) -> ApiResponse:  # noqa: E501
-        """Delete Lifecycle State by ID  # noqa: E501
-
-        This endpoint deletes the Lifecycle State using its ID. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.delete_lifecycle_state_with_http_info(identity_profile_id, lifecycle_state_id, async_req=True)
-        >>> result = thread.get()
-
-        :param identity_profile_id: Identity Profile ID (required)
-        :type identity_profile_id: str
-        :param lifecycle_state_id: Lifecycle State ID (required)
-        :type lifecycle_state_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
+        :param lifecycle_state: Lifecycle State (required)
+        :type lifecycle_state: LifecycleState
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
         :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
         :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(LifecyclestateDeleted, status_code(int), headers(HTTPHeaderDict))
-        """
+        """ # noqa: E501
 
-        _params = locals()
+        _param = self._create_lifecycle_state_serialize(
+            identity_profile_id=identity_profile_id,
+            lifecycle_state=lifecycle_state,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
 
-        _all_params = ['identity_profile_id', 'lifecycle_state_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "LifecycleState",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
 
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method delete_lifecycle_state" % _key)
-            _params[_key] = _val
-        del _params['kwargs']
+    @validate_call
+    def create_lifecycle_state_without_preload_content(
+        self,
+        identity_profile_id: Annotated[StrictStr,
+                                       Field(
+                                           description="Identity Profile ID")],
+        lifecycle_state: Annotated[LifecycleState,
+                                   Field(description="Lifecycle State")],
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create Lifecycle State
 
-        _collection_formats = {}
+        This API creates a new Lifecycle State. A token with ORG_ADMIN or API authority is required to call this API.
+
+        :param identity_profile_id: Identity Profile ID (required)
+        :type identity_profile_id: str
+        :param lifecycle_state: Lifecycle State (required)
+        :type lifecycle_state: LifecycleState
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._create_lifecycle_state_serialize(
+            identity_profile_id=identity_profile_id,
+            lifecycle_state=lifecycle_state,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': "LifecycleState",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        return response_data.response
+
+    def _create_lifecycle_state_serialize(
+        self,
+        identity_profile_id,
+        lifecycle_state,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
 
         # process the path parameters
-        _path_params = {}
-        if _params['identity_profile_id']:
-            _path_params['identity-profile-id'] = _params[
-                'identity_profile_id']
-
-        if _params['lifecycle_state_id']:
-            _path_params['lifecycle-state-id'] = _params['lifecycle_state_id']
-
+        if identity_profile_id is not None:
+            _path_params['identity-profile-id'] = identity_profile_id
         # process the query parameters
-        _query_params = []
         # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
-        _form_params = []
-        _files = {}
         # process the body parameter
-        _body_params = None
+        if lifecycle_state is not None:
+            _body_params = lifecycle_state
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json'])
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    ['application/json']))
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
-        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
 
-        _response_types_map = {
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path=
+            '/identity-profiles/{identity-profile-id}/lifecycle-states',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth)
+
+    @validate_call
+    def delete_lifecycle_state(
+        self,
+        identity_profile_id: Annotated[StrictStr,
+                                       Field(
+                                           description="Identity Profile ID")],
+        lifecycle_state_id: Annotated[StrictStr,
+                                      Field(description="Lifecycle State ID")],
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> LifecyclestateDeleted:
+        """Delete Lifecycle State by ID
+
+        This endpoint deletes the Lifecycle State using its ID. A token with API, or ORG_ADMIN authority is required to call this API.
+
+        :param identity_profile_id: Identity Profile ID (required)
+        :type identity_profile_id: str
+        :param lifecycle_state_id: Lifecycle State ID (required)
+        :type lifecycle_state_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_lifecycle_state_serialize(
+            identity_profile_id=identity_profile_id,
+            lifecycle_state_id=lifecycle_state_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
+
+        _response_types_map: Dict[str, Optional[str]] = {
             '202': "LifecyclestateDeleted",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto",
+            '500': "ErrorResponseDto"
         }
-
-        return self.api_client.call_api(
-            '/identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}',
-            'DELETE',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
             response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
+        ).data
 
-    @validate_arguments
-    def get_lifecycle_state(self, identity_profile_id: Annotated[
-        StrictStr, Field(..., description="Identity Profile ID")],
-                            lifecycle_state_id: Annotated[
-                                StrictStr,
-                                Field(..., description="Lifecycle State ID")],
-                            **kwargs) -> LifecycleState:  # noqa: E501
-        """Retrieves Lifecycle State  # noqa: E501
+    @validate_call
+    def delete_lifecycle_state_with_http_info(
+        self,
+        identity_profile_id: Annotated[StrictStr,
+                                       Field(
+                                           description="Identity Profile ID")],
+        lifecycle_state_id: Annotated[StrictStr,
+                                      Field(description="Lifecycle State ID")],
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[LifecyclestateDeleted]:
+        """Delete Lifecycle State by ID
 
-        This endpoint retrieves a Lifecycle State. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_lifecycle_state(identity_profile_id, lifecycle_state_id, async_req=True)
-        >>> result = thread.get()
-
-        :param identity_profile_id: Identity Profile ID (required)
-        :type identity_profile_id: str
-        :param lifecycle_state_id: Lifecycle State ID (required)
-        :type lifecycle_state_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: LifecycleState
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the get_lifecycle_state_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.get_lifecycle_state_with_http_info(identity_profile_id,
-                                                       lifecycle_state_id,
-                                                       **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def get_lifecycle_state_with_http_info(
-            self, identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="Identity Profile ID")],
-            lifecycle_state_id: Annotated[
-                StrictStr,
-                Field(..., description="Lifecycle State ID")],
-            **kwargs) -> ApiResponse:  # noqa: E501
-        """Retrieves Lifecycle State  # noqa: E501
-
-        This endpoint retrieves a Lifecycle State. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_lifecycle_state_with_http_info(identity_profile_id, lifecycle_state_id, async_req=True)
-        >>> result = thread.get()
+        This endpoint deletes the Lifecycle State using its ID. A token with API, or ORG_ADMIN authority is required to call this API.
 
         :param identity_profile_id: Identity Profile ID (required)
         :type identity_profile_id: str
         :param lifecycle_state_id: Lifecycle State ID (required)
         :type lifecycle_state_id: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
         :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
         :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(LifecycleState, status_code(int), headers(HTTPHeaderDict))
-        """
+        """ # noqa: E501
 
-        _params = locals()
+        _param = self._delete_lifecycle_state_serialize(
+            identity_profile_id=identity_profile_id,
+            lifecycle_state_id=lifecycle_state_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
 
-        _all_params = ['identity_profile_id', 'lifecycle_state_id']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "LifecyclestateDeleted",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
 
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method get_lifecycle_state" % _key)
-            _params[_key] = _val
-        del _params['kwargs']
+    @validate_call
+    def delete_lifecycle_state_without_preload_content(
+        self,
+        identity_profile_id: Annotated[StrictStr,
+                                       Field(
+                                           description="Identity Profile ID")],
+        lifecycle_state_id: Annotated[StrictStr,
+                                      Field(description="Lifecycle State ID")],
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete Lifecycle State by ID
 
-        _collection_formats = {}
+        This endpoint deletes the Lifecycle State using its ID. A token with API, or ORG_ADMIN authority is required to call this API.
+
+        :param identity_profile_id: Identity Profile ID (required)
+        :type identity_profile_id: str
+        :param lifecycle_state_id: Lifecycle State ID (required)
+        :type lifecycle_state_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_lifecycle_state_serialize(
+            identity_profile_id=identity_profile_id,
+            lifecycle_state_id=lifecycle_state_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '202': "LifecyclestateDeleted",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        return response_data.response
+
+    def _delete_lifecycle_state_serialize(
+        self,
+        identity_profile_id,
+        lifecycle_state_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
 
         # process the path parameters
-        _path_params = {}
-        if _params['identity_profile_id']:
-            _path_params['identity-profile-id'] = _params[
-                'identity_profile_id']
-
-        if _params['lifecycle_state_id']:
-            _path_params['lifecycle-state-id'] = _params['lifecycle_state_id']
-
+        if identity_profile_id is not None:
+            _path_params['identity-profile-id'] = identity_profile_id
+        if lifecycle_state_id is not None:
+            _path_params['lifecycle-state-id'] = lifecycle_state_id
         # process the query parameters
-        _query_params = []
         # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
-        _form_params = []
-        _files = {}
         # process the body parameter
-        _body_params = None
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json'])
 
         # authentication setting
-        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
 
-        _response_types_map = {
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path=
+            '/identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth)
+
+    @validate_call
+    def get_lifecycle_state(
+        self,
+        identity_profile_id: Annotated[StrictStr,
+                                       Field(
+                                           description="Identity Profile ID")],
+        lifecycle_state_id: Annotated[StrictStr,
+                                      Field(description="Lifecycle State ID")],
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> LifecycleState:
+        """Retrieves Lifecycle State
+
+        This endpoint retrieves a Lifecycle State. A token with ORG_ADMIN or API authority is required to call this API.
+
+        :param identity_profile_id: Identity Profile ID (required)
+        :type identity_profile_id: str
+        :param lifecycle_state_id: Lifecycle State ID (required)
+        :type lifecycle_state_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_lifecycle_state_serialize(
+            identity_profile_id=identity_profile_id,
+            lifecycle_state_id=lifecycle_state_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
+
+        _response_types_map: Dict[str, Optional[str]] = {
             '200': "LifecycleState",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto",
+            '500': "ErrorResponseDto"
         }
-
-        return self.api_client.call_api(
-            '/identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}',
-            'GET',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
             response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
+        ).data
 
-    @validate_arguments
-    def list_lifecycle_states(
-            self,
-            identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="The IdentityProfile id")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**"
-            )] = None,
-            **kwargs) -> List[LifecycleState]:  # noqa: E501
-        """Lists LifecycleStates  # noqa: E501
+    @validate_call
+    def get_lifecycle_state_with_http_info(
+        self,
+        identity_profile_id: Annotated[StrictStr,
+                                       Field(
+                                           description="Identity Profile ID")],
+        lifecycle_state_id: Annotated[StrictStr,
+                                      Field(description="Lifecycle State ID")],
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[LifecycleState]:
+        """Retrieves Lifecycle State
 
-        This end-point lists all the LifecycleStates associated with IdentityProfiles. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        This endpoint retrieves a Lifecycle State. A token with ORG_ADMIN or API authority is required to call this API.
 
-        >>> thread = api.list_lifecycle_states(identity_profile_id, limit, offset, count, sorters, async_req=True)
-        >>> result = thread.get()
-
-        :param identity_profile_id: The IdentityProfile id (required)
+        :param identity_profile_id: Identity Profile ID (required)
         :type identity_profile_id: str
-        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type limit: int
-        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type offset: int
-        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type count: bool
-        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**
-        :type sorters: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: List[LifecycleState]
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the list_lifecycle_states_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.list_lifecycle_states_with_http_info(
-            identity_profile_id, limit, offset, count, sorters,
-            **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def list_lifecycle_states_with_http_info(
-            self,
-            identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="The IdentityProfile id")],
-            limit:
-        Annotated[
-            Optional[conint(strict=True, le=250, ge=0)],
-            Field(
-                description=
-                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            offset:
-        Annotated[
-            Optional[conint(strict=True, ge=0)],
-            Field(
-                description=
-                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            count:
-        Annotated[
-            Optional[StrictBool],
-            Field(
-                description=
-                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
-            )] = None,
-            sorters:
-        Annotated[
-            Optional[StrictStr],
-            Field(
-                description=
-                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**"
-            )] = None,
-            **kwargs) -> ApiResponse:  # noqa: E501
-        """Lists LifecycleStates  # noqa: E501
-
-        This end-point lists all the LifecycleStates associated with IdentityProfiles. A token with API, or ORG_ADMIN authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.list_lifecycle_states_with_http_info(identity_profile_id, limit, offset, count, sorters, async_req=True)
-        >>> result = thread.get()
-
-        :param identity_profile_id: The IdentityProfile id (required)
-        :type identity_profile_id: str
-        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type limit: int
-        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type offset: int
-        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        :type count: bool
-        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**
-        :type sorters: str
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
+        :param lifecycle_state_id: Lifecycle State ID (required)
+        :type lifecycle_state_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
         :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
         :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(List[LifecycleState], status_code(int), headers(HTTPHeaderDict))
-        """
+        """ # noqa: E501
 
-        _params = locals()
+        _param = self._get_lifecycle_state_serialize(
+            identity_profile_id=identity_profile_id,
+            lifecycle_state_id=lifecycle_state_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
 
-        _all_params = [
-            'identity_profile_id', 'limit', 'offset', 'count', 'sorters'
-        ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "LifecycleState",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
 
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method list_lifecycle_states" % _key)
-            _params[_key] = _val
-        del _params['kwargs']
+    @validate_call
+    def get_lifecycle_state_without_preload_content(
+        self,
+        identity_profile_id: Annotated[StrictStr,
+                                       Field(
+                                           description="Identity Profile ID")],
+        lifecycle_state_id: Annotated[StrictStr,
+                                      Field(description="Lifecycle State ID")],
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retrieves Lifecycle State
 
-        _collection_formats = {}
+        This endpoint retrieves a Lifecycle State. A token with ORG_ADMIN or API authority is required to call this API.
+
+        :param identity_profile_id: Identity Profile ID (required)
+        :type identity_profile_id: str
+        :param lifecycle_state_id: Lifecycle State ID (required)
+        :type lifecycle_state_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_lifecycle_state_serialize(
+            identity_profile_id=identity_profile_id,
+            lifecycle_state_id=lifecycle_state_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "LifecycleState",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        return response_data.response
+
+    def _get_lifecycle_state_serialize(
+        self,
+        identity_profile_id,
+        lifecycle_state_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
 
         # process the path parameters
-        _path_params = {}
-        if _params['identity_profile_id']:
-            _path_params['identity-profile-id'] = _params[
-                'identity_profile_id']
-
+        if identity_profile_id is not None:
+            _path_params['identity-profile-id'] = identity_profile_id
+        if lifecycle_state_id is not None:
+            _path_params['lifecycle-state-id'] = lifecycle_state_id
         # process the query parameters
-        _query_params = []
-        if _params.get('limit') is not None:  # noqa: E501
-            _query_params.append(('limit', _params['limit']))
-
-        if _params.get('offset') is not None:  # noqa: E501
-            _query_params.append(('offset', _params['offset']))
-
-        if _params.get('count') is not None:  # noqa: E501
-            _query_params.append(('count', _params['count']))
-
-        if _params.get('sorters') is not None:  # noqa: E501
-            _query_params.append(('sorters', _params['sorters']))
-
         # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
-        _form_params = []
-        _files = {}
         # process the body parameter
-        _body_params = None
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json'])
 
         # authentication setting
-        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
 
-        _response_types_map = {
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path=
+            '/identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth)
+
+    @validate_call
+    def list_lifecycle_states(
+        self,
+        identity_profile_id: Annotated[
+            StrictStr, Field(description="The IdentityProfile id")],
+        limit: Annotated[
+            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        offset: Annotated[
+            Optional[Annotated[int, Field(strict=True, ge=0)]],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        count: Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        sorters: Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**"
+            )] = None,
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[LifecycleState]:
+        """Lists LifecycleStates
+
+        This end-point lists all the LifecycleStates associated with IdentityProfiles. A token with API, or ORG_ADMIN authority is required to call this API.
+
+        :param identity_profile_id: The IdentityProfile id (required)
+        :type identity_profile_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**
+        :type sorters: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_lifecycle_states_serialize(
+            identity_profile_id=identity_profile_id,
+            limit=limit,
+            offset=offset,
+            count=count,
+            sorters=sorters,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
+
+        _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[LifecycleState]",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto",
+            '500': "ErrorResponseDto"
         }
-
-        return self.api_client.call_api(
-            '/identity-profiles/{identity-profile-id}/lifecycle-states',
-            'GET',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
             response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
+        ).data
 
-    @validate_arguments
-    def set_lifecycle_state(
-            self, identity_id: Annotated[
-                StrictStr,
-                Field(..., description="The ID of the identity to update")],
-            set_lifecycle_state_request: SetLifecycleStateRequest,
-            **kwargs) -> SetLifecycleState200Response:  # noqa: E501
-        """Set Lifecycle State  # noqa: E501
+    @validate_call
+    def list_lifecycle_states_with_http_info(
+        self,
+        identity_profile_id: Annotated[
+            StrictStr, Field(description="The IdentityProfile id")],
+        limit: Annotated[
+            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        offset: Annotated[
+            Optional[Annotated[int, Field(strict=True, ge=0)]],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        count: Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        sorters: Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**"
+            )] = None,
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[LifecycleState]]:
+        """Lists LifecycleStates
 
-        This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding Identity Profile. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        This end-point lists all the LifecycleStates associated with IdentityProfiles. A token with API, or ORG_ADMIN authority is required to call this API.
 
-        >>> thread = api.set_lifecycle_state(identity_id, set_lifecycle_state_request, async_req=True)
-        >>> result = thread.get()
-
-        :param identity_id: The ID of the identity to update (required)
-        :type identity_id: str
-        :param set_lifecycle_state_request: (required)
-        :type set_lifecycle_state_request: SetLifecycleStateRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: SetLifecycleState200Response
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the set_lifecycle_state_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.set_lifecycle_state_with_http_info(
-            identity_id, set_lifecycle_state_request, **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def set_lifecycle_state_with_http_info(
-            self, identity_id: Annotated[
-                StrictStr,
-                Field(..., description="The ID of the identity to update")],
-            set_lifecycle_state_request: SetLifecycleStateRequest,
-            **kwargs) -> ApiResponse:  # noqa: E501
-        """Set Lifecycle State  # noqa: E501
-
-        This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding Identity Profile. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.set_lifecycle_state_with_http_info(identity_id, set_lifecycle_state_request, async_req=True)
-        >>> result = thread.get()
-
-        :param identity_id: The ID of the identity to update (required)
-        :type identity_id: str
-        :param set_lifecycle_state_request: (required)
-        :type set_lifecycle_state_request: SetLifecycleStateRequest
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
+        :param identity_profile_id: The IdentityProfile id (required)
+        :type identity_profile_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**
+        :type sorters: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
         :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
         :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(SetLifecycleState200Response, status_code(int), headers(HTTPHeaderDict))
-        """
+        """ # noqa: E501
 
-        _params = locals()
+        _param = self._list_lifecycle_states_serialize(
+            identity_profile_id=identity_profile_id,
+            limit=limit,
+            offset=offset,
+            count=count,
+            sorters=sorters,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
 
-        _all_params = ['identity_id', 'set_lifecycle_state_request']
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[LifecycleState]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
 
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method set_lifecycle_state" % _key)
-            _params[_key] = _val
-        del _params['kwargs']
+    @validate_call
+    def list_lifecycle_states_without_preload_content(
+        self,
+        identity_profile_id: Annotated[
+            StrictStr, Field(description="The IdentityProfile id")],
+        limit: Annotated[
+            Optional[Annotated[int, Field(le=250, strict=True, ge=0)]],
+            Field(
+                description=
+                "Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        offset: Annotated[
+            Optional[Annotated[int, Field(strict=True, ge=0)]],
+            Field(
+                description=
+                "Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        count: Annotated[
+            Optional[StrictBool],
+            Field(
+                description=
+                "If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information."
+            )] = None,
+        sorters: Annotated[
+            Optional[StrictStr],
+            Field(
+                description=
+                "Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**"
+            )] = None,
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Lists LifecycleStates
 
-        _collection_formats = {}
+        This end-point lists all the LifecycleStates associated with IdentityProfiles. A token with API, or ORG_ADMIN authority is required to call this API.
+
+        :param identity_profile_id: The IdentityProfile id (required)
+        :type identity_profile_id: str
+        :param limit: Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type limit: int
+        :param offset: Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type offset: int
+        :param count: If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        :type count: bool
+        :param sorters: Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified**
+        :type sorters: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._list_lifecycle_states_serialize(
+            identity_profile_id=identity_profile_id,
+            limit=limit,
+            offset=offset,
+            count=count,
+            sorters=sorters,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "List[LifecycleState]",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        return response_data.response
+
+    def _list_lifecycle_states_serialize(
+        self,
+        identity_profile_id,
+        limit,
+        offset,
+        count,
+        sorters,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
 
         # process the path parameters
-        _path_params = {}
-        if _params['identity_id']:
-            _path_params['identity-id'] = _params['identity_id']
-
+        if identity_profile_id is not None:
+            _path_params['identity-profile-id'] = identity_profile_id
         # process the query parameters
-        _query_params = []
+        if limit is not None:
+
+            _query_params.append(('limit', limit))
+
+        if offset is not None:
+
+            _query_params.append(('offset', offset))
+
+        if count is not None:
+
+            _query_params.append(('count', count))
+
+        if sorters is not None:
+
+            _query_params.append(('sorters', sorters))
+
         # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
-        _form_params = []
-        _files = {}
         # process the body parameter
-        _body_params = None
-        if _params['set_lifecycle_state_request'] is not None:
-            _body_params = _params['set_lifecycle_state_request']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(['application/json']))
-        if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+            ['application/json'])
 
         # authentication setting
-        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
 
-        _response_types_map = {
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path=
+            '/identity-profiles/{identity-profile-id}/lifecycle-states',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth)
+
+    @validate_call
+    def set_lifecycle_state(
+        self,
+        identity_id: Annotated[
+            StrictStr,
+            Field(description="The ID of the identity to update")],
+        set_lifecycle_state_request: SetLifecycleStateRequest,
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SetLifecycleState200Response:
+        """Set Lifecycle State
+
+        This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding Identity Profile. A token with ORG_ADMIN or API authority is required to call this API.
+
+        :param identity_id: The ID of the identity to update (required)
+        :type identity_id: str
+        :param set_lifecycle_state_request: (required)
+        :type set_lifecycle_state_request: SetLifecycleStateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._set_lifecycle_state_serialize(
+            identity_id=identity_id,
+            set_lifecycle_state_request=set_lifecycle_state_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
+
+        _response_types_map: Dict[str, Optional[str]] = {
             '200': "SetLifecycleState200Response",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto",
+            '500': "ErrorResponseDto"
         }
-
-        return self.api_client.call_api(
-            '/identities/{identity-id}/set-lifecycle-state',
-            'POST',
-            _path_params,
-            _query_params,
-            _header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
             response_types_map=_response_types_map,
-            auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
-            collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
+        ).data
 
-    @validate_arguments
-    def update_lifecycle_states(
-            self, identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="Identity Profile ID")],
-            lifecycle_state_id: Annotated[
-                StrictStr,
-                Field(..., description="Lifecycle State ID")],
-            json_patch_operation:
-        Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption "
-            )], **kwargs) -> LifecycleState:  # noqa: E501
-        """Update Lifecycle State  # noqa: E501
+    @validate_call
+    def set_lifecycle_state_with_http_info(
+        self,
+        identity_id: Annotated[
+            StrictStr,
+            Field(description="The ID of the identity to update")],
+        set_lifecycle_state_request: SetLifecycleStateRequest,
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SetLifecycleState200Response]:
+        """Set Lifecycle State
 
-        This endpoint updates individual Lifecycle State fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding Identity Profile. A token with ORG_ADMIN or API authority is required to call this API.
 
-        >>> thread = api.update_lifecycle_states(identity_profile_id, lifecycle_state_id, json_patch_operation, async_req=True)
-        >>> result = thread.get()
-
-        :param identity_profile_id: Identity Profile ID (required)
-        :type identity_profile_id: str
-        :param lifecycle_state_id: Lifecycle State ID (required)
-        :type lifecycle_state_id: str
-        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption  (required)
-        :type json_patch_operation: List[JsonPatchOperation]
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _request_timeout: timeout setting for this request.
-               If one number provided, it will be total request
-               timeout. It can also be a pair (tuple) of
-               (connection, read) timeouts.
-        :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: LifecycleState
-        """
-        kwargs['_return_http_data_only'] = True
-        if '_preload_content' in kwargs:
-            message = "Error! Please call the update_lifecycle_states_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
-            raise ValueError(message)
-        return self.update_lifecycle_states_with_http_info(
-            identity_profile_id, lifecycle_state_id, json_patch_operation,
-            **kwargs)  # noqa: E501
-
-    @validate_arguments
-    def update_lifecycle_states_with_http_info(
-            self, identity_profile_id: Annotated[
-                StrictStr,
-                Field(..., description="Identity Profile ID")],
-            lifecycle_state_id: Annotated[
-                StrictStr,
-                Field(..., description="Lifecycle State ID")],
-            json_patch_operation:
-        Annotated[
-            conlist(JsonPatchOperation),
-            Field(
-                ...,
-                description=
-                "A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption "
-            )], **kwargs) -> ApiResponse:  # noqa: E501
-        """Update Lifecycle State  # noqa: E501
-
-        This endpoint updates individual Lifecycle State fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. A token with ORG_ADMIN or API authority is required to call this API.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.update_lifecycle_states_with_http_info(identity_profile_id, lifecycle_state_id, json_patch_operation, async_req=True)
-        >>> result = thread.get()
-
-        :param identity_profile_id: Identity Profile ID (required)
-        :type identity_profile_id: str
-        :param lifecycle_state_id: Lifecycle State ID (required)
-        :type lifecycle_state_id: str
-        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption  (required)
-        :type json_patch_operation: List[JsonPatchOperation]
-        :param async_req: Whether to execute the request asynchronously.
-        :type async_req: bool, optional
-        :param _preload_content: if False, the ApiResponse.data will
-                                 be set to none and raw_data will store the
-                                 HTTP response body without reading/decoding.
-                                 Default is True.
-        :type _preload_content: bool, optional
-        :param _return_http_data_only: response data instead of ApiResponse
-                                       object with status code, headers, etc
-        :type _return_http_data_only: bool, optional
+        :param identity_id: The ID of the identity to update (required)
+        :type identity_id: str
+        :param set_lifecycle_state_request: (required)
+        :type set_lifecycle_state_request: SetLifecycleStateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
         :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the authentication
-                              in the spec for a single request.
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
         :type _request_auth: dict, optional
-        :type _content_type: string, optional: force content-type for the request
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
         :return: Returns the result object.
-                 If the method is called asynchronously,
-                 returns the request thread.
-        :rtype: tuple(LifecycleState, status_code(int), headers(HTTPHeaderDict))
-        """
+        """ # noqa: E501
 
-        _params = locals()
+        _param = self._set_lifecycle_state_serialize(
+            identity_id=identity_id,
+            set_lifecycle_state_request=set_lifecycle_state_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
 
-        _all_params = [
-            'identity_profile_id', 'lifecycle_state_id', 'json_patch_operation'
-        ]
-        _all_params.extend([
-            'async_req', '_return_http_data_only', '_preload_content',
-            '_request_timeout', '_request_auth', '_content_type', '_headers'
-        ])
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SetLifecycleState200Response",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
 
-        # validate the arguments
-        for _key, _val in _params['kwargs'].items():
-            if _key not in _all_params:
-                raise ApiTypeError("Got an unexpected keyword argument '%s'"
-                                   " to method update_lifecycle_states" % _key)
-            _params[_key] = _val
-        del _params['kwargs']
+    @validate_call
+    def set_lifecycle_state_without_preload_content(
+        self,
+        identity_id: Annotated[
+            StrictStr,
+            Field(description="The ID of the identity to update")],
+        set_lifecycle_state_request: SetLifecycleStateRequest,
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Set Lifecycle State
 
-        _collection_formats = {}
+        This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding Identity Profile. A token with ORG_ADMIN or API authority is required to call this API.
+
+        :param identity_id: The ID of the identity to update (required)
+        :type identity_id: str
+        :param set_lifecycle_state_request: (required)
+        :type set_lifecycle_state_request: SetLifecycleStateRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._set_lifecycle_state_serialize(
+            identity_id=identity_id,
+            set_lifecycle_state_request=set_lifecycle_state_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SetLifecycleState200Response",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        return response_data.response
+
+    def _set_lifecycle_state_serialize(
+        self,
+        identity_id,
+        set_lifecycle_state_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
 
         # process the path parameters
-        _path_params = {}
-        if _params['identity_profile_id']:
-            _path_params['identity-profile-id'] = _params[
-                'identity_profile_id']
-
-        if _params['lifecycle_state_id']:
-            _path_params['lifecycle-state-id'] = _params['lifecycle_state_id']
-
+        if identity_id is not None:
+            _path_params['identity-id'] = identity_id
         # process the query parameters
-        _query_params = []
         # process the header parameters
-        _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
-        _form_params = []
-        _files = {}
         # process the body parameter
-        _body_params = None
-        if _params['json_patch_operation'] is not None:
-            _body_params = _params['json_patch_operation']
+        if set_lifecycle_state_request is not None:
+            _body_params = set_lifecycle_state_request
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json'])
 
         # set the HTTP header `Content-Type`
-        _content_types_list = _params.get(
-            '_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json-patch+json']))
-        if _content_types_list:
-            _header_params['Content-Type'] = _content_types_list
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    ['application/json']))
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
-        _auth_settings = ['UserContextAuth', 'UserContextAuth']  # noqa: E501
+        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
 
-        _response_types_map = {
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/identities/{identity-id}/set-lifecycle-state',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth)
+
+    @validate_call
+    def update_lifecycle_states(
+        self,
+        identity_profile_id: Annotated[StrictStr,
+                                       Field(
+                                           description="Identity Profile ID")],
+        lifecycle_state_id: Annotated[StrictStr,
+                                      Field(description="Lifecycle State ID")],
+        json_patch_operation: Annotated[
+            List[JsonPatchOperation],
+            Field(
+                description=
+                "A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption "
+            )],
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> LifecycleState:
+        """Update Lifecycle State
+
+        This endpoint updates individual Lifecycle State fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. A token with ORG_ADMIN or API authority is required to call this API.
+
+        :param identity_profile_id: Identity Profile ID (required)
+        :type identity_profile_id: str
+        :param lifecycle_state_id: Lifecycle State ID (required)
+        :type lifecycle_state_id: str
+        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_lifecycle_states_serialize(
+            identity_profile_id=identity_profile_id,
+            lifecycle_state_id=lifecycle_state_id,
+            json_patch_operation=json_patch_operation,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
+
+        _response_types_map: Dict[str, Optional[str]] = {
             '200': "LifecycleState",
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def update_lifecycle_states_with_http_info(
+        self,
+        identity_profile_id: Annotated[StrictStr,
+                                       Field(
+                                           description="Identity Profile ID")],
+        lifecycle_state_id: Annotated[StrictStr,
+                                      Field(description="Lifecycle State ID")],
+        json_patch_operation: Annotated[
+            List[JsonPatchOperation],
+            Field(
+                description=
+                "A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption "
+            )],
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[LifecycleState]:
+        """Update Lifecycle State
+
+        This endpoint updates individual Lifecycle State fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. A token with ORG_ADMIN or API authority is required to call this API.
+
+        :param identity_profile_id: Identity Profile ID (required)
+        :type identity_profile_id: str
+        :param lifecycle_state_id: Lifecycle State ID (required)
+        :type lifecycle_state_id: str
+        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_lifecycle_states_serialize(
+            identity_profile_id=identity_profile_id,
+            lifecycle_state_id=lifecycle_state_id,
+            json_patch_operation=json_patch_operation,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "LifecycleState",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def update_lifecycle_states_without_preload_content(
+        self,
+        identity_profile_id: Annotated[StrictStr,
+                                       Field(
+                                           description="Identity Profile ID")],
+        lifecycle_state_id: Annotated[StrictStr,
+                                      Field(description="Lifecycle State ID")],
+        json_patch_operation: Annotated[
+            List[JsonPatchOperation],
+            Field(
+                description=
+                "A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption "
+            )],
+        _request_timeout: Union[None, Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                Tuple[Annotated[StrictFloat,
+                                                Field(gt=0)],
+                                      Annotated[StrictFloat,
+                                                Field(gt=0)]]] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Update Lifecycle State
+
+        This endpoint updates individual Lifecycle State fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. A token with ORG_ADMIN or API authority is required to call this API.
+
+        :param identity_profile_id: Identity Profile ID (required)
+        :type identity_profile_id: str
+        :param lifecycle_state_id: Lifecycle State ID (required)
+        :type lifecycle_state_id: str
+        :param json_patch_operation: A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption  (required)
+        :type json_patch_operation: List[JsonPatchOperation]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._update_lifecycle_states_serialize(
+            identity_profile_id=identity_profile_id,
+            lifecycle_state_id=lifecycle_state_id,
+            json_patch_operation=json_patch_operation,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index)
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "LifecycleState",
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto"
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout)
+        return response_data.response
+
+    def _update_lifecycle_states_serialize(
+        self,
+        identity_profile_id,
+        lifecycle_state_id,
+        json_patch_operation,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> Tuple:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'JsonPatchOperation': '',
         }
 
-        return self.api_client.call_api(
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[str, str] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if identity_profile_id is not None:
+            _path_params['identity-profile-id'] = identity_profile_id
+        if lifecycle_state_id is not None:
+            _path_params['lifecycle-state-id'] = lifecycle_state_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if json_patch_operation is not None:
+            _body_params = json_patch_operation
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    ['application/json-patch+json']))
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = ['UserContextAuth', 'UserContextAuth']
+
+        return self.api_client.param_serialize(
+            method='PATCH',
+            resource_path=
             '/identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}',
-            'PATCH',
-            _path_params,
-            _query_params,
-            _header_params,
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
             body=_body_params,
             post_params=_form_params,
             files=_files,
-            response_types_map=_response_types_map,
             auth_settings=_auth_settings,
-            async_req=_params.get('async_req'),
-            _return_http_data_only=_params.get(
-                '_return_http_data_only'),  # noqa: E501
-            _preload_content=_params.get('_preload_content', True),
-            _request_timeout=_params.get('_request_timeout'),
             collection_formats=_collection_formats,
-            _request_auth=_params.get('_request_auth'))
+            _host=_host,
+            _request_auth=_request_auth)

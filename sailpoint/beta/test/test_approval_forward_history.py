@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.approval_forward_history import ApprovalForwardHistory  # noqa: E501
+from sailpoint.beta.models.approval_forward_history import ApprovalForwardHistory
 
 
 class TestApprovalForwardHistory(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestApprovalForwardHistory(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ApprovalForwardHistory`
         """
-        model = ApprovalForwardHistory()  # noqa: E501
+        model = ApprovalForwardHistory()
         if include_optional:
             return ApprovalForwardHistory(
                 old_approver_name = 'Frank Mir',

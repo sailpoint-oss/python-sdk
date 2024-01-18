@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.work_items_api import WorkItemsApi  # noqa: E501
+from sailpoint.v3.api.work_items_api import WorkItemsApi
 
 
 class TestWorkItemsApi(unittest.TestCase):
     """WorkItemsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = WorkItemsApi()  # noqa: E501
+        self.api = WorkItemsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,84 +28,84 @@ class TestWorkItemsApi(unittest.TestCase):
     def test_approve_approval_item(self) -> None:
         """Test case for approve_approval_item
 
-        Approve an Approval Item  # noqa: E501
+        Approve an Approval Item
         """
         pass
 
     def test_approve_approval_items_in_bulk(self) -> None:
         """Test case for approve_approval_items_in_bulk
 
-        Bulk approve Approval Items  # noqa: E501
+        Bulk approve Approval Items
         """
         pass
 
     def test_complete_work_item(self) -> None:
         """Test case for complete_work_item
 
-        Complete a Work Item  # noqa: E501
+        Complete a Work Item
         """
         pass
 
     def test_get_completed_work_items(self) -> None:
         """Test case for get_completed_work_items
 
-        Completed Work Items  # noqa: E501
+        Completed Work Items
         """
         pass
 
     def test_get_count_completed_work_items(self) -> None:
         """Test case for get_count_completed_work_items
 
-        Count Completed Work Items  # noqa: E501
+        Count Completed Work Items
         """
         pass
 
     def test_get_count_work_items(self) -> None:
         """Test case for get_count_work_items
 
-        Count Work Items  # noqa: E501
+        Count Work Items
         """
         pass
 
     def test_get_work_item(self) -> None:
         """Test case for get_work_item
 
-        Get a Work Item  # noqa: E501
+        Get a Work Item
         """
         pass
 
     def test_get_work_items_summary(self) -> None:
         """Test case for get_work_items_summary
 
-        Work Items Summary  # noqa: E501
+        Work Items Summary
         """
         pass
 
     def test_list_work_items(self) -> None:
         """Test case for list_work_items
 
-        List Work Items  # noqa: E501
+        List Work Items
         """
         pass
 
     def test_reject_approval_item(self) -> None:
         """Test case for reject_approval_item
 
-        Reject an Approval Item  # noqa: E501
+        Reject an Approval Item
         """
         pass
 
     def test_reject_approval_items_in_bulk(self) -> None:
         """Test case for reject_approval_items_in_bulk
 
-        Bulk reject Approval Items  # noqa: E501
+        Bulk reject Approval Items
         """
         pass
 
     def test_submit_account_selection(self) -> None:
         """Test case for submit_account_selection
 
-        Submit Account Selections  # noqa: E501
+        Submit Account Selections
         """
         pass
 

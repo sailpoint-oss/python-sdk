@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.manually_updated_fields_dto import ManuallyUpdatedFieldsDTO  # noqa: E501
+from sailpoint.beta.models.manually_updated_fields_dto import ManuallyUpdatedFieldsDTO
 
 
 class TestManuallyUpdatedFieldsDTO(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestManuallyUpdatedFieldsDTO(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ManuallyUpdatedFieldsDTO`
         """
-        model = ManuallyUpdatedFieldsDTO()  # noqa: E501
+        model = ManuallyUpdatedFieldsDTO()
         if include_optional:
             return ManuallyUpdatedFieldsDTO(
                 display_name = True,

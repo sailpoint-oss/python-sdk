@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.completion_status import CompletionStatus  # noqa: E501
+from sailpoint.beta.models.completion_status import CompletionStatus
 
 
 class TestCompletionStatus(unittest.TestCase):

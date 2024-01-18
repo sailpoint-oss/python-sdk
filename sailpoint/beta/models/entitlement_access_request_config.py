@@ -16,57 +16,72 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool
+from pydantic import Field
 from sailpoint.beta.models.entitlement_approval_scheme import EntitlementApprovalScheme
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class EntitlementAccessRequestConfig(BaseModel):
     """
     EntitlementAccessRequestConfig
     """
-    approval_schemes: Optional[conlist(EntitlementApprovalScheme)] = Field(
-        None,
-        alias="approvalSchemes",
+
+  # noqa: E501
+    approval_schemes: Optional[List[EntitlementApprovalScheme]] = Field(
+        default=None,
         description=
-        "Ordered list of approval steps for the access request. Empty when no approval is required."
-    )
+        "Ordered list of approval steps for the access request. Empty when no approval is required.",
+        alias="approvalSchemes")
     request_comment_required: Optional[StrictBool] = Field(
-        False,
-        alias="requestCommentRequired",
+        default=False,
         description=
-        "If the requester must provide a comment during access request.")
+        "If the requester must provide a comment during access request.",
+        alias="requestCommentRequired")
     denial_comment_required: Optional[StrictBool] = Field(
-        False,
-        alias="denialCommentRequired",
+        default=False,
         description=
-        "If the reviewer must provide a comment when denying the access request."
-    )
-    __properties = [
+        "If the reviewer must provide a comment when denying the access request.",
+        alias="denialCommentRequired")
+    __properties: ClassVar[List[str]] = [
         "approvalSchemes", "requestCommentRequired", "denialCommentRequired"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> EntitlementAccessRequestConfig:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of EntitlementAccessRequestConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in approval_schemes (list)
         _items = []
         if self.approval_schemes:
@@ -77,23 +92,23 @@ class EntitlementAccessRequestConfig(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> EntitlementAccessRequestConfig:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of EntitlementAccessRequestConfig from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return EntitlementAccessRequestConfig.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = EntitlementAccessRequestConfig.parse_obj({
-            "approval_schemes": [
+        _obj = cls.model_validate({
+            "approvalSchemes": [
                 EntitlementApprovalScheme.from_dict(_item)
                 for _item in obj.get("approvalSchemes")
             ] if obj.get("approvalSchemes") is not None else None,
-            "request_comment_required":
+            "requestCommentRequired":
             obj.get("requestCommentRequired")
             if obj.get("requestCommentRequired") is not None else False,
-            "denial_comment_required":
+            "denialCommentRequired":
             obj.get("denialCommentRequired")
             if obj.get("denialCommentRequired") is not None else False
         })

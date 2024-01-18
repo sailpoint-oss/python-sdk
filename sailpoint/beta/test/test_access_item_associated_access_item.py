@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_item_associated_access_item import AccessItemAssociatedAccessItem  # noqa: E501
+from sailpoint.beta.models.access_item_associated_access_item import AccessItemAssociatedAccessItem
 
 
 class TestAccessItemAssociatedAccessItem(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestAccessItemAssociatedAccessItem(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessItemAssociatedAccessItem`
         """
-        model = AccessItemAssociatedAccessItem()  # noqa: E501
+        model = AccessItemAssociatedAccessItem()
         if include_optional:
             return AccessItemAssociatedAccessItem(
                 access_type = 'role',

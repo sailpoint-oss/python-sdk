@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.role import Role  # noqa: E501
+from sailpoint.v3.models.role import Role
 
 
 class TestRole(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRole(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Role`
         """
-        model = Role()  # noqa: E501
+        model = Role()
         if include_optional:
             return Role(
                 id = '2c918086749d78830174a1a40e121518',
@@ -81,11 +81,11 @@ class TestRole(unittest.TestCase):
                             approver_type = 'GOVERNANCE_GROUP', 
                             approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                         ], ),
-                revocation_request_config = sailpoint.v3.models.revocability.Revocability(
+                revocation_request_config = sailpoint.v3.models.revocability_for_role.RevocabilityForRole(
                     comments_required = False, 
                     denial_comments_required = False, 
                     approval_schemes = [
-                        sailpoint.v3.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
+                        sailpoint.v3.models.approval_scheme_for_role.ApprovalSchemeForRole(
                             approver_type = 'GOVERNANCE_GROUP', 
                             approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                         ], ),

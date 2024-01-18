@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.pending_approval_owner import PendingApprovalOwner  # noqa: E501
+from sailpoint.v3.models.pending_approval_owner import PendingApprovalOwner
 
 
 class TestPendingApprovalOwner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPendingApprovalOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PendingApprovalOwner`
         """
-        model = PendingApprovalOwner()  # noqa: E501
+        model = PendingApprovalOwner()
         if include_optional:
             return PendingApprovalOwner(
                 type = 'IDENTITY',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_list_item import IdentityListItem  # noqa: E501
+from sailpoint.beta.models.identity_list_item import IdentityListItem
 
 
 class TestIdentityListItem(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityListItem(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityListItem`
         """
-        model = IdentityListItem()  # noqa: E501
+        model = IdentityListItem()
         if include_optional:
             return IdentityListItem(
                 id = 'bc693f07e7b645539626c25954c58554',

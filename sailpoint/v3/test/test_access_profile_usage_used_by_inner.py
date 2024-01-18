@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access_profile_usage_used_by_inner import AccessProfileUsageUsedByInner  # noqa: E501
+from sailpoint.v3.models.access_profile_usage_used_by_inner import AccessProfileUsageUsedByInner
 
 
 class TestAccessProfileUsageUsedByInner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessProfileUsageUsedByInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessProfileUsageUsedByInner`
         """
-        model = AccessProfileUsageUsedByInner()  # noqa: E501
+        model = AccessProfileUsageUsedByInner()
         if include_optional:
             return AccessProfileUsageUsedByInner(
                 type = 'ROLE',

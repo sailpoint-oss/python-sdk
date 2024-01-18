@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.create_o_auth_client_response import CreateOAuthClientResponse  # noqa: E501
+from sailpoint.v3.models.create_o_auth_client_response import CreateOAuthClientResponse
 
 
 class TestCreateOAuthClientResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCreateOAuthClientResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreateOAuthClientResponse`
         """
-        model = CreateOAuthClientResponse()  # noqa: E501
+        model = CreateOAuthClientResponse()
         if include_optional:
             return CreateOAuthClientResponse(
                 id = '2c9180835d2e5168015d32f890ca1581',

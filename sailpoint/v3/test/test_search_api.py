@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.search_api import SearchApi  # noqa: E501
+from sailpoint.v3.api.search_api import SearchApi
 
 
 class TestSearchApi(unittest.TestCase):
     """SearchApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SearchApi()  # noqa: E501
+        self.api = SearchApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,28 +28,28 @@ class TestSearchApi(unittest.TestCase):
     def test_search_aggregate(self) -> None:
         """Test case for search_aggregate
 
-        Perform a Search Query Aggregation  # noqa: E501
+        Perform a Search Query Aggregation
         """
         pass
 
     def test_search_count(self) -> None:
         """Test case for search_count
 
-        Count Documents Satisfying a Query  # noqa: E501
+        Count Documents Satisfying a Query
         """
         pass
 
     def test_search_get(self) -> None:
         """Test case for search_get
 
-        Get a Document by ID  # noqa: E501
+        Get a Document by ID
         """
         pass
 
     def test_search_post(self) -> None:
         """Test case for search_post
 
-        Perform Search  # noqa: E501
+        Perform Search
         """
         pass
 

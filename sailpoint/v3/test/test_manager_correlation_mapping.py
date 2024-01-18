@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.manager_correlation_mapping import ManagerCorrelationMapping  # noqa: E501
+from sailpoint.v3.models.manager_correlation_mapping import ManagerCorrelationMapping
 
 
 class TestManagerCorrelationMapping(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestManagerCorrelationMapping(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ManagerCorrelationMapping`
         """
-        model = ManagerCorrelationMapping()  # noqa: E501
+        model = ManagerCorrelationMapping()
         if include_optional:
             return ManagerCorrelationMapping(
                 account_attribute = 'manager',

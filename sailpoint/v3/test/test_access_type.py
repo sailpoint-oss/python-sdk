@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access_type import AccessType  # noqa: E501
+from sailpoint.v3.models.access_type import AccessType
 
 
 class TestAccessType(unittest.TestCase):

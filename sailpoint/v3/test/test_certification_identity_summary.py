@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.certification_identity_summary import CertificationIdentitySummary  # noqa: E501
+from sailpoint.v3.models.certification_identity_summary import CertificationIdentitySummary
 
 
 class TestCertificationIdentitySummary(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCertificationIdentitySummary(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CertificationIdentitySummary`
         """
-        model = CertificationIdentitySummary()  # noqa: E501
+        model = CertificationIdentitySummary()
         if include_optional:
             return CertificationIdentitySummary(
                 id = '2c91808772a504f50172a9540e501ba7',

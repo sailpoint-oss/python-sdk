@@ -7,12 +7,9 @@ Name | Type | Description | Notes
 **job_id** | **str** | Unique id assigned to this job. | 
 **status** | **str** | Status of the job. | 
 **type** | **str** | Type of the job, either export or import. | 
-**message** | **str** | This message contains additional information about the overall status of the job. | 
-**description** | **str** | Optional user defined description/name for export job. | 
 **expiration** | **datetime** | The time until which the artifacts will be available for download. | 
 **created** | **datetime** | The time the job was started. | 
 **modified** | **datetime** | The time of the last update to the job. | 
-**completed** | **datetime** | The time the job was completed. | 
 
 ## Example
 

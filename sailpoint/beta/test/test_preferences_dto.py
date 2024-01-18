@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.preferences_dto import PreferencesDto  # noqa: E501
+from sailpoint.beta.models.preferences_dto import PreferencesDto
 
 
 class TestPreferencesDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPreferencesDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PreferencesDto`
         """
-        model = PreferencesDto()  # noqa: E501
+        model = PreferencesDto()
         if include_optional:
             return PreferencesDto(
                 key = 'cloud_manual_work_item_summary',

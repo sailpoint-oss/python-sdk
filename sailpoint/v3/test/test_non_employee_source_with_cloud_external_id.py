@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId  # noqa: E501
+from sailpoint.v3.models.non_employee_source_with_cloud_external_id import NonEmployeeSourceWithCloudExternalId
 
 
 class TestNonEmployeeSourceWithCloudExternalId(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestNonEmployeeSourceWithCloudExternalId(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeSourceWithCloudExternalId`
         """
-        model = NonEmployeeSourceWithCloudExternalId()  # noqa: E501
+        model = NonEmployeeSourceWithCloudExternalId()
         if include_optional:
             return NonEmployeeSourceWithCloudExternalId(
                 id = 'a0303682-5e4a-44f7-bdc2-6ce6112549c1',

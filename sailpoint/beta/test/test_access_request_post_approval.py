@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_request_post_approval import AccessRequestPostApproval  # noqa: E501
+from sailpoint.beta.models.access_request_post_approval import AccessRequestPostApproval
 
 
 class TestAccessRequestPostApproval(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessRequestPostApproval(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessRequestPostApproval`
         """
-        model = AccessRequestPostApproval()  # noqa: E501
+        model = AccessRequestPostApproval()
         if include_optional:
             return AccessRequestPostApproval(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',

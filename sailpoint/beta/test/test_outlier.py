@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.outlier import Outlier  # noqa: E501
+from sailpoint.beta.models.outlier import Outlier
 
 
 class TestOutlier(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestOutlier(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Outlier`
         """
-        model = Outlier()  # noqa: E501
+        model = Outlier()
         if include_optional:
             return Outlier(
                 id = '5be33d3e-c54d-4ed7-af73-2380543e8283',

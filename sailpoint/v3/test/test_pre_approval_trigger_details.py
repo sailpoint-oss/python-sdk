@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.pre_approval_trigger_details import PreApprovalTriggerDetails  # noqa: E501
+from sailpoint.v3.models.pre_approval_trigger_details import PreApprovalTriggerDetails
 
 
 class TestPreApprovalTriggerDetails(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPreApprovalTriggerDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PreApprovalTriggerDetails`
         """
-        model = PreApprovalTriggerDetails()  # noqa: E501
+        model = PreApprovalTriggerDetails()
         if include_optional:
             return PreApprovalTriggerDetails(
                 comment = 'Access is Approved',

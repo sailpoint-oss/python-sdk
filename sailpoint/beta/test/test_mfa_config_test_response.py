@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.mfa_config_test_response import MfaConfigTestResponse  # noqa: E501
+from sailpoint.beta.models.mfa_config_test_response import MfaConfigTestResponse
 
 
 class TestMfaConfigTestResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestMfaConfigTestResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `MfaConfigTestResponse`
         """
-        model = MfaConfigTestResponse()  # noqa: E501
+        model = MfaConfigTestResponse()
         if include_optional:
             return MfaConfigTestResponse(
                 state = 'SUCCESS',

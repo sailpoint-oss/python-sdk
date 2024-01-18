@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.display_reference import DisplayReference  # noqa: E501
+from sailpoint.v3.models.display_reference import DisplayReference
 
 
 class TestDisplayReference(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestDisplayReference(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `DisplayReference`
         """
-        model = DisplayReference()  # noqa: E501
+        model = DisplayReference()
         if include_optional:
             return DisplayReference(
                 id = '2c91808568c529c60168cca6f90c1313',

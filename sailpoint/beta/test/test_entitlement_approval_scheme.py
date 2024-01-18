@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.entitlement_approval_scheme import EntitlementApprovalScheme  # noqa: E501
+from sailpoint.beta.models.entitlement_approval_scheme import EntitlementApprovalScheme
 
 
 class TestEntitlementApprovalScheme(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestEntitlementApprovalScheme(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `EntitlementApprovalScheme`
         """
-        model = EntitlementApprovalScheme()  # noqa: E501
+        model = EntitlementApprovalScheme()
         if include_optional:
             return EntitlementApprovalScheme(
                 approver_type = 'GOVERNANCE_GROUP',

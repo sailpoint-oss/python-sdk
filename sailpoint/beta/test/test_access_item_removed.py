@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_item_removed import AccessItemRemoved  # noqa: E501
+from sailpoint.beta.models.access_item_removed import AccessItemRemoved
 
 
 class TestAccessItemRemoved(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessItemRemoved(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessItemRemoved`
         """
-        model = AccessItemRemoved()  # noqa: E501
+        model = AccessItemRemoved()
         if include_optional:
             return AccessItemRemoved(
                 access_item = {id=8c190e6787aa4ed9a90bd9d5344523fb, accessType=account, nativeIdentity=127999, sourceName=JDBC Entitlements Source, entitlementCount=0, displayName=Sample Name},

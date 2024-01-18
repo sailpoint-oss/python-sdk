@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access import Access  # noqa: E501
+from sailpoint.v3.models.access import Access
 
 
 class TestAccess(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccess(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Access`
         """
-        model = Access()  # noqa: E501
+        model = Access()
         if include_optional:
             return Access(
                 id = '2c91808568c529c60168cca6f90c1313',

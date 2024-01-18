@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.non_employee_source_lite_with_schema_attributes import NonEmployeeSourceLiteWithSchemaAttributes  # noqa: E501
+from sailpoint.v3.models.non_employee_source_lite_with_schema_attributes import NonEmployeeSourceLiteWithSchemaAttributes
 
 
 class TestNonEmployeeSourceLiteWithSchemaAttributes(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestNonEmployeeSourceLiteWithSchemaAttributes(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeSourceLiteWithSchemaAttributes`
         """
-        model = NonEmployeeSourceLiteWithSchemaAttributes()  # noqa: E501
+        model = NonEmployeeSourceLiteWithSchemaAttributes()
         if include_optional:
             return NonEmployeeSourceLiteWithSchemaAttributes(
                 id = 'a0303682-5e4a-44f7-bdc2-6ce6112549c1',

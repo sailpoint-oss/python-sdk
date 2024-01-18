@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.data_access_policies_inner import DataAccessPoliciesInner  # noqa: E501
+from sailpoint.v3.models.data_access_policies_inner import DataAccessPoliciesInner
 
 
 class TestDataAccessPoliciesInner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestDataAccessPoliciesInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `DataAccessPoliciesInner`
         """
-        model = DataAccessPoliciesInner()  # noqa: E501
+        model = DataAccessPoliciesInner()
         if include_optional:
             return DataAccessPoliciesInner(
                 value = 'GDPR-20'

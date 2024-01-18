@@ -17,94 +17,111 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.reassignment_type import ReassignmentType
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ApprovalForwardHistory(BaseModel):
     """
     ApprovalForwardHistory
     """
+
+  # noqa: E501
     old_approver_name: Optional[StrictStr] = Field(
-        None,
-        alias="oldApproverName",
+        default=None,
         description=
-        "Display name of approver from whom the approval was forwarded.")
+        "Display name of approver from whom the approval was forwarded.",
+        alias="oldApproverName")
     new_approver_name: Optional[StrictStr] = Field(
-        None,
-        alias="newApproverName",
+        default=None,
         description=
-        "Display name of approver to whom the approval was forwarded.")
+        "Display name of approver to whom the approval was forwarded.",
+        alias="newApproverName")
     comment: Optional[StrictStr] = Field(
-        None, description="Comment made while forwarding.")
+        default=None, description="Comment made while forwarding.")
     modified: Optional[datetime] = Field(
-        None, description="Time at which approval was forwarded.")
+        default=None, description="Time at which approval was forwarded.")
     forwarder_name: Optional[StrictStr] = Field(
-        None,
-        alias="forwarderName",
-        description="Display name of forwarder who forwarded the approval.")
+        default=None,
+        description="Display name of forwarder who forwarded the approval.",
+        alias="forwarderName")
     reassignment_type: Optional[ReassignmentType] = Field(
-        None, alias="reassignmentType")
-    __properties = [
+        default=None, alias="reassignmentType")
+    __properties: ClassVar[List[str]] = [
         "oldApproverName", "newApproverName", "comment", "modified",
         "forwarderName", "reassignmentType"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ApprovalForwardHistory:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ApprovalForwardHistory from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # set to None if comment (nullable) is None
-        # and __fields_set__ contains the field
-        if self.comment is None and "comment" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.comment is None and "comment" in self.model_fields_set:
             _dict['comment'] = None
 
         # set to None if forwarder_name (nullable) is None
-        # and __fields_set__ contains the field
-        if self.forwarder_name is None and "forwarder_name" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.forwarder_name is None and "forwarder_name" in self.model_fields_set:
             _dict['forwarderName'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ApprovalForwardHistory:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ApprovalForwardHistory from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ApprovalForwardHistory.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ApprovalForwardHistory.parse_obj({
-            "old_approver_name":
+        _obj = cls.model_validate({
+            "oldApproverName":
             obj.get("oldApproverName"),
-            "new_approver_name":
+            "newApproverName":
             obj.get("newApproverName"),
             "comment":
             obj.get("comment"),
             "modified":
             obj.get("modified"),
-            "forwarder_name":
+            "forwarderName":
             obj.get("forwarderName"),
-            "reassignment_type":
+            "reassignmentType":
             obj.get("reassignmentType")
         })
         return _obj

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto  # noqa: E501
+from sailpoint.beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
 
 
 class TestSendTestNotificationRequestDto(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestSendTestNotificationRequestDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SendTestNotificationRequestDto`
         """
-        model = SendTestNotificationRequestDto()  # noqa: E501
+        model = SendTestNotificationRequestDto()
         if include_optional:
             return SendTestNotificationRequestDto(
                 key = 'cloud_manual_work_item_summary',

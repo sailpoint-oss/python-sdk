@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.certifications_api import CertificationsApi  # noqa: E501
+from sailpoint.v3.api.certifications_api import CertificationsApi
 
 
 class TestCertificationsApi(unittest.TestCase):
     """CertificationsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = CertificationsApi()  # noqa: E501
+        self.api = CertificationsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,77 +28,77 @@ class TestCertificationsApi(unittest.TestCase):
     def test_get_certification_task(self) -> None:
         """Test case for get_certification_task
 
-        Certification Task by ID  # noqa: E501
+        Certification Task by ID
         """
         pass
 
     def test_get_identity_certification(self) -> None:
         """Test case for get_identity_certification
 
-        Identity Certification by ID  # noqa: E501
+        Identity Certification by ID
         """
         pass
 
     def test_get_identity_certification_item_permissions(self) -> None:
         """Test case for get_identity_certification_item_permissions
 
-        Permissions for Entitlement Certification Item  # noqa: E501
+        Permissions for Entitlement Certification Item
         """
         pass
 
     def test_get_pending_certification_tasks(self) -> None:
         """Test case for get_pending_certification_tasks
 
-        List of Pending Certification Tasks  # noqa: E501
+        List of Pending Certification Tasks
         """
         pass
 
     def test_list_certification_reviewers(self) -> None:
         """Test case for list_certification_reviewers
 
-        List of Reviewers for certification  # noqa: E501
+        List of Reviewers for certification
         """
         pass
 
     def test_list_identity_access_review_items(self) -> None:
         """Test case for list_identity_access_review_items
 
-        List of Access Review Items  # noqa: E501
+        List of Access Review Items
         """
         pass
 
     def test_list_identity_certifications(self) -> None:
         """Test case for list_identity_certifications
 
-        Identity Campaign Certifications by IDs  # noqa: E501
+        Identity Campaign Certifications by IDs
         """
         pass
 
     def test_make_identity_decision(self) -> None:
         """Test case for make_identity_decision
 
-        Decide on a Certification Item  # noqa: E501
+        Decide on a Certification Item
         """
         pass
 
     def test_reassign_identity_certifications(self) -> None:
         """Test case for reassign_identity_certifications
 
-        Reassign Identities or Items  # noqa: E501
+        Reassign Identities or Items
         """
         pass
 
     def test_sign_off_identity_certification(self) -> None:
         """Test case for sign_off_identity_certification
 
-        Finalize Identity Certification Decisions  # noqa: E501
+        Finalize Identity Certification Decisions
         """
         pass
 
     def test_submit_reassign_certs_async(self) -> None:
         """Test case for submit_reassign_certs_async
 
-        Reassign Certifications Asynchronously  # noqa: E501
+        Reassign Certifications Asynchronously
         """
         pass
 

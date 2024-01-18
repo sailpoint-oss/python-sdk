@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto  # noqa: E501
+from sailpoint.beta.models.access_request_recommendation_action_item_response_dto import AccessRequestRecommendationActionItemResponseDto
 
 
 class TestAccessRequestRecommendationActionItemResponseDto(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestAccessRequestRecommendationActionItemResponseDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessRequestRecommendationActionItemResponseDto`
         """
-        model = AccessRequestRecommendationActionItemResponseDto()  # noqa: E501
+        model = AccessRequestRecommendationActionItemResponseDto()
         if include_optional:
             return AccessRequestRecommendationActionItemResponseDto(
                 identity_id = '2c91808570313110017040b06f344ec9',

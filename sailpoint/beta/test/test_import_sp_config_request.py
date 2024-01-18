@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.import_sp_config_request import ImportSpConfigRequest  # noqa: E501
+from sailpoint.beta.models.import_sp_config_request import ImportSpConfigRequest
 
 
 class TestImportSpConfigRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestImportSpConfigRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ImportSpConfigRequest`
         """
-        model = ImportSpConfigRequest()  # noqa: E501
+        model = ImportSpConfigRequest()
         if include_optional:
             return ImportSpConfigRequest(
                 data = bytes(b'blah'),

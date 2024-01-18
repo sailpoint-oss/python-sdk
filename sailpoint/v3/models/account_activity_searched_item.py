@@ -17,75 +17,94 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.account_request import AccountRequest
 from sailpoint.v3.models.account_source import AccountSource
 from sailpoint.v3.models.approval import Approval
 from sailpoint.v3.models.document_type import DocumentType
 from sailpoint.v3.models.expansion_item import ExpansionItem
 from sailpoint.v3.models.original_request import OriginalRequest
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccountActivitySearchedItem(BaseModel):
     """
-    AccountActivity  # noqa: E501
+    AccountActivity
     """
-    id: StrictStr = Field(...)
-    name: StrictStr = Field(...)
-    type: DocumentType = Field(..., alias="_type")
+
+  # noqa: E501
+    id: StrictStr
+    name: StrictStr
+    type: DocumentType = Field(alias="_type")
     action: Optional[StrictStr] = Field(
-        None, description="The type of action that this activity performed")
+        default=None,
+        description="The type of action that this activity performed")
     created: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
+        default=None, description="A date-time in ISO-8601 format")
     modified: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
+        default=None, description="A date-time in ISO-8601 format")
     stage: Optional[StrictStr] = Field(
-        None, description="The current stage of the activity")
+        default=None, description="The current stage of the activity")
     origin: Optional[StrictStr] = None
     status: Optional[StrictStr] = Field(
-        None, description="the current status of the activity")
+        default=None, description="the current status of the activity")
     requester: Optional[AccountSource] = None
     recipient: Optional[AccountSource] = None
-    tracking_number: Optional[StrictStr] = Field(None, alias="trackingNumber")
-    errors: Optional[conlist(StrictStr)] = None
-    warnings: Optional[conlist(StrictStr)] = None
-    approvals: Optional[conlist(Approval)] = None
-    original_requests: Optional[conlist(OriginalRequest)] = Field(
-        None, alias="originalRequests")
-    expansion_items: Optional[conlist(ExpansionItem)] = Field(
-        None, alias="expansionItems")
-    account_requests: Optional[conlist(AccountRequest)] = Field(
-        None, alias="accountRequests")
+    tracking_number: Optional[StrictStr] = Field(default=None,
+                                                 alias="trackingNumber")
+    errors: Optional[List[StrictStr]] = None
+    warnings: Optional[List[StrictStr]] = None
+    approvals: Optional[List[Approval]] = None
+    original_requests: Optional[List[OriginalRequest]] = Field(
+        default=None, alias="originalRequests")
+    expansion_items: Optional[List[ExpansionItem]] = Field(
+        default=None, alias="expansionItems")
+    account_requests: Optional[List[AccountRequest]] = Field(
+        default=None, alias="accountRequests")
     sources: Optional[StrictStr] = None
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "id", "name", "_type", "action", "created", "modified", "stage",
         "origin", "status", "requester", "recipient", "trackingNumber",
         "errors", "warnings", "approvals", "originalRequests",
         "expansionItems", "accountRequests", "sources"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccountActivitySearchedItem:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccountActivitySearchedItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of requester
         if self.requester:
             _dict['requester'] = self.requester.to_dict()
@@ -121,47 +140,47 @@ class AccountActivitySearchedItem(BaseModel):
                     _items.append(_item.to_dict())
             _dict['accountRequests'] = _items
         # set to None if created (nullable) is None
-        # and __fields_set__ contains the field
-        if self.created is None and "created" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.created is None and "created" in self.model_fields_set:
             _dict['created'] = None
 
         # set to None if modified (nullable) is None
-        # and __fields_set__ contains the field
-        if self.modified is None and "modified" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
             _dict['modified'] = None
 
         # set to None if origin (nullable) is None
-        # and __fields_set__ contains the field
-        if self.origin is None and "origin" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.origin is None and "origin" in self.model_fields_set:
             _dict['origin'] = None
 
         # set to None if errors (nullable) is None
-        # and __fields_set__ contains the field
-        if self.errors is None and "errors" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.errors is None and "errors" in self.model_fields_set:
             _dict['errors'] = None
 
         # set to None if warnings (nullable) is None
-        # and __fields_set__ contains the field
-        if self.warnings is None and "warnings" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.warnings is None and "warnings" in self.model_fields_set:
             _dict['warnings'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccountActivitySearchedItem:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccountActivitySearchedItem from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccountActivitySearchedItem.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccountActivitySearchedItem.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
             obj.get("name"),
-            "type":
+            "_type":
             obj.get("_type"),
             "action":
             obj.get("action"),
@@ -181,7 +200,7 @@ class AccountActivitySearchedItem(BaseModel):
             "recipient":
             AccountSource.from_dict(obj.get("recipient"))
             if obj.get("recipient") is not None else None,
-            "tracking_number":
+            "trackingNumber":
             obj.get("trackingNumber"),
             "errors":
             obj.get("errors"),
@@ -190,15 +209,15 @@ class AccountActivitySearchedItem(BaseModel):
             "approvals":
             [Approval.from_dict(_item) for _item in obj.get("approvals")]
             if obj.get("approvals") is not None else None,
-            "original_requests": [
+            "originalRequests": [
                 OriginalRequest.from_dict(_item)
                 for _item in obj.get("originalRequests")
             ] if obj.get("originalRequests") is not None else None,
-            "expansion_items": [
+            "expansionItems": [
                 ExpansionItem.from_dict(_item)
                 for _item in obj.get("expansionItems")
             ] if obj.get("expansionItems") is not None else None,
-            "account_requests": [
+            "accountRequests": [
                 AccountRequest.from_dict(_item)
                 for _item in obj.get("accountRequests")
             ] if obj.get("accountRequests") is not None else None,

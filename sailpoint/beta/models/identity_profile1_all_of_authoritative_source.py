@@ -16,26 +16,35 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class IdentityProfile1AllOfAuthoritativeSource(BaseModel):
     """
     IdentityProfile1AllOfAuthoritativeSource
     """
+
+  # noqa: E501
     type: Optional[StrictStr] = Field(
-        None, description="Type of the object to which this reference applies")
+        default=None,
+        description="Type of the object to which this reference applies")
     id: Optional[StrictStr] = Field(
-        None, description="ID of the object to which this reference applies")
+        default=None,
+        description="ID of the object to which this reference applies")
     name: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "Human-readable display name of the object to which this reference applies"
     )
-    __properties = ["type", "id", "name"]
+    __properties: ClassVar[List[str]] = ["type", "id", "name"]
 
-    @validator('type')
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -45,45 +54,51 @@ class IdentityProfile1AllOfAuthoritativeSource(BaseModel):
             raise ValueError("must be one of enum values ('SOURCE')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls,
-                  json_str: str) -> IdentityProfile1AllOfAuthoritativeSource:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of IdentityProfile1AllOfAuthoritativeSource from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> IdentityProfile1AllOfAuthoritativeSource:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of IdentityProfile1AllOfAuthoritativeSource from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return IdentityProfile1AllOfAuthoritativeSource.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = IdentityProfile1AllOfAuthoritativeSource.parse_obj({
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name")
+        _obj = cls.model_validate({
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj

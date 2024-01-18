@@ -16,95 +16,119 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictInt, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AuthUser(BaseModel):
     """
     AuthUser
     """
-    tenant: Optional[StrictStr] = Field(None, description="Tenant name.")
-    id: Optional[StrictStr] = Field(None, description="Identity ID.")
+
+  # noqa: E501
+    tenant: Optional[StrictStr] = Field(default=None,
+                                        description="Tenant name.")
+    id: Optional[StrictStr] = Field(default=None, description="Identity ID.")
     uid: Optional[StrictStr] = Field(
-        None, description="Identity unique identitifier.")
+        default=None, description="Identity unique identitifier.")
     profile: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description="ID of the auth profile associated with this auth user.")
     identification_number: Optional[StrictStr] = Field(
-        None,
-        alias="identificationNumber",
-        description="Auth user employee number.")
-    email: Optional[StrictStr] = Field(None, description="Auth user's email.")
-    phone: Optional[StrictStr] = Field(None,
+        default=None,
+        description="Auth user employee number.",
+        alias="identificationNumber")
+    email: Optional[StrictStr] = Field(default=None,
+                                       description="Auth user's email.")
+    phone: Optional[StrictStr] = Field(default=None,
                                        description="Auth user's phone number.")
     work_phone: Optional[StrictStr] = Field(
-        None, alias="workPhone", description="Auth user's work phone number.")
+        default=None,
+        description="Auth user's work phone number.",
+        alias="workPhone")
     personal_email: Optional[StrictStr] = Field(
-        None, alias="personalEmail", description="Auth user's personal email.")
+        default=None,
+        description="Auth user's personal email.",
+        alias="personalEmail")
     firstname: Optional[StrictStr] = Field(
-        None, description="Auth user's first name.")
-    lastname: Optional[StrictStr] = Field(None,
+        default=None, description="Auth user's first name.")
+    lastname: Optional[StrictStr] = Field(default=None,
                                           description="Auth user's last name.")
     display_name: Optional[StrictStr] = Field(
-        None,
-        alias="displayName",
-        description="Auth user's name in displayed format.")
-    alias: Optional[StrictStr] = Field(None, description="Auth user's alias.")
+        default=None,
+        description="Auth user's name in displayed format.",
+        alias="displayName")
+    alias: Optional[StrictStr] = Field(default=None,
+                                       description="Auth user's alias.")
     last_password_change_date: Optional[StrictStr] = Field(
-        None,
-        alias="lastPasswordChangeDate",
-        description="the date of last password change")
+        default=None,
+        description="the date of last password change",
+        alias="lastPasswordChangeDate")
     last_login_timestamp: Optional[StrictInt] = Field(
-        None,
-        alias="lastLoginTimestamp",
-        description="Timestamp of the last login (long type value).")
+        default=None,
+        description="Timestamp of the last login (long type value).",
+        alias="lastLoginTimestamp")
     current_login_timestamp: Optional[StrictInt] = Field(
-        None,
-        alias="currentLoginTimestamp",
-        description="Timestamp of the current login (long type value).")
-    capabilities: Optional[conlist(StrictStr)] = Field(
-        None, description="Array of capabilities for this auth user.")
-    __properties = [
+        default=None,
+        description="Timestamp of the current login (long type value).",
+        alias="currentLoginTimestamp")
+    capabilities: Optional[List[StrictStr]] = Field(
+        default=None, description="Array of capabilities for this auth user.")
+    __properties: ClassVar[List[str]] = [
         "tenant", "id", "uid", "profile", "identificationNumber", "email",
         "phone", "workPhone", "personalEmail", "firstname", "lastname",
         "displayName", "alias", "lastPasswordChangeDate", "lastLoginTimestamp",
         "currentLoginTimestamp", "capabilities"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AuthUser:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AuthUser from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AuthUser:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AuthUser from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AuthUser.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AuthUser.parse_obj({
+        _obj = cls.model_validate({
             "tenant":
             obj.get("tenant"),
             "id":
@@ -113,29 +137,29 @@ class AuthUser(BaseModel):
             obj.get("uid"),
             "profile":
             obj.get("profile"),
-            "identification_number":
+            "identificationNumber":
             obj.get("identificationNumber"),
             "email":
             obj.get("email"),
             "phone":
             obj.get("phone"),
-            "work_phone":
+            "workPhone":
             obj.get("workPhone"),
-            "personal_email":
+            "personalEmail":
             obj.get("personalEmail"),
             "firstname":
             obj.get("firstname"),
             "lastname":
             obj.get("lastname"),
-            "display_name":
+            "displayName":
             obj.get("displayName"),
             "alias":
             obj.get("alias"),
-            "last_password_change_date":
+            "lastPasswordChangeDate":
             obj.get("lastPasswordChangeDate"),
-            "last_login_timestamp":
+            "lastLoginTimestamp":
             obj.get("lastLoginTimestamp"),
-            "current_login_timestamp":
+            "currentLoginTimestamp":
             obj.get("currentLoginTimestamp"),
             "capabilities":
             obj.get("capabilities")

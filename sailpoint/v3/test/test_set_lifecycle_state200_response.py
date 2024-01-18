@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.set_lifecycle_state200_response import SetLifecycleState200Response  # noqa: E501
+from sailpoint.v3.models.set_lifecycle_state200_response import SetLifecycleState200Response
 
 
 class TestSetLifecycleState200Response(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSetLifecycleState200Response(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SetLifecycleState200Response`
         """
-        model = SetLifecycleState200Response()  # noqa: E501
+        model = SetLifecycleState200Response()
         if include_optional:
             return SetLifecycleState200Response(
                 account_activity_id = '2c9180837ab5b716017ab7c6c9ef1e20'

@@ -17,75 +17,89 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.column import Column
 from sailpoint.v3.models.index import Index
 from sailpoint.v3.models.saved_search_detail_filters import SavedSearchDetailFilters
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class SavedSearchDetail(BaseModel):
     """
     SavedSearchDetail
     """
-    public: Optional[StrictBool] = Field(
-        False, description="Indicates if the saved search is public. ")
+
+  # noqa: E501
     created: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
+        default=None, description="A date-time in ISO-8601 format")
     modified: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
-    indices: conlist(Index) = Field(
-        ...,
+        default=None, description="A date-time in ISO-8601 format")
+    indices: List[Index] = Field(
         description=
         "The names of the Elasticsearch indices in which to search. ")
-    columns: Optional[Dict[str, conlist(Column)]] = Field(
-        None,
+    columns: Optional[Dict[str, List[Column]]] = Field(
+        default=None,
         description=
         "The columns to be returned (specifies the order in which they will be presented) for each document type.  The currently supported document types are: _accessprofile_, _accountactivity_, _account_, _aggregation_, _entitlement_, _event_, _identity_, and _role_. "
     )
     query: StrictStr = Field(
-        ...,
         description=
         "The search query using Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL. "
     )
-    fields: Optional[conlist(StrictStr)] = Field(
-        None,
+    fields: Optional[List[StrictStr]] = Field(
+        default=None,
         description="The fields to be searched against in a multi-field query. "
     )
-    sort: Optional[conlist(StrictStr)] = Field(
-        None, description="The fields to be used to sort the search results. ")
+    sort: Optional[List[StrictStr]] = Field(
+        default=None,
+        description="The fields to be used to sort the search results. ")
     filters: Optional[SavedSearchDetailFilters] = None
-    __properties = [
-        "public", "created", "modified", "indices", "columns", "query",
-        "fields", "sort", "filters"
+    __properties: ClassVar[List[str]] = [
+        "created", "modified", "indices", "columns", "query", "fields", "sort",
+        "filters"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SavedSearchDetail:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of SavedSearchDetail from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each value in columns (dict of array)
         _field_dict_of_array = {}
         if self.columns:
             for _key in self.columns:
-                if self.columns[_key]:
+                if self.columns[_key] is not None:
                     _field_dict_of_array[_key] = [
                         _item.to_dict() for _item in self.columns[_key]
                     ]
@@ -94,39 +108,37 @@ class SavedSearchDetail(BaseModel):
         if self.filters:
             _dict['filters'] = self.filters.to_dict()
         # set to None if created (nullable) is None
-        # and __fields_set__ contains the field
-        if self.created is None and "created" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.created is None and "created" in self.model_fields_set:
             _dict['created'] = None
 
         # set to None if modified (nullable) is None
-        # and __fields_set__ contains the field
-        if self.modified is None and "modified" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
             _dict['modified'] = None
 
         # set to None if fields (nullable) is None
-        # and __fields_set__ contains the field
-        if self.fields is None and "fields" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.fields is None and "fields" in self.model_fields_set:
             _dict['fields'] = None
 
         # set to None if filters (nullable) is None
-        # and __fields_set__ contains the field
-        if self.filters is None and "filters" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.filters is None and "filters" in self.model_fields_set:
             _dict['filters'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SavedSearchDetail:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of SavedSearchDetail from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SavedSearchDetail.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SavedSearchDetail.parse_obj({
-            "public":
-            obj.get("public") if obj.get("public") is not None else False,
+        _obj = cls.model_validate({
             "created":
             obj.get("created"),
             "modified":

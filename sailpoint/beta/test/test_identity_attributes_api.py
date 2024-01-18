@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.identity_attributes_api import IdentityAttributesApi  # noqa: E501
+from sailpoint.beta.api.identity_attributes_api import IdentityAttributesApi
 
 
 class TestIdentityAttributesApi(unittest.TestCase):
     """IdentityAttributesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = IdentityAttributesApi()  # noqa: E501
+        self.api = IdentityAttributesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,42 +28,42 @@ class TestIdentityAttributesApi(unittest.TestCase):
     def test_create_identity_attribute(self) -> None:
         """Test case for create_identity_attribute
 
-        Create Identity Attribute  # noqa: E501
+        Create Identity Attribute
         """
         pass
 
     def test_delete_identity_attribute(self) -> None:
         """Test case for delete_identity_attribute
 
-        Delete Identity Attribute  # noqa: E501
+        Delete Identity Attribute
         """
         pass
 
     def test_delete_identity_attributes_in_bulk(self) -> None:
         """Test case for delete_identity_attributes_in_bulk
 
-        Bulk delete Identity Attributes  # noqa: E501
+        Bulk delete Identity Attributes
         """
         pass
 
     def test_get_identity_attribute(self) -> None:
         """Test case for get_identity_attribute
 
-        Get Identity Attribute  # noqa: E501
+        Get Identity Attribute
         """
         pass
 
     def test_list_identity_attributes(self) -> None:
         """Test case for list_identity_attributes
 
-        List Identity Attributes  # noqa: E501
+        List Identity Attributes
         """
         pass
 
     def test_put_identity_attribute(self) -> None:
         """Test case for put_identity_attribute
 
-        Update Identity Attribute  # noqa: E501
+        Update Identity Attribute
         """
         pass
 

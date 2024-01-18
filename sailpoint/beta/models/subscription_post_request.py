@@ -16,69 +16,84 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.event_bridge_config import EventBridgeConfig
 from sailpoint.beta.models.http_config import HttpConfig
 from sailpoint.beta.models.subscription_type import SubscriptionType
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class SubscriptionPostRequest(BaseModel):
     """
     SubscriptionPostRequest
     """
-    name: StrictStr = Field(..., description="Subscription name.")
+
+  # noqa: E501
+    name: StrictStr = Field(description="Subscription name.")
     description: Optional[StrictStr] = Field(
-        None, description="Subscription description.")
-    trigger_id: StrictStr = Field(...,
-                                  alias="triggerId",
-                                  description="ID of trigger subscribed to.")
-    type: SubscriptionType = Field(...)
+        default=None, description="Subscription description.")
+    trigger_id: StrictStr = Field(description="ID of trigger subscribed to.",
+                                  alias="triggerId")
+    type: SubscriptionType
     response_deadline: Optional[StrictStr] = Field(
-        'PT1H',
-        alias="responseDeadline",
+        default='PT1H',
         description=
-        "Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format."
-    )
-    http_config: Optional[HttpConfig] = Field(None, alias="httpConfig")
+        "Deadline for completing REQUEST_RESPONSE trigger invocation, represented in ISO-8601 duration format.",
+        alias="responseDeadline")
+    http_config: Optional[HttpConfig] = Field(default=None, alias="httpConfig")
     event_bridge_config: Optional[EventBridgeConfig] = Field(
-        None, alias="eventBridgeConfig")
+        default=None, alias="eventBridgeConfig")
     enabled: Optional[StrictBool] = Field(
-        True,
+        default=True,
         description=
         "Whether subscription should receive real-time trigger invocations or not.  Test trigger invocations are always enabled regardless of this option."
     )
     filter: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "JSONPath filter to conditionally invoke trigger when expression evaluates to true."
     )
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "name", "description", "triggerId", "type", "responseDeadline",
         "httpConfig", "eventBridgeConfig", "enabled", "filter"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SubscriptionPostRequest:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of SubscriptionPostRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of http_config
         if self.http_config:
             _dict['httpConfig'] = self.http_config.to_dict()
@@ -88,30 +103,30 @@ class SubscriptionPostRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SubscriptionPostRequest:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of SubscriptionPostRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SubscriptionPostRequest.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SubscriptionPostRequest.parse_obj({
+        _obj = cls.model_validate({
             "name":
             obj.get("name"),
             "description":
             obj.get("description"),
-            "trigger_id":
+            "triggerId":
             obj.get("triggerId"),
             "type":
             obj.get("type"),
-            "response_deadline":
+            "responseDeadline":
             obj.get("responseDeadline")
             if obj.get("responseDeadline") is not None else 'PT1H',
-            "http_config":
+            "httpConfig":
             HttpConfig.from_dict(obj.get("httpConfig"))
             if obj.get("httpConfig") is not None else None,
-            "event_bridge_config":
+            "eventBridgeConfig":
             EventBridgeConfig.from_dict(obj.get("eventBridgeConfig"))
             if obj.get("eventBridgeConfig") is not None else None,
             "enabled":

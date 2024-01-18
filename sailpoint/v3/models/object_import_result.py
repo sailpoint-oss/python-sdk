@@ -16,56 +16,71 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List
-from pydantic import BaseModel, Field, conlist
+from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel
+from pydantic import Field
 from sailpoint.v3.models.import_object import ImportObject
 from sailpoint.v3.models.sp_config_message import SpConfigMessage
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ObjectImportResult(BaseModel):
     """
-    Response model for import of a single object.  # noqa: E501
+    Response model for import of a single object.
     """
-    infos: conlist(SpConfigMessage) = Field(
-        ...,
+
+  # noqa: E501
+    infos: List[SpConfigMessage] = Field(
         description=
         "Informational messages returned from the target service on import.")
-    warnings: conlist(SpConfigMessage) = Field(
-        ...,
+    warnings: List[SpConfigMessage] = Field(
         description=
         "Warning messages returned from the target service on import.")
-    errors: conlist(SpConfigMessage) = Field(
-        ...,
+    errors: List[SpConfigMessage] = Field(
         description="Error messages returned from the target service on import."
     )
-    imported_objects: conlist(ImportObject) = Field(
-        ...,
-        alias="importedObjects",
+    imported_objects: List[ImportObject] = Field(
         description=
-        "References to objects that were created or updated by the import.")
-    __properties = ["infos", "warnings", "errors", "importedObjects"]
+        "References to objects that were created or updated by the import.",
+        alias="importedObjects")
+    __properties: ClassVar[List[str]] = [
+        "infos", "warnings", "errors", "importedObjects"
+    ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ObjectImportResult:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ObjectImportResult from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in infos (list)
         _items = []
         if self.infos:
@@ -97,15 +112,15 @@ class ObjectImportResult(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ObjectImportResult:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ObjectImportResult from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ObjectImportResult.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ObjectImportResult.parse_obj({
+        _obj = cls.model_validate({
             "infos":
             [SpConfigMessage.from_dict(_item) for _item in obj.get("infos")]
             if obj.get("infos") is not None else None,
@@ -116,7 +131,7 @@ class ObjectImportResult(BaseModel):
             "errors":
             [SpConfigMessage.from_dict(_item) for _item in obj.get("errors")]
             if obj.get("errors") is not None else None,
-            "imported_objects": [
+            "importedObjects": [
                 ImportObject.from_dict(_item)
                 for _item in obj.get("importedObjects")
             ] if obj.get("importedObjects") is not None else None

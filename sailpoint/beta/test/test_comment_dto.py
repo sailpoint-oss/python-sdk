@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.comment_dto import CommentDto  # noqa: E501
+from sailpoint.beta.models.comment_dto import CommentDto
 
 
 class TestCommentDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCommentDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CommentDto`
         """
-        model = CommentDto()  # noqa: E501
+        model = CommentDto()
         if include_optional:
             return CommentDto(
                 comment = 'This is a comment.',

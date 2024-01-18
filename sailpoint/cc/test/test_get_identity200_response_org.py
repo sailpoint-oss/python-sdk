@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.get_identity200_response_org import GetIdentity200ResponseOrg  # noqa: E501
+from sailpoint.cc.models.get_identity200_response_org import GetIdentity200ResponseOrg
 
 
 class TestGetIdentity200ResponseOrg(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestGetIdentity200ResponseOrg(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `GetIdentity200ResponseOrg`
         """
-        model = GetIdentity200ResponseOrg()  # noqa: E501
+        model = GetIdentity200ResponseOrg()
         if include_optional:
             return GetIdentity200ResponseOrg(
                 name = '',

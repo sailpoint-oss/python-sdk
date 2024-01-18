@@ -1,5 +1,6 @@
 # AccessProfile
 
+Access Profile
 
 ## Properties
 Name | Type | Description | Notes
@@ -9,11 +10,11 @@ Name | Type | Description | Notes
 **description** | **str** | Information about the Access Profile | [optional] 
 **created** | **datetime** | Date the Access Profile was created | [optional] [readonly] 
 **modified** | **datetime** | Date the Access Profile was last modified. | [optional] [readonly] 
-**enabled** | **bool** | Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement. | [optional] 
+**enabled** | **bool** | Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement. | [optional] [default to True]
 **owner** | [**OwnerReference**](OwnerReference.md) |  | 
 **source** | [**AccessProfileSourceRef**](AccessProfileSourceRef.md) |  | 
 **entitlements** | [**List[EntitlementRef]**](EntitlementRef.md) | A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement. | [optional] 
-**requestable** | **bool** | Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error. | [optional] 
+**requestable** | **bool** | Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error. | [optional] [default to True]
 **access_request_config** | [**Requestability**](Requestability.md) |  | [optional] 
 **revocation_request_config** | [**Revocability**](Revocability.md) |  | [optional] 
 **segments** | **List[str]** | List of IDs of segments, if any, to which this Access Profile is assigned. | [optional] 

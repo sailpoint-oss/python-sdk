@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_definition_input import FormDefinitionInput  # noqa: E501
+from sailpoint.beta.models.form_definition_input import FormDefinitionInput
 
 
 class TestFormDefinitionInput(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFormDefinitionInput(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormDefinitionInput`
         """
-        model = FormDefinitionInput()  # noqa: E501
+        model = FormDefinitionInput()
         if include_optional:
             return FormDefinitionInput(
                 id = '00000000-0000-0000-0000-000000000000',

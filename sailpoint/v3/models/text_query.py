@@ -16,72 +16,86 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class TextQuery(BaseModel):
     """
-    Query parameters used to construct an Elasticsearch text query object.  # noqa: E501
-    """
-    terms: conlist(StrictStr) = Field(
-        ...,
+    Query parameters used to construct an Elasticsearch text query object.
+    """ # noqa: E501
+    terms: List[StrictStr] = Field(
         description=
         "Words or characters that specify a particular thing to be searched for."
     )
-    fields: conlist(StrictStr) = Field(
-        ..., description="The fields to be searched.")
+    fields: List[StrictStr] = Field(description="The fields to be searched.")
     match_any: Optional[StrictBool] = Field(
-        False,
-        alias="matchAny",
+        default=False,
         description=
-        "Indicates that at least one of the terms must be found in the specified fields;  otherwise, all terms must be found."
-    )
+        "Indicates that at least one of the terms must be found in the specified fields;  otherwise, all terms must be found.",
+        alias="matchAny")
     contains: Optional[StrictBool] = Field(
-        False,
+        default=False,
         description=
         "Indicates that the terms can be located anywhere in the specified fields;  otherwise, the fields must begin with the terms."
     )
-    __properties = ["terms", "fields", "matchAny", "contains"]
+    __properties: ClassVar[List[str]] = [
+        "terms", "fields", "matchAny", "contains"
+    ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> TextQuery:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of TextQuery from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TextQuery:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of TextQuery from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return TextQuery.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = TextQuery.parse_obj({
+        _obj = cls.model_validate({
             "terms":
             obj.get("terms"),
             "fields":
             obj.get("fields"),
-            "match_any":
+            "matchAny":
             obj.get("matchAny") if obj.get("matchAny") is not None else False,
             "contains":
             obj.get("contains") if obj.get("contains") is not None else False

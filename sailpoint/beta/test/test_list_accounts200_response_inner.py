@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.list_accounts200_response_inner import ListAccounts200ResponseInner  # noqa: E501
+from sailpoint.beta.models.list_accounts200_response_inner import ListAccounts200ResponseInner
 
 
 class TestListAccounts200ResponseInner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestListAccounts200ResponseInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListAccounts200ResponseInner`
         """
-        model = ListAccounts200ResponseInner()  # noqa: E501
+        model = ListAccounts200ResponseInner()
         if include_optional:
             return ListAccounts200ResponseInner(
                 id = 'id12345',

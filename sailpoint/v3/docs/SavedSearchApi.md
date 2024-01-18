@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**delete_saved_search**](SavedSearchApi.md#delete_saved_search) | **DELETE** /saved-searches/{id} | Delete document by ID
 [**execute_saved_search**](SavedSearchApi.md#execute_saved_search) | **POST** /saved-searches/{id}/execute | Execute a saved search by ID
 [**get_saved_search**](SavedSearchApi.md#get_saved_search) | **GET** /saved-searches/{id} | Return saved search by ID
-[**list_saved_searches**](SavedSearchApi.md#list_saved_searches) | **GET** /saved-searches | Return a list of Saved Searches
+[**list_saved_searches**](SavedSearchApi.md#list_saved_searches) | **GET** /saved-searches | A list of Saved Searches
 [**put_saved_search**](SavedSearchApi.md#put_saved_search) | **PUT** /saved-searches/{id} | Updates an existing saved search 
 
 
@@ -88,7 +88,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | The persisted saved search. |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -341,7 +344,7 @@ Name | Type | Description  | Notes
 # **list_saved_searches**
 > List[SavedSearch] list_saved_searches(offset=offset, limit=limit, count=count, filters=filters)
 
-Return a list of Saved Searches
+A list of Saved Searches
 
 Returns a list of saved searches. 
 
@@ -379,10 +382,10 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
     offset = 0 # int | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit = 250 # int | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count = False # bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to False)
-    filters = 'public eq true' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*  **publiic**: *eq* (optional)
+    filters = 'owner.id eq \"7a724640-0c17-4ce9-a8c3-4a89738459c8\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq* (optional)
 
     try:
-        # Return a list of Saved Searches
+        # A list of Saved Searches
         api_response = api_instance.list_saved_searches(offset=offset, limit=limit, count=count, filters=filters)
         print("The response of SavedSearchApi->list_saved_searches:\n")
         pprint(api_response)
@@ -399,7 +402,7 @@ Name | Type | Description  | Notes
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
  **count** | **bool**| If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to False]
- **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*  **publiic**: *eq* | [optional] 
+ **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq* | [optional] 
 
 ### Return type
 
@@ -419,7 +422,10 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | The list of requested saved searches. |  * X-Total-Count - The total result count (returned only if the *count* parameter is specified as *true*). <br>  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
+**401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
+**429** | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. |  -  |
+**500** | Internal Server Error - Returned if there is an unexpected error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

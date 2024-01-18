@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.source_cluster_dto import SourceClusterDto  # noqa: E501
+from sailpoint.v3.models.source_cluster_dto import SourceClusterDto
 
 
 class TestSourceClusterDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceClusterDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceClusterDto`
         """
-        model = SourceClusterDto()  # noqa: E501
+        model = SourceClusterDto()
         if include_optional:
             return SourceClusterDto(
                 type = 'CLUSTER',

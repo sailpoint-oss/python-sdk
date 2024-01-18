@@ -16,64 +16,82 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class WorkItemForward(BaseModel):
     """
     WorkItemForward
     """
-    target_owner_id: StrictStr = Field(
-        ...,
-        alias="targetOwnerId",
-        description="The ID of the identity to forward this work item to.")
-    comment: StrictStr = Field(
-        ..., description="Comments to send to the target owner")
-    send_notifications: Optional[StrictBool] = Field(
-        True,
-        alias="sendNotifications",
-        description="If true, send a notification to the target owner.")
-    __properties = ["targetOwnerId", "comment", "sendNotifications"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+  # noqa: E501
+    target_owner_id: StrictStr = Field(
+        description="The ID of the identity to forward this work item to.",
+        alias="targetOwnerId")
+    comment: StrictStr = Field(
+        description="Comments to send to the target owner")
+    send_notifications: Optional[StrictBool] = Field(
+        default=True,
+        description="If true, send a notification to the target owner.",
+        alias="sendNotifications")
+    __properties: ClassVar[List[str]] = [
+        "targetOwnerId", "comment", "sendNotifications"
+    ]
+
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> WorkItemForward:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of WorkItemForward from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> WorkItemForward:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of WorkItemForward from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return WorkItemForward.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = WorkItemForward.parse_obj({
-            "target_owner_id":
+        _obj = cls.model_validate({
+            "targetOwnerId":
             obj.get("targetOwnerId"),
             "comment":
             obj.get("comment"),
-            "send_notifications":
+            "sendNotifications":
             obj.get("sendNotifications")
             if obj.get("sendNotifications") is not None else True
         })

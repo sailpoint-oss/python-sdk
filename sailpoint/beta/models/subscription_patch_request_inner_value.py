@@ -17,11 +17,16 @@ import json
 import pprint
 import re  # noqa: F401
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, ValidationError, conlist, validator
+from typing import Any, Dict, List, Optional, Union
+from pydantic import BaseModel, Field, StrictInt, StrictStr, ValidationError, field_validator
 from sailpoint.beta.models.subscription_patch_request_inner_value_any_of_inner import SubscriptionPatchRequestInnerValueAnyOfInner
-from typing import Union, Any, List, TYPE_CHECKING
+from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
+from typing_extensions import Literal
 from pydantic import StrictStr, Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 SUBSCRIPTIONPATCHREQUESTINNERVALUE_ANY_OF_SCHEMAS = [
     "List[SubscriptionPatchRequestInnerValueAnyOfInner]", "int", "object",
@@ -39,21 +44,20 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
     # data type: int
     anyof_schema_2_validator: Optional[StrictInt] = None
     # data type: object
-    anyof_schema_3_validator: Optional[Dict[str, Any]] = None
+    anyof_schema_3_validator: Optional[Union[str, Any]] = None
     # data type: List[SubscriptionPatchRequestInnerValueAnyOfInner]
-    anyof_schema_4_validator: Optional[conlist(
-        SubscriptionPatchRequestInnerValueAnyOfInner)] = None
+    anyof_schema_4_validator: Optional[
+        List[SubscriptionPatchRequestInnerValueAnyOfInner]] = None
     if TYPE_CHECKING:
-        actual_instance: Union[
-            List[SubscriptionPatchRequestInnerValueAnyOfInner], int, object,
-            str]
+        actual_instance: Optional[
+            Union[List[SubscriptionPatchRequestInnerValueAnyOfInner], int,
+                  object, str]] = None
     else:
-        actual_instance: Any
-    any_of_schemas: List[str] = Field(
-        SUBSCRIPTIONPATCHREQUESTINNERVALUE_ANY_OF_SCHEMAS, const=True)
+        actual_instance: Any = None
+    any_of_schemas: List[str] = Literal[
+        SUBSCRIPTIONPATCHREQUESTINNERVALUE_ANY_OF_SCHEMAS]
 
-    class Config:
-        validate_assignment = True
+    model_config = {"validate_assignment": True}
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -69,9 +73,9 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
     def actual_instance_must_validate_anyof(cls, v):
-        instance = SubscriptionPatchRequestInnerValue.construct()
+        instance = SubscriptionPatchRequestInnerValue.model_construct()
         error_messages = []
         # validate data type: str
         try:
@@ -106,13 +110,13 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SubscriptionPatchRequestInnerValue:
+    def from_dict(cls, obj: dict) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> SubscriptionPatchRequestInnerValue:
+    def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
-        instance = SubscriptionPatchRequestInnerValue.construct()
+        instance = cls.model_construct()
         error_messages = []
         # deserialize data into str
         try:
@@ -170,7 +174,7 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> Dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return "null"
@@ -183,4 +187,4 @@ class SubscriptionPatchRequestInnerValue(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.dict())
+        return pprint.pformat(self.model_dump())

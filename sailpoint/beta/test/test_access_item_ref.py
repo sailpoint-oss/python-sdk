@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_item_ref import AccessItemRef  # noqa: E501
+from sailpoint.beta.models.access_item_ref import AccessItemRef
 
 
 class TestAccessItemRef(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessItemRef(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessItemRef`
         """
-        model = AccessItemRef()  # noqa: E501
+        model = AccessItemRef()
         if include_optional:
             return AccessItemRef(
                 id = '2c938083633d259901633d2623ec0375',

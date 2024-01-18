@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.reviewer import Reviewer  # noqa: E501
+from sailpoint.beta.models.reviewer import Reviewer
 
 
 class TestReviewer(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReviewer(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Reviewer`
         """
-        model = Reviewer()  # noqa: E501
+        model = Reviewer()
         if include_optional:
             return Reviewer(
                 type = 'IDENTITY',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner  # noqa: E501
+from sailpoint.beta.models.access_criteria_criteria_list_inner import AccessCriteriaCriteriaListInner
 
 
 class TestAccessCriteriaCriteriaListInner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestAccessCriteriaCriteriaListInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessCriteriaCriteriaListInner`
         """
-        model = AccessCriteriaCriteriaListInner()  # noqa: E501
+        model = AccessCriteriaCriteriaListInner()
         if include_optional:
             return AccessCriteriaCriteriaListInner(
                 type = 'ENTITLEMENT',

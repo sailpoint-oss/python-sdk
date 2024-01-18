@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.service_desk_integration_api import ServiceDeskIntegrationApi  # noqa: E501
+from sailpoint.beta.api.service_desk_integration_api import ServiceDeskIntegrationApi
 
 
 class TestServiceDeskIntegrationApi(unittest.TestCase):
     """ServiceDeskIntegrationApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = ServiceDeskIntegrationApi()  # noqa: E501
+        self.api = ServiceDeskIntegrationApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,70 +28,70 @@ class TestServiceDeskIntegrationApi(unittest.TestCase):
     def test_create_service_desk_integration(self) -> None:
         """Test case for create_service_desk_integration
 
-        Create new Service Desk integration  # noqa: E501
+        Create new Service Desk integration
         """
         pass
 
     def test_delete_service_desk_integration(self) -> None:
         """Test case for delete_service_desk_integration
 
-        Delete a Service Desk integration  # noqa: E501
+        Delete a Service Desk integration
         """
         pass
 
     def test_get_service_desk_integration(self) -> None:
         """Test case for get_service_desk_integration
 
-        Get a Service Desk integration  # noqa: E501
+        Get a Service Desk integration
         """
         pass
 
     def test_get_service_desk_integration_list(self) -> None:
         """Test case for get_service_desk_integration_list
 
-        List existing Service Desk Integrations  # noqa: E501
+        List existing Service Desk Integrations
         """
         pass
 
     def test_get_service_desk_integration_template(self) -> None:
         """Test case for get_service_desk_integration_template
 
-        Service Desk integration template by scriptName.  # noqa: E501
+        Service Desk integration template by scriptName.
         """
         pass
 
     def test_get_service_desk_integration_types(self) -> None:
         """Test case for get_service_desk_integration_types
 
-        Service Desk Integration Types List.  # noqa: E501
+        Service Desk Integration Types List.
         """
         pass
 
     def test_get_status_check_details(self) -> None:
         """Test case for get_status_check_details
 
-        Get the time check configuration  # noqa: E501
+        Get the time check configuration
         """
         pass
 
     def test_patch_service_desk_integration(self) -> None:
         """Test case for patch_service_desk_integration
 
-        Service Desk Integration Update PATCH  # noqa: E501
+        Service Desk Integration Update PATCH
         """
         pass
 
     def test_put_service_desk_integration(self) -> None:
         """Test case for put_service_desk_integration
 
-        Update a Service Desk integration  # noqa: E501
+        Update a Service Desk integration
         """
         pass
 
     def test_update_status_check_details(self) -> None:
         """Test case for update_status_check_details
 
-        Update the time check configuration  # noqa: E501
+        Update the time check configuration
         """
         pass
 

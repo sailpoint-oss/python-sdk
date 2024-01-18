@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.campaign_activated import CampaignActivated  # noqa: E501
+from sailpoint.beta.models.campaign_activated import CampaignActivated
 
 
 class TestCampaignActivated(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCampaignActivated(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CampaignActivated`
         """
-        model = CampaignActivated()  # noqa: E501
+        model = CampaignActivated()
         if include_optional:
             return CampaignActivated(
                 campaign = sailpoint.beta.models.campaign_activated_campaign.CampaignActivated_campaign(

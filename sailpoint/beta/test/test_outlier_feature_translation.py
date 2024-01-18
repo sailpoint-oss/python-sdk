@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.outlier_feature_translation import OutlierFeatureTranslation  # noqa: E501
+from sailpoint.beta.models.outlier_feature_translation import OutlierFeatureTranslation
 
 
 class TestOutlierFeatureTranslation(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestOutlierFeatureTranslation(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `OutlierFeatureTranslation`
         """
-        model = OutlierFeatureTranslation()  # noqa: E501
+        model = OutlierFeatureTranslation()
         if include_optional:
             return OutlierFeatureTranslation(
                 display_name = sailpoint.beta.models.translation_message.TranslationMessage(

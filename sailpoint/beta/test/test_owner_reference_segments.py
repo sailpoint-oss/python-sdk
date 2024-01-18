@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.owner_reference_segments import OwnerReferenceSegments  # noqa: E501
+from sailpoint.beta.models.owner_reference_segments import OwnerReferenceSegments
 
 
 class TestOwnerReferenceSegments(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestOwnerReferenceSegments(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `OwnerReferenceSegments`
         """
-        model = OwnerReferenceSegments()  # noqa: E501
+        model = OwnerReferenceSegments()
         if include_optional:
             return OwnerReferenceSegments(
                 type = 'IDENTITY',

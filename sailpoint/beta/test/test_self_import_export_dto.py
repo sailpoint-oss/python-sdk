@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.self_import_export_dto import SelfImportExportDto  # noqa: E501
+from sailpoint.beta.models.self_import_export_dto import SelfImportExportDto
 
 
 class TestSelfImportExportDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSelfImportExportDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SelfImportExportDto`
         """
-        model = SelfImportExportDto()  # noqa: E501
+        model = SelfImportExportDto()
         if include_optional:
             return SelfImportExportDto(
                 type = 'SOURCE',

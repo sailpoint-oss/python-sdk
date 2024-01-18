@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.sub_search_aggregation_specification import SubSearchAggregationSpecification  # noqa: E501
+from sailpoint.v3.models.sub_search_aggregation_specification import SubSearchAggregationSpecification
 
 
 class TestSubSearchAggregationSpecification(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestSubSearchAggregationSpecification(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SubSearchAggregationSpecification`
         """
-        model = SubSearchAggregationSpecification()  # noqa: E501
+        model = SubSearchAggregationSpecification()
         if include_optional:
             return SubSearchAggregationSpecification(
                 nested = sailpoint.v3.models.nested_aggregation.NestedAggregation(

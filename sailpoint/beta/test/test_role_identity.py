@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_identity import RoleIdentity  # noqa: E501
+from sailpoint.beta.models.role_identity import RoleIdentity
 
 
 class TestRoleIdentity(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRoleIdentity(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleIdentity`
         """
-        model = RoleIdentity()  # noqa: E501
+        model = RoleIdentity()
         if include_optional:
             return RoleIdentity(
                 id = '2c9180a46faadee4016fb4e018c20639',

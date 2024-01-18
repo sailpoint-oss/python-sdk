@@ -16,94 +16,106 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.saved_search_complete_search_results import SavedSearchCompleteSearchResults
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class SavedSearchComplete(BaseModel):
     """
     SavedSearchComplete
     """
-    file_name: StrictStr = Field(...,
-                                 alias="fileName",
-                                 description="A name for the report file.")
+
+  # noqa: E501
+    file_name: StrictStr = Field(description="A name for the report file.",
+                                 alias="fileName")
     owner_email: StrictStr = Field(
-        ...,
-        alias="ownerEmail",
         description=
-        "The email address of the identity that owns the saved search.")
+        "The email address of the identity that owns the saved search.",
+        alias="ownerEmail")
     owner_name: StrictStr = Field(
-        ...,
-        alias="ownerName",
-        description="The name of the identity that owns the saved search.")
+        description="The name of the identity that owns the saved search.",
+        alias="ownerName")
     query: StrictStr = Field(
-        ...,
         description="The search query that was used to generate the report.")
-    search_name: StrictStr = Field(...,
-                                   alias="searchName",
-                                   description="The name of the saved search.")
+    search_name: StrictStr = Field(description="The name of the saved search.",
+                                   alias="searchName")
     search_results: SavedSearchCompleteSearchResults = Field(
-        ..., alias="searchResults")
+        alias="searchResults")
     signed_s3_url: StrictStr = Field(
-        ...,
-        alias="signedS3Url",
-        description="The Amazon S3 URL to download the report from.")
-    __properties = [
+        description="The Amazon S3 URL to download the report from.",
+        alias="signedS3Url")
+    __properties: ClassVar[List[str]] = [
         "fileName", "ownerEmail", "ownerName", "query", "searchName",
         "searchResults", "signedS3Url"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SavedSearchComplete:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of SavedSearchComplete from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of search_results
         if self.search_results:
             _dict['searchResults'] = self.search_results.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SavedSearchComplete:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of SavedSearchComplete from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SavedSearchComplete.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SavedSearchComplete.parse_obj({
-            "file_name":
+        _obj = cls.model_validate({
+            "fileName":
             obj.get("fileName"),
-            "owner_email":
+            "ownerEmail":
             obj.get("ownerEmail"),
-            "owner_name":
+            "ownerName":
             obj.get("ownerName"),
             "query":
             obj.get("query"),
-            "search_name":
+            "searchName":
             obj.get("searchName"),
-            "search_results":
+            "searchResults":
             SavedSearchCompleteSearchResults.from_dict(
                 obj.get("searchResults"))
             if obj.get("searchResults") is not None else None,
-            "signed_s3_url":
+            "signedS3Url":
             obj.get("signedS3Url")
         })
         return _obj

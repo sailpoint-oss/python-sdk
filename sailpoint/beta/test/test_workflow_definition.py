@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workflow_definition import WorkflowDefinition  # noqa: E501
+from sailpoint.beta.models.workflow_definition import WorkflowDefinition
 
 
 class TestWorkflowDefinition(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkflowDefinition(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkflowDefinition`
         """
-        model = WorkflowDefinition()  # noqa: E501
+        model = WorkflowDefinition()
         if include_optional:
             return WorkflowDefinition(
                 start = 'Send Email Test',

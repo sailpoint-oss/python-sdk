@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner import ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner  # noqa: E501
+from sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner import ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
 
 
 class TestProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
@@ -36,7 +36,7 @@ class TestProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
             optional params are included """
         # uncomment below to create an instance of `ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner`
         """
-        model = ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner()  # noqa: E501
+        model = ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner()
         if include_optional:
             return ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
                 attribute_name = 'memberOf',

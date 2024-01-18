@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access_request_config import AccessRequestConfig  # noqa: E501
+from sailpoint.v3.models.access_request_config import AccessRequestConfig
 
 
 class TestAccessRequestConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessRequestConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessRequestConfig`
         """
-        model = AccessRequestConfig()  # noqa: E501
+        model = AccessRequestConfig()
         if include_optional:
             return AccessRequestConfig(
                 approvals_must_be_external = True,

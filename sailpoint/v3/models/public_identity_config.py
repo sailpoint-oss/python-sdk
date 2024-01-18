@@ -17,47 +17,65 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel
+from pydantic import Field
 from sailpoint.v3.models.identity_reference import IdentityReference
 from sailpoint.v3.models.public_identity_attribute_config import PublicIdentityAttributeConfig
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class PublicIdentityConfig(BaseModel):
     """
-    Details of up to 5 Identity attributes that will be publicly accessible for all Identities to anyone in the org.  # noqa: E501
-    """
-    attributes: Optional[conlist(PublicIdentityAttributeConfig)] = Field(
-        None,
+    Details of up to 5 Identity attributes that will be publicly accessible for all Identities to anyone in the org.
+    """ # noqa: E501
+    attributes: Optional[List[PublicIdentityAttributeConfig]] = Field(
+        default=None,
         description=
         "Up to 5 identity attributes that will be available to everyone in the org for all users in the org."
     )
     modified: Optional[datetime] = Field(
-        None, description="When this configuration was last modified.")
-    modified_by: Optional[IdentityReference] = Field(None, alias="modifiedBy")
-    __properties = ["attributes", "modified", "modifiedBy"]
+        default=None, description="When this configuration was last modified.")
+    modified_by: Optional[IdentityReference] = Field(default=None,
+                                                     alias="modifiedBy")
+    __properties: ClassVar[List[str]] = [
+        "attributes", "modified", "modifiedBy"
+    ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> PublicIdentityConfig:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of PublicIdentityConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in attributes (list)
         _items = []
         if self.attributes:
@@ -69,34 +87,34 @@ class PublicIdentityConfig(BaseModel):
         if self.modified_by:
             _dict['modifiedBy'] = self.modified_by.to_dict()
         # set to None if modified (nullable) is None
-        # and __fields_set__ contains the field
-        if self.modified is None and "modified" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
             _dict['modified'] = None
 
         # set to None if modified_by (nullable) is None
-        # and __fields_set__ contains the field
-        if self.modified_by is None and "modified_by" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.modified_by is None and "modified_by" in self.model_fields_set:
             _dict['modifiedBy'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> PublicIdentityConfig:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of PublicIdentityConfig from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PublicIdentityConfig.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = PublicIdentityConfig.parse_obj({
+        _obj = cls.model_validate({
             "attributes": [
                 PublicIdentityAttributeConfig.from_dict(_item)
                 for _item in obj.get("attributes")
             ] if obj.get("attributes") is not None else None,
             "modified":
             obj.get("modified"),
-            "modified_by":
+            "modifiedBy":
             IdentityReference.from_dict(obj.get("modifiedBy"))
             if obj.get("modifiedBy") is not None else None
         })

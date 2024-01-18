@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.sp_config_job import SpConfigJob  # noqa: E501
+from sailpoint.beta.models.sp_config_job import SpConfigJob
 
 
 class TestSpConfigJob(unittest.TestCase):
@@ -33,30 +33,24 @@ class TestSpConfigJob(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SpConfigJob`
         """
-        model = SpConfigJob()  # noqa: E501
+        model = SpConfigJob()
         if include_optional:
             return SpConfigJob(
                 job_id = '3469b87d-48ca-439a-868f-2160001da8c1',
                 status = 'COMPLETE',
                 type = 'IMPORT',
-                message = 'Download import results for details.',
-                description = 'ETS configuration objects from Acme-Solar sandbox',
                 expiration = '2021-05-11T22:23:16Z',
                 created = '2021-05-11T22:23:16Z',
-                modified = '2021-05-11T22:23:16Z',
-                completed = '2021-05-11T22:23:16Z'
+                modified = '2021-05-11T22:23:16Z'
             )
         else:
             return SpConfigJob(
                 job_id = '3469b87d-48ca-439a-868f-2160001da8c1',
                 status = 'COMPLETE',
                 type = 'IMPORT',
-                message = 'Download import results for details.',
-                description = 'ETS configuration objects from Acme-Solar sandbox',
                 expiration = '2021-05-11T22:23:16Z',
                 created = '2021-05-11T22:23:16Z',
                 modified = '2021-05-11T22:23:16Z',
-                completed = '2021-05-11T22:23:16Z',
         )
         """
 

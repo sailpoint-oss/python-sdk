@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.password_status import PasswordStatus  # noqa: E501
+from sailpoint.v3.models.password_status import PasswordStatus
 
 
 class TestPasswordStatus(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPasswordStatus(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PasswordStatus`
         """
-        model = PasswordStatus()  # noqa: E501
+        model = PasswordStatus()
         if include_optional:
             return PasswordStatus(
                 request_id = '089899f13a8f4da7824996191587bab9',

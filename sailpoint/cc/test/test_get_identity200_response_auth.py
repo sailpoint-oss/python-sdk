@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.get_identity200_response_auth import GetIdentity200ResponseAuth  # noqa: E501
+from sailpoint.cc.models.get_identity200_response_auth import GetIdentity200ResponseAuth
 
 
 class TestGetIdentity200ResponseAuth(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestGetIdentity200ResponseAuth(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `GetIdentity200ResponseAuth`
         """
-        model = GetIdentity200ResponseAuth()  # noqa: E501
+        model = GetIdentity200ResponseAuth()
         if include_optional:
             return GetIdentity200ResponseAuth(
                 service = '',

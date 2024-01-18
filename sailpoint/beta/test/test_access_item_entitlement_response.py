@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_item_entitlement_response import AccessItemEntitlementResponse  # noqa: E501
+from sailpoint.beta.models.access_item_entitlement_response import AccessItemEntitlementResponse
 
 
 class TestAccessItemEntitlementResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessItemEntitlementResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessItemEntitlementResponse`
         """
-        model = AccessItemEntitlementResponse()  # noqa: E501
+        model = AccessItemEntitlementResponse()
         if include_optional:
             return AccessItemEntitlementResponse(
                 access_type = 'entitlement',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.create_connector_request import CreateConnectorRequest  # noqa: E501
+from sailpoint.cc.models.create_connector_request import CreateConnectorRequest
 
 
 class TestCreateConnectorRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCreateConnectorRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreateConnectorRequest`
         """
-        model = CreateConnectorRequest()  # noqa: E501
+        model = CreateConnectorRequest()
         if include_optional:
             return CreateConnectorRequest(
                 name = 'My Connector',

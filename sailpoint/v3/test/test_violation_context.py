@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.violation_context import ViolationContext  # noqa: E501
+from sailpoint.v3.models.violation_context import ViolationContext
 
 
 class TestViolationContext(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestViolationContext(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ViolationContext`
         """
-        model = ViolationContext()  # noqa: E501
+        model = ViolationContext()
         if include_optional:
             return ViolationContext(
                 policy = sailpoint.v3.models.violation_context_policy.ViolationContext_policy(

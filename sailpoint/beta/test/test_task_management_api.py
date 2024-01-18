@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.task_management_api import TaskManagementApi  # noqa: E501
+from sailpoint.beta.api.task_management_api import TaskManagementApi
 
 
 class TestTaskManagementApi(unittest.TestCase):
     """TaskManagementApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = TaskManagementApi()  # noqa: E501
+        self.api = TaskManagementApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,35 +28,35 @@ class TestTaskManagementApi(unittest.TestCase):
     def test_get_pending_task_headers(self) -> None:
         """Test case for get_pending_task_headers
 
-        Retrieve headers only for pending task list.  # noqa: E501
+        Retrieve headers only for pending task list.
         """
         pass
 
     def test_get_pending_tasks(self) -> None:
         """Test case for get_pending_tasks
 
-        Retrieve a pending task list.  # noqa: E501
+        Retrieve a pending task list.
         """
         pass
 
     def test_get_task_status(self) -> None:
         """Test case for get_task_status
 
-        Get task status by ID.  # noqa: E501
+        Get task status by ID.
         """
         pass
 
     def test_get_task_status_list(self) -> None:
         """Test case for get_task_status_list
 
-        Retrieve a task status list.  # noqa: E501
+        Retrieve a task status list.
         """
         pass
 
     def test_update_task_status(self) -> None:
         """Test case for update_task_status
 
-        Update task status by ID  # noqa: E501
+        Update task status by ID
         """
         pass
 

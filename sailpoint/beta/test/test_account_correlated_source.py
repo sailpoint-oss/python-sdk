@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_correlated_source import AccountCorrelatedSource  # noqa: E501
+from sailpoint.beta.models.account_correlated_source import AccountCorrelatedSource
 
 
 class TestAccountCorrelatedSource(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountCorrelatedSource(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountCorrelatedSource`
         """
-        model = AccountCorrelatedSource()  # noqa: E501
+        model = AccountCorrelatedSource()
         if include_optional:
             return AccountCorrelatedSource(
                 type = 'SOURCE',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.sp_config_object import SpConfigObject  # noqa: E501
+from sailpoint.beta.models.sp_config_object import SpConfigObject
 
 
 class TestSpConfigObject(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSpConfigObject(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SpConfigObject`
         """
-        model = SpConfigObject()  # noqa: E501
+        model = SpConfigObject()
         if include_optional:
             return SpConfigObject(
                 object_type = 'TRIGGER_SUBSCRIPTION',

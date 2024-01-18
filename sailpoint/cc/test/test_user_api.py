@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.cc.api.user_api import UserApi  # noqa: E501
+from sailpoint.cc.api.user_api import UserApi
 
 
 class TestUserApi(unittest.TestCase):
     """UserApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = UserApi()  # noqa: E501
+        self.api = UserApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,14 +28,14 @@ class TestUserApi(unittest.TestCase):
     def test_get_identity(self) -> None:
         """Test case for get_identity
 
-        Get Single Identity  # noqa: E501
+        Get Single Identity
         """
         pass
 
     def test_update_user_permissions(self) -> None:
         """Test case for update_user_permissions
 
-        Update User Permissions  # noqa: E501
+        Update User Permissions
         """
         pass
 

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.config_object import ConfigObject  # noqa: E501
+from sailpoint.beta.models.config_object import ConfigObject
 
 
 class TestConfigObject(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestConfigObject(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConfigObject`
         """
-        model = ConfigObject()  # noqa: E501
+        model = ConfigObject()
         if include_optional:
             return ConfigObject(
                 version = 1,

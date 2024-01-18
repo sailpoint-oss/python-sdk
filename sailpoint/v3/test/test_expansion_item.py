@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.expansion_item import ExpansionItem  # noqa: E501
+from sailpoint.v3.models.expansion_item import ExpansionItem
 
 
 class TestExpansionItem(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestExpansionItem(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ExpansionItem`
         """
-        model = ExpansionItem()  # noqa: E501
+        model = ExpansionItem()
         if include_optional:
             return ExpansionItem(
                 account_id = '2c91808981f58ea601821c3e93482e6f',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.data_access_impact_score import DataAccessImpactScore  # noqa: E501
+from sailpoint.v3.models.data_access_impact_score import DataAccessImpactScore
 
 
 class TestDataAccessImpactScore(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestDataAccessImpactScore(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `DataAccessImpactScore`
         """
-        model = DataAccessImpactScore()  # noqa: E501
+        model = DataAccessImpactScore()
         if include_optional:
             return DataAccessImpactScore(
                 value = 'Medium'

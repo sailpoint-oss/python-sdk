@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.attribute_definition_type import AttributeDefinitionType  # noqa: E501
+from sailpoint.beta.models.attribute_definition_type import AttributeDefinitionType
 
 
 class TestAttributeDefinitionType(unittest.TestCase):

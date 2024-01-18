@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.full_account import FullAccount  # noqa: E501
+from sailpoint.beta.models.full_account import FullAccount
 
 
 class TestFullAccount(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFullAccount(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FullAccount`
         """
-        model = FullAccount()  # noqa: E501
+        model = FullAccount()
         if include_optional:
             return FullAccount(
                 id = 'id12345',

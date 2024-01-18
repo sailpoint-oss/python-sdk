@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 
 from typing import Any, List, Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
+from pydantic import BaseModel, Field, StrictStr, ValidationError, field_validator
 from sailpoint.beta.models.access_request_dynamic_approver import AccessRequestDynamicApprover
 from sailpoint.beta.models.access_request_post_approval import AccessRequestPostApproval
 from sailpoint.beta.models.access_request_pre_approval import AccessRequestPreApproval
@@ -41,8 +41,13 @@ from sailpoint.beta.models.source_created import SourceCreated
 from sailpoint.beta.models.source_deleted import SourceDeleted
 from sailpoint.beta.models.source_updated import SourceUpdated
 from sailpoint.beta.models.va_cluster_status_change_event import VAClusterStatusChangeEvent
-from typing import Union, Any, List, TYPE_CHECKING
+from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
+from typing_extensions import Literal
 from pydantic import StrictStr, Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 TRIGGEREXAMPLEINPUT_ONE_OF_SCHEMAS = [
     "AccessRequestDynamicApprover", "AccessRequestPostApproval",
@@ -108,28 +113,33 @@ class TriggerExampleInput(BaseModel):
     oneof_schema_23_validator: Optional[SourceUpdated] = None
     # data type: VAClusterStatusChangeEvent
     oneof_schema_24_validator: Optional[VAClusterStatusChangeEvent] = None
-    if TYPE_CHECKING:
-        actual_instance: Union[AccessRequestDynamicApprover,
-                               AccessRequestPostApproval,
-                               AccessRequestPreApproval,
-                               AccountAggregationCompleted,
-                               AccountAttributesChanged, AccountCorrelated,
-                               AccountUncorrelated,
-                               AccountsCollectedForAggregation,
-                               CampaignActivated, CampaignEnded,
-                               CampaignGenerated, CertificationSignedOff,
-                               IdentityAttributesChanged, IdentityCreated,
-                               IdentityDeleted, ProvisioningCompleted,
-                               SavedSearchComplete, SourceAccount,
-                               SourceCreated, SourceDeleted, SourceUpdated,
-                               VAClusterStatusChangeEvent]
-    else:
-        actual_instance: Any
-    one_of_schemas: List[str] = Field(TRIGGEREXAMPLEINPUT_ONE_OF_SCHEMAS,
-                                      const=True)
+    actual_instance: Optional[Union[AccessRequestDynamicApprover,
+                                    AccessRequestPostApproval,
+                                    AccessRequestPreApproval,
+                                    AccountAggregationCompleted,
+                                    AccountAttributesChanged,
+                                    AccountCorrelated, AccountUncorrelated,
+                                    AccountsCollectedForAggregation,
+                                    CampaignActivated, CampaignEnded,
+                                    CampaignGenerated, CertificationSignedOff,
+                                    IdentityAttributesChanged, IdentityCreated,
+                                    IdentityDeleted, ProvisioningCompleted,
+                                    SavedSearchComplete, SourceAccount,
+                                    SourceCreated, SourceDeleted,
+                                    SourceUpdated,
+                                    VAClusterStatusChangeEvent]] = None
+    one_of_schemas: List[str] = Literal[
+        "AccessRequestDynamicApprover", "AccessRequestPostApproval",
+        "AccessRequestPreApproval", "AccountAggregationCompleted",
+        "AccountAttributesChanged", "AccountCorrelated", "AccountUncorrelated",
+        "AccountsCollectedForAggregation", "CampaignActivated",
+        "CampaignEnded", "CampaignGenerated", "CertificationSignedOff",
+        "IdentityAttributesChanged", "IdentityCreated", "IdentityDeleted",
+        "ProvisioningCompleted", "SavedSearchComplete", "SourceAccount",
+        "SourceCreated", "SourceDeleted", "SourceUpdated",
+        "VAClusterStatusChangeEvent"]
 
-    class Config:
-        validate_assignment = True
+    model_config = {"validate_assignment": True}
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -145,9 +155,9 @@ class TriggerExampleInput(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
-        instance = TriggerExampleInput.construct()
+        instance = TriggerExampleInput.model_construct()
         error_messages = []
         match = 0
         # validate data type: AccessRequestDynamicApprover
@@ -318,13 +328,13 @@ class TriggerExampleInput(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TriggerExampleInput:
+    def from_dict(cls, obj: dict) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> TriggerExampleInput:
+    def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
-        instance = TriggerExampleInput.construct()
+        instance = cls.model_construct()
         error_messages = []
         match = 0
 
@@ -507,7 +517,7 @@ class TriggerExampleInput(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> Dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
@@ -521,4 +531,4 @@ class TriggerExampleInput(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.dict())
+        return pprint.pformat(self.model_dump())

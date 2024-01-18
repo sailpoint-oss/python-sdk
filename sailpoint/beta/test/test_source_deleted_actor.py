@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_deleted_actor import SourceDeletedActor  # noqa: E501
+from sailpoint.beta.models.source_deleted_actor import SourceDeletedActor
 
 
 class TestSourceDeletedActor(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceDeletedActor(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceDeletedActor`
         """
-        model = SourceDeletedActor()  # noqa: E501
+        model = SourceDeletedActor()
         if include_optional:
             return SourceDeletedActor(
                 type = 'IDENTITY',

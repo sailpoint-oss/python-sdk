@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identity_exception_report_reference import IdentityExceptionReportReference  # noqa: E501
+from sailpoint.v3.models.identity_exception_report_reference import IdentityExceptionReportReference
 
 
 class TestIdentityExceptionReportReference(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestIdentityExceptionReportReference(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityExceptionReportReference`
         """
-        model = IdentityExceptionReportReference()  # noqa: E501
+        model = IdentityExceptionReportReference()
         if include_optional:
             return IdentityExceptionReportReference(
                 task_result_id = '2b838de9-db9b-abcf-e646-d4f274ad4238',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.list_access_profiles429_response import ListAccessProfiles429Response  # noqa: E501
+from sailpoint.beta.models.list_access_profiles429_response import ListAccessProfiles429Response
 
 
 class TestListAccessProfiles429Response(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestListAccessProfiles429Response(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListAccessProfiles429Response`
         """
-        model = ListAccessProfiles429Response()  # noqa: E501
+        model = ListAccessProfiles429Response()
         if include_optional:
             return ListAccessProfiles429Response(
                 message =  Rate Limit Exceeded 

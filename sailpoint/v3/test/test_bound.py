@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.bound import Bound  # noqa: E501
+from sailpoint.v3.models.bound import Bound
 
 
 class TestBound(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestBound(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Bound`
         """
-        model = Bound()  # noqa: E501
+        model = Bound()
         if include_optional:
             return Bound(
                 value = '1',

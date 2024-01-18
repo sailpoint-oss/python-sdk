@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.provisioning_policy import ProvisioningPolicy  # noqa: E501
+from sailpoint.v3.models.provisioning_policy import ProvisioningPolicy
 
 
 class TestProvisioningPolicy(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestProvisioningPolicy(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ProvisioningPolicy`
         """
-        model = ProvisioningPolicy()  # noqa: E501
+        model = ProvisioningPolicy()
         if include_optional:
             return ProvisioningPolicy(
                 name = 'example provisioning policy for inactive identities',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.activate_campaign_options import ActivateCampaignOptions  # noqa: E501
+from sailpoint.v3.models.activate_campaign_options import ActivateCampaignOptions
 
 
 class TestActivateCampaignOptions(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestActivateCampaignOptions(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ActivateCampaignOptions`
         """
-        model = ActivateCampaignOptions()  # noqa: E501
+        model = ActivateCampaignOptions()
         if include_optional:
             return ActivateCampaignOptions(
                 time_zone = 'Z'

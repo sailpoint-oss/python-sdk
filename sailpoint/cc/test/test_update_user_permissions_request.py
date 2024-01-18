@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.update_user_permissions_request import UpdateUserPermissionsRequest  # noqa: E501
+from sailpoint.cc.models.update_user_permissions_request import UpdateUserPermissionsRequest
 
 
 class TestUpdateUserPermissionsRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestUpdateUserPermissionsRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `UpdateUserPermissionsRequest`
         """
-        model = UpdateUserPermissionsRequest()  # noqa: E501
+        model = UpdateUserPermissionsRequest()
         if include_optional:
             return UpdateUserPermissionsRequest(
                 ids = '71624,71625',

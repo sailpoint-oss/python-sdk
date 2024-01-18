@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_item_diff import AccessItemDiff  # noqa: E501
+from sailpoint.beta.models.access_item_diff import AccessItemDiff
 
 
 class TestAccessItemDiff(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessItemDiff(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessItemDiff`
         """
-        model = AccessItemDiff()  # noqa: E501
+        model = AccessItemDiff()
         if include_optional:
             return AccessItemDiff(
                 id = '',

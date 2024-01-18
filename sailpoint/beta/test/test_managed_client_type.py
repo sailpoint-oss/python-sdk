@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.managed_client_type import ManagedClientType  # noqa: E501
+from sailpoint.beta.models.managed_client_type import ManagedClientType
 
 
 class TestManagedClientType(unittest.TestCase):

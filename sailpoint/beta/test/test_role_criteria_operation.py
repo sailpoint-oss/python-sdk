@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_criteria_operation import RoleCriteriaOperation  # noqa: E501
+from sailpoint.beta.models.role_criteria_operation import RoleCriteriaOperation
 
 
 class TestRoleCriteriaOperation(unittest.TestCase):

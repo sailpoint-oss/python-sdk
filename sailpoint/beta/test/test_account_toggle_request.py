@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_toggle_request import AccountToggleRequest  # noqa: E501
+from sailpoint.beta.models.account_toggle_request import AccountToggleRequest
 
 
 class TestAccountToggleRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountToggleRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountToggleRequest`
         """
-        model = AccountToggleRequest()  # noqa: E501
+        model = AccountToggleRequest()
         if include_optional:
             return AccountToggleRequest(
                 external_verification_id = '3f9180835d2e5168015d32f890ca1581',

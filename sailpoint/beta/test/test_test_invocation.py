@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.test_invocation import TestInvocation  # noqa: E501
+from sailpoint.beta.models.test_invocation import TestInvocation
 
 
 class TestTestInvocation(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTestInvocation(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TestInvocation`
         """
-        model = TestInvocation()  # noqa: E501
+        model = TestInvocation()
         if include_optional:
             return TestInvocation(
                 trigger_id = 'idn:access-request-post-approval',

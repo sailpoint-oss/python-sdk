@@ -16,82 +16,104 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class IdentityListItem(BaseModel):
     """
     IdentityListItem
     """
-    id: Optional[StrictStr] = Field(None, description="the identity ID")
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
+                                    description="the identity ID")
     display_name: Optional[StrictStr] = Field(
-        None,
-        alias="displayName",
-        description="the display name of the identity")
+        default=None,
+        description="the display name of the identity",
+        alias="displayName")
     first_name: Optional[StrictStr] = Field(
-        None, alias="firstName", description="the first name of the identity")
+        default=None,
+        description="the first name of the identity",
+        alias="firstName")
     last_name: Optional[StrictStr] = Field(
-        None, alias="lastName", description="the last name of the identity")
+        default=None,
+        description="the last name of the identity",
+        alias="lastName")
     active: Optional[StrictBool] = Field(
-        True, description="indicates if an identity is active or not")
+        default=True, description="indicates if an identity is active or not")
     deleted_date: Optional[StrictStr] = Field(
-        None,
-        alias="deletedDate",
-        description="the date when the identity was deleted")
-    __properties = [
+        default=None,
+        description="the date when the identity was deleted",
+        alias="deletedDate")
+    __properties: ClassVar[List[str]] = [
         "id", "displayName", "firstName", "lastName", "active", "deletedDate"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> IdentityListItem:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of IdentityListItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # set to None if deleted_date (nullable) is None
-        # and __fields_set__ contains the field
-        if self.deleted_date is None and "deleted_date" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.deleted_date is None and "deleted_date" in self.model_fields_set:
             _dict['deletedDate'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> IdentityListItem:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of IdentityListItem from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return IdentityListItem.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = IdentityListItem.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
-            "display_name":
+            "displayName":
             obj.get("displayName"),
-            "first_name":
+            "firstName":
             obj.get("firstName"),
-            "last_name":
+            "lastName":
             obj.get("lastName"),
             "active":
             obj.get("active") if obj.get("active") is not None else True,
-            "deleted_date":
+            "deletedDate":
             obj.get("deletedDate")
         })
         return _obj

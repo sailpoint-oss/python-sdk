@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.account import Account  # noqa: E501
+from sailpoint.v3.models.account import Account
 
 
 class TestAccount(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccount(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Account`
         """
-        model = Account()  # noqa: E501
+        model = Account()
         if include_optional:
             return Account(
                 id = 'id12345',
@@ -53,7 +53,15 @@ class TestAccount(unittest.TestCase):
                 uncorrelated = False,
                 uuid = 'slpt.support',
                 manually_correlated = False,
-                has_entitlements = True
+                has_entitlements = True,
+                identity = sailpoint.v3.models.base_reference_dto.BaseReferenceDto(
+                    type = 'IDENTITY', 
+                    id = '2c91808568c529c60168cca6f90c1313', 
+                    name = 'William Wilson', ),
+                source_owner = sailpoint.v3.models.base_reference_dto.BaseReferenceDto(
+                    type = 'IDENTITY', 
+                    id = '2c91808568c529c60168cca6f90c1313', 
+                    name = 'William Wilson', )
             )
         else:
             return Account(

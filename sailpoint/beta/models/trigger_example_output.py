@@ -18,11 +18,16 @@ import pprint
 import re  # noqa: F401
 
 from typing import Any, List, Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
+from pydantic import BaseModel, Field, StrictStr, ValidationError, field_validator
 from sailpoint.beta.models.access_request_dynamic_approver1 import AccessRequestDynamicApprover1
 from sailpoint.beta.models.access_request_pre_approval1 import AccessRequestPreApproval1
-from typing import Union, Any, List, TYPE_CHECKING
+from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
+from typing_extensions import Literal
 from pydantic import StrictStr, Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 TRIGGEREXAMPLEOUTPUT_ONE_OF_SCHEMAS = [
     "AccessRequestDynamicApprover1", "AccessRequestPreApproval1"
@@ -37,16 +42,12 @@ class TriggerExampleOutput(BaseModel):
     oneof_schema_1_validator: Optional[AccessRequestDynamicApprover1] = None
     # data type: AccessRequestPreApproval1
     oneof_schema_2_validator: Optional[AccessRequestPreApproval1] = None
-    if TYPE_CHECKING:
-        actual_instance: Union[AccessRequestDynamicApprover1,
-                               AccessRequestPreApproval1]
-    else:
-        actual_instance: Any
-    one_of_schemas: List[str] = Field(TRIGGEREXAMPLEOUTPUT_ONE_OF_SCHEMAS,
-                                      const=True)
+    actual_instance: Optional[Union[AccessRequestDynamicApprover1,
+                                    AccessRequestPreApproval1]] = None
+    one_of_schemas: List[str] = Literal["AccessRequestDynamicApprover1",
+                                        "AccessRequestPreApproval1"]
 
-    class Config:
-        validate_assignment = True
+    model_config = {"validate_assignment": True}
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -62,12 +63,12 @@ class TriggerExampleOutput(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
         if v is None:
             return v
 
-        instance = TriggerExampleOutput.construct()
+        instance = TriggerExampleOutput.model_construct()
         error_messages = []
         match = 0
         # validate data type: AccessRequestDynamicApprover1
@@ -98,13 +99,13 @@ class TriggerExampleOutput(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TriggerExampleOutput:
+    def from_dict(cls, obj: dict) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> TriggerExampleOutput:
+    def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
-        instance = TriggerExampleOutput.construct()
+        instance = cls.model_construct()
         if json_str is None:
             return instance
 
@@ -150,7 +151,7 @@ class TriggerExampleOutput(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> Dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
@@ -164,4 +165,4 @@ class TriggerExampleOutput(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.dict())
+        return pprint.pformat(self.model_dump())

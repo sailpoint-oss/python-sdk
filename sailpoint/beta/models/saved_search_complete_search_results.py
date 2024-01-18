@@ -16,46 +16,61 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel
+from pydantic import Field
 from sailpoint.beta.models.saved_search_complete_search_results_account import SavedSearchCompleteSearchResultsAccount
 from sailpoint.beta.models.saved_search_complete_search_results_entitlement import SavedSearchCompleteSearchResultsEntitlement
 from sailpoint.beta.models.saved_search_complete_search_results_identity import SavedSearchCompleteSearchResultsIdentity
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class SavedSearchCompleteSearchResults(BaseModel):
     """
-    A preview of the search results for each object type. This includes a count as well as headers, and the first several rows of data, per object type.  # noqa: E501
-    """
+    A preview of the search results for each object type. This includes a count as well as headers, and the first several rows of data, per object type.
+    """ # noqa: E501
     account: Optional[SavedSearchCompleteSearchResultsAccount] = Field(
-        None, alias="Account")
+        default=None, alias="Account")
     entitlement: Optional[SavedSearchCompleteSearchResultsEntitlement] = Field(
-        None, alias="Entitlement")
+        default=None, alias="Entitlement")
     identity: Optional[SavedSearchCompleteSearchResultsIdentity] = Field(
-        None, alias="Identity")
-    __properties = ["Account", "Entitlement", "Identity"]
+        default=None, alias="Identity")
+    __properties: ClassVar[List[str]] = ["Account", "Entitlement", "Identity"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SavedSearchCompleteSearchResults:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of SavedSearchCompleteSearchResults from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of account
         if self.account:
             _dict['Account'] = self.account.to_dict()
@@ -66,41 +81,41 @@ class SavedSearchCompleteSearchResults(BaseModel):
         if self.identity:
             _dict['Identity'] = self.identity.to_dict()
         # set to None if account (nullable) is None
-        # and __fields_set__ contains the field
-        if self.account is None and "account" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.account is None and "account" in self.model_fields_set:
             _dict['Account'] = None
 
         # set to None if entitlement (nullable) is None
-        # and __fields_set__ contains the field
-        if self.entitlement is None and "entitlement" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.entitlement is None and "entitlement" in self.model_fields_set:
             _dict['Entitlement'] = None
 
         # set to None if identity (nullable) is None
-        # and __fields_set__ contains the field
-        if self.identity is None and "identity" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.identity is None and "identity" in self.model_fields_set:
             _dict['Identity'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SavedSearchCompleteSearchResults:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of SavedSearchCompleteSearchResults from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SavedSearchCompleteSearchResults.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SavedSearchCompleteSearchResults.parse_obj({
-            "account":
+        _obj = cls.model_validate({
+            "Account":
             SavedSearchCompleteSearchResultsAccount.from_dict(
                 obj.get("Account"))
             if obj.get("Account") is not None else None,
-            "entitlement":
+            "Entitlement":
             SavedSearchCompleteSearchResultsEntitlement.from_dict(
                 obj.get("Entitlement"))
             if obj.get("Entitlement") is not None else None,
-            "identity":
+            "Identity":
             SavedSearchCompleteSearchResultsIdentity.from_dict(
                 obj.get("Identity"))
             if obj.get("Identity") is not None else None

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.common_access_item_access import CommonAccessItemAccess  # noqa: E501
+from sailpoint.beta.models.common_access_item_access import CommonAccessItemAccess
 
 
 class TestCommonAccessItemAccess(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCommonAccessItemAccess(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CommonAccessItemAccess`
         """
-        model = CommonAccessItemAccess()  # noqa: E501
+        model = CommonAccessItemAccess()
         if include_optional:
             return CommonAccessItemAccess(
                 id = '',

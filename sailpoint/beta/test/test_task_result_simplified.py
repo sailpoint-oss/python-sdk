@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.task_result_simplified import TaskResultSimplified  # noqa: E501
+from sailpoint.beta.models.task_result_simplified import TaskResultSimplified
 
 
 class TestTaskResultSimplified(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTaskResultSimplified(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TaskResultSimplified`
         """
-        model = TaskResultSimplified()  # noqa: E501
+        model = TaskResultSimplified()
         if include_optional:
             return TaskResultSimplified(
                 id = 'ff8081814d977c21014da056804a0af3',

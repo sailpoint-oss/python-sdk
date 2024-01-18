@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.fullcampaign_all_of_filter import FullcampaignAllOfFilter  # noqa: E501
+from sailpoint.beta.models.fullcampaign_all_of_filter import FullcampaignAllOfFilter
 
 
 class TestFullcampaignAllOfFilter(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFullcampaignAllOfFilter(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FullcampaignAllOfFilter`
         """
-        model = FullcampaignAllOfFilter()  # noqa: E501
+        model = FullcampaignAllOfFilter()
         if include_optional:
             return FullcampaignAllOfFilter(
                 id = '0fbe863c063c4c88a35fd7f17e8a3df5',

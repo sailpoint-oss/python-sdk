@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.segments_api import SegmentsApi  # noqa: E501
+from sailpoint.v3.api.segments_api import SegmentsApi
 
 
 class TestSegmentsApi(unittest.TestCase):
     """SegmentsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SegmentsApi()  # noqa: E501
+        self.api = SegmentsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,35 +28,35 @@ class TestSegmentsApi(unittest.TestCase):
     def test_create_segment(self) -> None:
         """Test case for create_segment
 
-        Create Segment  # noqa: E501
+        Create Segment
         """
         pass
 
     def test_delete_segment(self) -> None:
         """Test case for delete_segment
 
-        Delete Segment by ID  # noqa: E501
+        Delete Segment by ID
         """
         pass
 
     def test_get_segment(self) -> None:
         """Test case for get_segment
 
-        Get Segment by ID  # noqa: E501
+        Get Segment by ID
         """
         pass
 
     def test_list_segments(self) -> None:
         """Test case for list_segments
 
-        List Segments  # noqa: E501
+        List Segments
         """
         pass
 
     def test_patch_segment(self) -> None:
         """Test case for patch_segment
 
-        Update Segment  # noqa: E501
+        Update Segment
         """
         pass
 

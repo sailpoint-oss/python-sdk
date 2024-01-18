@@ -16,41 +16,43 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class CloseAccessRequest(BaseModel):
     """
-    Request body payload for close access requests endpoint.  # noqa: E501
-    """
-    access_request_ids: conlist(StrictStr) = Field(
-        ...,
-        alias="accessRequestIds",
+    Request body payload for close access requests endpoint.
+    """ # noqa: E501
+    access_request_ids: List[StrictStr] = Field(
         description=
-        "Access Request IDs for the requests to be closed. Accepts 1-500 Identity Request IDs per request."
-    )
+        "Access Request IDs for the requests to be closed. Accepts 1-500 Identity Request IDs per request.",
+        alias="accessRequestIds")
     message: Optional[StrictStr] = Field(
-        'The IdentityNow Administrator manually closed this request.',
+        default='The IdentityNow Administrator manually closed this request.',
         description=
         "Reason for closing the access request. Displayed under Warnings in IdentityNow."
     )
     execution_status: Optional[StrictStr] = Field(
-        'Terminated',
-        alias="executionStatus",
+        default='Terminated',
         description=
-        "The request's provisioning status. Displayed as Stage in IdentityNow."
-    )
+        "The request's provisioning status. Displayed as Stage in IdentityNow.",
+        alias="executionStatus")
     completion_status: Optional[StrictStr] = Field(
-        'Failure',
-        alias="completionStatus",
+        default='Failure',
         description=
-        "The request's overall status. Displayed as Status in IdentityNow.")
-    __properties = [
+        "The request's overall status. Displayed as Status in IdentityNow.",
+        alias="completionStatus")
+    __properties: ClassVar[List[str]] = [
         "accessRequestIds", "message", "executionStatus", "completionStatus"
     ]
 
-    @validator('execution_status')
+    @field_validator('execution_status')
     def execution_status_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -61,7 +63,7 @@ class CloseAccessRequest(BaseModel):
                 "must be one of enum values ('Terminated', 'Completed')")
         return value
 
-    @validator('completion_status')
+    @field_validator('completion_status')
     def completion_status_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -73,48 +75,58 @@ class CloseAccessRequest(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CloseAccessRequest:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of CloseAccessRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CloseAccessRequest:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of CloseAccessRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CloseAccessRequest.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = CloseAccessRequest.parse_obj({
-            "access_request_ids":
+        _obj = cls.model_validate({
+            "accessRequestIds":
             obj.get("accessRequestIds"),
             "message":
             obj.get("message") if obj.get("message") is not None else
             'The IdentityNow Administrator manually closed this request.',
-            "execution_status":
+            "executionStatus":
             obj.get("executionStatus")
             if obj.get("executionStatus") is not None else 'Terminated',
-            "completion_status":
+            "completionStatus":
             obj.get("completionStatus")
             if obj.get("completionStatus") is not None else 'Failure'
         })

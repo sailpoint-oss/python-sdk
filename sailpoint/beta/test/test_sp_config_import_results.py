@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.sp_config_import_results import SpConfigImportResults  # noqa: E501
+from sailpoint.beta.models.sp_config_import_results import SpConfigImportResults
 
 
 class TestSpConfigImportResults(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSpConfigImportResults(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SpConfigImportResults`
         """
-        model = SpConfigImportResults()  # noqa: E501
+        model = SpConfigImportResults()
         if include_optional:
             return SpConfigImportResults(
                 results = {results={TRIGGER_SUBSCRIPTION={infos=[{key=IMPORT_PREVIEW, text=Object to be imported: [c953134c-2224-42f2-a84e-fa5cbb395904, Test 2], detail=null}, {key=IMPORT_PREVIEW, text=Object to be imported: [be9e116d-08e1-49fc-ab7f-fa585e96c9e4, Test 1], detail=null}], warnings=[], errors=[], importedObjects=[]}}},

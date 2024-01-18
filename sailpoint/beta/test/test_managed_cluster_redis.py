@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.managed_cluster_redis import ManagedClusterRedis  # noqa: E501
+from sailpoint.beta.models.managed_cluster_redis import ManagedClusterRedis
 
 
 class TestManagedClusterRedis(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestManagedClusterRedis(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ManagedClusterRedis`
         """
-        model = ManagedClusterRedis()  # noqa: E501
+        model = ManagedClusterRedis()
         if include_optional:
             return ManagedClusterRedis(
                 redis_host = 'megapod-useast1-shared-redis.cloud.sailpoint.com',

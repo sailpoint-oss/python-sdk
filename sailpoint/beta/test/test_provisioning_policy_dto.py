@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.provisioning_policy_dto import ProvisioningPolicyDto  # noqa: E501
+from sailpoint.beta.models.provisioning_policy_dto import ProvisioningPolicyDto
 
 
 class TestProvisioningPolicyDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestProvisioningPolicyDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ProvisioningPolicyDto`
         """
-        model = ProvisioningPolicyDto()  # noqa: E501
+        model = ProvisioningPolicyDto()
         if include_optional:
             return ProvisioningPolicyDto(
                 name = 'example provisioning policy for inactive identities',

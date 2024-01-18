@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.error_response_dto import ErrorResponseDto  # noqa: E501
+from sailpoint.v3.models.error_response_dto import ErrorResponseDto
 
 
 class TestErrorResponseDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestErrorResponseDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ErrorResponseDto`
         """
-        model = ErrorResponseDto()  # noqa: E501
+        model = ErrorResponseDto()
         if include_optional:
             return ErrorResponseDto(
                 detail_code = '400.1 Bad Request Content',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.campaign_template import CampaignTemplate  # noqa: E501
+from sailpoint.beta.models.campaign_template import CampaignTemplate
 
 
 class TestCampaignTemplate(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCampaignTemplate(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CampaignTemplate`
         """
-        model = CampaignTemplate()  # noqa: E501
+        model = CampaignTemplate()
         if include_optional:
             return CampaignTemplate(
                 id = '2c9079b270a266a60170a277bb960008',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.task_return_details import TaskReturnDetails  # noqa: E501
+from sailpoint.beta.models.task_return_details import TaskReturnDetails
 
 
 class TestTaskReturnDetails(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTaskReturnDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TaskReturnDetails`
         """
-        model = TaskReturnDetails()  # noqa: E501
+        model = TaskReturnDetails()
         if include_optional:
             return TaskReturnDetails(
                 name = 'label',

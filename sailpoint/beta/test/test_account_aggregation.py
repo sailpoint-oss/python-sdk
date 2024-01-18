@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_aggregation import AccountAggregation  # noqa: E501
+from sailpoint.beta.models.account_aggregation import AccountAggregation
 
 
 class TestAccountAggregation(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountAggregation(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountAggregation`
         """
-        model = AccountAggregation()  # noqa: E501
+        model = AccountAggregation()
         if include_optional:
             return AccountAggregation(
                 start = '2021-01-31T14:30:05.104Z',

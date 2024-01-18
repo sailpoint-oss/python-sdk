@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.original_request import OriginalRequest  # noqa: E501
+from sailpoint.v3.models.original_request import OriginalRequest
 
 
 class TestOriginalRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestOriginalRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `OriginalRequest`
         """
-        model = OriginalRequest()  # noqa: E501
+        model = OriginalRequest()
         if include_optional:
             return OriginalRequest(
                 account_id = 'CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com',

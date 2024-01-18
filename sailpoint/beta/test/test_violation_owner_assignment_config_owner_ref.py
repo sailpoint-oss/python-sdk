@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.violation_owner_assignment_config_owner_ref import ViolationOwnerAssignmentConfigOwnerRef  # noqa: E501
+from sailpoint.beta.models.violation_owner_assignment_config_owner_ref import ViolationOwnerAssignmentConfigOwnerRef
 
 
 class TestViolationOwnerAssignmentConfigOwnerRef(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestViolationOwnerAssignmentConfigOwnerRef(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ViolationOwnerAssignmentConfigOwnerRef`
         """
-        model = ViolationOwnerAssignmentConfigOwnerRef()  # noqa: E501
+        model = ViolationOwnerAssignmentConfigOwnerRef()
         if include_optional:
             return ViolationOwnerAssignmentConfigOwnerRef(
                 type = 'IDENTITY',

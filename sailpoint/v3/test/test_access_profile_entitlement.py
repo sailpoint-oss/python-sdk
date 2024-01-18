@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access_profile_entitlement import AccessProfileEntitlement  # noqa: E501
+from sailpoint.v3.models.access_profile_entitlement import AccessProfileEntitlement
 
 
 class TestAccessProfileEntitlement(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessProfileEntitlement(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessProfileEntitlement`
         """
-        model = AccessProfileEntitlement()  # noqa: E501
+        model = AccessProfileEntitlement()
         if include_optional:
             return AccessProfileEntitlement(
                 id = '2c91808568c529c60168cca6f90c1313',

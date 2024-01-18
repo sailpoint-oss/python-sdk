@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.common_access_id_status import CommonAccessIDStatus  # noqa: E501
+from sailpoint.beta.models.common_access_id_status import CommonAccessIDStatus
 
 
 class TestCommonAccessIDStatus(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCommonAccessIDStatus(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CommonAccessIDStatus`
         """
-        model = CommonAccessIDStatus()  # noqa: E501
+        model = CommonAccessIDStatus()
         if include_optional:
             return CommonAccessIDStatus(
                 confirmed_ids = [

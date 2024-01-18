@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.process_identities_request import ProcessIdentitiesRequest  # noqa: E501
+from sailpoint.beta.models.process_identities_request import ProcessIdentitiesRequest
 
 
 class TestProcessIdentitiesRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestProcessIdentitiesRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ProcessIdentitiesRequest`
         """
-        model = ProcessIdentitiesRequest()  # noqa: E501
+        model = ProcessIdentitiesRequest()
         if include_optional:
             return ProcessIdentitiesRequest(
                 identity_ids = [

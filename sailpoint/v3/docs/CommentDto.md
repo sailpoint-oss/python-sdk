@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **str** | Comment content. | [optional] 
-**author** | [**CommentDtoAuthor**](CommentDtoAuthor.md) |  | [optional] 
 **created** | **datetime** | Date and time comment was created. | [optional] 
 
 ## Example

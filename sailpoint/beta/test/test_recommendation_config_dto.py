@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.recommendation_config_dto import RecommendationConfigDto  # noqa: E501
+from sailpoint.beta.models.recommendation_config_dto import RecommendationConfigDto
 
 
 class TestRecommendationConfigDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRecommendationConfigDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RecommendationConfigDto`
         """
-        model = RecommendationConfigDto()  # noqa: E501
+        model = RecommendationConfigDto()
         if include_optional:
             return RecommendationConfigDto(
                 recommender_features = [jobTitle, location, peer_group, department, active],

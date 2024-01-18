@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.accounts_collected_for_aggregation import AccountsCollectedForAggregation  # noqa: E501
+from sailpoint.beta.models.accounts_collected_for_aggregation import AccountsCollectedForAggregation
 
 
 class TestAccountsCollectedForAggregation(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestAccountsCollectedForAggregation(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountsCollectedForAggregation`
         """
-        model = AccountsCollectedForAggregation()  # noqa: E501
+        model = AccountsCollectedForAggregation()
         if include_optional:
             return AccountsCollectedForAggregation(
                 source = sailpoint.beta.models.accounts_collected_for_aggregation_source.AccountsCollectedForAggregation_source(

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.resource_objects_request import ResourceObjectsRequest  # noqa: E501
+from sailpoint.beta.models.resource_objects_request import ResourceObjectsRequest
 
 
 class TestResourceObjectsRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestResourceObjectsRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ResourceObjectsRequest`
         """
-        model = ResourceObjectsRequest()  # noqa: E501
+        model = ResourceObjectsRequest()
         if include_optional:
             return ResourceObjectsRequest(
                 object_type = 'account',

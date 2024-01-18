@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_instance_created_by import FormInstanceCreatedBy  # noqa: E501
+from sailpoint.beta.models.form_instance_created_by import FormInstanceCreatedBy
 
 
 class TestFormInstanceCreatedBy(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFormInstanceCreatedBy(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormInstanceCreatedBy`
         """
-        model = FormInstanceCreatedBy()  # noqa: E501
+        model = FormInstanceCreatedBy()
         if include_optional:
             return FormInstanceCreatedBy(
                 id = '00000000-0000-0000-0000-000000000000',

@@ -18,15 +18,20 @@ import pprint
 import re  # noqa: F401
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
+from pydantic import BaseModel, Field, StrictStr, ValidationError, field_validator
 from sailpoint.beta.models.access_item_associated import AccessItemAssociated
 from sailpoint.beta.models.access_item_removed import AccessItemRemoved
 from sailpoint.beta.models.access_requested import AccessRequested
 from sailpoint.beta.models.account_status_changed import AccountStatusChanged
 from sailpoint.beta.models.attributes_changed import AttributesChanged
 from sailpoint.beta.models.identity_certified import IdentityCertified
-from typing import Union, Any, List, TYPE_CHECKING
+from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
+from typing_extensions import Literal
 from pydantic import StrictStr, Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 GETHISTORICALIDENTITYEVENTS200RESPONSEINNER_ANY_OF_SCHEMAS = [
     "AccessItemAssociated", "AccessItemRemoved", "AccessRequested",
@@ -52,16 +57,17 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
     # data type: AccountStatusChanged
     anyof_schema_6_validator: Optional[AccountStatusChanged] = None
     if TYPE_CHECKING:
-        actual_instance: Union[AccessItemAssociated, AccessItemRemoved,
-                               AccessRequested, AccountStatusChanged,
-                               AttributesChanged, IdentityCertified]
+        actual_instance: Optional[Union[AccessItemAssociated,
+                                        AccessItemRemoved, AccessRequested,
+                                        AccountStatusChanged,
+                                        AttributesChanged,
+                                        IdentityCertified]] = None
     else:
-        actual_instance: Any
-    any_of_schemas: List[str] = Field(
-        GETHISTORICALIDENTITYEVENTS200RESPONSEINNER_ANY_OF_SCHEMAS, const=True)
+        actual_instance: Any = None
+    any_of_schemas: List[str] = Literal[
+        GETHISTORICALIDENTITYEVENTS200RESPONSEINNER_ANY_OF_SCHEMAS]
 
-    class Config:
-        validate_assignment = True
+    model_config = {"validate_assignment": True}
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -77,9 +83,10 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
     def actual_instance_must_validate_anyof(cls, v):
-        instance = GetHistoricalIdentityEvents200ResponseInner.construct()
+        instance = GetHistoricalIdentityEvents200ResponseInner.model_construct(
+        )
         error_messages = []
         # validate data type: AccessItemAssociated
         if not isinstance(v, AccessItemAssociated):
@@ -132,15 +139,13 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls,
-                  obj: dict) -> GetHistoricalIdentityEvents200ResponseInner:
+    def from_dict(cls, obj: dict) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(
-            cls, json_str: str) -> GetHistoricalIdentityEvents200ResponseInner:
+    def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
-        instance = GetHistoricalIdentityEvents200ResponseInner.construct()
+        instance = cls.model_construct()
         error_messages = []
         # anyof_schema_1_validator: Optional[AccessItemAssociated] = None
         try:
@@ -198,7 +203,7 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> Dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return "null"
@@ -211,4 +216,4 @@ class GetHistoricalIdentityEvents200ResponseInner(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.dict())
+        return pprint.pformat(self.model_dump())

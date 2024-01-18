@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.search_form_definitions_by_tenant400_response import SearchFormDefinitionsByTenant400Response  # noqa: E501
+from sailpoint.beta.models.search_form_definitions_by_tenant400_response import SearchFormDefinitionsByTenant400Response
 
 
 class TestSearchFormDefinitionsByTenant400Response(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestSearchFormDefinitionsByTenant400Response(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SearchFormDefinitionsByTenant400Response`
         """
-        model = SearchFormDefinitionsByTenant400Response()  # noqa: E501
+        model = SearchFormDefinitionsByTenant400Response()
         if include_optional:
             return SearchFormDefinitionsByTenant400Response(
                 detail_code = '',

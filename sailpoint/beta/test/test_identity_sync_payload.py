@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_sync_payload import IdentitySyncPayload  # noqa: E501
+from sailpoint.beta.models.identity_sync_payload import IdentitySyncPayload
 
 
 class TestIdentitySyncPayload(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentitySyncPayload(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentitySyncPayload`
         """
-        model = IdentitySyncPayload()  # noqa: E501
+        model = IdentitySyncPayload()
         if include_optional:
             return IdentitySyncPayload(
                 type = 'SYNCHRONIZE_IDENTITY_ATTRIBUTES',

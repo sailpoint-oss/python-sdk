@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.certification import Certification  # noqa: E501
+from sailpoint.v3.models.certification import Certification
 
 
 class TestCertification(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCertification(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Certification`
         """
-        model = Certification()  # noqa: E501
+        model = Certification()
         if include_optional:
             return Certification(
                 id = '2c9180835d2e5168015d32f890ca1581',

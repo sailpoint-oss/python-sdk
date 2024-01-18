@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.lifecycle_state_dto import LifecycleStateDto  # noqa: E501
+from sailpoint.beta.models.lifecycle_state_dto import LifecycleStateDto
 
 
 class TestLifecycleStateDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestLifecycleStateDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `LifecycleStateDto`
         """
-        model = LifecycleStateDto()  # noqa: E501
+        model = LifecycleStateDto()
         if include_optional:
             return LifecycleStateDto(
                 state_name = 'active',

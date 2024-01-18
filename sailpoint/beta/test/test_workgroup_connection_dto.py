@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workgroup_connection_dto import WorkgroupConnectionDto  # noqa: E501
+from sailpoint.beta.models.workgroup_connection_dto import WorkgroupConnectionDto
 
 
 class TestWorkgroupConnectionDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkgroupConnectionDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkgroupConnectionDto`
         """
-        model = WorkgroupConnectionDto()  # noqa: E501
+        model = WorkgroupConnectionDto()
         if include_optional:
             return WorkgroupConnectionDto(
                 object = sailpoint.beta.models.connected_object.ConnectedObject(

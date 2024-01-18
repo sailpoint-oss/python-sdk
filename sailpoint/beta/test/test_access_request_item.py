@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_request_item import AccessRequestItem  # noqa: E501
+from sailpoint.beta.models.access_request_item import AccessRequestItem
 
 
 class TestAccessRequestItem(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessRequestItem(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessRequestItem`
         """
-        model = AccessRequestItem()  # noqa: E501
+        model = AccessRequestItem()
         if include_optional:
             return AccessRequestItem(
                 type = 'ACCESS_PROFILE',

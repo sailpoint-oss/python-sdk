@@ -16,25 +16,30 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(BaseModel):
     """
     OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
-    """
-    display_name: Optional[StrictStr] = Field(None,
-                                              alias="displayName",
-                                              description="display name")
-    value: Optional[StrictStr] = Field(None, description="value")
+    """ # noqa: E501
+    display_name: Optional[StrictStr] = Field(default=None,
+                                              description="display name",
+                                              alias="displayName")
+    value: Optional[StrictStr] = Field(default=None, description="value")
     value_type: Optional[StrictStr] = Field(
-        None,
-        alias="valueType",
-        description="The data type of the value field")
-    __properties = ["displayName", "value", "valueType"]
+        default=None,
+        description="The data type of the value field",
+        alias="valueType")
+    __properties: ClassVar[List[str]] = ["displayName", "value", "valueType"]
 
-    @validator('value_type')
+    @field_validator('value_type')
     def value_type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -44,47 +49,51 @@ class OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(BaseModel):
             raise ValueError("must be one of enum values ('INTEGER', 'FLOAT')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-        cls, json_str: str
-    ) -> OutlierFeatureSummaryOutlierFeatureDisplayValuesInner:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of OutlierFeatureSummaryOutlierFeatureDisplayValuesInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(
-            cls, obj: dict
-    ) -> OutlierFeatureSummaryOutlierFeatureDisplayValuesInner:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of OutlierFeatureSummaryOutlierFeatureDisplayValuesInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.parse_obj(
-                obj)
+            return cls.model_validate(obj)
 
-        _obj = OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.parse_obj(
-            {
-                "display_name": obj.get("displayName"),
-                "value": obj.get("value"),
-                "value_type": obj.get("valueType")
-            })
+        _obj = cls.model_validate({
+            "displayName": obj.get("displayName"),
+            "value": obj.get("value"),
+            "valueType": obj.get("valueType")
+        })
         return _obj

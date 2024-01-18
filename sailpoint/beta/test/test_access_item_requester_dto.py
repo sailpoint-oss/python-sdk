@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_item_requester_dto import AccessItemRequesterDto  # noqa: E501
+from sailpoint.beta.models.access_item_requester_dto import AccessItemRequesterDto
 
 
 class TestAccessItemRequesterDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessItemRequesterDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessItemRequesterDto`
         """
-        model = AccessItemRequesterDto()  # noqa: E501
+        model = AccessItemRequesterDto()
         if include_optional:
             return AccessItemRequesterDto(
                 type = 'IDENTITY',

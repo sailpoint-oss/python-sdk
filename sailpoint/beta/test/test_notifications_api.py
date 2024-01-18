@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.notifications_api import NotificationsApi  # noqa: E501
+from sailpoint.beta.api.notifications_api import NotificationsApi
 
 
 class TestNotificationsApi(unittest.TestCase):
     """NotificationsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = NotificationsApi()  # noqa: E501
+        self.api = NotificationsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,112 +28,112 @@ class TestNotificationsApi(unittest.TestCase):
     def test_create_domain_dkim(self) -> None:
         """Test case for create_domain_dkim
 
-        Verify domain address via DKIM  # noqa: E501
+        Verify domain address via DKIM
         """
         pass
 
     def test_create_notification_template(self) -> None:
         """Test case for create_notification_template
 
-        Create Notification Template  # noqa: E501
+        Create Notification Template
         """
         pass
 
     def test_create_verified_from_address(self) -> None:
         """Test case for create_verified_from_address
 
-        Create Verified From Address  # noqa: E501
+        Create Verified From Address
         """
         pass
 
     def test_delete_notification_templates_in_bulk(self) -> None:
         """Test case for delete_notification_templates_in_bulk
 
-        Bulk Delete Notification Templates  # noqa: E501
+        Bulk Delete Notification Templates
         """
         pass
 
     def test_delete_verified_from_address(self) -> None:
         """Test case for delete_verified_from_address
 
-        Delete Verified From Address  # noqa: E501
+        Delete Verified From Address
         """
         pass
 
     def test_get_dkim_attributes(self) -> None:
         """Test case for get_dkim_attributes
 
-        Get DKIM Attributes  # noqa: E501
+        Get DKIM Attributes
         """
         pass
 
     def test_get_mail_from_attributes(self) -> None:
         """Test case for get_mail_from_attributes
 
-        Get MAIL FROM Attributes  # noqa: E501
+        Get MAIL FROM Attributes
         """
         pass
 
     def test_get_notification_preference(self) -> None:
         """Test case for get_notification_preference
 
-        Get Notification Preferences for tenant.  # noqa: E501
+        Get Notification Preferences for tenant.
         """
         pass
 
     def test_get_notification_template(self) -> None:
         """Test case for get_notification_template
 
-        Get Notification Template By Id  # noqa: E501
+        Get Notification Template By Id
         """
         pass
 
     def test_get_notifications_template_context(self) -> None:
         """Test case for get_notifications_template_context
 
-        Get Notification Template Context  # noqa: E501
+        Get Notification Template Context
         """
         pass
 
     def test_list_from_addresses(self) -> None:
         """Test case for list_from_addresses
 
-        List From Addresses  # noqa: E501
+        List From Addresses
         """
         pass
 
     def test_list_notification_template_defaults(self) -> None:
         """Test case for list_notification_template_defaults
 
-        List Notification Template Defaults  # noqa: E501
+        List Notification Template Defaults
         """
         pass
 
     def test_list_notification_templates(self) -> None:
         """Test case for list_notification_templates
 
-        List Notification Templates  # noqa: E501
+        List Notification Templates
         """
         pass
 
     def test_put_mail_from_attributes(self) -> None:
         """Test case for put_mail_from_attributes
 
-        Change MAIL FROM domain  # noqa: E501
+        Change MAIL FROM domain
         """
         pass
 
     def test_put_notification_preference(self) -> None:
         """Test case for put_notification_preference
 
-        Overwrite the preferences for the given notification key.  # noqa: E501
+        Overwrite the preferences for the given notification key.
         """
         pass
 
     def test_send_test_notification(self) -> None:
         """Test case for send_test_notification
 
-        Send Test Notification  # noqa: E501
+        Send Test Notification
         """
         pass
 

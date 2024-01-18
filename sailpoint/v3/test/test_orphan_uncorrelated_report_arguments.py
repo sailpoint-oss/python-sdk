@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments  # noqa: E501
+from sailpoint.v3.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments
 
 
 class TestOrphanUncorrelatedReportArguments(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestOrphanUncorrelatedReportArguments(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `OrphanUncorrelatedReportArguments`
         """
-        model = OrphanUncorrelatedReportArguments()  # noqa: E501
+        model = OrphanUncorrelatedReportArguments()
         if include_optional:
             return OrphanUncorrelatedReportArguments(
                 selected_formats = [CSV],

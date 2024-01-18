@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.work_reassignment_api import WorkReassignmentApi  # noqa: E501
+from sailpoint.beta.api.work_reassignment_api import WorkReassignmentApi
 
 
 class TestWorkReassignmentApi(unittest.TestCase):
     """WorkReassignmentApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = WorkReassignmentApi()  # noqa: E501
+        self.api = WorkReassignmentApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,63 +28,63 @@ class TestWorkReassignmentApi(unittest.TestCase):
     def test_create_reassignment_configuration(self) -> None:
         """Test case for create_reassignment_configuration
 
-        Create a Reassignment Configuration  # noqa: E501
+        Create a Reassignment Configuration
         """
         pass
 
     def test_delete_reassignment_configuration(self) -> None:
         """Test case for delete_reassignment_configuration
 
-        Delete Reassignment Configuration  # noqa: E501
+        Delete Reassignment Configuration
         """
         pass
 
     def test_get_evaluate_reassignment_configuration(self) -> None:
         """Test case for get_evaluate_reassignment_configuration
 
-        Evaluate Reassignment Configuration  # noqa: E501
+        Evaluate Reassignment Configuration
         """
         pass
 
     def test_get_reassignment_config_types(self) -> None:
         """Test case for get_reassignment_config_types
 
-        List Reassignment Config Types  # noqa: E501
+        List Reassignment Config Types
         """
         pass
 
     def test_get_reassignment_configuration(self) -> None:
         """Test case for get_reassignment_configuration
 
-        Get Reassignment Configuration  # noqa: E501
+        Get Reassignment Configuration
         """
         pass
 
     def test_get_tenant_config_configuration(self) -> None:
         """Test case for get_tenant_config_configuration
 
-        Get Tenant-wide Reassignment Configuration settings  # noqa: E501
+        Get Tenant-wide Reassignment Configuration settings
         """
         pass
 
     def test_list_reassignment_configurations(self) -> None:
         """Test case for list_reassignment_configurations
 
-        List Reassignment Configurations  # noqa: E501
+        List Reassignment Configurations
         """
         pass
 
     def test_put_reassignment_config(self) -> None:
         """Test case for put_reassignment_config
 
-        Update Reassignment Configuration  # noqa: E501
+        Update Reassignment Configuration
         """
         pass
 
     def test_put_tenant_configuration(self) -> None:
         """Test case for put_tenant_configuration
 
-        Update Tenant-wide Reassignment Configuration settings  # noqa: E501
+        Update Tenant-wide Reassignment Configuration settings
         """
         pass
 

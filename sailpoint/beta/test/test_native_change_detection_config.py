@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.native_change_detection_config import NativeChangeDetectionConfig  # noqa: E501
+from sailpoint.beta.models.native_change_detection_config import NativeChangeDetectionConfig
 
 
 class TestNativeChangeDetectionConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNativeChangeDetectionConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NativeChangeDetectionConfig`
         """
-        model = NativeChangeDetectionConfig()  # noqa: E501
+        model = NativeChangeDetectionConfig()
         if include_optional:
             return NativeChangeDetectionConfig(
                 enabled = True,

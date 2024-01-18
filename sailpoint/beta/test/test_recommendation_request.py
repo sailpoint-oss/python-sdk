@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.recommendation_request import RecommendationRequest  # noqa: E501
+from sailpoint.beta.models.recommendation_request import RecommendationRequest
 
 
 class TestRecommendationRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRecommendationRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RecommendationRequest`
         """
-        model = RecommendationRequest()  # noqa: E501
+        model = RecommendationRequest()
         if include_optional:
             return RecommendationRequest(
                 identity_id = '2c938083633d259901633d25c68c00fa',

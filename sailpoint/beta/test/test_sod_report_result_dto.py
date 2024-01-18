@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.sod_report_result_dto import SodReportResultDto  # noqa: E501
+from sailpoint.beta.models.sod_report_result_dto import SodReportResultDto
 
 
 class TestSodReportResultDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSodReportResultDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SodReportResultDto`
         """
-        model = SodReportResultDto()  # noqa: E501
+        model = SodReportResultDto()
         if include_optional:
             return SodReportResultDto(
                 type = 'REPORT_RESULT',

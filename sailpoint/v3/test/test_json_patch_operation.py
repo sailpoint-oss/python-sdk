@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.json_patch_operation import JsonPatchOperation  # noqa: E501
+from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 
 
 class TestJsonPatchOperation(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestJsonPatchOperation(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `JsonPatchOperation`
         """
-        model = JsonPatchOperation()  # noqa: E501
+        model = JsonPatchOperation()
         if include_optional:
             return JsonPatchOperation(
                 op = 'replace',

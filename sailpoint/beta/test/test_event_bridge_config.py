@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.event_bridge_config import EventBridgeConfig  # noqa: E501
+from sailpoint.beta.models.event_bridge_config import EventBridgeConfig
 
 
 class TestEventBridgeConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestEventBridgeConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `EventBridgeConfig`
         """
-        model = EventBridgeConfig()  # noqa: E501
+        model = EventBridgeConfig()
         if include_optional:
             return EventBridgeConfig(
                 aws_account = '123456789012',

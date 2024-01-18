@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.outlier_feature_summary_outlier_feature_display_values_inner import OutlierFeatureSummaryOutlierFeatureDisplayValuesInner  # noqa: E501
+from sailpoint.beta.models.outlier_feature_summary_outlier_feature_display_values_inner import OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
 
 
 class TestOutlierFeatureSummaryOutlierFeatureDisplayValuesInner(
@@ -36,7 +36,7 @@ class TestOutlierFeatureSummaryOutlierFeatureDisplayValuesInner(
             optional params are included """
         # uncomment below to create an instance of `OutlierFeatureSummaryOutlierFeatureDisplayValuesInner`
         """
-        model = OutlierFeatureSummaryOutlierFeatureDisplayValuesInner()  # noqa: E501
+        model = OutlierFeatureSummaryOutlierFeatureDisplayValuesInner()
         if include_optional:
             return OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(
                 display_name = 'Aliza Chris',

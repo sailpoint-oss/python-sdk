@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.post_external_execute_workflow200_response import PostExternalExecuteWorkflow200Response  # noqa: E501
+from sailpoint.beta.models.post_external_execute_workflow200_response import PostExternalExecuteWorkflow200Response
 
 
 class TestPostExternalExecuteWorkflow200Response(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestPostExternalExecuteWorkflow200Response(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PostExternalExecuteWorkflow200Response`
         """
-        model = PostExternalExecuteWorkflow200Response()  # noqa: E501
+        model = PostExternalExecuteWorkflow200Response()
         if include_optional:
             return PostExternalExecuteWorkflow200Response(
                 workflow_execution_id = '0e11cefa-96e7-4b67-90d0-065bc1da5753',

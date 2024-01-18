@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_created_actor import SourceCreatedActor  # noqa: E501
+from sailpoint.beta.models.source_created_actor import SourceCreatedActor
 
 
 class TestSourceCreatedActor(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceCreatedActor(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceCreatedActor`
         """
-        model = SourceCreatedActor()  # noqa: E501
+        model = SourceCreatedActor()
         if include_optional:
             return SourceCreatedActor(
                 type = 'IDENTITY',

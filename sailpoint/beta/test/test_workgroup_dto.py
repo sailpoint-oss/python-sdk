@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workgroup_dto import WorkgroupDto  # noqa: E501
+from sailpoint.beta.models.workgroup_dto import WorkgroupDto
 
 
 class TestWorkgroupDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkgroupDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkgroupDto`
         """
-        model = WorkgroupDto()  # noqa: E501
+        model = WorkgroupDto()
         if include_optional:
             return WorkgroupDto(
                 owner = sailpoint.beta.models.owner_dto.OwnerDto(

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.managed_client_status_enum import ManagedClientStatusEnum  # noqa: E501
+from sailpoint.beta.models.managed_client_status_enum import ManagedClientStatusEnum
 
 
 class TestManagedClientStatusEnum(unittest.TestCase):

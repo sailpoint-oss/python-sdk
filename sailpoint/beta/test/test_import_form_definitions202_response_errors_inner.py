@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner  # noqa: E501
+from sailpoint.beta.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner
 
 
 class TestImportFormDefinitions202ResponseErrorsInner(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestImportFormDefinitions202ResponseErrorsInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ImportFormDefinitions202ResponseErrorsInner`
         """
-        model = ImportFormDefinitions202ResponseErrorsInner()  # noqa: E501
+        model = ImportFormDefinitions202ResponseErrorsInner()
         if include_optional:
             return ImportFormDefinitions202ResponseErrorsInner(
                 detail = {

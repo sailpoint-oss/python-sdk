@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.condition_rule import ConditionRule  # noqa: E501
+from sailpoint.beta.models.condition_rule import ConditionRule
 
 
 class TestConditionRule(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestConditionRule(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConditionRule`
         """
-        model = ConditionRule()  # noqa: E501
+        model = ConditionRule()
         if include_optional:
             return ConditionRule(
                 source_type = 'ELEMENT',

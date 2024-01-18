@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.report_config_dto import ReportConfigDTO  # noqa: E501
+from sailpoint.beta.models.report_config_dto import ReportConfigDTO
 
 
 class TestReportConfigDTO(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReportConfigDTO(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ReportConfigDTO`
         """
-        model = ReportConfigDTO()  # noqa: E501
+        model = ReportConfigDTO()
         if include_optional:
             return ReportConfigDTO(
                 column_name = 'SOD Business Name',

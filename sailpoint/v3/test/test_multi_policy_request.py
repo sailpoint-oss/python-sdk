@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.multi_policy_request import MultiPolicyRequest  # noqa: E501
+from sailpoint.v3.models.multi_policy_request import MultiPolicyRequest
 
 
 class TestMultiPolicyRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestMultiPolicyRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `MultiPolicyRequest`
         """
-        model = MultiPolicyRequest()  # noqa: E501
+        model = MultiPolicyRequest()
         if include_optional:
             return MultiPolicyRequest(
                 filtered_policy_list = [

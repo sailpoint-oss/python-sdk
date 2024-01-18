@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.sod_violation_context_conflicting_access_criteria import SodViolationContextConflictingAccessCriteria  # noqa: E501
+from sailpoint.beta.models.sod_violation_context_conflicting_access_criteria import SodViolationContextConflictingAccessCriteria
 
 
 class TestSodViolationContextConflictingAccessCriteria(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestSodViolationContextConflictingAccessCriteria(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SodViolationContextConflictingAccessCriteria`
         """
-        model = SodViolationContextConflictingAccessCriteria()  # noqa: E501
+        model = SodViolationContextConflictingAccessCriteria()
         if include_optional:
             return SodViolationContextConflictingAccessCriteria(
                 left_criteria = sailpoint.beta.models.sod_violation_context_conflicting_access_criteria_left_criteria.SodViolationContext_conflictingAccessCriteria_leftCriteria(

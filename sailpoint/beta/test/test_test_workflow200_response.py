@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.test_workflow200_response import TestWorkflow200Response  # noqa: E501
+from sailpoint.beta.models.test_workflow200_response import TestWorkflow200Response
 
 
 class TestTestWorkflow200Response(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTestWorkflow200Response(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TestWorkflow200Response`
         """
-        model = TestWorkflow200Response()  # noqa: E501
+        model = TestWorkflow200Response()
         if include_optional:
             return TestWorkflow200Response(
                 workflow_execution_id = '0e11cefa-96e7-4b67-90d0-065bc1da5753'

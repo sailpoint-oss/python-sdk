@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.index import Index  # noqa: E501
+from sailpoint.v3.models.index import Index
 
 
 class TestIndex(unittest.TestCase):

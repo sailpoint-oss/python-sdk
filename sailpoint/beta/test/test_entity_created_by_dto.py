@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.entity_created_by_dto import EntityCreatedByDTO  # noqa: E501
+from sailpoint.beta.models.entity_created_by_dto import EntityCreatedByDTO
 
 
 class TestEntityCreatedByDTO(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestEntityCreatedByDTO(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `EntityCreatedByDTO`
         """
-        model = EntityCreatedByDTO()  # noqa: E501
+        model = EntityCreatedByDTO()
         if include_optional:
             return EntityCreatedByDTO(
                 id = '2c918090761a5aac0176215c46a62d58',

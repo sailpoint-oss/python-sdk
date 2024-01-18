@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.owns import Owns  # noqa: E501
+from sailpoint.v3.models.owns import Owns
 
 
 class TestOwns(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestOwns(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Owns`
         """
-        model = Owns()  # noqa: E501
+        model = Owns()
         if include_optional:
             return Owns(
                 sources = [

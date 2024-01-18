@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.request_on_behalf_of_config import RequestOnBehalfOfConfig  # noqa: E501
+from sailpoint.beta.models.request_on_behalf_of_config import RequestOnBehalfOfConfig
 
 
 class TestRequestOnBehalfOfConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRequestOnBehalfOfConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RequestOnBehalfOfConfig`
         """
-        model = RequestOnBehalfOfConfig()  # noqa: E501
+        model = RequestOnBehalfOfConfig()
         if include_optional:
             return RequestOnBehalfOfConfig(
                 allow_request_on_behalf_of_anyone_by_anyone = True,

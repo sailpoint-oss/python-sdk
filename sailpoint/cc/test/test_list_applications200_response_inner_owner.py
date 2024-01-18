@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.list_applications200_response_inner_owner import ListApplications200ResponseInnerOwner  # noqa: E501
+from sailpoint.cc.models.list_applications200_response_inner_owner import ListApplications200ResponseInnerOwner
 
 
 class TestListApplications200ResponseInnerOwner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestListApplications200ResponseInnerOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListApplications200ResponseInnerOwner`
         """
-        model = ListApplications200ResponseInnerOwner()  # noqa: E501
+        model = ListApplications200ResponseInnerOwner()
         if include_optional:
             return ListApplications200ResponseInnerOwner(
                 id = '',

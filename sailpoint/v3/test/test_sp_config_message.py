@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.sp_config_message import SpConfigMessage  # noqa: E501
+from sailpoint.v3.models.sp_config_message import SpConfigMessage
 
 
 class TestSpConfigMessage(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSpConfigMessage(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SpConfigMessage`
         """
-        model = SpConfigMessage()  # noqa: E501
+        model = SpConfigMessage()
         if include_optional:
             return SpConfigMessage(
                 key = 'UNKNOWN_REFERENCE_RESOLVER',

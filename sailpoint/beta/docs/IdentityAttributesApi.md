@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 Delete Identity Attribute
 
-This deletes an identity attribute for a given technical name.
+This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
 
 ### Example
 
@@ -180,7 +180,7 @@ void (empty response body)
 
 Bulk delete Identity Attributes
 
-This deletes identity attributes for a given set of technical names.
+This deletes identity attributes for a given set of names. Attributes that are currently mapped in an Identity Profile cannot be deleted.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
 
 ### Example
 
@@ -432,7 +432,7 @@ Name | Type | Description  | Notes
 
 Update Identity Attribute
 
-This updates an existing identity attribute.
+This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
 
 ### Example
 
@@ -502,7 +502,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**202** | The identity attribute was updated successfully |  -  |
+**200** | The identity attribute was updated successfully |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |

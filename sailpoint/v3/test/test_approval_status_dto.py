@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.approval_status_dto import ApprovalStatusDto  # noqa: E501
+from sailpoint.v3.models.approval_status_dto import ApprovalStatusDto
 
 
 class TestApprovalStatusDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestApprovalStatusDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ApprovalStatusDto`
         """
-        model = ApprovalStatusDto()  # noqa: E501
+        model = ApprovalStatusDto()
         if include_optional:
             return ApprovalStatusDto(
                 forwarded = False,

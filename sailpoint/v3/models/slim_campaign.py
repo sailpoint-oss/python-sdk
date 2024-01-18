@@ -17,62 +17,80 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import Field
+from sailpoint.v3.models.campaign_alert import CampaignAlert
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class SlimCampaign(BaseModel):
     """
     SlimCampaign
     """
-    id: Optional[StrictStr] = Field(None, description="Id of the campaign")
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
+                                    description="Id of the campaign")
     name: StrictStr = Field(
-        ...,
         description=
         "The campaign name. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details."
     )
     description: StrictStr = Field(
-        ...,
         description=
         "The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details."
     )
     deadline: Optional[datetime] = Field(
-        None,
+        default=None,
         description=
         "The campaign's completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response."
     )
     type: StrictStr = Field(
-        ...,
         description="The type of campaign. Could be extended in the future.")
     email_notification_enabled: Optional[StrictBool] = Field(
-        False,
-        alias="emailNotificationEnabled",
-        description="Enables email notification for this campaign")
+        default=False,
+        description="Enables email notification for this campaign",
+        alias="emailNotificationEnabled")
     auto_revoke_allowed: Optional[StrictBool] = Field(
-        False,
-        alias="autoRevokeAllowed",
-        description="Allows auto revoke for this campaign")
+        default=False,
+        description="Allows auto revoke for this campaign",
+        alias="autoRevokeAllowed")
     recommendations_enabled: Optional[StrictBool] = Field(
-        False,
-        alias="recommendationsEnabled",
+        default=False,
         description=
-        "Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future."
-    )
+        "Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future.",
+        alias="recommendationsEnabled")
     status: Optional[StrictStr] = Field(
-        None, description="The campaign's current status.")
+        default=None, description="The campaign's current status.")
     correlated_status: Optional[StrictStr] = Field(
-        None,
-        alias="correlatedStatus",
+        default=None,
         description=
-        "The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source)."
-    )
-    __properties = [
+        "The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).",
+        alias="correlatedStatus")
+    created: Optional[datetime] = Field(
+        default=None, description="Created time of the campaign")
+    total_certifications: Optional[StrictInt] = Field(
+        default=None,
+        description="The total number of certifications in this campaign.",
+        alias="totalCertifications")
+    completed_certifications: Optional[StrictInt] = Field(
+        default=None,
+        description="The number of completed certifications in this campaign.",
+        alias="completedCertifications")
+    alerts: Optional[List[CampaignAlert]] = Field(
+        default=None,
+        description="A list of errors and warnings that have accumulated.")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "description", "deadline", "type",
         "emailNotificationEnabled", "autoRevokeAllowed",
-        "recommendationsEnabled", "status", "correlatedStatus"
+        "recommendationsEnabled", "status", "correlatedStatus", "created",
+        "totalCertifications", "completedCertifications", "alerts"
     ]
 
-    @validator('type')
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('MANAGER', 'SOURCE_OWNER', 'SEARCH',
@@ -82,7 +100,7 @@ class SlimCampaign(BaseModel):
             )
         return value
 
-    @validator('status')
+    @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -96,7 +114,7 @@ class SlimCampaign(BaseModel):
             )
         return value
 
-    @validator('correlated_status')
+    @field_validator('correlated_status')
     def correlated_status_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -107,44 +125,69 @@ class SlimCampaign(BaseModel):
                 "must be one of enum values ('CORRELATED', 'UNCORRELATED')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SlimCampaign:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of SlimCampaign from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                              "id",
-                              "status",
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+                "id",
+                "status",
+                "created",
+                "total_certifications",
+                "completed_certifications",
+                "alerts",
+            },
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in alerts (list)
+        _items = []
+        if self.alerts:
+            for _item in self.alerts:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['alerts'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SlimCampaign:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of SlimCampaign from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SlimCampaign.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SlimCampaign.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -155,18 +198,27 @@ class SlimCampaign(BaseModel):
             obj.get("deadline"),
             "type":
             obj.get("type"),
-            "email_notification_enabled":
+            "emailNotificationEnabled":
             obj.get("emailNotificationEnabled")
             if obj.get("emailNotificationEnabled") is not None else False,
-            "auto_revoke_allowed":
+            "autoRevokeAllowed":
             obj.get("autoRevokeAllowed")
             if obj.get("autoRevokeAllowed") is not None else False,
-            "recommendations_enabled":
+            "recommendationsEnabled":
             obj.get("recommendationsEnabled")
             if obj.get("recommendationsEnabled") is not None else False,
             "status":
             obj.get("status"),
-            "correlated_status":
-            obj.get("correlatedStatus")
+            "correlatedStatus":
+            obj.get("correlatedStatus"),
+            "created":
+            obj.get("created"),
+            "totalCertifications":
+            obj.get("totalCertifications"),
+            "completedCertifications":
+            obj.get("completedCertifications"),
+            "alerts":
+            [CampaignAlert.from_dict(_item) for _item in obj.get("alerts")]
+            if obj.get("alerts") is not None else None
         })
         return _obj

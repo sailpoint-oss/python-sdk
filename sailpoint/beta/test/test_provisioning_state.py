@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.provisioning_state import ProvisioningState  # noqa: E501
+from sailpoint.beta.models.provisioning_state import ProvisioningState
 
 
 class TestProvisioningState(unittest.TestCase):

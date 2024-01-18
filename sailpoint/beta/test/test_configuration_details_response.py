@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.configuration_details_response import ConfigurationDetailsResponse  # noqa: E501
+from sailpoint.beta.models.configuration_details_response import ConfigurationDetailsResponse
 
 
 class TestConfigurationDetailsResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestConfigurationDetailsResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConfigurationDetailsResponse`
         """
-        model = ConfigurationDetailsResponse()  # noqa: E501
+        model = ConfigurationDetailsResponse()
         if include_optional:
             return ConfigurationDetailsResponse(
                 config_type = 'ACCESS_REQUESTS',

@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v2.api.governance_groups_api import GovernanceGroupsApi  # noqa: E501
+from sailpoint.v2.api.governance_groups_api import GovernanceGroupsApi
 
 
 class TestGovernanceGroupsApi(unittest.TestCase):
     """GovernanceGroupsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = GovernanceGroupsApi()  # noqa: E501
+        self.api = GovernanceGroupsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,63 +28,63 @@ class TestGovernanceGroupsApi(unittest.TestCase):
     def test_bulk_delete_work_groups(self) -> None:
         """Test case for bulk_delete_work_groups
 
-        Bulk delete work groups  # noqa: E501
+        Bulk delete work groups
         """
         pass
 
     def test_create_workgroup(self) -> None:
         """Test case for create_workgroup
 
-        Create Work Group  # noqa: E501
+        Create Work Group
         """
         pass
 
     def test_delete_workgroup(self) -> None:
         """Test case for delete_workgroup
 
-        Delete Work Group By Id  # noqa: E501
+        Delete Work Group By Id
         """
         pass
 
     def test_get_workgroup(self) -> None:
         """Test case for get_workgroup
 
-        Get Work Group By Id  # noqa: E501
+        Get Work Group By Id
         """
         pass
 
     def test_list_workgroup_connections(self) -> None:
         """Test case for list_workgroup_connections
 
-        List Work Group Connections  # noqa: E501
+        List Work Group Connections
         """
         pass
 
     def test_list_workgroup_members(self) -> None:
         """Test case for list_workgroup_members
 
-        List Work Group Members  # noqa: E501
+        List Work Group Members
         """
         pass
 
     def test_list_workgroups(self) -> None:
         """Test case for list_workgroups
 
-        List Work Groups  # noqa: E501
+        List Work Groups
         """
         pass
 
     def test_modify_workgroup_members(self) -> None:
         """Test case for modify_workgroup_members
 
-        Modify Work Group Members  # noqa: E501
+        Modify Work Group Members
         """
         pass
 
     def test_update_workgroup(self) -> None:
         """Test case for update_workgroup
 
-        Update Work Group By Id  # noqa: E501
+        Update Work Group By Id
         """
         pass
 

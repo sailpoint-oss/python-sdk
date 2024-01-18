@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.execution_status import ExecutionStatus  # noqa: E501
+from sailpoint.beta.models.execution_status import ExecutionStatus
 
 
 class TestExecutionStatus(unittest.TestCase):

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.dto_type import DtoType  # noqa: E501
+from sailpoint.v3.models.dto_type import DtoType
 
 
 class TestDtoType(unittest.TestCase):

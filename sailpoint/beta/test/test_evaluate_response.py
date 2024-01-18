@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.evaluate_response import EvaluateResponse  # noqa: E501
+from sailpoint.beta.models.evaluate_response import EvaluateResponse
 
 
 class TestEvaluateResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestEvaluateResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `EvaluateResponse`
         """
-        model = EvaluateResponse()  # noqa: E501
+        model = EvaluateResponse()
         if include_optional:
             return EvaluateResponse(
                 reassign_to_id = '869320b6b6f34a169b6178b1a865e66f',

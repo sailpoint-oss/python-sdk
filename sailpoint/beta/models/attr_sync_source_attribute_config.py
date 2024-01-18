@@ -16,70 +16,81 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AttrSyncSourceAttributeConfig(BaseModel):
     """
-    Specification of source attribute sync mapping configuration for an identity attribute  # noqa: E501
-    """
-    name: StrictStr = Field(..., description="Name of the identity attribute")
+    Specification of source attribute sync mapping configuration for an identity attribute
+    """ # noqa: E501
+    name: StrictStr = Field(description="Name of the identity attribute")
     display_name: StrictStr = Field(
-        ...,
-        alias="displayName",
-        description="Display name of the identity attribute")
+        description="Display name of the identity attribute",
+        alias="displayName")
     enabled: StrictBool = Field(
-        ...,
         description=
         "Determines whether or not the attribute is enabled for synchronization"
     )
     target: StrictStr = Field(
-        ...,
         description=
         "Name of the source account attribute to which the identity attribute value will be synchronized if enabled"
     )
-    __properties = ["name", "displayName", "enabled", "target"]
+    __properties: ClassVar[List[str]] = [
+        "name", "displayName", "enabled", "target"
+    ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AttrSyncSourceAttributeConfig:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AttrSyncSourceAttributeConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AttrSyncSourceAttributeConfig:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AttrSyncSourceAttributeConfig from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AttrSyncSourceAttributeConfig.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AttrSyncSourceAttributeConfig.parse_obj({
-            "name":
-            obj.get("name"),
-            "display_name":
-            obj.get("displayName"),
-            "enabled":
-            obj.get("enabled"),
-            "target":
-            obj.get("target")
+        _obj = cls.model_validate({
+            "name": obj.get("name"),
+            "displayName": obj.get("displayName"),
+            "enabled": obj.get("enabled"),
+            "target": obj.get("target")
         })
         return _obj

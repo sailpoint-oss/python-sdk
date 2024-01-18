@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_used_by import FormUsedBy  # noqa: E501
+from sailpoint.beta.models.form_used_by import FormUsedBy
 
 
 class TestFormUsedBy(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFormUsedBy(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormUsedBy`
         """
-        model = FormUsedBy()  # noqa: E501
+        model = FormUsedBy()
         if include_optional:
             return FormUsedBy(
                 type = 'WORKFLOW',

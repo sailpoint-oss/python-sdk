@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.range import Range  # noqa: E501
+from sailpoint.v3.models.range import Range
 
 
 class TestRange(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRange(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Range`
         """
-        model = Range()  # noqa: E501
+        model = Range()
         if include_optional:
             return Range(
                 lower = sailpoint.v3.models.bound.Bound(

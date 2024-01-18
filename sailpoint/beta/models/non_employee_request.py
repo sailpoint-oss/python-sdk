@@ -17,101 +17,124 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Dict, List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.approval_status import ApprovalStatus
 from sailpoint.beta.models.non_employee_approval_item_base import NonEmployeeApprovalItemBase
 from sailpoint.beta.models.non_employee_source_lite import NonEmployeeSourceLite
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class NonEmployeeRequest(BaseModel):
     """
     NonEmployeeRequest
     """
-    id: Optional[StrictStr] = Field(None,
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
                                     description="Non-Employee source id.")
     source_id: Optional[StrictStr] = Field(
-        None,
-        alias="sourceId",
-        description="Source Id associated with this non-employee source.")
+        default=None,
+        description="Source Id associated with this non-employee source.",
+        alias="sourceId")
     name: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description="Source name associated with this non-employee source.")
     description: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "Source description associated with this non-employee source.")
     account_name: Optional[StrictStr] = Field(
-        None,
-        alias="accountName",
-        description="Requested identity account name.")
+        default=None,
+        description="Requested identity account name.",
+        alias="accountName")
     first_name: Optional[StrictStr] = Field(
-        None, alias="firstName", description="Non-Employee's first name.")
+        default=None,
+        description="Non-Employee's first name.",
+        alias="firstName")
     last_name: Optional[StrictStr] = Field(
-        None, alias="lastName", description="Non-Employee's last name.")
-    email: Optional[StrictStr] = Field(None,
+        default=None,
+        description="Non-Employee's last name.",
+        alias="lastName")
+    email: Optional[StrictStr] = Field(default=None,
                                        description="Non-Employee's email.")
-    phone: Optional[StrictStr] = Field(None,
+    phone: Optional[StrictStr] = Field(default=None,
                                        description="Non-Employee's phone.")
     manager: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "The account ID of a valid identity to serve as this non-employee's manager."
     )
     non_employee_source: Optional[NonEmployeeSourceLite] = Field(
-        None, alias="nonEmployeeSource")
+        default=None, alias="nonEmployeeSource")
     data: Optional[Dict[str, StrictStr]] = Field(
-        None, description="Attribute blob/bag for a non-employee.")
-    approval_items: Optional[conlist(NonEmployeeApprovalItemBase)] = Field(
-        None,
-        alias="approvalItems",
-        description="List of approval item for the request")
-    approval_status: Optional[ApprovalStatus] = Field(None,
+        default=None, description="Attribute blob/bag for a non-employee.")
+    approval_items: Optional[List[NonEmployeeApprovalItemBase]] = Field(
+        default=None,
+        description="List of approval item for the request",
+        alias="approvalItems")
+    approval_status: Optional[ApprovalStatus] = Field(default=None,
                                                       alias="approvalStatus")
-    comment: Optional[StrictStr] = Field(None,
+    comment: Optional[StrictStr] = Field(default=None,
                                          description="comment of requester")
     completion_date: Optional[datetime] = Field(
-        None,
-        alias="completionDate",
-        description="When the request was completely approved.")
+        default=None,
+        description="When the request was completely approved.",
+        alias="completionDate")
     start_date: Optional[datetime] = Field(
-        None,
-        alias="startDate",
-        description="Non-Employee employment start date.")
+        default=None,
+        description="Non-Employee employment start date.",
+        alias="startDate")
     end_date: Optional[datetime] = Field(
-        None, alias="endDate", description="Non-Employee employment end date.")
+        default=None,
+        description="Non-Employee employment end date.",
+        alias="endDate")
     modified: Optional[datetime] = Field(
-        None, description="When the request was last modified.")
+        default=None, description="When the request was last modified.")
     created: Optional[datetime] = Field(
-        None, description="When the request was created.")
-    __properties = [
+        default=None, description="When the request was created.")
+    __properties: ClassVar[List[str]] = [
         "id", "sourceId", "name", "description", "accountName", "firstName",
         "lastName", "email", "phone", "manager", "nonEmployeeSource", "data",
         "approvalItems", "approvalStatus", "comment", "completionDate",
         "startDate", "endDate", "modified", "created"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> NonEmployeeRequest:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of NonEmployeeRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of non_employee_source
         if self.non_employee_source:
             _dict['nonEmployeeSource'] = self.non_employee_source.to_dict()
@@ -125,28 +148,28 @@ class NonEmployeeRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> NonEmployeeRequest:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of NonEmployeeRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return NonEmployeeRequest.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = NonEmployeeRequest.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
-            "source_id":
+            "sourceId":
             obj.get("sourceId"),
             "name":
             obj.get("name"),
             "description":
             obj.get("description"),
-            "account_name":
+            "accountName":
             obj.get("accountName"),
-            "first_name":
+            "firstName":
             obj.get("firstName"),
-            "last_name":
+            "lastName":
             obj.get("lastName"),
             "email":
             obj.get("email"),
@@ -154,24 +177,24 @@ class NonEmployeeRequest(BaseModel):
             obj.get("phone"),
             "manager":
             obj.get("manager"),
-            "non_employee_source":
+            "nonEmployeeSource":
             NonEmployeeSourceLite.from_dict(obj.get("nonEmployeeSource"))
             if obj.get("nonEmployeeSource") is not None else None,
             "data":
             obj.get("data"),
-            "approval_items": [
+            "approvalItems": [
                 NonEmployeeApprovalItemBase.from_dict(_item)
                 for _item in obj.get("approvalItems")
             ] if obj.get("approvalItems") is not None else None,
-            "approval_status":
+            "approvalStatus":
             obj.get("approvalStatus"),
             "comment":
             obj.get("comment"),
-            "completion_date":
+            "completionDate":
             obj.get("completionDate"),
-            "start_date":
+            "startDate":
             obj.get("startDate"),
-            "end_date":
+            "endDate":
             obj.get("endDate"),
             "modified":
             obj.get("modified"),

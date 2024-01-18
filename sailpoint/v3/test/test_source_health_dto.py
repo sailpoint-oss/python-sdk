@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.source_health_dto import SourceHealthDto  # noqa: E501
+from sailpoint.v3.models.source_health_dto import SourceHealthDto
 
 
 class TestSourceHealthDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceHealthDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceHealthDto`
         """
-        model = SourceHealthDto()  # noqa: E501
+        model = SourceHealthDto()
         if include_optional:
             return SourceHealthDto(
                 id = '2c91808568c529c60168cca6f90c1324',

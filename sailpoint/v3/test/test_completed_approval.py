@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.completed_approval import CompletedApproval  # noqa: E501
+from sailpoint.v3.models.completed_approval import CompletedApproval
 
 
 class TestCompletedApproval(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCompletedApproval(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CompletedApproval`
         """
-        model = CompletedApproval()  # noqa: E501
+        model = CompletedApproval()
         if include_optional:
             return CompletedApproval(
                 id = 'id12345',
@@ -65,19 +65,11 @@ class TestCompletedApproval(unittest.TestCase):
                     type = 'ROLE', ),
                 requester_comment = sailpoint.v3.models.comment_dto.CommentDto(
                     comment = 'This is a comment.', 
-                    author = sailpoint.v3.models.comment_dto_author.CommentDto_author(
-                        type = 'IDENTITY', 
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'Adam Kennedy', ), 
                     created = '2017-07-11T18:45:37.098Z', ),
                 reviewer_comment = None,
                 previous_reviewers_comments = [
                     sailpoint.v3.models.comment_dto.CommentDto(
                         comment = 'This is a comment.', 
-                        author = sailpoint.v3.models.comment_dto_author.CommentDto_author(
-                            type = 'IDENTITY', 
-                            id = '2c91808568c529c60168cca6f90c1313', 
-                            name = 'Adam Kennedy', ), 
                         created = '2017-07-11T18:45:37.098Z', )
                     ],
                 forward_history = [

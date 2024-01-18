@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.aggregation_type import AggregationType  # noqa: E501
+from sailpoint.v3.models.aggregation_type import AggregationType
 
 
 class TestAggregationType(unittest.TestCase):

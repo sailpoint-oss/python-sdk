@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.subscription_type import SubscriptionType  # noqa: E501
+from sailpoint.beta.models.subscription_type import SubscriptionType
 
 
 class TestSubscriptionType(unittest.TestCase):

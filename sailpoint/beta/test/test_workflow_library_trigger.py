@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workflow_library_trigger import WorkflowLibraryTrigger  # noqa: E501
+from sailpoint.beta.models.workflow_library_trigger import WorkflowLibraryTrigger
 
 
 class TestWorkflowLibraryTrigger(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkflowLibraryTrigger(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkflowLibraryTrigger`
         """
-        model = WorkflowLibraryTrigger()  # noqa: E501
+        model = WorkflowLibraryTrigger()
         if include_optional:
             return WorkflowLibraryTrigger(
                 id = 'idn:identity-attributes-changed',

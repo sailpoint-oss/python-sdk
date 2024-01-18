@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.approval_comment import ApprovalComment  # noqa: E501
+from sailpoint.v3.models.approval_comment import ApprovalComment
 
 
 class TestApprovalComment(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestApprovalComment(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ApprovalComment`
         """
-        model = ApprovalComment()  # noqa: E501
+        model = ApprovalComment()
         if include_optional:
             return ApprovalComment(
                 comment = 'This request was autoapproved by our automated ETS subscriber.',

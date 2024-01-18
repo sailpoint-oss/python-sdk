@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_reference_with_id import IdentityReferenceWithId  # noqa: E501
+from sailpoint.beta.models.identity_reference_with_id import IdentityReferenceWithId
 
 
 class TestIdentityReferenceWithId(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityReferenceWithId(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityReferenceWithId`
         """
-        model = IdentityReferenceWithId()  # noqa: E501
+        model = IdentityReferenceWithId()
         if include_optional:
             return IdentityReferenceWithId(
                 type = 'IDENTITY',

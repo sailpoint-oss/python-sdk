@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.translation_message import TranslationMessage  # noqa: E501
+from sailpoint.beta.models.translation_message import TranslationMessage
 
 
 class TestTranslationMessage(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTranslationMessage(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TranslationMessage`
         """
-        model = TranslationMessage()  # noqa: E501
+        model = TranslationMessage()
         if include_optional:
             return TranslationMessage(
                 key = 'recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH',

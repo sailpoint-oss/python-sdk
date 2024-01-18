@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.non_employee_source import NonEmployeeSource  # noqa: E501
+from sailpoint.v3.models.non_employee_source import NonEmployeeSource
 
 
 class TestNonEmployeeSource(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNonEmployeeSource(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeSource`
         """
-        model = NonEmployeeSource()  # noqa: E501
+        model = NonEmployeeSource()
         if include_optional:
             return NonEmployeeSource(
                 id = 'a0303682-5e4a-44f7-bdc2-6ce6112549c1',

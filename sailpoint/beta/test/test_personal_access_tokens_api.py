@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.personal_access_tokens_api import PersonalAccessTokensApi  # noqa: E501
+from sailpoint.beta.api.personal_access_tokens_api import PersonalAccessTokensApi
 
 
 class TestPersonalAccessTokensApi(unittest.TestCase):
     """PersonalAccessTokensApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = PersonalAccessTokensApi()  # noqa: E501
+        self.api = PersonalAccessTokensApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,28 +28,28 @@ class TestPersonalAccessTokensApi(unittest.TestCase):
     def test_create_personal_access_token(self) -> None:
         """Test case for create_personal_access_token
 
-        Create Personal Access Token  # noqa: E501
+        Create Personal Access Token
         """
         pass
 
     def test_delete_personal_access_token(self) -> None:
         """Test case for delete_personal_access_token
 
-        Delete Personal Access Token  # noqa: E501
+        Delete Personal Access Token
         """
         pass
 
     def test_list_personal_access_tokens(self) -> None:
         """Test case for list_personal_access_tokens
 
-        List Personal Access Tokens  # noqa: E501
+        List Personal Access Tokens
         """
         pass
 
     def test_patch_personal_access_token(self) -> None:
         """Test case for patch_personal_access_token
 
-        Patch Personal Access Token  # noqa: E501
+        Patch Personal Access Token
         """
         pass
 

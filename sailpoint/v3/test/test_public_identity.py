@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.public_identity import PublicIdentity  # noqa: E501
+from sailpoint.v3.models.public_identity import PublicIdentity
 
 
 class TestPublicIdentity(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPublicIdentity(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PublicIdentity`
         """
-        model = PublicIdentity()  # noqa: E501
+        model = PublicIdentity()
         if include_optional:
             return PublicIdentity(
                 id = '2c9180857182305e0171993735622948',

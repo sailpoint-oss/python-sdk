@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identity_profile_all_of_authoritative_source import IdentityProfileAllOfAuthoritativeSource  # noqa: E501
+from sailpoint.v3.models.identity_profile_all_of_authoritative_source import IdentityProfileAllOfAuthoritativeSource
 
 
 class TestIdentityProfileAllOfAuthoritativeSource(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestIdentityProfileAllOfAuthoritativeSource(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityProfileAllOfAuthoritativeSource`
         """
-        model = IdentityProfileAllOfAuthoritativeSource()  # noqa: E501
+        model = IdentityProfileAllOfAuthoritativeSource()
         if include_optional:
             return IdentityProfileAllOfAuthoritativeSource(
                 type = 'SOURCE',

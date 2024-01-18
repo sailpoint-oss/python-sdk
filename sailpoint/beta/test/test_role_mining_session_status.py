@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_mining_session_status import RoleMiningSessionStatus  # noqa: E501
+from sailpoint.beta.models.role_mining_session_status import RoleMiningSessionStatus
 
 
 class TestRoleMiningSessionStatus(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRoleMiningSessionStatus(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleMiningSessionStatus`
         """
-        model = RoleMiningSessionStatus()  # noqa: E501
+        model = RoleMiningSessionStatus()
         if include_optional:
             return RoleMiningSessionStatus(
                 state = 'CREATED'

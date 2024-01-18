@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.non_employee_reject_approval_decision import NonEmployeeRejectApprovalDecision  # noqa: E501
+from sailpoint.v3.models.non_employee_reject_approval_decision import NonEmployeeRejectApprovalDecision
 
 
 class TestNonEmployeeRejectApprovalDecision(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestNonEmployeeRejectApprovalDecision(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeRejectApprovalDecision`
         """
-        model = NonEmployeeRejectApprovalDecision()  # noqa: E501
+        model = NonEmployeeRejectApprovalDecision()
         if include_optional:
             return NonEmployeeRejectApprovalDecision(
                 comment = 'approved'

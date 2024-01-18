@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_usage import AccountUsage  # noqa: E501
+from sailpoint.beta.models.account_usage import AccountUsage
 
 
 class TestAccountUsage(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountUsage(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountUsage`
         """
-        model = AccountUsage()  # noqa: E501
+        model = AccountUsage()
         if include_optional:
             return AccountUsage(
                 var_date = 'Thu Apr 20 20:00:00 EDT 2023',

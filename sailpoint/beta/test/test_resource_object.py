@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.resource_object import ResourceObject  # noqa: E501
+from sailpoint.beta.models.resource_object import ResourceObject
 
 
 class TestResourceObject(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestResourceObject(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ResourceObject`
         """
-        model = ResourceObject()  # noqa: E501
+        model = ResourceObject()
         if include_optional:
             return ResourceObject(
                 instance = '',

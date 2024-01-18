@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.search_arguments import SearchArguments  # noqa: E501
+from sailpoint.v3.models.search_arguments import SearchArguments
 
 
 class TestSearchArguments(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSearchArguments(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SearchArguments`
         """
-        model = SearchArguments()  # noqa: E501
+        model = SearchArguments()
         if include_optional:
             return SearchArguments(
                 schedule_id = '7a724640-0c17-4ce9-a8c3-4a89738459c8',

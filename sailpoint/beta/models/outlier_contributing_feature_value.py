@@ -18,9 +18,16 @@ import pprint
 import re  # noqa: F401
 
 from typing import Any, List, Optional, Union
-from pydantic import BaseModel, Field, StrictInt, StrictStr, ValidationError, confloat, conint, validator
-from typing import Union, Any, List, TYPE_CHECKING
+from pydantic import BaseModel, Field, StrictInt, StrictStr, ValidationError, field_validator
+from pydantic import Field
+from typing_extensions import Annotated
+from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
+from typing_extensions import Literal
 from pydantic import StrictStr, Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 OUTLIERCONTRIBUTINGFEATUREVALUE_ONE_OF_SCHEMAS = ["float", "int"]
 
@@ -30,20 +37,15 @@ class OutlierContributingFeatureValue(BaseModel):
     The feature value
     """
     # data type: float
-    oneof_schema_1_validator: Optional[Union[
-        confloat(le=1.0, ge=0.0, strict=True),
-        conint(le=1, ge=0, strict=True)]] = None
+    oneof_schema_1_validator: Optional[
+        Union[Annotated[float, Field(le=1.0, strict=True, ge=0.0)],
+              Annotated[int, Field(le=1, strict=True, ge=0)]]] = None
     # data type: int
     oneof_schema_2_validator: Optional[StrictInt] = None
-    if TYPE_CHECKING:
-        actual_instance: Union[float, int]
-    else:
-        actual_instance: Any
-    one_of_schemas: List[str] = Field(
-        OUTLIERCONTRIBUTINGFEATUREVALUE_ONE_OF_SCHEMAS, const=True)
+    actual_instance: Optional[Union[float, int]] = None
+    one_of_schemas: List[str] = Literal["float", "int"]
 
-    class Config:
-        validate_assignment = True
+    model_config = {"validate_assignment": True}
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -59,9 +61,9 @@ class OutlierContributingFeatureValue(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
-        instance = OutlierContributingFeatureValue.construct()
+        instance = OutlierContributingFeatureValue.model_construct()
         error_messages = []
         match = 0
         # validate data type: float
@@ -90,13 +92,13 @@ class OutlierContributingFeatureValue(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> OutlierContributingFeatureValue:
+    def from_dict(cls, obj: dict) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> OutlierContributingFeatureValue:
+    def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
-        instance = OutlierContributingFeatureValue.construct()
+        instance = cls.model_construct()
         error_messages = []
         match = 0
 
@@ -143,7 +145,7 @@ class OutlierContributingFeatureValue(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> Dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
@@ -157,4 +159,4 @@ class OutlierContributingFeatureValue(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.dict())
+        return pprint.pformat(self.model_dump())

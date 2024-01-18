@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.work_items_summary import WorkItemsSummary  # noqa: E501
+from sailpoint.v3.models.work_items_summary import WorkItemsSummary
 
 
 class TestWorkItemsSummary(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkItemsSummary(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkItemsSummary`
         """
-        model = WorkItemsSummary()  # noqa: E501
+        model = WorkItemsSummary()
         if include_optional:
             return WorkItemsSummary(
                 open = 29,

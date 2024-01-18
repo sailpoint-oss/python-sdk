@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_element_preview_request import FormElementPreviewRequest  # noqa: E501
+from sailpoint.beta.models.form_element_preview_request import FormElementPreviewRequest
 
 
 class TestFormElementPreviewRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFormElementPreviewRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormElementPreviewRequest`
         """
-        model = FormElementPreviewRequest()  # noqa: E501
+        model = FormElementPreviewRequest()
         if include_optional:
             return FormElementPreviewRequest(
                 data_source = sailpoint.beta.models.form_element_dynamic_data_source.FormElementDynamicDataSource(

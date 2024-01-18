@@ -16,21 +16,28 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
 from sailpoint.beta.models.connected_object import ConnectedObject
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class WorkgroupConnectionDto(BaseModel):
     """
     WorkgroupConnectionDto
     """
+
+  # noqa: E501
     object: Optional[ConnectedObject] = None
     connection_type: Optional[StrictStr] = Field(
-        None, alias="connectionType", description="Connection Type.")
-    __properties = ["object", "connectionType"]
+        default=None, description="Connection Type.", alias="connectionType")
+    __properties: ClassVar[List[str]] = ["object", "connectionType"]
 
-    @validator('connection_type')
+    @field_validator('connection_type')
     def connection_type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -43,46 +50,56 @@ class WorkgroupConnectionDto(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> WorkgroupConnectionDto:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of WorkgroupConnectionDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of object
         if self.object:
             _dict['object'] = self.object.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> WorkgroupConnectionDto:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of WorkgroupConnectionDto from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return WorkgroupConnectionDto.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = WorkgroupConnectionDto.parse_obj({
+        _obj = cls.model_validate({
             "object":
             ConnectedObject.from_dict(obj.get("object"))
             if obj.get("object") is not None else None,
-            "connection_type":
+            "connectionType":
             obj.get("connectionType")
         })
         return _obj

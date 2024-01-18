@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.access_request_approvals_api import AccessRequestApprovalsApi  # noqa: E501
+from sailpoint.beta.api.access_request_approvals_api import AccessRequestApprovalsApi
 
 
 class TestAccessRequestApprovalsApi(unittest.TestCase):
     """AccessRequestApprovalsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = AccessRequestApprovalsApi()  # noqa: E501
+        self.api = AccessRequestApprovalsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,42 +28,42 @@ class TestAccessRequestApprovalsApi(unittest.TestCase):
     def test_approve_access_request(self) -> None:
         """Test case for approve_access_request
 
-        Approves an access request approval.  # noqa: E501
+        Approves an access request approval.
         """
         pass
 
     def test_forward_access_request(self) -> None:
         """Test case for forward_access_request
 
-        Forwards an access request approval to a new owner.  # noqa: E501
+        Forwards an access request approval to a new owner.
         """
         pass
 
     def test_get_access_request_approval_summary(self) -> None:
         """Test case for get_access_request_approval_summary
 
-        Get the number of pending, approved and rejected access requests approvals  # noqa: E501
+        Get the number of pending, approved and rejected access requests approvals
         """
         pass
 
     def test_list_completed_approvals(self) -> None:
         """Test case for list_completed_approvals
 
-        Completed Access Request Approvals List  # noqa: E501
+        Completed Access Request Approvals List
         """
         pass
 
     def test_list_pending_approvals(self) -> None:
         """Test case for list_pending_approvals
 
-        Pending Access Request Approvals List  # noqa: E501
+        Pending Access Request Approvals List
         """
         pass
 
     def test_reject_access_request(self) -> None:
         """Test case for reject_access_request
 
-        Rejects an access request approval.  # noqa: E501
+        Rejects an access request approval.
         """
         pass
 

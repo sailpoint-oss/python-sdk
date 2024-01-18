@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.non_employee_record import NonEmployeeRecord  # noqa: E501
+from sailpoint.v3.models.non_employee_record import NonEmployeeRecord
 
 
 class TestNonEmployeeRecord(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNonEmployeeRecord(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeRecord`
         """
-        model = NonEmployeeRecord()  # noqa: E501
+        model = NonEmployeeRecord()
         if include_optional:
             return NonEmployeeRecord(
                 id = 'ef38f94347e94562b5bb8424a56397d8',

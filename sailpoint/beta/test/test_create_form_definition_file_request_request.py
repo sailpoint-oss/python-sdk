@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.create_form_definition_file_request_request import CreateFormDefinitionFileRequestRequest  # noqa: E501
+from sailpoint.beta.models.create_form_definition_file_request_request import CreateFormDefinitionFileRequestRequest
 
 
 class TestCreateFormDefinitionFileRequestRequest(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestCreateFormDefinitionFileRequestRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreateFormDefinitionFileRequestRequest`
         """
-        model = CreateFormDefinitionFileRequestRequest()  # noqa: E501
+        model = CreateFormDefinitionFileRequestRequest()
         if include_optional:
             return CreateFormDefinitionFileRequestRequest(
                 file = bytes(b'blah')

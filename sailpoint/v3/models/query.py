@@ -16,76 +16,93 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.inner_hit import InnerHit
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class Query(BaseModel):
     """
-    Query parameters used to construct an Elasticsearch query object.  # noqa: E501
-    """
+    Query parameters used to construct an Elasticsearch query object.
+    """ # noqa: E501
     query: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries."
     )
-    fields: Optional[conlist(StrictStr)] = Field(
-        None,
+    fields: Optional[List[StrictStr]] = Field(
+        default=None,
         description=
         "The fields the query will be applied to.  Fields provide you with a simple way to add additional fields to search, without making the query too complicated.  For example, you can use the fields to specify that you want your query of \"a*\" to be applied to \"name\", \"firstName\", and the \"source.name\".  The response will include all results matching the \"a*\" query found in those three fields.  A field's availability depends on the indices being searched.  For example, if you are searching \"identities\", you can apply your search to the \"firstName\" field, but you couldn't use \"firstName\" with a search on \"access profiles\".  Refer to the response schema for the respective lists of available fields. "
     )
     time_zone: Optional[StrictStr] = Field(
-        None,
-        alias="timeZone",
+        default=None,
         description=
-        "The time zone to be applied to any range query related to dates.")
-    inner_hit: Optional[InnerHit] = Field(None, alias="innerHit")
-    __properties = ["query", "fields", "timeZone", "innerHit"]
+        "The time zone to be applied to any range query related to dates.",
+        alias="timeZone")
+    inner_hit: Optional[InnerHit] = Field(default=None, alias="innerHit")
+    __properties: ClassVar[List[str]] = [
+        "query", "fields", "timeZone", "innerHit"
+    ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Query:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of Query from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of inner_hit
         if self.inner_hit:
             _dict['innerHit'] = self.inner_hit.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Query:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of Query from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return Query.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = Query.parse_obj({
+        _obj = cls.model_validate({
             "query":
             obj.get("query"),
             "fields":
             obj.get("fields"),
-            "time_zone":
+            "timeZone":
             obj.get("timeZone"),
-            "inner_hit":
+            "innerHit":
             InnerHit.from_dict(obj.get("innerHit"))
             if obj.get("innerHit") is not None else None
         })

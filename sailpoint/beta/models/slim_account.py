@@ -17,112 +17,129 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class SlimAccount(BaseModel):
     """
     SlimAccount
     """
+
+  # noqa: E501
     id: Optional[StrictStr] = Field(
-        None, description="System-generated unique ID of the Object")
-    name: StrictStr = Field(..., description="Name of the Object")
+        default=None, description="System-generated unique ID of the Object")
+    name: StrictStr = Field(description="Name of the Object")
     created: Optional[datetime] = Field(
-        None, description="Creation date of the Object")
+        default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(
-        None, description="Last modification date of the Object")
+        default=None, description="Last modification date of the Object")
     uuid: Optional[StrictStr] = Field(
-        None, description="Unique ID from the owning source")
+        default=None, description="Unique ID from the owning source")
     native_identity: Optional[StrictStr] = Field(
-        None,
-        alias="nativeIdentity",
-        description="The native identifier of the account")
+        default=None,
+        description="The native identifier of the account",
+        alias="nativeIdentity")
     description: Optional[StrictStr] = Field(
-        None, description="The description for the account")
+        default=None, description="The description for the account")
     disabled: Optional[StrictBool] = Field(
-        None, description="Whether the account is disabled")
+        default=None, description="Whether the account is disabled")
     locked: Optional[StrictBool] = Field(
-        None, description="Whether the account is locked")
+        default=None, description="Whether the account is locked")
     manually_correlated: Optional[StrictBool] = Field(
-        None,
-        alias="manuallyCorrelated",
-        description="Whether the account was manually correlated")
+        default=None,
+        description="Whether the account was manually correlated",
+        alias="manuallyCorrelated")
     has_entitlements: Optional[StrictBool] = Field(
-        None,
-        alias="hasEntitlements",
+        default=None,
         description=
-        "Whether the account has any entitlements associated with it")
+        "Whether the account has any entitlements associated with it",
+        alias="hasEntitlements")
     source_id: Optional[StrictStr] = Field(
-        None,
-        alias="sourceId",
-        description="The ID of the source for which this account belongs")
+        default=None,
+        description="The ID of the source for which this account belongs",
+        alias="sourceId")
     source_name: Optional[StrictStr] = Field(
-        None, alias="sourceName", description="The name of the source")
+        default=None, description="The name of the source", alias="sourceName")
     identity_id: Optional[StrictStr] = Field(
-        None,
-        alias="identityId",
+        default=None,
         description=
-        "The ID of the identity for which this account is correlated to if not uncorrelated"
-    )
+        "The ID of the identity for which this account is correlated to if not uncorrelated",
+        alias="identityId")
     attributes: Optional[Dict[str, Any]] = Field(
-        None,
+        default=None,
         description="A map containing attributes associated with the account")
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "id", "name", "created", "modified", "uuid", "nativeIdentity",
         "description", "disabled", "locked", "manuallyCorrelated",
         "hasEntitlements", "sourceId", "sourceName", "identityId", "attributes"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SlimAccount:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of SlimAccount from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                              "id",
-                              "created",
-                              "modified",
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+                "id",
+                "created",
+                "modified",
+            },
+            exclude_none=True,
+        )
         # set to None if uuid (nullable) is None
-        # and __fields_set__ contains the field
-        if self.uuid is None and "uuid" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.uuid is None and "uuid" in self.model_fields_set:
             _dict['uuid'] = None
 
         # set to None if description (nullable) is None
-        # and __fields_set__ contains the field
-        if self.description is None and "description" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SlimAccount:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of SlimAccount from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SlimAccount.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SlimAccount.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -133,7 +150,7 @@ class SlimAccount(BaseModel):
             obj.get("modified"),
             "uuid":
             obj.get("uuid"),
-            "native_identity":
+            "nativeIdentity":
             obj.get("nativeIdentity"),
             "description":
             obj.get("description"),
@@ -141,15 +158,15 @@ class SlimAccount(BaseModel):
             obj.get("disabled"),
             "locked":
             obj.get("locked"),
-            "manually_correlated":
+            "manuallyCorrelated":
             obj.get("manuallyCorrelated"),
-            "has_entitlements":
+            "hasEntitlements":
             obj.get("hasEntitlements"),
-            "source_id":
+            "sourceId":
             obj.get("sourceId"),
-            "source_name":
+            "sourceName":
             obj.get("sourceName"),
-            "identity_id":
+            "identityId":
             obj.get("identityId"),
             "attributes":
             obj.get("attributes")

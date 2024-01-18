@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.delete_campaigns_request import DeleteCampaignsRequest  # noqa: E501
+from sailpoint.beta.models.delete_campaigns_request import DeleteCampaignsRequest
 
 
 class TestDeleteCampaignsRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestDeleteCampaignsRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `DeleteCampaignsRequest`
         """
-        model = DeleteCampaignsRequest()  # noqa: E501
+        model = DeleteCampaignsRequest()
         if include_optional:
             return DeleteCampaignsRequest(
                 ids = [2c9180887335cee10173490db1776c26, 2c9180836a712436016a7125a90c0021]

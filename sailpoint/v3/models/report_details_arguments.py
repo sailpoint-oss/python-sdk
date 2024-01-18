@@ -18,15 +18,20 @@ import pprint
 import re  # noqa: F401
 
 from typing import Any, List, Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
+from pydantic import BaseModel, Field, StrictStr, ValidationError, field_validator
 from sailpoint.v3.models.accounts_export_report_arguments import AccountsExportReportArguments
 from sailpoint.v3.models.identities_details_report_arguments import IdentitiesDetailsReportArguments
 from sailpoint.v3.models.identities_report_arguments import IdentitiesReportArguments
 from sailpoint.v3.models.identity_profile_identity_error_report_arguments import IdentityProfileIdentityErrorReportArguments
 from sailpoint.v3.models.orphan_uncorrelated_report_arguments import OrphanUncorrelatedReportArguments
 from sailpoint.v3.models.search_export_report_arguments import SearchExportReportArguments
-from typing import Union, Any, List, TYPE_CHECKING
+from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
+from typing_extensions import Literal
 from pydantic import StrictStr, Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 REPORTDETAILSARGUMENTS_ONE_OF_SCHEMAS = [
     "AccountsExportReportArguments", "IdentitiesDetailsReportArguments",
@@ -53,20 +58,17 @@ class ReportDetailsArguments(BaseModel):
         OrphanUncorrelatedReportArguments] = None
     # data type: SearchExportReportArguments
     oneof_schema_6_validator: Optional[SearchExportReportArguments] = None
-    if TYPE_CHECKING:
-        actual_instance: Union[AccountsExportReportArguments,
-                               IdentitiesDetailsReportArguments,
-                               IdentitiesReportArguments,
-                               IdentityProfileIdentityErrorReportArguments,
-                               OrphanUncorrelatedReportArguments,
-                               SearchExportReportArguments]
-    else:
-        actual_instance: Any
-    one_of_schemas: List[str] = Field(REPORTDETAILSARGUMENTS_ONE_OF_SCHEMAS,
-                                      const=True)
+    actual_instance: Optional[Union[
+        AccountsExportReportArguments, IdentitiesDetailsReportArguments,
+        IdentitiesReportArguments, IdentityProfileIdentityErrorReportArguments,
+        OrphanUncorrelatedReportArguments, SearchExportReportArguments]] = None
+    one_of_schemas: List[str] = Literal[
+        "AccountsExportReportArguments", "IdentitiesDetailsReportArguments",
+        "IdentitiesReportArguments",
+        "IdentityProfileIdentityErrorReportArguments",
+        "OrphanUncorrelatedReportArguments", "SearchExportReportArguments"]
 
-    class Config:
-        validate_assignment = True
+    model_config = {"validate_assignment": True}
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -82,9 +84,9 @@ class ReportDetailsArguments(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
-        instance = ReportDetailsArguments.construct()
+        instance = ReportDetailsArguments.model_construct()
         error_messages = []
         match = 0
         # validate data type: AccountsExportReportArguments
@@ -143,13 +145,13 @@ class ReportDetailsArguments(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ReportDetailsArguments:
+    def from_dict(cls, obj: dict) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> ReportDetailsArguments:
+    def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
-        instance = ReportDetailsArguments.construct()
+        instance = cls.model_construct()
         error_messages = []
         match = 0
 
@@ -220,7 +222,7 @@ class ReportDetailsArguments(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> Dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
@@ -234,4 +236,4 @@ class ReportDetailsArguments(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.dict())
+        return pprint.pformat(self.model_dump())

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute  # noqa: E501
+from sailpoint.beta.models.non_employee_schema_attribute import NonEmployeeSchemaAttribute
 
 
 class TestNonEmployeeSchemaAttribute(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNonEmployeeSchemaAttribute(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeSchemaAttribute`
         """
-        model = NonEmployeeSchemaAttribute()  # noqa: E501
+        model = NonEmployeeSchemaAttribute()
         if include_optional:
             return NonEmployeeSchemaAttribute(
                 id = 'ac110005-7156-1150-8171-5b292e3e0084',

@@ -17,88 +17,102 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.attribute_definition import AttributeDefinition
 from sailpoint.v3.models.source_feature import SourceFeature
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ModelSchema(BaseModel):
     """
     ModelSchema
     """
-    id: Optional[StrictStr] = Field(None, description="The id of the Schema.")
-    name: Optional[StrictStr] = Field(None,
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
+                                    description="The id of the Schema.")
+    name: Optional[StrictStr] = Field(default=None,
                                       description="The name of the Schema.")
     native_object_type: Optional[StrictStr] = Field(
-        None,
-        alias="nativeObjectType",
+        default=None,
         description=
-        "The name of the object type on the native system that the schema represents."
-    )
+        "The name of the object type on the native system that the schema represents.",
+        alias="nativeObjectType")
     identity_attribute: Optional[StrictStr] = Field(
-        None,
-        alias="identityAttribute",
+        default=None,
         description=
-        "The name of the attribute used to calculate the unique identifier for an object in the schema."
-    )
+        "The name of the attribute used to calculate the unique identifier for an object in the schema.",
+        alias="identityAttribute")
     display_attribute: Optional[StrictStr] = Field(
-        None,
-        alias="displayAttribute",
+        default=None,
         description=
-        "The name of the attribute used to calculate the display value for an object in the schema."
-    )
+        "The name of the attribute used to calculate the display value for an object in the schema.",
+        alias="displayAttribute")
     hierarchy_attribute: Optional[StrictStr] = Field(
-        None,
-        alias="hierarchyAttribute",
+        default=None,
         description=
-        "The name of the attribute whose values represent other objects in a hierarchy. Only relevant to group schemas."
-    )
+        "The name of the attribute whose values represent other objects in a hierarchy. Only relevant to group schemas.",
+        alias="hierarchyAttribute")
     include_permissions: Optional[StrictBool] = Field(
-        None,
-        alias="includePermissions",
+        default=None,
         description=
-        "Flag indicating whether or not the include permissions with the object data when aggregating the schema."
-    )
-    features: Optional[conlist(SourceFeature)] = Field(
-        None, description="The features that the schema supports.")
-    configuration: Optional[Dict[str, Any]] = Field(
-        None,
+        "Flag indicating whether or not the include permissions with the object data when aggregating the schema.",
+        alias="includePermissions")
+    features: Optional[List[SourceFeature]] = Field(
+        default=None, description="The features that the schema supports.")
+    configuration: Optional[Union[str, Any]] = Field(
+        default=None,
         description=
         "Holds any extra configuration data that the schema may require.")
-    attributes: Optional[conlist(AttributeDefinition)] = Field(
-        None, description="The attribute definitions which form the schema.")
+    attributes: Optional[List[AttributeDefinition]] = Field(
+        default=None,
+        description="The attribute definitions which form the schema.")
     created: Optional[datetime] = Field(
-        None, description="The date the Schema was created.")
+        default=None, description="The date the Schema was created.")
     modified: Optional[datetime] = Field(
-        None, description="The date the Schema was last modified.")
-    __properties = [
+        default=None, description="The date the Schema was last modified.")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "nativeObjectType", "identityAttribute",
         "displayAttribute", "hierarchyAttribute", "includePermissions",
         "features", "configuration", "attributes", "created", "modified"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ModelSchema:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ModelSchema from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in attributes (list)
         _items = []
         if self.attributes:
@@ -109,28 +123,28 @@ class ModelSchema(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ModelSchema:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ModelSchema from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ModelSchema.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ModelSchema.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
             obj.get("name"),
-            "native_object_type":
+            "nativeObjectType":
             obj.get("nativeObjectType"),
-            "identity_attribute":
+            "identityAttribute":
             obj.get("identityAttribute"),
-            "display_attribute":
+            "displayAttribute":
             obj.get("displayAttribute"),
-            "hierarchy_attribute":
+            "hierarchyAttribute":
             obj.get("hierarchyAttribute"),
-            "include_permissions":
+            "includePermissions":
             obj.get("includePermissions"),
             "features":
             obj.get("features"),

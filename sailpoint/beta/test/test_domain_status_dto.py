@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.domain_status_dto import DomainStatusDto  # noqa: E501
+from sailpoint.beta.models.domain_status_dto import DomainStatusDto
 
 
 class TestDomainStatusDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestDomainStatusDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `DomainStatusDto`
         """
-        model = DomainStatusDto()  # noqa: E501
+        model = DomainStatusDto()
         if include_optional:
             return DomainStatusDto(
                 id = '123b45b0-aaaa-bbbb-a7db-123456a56abc',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.list_connectors200_response import ListConnectors200Response  # noqa: E501
+from sailpoint.cc.models.list_connectors200_response import ListConnectors200Response
 
 
 class TestListConnectors200Response(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestListConnectors200Response(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListConnectors200Response`
         """
-        model = ListConnectors200Response()  # noqa: E501
+        model = ListConnectors200Response()
         if include_optional:
             return ListConnectors200Response(
                 total = 1.337,

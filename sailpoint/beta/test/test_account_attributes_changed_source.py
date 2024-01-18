@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_attributes_changed_source import AccountAttributesChangedSource  # noqa: E501
+from sailpoint.beta.models.account_attributes_changed_source import AccountAttributesChangedSource
 
 
 class TestAccountAttributesChangedSource(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestAccountAttributesChangedSource(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountAttributesChangedSource`
         """
-        model = AccountAttributesChangedSource()  # noqa: E501
+        model = AccountAttributesChangedSource()
         if include_optional:
             return AccountAttributesChangedSource(
                 id = '4e4d982dddff4267ab12f0f1e72b5a6d',

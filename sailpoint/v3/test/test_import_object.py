@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.import_object import ImportObject  # noqa: E501
+from sailpoint.v3.models.import_object import ImportObject
 
 
 class TestImportObject(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestImportObject(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ImportObject`
         """
-        model = ImportObject()  # noqa: E501
+        model = ImportObject()
         if include_optional:
             return ImportObject(
                 type = 'SOURCE',

@@ -16,31 +16,40 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class WorkflowLibraryFormFields(BaseModel):
     """
     WorkflowLibraryFormFields
     """
+
+  # noqa: E501
     help_text: Optional[StrictStr] = Field(
-        None,
-        alias="helpText",
-        description="Describes the form field in the UI")
+        default=None,
+        description="Describes the form field in the UI",
+        alias="helpText")
     label: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description="A human readable name for this form field in the UI")
     name: Optional[StrictStr] = Field(
-        None, description="The name of the input attribute")
+        default=None, description="The name of the input attribute")
     required: Optional[StrictBool] = Field(
-        None, description="Denotes if this field is a required attribute")
-    type: Optional[Dict[str,
-                        Any]] = Field(None,
-                                      description="The type of the form field")
-    __properties = ["helpText", "label", "name", "required", "type"]
+        default=None,
+        description="Denotes if this field is a required attribute")
+    type: Optional[Union[str, Any]] = Field(
+        default=None, description="The type of the form field")
+    __properties: ClassVar[List[str]] = [
+        "helpText", "label", "name", "required", "type"
+    ]
 
-    @validator('type')
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -57,53 +66,58 @@ class WorkflowLibraryFormFields(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> WorkflowLibraryFormFields:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of WorkflowLibraryFormFields from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # set to None if type (nullable) is None
-        # and __fields_set__ contains the field
-        if self.type is None and "type" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.type is None and "type" in self.model_fields_set:
             _dict['type'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> WorkflowLibraryFormFields:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of WorkflowLibraryFormFields from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return WorkflowLibraryFormFields.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = WorkflowLibraryFormFields.parse_obj({
-            "help_text":
-            obj.get("helpText"),
-            "label":
-            obj.get("label"),
-            "name":
-            obj.get("name"),
-            "required":
-            obj.get("required"),
-            "type":
-            obj.get("type")
+        _obj = cls.model_validate({
+            "helpText": obj.get("helpText"),
+            "label": obj.get("label"),
+            "name": obj.get("name"),
+            "required": obj.get("required"),
+            "type": obj.get("type")
         })
         return _obj

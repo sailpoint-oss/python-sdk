@@ -17,62 +17,80 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.source_deleted_actor import SourceDeletedActor
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class SourceDeleted(BaseModel):
     """
     SourceDeleted
     """
-    id: StrictStr = Field(..., description="The unique ID of the source.")
-    name: StrictStr = Field(...,
-                            description="Human friendly name of the source.")
-    type: StrictStr = Field(..., description="The connection type.")
-    deleted: datetime = Field(
-        ..., description="The date and time the source was deleted.")
-    connector: StrictStr = Field(
-        ..., description="The connector type used to connect to the source.")
-    actor: SourceDeletedActor = Field(...)
-    __properties = ["id", "name", "type", "deleted", "connector", "actor"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+  # noqa: E501
+    id: StrictStr = Field(description="The unique ID of the source.")
+    name: StrictStr = Field(description="Human friendly name of the source.")
+    type: StrictStr = Field(description="The connection type.")
+    deleted: datetime = Field(
+        description="The date and time the source was deleted.")
+    connector: StrictStr = Field(
+        description="The connector type used to connect to the source.")
+    actor: SourceDeletedActor
+    __properties: ClassVar[List[str]] = [
+        "id", "name", "type", "deleted", "connector", "actor"
+    ]
+
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SourceDeleted:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of SourceDeleted from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of actor
         if self.actor:
             _dict['actor'] = self.actor.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SourceDeleted:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of SourceDeleted from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SourceDeleted.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SourceDeleted.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":

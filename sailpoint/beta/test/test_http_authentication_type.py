@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.http_authentication_type import HttpAuthenticationType  # noqa: E501
+from sailpoint.beta.models.http_authentication_type import HttpAuthenticationType
 
 
 class TestHttpAuthenticationType(unittest.TestCase):

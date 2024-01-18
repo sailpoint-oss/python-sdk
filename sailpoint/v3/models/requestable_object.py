@@ -17,103 +17,119 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.v3.models.requestable_object_request_status import RequestableObjectRequestStatus
 from sailpoint.v3.models.requestable_object_type import RequestableObjectType
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RequestableObject(BaseModel):
     """
     RequestableObject
     """
+
+  # noqa: E501
     id: Optional[StrictStr] = Field(
-        None, description="Id of the requestable object itself")
+        default=None, description="Id of the requestable object itself")
     name: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description="Human-readable display name of the requestable object")
     created: Optional[datetime] = Field(
-        None, description="The time when the requestable object was created")
+        default=None,
+        description="The time when the requestable object was created")
     modified: Optional[datetime] = Field(
-        None,
+        default=None,
         description="The time when the requestable object was last modified")
     description: Optional[StrictStr] = Field(
-        None, description="Description of the requestable object.")
+        default=None, description="Description of the requestable object.")
     type: Optional[RequestableObjectType] = None
     request_status: Optional[RequestableObjectRequestStatus] = Field(
-        None, alias="requestStatus")
+        default=None, alias="requestStatus")
     identity_request_id: Optional[StrictStr] = Field(
-        None,
-        alias="identityRequestId",
+        default=None,
         description=
-        "If *requestStatus* is *PENDING*, indicates the id of the associated account activity."
-    )
+        "If *requestStatus* is *PENDING*, indicates the id of the associated account activity.",
+        alias="identityRequestId")
     owner_ref: Optional[IdentityReferenceWithNameAndEmail] = Field(
-        None, alias="ownerRef")
+        default=None, alias="ownerRef")
     request_comments_required: Optional[StrictBool] = Field(
-        None,
-        alias="requestCommentsRequired",
+        default=None,
         description=
-        "Whether the requester must provide comments when requesting the object."
-    )
-    __properties = [
+        "Whether the requester must provide comments when requesting the object.",
+        alias="requestCommentsRequired")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "created", "modified", "description", "type",
         "requestStatus", "identityRequestId", "ownerRef",
         "requestCommentsRequired"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RequestableObject:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RequestableObject from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of owner_ref
         if self.owner_ref:
             _dict['ownerRef'] = self.owner_ref.to_dict()
         # set to None if modified (nullable) is None
-        # and __fields_set__ contains the field
-        if self.modified is None and "modified" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
             _dict['modified'] = None
 
         # set to None if identity_request_id (nullable) is None
-        # and __fields_set__ contains the field
-        if self.identity_request_id is None and "identity_request_id" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.identity_request_id is None and "identity_request_id" in self.model_fields_set:
             _dict['identityRequestId'] = None
 
         # set to None if owner_ref (nullable) is None
-        # and __fields_set__ contains the field
-        if self.owner_ref is None and "owner_ref" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.owner_ref is None and "owner_ref" in self.model_fields_set:
             _dict['ownerRef'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RequestableObject:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of RequestableObject from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RequestableObject.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RequestableObject.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -126,14 +142,14 @@ class RequestableObject(BaseModel):
             obj.get("description"),
             "type":
             obj.get("type"),
-            "request_status":
+            "requestStatus":
             obj.get("requestStatus"),
-            "identity_request_id":
+            "identityRequestId":
             obj.get("identityRequestId"),
-            "owner_ref":
+            "ownerRef":
             IdentityReferenceWithNameAndEmail.from_dict(obj.get("ownerRef"))
             if obj.get("ownerRef") is not None else None,
-            "request_comments_required":
+            "requestCommentsRequired":
             obj.get("requestCommentsRequired")
         })
         return _obj

@@ -11,15 +11,21 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from aenum import Enum, no_arg
+from enum import Enum
+
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class CriteriaType(str, Enum):
     """
-    Type of the criteria in the filter.
+    Type of the criteria in the filter. The `COMPOSITE` filter can contain multiple filters in an AND/OR relationship.
     """
     """
     allowed enum values
@@ -29,14 +35,12 @@ class CriteriaType(str, Enum):
     IDENTITY = 'IDENTITY'
     IDENTITY_ATTRIBUTE = 'IDENTITY_ATTRIBUTE'
     ENTITLEMENT = 'ENTITLEMENT'
-    INVALID_CERTIFIABLE_ENTITY = 'INVALID_CERTIFIABLE_ENTITY'
     ACCESS_PROFILE = 'ACCESS_PROFILE'
     SOURCE = 'SOURCE'
     ACCOUNT = 'ACCOUNT'
-    INVALID_CERTIFIABLE_BUNDLE = 'INVALID_CERTIFIABLE_BUNDLE'
     AGGREGATED_ENTITLEMENT = 'AGGREGATED_ENTITLEMENT'
 
     @classmethod
-    def from_json(cls, json_str: str) -> CriteriaType:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of CriteriaType from a JSON string"""
-        return CriteriaType(json.loads(json_str))
+        return cls(json.loads(json_str))

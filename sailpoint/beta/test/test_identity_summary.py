@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_summary import IdentitySummary  # noqa: E501
+from sailpoint.beta.models.identity_summary import IdentitySummary
 
 
 class TestIdentitySummary(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentitySummary(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentitySummary`
         """
-        model = IdentitySummary()  # noqa: E501
+        model = IdentitySummary()
         if include_optional:
             return IdentitySummary(
                 id = 'ff80818155fe8c080155fe8d925b0316',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.bulk_tagged_object import BulkTaggedObject  # noqa: E501
+from sailpoint.beta.models.bulk_tagged_object import BulkTaggedObject
 
 
 class TestBulkTaggedObject(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestBulkTaggedObject(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `BulkTaggedObject`
         """
-        model = BulkTaggedObject()  # noqa: E501
+        model = BulkTaggedObject()
         if include_optional:
             return BulkTaggedObject(
                 object_refs = [

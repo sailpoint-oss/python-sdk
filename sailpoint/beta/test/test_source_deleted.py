@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_deleted import SourceDeleted  # noqa: E501
+from sailpoint.beta.models.source_deleted import SourceDeleted
 
 
 class TestSourceDeleted(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceDeleted(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceDeleted`
         """
-        model = SourceDeleted()  # noqa: E501
+        model = SourceDeleted()
         if include_optional:
             return SourceDeleted(
                 id = '2c9180866166b5b0016167c32ef31a66',

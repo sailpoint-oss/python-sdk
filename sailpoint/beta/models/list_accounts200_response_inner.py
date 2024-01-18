@@ -18,11 +18,16 @@ import pprint
 import re  # noqa: F401
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
+from pydantic import BaseModel, Field, StrictStr, ValidationError, field_validator
 from sailpoint.beta.models.full_account import FullAccount
 from sailpoint.beta.models.slim_account import SlimAccount
-from typing import Union, Any, List, TYPE_CHECKING
+from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
+from typing_extensions import Literal
 from pydantic import StrictStr, Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 LISTACCOUNTS200RESPONSEINNER_ANY_OF_SCHEMAS = ["FullAccount", "SlimAccount"]
 
@@ -37,14 +42,13 @@ class ListAccounts200ResponseInner(BaseModel):
     # data type: FullAccount
     anyof_schema_2_validator: Optional[FullAccount] = None
     if TYPE_CHECKING:
-        actual_instance: Union[FullAccount, SlimAccount]
+        actual_instance: Optional[Union[FullAccount, SlimAccount]] = None
     else:
-        actual_instance: Any
-    any_of_schemas: List[str] = Field(
-        LISTACCOUNTS200RESPONSEINNER_ANY_OF_SCHEMAS, const=True)
+        actual_instance: Any = None
+    any_of_schemas: List[str] = Literal[
+        LISTACCOUNTS200RESPONSEINNER_ANY_OF_SCHEMAS]
 
-    class Config:
-        validate_assignment = True
+    model_config = {"validate_assignment": True}
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -60,9 +64,9 @@ class ListAccounts200ResponseInner(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
     def actual_instance_must_validate_anyof(cls, v):
-        instance = ListAccounts200ResponseInner.construct()
+        instance = ListAccounts200ResponseInner.model_construct()
         error_messages = []
         # validate data type: SlimAccount
         if not isinstance(v, SlimAccount):
@@ -87,13 +91,13 @@ class ListAccounts200ResponseInner(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ListAccounts200ResponseInner:
+    def from_dict(cls, obj: dict) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> ListAccounts200ResponseInner:
+    def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
-        instance = ListAccounts200ResponseInner.construct()
+        instance = cls.model_construct()
         error_messages = []
         # anyof_schema_1_validator: Optional[SlimAccount] = None
         try:
@@ -127,7 +131,7 @@ class ListAccounts200ResponseInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> Dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return "null"
@@ -140,4 +144,4 @@ class ListAccounts200ResponseInner(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.dict())
+        return pprint.pformat(self.model_dump())

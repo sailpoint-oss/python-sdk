@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.iai_role_mining_api import IAIRoleMiningApi  # noqa: E501
+from sailpoint.beta.api.iai_role_mining_api import IAIRoleMiningApi
 
 
 class TestIAIRoleMiningApi(unittest.TestCase):
     """IAIRoleMiningApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = IAIRoleMiningApi()  # noqa: E501
+        self.api = IAIRoleMiningApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,168 +28,168 @@ class TestIAIRoleMiningApi(unittest.TestCase):
     def test_create_potential_role_provision_request(self) -> None:
         """Test case for create_potential_role_provision_request
 
-        Create request to provision a potential role into an actual role.  # noqa: E501
+        Create request to provision a potential role into an actual role.
         """
         pass
 
     def test_create_role_mining_sessions(self) -> None:
         """Test case for create_role_mining_sessions
 
-        Create a role mining session  # noqa: E501
+        Create a role mining session
         """
         pass
 
     def test_download_role_mining_potential_role_zip(self) -> None:
         """Test case for download_role_mining_potential_role_zip
 
-        Export (download) details for a potential role in a role mining session  # noqa: E501
+        Export (download) details for a potential role in a role mining session
         """
         pass
 
     def test_export_role_mining_potential_role(self) -> None:
         """Test case for export_role_mining_potential_role
 
-        Export (download) details for a potential role in a role mining session  # noqa: E501
+        Export (download) details for a potential role in a role mining session
         """
         pass
 
     def test_export_role_mining_potential_role_async(self) -> None:
         """Test case for export_role_mining_potential_role_async
 
-        Asynchronously export details for a potential role in a role mining session and upload to S3  # noqa: E501
+        Asynchronously export details for a potential role in a role mining session and upload to S3
         """
         pass
 
     def test_export_role_mining_potential_role_status(self) -> None:
         """Test case for export_role_mining_potential_role_status
 
-        Retrieve status of a potential role export job  # noqa: E501
+        Retrieve status of a potential role export job
         """
         pass
 
     def test_get_all_potential_role_summaries(self) -> None:
         """Test case for get_all_potential_role_summaries
 
-        Retrieves all potential role summaries  # noqa: E501
+        Retrieves all potential role summaries
         """
         pass
 
     def test_get_entitlement_distribution_potential_role(self) -> None:
         """Test case for get_entitlement_distribution_potential_role
 
-        Retrieves entitlement popularity distribution for a potential role in a role mining session  # noqa: E501
+        Retrieves entitlement popularity distribution for a potential role in a role mining session
         """
         pass
 
     def test_get_entitlements_potential_role(self) -> None:
         """Test case for get_entitlements_potential_role
 
-        Retrieves entitlements for a potential role in a role mining session  # noqa: E501
+        Retrieves entitlements for a potential role in a role mining session
         """
         pass
 
     def test_get_excluded_entitlements_potential_role(self) -> None:
         """Test case for get_excluded_entitlements_potential_role
 
-        Retrieves excluded entitlements for a potential role in a role mining session  # noqa: E501
+        Retrieves excluded entitlements for a potential role in a role mining session
         """
         pass
 
     def test_get_identities_potential_role(self) -> None:
         """Test case for get_identities_potential_role
 
-        Retrieves identities for a potential role in a role mining session  # noqa: E501
+        Retrieves identities for a potential role in a role mining session
         """
         pass
 
     def test_get_potential_role(self) -> None:
         """Test case for get_potential_role
 
-        Retrieves a specific potential role  # noqa: E501
+        Retrieves a specific potential role
         """
         pass
 
     def test_get_potential_role_applications(self) -> None:
         """Test case for get_potential_role_applications
 
-        Retrieves the applications of a potential role for a role mining session  # noqa: E501
+        Retrieves the applications of a potential role for a role mining session
         """
         pass
 
     def test_get_potential_role_source_identity_usage(self) -> None:
         """Test case for get_potential_role_source_identity_usage
 
-        Retrieves potential role source usage  # noqa: E501
+        Retrieves potential role source usage
         """
         pass
 
     def test_get_potential_role_summaries(self) -> None:
         """Test case for get_potential_role_summaries
 
-        Retrieves all potential role summaries  # noqa: E501
+        Retrieves all potential role summaries
         """
         pass
 
     def test_get_role_mining_potential_role(self) -> None:
         """Test case for get_role_mining_potential_role
 
-        Retrieves a specific potential role  # noqa: E501
+        Retrieves a specific potential role
         """
         pass
 
     def test_get_role_mining_session(self) -> None:
         """Test case for get_role_mining_session
 
-        Get a role mining session  # noqa: E501
+        Get a role mining session
         """
         pass
 
     def test_get_role_mining_session_status(self) -> None:
         """Test case for get_role_mining_session_status
 
-        Get role mining session status state  # noqa: E501
+        Get role mining session status state
         """
         pass
 
     def test_get_role_mining_sessions(self) -> None:
         """Test case for get_role_mining_sessions
 
-        Retrieves all role mining sessions  # noqa: E501
+        Retrieves all role mining sessions
         """
         pass
 
     def test_get_saved_potential_roles(self) -> None:
         """Test case for get_saved_potential_roles
 
-        Retrieves all saved potential roles  # noqa: E501
+        Retrieves all saved potential roles
         """
         pass
 
     def test_patch_potential_role(self) -> None:
         """Test case for patch_potential_role
 
-        Update a potential role  # noqa: E501
+        Update a potential role
         """
         pass
 
     def test_patch_potential_role_0(self) -> None:
         """Test case for patch_potential_role_0
 
-        Update a potential role  # noqa: E501
+        Update a potential role
         """
         pass
 
     def test_patch_role_mining_session(self) -> None:
         """Test case for patch_role_mining_session
 
-        Patch a role mining session  # noqa: E501
+        Patch a role mining session
         """
         pass
 
     def test_update_entitlements_potential_role(self) -> None:
         """Test case for update_entitlements_potential_role
 
-        Edit entitlements for a potential role to exclude some entitlements  # noqa: E501
+        Edit entitlements for a potential role to exclude some entitlements
         """
         pass
 

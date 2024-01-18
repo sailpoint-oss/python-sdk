@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_mining_entitlement import RoleMiningEntitlement  # noqa: E501
+from sailpoint.beta.models.role_mining_entitlement import RoleMiningEntitlement
 
 
 class TestRoleMiningEntitlement(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRoleMiningEntitlement(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleMiningEntitlement`
         """
-        model = RoleMiningEntitlement()  # noqa: E501
+        model = RoleMiningEntitlement()
         if include_optional:
             return RoleMiningEntitlement(
                 entitlement_ref = sailpoint.beta.models.role_mining_entitlement_ref.RoleMiningEntitlementRef(

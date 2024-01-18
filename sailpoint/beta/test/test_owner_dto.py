@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.owner_dto import OwnerDto  # noqa: E501
+from sailpoint.beta.models.owner_dto import OwnerDto
 
 
 class TestOwnerDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestOwnerDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `OwnerDto`
         """
-        model = OwnerDto()  # noqa: E501
+        model = OwnerDto()
         if include_optional:
             return OwnerDto(
                 type = 'IDENTITY',

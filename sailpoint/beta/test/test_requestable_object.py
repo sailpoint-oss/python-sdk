@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.requestable_object import RequestableObject  # noqa: E501
+from sailpoint.beta.models.requestable_object import RequestableObject
 
 
 class TestRequestableObject(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRequestableObject(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RequestableObject`
         """
-        model = RequestableObject()  # noqa: E501
+        model = RequestableObject()
         if include_optional:
             return RequestableObject(
                 id = '2c9180835d2e5168015d32f890ca1581',

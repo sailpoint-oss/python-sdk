@@ -17,41 +17,49 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictInt, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RoleInsightsResponse(BaseModel):
     """
     RoleInsightsResponse
     """
+
+  # noqa: E501
     id: Optional[StrictStr] = Field(
-        None, description="Request Id for a role insight generation request")
+        default=None,
+        description="Request Id for a role insight generation request")
     created_date: Optional[datetime] = Field(
-        None,
-        alias="createdDate",
-        description="The date-time role insights request was created.")
+        default=None,
+        description="The date-time role insights request was created.",
+        alias="createdDate")
     last_generated: Optional[datetime] = Field(
-        None,
-        alias="lastGenerated",
-        description="The date-time role insights request was completed.")
+        default=None,
+        description="The date-time role insights request was completed.",
+        alias="lastGenerated")
     number_of_updates: Optional[StrictInt] = Field(
-        None,
-        alias="numberOfUpdates",
+        default=None,
         description=
-        "Total number of updates for this request. Starts with 0 and will have correct number when request is COMPLETED."
-    )
-    role_ids: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="roleIds",
-        description="The role IDs that are in this request.")
-    status: Optional[StrictStr] = Field(None, description="Request status")
-    __properties = [
+        "Total number of updates for this request. Starts with 0 and will have correct number when request is COMPLETED.",
+        alias="numberOfUpdates")
+    role_ids: Optional[List[StrictStr]] = Field(
+        default=None,
+        description="The role IDs that are in this request.",
+        alias="roleIds")
+    status: Optional[StrictStr] = Field(default=None,
+                                        description="Request status")
+    __properties: ClassVar[List[str]] = [
         "id", "createdDate", "lastGenerated", "numberOfUpdates", "roleIds",
         "status"
     ]
 
-    @validator('status')
+    @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -63,50 +71,54 @@ class RoleInsightsResponse(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RoleInsightsResponse:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RoleInsightsResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RoleInsightsResponse:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of RoleInsightsResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RoleInsightsResponse.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RoleInsightsResponse.parse_obj({
-            "id":
-            obj.get("id"),
-            "created_date":
-            obj.get("createdDate"),
-            "last_generated":
-            obj.get("lastGenerated"),
-            "number_of_updates":
-            obj.get("numberOfUpdates"),
-            "role_ids":
-            obj.get("roleIds"),
-            "status":
-            obj.get("status")
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "createdDate": obj.get("createdDate"),
+            "lastGenerated": obj.get("lastGenerated"),
+            "numberOfUpdates": obj.get("numberOfUpdates"),
+            "roleIds": obj.get("roleIds"),
+            "status": obj.get("status")
         })
         return _obj

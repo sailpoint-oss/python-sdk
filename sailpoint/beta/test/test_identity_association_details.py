@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_association_details import IdentityAssociationDetails  # noqa: E501
+from sailpoint.beta.models.identity_association_details import IdentityAssociationDetails
 
 
 class TestIdentityAssociationDetails(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityAssociationDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityAssociationDetails`
         """
-        model = IdentityAssociationDetails()  # noqa: E501
+        model = IdentityAssociationDetails()
         if include_optional:
             return IdentityAssociationDetails(
                 message = 'Identity cannot be deleted as it is owner of following resources',

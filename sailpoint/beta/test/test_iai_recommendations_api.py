@@ -13,43 +13,36 @@
 
 import unittest
 
-from sailpoint.beta.api.iai_recommendations_api import IAIRecommendationsApi  # noqa: E501
+from sailpoint.beta.api.iai_recommendations_api import IAIRecommendationsApi
 
 
 class TestIAIRecommendationsApi(unittest.TestCase):
     """IAIRecommendationsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = IAIRecommendationsApi()  # noqa: E501
+        self.api = IAIRecommendationsApi()
 
     def tearDown(self) -> None:
-        pass
-
-    def test_get_message_catalogs(self) -> None:
-        """Test case for get_message_catalogs
-
-        Get Message catalogs  # noqa: E501
-        """
         pass
 
     def test_get_recommendations(self) -> None:
         """Test case for get_recommendations
 
-        Returns a Recommendation Based on Object  # noqa: E501
+        Returns a Recommendation Based on Object
         """
         pass
 
     def test_get_recommendations_config(self) -> None:
         """Test case for get_recommendations_config
 
-        Get certification recommendation config values  # noqa: E501
+        Get certification recommendation config values
         """
         pass
 
     def test_update_recommendations_config(self) -> None:
         """Test case for update_recommendations_config
 
-        Update certification recommendation config values  # noqa: E501
+        Update certification recommendation config values
         """
         pass
 

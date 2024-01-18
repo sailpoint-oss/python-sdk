@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_details import FormDetails  # noqa: E501
+from sailpoint.beta.models.form_details import FormDetails
 
 
 class TestFormDetails(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFormDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormDetails`
         """
-        model = FormDetails()  # noqa: E501
+        model = FormDetails()
         if include_optional:
             return FormDetails(
                 id = '2c9180835d2e5168015d32f890ca1581',

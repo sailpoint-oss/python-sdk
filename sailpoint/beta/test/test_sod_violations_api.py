@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.sod_violations_api import SODViolationsApi  # noqa: E501
+from sailpoint.beta.api.sod_violations_api import SODViolationsApi
 
 
 class TestSODViolationsApi(unittest.TestCase):
     """SODViolationsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SODViolationsApi()  # noqa: E501
+        self.api = SODViolationsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,7 +28,7 @@ class TestSODViolationsApi(unittest.TestCase):
     def test_start_predict_sod_violations(self) -> None:
         """Test case for start_predict_sod_violations
 
-        Predict SOD violations for identity.  # noqa: E501
+        Predict SOD violations for identity.
         """
         pass
 

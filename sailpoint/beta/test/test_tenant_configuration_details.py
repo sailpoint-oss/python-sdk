@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.tenant_configuration_details import TenantConfigurationDetails  # noqa: E501
+from sailpoint.beta.models.tenant_configuration_details import TenantConfigurationDetails
 
 
 class TestTenantConfigurationDetails(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTenantConfigurationDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TenantConfigurationDetails`
         """
-        model = TenantConfigurationDetails()  # noqa: E501
+        model = TenantConfigurationDetails()
         if include_optional:
             return TenantConfigurationDetails(
                 disabled = True

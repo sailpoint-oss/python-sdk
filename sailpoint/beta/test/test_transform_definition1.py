@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.transform_definition1 import TransformDefinition1  # noqa: E501
+from sailpoint.beta.models.transform_definition1 import TransformDefinition1
 
 
 class TestTransformDefinition1(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTransformDefinition1(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TransformDefinition1`
         """
-        model = TransformDefinition1()  # noqa: E501
+        model = TransformDefinition1()
         if include_optional:
             return TransformDefinition1(
                 type = 'accountAttribute',

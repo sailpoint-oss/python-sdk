@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identity_with_new_access1 import IdentityWithNewAccess1  # noqa: E501
+from sailpoint.v3.models.identity_with_new_access1 import IdentityWithNewAccess1
 
 
 class TestIdentityWithNewAccess1(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityWithNewAccess1(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityWithNewAccess1`
         """
-        model = IdentityWithNewAccess1()  # noqa: E501
+        model = IdentityWithNewAccess1()
         if include_optional:
             return IdentityWithNewAccess1(
                 identity_id = '2c91809050db617d0150e0bf3215385e',

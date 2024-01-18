@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.grant_type import GrantType  # noqa: E501
+from sailpoint.beta.models.grant_type import GrantType
 
 
 class TestGrantType(unittest.TestCase):

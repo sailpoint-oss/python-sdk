@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.client_log_configuration import ClientLogConfiguration  # noqa: E501
+from sailpoint.beta.models.client_log_configuration import ClientLogConfiguration
 
 
 class TestClientLogConfiguration(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestClientLogConfiguration(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ClientLogConfiguration`
         """
-        model = ClientLogConfiguration()  # noqa: E501
+        model = ClientLogConfiguration()
         if include_optional:
             return ClientLogConfiguration(
                 client_id = 'aClientId',

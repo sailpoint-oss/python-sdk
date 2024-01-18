@@ -16,75 +16,86 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.filter import Filter
 from sailpoint.v3.models.index import Index
 from sailpoint.v3.models.query import Query
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class SearchExportReportArguments(BaseModel):
     """
-    Arguments for Search Export report (SEARCH_EXPORT)  # noqa: E501
-    """
-    indices: Optional[conlist(Index)] = Field(
-        None,
+    Arguments for Search Export report (SEARCH_EXPORT)
+    """ # noqa: E501
+    indices: Optional[List[Index]] = Field(
+        default=None,
         description=
         "The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched."
     )
     filters: Optional[Dict[str, Filter]] = Field(
-        None,
+        default=None,
         description="The filters to be applied for each filtered field name.")
-    query: Query = Field(...)
+    query: Query
     include_nested: Optional[StrictBool] = Field(
-        True,
-        alias="includeNested",
+        default=True,
         description=
-        "Indicates whether nested objects from returned search results should be included."
-    )
-    sort: Optional[conlist(StrictStr)] = Field(
-        None,
+        "Indicates whether nested objects from returned search results should be included.",
+        alias="includeNested")
+    sort: Optional[List[StrictStr]] = Field(
+        default=None,
         description=
         "The fields to be used to sort the search results. Use + or - to specify the sort direction."
     )
     default_s3_bucket: StrictBool = Field(
-        ...,
-        alias="defaultS3Bucket",
         description=
-        "Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report."
-    )
+        "Use it to set default s3 bucket where generated report will be saved.  In case this argument is false and 's3Bucket' argument is null or absent there will be default s3Bucket assigned to the report.",
+        alias="defaultS3Bucket")
     s3_bucket: Optional[StrictStr] = Field(
-        None,
-        alias="s3Bucket",
+        default=None,
         description=
-        "If you want to be specific you could use this argument with defaultS3Bucket = false."
-    )
-    __properties = [
+        "If you want to be specific you could use this argument with defaultS3Bucket = false.",
+        alias="s3Bucket")
+    __properties: ClassVar[List[str]] = [
         "indices", "filters", "query", "includeNested", "sort",
         "defaultS3Bucket", "s3Bucket"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SearchExportReportArguments:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of SearchExportReportArguments from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each value in filters (dict)
         _field_dict = {}
         if self.filters:
@@ -98,15 +109,15 @@ class SearchExportReportArguments(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SearchExportReportArguments:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of SearchExportReportArguments from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SearchExportReportArguments.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SearchExportReportArguments.parse_obj({
+        _obj = cls.model_validate({
             "indices":
             obj.get("indices"),
             "filters":
@@ -116,14 +127,14 @@ class SearchExportReportArguments(BaseModel):
             "query":
             Query.from_dict(obj.get("query"))
             if obj.get("query") is not None else None,
-            "include_nested":
+            "includeNested":
             obj.get("includeNested")
             if obj.get("includeNested") is not None else True,
             "sort":
             obj.get("sort"),
-            "default_s3_bucket":
+            "defaultS3Bucket":
             obj.get("defaultS3Bucket"),
-            "s3_bucket":
+            "s3Bucket":
             obj.get("s3Bucket")
         })
         return _obj

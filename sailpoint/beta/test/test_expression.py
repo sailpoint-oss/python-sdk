@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.expression import Expression  # noqa: E501
+from sailpoint.beta.models.expression import Expression
 
 
 class TestExpression(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestExpression(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Expression`
         """
-        model = Expression()  # noqa: E501
+        model = Expression()
         if include_optional:
             return Expression(
                 operator = 'EQUALS',

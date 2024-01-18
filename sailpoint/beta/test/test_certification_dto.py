@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.certification_dto import CertificationDto  # noqa: E501
+from sailpoint.beta.models.certification_dto import CertificationDto
 
 
 class TestCertificationDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCertificationDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CertificationDto`
         """
-        model = CertificationDto()  # noqa: E501
+        model = CertificationDto()
         if include_optional:
             return CertificationDto(
                 campaign_ref = sailpoint.beta.models.campaign_reference.CampaignReference(

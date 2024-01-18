@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identity_document import IdentityDocument  # noqa: E501
+from sailpoint.v3.models.identity_document import IdentityDocument
 
 
 class TestIdentityDocument(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityDocument(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityDocument`
         """
-        model = IdentityDocument()  # noqa: E501
+        model = IdentityDocument()
         if include_optional:
             return IdentityDocument(
                 id = '2c91808568c529c60168cca6f90c1313',

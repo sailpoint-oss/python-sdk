@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.accounts_export_report_arguments import AccountsExportReportArguments  # noqa: E501
+from sailpoint.v3.models.accounts_export_report_arguments import AccountsExportReportArguments
 
 
 class TestAccountsExportReportArguments(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountsExportReportArguments(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountsExportReportArguments`
         """
-        model = AccountsExportReportArguments()  # noqa: E501
+        model = AccountsExportReportArguments()
         if include_optional:
             return AccountsExportReportArguments(
                 application = '2c9180897eSourceIde781782f705b9',

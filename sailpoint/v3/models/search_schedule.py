@@ -17,75 +17,89 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.schedule1 import Schedule1
 from sailpoint.v3.models.search_schedule_recipients_inner import SearchScheduleRecipientsInner
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class SearchSchedule(BaseModel):
     """
     SearchSchedule
     """
+
+  # noqa: E501
     saved_search_id: StrictStr = Field(
-        ...,
-        alias="savedSearchId",
-        description="The ID of the saved search that will be executed.")
+        description="The ID of the saved search that will be executed.",
+        alias="savedSearchId")
     created: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
+        default=None, description="A date-time in ISO-8601 format")
     modified: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
-    schedule: Schedule1 = Field(...)
-    recipients: conlist(SearchScheduleRecipientsInner) = Field(
-        ...,
+        default=None, description="A date-time in ISO-8601 format")
+    schedule: Schedule1
+    recipients: List[SearchScheduleRecipientsInner] = Field(
         description=
         "A list of identities that should receive the scheduled search report via email."
     )
     enabled: Optional[StrictBool] = Field(
-        False, description="Indicates if the scheduled search is enabled. ")
+        default=False,
+        description="Indicates if the scheduled search is enabled. ")
     email_empty_results: Optional[StrictBool] = Field(
-        False,
-        alias="emailEmptyResults",
+        default=False,
         description=
-        "Indicates if email generation should not be suppressed if search returns no results. "
-    )
+        "Indicates if email generation should occur when search returns no results. ",
+        alias="emailEmptyResults")
     display_query_details: Optional[StrictBool] = Field(
-        False,
-        alias="displayQueryDetails",
+        default=False,
         description=
-        "Indicates if the generated email should include the query and search results preview (which could include PII). "
-    )
-    __properties = [
+        "Indicates if the generated email should include the query and search results preview (which could include PII). ",
+        alias="displayQueryDetails")
+    __properties: ClassVar[List[str]] = [
         "savedSearchId", "created", "modified", "schedule", "recipients",
         "enabled", "emailEmptyResults", "displayQueryDetails"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SearchSchedule:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of SearchSchedule from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                              "created",
-                              "modified",
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+                "created",
+                "modified",
+            },
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of schedule
         if self.schedule:
             _dict['schedule'] = self.schedule.to_dict()
@@ -97,28 +111,28 @@ class SearchSchedule(BaseModel):
                     _items.append(_item.to_dict())
             _dict['recipients'] = _items
         # set to None if created (nullable) is None
-        # and __fields_set__ contains the field
-        if self.created is None and "created" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.created is None and "created" in self.model_fields_set:
             _dict['created'] = None
 
         # set to None if modified (nullable) is None
-        # and __fields_set__ contains the field
-        if self.modified is None and "modified" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
             _dict['modified'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SearchSchedule:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of SearchSchedule from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SearchSchedule.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SearchSchedule.parse_obj({
-            "saved_search_id":
+        _obj = cls.model_validate({
+            "savedSearchId":
             obj.get("savedSearchId"),
             "created":
             obj.get("created"),
@@ -133,10 +147,10 @@ class SearchSchedule(BaseModel):
             ] if obj.get("recipients") is not None else None,
             "enabled":
             obj.get("enabled") if obj.get("enabled") is not None else False,
-            "email_empty_results":
+            "emailEmptyResults":
             obj.get("emailEmptyResults")
             if obj.get("emailEmptyResults") is not None else False,
-            "display_query_details":
+            "displayQueryDetails":
             obj.get("displayQueryDetails")
             if obj.get("displayQueryDetails") is not None else False
         })

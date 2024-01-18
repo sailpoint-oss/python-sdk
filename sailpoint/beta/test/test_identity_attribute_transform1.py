@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_attribute_transform1 import IdentityAttributeTransform1  # noqa: E501
+from sailpoint.beta.models.identity_attribute_transform1 import IdentityAttributeTransform1
 
 
 class TestIdentityAttributeTransform1(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityAttributeTransform1(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityAttributeTransform1`
         """
-        model = IdentityAttributeTransform1()  # noqa: E501
+        model = IdentityAttributeTransform1()
         if include_optional:
             return IdentityAttributeTransform1(
                 identity_attribute_name = 'email',

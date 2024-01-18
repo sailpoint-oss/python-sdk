@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.iai_outliers_api import IAIOutliersApi  # noqa: E501
+from sailpoint.beta.api.iai_outliers_api import IAIOutliersApi
 
 
 class TestIAIOutliersApi(unittest.TestCase):
     """IAIOutliersApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = IAIOutliersApi()  # noqa: E501
+        self.api = IAIOutliersApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,63 +28,63 @@ class TestIAIOutliersApi(unittest.TestCase):
     def test_export_outliers_zip(self) -> None:
         """Test case for export_outliers_zip
 
-        IAI Identity Outliers Export  # noqa: E501
+        IAI Identity Outliers Export
         """
         pass
 
     def test_get_identity_outlier_snapshots(self) -> None:
         """Test case for get_identity_outlier_snapshots
 
-        IAI Identity Outliers Summary  # noqa: E501
+        IAI Identity Outliers Summary
         """
         pass
 
     def test_get_identity_outliers(self) -> None:
         """Test case for get_identity_outliers
 
-        IAI Get Identity Outliers  # noqa: E501
+        IAI Get Identity Outliers
         """
         pass
 
     def test_get_latest_identity_outlier_snapshots(self) -> None:
         """Test case for get_latest_identity_outlier_snapshots
 
-        IAI Identity Outliers Latest Summary  # noqa: E501
+        IAI Identity Outliers Latest Summary
         """
         pass
 
     def test_get_outlier_contributing_feature_summary(self) -> None:
         """Test case for get_outlier_contributing_feature_summary
 
-        Get identity outlier contibuting feature summary  # noqa: E501
+        Get identity outlier contibuting feature summary
         """
         pass
 
     def test_get_peer_group_outliers_contributing_features(self) -> None:
         """Test case for get_peer_group_outliers_contributing_features
 
-        Get identity outlier's contibuting features  # noqa: E501
+        Get identity outlier's contibuting features
         """
         pass
 
     def test_ignore_identity_outliers(self) -> None:
         """Test case for ignore_identity_outliers
 
-        IAI Identity Outliers Ignore  # noqa: E501
+        IAI Identity Outliers Ignore
         """
         pass
 
     def test_list_outliers_contributing_feature_access_items(self) -> None:
         """Test case for list_outliers_contributing_feature_access_items
 
-        Gets a list of access items associated with each identity outlier contributing feature  # noqa: E501
+        Gets a list of access items associated with each identity outlier contributing feature
         """
         pass
 
     def test_un_ignore_identity_outliers(self) -> None:
         """Test case for un_ignore_identity_outliers
 
-        IAI Identity Outliers Unignore  # noqa: E501
+        IAI Identity Outliers Unignore
         """
         pass
 

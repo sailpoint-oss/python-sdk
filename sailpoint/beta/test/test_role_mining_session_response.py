@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_mining_session_response import RoleMiningSessionResponse  # noqa: E501
+from sailpoint.beta.models.role_mining_session_response import RoleMiningSessionResponse
 
 
 class TestRoleMiningSessionResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRoleMiningSessionResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleMiningSessionResponse`
         """
-        model = RoleMiningSessionResponse()  # noqa: E501
+        model = RoleMiningSessionResponse()
         if include_optional:
             return RoleMiningSessionResponse(
                 scope = sailpoint.beta.models.role_mining_session_scope.RoleMiningSessionScope(

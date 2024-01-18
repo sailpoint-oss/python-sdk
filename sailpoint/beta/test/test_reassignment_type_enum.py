@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.reassignment_type_enum import ReassignmentTypeEnum  # noqa: E501
+from sailpoint.beta.models.reassignment_type_enum import ReassignmentTypeEnum
 
 
 class TestReassignmentTypeEnum(unittest.TestCase):

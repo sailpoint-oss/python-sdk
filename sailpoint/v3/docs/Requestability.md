@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**comments_required** | **bool** | Whether the requester of the containing object must provide comments justifying the request | [optional] 
-**denial_comments_required** | **bool** | Whether an approver must provide comments when denying the request | [optional] 
+**comments_required** | **bool** | Whether the requester of the containing object must provide comments justifying the request | [optional] [default to False]
+**denial_comments_required** | **bool** | Whether an approver must provide comments when denying the request | [optional] [default to False]
 **approval_schemes** | [**List[AccessProfileApprovalScheme]**](AccessProfileApprovalScheme.md) | List describing the steps in approving the request | [optional] 
 
 ## Example

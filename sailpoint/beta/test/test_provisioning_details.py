@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.provisioning_details import ProvisioningDetails  # noqa: E501
+from sailpoint.beta.models.provisioning_details import ProvisioningDetails
 
 
 class TestProvisioningDetails(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestProvisioningDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ProvisioningDetails`
         """
-        model = ProvisioningDetails()  # noqa: E501
+        model = ProvisioningDetails()
         if include_optional:
             return ProvisioningDetails(
                 ordered_sub_phase_references = 'manualWorkItemDetails'

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v2.models.create_workgroup_request import CreateWorkgroupRequest  # noqa: E501
+from sailpoint.v2.models.create_workgroup_request import CreateWorkgroupRequest
 
 
 class TestCreateWorkgroupRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCreateWorkgroupRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreateWorkgroupRequest`
         """
-        model = CreateWorkgroupRequest()  # noqa: E501
+        model = CreateWorkgroupRequest()
         if include_optional:
             return CreateWorkgroupRequest(
                 name = 'Test group 3',

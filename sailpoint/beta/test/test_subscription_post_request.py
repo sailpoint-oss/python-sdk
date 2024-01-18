@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.subscription_post_request import SubscriptionPostRequest  # noqa: E501
+from sailpoint.beta.models.subscription_post_request import SubscriptionPostRequest
 
 
 class TestSubscriptionPostRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSubscriptionPostRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SubscriptionPostRequest`
         """
-        model = SubscriptionPostRequest()  # noqa: E501
+        model = SubscriptionPostRequest()
         if include_optional:
             return SubscriptionPostRequest(
                 name = 'Access request subscription',

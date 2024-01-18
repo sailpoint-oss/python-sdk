@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.task_result_response import TaskResultResponse  # noqa: E501
+from sailpoint.beta.models.task_result_response import TaskResultResponse
 
 
 class TestTaskResultResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTaskResultResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TaskResultResponse`
         """
-        model = TaskResultResponse()  # noqa: E501
+        model = TaskResultResponse()
         if include_optional:
             return TaskResultResponse(
                 type = 'TASK_RESULT',

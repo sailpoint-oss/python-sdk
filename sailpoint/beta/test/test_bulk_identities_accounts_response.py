@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.bulk_identities_accounts_response import BulkIdentitiesAccountsResponse  # noqa: E501
+from sailpoint.beta.models.bulk_identities_accounts_response import BulkIdentitiesAccountsResponse
 
 
 class TestBulkIdentitiesAccountsResponse(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestBulkIdentitiesAccountsResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `BulkIdentitiesAccountsResponse`
         """
-        model = BulkIdentitiesAccountsResponse()  # noqa: E501
+        model = BulkIdentitiesAccountsResponse()
         if include_optional:
             return BulkIdentitiesAccountsResponse(
                 id = '2c9180858082150f0180893dbaf553fe',

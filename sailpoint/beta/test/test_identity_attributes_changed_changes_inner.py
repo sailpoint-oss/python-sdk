@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_attributes_changed_changes_inner import IdentityAttributesChangedChangesInner  # noqa: E501
+from sailpoint.beta.models.identity_attributes_changed_changes_inner import IdentityAttributesChangedChangesInner
 
 
 class TestIdentityAttributesChangedChangesInner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestIdentityAttributesChangedChangesInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityAttributesChangedChangesInner`
         """
-        model = IdentityAttributesChangedChangesInner()  # noqa: E501
+        model = IdentityAttributesChangedChangesInner()
         if include_optional:
             return IdentityAttributesChangedChangesInner(
                 attribute = 'department',

@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v2.api.org_api import OrgApi  # noqa: E501
+from sailpoint.v2.api.org_api import OrgApi
 
 
 class TestOrgApi(unittest.TestCase):
     """OrgApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = OrgApi()  # noqa: E501
+        self.api = OrgApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,14 +28,14 @@ class TestOrgApi(unittest.TestCase):
     def test_get_org_settings(self) -> None:
         """Test case for get_org_settings
 
-        Retrieves your org settings.  # noqa: E501
+        Retrieves your org settings.
         """
         pass
 
     def test_update_org_settings(self) -> None:
         """Test case for update_org_settings
 
-        Updates one or more org attributes.  # noqa: E501
+        Updates one or more org attributes.
         """
         pass
 

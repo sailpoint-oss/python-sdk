@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identities_accounts_bulk_request import IdentitiesAccountsBulkRequest  # noqa: E501
+from sailpoint.beta.models.identities_accounts_bulk_request import IdentitiesAccountsBulkRequest
 
 
 class TestIdentitiesAccountsBulkRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentitiesAccountsBulkRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentitiesAccountsBulkRequest`
         """
-        model = IdentitiesAccountsBulkRequest()  # noqa: E501
+        model = IdentitiesAccountsBulkRequest()
         if include_optional:
             return IdentitiesAccountsBulkRequest(
                 identity_ids = [2c91808384203c2d018437e631158308, 2c9180858082150f0180893dbaf553fe]

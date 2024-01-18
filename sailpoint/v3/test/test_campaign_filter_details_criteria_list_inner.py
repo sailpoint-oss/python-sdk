@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.campaign_filter_details_criteria_list_inner import CampaignFilterDetailsCriteriaListInner  # noqa: E501
+from sailpoint.v3.models.campaign_filter_details_criteria_list_inner import CampaignFilterDetailsCriteriaListInner
 
 
 class TestCampaignFilterDetailsCriteriaListInner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestCampaignFilterDetailsCriteriaListInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CampaignFilterDetailsCriteriaListInner`
         """
-        model = CampaignFilterDetailsCriteriaListInner()  # noqa: E501
+        model = CampaignFilterDetailsCriteriaListInner()
         if include_optional:
             return CampaignFilterDetailsCriteriaListInner(
                 type = 'IDENTITY_ATTRIBUTE',

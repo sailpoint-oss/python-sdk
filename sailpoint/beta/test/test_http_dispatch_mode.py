@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.http_dispatch_mode import HttpDispatchMode  # noqa: E501
+from sailpoint.beta.models.http_dispatch_mode import HttpDispatchMode
 
 
 class TestHttpDispatchMode(unittest.TestCase):

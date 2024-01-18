@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.list_applications200_response_inner_app_profiles_inner import ListApplications200ResponseInnerAppProfilesInner  # noqa: E501
+from sailpoint.cc.models.list_applications200_response_inner_app_profiles_inner import ListApplications200ResponseInnerAppProfilesInner
 
 
 class TestListApplications200ResponseInnerAppProfilesInner(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestListApplications200ResponseInnerAppProfilesInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListApplications200ResponseInnerAppProfilesInner`
         """
-        model = ListApplications200ResponseInnerAppProfilesInner()  # noqa: E501
+        model = ListApplications200ResponseInnerAppProfilesInner()
         if include_optional:
             return ListApplications200ResponseInnerAppProfilesInner(
                 id = 1.337,

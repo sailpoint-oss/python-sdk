@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.metric_response import MetricResponse  # noqa: E501
+from sailpoint.beta.models.metric_response import MetricResponse
 
 
 class TestMetricResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestMetricResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `MetricResponse`
         """
-        model = MetricResponse()  # noqa: E501
+        model = MetricResponse()
         if include_optional:
             return MetricResponse(
                 name = '',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.status_response import StatusResponse  # noqa: E501
+from sailpoint.beta.models.status_response import StatusResponse
 
 
 class TestStatusResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestStatusResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `StatusResponse`
         """
-        model = StatusResponse()  # noqa: E501
+        model = StatusResponse()
         if include_optional:
             return StatusResponse(
                 id = '2c91808568c529c60168cca6f90c1313',

@@ -16,73 +16,89 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, List, Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictFloat, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.cc.models.get_identity200_response_auth import GetIdentity200ResponseAuth
 from sailpoint.cc.models.get_identity200_response_org import GetIdentity200ResponseOrg
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class GetIdentity200Response(BaseModel):
     """
     GetIdentity200Response
     """
+
+  # noqa: E501
     id: Optional[StrictStr] = None
     alias: Optional[StrictStr] = None
     uid: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
-    display_name: Optional[StrictStr] = Field(None, alias="displayName")
+    display_name: Optional[StrictStr] = Field(default=None,
+                                              alias="displayName")
     uuid: Optional[StrictStr] = None
-    encryption_key: Optional[Dict[str, Any]] = Field(None,
-                                                     alias="encryptionKey")
-    encryption_check: Optional[Dict[str, Any]] = Field(None,
-                                                       alias="encryptionCheck")
+    encryption_key: Optional[Union[str, Any]] = Field(default=None,
+                                                      alias="encryptionKey")
+    encryption_check: Optional[Union[str,
+                                     Any]] = Field(default=None,
+                                                   alias="encryptionCheck")
     status: Optional[StrictStr] = None
     pending: Optional[StrictBool] = None
     password_reset_since_last_login: Optional[StrictBool] = Field(
-        None, alias="passwordResetSinceLastLogin")
-    usage_cert_attested: Optional[Dict[str,
-                                       Any]] = Field(None,
-                                                     alias="usageCertAttested")
-    user_flags: Optional[Dict[str, Any]] = Field(None, alias="userFlags")
+        default=None, alias="passwordResetSinceLastLogin")
+    usage_cert_attested: Optional[Union[str, Any]] = Field(
+        default=None, alias="usageCertAttested")
+    user_flags: Optional[Union[str, Any]] = Field(default=None,
+                                                  alias="userFlags")
     enabled: Optional[StrictBool] = None
-    alt_auth_via: Optional[StrictStr] = Field(None, alias="altAuthVia")
-    alt_auth_via_integration_data: Optional[Dict[str, Any]] = Field(
-        None, alias="altAuthViaIntegrationData")
+    alt_auth_via: Optional[StrictStr] = Field(default=None, alias="altAuthVia")
+    alt_auth_via_integration_data: Optional[Union[str, Any]] = Field(
+        default=None, alias="altAuthViaIntegrationData")
     kba_answers: Optional[Union[StrictFloat,
-                                StrictInt]] = Field(None, alias="kbaAnswers")
+                                StrictInt]] = Field(default=None,
+                                                    alias="kbaAnswers")
     disable_password_reset: Optional[StrictBool] = Field(
-        None, alias="disablePasswordReset")
-    pta_source_id: Optional[Dict[str, Any]] = Field(None, alias="ptaSourceId")
+        default=None, alias="disablePasswordReset")
+    pta_source_id: Optional[Union[str, Any]] = Field(default=None,
+                                                     alias="ptaSourceId")
     supports_password_push: Optional[StrictBool] = Field(
-        None, alias="supportsPasswordPush")
-    attributes: Optional[Dict[str, Any]] = None
-    external_id: Optional[StrictStr] = Field(None, alias="externalId")
-    role: Optional[conlist(Dict[str, Any])] = None
-    phone: Optional[Dict[str, Any]] = None
+        default=None, alias="supportsPasswordPush")
+    attributes: Optional[Union[str, Any]] = None
+    external_id: Optional[StrictStr] = Field(default=None, alias="externalId")
+    role: Optional[List[Union[str, Any]]] = None
+    phone: Optional[Union[str, Any]] = None
     email: Optional[StrictStr] = None
-    personal_email: Optional[Dict[str, Any]] = Field(None,
-                                                     alias="personalEmail")
-    employee_number: Optional[Dict[str, Any]] = Field(None,
-                                                      alias="employeeNumber")
+    personal_email: Optional[Union[str, Any]] = Field(default=None,
+                                                      alias="personalEmail")
+    employee_number: Optional[Union[str, Any]] = Field(default=None,
+                                                       alias="employeeNumber")
     risk_score: Optional[Union[StrictFloat,
-                               StrictInt]] = Field(None, alias="riskScore")
-    feature_flags: Optional[Dict[str, Any]] = Field(None, alias="featureFlags")
-    feature: Optional[conlist(StrictStr)] = None
-    org_encryption_key: Optional[StrictStr] = Field(None,
+                               StrictInt]] = Field(default=None,
+                                                   alias="riskScore")
+    feature_flags: Optional[Union[str, Any]] = Field(default=None,
+                                                     alias="featureFlags")
+    feature: Optional[List[StrictStr]] = None
+    org_encryption_key: Optional[StrictStr] = Field(default=None,
                                                     alias="orgEncryptionKey")
     org_encryption_key_id: Optional[StrictStr] = Field(
-        None, alias="orgEncryptionKeyId")
-    meta: Optional[Dict[str, Any]] = None
+        default=None, alias="orgEncryptionKeyId")
+    meta: Optional[Union[str, Any]] = None
     org: Optional[GetIdentity200ResponseOrg] = None
-    step_up_auth: Optional[StrictBool] = Field(None, alias="stepUpAuth")
+    step_up_auth: Optional[StrictBool] = Field(default=None,
+                                               alias="stepUpAuth")
     bx_install_prompted: Optional[StrictBool] = Field(
-        None, alias="bxInstallPrompted")
-    federated_login: Optional[StrictBool] = Field(None, alias="federatedLogin")
+        default=None, alias="bxInstallPrompted")
+    federated_login: Optional[StrictBool] = Field(default=None,
+                                                  alias="federatedLogin")
     auth: Optional[GetIdentity200ResponseAuth] = None
-    on_network: Optional[StrictBool] = Field(None, alias="onNetwork")
-    on_trusted_geo: Optional[StrictBool] = Field(None, alias="onTrustedGeo")
-    login_url: Optional[StrictStr] = Field(None, alias="loginUrl")
-    __properties = [
+    on_network: Optional[StrictBool] = Field(default=None, alias="onNetwork")
+    on_trusted_geo: Optional[StrictBool] = Field(default=None,
+                                                 alias="onTrustedGeo")
+    login_url: Optional[StrictStr] = Field(default=None, alias="loginUrl")
+    __properties: ClassVar[List[str]] = [
         "id", "alias", "uid", "name", "displayName", "uuid", "encryptionKey",
         "encryptionCheck", "status", "pending", "passwordResetSinceLastLogin",
         "usageCertAttested", "userFlags", "enabled", "altAuthVia",
@@ -94,27 +110,37 @@ class GetIdentity200Response(BaseModel):
         "federatedLogin", "auth", "onNetwork", "onTrustedGeo", "loginUrl"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> GetIdentity200Response:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of GetIdentity200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of org
         if self.org:
             _dict['org'] = self.org.to_dict()
@@ -124,15 +150,15 @@ class GetIdentity200Response(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> GetIdentity200Response:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of GetIdentity200Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return GetIdentity200Response.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = GetIdentity200Response.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "alias":
@@ -141,41 +167,41 @@ class GetIdentity200Response(BaseModel):
             obj.get("uid"),
             "name":
             obj.get("name"),
-            "display_name":
+            "displayName":
             obj.get("displayName"),
             "uuid":
             obj.get("uuid"),
-            "encryption_key":
+            "encryptionKey":
             obj.get("encryptionKey"),
-            "encryption_check":
+            "encryptionCheck":
             obj.get("encryptionCheck"),
             "status":
             obj.get("status"),
             "pending":
             obj.get("pending"),
-            "password_reset_since_last_login":
+            "passwordResetSinceLastLogin":
             obj.get("passwordResetSinceLastLogin"),
-            "usage_cert_attested":
+            "usageCertAttested":
             obj.get("usageCertAttested"),
-            "user_flags":
+            "userFlags":
             obj.get("userFlags"),
             "enabled":
             obj.get("enabled"),
-            "alt_auth_via":
+            "altAuthVia":
             obj.get("altAuthVia"),
-            "alt_auth_via_integration_data":
+            "altAuthViaIntegrationData":
             obj.get("altAuthViaIntegrationData"),
-            "kba_answers":
+            "kbaAnswers":
             obj.get("kbaAnswers"),
-            "disable_password_reset":
+            "disablePasswordReset":
             obj.get("disablePasswordReset"),
-            "pta_source_id":
+            "ptaSourceId":
             obj.get("ptaSourceId"),
-            "supports_password_push":
+            "supportsPasswordPush":
             obj.get("supportsPasswordPush"),
             "attributes":
             obj.get("attributes"),
-            "external_id":
+            "externalId":
             obj.get("externalId"),
             "role":
             obj.get("role"),
@@ -183,39 +209,39 @@ class GetIdentity200Response(BaseModel):
             obj.get("phone"),
             "email":
             obj.get("email"),
-            "personal_email":
+            "personalEmail":
             obj.get("personalEmail"),
-            "employee_number":
+            "employeeNumber":
             obj.get("employeeNumber"),
-            "risk_score":
+            "riskScore":
             obj.get("riskScore"),
-            "feature_flags":
+            "featureFlags":
             obj.get("featureFlags"),
             "feature":
             obj.get("feature"),
-            "org_encryption_key":
+            "orgEncryptionKey":
             obj.get("orgEncryptionKey"),
-            "org_encryption_key_id":
+            "orgEncryptionKeyId":
             obj.get("orgEncryptionKeyId"),
             "meta":
             obj.get("meta"),
             "org":
             GetIdentity200ResponseOrg.from_dict(obj.get("org"))
             if obj.get("org") is not None else None,
-            "step_up_auth":
+            "stepUpAuth":
             obj.get("stepUpAuth"),
-            "bx_install_prompted":
+            "bxInstallPrompted":
             obj.get("bxInstallPrompted"),
-            "federated_login":
+            "federatedLogin":
             obj.get("federatedLogin"),
             "auth":
             GetIdentity200ResponseAuth.from_dict(obj.get("auth"))
             if obj.get("auth") is not None else None,
-            "on_network":
+            "onNetwork":
             obj.get("onNetwork"),
-            "on_trusted_geo":
+            "onTrustedGeo":
             obj.get("onTrustedGeo"),
-            "login_url":
+            "loginUrl":
             obj.get("loginUrl")
         })
         return _obj

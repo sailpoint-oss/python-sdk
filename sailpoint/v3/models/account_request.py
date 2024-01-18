@@ -16,53 +16,72 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.account_request_result import AccountRequestResult
 from sailpoint.v3.models.account_source import AccountSource
 from sailpoint.v3.models.attribute_request import AttributeRequest
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccountRequest(BaseModel):
     """
     AccountRequest
     """
+
+  # noqa: E501
     account_id: Optional[StrictStr] = Field(
-        None, alias="accountId", description="Unique ID of the account")
-    attribute_requests: Optional[conlist(AttributeRequest)] = Field(
-        None, alias="attributeRequests")
+        default=None,
+        description="Unique ID of the account",
+        alias="accountId")
+    attribute_requests: Optional[List[AttributeRequest]] = Field(
+        default=None, alias="attributeRequests")
     op: Optional[StrictStr] = Field(
-        None, description="The operation that was performed")
+        default=None, description="The operation that was performed")
     provisioning_target: Optional[AccountSource] = Field(
-        None, alias="provisioningTarget")
+        default=None, alias="provisioningTarget")
     result: Optional[AccountRequestResult] = None
     source: Optional[AccountSource] = None
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "accountId", "attributeRequests", "op", "provisioningTarget", "result",
         "source"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccountRequest:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccountRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in attribute_requests (list)
         _items = []
         if self.attribute_requests:
@@ -82,24 +101,24 @@ class AccountRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccountRequest:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccountRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccountRequest.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccountRequest.parse_obj({
-            "account_id":
+        _obj = cls.model_validate({
+            "accountId":
             obj.get("accountId"),
-            "attribute_requests": [
+            "attributeRequests": [
                 AttributeRequest.from_dict(_item)
                 for _item in obj.get("attributeRequests")
             ] if obj.get("attributeRequests") is not None else None,
             "op":
             obj.get("op"),
-            "provisioning_target":
+            "provisioningTarget":
             AccountSource.from_dict(obj.get("provisioningTarget"))
             if obj.get("provisioningTarget") is not None else None,
             "result":

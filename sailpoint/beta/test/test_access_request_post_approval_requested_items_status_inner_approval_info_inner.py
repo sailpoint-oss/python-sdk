@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner  # noqa: E501
+from sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
 
 
 class TestAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
@@ -36,7 +36,7 @@ class TestAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
             optional params are included """
         # uncomment below to create an instance of `AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner`
         """
-        model = AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner()  # noqa: E501
+        model = AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner()
         if include_optional:
             return AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
                 approval_comment = 'This access looks good.  Approved.',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.section import Section  # noqa: E501
+from sailpoint.beta.models.section import Section
 
 
 class TestSection(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSection(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Section`
         """
-        model = Section()  # noqa: E501
+        model = Section()
         if include_optional:
             return Section(
                 name = 'Field1',

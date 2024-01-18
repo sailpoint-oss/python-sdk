@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.role_criteria_key_type import RoleCriteriaKeyType  # noqa: E501
+from sailpoint.v3.models.role_criteria_key_type import RoleCriteriaKeyType
 
 
 class TestRoleCriteriaKeyType(unittest.TestCase):

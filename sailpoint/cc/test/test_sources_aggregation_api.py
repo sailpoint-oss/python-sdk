@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.cc.api.sources_aggregation_api import SourcesAggregationApi  # noqa: E501
+from sailpoint.cc.api.sources_aggregation_api import SourcesAggregationApi
 
 
 class TestSourcesAggregationApi(unittest.TestCase):
     """SourcesAggregationApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SourcesAggregationApi()  # noqa: E501
+        self.api = SourcesAggregationApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,14 +28,14 @@ class TestSourcesAggregationApi(unittest.TestCase):
     def test_load_accounts(self) -> None:
         """Test case for load_accounts
 
-        Account Aggregation (File)  # noqa: E501
+        Account Aggregation (File)
         """
         pass
 
     def test_load_entitlements(self) -> None:
         """Test case for load_entitlements
 
-        Account Aggregation (File)  # noqa: E501
+        Account Aggregation (File)
         """
         pass
 

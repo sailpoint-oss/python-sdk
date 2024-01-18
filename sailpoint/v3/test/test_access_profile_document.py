@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access_profile_document import AccessProfileDocument  # noqa: E501
+from sailpoint.v3.models.access_profile_document import AccessProfileDocument
 
 
 class TestAccessProfileDocument(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessProfileDocument(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessProfileDocument`
         """
-        model = AccessProfileDocument()  # noqa: E501
+        model = AccessProfileDocument()
         if include_optional:
             return AccessProfileDocument(
                 id = '2c91808568c529c60168cca6f90c1313',

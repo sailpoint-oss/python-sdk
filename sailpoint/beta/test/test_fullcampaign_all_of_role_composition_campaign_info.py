@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.fullcampaign_all_of_role_composition_campaign_info import FullcampaignAllOfRoleCompositionCampaignInfo  # noqa: E501
+from sailpoint.beta.models.fullcampaign_all_of_role_composition_campaign_info import FullcampaignAllOfRoleCompositionCampaignInfo
 
 
 class TestFullcampaignAllOfRoleCompositionCampaignInfo(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestFullcampaignAllOfRoleCompositionCampaignInfo(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FullcampaignAllOfRoleCompositionCampaignInfo`
         """
-        model = FullcampaignAllOfRoleCompositionCampaignInfo()  # noqa: E501
+        model = FullcampaignAllOfRoleCompositionCampaignInfo()
         if include_optional:
             return FullcampaignAllOfRoleCompositionCampaignInfo(
                 reviewer = sailpoint.beta.models.fullcampaign_all_of_search_campaign_info_reviewer.fullcampaign_allOf_searchCampaignInfo_reviewer(

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.non_employee_bulk_upload_job import NonEmployeeBulkUploadJob  # noqa: E501
+from sailpoint.beta.models.non_employee_bulk_upload_job import NonEmployeeBulkUploadJob
 
 
 class TestNonEmployeeBulkUploadJob(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNonEmployeeBulkUploadJob(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeBulkUploadJob`
         """
-        model = NonEmployeeBulkUploadJob()  # noqa: E501
+        model = NonEmployeeBulkUploadJob()
         if include_optional:
             return NonEmployeeBulkUploadJob(
                 id = '2c91808568c529c60168cca6f90cffff',

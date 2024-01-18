@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.password_management_api import PasswordManagementApi  # noqa: E501
+from sailpoint.beta.api.password_management_api import PasswordManagementApi
 
 
 class TestPasswordManagementApi(unittest.TestCase):
     """PasswordManagementApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = PasswordManagementApi()  # noqa: E501
+        self.api = PasswordManagementApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,28 +28,28 @@ class TestPasswordManagementApi(unittest.TestCase):
     def test_generate_digit_token(self) -> None:
         """Test case for generate_digit_token
 
-        Generate a digit token  # noqa: E501
+        Generate a digit token
         """
         pass
 
     def test_get_identity_password_change_status(self) -> None:
         """Test case for get_identity_password_change_status
 
-        Get Password Change Request Status  # noqa: E501
+        Get Password Change Request Status
         """
         pass
 
     def test_query_password_info(self) -> None:
         """Test case for query_password_info
 
-        Query Password Info  # noqa: E501
+        Query Password Info
         """
         pass
 
     def test_set_identity_password(self) -> None:
         """Test case for set_identity_password
 
-        Set Identity's Password  # noqa: E501
+        Set Identity's Password
         """
         pass
 

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_sync_payload import SourceSyncPayload  # noqa: E501
+from sailpoint.beta.models.source_sync_payload import SourceSyncPayload
 
 
 class TestSourceSyncPayload(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceSyncPayload(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceSyncPayload`
         """
-        model = SourceSyncPayload()  # noqa: E501
+        model = SourceSyncPayload()
         if include_optional:
             return SourceSyncPayload(
                 type = 'SYNCHRONIZE_SOURCE_ATTRIBUTES',

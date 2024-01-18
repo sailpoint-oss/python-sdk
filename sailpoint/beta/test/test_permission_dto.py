@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.permission_dto import PermissionDto  # noqa: E501
+from sailpoint.beta.models.permission_dto import PermissionDto
 
 
 class TestPermissionDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPermissionDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PermissionDto`
         """
-        model = PermissionDto()  # noqa: E501
+        model = PermissionDto()
         if include_optional:
             return PermissionDto(
                 rights = [

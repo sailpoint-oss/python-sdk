@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.data_access import DataAccess  # noqa: E501
+from sailpoint.v3.models.data_access import DataAccess
 
 
 class TestDataAccess(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestDataAccess(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `DataAccess`
         """
-        model = DataAccess()  # noqa: E501
+        model = DataAccess()
         if include_optional:
             return DataAccess(
                 policies = [

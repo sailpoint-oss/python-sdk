@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.saved_search_name import SavedSearchName  # noqa: E501
+from sailpoint.v3.models.saved_search_name import SavedSearchName
 
 
 class TestSavedSearchName(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSavedSearchName(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SavedSearchName`
         """
-        model = SavedSearchName()  # noqa: E501
+        model = SavedSearchName()
         if include_optional:
             return SavedSearchName(
                 name = 'Disabled accounts',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_sync_job import IdentitySyncJob  # noqa: E501
+from sailpoint.beta.models.identity_sync_job import IdentitySyncJob
 
 
 class TestIdentitySyncJob(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentitySyncJob(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentitySyncJob`
         """
-        model = IdentitySyncJob()  # noqa: E501
+        model = IdentitySyncJob()
         if include_optional:
             return IdentitySyncJob(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',

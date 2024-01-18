@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.resource_bundle_message import ResourceBundleMessage  # noqa: E501
+from sailpoint.beta.models.resource_bundle_message import ResourceBundleMessage
 
 
 class TestResourceBundleMessage(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestResourceBundleMessage(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ResourceBundleMessage`
         """
-        model = ResourceBundleMessage()  # noqa: E501
+        model = ResourceBundleMessage()
         if include_optional:
             return ResourceBundleMessage(
                 key = 'recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_LOW',

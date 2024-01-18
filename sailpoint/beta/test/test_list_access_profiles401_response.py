@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.list_access_profiles401_response import ListAccessProfiles401Response  # noqa: E501
+from sailpoint.beta.models.list_access_profiles401_response import ListAccessProfiles401Response
 
 
 class TestListAccessProfiles401Response(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestListAccessProfiles401Response(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListAccessProfiles401Response`
         """
-        model = ListAccessProfiles401Response()  # noqa: E501
+        model = ListAccessProfiles401Response()
         if include_optional:
             return ListAccessProfiles401Response(
                 error = JWT validation failed: JWT is expired

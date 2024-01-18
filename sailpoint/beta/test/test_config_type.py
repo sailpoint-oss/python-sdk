@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.config_type import ConfigType  # noqa: E501
+from sailpoint.beta.models.config_type import ConfigType
 
 
 class TestConfigType(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestConfigType(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConfigType`
         """
-        model = ConfigType()  # noqa: E501
+        model = ConfigType()
         if include_optional:
             return ConfigType(
                 internal_name = 'ACCESS_REQUESTS',

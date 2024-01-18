@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.config_type_enum import ConfigTypeEnum  # noqa: E501
+from sailpoint.beta.models.config_type_enum import ConfigTypeEnum
 
 
 class TestConfigTypeEnum(unittest.TestCase):

@@ -16,55 +16,56 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class NativeChangeDetectionConfig(BaseModel):
     """
-    Source configuration information for Native Change Detection that is read and used by account aggregation process.  # noqa: E501
-    """
+    Source configuration information for Native Change Detection that is read and used by account aggregation process.
+    """ # noqa: E501
     enabled: Optional[StrictBool] = Field(
-        False,
+        default=False,
         description=
         "A flag indicating if Native Change Detection is enabled for a source."
     )
-    operations: Optional[conlist(StrictStr)] = Field(
-        None,
+    operations: Optional[List[StrictStr]] = Field(
+        default=None,
         description=
         "Operation types for which Native Change Detection is enabled for a source."
     )
     all_entitlements: Optional[StrictBool] = Field(
-        False,
-        alias="allEntitlements",
+        default=False,
         description=
-        "A flag indicating that all entitlements participate in Native Change Detection."
-    )
+        "A flag indicating that all entitlements participate in Native Change Detection.",
+        alias="allEntitlements")
     all_non_entitlement_attributes: Optional[StrictBool] = Field(
-        False,
-        alias="allNonEntitlementAttributes",
+        default=False,
         description=
-        "A flag indicating that all non-entitlement account attributes participate in Native Change Detection."
-    )
-    selected_entitlements: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="selectedEntitlements",
+        "A flag indicating that all non-entitlement account attributes participate in Native Change Detection.",
+        alias="allNonEntitlementAttributes")
+    selected_entitlements: Optional[List[StrictStr]] = Field(
+        default=None,
         description=
-        "If allEntitlements flag is off this field lists entitlements that participate in Native Change Detection."
-    )
-    selected_non_entitlement_attributes: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="selectedNonEntitlementAttributes",
+        "If allEntitlements flag is off this field lists entitlements that participate in Native Change Detection.",
+        alias="selectedEntitlements")
+    selected_non_entitlement_attributes: Optional[List[StrictStr]] = Field(
+        default=None,
         description=
-        "If allNonEntitlementAttributes flag is off this field lists non-entitlement account attributes that participate in Native Change Detection."
-    )
-    __properties = [
+        "If allNonEntitlementAttributes flag is off this field lists non-entitlement account attributes that participate in Native Change Detection.",
+        alias="selectedNonEntitlementAttributes")
+    __properties: ClassVar[List[str]] = [
         "enabled", "operations", "allEntitlements",
         "allNonEntitlementAttributes", "selectedEntitlements",
         "selectedNonEntitlementAttributes"
     ]
 
-    @validator('operations')
+    @field_validator('operations')
     def operations_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -78,52 +79,62 @@ class NativeChangeDetectionConfig(BaseModel):
                 )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> NativeChangeDetectionConfig:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of NativeChangeDetectionConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> NativeChangeDetectionConfig:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of NativeChangeDetectionConfig from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return NativeChangeDetectionConfig.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = NativeChangeDetectionConfig.parse_obj({
+        _obj = cls.model_validate({
             "enabled":
             obj.get("enabled") if obj.get("enabled") is not None else False,
             "operations":
             obj.get("operations"),
-            "all_entitlements":
+            "allEntitlements":
             obj.get("allEntitlements")
             if obj.get("allEntitlements") is not None else False,
-            "all_non_entitlement_attributes":
+            "allNonEntitlementAttributes":
             obj.get("allNonEntitlementAttributes")
             if obj.get("allNonEntitlementAttributes") is not None else False,
-            "selected_entitlements":
+            "selectedEntitlements":
             obj.get("selectedEntitlements"),
-            "selected_non_entitlement_attributes":
+            "selectedNonEntitlementAttributes":
             obj.get("selectedNonEntitlementAttributes")
         })
         return _obj

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workgroup_member_add_item import WorkgroupMemberAddItem  # noqa: E501
+from sailpoint.beta.models.workgroup_member_add_item import WorkgroupMemberAddItem
 
 
 class TestWorkgroupMemberAddItem(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkgroupMemberAddItem(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkgroupMemberAddItem`
         """
-        model = WorkgroupMemberAddItem()  # noqa: E501
+        model = WorkgroupMemberAddItem()
         if include_optional:
             return WorkgroupMemberAddItem(
                 id = '464ae7bf791e49fdb74606a2e4a89635',

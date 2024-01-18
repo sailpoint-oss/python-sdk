@@ -16,86 +16,100 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictStr, confloat, conint, conlist
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
+from typing_extensions import Annotated
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RecommendationConfigDto(BaseModel):
     """
     RecommendationConfigDto
     """
-    recommender_features: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="recommenderFeatures",
+
+  # noqa: E501
+    recommender_features: Optional[List[StrictStr]] = Field(
+        default=None,
         description=
-        "List of identity attributes to use for calculating certification recommendations"
-    )
-    peer_group_percentage_threshold: Optional[Union[confloat(
-        le=1.0, ge=0.0, strict=True
-    ), conint(le=1, ge=0, strict=True)]] = Field(
-        None,
-        alias="peerGroupPercentageThreshold",
-        description=
-        "The percent value that the recommendation calculation must surpass to produce a YES recommendation"
-    )
+        "List of identity attributes to use for calculating certification recommendations",
+        alias="recommenderFeatures")
+    peer_group_percentage_threshold: Optional[Union[
+        Annotated[float, Field(le=1.0, strict=True, ge=0.0)],
+        Annotated[int, Field(le=1, strict=True, ge=0)]]] = Field(
+            default=None,
+            description=
+            "The percent value that the recommendation calculation must surpass to produce a YES recommendation",
+            alias="peerGroupPercentageThreshold")
     run_auto_select_once: Optional[StrictBool] = Field(
-        False,
-        alias="runAutoSelectOnce",
+        default=False,
         description=
-        "If true, rulesRecommenderConfig will be refreshed with new programatically selected attribute and threshold values on the next pipeline run"
-    )
+        "If true, rulesRecommenderConfig will be refreshed with new programatically selected attribute and threshold values on the next pipeline run",
+        alias="runAutoSelectOnce")
     only_tune_threshold: Optional[StrictBool] = Field(
-        False,
-        alias="onlyTuneThreshold",
+        default=False,
         description=
-        "If true, rulesRecommenderConfig will be refreshed with new programatically selected threshold values on the next pipeline run"
-    )
-    __properties = [
+        "If true, rulesRecommenderConfig will be refreshed with new programatically selected threshold values on the next pipeline run",
+        alias="onlyTuneThreshold")
+    __properties: ClassVar[List[str]] = [
         "recommenderFeatures", "peerGroupPercentageThreshold",
         "runAutoSelectOnce", "onlyTuneThreshold"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RecommendationConfigDto:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RecommendationConfigDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RecommendationConfigDto:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of RecommendationConfigDto from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RecommendationConfigDto.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RecommendationConfigDto.parse_obj({
-            "recommender_features":
+        _obj = cls.model_validate({
+            "recommenderFeatures":
             obj.get("recommenderFeatures"),
-            "peer_group_percentage_threshold":
+            "peerGroupPercentageThreshold":
             obj.get("peerGroupPercentageThreshold"),
-            "run_auto_select_once":
+            "runAutoSelectOnce":
             obj.get("runAutoSelectOnce")
             if obj.get("runAutoSelectOnce") is not None else False,
-            "only_tune_threshold":
+            "onlyTuneThreshold":
             obj.get("onlyTuneThreshold")
             if obj.get("onlyTuneThreshold") is not None else False
         })

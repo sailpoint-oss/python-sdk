@@ -16,35 +16,42 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Dict, List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
 from sailpoint.beta.models.object_export_import_options import ObjectExportImportOptions
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ExportOptions(BaseModel):
     """
     ExportOptions
     """
-    exclude_types: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="excludeTypes",
-        description=
-        "Object type names to be excluded from an sp-config export command.")
-    include_types: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="includeTypes",
-        description=
-        "Object type names to be included in an sp-config export command. IncludeTypes takes precedence over excludeTypes."
-    )
-    object_options: Optional[Dict[str, ObjectExportImportOptions]] = Field(
-        None,
-        alias="objectOptions",
-        description=
-        "Additional options targeting specific objects related to each item in the includeTypes field"
-    )
-    __properties = ["excludeTypes", "includeTypes", "objectOptions"]
 
-    @validator('exclude_types')
+  # noqa: E501
+    exclude_types: Optional[List[StrictStr]] = Field(
+        default=None,
+        description=
+        "Object type names to be excluded from an sp-config export command.",
+        alias="excludeTypes")
+    include_types: Optional[List[StrictStr]] = Field(
+        default=None,
+        description=
+        "Object type names to be included in an sp-config export command. IncludeTypes takes precedence over excludeTypes.",
+        alias="includeTypes")
+    object_options: Optional[Dict[str, ObjectExportImportOptions]] = Field(
+        default=None,
+        description=
+        "Additional options targeting specific objects related to each item in the includeTypes field",
+        alias="objectOptions")
+    __properties: ClassVar[List[str]] = [
+        "excludeTypes", "includeTypes", "objectOptions"
+    ]
+
+    @field_validator('exclude_types')
     def exclude_types_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -66,7 +73,7 @@ class ExportOptions(BaseModel):
                 )
         return value
 
-    @validator('include_types')
+    @field_validator('include_types')
     def include_types_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -88,27 +95,37 @@ class ExportOptions(BaseModel):
                 )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ExportOptions:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ExportOptions from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each value in object_options (dict)
         _field_dict = {}
         if self.object_options:
@@ -119,20 +136,20 @@ class ExportOptions(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ExportOptions:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ExportOptions from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ExportOptions.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ExportOptions.parse_obj({
-            "exclude_types":
+        _obj = cls.model_validate({
+            "excludeTypes":
             obj.get("excludeTypes"),
-            "include_types":
+            "includeTypes":
             obj.get("includeTypes"),
-            "object_options":
+            "objectOptions":
             dict((_k, ObjectExportImportOptions.from_dict(_v))
                  for _k, _v in obj.get("objectOptions").items())
             if obj.get("objectOptions") is not None else None

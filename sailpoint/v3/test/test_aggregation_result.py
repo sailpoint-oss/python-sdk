@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.aggregation_result import AggregationResult  # noqa: E501
+from sailpoint.v3.models.aggregation_result import AggregationResult
 
 
 class TestAggregationResult(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAggregationResult(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AggregationResult`
         """
-        model = AggregationResult()  # noqa: E501
+        model = AggregationResult()
         if include_optional:
             return AggregationResult(
                 aggregations = {Identity Locations={buckets=[{key=Austin, doc_count=109}, {key=London, doc_count=64}, {key=San Jose, doc_count=27}, {key=Brussels, doc_count=26}, {key=Sao Paulo, doc_count=24}, {key=Munich, doc_count=23}, {key=Singapore, doc_count=22}, {key=Tokyo, doc_count=20}, {key=Taipei, doc_count=16}]}},

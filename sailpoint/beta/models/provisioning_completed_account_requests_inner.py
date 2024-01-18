@@ -16,57 +16,57 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
 from sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner import ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
 from sailpoint.beta.models.provisioning_completed_account_requests_inner_source import ProvisioningCompletedAccountRequestsInnerSource
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ProvisioningCompletedAccountRequestsInner(BaseModel):
     """
     ProvisioningCompletedAccountRequestsInner
     """
-    source: ProvisioningCompletedAccountRequestsInnerSource = Field(...)
+
+  # noqa: E501
+    source: ProvisioningCompletedAccountRequestsInnerSource
     account_id: Optional[StrictStr] = Field(
-        None,
-        alias="accountId",
-        description="The unique idenfier of the account being provisioned.")
+        default=None,
+        description="The unique idenfier of the account being provisioned.",
+        alias="accountId")
     account_operation: StrictStr = Field(
-        ...,
-        alias="accountOperation",
         description=
-        "The provisioning operation; typically Create, Modify, Enable, Disable, Unlock, or Delete."
-    )
-    provisioning_result: Dict[str, Any] = Field(
-        ...,
-        alias="provisioningResult",
+        "The provisioning operation; typically Create, Modify, Enable, Disable, Unlock, or Delete.",
+        alias="accountOperation")
+    provisioning_result: Union[str, Any] = Field(
         description=
-        "The overall result of the provisioning transaction; this could be success, pending, failed, etc."
-    )
+        "The overall result of the provisioning transaction; this could be success, pending, failed, etc.",
+        alias="provisioningResult")
     provisioning_target: StrictStr = Field(
-        ...,
-        alias="provisioningTarget",
         description=
-        "The name of the provisioning channel selected; this could be the same as the source, or could be a Service Desk Integration Module (SDIM)."
-    )
+        "The name of the provisioning channel selected; this could be the same as the source, or could be a Service Desk Integration Module (SDIM).",
+        alias="provisioningTarget")
     ticket_id: Optional[StrictStr] = Field(
-        None,
-        alias="ticketId",
+        default=None,
         description=
-        "A reference to a tracking number, if this is sent to a Service Desk Integration Module (SDIM)."
-    )
-    attribute_requests: Optional[conlist(
-        ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
-    )] = Field(None,
-               alias="attributeRequests",
-               description=
-               "A list of attributes as part of the provisioning transaction.")
-    __properties = [
+        "A reference to a tracking number, if this is sent to a Service Desk Integration Module (SDIM).",
+        alias="ticketId")
+    attribute_requests: Optional[List[
+        ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner]] = Field(
+            default=None,
+            description=
+            "A list of attributes as part of the provisioning transaction.",
+            alias="attributeRequests")
+    __properties: ClassVar[List[str]] = [
         "source", "accountId", "accountOperation", "provisioningResult",
         "provisioningTarget", "ticketId", "attributeRequests"
     ]
 
-    @validator('provisioning_result')
+    @field_validator('provisioning_result')
     def provisioning_result_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('SUCCESS', 'PENDING', 'FAILED'):
@@ -74,28 +74,37 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
                 "must be one of enum values ('SUCCESS', 'PENDING', 'FAILED')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls,
-                  json_str: str) -> ProvisioningCompletedAccountRequestsInner:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ProvisioningCompletedAccountRequestsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -107,41 +116,41 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
                     _items.append(_item.to_dict())
             _dict['attributeRequests'] = _items
         # set to None if ticket_id (nullable) is None
-        # and __fields_set__ contains the field
-        if self.ticket_id is None and "ticket_id" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.ticket_id is None and "ticket_id" in self.model_fields_set:
             _dict['ticketId'] = None
 
         # set to None if attribute_requests (nullable) is None
-        # and __fields_set__ contains the field
-        if self.attribute_requests is None and "attribute_requests" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.attribute_requests is None and "attribute_requests" in self.model_fields_set:
             _dict['attributeRequests'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ProvisioningCompletedAccountRequestsInner:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ProvisioningCompletedAccountRequestsInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ProvisioningCompletedAccountRequestsInner.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ProvisioningCompletedAccountRequestsInner.parse_obj({
+        _obj = cls.model_validate({
             "source":
             ProvisioningCompletedAccountRequestsInnerSource.from_dict(
                 obj.get("source")) if obj.get("source") is not None else None,
-            "account_id":
+            "accountId":
             obj.get("accountId"),
-            "account_operation":
+            "accountOperation":
             obj.get("accountOperation"),
-            "provisioning_result":
+            "provisioningResult":
             obj.get("provisioningResult"),
-            "provisioning_target":
+            "provisioningTarget":
             obj.get("provisioningTarget"),
-            "ticket_id":
+            "ticketId":
             obj.get("ticketId"),
-            "attribute_requests": [
+            "attributeRequests": [
                 ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
                 .from_dict(_item) for _item in obj.get("attributeRequests")
             ] if obj.get("attributeRequests") is not None else None

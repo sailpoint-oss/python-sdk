@@ -16,85 +16,102 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, conint
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool
+from pydantic import Field
+from typing_extensions import Annotated
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class PasswordOrgConfig(BaseModel):
     """
     PasswordOrgConfig
     """
+
+  # noqa: E501
     custom_instructions_enabled: Optional[StrictBool] = Field(
-        False,
-        alias="customInstructionsEnabled",
+        default=False,
         description=
-        "Indicator whether custom password instructions feature is enabled. The default value is false."
-    )
+        "Indicator whether custom password instructions feature is enabled. The default value is false.",
+        alias="customInstructionsEnabled")
     digit_token_enabled: Optional[StrictBool] = Field(
-        False,
-        alias="digitTokenEnabled",
+        default=False,
         description=
-        "Indicator whether \"digit token\" feature is enabled. The default value is false."
-    )
-    digit_token_duration_minutes: Optional[conint(
-        strict=True, le=60, ge=1
-    )] = Field(
-        5,
-        alias="digitTokenDurationMinutes",
-        description=
-        "The duration of \"digit token\" in minutes. The default value is 5.")
-    digit_token_length: Optional[conint(strict=True, le=18, ge=6)] = Field(
-        6,
-        alias="digitTokenLength",
-        description="The length of \"digit token\". The default value is 6.")
-    __properties = [
+        "Indicator whether \"digit token\" feature is enabled. The default value is false.",
+        alias="digitTokenEnabled")
+    digit_token_duration_minutes: Optional[Annotated[
+        int, Field(le=60, strict=True, ge=1)]] = Field(
+            default=5,
+            description=
+            "The duration of \"digit token\" in minutes. The default value is 5.",
+            alias="digitTokenDurationMinutes")
+    digit_token_length: Optional[Annotated[
+        int, Field(le=18, strict=True, ge=6)]] = Field(
+            default=6,
+            description=
+            "The length of \"digit token\". The default value is 6.",
+            alias="digitTokenLength")
+    __properties: ClassVar[List[str]] = [
         "customInstructionsEnabled", "digitTokenEnabled",
         "digitTokenDurationMinutes", "digitTokenLength"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> PasswordOrgConfig:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of PasswordOrgConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> PasswordOrgConfig:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of PasswordOrgConfig from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PasswordOrgConfig.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = PasswordOrgConfig.parse_obj({
-            "custom_instructions_enabled":
+        _obj = cls.model_validate({
+            "customInstructionsEnabled":
             obj.get("customInstructionsEnabled")
             if obj.get("customInstructionsEnabled") is not None else False,
-            "digit_token_enabled":
+            "digitTokenEnabled":
             obj.get("digitTokenEnabled")
             if obj.get("digitTokenEnabled") is not None else False,
-            "digit_token_duration_minutes":
+            "digitTokenDurationMinutes":
             obj.get("digitTokenDurationMinutes")
             if obj.get("digitTokenDurationMinutes") is not None else 5,
-            "digit_token_length":
+            "digitTokenLength":
             obj.get("digitTokenLength")
             if obj.get("digitTokenLength") is not None else 6
         })

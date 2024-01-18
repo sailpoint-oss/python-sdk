@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.connectors_api import ConnectorsApi  # noqa: E501
+from sailpoint.beta.api.connectors_api import ConnectorsApi
 
 
 class TestConnectorsApi(unittest.TestCase):
     """ConnectorsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = ConnectorsApi()  # noqa: E501
+        self.api = ConnectorsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,7 +28,7 @@ class TestConnectorsApi(unittest.TestCase):
     def test_get_connector_list(self) -> None:
         """Test case for get_connector_list
 
-        Gets connector list  # noqa: E501
+        Gets connector list
         """
         pass
 

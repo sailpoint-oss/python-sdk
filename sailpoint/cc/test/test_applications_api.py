@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.cc.api.applications_api import ApplicationsApi  # noqa: E501
+from sailpoint.cc.api.applications_api import ApplicationsApi
 
 
 class TestApplicationsApi(unittest.TestCase):
     """ApplicationsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = ApplicationsApi()  # noqa: E501
+        self.api = ApplicationsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,42 +28,42 @@ class TestApplicationsApi(unittest.TestCase):
     def test_create_application(self) -> None:
         """Test case for create_application
 
-        Create Application  # noqa: E501
+        Create Application
         """
         pass
 
     def test_delete_application(self) -> None:
         """Test case for delete_application
 
-        Delete Application  # noqa: E501
+        Delete Application
         """
         pass
 
     def test_get_application(self) -> None:
         """Test case for get_application
 
-        Get Single Application  # noqa: E501
+        Get Single Application
         """
         pass
 
     def test_get_application_access_profiles(self) -> None:
         """Test case for get_application_access_profiles
 
-        Get Access Profiles for Application  # noqa: E501
+        Get Access Profiles for Application
         """
         pass
 
     def test_list_applications(self) -> None:
         """Test case for list_applications
 
-        List Applications  # noqa: E501
+        List Applications
         """
         pass
 
     def test_update_application(self) -> None:
         """Test case for update_application
 
-        Update Application  # noqa: E501
+        Update Application
         """
         pass
 

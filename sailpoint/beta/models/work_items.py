@@ -17,75 +17,94 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.approval_item_details import ApprovalItemDetails
 from sailpoint.beta.models.remediation_item_details import RemediationItemDetails
 from sailpoint.beta.models.work_item_state import WorkItemState
 from sailpoint.beta.models.work_item_type import WorkItemType
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class WorkItems(BaseModel):
     """
     WorkItems
     """
-    id: Optional[StrictStr] = Field(None, description="ID of the work item")
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
+                                    description="ID of the work item")
     requester_id: Optional[StrictStr] = Field(
-        None, alias="requesterId", description="ID of the requester")
+        default=None, description="ID of the requester", alias="requesterId")
     requester_display_name: Optional[StrictStr] = Field(
-        None,
-        alias="requesterDisplayName",
-        description="The displayname of the requester")
-    owner_id: Optional[StrictStr] = Field(None,
-                                          alias="ownerId",
-                                          description="The ID of the owner")
+        default=None,
+        description="The displayname of the requester",
+        alias="requesterDisplayName")
+    owner_id: Optional[StrictStr] = Field(default=None,
+                                          description="The ID of the owner",
+                                          alias="ownerId")
     owner_name: Optional[StrictStr] = Field(
-        None, alias="ownerName", description="The name of the owner")
+        default=None, description="The name of the owner", alias="ownerName")
     created: Optional[datetime] = None
     modified: Optional[datetime] = None
     description: Optional[StrictStr] = Field(
-        None, description="The description of the work item")
+        default=None, description="The description of the work item")
     state: Optional[WorkItemState] = None
     type: Optional[WorkItemType] = None
     remediation_items: Optional[RemediationItemDetails] = Field(
-        None, alias="remediationItems")
+        default=None, alias="remediationItems")
     approval_items: Optional[ApprovalItemDetails] = Field(
-        None, alias="approvalItems")
-    name: Optional[StrictStr] = Field(None, description="The work item name")
+        default=None, alias="approvalItems")
+    name: Optional[StrictStr] = Field(default=None,
+                                      description="The work item name")
     completed: Optional[datetime] = None
     num_items: Optional[StrictInt] = Field(
-        None,
-        alias="numItems",
-        description="The number of items in the work item")
-    errors: Optional[conlist(StrictStr)] = None
-    __properties = [
+        default=None,
+        description="The number of items in the work item",
+        alias="numItems")
+    errors: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = [
         "id", "requesterId", "requesterDisplayName", "ownerId", "ownerName",
         "created", "modified", "description", "state", "type",
         "remediationItems", "approvalItems", "name", "completed", "numItems",
         "errors"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> WorkItems:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of WorkItems from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of remediation_items
         if self.remediation_items:
             _dict['remediationItems'] = self.remediation_items.to_dict()
@@ -95,24 +114,24 @@ class WorkItems(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> WorkItems:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of WorkItems from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return WorkItems.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = WorkItems.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
-            "requester_id":
+            "requesterId":
             obj.get("requesterId"),
-            "requester_display_name":
+            "requesterDisplayName":
             obj.get("requesterDisplayName"),
-            "owner_id":
+            "ownerId":
             obj.get("ownerId"),
-            "owner_name":
+            "ownerName":
             obj.get("ownerName"),
             "created":
             obj.get("created"),
@@ -124,17 +143,17 @@ class WorkItems(BaseModel):
             obj.get("state"),
             "type":
             obj.get("type"),
-            "remediation_items":
+            "remediationItems":
             RemediationItemDetails.from_dict(obj.get("remediationItems"))
             if obj.get("remediationItems") is not None else None,
-            "approval_items":
+            "approvalItems":
             ApprovalItemDetails.from_dict(obj.get("approvalItems"))
             if obj.get("approvalItems") is not None else None,
             "name":
             obj.get("name"),
             "completed":
             obj.get("completed"),
-            "num_items":
+            "numItems":
             obj.get("numItems"),
             "errors":
             obj.get("errors")

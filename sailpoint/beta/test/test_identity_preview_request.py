@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_preview_request import IdentityPreviewRequest  # noqa: E501
+from sailpoint.beta.models.identity_preview_request import IdentityPreviewRequest
 
 
 class TestIdentityPreviewRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityPreviewRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityPreviewRequest`
         """
-        model = IdentityPreviewRequest()  # noqa: E501
+        model = IdentityPreviewRequest()
         if include_optional:
             return IdentityPreviewRequest(
                 identity_id = '',

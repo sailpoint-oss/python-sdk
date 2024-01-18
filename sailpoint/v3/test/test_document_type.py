@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.document_type import DocumentType  # noqa: E501
+from sailpoint.v3.models.document_type import DocumentType
 
 
 class TestDocumentType(unittest.TestCase):

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workgroup_bulk_delete_request import WorkgroupBulkDeleteRequest  # noqa: E501
+from sailpoint.beta.models.workgroup_bulk_delete_request import WorkgroupBulkDeleteRequest
 
 
 class TestWorkgroupBulkDeleteRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkgroupBulkDeleteRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkgroupBulkDeleteRequest`
         """
-        model = WorkgroupBulkDeleteRequest()  # noqa: E501
+        model = WorkgroupBulkDeleteRequest()
         if include_optional:
             return WorkgroupBulkDeleteRequest(
                 ids = [567a697e-885b-495a-afc5-d55e1c23a302, c7b0f7b2-1e78-4063-b294-a555333dacd2]

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.visibility_criteria import VisibilityCriteria  # noqa: E501
+from sailpoint.beta.models.visibility_criteria import VisibilityCriteria
 
 
 class TestVisibilityCriteria(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestVisibilityCriteria(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `VisibilityCriteria`
         """
-        model = VisibilityCriteria()  # noqa: E501
+        model = VisibilityCriteria()
         if include_optional:
             return VisibilityCriteria(
                 expression = sailpoint.beta.models.expression.Expression(

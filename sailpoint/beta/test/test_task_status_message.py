@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.task_status_message import TaskStatusMessage  # noqa: E501
+from sailpoint.beta.models.task_status_message import TaskStatusMessage
 
 
 class TestTaskStatusMessage(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTaskStatusMessage(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TaskStatusMessage`
         """
-        model = TaskStatusMessage()  # noqa: E501
+        model = TaskStatusMessage()
         if include_optional:
             return TaskStatusMessage(
                 type = 'INFO',

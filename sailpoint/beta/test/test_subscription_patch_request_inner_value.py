@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.subscription_patch_request_inner_value import SubscriptionPatchRequestInnerValue  # noqa: E501
+from sailpoint.beta.models.subscription_patch_request_inner_value import SubscriptionPatchRequestInnerValue
 
 
 class TestSubscriptionPatchRequestInnerValue(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestSubscriptionPatchRequestInnerValue(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SubscriptionPatchRequestInnerValue`
         """
-        model = SubscriptionPatchRequestInnerValue()  # noqa: E501
+        model = SubscriptionPatchRequestInnerValue()
         if include_optional:
             return SubscriptionPatchRequestInnerValue(
             )

@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.managed_clients_api import ManagedClientsApi  # noqa: E501
+from sailpoint.beta.api.managed_clients_api import ManagedClientsApi
 
 
 class TestManagedClientsApi(unittest.TestCase):
     """ManagedClientsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = ManagedClientsApi()  # noqa: E501
+        self.api = ManagedClientsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,14 +28,14 @@ class TestManagedClientsApi(unittest.TestCase):
     def test_get_managed_client_status(self) -> None:
         """Test case for get_managed_client_status
 
-        Specified Managed Client Status.  # noqa: E501
+        Specified Managed Client Status.
         """
         pass
 
     def test_update_managed_client_status(self) -> None:
         """Test case for update_managed_client_status
 
-        Handle status request from client  # noqa: E501
+        Handle status request from client
         """
         pass
 

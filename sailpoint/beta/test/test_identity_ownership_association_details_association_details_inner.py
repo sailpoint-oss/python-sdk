@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_ownership_association_details_association_details_inner import IdentityOwnershipAssociationDetailsAssociationDetailsInner  # noqa: E501
+from sailpoint.beta.models.identity_ownership_association_details_association_details_inner import IdentityOwnershipAssociationDetailsAssociationDetailsInner
 
 
 class TestIdentityOwnershipAssociationDetailsAssociationDetailsInner(
@@ -36,7 +36,7 @@ class TestIdentityOwnershipAssociationDetailsAssociationDetailsInner(
             optional params are included """
         # uncomment below to create an instance of `IdentityOwnershipAssociationDetailsAssociationDetailsInner`
         """
-        model = IdentityOwnershipAssociationDetailsAssociationDetailsInner()  # noqa: E501
+        model = IdentityOwnershipAssociationDetailsAssociationDetailsInner()
         if include_optional:
             return IdentityOwnershipAssociationDetailsAssociationDetailsInner(
                 association_type = 'ROLE_OWNER',

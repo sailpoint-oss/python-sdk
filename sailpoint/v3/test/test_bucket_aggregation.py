@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.bucket_aggregation import BucketAggregation  # noqa: E501
+from sailpoint.v3.models.bucket_aggregation import BucketAggregation
 
 
 class TestBucketAggregation(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestBucketAggregation(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `BucketAggregation`
         """
-        model = BucketAggregation()  # noqa: E501
+        model = BucketAggregation()
         if include_optional:
             return BucketAggregation(
                 name = 'Identity Locations',

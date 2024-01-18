@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workflow_library_operator import WorkflowLibraryOperator  # noqa: E501
+from sailpoint.beta.models.workflow_library_operator import WorkflowLibraryOperator
 
 
 class TestWorkflowLibraryOperator(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkflowLibraryOperator(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkflowLibraryOperator`
         """
-        model = WorkflowLibraryOperator()  # noqa: E501
+        model = WorkflowLibraryOperator()
         if include_optional:
             return WorkflowLibraryOperator(
                 id = 'sp:compare-boolean',

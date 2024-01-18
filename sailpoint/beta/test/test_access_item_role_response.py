@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_item_role_response import AccessItemRoleResponse  # noqa: E501
+from sailpoint.beta.models.access_item_role_response import AccessItemRoleResponse
 
 
 class TestAccessItemRoleResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessItemRoleResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessItemRoleResponse`
         """
-        model = AccessItemRoleResponse()  # noqa: E501
+        model = AccessItemRoleResponse()
         if include_optional:
             return AccessItemRoleResponse(
                 access_type = 'role',

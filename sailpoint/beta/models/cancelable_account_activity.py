@@ -17,76 +17,93 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.account_activity_item import AccountActivityItem
 from sailpoint.beta.models.comment import Comment
 from sailpoint.beta.models.completion_status import CompletionStatus
 from sailpoint.beta.models.execution_status import ExecutionStatus
 from sailpoint.beta.models.identity_summary import IdentitySummary
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class CancelableAccountActivity(BaseModel):
     """
     CancelableAccountActivity
     """
+
+  # noqa: E501
     id: Optional[StrictStr] = Field(
-        None, description="ID of the account activity itself")
+        default=None, description="ID of the account activity itself")
     name: Optional[StrictStr] = None
     created: Optional[datetime] = None
     modified: Optional[datetime] = None
     completed: Optional[datetime] = None
     completion_status: Optional[CompletionStatus] = Field(
-        None, alias="completionStatus")
+        default=None, alias="completionStatus")
     type: Optional[StrictStr] = None
     requester_identity_summary: Optional[IdentitySummary] = Field(
-        None, alias="requesterIdentitySummary")
+        default=None, alias="requesterIdentitySummary")
     target_identity_summary: Optional[IdentitySummary] = Field(
-        None, alias="targetIdentitySummary")
-    errors: Optional[conlist(StrictStr)] = None
-    warnings: Optional[conlist(StrictStr)] = None
-    items: Optional[conlist(AccountActivityItem)] = None
+        default=None, alias="targetIdentitySummary")
+    errors: Optional[List[StrictStr]] = None
+    warnings: Optional[List[StrictStr]] = None
+    items: Optional[List[AccountActivityItem]] = None
     execution_status: Optional[ExecutionStatus] = Field(
-        None, alias="executionStatus")
+        default=None, alias="executionStatus")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(
-        None,
-        alias="clientMetadata",
+        default=None,
         description=
-        "Arbitrary key-value pairs, if any were included in the corresponding access request"
-    )
+        "Arbitrary key-value pairs, if any were included in the corresponding access request",
+        alias="clientMetadata")
     cancelable: Optional[StrictBool] = Field(
-        None,
+        default=None,
         description=
         "Whether the account activity can be canceled before completion")
-    cancel_comment: Optional[Comment] = Field(None, alias="cancelComment")
-    __properties = [
+    cancel_comment: Optional[Comment] = Field(default=None,
+                                              alias="cancelComment")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "created", "modified", "completed", "completionStatus",
         "type", "requesterIdentitySummary", "targetIdentitySummary", "errors",
         "warnings", "items", "executionStatus", "clientMetadata", "cancelable",
         "cancelComment"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CancelableAccountActivity:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of CancelableAccountActivity from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of requester_identity_summary
         if self.requester_identity_summary:
             _dict[
@@ -108,37 +125,37 @@ class CancelableAccountActivity(BaseModel):
         if self.cancel_comment:
             _dict['cancelComment'] = self.cancel_comment.to_dict()
         # set to None if completion_status (nullable) is None
-        # and __fields_set__ contains the field
-        if self.completion_status is None and "completion_status" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.completion_status is None and "completion_status" in self.model_fields_set:
             _dict['completionStatus'] = None
 
         # set to None if requester_identity_summary (nullable) is None
-        # and __fields_set__ contains the field
-        if self.requester_identity_summary is None and "requester_identity_summary" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.requester_identity_summary is None and "requester_identity_summary" in self.model_fields_set:
             _dict['requesterIdentitySummary'] = None
 
         # set to None if target_identity_summary (nullable) is None
-        # and __fields_set__ contains the field
-        if self.target_identity_summary is None and "target_identity_summary" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.target_identity_summary is None and "target_identity_summary" in self.model_fields_set:
             _dict['targetIdentitySummary'] = None
 
         # set to None if cancel_comment (nullable) is None
-        # and __fields_set__ contains the field
-        if self.cancel_comment is None and "cancel_comment" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.cancel_comment is None and "cancel_comment" in self.model_fields_set:
             _dict['cancelComment'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CancelableAccountActivity:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of CancelableAccountActivity from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CancelableAccountActivity.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = CancelableAccountActivity.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -149,14 +166,14 @@ class CancelableAccountActivity(BaseModel):
             obj.get("modified"),
             "completed":
             obj.get("completed"),
-            "completion_status":
+            "completionStatus":
             obj.get("completionStatus"),
             "type":
             obj.get("type"),
-            "requester_identity_summary":
+            "requesterIdentitySummary":
             IdentitySummary.from_dict(obj.get("requesterIdentitySummary"))
             if obj.get("requesterIdentitySummary") is not None else None,
-            "target_identity_summary":
+            "targetIdentitySummary":
             IdentitySummary.from_dict(obj.get("targetIdentitySummary"))
             if obj.get("targetIdentitySummary") is not None else None,
             "errors":
@@ -167,13 +184,13 @@ class CancelableAccountActivity(BaseModel):
                 AccountActivityItem.from_dict(_item)
                 for _item in obj.get("items")
             ] if obj.get("items") is not None else None,
-            "execution_status":
+            "executionStatus":
             obj.get("executionStatus"),
-            "client_metadata":
+            "clientMetadata":
             obj.get("clientMetadata"),
             "cancelable":
             obj.get("cancelable"),
-            "cancel_comment":
+            "cancelComment":
             Comment.from_dict(obj.get("cancelComment"))
             if obj.get("cancelComment") is not None else None
         })

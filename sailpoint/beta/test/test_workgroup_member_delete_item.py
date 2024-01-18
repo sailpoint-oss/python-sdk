@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workgroup_member_delete_item import WorkgroupMemberDeleteItem  # noqa: E501
+from sailpoint.beta.models.workgroup_member_delete_item import WorkgroupMemberDeleteItem
 
 
 class TestWorkgroupMemberDeleteItem(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkgroupMemberDeleteItem(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkgroupMemberDeleteItem`
         """
-        model = WorkgroupMemberDeleteItem()  # noqa: E501
+        model = WorkgroupMemberDeleteItem()
         if include_optional:
             return WorkgroupMemberDeleteItem(
                 id = '464ae7bf791e49fdb74606a2e4a89635',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.sod_violation_check import SodViolationCheck  # noqa: E501
+from sailpoint.v3.models.sod_violation_check import SodViolationCheck
 
 
 class TestSodViolationCheck(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSodViolationCheck(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SodViolationCheck`
         """
-        model = SodViolationCheck()  # noqa: E501
+        model = SodViolationCheck()
         if include_optional:
             return SodViolationCheck(
                 request_id = '089899f13a8f4da7824996191587bab9',

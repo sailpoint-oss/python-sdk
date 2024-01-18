@@ -16,70 +16,91 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.outlier_feature_summary_outlier_feature_display_values_inner import OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class OutlierFeatureSummary(BaseModel):
     """
     OutlierFeatureSummary
     """
+
+  # noqa: E501
     contributing_feature_name: Optional[StrictStr] = Field(
-        None,
-        alias="contributingFeatureName",
-        description="Contributing feature name")
+        default=None,
+        description="Contributing feature name",
+        alias="contributingFeatureName")
     identity_outlier_display_name: Optional[StrictStr] = Field(
-        None,
-        alias="identityOutlierDisplayName",
-        description="Identity display name")
-    outlier_feature_display_values: Optional[conlist(
-        OutlierFeatureSummaryOutlierFeatureDisplayValuesInner)] = Field(
-            None, alias="outlierFeatureDisplayValues")
+        default=None,
+        description="Identity display name",
+        alias="identityOutlierDisplayName")
+    outlier_feature_display_values: Optional[
+        List[OutlierFeatureSummaryOutlierFeatureDisplayValuesInner]] = Field(
+            default=None, alias="outlierFeatureDisplayValues")
     feature_definition: Optional[StrictStr] = Field(
-        None,
-        alias="featureDefinition",
-        description="Definition of the feature")
+        default=None,
+        description="Definition of the feature",
+        alias="featureDefinition")
     feature_explanation: Optional[StrictStr] = Field(
-        None,
-        alias="featureExplanation",
-        description="Detailed explanation of the feature")
+        default=None,
+        description="Detailed explanation of the feature",
+        alias="featureExplanation")
     peer_display_name: Optional[StrictStr] = Field(
-        None,
-        alias="peerDisplayName",
-        description="outlier's peer identity display name")
+        default=None,
+        description="outlier's peer identity display name",
+        alias="peerDisplayName")
     peer_identity_id: Optional[StrictStr] = Field(
-        None, alias="peerIdentityId", description="outlier's peer identity id")
-    access_item_reference: Optional[Dict[str, Any]] = Field(
-        None, alias="accessItemReference", description="Access Item reference")
-    __properties = [
+        default=None,
+        description="outlier's peer identity id",
+        alias="peerIdentityId")
+    access_item_reference: Optional[Union[str, Any]] = Field(
+        default=None,
+        description="Access Item reference",
+        alias="accessItemReference")
+    __properties: ClassVar[List[str]] = [
         "contributingFeatureName", "identityOutlierDisplayName",
         "outlierFeatureDisplayValues", "featureDefinition",
         "featureExplanation", "peerDisplayName", "peerIdentityId",
         "accessItemReference"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> OutlierFeatureSummary:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of OutlierFeatureSummary from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in outlier_feature_display_values (list)
         _items = []
         if self.outlier_feature_display_values:
@@ -90,33 +111,33 @@ class OutlierFeatureSummary(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> OutlierFeatureSummary:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of OutlierFeatureSummary from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return OutlierFeatureSummary.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = OutlierFeatureSummary.parse_obj({
-            "contributing_feature_name":
+        _obj = cls.model_validate({
+            "contributingFeatureName":
             obj.get("contributingFeatureName"),
-            "identity_outlier_display_name":
+            "identityOutlierDisplayName":
             obj.get("identityOutlierDisplayName"),
-            "outlier_feature_display_values": [
+            "outlierFeatureDisplayValues": [
                 OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.
                 from_dict(_item)
                 for _item in obj.get("outlierFeatureDisplayValues")
             ] if obj.get("outlierFeatureDisplayValues") is not None else None,
-            "feature_definition":
+            "featureDefinition":
             obj.get("featureDefinition"),
-            "feature_explanation":
+            "featureExplanation":
             obj.get("featureExplanation"),
-            "peer_display_name":
+            "peerDisplayName":
             obj.get("peerDisplayName"),
-            "peer_identity_id":
+            "peerIdentityId":
             obj.get("peerIdentityId"),
-            "access_item_reference":
+            "accessItemReference":
             obj.get("accessItemReference")
         })
         return _obj

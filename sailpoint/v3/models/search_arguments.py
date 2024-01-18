@@ -16,49 +16,65 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.typed_reference import TypedReference
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class SearchArguments(BaseModel):
     """
     SearchArguments
     """
+
+  # noqa: E501
     schedule_id: Optional[StrictStr] = Field(
-        None,
-        alias="scheduleId",
+        default=None,
         description=
-        "The ID of the scheduled search that triggered the saved search execution. "
-    )
+        "The ID of the scheduled search that triggered the saved search execution. ",
+        alias="scheduleId")
     owner: Optional[TypedReference] = None
-    recipients: Optional[conlist(TypedReference)] = Field(
-        None,
+    recipients: Optional[List[TypedReference]] = Field(
+        default=None,
         description=
         "The email recipients of the scheduled search being tested. ")
-    __properties = ["scheduleId", "owner", "recipients"]
+    __properties: ClassVar[List[str]] = ["scheduleId", "owner", "recipients"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SearchArguments:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of SearchArguments from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -72,16 +88,16 @@ class SearchArguments(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SearchArguments:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of SearchArguments from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SearchArguments.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SearchArguments.parse_obj({
-            "schedule_id":
+        _obj = cls.model_validate({
+            "scheduleId":
             obj.get("scheduleId"),
             "owner":
             TypedReference.from_dict(obj.get("owner"))

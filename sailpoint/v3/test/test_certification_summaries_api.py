@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.certification_summaries_api import CertificationSummariesApi  # noqa: E501
+from sailpoint.v3.api.certification_summaries_api import CertificationSummariesApi
 
 
 class TestCertificationSummariesApi(unittest.TestCase):
     """CertificationSummariesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = CertificationSummariesApi()  # noqa: E501
+        self.api = CertificationSummariesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,28 +28,28 @@ class TestCertificationSummariesApi(unittest.TestCase):
     def test_get_identity_access_summaries(self) -> None:
         """Test case for get_identity_access_summaries
 
-        Access Summaries  # noqa: E501
+        Access Summaries
         """
         pass
 
     def test_get_identity_decision_summary(self) -> None:
         """Test case for get_identity_decision_summary
 
-        Summary of Certification Decisions  # noqa: E501
+        Summary of Certification Decisions
         """
         pass
 
     def test_get_identity_summaries(self) -> None:
         """Test case for get_identity_summaries
 
-        Identity Summaries for Campaign Certification  # noqa: E501
+        Identity Summaries for Campaign Certification
         """
         pass
 
     def test_get_identity_summary(self) -> None:
         """Test case for get_identity_summary
 
-        Summary for Identity  # noqa: E501
+        Summary for Identity
         """
         pass
 

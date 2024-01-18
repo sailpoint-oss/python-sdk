@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.approval_reminder_and_escalation_config import ApprovalReminderAndEscalationConfig  # noqa: E501
+from sailpoint.v3.models.approval_reminder_and_escalation_config import ApprovalReminderAndEscalationConfig
 
 
 class TestApprovalReminderAndEscalationConfig(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestApprovalReminderAndEscalationConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ApprovalReminderAndEscalationConfig`
         """
-        model = ApprovalReminderAndEscalationConfig()  # noqa: E501
+        model = ApprovalReminderAndEscalationConfig()
         if include_optional:
             return ApprovalReminderAndEscalationConfig(
                 days_until_escalation = 0,

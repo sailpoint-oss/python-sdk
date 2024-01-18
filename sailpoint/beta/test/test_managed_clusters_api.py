@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.managed_clusters_api import ManagedClustersApi  # noqa: E501
+from sailpoint.beta.api.managed_clusters_api import ManagedClustersApi
 
 
 class TestManagedClustersApi(unittest.TestCase):
     """ManagedClustersApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = ManagedClustersApi()  # noqa: E501
+        self.api = ManagedClustersApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,28 +28,28 @@ class TestManagedClustersApi(unittest.TestCase):
     def test_get_client_log_configuration(self) -> None:
         """Test case for get_client_log_configuration
 
-        Get managed cluster's log configuration  # noqa: E501
+        Get managed cluster's log configuration
         """
         pass
 
     def test_get_managed_cluster(self) -> None:
         """Test case for get_managed_cluster
 
-        Get a specified ManagedCluster.  # noqa: E501
+        Get a specified ManagedCluster.
         """
         pass
 
     def test_get_managed_clusters(self) -> None:
         """Test case for get_managed_clusters
 
-        Retrieve all Managed Clusters.  # noqa: E501
+        Retrieve all Managed Clusters.
         """
         pass
 
     def test_put_client_log_configuration(self) -> None:
         """Test case for put_client_log_configuration
 
-        Update managed cluster's log configuration  # noqa: E501
+        Update managed cluster's log configuration
         """
         pass
 

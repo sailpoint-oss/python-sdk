@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.transform import Transform  # noqa: E501
+from sailpoint.beta.models.transform import Transform
 
 
 class TestTransform(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTransform(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Transform`
         """
-        model = Transform()  # noqa: E501
+        model = Transform()
         if include_optional:
             return Transform(
                 name = 'Timestamp To Date',

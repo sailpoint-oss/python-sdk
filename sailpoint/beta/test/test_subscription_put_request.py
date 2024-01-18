@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.subscription_put_request import SubscriptionPutRequest  # noqa: E501
+from sailpoint.beta.models.subscription_put_request import SubscriptionPutRequest
 
 
 class TestSubscriptionPutRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSubscriptionPutRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SubscriptionPutRequest`
         """
-        model = SubscriptionPutRequest()  # noqa: E501
+        model = SubscriptionPutRequest()
         if include_optional:
             return SubscriptionPutRequest(
                 name = 'Access request subscription',

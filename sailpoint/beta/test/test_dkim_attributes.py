@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.dkim_attributes import DkimAttributes  # noqa: E501
+from sailpoint.beta.models.dkim_attributes import DkimAttributes
 
 
 class TestDkimAttributes(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestDkimAttributes(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `DkimAttributes`
         """
-        model = DkimAttributes()  # noqa: E501
+        model = DkimAttributes()
         if include_optional:
             return DkimAttributes(
                 id = '123b45b0-aaaa-bbbb-a7db-123456a56abc',

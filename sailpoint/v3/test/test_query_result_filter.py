@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.query_result_filter import QueryResultFilter  # noqa: E501
+from sailpoint.v3.models.query_result_filter import QueryResultFilter
 
 
 class TestQueryResultFilter(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestQueryResultFilter(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `QueryResultFilter`
         """
-        model = QueryResultFilter()  # noqa: E501
+        model = QueryResultFilter()
         if include_optional:
             return QueryResultFilter(
                 includes = [name, displayName],

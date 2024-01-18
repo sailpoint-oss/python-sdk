@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workflow_trigger import WorkflowTrigger  # noqa: E501
+from sailpoint.beta.models.workflow_trigger import WorkflowTrigger
 
 
 class TestWorkflowTrigger(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkflowTrigger(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkflowTrigger`
         """
-        model = WorkflowTrigger()  # noqa: E501
+        model = WorkflowTrigger()
         if include_optional:
             return WorkflowTrigger(
                 type = 'EVENT',

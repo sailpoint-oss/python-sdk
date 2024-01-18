@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted  # noqa: E501
+from sailpoint.v3.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted
 
 
 class TestSodViolationContextCheckCompleted(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestSodViolationContextCheckCompleted(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SodViolationContextCheckCompleted`
         """
-        model = SodViolationContextCheckCompleted()  # noqa: E501
+        model = SodViolationContextCheckCompleted()
         if include_optional:
             return SodViolationContextCheckCompleted(
                 state = 'SUCCESS',

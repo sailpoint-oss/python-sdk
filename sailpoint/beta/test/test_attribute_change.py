@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.attribute_change import AttributeChange  # noqa: E501
+from sailpoint.beta.models.attribute_change import AttributeChange
 
 
 class TestAttributeChange(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAttributeChange(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AttributeChange`
         """
-        model = AttributeChange()  # noqa: E501
+        model = AttributeChange()
         if include_optional:
             return AttributeChange(
                 name = '',

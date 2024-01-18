@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.public_identity_attribute_config import PublicIdentityAttributeConfig  # noqa: E501
+from sailpoint.v3.models.public_identity_attribute_config import PublicIdentityAttributeConfig
 
 
 class TestPublicIdentityAttributeConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPublicIdentityAttributeConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PublicIdentityAttributeConfig`
         """
-        model = PublicIdentityAttributeConfig()  # noqa: E501
+        model = PublicIdentityAttributeConfig()
         if include_optional:
             return PublicIdentityAttributeConfig(
                 key = 'country',

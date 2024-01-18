@@ -17,50 +17,69 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.role_insights_insight import RoleInsightsInsight
 from sailpoint.beta.models.role_insights_role import RoleInsightsRole
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RoleInsight(BaseModel):
     """
     RoleInsight
     """
-    id: Optional[StrictStr] = Field(None, description="Insight id")
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Insight id")
     number_of_updates: Optional[StrictInt] = Field(
-        None,
-        alias="numberOfUpdates",
-        description="Total number of updates for this role")
+        default=None,
+        description="Total number of updates for this role",
+        alias="numberOfUpdates")
     created_date: Optional[datetime] = Field(
-        None,
-        alias="createdDate",
-        description="The date-time insights were last created for this role.")
+        default=None,
+        description="The date-time insights were last created for this role.",
+        alias="createdDate")
     role: Optional[RoleInsightsRole] = None
     insight: Optional[RoleInsightsInsight] = None
-    __properties = ["id", "numberOfUpdates", "createdDate", "role", "insight"]
+    __properties: ClassVar[List[str]] = [
+        "id", "numberOfUpdates", "createdDate", "role", "insight"
+    ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RoleInsight:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RoleInsight from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of role
         if self.role:
             _dict['role'] = self.role.to_dict()
@@ -70,20 +89,20 @@ class RoleInsight(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RoleInsight:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of RoleInsight from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RoleInsight.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RoleInsight.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
-            "number_of_updates":
+            "numberOfUpdates":
             obj.get("numberOfUpdates"),
-            "created_date":
+            "createdDate":
             obj.get("createdDate"),
             "role":
             RoleInsightsRole.from_dict(obj.get("role"))

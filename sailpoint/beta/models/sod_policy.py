@@ -17,66 +17,73 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr, field_validator
+from pydantic import Field
 from sailpoint.beta.models.owner_dto import OwnerDto
 from sailpoint.beta.models.sod_policy_conflicting_access_criteria import SodPolicyConflictingAccessCriteria
 from sailpoint.beta.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class SodPolicy(BaseModel):
     """
     SodPolicy
     """
-    id: Optional[StrictStr] = Field(None, description="Policy ID.")
-    name: Optional[StrictStr] = Field(None,
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Policy ID.")
+    name: Optional[StrictStr] = Field(default=None,
                                       description="Policy business name.")
     created: Optional[datetime] = Field(
-        None, description="The time when this SOD policy is created.")
+        default=None, description="The time when this SOD policy is created.")
     modified: Optional[datetime] = Field(
-        None, description="The time when this SOD policy is modified.")
+        default=None, description="The time when this SOD policy is modified.")
     description: Optional[StrictStr] = Field(
-        None, description="Optional description of the SOD policy.")
-    owner_ref: Optional[OwnerDto] = Field(None, alias="ownerRef")
+        default=None, description="Optional description of the SOD policy.")
+    owner_ref: Optional[OwnerDto] = Field(default=None, alias="ownerRef")
     external_policy_reference: Optional[StrictStr] = Field(
-        None,
-        alias="externalPolicyReference",
-        description="Optional external policy reference.")
+        default=None,
+        description="Optional external policy reference.",
+        alias="externalPolicyReference")
     policy_query: Optional[StrictStr] = Field(
-        None,
-        alias="policyQuery",
-        description="Search query of the SOD policy.")
+        default=None,
+        description="Search query of the SOD policy.",
+        alias="policyQuery")
     compensating_controls: Optional[StrictStr] = Field(
-        None,
-        alias="compensatingControls",
-        description="Optional compensating controls (Mitigating Controls).")
+        default=None,
+        description="Optional compensating controls (Mitigating Controls).",
+        alias="compensatingControls")
     correction_advice: Optional[StrictStr] = Field(
-        None,
-        alias="correctionAdvice",
-        description="Optional correction advice.")
+        default=None,
+        description="Optional correction advice.",
+        alias="correctionAdvice")
     state: Optional[StrictStr] = Field(
-        None, description="Whether the policy is enforced or not.")
-    tags: Optional[conlist(StrictStr)] = Field(
-        None, description="Tags for the policy object.")
-    creator_id: Optional[StrictStr] = Field(None,
-                                            alias="creatorId",
-                                            description="Policy's creator ID.")
+        default=None, description="Whether the policy is enforced or not.")
+    tags: Optional[List[StrictStr]] = Field(
+        default=None, description="Tags for the policy object.")
+    creator_id: Optional[StrictStr] = Field(default=None,
+                                            description="Policy's creator ID.",
+                                            alias="creatorId")
     modifier_id: Optional[StrictStr] = Field(
-        None, alias="modifierId", description="Policy's modifier ID.")
+        default=None, description="Policy's modifier ID.", alias="modifierId")
     violation_owner_assignment_config: Optional[
         ViolationOwnerAssignmentConfig] = Field(
-            None, alias="violationOwnerAssignmentConfig")
+            default=None, alias="violationOwnerAssignmentConfig")
     scheduled: Optional[StrictBool] = Field(
-        False,
+        default=False,
         description="Defines whether a policy has been scheduled or not.")
     type: Optional[StrictStr] = Field(
-        'GENERAL',
+        default='GENERAL',
         description=
         "Whether a policy is query based or conflicting access based.")
     conflicting_access_criteria: Optional[
         SodPolicyConflictingAccessCriteria] = Field(
-            None, alias="conflictingAccessCriteria")
-    __properties = [
+            default=None, alias="conflictingAccessCriteria")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "created", "modified", "description", "ownerRef",
         "externalPolicyReference", "policyQuery", "compensatingControls",
         "correctionAdvice", "state", "tags", "creatorId", "modifierId",
@@ -84,7 +91,7 @@ class SodPolicy(BaseModel):
         "conflictingAccessCriteria"
     ]
 
-    @validator('state')
+    @field_validator('state')
     def state_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -95,7 +102,7 @@ class SodPolicy(BaseModel):
                 "must be one of enum values ('ENFORCED', 'NOT_ENFORCED')")
         return value
 
-    @validator('type')
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -107,35 +114,48 @@ class SodPolicy(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SodPolicy:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of SodPolicy from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                              "id",
-                              "created",
-                              "modified",
-                              "creator_id",
-                              "modifier_id",
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+                "id",
+                "created",
+                "modified",
+                "creator_id",
+                "modifier_id",
+            },
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of owner_ref
         if self.owner_ref:
             _dict['ownerRef'] = self.owner_ref.to_dict()
@@ -150,42 +170,42 @@ class SodPolicy(BaseModel):
                 'conflictingAccessCriteria'] = self.conflicting_access_criteria.to_dict(
                 )
         # set to None if description (nullable) is None
-        # and __fields_set__ contains the field
-        if self.description is None and "description" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
         # set to None if external_policy_reference (nullable) is None
-        # and __fields_set__ contains the field
-        if self.external_policy_reference is None and "external_policy_reference" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.external_policy_reference is None and "external_policy_reference" in self.model_fields_set:
             _dict['externalPolicyReference'] = None
 
         # set to None if compensating_controls (nullable) is None
-        # and __fields_set__ contains the field
-        if self.compensating_controls is None and "compensating_controls" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.compensating_controls is None and "compensating_controls" in self.model_fields_set:
             _dict['compensatingControls'] = None
 
         # set to None if correction_advice (nullable) is None
-        # and __fields_set__ contains the field
-        if self.correction_advice is None and "correction_advice" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.correction_advice is None and "correction_advice" in self.model_fields_set:
             _dict['correctionAdvice'] = None
 
         # set to None if modifier_id (nullable) is None
-        # and __fields_set__ contains the field
-        if self.modifier_id is None and "modifier_id" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.modifier_id is None and "modifier_id" in self.model_fields_set:
             _dict['modifierId'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SodPolicy:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of SodPolicy from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SodPolicy.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SodPolicy.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -196,26 +216,26 @@ class SodPolicy(BaseModel):
             obj.get("modified"),
             "description":
             obj.get("description"),
-            "owner_ref":
+            "ownerRef":
             OwnerDto.from_dict(obj.get("ownerRef"))
             if obj.get("ownerRef") is not None else None,
-            "external_policy_reference":
+            "externalPolicyReference":
             obj.get("externalPolicyReference"),
-            "policy_query":
+            "policyQuery":
             obj.get("policyQuery"),
-            "compensating_controls":
+            "compensatingControls":
             obj.get("compensatingControls"),
-            "correction_advice":
+            "correctionAdvice":
             obj.get("correctionAdvice"),
             "state":
             obj.get("state"),
             "tags":
             obj.get("tags"),
-            "creator_id":
+            "creatorId":
             obj.get("creatorId"),
-            "modifier_id":
+            "modifierId":
             obj.get("modifierId"),
-            "violation_owner_assignment_config":
+            "violationOwnerAssignmentConfig":
             ViolationOwnerAssignmentConfig.from_dict(
                 obj.get("violationOwnerAssignmentConfig"))
             if obj.get("violationOwnerAssignmentConfig") is not None else None,
@@ -224,7 +244,7 @@ class SodPolicy(BaseModel):
             if obj.get("scheduled") is not None else False,
             "type":
             obj.get("type") if obj.get("type") is not None else 'GENERAL',
-            "conflicting_access_criteria":
+            "conflictingAccessCriteria":
             SodPolicyConflictingAccessCriteria.from_dict(
                 obj.get("conflictingAccessCriteria"))
             if obj.get("conflictingAccessCriteria") is not None else None

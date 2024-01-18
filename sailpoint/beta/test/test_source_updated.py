@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_updated import SourceUpdated  # noqa: E501
+from sailpoint.beta.models.source_updated import SourceUpdated
 
 
 class TestSourceUpdated(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceUpdated(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceUpdated`
         """
-        model = SourceUpdated()  # noqa: E501
+        model = SourceUpdated()
         if include_optional:
             return SourceUpdated(
                 id = '2c9180866166b5b0016167c32ef31a66',

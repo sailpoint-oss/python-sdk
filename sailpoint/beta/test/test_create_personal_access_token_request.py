@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest  # noqa: E501
+from sailpoint.beta.models.create_personal_access_token_request import CreatePersonalAccessTokenRequest
 
 
 class TestCreatePersonalAccessTokenRequest(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestCreatePersonalAccessTokenRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreatePersonalAccessTokenRequest`
         """
-        model = CreatePersonalAccessTokenRequest()  # noqa: E501
+        model = CreatePersonalAccessTokenRequest()
         if include_optional:
             return CreatePersonalAccessTokenRequest(
                 name = 'NodeJS Integration',

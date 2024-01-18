@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.role_bulk_delete_request import RoleBulkDeleteRequest  # noqa: E501
+from sailpoint.v3.models.role_bulk_delete_request import RoleBulkDeleteRequest
 
 
 class TestRoleBulkDeleteRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRoleBulkDeleteRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleBulkDeleteRequest`
         """
-        model = RoleBulkDeleteRequest()  # noqa: E501
+        model = RoleBulkDeleteRequest()
         if include_optional:
             return RoleBulkDeleteRequest(
                 role_ids = [2c9180847812e0b1017817051919ecca, 2c9180887812e0b201781e129f151816]

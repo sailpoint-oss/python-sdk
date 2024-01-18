@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.review_recommendation import ReviewRecommendation  # noqa: E501
+from sailpoint.v3.models.review_recommendation import ReviewRecommendation
 
 
 class TestReviewRecommendation(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReviewRecommendation(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ReviewRecommendation`
         """
-        model = ReviewRecommendation()  # noqa: E501
+        model = ReviewRecommendation()
         if include_optional:
             return ReviewRecommendation(
                 recommendation = '',

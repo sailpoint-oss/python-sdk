@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.admin_review_reassign import AdminReviewReassign  # noqa: E501
+from sailpoint.beta.models.admin_review_reassign import AdminReviewReassign
 
 
 class TestAdminReviewReassign(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAdminReviewReassign(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AdminReviewReassign`
         """
-        model = AdminReviewReassign()  # noqa: E501
+        model = AdminReviewReassign()
         if include_optional:
             return AdminReviewReassign(
                 certification_ids = [af3859464779471211bb8424a563abc1, af3859464779471211bb8424a563abc2, af3859464779471211bb8424a563abc3],

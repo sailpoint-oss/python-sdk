@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.approval_info_response import ApprovalInfoResponse  # noqa: E501
+from sailpoint.beta.models.approval_info_response import ApprovalInfoResponse
 
 
 class TestApprovalInfoResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestApprovalInfoResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ApprovalInfoResponse`
         """
-        model = ApprovalInfoResponse()  # noqa: E501
+        model = ApprovalInfoResponse()
         if include_optional:
             return ApprovalInfoResponse(
                 id = '8a80828f643d484f01643e14202e2000',

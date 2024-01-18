@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.triggers_api import TriggersApi  # noqa: E501
+from sailpoint.beta.api.triggers_api import TriggersApi
 
 
 class TestTriggersApi(unittest.TestCase):
     """TriggersApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = TriggersApi()  # noqa: E501
+        self.api = TriggersApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,70 +28,70 @@ class TestTriggersApi(unittest.TestCase):
     def test_complete_trigger_invocation(self) -> None:
         """Test case for complete_trigger_invocation
 
-        Complete Trigger Invocation  # noqa: E501
+        Complete Trigger Invocation
         """
         pass
 
     def test_create_subscription(self) -> None:
         """Test case for create_subscription
 
-        Create a Subscription  # noqa: E501
+        Create a Subscription
         """
         pass
 
     def test_delete_subscription(self) -> None:
         """Test case for delete_subscription
 
-        Delete a Subscription  # noqa: E501
+        Delete a Subscription
         """
         pass
 
     def test_list_subscriptions(self) -> None:
         """Test case for list_subscriptions
 
-        List Subscriptions  # noqa: E501
+        List Subscriptions
         """
         pass
 
     def test_list_trigger_invocation_status(self) -> None:
         """Test case for list_trigger_invocation_status
 
-        List Latest Invocation Statuses  # noqa: E501
+        List Latest Invocation Statuses
         """
         pass
 
     def test_list_triggers(self) -> None:
         """Test case for list_triggers
 
-        List Triggers  # noqa: E501
+        List Triggers
         """
         pass
 
     def test_patch_subscription(self) -> None:
         """Test case for patch_subscription
 
-        Patch a Subscription  # noqa: E501
+        Patch a Subscription
         """
         pass
 
     def test_start_test_trigger_invocation(self) -> None:
         """Test case for start_test_trigger_invocation
 
-        Start a Test Invocation  # noqa: E501
+        Start a Test Invocation
         """
         pass
 
     def test_test_subscription_filter(self) -> None:
         """Test case for test_subscription_filter
 
-        Validate a Subscription Filter  # noqa: E501
+        Validate a Subscription Filter
         """
         pass
 
     def test_update_subscription(self) -> None:
         """Test case for update_subscription
 
-        Update a Subscription  # noqa: E501
+        Update a Subscription
         """
         pass
 

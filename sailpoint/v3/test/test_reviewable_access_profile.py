@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.reviewable_access_profile import ReviewableAccessProfile  # noqa: E501
+from sailpoint.v3.models.reviewable_access_profile import ReviewableAccessProfile
 
 
 class TestReviewableAccessProfile(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReviewableAccessProfile(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ReviewableAccessProfile`
         """
-        model = ReviewableAccessProfile()  # noqa: E501
+        model = ReviewableAccessProfile()
         if include_optional:
             return ReviewableAccessProfile(
                 id = '2c91808a7190d06e01719938fcd20792',
@@ -89,7 +89,11 @@ class TestReviewableAccessProfile(unittest.TestCase):
                             id = '2c9180857182305e0171993737eb29e6', 
                             name = 'Alison Ferguso', 
                             created = '2020-04-20T20:11:05.067Z', 
-                            modified = '2020-05-20T18:57:16.987Z', ), )
+                            modified = '2020-05-20T18:57:16.987Z', 
+                            activity_insights = sailpoint.v3.models.activity_insights.ActivityInsights(
+                                account_id = 'c4ddd5421d8549f0abd309162cafd3b1', 
+                                usage_days = 45, 
+                                usage_days_state = 'COMPLETE', ), ), )
                     ],
                 created = '2021-01-01T22:32:58.104Z',
                 modified = '2021-02-01T22:32:58.104Z'

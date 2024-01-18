@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.password_digit_token_reset import PasswordDigitTokenReset  # noqa: E501
+from sailpoint.beta.models.password_digit_token_reset import PasswordDigitTokenReset
 
 
 class TestPasswordDigitTokenReset(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPasswordDigitTokenReset(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PasswordDigitTokenReset`
         """
-        model = PasswordDigitTokenReset()  # noqa: E501
+        model = PasswordDigitTokenReset()
         if include_optional:
             return PasswordDigitTokenReset(
                 user_id = 'Abby.Smith',

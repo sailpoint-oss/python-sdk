@@ -17,111 +17,123 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Dict, Optional
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class NonEmployeeRecord(BaseModel):
     """
     NonEmployeeRecord
     """
-    id: Optional[StrictStr] = Field(None,
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
                                     description="Non-Employee record id.")
     account_name: Optional[StrictStr] = Field(
-        None,
-        alias="accountName",
-        description="Requested identity account name.")
+        default=None,
+        description="Requested identity account name.",
+        alias="accountName")
     first_name: Optional[StrictStr] = Field(
-        None, alias="firstName", description="Non-Employee's first name.")
+        default=None,
+        description="Non-Employee's first name.",
+        alias="firstName")
     last_name: Optional[StrictStr] = Field(
-        None, alias="lastName", description="Non-Employee's last name.")
-    email: Optional[StrictStr] = Field(None,
+        default=None,
+        description="Non-Employee's last name.",
+        alias="lastName")
+    email: Optional[StrictStr] = Field(default=None,
                                        description="Non-Employee's email.")
-    phone: Optional[StrictStr] = Field(None,
+    phone: Optional[StrictStr] = Field(default=None,
                                        description="Non-Employee's phone.")
     manager: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "The account ID of a valid identity to serve as this non-employee's manager."
     )
     source_id: Optional[StrictStr] = Field(
-        None, alias="sourceId", description="Non-Employee's source id.")
+        default=None,
+        description="Non-Employee's source id.",
+        alias="sourceId")
     data: Optional[Dict[str, StrictStr]] = Field(
-        None, description="Attribute blob/bag for a non-employee.")
+        default=None, description="Attribute blob/bag for a non-employee.")
     start_date: Optional[datetime] = Field(
-        None,
-        alias="startDate",
-        description="Non-Employee employment start date.")
+        default=None,
+        description="Non-Employee employment start date.",
+        alias="startDate")
     end_date: Optional[datetime] = Field(
-        None, alias="endDate", description="Non-Employee employment end date.")
+        default=None,
+        description="Non-Employee employment end date.",
+        alias="endDate")
     modified: Optional[datetime] = Field(
-        None, description="When the request was last modified.")
+        default=None, description="When the request was last modified.")
     created: Optional[datetime] = Field(
-        None, description="When the request was created.")
-    __properties = [
+        default=None, description="When the request was created.")
+    __properties: ClassVar[List[str]] = [
         "id", "accountName", "firstName", "lastName", "email", "phone",
         "manager", "sourceId", "data", "startDate", "endDate", "modified",
         "created"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> NonEmployeeRecord:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of NonEmployeeRecord from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> NonEmployeeRecord:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of NonEmployeeRecord from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return NonEmployeeRecord.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = NonEmployeeRecord.parse_obj({
-            "id":
-            obj.get("id"),
-            "account_name":
-            obj.get("accountName"),
-            "first_name":
-            obj.get("firstName"),
-            "last_name":
-            obj.get("lastName"),
-            "email":
-            obj.get("email"),
-            "phone":
-            obj.get("phone"),
-            "manager":
-            obj.get("manager"),
-            "source_id":
-            obj.get("sourceId"),
-            "data":
-            obj.get("data"),
-            "start_date":
-            obj.get("startDate"),
-            "end_date":
-            obj.get("endDate"),
-            "modified":
-            obj.get("modified"),
-            "created":
-            obj.get("created")
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "accountName": obj.get("accountName"),
+            "firstName": obj.get("firstName"),
+            "lastName": obj.get("lastName"),
+            "email": obj.get("email"),
+            "phone": obj.get("phone"),
+            "manager": obj.get("manager"),
+            "sourceId": obj.get("sourceId"),
+            "data": obj.get("data"),
+            "startDate": obj.get("startDate"),
+            "endDate": obj.get("endDate"),
+            "modified": obj.get("modified"),
+            "created": obj.get("created")
         })
         return _obj

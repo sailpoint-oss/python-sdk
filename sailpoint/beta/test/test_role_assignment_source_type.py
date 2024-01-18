@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_assignment_source_type import RoleAssignmentSourceType  # noqa: E501
+from sailpoint.beta.models.role_assignment_source_type import RoleAssignmentSourceType
 
 
 class TestRoleAssignmentSourceType(unittest.TestCase):

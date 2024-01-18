@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.account_activity_searched_item import AccountActivitySearchedItem  # noqa: E501
+from sailpoint.v3.models.account_activity_searched_item import AccountActivitySearchedItem
 
 
 class TestAccountActivitySearchedItem(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountActivitySearchedItem(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountActivitySearchedItem`
         """
-        model = AccountActivitySearchedItem()  # noqa: E501
+        model = AccountActivitySearchedItem()
         if include_optional:
             return AccountActivitySearchedItem(
                 id = '2c91808375d8e80a0175e1f88a575222',

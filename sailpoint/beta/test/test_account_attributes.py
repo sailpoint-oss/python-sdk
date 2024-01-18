@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_attributes import AccountAttributes  # noqa: E501
+from sailpoint.beta.models.account_attributes import AccountAttributes
 
 
 class TestAccountAttributes(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountAttributes(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountAttributes`
         """
-        model = AccountAttributes()  # noqa: E501
+        model = AccountAttributes()
         if include_optional:
             return AccountAttributes(
                 attributes = {city=Austin, displayName=John Doe, userName=jdoe, sAMAccountName=jDoe, mail=john.doe@sailpoint.com}

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.saved_search_complete_search_results_entitlement import SavedSearchCompleteSearchResultsEntitlement  # noqa: E501
+from sailpoint.beta.models.saved_search_complete_search_results_entitlement import SavedSearchCompleteSearchResultsEntitlement
 
 
 class TestSavedSearchCompleteSearchResultsEntitlement(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestSavedSearchCompleteSearchResultsEntitlement(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SavedSearchCompleteSearchResultsEntitlement`
         """
-        model = SavedSearchCompleteSearchResultsEntitlement()  # noqa: E501
+        model = SavedSearchCompleteSearchResultsEntitlement()
         if include_optional:
             return SavedSearchCompleteSearchResultsEntitlement(
                 count = '2',

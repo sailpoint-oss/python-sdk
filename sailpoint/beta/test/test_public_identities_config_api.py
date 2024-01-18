@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.public_identities_config_api import PublicIdentitiesConfigApi  # noqa: E501
+from sailpoint.beta.api.public_identities_config_api import PublicIdentitiesConfigApi
 
 
 class TestPublicIdentitiesConfigApi(unittest.TestCase):
     """PublicIdentitiesConfigApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = PublicIdentitiesConfigApi()  # noqa: E501
+        self.api = PublicIdentitiesConfigApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,14 +28,14 @@ class TestPublicIdentitiesConfigApi(unittest.TestCase):
     def test_get_public_identity_config(self) -> None:
         """Test case for get_public_identity_config
 
-        Get Public Identity Config  # noqa: E501
+        Get Public Identity Config
         """
         pass
 
     def test_update_public_identity_config(self) -> None:
         """Test case for update_public_identity_config
 
-        Update Public Identity Config  # noqa: E501
+        Update Public Identity Config
         """
         pass
 

@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.source_usages_api import SourceUsagesApi  # noqa: E501
+from sailpoint.beta.api.source_usages_api import SourceUsagesApi
 
 
 class TestSourceUsagesApi(unittest.TestCase):
     """SourceUsagesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SourceUsagesApi()  # noqa: E501
+        self.api = SourceUsagesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,14 +28,14 @@ class TestSourceUsagesApi(unittest.TestCase):
     def test_get_status_by_source_id(self) -> None:
         """Test case for get_status_by_source_id
 
-        Finds status of source usage  # noqa: E501
+        Finds status of source usage
         """
         pass
 
     def test_get_usages_by_source_id(self) -> None:
         """Test case for get_usages_by_source_id
 
-        Returns source usage insights  # noqa: E501
+        Returns source usage insights
         """
         pass
 

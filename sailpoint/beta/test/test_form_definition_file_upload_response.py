@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_definition_file_upload_response import FormDefinitionFileUploadResponse  # noqa: E501
+from sailpoint.beta.models.form_definition_file_upload_response import FormDefinitionFileUploadResponse
 
 
 class TestFormDefinitionFileUploadResponse(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestFormDefinitionFileUploadResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormDefinitionFileUploadResponse`
         """
-        model = FormDefinitionFileUploadResponse()  # noqa: E501
+        model = FormDefinitionFileUploadResponse()
         if include_optional:
             return FormDefinitionFileUploadResponse(
                 created = '2023-07-12T20:14:57.74486Z',

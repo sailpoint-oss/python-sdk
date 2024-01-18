@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.processing_details import ProcessingDetails  # noqa: E501
+from sailpoint.v3.models.processing_details import ProcessingDetails
 
 
 class TestProcessingDetails(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestProcessingDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ProcessingDetails`
         """
-        model = ProcessingDetails()  # noqa: E501
+        model = ProcessingDetails()
         if include_optional:
             return ProcessingDetails(
                 var_date = '2018-06-25T20:22:28.104Z',

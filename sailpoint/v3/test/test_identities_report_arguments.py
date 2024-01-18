@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identities_report_arguments import IdentitiesReportArguments  # noqa: E501
+from sailpoint.v3.models.identities_report_arguments import IdentitiesReportArguments
 
 
 class TestIdentitiesReportArguments(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentitiesReportArguments(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentitiesReportArguments`
         """
-        model = IdentitiesReportArguments()  # noqa: E501
+        model = IdentitiesReportArguments()
         if include_optional:
             return IdentitiesReportArguments(
                 correlated_only = True,

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.filter_aggregation import FilterAggregation  # noqa: E501
+from sailpoint.v3.models.filter_aggregation import FilterAggregation
 
 
 class TestFilterAggregation(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFilterAggregation(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FilterAggregation`
         """
-        model = FilterAggregation()  # noqa: E501
+        model = FilterAggregation()
         if include_optional:
             return FilterAggregation(
                 name = 'Entitlements',

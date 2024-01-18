@@ -16,48 +16,65 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel
+from pydantic import Field
 from sailpoint.beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
 from sailpoint.beta.models.import_form_definitions202_response_errors_inner import ImportFormDefinitions202ResponseErrorsInner
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ImportFormDefinitions202Response(BaseModel):
     """
     ImportFormDefinitions202Response
     """
-    errors: Optional[conlist(
-        ImportFormDefinitions202ResponseErrorsInner)] = None
-    imported_objects: Optional[conlist(
-        ExportFormDefinitionsByTenant200ResponseInner)] = Field(
-            None, alias="importedObjects")
-    infos: Optional[conlist(
-        ImportFormDefinitions202ResponseErrorsInner)] = None
-    warnings: Optional[conlist(
-        ImportFormDefinitions202ResponseErrorsInner)] = None
-    __properties = ["errors", "importedObjects", "infos", "warnings"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+  # noqa: E501
+    errors: Optional[List[ImportFormDefinitions202ResponseErrorsInner]] = None
+    imported_objects: Optional[
+        List[ExportFormDefinitionsByTenant200ResponseInner]] = Field(
+            default=None, alias="importedObjects")
+    infos: Optional[List[ImportFormDefinitions202ResponseErrorsInner]] = None
+    warnings: Optional[
+        List[ImportFormDefinitions202ResponseErrorsInner]] = None
+    __properties: ClassVar[List[str]] = [
+        "errors", "importedObjects", "infos", "warnings"
+    ]
+
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ImportFormDefinitions202Response:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ImportFormDefinitions202Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in errors (list)
         _items = []
         if self.errors:
@@ -89,20 +106,20 @@ class ImportFormDefinitions202Response(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ImportFormDefinitions202Response:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ImportFormDefinitions202Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ImportFormDefinitions202Response.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ImportFormDefinitions202Response.parse_obj({
+        _obj = cls.model_validate({
             "errors": [
                 ImportFormDefinitions202ResponseErrorsInner.from_dict(_item)
                 for _item in obj.get("errors")
             ] if obj.get("errors") is not None else None,
-            "imported_objects": [
+            "importedObjects": [
                 ExportFormDefinitionsByTenant200ResponseInner.from_dict(_item)
                 for _item in obj.get("importedObjects")
             ] if obj.get("importedObjects") is not None else None,

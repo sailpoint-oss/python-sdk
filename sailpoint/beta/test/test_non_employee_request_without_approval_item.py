@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.non_employee_request_without_approval_item import NonEmployeeRequestWithoutApprovalItem  # noqa: E501
+from sailpoint.beta.models.non_employee_request_without_approval_item import NonEmployeeRequestWithoutApprovalItem
 
 
 class TestNonEmployeeRequestWithoutApprovalItem(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestNonEmployeeRequestWithoutApprovalItem(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeRequestWithoutApprovalItem`
         """
-        model = NonEmployeeRequestWithoutApprovalItem()  # noqa: E501
+        model = NonEmployeeRequestWithoutApprovalItem()
         if include_optional:
             return NonEmployeeRequestWithoutApprovalItem(
                 id = '',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.certification_decision import CertificationDecision  # noqa: E501
+from sailpoint.v3.models.certification_decision import CertificationDecision
 
 
 class TestCertificationDecision(unittest.TestCase):

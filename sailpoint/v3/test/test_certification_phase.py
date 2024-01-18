@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.certification_phase import CertificationPhase  # noqa: E501
+from sailpoint.v3.models.certification_phase import CertificationPhase
 
 
 class TestCertificationPhase(unittest.TestCase):

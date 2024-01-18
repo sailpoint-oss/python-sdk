@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.connector_rule_validation_response_details_inner import ConnectorRuleValidationResponseDetailsInner  # noqa: E501
+from sailpoint.beta.models.connector_rule_validation_response_details_inner import ConnectorRuleValidationResponseDetailsInner
 
 
 class TestConnectorRuleValidationResponseDetailsInner(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestConnectorRuleValidationResponseDetailsInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConnectorRuleValidationResponseDetailsInner`
         """
-        model = ConnectorRuleValidationResponseDetailsInner()  # noqa: E501
+        model = ConnectorRuleValidationResponseDetailsInner()
         if include_optional:
             return ConnectorRuleValidationResponseDetailsInner(
                 line = 2,

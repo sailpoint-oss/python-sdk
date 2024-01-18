@@ -16,53 +16,71 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.role_criteria_key import RoleCriteriaKey
 from sailpoint.v3.models.role_criteria_level2 import RoleCriteriaLevel2
 from sailpoint.v3.models.role_criteria_operation import RoleCriteriaOperation
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RoleCriteriaLevel1(BaseModel):
     """
-    Defines STANDARD type Role membership  # noqa: E501
+    Defines STANDARD type Role membership
     """
+
+  # noqa: E501
     operation: Optional[RoleCriteriaOperation] = None
     key: Optional[RoleCriteriaKey] = None
     string_value: Optional[StrictStr] = Field(
-        None,
-        alias="stringValue",
+        default=None,
         description=
-        "String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error."
-    )
-    children: Optional[conlist(RoleCriteriaLevel2)] = Field(
-        None,
+        "String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.",
+        alias="stringValue")
+    children: Optional[List[RoleCriteriaLevel2]] = Field(
+        default=None,
         description=
         "Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes. Additionally, AND nodes can only be children or OR nodes and vice-versa."
     )
-    __properties = ["operation", "key", "stringValue", "children"]
+    __properties: ClassVar[List[str]] = [
+        "operation", "key", "stringValue", "children"
+    ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RoleCriteriaLevel1:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RoleCriteriaLevel1 from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of key
         if self.key:
             _dict['key'] = self.key.to_dict()
@@ -74,38 +92,38 @@ class RoleCriteriaLevel1(BaseModel):
                     _items.append(_item.to_dict())
             _dict['children'] = _items
         # set to None if key (nullable) is None
-        # and __fields_set__ contains the field
-        if self.key is None and "key" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.key is None and "key" in self.model_fields_set:
             _dict['key'] = None
 
         # set to None if string_value (nullable) is None
-        # and __fields_set__ contains the field
-        if self.string_value is None and "string_value" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.string_value is None and "string_value" in self.model_fields_set:
             _dict['stringValue'] = None
 
         # set to None if children (nullable) is None
-        # and __fields_set__ contains the field
-        if self.children is None and "children" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.children is None and "children" in self.model_fields_set:
             _dict['children'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RoleCriteriaLevel1:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of RoleCriteriaLevel1 from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RoleCriteriaLevel1.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RoleCriteriaLevel1.parse_obj({
+        _obj = cls.model_validate({
             "operation":
             obj.get("operation"),
             "key":
             RoleCriteriaKey.from_dict(obj.get("key"))
             if obj.get("key") is not None else None,
-            "string_value":
+            "stringValue":
             obj.get("stringValue"),
             "children": [
                 RoleCriteriaLevel2.from_dict(_item)

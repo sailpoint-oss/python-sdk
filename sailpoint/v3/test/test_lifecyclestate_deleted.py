@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.lifecyclestate_deleted import LifecyclestateDeleted  # noqa: E501
+from sailpoint.v3.models.lifecyclestate_deleted import LifecyclestateDeleted
 
 
 class TestLifecyclestateDeleted(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestLifecyclestateDeleted(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `LifecyclestateDeleted`
         """
-        model = LifecyclestateDeleted()  # noqa: E501
+        model = LifecyclestateDeleted()
         if include_optional:
             return LifecyclestateDeleted(
                 type = 'LIFECYCLE_STATE',

@@ -16,87 +16,107 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.entity_created_by_dto import EntityCreatedByDTO
 from sailpoint.beta.models.role_mining_identity_distribution import RoleMiningIdentityDistribution
 from sailpoint.beta.models.role_mining_potential_role_provision_state import RoleMiningPotentialRoleProvisionState
 from sailpoint.beta.models.role_mining_role_type import RoleMiningRoleType
 from sailpoint.beta.models.role_mining_session_parameters_dto import RoleMiningSessionParametersDto
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RoleMiningPotentialRole(BaseModel):
     """
     RoleMiningPotentialRole
     """
-    created_by: Optional[EntityCreatedByDTO] = Field(None, alias="createdBy")
+
+  # noqa: E501
+    created_by: Optional[EntityCreatedByDTO] = Field(default=None,
+                                                     alias="createdBy")
     density: Optional[StrictInt] = Field(
-        None, description="The density of a potential role.")
+        default=None, description="The density of a potential role.")
     description: Optional[StrictStr] = Field(
-        None, description="The description of a potential role.")
+        default=None, description="The description of a potential role.")
     entitlement_count: Optional[StrictInt] = Field(
-        None,
-        alias="entitlementCount",
-        description="The number of entitlements in a potential role.")
-    excluded_entitlements: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="excludedEntitlements",
-        description="The list of entitlement ids to be excluded.")
+        default=None,
+        description="The number of entitlements in a potential role.",
+        alias="entitlementCount")
+    excluded_entitlements: Optional[List[StrictStr]] = Field(
+        default=None,
+        description="The list of entitlement ids to be excluded.",
+        alias="excludedEntitlements")
     freshness: Optional[StrictInt] = Field(
-        None, description="The freshness of a potential role.")
+        default=None, description="The freshness of a potential role.")
     identity_count: Optional[StrictInt] = Field(
-        None,
-        alias="identityCount",
-        description="The number of identities in a potential role.")
-    identity_distribution: Optional[conlist(
-        RoleMiningIdentityDistribution)] = Field(
-            None,
-            alias="identityDistribution",
-            description="Identity attribute distribution.")
-    identity_ids: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="identityIds",
-        description="The list of ids in a potential role.")
+        default=None,
+        description="The number of identities in a potential role.",
+        alias="identityCount")
+    identity_distribution: Optional[
+        List[RoleMiningIdentityDistribution]] = Field(
+            default=None,
+            description="Identity attribute distribution.",
+            alias="identityDistribution")
+    identity_ids: Optional[List[StrictStr]] = Field(
+        default=None,
+        description="The list of ids in a potential role.",
+        alias="identityIds")
     name: Optional[StrictStr] = Field(
-        None, description="Name of the potential role.")
+        default=None, description="Name of the potential role.")
     provision_state: Optional[RoleMiningPotentialRoleProvisionState] = Field(
-        None, alias="provisionState")
+        default=None, alias="provisionState")
     quality: Optional[StrictInt] = Field(
-        None, description="The quality of a potential role.")
+        default=None, description="The quality of a potential role.")
     role_id: Optional[StrictStr] = Field(
-        None, alias="roleId", description="The roleId of a potential role.")
+        default=None,
+        description="The roleId of a potential role.",
+        alias="roleId")
     saved: Optional[StrictBool] = Field(
-        None, description="The potential role's saved status.")
+        default=None, description="The potential role's saved status.")
     session: Optional[RoleMiningSessionParametersDto] = None
     type: Optional[RoleMiningRoleType] = None
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "createdBy", "density", "description", "entitlementCount",
         "excludedEntitlements", "freshness", "identityCount",
         "identityDistribution", "identityIds", "name", "provisionState",
         "quality", "roleId", "saved", "session", "type"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RoleMiningPotentialRole:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RoleMiningPotentialRole from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
             _dict['createdBy'] = self.created_by.to_dict()
@@ -113,43 +133,43 @@ class RoleMiningPotentialRole(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RoleMiningPotentialRole:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of RoleMiningPotentialRole from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RoleMiningPotentialRole.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RoleMiningPotentialRole.parse_obj({
-            "created_by":
+        _obj = cls.model_validate({
+            "createdBy":
             EntityCreatedByDTO.from_dict(obj.get("createdBy"))
             if obj.get("createdBy") is not None else None,
             "density":
             obj.get("density"),
             "description":
             obj.get("description"),
-            "entitlement_count":
+            "entitlementCount":
             obj.get("entitlementCount"),
-            "excluded_entitlements":
+            "excludedEntitlements":
             obj.get("excludedEntitlements"),
             "freshness":
             obj.get("freshness"),
-            "identity_count":
+            "identityCount":
             obj.get("identityCount"),
-            "identity_distribution": [
+            "identityDistribution": [
                 RoleMiningIdentityDistribution.from_dict(_item)
                 for _item in obj.get("identityDistribution")
             ] if obj.get("identityDistribution") is not None else None,
-            "identity_ids":
+            "identityIds":
             obj.get("identityIds"),
             "name":
             obj.get("name"),
-            "provision_state":
+            "provisionState":
             obj.get("provisionState"),
             "quality":
             obj.get("quality"),
-            "role_id":
+            "roleId":
             obj.get("roleId"),
             "saved":
             obj.get("saved"),

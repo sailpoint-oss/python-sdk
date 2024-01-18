@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.schedule_hours import ScheduleHours  # noqa: E501
+from sailpoint.v3.models.schedule_hours import ScheduleHours
 
 
 class TestScheduleHours(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestScheduleHours(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ScheduleHours`
         """
-        model = ScheduleHours()  # noqa: E501
+        model = ScheduleHours()
         if include_optional:
             return ScheduleHours(
                 type = 'LIST',

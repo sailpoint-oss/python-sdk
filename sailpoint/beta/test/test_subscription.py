@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.subscription import Subscription  # noqa: E501
+from sailpoint.beta.models.subscription import Subscription
 
 
 class TestSubscription(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSubscription(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Subscription`
         """
-        model = Subscription()  # noqa: E501
+        model = Subscription()
         if include_optional:
             return Subscription(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **name** | **str** | The account name | [optional] 
 **created** | **datetime** | When the account was created | [optional] 
 **modified** | **datetime** | When the account was last modified | [optional] 
+**activity_insights** | [**ActivityInsights**](ActivityInsights.md) |  | [optional] 
 
 ## Example
 

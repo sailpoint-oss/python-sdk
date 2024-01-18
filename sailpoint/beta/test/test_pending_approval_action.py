@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.pending_approval_action import PendingApprovalAction  # noqa: E501
+from sailpoint.beta.models.pending_approval_action import PendingApprovalAction
 
 
 class TestPendingApprovalAction(unittest.TestCase):

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.condition_effect_config import ConditionEffectConfig  # noqa: E501
+from sailpoint.beta.models.condition_effect_config import ConditionEffectConfig
 
 
 class TestConditionEffectConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestConditionEffectConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConditionEffectConfig`
         """
-        model = ConditionEffectConfig()  # noqa: E501
+        model = ConditionEffectConfig()
         if include_optional:
             return ConditionEffectConfig(
                 default_value_label = 'Access to Remove',

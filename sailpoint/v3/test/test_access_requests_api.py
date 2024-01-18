@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.access_requests_api import AccessRequestsApi  # noqa: E501
+from sailpoint.v3.api.access_requests_api import AccessRequestsApi
 
 
 class TestAccessRequestsApi(unittest.TestCase):
     """AccessRequestsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = AccessRequestsApi()  # noqa: E501
+        self.api = AccessRequestsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,35 +28,35 @@ class TestAccessRequestsApi(unittest.TestCase):
     def test_cancel_access_request(self) -> None:
         """Test case for cancel_access_request
 
-        Cancel Access Request  # noqa: E501
+        Cancel Access Request
         """
         pass
 
     def test_create_access_request(self) -> None:
         """Test case for create_access_request
 
-        Submit an Access Request  # noqa: E501
+        Submit an Access Request
         """
         pass
 
     def test_get_access_request_config(self) -> None:
         """Test case for get_access_request_config
 
-        Get Access Request Configuration  # noqa: E501
+        Get Access Request Configuration
         """
         pass
 
     def test_list_access_request_status(self) -> None:
         """Test case for list_access_request_status
 
-        Access Request Status  # noqa: E501
+        Access Request Status
         """
         pass
 
     def test_set_access_request_config(self) -> None:
         """Test case for set_access_request_config
 
-        Update Access Request Configuration  # noqa: E501
+        Update Access Request Configuration
         """
         pass
 

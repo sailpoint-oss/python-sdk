@@ -16,75 +16,92 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class DomainStatusDto(BaseModel):
     """
-    Domain status DTO containing everything required to verify via DKIM  # noqa: E501
-    """
+    Domain status DTO containing everything required to verify via DKIM
+    """ # noqa: E501
     id: Optional[StrictStr] = Field(
-        None, description="New UUID associated with domain to be verified")
-    domain: Optional[StrictStr] = Field(None, description="A domain address")
-    dkim_enabled: Optional[Dict[str, Any]] = Field(
-        None,
-        alias="dkimEnabled",
-        description="DKIM is enabled for this domain")
-    dkim_tokens: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="dkimTokens",
-        description="DKIM tokens required for authentication")
+        default=None,
+        description="New UUID associated with domain to be verified")
+    domain: Optional[StrictStr] = Field(default=None,
+                                        description="A domain address")
+    dkim_enabled: Optional[Union[str, Any]] = Field(
+        default=None,
+        description="DKIM is enabled for this domain",
+        alias="dkimEnabled")
+    dkim_tokens: Optional[List[StrictStr]] = Field(
+        default=None,
+        description="DKIM tokens required for authentication",
+        alias="dkimTokens")
     dkim_verification_status: Optional[StrictStr] = Field(
-        None,
-        alias="dkimVerificationStatus",
-        description="Status of DKIM authentication")
-    __properties = [
+        default=None,
+        description="Status of DKIM authentication",
+        alias="dkimVerificationStatus")
+    __properties: ClassVar[List[str]] = [
         "id", "domain", "dkimEnabled", "dkimTokens", "dkimVerificationStatus"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> DomainStatusDto:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of DomainStatusDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> DomainStatusDto:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of DomainStatusDto from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return DomainStatusDto.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = DomainStatusDto.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "domain":
             obj.get("domain"),
-            "dkim_enabled":
+            "dkimEnabled":
             obj.get("dkimEnabled"),
-            "dkim_tokens":
+            "dkimTokens":
             obj.get("dkimTokens"),
-            "dkim_verification_status":
+            "dkimVerificationStatus":
             obj.get("dkimVerificationStatus")
         })
         return _obj

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.correlated_governance_event import CorrelatedGovernanceEvent  # noqa: E501
+from sailpoint.beta.models.correlated_governance_event import CorrelatedGovernanceEvent
 
 
 class TestCorrelatedGovernanceEvent(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCorrelatedGovernanceEvent(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CorrelatedGovernanceEvent`
         """
-        model = CorrelatedGovernanceEvent()  # noqa: E501
+        model = CorrelatedGovernanceEvent()
         if include_optional:
             return CorrelatedGovernanceEvent(
                 name = 'Manager Certification for Jon Snow',

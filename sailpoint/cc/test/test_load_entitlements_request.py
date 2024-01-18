@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.load_entitlements_request import LoadEntitlementsRequest  # noqa: E501
+from sailpoint.cc.models.load_entitlements_request import LoadEntitlementsRequest
 
 
 class TestLoadEntitlementsRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestLoadEntitlementsRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `LoadEntitlementsRequest`
         """
-        model = LoadEntitlementsRequest()  # noqa: E501
+        model = LoadEntitlementsRequest()
         if include_optional:
             return LoadEntitlementsRequest(
                 file = bytes(b'blah')

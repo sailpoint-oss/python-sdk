@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_attribute_names import IdentityAttributeNames  # noqa: E501
+from sailpoint.beta.models.identity_attribute_names import IdentityAttributeNames
 
 
 class TestIdentityAttributeNames(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityAttributeNames(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityAttributeNames`
         """
-        model = IdentityAttributeNames()  # noqa: E501
+        model = IdentityAttributeNames()
         if include_optional:
             return IdentityAttributeNames(
                 ids = [name, displayName]

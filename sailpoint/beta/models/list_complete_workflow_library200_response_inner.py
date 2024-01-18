@@ -18,12 +18,17 @@ import pprint
 import re  # noqa: F401
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
+from pydantic import BaseModel, Field, StrictStr, ValidationError, field_validator
 from sailpoint.beta.models.workflow_library_action import WorkflowLibraryAction
 from sailpoint.beta.models.workflow_library_operator import WorkflowLibraryOperator
 from sailpoint.beta.models.workflow_library_trigger import WorkflowLibraryTrigger
-from typing import Union, Any, List, TYPE_CHECKING
+from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
+from typing_extensions import Literal
 from pydantic import StrictStr, Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 LISTCOMPLETEWORKFLOWLIBRARY200RESPONSEINNER_ANY_OF_SCHEMAS = [
     "WorkflowLibraryAction", "WorkflowLibraryOperator",
@@ -43,15 +48,15 @@ class ListCompleteWorkflowLibrary200ResponseInner(BaseModel):
     # data type: WorkflowLibraryOperator
     anyof_schema_3_validator: Optional[WorkflowLibraryOperator] = None
     if TYPE_CHECKING:
-        actual_instance: Union[WorkflowLibraryAction, WorkflowLibraryOperator,
-                               WorkflowLibraryTrigger]
+        actual_instance: Optional[Union[WorkflowLibraryAction,
+                                        WorkflowLibraryOperator,
+                                        WorkflowLibraryTrigger]] = None
     else:
-        actual_instance: Any
-    any_of_schemas: List[str] = Field(
-        LISTCOMPLETEWORKFLOWLIBRARY200RESPONSEINNER_ANY_OF_SCHEMAS, const=True)
+        actual_instance: Any = None
+    any_of_schemas: List[str] = Literal[
+        LISTCOMPLETEWORKFLOWLIBRARY200RESPONSEINNER_ANY_OF_SCHEMAS]
 
-    class Config:
-        validate_assignment = True
+    model_config = {"validate_assignment": True}
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -67,9 +72,10 @@ class ListCompleteWorkflowLibrary200ResponseInner(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
     def actual_instance_must_validate_anyof(cls, v):
-        instance = ListCompleteWorkflowLibrary200ResponseInner.construct()
+        instance = ListCompleteWorkflowLibrary200ResponseInner.model_construct(
+        )
         error_messages = []
         # validate data type: WorkflowLibraryAction
         if not isinstance(v, WorkflowLibraryAction):
@@ -104,15 +110,13 @@ class ListCompleteWorkflowLibrary200ResponseInner(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls,
-                  obj: dict) -> ListCompleteWorkflowLibrary200ResponseInner:
+    def from_dict(cls, obj: dict) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(
-            cls, json_str: str) -> ListCompleteWorkflowLibrary200ResponseInner:
+    def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
-        instance = ListCompleteWorkflowLibrary200ResponseInner.construct()
+        instance = cls.model_construct()
         error_messages = []
         # anyof_schema_1_validator: Optional[WorkflowLibraryAction] = None
         try:
@@ -155,7 +159,7 @@ class ListCompleteWorkflowLibrary200ResponseInner(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> Dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return "null"
@@ -168,4 +172,4 @@ class ListCompleteWorkflowLibrary200ResponseInner(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.dict())
+        return pprint.pformat(self.model_dump())

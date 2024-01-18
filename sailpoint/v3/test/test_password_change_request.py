@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.password_change_request import PasswordChangeRequest  # noqa: E501
+from sailpoint.v3.models.password_change_request import PasswordChangeRequest
 
 
 class TestPasswordChangeRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPasswordChangeRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PasswordChangeRequest`
         """
-        model = PasswordChangeRequest()  # noqa: E501
+        model = PasswordChangeRequest()
         if include_optional:
             return PasswordChangeRequest(
                 identity_id = '8a807d4c73c545510173c545f0a002ff',

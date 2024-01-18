@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access_review_reassignment import AccessReviewReassignment  # noqa: E501
+from sailpoint.v3.models.access_review_reassignment import AccessReviewReassignment
 
 
 class TestAccessReviewReassignment(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessReviewReassignment(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessReviewReassignment`
         """
-        model = AccessReviewReassignment()  # noqa: E501
+        model = AccessReviewReassignment()
         if include_optional:
             return AccessReviewReassignment(
                 reassign = [

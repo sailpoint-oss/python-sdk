@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.source_owner import SourceOwner  # noqa: E501
+from sailpoint.v3.models.source_owner import SourceOwner
 
 
 class TestSourceOwner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceOwner`
         """
-        model = SourceOwner()  # noqa: E501
+        model = SourceOwner()
         if include_optional:
             return SourceOwner(
                 type = 'IDENTITY',

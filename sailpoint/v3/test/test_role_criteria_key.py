@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.role_criteria_key import RoleCriteriaKey  # noqa: E501
+from sailpoint.v3.models.role_criteria_key import RoleCriteriaKey
 
 
 class TestRoleCriteriaKey(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRoleCriteriaKey(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleCriteriaKey`
         """
-        model = RoleCriteriaKey()  # noqa: E501
+        model = RoleCriteriaKey()
         if include_optional:
             return RoleCriteriaKey(
                 type = 'ACCOUNT',

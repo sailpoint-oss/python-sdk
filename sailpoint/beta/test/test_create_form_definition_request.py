@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.create_form_definition_request import CreateFormDefinitionRequest  # noqa: E501
+from sailpoint.beta.models.create_form_definition_request import CreateFormDefinitionRequest
 
 
 class TestCreateFormDefinitionRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCreateFormDefinitionRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreateFormDefinitionRequest`
         """
-        model = CreateFormDefinitionRequest()  # noqa: E501
+        model = CreateFormDefinitionRequest()
         if include_optional:
             return CreateFormDefinitionRequest(
                 description = 'My form description',

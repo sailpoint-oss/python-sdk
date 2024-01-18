@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.audit_details import AuditDetails  # noqa: E501
+from sailpoint.beta.models.audit_details import AuditDetails
 
 
 class TestAuditDetails(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAuditDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AuditDetails`
         """
-        model = AuditDetails()  # noqa: E501
+        model = AuditDetails()
         if include_optional:
             return AuditDetails(
                 created = '2022-07-21T11:13:12.345Z',

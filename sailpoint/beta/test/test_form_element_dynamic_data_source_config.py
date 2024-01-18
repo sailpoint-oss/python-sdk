@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_element_dynamic_data_source_config import FormElementDynamicDataSourceConfig  # noqa: E501
+from sailpoint.beta.models.form_element_dynamic_data_source_config import FormElementDynamicDataSourceConfig
 
 
 class TestFormElementDynamicDataSourceConfig(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestFormElementDynamicDataSourceConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormElementDynamicDataSourceConfig`
         """
-        model = FormElementDynamicDataSourceConfig()  # noqa: E501
+        model = FormElementDynamicDataSourceConfig()
         if include_optional:
             return FormElementDynamicDataSourceConfig(
                 aggregation_bucket_field = 'attributes.cloudStatus.exact',

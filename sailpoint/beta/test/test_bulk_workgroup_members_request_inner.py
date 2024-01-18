@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner  # noqa: E501
+from sailpoint.beta.models.bulk_workgroup_members_request_inner import BulkWorkgroupMembersRequestInner
 
 
 class TestBulkWorkgroupMembersRequestInner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestBulkWorkgroupMembersRequestInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `BulkWorkgroupMembersRequestInner`
         """
-        model = BulkWorkgroupMembersRequestInner()  # noqa: E501
+        model = BulkWorkgroupMembersRequestInner()
         if include_optional:
             return BulkWorkgroupMembersRequestInner(
                 type = 'IDENTITY',

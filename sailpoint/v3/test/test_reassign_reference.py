@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.reassign_reference import ReassignReference  # noqa: E501
+from sailpoint.v3.models.reassign_reference import ReassignReference
 
 
 class TestReassignReference(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReassignReference(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ReassignReference`
         """
-        model = ReassignReference()  # noqa: E501
+        model = ReassignReference()
         if include_optional:
             return ReassignReference(
                 id = 'ef38f94347e94562b5bb8424a56397d8',

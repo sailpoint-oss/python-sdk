@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identity_access import IdentityAccess  # noqa: E501
+from sailpoint.v3.models.identity_access import IdentityAccess
 
 
 class TestIdentityAccess(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityAccess(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityAccess`
         """
-        model = IdentityAccess()  # noqa: E501
+        model = IdentityAccess()
         if include_optional:
             return IdentityAccess(
                 id = '2c91808568c529c60168cca6f90c1313',

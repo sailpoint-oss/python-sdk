@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_sync_job import SourceSyncJob  # noqa: E501
+from sailpoint.beta.models.source_sync_job import SourceSyncJob
 
 
 class TestSourceSyncJob(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceSyncJob(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceSyncJob`
         """
-        model = SourceSyncJob()  # noqa: E501
+        model = SourceSyncJob()
         if include_optional:
             return SourceSyncJob(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',

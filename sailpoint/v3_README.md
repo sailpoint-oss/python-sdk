@@ -21,7 +21,6 @@ To be able to use it, you will need these dependencies in your own package that 
 * urllib3 >= 1.25.3
 * python-dateutil
 * pydantic
-* aenum
 
 ## Getting Started
 
@@ -258,7 +257,7 @@ Class | Method | HTTP request | Description
 *SavedSearchApi* | [**delete_saved_search**](sailpoint/v3/docs/SavedSearchApi.md#delete_saved_search) | **DELETE** /saved-searches/{id} | Delete document by ID
 *SavedSearchApi* | [**execute_saved_search**](sailpoint/v3/docs/SavedSearchApi.md#execute_saved_search) | **POST** /saved-searches/{id}/execute | Execute a saved search by ID
 *SavedSearchApi* | [**get_saved_search**](sailpoint/v3/docs/SavedSearchApi.md#get_saved_search) | **GET** /saved-searches/{id} | Return saved search by ID
-*SavedSearchApi* | [**list_saved_searches**](sailpoint/v3/docs/SavedSearchApi.md#list_saved_searches) | **GET** /saved-searches | Return a list of Saved Searches
+*SavedSearchApi* | [**list_saved_searches**](sailpoint/v3/docs/SavedSearchApi.md#list_saved_searches) | **GET** /saved-searches | A list of Saved Searches
 *SavedSearchApi* | [**put_saved_search**](sailpoint/v3/docs/SavedSearchApi.md#put_saved_search) | **PUT** /saved-searches/{id} | Updates an existing saved search 
 *ScheduledSearchApi* | [**create_scheduled_search**](sailpoint/v3/docs/ScheduledSearchApi.md#create_scheduled_search) | **POST** /scheduled-searches | Create a new scheduled search
 *ScheduledSearchApi* | [**delete_scheduled_search**](sailpoint/v3/docs/ScheduledSearchApi.md#delete_scheduled_search) | **DELETE** /scheduled-searches/{id} | Delete a Scheduled Search
@@ -390,6 +389,7 @@ Class | Method | HTTP request | Description
  - [AccountsAsyncResult](sailpoint/v3/docs/AccountsAsyncResult.md)
  - [AccountsExportReportArguments](sailpoint/v3/docs/AccountsExportReportArguments.md)
  - [ActivateCampaignOptions](sailpoint/v3/docs/ActivateCampaignOptions.md)
+ - [ActivityInsights](sailpoint/v3/docs/ActivityInsights.md)
  - [AdminReviewReassign](sailpoint/v3/docs/AdminReviewReassign.md)
  - [AdminReviewReassignReassignTo](sailpoint/v3/docs/AdminReviewReassignReassignTo.md)
  - [AggregationResult](sailpoint/v3/docs/AggregationResult.md)
@@ -420,6 +420,7 @@ Class | Method | HTTP request | Description
  - [BaseCommonDto](sailpoint/v3/docs/BaseCommonDto.md)
  - [BaseDocument](sailpoint/v3/docs/BaseDocument.md)
  - [BaseEntitlement](sailpoint/v3/docs/BaseEntitlement.md)
+ - [BaseReferenceDto](sailpoint/v3/docs/BaseReferenceDto.md)
  - [BeforeProvisioningRuleDto](sailpoint/v3/docs/BeforeProvisioningRuleDto.md)
  - [Bound](sailpoint/v3/docs/Bound.md)
  - [BucketAggregation](sailpoint/v3/docs/BucketAggregation.md)
@@ -455,7 +456,6 @@ Class | Method | HTTP request | Description
  - [Column](sailpoint/v3/docs/Column.md)
  - [Comment](sailpoint/v3/docs/Comment.md)
  - [CommentDto](sailpoint/v3/docs/CommentDto.md)
- - [CommentDtoAuthor](sailpoint/v3/docs/CommentDtoAuthor.md)
  - [CompletedApproval](sailpoint/v3/docs/CompletedApproval.md)
  - [CompletedApprovalReviewerComment](sailpoint/v3/docs/CompletedApprovalReviewerComment.md)
  - [CompletedApprovalState](sailpoint/v3/docs/CompletedApprovalState.md)
@@ -652,6 +652,7 @@ Class | Method | HTTP request | Description
  - [ReviewableRole](sailpoint/v3/docs/ReviewableRole.md)
  - [Reviewer](sailpoint/v3/docs/Reviewer.md)
  - [Revocability](sailpoint/v3/docs/Revocability.md)
+ - [RevocabilityForRole](sailpoint/v3/docs/RevocabilityForRole.md)
  - [Role](sailpoint/v3/docs/Role.md)
  - [RoleAssignmentSourceType](sailpoint/v3/docs/RoleAssignmentSourceType.md)
  - [RoleBulkDeleteRequest](sailpoint/v3/docs/RoleBulkDeleteRequest.md)

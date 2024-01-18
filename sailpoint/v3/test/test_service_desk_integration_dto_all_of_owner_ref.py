@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.service_desk_integration_dto_all_of_owner_ref import ServiceDeskIntegrationDtoAllOfOwnerRef  # noqa: E501
+from sailpoint.v3.models.service_desk_integration_dto_all_of_owner_ref import ServiceDeskIntegrationDtoAllOfOwnerRef
 
 
 class TestServiceDeskIntegrationDtoAllOfOwnerRef(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestServiceDeskIntegrationDtoAllOfOwnerRef(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ServiceDeskIntegrationDtoAllOfOwnerRef`
         """
-        model = ServiceDeskIntegrationDtoAllOfOwnerRef()  # noqa: E501
+        model = ServiceDeskIntegrationDtoAllOfOwnerRef()
         if include_optional:
             return ServiceDeskIntegrationDtoAllOfOwnerRef(
                 type = 'SOURCE',

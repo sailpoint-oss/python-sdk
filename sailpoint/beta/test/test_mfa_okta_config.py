@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.mfa_okta_config import MfaOktaConfig  # noqa: E501
+from sailpoint.beta.models.mfa_okta_config import MfaOktaConfig
 
 
 class TestMfaOktaConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestMfaOktaConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `MfaOktaConfig`
         """
-        model = MfaOktaConfig()  # noqa: E501
+        model = MfaOktaConfig()
         if include_optional:
             return MfaOktaConfig(
                 mfa_method = 'okta-verify',

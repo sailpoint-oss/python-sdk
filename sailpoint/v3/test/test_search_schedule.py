@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.search_schedule import SearchSchedule  # noqa: E501
+from sailpoint.v3.models.search_schedule import SearchSchedule
 
 
 class TestSearchSchedule(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSearchSchedule(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SearchSchedule`
         """
-        model = SearchSchedule()  # noqa: E501
+        model = SearchSchedule()
         if include_optional:
             return SearchSchedule(
                 saved_search_id = '554f1511-f0a1-4744-ab14-599514d3e57c',
@@ -44,7 +44,7 @@ class TestSearchSchedule(unittest.TestCase):
                     days = null, 
                     hours = null, 
                     expiration = '2018-06-25T20:22:28.104Z', 
-                    time_zone_id = 'GMT-06:00', ),
+                    time_zone_id = 'America/Chicago', ),
                 recipients = [
                     sailpoint.v3.models.search_schedule_recipients_inner.SearchSchedule_recipients_inner(
                         type = 'IDENTITY', 
@@ -62,7 +62,7 @@ class TestSearchSchedule(unittest.TestCase):
                     days = null, 
                     hours = null, 
                     expiration = '2018-06-25T20:22:28.104Z', 
-                    time_zone_id = 'GMT-06:00', ),
+                    time_zone_id = 'America/Chicago', ),
                 recipients = [
                     sailpoint.v3.models.search_schedule_recipients_inner.SearchSchedule_recipients_inner(
                         type = 'IDENTITY', 

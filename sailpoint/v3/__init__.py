@@ -116,6 +116,7 @@ from sailpoint.v3.models.account_usage import AccountUsage
 from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
 from sailpoint.v3.models.accounts_export_report_arguments import AccountsExportReportArguments
 from sailpoint.v3.models.activate_campaign_options import ActivateCampaignOptions
+from sailpoint.v3.models.activity_insights import ActivityInsights
 from sailpoint.v3.models.admin_review_reassign import AdminReviewReassign
 from sailpoint.v3.models.admin_review_reassign_reassign_to import AdminReviewReassignReassignTo
 from sailpoint.v3.models.aggregation_result import AggregationResult
@@ -146,6 +147,7 @@ from sailpoint.v3.models.base_account import BaseAccount
 from sailpoint.v3.models.base_common_dto import BaseCommonDto
 from sailpoint.v3.models.base_document import BaseDocument
 from sailpoint.v3.models.base_entitlement import BaseEntitlement
+from sailpoint.v3.models.base_reference_dto import BaseReferenceDto
 from sailpoint.v3.models.before_provisioning_rule_dto import BeforeProvisioningRuleDto
 from sailpoint.v3.models.bound import Bound
 from sailpoint.v3.models.bucket_aggregation import BucketAggregation
@@ -181,7 +183,6 @@ from sailpoint.v3.models.client_type import ClientType
 from sailpoint.v3.models.column import Column
 from sailpoint.v3.models.comment import Comment
 from sailpoint.v3.models.comment_dto import CommentDto
-from sailpoint.v3.models.comment_dto_author import CommentDtoAuthor
 from sailpoint.v3.models.completed_approval import CompletedApproval
 from sailpoint.v3.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment
 from sailpoint.v3.models.completed_approval_state import CompletedApprovalState
@@ -378,6 +379,7 @@ from sailpoint.v3.models.reviewable_entitlement_account import ReviewableEntitle
 from sailpoint.v3.models.reviewable_role import ReviewableRole
 from sailpoint.v3.models.reviewer import Reviewer
 from sailpoint.v3.models.revocability import Revocability
+from sailpoint.v3.models.revocability_for_role import RevocabilityForRole
 from sailpoint.v3.models.role import Role
 from sailpoint.v3.models.role_assignment_source_type import RoleAssignmentSourceType
 from sailpoint.v3.models.role_bulk_delete_request import RoleBulkDeleteRequest

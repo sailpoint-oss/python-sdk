@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_code import SourceCode  # noqa: E501
+from sailpoint.beta.models.source_code import SourceCode
 
 
 class TestSourceCode(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceCode(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceCode`
         """
-        model = SourceCode()  # noqa: E501
+        model = SourceCode()
         if include_optional:
             return SourceCode(
                 version = '1.0',

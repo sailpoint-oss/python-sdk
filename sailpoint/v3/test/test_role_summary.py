@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.role_summary import RoleSummary  # noqa: E501
+from sailpoint.v3.models.role_summary import RoleSummary
 
 
 class TestRoleSummary(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRoleSummary(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleSummary`
         """
-        model = RoleSummary()  # noqa: E501
+        model = RoleSummary()
         if include_optional:
             return RoleSummary(
                 id = '2c91808568c529c60168cca6f90c1313',

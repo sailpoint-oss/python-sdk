@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.email_notification_option import EmailNotificationOption  # noqa: E501
+from sailpoint.beta.models.email_notification_option import EmailNotificationOption
 
 
 class TestEmailNotificationOption(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestEmailNotificationOption(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `EmailNotificationOption`
         """
-        model = EmailNotificationOption()  # noqa: E501
+        model = EmailNotificationOption()
         if include_optional:
             return EmailNotificationOption(
                 notify_managers = True,

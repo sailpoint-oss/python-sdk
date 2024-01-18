@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.requestable_object_type import RequestableObjectType  # noqa: E501
+from sailpoint.v3.models.requestable_object_type import RequestableObjectType
 
 
 class TestRequestableObjectType(unittest.TestCase):

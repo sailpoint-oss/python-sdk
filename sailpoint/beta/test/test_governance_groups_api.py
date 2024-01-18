@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.governance_groups_api import GovernanceGroupsApi  # noqa: E501
+from sailpoint.beta.api.governance_groups_api import GovernanceGroupsApi
 
 
 class TestGovernanceGroupsApi(unittest.TestCase):
     """GovernanceGroupsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = GovernanceGroupsApi()  # noqa: E501
+        self.api = GovernanceGroupsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,70 +28,70 @@ class TestGovernanceGroupsApi(unittest.TestCase):
     def test_create_workgroup(self) -> None:
         """Test case for create_workgroup
 
-        Create a new Governance Group.  # noqa: E501
+        Create a new Governance Group.
         """
         pass
 
     def test_delete_workgroup(self) -> None:
         """Test case for delete_workgroup
 
-        Delete a Governance Group  # noqa: E501
+        Delete a Governance Group
         """
         pass
 
     def test_delete_workgroup_members(self) -> None:
         """Test case for delete_workgroup_members
 
-        Remove members from Governance Group  # noqa: E501
+        Remove members from Governance Group
         """
         pass
 
     def test_delete_workgroups_in_bulk(self) -> None:
         """Test case for delete_workgroups_in_bulk
 
-        Delete Governance Group(s)  # noqa: E501
+        Delete Governance Group(s)
         """
         pass
 
     def test_get_workgroup(self) -> None:
         """Test case for get_workgroup
 
-        Get Governance Group by Id  # noqa: E501
+        Get Governance Group by Id
         """
         pass
 
     def test_list_connections(self) -> None:
         """Test case for list_connections
 
-        List connections for Governance Group  # noqa: E501
+        List connections for Governance Group
         """
         pass
 
     def test_list_workgroup_members(self) -> None:
         """Test case for list_workgroup_members
 
-        List Governance Group Members  # noqa: E501
+        List Governance Group Members
         """
         pass
 
     def test_list_workgroups(self) -> None:
         """Test case for list_workgroups
 
-        List Governance Groups  # noqa: E501
+        List Governance Groups
         """
         pass
 
     def test_patch_workgroup(self) -> None:
         """Test case for patch_workgroup
 
-        Patch a Governance Group  # noqa: E501
+        Patch a Governance Group
         """
         pass
 
     def test_update_workgroup_members(self) -> None:
         """Test case for update_workgroup_members
 
-        Add members to Governance Group  # noqa: E501
+        Add members to Governance Group
         """
         pass
 

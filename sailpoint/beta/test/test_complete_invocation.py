@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.complete_invocation import CompleteInvocation  # noqa: E501
+from sailpoint.beta.models.complete_invocation import CompleteInvocation
 
 
 class TestCompleteInvocation(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCompleteInvocation(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CompleteInvocation`
         """
-        model = CompleteInvocation()  # noqa: E501
+        model = CompleteInvocation()
         if include_optional:
             return CompleteInvocation(
                 secret = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',

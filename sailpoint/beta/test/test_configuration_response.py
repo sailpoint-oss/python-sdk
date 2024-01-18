@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.configuration_response import ConfigurationResponse  # noqa: E501
+from sailpoint.beta.models.configuration_response import ConfigurationResponse
 
 
 class TestConfigurationResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestConfigurationResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConfigurationResponse`
         """
-        model = ConfigurationResponse()  # noqa: E501
+        model = ConfigurationResponse()
         if include_optional:
             return ConfigurationResponse(
                 identity = sailpoint.beta.models.identity_1.Identity_1(

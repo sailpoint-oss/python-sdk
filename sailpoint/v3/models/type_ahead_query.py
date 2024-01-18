@@ -16,91 +16,106 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conint
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
+from typing_extensions import Annotated
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class TypeAheadQuery(BaseModel):
     """
-    Query parameters used to construct an Elasticsearch type ahead query object.  The typeAheadQuery performs a search for top values beginning with the typed values. For example, typing \"Jo\" results in top hits matching \"Jo.\" Typing \"Job\" results in top hits matching \"Job.\"   # noqa: E501
-    """
+    Query parameters used to construct an Elasticsearch type ahead query object.  The typeAheadQuery performs a search for top values beginning with the typed values. For example, typing \"Jo\" results in top hits matching \"Jo.\" Typing \"Job\" results in top hits matching \"Job.\" 
+    """ # noqa: E501
     query: StrictStr = Field(
-        ...,
         description=
         "The type ahead query string used to construct a phrase prefix match query."
     )
     field: StrictStr = Field(
-        ...,
         description="The field on which to perform the type ahead search.")
-    nested_type: Optional[StrictStr] = Field(None,
-                                             alias="nestedType",
-                                             description="The nested type.")
-    max_expansions: Optional[conint(strict=True, le=1000, ge=1)] = Field(
-        10,
-        alias="maxExpansions",
-        description=
-        "The number of suffixes the last term will be expanded into. Influences the performance of the query and the number results returned. Valid values: 1 to 1000."
-    )
-    size: Optional[conint(strict=True, ge=1)] = Field(
-        100, description="The max amount of records the search will return.")
+    nested_type: Optional[StrictStr] = Field(default=None,
+                                             description="The nested type.",
+                                             alias="nestedType")
+    max_expansions: Optional[Annotated[
+        int, Field(le=1000, strict=True, ge=1)]] = Field(
+            default=10,
+            description=
+            "The number of suffixes the last term will be expanded into. Influences the performance of the query and the number results returned. Valid values: 1 to 1000.",
+            alias="maxExpansions")
+    size: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(
+        default=100,
+        description="The max amount of records the search will return.")
     sort: Optional[StrictStr] = Field(
-        'desc', description="The sort order of the returned records.")
+        default='desc', description="The sort order of the returned records.")
     sort_by_value: Optional[StrictBool] = Field(
-        False,
-        alias="sortByValue",
-        description="The flag that defines the sort type, by count or value.")
-    __properties = [
+        default=False,
+        description="The flag that defines the sort type, by count or value.",
+        alias="sortByValue")
+    __properties: ClassVar[List[str]] = [
         "query", "field", "nestedType", "maxExpansions", "size", "sort",
         "sortByValue"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> TypeAheadQuery:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of TypeAheadQuery from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TypeAheadQuery:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of TypeAheadQuery from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return TypeAheadQuery.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = TypeAheadQuery.parse_obj({
+        _obj = cls.model_validate({
             "query":
             obj.get("query"),
             "field":
             obj.get("field"),
-            "nested_type":
+            "nestedType":
             obj.get("nestedType"),
-            "max_expansions":
+            "maxExpansions":
             obj.get("maxExpansions")
             if obj.get("maxExpansions") is not None else 10,
             "size":
             obj.get("size") if obj.get("size") is not None else 100,
             "sort":
             obj.get("sort") if obj.get("sort") is not None else 'desc',
-            "sort_by_value":
+            "sortByValue":
             obj.get("sortByValue")
             if obj.get("sortByValue") is not None else False
         })

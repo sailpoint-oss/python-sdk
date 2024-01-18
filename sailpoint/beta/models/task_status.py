@@ -17,76 +17,70 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, Dict, List
-from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, StrictInt, StrictStr, field_validator
+from pydantic import Field
 from sailpoint.beta.models.task_return_details import TaskReturnDetails
 from sailpoint.beta.models.task_status_message import TaskStatusMessage
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class TaskStatus(BaseModel):
     """
-    Details and current status of a specific task  # noqa: E501
+    Details and current status of a specific task
     """
+
+  # noqa: E501
     id: StrictStr = Field(
-        ...,
         description=
         "System-generated unique ID of the task this TaskStatus represents")
     type: StrictStr = Field(
-        ..., description="Type of task this TaskStatus represents")
+        description="Type of task this TaskStatus represents")
     unique_name: StrictStr = Field(
-        ...,
-        alias="uniqueName",
-        description="Name of the task this TaskStatus represents")
+        description="Name of the task this TaskStatus represents",
+        alias="uniqueName")
     description: StrictStr = Field(
-        ..., description="Description of the task this TaskStatus represents")
+        description="Description of the task this TaskStatus represents")
     parent_name: StrictStr = Field(
-        ...,
-        alias="parentName",
-        description="Name of the parent of the task this TaskStatus represents"
-    )
+        description="Name of the parent of the task this TaskStatus represents",
+        alias="parentName")
     launcher: StrictStr = Field(
-        ...,
         description="Service to execute the task this TaskStatus represents")
     created: datetime = Field(
-        ...,
         description="Creation date of the task this TaskStatus represents")
     modified: datetime = Field(
-        ...,
         description=
         "Last modification date of the task this TaskStatus represents")
     launched: datetime = Field(
-        ..., description="Launch date of the task this TaskStatus represents")
+        description="Launch date of the task this TaskStatus represents")
     completed: datetime = Field(
-        ...,
         description="Completion date of the task this TaskStatus represents")
     completion_status: StrictStr = Field(
-        ...,
-        alias="completionStatus",
-        description="Completion status of the task this TaskStatus represents")
-    messages: conlist(TaskStatusMessage) = Field(
-        ...,
+        description="Completion status of the task this TaskStatus represents",
+        alias="completionStatus")
+    messages: List[TaskStatusMessage] = Field(
         description=
         "Messages associated with the task this TaskStatus represents")
-    returns: conlist(TaskReturnDetails) = Field(
-        ...,
+    returns: List[TaskReturnDetails] = Field(
         description="Return values from the task this TaskStatus represents")
     attributes: Dict[str, Any] = Field(
-        ..., description="Attributes of the task this TaskStatus represents")
+        description="Attributes of the task this TaskStatus represents")
     progress: StrictStr = Field(
-        ...,
         description="Current progress of the task this TaskStatus represents")
     percent_complete: StrictInt = Field(
-        ...,
-        alias="percentComplete",
         description=
-        "Current percentage completion of the task this TaskStatus represents")
-    __properties = [
+        "Current percentage completion of the task this TaskStatus represents",
+        alias="percentComplete")
+    __properties: ClassVar[List[str]] = [
         "id", "type", "uniqueName", "description", "parentName", "launcher",
         "created", "modified", "launched", "completed", "completionStatus",
         "messages", "returns", "attributes", "progress", "percentComplete"
     ]
 
-    @validator('type')
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('QUARTZ', 'QPOC', 'QUEUED_TASK'):
@@ -94,7 +88,7 @@ class TaskStatus(BaseModel):
                 "must be one of enum values ('QUARTZ', 'QPOC', 'QUEUED_TASK')")
         return value
 
-    @validator('completion_status')
+    @field_validator('completion_status')
     def completion_status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('Success', 'Warning', 'Error', 'Terminated',
@@ -104,27 +98,37 @@ class TaskStatus(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> TaskStatus:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of TaskStatus from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
@@ -142,24 +146,24 @@ class TaskStatus(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TaskStatus:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of TaskStatus from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return TaskStatus.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = TaskStatus.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "type":
             obj.get("type"),
-            "unique_name":
+            "uniqueName":
             obj.get("uniqueName"),
             "description":
             obj.get("description"),
-            "parent_name":
+            "parentName":
             obj.get("parentName"),
             "launcher":
             obj.get("launcher"),
@@ -171,7 +175,7 @@ class TaskStatus(BaseModel):
             obj.get("launched"),
             "completed":
             obj.get("completed"),
-            "completion_status":
+            "completionStatus":
             obj.get("completionStatus"),
             "messages": [
                 TaskStatusMessage.from_dict(_item)
@@ -185,7 +189,7 @@ class TaskStatus(BaseModel):
             obj.get("attributes"),
             "progress":
             obj.get("progress"),
-            "percent_complete":
+            "percentComplete":
             obj.get("percentComplete")
         })
         return _obj

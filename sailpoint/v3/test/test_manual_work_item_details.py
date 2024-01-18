@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.manual_work_item_details import ManualWorkItemDetails  # noqa: E501
+from sailpoint.v3.models.manual_work_item_details import ManualWorkItemDetails
 
 
 class TestManualWorkItemDetails(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestManualWorkItemDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ManualWorkItemDetails`
         """
-        model = ManualWorkItemDetails()  # noqa: E501
+        model = ManualWorkItemDetails()
         if include_optional:
             return ManualWorkItemDetails(
                 forwarded = True,

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_attributes_changed_changes_inner_old_value import AccountAttributesChangedChangesInnerOldValue  # noqa: E501
+from sailpoint.beta.models.account_attributes_changed_changes_inner_old_value import AccountAttributesChangedChangesInnerOldValue
 
 
 class TestAccountAttributesChangedChangesInnerOldValue(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestAccountAttributesChangedChangesInnerOldValue(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountAttributesChangedChangesInnerOldValue`
         """
-        model = AccountAttributesChangedChangesInnerOldValue()  # noqa: E501
+        model = AccountAttributesChangedChangesInnerOldValue()
         if include_optional:
             return AccountAttributesChangedChangesInnerOldValue(
             )

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.sp_config_url import SpConfigUrl  # noqa: E501
+from sailpoint.beta.models.sp_config_url import SpConfigUrl
 
 
 class TestSpConfigUrl(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSpConfigUrl(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SpConfigUrl`
         """
-        model = SpConfigUrl()  # noqa: E501
+        model = SpConfigUrl()
         if include_optional:
             return SpConfigUrl(
                 url = 'ets://trigger-subscriptions/$id',

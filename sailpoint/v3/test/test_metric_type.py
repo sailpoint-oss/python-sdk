@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.metric_type import MetricType  # noqa: E501
+from sailpoint.v3.models.metric_type import MetricType
 
 
 class TestMetricType(unittest.TestCase):

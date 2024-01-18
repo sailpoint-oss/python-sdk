@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.connector_rule_create_request_signature import ConnectorRuleCreateRequestSignature  # noqa: E501
+from sailpoint.beta.models.connector_rule_create_request_signature import ConnectorRuleCreateRequestSignature
 
 
 class TestConnectorRuleCreateRequestSignature(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestConnectorRuleCreateRequestSignature(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConnectorRuleCreateRequestSignature`
         """
-        model = ConnectorRuleCreateRequestSignature()  # noqa: E501
+        model = ConnectorRuleCreateRequestSignature()
         if include_optional:
             return ConnectorRuleCreateRequestSignature(
                 input = [

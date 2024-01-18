@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.invocation_status import InvocationStatus  # noqa: E501
+from sailpoint.beta.models.invocation_status import InvocationStatus
 
 
 class TestInvocationStatus(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestInvocationStatus(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `InvocationStatus`
         """
-        model = InvocationStatus()  # noqa: E501
+        model = InvocationStatus()
         if include_optional:
             return InvocationStatus(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',

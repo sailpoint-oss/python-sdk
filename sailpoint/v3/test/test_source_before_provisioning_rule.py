@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.source_before_provisioning_rule import SourceBeforeProvisioningRule  # noqa: E501
+from sailpoint.v3.models.source_before_provisioning_rule import SourceBeforeProvisioningRule
 
 
 class TestSourceBeforeProvisioningRule(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceBeforeProvisioningRule(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceBeforeProvisioningRule`
         """
-        model = SourceBeforeProvisioningRule()  # noqa: E501
+        model = SourceBeforeProvisioningRule()
         if include_optional:
             return SourceBeforeProvisioningRule(
                 type = 'RULE',

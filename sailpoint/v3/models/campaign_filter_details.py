@@ -16,38 +16,45 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
 from sailpoint.v3.models.campaign_filter_details_criteria_list_inner import CampaignFilterDetailsCriteriaListInner
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class CampaignFilterDetails(BaseModel):
     """
-    Campaign Filter Details  # noqa: E501
+    Campaign Filter Details
     """
-    id: Optional[StrictStr] = Field(None,
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
                                     description="Id of the campaign filter")
-    name: StrictStr = Field(..., description="This is campaign filter's name.")
+    name: StrictStr = Field(description="This is campaign filter's name.")
     description: StrictStr = Field(
-        ..., description="This is campaign filter's description.")
+        description="This is campaign filter's description.")
     owner: StrictStr = Field(
-        ...,
         description=
         "The owner of this filter. This field is automatically populated at creation time with the current user."
     )
-    mode: Dict[str, Any] = Field(
-        ...,
+    mode: Union[str, Any] = Field(
         description=
         "The mode/type of Filter, where it is of INCLUSION or EXCLUSION type. INCLUSION type will include the data in generated campaign  as per specified in criteria, whereas EXCLUSION type will exclude the the data in generated campaign as per specified in criteria."
     )
-    criteria_list: Optional[conlist(
-        CampaignFilterDetailsCriteriaListInner)] = Field(
-            None, alias="criteriaList", description="List of criteria.")
-    __properties = [
+    criteria_list: Optional[
+        List[CampaignFilterDetailsCriteriaListInner]] = Field(
+            default=None,
+            description="List of criteria.",
+            alias="criteriaList")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "description", "owner", "mode", "criteriaList"
     ]
 
-    @validator('mode')
+    @field_validator('mode')
     def mode_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('INCLUSION', 'EXCLUSION'):
@@ -55,27 +62,37 @@ class CampaignFilterDetails(BaseModel):
                 "must be one of enum values ('INCLUSION', 'EXCLUSION')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CampaignFilterDetails:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of CampaignFilterDetails from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in criteria_list (list)
         _items = []
         if self.criteria_list:
@@ -86,15 +103,15 @@ class CampaignFilterDetails(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CampaignFilterDetails:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of CampaignFilterDetails from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CampaignFilterDetails.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = CampaignFilterDetails.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -105,7 +122,7 @@ class CampaignFilterDetails(BaseModel):
             obj.get("owner"),
             "mode":
             obj.get("mode"),
-            "criteria_list": [
+            "criteriaList": [
                 CampaignFilterDetailsCriteriaListInner.from_dict(_item)
                 for _item in obj.get("criteriaList")
             ] if obj.get("criteriaList") is not None else None

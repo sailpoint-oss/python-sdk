@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.forward_approval_dto import ForwardApprovalDto  # noqa: E501
+from sailpoint.beta.models.forward_approval_dto import ForwardApprovalDto
 
 
 class TestForwardApprovalDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestForwardApprovalDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ForwardApprovalDto`
         """
-        model = ForwardApprovalDto()  # noqa: E501
+        model = ForwardApprovalDto()
         if include_optional:
             return ForwardApprovalDto(
                 new_owner_id = '0',

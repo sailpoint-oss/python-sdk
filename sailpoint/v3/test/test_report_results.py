@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.report_results import ReportResults  # noqa: E501
+from sailpoint.v3.models.report_results import ReportResults
 
 
 class TestReportResults(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReportResults(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ReportResults`
         """
-        model = ReportResults()  # noqa: E501
+        model = ReportResults()
         if include_optional:
             return ReportResults(
                 report_type = 'IDENTITIES_DETAILS',

@@ -16,63 +16,82 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.resource_object import ResourceObject
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ResourceObjectsResponse(BaseModel):
     """
-    Response model for peek resource objects from source connectors.  # noqa: E501
-    """
-    id: Optional[StrictStr] = Field(None, description="ID of the source")
-    name: Optional[StrictStr] = Field(None, description="Name of the source")
+    Response model for peek resource objects from source connectors.
+    """ # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
+                                    description="ID of the source")
+    name: Optional[StrictStr] = Field(default=None,
+                                      description="Name of the source")
     object_count: Optional[StrictInt] = Field(
-        None,
-        alias="objectCount",
-        description="The number of objects that were fetched by the connector."
-    )
+        default=None,
+        description="The number of objects that were fetched by the connector.",
+        alias="objectCount")
     elapsed_millis: Optional[StrictInt] = Field(
-        None,
-        alias="elapsedMillis",
-        description="The number of milliseconds spent on the entire request.")
-    resource_objects: Optional[conlist(ResourceObject)] = Field(
-        None,
-        alias="resourceObjects",
-        description="Fetched objects from the source connector.")
-    __properties = [
+        default=None,
+        description="The number of milliseconds spent on the entire request.",
+        alias="elapsedMillis")
+    resource_objects: Optional[List[ResourceObject]] = Field(
+        default=None,
+        description="Fetched objects from the source connector.",
+        alias="resourceObjects")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "objectCount", "elapsedMillis", "resourceObjects"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ResourceObjectsResponse:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ResourceObjectsResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                              "id",
-                              "name",
-                              "object_count",
-                              "elapsed_millis",
-                              "resource_objects",
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+                "id",
+                "name",
+                "object_count",
+                "elapsed_millis",
+                "resource_objects",
+            },
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in resource_objects (list)
         _items = []
         if self.resource_objects:
@@ -83,24 +102,24 @@ class ResourceObjectsResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ResourceObjectsResponse:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ResourceObjectsResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ResourceObjectsResponse.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ResourceObjectsResponse.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
             obj.get("name"),
-            "object_count":
+            "objectCount":
             obj.get("objectCount"),
-            "elapsed_millis":
+            "elapsedMillis":
             obj.get("elapsedMillis"),
-            "resource_objects": [
+            "resourceObjects": [
                 ResourceObject.from_dict(_item)
                 for _item in obj.get("resourceObjects")
             ] if obj.get("resourceObjects") is not None else None

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_feature import SourceFeature  # noqa: E501
+from sailpoint.beta.models.source_feature import SourceFeature
 
 
 class TestSourceFeature(unittest.TestCase):

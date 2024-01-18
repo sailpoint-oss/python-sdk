@@ -17,90 +17,107 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Dict, Optional
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.account_activity_item_operation import AccountActivityItemOperation
 from sailpoint.beta.models.account_request_info import AccountRequestInfo
 from sailpoint.beta.models.comment import Comment
 from sailpoint.beta.models.identity_summary import IdentitySummary
 from sailpoint.beta.models.provisioning_state import ProvisioningState
 from sailpoint.beta.models.work_item_state import WorkItemState
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccountActivityItem(BaseModel):
     """
     AccountActivityItem
     """
-    id: Optional[StrictStr] = Field(None, description="Item id")
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Item id")
     name: Optional[StrictStr] = Field(
-        None, description="Human-readable display name of item")
+        default=None, description="Human-readable display name of item")
     requested: Optional[datetime] = Field(
-        None, description="Date and time item was requested")
-    approval_status: Optional[WorkItemState] = Field(None,
+        default=None, description="Date and time item was requested")
+    approval_status: Optional[WorkItemState] = Field(default=None,
                                                      alias="approvalStatus")
     provisioning_status: Optional[ProvisioningState] = Field(
-        None, alias="provisioningStatus")
-    requester_comment: Optional[Comment] = Field(None,
+        default=None, alias="provisioningStatus")
+    requester_comment: Optional[Comment] = Field(default=None,
                                                  alias="requesterComment")
     reviewer_identity_summary: Optional[IdentitySummary] = Field(
-        None, alias="reviewerIdentitySummary")
-    reviewer_comment: Optional[Comment] = Field(None, alias="reviewerComment")
+        default=None, alias="reviewerIdentitySummary")
+    reviewer_comment: Optional[Comment] = Field(default=None,
+                                                alias="reviewerComment")
     operation: Optional[AccountActivityItemOperation] = None
     attribute: Optional[StrictStr] = Field(
-        None, description="Attribute to which account activity applies")
-    value: Optional[StrictStr] = Field(None, description="Value of attribute")
+        default=None,
+        description="Attribute to which account activity applies")
+    value: Optional[StrictStr] = Field(default=None,
+                                       description="Value of attribute")
     native_identity: Optional[StrictStr] = Field(
-        None,
-        alias="nativeIdentity",
+        default=None,
         description=
-        "Native identity in the target system to which the account activity applies"
-    )
+        "Native identity in the target system to which the account activity applies",
+        alias="nativeIdentity")
     source_id: Optional[StrictStr] = Field(
-        None,
-        alias="sourceId",
-        description="Id of Source to which account activity applies")
+        default=None,
+        description="Id of Source to which account activity applies",
+        alias="sourceId")
     account_request_info: Optional[AccountRequestInfo] = Field(
-        None, alias="accountRequestInfo")
+        default=None, alias="accountRequestInfo")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(
-        None,
-        alias="clientMetadata",
+        default=None,
         description=
-        "Arbitrary key-value pairs, if any were included in the corresponding access request item"
-    )
+        "Arbitrary key-value pairs, if any were included in the corresponding access request item",
+        alias="clientMetadata")
     remove_date: Optional[datetime] = Field(
-        None,
-        alias="removeDate",
+        default=None,
         description=
-        "The date the role or access profile is no longer assigned to the specified identity."
-    )
-    __properties = [
+        "The date the role or access profile is no longer assigned to the specified identity.",
+        alias="removeDate")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "requested", "approvalStatus", "provisioningStatus",
         "requesterComment", "reviewerIdentitySummary", "reviewerComment",
         "operation", "attribute", "value", "nativeIdentity", "sourceId",
         "accountRequestInfo", "clientMetadata", "removeDate"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccountActivityItem:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccountActivityItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of requester_comment
         if self.requester_comment:
             _dict['requesterComment'] = self.requester_comment.to_dict()
@@ -116,79 +133,79 @@ class AccountActivityItem(BaseModel):
         if self.account_request_info:
             _dict['accountRequestInfo'] = self.account_request_info.to_dict()
         # set to None if requester_comment (nullable) is None
-        # and __fields_set__ contains the field
-        if self.requester_comment is None and "requester_comment" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.requester_comment is None and "requester_comment" in self.model_fields_set:
             _dict['requesterComment'] = None
 
         # set to None if reviewer_identity_summary (nullable) is None
-        # and __fields_set__ contains the field
-        if self.reviewer_identity_summary is None and "reviewer_identity_summary" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.reviewer_identity_summary is None and "reviewer_identity_summary" in self.model_fields_set:
             _dict['reviewerIdentitySummary'] = None
 
         # set to None if reviewer_comment (nullable) is None
-        # and __fields_set__ contains the field
-        if self.reviewer_comment is None and "reviewer_comment" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.reviewer_comment is None and "reviewer_comment" in self.model_fields_set:
             _dict['reviewerComment'] = None
 
         # set to None if attribute (nullable) is None
-        # and __fields_set__ contains the field
-        if self.attribute is None and "attribute" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.attribute is None and "attribute" in self.model_fields_set:
             _dict['attribute'] = None
 
         # set to None if value (nullable) is None
-        # and __fields_set__ contains the field
-        if self.value is None and "value" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.value is None and "value" in self.model_fields_set:
             _dict['value'] = None
 
         # set to None if native_identity (nullable) is None
-        # and __fields_set__ contains the field
-        if self.native_identity is None and "native_identity" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.native_identity is None and "native_identity" in self.model_fields_set:
             _dict['nativeIdentity'] = None
 
         # set to None if account_request_info (nullable) is None
-        # and __fields_set__ contains the field
-        if self.account_request_info is None and "account_request_info" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.account_request_info is None and "account_request_info" in self.model_fields_set:
             _dict['accountRequestInfo'] = None
 
         # set to None if client_metadata (nullable) is None
-        # and __fields_set__ contains the field
-        if self.client_metadata is None and "client_metadata" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.client_metadata is None and "client_metadata" in self.model_fields_set:
             _dict['clientMetadata'] = None
 
         # set to None if remove_date (nullable) is None
-        # and __fields_set__ contains the field
-        if self.remove_date is None and "remove_date" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.remove_date is None and "remove_date" in self.model_fields_set:
             _dict['removeDate'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccountActivityItem:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccountActivityItem from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccountActivityItem.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccountActivityItem.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
             obj.get("name"),
             "requested":
             obj.get("requested"),
-            "approval_status":
+            "approvalStatus":
             obj.get("approvalStatus"),
-            "provisioning_status":
+            "provisioningStatus":
             obj.get("provisioningStatus"),
-            "requester_comment":
+            "requesterComment":
             Comment.from_dict(obj.get("requesterComment"))
             if obj.get("requesterComment") is not None else None,
-            "reviewer_identity_summary":
+            "reviewerIdentitySummary":
             IdentitySummary.from_dict(obj.get("reviewerIdentitySummary"))
             if obj.get("reviewerIdentitySummary") is not None else None,
-            "reviewer_comment":
+            "reviewerComment":
             Comment.from_dict(obj.get("reviewerComment"))
             if obj.get("reviewerComment") is not None else None,
             "operation":
@@ -197,16 +214,16 @@ class AccountActivityItem(BaseModel):
             obj.get("attribute"),
             "value":
             obj.get("value"),
-            "native_identity":
+            "nativeIdentity":
             obj.get("nativeIdentity"),
-            "source_id":
+            "sourceId":
             obj.get("sourceId"),
-            "account_request_info":
+            "accountRequestInfo":
             AccountRequestInfo.from_dict(obj.get("accountRequestInfo"))
             if obj.get("accountRequestInfo") is not None else None,
-            "client_metadata":
+            "clientMetadata":
             obj.get("clientMetadata"),
-            "remove_date":
+            "removeDate":
             obj.get("removeDate")
         })
         return _obj

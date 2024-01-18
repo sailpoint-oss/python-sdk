@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_request_info import AccountRequestInfo  # noqa: E501
+from sailpoint.beta.models.account_request_info import AccountRequestInfo
 
 
 class TestAccountRequestInfo(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountRequestInfo(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountRequestInfo`
         """
-        model = AccountRequestInfo()  # noqa: E501
+        model = AccountRequestInfo()
         if include_optional:
             return AccountRequestInfo(
                 requested_object_id = '2c91808563ef85690164001c31140c0c',

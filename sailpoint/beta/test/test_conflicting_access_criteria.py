@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.conflicting_access_criteria import ConflictingAccessCriteria  # noqa: E501
+from sailpoint.beta.models.conflicting_access_criteria import ConflictingAccessCriteria
 
 
 class TestConflictingAccessCriteria(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestConflictingAccessCriteria(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConflictingAccessCriteria`
         """
-        model = ConflictingAccessCriteria()  # noqa: E501
+        model = ConflictingAccessCriteria()
         if include_optional:
             return ConflictingAccessCriteria(
                 left_criteria = sailpoint.beta.models.access_criteria.AccessCriteria(

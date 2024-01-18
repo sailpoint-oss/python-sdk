@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.data_access_categories_inner import DataAccessCategoriesInner  # noqa: E501
+from sailpoint.v3.models.data_access_categories_inner import DataAccessCategoriesInner
 
 
 class TestDataAccessCategoriesInner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestDataAccessCategoriesInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `DataAccessCategoriesInner`
         """
-        model = DataAccessCategoriesInner()  # noqa: E501
+        model = DataAccessCategoriesInner()
         if include_optional:
             return DataAccessCategoriesInner(
                 value = 'email-7',

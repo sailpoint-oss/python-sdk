@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.fullcampaign_all_of_search_campaign_info_reviewer import FullcampaignAllOfSearchCampaignInfoReviewer  # noqa: E501
+from sailpoint.beta.models.fullcampaign_all_of_search_campaign_info_reviewer import FullcampaignAllOfSearchCampaignInfoReviewer
 
 
 class TestFullcampaignAllOfSearchCampaignInfoReviewer(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestFullcampaignAllOfSearchCampaignInfoReviewer(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FullcampaignAllOfSearchCampaignInfoReviewer`
         """
-        model = FullcampaignAllOfSearchCampaignInfoReviewer()  # noqa: E501
+        model = FullcampaignAllOfSearchCampaignInfoReviewer()
         if include_optional:
             return FullcampaignAllOfSearchCampaignInfoReviewer(
                 type = 'IDENTITY',

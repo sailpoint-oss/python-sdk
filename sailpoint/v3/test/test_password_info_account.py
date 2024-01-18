@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.password_info_account import PasswordInfoAccount  # noqa: E501
+from sailpoint.v3.models.password_info_account import PasswordInfoAccount
 
 
 class TestPasswordInfoAccount(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPasswordInfoAccount(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PasswordInfoAccount`
         """
-        model = PasswordInfoAccount()  # noqa: E501
+        model = PasswordInfoAccount()
         if include_optional:
             return PasswordInfoAccount(
                 account_id = 'CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com',

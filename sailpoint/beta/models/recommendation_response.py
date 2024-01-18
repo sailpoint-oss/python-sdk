@@ -16,41 +16,48 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
 from sailpoint.beta.models.recommendation_request import RecommendationRequest
 from sailpoint.beta.models.recommender_calculations import RecommenderCalculations
 from sailpoint.beta.models.translation_message import TranslationMessage
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RecommendationResponse(BaseModel):
     """
     RecommendationResponse
     """
+
+  # noqa: E501
     request: Optional[RecommendationRequest] = None
     recommendation: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "The recommendation - YES if the access is recommended, NO if not recommended, MAYBE if there is not enough information to make a recommendation, NOT_FOUND if the identity is not found in the system"
     )
-    interpretations: Optional[conlist(StrictStr)] = Field(
-        None,
+    interpretations: Optional[List[StrictStr]] = Field(
+        default=None,
         description=
         "The list of interpretations explaining the recommendation. The array is empty if includeInterpretations is false or not present in the request. e.g. - [ \"Not approved in the last 6 months.\" ]. Interpretations will be translated using the client's locale as found in the Accept-Language header. If a translation for the client's locale cannot be found, the US English translation will be returned."
     )
-    translation_messages: Optional[conlist(TranslationMessage)] = Field(
-        None,
-        alias="translationMessages",
+    translation_messages: Optional[List[TranslationMessage]] = Field(
+        default=None,
         description=
-        "The list of translation messages, if they have been requested.")
+        "The list of translation messages, if they have been requested.",
+        alias="translationMessages")
     recommender_calculations: Optional[RecommenderCalculations] = Field(
-        None, alias="recommenderCalculations")
-    __properties = [
+        default=None, alias="recommenderCalculations")
+    __properties: ClassVar[List[str]] = [
         "request", "recommendation", "interpretations", "translationMessages",
         "recommenderCalculations"
     ]
 
-    @validator('recommendation')
+    @field_validator('recommendation')
     def recommendation_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -62,27 +69,37 @@ class RecommendationResponse(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RecommendationResponse:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RecommendationResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of request
         if self.request:
             _dict['request'] = self.request.to_dict()
@@ -101,15 +118,15 @@ class RecommendationResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RecommendationResponse:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of RecommendationResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RecommendationResponse.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RecommendationResponse.parse_obj({
+        _obj = cls.model_validate({
             "request":
             RecommendationRequest.from_dict(obj.get("request"))
             if obj.get("request") is not None else None,
@@ -117,11 +134,11 @@ class RecommendationResponse(BaseModel):
             obj.get("recommendation"),
             "interpretations":
             obj.get("interpretations"),
-            "translation_messages": [
+            "translationMessages": [
                 TranslationMessage.from_dict(_item)
                 for _item in obj.get("translationMessages")
             ] if obj.get("translationMessages") is not None else None,
-            "recommender_calculations":
+            "recommenderCalculations":
             RecommenderCalculations.from_dict(
                 obj.get("recommenderCalculations"))
             if obj.get("recommenderCalculations") is not None else None

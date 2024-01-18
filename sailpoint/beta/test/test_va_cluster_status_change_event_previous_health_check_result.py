@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.va_cluster_status_change_event_previous_health_check_result import VAClusterStatusChangeEventPreviousHealthCheckResult  # noqa: E501
+from sailpoint.beta.models.va_cluster_status_change_event_previous_health_check_result import VAClusterStatusChangeEventPreviousHealthCheckResult
 
 
 class TestVAClusterStatusChangeEventPreviousHealthCheckResult(
@@ -36,7 +36,7 @@ class TestVAClusterStatusChangeEventPreviousHealthCheckResult(
             optional params are included """
         # uncomment below to create an instance of `VAClusterStatusChangeEventPreviousHealthCheckResult`
         """
-        model = VAClusterStatusChangeEventPreviousHealthCheckResult()  # noqa: E501
+        model = VAClusterStatusChangeEventPreviousHealthCheckResult()
         if include_optional:
             return VAClusterStatusChangeEventPreviousHealthCheckResult(
                 message = 'Test Connection failed with exception. Error message - java.lang Exception',

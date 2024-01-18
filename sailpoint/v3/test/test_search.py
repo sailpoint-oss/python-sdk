@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.search import Search  # noqa: E501
+from sailpoint.v3.models.search import Search
 
 
 class TestSearch(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSearch(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Search`
         """
-        model = Search()  # noqa: E501
+        model = Search()
         if include_optional:
             return Search(
                 indices = [identities],

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.sod_policy_dto import SodPolicyDto  # noqa: E501
+from sailpoint.v3.models.sod_policy_dto import SodPolicyDto
 
 
 class TestSodPolicyDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSodPolicyDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SodPolicyDto`
         """
-        model = SodPolicyDto()  # noqa: E501
+        model = SodPolicyDto()
         if include_optional:
             return SodPolicyDto(
                 type = 'SOD_POLICY',

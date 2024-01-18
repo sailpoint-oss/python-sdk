@@ -16,92 +16,106 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RefreshIdentitiesRequestRefreshArgs(BaseModel):
     """
     RefreshIdentitiesRequestRefreshArgs
     """
+
+  # noqa: E501
     correlate_entitlements: Optional[StrictBool] = Field(
-        None,
-        alias="correlateEntitlements",
+        default=None,
         description=
-        "This will refresh entitlement, role, and access profile calculations."
-    )
+        "This will refresh entitlement, role, and access profile calculations.",
+        alias="correlateEntitlements")
     promote_attributes: Optional[StrictBool] = Field(
-        None,
-        alias="promoteAttributes",
-        description="This will calculate identity attributes.")
+        default=None,
+        description="This will calculate identity attributes.",
+        alias="promoteAttributes")
     refresh_manager_status: Optional[StrictBool] = Field(
-        None,
-        alias="refreshManagerStatus",
+        default=None,
         description=
-        "This recalculates manager correlation and manager status. Note: This is computationally expensive to run. "
-    )
+        "This recalculates manager correlation and manager status. Note: This is computationally expensive to run. ",
+        alias="refreshManagerStatus")
     synchronize_attributes: Optional[StrictBool] = Field(
-        None,
-        alias="synchronizeAttributes",
-        description="Enables attribute synchronization.")
+        default=None,
+        description="Enables attribute synchronization.",
+        alias="synchronizeAttributes")
     prune_identities: Optional[StrictBool] = Field(
-        None,
-        alias="pruneIdentities",
+        default=None,
         description=
-        "Option that will enable deletion of an identity objects if there are no account objects. Note: This is not typically used in IdentityNow, except by guidance from SailPoint. "
-    )
+        "Option that will enable deletion of an identity objects if there are no account objects. Note: This is not typically used in IdentityNow, except by guidance from SailPoint. ",
+        alias="pruneIdentities")
     provision: Optional[StrictBool] = Field(
-        None,
+        default=None,
         description=
         "Enables provisioning of role assignments with entitlements that are not currently fulfilled."
     )
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "correlateEntitlements", "promoteAttributes", "refreshManagerStatus",
         "synchronizeAttributes", "pruneIdentities", "provision"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RefreshIdentitiesRequestRefreshArgs:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RefreshIdentitiesRequestRefreshArgs from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RefreshIdentitiesRequestRefreshArgs:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of RefreshIdentitiesRequestRefreshArgs from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RefreshIdentitiesRequestRefreshArgs.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RefreshIdentitiesRequestRefreshArgs.parse_obj({
-            "correlate_entitlements":
+        _obj = cls.model_validate({
+            "correlateEntitlements":
             obj.get("correlateEntitlements"),
-            "promote_attributes":
+            "promoteAttributes":
             obj.get("promoteAttributes"),
-            "refresh_manager_status":
+            "refreshManagerStatus":
             obj.get("refreshManagerStatus"),
-            "synchronize_attributes":
+            "synchronizeAttributes":
             obj.get("synchronizeAttributes"),
-            "prune_identities":
+            "pruneIdentities":
             obj.get("pruneIdentities"),
             "provision":
             obj.get("provision")

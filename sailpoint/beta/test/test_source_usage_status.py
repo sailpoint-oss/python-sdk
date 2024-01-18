@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_usage_status import SourceUsageStatus  # noqa: E501
+from sailpoint.beta.models.source_usage_status import SourceUsageStatus
 
 
 class TestSourceUsageStatus(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceUsageStatus(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceUsageStatus`
         """
-        model = SourceUsageStatus()  # noqa: E501
+        model = SourceUsageStatus()
         if include_optional:
             return SourceUsageStatus(
                 status = 'COMPLETE'

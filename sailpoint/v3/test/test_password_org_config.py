@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.password_org_config import PasswordOrgConfig  # noqa: E501
+from sailpoint.v3.models.password_org_config import PasswordOrgConfig
 
 
 class TestPasswordOrgConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPasswordOrgConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PasswordOrgConfig`
         """
-        model = PasswordOrgConfig()  # noqa: E501
+        model = PasswordOrgConfig()
         if include_optional:
             return PasswordOrgConfig(
                 custom_instructions_enabled = True,

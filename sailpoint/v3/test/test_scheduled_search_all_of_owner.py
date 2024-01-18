@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.scheduled_search_all_of_owner import ScheduledSearchAllOfOwner  # noqa: E501
+from sailpoint.v3.models.scheduled_search_all_of_owner import ScheduledSearchAllOfOwner
 
 
 class TestScheduledSearchAllOfOwner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestScheduledSearchAllOfOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ScheduledSearchAllOfOwner`
         """
-        model = ScheduledSearchAllOfOwner()  # noqa: E501
+        model = ScheduledSearchAllOfOwner()
         if include_optional:
             return ScheduledSearchAllOfOwner(
                 type = 'IDENTITY',

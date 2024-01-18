@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult  # noqa: E501
+from sailpoint.v3.models.accounts_async_result import AccountsAsyncResult
 
 
 class TestAccountsAsyncResult(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountsAsyncResult(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountsAsyncResult`
         """
-        model = AccountsAsyncResult()  # noqa: E501
+        model = AccountsAsyncResult()
         if include_optional:
             return AccountsAsyncResult(
                 id = '2c91808474683da6017468693c260195'

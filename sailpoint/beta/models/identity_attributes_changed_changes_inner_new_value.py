@@ -18,10 +18,15 @@ import pprint
 import re  # noqa: F401
 
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, ValidationError, conlist, validator
+from pydantic import BaseModel, Field, StrictBool, StrictStr, ValidationError, field_validator
 from sailpoint.beta.models.identity_attributes_changed_changes_inner_old_value_one_of_value import IdentityAttributesChangedChangesInnerOldValueOneOfValue
-from typing import Union, Any, List, TYPE_CHECKING
+from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
+from typing_extensions import Literal
 from pydantic import StrictStr, Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 IDENTITYATTRIBUTESCHANGEDCHANGESINNERNEWVALUE_ONE_OF_SCHEMAS = [
     "Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue]",
@@ -38,22 +43,18 @@ class IdentityAttributesChangedChangesInnerNewValue(BaseModel):
     # data type: bool
     oneof_schema_2_validator: Optional[StrictBool] = None
     # data type: List[str]
-    oneof_schema_3_validator: Optional[conlist(StrictStr)] = None
+    oneof_schema_3_validator: Optional[List[StrictStr]] = None
     # data type: Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue]
     oneof_schema_4_validator: Optional[Dict[
         str, IdentityAttributesChangedChangesInnerOldValueOneOfValue]] = None
-    if TYPE_CHECKING:
-        actual_instance: Union[Dict[
-            str, IdentityAttributesChangedChangesInnerOldValueOneOfValue],
-                               List[str], bool, str]
-    else:
-        actual_instance: Any
-    one_of_schemas: List[str] = Field(
-        IDENTITYATTRIBUTESCHANGEDCHANGESINNERNEWVALUE_ONE_OF_SCHEMAS,
-        const=True)
+    actual_instance: Optional[Union[Dict[
+        str, IdentityAttributesChangedChangesInnerOldValueOneOfValue],
+                                    List[str], bool, str]] = None
+    one_of_schemas: List[str] = Literal[
+        "Dict[str, IdentityAttributesChangedChangesInnerOldValueOneOfValue]",
+        "List[str]", "bool", "str"]
 
-    class Config:
-        validate_assignment = True
+    model_config = {"validate_assignment": True}
 
     def __init__(self, *args, **kwargs) -> None:
         if args:
@@ -69,9 +70,10 @@ class IdentityAttributesChangedChangesInnerNewValue(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
-        instance = IdentityAttributesChangedChangesInnerNewValue.construct()
+        instance = IdentityAttributesChangedChangesInnerNewValue.model_construct(
+        )
         error_messages = []
         match = 0
         # validate data type: str
@@ -112,16 +114,13 @@ class IdentityAttributesChangedChangesInnerNewValue(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls,
-                  obj: dict) -> IdentityAttributesChangedChangesInnerNewValue:
+    def from_dict(cls, obj: dict) -> Self:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(
-            cls,
-            json_str: str) -> IdentityAttributesChangedChangesInnerNewValue:
+    def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
-        instance = IdentityAttributesChangedChangesInnerNewValue.construct()
+        instance = cls.model_construct()
         error_messages = []
         match = 0
 
@@ -186,7 +185,7 @@ class IdentityAttributesChangedChangesInnerNewValue(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> Dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
@@ -200,4 +199,4 @@ class IdentityAttributesChangedChangesInnerNewValue(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.dict())
+        return pprint.pformat(self.model_dump())

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.slim_account import SlimAccount  # noqa: E501
+from sailpoint.beta.models.slim_account import SlimAccount
 
 
 class TestSlimAccount(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSlimAccount(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SlimAccount`
         """
-        model = SlimAccount()  # noqa: E501
+        model = SlimAccount()
         if include_optional:
             return SlimAccount(
                 id = 'id12345',

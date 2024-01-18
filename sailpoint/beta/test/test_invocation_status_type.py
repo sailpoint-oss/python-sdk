@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.invocation_status_type import InvocationStatusType  # noqa: E501
+from sailpoint.beta.models.invocation_status_type import InvocationStatusType
 
 
 class TestInvocationStatusType(unittest.TestCase):

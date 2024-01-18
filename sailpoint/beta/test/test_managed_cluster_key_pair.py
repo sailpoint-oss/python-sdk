@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.managed_cluster_key_pair import ManagedClusterKeyPair  # noqa: E501
+from sailpoint.beta.models.managed_cluster_key_pair import ManagedClusterKeyPair
 
 
 class TestManagedClusterKeyPair(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestManagedClusterKeyPair(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ManagedClusterKeyPair`
         """
-        model = ManagedClusterKeyPair()  # noqa: E501
+        model = ManagedClusterKeyPair()
         if include_optional:
             return ManagedClusterKeyPair(
                 public_key = '-----BEGIN PUBLIC KEY-----******-----END PUBLIC KEY-----',

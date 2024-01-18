@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.saved_search_complete import SavedSearchComplete  # noqa: E501
+from sailpoint.beta.models.saved_search_complete import SavedSearchComplete
 
 
 class TestSavedSearchComplete(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSavedSearchComplete(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SavedSearchComplete`
         """
-        model = SavedSearchComplete()  # noqa: E501
+        model = SavedSearchComplete()
         if include_optional:
             return SavedSearchComplete(
                 file_name = 'Modified.zip',

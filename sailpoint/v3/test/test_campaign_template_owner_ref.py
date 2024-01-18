@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.campaign_template_owner_ref import CampaignTemplateOwnerRef  # noqa: E501
+from sailpoint.v3.models.campaign_template_owner_ref import CampaignTemplateOwnerRef
 
 
 class TestCampaignTemplateOwnerRef(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCampaignTemplateOwnerRef(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CampaignTemplateOwnerRef`
         """
-        model = CampaignTemplateOwnerRef()  # noqa: E501
+        model = CampaignTemplateOwnerRef()
         if include_optional:
             return CampaignTemplateOwnerRef(
                 id = '2c918086676d3e0601677611dbde220f',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.complete_campaign_options import CompleteCampaignOptions  # noqa: E501
+from sailpoint.beta.models.complete_campaign_options import CompleteCampaignOptions
 
 
 class TestCompleteCampaignOptions(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCompleteCampaignOptions(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CompleteCampaignOptions`
         """
-        model = CompleteCampaignOptions()  # noqa: E501
+        model = CompleteCampaignOptions()
         if include_optional:
             return CompleteCampaignOptions(
                 auto_complete_action = 'APPROVE'

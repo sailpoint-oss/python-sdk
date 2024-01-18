@@ -16,27 +16,39 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class PasswordStatus(BaseModel):
     """
     PasswordStatus
     """
-    request_id: Optional[StrictStr] = Field(
-        None, alias="requestId", description="The password change request ID")
-    state: Optional[StrictStr] = Field(None,
-                                       description="Password change state")
-    errors: Optional[conlist(StrictStr)] = Field(
-        None, description="The errors during the password change request")
-    source_ids: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="sourceIds",
-        description="List of source IDs in the password change request")
-    __properties = ["requestId", "state", "errors", "sourceIds"]
 
-    @validator('state')
+  # noqa: E501
+    request_id: Optional[StrictStr] = Field(
+        default=None,
+        description="The password change request ID",
+        alias="requestId")
+    state: Optional[StrictStr] = Field(default=None,
+                                       description="Password change state")
+    errors: Optional[List[StrictStr]] = Field(
+        default=None,
+        description="The errors during the password change request")
+    source_ids: Optional[List[StrictStr]] = Field(
+        default=None,
+        description="List of source IDs in the password change request",
+        alias="sourceIds")
+    __properties: ClassVar[List[str]] = [
+        "requestId", "state", "errors", "sourceIds"
+    ]
+
+    @field_validator('state')
     def state_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -48,47 +60,57 @@ class PasswordStatus(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> PasswordStatus:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of PasswordStatus from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # set to None if request_id (nullable) is None
-        # and __fields_set__ contains the field
-        if self.request_id is None and "request_id" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.request_id is None and "request_id" in self.model_fields_set:
             _dict['requestId'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> PasswordStatus:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of PasswordStatus from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PasswordStatus.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = PasswordStatus.parse_obj({
-            "request_id": obj.get("requestId"),
+        _obj = cls.model_validate({
+            "requestId": obj.get("requestId"),
             "state": obj.get("state"),
             "errors": obj.get("errors"),
-            "source_ids": obj.get("sourceIds")
+            "sourceIds": obj.get("sourceIds")
         })
         return _obj

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.approval_status_dto_original_owner import ApprovalStatusDtoOriginalOwner  # noqa: E501
+from sailpoint.v3.models.approval_status_dto_original_owner import ApprovalStatusDtoOriginalOwner
 
 
 class TestApprovalStatusDtoOriginalOwner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestApprovalStatusDtoOriginalOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ApprovalStatusDtoOriginalOwner`
         """
-        model = ApprovalStatusDtoOriginalOwner()  # noqa: E501
+        model = ApprovalStatusDtoOriginalOwner()
         if include_optional:
             return ApprovalStatusDtoOriginalOwner(
                 type = 'IDENTITY',

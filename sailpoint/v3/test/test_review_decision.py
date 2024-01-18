@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.review_decision import ReviewDecision  # noqa: E501
+from sailpoint.v3.models.review_decision import ReviewDecision
 
 
 class TestReviewDecision(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReviewDecision(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ReviewDecision`
         """
-        model = ReviewDecision()  # noqa: E501
+        model = ReviewDecision()
         if include_optional:
             return ReviewDecision(
                 id = 'ef38f94347e94562b5bb8424a56397d8',

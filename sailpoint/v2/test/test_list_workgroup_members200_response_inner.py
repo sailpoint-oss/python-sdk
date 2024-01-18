@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v2.models.list_workgroup_members200_response_inner import ListWorkgroupMembers200ResponseInner  # noqa: E501
+from sailpoint.v2.models.list_workgroup_members200_response_inner import ListWorkgroupMembers200ResponseInner
 
 
 class TestListWorkgroupMembers200ResponseInner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestListWorkgroupMembers200ResponseInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListWorkgroupMembers200ResponseInner`
         """
-        model = ListWorkgroupMembers200ResponseInner()  # noqa: E501
+        model = ListWorkgroupMembers200ResponseInner()
         if include_optional:
             return ListWorkgroupMembers200ResponseInner(
                 alias = 'Jerry.Bennett',

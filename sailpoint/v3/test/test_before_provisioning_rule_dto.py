@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.before_provisioning_rule_dto import BeforeProvisioningRuleDto  # noqa: E501
+from sailpoint.v3.models.before_provisioning_rule_dto import BeforeProvisioningRuleDto
 
 
 class TestBeforeProvisioningRuleDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestBeforeProvisioningRuleDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `BeforeProvisioningRuleDto`
         """
-        model = BeforeProvisioningRuleDto()  # noqa: E501
+        model = BeforeProvisioningRuleDto()
         if include_optional:
             return BeforeProvisioningRuleDto(
                 type = 'RULE',

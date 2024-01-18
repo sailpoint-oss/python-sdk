@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.localized_message import LocalizedMessage  # noqa: E501
+from sailpoint.beta.models.localized_message import LocalizedMessage
 
 
 class TestLocalizedMessage(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestLocalizedMessage(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `LocalizedMessage`
         """
-        model = LocalizedMessage()  # noqa: E501
+        model = LocalizedMessage()
         if include_optional:
             return LocalizedMessage(
                 locale = 'An error has occurred!',

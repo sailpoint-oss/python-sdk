@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_activity_item import AccountActivityItem  # noqa: E501
+from sailpoint.beta.models.account_activity_item import AccountActivityItem
 
 
 class TestAccountActivityItem(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountActivityItem(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountActivityItem`
         """
-        model = AccountActivityItem()  # noqa: E501
+        model = AccountActivityItem()
         if include_optional:
             return AccountActivityItem(
                 id = '48c545831b264409a81befcabb0e3c5a',

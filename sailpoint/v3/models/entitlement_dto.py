@@ -17,92 +17,109 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.entitlement_source import EntitlementSource
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class EntitlementDto(BaseModel):
     """
     EntitlementDto
     """
+
+  # noqa: E501
     id: Optional[StrictStr] = Field(
-        None, description="System-generated unique ID of the Object")
-    name: StrictStr = Field(..., description="Name of the Object")
+        default=None, description="System-generated unique ID of the Object")
+    name: StrictStr = Field(description="Name of the Object")
     created: Optional[datetime] = Field(
-        None, description="Creation date of the Object")
+        default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(
-        None, description="Last modification date of the Object")
+        default=None, description="Last modification date of the Object")
     attribute: Optional[StrictStr] = Field(
-        None, description="Name of the entitlement attribute")
+        default=None, description="Name of the entitlement attribute")
     value: Optional[StrictStr] = Field(
-        None, description="Raw value of the entitlement")
+        default=None, description="Raw value of the entitlement")
     description: Optional[StrictStr] = Field(
-        None, description="Entitlment description")
+        default=None, description="Entitlment description")
     attributes: Optional[Dict[str, Any]] = Field(
-        None, description="Entitlement attributes")
+        default=None, description="Entitlement attributes")
     source_schema_object_type: Optional[StrictStr] = Field(
-        None,
-        alias="sourceSchemaObjectType",
+        default=None,
         description=
-        "Schema objectType on the given application that maps to an Account Group"
-    )
+        "Schema objectType on the given application that maps to an Account Group",
+        alias="sourceSchemaObjectType")
     privileged: Optional[StrictBool] = Field(
-        None, description="Determines if this Entitlement is privileged.")
+        default=None,
+        description="Determines if this Entitlement is privileged.")
     cloud_governed: Optional[StrictBool] = Field(
-        None,
-        alias="cloudGoverned",
-        description="Determines if this Entitlement is goverened in the cloud."
-    )
+        default=None,
+        description="Determines if this Entitlement is goverened in the cloud.",
+        alias="cloudGoverned")
     source: Optional[EntitlementSource] = None
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "id", "name", "created", "modified", "attribute", "value",
         "description", "attributes", "sourceSchemaObjectType", "privileged",
         "cloudGoverned", "source"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> EntitlementDto:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of EntitlementDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                              "id",
-                              "created",
-                              "modified",
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+                "id",
+                "created",
+                "modified",
+            },
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> EntitlementDto:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of EntitlementDto from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return EntitlementDto.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = EntitlementDto.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -119,11 +136,11 @@ class EntitlementDto(BaseModel):
             obj.get("description"),
             "attributes":
             obj.get("attributes"),
-            "source_schema_object_type":
+            "sourceSchemaObjectType":
             obj.get("sourceSchemaObjectType"),
             "privileged":
             obj.get("privileged"),
-            "cloud_governed":
+            "cloudGoverned":
             obj.get("cloudGoverned"),
             "source":
             EntitlementSource.from_dict(obj.get("source"))

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_aggregation_completed_source import AccountAggregationCompletedSource  # noqa: E501
+from sailpoint.beta.models.account_aggregation_completed_source import AccountAggregationCompletedSource
 
 
 class TestAccountAggregationCompletedSource(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestAccountAggregationCompletedSource(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountAggregationCompletedSource`
         """
-        model = AccountAggregationCompletedSource()  # noqa: E501
+        model = AccountAggregationCompletedSource()
         if include_optional:
             return AccountAggregationCompletedSource(
                 type = 'SOURCE',

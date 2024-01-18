@@ -16,64 +16,78 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool
+from pydantic import Field
 from sailpoint.beta.models.recommendation_request import RecommendationRequest
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RecommendationRequestDto(BaseModel):
     """
     RecommendationRequestDto
     """
-    requests: Optional[conlist(RecommendationRequest)] = None
+
+  # noqa: E501
+    requests: Optional[List[RecommendationRequest]] = None
     exclude_interpretations: Optional[StrictBool] = Field(
-        False,
-        alias="excludeInterpretations",
+        default=False,
         description=
-        "Exclude interpretations in the response if \"true\". Return interpretations in the response if this attribute is not specified."
-    )
+        "Exclude interpretations in the response if \"true\". Return interpretations in the response if this attribute is not specified.",
+        alias="excludeInterpretations")
     include_translation_messages: Optional[StrictBool] = Field(
-        False,
-        alias="includeTranslationMessages",
+        default=False,
         description=
-        "When set to true, the calling system uses the translated messages for the specified language"
-    )
+        "When set to true, the calling system uses the translated messages for the specified language",
+        alias="includeTranslationMessages")
     include_debug_information: Optional[StrictBool] = Field(
-        False,
-        alias="includeDebugInformation",
-        description="Returns the recommender calculations if set to true")
+        default=False,
+        description="Returns the recommender calculations if set to true",
+        alias="includeDebugInformation")
     prescribe_mode: Optional[StrictBool] = Field(
-        False,
-        alias="prescribeMode",
+        default=False,
         description=
-        "When set to true, uses prescribedRulesRecommenderConfig to get identity attributes and peer group threshold instead of standard config."
-    )
-    __properties = [
+        "When set to true, uses prescribedRulesRecommenderConfig to get identity attributes and peer group threshold instead of standard config.",
+        alias="prescribeMode")
+    __properties: ClassVar[List[str]] = [
         "requests", "excludeInterpretations", "includeTranslationMessages",
         "includeDebugInformation", "prescribeMode"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RecommendationRequestDto:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RecommendationRequestDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in requests (list)
         _items = []
         if self.requests:
@@ -84,29 +98,29 @@ class RecommendationRequestDto(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RecommendationRequestDto:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of RecommendationRequestDto from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RecommendationRequestDto.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RecommendationRequestDto.parse_obj({
+        _obj = cls.model_validate({
             "requests": [
                 RecommendationRequest.from_dict(_item)
                 for _item in obj.get("requests")
             ] if obj.get("requests") is not None else None,
-            "exclude_interpretations":
+            "excludeInterpretations":
             obj.get("excludeInterpretations")
             if obj.get("excludeInterpretations") is not None else False,
-            "include_translation_messages":
+            "includeTranslationMessages":
             obj.get("includeTranslationMessages")
             if obj.get("includeTranslationMessages") is not None else False,
-            "include_debug_information":
+            "includeDebugInformation":
             obj.get("includeDebugInformation")
             if obj.get("includeDebugInformation") is not None else False,
-            "prescribe_mode":
+            "prescribeMode":
             obj.get("prescribeMode")
             if obj.get("prescribeMode") is not None else False
         })

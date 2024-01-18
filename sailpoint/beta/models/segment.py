@@ -17,59 +17,77 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.owner_reference_segments import OwnerReferenceSegments
 from sailpoint.beta.models.visibility_criteria import VisibilityCriteria
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class Segment(BaseModel):
     """
     Segment
     """
-    id: Optional[StrictStr] = Field(None, description="The segment's ID.")
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
+                                    description="The segment's ID.")
     name: Optional[StrictStr] = Field(
-        None, description="The segment's business name.")
+        default=None, description="The segment's business name.")
     created: Optional[datetime] = Field(
-        None, description="The time when the segment is created.")
+        default=None, description="The time when the segment is created.")
     modified: Optional[datetime] = Field(
-        None, description="The time when the segment is modified.")
+        default=None, description="The time when the segment is modified.")
     description: Optional[StrictStr] = Field(
-        None, description="The segment's optional description.")
+        default=None, description="The segment's optional description.")
     owner: Optional[OwnerReferenceSegments] = None
     visibility_criteria: Optional[VisibilityCriteria] = Field(
-        None, alias="visibilityCriteria")
+        default=None, alias="visibilityCriteria")
     active: Optional[StrictBool] = Field(
-        False,
+        default=False,
         description=
         "This boolean indicates whether the segment is currently active. Inactive segments have no effect."
     )
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "id", "name", "created", "modified", "description", "owner",
         "visibilityCriteria", "active"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Segment:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of Segment from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -77,22 +95,22 @@ class Segment(BaseModel):
         if self.visibility_criteria:
             _dict['visibilityCriteria'] = self.visibility_criteria.to_dict()
         # set to None if owner (nullable) is None
-        # and __fields_set__ contains the field
-        if self.owner is None and "owner" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.owner is None and "owner" in self.model_fields_set:
             _dict['owner'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Segment:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of Segment from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return Segment.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = Segment.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -106,7 +124,7 @@ class Segment(BaseModel):
             "owner":
             OwnerReferenceSegments.from_dict(obj.get("owner"))
             if obj.get("owner") is not None else None,
-            "visibility_criteria":
+            "visibilityCriteria":
             VisibilityCriteria.from_dict(obj.get("visibilityCriteria"))
             if obj.get("visibilityCriteria") is not None else None,
             "active":

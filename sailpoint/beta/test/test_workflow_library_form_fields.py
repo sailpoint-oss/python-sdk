@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workflow_library_form_fields import WorkflowLibraryFormFields  # noqa: E501
+from sailpoint.beta.models.workflow_library_form_fields import WorkflowLibraryFormFields
 
 
 class TestWorkflowLibraryFormFields(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkflowLibraryFormFields(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkflowLibraryFormFields`
         """
-        model = WorkflowLibraryFormFields()  # noqa: E501
+        model = WorkflowLibraryFormFields()
         if include_optional:
             return WorkflowLibraryFormFields(
                 help_text = 'The name to give to this certification campaign.',

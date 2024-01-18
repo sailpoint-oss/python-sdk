@@ -16,61 +16,72 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class CampaignActivatedCampaignCampaignOwner(BaseModel):
     """
-    Details of the identity that owns the campaign.  # noqa: E501
-    """
-    id: StrictStr = Field(..., description="The unique ID of the identity.")
+    Details of the identity that owns the campaign.
+    """ # noqa: E501
+    id: StrictStr = Field(description="The unique ID of the identity.")
     display_name: StrictStr = Field(
-        ...,
-        alias="displayName",
-        description="The human friendly name of the identity.")
+        description="The human friendly name of the identity.",
+        alias="displayName")
     email: StrictStr = Field(
-        ..., description="The primary email address of the identity.")
-    __properties = ["id", "displayName", "email"]
+        description="The primary email address of the identity.")
+    __properties: ClassVar[List[str]] = ["id", "displayName", "email"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls,
-                  json_str: str) -> CampaignActivatedCampaignCampaignOwner:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of CampaignActivatedCampaignCampaignOwner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CampaignActivatedCampaignCampaignOwner:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of CampaignActivatedCampaignCampaignOwner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CampaignActivatedCampaignCampaignOwner.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = CampaignActivatedCampaignCampaignOwner.parse_obj({
-            "id":
-            obj.get("id"),
-            "display_name":
-            obj.get("displayName"),
-            "email":
-            obj.get("email")
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "displayName": obj.get("displayName"),
+            "email": obj.get("email")
         })
         return _obj

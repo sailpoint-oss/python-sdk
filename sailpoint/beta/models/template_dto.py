@@ -17,65 +17,70 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class TemplateDto(BaseModel):
     """
     TemplateDto
     """
-    key: StrictStr = Field(..., description="The key of the template")
+
+  # noqa: E501
+    key: StrictStr = Field(description="The key of the template")
     name: Optional[StrictStr] = Field(
-        None, description="The name of the Task Manager Subscription")
+        default=None, description="The name of the Task Manager Subscription")
     medium: StrictStr = Field(
-        ...,
         description=
         "The message medium. More mediums may be added in the future.")
     locale: StrictStr = Field(
-        ...,
         description="The locale for the message text, a BCP 47 language tag.")
     subject: Optional[StrictStr] = Field(
-        None, description="The subject line in the template")
+        default=None, description="The subject line in the template")
     header: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "The header value is now located within the body field. If included with non-null values, will result in a 400."
     )
-    body: Optional[StrictStr] = Field(None,
+    body: Optional[StrictStr] = Field(default=None,
                                       description="The body in the template")
     footer: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "The footer value is now located within the body field. If included with non-null values, will result in a 400."
     )
     var_from: Optional[StrictStr] = Field(
-        None,
-        alias="from",
-        description="The \"From:\" address in the template")
+        default=None,
+        description="The \"From:\" address in the template",
+        alias="from")
     reply_to: Optional[StrictStr] = Field(
-        None,
-        alias="replyTo",
-        description="The \"Reply To\" line in the template")
+        default=None,
+        description="The \"Reply To\" line in the template",
+        alias="replyTo")
     description: Optional[StrictStr] = Field(
-        None, description="The description in the template")
-    id: Optional[StrictStr] = Field(None,
+        default=None, description="The description in the template")
+    id: Optional[StrictStr] = Field(default=None,
                                     description="This is auto-generated.")
     created: Optional[datetime] = Field(
-        None,
+        default=None,
         description=
         "The time when this template is created. This is auto-generated.")
     modified: Optional[datetime] = Field(
-        None,
+        default=None,
         description=
         "The time when this template was last modified. This is auto-generated."
     )
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "key", "name", "medium", "locale", "subject", "header", "body",
         "footer", "from", "replyTo", "description", "id", "created", "modified"
     ]
 
-    @validator('medium')
+    @field_validator('medium')
     def medium_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('EMAIL', 'PHONE', 'SMS', 'SLACK', 'TEAMS'):
@@ -84,49 +89,59 @@ class TemplateDto(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> TemplateDto:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of TemplateDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # set to None if header (nullable) is None
-        # and __fields_set__ contains the field
-        if self.header is None and "header" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.header is None and "header" in self.model_fields_set:
             _dict['header'] = None
 
         # set to None if footer (nullable) is None
-        # and __fields_set__ contains the field
-        if self.footer is None and "footer" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.footer is None and "footer" in self.model_fields_set:
             _dict['footer'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TemplateDto:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of TemplateDto from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return TemplateDto.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = TemplateDto.parse_obj({
+        _obj = cls.model_validate({
             "key": obj.get("key"),
             "name": obj.get("name"),
             "medium": obj.get("medium"),
@@ -135,8 +150,8 @@ class TemplateDto(BaseModel):
             "header": obj.get("header"),
             "body": obj.get("body"),
             "footer": obj.get("footer"),
-            "var_from": obj.get("from"),
-            "reply_to": obj.get("replyTo"),
+            "from": obj.get("from"),
+            "replyTo": obj.get("replyTo"),
             "description": obj.get("description"),
             "id": obj.get("id"),
             "created": obj.get("created"),

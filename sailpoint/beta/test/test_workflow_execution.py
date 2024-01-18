@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workflow_execution import WorkflowExecution  # noqa: E501
+from sailpoint.beta.models.workflow_execution import WorkflowExecution
 
 
 class TestWorkflowExecution(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkflowExecution(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkflowExecution`
         """
-        model = WorkflowExecution()  # noqa: E501
+        model = WorkflowExecution()
         if include_optional:
             return WorkflowExecution(
                 id = 'b393f4e2-4785-4d7f-ab27-3a6b8ded4c81',

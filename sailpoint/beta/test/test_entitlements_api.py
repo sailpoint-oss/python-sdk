@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.entitlements_api import EntitlementsApi  # noqa: E501
+from sailpoint.beta.api.entitlements_api import EntitlementsApi
 
 
 class TestEntitlementsApi(unittest.TestCase):
     """EntitlementsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = EntitlementsApi()  # noqa: E501
+        self.api = EntitlementsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,56 +28,56 @@ class TestEntitlementsApi(unittest.TestCase):
     def test_get_entitlement(self) -> None:
         """Test case for get_entitlement
 
-        Get an entitlement  # noqa: E501
+        Get an entitlement
         """
         pass
 
     def test_get_entitlement_request_config(self) -> None:
         """Test case for get_entitlement_request_config
 
-        Get Entitlement Request Config  # noqa: E501
+        Get Entitlement Request Config
         """
         pass
 
     def test_list_entitlement_children(self) -> None:
         """Test case for list_entitlement_children
 
-        List of entitlements children  # noqa: E501
+        List of entitlements children
         """
         pass
 
     def test_list_entitlement_parents(self) -> None:
         """Test case for list_entitlement_parents
 
-        List of entitlements parents  # noqa: E501
+        List of entitlements parents
         """
         pass
 
     def test_list_entitlements(self) -> None:
         """Test case for list_entitlements
 
-        Gets a list of entitlements.  # noqa: E501
+        Gets a list of entitlements.
         """
         pass
 
     def test_patch_entitlement(self) -> None:
         """Test case for patch_entitlement
 
-        Patch an entitlement  # noqa: E501
+        Patch an entitlement
         """
         pass
 
     def test_put_entitlement_request_config(self) -> None:
         """Test case for put_entitlement_request_config
 
-        Replace Entitlement Request Config  # noqa: E501
+        Replace Entitlement Request Config
         """
         pass
 
     def test_update_entitlements_in_bulk(self) -> None:
         """Test case for update_entitlements_in_bulk
 
-        Bulk update an entitlement list  # noqa: E501
+        Bulk update an entitlement list
         """
         pass
 

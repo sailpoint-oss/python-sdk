@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.configuration_item_request import ConfigurationItemRequest  # noqa: E501
+from sailpoint.beta.models.configuration_item_request import ConfigurationItemRequest
 
 
 class TestConfigurationItemRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestConfigurationItemRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConfigurationItemRequest`
         """
-        model = ConfigurationItemRequest()  # noqa: E501
+        model = ConfigurationItemRequest()
         if include_optional:
             return ConfigurationItemRequest(
                 reassigned_from_id = '2c91808781a71ddb0181b9090b5c504e',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.aggregations import Aggregations  # noqa: E501
+from sailpoint.v3.models.aggregations import Aggregations
 
 
 class TestAggregations(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAggregations(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Aggregations`
         """
-        model = Aggregations()  # noqa: E501
+        model = Aggregations()
         if include_optional:
             return Aggregations(
                 nested = sailpoint.v3.models.nested_aggregation.NestedAggregation(

@@ -4,7 +4,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**public** | **bool** | Indicates if the saved search is public.  | [optional] [default to False]
 **created** | **datetime** | A date-time in ISO-8601 format | [optional] 
 **modified** | **datetime** | A date-time in ISO-8601 format | [optional] 
 **indices** | [**List[Index]**](Index.md) | The names of the Elasticsearch indices in which to search.  | 

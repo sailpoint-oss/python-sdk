@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.connector_rule_response import ConnectorRuleResponse  # noqa: E501
+from sailpoint.beta.models.connector_rule_response import ConnectorRuleResponse
 
 
 class TestConnectorRuleResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestConnectorRuleResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConnectorRuleResponse`
         """
-        model = ConnectorRuleResponse()  # noqa: E501
+        model = ConnectorRuleResponse()
         if include_optional:
             return ConnectorRuleResponse(
                 name = 'WebServiceBeforeOperationRule',

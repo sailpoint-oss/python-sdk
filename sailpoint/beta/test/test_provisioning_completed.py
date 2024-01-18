@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.provisioning_completed import ProvisioningCompleted  # noqa: E501
+from sailpoint.beta.models.provisioning_completed import ProvisioningCompleted
 
 
 class TestProvisioningCompleted(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestProvisioningCompleted(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ProvisioningCompleted`
         """
-        model = ProvisioningCompleted()  # noqa: E501
+        model = ProvisioningCompleted()
         if include_optional:
             return ProvisioningCompleted(
                 tracking_number = '4b4d982dddff4267ab12f0f1e72b5a6d',
