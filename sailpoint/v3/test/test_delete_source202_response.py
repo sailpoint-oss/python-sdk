@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.delete_source202_response import DeleteSource202Response  # noqa: E501
+from sailpoint.v3.models.delete_source202_response import DeleteSource202Response
 
 
 class TestDeleteSource202Response(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestDeleteSource202Response(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `DeleteSource202Response`
         """
-        model = DeleteSource202Response()  # noqa: E501
+        model = DeleteSource202Response()
         if include_optional:
             return DeleteSource202Response(
                 type = 'TASK_RESULT',

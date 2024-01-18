@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.connector_rule_management_api import ConnectorRuleManagementApi  # noqa: E501
+from sailpoint.beta.api.connector_rule_management_api import ConnectorRuleManagementApi
 
 
 class TestConnectorRuleManagementApi(unittest.TestCase):
     """ConnectorRuleManagementApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = ConnectorRuleManagementApi()  # noqa: E501
+        self.api = ConnectorRuleManagementApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,42 +28,42 @@ class TestConnectorRuleManagementApi(unittest.TestCase):
     def test_create_connector_rule(self) -> None:
         """Test case for create_connector_rule
 
-        Create Connector Rule  # noqa: E501
+        Create Connector Rule
         """
         pass
 
     def test_delete_connector_rule(self) -> None:
         """Test case for delete_connector_rule
 
-        Delete a Connector-Rule  # noqa: E501
+        Delete a Connector-Rule
         """
         pass
 
     def test_get_connector_rule(self) -> None:
         """Test case for get_connector_rule
 
-        Connector-Rule by ID  # noqa: E501
+        Connector-Rule by ID
         """
         pass
 
     def test_get_connector_rule_list(self) -> None:
         """Test case for get_connector_rule_list
 
-        List Connector Rules  # noqa: E501
+        List Connector Rules
         """
         pass
 
     def test_update_connector_rule(self) -> None:
         """Test case for update_connector_rule
 
-        Update a Connector Rule  # noqa: E501
+        Update a Connector Rule
         """
         pass
 
     def test_validate_connector_rule(self) -> None:
         """Test case for validate_connector_rule
 
-        Validate Connector Rule  # noqa: E501
+        Validate Connector Rule
         """
         pass
 

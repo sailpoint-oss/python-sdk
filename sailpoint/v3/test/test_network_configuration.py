@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.network_configuration import NetworkConfiguration  # noqa: E501
+from sailpoint.v3.models.network_configuration import NetworkConfiguration
 
 
 class TestNetworkConfiguration(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNetworkConfiguration(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NetworkConfiguration`
         """
-        model = NetworkConfiguration()  # noqa: E501
+        model = NetworkConfiguration()
         if include_optional:
             return NetworkConfiguration(
                 range = [1.3.7.2, 255.255.255.252/30],

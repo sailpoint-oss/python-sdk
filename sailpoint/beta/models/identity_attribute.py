@@ -16,65 +16,86 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.source1 import Source1
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class IdentityAttribute(BaseModel):
     """
     IdentityAttribute
     """
+
+  # noqa: E501
     name: Optional[StrictStr] = Field(
-        None, description="The technical name of the identity attribute")
+        default=None,
+        description="The technical name of the identity attribute")
     display_name: Optional[StrictStr] = Field(
-        None,
-        alias="displayName",
-        description="The business-friendly name of the identity attribute")
+        default=None,
+        description="The business-friendly name of the identity attribute",
+        alias="displayName")
     standard: Optional[StrictBool] = Field(
-        False, description="Shows if the attribute is 'standard' or default")
+        default=False,
+        description="Shows if the attribute is 'standard' or default")
     type: Optional[StrictStr] = Field(
-        None, description="The type of the identity attribute")
+        default=None, description="The type of the identity attribute")
     multi: Optional[StrictBool] = Field(
-        False, description="Shows if the identity attribute is multi-valued")
+        default=False,
+        description="Shows if the identity attribute is multi-valued")
     searchable: Optional[StrictBool] = Field(
-        False, description="Shows if the identity attribute is searchable")
+        default=False,
+        description="Shows if the identity attribute is searchable")
     system: Optional[StrictBool] = Field(
-        False,
+        default=False,
         description=
         "Shows this is 'system' identity attribute that does not have a source and is not configurable."
     )
-    sources: Optional[conlist(Source1)] = Field(
-        None,
+    sources: Optional[List[Source1]] = Field(
+        default=None,
         description=
         "List of sources for an attribute, this specifies how the value of the rule is derived"
     )
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "name", "displayName", "standard", "type", "multi", "searchable",
         "system", "sources"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> IdentityAttribute:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of IdentityAttribute from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in sources (list)
         _items = []
         if self.sources:
@@ -85,18 +106,18 @@ class IdentityAttribute(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> IdentityAttribute:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of IdentityAttribute from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return IdentityAttribute.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = IdentityAttribute.parse_obj({
+        _obj = cls.model_validate({
             "name":
             obj.get("name"),
-            "display_name":
+            "displayName":
             obj.get("displayName"),
             "standard":
             obj.get("standard") if obj.get("standard") is not None else False,

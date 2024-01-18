@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.source_account_correlation_config import SourceAccountCorrelationConfig  # noqa: E501
+from sailpoint.v3.models.source_account_correlation_config import SourceAccountCorrelationConfig
 
 
 class TestSourceAccountCorrelationConfig(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestSourceAccountCorrelationConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceAccountCorrelationConfig`
         """
-        model = SourceAccountCorrelationConfig()  # noqa: E501
+        model = SourceAccountCorrelationConfig()
         if include_optional:
             return SourceAccountCorrelationConfig(
                 type = 'ACCOUNT_CORRELATION_CONFIG',

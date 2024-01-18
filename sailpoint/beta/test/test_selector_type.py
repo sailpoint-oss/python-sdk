@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.selector_type import SelectorType  # noqa: E501
+from sailpoint.beta.models.selector_type import SelectorType
 
 
 class TestSelectorType(unittest.TestCase):

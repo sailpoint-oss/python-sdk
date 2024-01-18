@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v2.models.get_org_settings200_response import GetOrgSettings200Response  # noqa: E501
+from sailpoint.v2.models.get_org_settings200_response import GetOrgSettings200Response
 
 
 class TestGetOrgSettings200Response(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestGetOrgSettings200Response(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `GetOrgSettings200Response`
         """
-        model = GetOrgSettings200Response()  # noqa: E501
+        model = GetOrgSettings200Response()
         if include_optional:
             return GetOrgSettings200Response(
                 id = '',

@@ -11,10 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from aenum import Enum, no_arg
+from enum import Enum
+
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class DocumentType(str, Enum):
@@ -34,6 +40,6 @@ class DocumentType(str, Enum):
     ROLE = 'role'
 
     @classmethod
-    def from_json(cls, json_str: str) -> DocumentType:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of DocumentType from a JSON string"""
-        return DocumentType(json.loads(json_str))
+        return cls(json.loads(json_str))

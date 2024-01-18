@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.tenant_configuration_request import TenantConfigurationRequest  # noqa: E501
+from sailpoint.beta.models.tenant_configuration_request import TenantConfigurationRequest
 
 
 class TestTenantConfigurationRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTenantConfigurationRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TenantConfigurationRequest`
         """
-        model = TenantConfigurationRequest()  # noqa: E501
+        model = TenantConfigurationRequest()
         if include_optional:
             return TenantConfigurationRequest(
                 config_details = sailpoint.beta.models.tenant_configuration_details.TenantConfigurationDetails(

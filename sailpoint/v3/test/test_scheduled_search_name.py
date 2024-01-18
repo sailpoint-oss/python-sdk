@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.scheduled_search_name import ScheduledSearchName  # noqa: E501
+from sailpoint.v3.models.scheduled_search_name import ScheduledSearchName
 
 
 class TestScheduledSearchName(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestScheduledSearchName(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ScheduledSearchName`
         """
-        model = ScheduledSearchName()  # noqa: E501
+        model = ScheduledSearchName()
         if include_optional:
             return ScheduledSearchName(
                 name = 'Daily disabled accounts',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v2.models.modify_workgroup_members_request import ModifyWorkgroupMembersRequest  # noqa: E501
+from sailpoint.v2.models.modify_workgroup_members_request import ModifyWorkgroupMembersRequest
 
 
 class TestModifyWorkgroupMembersRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestModifyWorkgroupMembersRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ModifyWorkgroupMembersRequest`
         """
-        model = ModifyWorkgroupMembersRequest()  # noqa: E501
+        model = ModifyWorkgroupMembersRequest()
         if include_optional:
             return ModifyWorkgroupMembersRequest(
                 add = [

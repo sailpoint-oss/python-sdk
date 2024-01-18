@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.nested_aggregation import NestedAggregation  # noqa: E501
+from sailpoint.v3.models.nested_aggregation import NestedAggregation
 
 
 class TestNestedAggregation(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNestedAggregation(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NestedAggregation`
         """
-        model = NestedAggregation()  # noqa: E501
+        model = NestedAggregation()
         if include_optional:
             return NestedAggregation(
                 name = 'id',

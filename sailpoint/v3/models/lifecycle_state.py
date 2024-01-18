@@ -17,83 +17,98 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.account_action import AccountAction
 from sailpoint.v3.models.email_notification_option import EmailNotificationOption
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class LifecycleState(BaseModel):
     """
     LifecycleState
     """
+
+  # noqa: E501
     id: Optional[StrictStr] = Field(
-        None, description="System-generated unique ID of the Object")
-    name: StrictStr = Field(..., description="Name of the Object")
+        default=None, description="System-generated unique ID of the Object")
+    name: StrictStr = Field(description="Name of the Object")
     created: Optional[datetime] = Field(
-        None, description="Creation date of the Object")
+        default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(
-        None, description="Last modification date of the Object")
+        default=None, description="Last modification date of the Object")
     enabled: Optional[StrictBool] = Field(
-        None,
+        default=None,
         description="Whether the lifecycle state is enabled or disabled.")
     technical_name: StrictStr = Field(
-        ...,
-        alias="technicalName",
         description=
-        "The technical name for lifecycle state. This is for internal use.")
+        "The technical name for lifecycle state. This is for internal use.",
+        alias="technicalName")
     description: Optional[StrictStr] = Field(
-        None, description="Lifecycle state description.")
+        default=None, description="Lifecycle state description.")
     identity_count: Optional[StrictInt] = Field(
-        None,
-        alias="identityCount",
-        description="Number of identities that have the lifecycle state.")
+        default=None,
+        description="Number of identities that have the lifecycle state.",
+        alias="identityCount")
     email_notification_option: Optional[EmailNotificationOption] = Field(
-        None, alias="emailNotificationOption")
-    account_actions: Optional[conlist(AccountAction)] = Field(
-        None, alias="accountActions")
-    access_profile_ids: Optional[conlist(
-        StrictStr, unique_items=True
-    )] = Field(
-        None,
-        alias="accessProfileIds",
+        default=None, alias="emailNotificationOption")
+    account_actions: Optional[List[AccountAction]] = Field(
+        default=None, alias="accountActions")
+    access_profile_ids: Optional[List[StrictStr]] = Field(
+        default=None,
         description=
-        "List of unique access-profile IDs that are associated with the lifecycle state."
-    )
-    __properties = [
+        "List of unique access-profile IDs that are associated with the lifecycle state.",
+        alias="accessProfileIds")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "created", "modified", "enabled", "technicalName",
         "description", "identityCount", "emailNotificationOption",
         "accountActions", "accessProfileIds"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> LifecycleState:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of LifecycleState from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                              "id",
-                              "created",
-                              "modified",
-                              "identity_count",
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+                "id",
+                "created",
+                "modified",
+                "identity_count",
+            },
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of email_notification_option
         if self.email_notification_option:
             _dict[
@@ -109,15 +124,15 @@ class LifecycleState(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> LifecycleState:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of LifecycleState from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return LifecycleState.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = LifecycleState.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -128,21 +143,21 @@ class LifecycleState(BaseModel):
             obj.get("modified"),
             "enabled":
             obj.get("enabled"),
-            "technical_name":
+            "technicalName":
             obj.get("technicalName"),
             "description":
             obj.get("description"),
-            "identity_count":
+            "identityCount":
             obj.get("identityCount"),
-            "email_notification_option":
+            "emailNotificationOption":
             EmailNotificationOption.from_dict(
                 obj.get("emailNotificationOption"))
             if obj.get("emailNotificationOption") is not None else None,
-            "account_actions": [
+            "accountActions": [
                 AccountAction.from_dict(_item)
                 for _item in obj.get("accountActions")
             ] if obj.get("accountActions") is not None else None,
-            "access_profile_ids":
+            "accessProfileIds":
             obj.get("accessProfileIds")
         })
         return _obj

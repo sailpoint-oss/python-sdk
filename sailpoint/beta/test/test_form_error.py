@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_error import FormError  # noqa: E501
+from sailpoint.beta.models.form_error import FormError
 
 
 class TestFormError(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFormError(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormError`
         """
-        model = FormError()  # noqa: E501
+        model = FormError()
         if include_optional:
             return FormError(
                 key = 'department',

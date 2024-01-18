@@ -17,71 +17,87 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.document_type import DocumentType
 from sailpoint.v3.models.owner import Owner
 from sailpoint.v3.models.reference import Reference
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RoleDocument(BaseModel):
     """
-    Role  # noqa: E501
+    Role
     """
+
+  # noqa: E501
     id: StrictStr = Field(
-        ..., description="The unique ID of the referenced object.")
+        description="The unique ID of the referenced object.")
     name: StrictStr = Field(
-        ..., description="The human readable name of the referenced object.")
-    type: DocumentType = Field(..., alias="_type")
+        description="The human readable name of the referenced object.")
+    type: DocumentType = Field(alias="_type")
     description: Optional[StrictStr] = Field(
-        None, description="The description of the access item")
+        default=None, description="The description of the access item")
     created: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
+        default=None, description="A date-time in ISO-8601 format")
     modified: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
+        default=None, description="A date-time in ISO-8601 format")
     synced: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
+        default=None, description="A date-time in ISO-8601 format")
     enabled: Optional[StrictBool] = None
     requestable: Optional[StrictBool] = Field(
-        None, description="Indicates if the access can be requested")
+        default=None, description="Indicates if the access can be requested")
     request_comments_required: Optional[StrictBool] = Field(
-        None,
-        alias="requestCommentsRequired",
-        description="Indicates if comments are required when requesting access"
-    )
+        default=None,
+        description="Indicates if comments are required when requesting access",
+        alias="requestCommentsRequired")
     owner: Optional[Owner] = None
-    access_profiles: Optional[conlist(Reference)] = Field(
-        None, alias="accessProfiles")
+    access_profiles: Optional[List[Reference]] = Field(default=None,
+                                                       alias="accessProfiles")
     access_profile_count: Optional[StrictInt] = Field(
-        None, alias="accessProfileCount")
-    tags: Optional[conlist(StrictStr)] = None
-    __properties = [
+        default=None, alias="accessProfileCount")
+    tags: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = [
         "id", "name", "_type", "description", "created", "modified", "synced",
         "enabled", "requestable", "requestCommentsRequired", "owner",
         "accessProfiles", "accessProfileCount", "tags"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RoleDocument:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RoleDocument from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -93,37 +109,37 @@ class RoleDocument(BaseModel):
                     _items.append(_item.to_dict())
             _dict['accessProfiles'] = _items
         # set to None if created (nullable) is None
-        # and __fields_set__ contains the field
-        if self.created is None and "created" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.created is None and "created" in self.model_fields_set:
             _dict['created'] = None
 
         # set to None if modified (nullable) is None
-        # and __fields_set__ contains the field
-        if self.modified is None and "modified" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
             _dict['modified'] = None
 
         # set to None if synced (nullable) is None
-        # and __fields_set__ contains the field
-        if self.synced is None and "synced" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.synced is None and "synced" in self.model_fields_set:
             _dict['synced'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RoleDocument:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of RoleDocument from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RoleDocument.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RoleDocument.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
             obj.get("name"),
-            "type":
+            "_type":
             obj.get("_type"),
             "description":
             obj.get("description"),
@@ -137,16 +153,16 @@ class RoleDocument(BaseModel):
             obj.get("enabled"),
             "requestable":
             obj.get("requestable"),
-            "request_comments_required":
+            "requestCommentsRequired":
             obj.get("requestCommentsRequired"),
             "owner":
             Owner.from_dict(obj.get("owner"))
             if obj.get("owner") is not None else None,
-            "access_profiles": [
+            "accessProfiles": [
                 Reference.from_dict(_item)
                 for _item in obj.get("accessProfiles")
             ] if obj.get("accessProfiles") is not None else None,
-            "access_profile_count":
+            "accessProfileCount":
             obj.get("accessProfileCount"),
             "tags":
             obj.get("tags")

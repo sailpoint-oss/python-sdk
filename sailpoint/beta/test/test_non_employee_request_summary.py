@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.non_employee_request_summary import NonEmployeeRequestSummary  # noqa: E501
+from sailpoint.beta.models.non_employee_request_summary import NonEmployeeRequestSummary
 
 
 class TestNonEmployeeRequestSummary(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNonEmployeeRequestSummary(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeRequestSummary`
         """
-        model = NonEmployeeRequestSummary()  # noqa: E501
+        model = NonEmployeeRequestSummary()
         if include_optional:
             return NonEmployeeRequestSummary(
                 approved = 1.337,

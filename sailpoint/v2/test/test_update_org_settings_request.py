@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v2.models.update_org_settings_request import UpdateOrgSettingsRequest  # noqa: E501
+from sailpoint.v2.models.update_org_settings_request import UpdateOrgSettingsRequest
 
 
 class TestUpdateOrgSettingsRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestUpdateOrgSettingsRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `UpdateOrgSettingsRequest`
         """
-        model = UpdateOrgSettingsRequest()  # noqa: E501
+        model = UpdateOrgSettingsRequest()
         if include_optional:
             return UpdateOrgSettingsRequest(
                 country_codes = [

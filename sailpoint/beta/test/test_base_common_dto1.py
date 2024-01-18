@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.base_common_dto1 import BaseCommonDto1  # noqa: E501
+from sailpoint.beta.models.base_common_dto1 import BaseCommonDto1
 
 
 class TestBaseCommonDto1(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestBaseCommonDto1(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `BaseCommonDto1`
         """
-        model = BaseCommonDto1()  # noqa: E501
+        model = BaseCommonDto1()
         if include_optional:
             return BaseCommonDto1(
                 id = 'id12345',

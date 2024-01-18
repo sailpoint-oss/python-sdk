@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.sp_config_api import SPConfigApi  # noqa: E501
+from sailpoint.beta.api.sp_config_api import SPConfigApi
 
 
 class TestSPConfigApi(unittest.TestCase):
     """SPConfigApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SPConfigApi()  # noqa: E501
+        self.api = SPConfigApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,49 +28,49 @@ class TestSPConfigApi(unittest.TestCase):
     def test_export_sp_config(self) -> None:
         """Test case for export_sp_config
 
-        Initiates configuration objects export job  # noqa: E501
+        Initiates configuration objects export job
         """
         pass
 
     def test_get_sp_config_export(self) -> None:
         """Test case for get_sp_config_export
 
-        Download export job result.  # noqa: E501
+        Download export job result.
         """
         pass
 
     def test_get_sp_config_export_status(self) -> None:
         """Test case for get_sp_config_export_status
 
-        Get export job status  # noqa: E501
+        Get export job status
         """
         pass
 
     def test_get_sp_config_import(self) -> None:
         """Test case for get_sp_config_import
 
-        Download import job result  # noqa: E501
+        Download import job result
         """
         pass
 
     def test_get_sp_config_import_status(self) -> None:
         """Test case for get_sp_config_import_status
 
-        Get import job status  # noqa: E501
+        Get import job status
         """
         pass
 
     def test_import_sp_config(self) -> None:
         """Test case for import_sp_config
 
-        Initiates configuration objects import job  # noqa: E501
+        Initiates configuration objects import job
         """
         pass
 
     def test_list_sp_config_objects(self) -> None:
         """Test case for list_sp_config_objects
 
-        Get config object details  # noqa: E501
+        Get config object details
         """
         pass
 

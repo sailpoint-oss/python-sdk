@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_attribute_config1 import IdentityAttributeConfig1  # noqa: E501
+from sailpoint.beta.models.identity_attribute_config1 import IdentityAttributeConfig1
 
 
 class TestIdentityAttributeConfig1(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityAttributeConfig1(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityAttributeConfig1`
         """
-        model = IdentityAttributeConfig1()  # noqa: E501
+        model = IdentityAttributeConfig1()
         if include_optional:
             return IdentityAttributeConfig1(
                 enabled = True,

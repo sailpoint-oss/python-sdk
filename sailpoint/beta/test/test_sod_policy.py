@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.sod_policy import SodPolicy  # noqa: E501
+from sailpoint.beta.models.sod_policy import SodPolicy
 
 
 class TestSodPolicy(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSodPolicy(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SodPolicy`
         """
-        model = SodPolicy()  # noqa: E501
+        model = SodPolicy()
         if include_optional:
             return SodPolicy(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',

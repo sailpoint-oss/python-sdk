@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.error import Error  # noqa: E501
+from sailpoint.beta.models.error import Error
 
 
 class TestError(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestError(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Error`
         """
-        model = Error()  # noqa: E501
+        model = Error()
         if include_optional:
             return Error(
                 detail_code = 'Internal Server Error',

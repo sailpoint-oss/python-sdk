@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.certifier_response import CertifierResponse  # noqa: E501
+from sailpoint.beta.models.certifier_response import CertifierResponse
 
 
 class TestCertifierResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCertifierResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CertifierResponse`
         """
-        model = CertifierResponse()  # noqa: E501
+        model = CertifierResponse()
         if include_optional:
             return CertifierResponse(
                 id = '8a80828f643d484f01643e14202e206f',

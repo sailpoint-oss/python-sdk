@@ -14,11 +14,11 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.comment_dto_author import CommentDtoAuthor  # noqa: E501
+from sailpoint.v3.models.activity_insights import ActivityInsights
 
 
-class TestCommentDtoAuthor(unittest.TestCase):
-    """CommentDtoAuthor unit test stubs"""
+class TestActivityInsights(unittest.TestCase):
+    """ActivityInsights unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,27 +26,27 @@ class TestCommentDtoAuthor(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> CommentDtoAuthor:
-        """Test CommentDtoAuthor
+    def make_instance(self, include_optional) -> ActivityInsights:
+        """Test ActivityInsights
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `CommentDtoAuthor`
+        # uncomment below to create an instance of `ActivityInsights`
         """
-        model = CommentDtoAuthor()  # noqa: E501
+        model = ActivityInsights()
         if include_optional:
-            return CommentDtoAuthor(
-                type = 'IDENTITY',
-                id = '2c91808568c529c60168cca6f90c1313',
-                name = 'Adam Kennedy'
+            return ActivityInsights(
+                account_id = 'c4ddd5421d8549f0abd309162cafd3b1',
+                usage_days = 45,
+                usage_days_state = 'COMPLETE'
             )
         else:
-            return CommentDtoAuthor(
+            return ActivityInsights(
         )
         """
 
-    def testCommentDtoAuthor(self):
-        """Test CommentDtoAuthor"""
+    def testActivityInsights(self):
+        """Test ActivityInsights"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -18,6 +18,7 @@ from sailpoint.beta.api.entitlements_api import EntitlementsApi
 from sailpoint.beta.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.beta.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.beta.api.iai_common_access_api import IAICommonAccessApi
+from sailpoint.beta.api.iai_message_catalogs_api import IAIMessageCatalogsApi
 from sailpoint.beta.api.iai_outliers_api import IAIOutliersApi
 from sailpoint.beta.api.iai_peer_group_strategies_api import IAIPeerGroupStrategiesApi
 from sailpoint.beta.api.iai_recommendations_api import IAIRecommendationsApi
@@ -28,6 +29,7 @@ from sailpoint.beta.api.identity_history_api import IdentityHistoryApi
 from sailpoint.beta.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.beta.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.beta.api.mfa_configuration_api import MFAConfigurationApi
+from sailpoint.beta.api.mfa_controller_api import MFAControllerApi
 from sailpoint.beta.api.managed_clients_api import ManagedClientsApi
 from sailpoint.beta.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.beta.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi

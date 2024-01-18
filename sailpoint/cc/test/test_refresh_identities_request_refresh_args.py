@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.refresh_identities_request_refresh_args import RefreshIdentitiesRequestRefreshArgs  # noqa: E501
+from sailpoint.cc.models.refresh_identities_request_refresh_args import RefreshIdentitiesRequestRefreshArgs
 
 
 class TestRefreshIdentitiesRequestRefreshArgs(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestRefreshIdentitiesRequestRefreshArgs(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RefreshIdentitiesRequestRefreshArgs`
         """
-        model = RefreshIdentitiesRequestRefreshArgs()  # noqa: E501
+        model = RefreshIdentitiesRequestRefreshArgs()
         if include_optional:
             return RefreshIdentitiesRequestRefreshArgs(
                 correlate_entitlements = True,

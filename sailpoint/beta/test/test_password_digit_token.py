@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.password_digit_token import PasswordDigitToken  # noqa: E501
+from sailpoint.beta.models.password_digit_token import PasswordDigitToken
 
 
 class TestPasswordDigitToken(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPasswordDigitToken(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PasswordDigitToken`
         """
-        model = PasswordDigitToken()  # noqa: E501
+        model = PasswordDigitToken()
         if include_optional:
             return PasswordDigitToken(
                 digit_token = '09087713',

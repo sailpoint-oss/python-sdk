@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v2.models.get_org_settings200_response_approval_config import GetOrgSettings200ResponseApprovalConfig  # noqa: E501
+from sailpoint.v2.models.get_org_settings200_response_approval_config import GetOrgSettings200ResponseApprovalConfig
 
 
 class TestGetOrgSettings200ResponseApprovalConfig(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestGetOrgSettings200ResponseApprovalConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `GetOrgSettings200ResponseApprovalConfig`
         """
-        model = GetOrgSettings200ResponseApprovalConfig()  # noqa: E501
+        model = GetOrgSettings200ResponseApprovalConfig()
         if include_optional:
             return GetOrgSettings200ResponseApprovalConfig(
                 days_till_escalation = 56,

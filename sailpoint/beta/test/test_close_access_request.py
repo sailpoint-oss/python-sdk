@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.close_access_request import CloseAccessRequest  # noqa: E501
+from sailpoint.beta.models.close_access_request import CloseAccessRequest
 
 
 class TestCloseAccessRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCloseAccessRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CloseAccessRequest`
         """
-        model = CloseAccessRequest()  # noqa: E501
+        model = CloseAccessRequest()
         if include_optional:
             return CloseAccessRequest(
                 access_request_ids = [2c90ad2a70ace7d50170acf22ca90010],

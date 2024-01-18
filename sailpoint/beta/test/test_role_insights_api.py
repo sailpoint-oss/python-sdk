@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.role_insights_api import RoleInsightsApi  # noqa: E501
+from sailpoint.beta.api.role_insights_api import RoleInsightsApi
 
 
 class TestRoleInsightsApi(unittest.TestCase):
     """RoleInsightsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = RoleInsightsApi()  # noqa: E501
+        self.api = RoleInsightsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,63 +28,63 @@ class TestRoleInsightsApi(unittest.TestCase):
     def test_create_role_insight_requests(self) -> None:
         """Test case for create_role_insight_requests
 
-        Generate insights for roles  # noqa: E501
+        Generate insights for roles
         """
         pass
 
     def test_download_role_insights_entitlements_changes(self) -> None:
         """Test case for download_role_insights_entitlements_changes
 
-        Download entitlement insights for a role  # noqa: E501
+        Download entitlement insights for a role
         """
         pass
 
     def test_get_entitlement_changes_identities(self) -> None:
         """Test case for get_entitlement_changes_identities
 
-        Get identities for a suggested entitlement (for a role)  # noqa: E501
+        Get identities for a suggested entitlement (for a role)
         """
         pass
 
     def test_get_role_insight(self) -> None:
         """Test case for get_role_insight
 
-        Get a single role insight  # noqa: E501
+        Get a single role insight
         """
         pass
 
     def test_get_role_insights(self) -> None:
         """Test case for get_role_insights
 
-        Get role insights  # noqa: E501
+        Get role insights
         """
         pass
 
     def test_get_role_insights_current_entitlements(self) -> None:
         """Test case for get_role_insights_current_entitlements
 
-        Get current entitlement for a role  # noqa: E501
+        Get current entitlement for a role
         """
         pass
 
     def test_get_role_insights_entitlements_changes(self) -> None:
         """Test case for get_role_insights_entitlements_changes
 
-        Get entitlement insights for a role  # noqa: E501
+        Get entitlement insights for a role
         """
         pass
 
     def test_get_role_insights_requests(self) -> None:
         """Test case for get_role_insights_requests
 
-        Returns metadata from prior request.  # noqa: E501
+        Returns metadata from prior request.
         """
         pass
 
     def test_get_role_insights_summary(self) -> None:
         """Test case for get_role_insights_summary
 
-        Get role insights summary information  # noqa: E501
+        Get role insights summary information
         """
         pass
 

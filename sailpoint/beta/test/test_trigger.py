@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.trigger import Trigger  # noqa: E501
+from sailpoint.beta.models.trigger import Trigger
 
 
 class TestTrigger(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTrigger(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Trigger`
         """
-        model = Trigger()  # noqa: E501
+        model = Trigger()
         if include_optional:
             return Trigger(
                 id = 'idn:access-request-dynamic-approver',

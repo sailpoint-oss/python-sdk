@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.complete_invocation_input import CompleteInvocationInput  # noqa: E501
+from sailpoint.beta.models.complete_invocation_input import CompleteInvocationInput
 
 
 class TestCompleteInvocationInput(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCompleteInvocationInput(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CompleteInvocationInput`
         """
-        model = CompleteInvocationInput()  # noqa: E501
+        model = CompleteInvocationInput()
         if include_optional:
             return CompleteInvocationInput(
                 localized_error = sailpoint.beta.models.localized_message.LocalizedMessage(

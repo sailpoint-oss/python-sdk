@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.export_options import ExportOptions  # noqa: E501
+from sailpoint.beta.models.export_options import ExportOptions
 
 
 class TestExportOptions(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestExportOptions(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ExportOptions`
         """
-        model = ExportOptions()  # noqa: E501
+        model = ExportOptions()
         if include_optional:
             return ExportOptions(
                 exclude_types = [

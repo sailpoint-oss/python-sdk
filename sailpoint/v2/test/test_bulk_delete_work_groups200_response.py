@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v2.models.bulk_delete_work_groups200_response import BulkDeleteWorkGroups200Response  # noqa: E501
+from sailpoint.v2.models.bulk_delete_work_groups200_response import BulkDeleteWorkGroups200Response
 
 
 class TestBulkDeleteWorkGroups200Response(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestBulkDeleteWorkGroups200Response(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `BulkDeleteWorkGroups200Response`
         """
-        model = BulkDeleteWorkGroups200Response()  # noqa: E501
+        model = BulkDeleteWorkGroups200Response()
         if include_optional:
             return BulkDeleteWorkGroups200Response(
                 deleted = [

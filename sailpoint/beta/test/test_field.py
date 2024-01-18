@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.field import Field  # noqa: E501
+from sailpoint.beta.models.field import Field
 
 
 class TestField(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestField(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Field`
         """
-        model = Field()  # noqa: E501
+        model = Field()
         if include_optional:
             return Field(
                 name = 'Field1',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v2.models.get_org_settings200_response_system_notification_config_notifications_inner_thresholds import GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds  # noqa: E501
+from sailpoint.v2.models.get_org_settings200_response_system_notification_config_notifications_inner_thresholds import GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds
 
 
 class TestGetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds(
@@ -36,7 +36,7 @@ class TestGetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThr
             optional params are included """
         # uncomment below to create an instance of `GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds`
         """
-        model = GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds()  # noqa: E501
+        model = GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds()
         if include_optional:
             return GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds(
                 healthy = '',

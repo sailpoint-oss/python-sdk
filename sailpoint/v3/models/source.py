@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.manager_correlation_mapping import ManagerCorrelationMapping
 from sailpoint.v3.models.source_account_correlation_config import SourceAccountCorrelationConfig
 from sailpoint.v3.models.source_account_correlation_rule import SourceAccountCorrelationRule
@@ -29,95 +30,100 @@ from sailpoint.v3.models.source_manager_correlation_rule import SourceManagerCor
 from sailpoint.v3.models.source_owner import SourceOwner
 from sailpoint.v3.models.source_password_policies_inner import SourcePasswordPoliciesInner
 from sailpoint.v3.models.source_schemas_inner import SourceSchemasInner
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class Source(BaseModel):
     """
     Source
     """
-    id: Optional[StrictStr] = Field(None, description="the id of the Source")
-    name: StrictStr = Field(...,
-                            description="Human-readable name of the source")
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
+                                    description="the id of the Source")
+    name: StrictStr = Field(description="Human-readable name of the source")
     description: Optional[StrictStr] = Field(
-        None, description="Human-readable description of the source")
-    owner: SourceOwner = Field(...)
+        default=None, description="Human-readable description of the source")
+    owner: SourceOwner
     cluster: Optional[SourceCluster] = None
     account_correlation_config: Optional[
         SourceAccountCorrelationConfig] = Field(
-            None, alias="accountCorrelationConfig")
+            default=None, alias="accountCorrelationConfig")
     account_correlation_rule: Optional[SourceAccountCorrelationRule] = Field(
-        None, alias="accountCorrelationRule")
+        default=None, alias="accountCorrelationRule")
     manager_correlation_mapping: Optional[ManagerCorrelationMapping] = Field(
-        None, alias="managerCorrelationMapping")
+        default=None, alias="managerCorrelationMapping")
     manager_correlation_rule: Optional[SourceManagerCorrelationRule] = Field(
-        None, alias="managerCorrelationRule")
+        default=None, alias="managerCorrelationRule")
     before_provisioning_rule: Optional[SourceBeforeProvisioningRule] = Field(
-        None, alias="beforeProvisioningRule")
-    schemas: Optional[conlist(SourceSchemasInner)] = Field(
-        None, description="List of references to Schema objects")
-    password_policies: Optional[conlist(SourcePasswordPoliciesInner)] = Field(
-        None,
-        alias="passwordPolicies",
+        default=None, alias="beforeProvisioningRule")
+    schemas: Optional[List[SourceSchemasInner]] = Field(
+        default=None, description="List of references to Schema objects")
+    password_policies: Optional[List[SourcePasswordPoliciesInner]] = Field(
+        default=None,
         description=
-        "List of references to the associated PasswordPolicy objects.")
-    features: Optional[conlist(SourceFeature)] = Field(
-        None,
+        "List of references to the associated PasswordPolicy objects.",
+        alias="passwordPolicies")
+    features: Optional[List[SourceFeature]] = Field(
+        default=None,
         description="Optional features that can be supported by a source.")
     type: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a Delimited File source, you must set the `provisionasCsv` query parameter to `true`. "
     )
-    connector: StrictStr = Field(..., description="Connector script name.")
+    connector: StrictStr = Field(description="Connector script name.")
     connector_class: Optional[StrictStr] = Field(
-        None,
-        alias="connectorClass",
+        default=None,
         description=
-        "The fully qualified name of the Java class that implements the connector interface."
-    )
-    connector_attributes: Optional[Dict[str, Any]] = Field(
-        None,
-        alias="connectorAttributes",
+        "The fully qualified name of the Java class that implements the connector interface.",
+        alias="connectorClass")
+    connector_attributes: Optional[Union[str, Any]] = Field(
+        default=None,
         description=
-        "Connector specific configuration; will differ from type to type.")
+        "Connector specific configuration; will differ from type to type.",
+        alias="connectorAttributes")
     delete_threshold: Optional[StrictInt] = Field(
-        None,
-        alias="deleteThreshold",
+        default=None,
         description=
-        "Number from 0 to 100 that specifies when to skip the delete phase.")
+        "Number from 0 to 100 that specifies when to skip the delete phase.",
+        alias="deleteThreshold")
     authoritative: Optional[StrictBool] = Field(
-        False,
+        default=False,
         description=
         "When true indicates the source is referenced by an IdentityProfile.")
     management_workgroup: Optional[SourceManagementWorkgroup] = Field(
-        None, alias="managementWorkgroup")
+        default=None, alias="managementWorkgroup")
     healthy: Optional[StrictBool] = Field(
-        False, description="When true indicates a healthy source")
+        default=False, description="When true indicates a healthy source")
     status: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "A status identifier, giving specific information on why a source is healthy or not"
     )
     since: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "Timestamp showing when a source health check was last performed")
     connector_id: Optional[StrictStr] = Field(
-        None, alias="connectorId", description="The id of connector")
+        default=None, description="The id of connector", alias="connectorId")
     connector_name: Optional[StrictStr] = Field(
-        None,
-        alias="connectorName",
+        default=None,
         description=
-        "The name of the connector that was chosen on source creation")
+        "The name of the connector that was chosen on source creation",
+        alias="connectorName")
     connection_type: Optional[StrictStr] = Field(
-        None,
-        alias="connectionType",
-        description="The type of connection (direct or file)")
+        default=None,
+        description="The type of connection (direct or file)",
+        alias="connectionType")
     connector_implementation_id: Optional[StrictStr] = Field(
-        None,
-        alias="connectorImplementationId",
-        description="The connector implementation id")
-    __properties = [
+        default=None,
+        description="The connector implementation id",
+        alias="connectorImplementationId")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "description", "owner", "cluster",
         "accountCorrelationConfig", "accountCorrelationRule",
         "managerCorrelationMapping", "managerCorrelationRule",
@@ -128,29 +134,40 @@ class Source(BaseModel):
         "connectorImplementationId"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Source:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of Source from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={
-            "id",
-        }, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+                "id",
+            },
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -202,15 +219,15 @@ class Source(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Source:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of Source from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return Source.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = Source.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -223,23 +240,23 @@ class Source(BaseModel):
             "cluster":
             SourceCluster.from_dict(obj.get("cluster"))
             if obj.get("cluster") is not None else None,
-            "account_correlation_config":
+            "accountCorrelationConfig":
             SourceAccountCorrelationConfig.from_dict(
                 obj.get("accountCorrelationConfig"))
             if obj.get("accountCorrelationConfig") is not None else None,
-            "account_correlation_rule":
+            "accountCorrelationRule":
             SourceAccountCorrelationRule.from_dict(
                 obj.get("accountCorrelationRule"))
             if obj.get("accountCorrelationRule") is not None else None,
-            "manager_correlation_mapping":
+            "managerCorrelationMapping":
             ManagerCorrelationMapping.from_dict(
                 obj.get("managerCorrelationMapping"))
             if obj.get("managerCorrelationMapping") is not None else None,
-            "manager_correlation_rule":
+            "managerCorrelationRule":
             SourceManagerCorrelationRule.from_dict(
                 obj.get("managerCorrelationRule"))
             if obj.get("managerCorrelationRule") is not None else None,
-            "before_provisioning_rule":
+            "beforeProvisioningRule":
             SourceBeforeProvisioningRule.from_dict(
                 obj.get("beforeProvisioningRule"))
             if obj.get("beforeProvisioningRule") is not None else None,
@@ -247,7 +264,7 @@ class Source(BaseModel):
                 SourceSchemasInner.from_dict(_item)
                 for _item in obj.get("schemas")
             ] if obj.get("schemas") is not None else None,
-            "password_policies": [
+            "passwordPolicies": [
                 SourcePasswordPoliciesInner.from_dict(_item)
                 for _item in obj.get("passwordPolicies")
             ] if obj.get("passwordPolicies") is not None else None,
@@ -257,16 +274,16 @@ class Source(BaseModel):
             obj.get("type"),
             "connector":
             obj.get("connector"),
-            "connector_class":
+            "connectorClass":
             obj.get("connectorClass"),
-            "connector_attributes":
+            "connectorAttributes":
             obj.get("connectorAttributes"),
-            "delete_threshold":
+            "deleteThreshold":
             obj.get("deleteThreshold"),
             "authoritative":
             obj.get("authoritative")
             if obj.get("authoritative") is not None else False,
-            "management_workgroup":
+            "managementWorkgroup":
             SourceManagementWorkgroup.from_dict(obj.get("managementWorkgroup"))
             if obj.get("managementWorkgroup") is not None else None,
             "healthy":
@@ -275,13 +292,13 @@ class Source(BaseModel):
             obj.get("status"),
             "since":
             obj.get("since"),
-            "connector_id":
+            "connectorId":
             obj.get("connectorId"),
-            "connector_name":
+            "connectorName":
             obj.get("connectorName"),
-            "connection_type":
+            "connectionType":
             obj.get("connectionType"),
-            "connector_implementation_id":
+            "connectorImplementationId":
             obj.get("connectorImplementationId")
         })
         return _obj

@@ -16,102 +16,115 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, List, Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictFloat, StrictInt, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class GetIdentity200ResponseOrg(BaseModel):
     """
     GetIdentity200ResponseOrg
     """
+
+  # noqa: E501
     name: Optional[StrictStr] = None
-    script_name: Optional[StrictStr] = Field(None, alias="scriptName")
+    script_name: Optional[StrictStr] = Field(default=None, alias="scriptName")
     mode: Optional[StrictStr] = None
     num_questions: Optional[Union[StrictFloat,
-                                  StrictInt]] = Field(None,
+                                  StrictInt]] = Field(default=None,
                                                       alias="numQuestions")
     status: Optional[StrictStr] = None
     max_registered_users: Optional[Union[StrictFloat, StrictInt]] = Field(
-        None, alias="maxRegisteredUsers")
+        default=None, alias="maxRegisteredUsers")
     pod: Optional[StrictStr] = None
     pwd_reset_personal_phone: Optional[StrictBool] = Field(
-        None, alias="pwdResetPersonalPhone")
+        default=None, alias="pwdResetPersonalPhone")
     pwd_reset_personal_email: Optional[StrictBool] = Field(
-        None, alias="pwdResetPersonalEmail")
-    pwd_reset_kba: Optional[StrictBool] = Field(None, alias="pwdResetKba")
-    pwd_reset_email: Optional[StrictBool] = Field(None, alias="pwdResetEmail")
-    pwd_reset_duo: Optional[StrictBool] = Field(None, alias="pwdResetDuo")
+        default=None, alias="pwdResetPersonalEmail")
+    pwd_reset_kba: Optional[StrictBool] = Field(default=None,
+                                                alias="pwdResetKba")
+    pwd_reset_email: Optional[StrictBool] = Field(default=None,
+                                                  alias="pwdResetEmail")
+    pwd_reset_duo: Optional[StrictBool] = Field(default=None,
+                                                alias="pwdResetDuo")
     pwd_reset_phone_mask: Optional[StrictBool] = Field(
-        None, alias="pwdResetPhoneMask")
-    auth_error_text: Optional[Dict[str, Any]] = Field(None,
-                                                      alias="authErrorText")
-    strong_auth_kba: Optional[StrictBool] = Field(None, alias="strongAuthKba")
+        default=None, alias="pwdResetPhoneMask")
+    auth_error_text: Optional[Union[str, Any]] = Field(default=None,
+                                                       alias="authErrorText")
+    strong_auth_kba: Optional[StrictBool] = Field(default=None,
+                                                  alias="strongAuthKba")
     strong_auth_personal_phone: Optional[StrictBool] = Field(
-        None, alias="strongAuthPersonalPhone")
+        default=None, alias="strongAuthPersonalPhone")
     strong_auth_personal_email: Optional[StrictBool] = Field(
-        None, alias="strongAuthPersonalEmail")
-    integrations: Optional[conlist(Dict[str, Any])] = None
-    product_name: Optional[StrictStr] = Field(None, alias="productName")
+        default=None, alias="strongAuthPersonalEmail")
+    integrations: Optional[List[Union[str, Any]]] = None
+    product_name: Optional[StrictStr] = Field(default=None,
+                                              alias="productName")
     kba_req_for_authn: Optional[Union[StrictFloat, StrictInt]] = Field(
-        None, alias="kbaReqForAuthn")
+        default=None, alias="kbaReqForAuthn")
     kba_req_answers: Optional[Union[StrictFloat,
-                                    StrictInt]] = Field(None,
+                                    StrictInt]] = Field(default=None,
                                                         alias="kbaReqAnswers")
     lockout_attempt_threshold: Optional[Union[StrictFloat, StrictInt]] = Field(
-        None, alias="lockoutAttemptThreshold")
+        default=None, alias="lockoutAttemptThreshold")
     lockout_time_minutes: Optional[Union[StrictFloat, StrictInt]] = Field(
-        None, alias="lockoutTimeMinutes")
+        default=None, alias="lockoutTimeMinutes")
     usage_cert_required: Optional[StrictBool] = Field(
-        None, alias="usageCertRequired")
+        default=None, alias="usageCertRequired")
     admin_strong_auth_required: Optional[StrictBool] = Field(
-        None, alias="adminStrongAuthRequired")
+        default=None, alias="adminStrongAuthRequired")
     enable_external_password_change: Optional[StrictBool] = Field(
-        None, alias="enableExternalPasswordChange")
+        default=None, alias="enableExternalPasswordChange")
     enable_password_replay: Optional[StrictBool] = Field(
-        None, alias="enablePasswordReplay")
+        default=None, alias="enablePasswordReplay")
     enable_automatic_password_replay: Optional[StrictBool] = Field(
-        None, alias="enableAutomaticPasswordReplay")
+        default=None, alias="enableAutomaticPasswordReplay")
     notify_authentication_setting_change: Optional[StrictBool] = Field(
-        None, alias="notifyAuthenticationSettingChange")
-    netmasks: Optional[Dict[str, Any]] = None
-    country_codes: Optional[Dict[str, Any]] = Field(None, alias="countryCodes")
-    white_list: Optional[StrictBool] = Field(None, alias="whiteList")
-    username_empty_text: Optional[Dict[str,
-                                       Any]] = Field(None,
-                                                     alias="usernameEmptyText")
-    username_label: Optional[Dict[str, Any]] = Field(None,
-                                                     alias="usernameLabel")
+        default=None, alias="notifyAuthenticationSettingChange")
+    netmasks: Optional[Union[str, Any]] = None
+    country_codes: Optional[Union[str, Any]] = Field(default=None,
+                                                     alias="countryCodes")
+    white_list: Optional[StrictBool] = Field(default=None, alias="whiteList")
+    username_empty_text: Optional[Union[str, Any]] = Field(
+        default=None, alias="usernameEmptyText")
+    username_label: Optional[Union[str, Any]] = Field(default=None,
+                                                      alias="usernameLabel")
     enable_automation_generation: Optional[StrictBool] = Field(
-        None, alias="enableAutomationGeneration")
-    email_test_mode: Optional[StrictBool] = Field(None, alias="emailTestMode")
-    email_test_address: Optional[StrictStr] = Field(None,
+        default=None, alias="enableAutomationGeneration")
+    email_test_mode: Optional[StrictBool] = Field(default=None,
+                                                  alias="emailTestMode")
+    email_test_address: Optional[StrictStr] = Field(default=None,
                                                     alias="emailTestAddress")
-    org_type: Optional[StrictStr] = Field(None, alias="orgType")
+    org_type: Optional[StrictStr] = Field(default=None, alias="orgType")
     password_replay_state: Optional[StrictStr] = Field(
-        None, alias="passwordReplayState")
+        default=None, alias="passwordReplayState")
     system_notification_config: Optional[StrictStr] = Field(
-        None, alias="systemNotificationConfig")
-    redirect_patterns: Optional[StrictStr] = Field(None,
+        default=None, alias="systemNotificationConfig")
+    redirect_patterns: Optional[StrictStr] = Field(default=None,
                                                    alias="redirectPatterns")
     max_cluster_debug_hours: Optional[StrictStr] = Field(
-        None, alias="maxClusterDebugHours")
-    brand_name: Optional[StrictStr] = Field(None, alias="brandName")
-    logo: Optional[Dict[str, Any]] = None
-    email_from_address: Optional[Dict[str,
-                                      Any]] = Field(None,
-                                                    alias="emailFromAddress")
-    standard_logo_url: Optional[Dict[str,
-                                     Any]] = Field(None,
-                                                   alias="standardLogoUrl")
-    narrow_logo_url: Optional[Dict[str, Any]] = Field(None,
-                                                      alias="narrowLogoUrl")
-    action_button_color: Optional[StrictStr] = Field(None,
+        default=None, alias="maxClusterDebugHours")
+    brand_name: Optional[StrictStr] = Field(default=None, alias="brandName")
+    logo: Optional[Union[str, Any]] = None
+    email_from_address: Optional[Union[str,
+                                       Any]] = Field(default=None,
+                                                     alias="emailFromAddress")
+    standard_logo_url: Optional[Union[str,
+                                      Any]] = Field(default=None,
+                                                    alias="standardLogoUrl")
+    narrow_logo_url: Optional[Union[str, Any]] = Field(default=None,
+                                                       alias="narrowLogoUrl")
+    action_button_color: Optional[StrictStr] = Field(default=None,
                                                      alias="actionButtonColor")
-    active_link_color: Optional[StrictStr] = Field(None,
+    active_link_color: Optional[StrictStr] = Field(default=None,
                                                    alias="activeLinkColor")
-    navigation_color: Optional[StrictStr] = Field(None,
+    navigation_color: Optional[StrictStr] = Field(default=None,
                                                   alias="navigationColor")
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "name", "scriptName", "mode", "numQuestions", "status",
         "maxRegisteredUsers", "pod", "pwdResetPersonalPhone",
         "pwdResetPersonalEmail", "pwdResetKba", "pwdResetEmail", "pwdResetDuo",
@@ -130,138 +143,148 @@ class GetIdentity200ResponseOrg(BaseModel):
         "actionButtonColor", "activeLinkColor", "navigationColor"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> GetIdentity200ResponseOrg:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of GetIdentity200ResponseOrg from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> GetIdentity200ResponseOrg:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of GetIdentity200ResponseOrg from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return GetIdentity200ResponseOrg.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = GetIdentity200ResponseOrg.parse_obj({
+        _obj = cls.model_validate({
             "name":
             obj.get("name"),
-            "script_name":
+            "scriptName":
             obj.get("scriptName"),
             "mode":
             obj.get("mode"),
-            "num_questions":
+            "numQuestions":
             obj.get("numQuestions"),
             "status":
             obj.get("status"),
-            "max_registered_users":
+            "maxRegisteredUsers":
             obj.get("maxRegisteredUsers"),
             "pod":
             obj.get("pod"),
-            "pwd_reset_personal_phone":
+            "pwdResetPersonalPhone":
             obj.get("pwdResetPersonalPhone"),
-            "pwd_reset_personal_email":
+            "pwdResetPersonalEmail":
             obj.get("pwdResetPersonalEmail"),
-            "pwd_reset_kba":
+            "pwdResetKba":
             obj.get("pwdResetKba"),
-            "pwd_reset_email":
+            "pwdResetEmail":
             obj.get("pwdResetEmail"),
-            "pwd_reset_duo":
+            "pwdResetDuo":
             obj.get("pwdResetDuo"),
-            "pwd_reset_phone_mask":
+            "pwdResetPhoneMask":
             obj.get("pwdResetPhoneMask"),
-            "auth_error_text":
+            "authErrorText":
             obj.get("authErrorText"),
-            "strong_auth_kba":
+            "strongAuthKba":
             obj.get("strongAuthKba"),
-            "strong_auth_personal_phone":
+            "strongAuthPersonalPhone":
             obj.get("strongAuthPersonalPhone"),
-            "strong_auth_personal_email":
+            "strongAuthPersonalEmail":
             obj.get("strongAuthPersonalEmail"),
             "integrations":
             obj.get("integrations"),
-            "product_name":
+            "productName":
             obj.get("productName"),
-            "kba_req_for_authn":
+            "kbaReqForAuthn":
             obj.get("kbaReqForAuthn"),
-            "kba_req_answers":
+            "kbaReqAnswers":
             obj.get("kbaReqAnswers"),
-            "lockout_attempt_threshold":
+            "lockoutAttemptThreshold":
             obj.get("lockoutAttemptThreshold"),
-            "lockout_time_minutes":
+            "lockoutTimeMinutes":
             obj.get("lockoutTimeMinutes"),
-            "usage_cert_required":
+            "usageCertRequired":
             obj.get("usageCertRequired"),
-            "admin_strong_auth_required":
+            "adminStrongAuthRequired":
             obj.get("adminStrongAuthRequired"),
-            "enable_external_password_change":
+            "enableExternalPasswordChange":
             obj.get("enableExternalPasswordChange"),
-            "enable_password_replay":
+            "enablePasswordReplay":
             obj.get("enablePasswordReplay"),
-            "enable_automatic_password_replay":
+            "enableAutomaticPasswordReplay":
             obj.get("enableAutomaticPasswordReplay"),
-            "notify_authentication_setting_change":
+            "notifyAuthenticationSettingChange":
             obj.get("notifyAuthenticationSettingChange"),
             "netmasks":
             obj.get("netmasks"),
-            "country_codes":
+            "countryCodes":
             obj.get("countryCodes"),
-            "white_list":
+            "whiteList":
             obj.get("whiteList"),
-            "username_empty_text":
+            "usernameEmptyText":
             obj.get("usernameEmptyText"),
-            "username_label":
+            "usernameLabel":
             obj.get("usernameLabel"),
-            "enable_automation_generation":
+            "enableAutomationGeneration":
             obj.get("enableAutomationGeneration"),
-            "email_test_mode":
+            "emailTestMode":
             obj.get("emailTestMode"),
-            "email_test_address":
+            "emailTestAddress":
             obj.get("emailTestAddress"),
-            "org_type":
+            "orgType":
             obj.get("orgType"),
-            "password_replay_state":
+            "passwordReplayState":
             obj.get("passwordReplayState"),
-            "system_notification_config":
+            "systemNotificationConfig":
             obj.get("systemNotificationConfig"),
-            "redirect_patterns":
+            "redirectPatterns":
             obj.get("redirectPatterns"),
-            "max_cluster_debug_hours":
+            "maxClusterDebugHours":
             obj.get("maxClusterDebugHours"),
-            "brand_name":
+            "brandName":
             obj.get("brandName"),
             "logo":
             obj.get("logo"),
-            "email_from_address":
+            "emailFromAddress":
             obj.get("emailFromAddress"),
-            "standard_logo_url":
+            "standardLogoUrl":
             obj.get("standardLogoUrl"),
-            "narrow_logo_url":
+            "narrowLogoUrl":
             obj.get("narrowLogoUrl"),
-            "action_button_color":
+            "actionButtonColor":
             obj.get("actionButtonColor"),
-            "active_link_color":
+            "activeLinkColor":
             obj.get("activeLinkColor"),
-            "navigation_color":
+            "navigationColor":
             obj.get("navigationColor")
         })
         return _obj

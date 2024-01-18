@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.certification_task import CertificationTask  # noqa: E501
+from sailpoint.beta.models.certification_task import CertificationTask
 
 
 class TestCertificationTask(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCertificationTask(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CertificationTask`
         """
-        model = CertificationTask()  # noqa: E501
+        model = CertificationTask()
         if include_optional:
             return CertificationTask(
                 id = '2c918086719eec070171a7e3355a360a',

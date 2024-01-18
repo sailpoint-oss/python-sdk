@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_instance_recipient import FormInstanceRecipient  # noqa: E501
+from sailpoint.beta.models.form_instance_recipient import FormInstanceRecipient
 
 
 class TestFormInstanceRecipient(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFormInstanceRecipient(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormInstanceRecipient`
         """
-        model = FormInstanceRecipient()  # noqa: E501
+        model = FormInstanceRecipient()
         if include_optional:
             return FormInstanceRecipient(
                 id = '00000000-0000-0000-0000-000000000000',

@@ -17,88 +17,104 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.identity_attribute_config import IdentityAttributeConfig
 from sailpoint.v3.models.identity_exception_report_reference import IdentityExceptionReportReference
 from sailpoint.v3.models.identity_profile_all_of_authoritative_source import IdentityProfileAllOfAuthoritativeSource
 from sailpoint.v3.models.identity_profile_all_of_owner import IdentityProfileAllOfOwner
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class IdentityProfile(BaseModel):
     """
     IdentityProfile
     """
+
+  # noqa: E501
     id: Optional[StrictStr] = Field(
-        None, description="System-generated unique ID of the Object")
-    name: StrictStr = Field(..., description="Name of the Object")
+        default=None, description="System-generated unique ID of the Object")
+    name: StrictStr = Field(description="Name of the Object")
     created: Optional[datetime] = Field(
-        None, description="Creation date of the Object")
+        default=None, description="Creation date of the Object")
     modified: Optional[datetime] = Field(
-        None, description="Last modification date of the Object")
+        default=None, description="Last modification date of the Object")
     description: Optional[StrictStr] = Field(
-        None, description="The description of the Identity Profile.")
+        default=None, description="The description of the Identity Profile.")
     owner: Optional[IdentityProfileAllOfOwner] = None
     priority: Optional[StrictInt] = Field(
-        None, description="The priority for an Identity Profile.")
+        default=None, description="The priority for an Identity Profile.")
     authoritative_source: IdentityProfileAllOfAuthoritativeSource = Field(
-        ..., alias="authoritativeSource")
+        alias="authoritativeSource")
     identity_refresh_required: Optional[StrictBool] = Field(
-        False,
-        alias="identityRefreshRequired",
+        default=False,
         description=
-        "True if a identity refresh is needed. Typically triggered when a change on the source has been made."
-    )
+        "True if a identity refresh is needed. Typically triggered when a change on the source has been made.",
+        alias="identityRefreshRequired")
     identity_count: Optional[StrictInt] = Field(
-        None,
-        alias="identityCount",
+        default=None,
         description=
-        "The number of identities that belong to the Identity Profile.")
+        "The number of identities that belong to the Identity Profile.",
+        alias="identityCount")
     identity_attribute_config: Optional[IdentityAttributeConfig] = Field(
-        None, alias="identityAttributeConfig")
+        default=None, alias="identityAttributeConfig")
     identity_exception_report_reference: Optional[
         IdentityExceptionReportReference] = Field(
-            None, alias="identityExceptionReportReference")
+            default=None, alias="identityExceptionReportReference")
     has_time_based_attr: Optional[StrictBool] = Field(
-        False,
-        alias="hasTimeBasedAttr",
+        default=False,
         description=
-        "Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile."
-    )
-    __properties = [
+        "Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile.",
+        alias="hasTimeBasedAttr")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "created", "modified", "description", "owner",
         "priority", "authoritativeSource", "identityRefreshRequired",
         "identityCount", "identityAttributeConfig",
         "identityExceptionReportReference", "hasTimeBasedAttr"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> IdentityProfile:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of IdentityProfile from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                              "id",
-                              "created",
-                              "modified",
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+                "id",
+                "created",
+                "modified",
+            },
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -116,32 +132,32 @@ class IdentityProfile(BaseModel):
                 'identityExceptionReportReference'] = self.identity_exception_report_reference.to_dict(
                 )
         # set to None if description (nullable) is None
-        # and __fields_set__ contains the field
-        if self.description is None and "description" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
         # set to None if owner (nullable) is None
-        # and __fields_set__ contains the field
-        if self.owner is None and "owner" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.owner is None and "owner" in self.model_fields_set:
             _dict['owner'] = None
 
         # set to None if identity_exception_report_reference (nullable) is None
-        # and __fields_set__ contains the field
-        if self.identity_exception_report_reference is None and "identity_exception_report_reference" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.identity_exception_report_reference is None and "identity_exception_report_reference" in self.model_fields_set:
             _dict['identityExceptionReportReference'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> IdentityProfile:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of IdentityProfile from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return IdentityProfile.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = IdentityProfile.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -157,24 +173,24 @@ class IdentityProfile(BaseModel):
             if obj.get("owner") is not None else None,
             "priority":
             obj.get("priority"),
-            "authoritative_source":
+            "authoritativeSource":
             IdentityProfileAllOfAuthoritativeSource.from_dict(
                 obj.get("authoritativeSource"))
             if obj.get("authoritativeSource") is not None else None,
-            "identity_refresh_required":
+            "identityRefreshRequired":
             obj.get("identityRefreshRequired")
             if obj.get("identityRefreshRequired") is not None else False,
-            "identity_count":
+            "identityCount":
             obj.get("identityCount"),
-            "identity_attribute_config":
+            "identityAttributeConfig":
             IdentityAttributeConfig.from_dict(
                 obj.get("identityAttributeConfig"))
             if obj.get("identityAttributeConfig") is not None else None,
-            "identity_exception_report_reference":
+            "identityExceptionReportReference":
             IdentityExceptionReportReference.from_dict(
                 obj.get("identityExceptionReportReference")) if
             obj.get("identityExceptionReportReference") is not None else None,
-            "has_time_based_attr":
+            "hasTimeBasedAttr":
             obj.get("hasTimeBasedAttr")
             if obj.get("hasTimeBasedAttr") is not None else False
         })

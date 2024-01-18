@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.entitlement_document import EntitlementDocument  # noqa: E501
+from sailpoint.v3.models.entitlement_document import EntitlementDocument
 
 
 class TestEntitlementDocument(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestEntitlementDocument(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `EntitlementDocument`
         """
-        model = EntitlementDocument()  # noqa: E501
+        model = EntitlementDocument()
         if include_optional:
             return EntitlementDocument(
                 id = '2c91808568c529c60168cca6f90c1313',

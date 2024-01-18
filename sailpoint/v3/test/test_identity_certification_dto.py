@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto  # noqa: E501
+from sailpoint.v3.models.identity_certification_dto import IdentityCertificationDto
 
 
 class TestIdentityCertificationDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityCertificationDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityCertificationDto`
         """
-        model = IdentityCertificationDto()  # noqa: E501
+        model = IdentityCertificationDto()
         if include_optional:
             return IdentityCertificationDto(
                 id = '2c9180835d2e5168015d32f890ca1581',

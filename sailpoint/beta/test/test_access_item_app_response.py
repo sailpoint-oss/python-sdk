@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_item_app_response import AccessItemAppResponse  # noqa: E501
+from sailpoint.beta.models.access_item_app_response import AccessItemAppResponse
 
 
 class TestAccessItemAppResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessItemAppResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessItemAppResponse`
         """
-        model = AccessItemAppResponse()  # noqa: E501
+        model = AccessItemAppResponse()
         if include_optional:
             return AccessItemAppResponse(
                 access_type = 'app',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access_summary_access import AccessSummaryAccess  # noqa: E501
+from sailpoint.v3.models.access_summary_access import AccessSummaryAccess
 
 
 class TestAccessSummaryAccess(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessSummaryAccess(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessSummaryAccess`
         """
-        model = AccessSummaryAccess()  # noqa: E501
+        model = AccessSummaryAccess()
         if include_optional:
             return AccessSummaryAccess(
                 type = 'IDENTITY',

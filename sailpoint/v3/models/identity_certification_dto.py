@@ -17,94 +17,109 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.campaign_reference import CampaignReference
 from sailpoint.v3.models.certification_phase import CertificationPhase
 from sailpoint.v3.models.reassignment import Reassignment
 from sailpoint.v3.models.reviewer import Reviewer
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class IdentityCertificationDto(BaseModel):
     """
     IdentityCertificationDto
     """
-    id: Optional[StrictStr] = Field(None,
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
                                     description="id of the certification")
-    name: Optional[StrictStr] = Field(None,
+    name: Optional[StrictStr] = Field(default=None,
                                       description="name of the certification")
     campaign: Optional[CampaignReference] = None
     completed: Optional[StrictBool] = Field(
-        None, description="Have all decisions been made?")
+        default=None, description="Have all decisions been made?")
     identities_completed: Optional[StrictInt] = Field(
-        None,
-        alias="identitiesCompleted",
+        default=None,
         description=
-        "The number of identities for whom all decisions have been made and are complete."
-    )
+        "The number of identities for whom all decisions have been made and are complete.",
+        alias="identitiesCompleted")
     identities_total: Optional[StrictInt] = Field(
-        None,
-        alias="identitiesTotal",
+        default=None,
         description=
-        "The total number of identities in the Certification, both complete and incomplete."
-    )
-    created: Optional[datetime] = Field(None, description="created date")
-    modified: Optional[datetime] = Field(None, description="modified date")
+        "The total number of identities in the Certification, both complete and incomplete.",
+        alias="identitiesTotal")
+    created: Optional[datetime] = Field(default=None,
+                                        description="created date")
+    modified: Optional[datetime] = Field(default=None,
+                                         description="modified date")
     decisions_made: Optional[StrictInt] = Field(
-        None,
-        alias="decisionsMade",
+        default=None,
         description=
-        "The number of approve/revoke/acknowledge decisions that have been made."
-    )
+        "The number of approve/revoke/acknowledge decisions that have been made.",
+        alias="decisionsMade")
     decisions_total: Optional[StrictInt] = Field(
-        None,
-        alias="decisionsTotal",
-        description="The total number of approve/revoke/acknowledge decisions."
-    )
+        default=None,
+        description="The total number of approve/revoke/acknowledge decisions.",
+        alias="decisionsTotal")
     due: Optional[datetime] = Field(
-        None, description="The due date of the certification.")
+        default=None, description="The due date of the certification.")
     signed: Optional[datetime] = Field(
-        None,
+        default=None,
         description="The date the reviewer signed off on the Certification.")
     reviewer: Optional[Reviewer] = None
     reassignment: Optional[Reassignment] = None
     has_errors: Optional[StrictBool] = Field(
-        None,
-        alias="hasErrors",
-        description="Identifies if the certification has an error")
+        default=None,
+        description="Identifies if the certification has an error",
+        alias="hasErrors")
     error_message: Optional[StrictStr] = Field(
-        None,
-        alias="errorMessage",
-        description="Description of the certification error")
+        default=None,
+        description="Description of the certification error",
+        alias="errorMessage")
     phase: Optional[CertificationPhase] = None
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "id", "name", "campaign", "completed", "identitiesCompleted",
         "identitiesTotal", "created", "modified", "decisionsMade",
         "decisionsTotal", "due", "signed", "reviewer", "reassignment",
         "hasErrors", "errorMessage", "phase"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> IdentityCertificationDto:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of IdentityCertificationDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of campaign
         if self.campaign:
             _dict['campaign'] = self.campaign.to_dict()
@@ -115,32 +130,32 @@ class IdentityCertificationDto(BaseModel):
         if self.reassignment:
             _dict['reassignment'] = self.reassignment.to_dict()
         # set to None if signed (nullable) is None
-        # and __fields_set__ contains the field
-        if self.signed is None and "signed" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.signed is None and "signed" in self.model_fields_set:
             _dict['signed'] = None
 
         # set to None if reassignment (nullable) is None
-        # and __fields_set__ contains the field
-        if self.reassignment is None and "reassignment" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.reassignment is None and "reassignment" in self.model_fields_set:
             _dict['reassignment'] = None
 
         # set to None if error_message (nullable) is None
-        # and __fields_set__ contains the field
-        if self.error_message is None and "error_message" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.error_message is None and "error_message" in self.model_fields_set:
             _dict['errorMessage'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> IdentityCertificationDto:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of IdentityCertificationDto from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return IdentityCertificationDto.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = IdentityCertificationDto.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -150,17 +165,17 @@ class IdentityCertificationDto(BaseModel):
             if obj.get("campaign") is not None else None,
             "completed":
             obj.get("completed"),
-            "identities_completed":
+            "identitiesCompleted":
             obj.get("identitiesCompleted"),
-            "identities_total":
+            "identitiesTotal":
             obj.get("identitiesTotal"),
             "created":
             obj.get("created"),
             "modified":
             obj.get("modified"),
-            "decisions_made":
+            "decisionsMade":
             obj.get("decisionsMade"),
-            "decisions_total":
+            "decisionsTotal":
             obj.get("decisionsTotal"),
             "due":
             obj.get("due"),
@@ -172,9 +187,9 @@ class IdentityCertificationDto(BaseModel):
             "reassignment":
             Reassignment.from_dict(obj.get("reassignment"))
             if obj.get("reassignment") is not None else None,
-            "has_errors":
+            "hasErrors":
             obj.get("hasErrors"),
-            "error_message":
+            "errorMessage":
             obj.get("errorMessage"),
             "phase":
             obj.get("phase")

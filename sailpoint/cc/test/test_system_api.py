@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.cc.api.system_api import SystemApi  # noqa: E501
+from sailpoint.cc.api.system_api import SystemApi
 
 
 class TestSystemApi(unittest.TestCase):
     """SystemApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SystemApi()  # noqa: E501
+        self.api = SystemApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,7 +28,7 @@ class TestSystemApi(unittest.TestCase):
     def test_refresh_identities(self) -> None:
         """Test case for refresh_identities
 
-        Refresh Identities  # noqa: E501
+        Refresh Identities
         """
         pass
 

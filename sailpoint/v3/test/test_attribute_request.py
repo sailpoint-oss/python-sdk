@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.attribute_request import AttributeRequest  # noqa: E501
+from sailpoint.v3.models.attribute_request import AttributeRequest
 
 
 class TestAttributeRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAttributeRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AttributeRequest`
         """
-        model = AttributeRequest()  # noqa: E501
+        model = AttributeRequest()
         if include_optional:
             return AttributeRequest(
                 name = 'groups',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.source_usage import SourceUsage  # noqa: E501
+from sailpoint.v3.models.source_usage import SourceUsage
 
 
 class TestSourceUsage(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceUsage(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceUsage`
         """
-        model = SourceUsage()  # noqa: E501
+        model = SourceUsage()
         if include_optional:
             return SourceUsage(
                 var_date = 'Thu Apr 20 20:00:00 EDT 2023',

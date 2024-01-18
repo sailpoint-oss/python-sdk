@@ -16,86 +16,101 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class FieldDetailsDto(BaseModel):
     """
     FieldDetailsDto
     """
-    name: Optional[StrictStr] = Field(None,
+
+  # noqa: E501
+    name: Optional[StrictStr] = Field(default=None,
                                       description="The name of the attribute.")
-    transform: Optional[Dict[str, Any]] = Field(
-        None, description="The transform to apply to the field")
-    attributes: Optional[Dict[str, Any]] = Field(
-        None, description="Attributes required for the transform")
+    transform: Optional[Union[str, Any]] = Field(
+        default=None, description="The transform to apply to the field")
+    attributes: Optional[Union[str, Any]] = Field(
+        default=None, description="Attributes required for the transform")
     is_required: Optional[StrictBool] = Field(
-        False,
-        alias="isRequired",
-        description="Flag indicating whether or not the attribute is required."
-    )
-    type: Optional[StrictStr] = Field(None,
+        default=False,
+        description="Flag indicating whether or not the attribute is required.",
+        alias="isRequired")
+    type: Optional[StrictStr] = Field(default=None,
                                       description="The type of the attribute.")
     is_multi_valued: Optional[StrictBool] = Field(
-        False,
-        alias="isMultiValued",
+        default=False,
         description=
-        "Flag indicating whether or not the attribute is multi-valued.")
-    __properties = [
+        "Flag indicating whether or not the attribute is multi-valued.",
+        alias="isMultiValued")
+    __properties: ClassVar[List[str]] = [
         "name", "transform", "attributes", "isRequired", "type",
         "isMultiValued"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> FieldDetailsDto:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of FieldDetailsDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                              "is_required",
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+                "is_required",
+            },
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> FieldDetailsDto:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of FieldDetailsDto from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return FieldDetailsDto.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = FieldDetailsDto.parse_obj({
+        _obj = cls.model_validate({
             "name":
             obj.get("name"),
             "transform":
             obj.get("transform"),
             "attributes":
             obj.get("attributes"),
-            "is_required":
+            "isRequired":
             obj.get("isRequired")
             if obj.get("isRequired") is not None else False,
             "type":
             obj.get("type"),
-            "is_multi_valued":
+            "isMultiValued":
             obj.get("isMultiValued")
             if obj.get("isMultiValued") is not None else False
         })

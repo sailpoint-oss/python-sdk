@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.recommender_calculations_identity_attributes_value import RecommenderCalculationsIdentityAttributesValue  # noqa: E501
+from sailpoint.beta.models.recommender_calculations_identity_attributes_value import RecommenderCalculationsIdentityAttributesValue
 
 
 class TestRecommenderCalculationsIdentityAttributesValue(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestRecommenderCalculationsIdentityAttributesValue(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RecommenderCalculationsIdentityAttributesValue`
         """
-        model = RecommenderCalculationsIdentityAttributesValue()  # noqa: E501
+        model = RecommenderCalculationsIdentityAttributesValue()
         if include_optional:
             return RecommenderCalculationsIdentityAttributesValue(
                 value = ''

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.argument import Argument  # noqa: E501
+from sailpoint.beta.models.argument import Argument
 
 
 class TestArgument(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestArgument(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Argument`
         """
-        model = Argument()  # noqa: E501
+        model = Argument()
         if include_optional:
             return Argument(
                 name = 'firstName',

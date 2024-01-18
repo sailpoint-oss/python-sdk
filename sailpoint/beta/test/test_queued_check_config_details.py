@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.queued_check_config_details import QueuedCheckConfigDetails  # noqa: E501
+from sailpoint.beta.models.queued_check_config_details import QueuedCheckConfigDetails
 
 
 class TestQueuedCheckConfigDetails(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestQueuedCheckConfigDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `QueuedCheckConfigDetails`
         """
-        model = QueuedCheckConfigDetails()  # noqa: E501
+        model = QueuedCheckConfigDetails()
         if include_optional:
             return QueuedCheckConfigDetails(
                 provisioning_status_check_interval_minutes = '30',

@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.custom_password_instructions_api import CustomPasswordInstructionsApi  # noqa: E501
+from sailpoint.beta.api.custom_password_instructions_api import CustomPasswordInstructionsApi
 
 
 class TestCustomPasswordInstructionsApi(unittest.TestCase):
     """CustomPasswordInstructionsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = CustomPasswordInstructionsApi()  # noqa: E501
+        self.api = CustomPasswordInstructionsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,21 +28,21 @@ class TestCustomPasswordInstructionsApi(unittest.TestCase):
     def test_create_custom_password_instructions(self) -> None:
         """Test case for create_custom_password_instructions
 
-        Create Custom Password Instructions  # noqa: E501
+        Create Custom Password Instructions
         """
         pass
 
     def test_delete_custom_password_instructions(self) -> None:
         """Test case for delete_custom_password_instructions
 
-        Delete Custom Password Instructions by page ID  # noqa: E501
+        Delete Custom Password Instructions by page ID
         """
         pass
 
     def test_get_custom_password_instructions(self) -> None:
         """Test case for get_custom_password_instructions
 
-        Get Custom Password Instructions by Page ID  # noqa: E501
+        Get Custom Password Instructions by Page ID
         """
         pass
 

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.domain_address import DomainAddress  # noqa: E501
+from sailpoint.beta.models.domain_address import DomainAddress
 
 
 class TestDomainAddress(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestDomainAddress(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `DomainAddress`
         """
-        model = DomainAddress()  # noqa: E501
+        model = DomainAddress()
         if include_optional:
             return DomainAddress(
                 domain = 'sailpoint.com'

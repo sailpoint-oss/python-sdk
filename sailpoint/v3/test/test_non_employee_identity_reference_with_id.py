@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.non_employee_identity_reference_with_id import NonEmployeeIdentityReferenceWithId  # noqa: E501
+from sailpoint.v3.models.non_employee_identity_reference_with_id import NonEmployeeIdentityReferenceWithId
 
 
 class TestNonEmployeeIdentityReferenceWithId(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestNonEmployeeIdentityReferenceWithId(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeIdentityReferenceWithId`
         """
-        model = NonEmployeeIdentityReferenceWithId()  # noqa: E501
+        model = NonEmployeeIdentityReferenceWithId()
         if include_optional:
             return NonEmployeeIdentityReferenceWithId(
                 type = 'IDENTITY',

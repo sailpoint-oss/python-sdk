@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.app import App  # noqa: E501
+from sailpoint.v3.models.app import App
 
 
 class TestApp(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestApp(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `App`
         """
-        model = App()  # noqa: E501
+        model = App()
         if include_optional:
             return App(
                 id = '2c91808568c529c60168cca6f90c1313',

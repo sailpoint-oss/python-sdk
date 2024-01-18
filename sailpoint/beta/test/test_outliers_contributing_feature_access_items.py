@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems  # noqa: E501
+from sailpoint.beta.models.outliers_contributing_feature_access_items import OutliersContributingFeatureAccessItems
 
 
 class TestOutliersContributingFeatureAccessItems(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestOutliersContributingFeatureAccessItems(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `OutliersContributingFeatureAccessItems`
         """
-        model = OutliersContributingFeatureAccessItems()  # noqa: E501
+        model = OutliersContributingFeatureAccessItems()
         if include_optional:
             return OutliersContributingFeatureAccessItems(
                 id = '2c938083633d259901633d2623ec0375',

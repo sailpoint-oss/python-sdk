@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.list_applications200_response_inner_health import ListApplications200ResponseInnerHealth  # noqa: E501
+from sailpoint.cc.models.list_applications200_response_inner_health import ListApplications200ResponseInnerHealth
 
 
 class TestListApplications200ResponseInnerHealth(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestListApplications200ResponseInnerHealth(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListApplications200ResponseInnerHealth`
         """
-        model = ListApplications200ResponseInnerHealth()  # noqa: E501
+        model = ListApplications200ResponseInnerHealth()
         if include_optional:
             return ListApplications200ResponseInnerHealth(
                 status = '',

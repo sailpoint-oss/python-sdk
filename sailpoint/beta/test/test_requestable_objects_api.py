@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.requestable_objects_api import RequestableObjectsApi  # noqa: E501
+from sailpoint.beta.api.requestable_objects_api import RequestableObjectsApi
 
 
 class TestRequestableObjectsApi(unittest.TestCase):
     """RequestableObjectsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = RequestableObjectsApi()  # noqa: E501
+        self.api = RequestableObjectsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,7 +28,7 @@ class TestRequestableObjectsApi(unittest.TestCase):
     def test_list_requestable_objects(self) -> None:
         """Test case for list_requestable_objects
 
-        Requestable Objects List  # noqa: E501
+        Requestable Objects List
         """
         pass
 

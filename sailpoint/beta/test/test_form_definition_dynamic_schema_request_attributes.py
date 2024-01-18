@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_definition_dynamic_schema_request_attributes import FormDefinitionDynamicSchemaRequestAttributes  # noqa: E501
+from sailpoint.beta.models.form_definition_dynamic_schema_request_attributes import FormDefinitionDynamicSchemaRequestAttributes
 
 
 class TestFormDefinitionDynamicSchemaRequestAttributes(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestFormDefinitionDynamicSchemaRequestAttributes(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormDefinitionDynamicSchemaRequestAttributes`
         """
-        model = FormDefinitionDynamicSchemaRequestAttributes()  # noqa: E501
+        model = FormDefinitionDynamicSchemaRequestAttributes()
         if include_optional:
             return FormDefinitionDynamicSchemaRequestAttributes(
                 form_definition_id = '00000000-0000-0000-0000-000000000000'

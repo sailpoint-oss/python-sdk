@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.create_application_request import CreateApplicationRequest  # noqa: E501
+from sailpoint.cc.models.create_application_request import CreateApplicationRequest
 
 
 class TestCreateApplicationRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCreateApplicationRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreateApplicationRequest`
         """
-        model = CreateApplicationRequest()  # noqa: E501
+        model = CreateApplicationRequest()
         if include_optional:
             return CreateApplicationRequest(
                 name = 'My App',

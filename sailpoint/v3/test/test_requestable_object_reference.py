@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.requestable_object_reference import RequestableObjectReference  # noqa: E501
+from sailpoint.v3.models.requestable_object_reference import RequestableObjectReference
 
 
 class TestRequestableObjectReference(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRequestableObjectReference(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RequestableObjectReference`
         """
-        model = RequestableObjectReference()  # noqa: E501
+        model = RequestableObjectReference()
         if include_optional:
             return RequestableObjectReference(
                 id = '2c9180835d2e5168015d32f890ca1581',

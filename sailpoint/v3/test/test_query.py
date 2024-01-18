@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.query import Query  # noqa: E501
+from sailpoint.v3.models.query import Query
 
 
 class TestQuery(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestQuery(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Query`
         """
-        model = Query()  # noqa: E501
+        model = Query()
         if include_optional:
             return Query(
                 query = 'name:a*',

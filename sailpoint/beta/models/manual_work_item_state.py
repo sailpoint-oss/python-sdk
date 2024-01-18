@@ -11,10 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from aenum import Enum, no_arg
+from enum import Enum
+
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ManualWorkItemState(str, Enum):
@@ -32,6 +38,6 @@ class ManualWorkItemState(str, Enum):
     ARCHIVED = 'ARCHIVED'
 
     @classmethod
-    def from_json(cls, json_str: str) -> ManualWorkItemState:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ManualWorkItemState from a JSON string"""
-        return ManualWorkItemState(json.loads(json_str))
+        return cls(json.loads(json_str))

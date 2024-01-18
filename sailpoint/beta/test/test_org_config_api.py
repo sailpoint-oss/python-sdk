@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.org_config_api import OrgConfigApi  # noqa: E501
+from sailpoint.beta.api.org_config_api import OrgConfigApi
 
 
 class TestOrgConfigApi(unittest.TestCase):
     """OrgConfigApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = OrgConfigApi()  # noqa: E501
+        self.api = OrgConfigApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,21 +28,21 @@ class TestOrgConfigApi(unittest.TestCase):
     def test_get_org_config(self) -> None:
         """Test case for get_org_config
 
-        Get Org configuration settings  # noqa: E501
+        Get Org configuration settings
         """
         pass
 
     def test_get_valid_time_zones(self) -> None:
         """Test case for get_valid_time_zones
 
-        Get list of time zones  # noqa: E501
+        Get list of time zones
         """
         pass
 
     def test_patch_org_config(self) -> None:
         """Test case for patch_org_config
 
-        Patch an Org configuration property  # noqa: E501
+        Patch an Org configuration property
         """
         pass
 

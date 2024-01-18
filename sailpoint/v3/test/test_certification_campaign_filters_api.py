@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.certification_campaign_filters_api import CertificationCampaignFiltersApi  # noqa: E501
+from sailpoint.v3.api.certification_campaign_filters_api import CertificationCampaignFiltersApi
 
 
 class TestCertificationCampaignFiltersApi(unittest.TestCase):
     """CertificationCampaignFiltersApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = CertificationCampaignFiltersApi()  # noqa: E501
+        self.api = CertificationCampaignFiltersApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,35 +28,35 @@ class TestCertificationCampaignFiltersApi(unittest.TestCase):
     def test_create_campaign_filter(self) -> None:
         """Test case for create_campaign_filter
 
-        Create a Campaign Filter  # noqa: E501
+        Create a Campaign Filter
         """
         pass
 
     def test_delete_campaign_filters(self) -> None:
         """Test case for delete_campaign_filters
 
-        Deletes Campaign Filters  # noqa: E501
+        Deletes Campaign Filters
         """
         pass
 
     def test_get_campaign_filter_by_id(self) -> None:
         """Test case for get_campaign_filter_by_id
 
-        Get Campaign Filter by ID  # noqa: E501
+        Get Campaign Filter by ID
         """
         pass
 
     def test_list_campaign_filters(self) -> None:
         """Test case for list_campaign_filters
 
-        List Campaign Filters  # noqa: E501
+        List Campaign Filters
         """
         pass
 
     def test_update_campaign_filter(self) -> None:
         """Test case for update_campaign_filter
 
-        Updates a Campaign Filter  # noqa: E501
+        Updates a Campaign Filter
         """
         pass
 

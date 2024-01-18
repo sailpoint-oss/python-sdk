@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.locale_origin import LocaleOrigin  # noqa: E501
+from sailpoint.beta.models.locale_origin import LocaleOrigin
 
 
 class TestLocaleOrigin(unittest.TestCase):

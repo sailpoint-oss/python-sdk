@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access_profile_summary import AccessProfileSummary  # noqa: E501
+from sailpoint.v3.models.access_profile_summary import AccessProfileSummary
 
 
 class TestAccessProfileSummary(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessProfileSummary(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessProfileSummary`
         """
-        model = AccessProfileSummary()  # noqa: E501
+        model = AccessProfileSummary()
         if include_optional:
             return AccessProfileSummary(
                 id = '2c91808568c529c60168cca6f90c1313',

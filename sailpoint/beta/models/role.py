@@ -17,88 +17,105 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, constr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
+from typing_extensions import Annotated
 from sailpoint.beta.models.access_profile_ref import AccessProfileRef
 from sailpoint.beta.models.owner_reference import OwnerReference
 from sailpoint.beta.models.requestability_for_role import RequestabilityForRole
-from sailpoint.beta.models.revocability import Revocability
+from sailpoint.beta.models.revocability_for_role import RevocabilityForRole
 from sailpoint.beta.models.role_membership_selector import RoleMembershipSelector
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class Role(BaseModel):
     """
-    A Role  # noqa: E501
+    A Role
     """
+
+  # noqa: E501
     id: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "The id of the Role. This field must be left null when creating an Role, otherwise a 400 Bad Request error will result."
     )
-    name: constr(strict=True, max_length=128) = Field(
-        ..., description="The human-readable display name of the Role")
+    name: Annotated[str, Field(strict=True, max_length=128)] = Field(
+        description="The human-readable display name of the Role")
     created: Optional[datetime] = Field(
-        None, description="Date the Role was created")
+        default=None, description="Date the Role was created")
     modified: Optional[datetime] = Field(
-        None, description="Date the Role was last modified.")
+        default=None, description="Date the Role was last modified.")
     description: Optional[StrictStr] = Field(
-        None, description="A human-readable description of the Role")
-    owner: OwnerReference = Field(...)
-    access_profiles: Optional[conlist(AccessProfileRef)] = Field(
-        None, alias="accessProfiles")
+        default=None, description="A human-readable description of the Role")
+    owner: OwnerReference
+    access_profiles: Optional[List[AccessProfileRef]] = Field(
+        default=None, alias="accessProfiles")
     membership: Optional[RoleMembershipSelector] = None
     legacy_membership_info: Optional[Dict[str, Any]] = Field(
-        None,
-        alias="legacyMembershipInfo",
+        default=None,
         description=
-        "This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration."
-    )
+        "This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration.",
+        alias="legacyMembershipInfo")
     enabled: Optional[StrictBool] = Field(
-        False, description="Whether the Role is enabled or not.")
+        default=False, description="Whether the Role is enabled or not.")
     requestable: Optional[StrictBool] = Field(
-        False,
+        default=False,
         description="Whether the Role can be the target of access requests.")
     access_request_config: Optional[RequestabilityForRole] = Field(
-        None, alias="accessRequestConfig")
-    revocation_request_config: Optional[Revocability] = Field(
-        None, alias="revocationRequestConfig")
-    segments: Optional[conlist(StrictStr)] = Field(
-        None,
+        default=None, alias="accessRequestConfig")
+    revocation_request_config: Optional[RevocabilityForRole] = Field(
+        default=None, alias="revocationRequestConfig")
+    segments: Optional[List[StrictStr]] = Field(
+        default=None,
         description=
         "List of IDs of segments, if any, to which this Role is assigned.")
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "id", "name", "created", "modified", "description", "owner",
         "accessProfiles", "membership", "legacyMembershipInfo", "enabled",
         "requestable", "accessRequestConfig", "revocationRequestConfig",
         "segments"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Role:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of Role from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                              "created",
-                              "modified",
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+                "created",
+                "modified",
+            },
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -121,42 +138,42 @@ class Role(BaseModel):
                 'revocationRequestConfig'] = self.revocation_request_config.to_dict(
                 )
         # set to None if description (nullable) is None
-        # and __fields_set__ contains the field
-        if self.description is None and "description" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
         # set to None if access_profiles (nullable) is None
-        # and __fields_set__ contains the field
-        if self.access_profiles is None and "access_profiles" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.access_profiles is None and "access_profiles" in self.model_fields_set:
             _dict['accessProfiles'] = None
 
         # set to None if membership (nullable) is None
-        # and __fields_set__ contains the field
-        if self.membership is None and "membership" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.membership is None and "membership" in self.model_fields_set:
             _dict['membership'] = None
 
         # set to None if legacy_membership_info (nullable) is None
-        # and __fields_set__ contains the field
-        if self.legacy_membership_info is None and "legacy_membership_info" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.legacy_membership_info is None and "legacy_membership_info" in self.model_fields_set:
             _dict['legacyMembershipInfo'] = None
 
         # set to None if segments (nullable) is None
-        # and __fields_set__ contains the field
-        if self.segments is None and "segments" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.segments is None and "segments" in self.model_fields_set:
             _dict['segments'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Role:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of Role from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return Role.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = Role.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -170,25 +187,25 @@ class Role(BaseModel):
             "owner":
             OwnerReference.from_dict(obj.get("owner"))
             if obj.get("owner") is not None else None,
-            "access_profiles": [
+            "accessProfiles": [
                 AccessProfileRef.from_dict(_item)
                 for _item in obj.get("accessProfiles")
             ] if obj.get("accessProfiles") is not None else None,
             "membership":
             RoleMembershipSelector.from_dict(obj.get("membership"))
             if obj.get("membership") is not None else None,
-            "legacy_membership_info":
+            "legacyMembershipInfo":
             obj.get("legacyMembershipInfo"),
             "enabled":
             obj.get("enabled") if obj.get("enabled") is not None else False,
             "requestable":
             obj.get("requestable")
             if obj.get("requestable") is not None else False,
-            "access_request_config":
+            "accessRequestConfig":
             RequestabilityForRole.from_dict(obj.get("accessRequestConfig"))
             if obj.get("accessRequestConfig") is not None else None,
-            "revocation_request_config":
-            Revocability.from_dict(obj.get("revocationRequestConfig"))
+            "revocationRequestConfig":
+            RevocabilityForRole.from_dict(obj.get("revocationRequestConfig"))
             if obj.get("revocationRequestConfig") is not None else None,
             "segments":
             obj.get("segments")

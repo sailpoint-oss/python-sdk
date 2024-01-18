@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse  # noqa: E501
+from sailpoint.v3.models.access_profile_bulk_delete_response import AccessProfileBulkDeleteResponse
 
 
 class TestAccessProfileBulkDeleteResponse(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestAccessProfileBulkDeleteResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessProfileBulkDeleteResponse`
         """
-        model = AccessProfileBulkDeleteResponse()  # noqa: E501
+        model = AccessProfileBulkDeleteResponse()
         if include_optional:
             return AccessProfileBulkDeleteResponse(
                 task_id = '2c9180867817ac4d017817c491119a20',

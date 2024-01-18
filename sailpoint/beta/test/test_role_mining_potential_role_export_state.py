@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_mining_potential_role_export_state import RoleMiningPotentialRoleExportState  # noqa: E501
+from sailpoint.beta.models.role_mining_potential_role_export_state import RoleMiningPotentialRoleExportState
 
 
 class TestRoleMiningPotentialRoleExportState(unittest.TestCase):

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.cancelled_request_details import CancelledRequestDetails  # noqa: E501
+from sailpoint.v3.models.cancelled_request_details import CancelledRequestDetails
 
 
 class TestCancelledRequestDetails(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCancelledRequestDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CancelledRequestDetails`
         """
-        model = CancelledRequestDetails()  # noqa: E501
+        model = CancelledRequestDetails()
         if include_optional:
             return CancelledRequestDetails(
                 comment = 'This request must be cancelled.',

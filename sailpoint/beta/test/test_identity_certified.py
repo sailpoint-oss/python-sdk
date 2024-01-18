@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_certified import IdentityCertified  # noqa: E501
+from sailpoint.beta.models.identity_certified import IdentityCertified
 
 
 class TestIdentityCertified(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityCertified(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityCertified`
         """
-        model = IdentityCertified()  # noqa: E501
+        model = IdentityCertified()
         if include_optional:
             return IdentityCertified(
                 certification_id = '2c91808a77ff216301782327a50f09bf',

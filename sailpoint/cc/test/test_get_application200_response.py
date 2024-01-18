@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.get_application200_response import GetApplication200Response  # noqa: E501
+from sailpoint.cc.models.get_application200_response import GetApplication200Response
 
 
 class TestGetApplication200Response(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestGetApplication200Response(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `GetApplication200Response`
         """
-        model = GetApplication200Response()  # noqa: E501
+        model = GetApplication200Response()
         if include_optional:
             return GetApplication200Response(
                 id = '',

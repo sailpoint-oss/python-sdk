@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_aggregation_completed_stats import AccountAggregationCompletedStats  # noqa: E501
+from sailpoint.beta.models.account_aggregation_completed_stats import AccountAggregationCompletedStats
 
 
 class TestAccountAggregationCompletedStats(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestAccountAggregationCompletedStats(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountAggregationCompletedStats`
         """
-        model = AccountAggregationCompletedStats()  # noqa: E501
+        model = AccountAggregationCompletedStats()
         if include_optional:
             return AccountAggregationCompletedStats(
                 scanned = 200,

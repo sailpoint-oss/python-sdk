@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail  # noqa: E501
+from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 
 
 class TestIdentityReferenceWithNameAndEmail(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestIdentityReferenceWithNameAndEmail(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityReferenceWithNameAndEmail`
         """
-        model = IdentityReferenceWithNameAndEmail()  # noqa: E501
+        model = IdentityReferenceWithNameAndEmail()
         if include_optional:
             return IdentityReferenceWithNameAndEmail(
                 type = 'IDENTITY',

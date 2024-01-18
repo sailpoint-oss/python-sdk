@@ -16,34 +16,39 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class CustomPasswordInstruction(BaseModel):
     """
     CustomPasswordInstruction
     """
+
+  # noqa: E501
     page_id: Optional[StrictStr] = Field(
-        None,
-        alias="pageId",
+        default=None,
         description=
-        "The page ID that represents the page for forget user name, reset password and unlock account flow."
-    )
+        "The page ID that represents the page for forget user name, reset password and unlock account flow.",
+        alias="pageId")
     page_content: Optional[StrictStr] = Field(
-        None,
-        alias="pageContent",
+        default=None,
         description=
-        "The custom instructions for the specified page. Allow basic HTML format and maximum length is 1000 characters. The custom instructions will be sanitized to avoid attacks. If the customization text includes a link, like <A HREF=\\\"URL\\\">...</A> clicking on this will open the link on the current browser page. If you want your link to be redirected to a different page, please redirect it to \"_blank\" like this: <a href=\\\"URL\" target=\\\"_blank\\\" >link</a>. This will open a new tab when the link is clicked. Notice we're only supporting _blank as the redirection target."
-    )
+        "The custom instructions for the specified page. Allow basic HTML format and maximum length is 1000 characters. The custom instructions will be sanitized to avoid attacks. If the customization text includes a link, like <A HREF=\\\"URL\\\">...</A> clicking on this will open the link on the current browser page. If you want your link to be redirected to a different page, please redirect it to \"_blank\" like this: <a href=\\\"URL\" target=\\\"_blank\\\" >link</a>. This will open a new tab when the link is clicked. Notice we're only supporting _blank as the redirection target.",
+        alias="pageContent")
     locale: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "The locale for the custom instructions, a BCP47 language tag. The default value is \\\"default\\\"."
     )
-    __properties = ["pageId", "pageContent", "locale"]
+    __properties: ClassVar[List[str]] = ["pageId", "pageContent", "locale"]
 
-    @validator('page_id')
+    @field_validator('page_id')
     def page_id_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -63,44 +68,51 @@ class CustomPasswordInstruction(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CustomPasswordInstruction:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of CustomPasswordInstruction from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CustomPasswordInstruction:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of CustomPasswordInstruction from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CustomPasswordInstruction.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = CustomPasswordInstruction.parse_obj({
-            "page_id":
-            obj.get("pageId"),
-            "page_content":
-            obj.get("pageContent"),
-            "locale":
-            obj.get("locale")
+        _obj = cls.model_validate({
+            "pageId": obj.get("pageId"),
+            "pageContent": obj.get("pageContent"),
+            "locale": obj.get("locale")
         })
         return _obj

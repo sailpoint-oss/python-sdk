@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.common_access_type import CommonAccessType  # noqa: E501
+from sailpoint.beta.models.common_access_type import CommonAccessType
 
 
 class TestCommonAccessType(unittest.TestCase):

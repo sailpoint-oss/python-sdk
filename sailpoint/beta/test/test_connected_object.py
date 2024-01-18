@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.connected_object import ConnectedObject  # noqa: E501
+from sailpoint.beta.models.connected_object import ConnectedObject
 
 
 class TestConnectedObject(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestConnectedObject(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConnectedObject`
         """
-        model = ConnectedObject()  # noqa: E501
+        model = ConnectedObject()
         if include_optional:
             return ConnectedObject(
                 type = 'ACCESS_PROFILE',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.work_item_forward import WorkItemForward  # noqa: E501
+from sailpoint.beta.models.work_item_forward import WorkItemForward
 
 
 class TestWorkItemForward(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkItemForward(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkItemForward`
         """
-        model = WorkItemForward()  # noqa: E501
+        model = WorkItemForward()
         if include_optional:
             return WorkItemForward(
                 target_owner_id = '2c9180835d2e5168015d32f890ca1581',

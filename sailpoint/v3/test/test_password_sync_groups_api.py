@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.password_sync_groups_api import PasswordSyncGroupsApi  # noqa: E501
+from sailpoint.v3.api.password_sync_groups_api import PasswordSyncGroupsApi
 
 
 class TestPasswordSyncGroupsApi(unittest.TestCase):
     """PasswordSyncGroupsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = PasswordSyncGroupsApi()  # noqa: E501
+        self.api = PasswordSyncGroupsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,35 +28,35 @@ class TestPasswordSyncGroupsApi(unittest.TestCase):
     def test_create_password_sync_group(self) -> None:
         """Test case for create_password_sync_group
 
-        Create Password Sync Group  # noqa: E501
+        Create Password Sync Group
         """
         pass
 
     def test_delete_password_sync_group(self) -> None:
         """Test case for delete_password_sync_group
 
-        Delete Password Sync Group by ID  # noqa: E501
+        Delete Password Sync Group by ID
         """
         pass
 
     def test_get_password_sync_group(self) -> None:
         """Test case for get_password_sync_group
 
-        Get Password Sync Group by ID  # noqa: E501
+        Get Password Sync Group by ID
         """
         pass
 
     def test_get_password_sync_groups(self) -> None:
         """Test case for get_password_sync_groups
 
-        Get Password Sync Group List  # noqa: E501
+        Get Password Sync Group List
         """
         pass
 
     def test_update_password_sync_group(self) -> None:
         """Test case for update_password_sync_group
 
-        Update Password Sync Group by ID  # noqa: E501
+        Update Password Sync Group by ID
         """
         pass
 

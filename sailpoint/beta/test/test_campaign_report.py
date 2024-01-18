@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.campaign_report import CampaignReport  # noqa: E501
+from sailpoint.beta.models.campaign_report import CampaignReport
 
 
 class TestCampaignReport(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCampaignReport(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CampaignReport`
         """
-        model = CampaignReport()  # noqa: E501
+        model = CampaignReport()
         if include_optional:
             return CampaignReport(
                 type = 'REPORT_RESULT',

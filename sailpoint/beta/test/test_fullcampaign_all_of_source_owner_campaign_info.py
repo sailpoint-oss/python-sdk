@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.fullcampaign_all_of_source_owner_campaign_info import FullcampaignAllOfSourceOwnerCampaignInfo  # noqa: E501
+from sailpoint.beta.models.fullcampaign_all_of_source_owner_campaign_info import FullcampaignAllOfSourceOwnerCampaignInfo
 
 
 class TestFullcampaignAllOfSourceOwnerCampaignInfo(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestFullcampaignAllOfSourceOwnerCampaignInfo(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FullcampaignAllOfSourceOwnerCampaignInfo`
         """
-        model = FullcampaignAllOfSourceOwnerCampaignInfo()  # noqa: E501
+        model = FullcampaignAllOfSourceOwnerCampaignInfo()
         if include_optional:
             return FullcampaignAllOfSourceOwnerCampaignInfo(
                 source_ids = [0fbe863c063c4c88a35fd7f17e8a3df5]

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.sod_policy_schedule import SodPolicySchedule  # noqa: E501
+from sailpoint.v3.models.sod_policy_schedule import SodPolicySchedule
 
 
 class TestSodPolicySchedule(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSodPolicySchedule(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SodPolicySchedule`
         """
-        model = SodPolicySchedule()  # noqa: E501
+        model = SodPolicySchedule()
         if include_optional:
             return SodPolicySchedule(
                 name = 'SCH-1584312283015',
@@ -45,7 +45,7 @@ class TestSodPolicySchedule(unittest.TestCase):
                     days = null, 
                     hours = null, 
                     expiration = '2018-06-25T20:22:28.104Z', 
-                    time_zone_id = 'GMT-06:00', ),
+                    time_zone_id = 'America/Chicago', ),
                 recipients = [
                     sailpoint.v3.models.sod_recipient.SodRecipient(
                         type = 'IDENTITY', 

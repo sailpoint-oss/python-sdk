@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.recommendation_request_dto import RecommendationRequestDto  # noqa: E501
+from sailpoint.beta.models.recommendation_request_dto import RecommendationRequestDto
 
 
 class TestRecommendationRequestDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRecommendationRequestDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RecommendationRequestDto`
         """
-        model = RecommendationRequestDto()  # noqa: E501
+        model = RecommendationRequestDto()
         if include_optional:
             return RecommendationRequestDto(
                 requests = [

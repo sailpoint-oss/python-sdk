@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi  # noqa: E501
+from sailpoint.v3.api.global_tenant_security_settings_api import GlobalTenantSecuritySettingsApi
 
 
 class TestGlobalTenantSecuritySettingsApi(unittest.TestCase):
     """GlobalTenantSecuritySettingsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = GlobalTenantSecuritySettingsApi()  # noqa: E501
+        self.api = GlobalTenantSecuritySettingsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,21 +28,21 @@ class TestGlobalTenantSecuritySettingsApi(unittest.TestCase):
     def test_create_auth_org_network_config(self) -> None:
         """Test case for create_auth_org_network_config
 
-        Create security network configuration.  # noqa: E501
+        Create security network configuration.
         """
         pass
 
     def test_get_auth_org_network_config(self) -> None:
         """Test case for get_auth_org_network_config
 
-        Get security network configuration.  # noqa: E501
+        Get security network configuration.
         """
         pass
 
     def test_patch_auth_org_network_config(self) -> None:
         """Test case for patch_auth_org_network_config
 
-        Update security network configuration.  # noqa: E501
+        Update security network configuration.
         """
         pass
 

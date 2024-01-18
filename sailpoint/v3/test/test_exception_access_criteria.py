@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.exception_access_criteria import ExceptionAccessCriteria  # noqa: E501
+from sailpoint.v3.models.exception_access_criteria import ExceptionAccessCriteria
 
 
 class TestExceptionAccessCriteria(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestExceptionAccessCriteria(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ExceptionAccessCriteria`
         """
-        model = ExceptionAccessCriteria()  # noqa: E501
+        model = ExceptionAccessCriteria()
         if include_optional:
             return ExceptionAccessCriteria(
                 left_criteria = sailpoint.v3.models.exception_criteria.ExceptionCriteria(

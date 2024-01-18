@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.owner_reference import OwnerReference  # noqa: E501
+from sailpoint.beta.models.owner_reference import OwnerReference
 
 
 class TestOwnerReference(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestOwnerReference(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `OwnerReference`
         """
-        model = OwnerReference()  # noqa: E501
+        model = OwnerReference()
         if include_optional:
             return OwnerReference(
                 type = 'IDENTITY',

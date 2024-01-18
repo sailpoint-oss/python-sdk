@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_owner import FormOwner  # noqa: E501
+from sailpoint.beta.models.form_owner import FormOwner
 
 
 class TestFormOwner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFormOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormOwner`
         """
-        model = FormOwner()  # noqa: E501
+        model = FormOwner()
         if include_optional:
             return FormOwner(
                 type = 'IDENTITY',

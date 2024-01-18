@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.basic_auth_config import BasicAuthConfig  # noqa: E501
+from sailpoint.beta.models.basic_auth_config import BasicAuthConfig
 
 
 class TestBasicAuthConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestBasicAuthConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `BasicAuthConfig`
         """
-        model = BasicAuthConfig()  # noqa: E501
+        model = BasicAuthConfig()
         if include_optional:
             return BasicAuthConfig(
                 user_name = 'user@example.com',

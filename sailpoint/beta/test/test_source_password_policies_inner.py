@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_password_policies_inner import SourcePasswordPoliciesInner  # noqa: E501
+from sailpoint.beta.models.source_password_policies_inner import SourcePasswordPoliciesInner
 
 
 class TestSourcePasswordPoliciesInner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourcePasswordPoliciesInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourcePasswordPoliciesInner`
         """
-        model = SourcePasswordPoliciesInner()  # noqa: E501
+        model = SourcePasswordPoliciesInner()
         if include_optional:
             return SourcePasswordPoliciesInner(
                 type = 'PASSWORD_POLICY',

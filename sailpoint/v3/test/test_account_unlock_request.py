@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.account_unlock_request import AccountUnlockRequest  # noqa: E501
+from sailpoint.v3.models.account_unlock_request import AccountUnlockRequest
 
 
 class TestAccountUnlockRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountUnlockRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountUnlockRequest`
         """
-        model = AccountUnlockRequest()  # noqa: E501
+        model = AccountUnlockRequest()
         if include_optional:
             return AccountUnlockRequest(
                 external_verification_id = '3f9180835d2e5168015d32f890ca1581',

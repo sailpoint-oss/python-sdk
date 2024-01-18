@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.list_applications200_response_inner_account_service_policies_inner import ListApplications200ResponseInnerAccountServicePoliciesInner  # noqa: E501
+from sailpoint.cc.models.list_applications200_response_inner_account_service_policies_inner import ListApplications200ResponseInnerAccountServicePoliciesInner
 
 
 class TestListApplications200ResponseInnerAccountServicePoliciesInner(
@@ -36,7 +36,7 @@ class TestListApplications200ResponseInnerAccountServicePoliciesInner(
             optional params are included """
         # uncomment below to create an instance of `ListApplications200ResponseInnerAccountServicePoliciesInner`
         """
-        model = ListApplications200ResponseInnerAccountServicePoliciesInner()  # noqa: E501
+        model = ListApplications200ResponseInnerAccountServicePoliciesInner()
         if include_optional:
             return ListApplications200ResponseInnerAccountServicePoliciesInner(
                 policy_id = '',

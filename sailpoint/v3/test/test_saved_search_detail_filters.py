@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.saved_search_detail_filters import SavedSearchDetailFilters  # noqa: E501
+from sailpoint.v3.models.saved_search_detail_filters import SavedSearchDetailFilters
 
 
 class TestSavedSearchDetailFilters(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSavedSearchDetailFilters(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SavedSearchDetailFilters`
         """
-        model = SavedSearchDetailFilters()  # noqa: E501
+        model = SavedSearchDetailFilters()
         if include_optional:
             return SavedSearchDetailFilters(
                 type = 'RANGE',

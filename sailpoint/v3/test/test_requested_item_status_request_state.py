@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.requested_item_status_request_state import RequestedItemStatusRequestState  # noqa: E501
+from sailpoint.v3.models.requested_item_status_request_state import RequestedItemStatusRequestState
 
 
 class TestRequestedItemStatusRequestState(unittest.TestCase):

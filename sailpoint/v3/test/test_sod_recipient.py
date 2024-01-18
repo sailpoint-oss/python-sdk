@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.sod_recipient import SodRecipient  # noqa: E501
+from sailpoint.v3.models.sod_recipient import SodRecipient
 
 
 class TestSodRecipient(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSodRecipient(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SodRecipient`
         """
-        model = SodRecipient()  # noqa: E501
+        model = SodRecipient()
         if include_optional:
             return SodRecipient(
                 type = 'IDENTITY',

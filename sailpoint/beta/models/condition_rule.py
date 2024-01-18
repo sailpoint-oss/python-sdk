@@ -16,42 +16,49 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ConditionRule(BaseModel):
     """
     ConditionRule
     """
+
+  # noqa: E501
     source_type: Optional[StrictStr] = Field(
-        None,
-        alias="sourceType",
+        default=None,
         description=
-        "Defines the type of object being selected. It will be either a reference to a form input (by input name) or a form element (by technical key). INPUT ConditionRuleSourceTypeInput ELEMENT ConditionRuleSourceTypeElement"
-    )
+        "Defines the type of object being selected. It will be either a reference to a form input (by input name) or a form element (by technical key). INPUT ConditionRuleSourceTypeInput ELEMENT ConditionRuleSourceTypeElement",
+        alias="sourceType")
     source: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "Source - if the sourceType is ConditionRuleSourceTypeInput, the source type is the name of the form input to accept. However, if the sourceType is ConditionRuleSourceTypeElement, the source is the name of a technical key of an element to retrieve its value."
     )
     operator: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "ConditionRuleComparisonOperatorType value. EQ ConditionRuleComparisonOperatorTypeEquals  This comparison operator compares the source and target for equality. NE ConditionRuleComparisonOperatorTypeNotEquals  This comparison operator compares the source and target for inequality. CO ConditionRuleComparisonOperatorTypeContains  This comparison operator searches the source to see whether it contains the value. NOT_CO ConditionRuleComparisonOperatorTypeNotContains IN ConditionRuleComparisonOperatorTypeIncludes  This comparison operator searches the source if it equals any of the values. NOT_IN ConditionRuleComparisonOperatorTypeNotIncludes EM ConditionRuleComparisonOperatorTypeEmpty NOT_EM ConditionRuleComparisonOperatorTypeNotEmpty SW ConditionRuleComparisonOperatorTypeStartsWith  Checks whether a string starts with another substring of the same string. This operator is case-sensitive. NOT_SW ConditionRuleComparisonOperatorTypeNotStartsWith EW ConditionRuleComparisonOperatorTypeEndsWith  Checks whether a string ends with another substring of the same string. This operator is case-sensitive. NOT_EW ConditionRuleComparisonOperatorTypeNotEndsWith"
     )
     value_type: Optional[StrictStr] = Field(
-        None,
-        alias="valueType",
+        default=None,
         description=
-        "ConditionRuleValueType type. STRING ConditionRuleValueTypeString  This value is a static string. STRING_LIST ConditionRuleValueTypeStringList  This value is an array of string values. INPUT ConditionRuleValueTypeInput  This value is a reference to a form input. ELEMENT ConditionRuleValueTypeElement  This value is a reference to a form element (by technical key). LIST ConditionRuleValueTypeList BOOLEAN ConditionRuleValueTypeBoolean"
-    )
-    value: Optional[Dict[str,
-                         Any]] = Field(None,
-                                       description="Based on the ValueType.")
-    __properties = ["sourceType", "source", "operator", "valueType", "value"]
+        "ConditionRuleValueType type. STRING ConditionRuleValueTypeString  This value is a static string. STRING_LIST ConditionRuleValueTypeStringList  This value is an array of string values. INPUT ConditionRuleValueTypeInput  This value is a reference to a form input. ELEMENT ConditionRuleValueTypeElement  This value is a reference to a form element (by technical key). LIST ConditionRuleValueTypeList BOOLEAN ConditionRuleValueTypeBoolean",
+        alias="valueType")
+    value: Optional[Union[str,
+                          Any]] = Field(default=None,
+                                        description="Based on the ValueType.")
+    __properties: ClassVar[List[str]] = [
+        "sourceType", "source", "operator", "valueType", "value"
+    ]
 
-    @validator('source_type')
+    @field_validator('source_type')
     def source_type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -61,7 +68,7 @@ class ConditionRule(BaseModel):
             raise ValueError("must be one of enum values ('INPUT', 'ELEMENT')")
         return value
 
-    @validator('operator')
+    @field_validator('operator')
     def operator_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -74,7 +81,7 @@ class ConditionRule(BaseModel):
             )
         return value
 
-    @validator('value_type')
+    @field_validator('value_type')
     def value_type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -87,43 +94,53 @@ class ConditionRule(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ConditionRule:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ConditionRule from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ConditionRule:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ConditionRule from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ConditionRule.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ConditionRule.parse_obj({
-            "source_type": obj.get("sourceType"),
+        _obj = cls.model_validate({
+            "sourceType": obj.get("sourceType"),
             "source": obj.get("source"),
             "operator": obj.get("operator"),
-            "value_type": obj.get("valueType"),
+            "valueType": obj.get("valueType"),
             "value": obj.get("value")
         })
         return _obj

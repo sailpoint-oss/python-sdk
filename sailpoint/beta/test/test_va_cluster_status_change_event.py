@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.va_cluster_status_change_event import VAClusterStatusChangeEvent  # noqa: E501
+from sailpoint.beta.models.va_cluster_status_change_event import VAClusterStatusChangeEvent
 
 
 class TestVAClusterStatusChangeEvent(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestVAClusterStatusChangeEvent(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `VAClusterStatusChangeEvent`
         """
-        model = VAClusterStatusChangeEvent()  # noqa: E501
+        model = VAClusterStatusChangeEvent()
         if include_optional:
             return VAClusterStatusChangeEvent(
                 created = '2020-06-29T22:01:50.474Z',

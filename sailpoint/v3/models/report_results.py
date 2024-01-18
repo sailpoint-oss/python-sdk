@@ -17,47 +17,52 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictInt, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ReportResults(BaseModel):
     """
-    Details about report result or current state.  # noqa: E501
+    Details about report result or current state.
     """
+
+  # noqa: E501
     report_type: Optional[StrictStr] = Field(
-        None,
-        alias="reportType",
+        default=None,
         description=
-        "Use this property to define what report should be processed in the RDE service."
-    )
+        "Use this property to define what report should be processed in the RDE service.",
+        alias="reportType")
     task_def_name: Optional[StrictStr] = Field(
-        None,
-        alias="taskDefName",
+        default=None,
         description=
-        "Name of the task definition which is started to process requesting report. Usually the same as report name"
-    )
+        "Name of the task definition which is started to process requesting report. Usually the same as report name",
+        alias="taskDefName")
     id: Optional[StrictStr] = Field(
-        None, description="Unique task definition identifier.")
+        default=None, description="Unique task definition identifier.")
     created: Optional[datetime] = Field(
-        None, description="Report processing start date")
+        default=None, description="Report processing start date")
     status: Optional[StrictStr] = Field(
-        None, description="Report current state or result status.")
+        default=None, description="Report current state or result status.")
     duration: Optional[StrictInt] = Field(
-        None, description="Report processing time in ms.")
-    rows: Optional[StrictInt] = Field(None, description="Report size in rows.")
-    available_formats: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="availableFormats",
+        default=None, description="Report processing time in ms.")
+    rows: Optional[StrictInt] = Field(default=None,
+                                      description="Report size in rows.")
+    available_formats: Optional[List[StrictStr]] = Field(
+        default=None,
         description=
-        "Output report file formats. This are formats for calling get endpoint as a query parameter 'fileFormat'.  In case report won't have this argument there will be ['CSV', 'PDF'] as default."
-    )
-    __properties = [
+        "Output report file formats. This are formats for calling get endpoint as a query parameter 'fileFormat'.  In case report won't have this argument there will be ['CSV', 'PDF'] as default.",
+        alias="availableFormats")
+    __properties: ClassVar[List[str]] = [
         "reportType", "taskDefName", "id", "created", "status", "duration",
         "rows", "availableFormats"
     ]
 
-    @validator('report_type')
+    @field_validator('report_type')
     def report_type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -72,7 +77,7 @@ class ReportResults(BaseModel):
             )
         return value
 
-    @validator('status')
+    @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -84,7 +89,7 @@ class ReportResults(BaseModel):
             )
         return value
 
-    @validator('available_formats')
+    @field_validator('available_formats')
     def available_formats_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -96,42 +101,52 @@ class ReportResults(BaseModel):
                     "each list item must be one of ('CSV', 'PDF')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ReportResults:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ReportResults from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ReportResults:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ReportResults from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ReportResults.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ReportResults.parse_obj({
-            "report_type":
+        _obj = cls.model_validate({
+            "reportType":
             obj.get("reportType"),
-            "task_def_name":
+            "taskDefName":
             obj.get("taskDefName"),
             "id":
             obj.get("id"),
@@ -143,7 +158,7 @@ class ReportResults(BaseModel):
             obj.get("duration"),
             "rows":
             obj.get("rows"),
-            "available_formats":
+            "availableFormats":
             obj.get("availableFormats")
         })
         return _obj

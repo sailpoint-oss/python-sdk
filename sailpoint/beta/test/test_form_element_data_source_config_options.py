@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_element_data_source_config_options import FormElementDataSourceConfigOptions  # noqa: E501
+from sailpoint.beta.models.form_element_data_source_config_options import FormElementDataSourceConfigOptions
 
 
 class TestFormElementDataSourceConfigOptions(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestFormElementDataSourceConfigOptions(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormElementDataSourceConfigOptions`
         """
-        model = FormElementDataSourceConfigOptions()  # noqa: E501
+        model = FormElementDataSourceConfigOptions()
         if include_optional:
             return FormElementDataSourceConfigOptions(
                 label = 'regression-test-access-request-07c55dd6-3056-430a-86b5-fccc395bb6c5',

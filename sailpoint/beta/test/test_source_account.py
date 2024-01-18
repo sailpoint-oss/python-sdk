@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_account import SourceAccount  # noqa: E501
+from sailpoint.beta.models.source_account import SourceAccount
 
 
 class TestSourceAccount(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceAccount(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceAccount`
         """
-        model = SourceAccount()  # noqa: E501
+        model = SourceAccount()
         if include_optional:
             return SourceAccount(
                 uuid = 'b7264868-7201-415f-9118-b581d431c688',

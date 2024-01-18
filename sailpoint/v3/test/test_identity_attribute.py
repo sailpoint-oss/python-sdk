@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identity_attribute import IdentityAttribute  # noqa: E501
+from sailpoint.v3.models.identity_attribute import IdentityAttribute
 
 
 class TestIdentityAttribute(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityAttribute(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityAttribute`
         """
-        model = IdentityAttribute()  # noqa: E501
+        model = IdentityAttribute()
         if include_optional:
             return IdentityAttribute(
                 key = 'country',

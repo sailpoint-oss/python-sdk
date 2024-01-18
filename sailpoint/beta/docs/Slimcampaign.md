@@ -14,6 +14,10 @@ Name | Type | Description | Notes
 **recommendations_enabled** | **bool** | Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future. | [optional] [default to False]
 **status** | **str** | The campaign&#39;s current status. | [optional] [readonly] 
 **correlated_status** | **str** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | [optional] 
+**created** | **datetime** | Created time of the campaign | [optional] [readonly] 
+**total_certifications** | **int** | The total number of certifications in this campaign. | [optional] [readonly] 
+**completed_certifications** | **int** | The number of completed certifications in this campaign. | [optional] [readonly] 
+**alerts** | [**List[CampaignAlert]**](CampaignAlert.md) | A list of errors and warnings that have accumulated. | [optional] [readonly] 
 
 ## Example
 

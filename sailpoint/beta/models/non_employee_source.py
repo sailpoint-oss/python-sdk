@@ -17,68 +17,86 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.identity_reference_with_id import IdentityReferenceWithId
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class NonEmployeeSource(BaseModel):
     """
     NonEmployeeSource
     """
-    id: Optional[StrictStr] = Field(None,
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
                                     description="Non-Employee source id.")
     source_id: Optional[StrictStr] = Field(
-        None,
-        alias="sourceId",
-        description="Source Id associated with this non-employee source.")
+        default=None,
+        description="Source Id associated with this non-employee source.",
+        alias="sourceId")
     name: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description="Source name associated with this non-employee source.")
     description: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "Source description associated with this non-employee source.")
-    approvers: Optional[conlist(IdentityReferenceWithId)] = Field(
-        None, description="List of approvers")
-    account_managers: Optional[conlist(IdentityReferenceWithId)] = Field(
-        None, alias="accountManagers", description="List of account managers")
+    approvers: Optional[List[IdentityReferenceWithId]] = Field(
+        default=None, description="List of approvers")
+    account_managers: Optional[List[IdentityReferenceWithId]] = Field(
+        default=None,
+        description="List of account managers",
+        alias="accountManagers")
     modified: Optional[datetime] = Field(
-        None, description="When the request was last modified.")
+        default=None, description="When the request was last modified.")
     created: Optional[datetime] = Field(
-        None, description="When the request was created.")
+        default=None, description="When the request was created.")
     non_employee_count: Optional[StrictInt] = Field(
-        None,
-        alias="nonEmployeeCount",
+        default=None,
         description=
-        "The number of non-employee records on all sources that *requested-for* user manages."
-    )
-    __properties = [
+        "The number of non-employee records on all sources that *requested-for* user manages.",
+        alias="nonEmployeeCount")
+    __properties: ClassVar[List[str]] = [
         "id", "sourceId", "name", "description", "approvers",
         "accountManagers", "modified", "created", "nonEmployeeCount"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> NonEmployeeSource:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of NonEmployeeSource from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in approvers (list)
         _items = []
         if self.approvers:
@@ -94,25 +112,25 @@ class NonEmployeeSource(BaseModel):
                     _items.append(_item.to_dict())
             _dict['accountManagers'] = _items
         # set to None if non_employee_count (nullable) is None
-        # and __fields_set__ contains the field
-        if self.non_employee_count is None and "non_employee_count" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.non_employee_count is None and "non_employee_count" in self.model_fields_set:
             _dict['nonEmployeeCount'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> NonEmployeeSource:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of NonEmployeeSource from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return NonEmployeeSource.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = NonEmployeeSource.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
-            "source_id":
+            "sourceId":
             obj.get("sourceId"),
             "name":
             obj.get("name"),
@@ -122,7 +140,7 @@ class NonEmployeeSource(BaseModel):
                 IdentityReferenceWithId.from_dict(_item)
                 for _item in obj.get("approvers")
             ] if obj.get("approvers") is not None else None,
-            "account_managers": [
+            "accountManagers": [
                 IdentityReferenceWithId.from_dict(_item)
                 for _item in obj.get("accountManagers")
             ] if obj.get("accountManagers") is not None else None,
@@ -130,7 +148,7 @@ class NonEmployeeSource(BaseModel):
             obj.get("modified"),
             "created":
             obj.get("created"),
-            "non_employee_count":
+            "nonEmployeeCount":
             obj.get("nonEmployeeCount")
         })
         return _obj

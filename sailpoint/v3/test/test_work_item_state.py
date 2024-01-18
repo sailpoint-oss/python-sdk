@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.work_item_state import WorkItemState  # noqa: E501
+from sailpoint.v3.models.work_item_state import WorkItemState
 
 
 class TestWorkItemState(unittest.TestCase):

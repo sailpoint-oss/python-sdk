@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.remediation_item_details import RemediationItemDetails  # noqa: E501
+from sailpoint.v3.models.remediation_item_details import RemediationItemDetails
 
 
 class TestRemediationItemDetails(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRemediationItemDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RemediationItemDetails`
         """
-        model = RemediationItemDetails()  # noqa: E501
+        model = RemediationItemDetails()
         if include_optional:
             return RemediationItemDetails(
                 id = '2c9180835d2e5168015d32f890ca1581',

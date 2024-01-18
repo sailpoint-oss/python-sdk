@@ -16,46 +16,63 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel
+from pydantic import Field
 from sailpoint.v3.models.access_summary_access import AccessSummaryAccess
 from sailpoint.v3.models.reviewable_access_profile import ReviewableAccessProfile
 from sailpoint.v3.models.reviewable_entitlement import ReviewableEntitlement
 from sailpoint.v3.models.reviewable_role import ReviewableRole
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccessSummary(BaseModel):
     """
-    An object holding the access that is being reviewed  # noqa: E501
-    """
+    An object holding the access that is being reviewed
+    """ # noqa: E501
     access: Optional[AccessSummaryAccess] = None
     entitlement: Optional[ReviewableEntitlement] = None
     access_profile: Optional[ReviewableAccessProfile] = Field(
-        None, alias="accessProfile")
+        default=None, alias="accessProfile")
     role: Optional[ReviewableRole] = None
-    __properties = ["access", "entitlement", "accessProfile", "role"]
+    __properties: ClassVar[List[str]] = [
+        "access", "entitlement", "accessProfile", "role"
+    ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccessSummary:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccessSummary from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of access
         if self.access:
             _dict['access'] = self.access.to_dict()
@@ -69,34 +86,34 @@ class AccessSummary(BaseModel):
         if self.role:
             _dict['role'] = self.role.to_dict()
         # set to None if entitlement (nullable) is None
-        # and __fields_set__ contains the field
-        if self.entitlement is None and "entitlement" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.entitlement is None and "entitlement" in self.model_fields_set:
             _dict['entitlement'] = None
 
         # set to None if role (nullable) is None
-        # and __fields_set__ contains the field
-        if self.role is None and "role" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.role is None and "role" in self.model_fields_set:
             _dict['role'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccessSummary:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccessSummary from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccessSummary.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccessSummary.parse_obj({
+        _obj = cls.model_validate({
             "access":
             AccessSummaryAccess.from_dict(obj.get("access"))
             if obj.get("access") is not None else None,
             "entitlement":
             ReviewableEntitlement.from_dict(obj.get("entitlement"))
             if obj.get("entitlement") is not None else None,
-            "access_profile":
+            "accessProfile":
             ReviewableAccessProfile.from_dict(obj.get("accessProfile"))
             if obj.get("accessProfile") is not None else None,
             "role":

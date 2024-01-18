@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.owner import Owner  # noqa: E501
+from sailpoint.v3.models.owner import Owner
 
 
 class TestOwner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Owner`
         """
-        model = Owner()  # noqa: E501
+        model = Owner()
         if include_optional:
             return Owner(
                 id = '2c91808568c529c60168cca6f90c1313',

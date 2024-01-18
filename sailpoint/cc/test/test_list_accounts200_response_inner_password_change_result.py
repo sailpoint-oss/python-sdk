@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.list_accounts200_response_inner_password_change_result import ListAccounts200ResponseInnerPasswordChangeResult  # noqa: E501
+from sailpoint.cc.models.list_accounts200_response_inner_password_change_result import ListAccounts200ResponseInnerPasswordChangeResult
 
 
 class TestListAccounts200ResponseInnerPasswordChangeResult(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestListAccounts200ResponseInnerPasswordChangeResult(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListAccounts200ResponseInnerPasswordChangeResult`
         """
-        model = ListAccounts200ResponseInnerPasswordChangeResult()  # noqa: E501
+        model = ListAccounts200ResponseInnerPasswordChangeResult()
         if include_optional:
             return ListAccounts200ResponseInnerPasswordChangeResult(
                 completion_status = 'SUCCESS'

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.campaign_all_of_role_composition_campaign_info_remediator_ref import CampaignAllOfRoleCompositionCampaignInfoRemediatorRef  # noqa: E501
+from sailpoint.v3.models.campaign_all_of_role_composition_campaign_info_remediator_ref import CampaignAllOfRoleCompositionCampaignInfoRemediatorRef
 
 
 class TestCampaignAllOfRoleCompositionCampaignInfoRemediatorRef(
@@ -36,7 +36,7 @@ class TestCampaignAllOfRoleCompositionCampaignInfoRemediatorRef(
             optional params are included """
         # uncomment below to create an instance of `CampaignAllOfRoleCompositionCampaignInfoRemediatorRef`
         """
-        model = CampaignAllOfRoleCompositionCampaignInfoRemediatorRef()  # noqa: E501
+        model = CampaignAllOfRoleCompositionCampaignInfoRemediatorRef()
         if include_optional:
             return CampaignAllOfRoleCompositionCampaignInfoRemediatorRef(
                 type = 'IDENTITY',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner  # noqa: E501
+from sailpoint.beta.models.list_identity_access_items200_response_inner import ListIdentityAccessItems200ResponseInner
 
 
 class TestListIdentityAccessItems200ResponseInner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestListIdentityAccessItems200ResponseInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListIdentityAccessItems200ResponseInner`
         """
-        model = ListIdentityAccessItems200ResponseInner()  # noqa: E501
+        model = ListIdentityAccessItems200ResponseInner()
         if include_optional:
             return ListIdentityAccessItems200ResponseInner(
                 access_type = 'role',

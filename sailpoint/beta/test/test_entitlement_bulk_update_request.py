@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest  # noqa: E501
+from sailpoint.beta.models.entitlement_bulk_update_request import EntitlementBulkUpdateRequest
 
 
 class TestEntitlementBulkUpdateRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestEntitlementBulkUpdateRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `EntitlementBulkUpdateRequest`
         """
-        model = EntitlementBulkUpdateRequest()  # noqa: E501
+        model = EntitlementBulkUpdateRequest()
         if include_optional:
             return EntitlementBulkUpdateRequest(
                 entitlement_ids = [2c91808a7624751a01762f19d665220d, 2c91808a7624751a01762f19d67c220e, 2c91808a7624751a01762f19d692220f],

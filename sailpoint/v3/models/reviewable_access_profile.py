@@ -17,68 +17,85 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.v3.models.reviewable_entitlement import ReviewableEntitlement
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ReviewableAccessProfile(BaseModel):
     """
     ReviewableAccessProfile
     """
-    id: Optional[StrictStr] = Field(None,
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
                                     description="The id of the Access Profile")
-    name: Optional[StrictStr] = Field(None,
+    name: Optional[StrictStr] = Field(default=None,
                                       description="Name of the Access Profile")
     description: Optional[StrictStr] = Field(
-        None, description="Information about the Access Profile")
+        default=None, description="Information about the Access Profile")
     privileged: Optional[StrictBool] = Field(
-        None,
+        default=None,
         description="Indicates if the entitlement is a privileged entitlement")
     cloud_governed: Optional[StrictBool] = Field(
-        None,
-        alias="cloudGoverned",
-        description="True if the entitlement is cloud governed")
+        default=None,
+        description="True if the entitlement is cloud governed",
+        alias="cloudGoverned")
     end_date: Optional[datetime] = Field(
-        None,
-        alias="endDate",
-        description="The date at which a user's access expires")
+        default=None,
+        description="The date at which a user's access expires",
+        alias="endDate")
     owner: Optional[IdentityReferenceWithNameAndEmail] = None
-    entitlements: Optional[conlist(ReviewableEntitlement)] = Field(
-        None,
+    entitlements: Optional[List[ReviewableEntitlement]] = Field(
+        default=None,
         description="A list of entitlements associated with this Access Profile"
     )
     created: Optional[datetime] = Field(
-        None, description="Date the Access Profile was created.")
+        default=None, description="Date the Access Profile was created.")
     modified: Optional[datetime] = Field(
-        None, description="Date the Access Profile was last modified.")
-    __properties = [
+        default=None, description="Date the Access Profile was last modified.")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "description", "privileged", "cloudGoverned", "endDate",
         "owner", "entitlements", "created", "modified"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ReviewableAccessProfile:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ReviewableAccessProfile from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of owner
         if self.owner:
             _dict['owner'] = self.owner.to_dict()
@@ -90,27 +107,27 @@ class ReviewableAccessProfile(BaseModel):
                     _items.append(_item.to_dict())
             _dict['entitlements'] = _items
         # set to None if end_date (nullable) is None
-        # and __fields_set__ contains the field
-        if self.end_date is None and "end_date" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.end_date is None and "end_date" in self.model_fields_set:
             _dict['endDate'] = None
 
         # set to None if owner (nullable) is None
-        # and __fields_set__ contains the field
-        if self.owner is None and "owner" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.owner is None and "owner" in self.model_fields_set:
             _dict['owner'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ReviewableAccessProfile:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ReviewableAccessProfile from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ReviewableAccessProfile.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ReviewableAccessProfile.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -119,9 +136,9 @@ class ReviewableAccessProfile(BaseModel):
             obj.get("description"),
             "privileged":
             obj.get("privileged"),
-            "cloud_governed":
+            "cloudGoverned":
             obj.get("cloudGoverned"),
-            "end_date":
+            "endDate":
             obj.get("endDate"),
             "owner":
             IdentityReferenceWithNameAndEmail.from_dict(obj.get("owner"))

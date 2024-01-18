@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse  # noqa: E501
+from sailpoint.beta.models.list_predefined_select_options_response import ListPredefinedSelectOptionsResponse
 
 
 class TestListPredefinedSelectOptionsResponse(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestListPredefinedSelectOptionsResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListPredefinedSelectOptionsResponse`
         """
-        model = ListPredefinedSelectOptionsResponse()  # noqa: E501
+        model = ListPredefinedSelectOptionsResponse()
         if include_optional:
             return ListPredefinedSelectOptionsResponse(
                 results = [

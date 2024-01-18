@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.cancelable_account_activity import CancelableAccountActivity  # noqa: E501
+from sailpoint.beta.models.cancelable_account_activity import CancelableAccountActivity
 
 
 class TestCancelableAccountActivity(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCancelableAccountActivity(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CancelableAccountActivity`
         """
-        model = CancelableAccountActivity()  # noqa: E501
+        model = CancelableAccountActivity()
         if include_optional:
             return CancelableAccountActivity(
                 id = '2c9180835d2e5168015d32f890ca1581',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_account_correlation_rule import SourceAccountCorrelationRule  # noqa: E501
+from sailpoint.beta.models.source_account_correlation_rule import SourceAccountCorrelationRule
 
 
 class TestSourceAccountCorrelationRule(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceAccountCorrelationRule(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceAccountCorrelationRule`
         """
-        model = SourceAccountCorrelationRule()  # noqa: E501
+        model = SourceAccountCorrelationRule()
         if include_optional:
             return SourceAccountCorrelationRule(
                 type = 'RULE',

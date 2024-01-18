@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner  # noqa: E501
+from sailpoint.beta.models.export_form_definitions_by_tenant200_response_inner import ExportFormDefinitionsByTenant200ResponseInner
 
 
 class TestExportFormDefinitionsByTenant200ResponseInner(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestExportFormDefinitionsByTenant200ResponseInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ExportFormDefinitionsByTenant200ResponseInner`
         """
-        model = ExportFormDefinitionsByTenant200ResponseInner()  # noqa: E501
+        model = ExportFormDefinitionsByTenant200ResponseInner()
         if include_optional:
             return ExportFormDefinitionsByTenant200ResponseInner(
                 object = sailpoint.beta.models.form_definition_response.FormDefinitionResponse(

@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.sources_api import SourcesApi  # noqa: E501
+from sailpoint.v3.api.sources_api import SourcesApi
 
 
 class TestSourcesApi(unittest.TestCase):
     """SourcesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SourcesApi()  # noqa: E501
+        self.api = SourcesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,175 +28,175 @@ class TestSourcesApi(unittest.TestCase):
     def test_create_provisioning_policy(self) -> None:
         """Test case for create_provisioning_policy
 
-        Create Provisioning Policy  # noqa: E501
+        Create Provisioning Policy
         """
         pass
 
     def test_create_source(self) -> None:
         """Test case for create_source
 
-        Creates a source in IdentityNow.  # noqa: E501
+        Creates a source in IdentityNow.
         """
         pass
 
     def test_create_source_schema(self) -> None:
         """Test case for create_source_schema
 
-        Create Schema on a Source  # noqa: E501
+        Create Schema on a Source
         """
         pass
 
     def test_delete_provisioning_policy(self) -> None:
         """Test case for delete_provisioning_policy
 
-        Delete Provisioning Policy by UsageType  # noqa: E501
+        Delete Provisioning Policy by UsageType
         """
         pass
 
     def test_delete_source(self) -> None:
         """Test case for delete_source
 
-        Delete Source by ID  # noqa: E501
+        Delete Source by ID
         """
         pass
 
     def test_delete_source_schema(self) -> None:
         """Test case for delete_source_schema
 
-        Delete Source Schema by ID  # noqa: E501
+        Delete Source Schema by ID
         """
         pass
 
     def test_get_accounts_schema(self) -> None:
         """Test case for get_accounts_schema
 
-        Downloads source accounts schema template  # noqa: E501
+        Downloads source accounts schema template
         """
         pass
 
     def test_get_entitlements_schema(self) -> None:
         """Test case for get_entitlements_schema
 
-        Downloads source entitlements schema template  # noqa: E501
+        Downloads source entitlements schema template
         """
         pass
 
     def test_get_provisioning_policy(self) -> None:
         """Test case for get_provisioning_policy
 
-        Get Provisioning Policy by UsageType  # noqa: E501
+        Get Provisioning Policy by UsageType
         """
         pass
 
     def test_get_source(self) -> None:
         """Test case for get_source
 
-        Get Source by ID  # noqa: E501
+        Get Source by ID
         """
         pass
 
     def test_get_source_health(self) -> None:
         """Test case for get_source_health
 
-        Fetches source health by id  # noqa: E501
+        Fetches source health by id
         """
         pass
 
     def test_get_source_schema(self) -> None:
         """Test case for get_source_schema
 
-        Get Source Schema by ID  # noqa: E501
+        Get Source Schema by ID
         """
         pass
 
     def test_import_accounts_schema(self) -> None:
         """Test case for import_accounts_schema
 
-        Uploads source accounts schema template  # noqa: E501
+        Uploads source accounts schema template
         """
         pass
 
     def test_import_connector_file(self) -> None:
         """Test case for import_connector_file
 
-        Upload connector file to source  # noqa: E501
+        Upload connector file to source
         """
         pass
 
     def test_import_entitlements_schema(self) -> None:
         """Test case for import_entitlements_schema
 
-        Uploads source entitlements schema template  # noqa: E501
+        Uploads source entitlements schema template
         """
         pass
 
     def test_list_provisioning_policies(self) -> None:
         """Test case for list_provisioning_policies
 
-        Lists ProvisioningPolicies  # noqa: E501
+        Lists ProvisioningPolicies
         """
         pass
 
     def test_list_source_schemas(self) -> None:
         """Test case for list_source_schemas
 
-        List Schemas on a Source  # noqa: E501
+        List Schemas on a Source
         """
         pass
 
     def test_list_sources(self) -> None:
         """Test case for list_sources
 
-        Lists all sources in IdentityNow.  # noqa: E501
+        Lists all sources in IdentityNow.
         """
         pass
 
     def test_put_provisioning_policy(self) -> None:
         """Test case for put_provisioning_policy
 
-        Update Provisioning Policy by UsageType  # noqa: E501
+        Update Provisioning Policy by UsageType
         """
         pass
 
     def test_put_source(self) -> None:
         """Test case for put_source
 
-        Update Source (Full)  # noqa: E501
+        Update Source (Full)
         """
         pass
 
     def test_put_source_schema(self) -> None:
         """Test case for put_source_schema
 
-        Update Source Schema (Full)  # noqa: E501
+        Update Source Schema (Full)
         """
         pass
 
     def test_update_provisioning_policies_in_bulk(self) -> None:
         """Test case for update_provisioning_policies_in_bulk
 
-        Bulk Update Provisioning Policies  # noqa: E501
+        Bulk Update Provisioning Policies
         """
         pass
 
     def test_update_provisioning_policy(self) -> None:
         """Test case for update_provisioning_policy
 
-        Partial update of Provisioning Policy  # noqa: E501
+        Partial update of Provisioning Policy
         """
         pass
 
     def test_update_source(self) -> None:
         """Test case for update_source
 
-        Update Source (Partial)  # noqa: E501
+        Update Source (Partial)
         """
         pass
 
     def test_update_source_schema(self) -> None:
         """Test case for update_source_schema
 
-        Update Source Schema (Partial)  # noqa: E501
+        Update Source Schema (Partial)
         """
         pass
 

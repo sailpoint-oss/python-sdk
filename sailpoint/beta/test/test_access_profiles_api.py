@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.access_profiles_api import AccessProfilesApi  # noqa: E501
+from sailpoint.beta.api.access_profiles_api import AccessProfilesApi
 
 
 class TestAccessProfilesApi(unittest.TestCase):
     """AccessProfilesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = AccessProfilesApi()  # noqa: E501
+        self.api = AccessProfilesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,49 +28,49 @@ class TestAccessProfilesApi(unittest.TestCase):
     def test_create_access_profile(self) -> None:
         """Test case for create_access_profile
 
-        Create an Access Profile  # noqa: E501
+        Create an Access Profile
         """
         pass
 
     def test_delete_access_profile(self) -> None:
         """Test case for delete_access_profile
 
-        Delete the specified Access Profile  # noqa: E501
+        Delete the specified Access Profile
         """
         pass
 
     def test_delete_access_profiles_in_bulk(self) -> None:
         """Test case for delete_access_profiles_in_bulk
 
-        Delete Access Profile(s)  # noqa: E501
+        Delete Access Profile(s)
         """
         pass
 
     def test_get_access_profile(self) -> None:
         """Test case for get_access_profile
 
-        Get an Access Profile  # noqa: E501
+        Get an Access Profile
         """
         pass
 
     def test_get_access_profile_entitlements(self) -> None:
         """Test case for get_access_profile_entitlements
 
-        List Access Profile's Entitlements  # noqa: E501
+        List Access Profile's Entitlements
         """
         pass
 
     def test_list_access_profiles(self) -> None:
         """Test case for list_access_profiles
 
-        List Access Profiles  # noqa: E501
+        List Access Profiles
         """
         pass
 
     def test_patch_access_profile(self) -> None:
         """Test case for patch_access_profile
 
-        Patch a specified Access Profile  # noqa: E501
+        Patch a specified Access Profile
         """
         pass
 

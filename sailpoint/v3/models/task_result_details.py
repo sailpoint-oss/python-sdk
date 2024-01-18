@@ -17,65 +17,71 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
 from sailpoint.v3.models.task_result_details_messages_inner import TaskResultDetailsMessagesInner
 from sailpoint.v3.models.task_result_details_returns_inner import TaskResultDetailsReturnsInner
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class TaskResultDetails(BaseModel):
     """
-    Details about job or task type, state and lifecycle.  # noqa: E501
-    """
+    Details about job or task type, state and lifecycle.
+    """ # noqa: E501
     type: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "Type of the job or task underlying in the report processing. It could be a quartz task, QPOC or MENTOS jobs or a refresh/sync task."
     )
     id: Optional[StrictStr] = Field(
-        None, description="Unique task definition identifier.")
-    report_type: Optional[Dict[str, Any]] = Field(
-        None,
-        alias="reportType",
+        default=None, description="Unique task definition identifier.")
+    report_type: Optional[Union[str, Any]] = Field(
+        default=None,
         description=
-        "Use this property to define what report should be processed in the RDE service."
-    )
+        "Use this property to define what report should be processed in the RDE service.",
+        alias="reportType")
     description: Optional[StrictStr] = Field(
-        None, description="Description of the report purpose and/or contents.")
+        default=None,
+        description="Description of the report purpose and/or contents.")
     parent_name: Optional[StrictStr] = Field(
-        None,
-        alias="parentName",
-        description="Name of the parent task/report if exists.")
+        default=None,
+        description="Name of the parent task/report if exists.",
+        alias="parentName")
     launcher: Optional[StrictStr] = Field(
-        None, description="Name of the report processing initiator.")
-    created: Optional[datetime] = Field(None,
+        default=None, description="Name of the report processing initiator.")
+    created: Optional[datetime] = Field(default=None,
                                         description="Report creation date")
-    launched: Optional[datetime] = Field(None, description="Report start date")
-    completed: Optional[datetime] = Field(None,
+    launched: Optional[datetime] = Field(default=None,
+                                         description="Report start date")
+    completed: Optional[datetime] = Field(default=None,
                                           description="Report completion date")
     completion_status: Optional[StrictStr] = Field(
-        None,
-        alias="completionStatus",
-        description="Report completion status.")
-    messages: Optional[conlist(TaskResultDetailsMessagesInner)] = Field(
-        None,
+        default=None,
+        description="Report completion status.",
+        alias="completionStatus")
+    messages: Optional[List[TaskResultDetailsMessagesInner]] = Field(
+        default=None,
         description=
         "List of the messages dedicated to the report.  From task definition perspective here usually should be warnings or errors."
     )
-    returns: Optional[conlist(TaskResultDetailsReturnsInner)] = Field(
-        None, description="Task definition results, if necessary.")
-    attributes: Optional[Dict[str, Dict[str, Any]]] = Field(
-        None,
+    returns: Optional[List[TaskResultDetailsReturnsInner]] = Field(
+        default=None, description="Task definition results, if necessary.")
+    attributes: Optional[Dict[str, Union[str, Any]]] = Field(
+        default=None,
         description="Extra attributes map(dictionary) needed for the report.")
-    progress: Optional[StrictStr] = Field(None,
+    progress: Optional[StrictStr] = Field(default=None,
                                           description="Current report state.")
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "type", "id", "reportType", "description", "parentName", "launcher",
         "created", "launched", "completed", "completionStatus", "messages",
         "returns", "attributes", "progress"
     ]
 
-    @validator('type')
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -87,7 +93,7 @@ class TaskResultDetails(BaseModel):
             )
         return value
 
-    @validator('report_type')
+    @field_validator('report_type')
     def report_type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -102,7 +108,7 @@ class TaskResultDetails(BaseModel):
             )
         return value
 
-    @validator('completion_status')
+    @field_validator('completion_status')
     def completion_status_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -115,27 +121,37 @@ class TaskResultDetails(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> TaskResultDetails:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of TaskResultDetails from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
@@ -151,51 +167,51 @@ class TaskResultDetails(BaseModel):
                     _items.append(_item.to_dict())
             _dict['returns'] = _items
         # set to None if parent_name (nullable) is None
-        # and __fields_set__ contains the field
-        if self.parent_name is None and "parent_name" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.parent_name is None and "parent_name" in self.model_fields_set:
             _dict['parentName'] = None
 
         # set to None if launched (nullable) is None
-        # and __fields_set__ contains the field
-        if self.launched is None and "launched" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.launched is None and "launched" in self.model_fields_set:
             _dict['launched'] = None
 
         # set to None if completed (nullable) is None
-        # and __fields_set__ contains the field
-        if self.completed is None and "completed" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.completed is None and "completed" in self.model_fields_set:
             _dict['completed'] = None
 
         # set to None if completion_status (nullable) is None
-        # and __fields_set__ contains the field
-        if self.completion_status is None and "completion_status" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.completion_status is None and "completion_status" in self.model_fields_set:
             _dict['completionStatus'] = None
 
         # set to None if progress (nullable) is None
-        # and __fields_set__ contains the field
-        if self.progress is None and "progress" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.progress is None and "progress" in self.model_fields_set:
             _dict['progress'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TaskResultDetails:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of TaskResultDetails from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return TaskResultDetails.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = TaskResultDetails.parse_obj({
+        _obj = cls.model_validate({
             "type":
             obj.get("type"),
             "id":
             obj.get("id"),
-            "report_type":
+            "reportType":
             obj.get("reportType"),
             "description":
             obj.get("description"),
-            "parent_name":
+            "parentName":
             obj.get("parentName"),
             "launcher":
             obj.get("launcher"),
@@ -205,7 +221,7 @@ class TaskResultDetails(BaseModel):
             obj.get("launched"),
             "completed":
             obj.get("completed"),
-            "completion_status":
+            "completionStatus":
             obj.get("completionStatus"),
             "messages": [
                 TaskResultDetailsMessagesInner.from_dict(_item)

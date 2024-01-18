@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.validate_filter_input_dto import ValidateFilterInputDto  # noqa: E501
+from sailpoint.beta.models.validate_filter_input_dto import ValidateFilterInputDto
 
 
 class TestValidateFilterInputDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestValidateFilterInputDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ValidateFilterInputDto`
         """
-        model = ValidateFilterInputDto()  # noqa: E501
+        model = ValidateFilterInputDto()
         if include_optional:
             return ValidateFilterInputDto(
                 input = {identityId=201327fda1c44704ac01181e963d463c},

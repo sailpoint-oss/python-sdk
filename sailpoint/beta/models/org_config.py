@@ -16,81 +16,93 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.report_config_dto import ReportConfigDTO
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class OrgConfig(BaseModel):
     """
-    DTO class for OrgConfig data accessible by customer external org admin (\"ORG_ADMIN\") users  # noqa: E501
-    """
-    org_name: Optional[StrictStr] = Field(None,
-                                          alias="orgName",
-                                          description="The name of the org.")
+    DTO class for OrgConfig data accessible by customer external org admin (\"ORG_ADMIN\") users
+    """ # noqa: E501
+    org_name: Optional[StrictStr] = Field(default=None,
+                                          description="The name of the org.",
+                                          alias="orgName")
     time_zone: Optional[StrictStr] = Field(
-        None,
-        alias="timeZone",
+        default=None,
         description=
-        "The selected time zone which is to be used for the org.  This directly affects when scheduled tasks are executed.  Valid options can be found at /beta/org-config/valid-time-zones"
-    )
+        "The selected time zone which is to be used for the org.  This directly affects when scheduled tasks are executed.  Valid options can be found at /beta/org-config/valid-time-zones",
+        alias="timeZone")
     lcs_change_honors_source_enable_feature: Optional[StrictBool] = Field(
-        None,
-        alias="lcsChangeHonorsSourceEnableFeature",
+        default=None,
         description=
-        "Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org."
-    )
-    arm_customer_id: Optional[StrictStr] = Field(None,
-                                                 alias="armCustomerId",
-                                                 description="ARM Customer ID")
+        "Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org.",
+        alias="lcsChangeHonorsSourceEnableFeature")
+    arm_customer_id: Optional[StrictStr] = Field(default=None,
+                                                 description="ARM Customer ID",
+                                                 alias="armCustomerId")
     arm_sap_system_id_mappings: Optional[StrictStr] = Field(
-        None,
-        alias="armSapSystemIdMappings",
-        description="A list of IDN::sourceId to ARM::systemId mappings.")
+        default=None,
+        description="A list of IDN::sourceId to ARM::systemId mappings.",
+        alias="armSapSystemIdMappings")
     arm_auth: Optional[StrictStr] = Field(
-        None, alias="armAuth", description="ARM authentication string")
-    arm_db: Optional[StrictStr] = Field(None,
-                                        alias="armDb",
-                                        description="ARM database name")
-    arm_sso_url: Optional[StrictStr] = Field(None,
-                                             alias="armSsoUrl",
-                                             description="ARM SSO URL")
+        default=None, description="ARM authentication string", alias="armAuth")
+    arm_db: Optional[StrictStr] = Field(default=None,
+                                        description="ARM database name",
+                                        alias="armDb")
+    arm_sso_url: Optional[StrictStr] = Field(default=None,
+                                             description="ARM SSO URL",
+                                             alias="armSsoUrl")
     iai_enable_certification_recommendations: Optional[StrictBool] = Field(
-        None,
-        alias="iaiEnableCertificationRecommendations",
+        default=None,
         description=
-        "Flag to determine whether IAI Certification Recommendations are enabled for the current org"
-    )
-    sod_report_configs: Optional[conlist(ReportConfigDTO)] = Field(
-        None, alias="sodReportConfigs")
-    __properties = [
+        "Flag to determine whether IAI Certification Recommendations are enabled for the current org",
+        alias="iaiEnableCertificationRecommendations")
+    sod_report_configs: Optional[List[ReportConfigDTO]] = Field(
+        default=None, alias="sodReportConfigs")
+    __properties: ClassVar[List[str]] = [
         "orgName", "timeZone", "lcsChangeHonorsSourceEnableFeature",
         "armCustomerId", "armSapSystemIdMappings", "armAuth", "armDb",
         "armSsoUrl", "iaiEnableCertificationRecommendations",
         "sodReportConfigs"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> OrgConfig:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of OrgConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in sod_report_configs (list)
         _items = []
         if self.sod_report_configs:
@@ -99,61 +111,61 @@ class OrgConfig(BaseModel):
                     _items.append(_item.to_dict())
             _dict['sodReportConfigs'] = _items
         # set to None if arm_customer_id (nullable) is None
-        # and __fields_set__ contains the field
-        if self.arm_customer_id is None and "arm_customer_id" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.arm_customer_id is None and "arm_customer_id" in self.model_fields_set:
             _dict['armCustomerId'] = None
 
         # set to None if arm_sap_system_id_mappings (nullable) is None
-        # and __fields_set__ contains the field
-        if self.arm_sap_system_id_mappings is None and "arm_sap_system_id_mappings" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.arm_sap_system_id_mappings is None and "arm_sap_system_id_mappings" in self.model_fields_set:
             _dict['armSapSystemIdMappings'] = None
 
         # set to None if arm_auth (nullable) is None
-        # and __fields_set__ contains the field
-        if self.arm_auth is None and "arm_auth" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.arm_auth is None and "arm_auth" in self.model_fields_set:
             _dict['armAuth'] = None
 
         # set to None if arm_db (nullable) is None
-        # and __fields_set__ contains the field
-        if self.arm_db is None and "arm_db" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.arm_db is None and "arm_db" in self.model_fields_set:
             _dict['armDb'] = None
 
         # set to None if arm_sso_url (nullable) is None
-        # and __fields_set__ contains the field
-        if self.arm_sso_url is None and "arm_sso_url" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.arm_sso_url is None and "arm_sso_url" in self.model_fields_set:
             _dict['armSsoUrl'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> OrgConfig:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of OrgConfig from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return OrgConfig.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = OrgConfig.parse_obj({
-            "org_name":
+        _obj = cls.model_validate({
+            "orgName":
             obj.get("orgName"),
-            "time_zone":
+            "timeZone":
             obj.get("timeZone"),
-            "lcs_change_honors_source_enable_feature":
+            "lcsChangeHonorsSourceEnableFeature":
             obj.get("lcsChangeHonorsSourceEnableFeature"),
-            "arm_customer_id":
+            "armCustomerId":
             obj.get("armCustomerId"),
-            "arm_sap_system_id_mappings":
+            "armSapSystemIdMappings":
             obj.get("armSapSystemIdMappings"),
-            "arm_auth":
+            "armAuth":
             obj.get("armAuth"),
-            "arm_db":
+            "armDb":
             obj.get("armDb"),
-            "arm_sso_url":
+            "armSsoUrl":
             obj.get("armSsoUrl"),
-            "iai_enable_certification_recommendations":
+            "iaiEnableCertificationRecommendations":
             obj.get("iaiEnableCertificationRecommendations"),
-            "sod_report_configs": [
+            "sodReportConfigs": [
                 ReportConfigDTO.from_dict(_item)
                 for _item in obj.get("sodReportConfigs")
             ] if obj.get("sodReportConfigs") is not None else None

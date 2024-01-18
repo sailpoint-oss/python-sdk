@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType  # noqa: E501
+from sailpoint.v3.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 
 
 class TestServiceDeskIntegrationTemplateType(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestServiceDeskIntegrationTemplateType(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ServiceDeskIntegrationTemplateType`
         """
-        model = ServiceDeskIntegrationTemplateType()  # noqa: E501
+        model = ServiceDeskIntegrationTemplateType()
         if include_optional:
             return ServiceDeskIntegrationTemplateType(
                 name = 'aName',

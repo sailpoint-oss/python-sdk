@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.connector_rule_validation_response import ConnectorRuleValidationResponse  # noqa: E501
+from sailpoint.beta.models.connector_rule_validation_response import ConnectorRuleValidationResponse
 
 
 class TestConnectorRuleValidationResponse(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestConnectorRuleValidationResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConnectorRuleValidationResponse`
         """
-        model = ConnectorRuleValidationResponse()  # noqa: E501
+        model = ConnectorRuleValidationResponse()
         if include_optional:
             return ConnectorRuleValidationResponse(
                 state = 'ERROR',

@@ -16,53 +16,70 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.basic_auth_config import BasicAuthConfig
 from sailpoint.beta.models.bearer_token_auth_config import BearerTokenAuthConfig
 from sailpoint.beta.models.http_authentication_type import HttpAuthenticationType
 from sailpoint.beta.models.http_dispatch_mode import HttpDispatchMode
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class HttpConfig(BaseModel):
     """
     HttpConfig
     """
+
+  # noqa: E501
     url: StrictStr = Field(
-        ..., description="URL of the external/custom integration.")
-    http_dispatch_mode: HttpDispatchMode = Field(..., alias="httpDispatchMode")
+        description="URL of the external/custom integration.")
+    http_dispatch_mode: HttpDispatchMode = Field(alias="httpDispatchMode")
     http_authentication_type: Optional[HttpAuthenticationType] = Field(
-        None, alias="httpAuthenticationType")
+        default=None, alias="httpAuthenticationType")
     basic_auth_config: Optional[BasicAuthConfig] = Field(
-        None, alias="basicAuthConfig")
+        default=None, alias="basicAuthConfig")
     bearer_token_auth_config: Optional[BearerTokenAuthConfig] = Field(
-        None, alias="bearerTokenAuthConfig")
-    __properties = [
+        default=None, alias="bearerTokenAuthConfig")
+    __properties: ClassVar[List[str]] = [
         "url", "httpDispatchMode", "httpAuthenticationType", "basicAuthConfig",
         "bearerTokenAuthConfig"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> HttpConfig:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of HttpConfig from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of basic_auth_config
         if self.basic_auth_config:
             _dict['basicAuthConfig'] = self.basic_auth_config.to_dict()
@@ -72,37 +89,37 @@ class HttpConfig(BaseModel):
                 'bearerTokenAuthConfig'] = self.bearer_token_auth_config.to_dict(
                 )
         # set to None if basic_auth_config (nullable) is None
-        # and __fields_set__ contains the field
-        if self.basic_auth_config is None and "basic_auth_config" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.basic_auth_config is None and "basic_auth_config" in self.model_fields_set:
             _dict['basicAuthConfig'] = None
 
         # set to None if bearer_token_auth_config (nullable) is None
-        # and __fields_set__ contains the field
-        if self.bearer_token_auth_config is None and "bearer_token_auth_config" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.bearer_token_auth_config is None and "bearer_token_auth_config" in self.model_fields_set:
             _dict['bearerTokenAuthConfig'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> HttpConfig:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of HttpConfig from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return HttpConfig.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = HttpConfig.parse_obj({
+        _obj = cls.model_validate({
             "url":
             obj.get("url"),
-            "http_dispatch_mode":
+            "httpDispatchMode":
             obj.get("httpDispatchMode"),
-            "http_authentication_type":
+            "httpAuthenticationType":
             obj.get("httpAuthenticationType"),
-            "basic_auth_config":
+            "basicAuthConfig":
             BasicAuthConfig.from_dict(obj.get("basicAuthConfig"))
             if obj.get("basicAuthConfig") is not None else None,
-            "bearer_token_auth_config":
+            "bearerTokenAuthConfig":
             BearerTokenAuthConfig.from_dict(obj.get("bearerTokenAuthConfig"))
             if obj.get("bearerTokenAuthConfig") is not None else None
         })

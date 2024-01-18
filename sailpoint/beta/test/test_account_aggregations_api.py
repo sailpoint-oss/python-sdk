@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.account_aggregations_api import AccountAggregationsApi  # noqa: E501
+from sailpoint.beta.api.account_aggregations_api import AccountAggregationsApi
 
 
 class TestAccountAggregationsApi(unittest.TestCase):
     """AccountAggregationsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = AccountAggregationsApi()  # noqa: E501
+        self.api = AccountAggregationsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,7 +28,7 @@ class TestAccountAggregationsApi(unittest.TestCase):
     def test_get_account_aggregation_status(self) -> None:
         """Test case for get_account_aggregation_status
 
-        In-progress Account Aggregation status  # noqa: E501
+        In-progress Account Aggregation status
         """
         pass
 

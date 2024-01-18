@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access_profile_ref import AccessProfileRef  # noqa: E501
+from sailpoint.v3.models.access_profile_ref import AccessProfileRef
 
 
 class TestAccessProfileRef(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessProfileRef(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessProfileRef`
         """
-        model = AccessProfileRef()  # noqa: E501
+        model = AccessProfileRef()
         if include_optional:
             return AccessProfileRef(
                 id = 'ff808081751e6e129f1518161919ecca',

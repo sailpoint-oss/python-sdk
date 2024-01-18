@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.provisioning_completed_recipient import ProvisioningCompletedRecipient  # noqa: E501
+from sailpoint.beta.models.provisioning_completed_recipient import ProvisioningCompletedRecipient
 
 
 class TestProvisioningCompletedRecipient(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestProvisioningCompletedRecipient(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ProvisioningCompletedRecipient`
         """
-        model = ProvisioningCompletedRecipient()  # noqa: E501
+        model = ProvisioningCompletedRecipient()
         if include_optional:
             return ProvisioningCompletedRecipient(
                 type = 'IDENTITY',

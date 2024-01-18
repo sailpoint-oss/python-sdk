@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v2.models.create_workgroup_request_owner import CreateWorkgroupRequestOwner  # noqa: E501
+from sailpoint.v2.models.create_workgroup_request_owner import CreateWorkgroupRequestOwner
 
 
 class TestCreateWorkgroupRequestOwner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCreateWorkgroupRequestOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreateWorkgroupRequestOwner`
         """
-        model = CreateWorkgroupRequestOwner()  # noqa: E501
+        model = CreateWorkgroupRequestOwner()
         if include_optional:
             return CreateWorkgroupRequestOwner(
                 id = '2c9180867624cbd7017642d8c8c81f67'

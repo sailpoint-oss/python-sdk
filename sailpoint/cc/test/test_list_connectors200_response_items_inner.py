@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.list_connectors200_response_items_inner import ListConnectors200ResponseItemsInner  # noqa: E501
+from sailpoint.cc.models.list_connectors200_response_items_inner import ListConnectors200ResponseItemsInner
 
 
 class TestListConnectors200ResponseItemsInner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestListConnectors200ResponseItemsInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListConnectors200ResponseItemsInner`
         """
-        model = ListConnectors200ResponseItemsInner()  # noqa: E501
+        model = ListConnectors200ResponseItemsInner()
         if include_optional:
             return ListConnectors200ResponseItemsInner(
                 application_xml = '',

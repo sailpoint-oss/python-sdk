@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.refresh_identities_request import RefreshIdentitiesRequest  # noqa: E501
+from sailpoint.cc.models.refresh_identities_request import RefreshIdentitiesRequest
 
 
 class TestRefreshIdentitiesRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRefreshIdentitiesRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RefreshIdentitiesRequest`
         """
-        model = RefreshIdentitiesRequest()  # noqa: E501
+        model = RefreshIdentitiesRequest()
         if include_optional:
             return RefreshIdentitiesRequest(
                 filter = '',

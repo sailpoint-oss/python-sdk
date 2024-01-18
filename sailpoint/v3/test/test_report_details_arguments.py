@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.report_details_arguments import ReportDetailsArguments  # noqa: E501
+from sailpoint.v3.models.report_details_arguments import ReportDetailsArguments
 
 
 class TestReportDetailsArguments(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReportDetailsArguments(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ReportDetailsArguments`
         """
-        model = ReportDetailsArguments()  # noqa: E501
+        model = ReportDetailsArguments()
         if include_optional:
             return ReportDetailsArguments(
                 application = '2c9180897eSourceIde781782f705b9',
@@ -46,6 +46,7 @@ class TestReportDetailsArguments(unittest.TestCase):
                 indices = [entitlements],
                 filters = {source.id={type=TERMS, terms=[2c9180897termsId780bd2920576]}, source.name.exact={type=TERMS, terms=[IdentityNow], exclude=true}},
                 query = sailpoint.v3.models.query.Query(
+                    query = 'name:a*', 
                     fields = [name], 
                     time_zone = 'America/Chicago', 
                     inner_hit = sailpoint.v3.models.inner_hit.InnerHit(
@@ -62,6 +63,7 @@ class TestReportDetailsArguments(unittest.TestCase):
                 correlated_only = True,
                 authoritative_source = '1234sourceId5678902',
                 query = sailpoint.v3.models.query.Query(
+                    query = 'name:a*', 
                     fields = [name], 
                     time_zone = 'America/Chicago', 
                     inner_hit = sailpoint.v3.models.inner_hit.InnerHit(

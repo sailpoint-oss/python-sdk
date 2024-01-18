@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.create_scheduled_search_request import CreateScheduledSearchRequest  # noqa: E501
+from sailpoint.v3.models.create_scheduled_search_request import CreateScheduledSearchRequest
 
 
 class TestCreateScheduledSearchRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCreateScheduledSearchRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreateScheduledSearchRequest`
         """
-        model = CreateScheduledSearchRequest()  # noqa: E501
+        model = CreateScheduledSearchRequest()
         if include_optional:
             return CreateScheduledSearchRequest(
                 name = 'Daily disabled accounts',
@@ -46,7 +46,7 @@ class TestCreateScheduledSearchRequest(unittest.TestCase):
                     days = null, 
                     hours = null, 
                     expiration = '2018-06-25T20:22:28.104Z', 
-                    time_zone_id = 'GMT-06:00', ),
+                    time_zone_id = 'America/Chicago', ),
                 recipients = [
                     sailpoint.v3.models.search_schedule_recipients_inner.SearchSchedule_recipients_inner(
                         type = 'IDENTITY', 
@@ -64,7 +64,7 @@ class TestCreateScheduledSearchRequest(unittest.TestCase):
                     days = null, 
                     hours = null, 
                     expiration = '2018-06-25T20:22:28.104Z', 
-                    time_zone_id = 'GMT-06:00', ),
+                    time_zone_id = 'America/Chicago', ),
                 recipients = [
                     sailpoint.v3.models.search_schedule_recipients_inner.SearchSchedule_recipients_inner(
                         type = 'IDENTITY', 

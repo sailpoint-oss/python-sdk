@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.create_workflow_request import CreateWorkflowRequest  # noqa: E501
+from sailpoint.beta.models.create_workflow_request import CreateWorkflowRequest
 
 
 class TestCreateWorkflowRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCreateWorkflowRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreateWorkflowRequest`
         """
-        model = CreateWorkflowRequest()  # noqa: E501
+        model = CreateWorkflowRequest()
         if include_optional:
             return CreateWorkflowRequest(
                 name = 'Send Email',

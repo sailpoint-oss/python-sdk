@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.template_bulk_delete_dto import TemplateBulkDeleteDto  # noqa: E501
+from sailpoint.beta.models.template_bulk_delete_dto import TemplateBulkDeleteDto
 
 
 class TestTemplateBulkDeleteDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTemplateBulkDeleteDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TemplateBulkDeleteDto`
         """
-        model = TemplateBulkDeleteDto()  # noqa: E501
+        model = TemplateBulkDeleteDto()
         if include_optional:
             return TemplateBulkDeleteDto(
                 key = 'cloud_manual_work_item_summary',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_profile_usage import AccessProfileUsage  # noqa: E501
+from sailpoint.beta.models.access_profile_usage import AccessProfileUsage
 
 
 class TestAccessProfileUsage(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessProfileUsage(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessProfileUsage`
         """
-        model = AccessProfileUsage()  # noqa: E501
+        model = AccessProfileUsage()
         if include_optional:
             return AccessProfileUsage(
                 access_profile_id = '2c91808876438bbb017668c21919ecca',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.reviewable_entitlement import ReviewableEntitlement  # noqa: E501
+from sailpoint.v3.models.reviewable_entitlement import ReviewableEntitlement
 
 
 class TestReviewableEntitlement(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReviewableEntitlement(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ReviewableEntitlement`
         """
-        model = ReviewableEntitlement()  # noqa: E501
+        model = ReviewableEntitlement()
         if include_optional:
             return ReviewableEntitlement(
                 id = '2c918085718230600171993742c63558',
@@ -76,7 +76,11 @@ class TestReviewableEntitlement(unittest.TestCase):
                     id = '2c9180857182305e0171993737eb29e6', 
                     name = 'Alison Ferguso', 
                     created = '2020-04-20T20:11:05.067Z', 
-                    modified = '2020-05-20T18:57:16.987Z', )
+                    modified = '2020-05-20T18:57:16.987Z', 
+                    activity_insights = sailpoint.v3.models.activity_insights.ActivityInsights(
+                        account_id = 'c4ddd5421d8549f0abd309162cafd3b1', 
+                        usage_days = 45, 
+                        usage_days_state = 'COMPLETE', ), )
             )
         else:
             return ReviewableEntitlement(

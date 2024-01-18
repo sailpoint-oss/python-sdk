@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.auth_user import AuthUser  # noqa: E501
+from sailpoint.v3.models.auth_user import AuthUser
 
 
 class TestAuthUser(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAuthUser(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AuthUser`
         """
-        model = AuthUser()  # noqa: E501
+        model = AuthUser()
         if include_optional:
             return AuthUser(
                 tenant = 'test-tenant',

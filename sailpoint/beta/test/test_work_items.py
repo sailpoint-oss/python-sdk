@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.work_items import WorkItems  # noqa: E501
+from sailpoint.beta.models.work_items import WorkItems
 
 
 class TestWorkItems(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkItems(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkItems`
         """
-        model = WorkItems()  # noqa: E501
+        model = WorkItems()
         if include_optional:
             return WorkItems(
                 id = '2c9180835d2e5168015d32f890ca1581',

@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.roles_api import RolesApi  # noqa: E501
+from sailpoint.beta.api.roles_api import RolesApi
 
 
 class TestRolesApi(unittest.TestCase):
     """RolesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = RolesApi()  # noqa: E501
+        self.api = RolesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,49 +28,49 @@ class TestRolesApi(unittest.TestCase):
     def test_bulk_delete_roles(self) -> None:
         """Test case for bulk_delete_roles
 
-        Delete Role(s)  # noqa: E501
+        Delete Role(s)
         """
         pass
 
     def test_create_role(self) -> None:
         """Test case for create_role
 
-        Create a Role  # noqa: E501
+        Create a Role
         """
         pass
 
     def test_delete_role(self) -> None:
         """Test case for delete_role
 
-        Delete a Role  # noqa: E501
+        Delete a Role
         """
         pass
 
     def test_get_role(self) -> None:
         """Test case for get_role
 
-        Get a Role  # noqa: E501
+        Get a Role
         """
         pass
 
     def test_get_role_assigned_identities(self) -> None:
         """Test case for get_role_assigned_identities
 
-        Identities assigned a Role  # noqa: E501
+        Identities assigned a Role
         """
         pass
 
     def test_list_roles(self) -> None:
         """Test case for list_roles
 
-        List Roles  # noqa: E501
+        List Roles
         """
         pass
 
     def test_patch_role(self) -> None:
         """Test case for patch_role
 
-        Patch a specified Role  # noqa: E501
+        Patch a specified Role
         """
         pass
 

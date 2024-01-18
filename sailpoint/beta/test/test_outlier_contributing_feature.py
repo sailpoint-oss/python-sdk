@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.outlier_contributing_feature import OutlierContributingFeature  # noqa: E501
+from sailpoint.beta.models.outlier_contributing_feature import OutlierContributingFeature
 
 
 class TestOutlierContributingFeature(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestOutlierContributingFeature(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `OutlierContributingFeature`
         """
-        model = OutlierContributingFeature()  # noqa: E501
+        model = OutlierContributingFeature()
         if include_optional:
             return OutlierContributingFeature(
                 id = '66e38828-5017-47af-92ff-9844871352c5',

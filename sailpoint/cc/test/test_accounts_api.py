@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.cc.api.accounts_api import AccountsApi  # noqa: E501
+from sailpoint.cc.api.accounts_api import AccountsApi
 
 
 class TestAccountsApi(unittest.TestCase):
     """AccountsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = AccountsApi()  # noqa: E501
+        self.api = AccountsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,14 +28,14 @@ class TestAccountsApi(unittest.TestCase):
     def test_list_accounts(self) -> None:
         """Test case for list_accounts
 
-        List Accounts  # noqa: E501
+        List Accounts
         """
         pass
 
     def test_remove_account(self) -> None:
         """Test case for remove_account
 
-        Remove Account  # noqa: E501
+        Remove Account
         """
         pass
 

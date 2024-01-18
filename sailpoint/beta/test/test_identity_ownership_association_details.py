@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_ownership_association_details import IdentityOwnershipAssociationDetails  # noqa: E501
+from sailpoint.beta.models.identity_ownership_association_details import IdentityOwnershipAssociationDetails
 
 
 class TestIdentityOwnershipAssociationDetails(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestIdentityOwnershipAssociationDetails(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityOwnershipAssociationDetails`
         """
-        model = IdentityOwnershipAssociationDetails()  # noqa: E501
+        model = IdentityOwnershipAssociationDetails()
         if include_optional:
             return IdentityOwnershipAssociationDetails(
                 association_details = [

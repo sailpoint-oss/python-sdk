@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.identities_api import IdentitiesApi  # noqa: E501
+from sailpoint.beta.api.identities_api import IdentitiesApi
 
 
 class TestIdentitiesApi(unittest.TestCase):
     """IdentitiesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = IdentitiesApi()  # noqa: E501
+        self.api = IdentitiesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,42 +28,42 @@ class TestIdentitiesApi(unittest.TestCase):
     def test_delete_identity(self) -> None:
         """Test case for delete_identity
 
-        Deletes an identity.  # noqa: E501
+        Deletes an identity.
         """
         pass
 
     def test_get_identity(self) -> None:
         """Test case for get_identity
 
-        Identity Details  # noqa: E501
+        Identity Details
         """
         pass
 
     def test_get_identity_ownership_details(self) -> None:
         """Test case for get_identity_ownership_details
 
-        Get ownership details  # noqa: E501
+        Get ownership details
         """
         pass
 
     def test_list_identities(self) -> None:
         """Test case for list_identities
 
-        List Identities  # noqa: E501
+        List Identities
         """
         pass
 
     def test_start_identity_processing(self) -> None:
         """Test case for start_identity_processing
 
-        Process a list of identityIds  # noqa: E501
+        Process a list of identityIds
         """
         pass
 
     def test_synchronize_attributes_for_identity(self) -> None:
         """Test case for synchronize_attributes_for_identity
 
-        Attribute synchronization for single identity.  # noqa: E501
+        Attribute synchronization for single identity.
         """
         pass
 

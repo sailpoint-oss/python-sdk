@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.field_details_dto import FieldDetailsDto  # noqa: E501
+from sailpoint.v3.models.field_details_dto import FieldDetailsDto
 
 
 class TestFieldDetailsDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFieldDetailsDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FieldDetailsDto`
         """
-        model = FieldDetailsDto()  # noqa: E501
+        model = FieldDetailsDto()
         if include_optional:
             return FieldDetailsDto(
                 name = 'userName',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.manual_work_item_details_current_owner import ManualWorkItemDetailsCurrentOwner  # noqa: E501
+from sailpoint.v3.models.manual_work_item_details_current_owner import ManualWorkItemDetailsCurrentOwner
 
 
 class TestManualWorkItemDetailsCurrentOwner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestManualWorkItemDetailsCurrentOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ManualWorkItemDetailsCurrentOwner`
         """
-        model = ManualWorkItemDetailsCurrentOwner()  # noqa: E501
+        model = ManualWorkItemDetailsCurrentOwner()
         if include_optional:
             return ManualWorkItemDetailsCurrentOwner(
                 type = 'IDENTITY',

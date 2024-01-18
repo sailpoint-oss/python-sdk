@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.entitlement_summary import EntitlementSummary  # noqa: E501
+from sailpoint.v3.models.entitlement_summary import EntitlementSummary
 
 
 class TestEntitlementSummary(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestEntitlementSummary(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `EntitlementSummary`
         """
-        model = EntitlementSummary()  # noqa: E501
+        model = EntitlementSummary()
         if include_optional:
             return EntitlementSummary(
                 id = '2c91808568c529c60168cca6f90c1313',

@@ -16,58 +16,76 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.access_summary import AccessSummary
 from sailpoint.v3.models.certification_decision import CertificationDecision
 from sailpoint.v3.models.certification_identity_summary import CertificationIdentitySummary
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccessReviewItem(BaseModel):
     """
     AccessReviewItem
     """
-    access_summary: Optional[AccessSummary] = Field(None,
+
+  # noqa: E501
+    access_summary: Optional[AccessSummary] = Field(default=None,
                                                     alias="accessSummary")
     identity_summary: Optional[CertificationIdentitySummary] = Field(
-        None, alias="identitySummary")
-    id: Optional[StrictStr] = Field(None, description="The review item's id")
+        default=None, alias="identitySummary")
+    id: Optional[StrictStr] = Field(default=None,
+                                    description="The review item's id")
     completed: Optional[StrictBool] = Field(
-        None, description="Whether the review item is complete")
+        default=None, description="Whether the review item is complete")
     new_access: Optional[StrictBool] = Field(
-        None,
-        alias="newAccess",
+        default=None,
         description=
-        "Indicates whether the review item is for new access to a source")
+        "Indicates whether the review item is for new access to a source",
+        alias="newAccess")
     decision: Optional[CertificationDecision] = None
     comments: Optional[StrictStr] = Field(
-        None, description="Comments for this review item")
-    __properties = [
+        default=None, description="Comments for this review item")
+    __properties: ClassVar[List[str]] = [
         "accessSummary", "identitySummary", "id", "completed", "newAccess",
         "decision", "comments"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccessReviewItem:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccessReviewItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of access_summary
         if self.access_summary:
             _dict['accessSummary'] = self.access_summary.to_dict()
@@ -75,33 +93,33 @@ class AccessReviewItem(BaseModel):
         if self.identity_summary:
             _dict['identitySummary'] = self.identity_summary.to_dict()
         # set to None if comments (nullable) is None
-        # and __fields_set__ contains the field
-        if self.comments is None and "comments" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.comments is None and "comments" in self.model_fields_set:
             _dict['comments'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccessReviewItem:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccessReviewItem from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccessReviewItem.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccessReviewItem.parse_obj({
-            "access_summary":
+        _obj = cls.model_validate({
+            "accessSummary":
             AccessSummary.from_dict(obj.get("accessSummary"))
             if obj.get("accessSummary") is not None else None,
-            "identity_summary":
+            "identitySummary":
             CertificationIdentitySummary.from_dict(obj.get("identitySummary"))
             if obj.get("identitySummary") is not None else None,
             "id":
             obj.get("id"),
             "completed":
             obj.get("completed"),
-            "new_access":
+            "newAccess":
             obj.get("newAccess"),
             "decision":
             obj.get("decision"),

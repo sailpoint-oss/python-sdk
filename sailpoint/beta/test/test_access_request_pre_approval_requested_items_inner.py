@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_request_pre_approval_requested_items_inner import AccessRequestPreApprovalRequestedItemsInner  # noqa: E501
+from sailpoint.beta.models.access_request_pre_approval_requested_items_inner import AccessRequestPreApprovalRequestedItemsInner
 
 
 class TestAccessRequestPreApprovalRequestedItemsInner(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestAccessRequestPreApprovalRequestedItemsInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessRequestPreApprovalRequestedItemsInner`
         """
-        model = AccessRequestPreApprovalRequestedItemsInner()  # noqa: E501
+        model = AccessRequestPreApprovalRequestedItemsInner()
         if include_optional:
             return AccessRequestPreApprovalRequestedItemsInner(
                 id = '2c91808b6ef1d43e016efba0ce470904',

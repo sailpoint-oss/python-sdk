@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.search_aggregation_specification import SearchAggregationSpecification  # noqa: E501
+from sailpoint.v3.models.search_aggregation_specification import SearchAggregationSpecification
 
 
 class TestSearchAggregationSpecification(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestSearchAggregationSpecification(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SearchAggregationSpecification`
         """
-        model = SearchAggregationSpecification()  # noqa: E501
+        model = SearchAggregationSpecification()
         if include_optional:
             return SearchAggregationSpecification(
                 nested = sailpoint.v3.models.nested_aggregation.NestedAggregation(

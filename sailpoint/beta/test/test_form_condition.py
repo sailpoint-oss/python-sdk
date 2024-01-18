@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_condition import FormCondition  # noqa: E501
+from sailpoint.beta.models.form_condition import FormCondition
 
 
 class TestFormCondition(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFormCondition(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormCondition`
         """
-        model = FormCondition()  # noqa: E501
+        model = FormCondition()
         if include_optional:
             return FormCondition(
                 rule_operator = 'AND',

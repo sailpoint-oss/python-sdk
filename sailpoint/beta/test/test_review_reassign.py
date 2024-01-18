@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.review_reassign import ReviewReassign  # noqa: E501
+from sailpoint.beta.models.review_reassign import ReviewReassign
 
 
 class TestReviewReassign(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReviewReassign(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ReviewReassign`
         """
-        model = ReviewReassign()  # noqa: E501
+        model = ReviewReassign()
         if include_optional:
             return ReviewReassign(
                 reassign = [

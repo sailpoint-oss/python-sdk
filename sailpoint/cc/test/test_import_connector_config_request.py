@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.import_connector_config_request import ImportConnectorConfigRequest  # noqa: E501
+from sailpoint.cc.models.import_connector_config_request import ImportConnectorConfigRequest
 
 
 class TestImportConnectorConfigRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestImportConnectorConfigRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ImportConnectorConfigRequest`
         """
-        model = ImportConnectorConfigRequest()  # noqa: E501
+        model = ImportConnectorConfigRequest()
         if include_optional:
             return ImportConnectorConfigRequest(
                 file = bytes(b'blah')

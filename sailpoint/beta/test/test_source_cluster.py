@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_cluster import SourceCluster  # noqa: E501
+from sailpoint.beta.models.source_cluster import SourceCluster
 
 
 class TestSourceCluster(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceCluster(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceCluster`
         """
-        model = SourceCluster()  # noqa: E501
+        model = SourceCluster()
         if include_optional:
             return SourceCluster(
                 type = 'CLUSTER',

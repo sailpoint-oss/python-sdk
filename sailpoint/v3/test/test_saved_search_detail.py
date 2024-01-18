@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.saved_search_detail import SavedSearchDetail  # noqa: E501
+from sailpoint.v3.models.saved_search_detail import SavedSearchDetail
 
 
 class TestSavedSearchDetail(unittest.TestCase):
@@ -33,10 +33,9 @@ class TestSavedSearchDetail(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SavedSearchDetail`
         """
-        model = SavedSearchDetail()  # noqa: E501
+        model = SavedSearchDetail()
         if include_optional:
             return SavedSearchDetail(
-                public = False,
                 created = '2018-06-25T20:22:28.104Z',
                 modified = '2018-06-25T20:22:28.104Z',
                 indices = [identities],

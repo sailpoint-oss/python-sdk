@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.non_employee_identity_dto_type import NonEmployeeIdentityDtoType  # noqa: E501
+from sailpoint.v3.models.non_employee_identity_dto_type import NonEmployeeIdentityDtoType
 
 
 class TestNonEmployeeIdentityDtoType(unittest.TestCase):

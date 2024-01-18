@@ -16,52 +16,56 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import Field
 from sailpoint.beta.models.form_instance_created_by import FormInstanceCreatedBy
 from sailpoint.beta.models.form_instance_recipient import FormInstanceRecipient
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class CreateFormInstanceRequest(BaseModel):
     """
     CreateFormInstanceRequest
     """
-    created_by: FormInstanceCreatedBy = Field(..., alias="createdBy")
-    expire: StrictStr = Field(..., description="Expire is required")
+
+  # noqa: E501
+    created_by: FormInstanceCreatedBy = Field(alias="createdBy")
+    expire: StrictStr = Field(description="Expire is required")
     form_definition_id: StrictStr = Field(
-        ...,
-        alias="formDefinitionId",
         description=
-        "FormDefinitionID is the id of the form definition that created this form"
-    )
-    form_input: Optional[Dict[str, Dict[str, Any]]] = Field(
-        None,
-        alias="formInput",
-        description="FormInput is an object of form input labels to value")
-    recipients: conlist(FormInstanceRecipient) = Field(
-        ..., description="Recipients is required")
+        "FormDefinitionID is the id of the form definition that created this form",
+        alias="formDefinitionId")
+    form_input: Optional[Dict[str, Union[str, Any]]] = Field(
+        default=None,
+        description="FormInput is an object of form input labels to value",
+        alias="formInput")
+    recipients: List[FormInstanceRecipient] = Field(
+        description="Recipients is required")
     stand_alone_form: Optional[StrictBool] = Field(
-        False,
-        alias="standAloneForm",
+        default=False,
         description=
-        "StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form"
-    )
+        "StandAloneForm is a boolean flag to indicate if this form should be available for users to complete via the standalone form UI or should this only be available to be completed by as an embedded form",
+        alias="standAloneForm")
     state: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "State is required, if not present initial state is FormInstanceStateAssigned ASSIGNED FormInstanceStateAssigned IN_PROGRESS FormInstanceStateInProgress SUBMITTED FormInstanceStateSubmitted COMPLETED FormInstanceStateCompleted CANCELLED FormInstanceStateCancelled"
     )
     ttl: Optional[StrictInt] = Field(
-        None,
+        default=None,
         description=
         "TTL an epoch timestamp in seconds, it most be in seconds or dynamodb will ignore it SEE: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/time-to-live-ttl-before-you-start.html"
     )
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "createdBy", "expire", "formDefinitionId", "formInput", "recipients",
         "standAloneForm", "state", "ttl"
     ]
 
-    @validator('state')
+    @field_validator('state')
     def state_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -74,27 +78,37 @@ class CreateFormInstanceRequest(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CreateFormInstanceRequest:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of CreateFormInstanceRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of created_by
         if self.created_by:
             _dict['createdBy'] = self.created_by.to_dict()
@@ -108,29 +122,29 @@ class CreateFormInstanceRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CreateFormInstanceRequest:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of CreateFormInstanceRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CreateFormInstanceRequest.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = CreateFormInstanceRequest.parse_obj({
-            "created_by":
+        _obj = cls.model_validate({
+            "createdBy":
             FormInstanceCreatedBy.from_dict(obj.get("createdBy"))
             if obj.get("createdBy") is not None else None,
             "expire":
             obj.get("expire"),
-            "form_definition_id":
+            "formDefinitionId":
             obj.get("formDefinitionId"),
-            "form_input":
+            "formInput":
             obj.get("formInput"),
             "recipients": [
                 FormInstanceRecipient.from_dict(_item)
                 for _item in obj.get("recipients")
             ] if obj.get("recipients") is not None else None,
-            "stand_alone_form":
+            "standAloneForm":
             obj.get("standAloneForm")
             if obj.get("standAloneForm") is not None else False,
             "state":

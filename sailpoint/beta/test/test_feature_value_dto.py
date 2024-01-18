@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.feature_value_dto import FeatureValueDto  # noqa: E501
+from sailpoint.beta.models.feature_value_dto import FeatureValueDto
 
 
 class TestFeatureValueDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFeatureValueDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FeatureValueDto`
         """
-        model = FeatureValueDto()  # noqa: E501
+        model = FeatureValueDto()
         if include_optional:
             return FeatureValueDto(
                 feature = 'department',

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **export_sp_config**
-> SpConfigJob export_sp_config(export_payload)
+> SpConfigExportJob export_sp_config(export_payload)
 
 Initiates configuration objects export job
 
@@ -29,7 +29,7 @@ import time
 import os
 import sailpoint.beta
 from sailpoint.beta.models.export_payload import ExportPayload
-from sailpoint.beta.models.sp_config_job import SpConfigJob
+from sailpoint.beta.models.sp_config_export_job import SpConfigExportJob
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SpConfigJob**](SpConfigJob.md)
+[**SpConfigExportJob**](SpConfigExportJob.md)
 
 ### Authorization
 
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sp_config_export_status**
-> SpConfigJob get_sp_config_export_status(id)
+> SpConfigExportJobStatus get_sp_config_export_status(id)
 
 Get export job status
 
@@ -195,7 +195,7 @@ This gets the status of the export job identified by the `id` parameter. The req
 import time
 import os
 import sailpoint.beta
-from sailpoint.beta.models.sp_config_job import SpConfigJob
+from sailpoint.beta.models.sp_config_export_job_status import SpConfigExportJobStatus
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SpConfigJob**](SpConfigJob.md)
+[**SpConfigExportJobStatus**](SpConfigExportJobStatus.md)
 
 ### Authorization
 
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sp_config_import_status**
-> SpConfigJob get_sp_config_import_status(id)
+> SpConfigImportJobStatus get_sp_config_import_status(id)
 
 Get import job status
 
@@ -361,7 +361,7 @@ This gets the status of the import job identified by the `id` parameter. For mor
 import time
 import os
 import sailpoint.beta
-from sailpoint.beta.models.sp_config_job import SpConfigJob
+from sailpoint.beta.models.sp_config_import_job_status import SpConfigImportJobStatus
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
 
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SpConfigJob**](SpConfigJob.md)
+[**SpConfigImportJobStatus**](SpConfigImportJobStatus.md)
 
 ### Authorization
 

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.outlier_feature_summary import OutlierFeatureSummary  # noqa: E501
+from sailpoint.beta.models.outlier_feature_summary import OutlierFeatureSummary
 
 
 class TestOutlierFeatureSummary(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestOutlierFeatureSummary(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `OutlierFeatureSummary`
         """
-        model = OutlierFeatureSummary()  # noqa: E501
+        model = OutlierFeatureSummary()
         if include_optional:
             return OutlierFeatureSummary(
                 contributing_feature_name = 'Rare Access',

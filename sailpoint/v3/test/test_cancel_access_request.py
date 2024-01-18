@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.cancel_access_request import CancelAccessRequest  # noqa: E501
+from sailpoint.v3.models.cancel_access_request import CancelAccessRequest
 
 
 class TestCancelAccessRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCancelAccessRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CancelAccessRequest`
         """
-        model = CancelAccessRequest()  # noqa: E501
+        model = CancelAccessRequest()
         if include_optional:
             return CancelAccessRequest(
                 account_activity_id = '2c9180835d2e5168015d32f890ca1581',

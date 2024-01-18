@@ -17,96 +17,114 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.document_type import DocumentType
 from sailpoint.v3.models.reference import Reference
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class EntitlementDocument(BaseModel):
     """
-    Entitlement  # noqa: E501
+    Entitlement
     """
+
+  # noqa: E501
     id: StrictStr = Field(
-        ..., description="The unique ID of the referenced object.")
+        description="The unique ID of the referenced object.")
     name: StrictStr = Field(
-        ..., description="The human readable name of the referenced object.")
-    type: DocumentType = Field(..., alias="_type")
+        description="The human readable name of the referenced object.")
+    type: DocumentType = Field(alias="_type")
     description: Optional[StrictStr] = Field(
-        None, description="A description of the entitlement")
+        default=None, description="A description of the entitlement")
     attribute: Optional[StrictStr] = Field(
-        None, description="The name of the entitlement attribute")
+        default=None, description="The name of the entitlement attribute")
     value: Optional[StrictStr] = Field(
-        None, description="The value of the entitlement")
+        default=None, description="The value of the entitlement")
     modified: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
+        default=None, description="A date-time in ISO-8601 format")
     synced: Optional[datetime] = Field(
-        None, description="A date-time in ISO-8601 format")
+        default=None, description="A date-time in ISO-8601 format")
     display_name: Optional[StrictStr] = Field(
-        None,
-        alias="displayName",
-        description="The display name of the entitlement")
+        default=None,
+        description="The display name of the entitlement",
+        alias="displayName")
     source: Optional[Reference] = None
     privileged: Optional[StrictBool] = None
-    identity_count: Optional[StrictInt] = Field(None, alias="identityCount")
-    tags: Optional[conlist(StrictStr)] = None
-    __properties = [
+    identity_count: Optional[StrictInt] = Field(default=None,
+                                                alias="identityCount")
+    tags: Optional[List[StrictStr]] = None
+    __properties: ClassVar[List[str]] = [
         "id", "name", "_type", "description", "attribute", "value", "modified",
         "synced", "displayName", "source", "privileged", "identityCount",
         "tags"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> EntitlementDocument:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of EntitlementDocument from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
         # set to None if modified (nullable) is None
-        # and __fields_set__ contains the field
-        if self.modified is None and "modified" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.modified is None and "modified" in self.model_fields_set:
             _dict['modified'] = None
 
         # set to None if synced (nullable) is None
-        # and __fields_set__ contains the field
-        if self.synced is None and "synced" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.synced is None and "synced" in self.model_fields_set:
             _dict['synced'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> EntitlementDocument:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of EntitlementDocument from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return EntitlementDocument.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = EntitlementDocument.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
             obj.get("name"),
-            "type":
+            "_type":
             obj.get("_type"),
             "description":
             obj.get("description"),
@@ -118,14 +136,14 @@ class EntitlementDocument(BaseModel):
             obj.get("modified"),
             "synced":
             obj.get("synced"),
-            "display_name":
+            "displayName":
             obj.get("displayName"),
             "source":
             Reference.from_dict(obj.get("source"))
             if obj.get("source") is not None else None,
             "privileged":
             obj.get("privileged"),
-            "identity_count":
+            "identityCount":
             obj.get("identityCount"),
             "tags":
             obj.get("tags")

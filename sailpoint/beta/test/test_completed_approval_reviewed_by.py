@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.completed_approval_reviewed_by import CompletedApprovalReviewedBy  # noqa: E501
+from sailpoint.beta.models.completed_approval_reviewed_by import CompletedApprovalReviewedBy
 
 
 class TestCompletedApprovalReviewedBy(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCompletedApprovalReviewedBy(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CompletedApprovalReviewedBy`
         """
-        model = CompletedApprovalReviewedBy()  # noqa: E501
+        model = CompletedApprovalReviewedBy()
         if include_optional:
             return CompletedApprovalReviewedBy(
                 type = 'IDENTITY',

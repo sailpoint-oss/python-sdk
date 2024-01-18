@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.lookup_step import LookupStep  # noqa: E501
+from sailpoint.beta.models.lookup_step import LookupStep
 
 
 class TestLookupStep(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestLookupStep(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `LookupStep`
         """
-        model = LookupStep()  # noqa: E501
+        model = LookupStep()
         if include_optional:
             return LookupStep(
                 reassigned_to_id = '869320b6b6f34a169b6178b1a865e66f',

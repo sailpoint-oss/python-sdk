@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.certifications_api import CertificationsApi  # noqa: E501
+from sailpoint.beta.api.certifications_api import CertificationsApi
 
 
 class TestCertificationsApi(unittest.TestCase):
     """CertificationsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = CertificationsApi()  # noqa: E501
+        self.api = CertificationsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,35 +28,35 @@ class TestCertificationsApi(unittest.TestCase):
     def test_get_identity_certification_item_permissions(self) -> None:
         """Test case for get_identity_certification_item_permissions
 
-        Permissions for Entitlement Certification Item  # noqa: E501
+        Permissions for Entitlement Certification Item
         """
         pass
 
     def test_get_identity_certification_pending_tasks(self) -> None:
         """Test case for get_identity_certification_pending_tasks
 
-        Pending Certification Tasks  # noqa: E501
+        Pending Certification Tasks
         """
         pass
 
     def test_get_identity_certification_task_status(self) -> None:
         """Test case for get_identity_certification_task_status
 
-        Certification Task Status  # noqa: E501
+        Certification Task Status
         """
         pass
 
     def test_list_certification_reviewers(self) -> None:
         """Test case for list_certification_reviewers
 
-        List of Reviewers for certification  # noqa: E501
+        List of Reviewers for certification
         """
         pass
 
     def test_submit_reassign_certs_async(self) -> None:
         """Test case for submit_reassign_certs_async
 
-        Reassign Certifications Asynchronously  # noqa: E501
+        Reassign Certifications Asynchronously
         """
         pass
 

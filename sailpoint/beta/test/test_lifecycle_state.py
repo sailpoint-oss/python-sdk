@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.lifecycle_state import LifecycleState  # noqa: E501
+from sailpoint.beta.models.lifecycle_state import LifecycleState
 
 
 class TestLifecycleState(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestLifecycleState(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `LifecycleState`
         """
-        model = LifecycleState()  # noqa: E501
+        model = LifecycleState()
         if include_optional:
             return LifecycleState(
                 id = '2c9180835d2e5168015d32f890ca1581',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.attribute_definition import AttributeDefinition  # noqa: E501
+from sailpoint.v3.models.attribute_definition import AttributeDefinition
 
 
 class TestAttributeDefinition(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAttributeDefinition(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AttributeDefinition`
         """
-        model = AttributeDefinition()  # noqa: E501
+        model = AttributeDefinition()
         if include_optional:
             return AttributeDefinition(
                 name = 'sAMAccountName',

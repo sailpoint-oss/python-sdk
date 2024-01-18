@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.cc.models.load_accounts_request import LoadAccountsRequest  # noqa: E501
+from sailpoint.cc.models.load_accounts_request import LoadAccountsRequest
 
 
 class TestLoadAccountsRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestLoadAccountsRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `LoadAccountsRequest`
         """
-        model = LoadAccountsRequest()  # noqa: E501
+        model = LoadAccountsRequest()
         if include_optional:
             return LoadAccountsRequest(
                 disable_optimization = True,

@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.iai_peer_group_strategies_api import IAIPeerGroupStrategiesApi  # noqa: E501
+from sailpoint.beta.api.iai_peer_group_strategies_api import IAIPeerGroupStrategiesApi
 
 
 class TestIAIPeerGroupStrategiesApi(unittest.TestCase):
     """IAIPeerGroupStrategiesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = IAIPeerGroupStrategiesApi()  # noqa: E501
+        self.api = IAIPeerGroupStrategiesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,7 +28,7 @@ class TestIAIPeerGroupStrategiesApi(unittest.TestCase):
     def test_get_peer_group_outliers(self) -> None:
         """Test case for get_peer_group_outliers
 
-        Identity Outliers List  # noqa: E501
+        Identity Outliers List
         """
         pass
 

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.connector_detail import ConnectorDetail  # noqa: E501
+from sailpoint.beta.models.connector_detail import ConnectorDetail
 
 
 class TestConnectorDetail(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestConnectorDetail(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConnectorDetail`
         """
-        model = ConnectorDetail()  # noqa: E501
+        model = ConnectorDetail()
         if include_optional:
             return ConnectorDetail(
                 name = 'JDBC',

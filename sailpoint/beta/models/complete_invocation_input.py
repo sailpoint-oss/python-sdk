@@ -16,61 +16,78 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel
+from pydantic import Field
 from sailpoint.beta.models.localized_message import LocalizedMessage
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class CompleteInvocationInput(BaseModel):
     """
     CompleteInvocationInput
     """
-    localized_error: Optional[LocalizedMessage] = Field(None,
+
+  # noqa: E501
+    localized_error: Optional[LocalizedMessage] = Field(default=None,
                                                         alias="localizedError")
-    output: Optional[Dict[str, Any]] = Field(
-        None,
+    output: Optional[Union[str, Any]] = Field(
+        default=None,
         description=
         "Trigger output that completed the invocation. Its schema is defined in the trigger definition."
     )
-    __properties = ["localizedError", "output"]
+    __properties: ClassVar[List[str]] = ["localizedError", "output"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CompleteInvocationInput:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of CompleteInvocationInput from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of localized_error
         if self.localized_error:
             _dict['localizedError'] = self.localized_error.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CompleteInvocationInput:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of CompleteInvocationInput from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CompleteInvocationInput.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = CompleteInvocationInput.parse_obj({
-            "localized_error":
+        _obj = cls.model_validate({
+            "localizedError":
             LocalizedMessage.from_dict(obj.get("localizedError"))
             if obj.get("localizedError") is not None else None,
             "output":

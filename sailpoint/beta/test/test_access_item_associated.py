@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_item_associated import AccessItemAssociated  # noqa: E501
+from sailpoint.beta.models.access_item_associated import AccessItemAssociated
 
 
 class TestAccessItemAssociated(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessItemAssociated(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessItemAssociated`
         """
-        model = AccessItemAssociated()  # noqa: E501
+        model = AccessItemAssociated()
         if include_optional:
             return AccessItemAssociated(
                 access_item = {id=8c190e6787aa4ed9a90bd9d5344523fb, accessType=account, nativeIdentity=127999, sourceName=JDBC Entitlements Source, entitlementCount=0, displayName=Sample Name},

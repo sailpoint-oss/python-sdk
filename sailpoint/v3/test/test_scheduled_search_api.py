@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.scheduled_search_api import ScheduledSearchApi  # noqa: E501
+from sailpoint.v3.api.scheduled_search_api import ScheduledSearchApi
 
 
 class TestScheduledSearchApi(unittest.TestCase):
     """ScheduledSearchApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = ScheduledSearchApi()  # noqa: E501
+        self.api = ScheduledSearchApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,42 +28,42 @@ class TestScheduledSearchApi(unittest.TestCase):
     def test_create_scheduled_search(self) -> None:
         """Test case for create_scheduled_search
 
-        Create a new scheduled search  # noqa: E501
+        Create a new scheduled search
         """
         pass
 
     def test_delete_scheduled_search(self) -> None:
         """Test case for delete_scheduled_search
 
-        Delete a Scheduled Search  # noqa: E501
+        Delete a Scheduled Search
         """
         pass
 
     def test_get_scheduled_search(self) -> None:
         """Test case for get_scheduled_search
 
-        Get a Scheduled Search  # noqa: E501
+        Get a Scheduled Search
         """
         pass
 
     def test_list_scheduled_search(self) -> None:
         """Test case for list_scheduled_search
 
-        List scheduled searches  # noqa: E501
+        List scheduled searches
         """
         pass
 
     def test_unsubscribe_scheduled_search(self) -> None:
         """Test case for unsubscribe_scheduled_search
 
-        Unsubscribe a recipient from Scheduled Search  # noqa: E501
+        Unsubscribe a recipient from Scheduled Search
         """
         pass
 
     def test_update_scheduled_search(self) -> None:
         """Test case for update_scheduled_search
 
-        Update an existing Scheduled Search  # noqa: E501
+        Update an existing Scheduled Search
         """
         pass
 

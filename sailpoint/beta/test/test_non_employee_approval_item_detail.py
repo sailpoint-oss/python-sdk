@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.non_employee_approval_item_detail import NonEmployeeApprovalItemDetail  # noqa: E501
+from sailpoint.beta.models.non_employee_approval_item_detail import NonEmployeeApprovalItemDetail
 
 
 class TestNonEmployeeApprovalItemDetail(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNonEmployeeApprovalItemDetail(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeApprovalItemDetail`
         """
-        model = NonEmployeeApprovalItemDetail()  # noqa: E501
+        model = NonEmployeeApprovalItemDetail()
         if include_optional:
             return NonEmployeeApprovalItemDetail(
                 id = '2c1e388b-1e55-4b0a-ab5c-897f1204159c',

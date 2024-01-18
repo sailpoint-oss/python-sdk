@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.metric_aggregation import MetricAggregation  # noqa: E501
+from sailpoint.v3.models.metric_aggregation import MetricAggregation
 
 
 class TestMetricAggregation(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestMetricAggregation(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `MetricAggregation`
         """
-        model = MetricAggregation()  # noqa: E501
+        model = MetricAggregation()
         if include_optional:
             return MetricAggregation(
                 name = 'Access Name Count',

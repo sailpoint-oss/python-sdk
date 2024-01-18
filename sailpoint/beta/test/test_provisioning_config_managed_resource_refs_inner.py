@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.provisioning_config_managed_resource_refs_inner import ProvisioningConfigManagedResourceRefsInner  # noqa: E501
+from sailpoint.beta.models.provisioning_config_managed_resource_refs_inner import ProvisioningConfigManagedResourceRefsInner
 
 
 class TestProvisioningConfigManagedResourceRefsInner(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestProvisioningConfigManagedResourceRefsInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ProvisioningConfigManagedResourceRefsInner`
         """
-        model = ProvisioningConfigManagedResourceRefsInner()  # noqa: E501
+        model = ProvisioningConfigManagedResourceRefsInner()
         if include_optional:
             return ProvisioningConfigManagedResourceRefsInner(
                 type = SOURCE,

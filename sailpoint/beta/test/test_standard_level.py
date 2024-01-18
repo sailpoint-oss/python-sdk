@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.standard_level import StandardLevel  # noqa: E501
+from sailpoint.beta.models.standard_level import StandardLevel
 
 
 class TestStandardLevel(unittest.TestCase):

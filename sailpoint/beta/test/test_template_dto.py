@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.template_dto import TemplateDto  # noqa: E501
+from sailpoint.beta.models.template_dto import TemplateDto
 
 
 class TestTemplateDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTemplateDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TemplateDto`
         """
-        model = TemplateDto()  # noqa: E501
+        model = TemplateDto()
         if include_optional:
             return TemplateDto(
                 key = 'cloud_manual_work_item_summary',

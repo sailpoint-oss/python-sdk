@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.custom_password_instruction import CustomPasswordInstruction  # noqa: E501
+from sailpoint.beta.models.custom_password_instruction import CustomPasswordInstruction
 
 
 class TestCustomPasswordInstruction(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCustomPasswordInstruction(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CustomPasswordInstruction`
         """
-        model = CustomPasswordInstruction()  # noqa: E501
+        model = CustomPasswordInstruction()
         if include_optional:
             return CustomPasswordInstruction(
                 page_id = 'change-password:enter-password',

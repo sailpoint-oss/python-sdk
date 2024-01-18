@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.reassignment_type import ReassignmentType  # noqa: E501
+from sailpoint.v3.models.reassignment_type import ReassignmentType
 
 
 class TestReassignmentType(unittest.TestCase):

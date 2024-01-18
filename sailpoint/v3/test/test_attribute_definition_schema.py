@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.attribute_definition_schema import AttributeDefinitionSchema  # noqa: E501
+from sailpoint.v3.models.attribute_definition_schema import AttributeDefinitionSchema
 
 
 class TestAttributeDefinitionSchema(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAttributeDefinitionSchema(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AttributeDefinitionSchema`
         """
-        model = AttributeDefinitionSchema()  # noqa: E501
+        model = AttributeDefinitionSchema()
         if include_optional:
             return AttributeDefinitionSchema(
                 type = 'CONNECTOR_SCHEMA',

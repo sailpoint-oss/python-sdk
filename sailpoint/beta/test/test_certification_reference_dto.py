@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.certification_reference_dto import CertificationReferenceDto  # noqa: E501
+from sailpoint.beta.models.certification_reference_dto import CertificationReferenceDto
 
 
 class TestCertificationReferenceDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCertificationReferenceDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CertificationReferenceDto`
         """
-        model = CertificationReferenceDto()  # noqa: E501
+        model = CertificationReferenceDto()
         if include_optional:
             return CertificationReferenceDto(
                 type = 'IDENTITY',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.peer_group_member import PeerGroupMember  # noqa: E501
+from sailpoint.beta.models.peer_group_member import PeerGroupMember
 
 
 class TestPeerGroupMember(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPeerGroupMember(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PeerGroupMember`
         """
-        model = PeerGroupMember()  # noqa: E501
+        model = PeerGroupMember()
         if include_optional:
             return PeerGroupMember(
                 id = '',

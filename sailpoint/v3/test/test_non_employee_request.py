@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.non_employee_request import NonEmployeeRequest  # noqa: E501
+from sailpoint.v3.models.non_employee_request import NonEmployeeRequest
 
 
 class TestNonEmployeeRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNonEmployeeRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeRequest`
         """
-        model = NonEmployeeRequest()  # noqa: E501
+        model = NonEmployeeRequest()
         if include_optional:
             return NonEmployeeRequest(
                 id = 'a0303682-5e4a-44f7-bdc2-6ce6112549c1',

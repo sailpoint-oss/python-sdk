@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.search_export_report_arguments import SearchExportReportArguments  # noqa: E501
+from sailpoint.v3.models.search_export_report_arguments import SearchExportReportArguments
 
 
 class TestSearchExportReportArguments(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSearchExportReportArguments(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SearchExportReportArguments`
         """
-        model = SearchExportReportArguments()  # noqa: E501
+        model = SearchExportReportArguments()
         if include_optional:
             return SearchExportReportArguments(
                 indices = [entitlements],

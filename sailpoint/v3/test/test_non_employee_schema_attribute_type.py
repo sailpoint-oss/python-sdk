@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.non_employee_schema_attribute_type import NonEmployeeSchemaAttributeType  # noqa: E501
+from sailpoint.v3.models.non_employee_schema_attribute_type import NonEmployeeSchemaAttributeType
 
 
 class TestNonEmployeeSchemaAttributeType(unittest.TestCase):

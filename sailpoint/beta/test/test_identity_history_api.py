@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.identity_history_api import IdentityHistoryApi  # noqa: E501
+from sailpoint.beta.api.identity_history_api import IdentityHistoryApi
 
 
 class TestIdentityHistoryApi(unittest.TestCase):
     """IdentityHistoryApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = IdentityHistoryApi()  # noqa: E501
+        self.api = IdentityHistoryApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,77 +28,77 @@ class TestIdentityHistoryApi(unittest.TestCase):
     def test_compare_identity_snapshots(self) -> None:
         """Test case for compare_identity_snapshots
 
-        Gets a difference of count for each access item types for the given identity between 2 snapshots  # noqa: E501
+        Gets a difference of count for each access item types for the given identity between 2 snapshots
         """
         pass
 
     def test_compare_identity_snapshots_access_type(self) -> None:
         """Test case for compare_identity_snapshots_access_type
 
-        Gets a list of differences of specific accessType for the given identity between 2 snapshots  # noqa: E501
+        Gets a list of differences of specific accessType for the given identity between 2 snapshots
         """
         pass
 
     def test_get_historical_identity(self) -> None:
         """Test case for get_historical_identity
 
-        Get latest snapshot of identity  # noqa: E501
+        Get latest snapshot of identity
         """
         pass
 
     def test_get_historical_identity_events(self) -> None:
         """Test case for get_historical_identity_events
 
-        Lists all events for the given identity  # noqa: E501
+        Lists all events for the given identity
         """
         pass
 
     def test_get_identity_snapshot(self) -> None:
         """Test case for get_identity_snapshot
 
-        Gets an identity snapshot at a given date  # noqa: E501
+        Gets an identity snapshot at a given date
         """
         pass
 
     def test_get_identity_snapshot_summary(self) -> None:
         """Test case for get_identity_snapshot_summary
 
-        Gets the summary for the event count for a specific identity  # noqa: E501
+        Gets the summary for the event count for a specific identity
         """
         pass
 
     def test_get_identity_start_date(self) -> None:
         """Test case for get_identity_start_date
 
-        Gets the start date of the identity  # noqa: E501
+        Gets the start date of the identity
         """
         pass
 
     def test_list_historical_identities(self) -> None:
         """Test case for list_historical_identities
 
-        Lists all the identities  # noqa: E501
+        Lists all the identities
         """
         pass
 
     def test_list_identity_access_items(self) -> None:
         """Test case for list_identity_access_items
 
-        Gets a list of access items for the identity filtered by item type  # noqa: E501
+        Gets a list of access items for the identity filtered by item type
         """
         pass
 
     def test_list_identity_snapshot_access_items(self) -> None:
         """Test case for list_identity_snapshot_access_items
 
-        Gets the list of identity access items at a given date filterd by item type  # noqa: E501
+        Gets the list of identity access items at a given date filterd by item type
         """
         pass
 
     def test_list_identity_snapshots(self) -> None:
         """Test case for list_identity_snapshots
 
-        Lists all the snapshots for the identity  # noqa: E501
+        Lists all the snapshots for the identity
         """
         pass
 

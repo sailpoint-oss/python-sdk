@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto  # noqa: E501
+from sailpoint.v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 
 
 class TestServiceDeskIntegrationDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ServiceDeskIntegrationDto`
         """
-        model = ServiceDeskIntegrationDto()  # noqa: E501
+        model = ServiceDeskIntegrationDto()
         if include_optional:
             return ServiceDeskIntegrationDto(
                 id = 'id12345',

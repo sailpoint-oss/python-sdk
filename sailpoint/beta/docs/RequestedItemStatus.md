@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **created** | **datetime** | When the request was created. | [optional] 
 **requester** | [**AccessItemRequester**](AccessItemRequester.md) |  | [optional] 
 **requested_for** | [**AccessItemRequestedFor**](AccessItemRequestedFor.md) |  | [optional] 
-**requester_comment** | [**CommentDto**](CommentDto.md) |  | [optional] 
+**requester_comment** | [**CommentDto1**](CommentDto1.md) |  | [optional] 
 **sod_violation_context** | [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 **provisioning_details** | [**ProvisioningDetails**](ProvisioningDetails.md) |  | [optional] 
 **pre_approval_trigger_details** | [**PreApprovalTriggerDetails**](PreApprovalTriggerDetails.md) |  | [optional] 

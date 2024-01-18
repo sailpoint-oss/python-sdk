@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.attr_sync_source_config import AttrSyncSourceConfig  # noqa: E501
+from sailpoint.beta.models.attr_sync_source_config import AttrSyncSourceConfig
 
 
 class TestAttrSyncSourceConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAttrSyncSourceConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AttrSyncSourceConfig`
         """
-        model = AttrSyncSourceConfig()  # noqa: E501
+        model = AttrSyncSourceConfig()
         if include_optional:
             return AttrSyncSourceConfig(
                 source = sailpoint.beta.models.attr_sync_source.AttrSyncSource(

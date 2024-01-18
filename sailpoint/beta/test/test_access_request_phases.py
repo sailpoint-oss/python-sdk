@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_request_phases import AccessRequestPhases  # noqa: E501
+from sailpoint.beta.models.access_request_phases import AccessRequestPhases
 
 
 class TestAccessRequestPhases(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessRequestPhases(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessRequestPhases`
         """
-        model = AccessRequestPhases()  # noqa: E501
+        model = AccessRequestPhases()
         if include_optional:
             return AccessRequestPhases(
                 started = '2020-07-11T00:00Z',

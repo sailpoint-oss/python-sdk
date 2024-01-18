@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner  # noqa: E501
+from sailpoint.beta.models.get_historical_identity_events200_response_inner import GetHistoricalIdentityEvents200ResponseInner
 
 
 class TestGetHistoricalIdentityEvents200ResponseInner(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestGetHistoricalIdentityEvents200ResponseInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `GetHistoricalIdentityEvents200ResponseInner`
         """
-        model = GetHistoricalIdentityEvents200ResponseInner()  # noqa: E501
+        model = GetHistoricalIdentityEvents200ResponseInner()
         if include_optional:
             return GetHistoricalIdentityEvents200ResponseInner(
                 access_item = {id=8c190e6787aa4ed9a90bd9d5344523fb, accessType=account, nativeIdentity=127999, sourceName=JDBC Entitlements Source, entitlementCount=0, displayName=Sample Name},

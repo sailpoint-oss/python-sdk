@@ -16,59 +16,76 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.password_info_account import PasswordInfoAccount
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class PasswordInfo(BaseModel):
     """
     PasswordInfo
     """
-    identity_id: Optional[StrictStr] = Field(None,
-                                             alias="identityId",
-                                             description="Identity ID")
-    source_id: Optional[StrictStr] = Field(None,
-                                           alias="sourceId",
-                                           description="source ID")
-    public_key_id: Optional[StrictStr] = Field(None,
-                                               alias="publicKeyId",
-                                               description="public key ID")
+
+  # noqa: E501
+    identity_id: Optional[StrictStr] = Field(default=None,
+                                             description="Identity ID",
+                                             alias="identityId")
+    source_id: Optional[StrictStr] = Field(default=None,
+                                           description="source ID",
+                                           alias="sourceId")
+    public_key_id: Optional[StrictStr] = Field(default=None,
+                                               description="public key ID",
+                                               alias="publicKeyId")
     public_key: Optional[StrictStr] = Field(
-        None,
-        alias="publicKey",
-        description="User's public key with Base64 encoding")
-    accounts: Optional[conlist(PasswordInfoAccount)] = Field(
-        None,
+        default=None,
+        description="User's public key with Base64 encoding",
+        alias="publicKey")
+    accounts: Optional[List[PasswordInfoAccount]] = Field(
+        default=None,
         description="Account info related to queried identity and source")
-    policies: Optional[conlist(StrictStr)] = Field(
-        None, description="Password constraints")
-    __properties = [
+    policies: Optional[List[StrictStr]] = Field(
+        default=None, description="Password constraints")
+    __properties: ClassVar[List[str]] = [
         "identityId", "sourceId", "publicKeyId", "publicKey", "accounts",
         "policies"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> PasswordInfo:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of PasswordInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in accounts (list)
         _items = []
         if self.accounts:
@@ -79,22 +96,22 @@ class PasswordInfo(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> PasswordInfo:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of PasswordInfo from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PasswordInfo.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = PasswordInfo.parse_obj({
-            "identity_id":
+        _obj = cls.model_validate({
+            "identityId":
             obj.get("identityId"),
-            "source_id":
+            "sourceId":
             obj.get("sourceId"),
-            "public_key_id":
+            "publicKeyId":
             obj.get("publicKeyId"),
-            "public_key":
+            "publicKey":
             obj.get("publicKey"),
             "accounts": [
                 PasswordInfoAccount.from_dict(_item)

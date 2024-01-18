@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.invocation import Invocation  # noqa: E501
+from sailpoint.beta.models.invocation import Invocation
 
 
 class TestInvocation(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestInvocation(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Invocation`
         """
-        model = Invocation()  # noqa: E501
+        model = Invocation()
         if include_optional:
             return Invocation(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',

@@ -16,69 +16,81 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictInt, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class PasswordDigitTokenReset(BaseModel):
     """
     PasswordDigitTokenReset
     """
+
+  # noqa: E501
     user_id: StrictStr = Field(
-        ...,
-        alias="userId",
-        description="The uid of the user requested for digit token")
+        description="The uid of the user requested for digit token",
+        alias="userId")
     length: Optional[StrictInt] = Field(
-        None,
+        default=None,
         description=
         "The length of digit token. It should be from 6 to 18, inclusive. The default value is 6."
     )
     duration_minutes: Optional[StrictInt] = Field(
-        None,
-        alias="durationMinutes",
+        default=None,
         description=
-        "The time to live for the digit token in minutes. The default value is 5 minutes."
-    )
-    __properties = ["userId", "length", "durationMinutes"]
+        "The time to live for the digit token in minutes. The default value is 5 minutes.",
+        alias="durationMinutes")
+    __properties: ClassVar[List[str]] = ["userId", "length", "durationMinutes"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> PasswordDigitTokenReset:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of PasswordDigitTokenReset from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> PasswordDigitTokenReset:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of PasswordDigitTokenReset from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PasswordDigitTokenReset.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = PasswordDigitTokenReset.parse_obj({
-            "user_id":
-            obj.get("userId"),
-            "length":
-            obj.get("length"),
-            "duration_minutes":
-            obj.get("durationMinutes")
+        _obj = cls.model_validate({
+            "userId": obj.get("userId"),
+            "length": obj.get("length"),
+            "durationMinutes": obj.get("durationMinutes")
         })
         return _obj

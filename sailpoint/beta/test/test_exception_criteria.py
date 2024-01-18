@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.exception_criteria import ExceptionCriteria  # noqa: E501
+from sailpoint.beta.models.exception_criteria import ExceptionCriteria
 
 
 class TestExceptionCriteria(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestExceptionCriteria(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ExceptionCriteria`
         """
-        model = ExceptionCriteria()  # noqa: E501
+        model = ExceptionCriteria()
         if include_optional:
             return ExceptionCriteria(
                 criteria_list = [{type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a66, existing=true}, {type=ENTITLEMENT, id=2c9180866166b5b0016167c32ef31a67, existing=false}]

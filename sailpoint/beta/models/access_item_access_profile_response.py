@@ -16,94 +16,111 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccessItemAccessProfileResponse(BaseModel):
     """
     AccessItemAccessProfileResponse
     """
+
+  # noqa: E501
     access_type: Optional[StrictStr] = Field(
-        None,
-        alias="accessType",
-        description="the access item type. accessProfile in this case")
-    id: Optional[StrictStr] = Field(None, description="the access item id")
-    name: Optional[StrictStr] = Field(None,
+        default=None,
+        description="the access item type. accessProfile in this case",
+        alias="accessType")
+    id: Optional[StrictStr] = Field(default=None,
+                                    description="the access item id")
+    name: Optional[StrictStr] = Field(default=None,
                                       description="the access profile name")
     source_name: Optional[StrictStr] = Field(
-        None, alias="sourceName", description="the name of the source")
-    source_id: Optional[StrictStr] = Field(None,
-                                           alias="sourceId",
-                                           description="the id of the source")
+        default=None, description="the name of the source", alias="sourceName")
+    source_id: Optional[StrictStr] = Field(default=None,
+                                           description="the id of the source",
+                                           alias="sourceId")
     description: Optional[StrictStr] = Field(
-        None, description="the description for the access profile")
+        default=None, description="the description for the access profile")
     display_name: Optional[StrictStr] = Field(
-        None,
-        alias="displayName",
-        description="the display name of the identity")
+        default=None,
+        description="the display name of the identity",
+        alias="displayName")
     entitlement_count: Optional[StrictStr] = Field(
-        None,
-        alias="entitlementCount",
-        description="the number of entitlements the access profile will create"
-    )
+        default=None,
+        description="the number of entitlements the access profile will create",
+        alias="entitlementCount")
     app_display_name: Optional[StrictStr] = Field(
-        None, alias="appDisplayName", description="the name of app")
-    __properties = [
+        default=None, description="the name of app", alias="appDisplayName")
+    __properties: ClassVar[List[str]] = [
         "accessType", "id", "name", "sourceName", "sourceId", "description",
         "displayName", "entitlementCount", "appDisplayName"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccessItemAccessProfileResponse:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccessItemAccessProfileResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccessItemAccessProfileResponse:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccessItemAccessProfileResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccessItemAccessProfileResponse.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccessItemAccessProfileResponse.parse_obj({
-            "access_type":
+        _obj = cls.model_validate({
+            "accessType":
             obj.get("accessType"),
             "id":
             obj.get("id"),
             "name":
             obj.get("name"),
-            "source_name":
+            "sourceName":
             obj.get("sourceName"),
-            "source_id":
+            "sourceId":
             obj.get("sourceId"),
             "description":
             obj.get("description"),
-            "display_name":
+            "displayName":
             obj.get("displayName"),
-            "entitlement_count":
+            "entitlementCount":
             obj.get("entitlementCount"),
-            "app_display_name":
+            "appDisplayName":
             obj.get("appDisplayName")
         })
         return _obj

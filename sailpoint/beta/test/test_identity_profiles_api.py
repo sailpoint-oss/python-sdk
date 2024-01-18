@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.identity_profiles_api import IdentityProfilesApi  # noqa: E501
+from sailpoint.beta.api.identity_profiles_api import IdentityProfilesApi
 
 
 class TestIdentityProfilesApi(unittest.TestCase):
     """IdentityProfilesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = IdentityProfilesApi()  # noqa: E501
+        self.api = IdentityProfilesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,77 +28,77 @@ class TestIdentityProfilesApi(unittest.TestCase):
     def test_create_identity_profile(self) -> None:
         """Test case for create_identity_profile
 
-        Create an Identity Profile  # noqa: E501
+        Create an Identity Profile
         """
         pass
 
     def test_delete_identity_profile(self) -> None:
         """Test case for delete_identity_profile
 
-        Delete an Identity Profile  # noqa: E501
+        Delete an Identity Profile
         """
         pass
 
     def test_delete_identity_profiles(self) -> None:
         """Test case for delete_identity_profiles
 
-        Delete Identity Profiles  # noqa: E501
+        Delete Identity Profiles
         """
         pass
 
     def test_export_identity_profiles(self) -> None:
         """Test case for export_identity_profiles
 
-        Export Identity Profiles  # noqa: E501
+        Export Identity Profiles
         """
         pass
 
     def test_generate_identity_preview(self) -> None:
         """Test case for generate_identity_preview
 
-        Generate Identity Profile Preview  # noqa: E501
+        Generate Identity Profile Preview
         """
         pass
 
     def test_get_default_identity_attribute_config(self) -> None:
         """Test case for get_default_identity_attribute_config
 
-        Default identity attribute config  # noqa: E501
+        Default identity attribute config
         """
         pass
 
     def test_get_identity_profile(self) -> None:
         """Test case for get_identity_profile
 
-        Gets a single Identity Profile  # noqa: E501
+        Gets a single Identity Profile
         """
         pass
 
     def test_import_identity_profiles(self) -> None:
         """Test case for import_identity_profiles
 
-        Import Identity Profiles  # noqa: E501
+        Import Identity Profiles
         """
         pass
 
     def test_list_identity_profiles(self) -> None:
         """Test case for list_identity_profiles
 
-        Identity Profiles list  # noqa: E501
+        Identity Profiles list
         """
         pass
 
     def test_sync_identity_profile(self) -> None:
         """Test case for sync_identity_profile
 
-        Process identities under profile  # noqa: E501
+        Process identities under profile
         """
         pass
 
     def test_update_identity_profile(self) -> None:
         """Test case for update_identity_profile
 
-        Update the Identity Profile  # noqa: E501
+        Update the Identity Profile
         """
         pass
 

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.criteria_type import CriteriaType  # noqa: E501
+from sailpoint.v3.models.criteria_type import CriteriaType
 
 
 class TestCriteriaType(unittest.TestCase):

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.managed_cluster import ManagedCluster  # noqa: E501
+from sailpoint.beta.models.managed_cluster import ManagedCluster
 
 
 class TestManagedCluster(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestManagedCluster(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ManagedCluster`
         """
-        model = ManagedCluster()  # noqa: E501
+        model = ManagedCluster()
         if include_optional:
             return ManagedCluster(
                 id = 'aClusterId',

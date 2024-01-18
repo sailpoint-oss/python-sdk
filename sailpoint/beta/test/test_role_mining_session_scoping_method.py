@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_mining_session_scoping_method import RoleMiningSessionScopingMethod  # noqa: E501
+from sailpoint.beta.models.role_mining_session_scoping_method import RoleMiningSessionScopingMethod
 
 
 class TestRoleMiningSessionScopingMethod(unittest.TestCase):

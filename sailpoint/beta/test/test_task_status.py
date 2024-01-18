@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.task_status import TaskStatus  # noqa: E501
+from sailpoint.beta.models.task_status import TaskStatus
 
 
 class TestTaskStatus(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTaskStatus(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TaskStatus`
         """
-        model = TaskStatus()  # noqa: E501
+        model = TaskStatus()
         if include_optional:
             return TaskStatus(
                 id = 'id12345',

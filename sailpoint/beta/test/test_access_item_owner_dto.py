@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_item_owner_dto import AccessItemOwnerDto  # noqa: E501
+from sailpoint.beta.models.access_item_owner_dto import AccessItemOwnerDto
 
 
 class TestAccessItemOwnerDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessItemOwnerDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessItemOwnerDto`
         """
-        model = AccessItemOwnerDto()  # noqa: E501
+        model = AccessItemOwnerDto()
         if include_optional:
             return AccessItemOwnerDto(
                 type = 'IDENTITY',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.role_membership_selector_type import RoleMembershipSelectorType  # noqa: E501
+from sailpoint.v3.models.role_membership_selector_type import RoleMembershipSelectorType
 
 
 class TestRoleMembershipSelectorType(unittest.TestCase):

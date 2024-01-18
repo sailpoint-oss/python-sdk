@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.reports_data_extraction_api import ReportsDataExtractionApi  # noqa: E501
+from sailpoint.v3.api.reports_data_extraction_api import ReportsDataExtractionApi
 
 
 class TestReportsDataExtractionApi(unittest.TestCase):
     """ReportsDataExtractionApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = ReportsDataExtractionApi()  # noqa: E501
+        self.api = ReportsDataExtractionApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,28 +28,28 @@ class TestReportsDataExtractionApi(unittest.TestCase):
     def test_cancel_report(self) -> None:
         """Test case for cancel_report
 
-        Cancel Report  # noqa: E501
+        Cancel Report
         """
         pass
 
     def test_get_report(self) -> None:
         """Test case for get_report
 
-        Get Report File  # noqa: E501
+        Get Report File
         """
         pass
 
     def test_get_report_result(self) -> None:
         """Test case for get_report_result
 
-        Get Report Result  # noqa: E501
+        Get Report Result
         """
         pass
 
     def test_start_report(self) -> None:
         """Test case for start_report
 
-        Run Report  # noqa: E501
+        Run Report
         """
         pass
 

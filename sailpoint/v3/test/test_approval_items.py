@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.approval_items import ApprovalItems  # noqa: E501
+from sailpoint.v3.models.approval_items import ApprovalItems
 
 
 class TestApprovalItems(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestApprovalItems(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ApprovalItems`
         """
-        model = ApprovalItems()  # noqa: E501
+        model = ApprovalItems()
         if include_optional:
             return ApprovalItems(
                 id = '2c9180835d2e5168015d32f890ca1581',

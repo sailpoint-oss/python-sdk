@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse  # noqa: E501
+from sailpoint.v3.models.create_personal_access_token_response import CreatePersonalAccessTokenResponse
 
 
 class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestCreatePersonalAccessTokenResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreatePersonalAccessTokenResponse`
         """
-        model = CreatePersonalAccessTokenResponse()  # noqa: E501
+        model = CreatePersonalAccessTokenResponse()
         if include_optional:
             return CreatePersonalAccessTokenResponse(
                 id = '86f1dc6fe8f54414950454cbb11278fa',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.campaign_reference import CampaignReference  # noqa: E501
+from sailpoint.beta.models.campaign_reference import CampaignReference
 
 
 class TestCampaignReference(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCampaignReference(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CampaignReference`
         """
-        model = CampaignReference()  # noqa: E501
+        model = CampaignReference()
         if include_optional:
             return CampaignReference(
                 id = 'ef38f94347e94562b5bb8424a56397d8',

@@ -16,65 +16,82 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.requestable_object_type import RequestableObjectType
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccountRequestInfo(BaseModel):
     """
-    If an account activity item is associated with an access request, captures details of that request.  # noqa: E501
-    """
+    If an account activity item is associated with an access request, captures details of that request.
+    """ # noqa: E501
     requested_object_id: Optional[StrictStr] = Field(
-        None, alias="requestedObjectId", description="Id of requested object")
+        default=None,
+        description="Id of requested object",
+        alias="requestedObjectId")
     requested_object_name: Optional[StrictStr] = Field(
-        None,
-        alias="requestedObjectName",
-        description="Human-readable name of requested object")
+        default=None,
+        description="Human-readable name of requested object",
+        alias="requestedObjectName")
     requested_object_type: Optional[RequestableObjectType] = Field(
-        None, alias="requestedObjectType")
-    __properties = [
+        default=None, alias="requestedObjectType")
+    __properties: ClassVar[List[str]] = [
         "requestedObjectId", "requestedObjectName", "requestedObjectType"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccountRequestInfo:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccountRequestInfo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccountRequestInfo:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccountRequestInfo from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccountRequestInfo.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccountRequestInfo.parse_obj({
-            "requested_object_id":
+        _obj = cls.model_validate({
+            "requestedObjectId":
             obj.get("requestedObjectId"),
-            "requested_object_name":
+            "requestedObjectName":
             obj.get("requestedObjectName"),
-            "requested_object_type":
+            "requestedObjectType":
             obj.get("requestedObjectType")
         })
         return _obj

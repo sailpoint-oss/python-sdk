@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.role_document import RoleDocument  # noqa: E501
+from sailpoint.v3.models.role_document import RoleDocument
 
 
 class TestRoleDocument(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRoleDocument(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleDocument`
         """
-        model = RoleDocument()  # noqa: E501
+        model = RoleDocument()
         if include_optional:
             return RoleDocument(
                 id = '2c91808568c529c60168cca6f90c1313',

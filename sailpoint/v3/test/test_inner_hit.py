@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.inner_hit import InnerHit  # noqa: E501
+from sailpoint.v3.models.inner_hit import InnerHit
 
 
 class TestInnerHit(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestInnerHit(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `InnerHit`
         """
-        model = InnerHit()  # noqa: E501
+        model = InnerHit()
         if include_optional:
             return InnerHit(
                 query = 'source.name:\"Active Directory\"',

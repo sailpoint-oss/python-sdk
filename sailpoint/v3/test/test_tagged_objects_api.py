@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.tagged_objects_api import TaggedObjectsApi  # noqa: E501
+from sailpoint.v3.api.tagged_objects_api import TaggedObjectsApi
 
 
 class TestTaggedObjectsApi(unittest.TestCase):
     """TaggedObjectsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = TaggedObjectsApi()  # noqa: E501
+        self.api = TaggedObjectsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,56 +28,56 @@ class TestTaggedObjectsApi(unittest.TestCase):
     def test_delete_tagged_object(self) -> None:
         """Test case for delete_tagged_object
 
-        Delete Tagged Object  # noqa: E501
+        Delete Tagged Object
         """
         pass
 
     def test_delete_tags_to_many_object(self) -> None:
         """Test case for delete_tags_to_many_object
 
-        Remove Tags from Multiple Objects  # noqa: E501
+        Remove Tags from Multiple Objects
         """
         pass
 
     def test_get_tagged_object(self) -> None:
         """Test case for get_tagged_object
 
-        Get Tagged Object  # noqa: E501
+        Get Tagged Object
         """
         pass
 
     def test_list_tagged_objects(self) -> None:
         """Test case for list_tagged_objects
 
-        List Tagged Objects  # noqa: E501
+        List Tagged Objects
         """
         pass
 
     def test_list_tagged_objects_by_type(self) -> None:
         """Test case for list_tagged_objects_by_type
 
-        List Tagged Objects  # noqa: E501
+        List Tagged Objects
         """
         pass
 
     def test_put_tagged_object(self) -> None:
         """Test case for put_tagged_object
 
-        Update Tagged Object  # noqa: E501
+        Update Tagged Object
         """
         pass
 
     def test_set_tag_to_object(self) -> None:
         """Test case for set_tag_to_object
 
-        Add Tag to Object  # noqa: E501
+        Add Tag to Object
         """
         pass
 
     def test_set_tags_to_many_objects(self) -> None:
         """Test case for set_tags_to_many_objects
 
-        Tag Multiple Objects  # noqa: E501
+        Tag Multiple Objects
         """
         pass
 

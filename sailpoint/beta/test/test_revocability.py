@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.revocability import Revocability  # noqa: E501
+from sailpoint.beta.models.revocability import Revocability
 
 
 class TestRevocability(unittest.TestCase):
@@ -33,11 +33,9 @@ class TestRevocability(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Revocability`
         """
-        model = Revocability()  # noqa: E501
+        model = Revocability()
         if include_optional:
             return Revocability(
-                comments_required = False,
-                denial_comments_required = False,
                 approval_schemes = [
                     sailpoint.beta.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
                         approver_type = 'GOVERNANCE_GROUP', 

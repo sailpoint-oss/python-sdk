@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.sod_policy_api import SODPolicyApi  # noqa: E501
+from sailpoint.v3.api.sod_policy_api import SODPolicyApi
 
 
 class TestSODPolicyApi(unittest.TestCase):
     """SODPolicyApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SODPolicyApi()  # noqa: E501
+        self.api = SODPolicyApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,119 +28,119 @@ class TestSODPolicyApi(unittest.TestCase):
     def test_create_sod_policy(self) -> None:
         """Test case for create_sod_policy
 
-        Create SOD policy  # noqa: E501
+        Create SOD policy
         """
         pass
 
     def test_delete_sod_policy(self) -> None:
         """Test case for delete_sod_policy
 
-        Delete SOD policy by ID  # noqa: E501
+        Delete SOD policy by ID
         """
         pass
 
     def test_delete_sod_policy_schedule(self) -> None:
         """Test case for delete_sod_policy_schedule
 
-        Delete SOD policy schedule  # noqa: E501
+        Delete SOD policy schedule
         """
         pass
 
     def test_get_custom_violation_report(self) -> None:
         """Test case for get_custom_violation_report
 
-        Download custom violation report  # noqa: E501
+        Download custom violation report
         """
         pass
 
     def test_get_default_violation_report(self) -> None:
         """Test case for get_default_violation_report
 
-        Download violation report  # noqa: E501
+        Download violation report
         """
         pass
 
     def test_get_sod_all_report_run_status(self) -> None:
         """Test case for get_sod_all_report_run_status
 
-        Get multi-report run task status  # noqa: E501
+        Get multi-report run task status
         """
         pass
 
     def test_get_sod_policy(self) -> None:
         """Test case for get_sod_policy
 
-        Get SOD policy by ID  # noqa: E501
+        Get SOD policy by ID
         """
         pass
 
     def test_get_sod_policy_schedule(self) -> None:
         """Test case for get_sod_policy_schedule
 
-        Get SOD policy schedule  # noqa: E501
+        Get SOD policy schedule
         """
         pass
 
     def test_get_sod_violation_report_run_status(self) -> None:
         """Test case for get_sod_violation_report_run_status
 
-        Get violation report run status  # noqa: E501
+        Get violation report run status
         """
         pass
 
     def test_get_sod_violation_report_status(self) -> None:
         """Test case for get_sod_violation_report_status
 
-        Get SOD violation report status  # noqa: E501
+        Get SOD violation report status
         """
         pass
 
     def test_list_sod_policies(self) -> None:
         """Test case for list_sod_policies
 
-        List SOD policies  # noqa: E501
+        List SOD policies
         """
         pass
 
     def test_patch_sod_policy(self) -> None:
         """Test case for patch_sod_policy
 
-        Patch SOD policy by ID  # noqa: E501
+        Patch SOD policy by ID
         """
         pass
 
     def test_put_policy_schedule(self) -> None:
         """Test case for put_policy_schedule
 
-        Update SOD Policy schedule  # noqa: E501
+        Update SOD Policy schedule
         """
         pass
 
     def test_put_sod_policy(self) -> None:
         """Test case for put_sod_policy
 
-        Update SOD policy by ID  # noqa: E501
+        Update SOD policy by ID
         """
         pass
 
     def test_start_evaluate_sod_policy(self) -> None:
         """Test case for start_evaluate_sod_policy
 
-        Evaluate one policy by ID  # noqa: E501
+        Evaluate one policy by ID
         """
         pass
 
     def test_start_sod_all_policies_for_org(self) -> None:
         """Test case for start_sod_all_policies_for_org
 
-        Runs all policies for org  # noqa: E501
+        Runs all policies for org
         """
         pass
 
     def test_start_sod_policy(self) -> None:
         """Test case for start_sod_policy
 
-        Runs SOD policy violation report  # noqa: E501
+        Runs SOD policy violation report
         """
         pass
 

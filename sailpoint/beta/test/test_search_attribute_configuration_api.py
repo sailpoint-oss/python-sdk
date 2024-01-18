@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.search_attribute_configuration_api import SearchAttributeConfigurationApi  # noqa: E501
+from sailpoint.beta.api.search_attribute_configuration_api import SearchAttributeConfigurationApi
 
 
 class TestSearchAttributeConfigurationApi(unittest.TestCase):
     """SearchAttributeConfigurationApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SearchAttributeConfigurationApi()  # noqa: E501
+        self.api = SearchAttributeConfigurationApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,35 +28,35 @@ class TestSearchAttributeConfigurationApi(unittest.TestCase):
     def test_create_search_attribute_config(self) -> None:
         """Test case for create_search_attribute_config
 
-        Configure/create extended search attributes in IdentityNow.  # noqa: E501
+        Configure/create extended search attributes in IdentityNow.
         """
         pass
 
     def test_delete_search_attribute_config(self) -> None:
         """Test case for delete_search_attribute_config
 
-        Delete an extended search attribute in IdentityNow.  # noqa: E501
+        Delete an extended search attribute in IdentityNow.
         """
         pass
 
     def test_get_search_attribute_config(self) -> None:
         """Test case for get_search_attribute_config
 
-        Retrieve a list of extended search attributes in IdentityNow.  # noqa: E501
+        Retrieve a list of extended search attributes in IdentityNow.
         """
         pass
 
     def test_get_single_search_attribute_config(self) -> None:
         """Test case for get_single_search_attribute_config
 
-        Get the details of a specific extended search attribute in IdentityNow.  # noqa: E501
+        Get the details of a specific extended search attribute in IdentityNow.
         """
         pass
 
     def test_patch_search_attribute_config(self) -> None:
         """Test case for patch_search_attribute_config
 
-        Update the details of a specific extended search attribute in IdentityNow.  # noqa: E501
+        Update the details of a specific extended search attribute in IdentityNow.
         """
         pass
 

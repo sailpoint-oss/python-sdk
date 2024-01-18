@@ -17,35 +17,39 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccessRequestPhases(BaseModel):
     """
-    Provides additional details about this access request phase.  # noqa: E501
-    """
+    Provides additional details about this access request phase.
+    """ # noqa: E501
     started: Optional[datetime] = Field(
-        None, description="The time that this phase started.")
+        default=None, description="The time that this phase started.")
     finished: Optional[datetime] = Field(
-        None, description="The time that this phase finished.")
-    name: Optional[StrictStr] = Field(None,
+        default=None, description="The time that this phase finished.")
+    name: Optional[StrictStr] = Field(default=None,
                                       description="The name of this phase.")
-    state: Optional[StrictStr] = Field(None,
+    state: Optional[StrictStr] = Field(default=None,
                                        description="The state of this phase.")
-    result: Optional[StrictStr] = Field(None,
+    result: Optional[StrictStr] = Field(default=None,
                                         description="The state of this phase.")
     phase_reference: Optional[StrictStr] = Field(
-        None,
-        alias="phaseReference",
+        default=None,
         description=
-        "A reference to another object on the RequestedItemStatus that contains more details about the phase. Note that for the Provisioning phase, this will be empty if there are no manual work items."
-    )
-    __properties = [
+        "A reference to another object on the RequestedItemStatus that contains more details about the phase. Note that for the Provisioning phase, this will be empty if there are no manual work items.",
+        alias="phaseReference")
+    __properties: ClassVar[List[str]] = [
         "started", "finished", "name", "state", "result", "phaseReference"
     ]
 
-    @validator('state')
+    @field_validator('state')
     def state_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -57,7 +61,7 @@ class AccessRequestPhases(BaseModel):
             )
         return value
 
-    @validator('result')
+    @field_validator('result')
     def result_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -68,50 +72,54 @@ class AccessRequestPhases(BaseModel):
                 "must be one of enum values ('SUCCESSFUL', 'FAILED')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccessRequestPhases:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccessRequestPhases from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccessRequestPhases:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccessRequestPhases from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccessRequestPhases.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccessRequestPhases.parse_obj({
-            "started":
-            obj.get("started"),
-            "finished":
-            obj.get("finished"),
-            "name":
-            obj.get("name"),
-            "state":
-            obj.get("state"),
-            "result":
-            obj.get("result"),
-            "phase_reference":
-            obj.get("phaseReference")
+        _obj = cls.model_validate({
+            "started": obj.get("started"),
+            "finished": obj.get("finished"),
+            "name": obj.get("name"),
+            "state": obj.get("state"),
+            "result": obj.get("result"),
+            "phaseReference": obj.get("phaseReference")
         })
         return _obj

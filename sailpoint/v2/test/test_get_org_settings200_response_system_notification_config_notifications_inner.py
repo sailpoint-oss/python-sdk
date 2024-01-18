@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v2.models.get_org_settings200_response_system_notification_config_notifications_inner import GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner  # noqa: E501
+from sailpoint.v2.models.get_org_settings200_response_system_notification_config_notifications_inner import GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner
 
 
 class TestGetOrgSettings200ResponseSystemNotificationConfigNotificationsInner(
@@ -36,7 +36,7 @@ class TestGetOrgSettings200ResponseSystemNotificationConfigNotificationsInner(
             optional params are included """
         # uncomment below to create an instance of `GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner`
         """
-        model = GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner()  # noqa: E501
+        model = GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner()
         if include_optional:
             return GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner(
                 type = '',

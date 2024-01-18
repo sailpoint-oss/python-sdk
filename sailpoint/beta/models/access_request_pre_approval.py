@@ -16,53 +16,67 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.access_item_requested_for_dto import AccessItemRequestedForDto
 from sailpoint.beta.models.access_item_requester_dto import AccessItemRequesterDto
 from sailpoint.beta.models.access_request_pre_approval_requested_items_inner import AccessRequestPreApprovalRequestedItemsInner
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccessRequestPreApproval(BaseModel):
     """
     AccessRequestPreApproval
     """
+
+  # noqa: E501
     access_request_id: StrictStr = Field(
-        ...,
-        alias="accessRequestId",
-        description="The unique ID of the access request.")
-    requested_for: AccessItemRequestedForDto = Field(..., alias="requestedFor")
-    requested_items: conlist(
-        AccessRequestPreApprovalRequestedItemsInner) = Field(
-            ...,
-            alias="requestedItems",
-            description="Details of the access items being requested.")
-    requested_by: AccessItemRequesterDto = Field(..., alias="requestedBy")
-    __properties = [
+        description="The unique ID of the access request.",
+        alias="accessRequestId")
+    requested_for: AccessItemRequestedForDto = Field(alias="requestedFor")
+    requested_items: List[AccessRequestPreApprovalRequestedItemsInner] = Field(
+        description="Details of the access items being requested.",
+        alias="requestedItems")
+    requested_by: AccessItemRequesterDto = Field(alias="requestedBy")
+    __properties: ClassVar[List[str]] = [
         "accessRequestId", "requestedFor", "requestedItems", "requestedBy"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccessRequestPreApproval:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccessRequestPreApproval from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of requested_for
         if self.requested_for:
             _dict['requestedFor'] = self.requested_for.to_dict()
@@ -79,25 +93,25 @@ class AccessRequestPreApproval(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccessRequestPreApproval:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccessRequestPreApproval from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccessRequestPreApproval.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccessRequestPreApproval.parse_obj({
-            "access_request_id":
+        _obj = cls.model_validate({
+            "accessRequestId":
             obj.get("accessRequestId"),
-            "requested_for":
+            "requestedFor":
             AccessItemRequestedForDto.from_dict(obj.get("requestedFor"))
             if obj.get("requestedFor") is not None else None,
-            "requested_items": [
+            "requestedItems": [
                 AccessRequestPreApprovalRequestedItemsInner.from_dict(_item)
                 for _item in obj.get("requestedItems")
             ] if obj.get("requestedItems") is not None else None,
-            "requested_by":
+            "requestedBy":
             AccessItemRequesterDto.from_dict(obj.get("requestedBy"))
             if obj.get("requestedBy") is not None else None
         })

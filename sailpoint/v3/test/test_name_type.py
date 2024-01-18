@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.name_type import NameType  # noqa: E501
+from sailpoint.v3.models.name_type import NameType
 
 
 class TestNameType(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNameType(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NameType`
         """
-        model = NameType()  # noqa: E501
+        model = NameType()
         if include_optional:
             return NameType(
                 name = 'John Doe',

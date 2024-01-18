@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.search_identity_reference import SearchIdentityReference  # noqa: E501
+from sailpoint.v3.models.search_identity_reference import SearchIdentityReference
 
 
 class TestSearchIdentityReference(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSearchIdentityReference(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SearchIdentityReference`
         """
-        model = SearchIdentityReference()  # noqa: E501
+        model = SearchIdentityReference()
         if include_optional:
             return SearchIdentityReference(
                 id = '2c91808568c529c60168cca6f90c1313',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.base_account import BaseAccount  # noqa: E501
+from sailpoint.v3.models.base_account import BaseAccount
 
 
 class TestBaseAccount(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestBaseAccount(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `BaseAccount`
         """
-        model = BaseAccount()  # noqa: E501
+        model = BaseAccount()
         if include_optional:
             return BaseAccount(
                 id = '2c91808568c529c60168cca6f90c1313',

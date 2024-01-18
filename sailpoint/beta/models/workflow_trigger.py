@@ -16,21 +16,27 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict
-from pydantic import BaseModel, Field, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Union
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class WorkflowTrigger(BaseModel):
     """
-    The trigger that starts the workflow  # noqa: E501
+    The trigger that starts the workflow
     """
-    type: StrictStr = Field(..., description="The trigger type")
-    attributes: Dict[str,
-                     Any] = Field(...,
-                                  description="Workflow Trigger Attributes.")
-    __properties = ["type", "attributes"]
 
-    @validator('type')
+  # noqa: E501
+    type: StrictStr = Field(description="The trigger type")
+    attributes: Union[str,
+                      Any] = Field(description="Workflow Trigger Attributes.")
+    __properties: ClassVar[List[str]] = ["type", "attributes"]
+
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('EVENT', 'EXTERNAL', 'SCHEDULED'):
@@ -39,39 +45,49 @@ class WorkflowTrigger(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> WorkflowTrigger:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of WorkflowTrigger from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> WorkflowTrigger:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of WorkflowTrigger from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return WorkflowTrigger.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = WorkflowTrigger.parse_obj({
+        _obj = cls.model_validate({
             "type": obj.get("type"),
             "attributes": obj.get("attributes")
         })

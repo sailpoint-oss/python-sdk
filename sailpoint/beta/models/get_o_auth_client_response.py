@@ -17,96 +17,85 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.access_type import AccessType
 from sailpoint.beta.models.client_type import ClientType
 from sailpoint.beta.models.grant_type import GrantType
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class GetOAuthClientResponse(BaseModel):
     """
     GetOAuthClientResponse
     """
-    id: StrictStr = Field(..., description="ID of the OAuth client")
+
+  # noqa: E501
+    id: StrictStr = Field(description="ID of the OAuth client")
     business_name: Optional[StrictStr] = Field(
-        ...,
-        alias="businessName",
-        description="The name of the business the API Client should belong to")
+        description="The name of the business the API Client should belong to",
+        alias="businessName")
     homepage_url: Optional[StrictStr] = Field(
-        ...,
-        alias="homepageUrl",
         description=
-        "The homepage URL associated with the owner of the API Client")
+        "The homepage URL associated with the owner of the API Client",
+        alias="homepageUrl")
     name: StrictStr = Field(
-        ..., description="A human-readable name for the API Client")
+        description="A human-readable name for the API Client")
     description: Optional[StrictStr] = Field(
-        ..., description="A description of the API Client")
+        description="A description of the API Client")
     access_token_validity_seconds: StrictInt = Field(
-        ...,
-        alias="accessTokenValiditySeconds",
         description=
-        "The number of seconds an access token generated for this API Client is valid for"
-    )
+        "The number of seconds an access token generated for this API Client is valid for",
+        alias="accessTokenValiditySeconds")
     refresh_token_validity_seconds: StrictInt = Field(
-        ...,
-        alias="refreshTokenValiditySeconds",
         description=
-        "The number of seconds a refresh token generated for this API Client is valid for"
-    )
-    redirect_uris: Optional[conlist(StrictStr)] = Field(
-        ...,
-        alias="redirectUris",
+        "The number of seconds a refresh token generated for this API Client is valid for",
+        alias="refreshTokenValiditySeconds")
+    redirect_uris: Optional[List[StrictStr]] = Field(
         description=
-        "A list of the approved redirect URIs used with the authorization_code flow"
-    )
-    grant_types: conlist(GrantType) = Field(
-        ...,
-        alias="grantTypes",
+        "A list of the approved redirect URIs used with the authorization_code flow",
+        alias="redirectUris")
+    grant_types: List[GrantType] = Field(
         description=
-        "A list of OAuth 2.0 grant types this API Client can be used with")
-    access_type: AccessType = Field(..., alias="accessType")
-    type: ClientType = Field(...)
+        "A list of OAuth 2.0 grant types this API Client can be used with",
+        alias="grantTypes")
+    access_type: AccessType = Field(alias="accessType")
+    type: ClientType
     internal: StrictBool = Field(
-        ...,
         description=
         "An indicator of whether the API Client can be used for requests internal to IDN"
     )
     enabled: StrictBool = Field(
-        ...,
         description="An indicator of whether the API Client is enabled for use"
     )
     strong_auth_supported: StrictBool = Field(
-        ...,
-        alias="strongAuthSupported",
         description=
-        "An indicator of whether the API Client supports strong authentication"
-    )
+        "An indicator of whether the API Client supports strong authentication",
+        alias="strongAuthSupported")
     claims_supported: StrictBool = Field(
-        ...,
-        alias="claimsSupported",
         description=
-        "An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow"
-    )
+        "An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow",
+        alias="claimsSupported")
     created: datetime = Field(
-        ...,
         description=
         "The date and time, down to the millisecond, when the API Client was created"
     )
     modified: datetime = Field(
-        ...,
         description=
         "The date and time, down to the millisecond, when the API Client was last updated"
     )
     last_used: Optional[datetime] = Field(
-        None,
-        alias="lastUsed",
+        default=None,
         description=
-        "The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed."
-    )
-    scope: Optional[conlist(StrictStr)] = Field(
-        ..., description="Scopes of the API Client.")
-    __properties = [
+        "The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed.",
+        alias="lastUsed")
+    scope: Optional[List[StrictStr]] = Field(
+        description="Scopes of the API Client.")
+    __properties: ClassVar[List[str]] = [
         "id", "businessName", "homepageUrl", "name", "description",
         "accessTokenValiditySeconds", "refreshTokenValiditySeconds",
         "redirectUris", "grantTypes", "accessType", "type", "internal",
@@ -114,88 +103,98 @@ class GetOAuthClientResponse(BaseModel):
         "modified", "lastUsed", "scope"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> GetOAuthClientResponse:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of GetOAuthClientResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # set to None if business_name (nullable) is None
-        # and __fields_set__ contains the field
-        if self.business_name is None and "business_name" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.business_name is None and "business_name" in self.model_fields_set:
             _dict['businessName'] = None
 
         # set to None if homepage_url (nullable) is None
-        # and __fields_set__ contains the field
-        if self.homepage_url is None and "homepage_url" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.homepage_url is None and "homepage_url" in self.model_fields_set:
             _dict['homepageUrl'] = None
 
         # set to None if description (nullable) is None
-        # and __fields_set__ contains the field
-        if self.description is None and "description" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
         # set to None if redirect_uris (nullable) is None
-        # and __fields_set__ contains the field
-        if self.redirect_uris is None and "redirect_uris" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.redirect_uris is None and "redirect_uris" in self.model_fields_set:
             _dict['redirectUris'] = None
 
         # set to None if last_used (nullable) is None
-        # and __fields_set__ contains the field
-        if self.last_used is None and "last_used" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.last_used is None and "last_used" in self.model_fields_set:
             _dict['lastUsed'] = None
 
         # set to None if scope (nullable) is None
-        # and __fields_set__ contains the field
-        if self.scope is None and "scope" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.scope is None and "scope" in self.model_fields_set:
             _dict['scope'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> GetOAuthClientResponse:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of GetOAuthClientResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return GetOAuthClientResponse.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = GetOAuthClientResponse.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
-            "business_name":
+            "businessName":
             obj.get("businessName"),
-            "homepage_url":
+            "homepageUrl":
             obj.get("homepageUrl"),
             "name":
             obj.get("name"),
             "description":
             obj.get("description"),
-            "access_token_validity_seconds":
+            "accessTokenValiditySeconds":
             obj.get("accessTokenValiditySeconds"),
-            "refresh_token_validity_seconds":
+            "refreshTokenValiditySeconds":
             obj.get("refreshTokenValiditySeconds"),
-            "redirect_uris":
+            "redirectUris":
             obj.get("redirectUris"),
-            "grant_types":
+            "grantTypes":
             obj.get("grantTypes"),
-            "access_type":
+            "accessType":
             obj.get("accessType"),
             "type":
             obj.get("type"),
@@ -203,15 +202,15 @@ class GetOAuthClientResponse(BaseModel):
             obj.get("internal"),
             "enabled":
             obj.get("enabled"),
-            "strong_auth_supported":
+            "strongAuthSupported":
             obj.get("strongAuthSupported"),
-            "claims_supported":
+            "claimsSupported":
             obj.get("claimsSupported"),
             "created":
             obj.get("created"),
             "modified":
             obj.get("modified"),
-            "last_used":
+            "lastUsed":
             obj.get("lastUsed"),
             "scope":
             obj.get("scope")

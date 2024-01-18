@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.managed_client import ManagedClient  # noqa: E501
+from sailpoint.beta.models.managed_client import ManagedClient
 
 
 class TestManagedClient(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestManagedClient(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ManagedClient`
         """
-        model = ManagedClient()  # noqa: E501
+        model = ManagedClient()
         if include_optional:
             return ManagedClient(
                 id = 'aClientId',

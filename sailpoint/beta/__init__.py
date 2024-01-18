@@ -33,6 +33,7 @@ from sailpoint.beta.api.entitlements_api import EntitlementsApi
 from sailpoint.beta.api.governance_groups_api import GovernanceGroupsApi
 from sailpoint.beta.api.iai_access_request_recommendations_api import IAIAccessRequestRecommendationsApi
 from sailpoint.beta.api.iai_common_access_api import IAICommonAccessApi
+from sailpoint.beta.api.iai_message_catalogs_api import IAIMessageCatalogsApi
 from sailpoint.beta.api.iai_outliers_api import IAIOutliersApi
 from sailpoint.beta.api.iai_peer_group_strategies_api import IAIPeerGroupStrategiesApi
 from sailpoint.beta.api.iai_recommendations_api import IAIRecommendationsApi
@@ -43,6 +44,7 @@ from sailpoint.beta.api.identity_history_api import IdentityHistoryApi
 from sailpoint.beta.api.identity_profiles_api import IdentityProfilesApi
 from sailpoint.beta.api.lifecycle_states_api import LifecycleStatesApi
 from sailpoint.beta.api.mfa_configuration_api import MFAConfigurationApi
+from sailpoint.beta.api.mfa_controller_api import MFAControllerApi
 from sailpoint.beta.api.managed_clients_api import ManagedClientsApi
 from sailpoint.beta.api.managed_clusters_api import ManagedClustersApi
 from sailpoint.beta.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
@@ -242,6 +244,7 @@ from sailpoint.beta.models.client_type import ClientType
 from sailpoint.beta.models.close_access_request import CloseAccessRequest
 from sailpoint.beta.models.comment import Comment
 from sailpoint.beta.models.comment_dto import CommentDto
+from sailpoint.beta.models.comment_dto1 import CommentDto1
 from sailpoint.beta.models.comment_dto_author import CommentDtoAuthor
 from sailpoint.beta.models.common_access_id_status import CommonAccessIDStatus
 from sailpoint.beta.models.common_access_item_access import CommonAccessItemAccess
@@ -296,6 +299,7 @@ from sailpoint.beta.models.dkim_attributes import DkimAttributes
 from sailpoint.beta.models.domain_address import DomainAddress
 from sailpoint.beta.models.domain_status_dto import DomainStatusDto
 from sailpoint.beta.models.dto_type import DtoType
+from sailpoint.beta.models.duo_verification_request import DuoVerificationRequest
 from sailpoint.beta.models.email_notification_option import EmailNotificationOption
 from sailpoint.beta.models.email_status_dto import EmailStatusDto
 from sailpoint.beta.models.entitlement import Entitlement
@@ -430,6 +434,10 @@ from sailpoint.beta.models.invocation_status_type import InvocationStatusType
 from sailpoint.beta.models.json_patch import JsonPatch
 from sailpoint.beta.models.json_patch_operation import JsonPatchOperation
 from sailpoint.beta.models.json_patch_operation_value import JsonPatchOperationValue
+from sailpoint.beta.models.kba_answer_request import KbaAnswerRequest
+from sailpoint.beta.models.kba_answer_request_item import KbaAnswerRequestItem
+from sailpoint.beta.models.kba_auth_response import KbaAuthResponse
+from sailpoint.beta.models.kba_auth_response_item import KbaAuthResponseItem
 from sailpoint.beta.models.latest_outlier_summary import LatestOutlierSummary
 from sailpoint.beta.models.lifecycle_state import LifecycleState
 from sailpoint.beta.models.lifecycle_state_dto import LifecycleStateDto
@@ -501,6 +509,7 @@ from sailpoint.beta.models.non_employee_source_with_ne_count import NonEmployeeS
 from sailpoint.beta.models.notification_template_context import NotificationTemplateContext
 from sailpoint.beta.models.object_export_import_options import ObjectExportImportOptions
 from sailpoint.beta.models.object_import_result import ObjectImportResult
+from sailpoint.beta.models.okta_verification_request import OktaVerificationRequest
 from sailpoint.beta.models.org_config import OrgConfig
 from sailpoint.beta.models.outlier import Outlier
 from sailpoint.beta.models.outlier_contributing_feature import OutlierContributingFeature
@@ -587,6 +596,7 @@ from sailpoint.beta.models.resource_objects_response import ResourceObjectsRespo
 from sailpoint.beta.models.review_reassign import ReviewReassign
 from sailpoint.beta.models.reviewer import Reviewer
 from sailpoint.beta.models.revocability import Revocability
+from sailpoint.beta.models.revocability_for_role import RevocabilityForRole
 from sailpoint.beta.models.role import Role
 from sailpoint.beta.models.role_assignment_source_type import RoleAssignmentSourceType
 from sailpoint.beta.models.role_bulk_delete_request import RoleBulkDeleteRequest
@@ -655,6 +665,8 @@ from sailpoint.beta.models.selector import Selector
 from sailpoint.beta.models.selector_type import SelectorType
 from sailpoint.beta.models.self_import_export_dto import SelfImportExportDto
 from sailpoint.beta.models.send_test_notification_request_dto import SendTestNotificationRequestDto
+from sailpoint.beta.models.send_token_request import SendTokenRequest
+from sailpoint.beta.models.send_token_response import SendTokenResponse
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 from sailpoint.beta.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
@@ -705,7 +717,10 @@ from sailpoint.beta.models.source_updated import SourceUpdated
 from sailpoint.beta.models.source_updated_actor import SourceUpdatedActor
 from sailpoint.beta.models.source_usage import SourceUsage
 from sailpoint.beta.models.source_usage_status import SourceUsageStatus
+from sailpoint.beta.models.sp_config_export_job import SpConfigExportJob
+from sailpoint.beta.models.sp_config_export_job_status import SpConfigExportJobStatus
 from sailpoint.beta.models.sp_config_export_results import SpConfigExportResults
+from sailpoint.beta.models.sp_config_import_job_status import SpConfigImportJobStatus
 from sailpoint.beta.models.sp_config_import_results import SpConfigImportResults
 from sailpoint.beta.models.sp_config_job import SpConfigJob
 from sailpoint.beta.models.sp_config_message import SpConfigMessage
@@ -741,6 +756,8 @@ from sailpoint.beta.models.test_external_execute_workflow_request import TestExt
 from sailpoint.beta.models.test_invocation import TestInvocation
 from sailpoint.beta.models.test_workflow200_response import TestWorkflow200Response
 from sailpoint.beta.models.test_workflow_request import TestWorkflowRequest
+from sailpoint.beta.models.token_auth_request import TokenAuthRequest
+from sailpoint.beta.models.token_auth_response import TokenAuthResponse
 from sailpoint.beta.models.transform import Transform
 from sailpoint.beta.models.transform_definition import TransformDefinition
 from sailpoint.beta.models.transform_definition1 import TransformDefinition1
@@ -761,6 +778,8 @@ from sailpoint.beta.models.va_cluster_status_change_event_previous_health_check_
 from sailpoint.beta.models.validate_filter_input_dto import ValidateFilterInputDto
 from sailpoint.beta.models.validate_filter_output_dto import ValidateFilterOutputDto
 from sailpoint.beta.models.value import Value
+from sailpoint.beta.models.verification_poll_request import VerificationPollRequest
+from sailpoint.beta.models.verification_response import VerificationResponse
 from sailpoint.beta.models.violation_context import ViolationContext
 from sailpoint.beta.models.violation_context_policy import ViolationContextPolicy
 from sailpoint.beta.models.violation_owner_assignment_config import ViolationOwnerAssignmentConfig

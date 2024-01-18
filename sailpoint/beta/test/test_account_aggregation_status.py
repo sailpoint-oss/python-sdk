@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_aggregation_status import AccountAggregationStatus  # noqa: E501
+from sailpoint.beta.models.account_aggregation_status import AccountAggregationStatus
 
 
 class TestAccountAggregationStatus(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountAggregationStatus(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountAggregationStatus`
         """
-        model = AccountAggregationStatus()  # noqa: E501
+        model = AccountAggregationStatus()
         if include_optional:
             return AccountAggregationStatus(
                 start = '2021-01-31T14:30:05.104Z',

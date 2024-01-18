@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_uncorrelated_identity import AccountUncorrelatedIdentity  # noqa: E501
+from sailpoint.beta.models.account_uncorrelated_identity import AccountUncorrelatedIdentity
 
 
 class TestAccountUncorrelatedIdentity(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountUncorrelatedIdentity(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountUncorrelatedIdentity`
         """
-        model = AccountUncorrelatedIdentity()  # noqa: E501
+        model = AccountUncorrelatedIdentity()
         if include_optional:
             return AccountUncorrelatedIdentity(
                 type = 'IDENTITY',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.entitlement_ref import EntitlementRef  # noqa: E501
+from sailpoint.beta.models.entitlement_ref import EntitlementRef
 
 
 class TestEntitlementRef(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestEntitlementRef(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `EntitlementRef`
         """
-        model = EntitlementRef()  # noqa: E501
+        model = EntitlementRef()
         if include_optional:
             return EntitlementRef(
                 type = 'ENTITLEMENT',

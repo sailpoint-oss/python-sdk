@@ -16,55 +16,66 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import Field
 from sailpoint.v2.models.get_org_settings200_response_approval_config import GetOrgSettings200ResponseApprovalConfig
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class UpdateOrgSettingsRequest(BaseModel):
     """
     UpdateOrgSettingsRequest
     """
-    country_codes: Optional[conlist(StrictStr)] = Field(None,
-                                                        alias="countryCodes")
+
+  # noqa: E501
+    country_codes: Optional[List[StrictStr]] = Field(default=None,
+                                                     alias="countryCodes")
     enable_external_password_change: Optional[StrictBool] = Field(
-        None, alias="enableExternalPasswordChange")
+        default=None, alias="enableExternalPasswordChange")
     enable_automatic_password_replay: Optional[StrictBool] = Field(
-        None, alias="enableAutomaticPasswordReplay")
+        default=None, alias="enableAutomaticPasswordReplay")
     enable_automation_generation: Optional[StrictBool] = Field(
-        None, alias="enableAutomationGeneration")
-    kba_req_answers: Optional[StrictInt] = Field(None, alias="kbaReqAnswers")
-    kba_req_for_authn: Optional[StrictInt] = Field(None,
+        default=None, alias="enableAutomationGeneration")
+    kba_req_answers: Optional[StrictInt] = Field(default=None,
+                                                 alias="kbaReqAnswers")
+    kba_req_for_authn: Optional[StrictInt] = Field(default=None,
                                                    alias="kbaReqForAuthn")
     lockout_attempt_threshold: Optional[StrictInt] = Field(
-        None, alias="lockoutAttemptThreshold")
+        default=None, alias="lockoutAttemptThreshold")
     lockout_time_minutes: Optional[StrictInt] = Field(
-        None, alias="lockoutTimeMinutes")
-    login_url: Optional[StrictStr] = Field(None, alias="loginUrl")
-    netmasks: Optional[conlist(StrictStr)] = None
+        default=None, alias="lockoutTimeMinutes")
+    login_url: Optional[StrictStr] = Field(default=None, alias="loginUrl")
+    netmasks: Optional[List[StrictStr]] = None
     notify_authentication_setting_change: Optional[StrictBool] = Field(
-        None, alias="notifyAuthenticationSettingChange")
+        default=None, alias="notifyAuthenticationSettingChange")
     password_replay_state: Optional[StrictStr] = Field(
-        None, alias="passwordReplayState")
+        default=None, alias="passwordReplayState")
     preferred_identity_invite_template: Optional[StrictStr] = Field(
-        None, alias="preferredIdentityInviteTemplate")
-    redirect_patterns: Optional[conlist(StrictStr)] = Field(
-        None, alias="redirectPatterns")
-    sso_partner_source: Optional[StrictStr] = Field(None,
+        default=None, alias="preferredIdentityInviteTemplate")
+    redirect_patterns: Optional[List[StrictStr]] = Field(
+        default=None, alias="redirectPatterns")
+    sso_partner_source: Optional[StrictStr] = Field(default=None,
                                                     alias="ssoPartnerSource")
-    system_notification_emails: Optional[conlist(StrictStr)] = Field(
-        None, alias="systemNotificationEmails")
-    track_analytics: Optional[StrictBool] = Field(None, alias="trackAnalytics")
+    system_notification_emails: Optional[List[StrictStr]] = Field(
+        default=None, alias="systemNotificationEmails")
+    track_analytics: Optional[StrictBool] = Field(default=None,
+                                                  alias="trackAnalytics")
     usage_cert_required: Optional[StrictBool] = Field(
-        None, alias="usageCertRequired")
-    usage_cert_text: Optional[StrictStr] = Field(None, alias="usageCertText")
-    username_empty_text: Optional[StrictStr] = Field(None,
+        default=None, alias="usageCertRequired")
+    usage_cert_text: Optional[StrictStr] = Field(default=None,
+                                                 alias="usageCertText")
+    username_empty_text: Optional[StrictStr] = Field(default=None,
                                                      alias="usernameEmptyText")
-    username_label: Optional[StrictStr] = Field(None, alias="usernameLabel")
-    white_list: Optional[StrictBool] = Field(None, alias="whiteList")
+    username_label: Optional[StrictStr] = Field(default=None,
+                                                alias="usernameLabel")
+    white_list: Optional[StrictBool] = Field(default=None, alias="whiteList")
     approval_config: Optional[GetOrgSettings200ResponseApprovalConfig] = Field(
-        None, alias="approvalConfig")
-    __properties = [
+        default=None, alias="approvalConfig")
+    __properties: ClassVar[List[str]] = [
         "countryCodes", "enableExternalPasswordChange",
         "enableAutomaticPasswordReplay", "enableAutomationGeneration",
         "kbaReqAnswers", "kbaReqForAuthn", "lockoutAttemptThreshold",
@@ -76,7 +87,7 @@ class UpdateOrgSettingsRequest(BaseModel):
         "usernameLabel", "whiteList", "approvalConfig"
     ]
 
-    @validator('password_replay_state')
+    @field_validator('password_replay_state')
     def password_replay_state_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -88,87 +99,97 @@ class UpdateOrgSettingsRequest(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> UpdateOrgSettingsRequest:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of UpdateOrgSettingsRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of approval_config
         if self.approval_config:
             _dict['approvalConfig'] = self.approval_config.to_dict()
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> UpdateOrgSettingsRequest:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of UpdateOrgSettingsRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return UpdateOrgSettingsRequest.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = UpdateOrgSettingsRequest.parse_obj({
-            "country_codes":
+        _obj = cls.model_validate({
+            "countryCodes":
             obj.get("countryCodes"),
-            "enable_external_password_change":
+            "enableExternalPasswordChange":
             obj.get("enableExternalPasswordChange"),
-            "enable_automatic_password_replay":
+            "enableAutomaticPasswordReplay":
             obj.get("enableAutomaticPasswordReplay"),
-            "enable_automation_generation":
+            "enableAutomationGeneration":
             obj.get("enableAutomationGeneration"),
-            "kba_req_answers":
+            "kbaReqAnswers":
             obj.get("kbaReqAnswers"),
-            "kba_req_for_authn":
+            "kbaReqForAuthn":
             obj.get("kbaReqForAuthn"),
-            "lockout_attempt_threshold":
+            "lockoutAttemptThreshold":
             obj.get("lockoutAttemptThreshold"),
-            "lockout_time_minutes":
+            "lockoutTimeMinutes":
             obj.get("lockoutTimeMinutes"),
-            "login_url":
+            "loginUrl":
             obj.get("loginUrl"),
             "netmasks":
             obj.get("netmasks"),
-            "notify_authentication_setting_change":
+            "notifyAuthenticationSettingChange":
             obj.get("notifyAuthenticationSettingChange"),
-            "password_replay_state":
+            "passwordReplayState":
             obj.get("passwordReplayState"),
-            "preferred_identity_invite_template":
+            "preferredIdentityInviteTemplate":
             obj.get("preferredIdentityInviteTemplate"),
-            "redirect_patterns":
+            "redirectPatterns":
             obj.get("redirectPatterns"),
-            "sso_partner_source":
+            "ssoPartnerSource":
             obj.get("ssoPartnerSource"),
-            "system_notification_emails":
+            "systemNotificationEmails":
             obj.get("systemNotificationEmails"),
-            "track_analytics":
+            "trackAnalytics":
             obj.get("trackAnalytics"),
-            "usage_cert_required":
+            "usageCertRequired":
             obj.get("usageCertRequired"),
-            "usage_cert_text":
+            "usageCertText":
             obj.get("usageCertText"),
-            "username_empty_text":
+            "usernameEmptyText":
             obj.get("usernameEmptyText"),
-            "username_label":
+            "usernameLabel":
             obj.get("usernameLabel"),
-            "white_list":
+            "whiteList":
             obj.get("whiteList"),
-            "approval_config":
+            "approvalConfig":
             GetOrgSettings200ResponseApprovalConfig.from_dict(
                 obj.get("approvalConfig"))
             if obj.get("approvalConfig") is not None else None

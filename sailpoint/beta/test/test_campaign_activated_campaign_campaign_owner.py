@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.campaign_activated_campaign_campaign_owner import CampaignActivatedCampaignCampaignOwner  # noqa: E501
+from sailpoint.beta.models.campaign_activated_campaign_campaign_owner import CampaignActivatedCampaignCampaignOwner
 
 
 class TestCampaignActivatedCampaignCampaignOwner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestCampaignActivatedCampaignCampaignOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CampaignActivatedCampaignCampaignOwner`
         """
-        model = CampaignActivatedCampaignCampaignOwner()  # noqa: E501
+        model = CampaignActivatedCampaignCampaignOwner()
         if include_optional:
             return CampaignActivatedCampaignCampaignOwner(
                 id = '37f080867702c1910177031320c40n27',

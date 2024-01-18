@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.saved_search_api import SavedSearchApi  # noqa: E501
+from sailpoint.v3.api.saved_search_api import SavedSearchApi
 
 
 class TestSavedSearchApi(unittest.TestCase):
     """SavedSearchApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SavedSearchApi()  # noqa: E501
+        self.api = SavedSearchApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,42 +28,42 @@ class TestSavedSearchApi(unittest.TestCase):
     def test_create_saved_search(self) -> None:
         """Test case for create_saved_search
 
-        Create a saved search  # noqa: E501
+        Create a saved search
         """
         pass
 
     def test_delete_saved_search(self) -> None:
         """Test case for delete_saved_search
 
-        Delete document by ID  # noqa: E501
+        Delete document by ID
         """
         pass
 
     def test_execute_saved_search(self) -> None:
         """Test case for execute_saved_search
 
-        Execute a saved search by ID  # noqa: E501
+        Execute a saved search by ID
         """
         pass
 
     def test_get_saved_search(self) -> None:
         """Test case for get_saved_search
 
-        Return saved search by ID  # noqa: E501
+        Return saved search by ID
         """
         pass
 
     def test_list_saved_searches(self) -> None:
         """Test case for list_saved_searches
 
-        Return a list of Saved Searches  # noqa: E501
+        A list of Saved Searches
         """
         pass
 
     def test_put_saved_search(self) -> None:
         """Test case for put_saved_search
 
-        Updates an existing saved search   # noqa: E501
+        Updates an existing saved search 
         """
         pass
 

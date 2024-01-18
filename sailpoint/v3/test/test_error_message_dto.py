@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.error_message_dto import ErrorMessageDto  # noqa: E501
+from sailpoint.v3.models.error_message_dto import ErrorMessageDto
 
 
 class TestErrorMessageDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestErrorMessageDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ErrorMessageDto`
         """
-        model = ErrorMessageDto()  # noqa: E501
+        model = ErrorMessageDto()
         if include_optional:
             return ErrorMessageDto(
                 locale = 'en-US',

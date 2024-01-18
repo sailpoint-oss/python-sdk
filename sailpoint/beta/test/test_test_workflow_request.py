@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.test_workflow_request import TestWorkflowRequest  # noqa: E501
+from sailpoint.beta.models.test_workflow_request import TestWorkflowRequest
 
 
 class TestTestWorkflowRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTestWorkflowRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TestWorkflowRequest`
         """
-        model = TestWorkflowRequest()  # noqa: E501
+        model = TestWorkflowRequest()
         if include_optional:
             return TestWorkflowRequest(
                 input = None

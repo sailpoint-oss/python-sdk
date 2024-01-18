@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_mining_potential_role_provision_request import RoleMiningPotentialRoleProvisionRequest  # noqa: E501
+from sailpoint.beta.models.role_mining_potential_role_provision_request import RoleMiningPotentialRoleProvisionRequest
 
 
 class TestRoleMiningPotentialRoleProvisionRequest(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestRoleMiningPotentialRoleProvisionRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleMiningPotentialRoleProvisionRequest`
         """
-        model = RoleMiningPotentialRoleProvisionRequest()  # noqa: E501
+        model = RoleMiningPotentialRoleProvisionRequest()
         if include_optional:
             return RoleMiningPotentialRoleProvisionRequest(
                 role_name = 'Finance - Accounting',

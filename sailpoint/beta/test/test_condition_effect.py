@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.condition_effect import ConditionEffect  # noqa: E501
+from sailpoint.beta.models.condition_effect import ConditionEffect
 
 
 class TestConditionEffect(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestConditionEffect(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ConditionEffect`
         """
-        model = ConditionEffect()  # noqa: E501
+        model = ConditionEffect()
         if include_optional:
             return ConditionEffect(
                 effect_type = 'HIDE',

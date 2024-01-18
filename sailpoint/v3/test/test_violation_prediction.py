@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.violation_prediction import ViolationPrediction  # noqa: E501
+from sailpoint.v3.models.violation_prediction import ViolationPrediction
 
 
 class TestViolationPrediction(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestViolationPrediction(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ViolationPrediction`
         """
-        model = ViolationPrediction()  # noqa: E501
+        model = ViolationPrediction()
         if include_optional:
             return ViolationPrediction(
                 violation_contexts = [

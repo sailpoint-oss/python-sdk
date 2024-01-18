@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.campaign_alert import CampaignAlert  # noqa: E501
+from sailpoint.beta.models.campaign_alert import CampaignAlert
 
 
 class TestCampaignAlert(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCampaignAlert(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CampaignAlert`
         """
-        model = CampaignAlert()  # noqa: E501
+        model = CampaignAlert()
         if include_optional:
             return CampaignAlert(
                 level = 'ERROR',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.start_invocation_input import StartInvocationInput  # noqa: E501
+from sailpoint.beta.models.start_invocation_input import StartInvocationInput
 
 
 class TestStartInvocationInput(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestStartInvocationInput(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `StartInvocationInput`
         """
-        model = StartInvocationInput()  # noqa: E501
+        model = StartInvocationInput()
         if include_optional:
             return StartInvocationInput(
                 trigger_id = 'idn:access-requested',

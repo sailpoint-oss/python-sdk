@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi  # noqa: E501
+from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
 
 
 class TestCertificationCampaignsApi(unittest.TestCase):
     """CertificationCampaignsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = CertificationCampaignsApi()  # noqa: E501
+        self.api = CertificationCampaignsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,154 +28,154 @@ class TestCertificationCampaignsApi(unittest.TestCase):
     def test_complete_campaign(self) -> None:
         """Test case for complete_campaign
 
-        Complete a Campaign  # noqa: E501
+        Complete a Campaign
         """
         pass
 
     def test_create_campaign(self) -> None:
         """Test case for create_campaign
 
-        Create a campaign  # noqa: E501
+        Create a campaign
         """
         pass
 
     def test_create_campaign_template(self) -> None:
         """Test case for create_campaign_template
 
-        Create a Campaign Template  # noqa: E501
+        Create a Campaign Template
         """
         pass
 
     def test_delete_campaign_template(self) -> None:
         """Test case for delete_campaign_template
 
-        Delete a Campaign Template  # noqa: E501
+        Delete a Campaign Template
         """
         pass
 
     def test_delete_campaign_template_schedule(self) -> None:
         """Test case for delete_campaign_template_schedule
 
-        Deletes a Campaign Template's Schedule  # noqa: E501
+        Deletes a Campaign Template's Schedule
         """
         pass
 
     def test_delete_campaigns(self) -> None:
         """Test case for delete_campaigns
 
-        Deletes Campaigns  # noqa: E501
+        Deletes Campaigns
         """
         pass
 
     def test_get_active_campaigns(self) -> None:
         """Test case for get_active_campaigns
 
-        List Campaigns  # noqa: E501
+        List Campaigns
         """
         pass
 
     def test_get_campaign(self) -> None:
         """Test case for get_campaign
 
-        Get a campaign  # noqa: E501
+        Get a campaign
         """
         pass
 
     def test_get_campaign_reports(self) -> None:
         """Test case for get_campaign_reports
 
-        Get Campaign Reports  # noqa: E501
+        Get Campaign Reports
         """
         pass
 
     def test_get_campaign_reports_config(self) -> None:
         """Test case for get_campaign_reports_config
 
-        Get Campaign Reports Configuration  # noqa: E501
+        Get Campaign Reports Configuration
         """
         pass
 
     def test_get_campaign_template(self) -> None:
         """Test case for get_campaign_template
 
-        Get a Campaign Template  # noqa: E501
+        Get a Campaign Template
         """
         pass
 
     def test_get_campaign_template_schedule(self) -> None:
         """Test case for get_campaign_template_schedule
 
-        Gets a Campaign Template's Schedule  # noqa: E501
+        Gets a Campaign Template's Schedule
         """
         pass
 
     def test_list_campaign_templates(self) -> None:
         """Test case for list_campaign_templates
 
-        List Campaign Templates  # noqa: E501
+        List Campaign Templates
         """
         pass
 
     def test_move(self) -> None:
         """Test case for move
 
-        Reassign Certifications  # noqa: E501
+        Reassign Certifications
         """
         pass
 
     def test_patch_campaign_template(self) -> None:
         """Test case for patch_campaign_template
 
-        Update a Campaign Template  # noqa: E501
+        Update a Campaign Template
         """
         pass
 
     def test_set_campaign_reports_config(self) -> None:
         """Test case for set_campaign_reports_config
 
-        Set Campaign Reports Configuration  # noqa: E501
+        Set Campaign Reports Configuration
         """
         pass
 
     def test_set_campaign_template_schedule(self) -> None:
         """Test case for set_campaign_template_schedule
 
-        Sets a Campaign Template's Schedule  # noqa: E501
+        Sets a Campaign Template's Schedule
         """
         pass
 
     def test_start_campaign(self) -> None:
         """Test case for start_campaign
 
-        Activate a Campaign  # noqa: E501
+        Activate a Campaign
         """
         pass
 
     def test_start_campaign_remediation_scan(self) -> None:
         """Test case for start_campaign_remediation_scan
 
-        Run Campaign Remediation Scan  # noqa: E501
+        Run Campaign Remediation Scan
         """
         pass
 
     def test_start_campaign_report(self) -> None:
         """Test case for start_campaign_report
 
-        Run Campaign Report  # noqa: E501
+        Run Campaign Report
         """
         pass
 
     def test_start_generate_campaign_template(self) -> None:
         """Test case for start_generate_campaign_template
 
-        Generate a Campaign from Template  # noqa: E501
+        Generate a Campaign from Template
         """
         pass
 
     def test_update_campaign(self) -> None:
         """Test case for update_campaign
 
-        Update a Campaign  # noqa: E501
+        Update a Campaign
         """
         pass
 

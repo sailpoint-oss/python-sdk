@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse  # noqa: E501
+from sailpoint.beta.models.list_form_instances_by_tenant_response import ListFormInstancesByTenantResponse
 
 
 class TestListFormInstancesByTenantResponse(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestListFormInstancesByTenantResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListFormInstancesByTenantResponse`
         """
-        model = ListFormInstancesByTenantResponse()  # noqa: E501
+        model = ListFormInstancesByTenantResponse()
         if include_optional:
             return ListFormInstancesByTenantResponse(
                 count = 1,

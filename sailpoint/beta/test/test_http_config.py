@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.http_config import HttpConfig  # noqa: E501
+from sailpoint.beta.models.http_config import HttpConfig
 
 
 class TestHttpConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestHttpConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `HttpConfig`
         """
-        model = HttpConfig()  # noqa: E501
+        model = HttpConfig()
         if include_optional:
             return HttpConfig(
                 url = 'https://www.example.com',

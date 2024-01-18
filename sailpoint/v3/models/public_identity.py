@@ -16,53 +16,72 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.identity_attribute import IdentityAttribute
 from sailpoint.v3.models.identity_reference import IdentityReference
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class PublicIdentity(BaseModel):
     """
-    Details about a public identity  # noqa: E501
+    Details about a public identity
     """
-    id: Optional[StrictStr] = Field(None, description="Identity id")
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None, description="Identity id")
     name: Optional[StrictStr] = Field(
-        None, description="Human-readable display name of identity.")
+        default=None, description="Human-readable display name of identity.")
     alias: Optional[StrictStr] = Field(
-        None, description="Alternate unique identifier for the identity.")
+        default=None,
+        description="Alternate unique identifier for the identity.")
     email: Optional[StrictStr] = Field(
-        None, description="Email address of identity.")
+        default=None, description="Email address of identity.")
     status: Optional[StrictStr] = Field(
-        None, description="The lifecycle status for the identity")
+        default=None, description="The lifecycle status for the identity")
     manager: Optional[IdentityReference] = None
-    attributes: Optional[conlist(IdentityAttribute)] = Field(
-        None, description="The public identity attributes of the identity")
-    __properties = [
+    attributes: Optional[List[IdentityAttribute]] = Field(
+        default=None,
+        description="The public identity attributes of the identity")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "alias", "email", "status", "manager", "attributes"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> PublicIdentity:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of PublicIdentity from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of manager
         if self.manager:
             _dict['manager'] = self.manager.to_dict()
@@ -74,32 +93,32 @@ class PublicIdentity(BaseModel):
                     _items.append(_item.to_dict())
             _dict['attributes'] = _items
         # set to None if email (nullable) is None
-        # and __fields_set__ contains the field
-        if self.email is None and "email" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.email is None and "email" in self.model_fields_set:
             _dict['email'] = None
 
         # set to None if status (nullable) is None
-        # and __fields_set__ contains the field
-        if self.status is None and "status" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.status is None and "status" in self.model_fields_set:
             _dict['status'] = None
 
         # set to None if manager (nullable) is None
-        # and __fields_set__ contains the field
-        if self.manager is None and "manager" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.manager is None and "manager" in self.model_fields_set:
             _dict['manager'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> PublicIdentity:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of PublicIdentity from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return PublicIdentity.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = PublicIdentity.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":

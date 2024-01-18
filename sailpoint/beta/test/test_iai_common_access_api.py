@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.iai_common_access_api import IAICommonAccessApi  # noqa: E501
+from sailpoint.beta.api.iai_common_access_api import IAICommonAccessApi
 
 
 class TestIAICommonAccessApi(unittest.TestCase):
     """IAICommonAccessApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = IAICommonAccessApi()  # noqa: E501
+        self.api = IAICommonAccessApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,21 +28,21 @@ class TestIAICommonAccessApi(unittest.TestCase):
     def test_create_common_access(self) -> None:
         """Test case for create_common_access
 
-        Create common access items  # noqa: E501
+        Create common access items
         """
         pass
 
     def test_get_common_access(self) -> None:
         """Test case for get_common_access
 
-        Get a paginated list of common access  # noqa: E501
+        Get a paginated list of common access
         """
         pass
 
     def test_update_common_access_status_in_bulk(self) -> None:
         """Test case for update_common_access_status_in_bulk
 
-        Bulk update common access status  # noqa: E501
+        Bulk update common access status
         """
         pass
 

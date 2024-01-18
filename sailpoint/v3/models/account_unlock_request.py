@@ -16,73 +16,88 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccountUnlockRequest(BaseModel):
     """
-    Request used for account unlock  # noqa: E501
+    Request used for account unlock
     """
+
+  # noqa: E501
     external_verification_id: Optional[StrictStr] = Field(
-        None,
-        alias="externalVerificationId",
+        default=None,
         description=
-        "If set, an external process validates that the user wants to proceed with this request."
-    )
+        "If set, an external process validates that the user wants to proceed with this request.",
+        alias="externalVerificationId")
     unlock_idn_account: Optional[StrictBool] = Field(
-        None,
-        alias="unlockIDNAccount",
+        default=None,
         description=
-        "If set, the IDN account is unlocked after the workflow completes.")
+        "If set, the IDN account is unlocked after the workflow completes.",
+        alias="unlockIDNAccount")
     force_provisioning: Optional[StrictBool] = Field(
-        None,
-        alias="forceProvisioning",
+        default=None,
         description=
-        "If set, provisioning updates the account attribute at the source.   This option is used when the account is not synced to ensure the attribute is updated."
-    )
-    __properties = [
+        "If set, provisioning updates the account attribute at the source.   This option is used when the account is not synced to ensure the attribute is updated.",
+        alias="forceProvisioning")
+    __properties: ClassVar[List[str]] = [
         "externalVerificationId", "unlockIDNAccount", "forceProvisioning"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccountUnlockRequest:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccountUnlockRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccountUnlockRequest:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccountUnlockRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccountUnlockRequest.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccountUnlockRequest.parse_obj({
-            "external_verification_id":
+        _obj = cls.model_validate({
+            "externalVerificationId":
             obj.get("externalVerificationId"),
-            "unlock_idn_account":
+            "unlockIDNAccount":
             obj.get("unlockIDNAccount"),
-            "force_provisioning":
+            "forceProvisioning":
             obj.get("forceProvisioning")
         })
         return _obj

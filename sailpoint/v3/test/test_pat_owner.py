@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.pat_owner import PatOwner  # noqa: E501
+from sailpoint.v3.models.pat_owner import PatOwner
 
 
 class TestPatOwner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPatOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PatOwner`
         """
-        model = PatOwner()  # noqa: E501
+        model = PatOwner()
         if include_optional:
             return PatOwner(
                 type = 'IDENTITY',

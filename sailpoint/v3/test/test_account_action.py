@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.account_action import AccountAction  # noqa: E501
+from sailpoint.v3.models.account_action import AccountAction
 
 
 class TestAccountAction(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountAction(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountAction`
         """
-        model = AccountAction()  # noqa: E501
+        model = AccountAction()
         if include_optional:
             return AccountAction(
                 action = 'ENABLE',

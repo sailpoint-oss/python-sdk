@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.service_desk_source import ServiceDeskSource  # noqa: E501
+from sailpoint.beta.models.service_desk_source import ServiceDeskSource
 
 
 class TestServiceDeskSource(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestServiceDeskSource(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ServiceDeskSource`
         """
-        model = ServiceDeskSource()  # noqa: E501
+        model = ServiceDeskSource()
         if include_optional:
             return ServiceDeskSource(
                 type = 'SOURCE',

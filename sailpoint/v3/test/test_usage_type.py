@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.usage_type import UsageType  # noqa: E501
+from sailpoint.v3.models.usage_type import UsageType
 
 
 class TestUsageType(unittest.TestCase):

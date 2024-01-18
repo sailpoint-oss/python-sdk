@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.approval_status import ApprovalStatus  # noqa: E501
+from sailpoint.beta.models.approval_status import ApprovalStatus
 
 
 class TestApprovalStatus(unittest.TestCase):

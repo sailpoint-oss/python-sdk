@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_request_pre_approval import AccessRequestPreApproval  # noqa: E501
+from sailpoint.beta.models.access_request_pre_approval import AccessRequestPreApproval
 
 
 class TestAccessRequestPreApproval(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessRequestPreApproval(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessRequestPreApproval`
         """
-        model = AccessRequestPreApproval()  # noqa: E501
+        model = AccessRequestPreApproval()
         if include_optional:
             return AccessRequestPreApproval(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',

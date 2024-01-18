@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.event import Event  # noqa: E501
+from sailpoint.v3.models.event import Event
 
 
 class TestEvent(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestEvent(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Event`
         """
-        model = Event()  # noqa: E501
+        model = Event()
         if include_optional:
             return Event(
                 id = '2c91808375d8e80a0175e1f88a575222',

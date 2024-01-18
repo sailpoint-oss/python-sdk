@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.trigger_example_input import TriggerExampleInput  # noqa: E501
+from sailpoint.beta.models.trigger_example_input import TriggerExampleInput
 
 
 class TestTriggerExampleInput(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTriggerExampleInput(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TriggerExampleInput`
         """
-        model = TriggerExampleInput()  # noqa: E501
+        model = TriggerExampleInput()
         if include_optional:
             return TriggerExampleInput(
                 access_request_id = '2c91808b6ef1d43e016efba0ce470904',

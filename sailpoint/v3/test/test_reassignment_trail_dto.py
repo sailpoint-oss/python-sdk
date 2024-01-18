@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.reassignment_trail_dto import ReassignmentTrailDTO  # noqa: E501
+from sailpoint.v3.models.reassignment_trail_dto import ReassignmentTrailDTO
 
 
 class TestReassignmentTrailDTO(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReassignmentTrailDTO(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ReassignmentTrailDTO`
         """
-        model = ReassignmentTrailDTO()  # noqa: E501
+        model = ReassignmentTrailDTO()
         if include_optional:
             return ReassignmentTrailDTO(
                 previous_owner = 'ef38f94347e94562b5bb8424a56397d8',

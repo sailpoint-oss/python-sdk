@@ -16,73 +16,89 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, conlist, constr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel
+from pydantic import Field
+from typing_extensions import Annotated
 from sailpoint.beta.models.form_condition import FormCondition
 from sailpoint.beta.models.form_definition_input import FormDefinitionInput
 from sailpoint.beta.models.form_element import FormElement
 from sailpoint.beta.models.form_owner import FormOwner
 from sailpoint.beta.models.form_used_by import FormUsedBy
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class CreateFormDefinitionRequest(BaseModel):
     """
     CreateFormDefinitionRequest
     """
-    description: Optional[constr(
-        strict=True, max_length=2000, min_length=0)] = Field(
-            None, description="Description is the form definition description")
-    form_conditions: Optional[conlist(FormCondition)] = Field(
-        None,
-        alias="formConditions",
+
+  # noqa: E501
+    description: Optional[Annotated[
+        str, Field(min_length=0, strict=True, max_length=2000)]] = Field(
+            default=None,
+            description="Description is the form definition description")
+    form_conditions: Optional[List[FormCondition]] = Field(
+        default=None,
         description=
-        "FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form"
-    )
-    form_elements: Optional[conlist(FormElement)] = Field(
-        None,
-        alias="formElements",
-        description="FormElements is a list of nested form elements")
-    form_input: Optional[conlist(FormDefinitionInput)] = Field(
-        None,
-        alias="formInput",
+        "FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form",
+        alias="formConditions")
+    form_elements: Optional[List[FormElement]] = Field(
+        default=None,
+        description="FormElements is a list of nested form elements",
+        alias="formElements")
+    form_input: Optional[List[FormDefinitionInput]] = Field(
+        default=None,
         description=
-        "FormInput is a list of form inputs that are required when creating a form-instance object"
-    )
-    name: constr(strict=True, max_length=255) = Field(
-        ..., description="Name is the form definition name")
-    owner: FormOwner = Field(...)
-    used_by: Optional[conlist(FormUsedBy)] = Field(
-        None,
-        alias="usedBy",
+        "FormInput is a list of form inputs that are required when creating a form-instance object",
+        alias="formInput")
+    name: Annotated[str, Field(strict=True, max_length=255)] = Field(
+        description="Name is the form definition name")
+    owner: FormOwner
+    used_by: Optional[List[FormUsedBy]] = Field(
+        default=None,
         description=
-        "UsedBy is a list of objects where when any system uses a particular form it reaches out to the form service to record it is currently being used"
-    )
-    __properties = [
+        "UsedBy is a list of objects where when any system uses a particular form it reaches out to the form service to record it is currently being used",
+        alias="usedBy")
+    __properties: ClassVar[List[str]] = [
         "description", "formConditions", "formElements", "formInput", "name",
         "owner", "usedBy"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CreateFormDefinitionRequest:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of CreateFormDefinitionRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in form_conditions (list)
         _items = []
         if self.form_conditions:
@@ -117,26 +133,26 @@ class CreateFormDefinitionRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CreateFormDefinitionRequest:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of CreateFormDefinitionRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CreateFormDefinitionRequest.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = CreateFormDefinitionRequest.parse_obj({
+        _obj = cls.model_validate({
             "description":
             obj.get("description"),
-            "form_conditions": [
+            "formConditions": [
                 FormCondition.from_dict(_item)
                 for _item in obj.get("formConditions")
             ] if obj.get("formConditions") is not None else None,
-            "form_elements": [
+            "formElements": [
                 FormElement.from_dict(_item)
                 for _item in obj.get("formElements")
             ] if obj.get("formElements") is not None else None,
-            "form_input": [
+            "formInput": [
                 FormDefinitionInput.from_dict(_item)
                 for _item in obj.get("formInput")
             ] if obj.get("formInput") is not None else None,
@@ -145,7 +161,7 @@ class CreateFormDefinitionRequest(BaseModel):
             "owner":
             FormOwner.from_dict(obj.get("owner"))
             if obj.get("owner") is not None else None,
-            "used_by":
+            "usedBy":
             [FormUsedBy.from_dict(_item) for _item in obj.get("usedBy")]
             if obj.get("usedBy") is not None else None
         })

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.set_lifecycle_state_request import SetLifecycleStateRequest  # noqa: E501
+from sailpoint.v3.models.set_lifecycle_state_request import SetLifecycleStateRequest
 
 
 class TestSetLifecycleStateRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSetLifecycleStateRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SetLifecycleStateRequest`
         """
-        model = SetLifecycleStateRequest()  # noqa: E501
+        model = SetLifecycleStateRequest()
         if include_optional:
             return SetLifecycleStateRequest(
                 lifecycle_state_id = '2c9180877a86e408017a8c19fefe046c'

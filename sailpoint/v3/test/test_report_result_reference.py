@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.report_result_reference import ReportResultReference  # noqa: E501
+from sailpoint.v3.models.report_result_reference import ReportResultReference
 
 
 class TestReportResultReference(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReportResultReference(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ReportResultReference`
         """
-        model = ReportResultReference()  # noqa: E501
+        model = ReportResultReference()
         if include_optional:
             return ReportResultReference(
                 type = 'REPORT_RESULT',

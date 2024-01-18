@@ -16,45 +16,62 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.identity_attributes_changed_changes_inner_new_value import IdentityAttributesChangedChangesInnerNewValue
 from sailpoint.beta.models.identity_attributes_changed_changes_inner_old_value import IdentityAttributesChangedChangesInnerOldValue
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class IdentityAttributesChangedChangesInner(BaseModel):
     """
     IdentityAttributesChangedChangesInner
     """
-    attribute: StrictStr = Field(
-        ..., description="The name of the identity attribute that changed.")
-    old_value: Optional[IdentityAttributesChangedChangesInnerOldValue] = Field(
-        None, alias="oldValue")
-    new_value: Optional[IdentityAttributesChangedChangesInnerNewValue] = Field(
-        None, alias="newValue")
-    __properties = ["attribute", "oldValue", "newValue"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+  # noqa: E501
+    attribute: StrictStr = Field(
+        description="The name of the identity attribute that changed.")
+    old_value: Optional[IdentityAttributesChangedChangesInnerOldValue] = Field(
+        default=None, alias="oldValue")
+    new_value: Optional[IdentityAttributesChangedChangesInnerNewValue] = Field(
+        default=None, alias="newValue")
+    __properties: ClassVar[List[str]] = ["attribute", "oldValue", "newValue"]
+
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> IdentityAttributesChangedChangesInner:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of IdentityAttributesChangedChangesInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of old_value
         if self.old_value:
             _dict['oldValue'] = self.old_value.to_dict()
@@ -62,29 +79,29 @@ class IdentityAttributesChangedChangesInner(BaseModel):
         if self.new_value:
             _dict['newValue'] = self.new_value.to_dict()
         # set to None if old_value (nullable) is None
-        # and __fields_set__ contains the field
-        if self.old_value is None and "old_value" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.old_value is None and "old_value" in self.model_fields_set:
             _dict['oldValue'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> IdentityAttributesChangedChangesInner:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of IdentityAttributesChangedChangesInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return IdentityAttributesChangedChangesInner.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = IdentityAttributesChangedChangesInner.parse_obj({
+        _obj = cls.model_validate({
             "attribute":
             obj.get("attribute"),
-            "old_value":
+            "oldValue":
             IdentityAttributesChangedChangesInnerOldValue.from_dict(
                 obj.get("oldValue"))
             if obj.get("oldValue") is not None else None,
-            "new_value":
+            "newValue":
             IdentityAttributesChangedChangesInnerNewValue.from_dict(
                 obj.get("newValue"))
             if obj.get("newValue") is not None else None

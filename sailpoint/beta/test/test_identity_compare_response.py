@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_compare_response import IdentityCompareResponse  # noqa: E501
+from sailpoint.beta.models.identity_compare_response import IdentityCompareResponse
 
 
 class TestIdentityCompareResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityCompareResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityCompareResponse`
         """
-        model = IdentityCompareResponse()  # noqa: E501
+        model = IdentityCompareResponse()
         if include_optional:
             return IdentityCompareResponse(
                 access_item_diff = {

@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.account_activities_api import AccountActivitiesApi  # noqa: E501
+from sailpoint.v3.api.account_activities_api import AccountActivitiesApi
 
 
 class TestAccountActivitiesApi(unittest.TestCase):
     """AccountActivitiesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = AccountActivitiesApi()  # noqa: E501
+        self.api = AccountActivitiesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,14 +28,14 @@ class TestAccountActivitiesApi(unittest.TestCase):
     def test_get_account_activity(self) -> None:
         """Test case for get_account_activity
 
-        Get an Account Activity  # noqa: E501
+        Get an Account Activity
         """
         pass
 
     def test_list_account_activities(self) -> None:
         """Test case for list_account_activities
 
-        List Account Activities  # noqa: E501
+        List Account Activities
         """
         pass
 

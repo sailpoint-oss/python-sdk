@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.connected_object_type import ConnectedObjectType  # noqa: E501
+from sailpoint.beta.models.connected_object_type import ConnectedObjectType
 
 
 class TestConnectedObjectType(unittest.TestCase):

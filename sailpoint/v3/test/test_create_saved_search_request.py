@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.create_saved_search_request import CreateSavedSearchRequest  # noqa: E501
+from sailpoint.v3.models.create_saved_search_request import CreateSavedSearchRequest
 
 
 class TestCreateSavedSearchRequest(unittest.TestCase):
@@ -33,12 +33,11 @@ class TestCreateSavedSearchRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreateSavedSearchRequest`
         """
-        model = CreateSavedSearchRequest()  # noqa: E501
+        model = CreateSavedSearchRequest()
         if include_optional:
             return CreateSavedSearchRequest(
                 name = 'Disabled accounts',
                 description = 'Disabled accounts',
-                public = False,
                 created = '2018-06-25T20:22:28.104Z',
                 modified = '2018-06-25T20:22:28.104Z',
                 indices = [identities],

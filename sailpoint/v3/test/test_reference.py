@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.reference import Reference  # noqa: E501
+from sailpoint.v3.models.reference import Reference
 
 
 class TestReference(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReference(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Reference`
         """
-        model = Reference()  # noqa: E501
+        model = Reference()
         if include_optional:
             return Reference(
                 id = '2c91808568c529c60168cca6f90c1313',

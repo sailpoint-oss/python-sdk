@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.provisioning_criteria_level2 import ProvisioningCriteriaLevel2  # noqa: E501
+from sailpoint.v3.models.provisioning_criteria_level2 import ProvisioningCriteriaLevel2
 
 
 class TestProvisioningCriteriaLevel2(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestProvisioningCriteriaLevel2(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ProvisioningCriteriaLevel2`
         """
-        model = ProvisioningCriteriaLevel2()  # noqa: E501
+        model = ProvisioningCriteriaLevel2()
         if include_optional:
             return ProvisioningCriteriaLevel2(
                 operation = 'EQUALS',

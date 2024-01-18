@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workflow_o_auth_client import WorkflowOAuthClient  # noqa: E501
+from sailpoint.beta.models.workflow_o_auth_client import WorkflowOAuthClient
 
 
 class TestWorkflowOAuthClient(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkflowOAuthClient(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkflowOAuthClient`
         """
-        model = WorkflowOAuthClient()  # noqa: E501
+        model = WorkflowOAuthClient()
         if include_optional:
             return WorkflowOAuthClient(
                 id = '1a58c03a6bf64dc2876f6988c6e2c7b7',

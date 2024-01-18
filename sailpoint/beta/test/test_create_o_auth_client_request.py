@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.create_o_auth_client_request import CreateOAuthClientRequest  # noqa: E501
+from sailpoint.beta.models.create_o_auth_client_request import CreateOAuthClientRequest
 
 
 class TestCreateOAuthClientRequest(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCreateOAuthClientRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreateOAuthClientRequest`
         """
-        model = CreateOAuthClientRequest()  # noqa: E501
+        model = CreateOAuthClientRequest()
         if include_optional:
             return CreateOAuthClientRequest(
                 business_name = 'Acme-Solar',

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **schedule** | [**Schedule1**](Schedule1.md) |  | 
 **recipients** | [**List[SearchScheduleRecipientsInner]**](SearchScheduleRecipientsInner.md) | A list of identities that should receive the scheduled search report via email. | 
 **enabled** | **bool** | Indicates if the scheduled search is enabled.  | [optional] [default to False]
-**email_empty_results** | **bool** | Indicates if email generation should not be suppressed if search returns no results.  | [optional] [default to False]
+**email_empty_results** | **bool** | Indicates if email generation should occur when search returns no results.  | [optional] [default to False]
 **display_query_details** | **bool** | Indicates if the generated email should include the query and search results preview (which could include PII).  | [optional] [default to False]
 
 ## Example

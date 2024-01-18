@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.identity_profiles_api import IdentityProfilesApi  # noqa: E501
+from sailpoint.v3.api.identity_profiles_api import IdentityProfilesApi
 
 
 class TestIdentityProfilesApi(unittest.TestCase):
     """IdentityProfilesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = IdentityProfilesApi()  # noqa: E501
+        self.api = IdentityProfilesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,56 +28,56 @@ class TestIdentityProfilesApi(unittest.TestCase):
     def test_delete_identity_profile(self) -> None:
         """Test case for delete_identity_profile
 
-        Delete an Identity Profile  # noqa: E501
+        Delete an Identity Profile
         """
         pass
 
     def test_delete_identity_profiles(self) -> None:
         """Test case for delete_identity_profiles
 
-        Delete Identity Profiles  # noqa: E501
+        Delete Identity Profiles
         """
         pass
 
     def test_export_identity_profiles(self) -> None:
         """Test case for export_identity_profiles
 
-        Export Identity Profiles  # noqa: E501
+        Export Identity Profiles
         """
         pass
 
     def test_get_default_identity_attribute_config(self) -> None:
         """Test case for get_default_identity_attribute_config
 
-        Get default Identity Attribute Config  # noqa: E501
+        Get default Identity Attribute Config
         """
         pass
 
     def test_get_identity_profile(self) -> None:
         """Test case for get_identity_profile
 
-        Get single Identity Profile  # noqa: E501
+        Get single Identity Profile
         """
         pass
 
     def test_import_identity_profiles(self) -> None:
         """Test case for import_identity_profiles
 
-        Import Identity Profiles  # noqa: E501
+        Import Identity Profiles
         """
         pass
 
     def test_list_identity_profiles(self) -> None:
         """Test case for list_identity_profiles
 
-        Identity Profiles List  # noqa: E501
+        Identity Profiles List
         """
         pass
 
     def test_sync_identity_profile(self) -> None:
         """Test case for sync_identity_profile
 
-        Process identities under profile  # noqa: E501
+        Process identities under profile
         """
         pass
 

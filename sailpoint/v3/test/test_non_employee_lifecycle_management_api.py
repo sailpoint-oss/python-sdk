@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi  # noqa: E501
+from sailpoint.v3.api.non_employee_lifecycle_management_api import NonEmployeeLifecycleManagementApi
 
 
 class TestNonEmployeeLifecycleManagementApi(unittest.TestCase):
     """NonEmployeeLifecycleManagementApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = NonEmployeeLifecycleManagementApi()  # noqa: E501
+        self.api = NonEmployeeLifecycleManagementApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,224 +28,224 @@ class TestNonEmployeeLifecycleManagementApi(unittest.TestCase):
     def test_approve_non_employee_request(self) -> None:
         """Test case for approve_non_employee_request
 
-        Approve a Non-Employee Request  # noqa: E501
+        Approve a Non-Employee Request
         """
         pass
 
     def test_create_non_employee_record(self) -> None:
         """Test case for create_non_employee_record
 
-        Create Non-Employee Record  # noqa: E501
+        Create Non-Employee Record
         """
         pass
 
     def test_create_non_employee_request(self) -> None:
         """Test case for create_non_employee_request
 
-        Create Non-Employee Request  # noqa: E501
+        Create Non-Employee Request
         """
         pass
 
     def test_create_non_employee_source(self) -> None:
         """Test case for create_non_employee_source
 
-        Create Non-Employee Source  # noqa: E501
+        Create Non-Employee Source
         """
         pass
 
     def test_create_non_employee_source_schema_attributes(self) -> None:
         """Test case for create_non_employee_source_schema_attributes
 
-        Create a new Schema Attribute for Non-Employee Source  # noqa: E501
+        Create a new Schema Attribute for Non-Employee Source
         """
         pass
 
     def test_delete_non_employee_record(self) -> None:
         """Test case for delete_non_employee_record
 
-        Delete Non-Employee Record  # noqa: E501
+        Delete Non-Employee Record
         """
         pass
 
     def test_delete_non_employee_records_in_bulk(self) -> None:
         """Test case for delete_non_employee_records_in_bulk
 
-        Delete Multiple Non-Employee Records  # noqa: E501
+        Delete Multiple Non-Employee Records
         """
         pass
 
     def test_delete_non_employee_request(self) -> None:
         """Test case for delete_non_employee_request
 
-        Delete Non-Employee Request  # noqa: E501
+        Delete Non-Employee Request
         """
         pass
 
     def test_delete_non_employee_schema_attribute(self) -> None:
         """Test case for delete_non_employee_schema_attribute
 
-        Delete a Schema Attribute for Non-Employee Source  # noqa: E501
+        Delete a Schema Attribute for Non-Employee Source
         """
         pass
 
     def test_delete_non_employee_source(self) -> None:
         """Test case for delete_non_employee_source
 
-        Delete Non-Employee Source  # noqa: E501
+        Delete Non-Employee Source
         """
         pass
 
     def test_delete_non_employee_source_schema_attributes(self) -> None:
         """Test case for delete_non_employee_source_schema_attributes
 
-        Delete all custom schema attributes for Non-Employee Source  # noqa: E501
+        Delete all custom schema attributes for Non-Employee Source
         """
         pass
 
     def test_export_non_employee_records(self) -> None:
         """Test case for export_non_employee_records
 
-        Exports Non-Employee Records to CSV  # noqa: E501
+        Exports Non-Employee Records to CSV
         """
         pass
 
     def test_export_non_employee_source_schema_template(self) -> None:
         """Test case for export_non_employee_source_schema_template
 
-        Exports Source Schema Template  # noqa: E501
+        Exports Source Schema Template
         """
         pass
 
     def test_get_non_employee_approval(self) -> None:
         """Test case for get_non_employee_approval
 
-        Get a non-employee approval item detail  # noqa: E501
+        Get a non-employee approval item detail
         """
         pass
 
     def test_get_non_employee_approval_summary(self) -> None:
         """Test case for get_non_employee_approval_summary
 
-        Get Summary of Non-Employee Approval Requests  # noqa: E501
+        Get Summary of Non-Employee Approval Requests
         """
         pass
 
     def test_get_non_employee_bulk_upload_status(self) -> None:
         """Test case for get_non_employee_bulk_upload_status
 
-        Obtain the status of bulk upload on the source  # noqa: E501
+        Obtain the status of bulk upload on the source
         """
         pass
 
     def test_get_non_employee_record(self) -> None:
         """Test case for get_non_employee_record
 
-        Get a Non-Employee Record  # noqa: E501
+        Get a Non-Employee Record
         """
         pass
 
     def test_get_non_employee_request(self) -> None:
         """Test case for get_non_employee_request
 
-        Get a Non-Employee Request  # noqa: E501
+        Get a Non-Employee Request
         """
         pass
 
     def test_get_non_employee_request_summary(self) -> None:
         """Test case for get_non_employee_request_summary
 
-        Get Summary of Non-Employee Requests  # noqa: E501
+        Get Summary of Non-Employee Requests
         """
         pass
 
     def test_get_non_employee_schema_attribute(self) -> None:
         """Test case for get_non_employee_schema_attribute
 
-        Get Schema Attribute Non-Employee Source  # noqa: E501
+        Get Schema Attribute Non-Employee Source
         """
         pass
 
     def test_get_non_employee_source(self) -> None:
         """Test case for get_non_employee_source
 
-        Get a Non-Employee Source  # noqa: E501
+        Get a Non-Employee Source
         """
         pass
 
     def test_get_non_employee_source_schema_attributes(self) -> None:
         """Test case for get_non_employee_source_schema_attributes
 
-        List Schema Attributes Non-Employee Source  # noqa: E501
+        List Schema Attributes Non-Employee Source
         """
         pass
 
     def test_import_non_employee_records_in_bulk(self) -> None:
         """Test case for import_non_employee_records_in_bulk
 
-        Imports, or Updates, Non-Employee Records  # noqa: E501
+        Imports, or Updates, Non-Employee Records
         """
         pass
 
     def test_list_non_employee_approvals(self) -> None:
         """Test case for list_non_employee_approvals
 
-        Get List of Non-Employee Approval Requests  # noqa: E501
+        Get List of Non-Employee Approval Requests
         """
         pass
 
     def test_list_non_employee_records(self) -> None:
         """Test case for list_non_employee_records
 
-        List Non-Employee Records  # noqa: E501
+        List Non-Employee Records
         """
         pass
 
     def test_list_non_employee_requests(self) -> None:
         """Test case for list_non_employee_requests
 
-        List Non-Employee Requests  # noqa: E501
+        List Non-Employee Requests
         """
         pass
 
     def test_list_non_employee_sources(self) -> None:
         """Test case for list_non_employee_sources
 
-        List Non-Employee Sources  # noqa: E501
+        List Non-Employee Sources
         """
         pass
 
     def test_patch_non_employee_record(self) -> None:
         """Test case for patch_non_employee_record
 
-        Patch Non-Employee Record  # noqa: E501
+        Patch Non-Employee Record
         """
         pass
 
     def test_patch_non_employee_schema_attribute(self) -> None:
         """Test case for patch_non_employee_schema_attribute
 
-        Patch a Schema Attribute for Non-Employee Source  # noqa: E501
+        Patch a Schema Attribute for Non-Employee Source
         """
         pass
 
     def test_patch_non_employee_source(self) -> None:
         """Test case for patch_non_employee_source
 
-        Patch a Non-Employee Source  # noqa: E501
+        Patch a Non-Employee Source
         """
         pass
 
     def test_reject_non_employee_request(self) -> None:
         """Test case for reject_non_employee_request
 
-        Reject a Non-Employee Request  # noqa: E501
+        Reject a Non-Employee Request
         """
         pass
 
     def test_update_non_employee_record(self) -> None:
         """Test case for update_non_employee_record
 
-        Update Non-Employee Record  # noqa: E501
+        Update Non-Employee Record
         """
         pass
 

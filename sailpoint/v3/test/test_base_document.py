@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.base_document import BaseDocument  # noqa: E501
+from sailpoint.v3.models.base_document import BaseDocument
 
 
 class TestBaseDocument(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestBaseDocument(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `BaseDocument`
         """
-        model = BaseDocument()  # noqa: E501
+        model = BaseDocument()
         if include_optional:
             return BaseDocument(
                 id = '2c91808375d8e80a0175e1f88a575222',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.segment import Segment  # noqa: E501
+from sailpoint.v3.models.segment import Segment
 
 
 class TestSegment(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSegment(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Segment`
         """
-        model = Segment()  # noqa: E501
+        model = Segment()
         if include_optional:
             return Segment(
                 id = '0f11f2a4-7c94-4bf3-a2bd-742580fe3bde',

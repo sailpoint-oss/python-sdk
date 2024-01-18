@@ -16,47 +16,62 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel
+from pydantic import Field
 from sailpoint.beta.models.role_criteria_level1 import RoleCriteriaLevel1
 from sailpoint.beta.models.role_membership_identity import RoleMembershipIdentity
 from sailpoint.beta.models.role_membership_selector_type import RoleMembershipSelectorType
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RoleMembershipSelector(BaseModel):
     """
-    When present, specifies that the Role is to be granted to Identities which either satisfy specific criteria or which are members of a given list of Identities.  # noqa: E501
-    """
+    When present, specifies that the Role is to be granted to Identities which either satisfy specific criteria or which are members of a given list of Identities.
+    """ # noqa: E501
     type: Optional[RoleMembershipSelectorType] = None
     criteria: Optional[RoleCriteriaLevel1] = None
-    identities: Optional[conlist(RoleMembershipIdentity)] = Field(
-        None,
+    identities: Optional[List[RoleMembershipIdentity]] = Field(
+        default=None,
         description=
         "Defines role membership as being exclusive to the specified Identities, when type is IDENTITY_LIST."
     )
-    __properties = ["type", "criteria", "identities"]
+    __properties: ClassVar[List[str]] = ["type", "criteria", "identities"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RoleMembershipSelector:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RoleMembershipSelector from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of criteria
         if self.criteria:
             _dict['criteria'] = self.criteria.to_dict()
@@ -68,27 +83,27 @@ class RoleMembershipSelector(BaseModel):
                     _items.append(_item.to_dict())
             _dict['identities'] = _items
         # set to None if criteria (nullable) is None
-        # and __fields_set__ contains the field
-        if self.criteria is None and "criteria" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.criteria is None and "criteria" in self.model_fields_set:
             _dict['criteria'] = None
 
         # set to None if identities (nullable) is None
-        # and __fields_set__ contains the field
-        if self.identities is None and "identities" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.identities is None and "identities" in self.model_fields_set:
             _dict['identities'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RoleMembershipSelector:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of RoleMembershipSelector from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RoleMembershipSelector.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RoleMembershipSelector.parse_obj({
+        _obj = cls.model_validate({
             "type":
             obj.get("type"),
             "criteria":

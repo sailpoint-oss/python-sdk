@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.app_all_of_account import AppAllOfAccount  # noqa: E501
+from sailpoint.v3.models.app_all_of_account import AppAllOfAccount
 
 
 class TestAppAllOfAccount(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAppAllOfAccount(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AppAllOfAccount`
         """
-        model = AppAllOfAccount()  # noqa: E501
+        model = AppAllOfAccount()
         if include_optional:
             return AppAllOfAccount(
                 id = '2c9180837dfe6949017e21f3d8cd6d49',

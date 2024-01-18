@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.email_status_dto import EmailStatusDto  # noqa: E501
+from sailpoint.beta.models.email_status_dto import EmailStatusDto
 
 
 class TestEmailStatusDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestEmailStatusDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `EmailStatusDto`
         """
-        model = EmailStatusDto()  # noqa: E501
+        model = EmailStatusDto()
         if include_optional:
             return EmailStatusDto(
                 id = '',

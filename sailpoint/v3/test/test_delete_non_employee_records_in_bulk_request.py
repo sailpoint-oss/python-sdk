@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest  # noqa: E501
+from sailpoint.v3.models.delete_non_employee_records_in_bulk_request import DeleteNonEmployeeRecordsInBulkRequest
 
 
 class TestDeleteNonEmployeeRecordsInBulkRequest(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestDeleteNonEmployeeRecordsInBulkRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `DeleteNonEmployeeRecordsInBulkRequest`
         """
-        model = DeleteNonEmployeeRecordsInBulkRequest()  # noqa: E501
+        model = DeleteNonEmployeeRecordsInBulkRequest()
         if include_optional:
             return DeleteNonEmployeeRecordsInBulkRequest(
                 ids = [2b838de9-db9b-abcf-e646-d4f274ad4238, 2d838de9-db9b-abcf-e646-d4f274ad4238]

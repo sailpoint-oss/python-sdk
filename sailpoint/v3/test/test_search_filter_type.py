@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.search_filter_type import SearchFilterType  # noqa: E501
+from sailpoint.v3.models.search_filter_type import SearchFilterType
 
 
 class TestSearchFilterType(unittest.TestCase):

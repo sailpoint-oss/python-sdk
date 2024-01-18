@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_requested import AccessRequested  # noqa: E501
+from sailpoint.beta.models.access_requested import AccessRequested
 
 
 class TestAccessRequested(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessRequested(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessRequested`
         """
-        model = AccessRequested()  # noqa: E501
+        model = AccessRequested()
         if include_optional:
             return AccessRequested(
                 access_request = sailpoint.beta.models.access_request_response.AccessRequestResponse(

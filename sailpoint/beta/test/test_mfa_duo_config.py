@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.mfa_duo_config import MfaDuoConfig  # noqa: E501
+from sailpoint.beta.models.mfa_duo_config import MfaDuoConfig
 
 
 class TestMfaDuoConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestMfaDuoConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `MfaDuoConfig`
         """
-        model = MfaDuoConfig()  # noqa: E501
+        model = MfaDuoConfig()
         if include_optional:
             return MfaDuoConfig(
                 mfa_method = 'duo-web',

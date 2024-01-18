@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.password_change_response import PasswordChangeResponse  # noqa: E501
+from sailpoint.v3.models.password_change_response import PasswordChangeResponse
 
 
 class TestPasswordChangeResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPasswordChangeResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PasswordChangeResponse`
         """
-        model = PasswordChangeResponse()  # noqa: E501
+        model = PasswordChangeResponse()
         if include_optional:
             return PasswordChangeResponse(
                 request_id = '089899f13a8f4da7824996191587bab9',

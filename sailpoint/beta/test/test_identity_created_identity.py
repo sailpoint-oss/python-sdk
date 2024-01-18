@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_created_identity import IdentityCreatedIdentity  # noqa: E501
+from sailpoint.beta.models.identity_created_identity import IdentityCreatedIdentity
 
 
 class TestIdentityCreatedIdentity(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityCreatedIdentity(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityCreatedIdentity`
         """
-        model = IdentityCreatedIdentity()  # noqa: E501
+        model = IdentityCreatedIdentity()
         if include_optional:
             return IdentityCreatedIdentity(
                 type = 'IDENTITY',

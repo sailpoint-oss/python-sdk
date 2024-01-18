@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.mail_from_attributes_dto import MailFromAttributesDto  # noqa: E501
+from sailpoint.beta.models.mail_from_attributes_dto import MailFromAttributesDto
 
 
 class TestMailFromAttributesDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestMailFromAttributesDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `MailFromAttributesDto`
         """
-        model = MailFromAttributesDto()  # noqa: E501
+        model = MailFromAttributesDto()
         if include_optional:
             return MailFromAttributesDto(
                 identity = 'BobSmith@sailpoint.com',

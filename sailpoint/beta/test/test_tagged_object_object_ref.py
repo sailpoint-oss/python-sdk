@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.tagged_object_object_ref import TaggedObjectObjectRef  # noqa: E501
+from sailpoint.beta.models.tagged_object_object_ref import TaggedObjectObjectRef
 
 
 class TestTaggedObjectObjectRef(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTaggedObjectObjectRef(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TaggedObjectObjectRef`
         """
-        model = TaggedObjectObjectRef()  # noqa: E501
+        model = TaggedObjectObjectRef()
         if include_optional:
             return TaggedObjectObjectRef(
                 type = 'IDENTITY',

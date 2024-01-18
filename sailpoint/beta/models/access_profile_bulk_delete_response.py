@@ -16,52 +16,68 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.access_profile_usage import AccessProfileUsage
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccessProfileBulkDeleteResponse(BaseModel):
     """
     AccessProfileBulkDeleteResponse
     """
+
+  # noqa: E501
     task_id: Optional[StrictStr] = Field(
-        None,
-        alias="taskId",
+        default=None,
         description=
-        "ID of the task which is executing the bulk deletion. This can be passed to the **/task-status** API to track status."
-    )
-    pending: Optional[conlist(StrictStr)] = Field(
-        None,
+        "ID of the task which is executing the bulk deletion. This can be passed to the **/task-status** API to track status.",
+        alias="taskId")
+    pending: Optional[List[StrictStr]] = Field(
+        default=None,
         description="List of IDs of Access Profiles which are pending deletion."
     )
-    in_use: Optional[conlist(AccessProfileUsage)] = Field(
-        None,
-        alias="inUse",
-        description="List of usages of Access Profiles targeted for deletion.")
-    __properties = ["taskId", "pending", "inUse"]
+    in_use: Optional[List[AccessProfileUsage]] = Field(
+        default=None,
+        description="List of usages of Access Profiles targeted for deletion.",
+        alias="inUse")
+    __properties: ClassVar[List[str]] = ["taskId", "pending", "inUse"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccessProfileBulkDeleteResponse:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccessProfileBulkDeleteResponse from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in in_use (list)
         _items = []
         if self.in_use:
@@ -72,20 +88,20 @@ class AccessProfileBulkDeleteResponse(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccessProfileBulkDeleteResponse:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccessProfileBulkDeleteResponse from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccessProfileBulkDeleteResponse.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccessProfileBulkDeleteResponse.parse_obj({
-            "task_id":
+        _obj = cls.model_validate({
+            "taskId":
             obj.get("taskId"),
             "pending":
             obj.get("pending"),
-            "in_use": [
+            "inUse": [
                 AccessProfileUsage.from_dict(_item)
                 for _item in obj.get("inUse")
             ] if obj.get("inUse") is not None else None

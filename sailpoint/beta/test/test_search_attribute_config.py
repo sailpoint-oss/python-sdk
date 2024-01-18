@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig  # noqa: E501
+from sailpoint.beta.models.search_attribute_config import SearchAttributeConfig
 
 
 class TestSearchAttributeConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSearchAttributeConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SearchAttributeConfig`
         """
-        model = SearchAttributeConfig()  # noqa: E501
+        model = SearchAttributeConfig()
         if include_optional:
             return SearchAttributeConfig(
                 name = 'newMailAttribute',

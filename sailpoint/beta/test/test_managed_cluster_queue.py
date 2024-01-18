@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.managed_cluster_queue import ManagedClusterQueue  # noqa: E501
+from sailpoint.beta.models.managed_cluster_queue import ManagedClusterQueue
 
 
 class TestManagedClusterQueue(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestManagedClusterQueue(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ManagedClusterQueue`
         """
-        model = ManagedClusterQueue()  # noqa: E501
+        model = ManagedClusterQueue()
         if include_optional:
             return ManagedClusterQueue(
                 name = 'megapod-useast1-denali-lwt-cluster-1533',

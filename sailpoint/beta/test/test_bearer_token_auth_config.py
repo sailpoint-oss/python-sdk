@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.bearer_token_auth_config import BearerTokenAuthConfig  # noqa: E501
+from sailpoint.beta.models.bearer_token_auth_config import BearerTokenAuthConfig
 
 
 class TestBearerTokenAuthConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestBearerTokenAuthConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `BearerTokenAuthConfig`
         """
-        model = BearerTokenAuthConfig()  # noqa: E501
+        model = BearerTokenAuthConfig()
         if include_optional:
             return BearerTokenAuthConfig(
                 bearer_token = ''

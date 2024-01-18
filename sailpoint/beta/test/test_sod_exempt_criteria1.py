@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.sod_exempt_criteria1 import SodExemptCriteria1  # noqa: E501
+from sailpoint.beta.models.sod_exempt_criteria1 import SodExemptCriteria1
 
 
 class TestSodExemptCriteria1(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSodExemptCriteria1(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SodExemptCriteria1`
         """
-        model = SodExemptCriteria1()  # noqa: E501
+        model = SodExemptCriteria1()
         if include_optional:
             return SodExemptCriteria1(
                 existing = True,

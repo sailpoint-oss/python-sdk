@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v2.models.list_workgroups200_response_inner import ListWorkgroups200ResponseInner  # noqa: E501
+from sailpoint.v2.models.list_workgroups200_response_inner import ListWorkgroups200ResponseInner
 
 
 class TestListWorkgroups200ResponseInner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestListWorkgroups200ResponseInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListWorkgroups200ResponseInner`
         """
-        model = ListWorkgroups200ResponseInner()  # noqa: E501
+        model = ListWorkgroups200ResponseInner()
         if include_optional:
             return ListWorkgroups200ResponseInner(
                 connection_count = 2,

@@ -16,54 +16,73 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.error_message_dto import ErrorMessageDto
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ErrorResponseDto(BaseModel):
     """
     ErrorResponseDto
     """
+
+  # noqa: E501
     detail_code: Optional[StrictStr] = Field(
-        None,
-        alias="detailCode",
+        default=None,
         description=
-        "Fine-grained error code providing more detail of the error.")
+        "Fine-grained error code providing more detail of the error.",
+        alias="detailCode")
     tracking_id: Optional[StrictStr] = Field(
-        None,
-        alias="trackingId",
-        description="Unique tracking id for the error.")
-    messages: Optional[conlist(ErrorMessageDto)] = Field(
-        None, description="Generic localized reason for error")
-    causes: Optional[conlist(ErrorMessageDto)] = Field(
-        None,
+        default=None,
+        description="Unique tracking id for the error.",
+        alias="trackingId")
+    messages: Optional[List[ErrorMessageDto]] = Field(
+        default=None, description="Generic localized reason for error")
+    causes: Optional[List[ErrorMessageDto]] = Field(
+        default=None,
         description=
         "Plain-text descriptive reasons to provide additional detail to the text provided in the messages field"
     )
-    __properties = ["detailCode", "trackingId", "messages", "causes"]
+    __properties: ClassVar[List[str]] = [
+        "detailCode", "trackingId", "messages", "causes"
+    ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ErrorResponseDto:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ErrorResponseDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
         _items = []
         if self.messages:
@@ -81,18 +100,18 @@ class ErrorResponseDto(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ErrorResponseDto:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ErrorResponseDto from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ErrorResponseDto.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ErrorResponseDto.parse_obj({
-            "detail_code":
+        _obj = cls.model_validate({
+            "detailCode":
             obj.get("detailCode"),
-            "tracking_id":
+            "trackingId":
             obj.get("trackingId"),
             "messages": [
                 ErrorMessageDto.from_dict(_item)

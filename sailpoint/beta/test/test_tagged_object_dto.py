@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.tagged_object_dto import TaggedObjectDto  # noqa: E501
+from sailpoint.beta.models.tagged_object_dto import TaggedObjectDto
 
 
 class TestTaggedObjectDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTaggedObjectDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TaggedObjectDto`
         """
-        model = TaggedObjectDto()  # noqa: E501
+        model = TaggedObjectDto()
         if include_optional:
             return TaggedObjectDto(
                 type = 'IDENTITY',

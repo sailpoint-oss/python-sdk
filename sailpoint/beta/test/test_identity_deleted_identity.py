@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_deleted_identity import IdentityDeletedIdentity  # noqa: E501
+from sailpoint.beta.models.identity_deleted_identity import IdentityDeletedIdentity
 
 
 class TestIdentityDeletedIdentity(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityDeletedIdentity(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityDeletedIdentity`
         """
-        model = IdentityDeletedIdentity()  # noqa: E501
+        model = IdentityDeletedIdentity()
         if include_optional:
             return IdentityDeletedIdentity(
                 type = 'IDENTITY',

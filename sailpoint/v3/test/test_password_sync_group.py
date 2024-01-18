@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.password_sync_group import PasswordSyncGroup  # noqa: E501
+from sailpoint.v3.models.password_sync_group import PasswordSyncGroup
 
 
 class TestPasswordSyncGroup(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPasswordSyncGroup(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PasswordSyncGroup`
         """
-        model = PasswordSyncGroup()  # noqa: E501
+        model = PasswordSyncGroup()
         if include_optional:
             return PasswordSyncGroup(
                 id = '6881f631-3bd5-4213-9c75-8e05cc3e35dd',

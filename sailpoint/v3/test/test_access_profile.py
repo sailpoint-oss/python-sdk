@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access_profile import AccessProfile  # noqa: E501
+from sailpoint.v3.models.access_profile import AccessProfile
 
 
 class TestAccessProfile(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessProfile(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessProfile`
         """
-        model = AccessProfile()  # noqa: E501
+        model = AccessProfile()
         if include_optional:
             return AccessProfile(
                 id = '2c91808a7190d06e01719938fcd20792',
@@ -66,8 +66,6 @@ class TestAccessProfile(unittest.TestCase):
                             approver_id = '46c79819-a69f-49a2-becb-12c971ae66c6', )
                         ], ),
                 revocation_request_config = sailpoint.v3.models.revocability.Revocability(
-                    comments_required = False, 
-                    denial_comments_required = False, 
                     approval_schemes = [
                         sailpoint.v3.models.access_profile_approval_scheme.AccessProfileApprovalScheme(
                             approver_type = 'GOVERNANCE_GROUP', 

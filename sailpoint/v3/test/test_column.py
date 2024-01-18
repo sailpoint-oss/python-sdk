@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.column import Column  # noqa: E501
+from sailpoint.v3.models.column import Column
 
 
 class TestColumn(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestColumn(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Column`
         """
-        model = Column()  # noqa: E501
+        model = Column()
         if include_optional:
             return Column(
                 field = 'email',

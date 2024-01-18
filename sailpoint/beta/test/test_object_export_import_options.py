@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.object_export_import_options import ObjectExportImportOptions  # noqa: E501
+from sailpoint.beta.models.object_export_import_options import ObjectExportImportOptions
 
 
 class TestObjectExportImportOptions(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestObjectExportImportOptions(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ObjectExportImportOptions`
         """
-        model = ObjectExportImportOptions()  # noqa: E501
+        model = ObjectExportImportOptions()
         if include_optional:
             return ObjectExportImportOptions(
                 included_ids = [

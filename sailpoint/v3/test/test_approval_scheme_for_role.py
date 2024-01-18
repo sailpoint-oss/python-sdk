@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.approval_scheme_for_role import ApprovalSchemeForRole  # noqa: E501
+from sailpoint.v3.models.approval_scheme_for_role import ApprovalSchemeForRole
 
 
 class TestApprovalSchemeForRole(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestApprovalSchemeForRole(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ApprovalSchemeForRole`
         """
-        model = ApprovalSchemeForRole()  # noqa: E501
+        model = ApprovalSchemeForRole()
         if include_optional:
             return ApprovalSchemeForRole(
                 approver_type = 'GOVERNANCE_GROUP',

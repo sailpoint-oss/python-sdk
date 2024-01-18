@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_request_recommendation_item_type import AccessRequestRecommendationItemType  # noqa: E501
+from sailpoint.beta.models.access_request_recommendation_item_type import AccessRequestRecommendationItemType
 
 
 class TestAccessRequestRecommendationItemType(unittest.TestCase):

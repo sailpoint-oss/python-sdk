@@ -17,95 +17,100 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictStr, field_validator
+from pydantic import Field
 from sailpoint.beta.models.access_item_requested_for import AccessItemRequestedFor
 from sailpoint.beta.models.access_item_requester import AccessItemRequester
 from sailpoint.beta.models.access_request_phases import AccessRequestPhases
 from sailpoint.beta.models.access_request_type import AccessRequestType
 from sailpoint.beta.models.approval_status_dto import ApprovalStatusDto
 from sailpoint.beta.models.cancelled_request_details import CancelledRequestDetails
-from sailpoint.beta.models.comment_dto import CommentDto
+from sailpoint.beta.models.comment_dto1 import CommentDto1
 from sailpoint.beta.models.error_message_dto import ErrorMessageDto
 from sailpoint.beta.models.manual_work_item_details import ManualWorkItemDetails
 from sailpoint.beta.models.pre_approval_trigger_details import PreApprovalTriggerDetails
 from sailpoint.beta.models.provisioning_details import ProvisioningDetails
 from sailpoint.beta.models.requested_item_status_request_state import RequestedItemStatusRequestState
 from sailpoint.beta.models.sod_violation_context_check_completed import SodViolationContextCheckCompleted
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RequestedItemStatus(BaseModel):
     """
     RequestedItemStatus
     """
+
+  # noqa: E501
     name: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description="Human-readable display name of the item being requested.")
-    type: Optional[StrictStr] = Field(None,
+    type: Optional[StrictStr] = Field(default=None,
                                       description="Type of requested object.")
     cancelled_request_details: Optional[CancelledRequestDetails] = Field(
-        None, alias="cancelledRequestDetails")
-    error_messages: Optional[conlist(conlist(ErrorMessageDto))] = Field(
-        None,
-        alias="errorMessages",
+        default=None, alias="cancelledRequestDetails")
+    error_messages: Optional[List[List[ErrorMessageDto]]] = Field(
+        default=None,
         description=
-        "List of list of localized error messages, if any, encountered during the approval/provisioning process."
-    )
+        "List of list of localized error messages, if any, encountered during the approval/provisioning process.",
+        alias="errorMessages")
     state: Optional[RequestedItemStatusRequestState] = None
-    approval_details: Optional[conlist(ApprovalStatusDto)] = Field(
-        None,
-        alias="approvalDetails",
-        description="Approval details for each item.")
-    manual_work_item_details: Optional[conlist(ManualWorkItemDetails)] = Field(
-        None,
-        alias="manualWorkItemDetails",
-        description="Manual work items created for provisioning the item.")
+    approval_details: Optional[List[ApprovalStatusDto]] = Field(
+        default=None,
+        description="Approval details for each item.",
+        alias="approvalDetails")
+    manual_work_item_details: Optional[List[ManualWorkItemDetails]] = Field(
+        default=None,
+        description="Manual work items created for provisioning the item.",
+        alias="manualWorkItemDetails")
     account_activity_item_id: Optional[StrictStr] = Field(
-        None,
-        alias="accountActivityItemId",
-        description="Id of associated account activity item.")
-    request_type: Optional[AccessRequestType] = Field(None,
+        default=None,
+        description="Id of associated account activity item.",
+        alias="accountActivityItemId")
+    request_type: Optional[AccessRequestType] = Field(default=None,
                                                       alias="requestType")
     modified: Optional[datetime] = Field(
-        None, description="When the request was last modified.")
+        default=None, description="When the request was last modified.")
     created: Optional[datetime] = Field(
-        None, description="When the request was created.")
+        default=None, description="When the request was created.")
     requester: Optional[AccessItemRequester] = None
     requested_for: Optional[AccessItemRequestedFor] = Field(
-        None, alias="requestedFor")
-    requester_comment: Optional[CommentDto] = Field(None,
-                                                    alias="requesterComment")
+        default=None, alias="requestedFor")
+    requester_comment: Optional[CommentDto1] = Field(default=None,
+                                                     alias="requesterComment")
     sod_violation_context: Optional[SodViolationContextCheckCompleted] = Field(
-        None, alias="sodViolationContext")
+        default=None, alias="sodViolationContext")
     provisioning_details: Optional[ProvisioningDetails] = Field(
-        None, alias="provisioningDetails")
+        default=None, alias="provisioningDetails")
     pre_approval_trigger_details: Optional[PreApprovalTriggerDetails] = Field(
-        None, alias="preApprovalTriggerDetails")
-    access_request_phases: Optional[conlist(AccessRequestPhases)] = Field(
-        None,
-        alias="accessRequestPhases",
+        default=None, alias="preApprovalTriggerDetails")
+    access_request_phases: Optional[List[AccessRequestPhases]] = Field(
+        default=None,
         description=
-        "A list of Phases that the Access Request has gone through in order, to help determine the status of the request."
-    )
+        "A list of Phases that the Access Request has gone through in order, to help determine the status of the request.",
+        alias="accessRequestPhases")
     description: Optional[StrictStr] = Field(
-        None, description="Description associated to the requested object.")
+        default=None,
+        description="Description associated to the requested object.")
     remove_date: Optional[datetime] = Field(
-        None,
-        alias="removeDate",
-        description="When the role access is scheduled for removal.")
+        default=None,
+        description="When the role access is scheduled for removal.",
+        alias="removeDate")
     cancelable: Optional[StrictBool] = Field(
-        None, description="True if the request can be canceled.")
+        default=None, description="True if the request can be canceled.")
     access_request_id: Optional[StrictStr] = Field(
-        None,
-        alias="accessRequestId",
-        description="This is the account activity id.")
+        default=None,
+        description="This is the account activity id.",
+        alias="accessRequestId")
     client_metadata: Optional[Dict[str, StrictStr]] = Field(
-        None,
-        alias="clientMetadata",
+        default=None,
         description=
-        "Arbitrary key-value pairs, if any were included in the corresponding access request"
-    )
-    __properties = [
+        "Arbitrary key-value pairs, if any were included in the corresponding access request",
+        alias="clientMetadata")
+    __properties: ClassVar[List[str]] = [
         "name", "type", "cancelledRequestDetails", "errorMessages", "state",
         "approvalDetails", "manualWorkItemDetails", "accountActivityItemId",
         "requestType", "modified", "created", "requester", "requestedFor",
@@ -114,7 +119,7 @@ class RequestedItemStatus(BaseModel):
         "removeDate", "cancelable", "accessRequestId", "clientMetadata"
     ]
 
-    @validator('type')
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -126,27 +131,37 @@ class RequestedItemStatus(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> RequestedItemStatus:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RequestedItemStatus from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of cancelled_request_details
         if self.cancelled_request_details:
             _dict[
@@ -204,62 +219,62 @@ class RequestedItemStatus(BaseModel):
                     _items.append(_item.to_dict())
             _dict['accessRequestPhases'] = _items
         # set to None if error_messages (nullable) is None
-        # and __fields_set__ contains the field
-        if self.error_messages is None and "error_messages" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.error_messages is None and "error_messages" in self.model_fields_set:
             _dict['errorMessages'] = None
 
         # set to None if manual_work_item_details (nullable) is None
-        # and __fields_set__ contains the field
-        if self.manual_work_item_details is None and "manual_work_item_details" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.manual_work_item_details is None and "manual_work_item_details" in self.model_fields_set:
             _dict['manualWorkItemDetails'] = None
 
         # set to None if remove_date (nullable) is None
-        # and __fields_set__ contains the field
-        if self.remove_date is None and "remove_date" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.remove_date is None and "remove_date" in self.model_fields_set:
             _dict['removeDate'] = None
 
         # set to None if client_metadata (nullable) is None
-        # and __fields_set__ contains the field
-        if self.client_metadata is None and "client_metadata" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.client_metadata is None and "client_metadata" in self.model_fields_set:
             _dict['clientMetadata'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> RequestedItemStatus:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of RequestedItemStatus from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return RequestedItemStatus.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = RequestedItemStatus.parse_obj({
+        _obj = cls.model_validate({
             "name":
             obj.get("name"),
             "type":
             obj.get("type"),
-            "cancelled_request_details":
+            "cancelledRequestDetails":
             CancelledRequestDetails.from_dict(
                 obj.get("cancelledRequestDetails"))
             if obj.get("cancelledRequestDetails") is not None else None,
-            "error_messages":
+            "errorMessages":
             [[ErrorMessageDto.from_dict(_inner_item) for _inner_item in _item]
              for _item in obj.get("errorMessages")]
             if obj.get("errorMessages") is not None else None,
             "state":
             obj.get("state"),
-            "approval_details": [
+            "approvalDetails": [
                 ApprovalStatusDto.from_dict(_item)
                 for _item in obj.get("approvalDetails")
             ] if obj.get("approvalDetails") is not None else None,
-            "manual_work_item_details": [
+            "manualWorkItemDetails": [
                 ManualWorkItemDetails.from_dict(_item)
                 for _item in obj.get("manualWorkItemDetails")
             ] if obj.get("manualWorkItemDetails") is not None else None,
-            "account_activity_item_id":
+            "accountActivityItemId":
             obj.get("accountActivityItemId"),
-            "request_type":
+            "requestType":
             obj.get("requestType"),
             "modified":
             obj.get("modified"),
@@ -268,36 +283,36 @@ class RequestedItemStatus(BaseModel):
             "requester":
             AccessItemRequester.from_dict(obj.get("requester"))
             if obj.get("requester") is not None else None,
-            "requested_for":
+            "requestedFor":
             AccessItemRequestedFor.from_dict(obj.get("requestedFor"))
             if obj.get("requestedFor") is not None else None,
-            "requester_comment":
-            CommentDto.from_dict(obj.get("requesterComment"))
+            "requesterComment":
+            CommentDto1.from_dict(obj.get("requesterComment"))
             if obj.get("requesterComment") is not None else None,
-            "sod_violation_context":
+            "sodViolationContext":
             SodViolationContextCheckCompleted.from_dict(
                 obj.get("sodViolationContext"))
             if obj.get("sodViolationContext") is not None else None,
-            "provisioning_details":
+            "provisioningDetails":
             ProvisioningDetails.from_dict(obj.get("provisioningDetails"))
             if obj.get("provisioningDetails") is not None else None,
-            "pre_approval_trigger_details":
+            "preApprovalTriggerDetails":
             PreApprovalTriggerDetails.from_dict(
                 obj.get("preApprovalTriggerDetails"))
             if obj.get("preApprovalTriggerDetails") is not None else None,
-            "access_request_phases": [
+            "accessRequestPhases": [
                 AccessRequestPhases.from_dict(_item)
                 for _item in obj.get("accessRequestPhases")
             ] if obj.get("accessRequestPhases") is not None else None,
             "description":
             obj.get("description"),
-            "remove_date":
+            "removeDate":
             obj.get("removeDate"),
             "cancelable":
             obj.get("cancelable"),
-            "access_request_id":
+            "accessRequestId":
             obj.get("accessRequestId"),
-            "client_metadata":
+            "clientMetadata":
             obj.get("clientMetadata")
         })
         return _obj

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment  # noqa: E501
+from sailpoint.beta.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment
 
 
 class TestCompletedApprovalReviewerComment(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestCompletedApprovalReviewerComment(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CompletedApprovalReviewerComment`
         """
-        model = CompletedApprovalReviewerComment()  # noqa: E501
+        model = CompletedApprovalReviewerComment()
         if include_optional:
             return CompletedApprovalReviewerComment(
                 comment = 'This is a comment.',

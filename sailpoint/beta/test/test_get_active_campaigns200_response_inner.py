@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner  # noqa: E501
+from sailpoint.beta.models.get_active_campaigns200_response_inner import GetActiveCampaigns200ResponseInner
 
 
 class TestGetActiveCampaigns200ResponseInner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestGetActiveCampaigns200ResponseInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `GetActiveCampaigns200ResponseInner`
         """
-        model = GetActiveCampaigns200ResponseInner()  # noqa: E501
+        model = GetActiveCampaigns200ResponseInner()
         if include_optional:
             return GetActiveCampaigns200ResponseInner(
                 id = '2c9079b270a266a60170a2779fcb0007',
@@ -48,6 +48,18 @@ class TestGetActiveCampaigns200ResponseInner(unittest.TestCase):
                 status = 'ACTIVE',
                 correlated_status = CORRELATED,
                 created = '2020-03-03T22:15:13.611Z',
+                total_certifications = 100,
+                completed_certifications = 10,
+                alerts = [
+                    sailpoint.beta.models.campaign_alert.CampaignAlert(
+                        level = 'ERROR', 
+                        localizations = [
+                            sailpoint.beta.models.error_message_dto.ErrorMessageDto(
+                                locale = 'en-US', 
+                                locale_origin = 'DEFAULT', 
+                                text = 'The request was syntactically correct but its content is semantically invalid.', )
+                            ], )
+                    ],
                 modified = '2020-03-03T22:20:12.674Z',
                 filter = sailpoint.beta.models.fullcampaign_all_of_filter.fullcampaign_allOf_filter(
                     id = '0fbe863c063c4c88a35fd7f17e8a3df5', 
@@ -83,18 +95,6 @@ class TestGetActiveCampaigns200ResponseInner(unittest.TestCase):
                         name = 'Role Admin', ), 
                     query = 'Search Query', 
                     description = 'Role Composition Description', ),
-                alerts = [
-                    sailpoint.beta.models.campaign_alert.CampaignAlert(
-                        level = 'ERROR', 
-                        localizations = [
-                            sailpoint.beta.models.error_message_dto.ErrorMessageDto(
-                                locale = 'en-US', 
-                                locale_origin = 'DEFAULT', 
-                                text = 'The request was syntactically correct but its content is semantically invalid.', )
-                            ], )
-                    ],
-                total_certifications = 100,
-                completed_certifications = 10,
                 sources_with_orphan_entitlements = [
                     sailpoint.beta.models.fullcampaign_all_of_sources_with_orphan_entitlements.fullcampaign_allOf_sourcesWithOrphanEntitlements(
                         id = '2c90ad2a70ace7d50170acf22ca90010', 

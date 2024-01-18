@@ -16,63 +16,79 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.workflow_library_form_fields import WorkflowLibraryFormFields
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class WorkflowLibraryAction(BaseModel):
     """
     WorkflowLibraryAction
     """
+
+  # noqa: E501
     id: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description="Action ID. This is a static namespaced ID for the action")
-    name: Optional[StrictStr] = Field(None, description="Action Name")
-    type: Optional[StrictStr] = Field(None, description="Action type")
-    description: Optional[StrictStr] = Field(None,
+    name: Optional[StrictStr] = Field(default=None, description="Action Name")
+    type: Optional[StrictStr] = Field(default=None, description="Action type")
+    description: Optional[StrictStr] = Field(default=None,
                                              description="Action Description")
-    form_fields: Optional[conlist(WorkflowLibraryFormFields)] = Field(
-        None,
-        alias="formFields",
-        description="One or more inputs that the action accepts")
+    form_fields: Optional[List[WorkflowLibraryFormFields]] = Field(
+        default=None,
+        description="One or more inputs that the action accepts",
+        alias="formFields")
     is_dynamic_schema: Optional[StrictBool] = Field(
-        None,
-        alias="isDynamicSchema",
+        default=None,
         description=
-        "Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields."
-    )
-    output_schema: Optional[Dict[str, Any]] = Field(
-        None,
-        alias="outputSchema",
+        "Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.",
+        alias="isDynamicSchema")
+    output_schema: Optional[Union[str, Any]] = Field(
+        default=None,
         description=
-        "Defines the output schema, if any, that this action produces.")
-    __properties = [
+        "Defines the output schema, if any, that this action produces.",
+        alias="outputSchema")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "type", "description", "formFields", "isDynamicSchema",
         "outputSchema"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> WorkflowLibraryAction:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of WorkflowLibraryAction from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in form_fields (list)
         _items = []
         if self.form_fields:
@@ -83,15 +99,15 @@ class WorkflowLibraryAction(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> WorkflowLibraryAction:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of WorkflowLibraryAction from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return WorkflowLibraryAction.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = WorkflowLibraryAction.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "name":
@@ -100,13 +116,13 @@ class WorkflowLibraryAction(BaseModel):
             obj.get("type"),
             "description":
             obj.get("description"),
-            "form_fields": [
+            "formFields": [
                 WorkflowLibraryFormFields.from_dict(_item)
                 for _item in obj.get("formFields")
             ] if obj.get("formFields") is not None else None,
-            "is_dynamic_schema":
+            "isDynamicSchema":
             obj.get("isDynamicSchema"),
-            "output_schema":
+            "outputSchema":
             obj.get("outputSchema")
         })
         return _obj

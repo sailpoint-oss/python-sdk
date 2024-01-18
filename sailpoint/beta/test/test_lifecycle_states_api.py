@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.lifecycle_states_api import LifecycleStatesApi  # noqa: E501
+from sailpoint.beta.api.lifecycle_states_api import LifecycleStatesApi
 
 
 class TestLifecycleStatesApi(unittest.TestCase):
     """LifecycleStatesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = LifecycleStatesApi()  # noqa: E501
+        self.api = LifecycleStatesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,14 +28,14 @@ class TestLifecycleStatesApi(unittest.TestCase):
     def test_list_lifecycle_states(self) -> None:
         """Test case for list_lifecycle_states
 
-        Lifecycle State  # noqa: E501
+        Lifecycle State
         """
         pass
 
     def test_update_lifecycle_states(self) -> None:
         """Test case for update_lifecycle_states
 
-        Update Lifecycle State  # noqa: E501
+        Update Lifecycle State
         """
         pass
 

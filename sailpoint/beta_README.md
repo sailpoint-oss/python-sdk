@@ -21,7 +21,6 @@ To be able to use it, you will need these dependencies in your own package that 
 * urllib3 >= 1.25.3
 * python-dateutil
 * pydantic
-* aenum
 
 ## Getting Started
 
@@ -192,10 +191,10 @@ Class | Method | HTTP request | Description
 *IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_ignored_items**](sailpoint/beta/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_ignored_items) | **GET** /ai-access-request-recommendations/ignored-items | List of Ignored Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_requested_items**](sailpoint/beta/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_requested_items) | **GET** /ai-access-request-recommendations/requested-items | List of Requested Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**get_access_request_recommendations_viewed_items**](sailpoint/beta/docs/IAIAccessRequestRecommendationsApi.md#get_access_request_recommendations_viewed_items) | **GET** /ai-access-request-recommendations/viewed-items | List of Viewed Access Request Recommendations
-*IAIAccessRequestRecommendationsApi* | [**get_message_catalogs**](sailpoint/beta/docs/IAIAccessRequestRecommendationsApi.md#get_message_catalogs) | **GET** /translation-catalogs/{catalog-id} | Get Message catalogs
 *IAICommonAccessApi* | [**create_common_access**](sailpoint/beta/docs/IAICommonAccessApi.md#create_common_access) | **POST** /common-access | Create common access items
 *IAICommonAccessApi* | [**get_common_access**](sailpoint/beta/docs/IAICommonAccessApi.md#get_common_access) | **GET** /common-access | Get a paginated list of common access
 *IAICommonAccessApi* | [**update_common_access_status_in_bulk**](sailpoint/beta/docs/IAICommonAccessApi.md#update_common_access_status_in_bulk) | **POST** /common-access/update-status | Bulk update common access status
+*IAIMessageCatalogsApi* | [**get_message_catalogs**](sailpoint/beta/docs/IAIMessageCatalogsApi.md#get_message_catalogs) | **GET** /translation-catalogs/{catalog-id} | Get Message catalogs
 *IAIOutliersApi* | [**export_outliers_zip**](sailpoint/beta/docs/IAIOutliersApi.md#export_outliers_zip) | **GET** /outliers/export | IAI Identity Outliers Export
 *IAIOutliersApi* | [**get_identity_outlier_snapshots**](sailpoint/beta/docs/IAIOutliersApi.md#get_identity_outlier_snapshots) | **GET** /outlier-summaries | IAI Identity Outliers Summary
 *IAIOutliersApi* | [**get_identity_outliers**](sailpoint/beta/docs/IAIOutliersApi.md#get_identity_outliers) | **GET** /outliers | IAI Get Identity Outliers
@@ -206,7 +205,6 @@ Class | Method | HTTP request | Description
 *IAIOutliersApi* | [**list_outliers_contributing_feature_access_items**](sailpoint/beta/docs/IAIOutliersApi.md#list_outliers_contributing_feature_access_items) | **GET** /outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items | Gets a list of access items associated with each identity outlier contributing feature
 *IAIOutliersApi* | [**un_ignore_identity_outliers**](sailpoint/beta/docs/IAIOutliersApi.md#un_ignore_identity_outliers) | **POST** /outliers/unignore | IAI Identity Outliers Unignore
 *IAIPeerGroupStrategiesApi* | [**get_peer_group_outliers**](sailpoint/beta/docs/IAIPeerGroupStrategiesApi.md#get_peer_group_outliers) | **GET** /peer-group-strategies/{strategy}/identity-outliers | Identity Outliers List
-*IAIRecommendationsApi* | [**get_message_catalogs**](sailpoint/beta/docs/IAIRecommendationsApi.md#get_message_catalogs) | **GET** /translation-catalogs/{catalog-id} | Get Message catalogs
 *IAIRecommendationsApi* | [**get_recommendations**](sailpoint/beta/docs/IAIRecommendationsApi.md#get_recommendations) | **POST** /recommendations/request | Returns a Recommendation Based on Object
 *IAIRecommendationsApi* | [**get_recommendations_config**](sailpoint/beta/docs/IAIRecommendationsApi.md#get_recommendations_config) | **GET** /recommendations/config | Get certification recommendation config values
 *IAIRecommendationsApi* | [**update_recommendations_config**](sailpoint/beta/docs/IAIRecommendationsApi.md#update_recommendations_config) | **PUT** /recommendations/config | Update certification recommendation config values
@@ -276,6 +274,12 @@ Class | Method | HTTP request | Description
 *MFAConfigurationApi* | [**set_mfa_duo_config**](sailpoint/beta/docs/MFAConfigurationApi.md#set_mfa_duo_config) | **PUT** /mfa/duo-web/config | Set Duo MFA configuration
 *MFAConfigurationApi* | [**set_mfa_okta_config**](sailpoint/beta/docs/MFAConfigurationApi.md#set_mfa_okta_config) | **PUT** /mfa/okta-verify/config | Set Okta MFA configuration
 *MFAConfigurationApi* | [**test_mfa_config**](sailpoint/beta/docs/MFAConfigurationApi.md#test_mfa_config) | **GET** /mfa/{method}/test | MFA method&#39;s test configuration
+*MFAControllerApi* | [**create_send_token**](sailpoint/beta/docs/MFAControllerApi.md#create_send_token) | **POST** /mfa/token/send | Create and send user token
+*MFAControllerApi* | [**ping_verification_status**](sailpoint/beta/docs/MFAControllerApi.md#ping_verification_status) | **POST** /mfa/{method}/poll | Polling MFA method by VerificationPollRequest
+*MFAControllerApi* | [**send_duo_verify_request**](sailpoint/beta/docs/MFAControllerApi.md#send_duo_verify_request) | **POST** /mfa/duo-web/verify | Verifying authentication via Duo method
+*MFAControllerApi* | [**send_kba_answers**](sailpoint/beta/docs/MFAControllerApi.md#send_kba_answers) | **POST** /mfa/kba/authenticate | Authenticate KBA provided MFA method
+*MFAControllerApi* | [**send_okta_verify_request**](sailpoint/beta/docs/MFAControllerApi.md#send_okta_verify_request) | **POST** /mfa/okta-verify/verify | Verifying authentication via Okta method
+*MFAControllerApi* | [**send_token_auth_request**](sailpoint/beta/docs/MFAControllerApi.md#send_token_auth_request) | **POST** /mfa/token/authenticate | Authenticate Token provided MFA method
 *ManagedClientsApi* | [**get_managed_client_status**](sailpoint/beta/docs/ManagedClientsApi.md#get_managed_client_status) | **GET** /managed-clients/{id}/status | Specified Managed Client Status.
 *ManagedClientsApi* | [**update_managed_client_status**](sailpoint/beta/docs/ManagedClientsApi.md#update_managed_client_status) | **POST** /managed-clients/{id}/status | Handle status request from client
 *ManagedClustersApi* | [**get_client_log_configuration**](sailpoint/beta/docs/ManagedClustersApi.md#get_client_log_configuration) | **GET** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
@@ -686,6 +690,7 @@ Class | Method | HTTP request | Description
  - [CloseAccessRequest](sailpoint/beta/docs/CloseAccessRequest.md)
  - [Comment](sailpoint/beta/docs/Comment.md)
  - [CommentDto](sailpoint/beta/docs/CommentDto.md)
+ - [CommentDto1](sailpoint/beta/docs/CommentDto1.md)
  - [CommentDtoAuthor](sailpoint/beta/docs/CommentDtoAuthor.md)
  - [CommonAccessIDStatus](sailpoint/beta/docs/CommonAccessIDStatus.md)
  - [CommonAccessItemAccess](sailpoint/beta/docs/CommonAccessItemAccess.md)
@@ -740,6 +745,7 @@ Class | Method | HTTP request | Description
  - [DomainAddress](sailpoint/beta/docs/DomainAddress.md)
  - [DomainStatusDto](sailpoint/beta/docs/DomainStatusDto.md)
  - [DtoType](sailpoint/beta/docs/DtoType.md)
+ - [DuoVerificationRequest](sailpoint/beta/docs/DuoVerificationRequest.md)
  - [EmailNotificationOption](sailpoint/beta/docs/EmailNotificationOption.md)
  - [EmailStatusDto](sailpoint/beta/docs/EmailStatusDto.md)
  - [Entitlement](sailpoint/beta/docs/Entitlement.md)
@@ -874,6 +880,10 @@ Class | Method | HTTP request | Description
  - [JsonPatch](sailpoint/beta/docs/JsonPatch.md)
  - [JsonPatchOperation](sailpoint/beta/docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](sailpoint/beta/docs/JsonPatchOperationValue.md)
+ - [KbaAnswerRequest](sailpoint/beta/docs/KbaAnswerRequest.md)
+ - [KbaAnswerRequestItem](sailpoint/beta/docs/KbaAnswerRequestItem.md)
+ - [KbaAuthResponse](sailpoint/beta/docs/KbaAuthResponse.md)
+ - [KbaAuthResponseItem](sailpoint/beta/docs/KbaAuthResponseItem.md)
  - [LatestOutlierSummary](sailpoint/beta/docs/LatestOutlierSummary.md)
  - [LifecycleState](sailpoint/beta/docs/LifecycleState.md)
  - [LifecycleStateDto](sailpoint/beta/docs/LifecycleStateDto.md)
@@ -945,6 +955,7 @@ Class | Method | HTTP request | Description
  - [NotificationTemplateContext](sailpoint/beta/docs/NotificationTemplateContext.md)
  - [ObjectExportImportOptions](sailpoint/beta/docs/ObjectExportImportOptions.md)
  - [ObjectImportResult](sailpoint/beta/docs/ObjectImportResult.md)
+ - [OktaVerificationRequest](sailpoint/beta/docs/OktaVerificationRequest.md)
  - [OrgConfig](sailpoint/beta/docs/OrgConfig.md)
  - [Outlier](sailpoint/beta/docs/Outlier.md)
  - [OutlierContributingFeature](sailpoint/beta/docs/OutlierContributingFeature.md)
@@ -1031,6 +1042,7 @@ Class | Method | HTTP request | Description
  - [ReviewReassign](sailpoint/beta/docs/ReviewReassign.md)
  - [Reviewer](sailpoint/beta/docs/Reviewer.md)
  - [Revocability](sailpoint/beta/docs/Revocability.md)
+ - [RevocabilityForRole](sailpoint/beta/docs/RevocabilityForRole.md)
  - [Role](sailpoint/beta/docs/Role.md)
  - [RoleAssignmentSourceType](sailpoint/beta/docs/RoleAssignmentSourceType.md)
  - [RoleBulkDeleteRequest](sailpoint/beta/docs/RoleBulkDeleteRequest.md)
@@ -1099,6 +1111,8 @@ Class | Method | HTTP request | Description
  - [SelectorType](sailpoint/beta/docs/SelectorType.md)
  - [SelfImportExportDto](sailpoint/beta/docs/SelfImportExportDto.md)
  - [SendTestNotificationRequestDto](sailpoint/beta/docs/SendTestNotificationRequestDto.md)
+ - [SendTokenRequest](sailpoint/beta/docs/SendTokenRequest.md)
+ - [SendTokenResponse](sailpoint/beta/docs/SendTokenResponse.md)
  - [ServiceDeskIntegrationDto](sailpoint/beta/docs/ServiceDeskIntegrationDto.md)
  - [ServiceDeskIntegrationTemplateDto](sailpoint/beta/docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](sailpoint/beta/docs/ServiceDeskIntegrationTemplateType.md)
@@ -1149,7 +1163,10 @@ Class | Method | HTTP request | Description
  - [SourceUpdatedActor](sailpoint/beta/docs/SourceUpdatedActor.md)
  - [SourceUsage](sailpoint/beta/docs/SourceUsage.md)
  - [SourceUsageStatus](sailpoint/beta/docs/SourceUsageStatus.md)
+ - [SpConfigExportJob](sailpoint/beta/docs/SpConfigExportJob.md)
+ - [SpConfigExportJobStatus](sailpoint/beta/docs/SpConfigExportJobStatus.md)
  - [SpConfigExportResults](sailpoint/beta/docs/SpConfigExportResults.md)
+ - [SpConfigImportJobStatus](sailpoint/beta/docs/SpConfigImportJobStatus.md)
  - [SpConfigImportResults](sailpoint/beta/docs/SpConfigImportResults.md)
  - [SpConfigJob](sailpoint/beta/docs/SpConfigJob.md)
  - [SpConfigMessage](sailpoint/beta/docs/SpConfigMessage.md)
@@ -1185,6 +1202,8 @@ Class | Method | HTTP request | Description
  - [TestInvocation](sailpoint/beta/docs/TestInvocation.md)
  - [TestWorkflow200Response](sailpoint/beta/docs/TestWorkflow200Response.md)
  - [TestWorkflowRequest](sailpoint/beta/docs/TestWorkflowRequest.md)
+ - [TokenAuthRequest](sailpoint/beta/docs/TokenAuthRequest.md)
+ - [TokenAuthResponse](sailpoint/beta/docs/TokenAuthResponse.md)
  - [Transform](sailpoint/beta/docs/Transform.md)
  - [TransformDefinition](sailpoint/beta/docs/TransformDefinition.md)
  - [TransformDefinition1](sailpoint/beta/docs/TransformDefinition1.md)
@@ -1205,6 +1224,8 @@ Class | Method | HTTP request | Description
  - [ValidateFilterInputDto](sailpoint/beta/docs/ValidateFilterInputDto.md)
  - [ValidateFilterOutputDto](sailpoint/beta/docs/ValidateFilterOutputDto.md)
  - [Value](sailpoint/beta/docs/Value.md)
+ - [VerificationPollRequest](sailpoint/beta/docs/VerificationPollRequest.md)
+ - [VerificationResponse](sailpoint/beta/docs/VerificationResponse.md)
  - [ViolationContext](sailpoint/beta/docs/ViolationContext.md)
  - [ViolationContextPolicy](sailpoint/beta/docs/ViolationContextPolicy.md)
  - [ViolationOwnerAssignmentConfig](sailpoint/beta/docs/ViolationOwnerAssignmentConfig.md)

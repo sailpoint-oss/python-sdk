@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_attributes_create_attributes import AccountAttributesCreateAttributes  # noqa: E501
+from sailpoint.beta.models.account_attributes_create_attributes import AccountAttributesCreateAttributes
 
 
 class TestAccountAttributesCreateAttributes(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestAccountAttributesCreateAttributes(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountAttributesCreateAttributes`
         """
-        model = AccountAttributesCreateAttributes()  # noqa: E501
+        model = AccountAttributesCreateAttributes()
         if include_optional:
             return AccountAttributesCreateAttributes(
                 source_id = '34bfcbe116c9407464af37acbaf7a4dc'

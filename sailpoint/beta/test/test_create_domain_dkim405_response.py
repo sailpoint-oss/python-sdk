@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.create_domain_dkim405_response import CreateDomainDkim405Response  # noqa: E501
+from sailpoint.beta.models.create_domain_dkim405_response import CreateDomainDkim405Response
 
 
 class TestCreateDomainDkim405Response(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCreateDomainDkim405Response(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CreateDomainDkim405Response`
         """
-        model = CreateDomainDkim405Response()  # noqa: E501
+        model = CreateDomainDkim405Response()
         if include_optional:
             return CreateDomainDkim405Response(
                 error_name = NotSupportedException,

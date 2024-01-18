@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_criteria import AccessCriteria  # noqa: E501
+from sailpoint.beta.models.access_criteria import AccessCriteria
 
 
 class TestAccessCriteria(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessCriteria(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessCriteria`
         """
-        model = AccessCriteria()  # noqa: E501
+        model = AccessCriteria()
         if include_optional:
             return AccessCriteria(
                 name = 'money-in',

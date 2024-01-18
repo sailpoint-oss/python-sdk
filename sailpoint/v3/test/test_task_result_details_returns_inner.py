@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.task_result_details_returns_inner import TaskResultDetailsReturnsInner  # noqa: E501
+from sailpoint.v3.models.task_result_details_returns_inner import TaskResultDetailsReturnsInner
 
 
 class TestTaskResultDetailsReturnsInner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTaskResultDetailsReturnsInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TaskResultDetailsReturnsInner`
         """
-        model = TaskResultDetailsReturnsInner()  # noqa: E501
+        model = TaskResultDetailsReturnsInner()
         if include_optional:
             return TaskResultDetailsReturnsInner(
                 display_label = ' ',

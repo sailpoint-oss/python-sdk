@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.value import Value  # noqa: E501
+from sailpoint.beta.models.value import Value
 
 
 class TestValue(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestValue(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Value`
         """
-        model = Value()  # noqa: E501
+        model = Value()
         if include_optional:
             return Value(
                 type = 'STRING',

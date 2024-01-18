@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig  # noqa: E501
+from sailpoint.beta.models.source_entitlement_request_config import SourceEntitlementRequestConfig
 
 
 class TestSourceEntitlementRequestConfig(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestSourceEntitlementRequestConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceEntitlementRequestConfig`
         """
-        model = SourceEntitlementRequestConfig()  # noqa: E501
+        model = SourceEntitlementRequestConfig()
         if include_optional:
             return SourceEntitlementRequestConfig(
                 access_request_config = sailpoint.beta.models.entitlement_access_request_config.EntitlementAccessRequestConfig(

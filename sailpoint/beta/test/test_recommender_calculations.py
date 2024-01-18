@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.recommender_calculations import RecommenderCalculations  # noqa: E501
+from sailpoint.beta.models.recommender_calculations import RecommenderCalculations
 
 
 class TestRecommenderCalculations(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRecommenderCalculations(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RecommenderCalculations`
         """
-        model = RecommenderCalculations()  # noqa: E501
+        model = RecommenderCalculations()
         if include_optional:
             return RecommenderCalculations(
                 identity_id = '2c91808457d8f3ab0157e3e62cb4213c',

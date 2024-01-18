@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.work_items_count import WorkItemsCount  # noqa: E501
+from sailpoint.beta.models.work_items_count import WorkItemsCount
 
 
 class TestWorkItemsCount(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkItemsCount(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkItemsCount`
         """
-        model = WorkItemsCount()  # noqa: E501
+        model = WorkItemsCount()
         if include_optional:
             return WorkItemsCount(
                 count = 29

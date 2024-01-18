@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.model_schema import ModelSchema  # noqa: E501
+from sailpoint.v3.models.model_schema import ModelSchema
 
 
 class TestModelSchema(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestModelSchema(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ModelSchema`
         """
-        model = ModelSchema()  # noqa: E501
+        model = ModelSchema()
         if include_optional:
             return ModelSchema(
                 id = '2c9180835d191a86015d28455b4a2329',

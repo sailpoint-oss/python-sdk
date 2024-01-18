@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.completed_approval import CompletedApproval  # noqa: E501
+from sailpoint.beta.models.completed_approval import CompletedApproval
 
 
 class TestCompletedApproval(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCompletedApproval(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CompletedApproval`
         """
-        model = CompletedApproval()  # noqa: E501
+        model = CompletedApproval()
         if include_optional:
             return CompletedApproval(
                 id = '2c938083633d259901633d25c68c00fa',
@@ -63,21 +63,13 @@ class TestCompletedApproval(unittest.TestCase):
                     name = 'Object Name', 
                     description = 'Object Description', 
                     type = 'ROLE', ),
-                requester_comment = sailpoint.beta.models.comment_dto.CommentDto(
+                requester_comment = sailpoint.beta.models.comment_dto_1.CommentDto_1(
                     comment = 'This is a comment.', 
-                    author = sailpoint.beta.models.comment_dto_author.CommentDto_author(
-                        type = 'IDENTITY', 
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'Adam Kennedy', ), 
                     created = '2017-07-11T18:45:37.098Z', ),
                 reviewer_comment = sailpoint.beta.models.completed_approval_reviewer_comment.CompletedApproval_reviewerComment(),
                 previous_reviewers_comments = [
-                    sailpoint.beta.models.comment_dto.CommentDto(
+                    sailpoint.beta.models.comment_dto_1.CommentDto_1(
                         comment = 'This is a comment.', 
-                        author = sailpoint.beta.models.comment_dto_author.CommentDto_author(
-                            type = 'IDENTITY', 
-                            id = '2c91808568c529c60168cca6f90c1313', 
-                            name = 'Adam Kennedy', ), 
                         created = '2017-07-11T18:45:37.098Z', )
                     ],
                 forward_history = [

@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.o_auth_clients_api import OAuthClientsApi  # noqa: E501
+from sailpoint.v3.api.o_auth_clients_api import OAuthClientsApi
 
 
 class TestOAuthClientsApi(unittest.TestCase):
     """OAuthClientsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = OAuthClientsApi()  # noqa: E501
+        self.api = OAuthClientsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,35 +28,35 @@ class TestOAuthClientsApi(unittest.TestCase):
     def test_create_oauth_client(self) -> None:
         """Test case for create_oauth_client
 
-        Create OAuth Client  # noqa: E501
+        Create OAuth Client
         """
         pass
 
     def test_delete_oauth_client(self) -> None:
         """Test case for delete_oauth_client
 
-        Delete OAuth Client  # noqa: E501
+        Delete OAuth Client
         """
         pass
 
     def test_get_oauth_client(self) -> None:
         """Test case for get_oauth_client
 
-        Get OAuth Client  # noqa: E501
+        Get OAuth Client
         """
         pass
 
     def test_list_oauth_clients(self) -> None:
         """Test case for list_oauth_clients
 
-        List OAuth Clients  # noqa: E501
+        List OAuth Clients
         """
         pass
 
     def test_patch_oauth_client(self) -> None:
         """Test case for patch_oauth_client
 
-        Patch OAuth Client  # noqa: E501
+        Patch OAuth Client
         """
         pass
 

@@ -17,52 +17,69 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.config_object import ConfigObject
 from sailpoint.beta.models.export_options import ExportOptions
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class SpConfigExportResults(BaseModel):
     """
-    Response model for config export download response.  # noqa: E501
-    """
+    Response model for config export download response.
+    """ # noqa: E501
     version: Optional[StrictInt] = Field(
-        None, description="Current version of the export results object.")
+        default=None,
+        description="Current version of the export results object.")
     timestamp: Optional[datetime] = Field(
-        None, description="Time the export was completed.")
+        default=None, description="Time the export was completed.")
     tenant: Optional[StrictStr] = Field(
-        None, description="Name of the tenant where this export originated.")
+        default=None,
+        description="Name of the tenant where this export originated.")
     description: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description="Optional user defined description/name for export job.")
     options: Optional[ExportOptions] = None
-    objects: Optional[conlist(ConfigObject)] = None
-    __properties = [
+    objects: Optional[List[ConfigObject]] = None
+    __properties: ClassVar[List[str]] = [
         "version", "timestamp", "tenant", "description", "options", "objects"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> SpConfigExportResults:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of SpConfigExportResults from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of options
         if self.options:
             _dict['options'] = self.options.to_dict()
@@ -76,15 +93,15 @@ class SpConfigExportResults(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> SpConfigExportResults:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of SpConfigExportResults from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return SpConfigExportResults.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = SpConfigExportResults.parse_obj({
+        _obj = cls.model_validate({
             "version":
             obj.get("version"),
             "timestamp":

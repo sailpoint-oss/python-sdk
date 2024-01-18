@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.provisioning_config import ProvisioningConfig  # noqa: E501
+from sailpoint.v3.models.provisioning_config import ProvisioningConfig
 
 
 class TestProvisioningConfig(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestProvisioningConfig(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ProvisioningConfig`
         """
-        model = ProvisioningConfig()  # noqa: E501
+        model = ProvisioningConfig()
         if include_optional:
             return ProvisioningConfig(
                 universal_manager = True,

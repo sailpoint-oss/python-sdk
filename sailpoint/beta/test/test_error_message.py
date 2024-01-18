@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.error_message import ErrorMessage  # noqa: E501
+from sailpoint.beta.models.error_message import ErrorMessage
 
 
 class TestErrorMessage(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestErrorMessage(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ErrorMessage`
         """
-        model = ErrorMessage()  # noqa: E501
+        model = ErrorMessage()
         if include_optional:
             return ErrorMessage(
                 locale = 'en-US',

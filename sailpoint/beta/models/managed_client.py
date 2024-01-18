@@ -17,149 +17,172 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.beta.models.managed_client_status_enum import ManagedClientStatusEnum
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ManagedClient(BaseModel):
     """
-    Managed Client  # noqa: E501
+    Managed Client
     """
-    id: Optional[StrictStr] = Field(None, description="ManagedClient ID")
+
+  # noqa: E501
+    id: Optional[StrictStr] = Field(default=None,
+                                    description="ManagedClient ID")
     alert_key: Optional[StrictStr] = Field(
-        None, alias="alertKey", description="ManagedClient alert key")
+        default=None, description="ManagedClient alert key", alias="alertKey")
     api_gateway_base_url: Optional[StrictStr] = Field(
-        None,
-        alias="apiGatewayBaseUrl",
-        description="ManagedClient gateway base url")
+        default=None,
+        description="ManagedClient gateway base url",
+        alias="apiGatewayBaseUrl")
     cc_id: Optional[StrictInt] = Field(
-        None,
-        alias="ccId",
+        default=None,
         description=
-        "Previous CC ID to be used in data migration. (This field will be deleted after CC migration!)"
-    )
+        "Previous CC ID to be used in data migration. (This field will be deleted after CC migration!)",
+        alias="ccId")
     client_id: StrictStr = Field(
-        ...,
-        alias="clientId",
-        description="The client ID used in API management")
+        description="The client ID used in API management", alias="clientId")
     cluster_id: StrictStr = Field(
-        ...,
-        alias="clusterId",
-        description="Cluster ID that the ManagedClient is linked to")
-    cookbook: Optional[StrictStr] = Field(None, description="VA cookbook")
-    description: StrictStr = Field(...,
-                                   description="ManagedClient description")
+        description="Cluster ID that the ManagedClient is linked to",
+        alias="clusterId")
+    cookbook: Optional[StrictStr] = Field(default=None,
+                                          description="VA cookbook")
+    description: StrictStr = Field(description="ManagedClient description")
     ip_address: Optional[StrictStr] = Field(
-        None,
-        alias="ipAddress",
-        description="The public IP address of the ManagedClient")
+        default=None,
+        description="The public IP address of the ManagedClient",
+        alias="ipAddress")
     last_seen: Optional[datetime] = Field(
-        None,
-        alias="lastSeen",
-        description="When the ManagedClient was last seen by the server")
-    name: Optional[StrictStr] = Field(None, description="ManagedClient name")
+        default=None,
+        description="When the ManagedClient was last seen by the server",
+        alias="lastSeen")
+    name: Optional[StrictStr] = Field(default=None,
+                                      description="ManagedClient name")
     since_last_seen: Optional[StrictStr] = Field(
-        None,
-        alias="sinceLastSeen",
-        description="Milliseconds since the ManagedClient has polled the server"
-    )
+        default=None,
+        description=
+        "Milliseconds since the ManagedClient has polled the server",
+        alias="sinceLastSeen")
     status: Optional[ManagedClientStatusEnum] = None
-    type: StrictStr = Field(...,
-                            description="Type of the ManagedClient (VA, CCG)")
+    type: StrictStr = Field(description="Type of the ManagedClient (VA, CCG)")
     va_download_url: Optional[StrictStr] = Field(
-        None,
-        alias="vaDownloadUrl",
-        description="ManagedClient VA download URL")
+        default=None,
+        description="ManagedClient VA download URL",
+        alias="vaDownloadUrl")
     va_version: Optional[StrictStr] = Field(
-        None,
-        alias="vaVersion",
-        description="Version that the ManagedClient's VA is running")
-    secret: Optional[StrictStr] = Field(None, description="Client's apiKey")
-    __properties = [
+        default=None,
+        description="Version that the ManagedClient's VA is running",
+        alias="vaVersion")
+    secret: Optional[StrictStr] = Field(default=None,
+                                        description="Client's apiKey")
+    __properties: ClassVar[List[str]] = [
         "id", "alertKey", "apiGatewayBaseUrl", "ccId", "clientId", "clusterId",
         "cookbook", "description", "ipAddress", "lastSeen", "name",
         "sinceLastSeen", "status", "type", "vaDownloadUrl", "vaVersion",
         "secret"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ManagedClient:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ManagedClient from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                              "id",
-                              "alert_key",
-                              "api_gateway_base_url",
-                              "cookbook",
-                              "ip_address",
-                              "last_seen",
-                              "since_last_seen",
-                              "status",
-                              "va_download_url",
-                              "va_version",
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+                "id",
+                "alert_key",
+                "api_gateway_base_url",
+                "cookbook",
+                "ip_address",
+                "last_seen",
+                "since_last_seen",
+                "status",
+                "va_download_url",
+                "va_version",
+            },
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ManagedClient:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ManagedClient from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ManagedClient.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ManagedClient.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
-            "alert_key":
+            "alertKey":
             obj.get("alertKey"),
-            "api_gateway_base_url":
+            "apiGatewayBaseUrl":
             obj.get("apiGatewayBaseUrl"),
-            "cc_id":
+            "ccId":
             obj.get("ccId"),
-            "client_id":
+            "clientId":
             obj.get("clientId"),
-            "cluster_id":
+            "clusterId":
             obj.get("clusterId"),
             "cookbook":
             obj.get("cookbook"),
             "description":
             obj.get("description"),
-            "ip_address":
+            "ipAddress":
             obj.get("ipAddress"),
-            "last_seen":
+            "lastSeen":
             obj.get("lastSeen"),
             "name":
             obj.get("name"),
-            "since_last_seen":
+            "sinceLastSeen":
             obj.get("sinceLastSeen"),
             "status":
             obj.get("status"),
             "type":
             obj.get("type"),
-            "va_download_url":
+            "vaDownloadUrl":
             obj.get("vaDownloadUrl"),
-            "va_version":
+            "vaVersion":
             obj.get("vaVersion"),
             "secret":
             obj.get("secret")

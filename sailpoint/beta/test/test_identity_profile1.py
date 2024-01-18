@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_profile1 import IdentityProfile1  # noqa: E501
+from sailpoint.beta.models.identity_profile1 import IdentityProfile1
 
 
 class TestIdentityProfile1(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityProfile1(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityProfile1`
         """
-        model = IdentityProfile1()  # noqa: E501
+        model = IdentityProfile1()
         if include_optional:
             return IdentityProfile1(
                 id = 'id12345',

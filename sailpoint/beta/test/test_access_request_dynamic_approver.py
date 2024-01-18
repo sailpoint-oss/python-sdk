@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_request_dynamic_approver import AccessRequestDynamicApprover  # noqa: E501
+from sailpoint.beta.models.access_request_dynamic_approver import AccessRequestDynamicApprover
 
 
 class TestAccessRequestDynamicApprover(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessRequestDynamicApprover(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessRequestDynamicApprover`
         """
-        model = AccessRequestDynamicApprover()  # noqa: E501
+        model = AccessRequestDynamicApprover()
         if include_optional:
             return AccessRequestDynamicApprover(
                 access_request_id = '4b4d982dddff4267ab12f0f1e72b5a6d',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.form_element_dynamic_data_source import FormElementDynamicDataSource  # noqa: E501
+from sailpoint.beta.models.form_element_dynamic_data_source import FormElementDynamicDataSource
 
 
 class TestFormElementDynamicDataSource(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFormElementDynamicDataSource(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FormElementDynamicDataSource`
         """
-        model = FormElementDynamicDataSource()  # noqa: E501
+        model = FormElementDynamicDataSource()
         if include_optional:
             return FormElementDynamicDataSource(
                 config = sailpoint.beta.models.form_element_dynamic_data_source_config.FormElementDynamicDataSourceConfig(

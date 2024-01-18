@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictStr
+from pydantic import Field
 from sailpoint.v3.models.aggregation_type import AggregationType
 from sailpoint.v3.models.filter import Filter
 from sailpoint.v3.models.index import Index
@@ -27,90 +28,102 @@ from sailpoint.v3.models.query_type import QueryType
 from sailpoint.v3.models.search_aggregation_specification import SearchAggregationSpecification
 from sailpoint.v3.models.text_query import TextQuery
 from sailpoint.v3.models.type_ahead_query import TypeAheadQuery
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class Search(BaseModel):
     """
     Search
     """
-    indices: Optional[conlist(Index)] = Field(
-        None,
+
+  # noqa: E501
+    indices: Optional[List[Index]] = Field(
+        default=None,
         description=
         "The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched."
     )
-    query_type: Optional[QueryType] = Field(None, alias="queryType")
-    query_version: Optional[Any] = Field(None, alias="queryVersion")
+    query_type: Optional[QueryType] = Field(default=None, alias="queryType")
+    query_version: Optional[Any] = Field(default=None, alias="queryVersion")
     query: Optional[Query] = None
-    query_dsl: Optional[Dict[str, Any]] = Field(
-        None,
-        alias="queryDsl",
+    query_dsl: Optional[Union[str, Any]] = Field(
+        default=None,
         description=
-        "The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax."
-    )
-    text_query: Optional[TextQuery] = Field(None, alias="textQuery")
-    type_ahead_query: Optional[TypeAheadQuery] = Field(None,
+        "The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax.",
+        alias="queryDsl")
+    text_query: Optional[TextQuery] = Field(default=None, alias="textQuery")
+    type_ahead_query: Optional[TypeAheadQuery] = Field(default=None,
                                                        alias="typeAheadQuery")
     include_nested: Optional[StrictBool] = Field(
-        True,
-        alias="includeNested",
+        default=True,
         description=
-        "Indicates whether nested objects from returned search results should be included."
-    )
+        "Indicates whether nested objects from returned search results should be included.",
+        alias="includeNested")
     query_result_filter: Optional[QueryResultFilter] = Field(
-        None, alias="queryResultFilter")
+        default=None, alias="queryResultFilter")
     aggregation_type: Optional[AggregationType] = Field(
-        None, alias="aggregationType")
-    aggregations_version: Optional[Any] = Field(None,
+        default=None, alias="aggregationType")
+    aggregations_version: Optional[Any] = Field(default=None,
                                                 alias="aggregationsVersion")
-    aggregations_dsl: Optional[Dict[str, Any]] = Field(
-        None,
-        alias="aggregationsDsl",
+    aggregations_dsl: Optional[Union[str, Any]] = Field(
+        default=None,
         description=
-        "The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) syntax."
-    )
+        "The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) syntax.",
+        alias="aggregationsDsl")
     aggregations: Optional[SearchAggregationSpecification] = None
-    sort: Optional[conlist(StrictStr)] = Field(
-        None,
+    sort: Optional[List[StrictStr]] = Field(
+        default=None,
         description=
         "The fields to be used to sort the search results. Use + or - to specify the sort direction."
     )
-    search_after: Optional[conlist(StrictStr)] = Field(
-        None,
-        alias="searchAfter",
+    search_after: Optional[List[StrictStr]] = Field(
+        default=None,
         description=
-        "Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set. This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value. It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging. For example, when searching for identities, if you are sorting by displayName you will also want to include ID, for example [\"displayName\", \"id\"].  If the last identity ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last displayName is \"John Doe\", then using that displayName and ID will start a new search after this identity. The searchAfter value will look like [\"John Doe\",\"2c91808375d8e80a0175e1f88a575221\"]"
-    )
+        "Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set. This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value. It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don't get duplicate results while paging. For example, when searching for identities, if you are sorting by displayName you will also want to include ID, for example [\"displayName\", \"id\"].  If the last identity ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last displayName is \"John Doe\", then using that displayName and ID will start a new search after this identity. The searchAfter value will look like [\"John Doe\",\"2c91808375d8e80a0175e1f88a575221\"]",
+        alias="searchAfter")
     filters: Optional[Dict[str, Filter]] = Field(
-        None,
+        default=None,
         description="The filters to be applied for each filtered field name.")
-    __properties = [
+    __properties: ClassVar[List[str]] = [
         "indices", "queryType", "queryVersion", "query", "queryDsl",
         "textQuery", "typeAheadQuery", "includeNested", "queryResultFilter",
         "aggregationType", "aggregationsVersion", "aggregationsDsl",
         "aggregations", "sort", "searchAfter", "filters"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Search:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of Search from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of query
         if self.query:
             _dict['query'] = self.query.to_dict()
@@ -136,50 +149,50 @@ class Search(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Search:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of Search from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return Search.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = Search.parse_obj({
+        _obj = cls.model_validate({
             "indices":
             obj.get("indices"),
-            "query_type":
+            "queryType":
             obj.get("queryType"),
-            "query_version":
+            "queryVersion":
             obj.get("queryVersion"),
             "query":
             Query.from_dict(obj.get("query"))
             if obj.get("query") is not None else None,
-            "query_dsl":
+            "queryDsl":
             obj.get("queryDsl"),
-            "text_query":
+            "textQuery":
             TextQuery.from_dict(obj.get("textQuery"))
             if obj.get("textQuery") is not None else None,
-            "type_ahead_query":
+            "typeAheadQuery":
             TypeAheadQuery.from_dict(obj.get("typeAheadQuery"))
             if obj.get("typeAheadQuery") is not None else None,
-            "include_nested":
+            "includeNested":
             obj.get("includeNested")
             if obj.get("includeNested") is not None else True,
-            "query_result_filter":
+            "queryResultFilter":
             QueryResultFilter.from_dict(obj.get("queryResultFilter"))
             if obj.get("queryResultFilter") is not None else None,
-            "aggregation_type":
+            "aggregationType":
             obj.get("aggregationType"),
-            "aggregations_version":
+            "aggregationsVersion":
             obj.get("aggregationsVersion"),
-            "aggregations_dsl":
+            "aggregationsDsl":
             obj.get("aggregationsDsl"),
             "aggregations":
             SearchAggregationSpecification.from_dict(obj.get("aggregations"))
             if obj.get("aggregations") is not None else None,
             "sort":
             obj.get("sort"),
-            "search_after":
+            "searchAfter":
             obj.get("searchAfter"),
             "filters":
             dict((_k, Filter.from_dict(_v))

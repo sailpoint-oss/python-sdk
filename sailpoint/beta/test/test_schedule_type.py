@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.schedule_type import ScheduleType  # noqa: E501
+from sailpoint.beta.models.schedule_type import ScheduleType
 
 
 class TestScheduleType(unittest.TestCase):

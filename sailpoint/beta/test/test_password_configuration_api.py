@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.password_configuration_api import PasswordConfigurationApi  # noqa: E501
+from sailpoint.beta.api.password_configuration_api import PasswordConfigurationApi
 
 
 class TestPasswordConfigurationApi(unittest.TestCase):
     """PasswordConfigurationApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = PasswordConfigurationApi()  # noqa: E501
+        self.api = PasswordConfigurationApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,21 +28,21 @@ class TestPasswordConfigurationApi(unittest.TestCase):
     def test_create_password_org_config(self) -> None:
         """Test case for create_password_org_config
 
-        Create Password Org Config  # noqa: E501
+        Create Password Org Config
         """
         pass
 
     def test_get_password_org_config(self) -> None:
         """Test case for get_password_org_config
 
-        Get Password Org Config  # noqa: E501
+        Get Password Org Config
         """
         pass
 
     def test_put_password_org_config(self) -> None:
         """Test case for put_password_org_config
 
-        Update Password Org Config  # noqa: E501
+        Update Password Org Config
         """
         pass
 

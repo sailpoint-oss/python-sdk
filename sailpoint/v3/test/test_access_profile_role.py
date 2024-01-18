@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.access_profile_role import AccessProfileRole  # noqa: E501
+from sailpoint.v3.models.access_profile_role import AccessProfileRole
 
 
 class TestAccessProfileRole(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessProfileRole(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessProfileRole`
         """
-        model = AccessProfileRole()  # noqa: E501
+        model = AccessProfileRole()
         if include_optional:
             return AccessProfileRole(
                 id = '2c91808568c529c60168cca6f90c1313',

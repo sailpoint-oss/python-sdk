@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identity_profile_exported_object import IdentityProfileExportedObject  # noqa: E501
+from sailpoint.v3.models.identity_profile_exported_object import IdentityProfileExportedObject
 
 
 class TestIdentityProfileExportedObject(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityProfileExportedObject(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityProfileExportedObject`
         """
-        model = IdentityProfileExportedObject()  # noqa: E501
+        model = IdentityProfileExportedObject()
         if include_optional:
             return IdentityProfileExportedObject(
                 version = 1,

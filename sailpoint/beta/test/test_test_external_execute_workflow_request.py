@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.test_external_execute_workflow_request import TestExternalExecuteWorkflowRequest  # noqa: E501
+from sailpoint.beta.models.test_external_execute_workflow_request import TestExternalExecuteWorkflowRequest
 
 
 class TestTestExternalExecuteWorkflowRequest(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestTestExternalExecuteWorkflowRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TestExternalExecuteWorkflowRequest`
         """
-        model = TestExternalExecuteWorkflowRequest()  # noqa: E501
+        model = TestExternalExecuteWorkflowRequest()
         if include_optional:
             return TestExternalExecuteWorkflowRequest(
                 input = {test=hello world}

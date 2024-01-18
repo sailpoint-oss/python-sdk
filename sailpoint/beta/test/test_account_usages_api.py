@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.account_usages_api import AccountUsagesApi  # noqa: E501
+from sailpoint.beta.api.account_usages_api import AccountUsagesApi
 
 
 class TestAccountUsagesApi(unittest.TestCase):
     """AccountUsagesApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = AccountUsagesApi()  # noqa: E501
+        self.api = AccountUsagesApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,7 +28,7 @@ class TestAccountUsagesApi(unittest.TestCase):
     def test_get_usages_by_account_id(self) -> None:
         """Test case for get_usages_by_account_id
 
-        Returns account usage insights  # noqa: E501
+        Returns account usage insights
         """
         pass
 

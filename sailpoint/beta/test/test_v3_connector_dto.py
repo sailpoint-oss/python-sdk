@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.v3_connector_dto import V3ConnectorDto  # noqa: E501
+from sailpoint.beta.models.v3_connector_dto import V3ConnectorDto
 
 
 class TestV3ConnectorDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestV3ConnectorDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `V3ConnectorDto`
         """
-        model = V3ConnectorDto()  # noqa: E501
+        model = V3ConnectorDto()
         if include_optional:
             return V3ConnectorDto(
                 name = 'name',

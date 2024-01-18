@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.cc.api.sources_accounts_api import SourcesAccountsApi  # noqa: E501
+from sailpoint.cc.api.sources_accounts_api import SourcesAccountsApi
 
 
 class TestSourcesAccountsApi(unittest.TestCase):
     """SourcesAccountsApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = SourcesAccountsApi()  # noqa: E501
+        self.api = SourcesAccountsApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,7 +28,7 @@ class TestSourcesAccountsApi(unittest.TestCase):
     def test_export_account_feed(self) -> None:
         """Test case for export_account_feed
 
-        Export Account Feed  # noqa: E501
+        Export Account Feed
         """
         pass
 

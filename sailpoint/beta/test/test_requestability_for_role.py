@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.requestability_for_role import RequestabilityForRole  # noqa: E501
+from sailpoint.beta.models.requestability_for_role import RequestabilityForRole
 
 
 class TestRequestabilityForRole(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRequestabilityForRole(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RequestabilityForRole`
         """
-        model = RequestabilityForRole()  # noqa: E501
+        model = RequestabilityForRole()
         if include_optional:
             return RequestabilityForRole(
                 comments_required = True,

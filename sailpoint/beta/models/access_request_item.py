@@ -17,40 +17,46 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Dict, Optional
-from pydantic import BaseModel, Field, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccessRequestItem(BaseModel):
     """
     AccessRequestItem
     """
+
+  # noqa: E501
     type: StrictStr = Field(
-        ..., description="The type of the item being requested.")
+        description="The type of the item being requested.")
     id: StrictStr = Field(
-        ...,
         description="ID of Role, Access Profile or Entitlement being requested."
     )
     comment: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description=
         "Comment provided by requester. * Comment is required when the request is of type Revoke Access. "
     )
     client_metadata: Optional[Dict[str, StrictStr]] = Field(
-        None,
-        alias="clientMetadata",
+        default=None,
         description=
-        "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status."
-    )
+        "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status.",
+        alias="clientMetadata")
     remove_date: Optional[datetime] = Field(
-        None,
-        alias="removeDate",
+        default=None,
         description=
-        "The date the role or access profile is no longer assigned to the specified identity. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. * Currently it is not supported for entitlements. "
-    )
-    __properties = ["type", "id", "comment", "clientMetadata", "removeDate"]
+        "The date the role or access profile is no longer assigned to the specified identity. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. * Currently it is not supported for entitlements. ",
+        alias="removeDate")
+    __properties: ClassVar[List[str]] = [
+        "type", "id", "comment", "clientMetadata", "removeDate"
+    ]
 
-    @validator('type')
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT'):
@@ -59,48 +65,53 @@ class AccessRequestItem(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccessRequestItem:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccessRequestItem from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccessRequestItem:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccessRequestItem from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccessRequestItem.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccessRequestItem.parse_obj({
-            "type":
-            obj.get("type"),
-            "id":
-            obj.get("id"),
-            "comment":
-            obj.get("comment"),
-            "client_metadata":
-            obj.get("clientMetadata"),
-            "remove_date":
-            obj.get("removeDate")
+        _obj = cls.model_validate({
+            "type": obj.get("type"),
+            "id": obj.get("id"),
+            "comment": obj.get("comment"),
+            "clientMetadata": obj.get("clientMetadata"),
+            "removeDate": obj.get("removeDate")
         })
         return _obj

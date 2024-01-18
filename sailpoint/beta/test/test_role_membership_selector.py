@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_membership_selector import RoleMembershipSelector  # noqa: E501
+from sailpoint.beta.models.role_membership_selector import RoleMembershipSelector
 
 
 class TestRoleMembershipSelector(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRoleMembershipSelector(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleMembershipSelector`
         """
-        model = RoleMembershipSelector()  # noqa: E501
+        model = RoleMembershipSelector()
         if include_optional:
             return RoleMembershipSelector(
                 type = 'IDENTITY_LIST',

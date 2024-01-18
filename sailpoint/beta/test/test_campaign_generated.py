@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.campaign_generated import CampaignGenerated  # noqa: E501
+from sailpoint.beta.models.campaign_generated import CampaignGenerated
 
 
 class TestCampaignGenerated(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCampaignGenerated(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CampaignGenerated`
         """
-        model = CampaignGenerated()  # noqa: E501
+        model = CampaignGenerated()
         if include_optional:
             return CampaignGenerated(
                 campaign = sailpoint.beta.models.campaign_generated_campaign.CampaignGenerated_campaign(

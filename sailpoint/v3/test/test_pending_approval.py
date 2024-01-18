@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.pending_approval import PendingApproval  # noqa: E501
+from sailpoint.v3.models.pending_approval import PendingApproval
 
 
 class TestPendingApproval(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPendingApproval(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PendingApproval`
         """
-        model = PendingApproval()  # noqa: E501
+        model = PendingApproval()
         if include_optional:
             return PendingApproval(
                 id = 'id12345',
@@ -61,18 +61,10 @@ class TestPendingApproval(unittest.TestCase):
                     type = 'ROLE', ),
                 requester_comment = sailpoint.v3.models.comment_dto.CommentDto(
                     comment = 'This is a comment.', 
-                    author = sailpoint.v3.models.comment_dto_author.CommentDto_author(
-                        type = 'IDENTITY', 
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'Adam Kennedy', ), 
                     created = '2017-07-11T18:45:37.098Z', ),
                 previous_reviewers_comments = [
                     sailpoint.v3.models.comment_dto.CommentDto(
                         comment = 'This is a comment.', 
-                        author = sailpoint.v3.models.comment_dto_author.CommentDto_author(
-                            type = 'IDENTITY', 
-                            id = '2c91808568c529c60168cca6f90c1313', 
-                            name = 'Adam Kennedy', ), 
                         created = '2017-07-11T18:45:37.098Z', )
                     ],
                 forward_history = [

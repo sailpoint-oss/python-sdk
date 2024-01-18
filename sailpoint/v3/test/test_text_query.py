@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.text_query import TextQuery  # noqa: E501
+from sailpoint.v3.models.text_query import TextQuery
 
 
 class TestTextQuery(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTextQuery(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TextQuery`
         """
-        model = TextQuery()  # noqa: E501
+        model = TextQuery()
         if include_optional:
             return TextQuery(
                 terms = [The quick brown fox, 3141592, 7],

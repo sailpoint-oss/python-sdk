@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.non_employee_bulk_upload_status import NonEmployeeBulkUploadStatus  # noqa: E501
+from sailpoint.beta.models.non_employee_bulk_upload_status import NonEmployeeBulkUploadStatus
 
 
 class TestNonEmployeeBulkUploadStatus(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNonEmployeeBulkUploadStatus(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeBulkUploadStatus`
         """
-        model = NonEmployeeBulkUploadStatus()  # noqa: E501
+        model = NonEmployeeBulkUploadStatus()
         if include_optional:
             return NonEmployeeBulkUploadStatus(
                 status = 'PENDING'

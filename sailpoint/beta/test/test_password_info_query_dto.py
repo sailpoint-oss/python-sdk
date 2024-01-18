@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.password_info_query_dto import PasswordInfoQueryDTO  # noqa: E501
+from sailpoint.beta.models.password_info_query_dto import PasswordInfoQueryDTO
 
 
 class TestPasswordInfoQueryDTO(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestPasswordInfoQueryDTO(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `PasswordInfoQueryDTO`
         """
-        model = PasswordInfoQueryDTO()  # noqa: E501
+        model = PasswordInfoQueryDTO()
         if include_optional:
             return PasswordInfoQueryDTO(
                 user_name = 'Abby.Smith',

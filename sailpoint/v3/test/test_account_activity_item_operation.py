@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.account_activity_item_operation import AccountActivityItemOperation  # noqa: E501
+from sailpoint.v3.models.account_activity_item_operation import AccountActivityItemOperation
 
 
 class TestAccountActivityItemOperation(unittest.TestCase):

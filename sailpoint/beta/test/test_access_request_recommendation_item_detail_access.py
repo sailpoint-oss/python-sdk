@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_request_recommendation_item_detail_access import AccessRequestRecommendationItemDetailAccess  # noqa: E501
+from sailpoint.beta.models.access_request_recommendation_item_detail_access import AccessRequestRecommendationItemDetailAccess
 
 
 class TestAccessRequestRecommendationItemDetailAccess(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestAccessRequestRecommendationItemDetailAccess(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessRequestRecommendationItemDetailAccess`
         """
-        model = AccessRequestRecommendationItemDetailAccess()  # noqa: E501
+        model = AccessRequestRecommendationItemDetailAccess()
         if include_optional:
             return AccessRequestRecommendationItemDetailAccess(
                 id = '2c9180835d2e5168015d32f890ca1581',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.array_inner import ArrayInner  # noqa: E501
+from sailpoint.v3.models.array_inner import ArrayInner
 
 
 class TestArrayInner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestArrayInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ArrayInner`
         """
-        model = ArrayInner()  # noqa: E501
+        model = ArrayInner()
         if include_optional:
             return ArrayInner(
             )

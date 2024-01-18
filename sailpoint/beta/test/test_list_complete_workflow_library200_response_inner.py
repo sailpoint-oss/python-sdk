@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner  # noqa: E501
+from sailpoint.beta.models.list_complete_workflow_library200_response_inner import ListCompleteWorkflowLibrary200ResponseInner
 
 
 class TestListCompleteWorkflowLibrary200ResponseInner(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestListCompleteWorkflowLibrary200ResponseInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListCompleteWorkflowLibrary200ResponseInner`
         """
-        model = ListCompleteWorkflowLibrary200ResponseInner()  # noqa: E501
+        model = ListCompleteWorkflowLibrary200ResponseInner()
         if include_optional:
             return ListCompleteWorkflowLibrary200ResponseInner(
                 id = 'sp:compare-boolean',

@@ -16,31 +16,40 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr, constr, validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictStr, field_validator
+from pydantic import Field
+from typing_extensions import Annotated
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class TransformRead(BaseModel):
     """
     TransformRead
     """
-    name: constr(strict=True, max_length=50, min_length=1) = Field(
-        ..., description="Unique name of this transform")
-    type: StrictStr = Field(..., description="The type of transform operation")
-    attributes: Optional[Dict[str, Any]] = Field(
-        ...,
+
+  # noqa: E501
+    name: Annotated[str,
+                    Field(min_length=1, strict=True, max_length=50)] = Field(
+                        description="Unique name of this transform")
+    type: StrictStr = Field(description="The type of transform operation")
+    attributes: Optional[Union[str, Any]] = Field(
         description=
         "Meta-data about the transform. Values in this list are specific to the type of transform to be executed."
     )
-    id: StrictStr = Field(..., description="Unique ID of this transform")
+    id: StrictStr = Field(description="Unique ID of this transform")
     internal: StrictBool = Field(
-        ...,
         description=
         "Indicates whether this is an internal SailPoint-created transform or a customer-created transform"
     )
-    __properties = ["name", "type", "attributes", "id", "internal"]
+    __properties: ClassVar[List[str]] = [
+        "name", "type", "attributes", "id", "internal"
+    ]
 
-    @validator('type')
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('accountAttribute', 'base64Decode', 'base64Encode',
@@ -57,44 +66,54 @@ class TransformRead(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> TransformRead:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of TransformRead from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # set to None if attributes (nullable) is None
-        # and __fields_set__ contains the field
-        if self.attributes is None and "attributes" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.attributes is None and "attributes" in self.model_fields_set:
             _dict['attributes'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TransformRead:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of TransformRead from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return TransformRead.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = TransformRead.parse_obj({
+        _obj = cls.model_validate({
             "name":
             obj.get("name"),
             "type":

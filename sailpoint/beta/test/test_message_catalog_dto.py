@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.message_catalog_dto import MessageCatalogDto  # noqa: E501
+from sailpoint.beta.models.message_catalog_dto import MessageCatalogDto
 
 
 class TestMessageCatalogDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestMessageCatalogDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `MessageCatalogDto`
         """
-        model = MessageCatalogDto()  # noqa: E501
+        model = MessageCatalogDto()
         if include_optional:
             return MessageCatalogDto(
                 locale = 'en_US',

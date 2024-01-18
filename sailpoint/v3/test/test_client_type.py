@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.client_type import ClientType  # noqa: E501
+from sailpoint.v3.models.client_type import ClientType
 
 
 class TestClientType(unittest.TestCase):

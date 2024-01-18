@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workflow_body_owner import WorkflowBodyOwner  # noqa: E501
+from sailpoint.beta.models.workflow_body_owner import WorkflowBodyOwner
 
 
 class TestWorkflowBodyOwner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkflowBodyOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkflowBodyOwner`
         """
-        model = WorkflowBodyOwner()  # noqa: E501
+        model = WorkflowBodyOwner()
         if include_optional:
             return WorkflowBodyOwner(
                 type = 'IDENTITY',

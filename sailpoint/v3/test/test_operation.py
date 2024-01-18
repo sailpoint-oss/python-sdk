@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.operation import Operation  # noqa: E501
+from sailpoint.v3.models.operation import Operation
 
 
 class TestOperation(unittest.TestCase):

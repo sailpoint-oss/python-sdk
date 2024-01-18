@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.fullcampaign_all_of_sources_with_orphan_entitlements import FullcampaignAllOfSourcesWithOrphanEntitlements  # noqa: E501
+from sailpoint.beta.models.fullcampaign_all_of_sources_with_orphan_entitlements import FullcampaignAllOfSourcesWithOrphanEntitlements
 
 
 class TestFullcampaignAllOfSourcesWithOrphanEntitlements(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestFullcampaignAllOfSourcesWithOrphanEntitlements(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `FullcampaignAllOfSourcesWithOrphanEntitlements`
         """
-        model = FullcampaignAllOfSourcesWithOrphanEntitlements()  # noqa: E501
+        model = FullcampaignAllOfSourcesWithOrphanEntitlements()
         if include_optional:
             return FullcampaignAllOfSourcesWithOrphanEntitlements(
                 id = '2c90ad2a70ace7d50170acf22ca90010',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_dto_manager_ref import IdentityDtoManagerRef  # noqa: E501
+from sailpoint.beta.models.identity_dto_manager_ref import IdentityDtoManagerRef
 
 
 class TestIdentityDtoManagerRef(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityDtoManagerRef(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityDtoManagerRef`
         """
-        model = IdentityDtoManagerRef()  # noqa: E501
+        model = IdentityDtoManagerRef()
         if include_optional:
             return IdentityDtoManagerRef(
                 type = 'IDENTITY',

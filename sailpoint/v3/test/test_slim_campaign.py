@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.slim_campaign import SlimCampaign  # noqa: E501
+from sailpoint.v3.models.slim_campaign import SlimCampaign
 
 
 class TestSlimCampaign(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSlimCampaign(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SlimCampaign`
         """
-        model = SlimCampaign()  # noqa: E501
+        model = SlimCampaign()
         if include_optional:
             return SlimCampaign(
                 id = '2c9079b270a266a60170a2779fcb0007',
@@ -45,7 +45,20 @@ class TestSlimCampaign(unittest.TestCase):
                 auto_revoke_allowed = False,
                 recommendations_enabled = True,
                 status = 'ACTIVE',
-                correlated_status = 'CORRELATED'
+                correlated_status = 'CORRELATED',
+                created = '2020-03-03T22:15:13.611Z',
+                total_certifications = 100,
+                completed_certifications = 10,
+                alerts = [
+                    sailpoint.v3.models.campaign_alert.CampaignAlert(
+                        level = 'ERROR', 
+                        localizations = [
+                            sailpoint.v3.models.error_message_dto.ErrorMessageDto(
+                                locale = 'en-US', 
+                                locale_origin = 'DEFAULT', 
+                                text = 'The request was syntactically correct but its content is semantically invalid.', )
+                            ], )
+                    ]
             )
         else:
             return SlimCampaign(

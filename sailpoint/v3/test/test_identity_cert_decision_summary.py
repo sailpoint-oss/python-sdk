@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identity_cert_decision_summary import IdentityCertDecisionSummary  # noqa: E501
+from sailpoint.v3.models.identity_cert_decision_summary import IdentityCertDecisionSummary
 
 
 class TestIdentityCertDecisionSummary(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityCertDecisionSummary(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityCertDecisionSummary`
         """
-        model = IdentityCertDecisionSummary()  # noqa: E501
+        model = IdentityCertDecisionSummary()
         if include_optional:
             return IdentityCertDecisionSummary(
                 entitlement_decisions_made = 3,

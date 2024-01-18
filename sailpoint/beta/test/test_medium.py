@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.medium import Medium  # noqa: E501
+from sailpoint.beta.models.medium import Medium
 
 
 class TestMedium(unittest.TestCase):

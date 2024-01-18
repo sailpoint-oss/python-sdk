@@ -16,30 +16,38 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccessRequestPreApprovalRequestedItemsInner(BaseModel):
     """
     AccessRequestPreApprovalRequestedItemsInner
     """
+
+  # noqa: E501
     id: StrictStr = Field(
-        ..., description="The unique ID of the access item being requested.")
+        description="The unique ID of the access item being requested.")
     name: StrictStr = Field(
-        ..., description="The human friendly name of the access item.")
+        description="The human friendly name of the access item.")
     description: Optional[StrictStr] = Field(
-        None, description="Detailed description of the access item.")
-    type: Dict[str, Any] = Field(..., description="The type of access item.")
-    operation: Dict[str, Any] = Field(
-        ..., description="The action to perform on the access item.")
+        default=None, description="Detailed description of the access item.")
+    type: Union[str, Any] = Field(description="The type of access item.")
+    operation: Union[str, Any] = Field(
+        description="The action to perform on the access item.")
     comment: Optional[StrictStr] = Field(
-        None, description="A comment from the identity requesting the access.")
-    __properties = [
+        default=None,
+        description="A comment from the identity requesting the access.")
+    __properties: ClassVar[List[str]] = [
         "id", "name", "description", "type", "operation", "comment"
     ]
 
-    @validator('type')
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('ACCESS_PROFILE', 'ROLE', 'ENTITLEMENT'):
@@ -48,69 +56,71 @@ class AccessRequestPreApprovalRequestedItemsInner(BaseModel):
             )
         return value
 
-    @validator('operation')
+    @field_validator('operation')
     def operation_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('Add', 'Remove'):
             raise ValueError("must be one of enum values ('Add', 'Remove')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(
-            cls, json_str: str) -> AccessRequestPreApprovalRequestedItemsInner:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccessRequestPreApprovalRequestedItemsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # set to None if description (nullable) is None
-        # and __fields_set__ contains the field
-        if self.description is None and "description" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
         # set to None if comment (nullable) is None
-        # and __fields_set__ contains the field
-        if self.comment is None and "comment" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.comment is None and "comment" in self.model_fields_set:
             _dict['comment'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls,
-                  obj: dict) -> AccessRequestPreApprovalRequestedItemsInner:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccessRequestPreApprovalRequestedItemsInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccessRequestPreApprovalRequestedItemsInner.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccessRequestPreApprovalRequestedItemsInner.parse_obj({
-            "id":
-            obj.get("id"),
-            "name":
-            obj.get("name"),
-            "description":
-            obj.get("description"),
-            "type":
-            obj.get("type"),
-            "operation":
-            obj.get("operation"),
-            "comment":
-            obj.get("comment")
+        _obj = cls.model_validate({
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "type": obj.get("type"),
+            "operation": obj.get("operation"),
+            "comment": obj.get("comment")
         })
         return _obj

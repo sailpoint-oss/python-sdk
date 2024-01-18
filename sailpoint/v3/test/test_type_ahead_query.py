@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.type_ahead_query import TypeAheadQuery  # noqa: E501
+from sailpoint.v3.models.type_ahead_query import TypeAheadQuery
 
 
 class TestTypeAheadQuery(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTypeAheadQuery(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TypeAheadQuery`
         """
-        model = TypeAheadQuery()  # noqa: E501
+        model = TypeAheadQuery()
         if include_optional:
             return TypeAheadQuery(
                 query = 'Work',

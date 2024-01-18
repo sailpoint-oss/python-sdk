@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.source_manager_correlation_rule import SourceManagerCorrelationRule  # noqa: E501
+from sailpoint.v3.models.source_manager_correlation_rule import SourceManagerCorrelationRule
 
 
 class TestSourceManagerCorrelationRule(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceManagerCorrelationRule(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceManagerCorrelationRule`
         """
-        model = SourceManagerCorrelationRule()  # noqa: E501
+        model = SourceManagerCorrelationRule()
         if include_optional:
             return SourceManagerCorrelationRule(
                 type = 'RULE',

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.task_result_dto import TaskResultDto  # noqa: E501
+from sailpoint.beta.models.task_result_dto import TaskResultDto
 
 
 class TestTaskResultDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTaskResultDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TaskResultDto`
         """
-        model = TaskResultDto()  # noqa: E501
+        model = TaskResultDto()
         if include_optional:
             return TaskResultDto(
                 type = 'TASK_RESULT',

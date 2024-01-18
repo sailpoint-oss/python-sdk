@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.report_type import ReportType  # noqa: E501
+from sailpoint.v3.models.report_type import ReportType
 
 
 class TestReportType(unittest.TestCase):

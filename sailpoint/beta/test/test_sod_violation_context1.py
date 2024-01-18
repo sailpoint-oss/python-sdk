@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.sod_violation_context1 import SodViolationContext1  # noqa: E501
+from sailpoint.beta.models.sod_violation_context1 import SodViolationContext1
 
 
 class TestSodViolationContext1(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSodViolationContext1(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SodViolationContext1`
         """
-        model = SodViolationContext1()  # noqa: E501
+        model = SodViolationContext1()
         if include_optional:
             return SodViolationContext1(
                 policy = sailpoint.beta.models.sod_policy_dto.SodPolicyDto(

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.workflow_library_action import WorkflowLibraryAction  # noqa: E501
+from sailpoint.beta.models.workflow_library_action import WorkflowLibraryAction
 
 
 class TestWorkflowLibraryAction(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestWorkflowLibraryAction(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `WorkflowLibraryAction`
         """
-        model = WorkflowLibraryAction()  # noqa: E501
+        model = WorkflowLibraryAction()
         if include_optional:
             return WorkflowLibraryAction(
                 id = 'sp:create-campaign',

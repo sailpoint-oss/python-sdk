@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_criteria_level1 import RoleCriteriaLevel1  # noqa: E501
+from sailpoint.beta.models.role_criteria_level1 import RoleCriteriaLevel1
 
 
 class TestRoleCriteriaLevel1(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRoleCriteriaLevel1(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleCriteriaLevel1`
         """
-        model = RoleCriteriaLevel1()  # noqa: E501
+        model = RoleCriteriaLevel1()
         if include_optional:
             return RoleCriteriaLevel1(
                 operation = 'EQUALS',

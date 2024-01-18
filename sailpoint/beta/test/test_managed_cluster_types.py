@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.managed_cluster_types import ManagedClusterTypes  # noqa: E501
+from sailpoint.beta.models.managed_cluster_types import ManagedClusterTypes
 
 
 class TestManagedClusterTypes(unittest.TestCase):

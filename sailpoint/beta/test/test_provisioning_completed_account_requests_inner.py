@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.provisioning_completed_account_requests_inner import ProvisioningCompletedAccountRequestsInner  # noqa: E501
+from sailpoint.beta.models.provisioning_completed_account_requests_inner import ProvisioningCompletedAccountRequestsInner
 
 
 class TestProvisioningCompletedAccountRequestsInner(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestProvisioningCompletedAccountRequestsInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ProvisioningCompletedAccountRequestsInner`
         """
-        model = ProvisioningCompletedAccountRequestsInner()  # noqa: E501
+        model = ProvisioningCompletedAccountRequestsInner()
         if include_optional:
             return ProvisioningCompletedAccountRequestsInner(
                 source = sailpoint.beta.models.provisioning_completed_account_requests_inner_source.ProvisioningCompleted_accountRequests_inner_source(

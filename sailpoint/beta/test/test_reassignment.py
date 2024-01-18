@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.reassignment import Reassignment  # noqa: E501
+from sailpoint.beta.models.reassignment import Reassignment
 
 
 class TestReassignment(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestReassignment(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Reassignment`
         """
-        model = Reassignment()  # noqa: E501
+        model = Reassignment()
         if include_optional:
             return Reassignment(
                 var_from = sailpoint.beta.models.certification_reference.CertificationReference(),

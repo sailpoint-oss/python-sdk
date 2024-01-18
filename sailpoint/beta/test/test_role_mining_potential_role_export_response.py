@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse  # noqa: E501
+from sailpoint.beta.models.role_mining_potential_role_export_response import RoleMiningPotentialRoleExportResponse
 
 
 class TestRoleMiningPotentialRoleExportResponse(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestRoleMiningPotentialRoleExportResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RoleMiningPotentialRoleExportResponse`
         """
-        model = RoleMiningPotentialRoleExportResponse()  # noqa: E501
+        model = RoleMiningPotentialRoleExportResponse()
         if include_optional:
             return RoleMiningPotentialRoleExportResponse(
                 min_entitlement_popularity = 0,

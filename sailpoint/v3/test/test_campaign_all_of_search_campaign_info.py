@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.campaign_all_of_search_campaign_info import CampaignAllOfSearchCampaignInfo  # noqa: E501
+from sailpoint.v3.models.campaign_all_of_search_campaign_info import CampaignAllOfSearchCampaignInfo
 
 
 class TestCampaignAllOfSearchCampaignInfo(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestCampaignAllOfSearchCampaignInfo(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CampaignAllOfSearchCampaignInfo`
         """
-        model = CampaignAllOfSearchCampaignInfo()  # noqa: E501
+        model = CampaignAllOfSearchCampaignInfo()
         if include_optional:
             return CampaignAllOfSearchCampaignInfo(
                 type = 'ACCESS',

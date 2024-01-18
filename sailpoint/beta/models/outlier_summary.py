@@ -17,34 +17,43 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictInt, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class OutlierSummary(BaseModel):
     """
     OutlierSummary
     """
-    type: Optional[StrictStr] = Field(
-        None, description="The type of outlier summary")
-    snapshot_date: Optional[datetime] = Field(
-        None,
-        alias="snapshotDate",
-        description=
-        "The date the bulk outlier detection ran/snapshot was created")
-    total_outliers: Optional[StrictInt] = Field(
-        None,
-        alias="totalOutliers",
-        description=
-        "Total number of outliers for the customer making the request")
-    total_identities: Optional[StrictInt] = Field(
-        None,
-        alias="totalIdentities",
-        description=
-        "Total number of identities for the customer making the request")
-    __properties = ["type", "snapshotDate", "totalOutliers", "totalIdentities"]
 
-    @validator('type')
+  # noqa: E501
+    type: Optional[StrictStr] = Field(
+        default=None, description="The type of outlier summary")
+    snapshot_date: Optional[datetime] = Field(
+        default=None,
+        description=
+        "The date the bulk outlier detection ran/snapshot was created",
+        alias="snapshotDate")
+    total_outliers: Optional[StrictInt] = Field(
+        default=None,
+        description=
+        "Total number of outliers for the customer making the request",
+        alias="totalOutliers")
+    total_identities: Optional[StrictInt] = Field(
+        default=None,
+        description=
+        "Total number of identities for the customer making the request",
+        alias="totalIdentities")
+    __properties: ClassVar[List[str]] = [
+        "type", "snapshotDate", "totalOutliers", "totalIdentities"
+    ]
+
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -55,46 +64,52 @@ class OutlierSummary(BaseModel):
                 "must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> OutlierSummary:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of OutlierSummary from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> OutlierSummary:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of OutlierSummary from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return OutlierSummary.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = OutlierSummary.parse_obj({
-            "type":
-            obj.get("type"),
-            "snapshot_date":
-            obj.get("snapshotDate"),
-            "total_outliers":
-            obj.get("totalOutliers"),
-            "total_identities":
-            obj.get("totalIdentities")
+        _obj = cls.model_validate({
+            "type": obj.get("type"),
+            "snapshotDate": obj.get("snapshotDate"),
+            "totalOutliers": obj.get("totalOutliers"),
+            "totalIdentities": obj.get("totalIdentities")
         })
         return _obj

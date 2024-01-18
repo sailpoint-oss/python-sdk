@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_item_approver_dto import AccessItemApproverDto  # noqa: E501
+from sailpoint.beta.models.access_item_approver_dto import AccessItemApproverDto
 
 
 class TestAccessItemApproverDto(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessItemApproverDto(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessItemApproverDto`
         """
-        model = AccessItemApproverDto()  # noqa: E501
+        model = AccessItemApproverDto()
         if include_optional:
             return AccessItemApproverDto(
                 type = 'IDENTITY',

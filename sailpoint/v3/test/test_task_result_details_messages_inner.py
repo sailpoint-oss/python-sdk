@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.task_result_details_messages_inner import TaskResultDetailsMessagesInner  # noqa: E501
+from sailpoint.v3.models.task_result_details_messages_inner import TaskResultDetailsMessagesInner
 
 
 class TestTaskResultDetailsMessagesInner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestTaskResultDetailsMessagesInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TaskResultDetailsMessagesInner`
         """
-        model = TaskResultDetailsMessagesInner()  # noqa: E501
+        model = TaskResultDetailsMessagesInner()
         if include_optional:
             return TaskResultDetailsMessagesInner(
                 type = 'WARN',

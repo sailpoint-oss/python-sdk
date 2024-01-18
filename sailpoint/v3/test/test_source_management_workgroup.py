@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.source_management_workgroup import SourceManagementWorkgroup  # noqa: E501
+from sailpoint.v3.models.source_management_workgroup import SourceManagementWorkgroup
 
 
 class TestSourceManagementWorkgroup(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceManagementWorkgroup(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceManagementWorkgroup`
         """
-        model = SourceManagementWorkgroup()  # noqa: E501
+        model = SourceManagementWorkgroup()
         if include_optional:
             return SourceManagementWorkgroup(
                 type = 'GOVERNANCE_GROUP',

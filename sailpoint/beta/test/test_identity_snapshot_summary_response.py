@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse  # noqa: E501
+from sailpoint.beta.models.identity_snapshot_summary_response import IdentitySnapshotSummaryResponse
 
 
 class TestIdentitySnapshotSummaryResponse(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestIdentitySnapshotSummaryResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentitySnapshotSummaryResponse`
         """
-        model = IdentitySnapshotSummaryResponse()  # noqa: E501
+        model = IdentitySnapshotSummaryResponse()
         if include_optional:
             return IdentitySnapshotSummaryResponse(
                 snapshot = '2007-03-01T13:00:00.000Z'

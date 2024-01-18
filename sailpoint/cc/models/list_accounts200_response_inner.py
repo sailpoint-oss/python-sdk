@@ -16,43 +16,54 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from pydantic import Field
 from sailpoint.cc.models.list_accounts200_response_inner_password_change_result import ListAccounts200ResponseInnerPasswordChangeResult
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ListAccounts200ResponseInner(BaseModel):
     """
     ListAccounts200ResponseInner
     """
+
+  # noqa: E501
     id: Optional[StrictStr] = None
     type: Optional[StrictStr] = None
-    display_name: Optional[StrictStr] = Field(None, alias="displayName")
+    display_name: Optional[StrictStr] = Field(default=None,
+                                              alias="displayName")
     username: Optional[StrictStr] = None
-    password_required: Optional[StrictBool] = Field(None,
+    password_required: Optional[StrictBool] = Field(default=None,
                                                     alias="passwordRequired")
-    password_provided: Optional[StrictBool] = Field(None,
+    password_provided: Optional[StrictBool] = Field(default=None,
                                                     alias="passwordProvided")
-    apps: Optional[conlist(Dict[str, Any])] = None
-    sso_method: Optional[StrictStr] = Field(None, alias="ssoMethod")
-    id_encryption: Optional[StrictStr] = Field(None, alias="idEncryption")
+    apps: Optional[List[Union[str, Any]]] = None
+    sso_method: Optional[StrictStr] = Field(default=None, alias="ssoMethod")
+    id_encryption: Optional[StrictStr] = Field(default=None,
+                                               alias="idEncryption")
     password_encryption: Optional[StrictStr] = Field(
-        None, alias="passwordEncryption")
-    last_passwd_change: Optional[StrictStr] = Field(None,
+        default=None, alias="passwordEncryption")
+    last_passwd_change: Optional[StrictStr] = Field(default=None,
                                                     alias="lastPasswdChange")
-    service_name: Optional[StrictStr] = Field(None, alias="serviceName")
-    date_disabled: Optional[StrictStr] = Field(None, alias="dateDisabled")
-    account_service_id: Optional[StrictInt] = Field(None,
+    service_name: Optional[StrictStr] = Field(default=None,
+                                              alias="serviceName")
+    date_disabled: Optional[StrictStr] = Field(default=None,
+                                               alias="dateDisabled")
+    account_service_id: Optional[StrictInt] = Field(default=None,
                                                     alias="accountServiceId")
-    service_id: Optional[StrictInt] = Field(None, alias="serviceId")
+    service_id: Optional[StrictInt] = Field(default=None, alias="serviceId")
     pending_password_request_id: Optional[StrictStr] = Field(
-        None, alias="pendingPasswordRequestId")
+        default=None, alias="pendingPasswordRequestId")
     password_change_status: Optional[StrictStr] = Field(
-        None, alias="passwordChangeStatus")
+        default=None, alias="passwordChangeStatus")
     password_change_result: Optional[
         ListAccounts200ResponseInnerPasswordChangeResult] = Field(
-            None, alias="passwordChangeResult")
-    __properties = [
+            default=None, alias="passwordChangeResult")
+    __properties: ClassVar[List[str]] = [
         "id", "type", "displayName", "username", "passwordRequired",
         "passwordProvided", "apps", "ssoMethod", "idEncryption",
         "passwordEncryption", "lastPasswdChange", "serviceName",
@@ -61,94 +72,104 @@ class ListAccounts200ResponseInner(BaseModel):
         "passwordChangeResult"
     ]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ListAccounts200ResponseInner:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ListAccounts200ResponseInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of password_change_result
         if self.password_change_result:
             _dict[
                 'passwordChangeResult'] = self.password_change_result.to_dict(
                 )
         # set to None if last_passwd_change (nullable) is None
-        # and __fields_set__ contains the field
-        if self.last_passwd_change is None and "last_passwd_change" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.last_passwd_change is None and "last_passwd_change" in self.model_fields_set:
             _dict['lastPasswdChange'] = None
 
         # set to None if date_disabled (nullable) is None
-        # and __fields_set__ contains the field
-        if self.date_disabled is None and "date_disabled" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.date_disabled is None and "date_disabled" in self.model_fields_set:
             _dict['dateDisabled'] = None
 
         # set to None if pending_password_request_id (nullable) is None
-        # and __fields_set__ contains the field
-        if self.pending_password_request_id is None and "pending_password_request_id" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.pending_password_request_id is None and "pending_password_request_id" in self.model_fields_set:
             _dict['pendingPasswordRequestId'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ListAccounts200ResponseInner:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ListAccounts200ResponseInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ListAccounts200ResponseInner.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ListAccounts200ResponseInner.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
             "type":
             obj.get("type"),
-            "display_name":
+            "displayName":
             obj.get("displayName"),
             "username":
             obj.get("username"),
-            "password_required":
+            "passwordRequired":
             obj.get("passwordRequired"),
-            "password_provided":
+            "passwordProvided":
             obj.get("passwordProvided"),
             "apps":
             obj.get("apps"),
-            "sso_method":
+            "ssoMethod":
             obj.get("ssoMethod"),
-            "id_encryption":
+            "idEncryption":
             obj.get("idEncryption"),
-            "password_encryption":
+            "passwordEncryption":
             obj.get("passwordEncryption"),
-            "last_passwd_change":
+            "lastPasswdChange":
             obj.get("lastPasswdChange"),
-            "service_name":
+            "serviceName":
             obj.get("serviceName"),
-            "date_disabled":
+            "dateDisabled":
             obj.get("dateDisabled"),
-            "account_service_id":
+            "accountServiceId":
             obj.get("accountServiceId"),
-            "service_id":
+            "serviceId":
             obj.get("serviceId"),
-            "pending_password_request_id":
+            "pendingPasswordRequestId":
             obj.get("pendingPasswordRequestId"),
-            "password_change_status":
+            "passwordChangeStatus":
             obj.get("passwordChangeStatus"),
-            "password_change_result":
+            "passwordChangeResult":
             ListAccounts200ResponseInnerPasswordChangeResult.from_dict(
                 obj.get("passwordChangeResult"))
             if obj.get("passwordChangeResult") is not None else None

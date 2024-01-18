@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.provisioning_criteria_operation import ProvisioningCriteriaOperation  # noqa: E501
+from sailpoint.beta.models.provisioning_criteria_operation import ProvisioningCriteriaOperation
 
 
 class TestProvisioningCriteriaOperation(unittest.TestCase):

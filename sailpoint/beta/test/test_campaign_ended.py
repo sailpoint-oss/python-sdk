@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.campaign_ended import CampaignEnded  # noqa: E501
+from sailpoint.beta.models.campaign_ended import CampaignEnded
 
 
 class TestCampaignEnded(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestCampaignEnded(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CampaignEnded`
         """
-        model = CampaignEnded()  # noqa: E501
+        model = CampaignEnded()
         if include_optional:
             return CampaignEnded(
                 campaign = sailpoint.beta.models.campaign_ended_campaign.CampaignEnded_campaign(

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **days** | [**Schedule1Days**](Schedule1Days.md) |  | [optional] 
 **hours** | [**Schedule1Hours**](Schedule1Hours.md) |  | 
 **expiration** | **datetime** | A date-time in ISO-8601 format | [optional] 
-**time_zone_id** | **str** | The GMT formatted timezone the schedule will run in (ex. GMT-06:00).  If no timezone is specified, the org&#39;s default timezone is used. | [optional] 
+**time_zone_id** | **str** | The canonical TZ identifier the schedule will run in (ex. America/New_York).  If no timezone is specified, the org&#39;s default timezone is used. | [optional] 
 
 ## Example
 

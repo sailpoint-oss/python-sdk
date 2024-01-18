@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.import_options import ImportOptions  # noqa: E501
+from sailpoint.beta.models.import_options import ImportOptions
 
 
 class TestImportOptions(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestImportOptions(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ImportOptions`
         """
-        model = ImportOptions()  # noqa: E501
+        model = ImportOptions()
         if include_optional:
             return ImportOptions(
                 exclude_types = [

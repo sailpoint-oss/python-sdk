@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.work_item_type import WorkItemType  # noqa: E501
+from sailpoint.v3.models.work_item_type import WorkItemType
 
 
 class TestWorkItemType(unittest.TestCase):

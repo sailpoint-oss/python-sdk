@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.selector import Selector  # noqa: E501
+from sailpoint.v3.models.selector import Selector
 
 
 class TestSelector(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSelector(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `Selector`
         """
-        model = Selector()  # noqa: E501
+        model = Selector()
         if include_optional:
             return Selector(
                 type = 'LIST',

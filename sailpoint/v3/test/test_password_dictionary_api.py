@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.v3.api.password_dictionary_api import PasswordDictionaryApi  # noqa: E501
+from sailpoint.v3.api.password_dictionary_api import PasswordDictionaryApi
 
 
 class TestPasswordDictionaryApi(unittest.TestCase):
     """PasswordDictionaryApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = PasswordDictionaryApi()  # noqa: E501
+        self.api = PasswordDictionaryApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,14 +28,14 @@ class TestPasswordDictionaryApi(unittest.TestCase):
     def test_get_password_dictionary(self) -> None:
         """Test case for get_password_dictionary
 
-        Get Password Dictionary  # noqa: E501
+        Get Password Dictionary
         """
         pass
 
     def test_update_password_dictionary(self) -> None:
         """Test case for update_password_dictionary
 
-        Update Password Dictionary  # noqa: E501
+        Update Password Dictionary
         """
         pass
 

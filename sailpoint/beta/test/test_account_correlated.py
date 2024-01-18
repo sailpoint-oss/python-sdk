@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_correlated import AccountCorrelated  # noqa: E501
+from sailpoint.beta.models.account_correlated import AccountCorrelated
 
 
 class TestAccountCorrelated(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountCorrelated(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountCorrelated`
         """
-        model = AccountCorrelated()  # noqa: E501
+        model = AccountCorrelated()
         if include_optional:
             return AccountCorrelated(
                 identity = sailpoint.beta.models.account_correlated_identity.AccountCorrelated_identity(

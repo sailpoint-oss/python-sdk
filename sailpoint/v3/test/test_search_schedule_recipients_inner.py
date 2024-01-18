@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.search_schedule_recipients_inner import SearchScheduleRecipientsInner  # noqa: E501
+from sailpoint.v3.models.search_schedule_recipients_inner import SearchScheduleRecipientsInner
 
 
 class TestSearchScheduleRecipientsInner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSearchScheduleRecipientsInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SearchScheduleRecipientsInner`
         """
-        model = SearchScheduleRecipientsInner()  # noqa: E501
+        model = SearchScheduleRecipientsInner()
         if include_optional:
             return SearchScheduleRecipientsInner(
                 type = 'IDENTITY',

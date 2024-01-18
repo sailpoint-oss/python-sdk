@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.transform_read import TransformRead  # noqa: E501
+from sailpoint.v3.models.transform_read import TransformRead
 
 
 class TestTransformRead(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestTransformRead(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TransformRead`
         """
-        model = TransformRead()  # noqa: E501
+        model = TransformRead()
         if include_optional:
             return TransformRead(
                 name = 'Timestamp To Date',

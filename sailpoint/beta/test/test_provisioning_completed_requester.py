@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.provisioning_completed_requester import ProvisioningCompletedRequester  # noqa: E501
+from sailpoint.beta.models.provisioning_completed_requester import ProvisioningCompletedRequester
 
 
 class TestProvisioningCompletedRequester(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestProvisioningCompletedRequester(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ProvisioningCompletedRequester`
         """
-        model = ProvisioningCompletedRequester()  # noqa: E501
+        model = ProvisioningCompletedRequester()
         if include_optional:
             return ProvisioningCompletedRequester(
                 type = 'IDENTITY',

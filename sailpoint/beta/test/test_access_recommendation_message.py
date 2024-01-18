@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_recommendation_message import AccessRecommendationMessage  # noqa: E501
+from sailpoint.beta.models.access_recommendation_message import AccessRecommendationMessage
 
 
 class TestAccessRecommendationMessage(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccessRecommendationMessage(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessRecommendationMessage`
         """
-        model = AccessRecommendationMessage()  # noqa: E501
+        model = AccessRecommendationMessage()
         if include_optional:
             return AccessRecommendationMessage(
                 interpretation = '95% of your peers have this access.'

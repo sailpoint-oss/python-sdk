@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.schedule_months import ScheduleMonths  # noqa: E501
+from sailpoint.beta.models.schedule_months import ScheduleMonths
 
 
 class TestScheduleMonths(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestScheduleMonths(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ScheduleMonths`
         """
-        model = ScheduleMonths()  # noqa: E501
+        model = ScheduleMonths()
         if include_optional:
             return ScheduleMonths(
                 type = 'LIST',

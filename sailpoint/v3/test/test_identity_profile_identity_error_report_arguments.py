@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identity_profile_identity_error_report_arguments import IdentityProfileIdentityErrorReportArguments  # noqa: E501
+from sailpoint.v3.models.identity_profile_identity_error_report_arguments import IdentityProfileIdentityErrorReportArguments
 
 
 class TestIdentityProfileIdentityErrorReportArguments(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestIdentityProfileIdentityErrorReportArguments(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityProfileIdentityErrorReportArguments`
         """
-        model = IdentityProfileIdentityErrorReportArguments()  # noqa: E501
+        model = IdentityProfileIdentityErrorReportArguments()
         if include_optional:
             return IdentityProfileIdentityErrorReportArguments(
                 authoritative_source = '1234sourceId5678902',

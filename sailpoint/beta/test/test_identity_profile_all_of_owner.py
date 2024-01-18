@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_profile_all_of_owner import IdentityProfileAllOfOwner  # noqa: E501
+from sailpoint.beta.models.identity_profile_all_of_owner import IdentityProfileAllOfOwner
 
 
 class TestIdentityProfileAllOfOwner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityProfileAllOfOwner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityProfileAllOfOwner`
         """
-        model = IdentityProfileAllOfOwner()  # noqa: E501
+        model = IdentityProfileAllOfOwner()
         if include_optional:
             return IdentityProfileAllOfOwner(
                 type = 'IDENTITY',

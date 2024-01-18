@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.access_request_dynamic_approver_requested_items_inner import AccessRequestDynamicApproverRequestedItemsInner  # noqa: E501
+from sailpoint.beta.models.access_request_dynamic_approver_requested_items_inner import AccessRequestDynamicApproverRequestedItemsInner
 
 
 class TestAccessRequestDynamicApproverRequestedItemsInner(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestAccessRequestDynamicApproverRequestedItemsInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccessRequestDynamicApproverRequestedItemsInner`
         """
-        model = AccessRequestDynamicApproverRequestedItemsInner()  # noqa: E501
+        model = AccessRequestDynamicApproverRequestedItemsInner()
         if include_optional:
             return AccessRequestDynamicApproverRequestedItemsInner(
                 id = '2c91808b6ef1d43e016efba0ce470904',

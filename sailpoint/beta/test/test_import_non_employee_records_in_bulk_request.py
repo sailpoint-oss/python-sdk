@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.import_non_employee_records_in_bulk_request import ImportNonEmployeeRecordsInBulkRequest  # noqa: E501
+from sailpoint.beta.models.import_non_employee_records_in_bulk_request import ImportNonEmployeeRecordsInBulkRequest
 
 
 class TestImportNonEmployeeRecordsInBulkRequest(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestImportNonEmployeeRecordsInBulkRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ImportNonEmployeeRecordsInBulkRequest`
         """
-        model = ImportNonEmployeeRecordsInBulkRequest()  # noqa: E501
+        model = ImportNonEmployeeRecordsInBulkRequest()
         if include_optional:
             return ImportNonEmployeeRecordsInBulkRequest(
                 data = bytes(b'blah')

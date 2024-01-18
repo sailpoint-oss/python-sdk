@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.transform_definition_attributes_value import TransformDefinitionAttributesValue  # noqa: E501
+from sailpoint.v3.models.transform_definition_attributes_value import TransformDefinitionAttributesValue
 
 
 class TestTransformDefinitionAttributesValue(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestTransformDefinitionAttributesValue(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `TransformDefinitionAttributesValue`
         """
-        model = TransformDefinitionAttributesValue()  # noqa: E501
+        model = TransformDefinitionAttributesValue()
         if include_optional:
             return TransformDefinitionAttributesValue(
             )

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.account_activity_document import AccountActivityDocument  # noqa: E501
+from sailpoint.v3.models.account_activity_document import AccountActivityDocument
 
 
 class TestAccountActivityDocument(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountActivityDocument(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountActivityDocument`
         """
-        model = AccountActivityDocument()  # noqa: E501
+        model = AccountActivityDocument()
         if include_optional:
             return AccountActivityDocument(
                 id = '2c91808375d8e80a0175e1f88a575222',

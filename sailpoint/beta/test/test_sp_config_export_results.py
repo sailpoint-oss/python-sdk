@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.sp_config_export_results import SpConfigExportResults  # noqa: E501
+from sailpoint.beta.models.sp_config_export_results import SpConfigExportResults
 
 
 class TestSpConfigExportResults(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSpConfigExportResults(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SpConfigExportResults`
         """
-        model = SpConfigExportResults()  # noqa: E501
+        model = SpConfigExportResults()
         if include_optional:
             return SpConfigExportResults(
                 version = 1,

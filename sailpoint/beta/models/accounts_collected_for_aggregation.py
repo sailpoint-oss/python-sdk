@@ -17,38 +17,41 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist, validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictStr, field_validator
+from pydantic import Field
 from sailpoint.beta.models.accounts_collected_for_aggregation_source import AccountsCollectedForAggregationSource
 from sailpoint.beta.models.accounts_collected_for_aggregation_stats import AccountsCollectedForAggregationStats
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AccountsCollectedForAggregation(BaseModel):
     """
     AccountsCollectedForAggregation
     """
-    source: AccountsCollectedForAggregationSource = Field(...)
-    status: Dict[str, Any] = Field(
-        ..., description="The overall status of the collection.")
+
+  # noqa: E501
+    source: AccountsCollectedForAggregationSource
+    status: Union[str, Any] = Field(
+        description="The overall status of the collection.")
     started: datetime = Field(
-        ...,
         description="The date and time when the account collection started.")
     completed: datetime = Field(
-        ...,
         description="The date and time when the account collection finished.")
-    errors: Optional[conlist(StrictStr)] = Field(
-        ...,
+    errors: Optional[List[StrictStr]] = Field(
         description="A list of errors that occurred during the collection.")
-    warnings: Optional[conlist(StrictStr)] = Field(
-        ...,
+    warnings: Optional[List[StrictStr]] = Field(
         description="A list of warnings that occurred during the collection.")
-    stats: AccountsCollectedForAggregationStats = Field(...)
-    __properties = [
+    stats: AccountsCollectedForAggregationStats
+    __properties: ClassVar[List[str]] = [
         "source", "status", "started", "completed", "errors", "warnings",
         "stats"
     ]
 
-    @validator('status')
+    @field_validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('Success', 'Failed', 'Terminated'):
@@ -57,27 +60,37 @@ class AccountsCollectedForAggregation(BaseModel):
             )
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> AccountsCollectedForAggregation:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AccountsCollectedForAggregation from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of source
         if self.source:
             _dict['source'] = self.source.to_dict()
@@ -85,27 +98,27 @@ class AccountsCollectedForAggregation(BaseModel):
         if self.stats:
             _dict['stats'] = self.stats.to_dict()
         # set to None if errors (nullable) is None
-        # and __fields_set__ contains the field
-        if self.errors is None and "errors" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.errors is None and "errors" in self.model_fields_set:
             _dict['errors'] = None
 
         # set to None if warnings (nullable) is None
-        # and __fields_set__ contains the field
-        if self.warnings is None and "warnings" in self.__fields_set__:
+        # and model_fields_set contains the field
+        if self.warnings is None and "warnings" in self.model_fields_set:
             _dict['warnings'] = None
 
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> AccountsCollectedForAggregation:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of AccountsCollectedForAggregation from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return AccountsCollectedForAggregation.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = AccountsCollectedForAggregation.parse_obj({
+        _obj = cls.model_validate({
             "source":
             AccountsCollectedForAggregationSource.from_dict(obj.get("source"))
             if obj.get("source") is not None else None,

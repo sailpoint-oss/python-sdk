@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.outlier_summary import OutlierSummary  # noqa: E501
+from sailpoint.beta.models.outlier_summary import OutlierSummary
 
 
 class TestOutlierSummary(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestOutlierSummary(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `OutlierSummary`
         """
-        model = OutlierSummary()  # noqa: E501
+        model = OutlierSummary()
         if include_optional:
             return OutlierSummary(
                 type = 'LOW_SIMILARITY',

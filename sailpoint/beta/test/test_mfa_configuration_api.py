@@ -13,14 +13,14 @@
 
 import unittest
 
-from sailpoint.beta.api.mfa_configuration_api import MFAConfigurationApi  # noqa: E501
+from sailpoint.beta.api.mfa_configuration_api import MFAConfigurationApi
 
 
 class TestMFAConfigurationApi(unittest.TestCase):
     """MFAConfigurationApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = MFAConfigurationApi()  # noqa: E501
+        self.api = MFAConfigurationApi()
 
     def tearDown(self) -> None:
         pass
@@ -28,42 +28,42 @@ class TestMFAConfigurationApi(unittest.TestCase):
     def test_delete_mfa_config(self) -> None:
         """Test case for delete_mfa_config
 
-        Delete MFA method configuration  # noqa: E501
+        Delete MFA method configuration
         """
         pass
 
     def test_get_mfa_duo_config(self) -> None:
         """Test case for get_mfa_duo_config
 
-        Configuration of Duo MFA method  # noqa: E501
+        Configuration of Duo MFA method
         """
         pass
 
     def test_get_mfa_okta_config(self) -> None:
         """Test case for get_mfa_okta_config
 
-        Configuration of Okta MFA method  # noqa: E501
+        Configuration of Okta MFA method
         """
         pass
 
     def test_set_mfa_duo_config(self) -> None:
         """Test case for set_mfa_duo_config
 
-        Set Duo MFA configuration  # noqa: E501
+        Set Duo MFA configuration
         """
         pass
 
     def test_set_mfa_okta_config(self) -> None:
         """Test case for set_mfa_okta_config
 
-        Set Okta MFA configuration  # noqa: E501
+        Set Okta MFA configuration
         """
         pass
 
     def test_test_mfa_config(self) -> None:
         """Test case for test_mfa_config
 
-        MFA method's test configuration  # noqa: E501
+        MFA method's test configuration
         """
         pass
 

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment  # noqa: E501
+from sailpoint.v3.models.completed_approval_reviewer_comment import CompletedApprovalReviewerComment
 
 
 class TestCompletedApprovalReviewerComment(unittest.TestCase):
@@ -34,14 +34,10 @@ class TestCompletedApprovalReviewerComment(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `CompletedApprovalReviewerComment`
         """
-        model = CompletedApprovalReviewerComment()  # noqa: E501
+        model = CompletedApprovalReviewerComment()
         if include_optional:
             return CompletedApprovalReviewerComment(
                 comment = 'This is a comment.',
-                author = sailpoint.v3.models.comment_dto_author.CommentDto_author(
-                    type = 'IDENTITY', 
-                    id = '2c91808568c529c60168cca6f90c1313', 
-                    name = 'Adam Kennedy', ),
                 created = '2017-07-11T18:45:37.098Z'
             )
         else:

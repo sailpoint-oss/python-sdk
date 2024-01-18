@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.identity_history_response import IdentityHistoryResponse  # noqa: E501
+from sailpoint.beta.models.identity_history_response import IdentityHistoryResponse
 
 
 class TestIdentityHistoryResponse(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestIdentityHistoryResponse(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityHistoryResponse`
         """
-        model = IdentityHistoryResponse()  # noqa: E501
+        model = IdentityHistoryResponse()
         if include_optional:
             return IdentityHistoryResponse(
                 id = 'bc693f07e7b645539626c25954c58554',

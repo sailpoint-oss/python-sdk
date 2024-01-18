@@ -17,61 +17,69 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, Dict, Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class Outlier(BaseModel):
     """
     Outlier
     """
+
+  # noqa: E501
     id: Optional[StrictStr] = Field(
-        None,
+        default=None,
         description="The identity's unique identifier for the outlier record")
     identity_id: Optional[StrictStr] = Field(
-        None,
-        alias="identityId",
-        description="The ID of the identity that is detected as an outlier")
+        default=None,
+        description="The ID of the identity that is detected as an outlier",
+        alias="identityId")
     type: Optional[StrictStr] = Field(
-        None, description="The type of outlier summary")
+        default=None, description="The type of outlier summary")
     first_detection_date: Optional[datetime] = Field(
-        None,
-        alias="firstDetectionDate",
-        description="The first date the outlier was detected")
+        default=None,
+        description="The first date the outlier was detected",
+        alias="firstDetectionDate")
     latest_detection_date: Optional[datetime] = Field(
-        None,
-        alias="latestDetectionDate",
-        description="The most recent date the outlier was detected")
+        default=None,
+        description="The most recent date the outlier was detected",
+        alias="latestDetectionDate")
     ignored: Optional[StrictBool] = Field(
-        None, description="Flag whether or not the outlier has been ignored")
-    attributes: Optional[Dict[str, Any]] = Field(
-        None, description="Object containing mapped identity attributes")
+        default=None,
+        description="Flag whether or not the outlier has been ignored")
+    attributes: Optional[Union[str, Any]] = Field(
+        default=None,
+        description="Object containing mapped identity attributes")
     score: Optional[Union[StrictFloat, StrictInt]] = Field(
-        None,
+        default=None,
         description=
         "The outlier score determined by the detection engine ranging from 0..1"
     )
     unignore_type: Optional[StrictStr] = Field(
-        None,
-        alias="unignoreType",
+        default=None,
         description=
-        "Enum value of if the outlier manually or automatically un-ignored. Will be NULL if outlier is not ignored"
-    )
+        "Enum value of if the outlier manually or automatically un-ignored. Will be NULL if outlier is not ignored",
+        alias="unignoreType")
     unignore_date: Optional[datetime] = Field(
-        None,
-        alias="unignoreDate",
-        description="shows date when last time has been unignored outlier")
+        default=None,
+        description="shows date when last time has been unignored outlier",
+        alias="unignoreDate")
     ignore_date: Optional[datetime] = Field(
-        None,
-        alias="ignoreDate",
-        description="shows date when last time has been ignored outlier")
-    __properties = [
+        default=None,
+        description="shows date when last time has been ignored outlier",
+        alias="ignoreDate")
+    __properties: ClassVar[List[str]] = [
         "id", "identityId", "type", "firstDetectionDate",
         "latestDetectionDate", "ignored", "attributes", "score",
         "unignoreType", "unignoreDate", "ignoreDate"
     ]
 
-    @validator('type')
+    @field_validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -82,7 +90,7 @@ class Outlier(BaseModel):
                 "must be one of enum values ('LOW_SIMILARITY', 'STRUCTURAL')")
         return value
 
-    @validator('unignore_type')
+    @field_validator('unignore_type')
     def unignore_type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
@@ -93,48 +101,58 @@ class Outlier(BaseModel):
                 "must be one of enum values ('MANUAL', 'AUTOMATIC')")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Outlier:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of Outlier from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Outlier:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of Outlier from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return Outlier.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = Outlier.parse_obj({
+        _obj = cls.model_validate({
             "id":
             obj.get("id"),
-            "identity_id":
+            "identityId":
             obj.get("identityId"),
             "type":
             obj.get("type"),
-            "first_detection_date":
+            "firstDetectionDate":
             obj.get("firstDetectionDate"),
-            "latest_detection_date":
+            "latestDetectionDate":
             obj.get("latestDetectionDate"),
             "ignored":
             obj.get("ignored"),
@@ -142,11 +160,11 @@ class Outlier(BaseModel):
             obj.get("attributes"),
             "score":
             obj.get("score"),
-            "unignore_type":
+            "unignoreType":
             obj.get("unignoreType"),
-            "unignore_date":
+            "unignoreDate":
             obj.get("unignoreDate"),
-            "ignore_date":
+            "ignoreDate":
             obj.get("ignoreDate")
         })
         return _obj

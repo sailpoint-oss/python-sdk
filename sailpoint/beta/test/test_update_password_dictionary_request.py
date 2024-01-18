@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.update_password_dictionary_request import UpdatePasswordDictionaryRequest  # noqa: E501
+from sailpoint.beta.models.update_password_dictionary_request import UpdatePasswordDictionaryRequest
 
 
 class TestUpdatePasswordDictionaryRequest(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestUpdatePasswordDictionaryRequest(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `UpdatePasswordDictionaryRequest`
         """
-        model = UpdatePasswordDictionaryRequest()  # noqa: E501
+        model = UpdatePasswordDictionaryRequest()
         if include_optional:
             return UpdatePasswordDictionaryRequest(
                 file = bytes(b'blah')

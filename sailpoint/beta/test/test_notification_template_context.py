@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.notification_template_context import NotificationTemplateContext  # noqa: E501
+from sailpoint.beta.models.notification_template_context import NotificationTemplateContext
 
 
 class TestNotificationTemplateContext(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNotificationTemplateContext(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NotificationTemplateContext`
         """
-        model = NotificationTemplateContext()  # noqa: E501
+        model = NotificationTemplateContext()
         if include_optional:
             return NotificationTemplateContext(
                 attributes = {productUrl=https://test-org.identitysoon.com, brandingConfigs={default={narrowLogoURL=null, productName=SailPoint, standardLogoURL=null, navigationColor=011E64, actionButtonColor=20B2DE, emailFromAddress=null, activeLinkColor=20B2DE, loginInformationalMessage=null}}},

@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount  # noqa: E501
+from sailpoint.v3.models.non_employee_source_with_ne_count import NonEmployeeSourceWithNECount
 
 
 class TestNonEmployeeSourceWithNECount(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNonEmployeeSourceWithNECount(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeSourceWithNECount`
         """
-        model = NonEmployeeSourceWithNECount()  # noqa: E501
+        model = NonEmployeeSourceWithNECount()
         if include_optional:
             return NonEmployeeSourceWithNECount(
                 id = 'a0303682-5e4a-44f7-bdc2-6ce6112549c1',

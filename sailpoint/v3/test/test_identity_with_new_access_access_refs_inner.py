@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v3.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner  # noqa: E501
+from sailpoint.v3.models.identity_with_new_access_access_refs_inner import IdentityWithNewAccessAccessRefsInner
 
 
 class TestIdentityWithNewAccessAccessRefsInner(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestIdentityWithNewAccessAccessRefsInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `IdentityWithNewAccessAccessRefsInner`
         """
-        model = IdentityWithNewAccessAccessRefsInner()  # noqa: E501
+        model = IdentityWithNewAccessAccessRefsInner()
         if include_optional:
             return IdentityWithNewAccessAccessRefsInner(
                 type = 'ENTITLEMENT',

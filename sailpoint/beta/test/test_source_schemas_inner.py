@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.source_schemas_inner import SourceSchemasInner  # noqa: E501
+from sailpoint.beta.models.source_schemas_inner import SourceSchemasInner
 
 
 class TestSourceSchemasInner(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestSourceSchemasInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `SourceSchemasInner`
         """
-        model = SourceSchemasInner()  # noqa: E501
+        model = SourceSchemasInner()
         if include_optional:
             return SourceSchemasInner(
                 type = 'CONNECTOR_SCHEMA',

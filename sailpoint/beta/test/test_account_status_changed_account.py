@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.account_status_changed_account import AccountStatusChangedAccount  # noqa: E501
+from sailpoint.beta.models.account_status_changed_account import AccountStatusChangedAccount
 
 
 class TestAccountStatusChangedAccount(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestAccountStatusChangedAccount(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `AccountStatusChangedAccount`
         """
-        model = AccountStatusChangedAccount()  # noqa: E501
+        model = AccountStatusChangedAccount()
         if include_optional:
             return AccountStatusChangedAccount(
                 id = '',

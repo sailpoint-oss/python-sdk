@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.non_employee_approval_summary import NonEmployeeApprovalSummary  # noqa: E501
+from sailpoint.beta.models.non_employee_approval_summary import NonEmployeeApprovalSummary
 
 
 class TestNonEmployeeApprovalSummary(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestNonEmployeeApprovalSummary(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `NonEmployeeApprovalSummary`
         """
-        model = NonEmployeeApprovalSummary()  # noqa: E501
+        model = NonEmployeeApprovalSummary()
         if include_optional:
             return NonEmployeeApprovalSummary(
                 approved = 1.337,

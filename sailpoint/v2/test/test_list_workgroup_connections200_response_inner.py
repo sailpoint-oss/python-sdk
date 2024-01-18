@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.v2.models.list_workgroup_connections200_response_inner import ListWorkgroupConnections200ResponseInner  # noqa: E501
+from sailpoint.v2.models.list_workgroup_connections200_response_inner import ListWorkgroupConnections200ResponseInner
 
 
 class TestListWorkgroupConnections200ResponseInner(unittest.TestCase):
@@ -35,7 +35,7 @@ class TestListWorkgroupConnections200ResponseInner(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `ListWorkgroupConnections200ResponseInner`
         """
-        model = ListWorkgroupConnections200ResponseInner()  # noqa: E501
+        model = ListWorkgroupConnections200ResponseInner()
         if include_optional:
             return ListWorkgroupConnections200ResponseInner(
                 connection_type = 'AccessRequestReviewer',

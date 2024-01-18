@@ -14,7 +14,7 @@
 import unittest
 import datetime
 
-from sailpoint.beta.models.requested_item_status import RequestedItemStatus  # noqa: E501
+from sailpoint.beta.models.requested_item_status import RequestedItemStatus
 
 
 class TestRequestedItemStatus(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestRequestedItemStatus(unittest.TestCase):
             optional params are included """
         # uncomment below to create an instance of `RequestedItemStatus`
         """
-        model = RequestedItemStatus()  # noqa: E501
+        model = RequestedItemStatus()
         if include_optional:
             return RequestedItemStatus(
                 name = 'AccessProfile1',
@@ -112,12 +112,8 @@ class TestRequestedItemStatus(unittest.TestCase):
                     type = 'IDENTITY', 
                     id = '2c4180a46faadee4016fb4e018c20626', 
                     name = 'Robert Robinson', ),
-                requester_comment = sailpoint.beta.models.comment_dto.CommentDto(
+                requester_comment = sailpoint.beta.models.comment_dto_1.CommentDto_1(
                     comment = 'This is a comment.', 
-                    author = sailpoint.beta.models.comment_dto_author.CommentDto_author(
-                        type = 'IDENTITY', 
-                        id = '2c91808568c529c60168cca6f90c1313', 
-                        name = 'Adam Kennedy', ), 
                     created = '2017-07-11T18:45:37.098Z', ),
                 sod_violation_context = sailpoint.beta.models.sod_violation_context_check_completed.SodViolationContextCheckCompleted(
                     state = 'SUCCESS', 

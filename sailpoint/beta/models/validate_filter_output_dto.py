@@ -16,73 +16,89 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool
+from pydantic import Field
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class ValidateFilterOutputDto(BaseModel):
     """
     ValidateFilterOutputDto
     """
-    is_valid: Optional[StrictBool] = Field(
-        False,
-        alias="isValid",
-        description=
-        "When this field is true, the filter expression is valid against the input."
-    )
-    is_valid_json_path: Optional[StrictBool] = Field(
-        False,
-        alias="isValidJSONPath",
-        description=
-        "When this field is true, the filter expression is using a valid JSON path."
-    )
-    is_path_exist: Optional[StrictBool] = Field(
-        False,
-        alias="isPathExist",
-        description=
-        "When this field is true, the filter expression is using an existing path."
-    )
-    __properties = ["isValid", "isValidJSONPath", "isPathExist"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+  # noqa: E501
+    is_valid: Optional[StrictBool] = Field(
+        default=False,
+        description=
+        "When this field is true, the filter expression is valid against the input.",
+        alias="isValid")
+    is_valid_json_path: Optional[StrictBool] = Field(
+        default=False,
+        description=
+        "When this field is true, the filter expression is using a valid JSON path.",
+        alias="isValidJSONPath")
+    is_path_exist: Optional[StrictBool] = Field(
+        default=False,
+        description=
+        "When this field is true, the filter expression is using an existing path.",
+        alias="isPathExist")
+    __properties: ClassVar[List[str]] = [
+        "isValid", "isValidJSONPath", "isPathExist"
+    ]
+
+    model_config = {"populate_by_name": True, "validate_assignment": True}
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> ValidateFilterOutputDto:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of ValidateFilterOutputDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={},
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> ValidateFilterOutputDto:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of ValidateFilterOutputDto from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return ValidateFilterOutputDto.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = ValidateFilterOutputDto.parse_obj({
-            "is_valid":
+        _obj = cls.model_validate({
+            "isValid":
             obj.get("isValid") if obj.get("isValid") is not None else False,
-            "is_valid_json_path":
+            "isValidJSONPath":
             obj.get("isValidJSONPath")
             if obj.get("isValidJSONPath") is not None else False,
-            "is_path_exist":
+            "isPathExist":
             obj.get("isPathExist")
             if obj.get("isPathExist") is not None else False
         })
