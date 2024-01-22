@@ -32,7 +32,7 @@ class ProvisioningConfig(BaseModel):
     Specification of a Service Desk integration provisioning configuration.
     """ # noqa: E501
     universal_manager: Optional[StrictBool] = Field(
-        default=None,
+        default=False,
         description=
         "Specifies whether this configuration is used to manage provisioning requests for all sources from the org.  If true, no managedResourceRefs are allowed.",
         alias="universalManager")
@@ -45,7 +45,7 @@ class ProvisioningConfig(BaseModel):
         ProvisioningConfigPlanInitializerScript] = Field(
             default=None, alias="planInitializerScript")
     no_provisioning_requests: Optional[StrictBool] = Field(
-        default=None,
+        default=False,
         description=
         "Name of an attribute that when true disables the saving of ProvisioningRequest objects whenever plans are sent through this integration.",
         alias="noProvisioningRequests")
@@ -118,7 +118,8 @@ class ProvisioningConfig(BaseModel):
 
         _obj = cls.model_validate({
             "universalManager":
-            obj.get("universalManager"),
+            obj.get("universalManager")
+            if obj.get("universalManager") is not None else False,
             "managedResourceRefs": [
                 ServiceDeskSource.from_dict(_item)
                 for _item in obj.get("managedResourceRefs")
@@ -128,7 +129,8 @@ class ProvisioningConfig(BaseModel):
                 obj.get("planInitializerScript"))
             if obj.get("planInitializerScript") is not None else None,
             "noProvisioningRequests":
-            obj.get("noProvisioningRequests"),
+            obj.get("noProvisioningRequests")
+            if obj.get("noProvisioningRequests") is not None else False,
             "provisioningRequestExpiration":
             obj.get("provisioningRequestExpiration")
         })

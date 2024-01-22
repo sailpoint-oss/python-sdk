@@ -369,7 +369,6 @@ from sailpoint.v3.models.segment import Segment
 from sailpoint.v3.models.selector import Selector
 from sailpoint.v3.models.selector_type import SelectorType
 from sailpoint.v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto
-from sailpoint.v3.models.service_desk_integration_dto_all_of_owner_ref import ServiceDeskIntegrationDtoAllOfOwnerRef
 from sailpoint.v3.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 from sailpoint.v3.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 from sailpoint.v3.models.service_desk_source import ServiceDeskSource

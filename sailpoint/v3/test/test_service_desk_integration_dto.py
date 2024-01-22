@@ -36,16 +36,13 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
         model = ServiceDeskIntegrationDto()
         if include_optional:
             return ServiceDeskIntegrationDto(
-                id = 'id12345',
-                name = 'aName',
-                created = '2015-05-28T14:07:17Z',
-                modified = '2015-05-28T14:07:17Z',
+                name = 'Service Desk Integration Name',
                 description = 'A very nice Service Desk integration',
                 type = 'ServiceNowSDIM',
-                owner_ref = sailpoint.v3.models.service_desk_integration_dto_all_of_owner_ref.ServiceDeskIntegrationDto_allOf_ownerRef(
-                    type = 'SOURCE', 
-                    id = '2c9180835d191a86015d28455b4b232a', 
-                    name = 'HR Active Directory', ),
+                owner_ref = sailpoint.v3.models.owner_dto.OwnerDto(
+                    type = 'IDENTITY', 
+                    id = '2c9180a46faadee4016fb4e018c20639', 
+                    name = 'Support', ),
                 cluster_ref = sailpoint.v3.models.source_cluster_dto.SourceClusterDto(
                     type = 'CLUSTER', 
                     id = '2c9180847a7fccdd017aa5896f9f4f6f', 
@@ -68,7 +65,7 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
             )
         else:
             return ServiceDeskIntegrationDto(
-                name = 'aName',
+                name = 'Service Desk Integration Name',
                 description = 'A very nice Service Desk integration',
                 type = 'ServiceNowSDIM',
                 attributes = {property=value, key=value},

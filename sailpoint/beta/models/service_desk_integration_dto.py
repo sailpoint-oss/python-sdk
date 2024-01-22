@@ -16,7 +16,6 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
@@ -36,25 +35,21 @@ class ServiceDeskIntegrationDto(BaseModel):
     """
 
   # noqa: E501
-    id: Optional[StrictStr] = Field(
-        default=None, description="System-generated unique ID of the Object")
-    name: StrictStr = Field(description="Name of the Object")
-    created: Optional[datetime] = Field(
-        default=None, description="Creation date of the Object")
-    modified: Optional[datetime] = Field(
-        default=None, description="Last modification date of the Object")
+    name: StrictStr = Field(
+        description="Service Desk integration's name. The name must be unique."
+    )
     description: StrictStr = Field(
-        description="Description of the Service Desk integration.")
+        description="Service Desk integration's description.")
     type: StrictStr = Field(
         description=
-        "Service Desk integration types  - ServiceNowSDIM - ServiceNow ")
+        "Service Desk integration types:  - ServiceNowSDIM - ServiceNow ")
     owner_ref: Optional[OwnerDto] = Field(default=None, alias="ownerRef")
     cluster_ref: Optional[SourceClusterDto] = Field(default=None,
                                                     alias="clusterRef")
     cluster: Optional[StrictStr] = Field(
         default=None,
         description=
-        "ID of the cluster for the Service Desk integration (replaced by clusterRef, retained for backward compatibility)."
+        "Cluster ID for the Service Desk integration (replaced by clusterRef, retained for backward compatibility)."
     )
     managed_sources: Optional[List[StrictStr]] = Field(
         default=None,
@@ -65,14 +60,14 @@ class ServiceDeskIntegrationDto(BaseModel):
         default=None, alias="provisioningConfig")
     attributes: Dict[str, Any] = Field(
         description=
-        "Attributes of the Service Desk integration.  Validation constraints enforced by the implementation."
+        "Service Desk integration's attributes. Validation constraints enforced by the implementation."
     )
     before_provisioning_rule: Optional[BeforeProvisioningRuleDto] = Field(
         default=None, alias="beforeProvisioningRule")
     __properties: ClassVar[List[str]] = [
-        "id", "name", "created", "modified", "description", "type", "ownerRef",
-        "clusterRef", "cluster", "managedSources", "provisioningConfig",
-        "attributes", "beforeProvisioningRule"
+        "name", "description", "type", "ownerRef", "clusterRef", "cluster",
+        "managedSources", "provisioningConfig", "attributes",
+        "beforeProvisioningRule"
     ]
 
     model_config = {"populate_by_name": True, "validate_assignment": True}
@@ -100,17 +95,10 @@ class ServiceDeskIntegrationDto(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
-        * OpenAPI `readOnly` fields are excluded.
         """
         _dict = self.model_dump(
             by_alias=True,
-            exclude={
-                "id",
-                "created",
-                "modified",
-            },
+            exclude={},
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of owner_ref
@@ -139,14 +127,8 @@ class ServiceDeskIntegrationDto(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id":
-            obj.get("id"),
             "name":
             obj.get("name"),
-            "created":
-            obj.get("created"),
-            "modified":
-            obj.get("modified"),
             "description":
             obj.get("description"),
             "type":

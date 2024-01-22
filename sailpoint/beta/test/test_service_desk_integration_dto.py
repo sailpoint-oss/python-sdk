@@ -36,10 +36,7 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
         model = ServiceDeskIntegrationDto()
         if include_optional:
             return ServiceDeskIntegrationDto(
-                id = 'id12345',
-                name = 'aName',
-                created = '2023-01-03T21:16:22.432Z',
-                modified = '2023-01-03T21:16:22.432Z',
+                name = 'Service Desk Integration Name',
                 description = 'A very nice Service Desk integration',
                 type = 'ServiceNowSDIM',
                 owner_ref = sailpoint.beta.models.owner_dto.OwnerDto(
@@ -68,7 +65,7 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
             )
         else:
             return ServiceDeskIntegrationDto(
-                name = 'aName',
+                name = 'Service Desk Integration Name',
                 description = 'A very nice Service Desk integration',
                 type = 'ServiceNowSDIM',
                 attributes = {property=value, key=value},

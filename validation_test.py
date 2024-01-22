@@ -1,8 +1,6 @@
 import unittest
 import sailpoint.v3
 import sailpoint.beta
-import sailpoint.v2
-import sailpoint.cc
 from sailpoint.v3.models.search import Search
 from sailpoint.configuration import Configuration
 from sailpoint.paginator import Paginator
@@ -12,8 +10,6 @@ class TestPythonSDK(unittest.TestCase):
     configuration = Configuration()
     v3_api_client = sailpoint.v3.ApiClient(configuration)
     beta_api_client = sailpoint.beta.ApiClient(configuration)
-    v2_api_client = sailpoint.v2.ApiClient(configuration)
-    cc_api_client = sailpoint.cc.ApiClient(configuration)
 
 
     def test_v3_accounts(self):
@@ -64,21 +60,6 @@ class TestPythonSDK(unittest.TestCase):
         self.assertIsNotNone(identity_profiles.data)
         self.assertEqual(200, identity_profiles.status_code)
         self.assertEqual(2, len(identity_profiles.data))
-
-    ## Tests for V2
-
-    def test_list_workgroups(self):
-        workgroups = sailpoint.v2.GovernanceGroupsApi(self.v2_api_client).list_workgroups_with_http_info()
-        self.assertIsNotNone(workgroups.data)
-        self.assertEqual(200, workgroups.status_code)
-    
-    ## Tests for CC
-    def test_list_accounts_with_cc(self):
-        accounts = sailpoint.cc.AccountsApi(self.cc_api_client).list_accounts_with_http_info()
-        self.assertIsNotNone(accounts.data)
-        self.assertEqual(200, accounts.status_code)
-    
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -4,18 +4,15 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | System-generated unique ID of the Object | [optional] [readonly] 
-**name** | **str** | Name of the Object | 
-**created** | **datetime** | Creation date of the Object | [optional] [readonly] 
-**modified** | **datetime** | Last modification date of the Object | [optional] [readonly] 
-**description** | **str** | Description of the Service Desk integration | 
-**type** | **str** | Service Desk integration types  - ServiceNowSDIM - ServiceNow  | [default to 'ServiceNowSDIM']
-**owner_ref** | [**ServiceDeskIntegrationDtoAllOfOwnerRef**](ServiceDeskIntegrationDtoAllOfOwnerRef.md) |  | [optional] 
+**name** | **str** | Service Desk integration&#39;s name. The name must be unique. | 
+**description** | **str** | Service Desk integration&#39;s description. | 
+**type** | **str** | Service Desk integration types:  - ServiceNowSDIM - ServiceNow  | [default to 'ServiceNowSDIM']
+**owner_ref** | [**OwnerDto**](OwnerDto.md) |  | [optional] 
 **cluster_ref** | [**SourceClusterDto**](SourceClusterDto.md) |  | [optional] 
-**cluster** | **str** | ID of the cluster for the Service Desk integration (replaced by clusterRef, retained for backward compatibility). | [optional] 
+**cluster** | **str** | Cluster ID for the Service Desk integration (replaced by clusterRef, retained for backward compatibility). | [optional] 
 **managed_sources** | **List[str]** | Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs, but retained here for backward compatibility). | [optional] 
 **provisioning_config** | [**ProvisioningConfig**](ProvisioningConfig.md) |  | [optional] 
-**attributes** | **Dict[str, object]** | Attributes of the Service Desk integration.  Validation constraints enforced by the implementation. | 
+**attributes** | **Dict[str, object]** | Service Desk integration&#39;s attributes. Validation constraints enforced by the implementation. | 
 **before_provisioning_rule** | [**BeforeProvisioningRuleDto**](BeforeProvisioningRuleDto.md) |  | [optional] 
 
 ## Example

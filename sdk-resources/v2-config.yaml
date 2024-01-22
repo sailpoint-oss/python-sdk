@@ -1,5 +1,0 @@
-templateDir: ./sdk-resources/resources
-packageName: sailpoint.v2
-packageVersion: 1.0.0
-apiVersion: v2
-generateSourceCodeOnly: true
