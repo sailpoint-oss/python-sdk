@@ -696,7 +696,6 @@ Class | Method | HTTP request | Description
  - [Selector](sailpoint/v3/docs/Selector.md)
  - [SelectorType](sailpoint/v3/docs/SelectorType.md)
  - [ServiceDeskIntegrationDto](sailpoint/v3/docs/ServiceDeskIntegrationDto.md)
- - [ServiceDeskIntegrationDtoAllOfOwnerRef](sailpoint/v3/docs/ServiceDeskIntegrationDtoAllOfOwnerRef.md)
  - [ServiceDeskIntegrationTemplateDto](sailpoint/v3/docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](sailpoint/v3/docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](sailpoint/v3/docs/ServiceDeskSource.md)
