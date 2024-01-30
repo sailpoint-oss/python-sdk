@@ -41,7 +41,11 @@ class TransformDefinition(BaseModel):
             "Arbitrary key-value pairs to store any metadata for the object")
     __properties: ClassVar[List[str]] = ["type", "attributes"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

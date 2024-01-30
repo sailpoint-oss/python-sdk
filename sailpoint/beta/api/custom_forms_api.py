@@ -121,7 +121,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -191,7 +191,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -261,7 +261,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -387,7 +387,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -458,7 +458,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -529,7 +529,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -662,7 +662,7 @@ class CustomFormsApi:
             '415': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
             '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response"
+            '503': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -740,7 +740,7 @@ class CustomFormsApi:
             '415': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
             '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response"
+            '503': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -818,7 +818,7 @@ class CustomFormsApi:
             '415': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
             '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response"
+            '503': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -945,7 +945,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1014,7 +1014,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1083,7 +1083,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1206,7 +1206,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1274,7 +1274,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1342,7 +1342,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1485,7 +1485,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1583,7 +1583,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1681,7 +1681,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1821,7 +1821,7 @@ class CustomFormsApi:
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
             '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response"
+            '503': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1899,7 +1899,7 @@ class CustomFormsApi:
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
             '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response"
+            '503': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1977,7 +1977,7 @@ class CustomFormsApi:
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
             '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response"
+            '503': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2095,7 +2095,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2163,7 +2163,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2231,7 +2231,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2344,7 +2344,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2412,7 +2412,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2480,7 +2480,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2603,7 +2603,7 @@ class CustomFormsApi:
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
             '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response"
+            '503': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2681,7 +2681,7 @@ class CustomFormsApi:
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
             '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response"
+            '503': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2759,7 +2759,7 @@ class CustomFormsApi:
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
             '500': "SearchFormDefinitionsByTenant400Response",
-            '503': "SearchFormDefinitionsByTenant400Response"
+            '503': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2878,7 +2878,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2947,7 +2947,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3016,7 +3016,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3089,7 +3089,7 @@ class CustomFormsApi:
         form_definition_id: Annotated[StrictStr,
                                       Field(description="Form definition ID")],
         body: Annotated[
-            Optional[List[Dict[str, Union[str, Any]]]],
+            Optional[List[Dict[str, Dict[str, Any]]]],
             Field(
                 description=
                 "Body is the request payload to patch a form definition, check: https://jsonpatch.com"
@@ -3150,7 +3150,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3166,7 +3166,7 @@ class CustomFormsApi:
         form_definition_id: Annotated[StrictStr,
                                       Field(description="Form definition ID")],
         body: Annotated[
-            Optional[List[Dict[str, Union[str, Any]]]],
+            Optional[List[Dict[str, Dict[str, Any]]]],
             Field(
                 description=
                 "Body is the request payload to patch a form definition, check: https://jsonpatch.com"
@@ -3227,7 +3227,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3243,7 +3243,7 @@ class CustomFormsApi:
         form_definition_id: Annotated[StrictStr,
                                       Field(description="Form definition ID")],
         body: Annotated[
-            Optional[List[Dict[str, Union[str, Any]]]],
+            Optional[List[Dict[str, Dict[str, Any]]]],
             Field(
                 description=
                 "Body is the request payload to patch a form definition, check: https://jsonpatch.com"
@@ -3304,7 +3304,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3380,7 +3380,7 @@ class CustomFormsApi:
         form_instance_id: Annotated[StrictStr,
                                     Field(description="Form instance ID")],
         body: Annotated[
-            Optional[List[Dict[str, Union[str, Any]]]],
+            Optional[List[Dict[str, Dict[str, Any]]]],
             Field(
                 description=
                 "Body is the request payload to patch a form instance, check: https://jsonpatch.com"
@@ -3442,7 +3442,7 @@ class CustomFormsApi:
             '404': "SearchFormDefinitionsByTenant400Response",
             '409': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3458,7 +3458,7 @@ class CustomFormsApi:
         form_instance_id: Annotated[StrictStr,
                                     Field(description="Form instance ID")],
         body: Annotated[
-            Optional[List[Dict[str, Union[str, Any]]]],
+            Optional[List[Dict[str, Dict[str, Any]]]],
             Field(
                 description=
                 "Body is the request payload to patch a form instance, check: https://jsonpatch.com"
@@ -3520,7 +3520,7 @@ class CustomFormsApi:
             '404': "SearchFormDefinitionsByTenant400Response",
             '409': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3536,7 +3536,7 @@ class CustomFormsApi:
         form_instance_id: Annotated[StrictStr,
                                     Field(description="Form instance ID")],
         body: Annotated[
-            Optional[List[Dict[str, Union[str, Any]]]],
+            Optional[List[Dict[str, Dict[str, Any]]]],
             Field(
                 description=
                 "Body is the request payload to patch a form instance, check: https://jsonpatch.com"
@@ -3598,7 +3598,7 @@ class CustomFormsApi:
             '404': "SearchFormDefinitionsByTenant400Response",
             '409': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3756,7 +3756,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3854,7 +3854,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3952,7 +3952,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4105,7 +4105,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4196,7 +4196,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4287,7 +4287,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4408,7 +4408,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4470,7 +4470,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4532,7 +4532,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4636,7 +4636,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4698,7 +4698,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4760,7 +4760,7 @@ class CustomFormsApi:
             '401': "SearchFormDefinitionsByTenant400Response",
             '403': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4903,7 +4903,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5004,7 +5004,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5105,7 +5105,7 @@ class CustomFormsApi:
             '403': "SearchFormDefinitionsByTenant400Response",
             '404': "SearchFormDefinitionsByTenant400Response",
             '429': "Error",
-            '500': "SearchFormDefinitionsByTenant400Response"
+            '500': "SearchFormDefinitionsByTenant400Response",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)

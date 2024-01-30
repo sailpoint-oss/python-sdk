@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **label** | **str** | Label is the main label to display to the user when selecting this option | [optional] 

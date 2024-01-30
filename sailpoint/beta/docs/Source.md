@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the id of the Source | [optional] [readonly] 
@@ -31,6 +32,8 @@ Name | Type | Description | Notes
 **connector_name** | **str** | The name of the connector that was chosen on source creation | [optional] 
 **connection_type** | **str** | The type of connection (direct or file) | [optional] 
 **connector_implementation_id** | **str** | The connector implementation id | [optional] 
+**created** | **datetime** | The date-time when the source was created | [optional] 
+**modified** | **datetime** | The date-time when the source was last modified | [optional] 
 
 ## Example
 

@@ -3,6 +3,7 @@
 Response model for get object configuration.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object_type** | **str** | The object type this configuration is for. | [optional] 

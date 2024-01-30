@@ -19,6 +19,7 @@ This gets a single account activity by its id.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -61,6 +62,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| The account activity id | 
@@ -79,6 +81,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | An account activity object |  -  |
@@ -102,6 +105,7 @@ This gets a collection of account activities that satisfy the given query parame
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -152,6 +156,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requested_for** | **str**| The identity that the activity was requested for. *me* indicates the current user. Mutually exclusive with *regarding-identity*. | [optional] 
@@ -178,6 +183,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of account activities |  -  |

@@ -52,7 +52,10 @@ class IdentityAccess(BaseModel):
                                         "AccessProfileRole",
                                         "AccessProfileSummary"]
 
-    model_config = {"validate_assignment": True}
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     discriminator_value_class_map: Dict[str, str] = {}
 

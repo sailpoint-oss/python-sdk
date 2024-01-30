@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.v3.models.campaign_filter_details_criteria_list_inner import CampaignFilterDetailsCriteriaListInner
@@ -41,7 +41,7 @@ class CampaignFilterDetails(BaseModel):
         description=
         "The owner of this filter. This field is automatically populated at creation time with the current user."
     )
-    mode: Union[str, Any] = Field(
+    mode: Dict[str, Any] = Field(
         description=
         "The mode/type of Filter, where it is of INCLUSION or EXCLUSION type. INCLUSION type will include the data in generated campaign  as per specified in criteria, whereas EXCLUSION type will exclude the the data in generated campaign as per specified in criteria."
     )
@@ -62,7 +62,11 @@ class CampaignFilterDetails(BaseModel):
                 "must be one of enum values ('INCLUSION', 'EXCLUSION')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

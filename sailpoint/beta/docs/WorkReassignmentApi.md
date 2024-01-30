@@ -26,6 +26,7 @@ Creates a new Reassignment Configuration for the specified identity.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -69,6 +70,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **configuration_item_request** | [**ConfigurationItemRequest**](ConfigurationItemRequest.md)|  | 
@@ -87,6 +89,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | The newly created Reassignment Configuration object |  -  |
@@ -109,6 +112,7 @@ Deletes all Reassignment Configuration for the specified identity
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -148,6 +152,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identity_id** | **str**| unique identity id | 
@@ -166,6 +171,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Reassignment Configuration deleted |  -  |
@@ -188,6 +194,7 @@ Evaluates the Reassignment Configuration for an `Identity` to determine if work 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -233,6 +240,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identity_id** | **str**| unique identity id | 
@@ -253,6 +261,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Evaluated Reassignment Configuration |  -  |
@@ -275,6 +284,7 @@ Gets a collection of types which are available in the Reassignment Configuration
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -315,6 +325,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -331,6 +342,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of Reassignment Configuration Types |  -  |
@@ -353,6 +365,7 @@ Gets the Reassignment Configuration for an identity.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -395,6 +408,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identity_id** | **str**| unique identity id | 
@@ -413,6 +427,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Reassignment Configuration for an identity |  -  |
@@ -436,6 +451,7 @@ Gets the global Reassignment Configuration settings for the requestor's tenant.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -476,6 +492,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -492,6 +509,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Tenant-wide Reassignment Configuration settings |  -  |
@@ -515,6 +533,7 @@ Gets all Reassignment configuration for the current org.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -555,6 +574,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -571,6 +591,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A list of Reassignment Configurations for an org |  -  |
@@ -594,6 +615,7 @@ Replaces existing Reassignment configuration for an identity with the newly prov
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -638,6 +660,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identity_id** | **str**| unique identity id | 
@@ -657,6 +680,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Reassignment Configuration updated |  -  |
@@ -679,6 +703,7 @@ Replaces existing Tenant-wide Reassignment Configuration settings with the newly
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -722,6 +747,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_configuration_request** | [**TenantConfigurationRequest**](TenantConfigurationRequest.md)|  | 
@@ -740,6 +766,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Tenant-wide Reassignment Configuration settings |  -  |

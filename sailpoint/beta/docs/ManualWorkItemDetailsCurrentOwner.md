@@ -3,6 +3,7 @@
 Identity of current work item owner.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of current work item owner&#39;s identity. | [optional] 

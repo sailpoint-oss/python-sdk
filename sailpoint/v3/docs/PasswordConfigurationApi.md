@@ -20,6 +20,7 @@ This API creates the password org config. Unspecified fields will use default va
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -62,6 +63,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **password_org_config** | [**PasswordOrgConfig**](PasswordOrgConfig.md)|  | 
@@ -80,6 +82,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Reference to the password org config. |  -  |
@@ -102,6 +105,7 @@ This API returns the password org config . Requires ORG_ADMIN, API role or autho
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -142,6 +146,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -158,6 +163,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Reference to the password org config. |  -  |
@@ -180,6 +186,7 @@ This API updates the password org config for specified fields. Other fields will
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -222,6 +229,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **password_org_config** | [**PasswordOrgConfig**](PasswordOrgConfig.md)|  | 
@@ -240,6 +248,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Reference to the password org config. |  -  |

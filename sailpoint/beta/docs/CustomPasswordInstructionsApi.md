@@ -20,6 +20,7 @@ This API creates the custom password instructions for the specified page ID. A t
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -62,6 +63,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **custom_password_instruction** | [**CustomPasswordInstruction**](CustomPasswordInstruction.md)|  | 
@@ -80,6 +82,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Reference to the custom password instructions. |  -  |
@@ -100,6 +103,7 @@ This API delete the custom password instructions for the specified page ID. A to
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -140,6 +144,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page_id** | **str**| The page ID of custom password instructions to delete. | 
@@ -159,6 +164,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
@@ -180,6 +186,7 @@ This API returns the custom password instructions for the specified page ID. A t
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -223,6 +230,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page_id** | **str**| The page ID of custom password instructions to query. | 
@@ -242,6 +250,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Reference to the custom password instructions. |  -  |

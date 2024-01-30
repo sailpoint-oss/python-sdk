@@ -3,6 +3,7 @@
 type of a Report
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

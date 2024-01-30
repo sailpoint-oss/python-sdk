@@ -41,6 +41,7 @@ This method starts a job to provision a potential role
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -88,6 +89,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -110,6 +112,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Accepted. Returns a potential role summary including the status of the provison request |  -  |
@@ -132,6 +135,7 @@ This submits a create role mining session request to the role mining application
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -175,6 +179,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **role_mining_session_dto** | [**RoleMiningSessionDto**](RoleMiningSessionDto.md)| Role mining session parameters | 
@@ -193,6 +198,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Submitted a role mining session request |  -  |
@@ -215,6 +221,7 @@ This endpoint downloads a completed export of information for a potential role i
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -258,6 +265,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -278,6 +286,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/zip, application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a zip file containing csv files for identities and entitlements for the potential role. |  -  |
@@ -299,6 +308,7 @@ This endpoint downloads all the information for a potential role in a role minin
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -341,6 +351,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -360,6 +371,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/zip, application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a zip file containing csv files for identities and entitlements for the potential role. |  -  |
@@ -381,6 +393,7 @@ This endpoint uploads all the information for a potential role in a role mining 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -426,6 +439,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -446,6 +460,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Job Submitted. Returns a reportId that can be used to download the zip once complete |  -  |
@@ -467,6 +482,7 @@ This endpoint retrieves information about the current status of a potential role
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -511,6 +527,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -531,6 +548,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success. Returns the current status of this export |  -  |
@@ -552,6 +570,7 @@ Returns all potential role summaries that match the query parameters
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -598,6 +617,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **createdDate, identityCount, entitlementCount, freshness, quality** | [optional] 
@@ -620,6 +640,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns all potential role summaries that match the query parameters. |  -  |
@@ -642,6 +663,7 @@ This method returns entitlement popularity distribution for a potential role in 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -685,6 +707,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -705,6 +728,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a map containing entitlement popularity distribution for a potential role. |  -  |
@@ -726,6 +750,7 @@ This method returns entitlements for a potential role in a role mining session.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -775,6 +800,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -800,6 +826,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a list of entitlements for a potential role. |  -  |
@@ -821,6 +848,7 @@ This method returns excluded entitlements for a potential role in a role mining 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -869,6 +897,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -893,6 +922,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a list of excluded entitlements for a potential roles. |  -  |
@@ -914,6 +944,7 @@ This method returns identities for a potential role in a role mining session.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -962,6 +993,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -986,6 +1018,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a list of identities for a potential role. |  -  |
@@ -1007,6 +1040,7 @@ This method returns a specific potential role for a role mining session.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -1050,6 +1084,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -1069,6 +1104,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a list of potential roles for a role mining session. |  -  |
@@ -1091,6 +1127,7 @@ This method returns the applications of a potential role for a role mining sessi
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -1137,6 +1174,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -1159,6 +1197,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a list of potential roles for a role mining session. |  -  |
@@ -1180,6 +1219,7 @@ This method returns source usageCount (as number of days in the last 90 days) fo
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -1227,6 +1267,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **potential_role_id** | **str**| A potential role id | 
@@ -1250,6 +1291,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a list of source usage for the identities in a potential role. |  -  |
@@ -1272,6 +1314,7 @@ This method returns the potential role summaries for a role mining session.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -1319,6 +1362,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -1342,6 +1386,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a list of potential role summaries for a role mining session. |  -  |
@@ -1364,6 +1409,7 @@ This method returns a specific potential role.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -1406,6 +1452,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **potential_role_id** | **str**| A potential role id | 
@@ -1424,6 +1471,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a list of potential roles for a role mining session. |  -  |
@@ -1446,6 +1494,7 @@ The method retrieves a role mining session.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -1488,6 +1537,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id to be retrieved. | 
@@ -1506,6 +1556,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Returns a role mining session |  -  |
@@ -1529,6 +1580,7 @@ This method returns a role mining session status for a customer.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -1571,6 +1623,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -1589,6 +1642,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns session status |  -  |
@@ -1610,6 +1664,7 @@ Returns all role mining sessions that match the query parameters
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -1656,6 +1711,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filters** | **str**| Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **saved**: *eq*  **name**: *eq, sw* | [optional] 
@@ -1678,6 +1734,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns all role mining sessions that match the query parameters. |  -  |
@@ -1700,6 +1757,7 @@ This method returns all saved potential roles (draft roles).
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -1745,6 +1803,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sorters** | **str**| Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified** | [optional] 
@@ -1766,6 +1825,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns a list of draft roles for a role mining session. |  -  |
@@ -1788,6 +1848,7 @@ The method updates an existing potential role using.  The following fields can b
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -1832,6 +1893,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -1852,6 +1914,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns the potential role summary based on the potentialRoleId provided. |  -  |
@@ -1875,6 +1938,7 @@ The method updates an existing potential role using.  The following fields can b
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -1919,6 +1983,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -1939,6 +2004,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns the potential role summary based on the potentialRoleId provided. |  -  |
@@ -1962,6 +2028,7 @@ The  method updates an existing role mining session using PATCH. Supports op in 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -2005,6 +2072,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id to be patched | 
@@ -2024,6 +2092,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Accepted - Returned if the request was successfully accepted into the system. |  -  |
@@ -2047,6 +2116,7 @@ This endpoint adds or removes entitlements from an exclusion list for a potentia
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -2092,6 +2162,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **session_id** | **str**| The role mining session id | 
@@ -2112,6 +2183,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Adds or removes entitlements from a potential role&#39;s entitlement exclusion list. |  -  |

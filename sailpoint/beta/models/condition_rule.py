@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -51,9 +51,9 @@ class ConditionRule(BaseModel):
         description=
         "ConditionRuleValueType type. STRING ConditionRuleValueTypeString  This value is a static string. STRING_LIST ConditionRuleValueTypeStringList  This value is an array of string values. INPUT ConditionRuleValueTypeInput  This value is a reference to a form input. ELEMENT ConditionRuleValueTypeElement  This value is a reference to a form element (by technical key). LIST ConditionRuleValueTypeList BOOLEAN ConditionRuleValueTypeBoolean",
         alias="valueType")
-    value: Optional[Union[str,
-                          Any]] = Field(default=None,
-                                        description="Based on the ValueType.")
+    value: Optional[Dict[str,
+                         Any]] = Field(default=None,
+                                       description="Based on the ValueType.")
     __properties: ClassVar[List[str]] = [
         "sourceType", "source", "operator", "valueType", "value"
     ]
@@ -94,7 +94,11 @@ class ConditionRule(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

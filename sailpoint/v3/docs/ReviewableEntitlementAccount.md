@@ -3,6 +3,7 @@
 Information about the status of the entitlement
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **native_identity** | **str** | The native identity for this account | [optional] 

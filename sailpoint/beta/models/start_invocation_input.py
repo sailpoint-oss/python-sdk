@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -34,18 +34,22 @@ class StartInvocationInput(BaseModel):
     trigger_id: Optional[StrictStr] = Field(default=None,
                                             description="Trigger ID",
                                             alias="triggerId")
-    input: Optional[Union[str, Any]] = Field(
+    input: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "Trigger input payload. Its schema is defined in the trigger definition."
     )
-    content_json: Optional[Union[str, Any]] = Field(
+    content_json: Optional[Dict[str, Any]] = Field(
         default=None,
         description="JSON map of invocation metadata",
         alias="contentJson")
     __properties: ClassVar[List[str]] = ["triggerId", "input", "contentJson"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

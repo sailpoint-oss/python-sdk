@@ -3,6 +3,7 @@
 Request body payload for close access requests endpoint.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_request_ids** | **List[str]** | Access Request IDs for the requests to be closed. Accepts 1-500 Identity Request IDs per request. | 

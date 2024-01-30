@@ -27,6 +27,7 @@ This API creates a new Governance Group.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -69,6 +70,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workgroup_dto** | [**WorkgroupDto**](WorkgroupDto.md)|  | 
@@ -87,6 +89,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Governance Group object created. |  -  |
@@ -109,6 +112,7 @@ This API deletes a Governance Group by its ID.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -148,6 +152,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the Governance Group | 
@@ -166,6 +171,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
@@ -188,6 +194,7 @@ This API removes one or more  members from a Governance Group.  A token with API
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -232,6 +239,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workgroup_id** | **str**| ID of the Governance Group. | 
@@ -251,6 +259,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **207** | List of deleted and not deleted identities from Governance Group members list. |  -  |
@@ -273,6 +282,7 @@ Delete Governance Group(s)
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -316,6 +326,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workgroup_bulk_delete_request** | [**WorkgroupBulkDeleteRequest**](WorkgroupBulkDeleteRequest.md)|  | 
@@ -334,6 +345,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **207** | Governance Group bulk delete response. |  -  |
@@ -356,6 +368,7 @@ This API returns a Governance Groups by its ID.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -398,6 +411,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the Governance Group | 
@@ -416,6 +430,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A Governance Group |  -  |
@@ -438,6 +453,7 @@ This API returns list of connections associated with a Governance Group.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -484,6 +500,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workgroup_id** | **str**| ID of the Governance Group. | 
@@ -506,6 +523,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List all connections associated with a Governance Group. |  -  |
@@ -528,6 +546,7 @@ This API returns list of members associated with a Governance Group.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -574,6 +593,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workgroup_id** | **str**| ID of the Governance Group. | 
@@ -596,6 +616,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List all members associated with a Governance Group. |  -  |
@@ -618,6 +639,7 @@ This API returns list of Governance Groups
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -664,6 +686,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
@@ -686,6 +709,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of Governance Groups |  -  |
@@ -708,6 +732,7 @@ This API updates an existing governance group by ID.  The following fields and o
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -752,6 +777,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the Governance Group | 
@@ -771,6 +797,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A Governance Group. |  -  |
@@ -793,6 +820,7 @@ This API adds one or more members to a Governance Group.  A token with API, ORG_
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -837,6 +865,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workgroup_id** | **str**| ID of the Governance Group. | 
@@ -856,6 +885,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **207** | List of added and not added identities into  Governance Group members list. |  -  |

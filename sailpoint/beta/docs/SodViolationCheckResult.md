@@ -3,6 +3,7 @@
 The inner object representing the completed SOD Violation check
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | [**ErrorMessageDto**](ErrorMessageDto.md) |  | [optional] 

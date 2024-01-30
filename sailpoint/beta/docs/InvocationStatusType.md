@@ -3,6 +3,7 @@
 Defines the Invocation type.  **TEST** The trigger was invocated as a test, either via the test subscription button in the UI or via the start test invocation API.  **REAL_TIME** The trigger subscription is live and was invocated by a real event in IdentityNow.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

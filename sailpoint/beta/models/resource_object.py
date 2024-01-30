@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 try:
@@ -73,7 +73,7 @@ class ResourceObject(BaseModel):
         description=
         "A list of attribute names that are not included in this object. This is only used with SMConnector and will only contain \"groups\"."
     )
-    attributes: Optional[Union[str, Any]] = Field(
+    attributes: Optional[Dict[str, Any]] = Field(
         default=None, description="Attributes of this ResourceObject.")
     final_update: Optional[StrictBool] = Field(
         default=None,
@@ -86,7 +86,11 @@ class ResourceObject(BaseModel):
         "missing", "attributes", "finalUpdate"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

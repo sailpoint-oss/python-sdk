@@ -52,7 +52,7 @@ class Outlier(BaseModel):
     ignored: Optional[StrictBool] = Field(
         default=None,
         description="Flag whether or not the outlier has been ignored")
-    attributes: Optional[Union[str, Any]] = Field(
+    attributes: Optional[Dict[str, Any]] = Field(
         default=None,
         description="Object containing mapped identity attributes")
     score: Optional[Union[StrictFloat, StrictInt]] = Field(
@@ -101,7 +101,11 @@ class Outlier(BaseModel):
                 "must be one of enum values ('MANUAL', 'AUTOMATIC')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

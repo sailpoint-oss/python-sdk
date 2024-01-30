@@ -3,6 +3,7 @@
 Details about report result or current state.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **report_type** | **str** | Use this property to define what report should be processed in the RDE service. | [optional] 

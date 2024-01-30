@@ -18,6 +18,7 @@ Identity Outliers List
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -63,6 +64,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **strategy** | **str**| The strategy used to create peer groups. Currently, &#39;entitlement&#39; is supported. | 
@@ -84,6 +86,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of identities that are not included in peer groups. |  -  |

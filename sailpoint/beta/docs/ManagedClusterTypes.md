@@ -3,6 +3,7 @@
 The Type of Cluster
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

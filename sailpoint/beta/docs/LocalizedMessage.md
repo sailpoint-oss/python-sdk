@@ -3,6 +3,7 @@
 Localized error message to indicate a failed invocation or error if any.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **locale** | **str** | Message locale | 

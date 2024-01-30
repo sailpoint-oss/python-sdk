@@ -3,6 +3,7 @@
 The types of objects supported for SOD policy violations.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **object** | The type of object supported for SOD policy violations. | [optional] 

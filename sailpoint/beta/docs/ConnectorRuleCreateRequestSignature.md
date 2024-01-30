@@ -3,6 +3,7 @@
 The rule's function signature. Describes the rule's input arguments and output (if any)
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **input** | [**List[Argument]**](Argument.md) |  | 

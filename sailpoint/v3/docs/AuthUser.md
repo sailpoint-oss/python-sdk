@@ -2,13 +2,14 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tenant** | **str** | Tenant name. | [optional] 
 **id** | **str** | Identity ID. | [optional] 
-**uid** | **str** | Identity unique identitifier. | [optional] 
-**profile** | **str** | ID of the auth profile associated with this auth user. | [optional] 
-**identification_number** | **str** | Auth user employee number. | [optional] 
+**uid** | **str** | Identity&#39;s unique identitifier. | [optional] 
+**profile** | **str** | ID of the auth profile associated with the auth user. | [optional] 
+**identification_number** | **str** | Auth user&#39;s employee number. | [optional] 
 **email** | **str** | Auth user&#39;s email. | [optional] 
 **phone** | **str** | Auth user&#39;s phone number. | [optional] 
 **work_phone** | **str** | Auth user&#39;s work phone number. | [optional] 
@@ -17,10 +18,10 @@ Name | Type | Description | Notes
 **lastname** | **str** | Auth user&#39;s last name. | [optional] 
 **display_name** | **str** | Auth user&#39;s name in displayed format. | [optional] 
 **alias** | **str** | Auth user&#39;s alias. | [optional] 
-**last_password_change_date** | **str** | the date of last password change | [optional] 
+**last_password_change_date** | **str** | Date of last password change. | [optional] 
 **last_login_timestamp** | **int** | Timestamp of the last login (long type value). | [optional] 
 **current_login_timestamp** | **int** | Timestamp of the current login (long type value). | [optional] 
-**capabilities** | **List[str]** | Array of capabilities for this auth user. | [optional] 
+**capabilities** | **List[str]** | Array of the auth user&#39;s capabilities. | [optional] 
 
 ## Example
 

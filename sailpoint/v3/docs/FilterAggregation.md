@@ -3,6 +3,7 @@
 An additional filter to constrain the results of the search query.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The name of the filter aggregate to be included in the result. | 

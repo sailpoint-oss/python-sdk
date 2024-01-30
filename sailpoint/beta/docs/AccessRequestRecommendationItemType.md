@@ -3,6 +3,7 @@
 The type of access item.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

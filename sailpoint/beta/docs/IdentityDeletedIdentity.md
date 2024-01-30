@@ -3,6 +3,7 @@
 Deleted identity.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Deleted identity&#39;s DTO type. | 

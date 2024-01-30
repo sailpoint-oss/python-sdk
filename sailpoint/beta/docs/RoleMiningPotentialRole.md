@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_by** | [**EntityCreatedByDTO**](EntityCreatedByDTO.md) |  | [optional] 

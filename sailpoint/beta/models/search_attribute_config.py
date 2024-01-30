@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -37,7 +37,7 @@ class SearchAttributeConfig(BaseModel):
         default=None,
         description="The display name of the new attribute",
         alias="displayName")
-    application_attributes: Optional[Union[str, Any]] = Field(
+    application_attributes: Optional[Dict[str, Any]] = Field(
         default=None,
         description="Map of application id and their associated attribute.",
         alias="applicationAttributes")
@@ -45,7 +45,11 @@ class SearchAttributeConfig(BaseModel):
         "name", "displayName", "applicationAttributes"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

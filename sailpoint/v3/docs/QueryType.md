@@ -3,6 +3,7 @@
 The type of query to use.  By default, the `SAILPOINT` query type is used, which requires the `query` object to be defined in the request body. To use the `queryDsl` or `typeAheadQuery` objects in the request, you must set the type to `DSL` or `TYPEAHEAD` accordingly. Additional values may be added in the future without notice.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

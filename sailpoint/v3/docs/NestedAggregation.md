@@ -3,6 +3,7 @@
 The nested aggregation object.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The name of the nested aggregate to be included in the result. | 

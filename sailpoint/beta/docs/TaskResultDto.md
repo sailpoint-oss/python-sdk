@@ -3,6 +3,7 @@
 Task result.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Task result DTO type. | [optional] 

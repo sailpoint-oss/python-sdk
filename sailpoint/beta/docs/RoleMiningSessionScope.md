@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identity_ids** | **List[str]** | The list of identities for this role mining session. | [optional] 

@@ -3,6 +3,7 @@
 MAIL FROM attributes for a domain / identity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identity** | **str** | The identity or domain address | [optional] 

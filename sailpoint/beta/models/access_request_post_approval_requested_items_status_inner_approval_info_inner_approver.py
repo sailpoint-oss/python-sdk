@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -32,7 +32,7 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprove
     """
 
   # noqa: E501
-    type: Union[str, Any] = Field(
+    type: Dict[str, Any] = Field(
         description="The type of object that is referenced")
     id: StrictStr = Field(
         description="ID of identity who approved the access item request.")
@@ -49,7 +49,11 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprove
             raise ValueError("must be one of enum values ('IDENTITY')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

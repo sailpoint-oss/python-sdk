@@ -3,6 +3,7 @@
 The manager for the identity.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**DtoType**](DtoType.md) |  | [optional] 

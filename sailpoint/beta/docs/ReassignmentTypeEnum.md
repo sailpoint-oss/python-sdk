@@ -3,6 +3,7 @@
 Enum list containing types of Reassignment that can be found in the evaluate response.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

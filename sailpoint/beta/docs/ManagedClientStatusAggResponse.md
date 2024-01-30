@@ -3,6 +3,7 @@
 Managed Client Status
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **body** | **object** | ManagedClientStatus body information | 

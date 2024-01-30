@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from pydantic import Field
 try:
@@ -31,14 +31,18 @@ class IdentityCompareResponse(BaseModel):
     """
 
   # noqa: E501
-    access_item_diff: Optional[Dict[str, Union[str, Any]]] = Field(
+    access_item_diff: Optional[Dict[str, Dict[str, Any]]] = Field(
         default=None,
         description=
         "Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.",
         alias="accessItemDiff")
     __properties: ClassVar[List[str]] = ["accessItemDiff"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -3,6 +3,7 @@
 Details about the certification campaign that ended.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique ID for the campaign. | 

@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -39,7 +39,7 @@ class StatusResponse(BaseModel):
         default=None,
         description="The number of milliseconds spent on the entire request.",
         alias="elapsedMillis")
-    details: Optional[Union[str, Any]] = Field(
+    details: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "The document contains the results of the health check. The schema of this document depends on the type of source used. "
@@ -59,7 +59,11 @@ class StatusResponse(BaseModel):
                 "must be one of enum values ('SUCCESS', 'FAILURE')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

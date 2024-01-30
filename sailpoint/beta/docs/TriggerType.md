@@ -3,6 +3,7 @@
 The type of trigger.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **left_criteria** | [**AccessCriteria**](AccessCriteria.md) |  | [optional] 

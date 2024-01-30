@@ -111,7 +111,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -182,7 +182,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -253,7 +253,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -366,7 +366,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -431,7 +431,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -496,7 +496,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -606,7 +606,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -671,7 +671,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -736,7 +736,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -846,7 +846,14 @@ class WorkItemsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -910,7 +917,14 @@ class WorkItemsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -974,7 +988,14 @@ class WorkItemsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         return response_data.response
@@ -1127,7 +1148,7 @@ class WorkItemsApi:
             '200': "List[WorkItems]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1223,7 +1244,7 @@ class WorkItemsApi:
             '200': "List[WorkItems]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1319,7 +1340,7 @@ class WorkItemsApi:
             '200': "List[WorkItems]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1447,7 +1468,7 @@ class WorkItemsApi:
             '200': "List[WorkItemsCount]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1513,7 +1534,7 @@ class WorkItemsApi:
             '200': "List[WorkItemsCount]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1579,7 +1600,7 @@ class WorkItemsApi:
             '200': "List[WorkItemsCount]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1692,7 +1713,7 @@ class WorkItemsApi:
             '200': "List[WorkItemsCount]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1758,7 +1779,7 @@ class WorkItemsApi:
             '200': "List[WorkItemsCount]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1824,7 +1845,7 @@ class WorkItemsApi:
             '200': "List[WorkItemsCount]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1941,7 +1962,7 @@ class WorkItemsApi:
             '200': "List[WorkItems]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2011,7 +2032,7 @@ class WorkItemsApi:
             '200': "List[WorkItems]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2081,7 +2102,7 @@ class WorkItemsApi:
             '200': "List[WorkItems]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2197,7 +2218,7 @@ class WorkItemsApi:
             '200': "List[WorkItemsSummary]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2263,7 +2284,7 @@ class WorkItemsApi:
             '200': "List[WorkItemsSummary]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2329,7 +2350,7 @@ class WorkItemsApi:
             '200': "List[WorkItemsSummary]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2468,7 +2489,7 @@ class WorkItemsApi:
             '200': "List[WorkItems]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2560,7 +2581,7 @@ class WorkItemsApi:
             '200': "List[WorkItems]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2652,7 +2673,7 @@ class WorkItemsApi:
             '200': "List[WorkItems]",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2785,7 +2806,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2856,7 +2877,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2927,7 +2948,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3040,7 +3061,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3105,7 +3126,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3170,7 +3191,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3287,7 +3308,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3359,7 +3380,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3431,7 +3452,7 @@ class WorkItemsApi:
             '200': "WorkItems",
             '400': "ErrorResponseDto",
             '403': "ErrorResponseDto",
-            '404': "ErrorResponseDto"
+            '404': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)

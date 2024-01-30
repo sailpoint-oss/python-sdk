@@ -56,7 +56,10 @@ class ListCompleteWorkflowLibrary200ResponseInner(BaseModel):
     any_of_schemas: List[str] = Literal[
         LISTCOMPLETEWORKFLOWLIBRARY200RESPONSEINNER_ANY_OF_SCHEMAS]
 
-    model_config = {"validate_assignment": True}
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:

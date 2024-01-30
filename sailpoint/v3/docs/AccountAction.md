@@ -3,6 +3,7 @@
 Object for specifying Actions to be performed on a specified list of sources' account.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **action** | **str** | Describes if action will be enabled or disabled | [optional] 

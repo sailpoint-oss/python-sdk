@@ -3,6 +3,7 @@
 Refers to a specific Identity attribute, Account attibute, or Entitlement used in Role membership criteria
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**RoleCriteriaKeyType**](RoleCriteriaKeyType.md) |  | 

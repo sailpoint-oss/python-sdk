@@ -38,7 +38,11 @@ class ConfigObject(BaseModel):
         description="Object details. Format dependant on the object type.")
     __properties: ClassVar[List[str]] = ["version", "self", "object"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

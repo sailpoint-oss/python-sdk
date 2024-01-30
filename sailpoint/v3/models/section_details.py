@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -35,14 +35,18 @@ class SectionDetails(BaseModel):
                                       description="Name of the FormItem")
     label: Optional[StrictStr] = Field(default=None,
                                        description="Label of the section")
-    form_items: Optional[List[Union[str, Any]]] = Field(
+    form_items: Optional[List[Dict[str, Any]]] = Field(
         default=None,
         description=
         "List of FormItems. FormItems can be SectionDetails and/or FieldDetails",
         alias="formItems")
     __properties: ClassVar[List[str]] = ["name", "label", "formItems"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

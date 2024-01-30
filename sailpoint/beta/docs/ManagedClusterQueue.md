@@ -3,6 +3,7 @@
 Managed Cluster key pair for Cluster
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | ManagedCluster queue name | [optional] 

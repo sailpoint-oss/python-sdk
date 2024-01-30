@@ -3,6 +3,7 @@
 Role
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The unique ID of the referenced object. | 
@@ -19,6 +20,10 @@ Name | Type | Description | Notes
 **access_profiles** | [**List[Reference]**](Reference.md) |  | [optional] 
 **access_profile_count** | **int** |  | [optional] 
 **tags** | **List[str]** |  | [optional] 
+**segments** | [**List[Reference]**](Reference.md) |  | [optional] 
+**segment_count** | **int** |  | [optional] 
+**entitlements** | [**List[AccessProfileRole]**](AccessProfileRole.md) |  | [optional] 
+**entitlement_count** | **int** |  | [optional] 
 
 ## Example
 

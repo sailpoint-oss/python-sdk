@@ -17,7 +17,7 @@ import json
 import pprint
 import re  # noqa: F401
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictInt, StrictStr, ValidationError, field_validator
 from sailpoint.v3.models.array_inner import ArrayInner
 from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
@@ -42,14 +42,17 @@ class JsonPatchOperationValue(BaseModel):
     # data type: int
     oneof_schema_2_validator: Optional[StrictInt] = None
     # data type: object
-    oneof_schema_3_validator: Optional[Union[str, Any]] = None
+    oneof_schema_3_validator: Optional[Dict[str, Any]] = None
     # data type: List[ArrayInner]
     oneof_schema_4_validator: Optional[List[ArrayInner]] = None
     actual_instance: Optional[Union[List[ArrayInner], int, object, str]] = None
     one_of_schemas: List[str] = Literal["List[ArrayInner]", "int", "object",
                                         "str"]
 
-    model_config = {"validate_assignment": True}
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:

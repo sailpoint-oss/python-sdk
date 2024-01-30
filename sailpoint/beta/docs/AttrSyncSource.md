@@ -3,6 +3,7 @@
 Target source for attribute synchronization.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of target source for attribute synchronization. | [optional] 

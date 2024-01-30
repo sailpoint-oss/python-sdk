@@ -3,6 +3,7 @@
 Enum representing the type of data a schema attribute accepts.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

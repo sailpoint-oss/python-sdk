@@ -3,6 +3,7 @@
 HTTP response modes, i.e. SYNC, ASYNC, or DYNAMIC.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

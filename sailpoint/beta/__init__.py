@@ -406,7 +406,6 @@ from sailpoint.beta.models.identity_ownership_association_details import Identit
 from sailpoint.beta.models.identity_ownership_association_details_association_details_inner import IdentityOwnershipAssociationDetailsAssociationDetailsInner
 from sailpoint.beta.models.identity_preview_request import IdentityPreviewRequest
 from sailpoint.beta.models.identity_preview_response import IdentityPreviewResponse
-from sailpoint.beta.models.identity_preview_response_identity import IdentityPreviewResponseIdentity
 from sailpoint.beta.models.identity_profile import IdentityProfile
 from sailpoint.beta.models.identity_profile1 import IdentityProfile1
 from sailpoint.beta.models.identity_profile1_all_of_authoritative_source import IdentityProfile1AllOfAuthoritativeSource
@@ -535,6 +534,7 @@ from sailpoint.beta.models.password_status import PasswordStatus
 from sailpoint.beta.models.password_sync_group import PasswordSyncGroup
 from sailpoint.beta.models.pat_owner import PatOwner
 from sailpoint.beta.models.patch_potential_role_request_inner import PatchPotentialRoleRequestInner
+from sailpoint.beta.models.patch_service_desk_integration_request import PatchServiceDeskIntegrationRequest
 from sailpoint.beta.models.peer_group_member import PeerGroupMember
 from sailpoint.beta.models.pending_approval import PendingApproval
 from sailpoint.beta.models.pending_approval_action import PendingApprovalAction
@@ -563,6 +563,7 @@ from sailpoint.beta.models.provisioning_policy_dto import ProvisioningPolicyDto
 from sailpoint.beta.models.provisioning_state import ProvisioningState
 from sailpoint.beta.models.public_identity_attribute_config import PublicIdentityAttributeConfig
 from sailpoint.beta.models.public_identity_config import PublicIdentityConfig
+from sailpoint.beta.models.put_password_dictionary_request import PutPasswordDictionaryRequest
 from sailpoint.beta.models.queued_check_config_details import QueuedCheckConfigDetails
 from sailpoint.beta.models.reassign_reference import ReassignReference
 from sailpoint.beta.models.reassignment import Reassignment
@@ -668,6 +669,9 @@ from sailpoint.beta.models.send_test_notification_request_dto import SendTestNot
 from sailpoint.beta.models.send_token_request import SendTokenRequest
 from sailpoint.beta.models.send_token_response import SendTokenResponse
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
+from sailpoint.beta.models.service_desk_integration_dto_all_of_before_provisioning_rule import ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule
+from sailpoint.beta.models.service_desk_integration_dto_all_of_cluster_ref import ServiceDeskIntegrationDtoAllOfClusterRef
+from sailpoint.beta.models.service_desk_integration_dto_all_of_owner_ref import ServiceDeskIntegrationDtoAllOfOwnerRef
 from sailpoint.beta.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 from sailpoint.beta.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 from sailpoint.beta.models.service_desk_source import ServiceDeskSource
@@ -768,7 +772,6 @@ from sailpoint.beta.models.trigger import Trigger
 from sailpoint.beta.models.trigger_example_input import TriggerExampleInput
 from sailpoint.beta.models.trigger_example_output import TriggerExampleOutput
 from sailpoint.beta.models.trigger_type import TriggerType
-from sailpoint.beta.models.update_password_dictionary_request import UpdatePasswordDictionaryRequest
 from sailpoint.beta.models.usage_type import UsageType
 from sailpoint.beta.models.v3_connector_dto import V3ConnectorDto
 from sailpoint.beta.models.va_cluster_status_change_event import VAClusterStatusChangeEvent

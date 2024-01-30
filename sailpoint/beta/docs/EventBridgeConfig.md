@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **aws_account** | **str** | AWS Account Number (12-digit number) that has the EventBridge Partner Event Source Resource. | 

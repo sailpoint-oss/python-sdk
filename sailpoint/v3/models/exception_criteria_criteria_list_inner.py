@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.v3.models.dto_type import DtoType
@@ -30,7 +30,7 @@ class ExceptionCriteriaCriteriaListInner(BaseModel):
     """
     The types of objects supported for SOD violations
     """ # noqa: E501
-    type: Optional[Union[str, Any]] = Field(
+    type: Optional[Dict[str, Any]] = Field(
         default=None, description="The type of object that is referenced")
     id: Optional[StrictStr] = Field(
         default=None,
@@ -56,7 +56,11 @@ class ExceptionCriteriaCriteriaListInner(BaseModel):
             raise ValueError("must be one of enum values ('ENTITLEMENT')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

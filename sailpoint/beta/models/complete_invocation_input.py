@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from pydantic import Field
 from sailpoint.beta.models.localized_message import LocalizedMessage
@@ -34,14 +34,18 @@ class CompleteInvocationInput(BaseModel):
   # noqa: E501
     localized_error: Optional[LocalizedMessage] = Field(default=None,
                                                         alias="localizedError")
-    output: Optional[Union[str, Any]] = Field(
+    output: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "Trigger output that completed the invocation. Its schema is defined in the trigger definition."
     )
     __properties: ClassVar[List[str]] = ["localizedError", "output"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

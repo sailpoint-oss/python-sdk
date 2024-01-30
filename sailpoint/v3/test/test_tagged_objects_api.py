@@ -56,7 +56,7 @@ class TestTaggedObjectsApi(unittest.TestCase):
     def test_list_tagged_objects_by_type(self) -> None:
         """Test case for list_tagged_objects_by_type
 
-        List Tagged Objects
+        List Tagged Objects by Type
         """
         pass
 

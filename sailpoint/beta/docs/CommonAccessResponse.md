@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access** | [**CommonAccessItemAccess**](CommonAccessItemAccess.md) |  | [optional] 

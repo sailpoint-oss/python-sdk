@@ -3,6 +3,7 @@
 Managed Client type
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

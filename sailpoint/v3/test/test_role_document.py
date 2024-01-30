@@ -53,7 +53,17 @@ class TestRoleDocument(unittest.TestCase):
                         name = 'John Doe', )
                     ],
                 access_profile_count = 56,
-                tags = [TAG_1, TAG_2]
+                tags = [TAG_1, TAG_2],
+                segments = [
+                    sailpoint.v3.models.reference.Reference(
+                        id = '2c91808568c529c60168cca6f90c1313', 
+                        name = 'John Doe', )
+                    ],
+                segment_count = 1,
+                entitlements = [
+                    null
+                    ],
+                entitlement_count = 3
             )
         else:
             return RoleDocument(

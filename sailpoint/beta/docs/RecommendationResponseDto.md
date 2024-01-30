@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **response** | [**List[RecommendationResponse]**](RecommendationResponse.md) |  | [optional] 

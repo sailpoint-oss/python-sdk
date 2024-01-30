@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -37,7 +37,7 @@ class SendTestNotificationRequestDto(BaseModel):
         default=None,
         description=
         "The notification medium. Has to be one of the following enum values.")
-    context: Optional[Union[str, Any]] = Field(
+    context: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "A Json object that denotes the context specific to the template.")
@@ -54,7 +54,11 @@ class SendTestNotificationRequestDto(BaseModel):
                 "must be one of enum values ('EMAIL', 'SLACK', 'TEAMS')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

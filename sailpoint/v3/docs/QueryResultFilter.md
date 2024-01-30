@@ -3,6 +3,7 @@
 Allows the query results to be filtered by specifying a list of fields to include and/or exclude from the result documents.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **includes** | **List[str]** | The list of field names to include in the result documents. | [optional] 

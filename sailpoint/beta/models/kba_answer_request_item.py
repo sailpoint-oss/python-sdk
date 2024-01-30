@@ -36,7 +36,11 @@ class KbaAnswerRequestItem(BaseModel):
     answer: StrictStr = Field(description="An answer for the KBA question")
     __properties: ClassVar[List[str]] = ["questionId", "answer"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

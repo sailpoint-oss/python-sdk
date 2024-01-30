@@ -22,6 +22,7 @@ from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.identity_reference_with_name_and_email import IdentityReferenceWithNameAndEmail
 from sailpoint.v3.models.reviewable_access_profile import ReviewableAccessProfile
+from sailpoint.v3.models.reviewable_entitlement import ReviewableEntitlement
 try:
     from typing import Self
 except ImportError:
@@ -55,12 +56,19 @@ class ReviewableRole(BaseModel):
         default=None,
         description="The list of Access Profiles associated with this Role",
         alias="accessProfiles")
+    entitlements: Optional[List[ReviewableEntitlement]] = Field(
+        default=None,
+        description="The list of entitlements associated with this Role")
     __properties: ClassVar[List[str]] = [
         "id", "name", "description", "privileged", "owner", "revocable",
-        "endDate", "accessProfiles"
+        "endDate", "accessProfiles", "entitlements"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -101,6 +109,13 @@ class ReviewableRole(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['accessProfiles'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in entitlements (list)
+        _items = []
+        if self.entitlements:
+            for _item in self.entitlements:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['entitlements'] = _items
         # set to None if owner (nullable) is None
         # and model_fields_set contains the field
         if self.owner is None and "owner" in self.model_fields_set:
@@ -136,6 +151,10 @@ class ReviewableRole(BaseModel):
             "accessProfiles": [
                 ReviewableAccessProfile.from_dict(_item)
                 for _item in obj.get("accessProfiles")
-            ] if obj.get("accessProfiles") is not None else None
+            ] if obj.get("accessProfiles") is not None else None,
+            "entitlements": [
+                ReviewableEntitlement.from_dict(_item)
+                for _item in obj.get("entitlements")
+            ] if obj.get("entitlements") is not None else None
         })
         return _obj

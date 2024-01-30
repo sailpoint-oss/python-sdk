@@ -3,6 +3,7 @@
 An identity with a set of access to be added
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identity_id** | **str** | Identity id to be checked. | 

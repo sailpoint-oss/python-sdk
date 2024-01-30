@@ -3,6 +3,7 @@
 A table of identities that match the search criteria.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **count** | **str** | The number of rows in the table. | 

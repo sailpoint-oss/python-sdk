@@ -3,6 +3,7 @@
 Type of an API Client indicating public or confidentials use
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

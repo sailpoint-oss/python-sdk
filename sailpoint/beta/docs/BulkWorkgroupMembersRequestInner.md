@@ -3,6 +3,7 @@
 Identity's basic details.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Identity&#39;s DTO type. | [optional] 

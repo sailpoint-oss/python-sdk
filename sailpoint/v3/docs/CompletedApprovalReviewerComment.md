@@ -3,6 +3,7 @@
 The approval's reviewer's comment.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **str** | Comment content. | [optional] 

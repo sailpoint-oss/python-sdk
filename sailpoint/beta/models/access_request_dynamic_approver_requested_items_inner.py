@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -34,10 +34,10 @@ class AccessRequestDynamicApproverRequestedItemsInner(BaseModel):
         description="Human friendly name of the access item.")
     description: Optional[StrictStr] = Field(
         default=None, description="Extended description of the access item.")
-    type: Union[str, Any] = Field(
+    type: Dict[str, Any] = Field(
         description="The type of access item being requested.")
-    operation: Union[str, Any] = Field(
-        description="Grant or revoke the access item")
+    operation: Dict[str,
+                    Any] = Field(description="Grant or revoke the access item")
     comment: Optional[StrictStr] = Field(
         default=None,
         description="A comment from the requestor on why the access is needed."
@@ -62,7 +62,11 @@ class AccessRequestDynamicApproverRequestedItemsInner(BaseModel):
             raise ValueError("must be one of enum values ('Add', 'Remove')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

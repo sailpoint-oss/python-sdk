@@ -3,6 +3,7 @@
 Response model for import of a single object.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **infos** | [**List[SpConfigMessage]**](SpConfigMessage.md) | Informational messages returned from the target service on import. | 

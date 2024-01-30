@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **exclude_types** | **List[str]** | Object type names to be excluded from an sp-config export command. | [optional] 

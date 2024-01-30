@@ -106,6 +106,11 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**update_account**](sailpoint/v3/docs/AccountsApi.md#update_account) | **PATCH** /accounts/{id} | Update Account
 *AuthUserApi* | [**get_auth_user**](sailpoint/v3/docs/AuthUserApi.md#get_auth_user) | **GET** /auth-users/{id} | Auth User Details
 *AuthUserApi* | [**patch_auth_user**](sailpoint/v3/docs/AuthUserApi.md#patch_auth_user) | **PATCH** /auth-users/{id} | Auth User Update
+*BrandingApi* | [**create_branding_item**](sailpoint/v3/docs/BrandingApi.md#create_branding_item) | **POST** /brandings | Create a branding item
+*BrandingApi* | [**delete_branding**](sailpoint/v3/docs/BrandingApi.md#delete_branding) | **DELETE** /brandings/{name} | Delete a branding item
+*BrandingApi* | [**get_branding**](sailpoint/v3/docs/BrandingApi.md#get_branding) | **GET** /brandings/{name} | Get a branding item
+*BrandingApi* | [**get_branding_list**](sailpoint/v3/docs/BrandingApi.md#get_branding_list) | **GET** /brandings | List of branding items
+*BrandingApi* | [**set_branding_item**](sailpoint/v3/docs/BrandingApi.md#set_branding_item) | **PUT** /brandings/{name} | Update a branding item
 *CertificationCampaignFiltersApi* | [**create_campaign_filter**](sailpoint/v3/docs/CertificationCampaignFiltersApi.md#create_campaign_filter) | **POST** /campaign-filters | Create a Campaign Filter
 *CertificationCampaignFiltersApi* | [**delete_campaign_filters**](sailpoint/v3/docs/CertificationCampaignFiltersApi.md#delete_campaign_filters) | **POST** /campaign-filters/delete | Deletes Campaign Filters
 *CertificationCampaignFiltersApi* | [**get_campaign_filter_by_id**](sailpoint/v3/docs/CertificationCampaignFiltersApi.md#get_campaign_filter_by_id) | **GET** /campaign-filters/{id} | Get Campaign Filter by ID
@@ -206,7 +211,7 @@ Class | Method | HTTP request | Description
 *PasswordConfigurationApi* | [**get_password_org_config**](sailpoint/v3/docs/PasswordConfigurationApi.md#get_password_org_config) | **GET** /password-org-config | Get Password Org Config
 *PasswordConfigurationApi* | [**put_password_org_config**](sailpoint/v3/docs/PasswordConfigurationApi.md#put_password_org_config) | **PUT** /password-org-config | Update Password Org Config
 *PasswordDictionaryApi* | [**get_password_dictionary**](sailpoint/v3/docs/PasswordDictionaryApi.md#get_password_dictionary) | **GET** /password-dictionary | Get Password Dictionary
-*PasswordDictionaryApi* | [**update_password_dictionary**](sailpoint/v3/docs/PasswordDictionaryApi.md#update_password_dictionary) | **PUT** /password-dictionary | Update Password Dictionary
+*PasswordDictionaryApi* | [**put_password_dictionary**](sailpoint/v3/docs/PasswordDictionaryApi.md#put_password_dictionary) | **PUT** /password-dictionary | Update Password Dictionary
 *PasswordManagementApi* | [**get_password_change_status**](sailpoint/v3/docs/PasswordManagementApi.md#get_password_change_status) | **GET** /password-change-status/{id} | Get Password Change Request Status
 *PasswordManagementApi* | [**query_password_info**](sailpoint/v3/docs/PasswordManagementApi.md#query_password_info) | **POST** /query-password-info | Query Password Info
 *PasswordManagementApi* | [**set_password**](sailpoint/v3/docs/PasswordManagementApi.md#set_password) | **POST** /set-password | Set Identity&#39;s Password
@@ -315,7 +320,7 @@ Class | Method | HTTP request | Description
 *TaggedObjectsApi* | [**delete_tags_to_many_object**](sailpoint/v3/docs/TaggedObjectsApi.md#delete_tags_to_many_object) | **POST** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsApi* | [**get_tagged_object**](sailpoint/v3/docs/TaggedObjectsApi.md#get_tagged_object) | **GET** /tagged-objects/{type}/{id} | Get Tagged Object
 *TaggedObjectsApi* | [**list_tagged_objects**](sailpoint/v3/docs/TaggedObjectsApi.md#list_tagged_objects) | **GET** /tagged-objects | List Tagged Objects
-*TaggedObjectsApi* | [**list_tagged_objects_by_type**](sailpoint/v3/docs/TaggedObjectsApi.md#list_tagged_objects_by_type) | **GET** /tagged-objects/{type} | List Tagged Objects
+*TaggedObjectsApi* | [**list_tagged_objects_by_type**](sailpoint/v3/docs/TaggedObjectsApi.md#list_tagged_objects_by_type) | **GET** /tagged-objects/{type} | List Tagged Objects by Type
 *TaggedObjectsApi* | [**put_tagged_object**](sailpoint/v3/docs/TaggedObjectsApi.md#put_tagged_object) | **PUT** /tagged-objects/{type}/{id} | Update Tagged Object
 *TaggedObjectsApi* | [**set_tag_to_object**](sailpoint/v3/docs/TaggedObjectsApi.md#set_tag_to_object) | **POST** /tagged-objects | Add Tag to Object
 *TaggedObjectsApi* | [**set_tags_to_many_objects**](sailpoint/v3/docs/TaggedObjectsApi.md#set_tags_to_many_objects) | **POST** /tagged-objects/bulk-add | Tag Multiple Objects
@@ -423,6 +428,8 @@ Class | Method | HTTP request | Description
  - [BaseReferenceDto](sailpoint/v3/docs/BaseReferenceDto.md)
  - [BeforeProvisioningRuleDto](sailpoint/v3/docs/BeforeProvisioningRuleDto.md)
  - [Bound](sailpoint/v3/docs/Bound.md)
+ - [BrandingItem](sailpoint/v3/docs/BrandingItem.md)
+ - [BrandingItemCreate](sailpoint/v3/docs/BrandingItemCreate.md)
  - [BucketAggregation](sailpoint/v3/docs/BucketAggregation.md)
  - [BucketType](sailpoint/v3/docs/BucketType.md)
  - [BulkTaggedObject](sailpoint/v3/docs/BulkTaggedObject.md)
@@ -533,7 +540,6 @@ Class | Method | HTTP request | Description
  - [ImportObject](sailpoint/v3/docs/ImportObject.md)
  - [Index](sailpoint/v3/docs/Index.md)
  - [InnerHit](sailpoint/v3/docs/InnerHit.md)
- - [JsonPatch](sailpoint/v3/docs/JsonPatch.md)
  - [JsonPatchOperation](sailpoint/v3/docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](sailpoint/v3/docs/JsonPatchOperationValue.md)
  - [LifecycleState](sailpoint/v3/docs/LifecycleState.md)
@@ -597,6 +603,7 @@ Class | Method | HTTP request | Description
  - [PasswordStatus](sailpoint/v3/docs/PasswordStatus.md)
  - [PasswordSyncGroup](sailpoint/v3/docs/PasswordSyncGroup.md)
  - [PatOwner](sailpoint/v3/docs/PatOwner.md)
+ - [PatchServiceDeskIntegrationRequest](sailpoint/v3/docs/PatchServiceDeskIntegrationRequest.md)
  - [PendingApproval](sailpoint/v3/docs/PendingApproval.md)
  - [PendingApprovalAction](sailpoint/v3/docs/PendingApprovalAction.md)
  - [PendingApprovalOwner](sailpoint/v3/docs/PendingApprovalOwner.md)
@@ -616,6 +623,7 @@ Class | Method | HTTP request | Description
  - [PublicIdentity](sailpoint/v3/docs/PublicIdentity.md)
  - [PublicIdentityAttributeConfig](sailpoint/v3/docs/PublicIdentityAttributeConfig.md)
  - [PublicIdentityConfig](sailpoint/v3/docs/PublicIdentityConfig.md)
+ - [PutPasswordDictionaryRequest](sailpoint/v3/docs/PutPasswordDictionaryRequest.md)
  - [Query](sailpoint/v3/docs/Query.md)
  - [QueryResultFilter](sailpoint/v3/docs/QueryResultFilter.md)
  - [QueryType](sailpoint/v3/docs/QueryType.md)
@@ -696,6 +704,9 @@ Class | Method | HTTP request | Description
  - [Selector](sailpoint/v3/docs/Selector.md)
  - [SelectorType](sailpoint/v3/docs/SelectorType.md)
  - [ServiceDeskIntegrationDto](sailpoint/v3/docs/ServiceDeskIntegrationDto.md)
+ - [ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule](sailpoint/v3/docs/ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.md)
+ - [ServiceDeskIntegrationDtoAllOfClusterRef](sailpoint/v3/docs/ServiceDeskIntegrationDtoAllOfClusterRef.md)
+ - [ServiceDeskIntegrationDtoAllOfOwnerRef](sailpoint/v3/docs/ServiceDeskIntegrationDtoAllOfOwnerRef.md)
  - [ServiceDeskIntegrationTemplateDto](sailpoint/v3/docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](sailpoint/v3/docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](sailpoint/v3/docs/ServiceDeskSource.md)
@@ -746,7 +757,6 @@ Class | Method | HTTP request | Description
  - [TransformRead](sailpoint/v3/docs/TransformRead.md)
  - [TypeAheadQuery](sailpoint/v3/docs/TypeAheadQuery.md)
  - [TypedReference](sailpoint/v3/docs/TypedReference.md)
- - [UpdatePasswordDictionaryRequest](sailpoint/v3/docs/UpdatePasswordDictionaryRequest.md)
  - [UsageType](sailpoint/v3/docs/UsageType.md)
  - [Value](sailpoint/v3/docs/Value.md)
  - [ViolationContext](sailpoint/v3/docs/ViolationContext.md)
@@ -782,7 +792,7 @@ Authentication schemes defined for the API:
 
 - **Type**: OAuth
 - **Flow**: accessCode
-- **Authorization URL**: https://tenant.identitynow.com/oauth/authorize
+- **Authorization URL**: https://tenant.login.sailpoint.com/oauth/authorize
 - **Scopes**: 
  - **sp:scopes:default**: default scope
  - **sp:scopes:all**: access to all scopes

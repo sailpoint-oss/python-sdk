@@ -3,6 +3,7 @@
 Supported operations on ProvisioningCriteria
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

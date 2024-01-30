@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **entitlement_decisions_made** | **int** | Number of entitlement decisions that have been made | [optional] 

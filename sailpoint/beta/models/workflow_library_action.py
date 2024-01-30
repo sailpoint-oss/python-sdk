@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.workflow_library_form_fields import WorkflowLibraryFormFields
@@ -48,7 +48,7 @@ class WorkflowLibraryAction(BaseModel):
         description=
         "Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.",
         alias="isDynamicSchema")
-    output_schema: Optional[Union[str, Any]] = Field(
+    output_schema: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "Defines the output schema, if any, that this action produces.",
@@ -58,7 +58,11 @@ class WorkflowLibraryAction(BaseModel):
         "outputSchema"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

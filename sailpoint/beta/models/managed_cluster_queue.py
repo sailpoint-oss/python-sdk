@@ -37,7 +37,11 @@ class ManagedClusterQueue(BaseModel):
         default=None, description="ManagedCluster queue aws region")
     __properties: ClassVar[List[str]] = ["name", "region"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

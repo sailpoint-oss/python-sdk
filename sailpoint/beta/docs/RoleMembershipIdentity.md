@@ -3,6 +3,7 @@
 A reference to an Identity in an IDENTITY_LIST role membership criteria.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**DtoType**](DtoType.md) |  | [optional] 

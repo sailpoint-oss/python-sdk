@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **state** | [**RoleMiningSessionState**](RoleMiningSessionState.md) |  | [optional] 

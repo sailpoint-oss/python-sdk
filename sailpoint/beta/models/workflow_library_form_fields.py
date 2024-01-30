@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -43,8 +43,9 @@ class WorkflowLibraryFormFields(BaseModel):
     required: Optional[StrictBool] = Field(
         default=None,
         description="Denotes if this field is a required attribute")
-    type: Optional[Union[str, Any]] = Field(
-        default=None, description="The type of the form field")
+    type: Optional[Dict[str,
+                        Any]] = Field(default=None,
+                                      description="The type of the form field")
     __properties: ClassVar[List[str]] = [
         "helpText", "label", "name", "required", "type"
     ]
@@ -66,7 +67,11 @@ class WorkflowLibraryFormFields(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

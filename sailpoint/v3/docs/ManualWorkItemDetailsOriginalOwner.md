@@ -3,6 +3,7 @@
 Identity of original work item owner, if the work item has been forwarded.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of original work item owner&#39;s identity. | [optional] 

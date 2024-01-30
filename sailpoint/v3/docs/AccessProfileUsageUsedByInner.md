@@ -3,6 +3,7 @@
 Role using the access profile.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of role using the access profile. | [optional] 

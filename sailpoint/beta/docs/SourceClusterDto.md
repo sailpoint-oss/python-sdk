@@ -3,6 +3,7 @@
 Source cluster.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Source cluster DTO type. | [optional] 

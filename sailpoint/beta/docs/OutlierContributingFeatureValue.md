@@ -3,6 +3,7 @@
 The feature value
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

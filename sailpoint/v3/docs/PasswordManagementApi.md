@@ -20,6 +20,7 @@ This API returns the status of a password change request. A token with identity 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -62,6 +63,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Password change request ID | 
@@ -80,6 +82,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Status of the password change request |  -  |
@@ -103,6 +106,7 @@ This API is used to query password related information.   A token with [API auth
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -146,6 +150,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **password_info_query_dto** | [**PasswordInfoQueryDTO**](PasswordInfoQueryDTO.md)|  | 
@@ -164,6 +169,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Reference to the password info. |  -  |
@@ -186,6 +192,7 @@ This API is used to set a password for an identity.   An identity can change the
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -229,6 +236,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **password_change_request** | [**PasswordChangeRequest**](PasswordChangeRequest.md)|  | 
@@ -247,6 +255,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Reference to the password change. |  -  |

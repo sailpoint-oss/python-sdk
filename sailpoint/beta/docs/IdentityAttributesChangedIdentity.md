@@ -3,6 +3,7 @@
 Identity whose attributes changed.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of identity whose attributes changed. | 

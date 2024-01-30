@@ -3,6 +3,7 @@
 An example of the JSON payload that will be sent by the trigger to the subscribed service.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_request_id** | **str** | The unique ID of the access request. | 

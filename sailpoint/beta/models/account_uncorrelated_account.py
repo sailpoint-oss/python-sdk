@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -31,8 +31,8 @@ class AccountUncorrelatedAccount(BaseModel):
     """
 
   # noqa: E501
-    type: Union[str,
-                Any] = Field(description="Uncorrelated account's DTO type.")
+    type: Dict[str,
+               Any] = Field(description="Uncorrelated account's DTO type.")
     id: StrictStr = Field(description="Uncorrelated account's ID.")
     name: StrictStr = Field(description="Uncorrelated account's display name.")
     native_identity: StrictStr = Field(
@@ -54,7 +54,11 @@ class AccountUncorrelatedAccount(BaseModel):
             raise ValueError("must be one of enum values ('ACCOUNT')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

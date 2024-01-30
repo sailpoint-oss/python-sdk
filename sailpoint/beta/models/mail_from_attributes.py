@@ -68,7 +68,11 @@ class MailFromAttributes(BaseModel):
                 "must be one of enum values ('PENDING', 'SUCCESS', 'FAILED')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

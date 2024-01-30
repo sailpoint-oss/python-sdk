@@ -3,6 +3,7 @@
 Type of the criteria in the filter. The `COMPOSITE` filter can contain multiple filters in an AND/OR relationship.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

@@ -3,6 +3,7 @@
 Managed Cluster Attributes for Cluster Configuration. Supported Cluster Types [sqsCluster, spConnectCluster]
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **queue** | [**ManagedClusterQueue**](ManagedClusterQueue.md) |  | [optional] 

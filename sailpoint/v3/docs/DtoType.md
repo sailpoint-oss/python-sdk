@@ -3,6 +3,7 @@
 An enumeration of the types of DTOs supported within the IdentityNow infrastructure.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

@@ -3,6 +3,7 @@
 Specification of source attribute sync mapping configuration for an identity attribute
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the identity attribute | 

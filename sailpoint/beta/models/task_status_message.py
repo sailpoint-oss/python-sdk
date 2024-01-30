@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.beta.models.localized_message import LocalizedMessage
@@ -35,7 +35,7 @@ class TaskStatusMessage(BaseModel):
     type: StrictStr = Field(description="Type of the message")
     localized_text: LocalizedMessage = Field(alias="localizedText")
     key: StrictStr = Field(description="Key of the message")
-    parameters: List[Union[str, Any]] = Field(
+    parameters: List[Dict[str, Any]] = Field(
         description="Message parameters for internationalization")
     __properties: ClassVar[List[str]] = [
         "type", "localizedText", "key", "parameters"
@@ -49,7 +49,11 @@ class TaskStatusMessage(BaseModel):
                 "must be one of enum values ('INFO', 'WARN', 'ERROR')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

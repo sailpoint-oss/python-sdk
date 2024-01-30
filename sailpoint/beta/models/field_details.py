@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 try:
@@ -43,18 +43,22 @@ class FieldDetails(BaseModel):
         alias="displayType")
     required: Optional[StrictBool] = Field(
         default=None, description="True if the field is required")
-    allowed_values_list: Optional[List[Union[str, Any]]] = Field(
+    allowed_values_list: Optional[List[Dict[str, Any]]] = Field(
         default=None,
         description="List of allowed values for the field",
         alias="allowedValuesList")
-    value: Optional[Union[str, Any]] = Field(default=None,
-                                             description="Value of the field")
+    value: Optional[Dict[str, Any]] = Field(default=None,
+                                            description="Value of the field")
     __properties: ClassVar[List[str]] = [
         "name", "displayName", "displayType", "required", "allowedValuesList",
         "value"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -3,6 +3,7 @@
 The response body of a Reassignment Configuration for a single identity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identity** | [**Identity1**](Identity1.md) |  | [optional] 

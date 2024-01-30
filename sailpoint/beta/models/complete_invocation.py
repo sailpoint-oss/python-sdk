@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -39,13 +39,17 @@ class CompleteInvocation(BaseModel):
         default=None,
         description=
         "The error message to indicate a failed invocation or error if any.")
-    output: Union[str, Any] = Field(
+    output: Dict[str, Any] = Field(
         description=
         "Trigger output to complete the invocation. Its schema is defined in the trigger definition."
     )
     __properties: ClassVar[List[str]] = ["secret", "error", "output"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

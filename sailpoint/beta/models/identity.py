@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.beta.models.identity_dto_manager_ref import IdentityDtoManagerRef
@@ -66,7 +66,7 @@ class Identity(BaseModel):
         default=None,
         description="The last time the identity was refreshed by the system",
         alias="lastRefresh")
-    attributes: Optional[Union[str, Any]] = Field(
+    attributes: Optional[Dict[str, Any]] = Field(
         default=None,
         description="A map with the identity attributes for the identity")
     lifecycle_state: Optional[LifecycleStateDto] = Field(
@@ -101,7 +101,11 @@ class Identity(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

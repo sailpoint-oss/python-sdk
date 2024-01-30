@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **secret** | **str** | Unique invocation secret that was generated when the invocation was created. Required to authenticate to the endpoint. | 

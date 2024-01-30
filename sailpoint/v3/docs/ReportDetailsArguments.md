@@ -3,6 +3,7 @@
 The string-object map(dictionary) with the arguments needed for report processing.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **application** | **str** | Id of the authoritative source to export related accounts e.g. identities | 

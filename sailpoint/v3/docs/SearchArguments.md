@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schedule_id** | **str** | The ID of the scheduled search that triggered the saved search execution.  | [optional] 

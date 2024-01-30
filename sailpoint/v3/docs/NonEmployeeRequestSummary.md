@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **approved** | **int** | The number of approved non-employee requests on all sources that *requested-for* user manages. | [optional] 

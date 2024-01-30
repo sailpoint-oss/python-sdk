@@ -24,6 +24,7 @@ This API creates a role. You must have a token with API, ORG_ADMIN, ROLE_ADMIN, 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -66,6 +67,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **role** | [**Role**](Role.md)|  | 
@@ -84,6 +86,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Role created |  -  |
@@ -106,6 +109,7 @@ This API initiates a bulk deletion of one or more Roles.  A token with API, ORG_
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -149,6 +153,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **role_bulk_delete_request** | [**RoleBulkDeleteRequest**](RoleBulkDeleteRequest.md)|  | 
@@ -167,6 +172,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Returns an object with the id of the task performing the delete operation. |  -  |
@@ -189,6 +195,7 @@ This API deletes a Role by its ID. A token with API, ORG_ADMIN, ROLE_ADMIN, or R
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -228,6 +235,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the Role | 
@@ -246,6 +254,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
@@ -268,6 +277,7 @@ This API returns a Role by its ID.  A token with API, ORG_ADMIN, ROLE_ADMIN, or 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -310,6 +320,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the Role | 
@@ -328,6 +339,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of all Roles |  -  |
@@ -348,6 +360,7 @@ List Identities assigned a Role
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -395,6 +408,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the Role for which the assigned Identities are to be listed | 
@@ -418,6 +432,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of Identities assigned the Role |  -  |
@@ -440,6 +455,7 @@ This API returns a list of Roles.  A token with API, ORG_ADMIN, ROLE_ADMIN, or R
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -489,6 +505,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **for_subadmin** | **str**| If provided, filters the returned list according to what is visible to the indicated ROLE_SUBADMIN Identity. The value of the parameter is either an Identity ID, or the special value **me**, which is shorthand for the calling Identity&#39;s ID. A 400 Bad Request error is returned if the **for-subadmin** parameter is specified for an Identity that is not a subadmin. | [optional] 
@@ -514,6 +531,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of Roles |  -  |
@@ -536,6 +554,7 @@ This API updates an existing Role using [JSON Patch](https://tools.ietf.org/html
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -580,6 +599,7 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the Role to patch | 
@@ -599,6 +619,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Responds with the Role as updated. |  -  |

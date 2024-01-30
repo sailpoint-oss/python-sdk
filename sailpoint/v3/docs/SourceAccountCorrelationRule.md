@@ -3,6 +3,7 @@
 Reference to a Rule that can do COMPLEX correlation, should only be used when accountCorrelationConfig can't be used.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of object being referenced | [optional] 

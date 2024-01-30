@@ -3,6 +3,7 @@
 The trigger that starts the workflow
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The trigger type | 

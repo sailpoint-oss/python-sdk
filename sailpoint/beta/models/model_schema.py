@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.attribute_definition import AttributeDefinition
@@ -65,7 +65,7 @@ class ModelSchema(BaseModel):
         alias="includePermissions")
     features: Optional[List[SourceFeature]] = Field(
         default=None, description="The features that the schema supports.")
-    configuration: Optional[Union[str, Any]] = Field(
+    configuration: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "Holds any extra configuration data that the schema may require.")
@@ -82,7 +82,11 @@ class ModelSchema(BaseModel):
         "features", "configuration", "attributes", "created", "modified"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

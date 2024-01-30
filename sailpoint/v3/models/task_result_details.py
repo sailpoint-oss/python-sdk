@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.v3.models.task_result_details_messages_inner import TaskResultDetailsMessagesInner
@@ -39,7 +39,7 @@ class TaskResultDetails(BaseModel):
     )
     id: Optional[StrictStr] = Field(
         default=None, description="Unique task definition identifier.")
-    report_type: Optional[Union[str, Any]] = Field(
+    report_type: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "Use this property to define what report should be processed in the RDE service.",
@@ -70,7 +70,7 @@ class TaskResultDetails(BaseModel):
     )
     returns: Optional[List[TaskResultDetailsReturnsInner]] = Field(
         default=None, description="Task definition results, if necessary.")
-    attributes: Optional[Dict[str, Union[str, Any]]] = Field(
+    attributes: Optional[Dict[str, Dict[str, Any]]] = Field(
         default=None,
         description="Extra attributes map(dictionary) needed for the report.")
     progress: Optional[StrictStr] = Field(default=None,
@@ -121,7 +121,11 @@ class TaskResultDetails(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

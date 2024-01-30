@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **saved_search_id** | **str** | The ID of the saved search that will be executed. | 

@@ -3,6 +3,7 @@
 Identifies if the identity is a normal identity or a governance group
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

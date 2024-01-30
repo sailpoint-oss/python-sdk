@@ -3,6 +3,7 @@
 Source for Service Desk integration template.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of source for service desk integration template. | [optional] 

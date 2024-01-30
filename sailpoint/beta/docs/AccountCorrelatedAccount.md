@@ -3,6 +3,7 @@
 The correlated account.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The correlated account&#39;s DTO type. | 

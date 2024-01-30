@@ -3,6 +3,7 @@
 OAuth2 Grant Type
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

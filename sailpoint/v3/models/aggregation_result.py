@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from pydantic import Field
 try:
@@ -31,17 +31,21 @@ class AggregationResult(BaseModel):
     """
 
   # noqa: E501
-    aggregations: Optional[Union[str, Any]] = Field(
+    aggregations: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "The document containing the results of the aggregation. This document is controlled by Elasticsearch and depends on the type of aggregation query that is run.  See Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) documentation for information. "
     )
-    hits: Optional[List[Union[str, Any]]] = Field(
+    hits: Optional[List[Dict[str, Any]]] = Field(
         default=None,
         description="The results of the aggregation search query. ")
     __properties: ClassVar[List[str]] = ["aggregations", "hits"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

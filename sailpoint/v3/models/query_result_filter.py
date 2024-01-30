@@ -39,7 +39,11 @@ class QueryResultFilter(BaseModel):
         "The list of field names to exclude from the result documents.")
     __properties: ClassVar[List[str]] = ["includes", "excludes"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comments_required** | **bool** | Whether the requester of the containing object must provide comments justifying the request | [optional] [default to False]

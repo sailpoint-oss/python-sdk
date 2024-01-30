@@ -3,6 +3,7 @@
 Audit details for the reassignment configuration of an identity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created** | **datetime** | Initial date and time when the record was created | [optional] 

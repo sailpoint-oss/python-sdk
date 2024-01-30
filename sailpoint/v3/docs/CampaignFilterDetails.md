@@ -3,6 +3,7 @@
 Campaign Filter Details
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Id of the campaign filter | [optional] 

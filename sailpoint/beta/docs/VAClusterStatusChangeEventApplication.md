@@ -3,6 +3,7 @@
 Details about the `CLUSTER` or `SOURCE` that initiated this event.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The GUID of the application | 

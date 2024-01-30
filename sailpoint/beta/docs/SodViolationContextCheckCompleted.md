@@ -3,6 +3,7 @@
 An object referencing a completed SOD violation check
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **state** | **str** | The status of SOD violation check | [optional] 

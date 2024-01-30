@@ -3,6 +3,7 @@
 Request used for account unlock
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **external_verification_id** | **str** | If set, an external process validates that the user wants to proceed with this request. | [optional] 

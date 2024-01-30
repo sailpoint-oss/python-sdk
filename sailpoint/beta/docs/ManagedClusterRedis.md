@@ -3,6 +3,7 @@
 Managed Cluster Redis Configuration
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **redis_host** | **str** | ManagedCluster redisHost | [optional] 

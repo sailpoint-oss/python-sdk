@@ -3,6 +3,7 @@
 DKIM attributes for a domain or identity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | UUID associated with domain to be verified | [optional] 

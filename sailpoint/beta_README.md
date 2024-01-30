@@ -346,7 +346,7 @@ Class | Method | HTTP request | Description
 *PasswordConfigurationApi* | [**get_password_org_config**](sailpoint/beta/docs/PasswordConfigurationApi.md#get_password_org_config) | **GET** /password-org-config | Get Password Org Config
 *PasswordConfigurationApi* | [**put_password_org_config**](sailpoint/beta/docs/PasswordConfigurationApi.md#put_password_org_config) | **PUT** /password-org-config | Update Password Org Config
 *PasswordDictionaryApi* | [**get_password_dictionary**](sailpoint/beta/docs/PasswordDictionaryApi.md#get_password_dictionary) | **GET** /password-dictionary | Get Password Dictionary
-*PasswordDictionaryApi* | [**update_password_dictionary**](sailpoint/beta/docs/PasswordDictionaryApi.md#update_password_dictionary) | **PUT** /password-dictionary | Update Password Dictionary
+*PasswordDictionaryApi* | [**put_password_dictionary**](sailpoint/beta/docs/PasswordDictionaryApi.md#put_password_dictionary) | **PUT** /password-dictionary | Update Password Dictionary
 *PasswordManagementApi* | [**generate_digit_token**](sailpoint/beta/docs/PasswordManagementApi.md#generate_digit_token) | **POST** /generate-password-reset-token/digit | Generate a digit token
 *PasswordManagementApi* | [**get_identity_password_change_status**](sailpoint/beta/docs/PasswordManagementApi.md#get_identity_password_change_status) | **GET** /password-change-status/{id} | Get Password Change Request Status
 *PasswordManagementApi* | [**query_password_info**](sailpoint/beta/docs/PasswordManagementApi.md#query_password_info) | **POST** /query-password-info | Query Password Info
@@ -377,6 +377,7 @@ Class | Method | HTTP request | Description
 *RolesApi* | [**delete_role**](sailpoint/beta/docs/RolesApi.md#delete_role) | **DELETE** /roles/{id} | Delete a Role
 *RolesApi* | [**get_role**](sailpoint/beta/docs/RolesApi.md#get_role) | **GET** /roles/{id} | Get a Role
 *RolesApi* | [**get_role_assigned_identities**](sailpoint/beta/docs/RolesApi.md#get_role_assigned_identities) | **GET** /roles/{id}/assigned-identities | Identities assigned a Role
+*RolesApi* | [**get_role_entitlements**](sailpoint/beta/docs/RolesApi.md#get_role_entitlements) | **GET** /roles/{id}/entitlements | List role&#39;s Entitlements
 *RolesApi* | [**list_roles**](sailpoint/beta/docs/RolesApi.md#list_roles) | **GET** /roles | List Roles
 *RolesApi* | [**patch_role**](sailpoint/beta/docs/RolesApi.md#patch_role) | **PATCH** /roles/{id} | Patch a specified Role
 *SODPolicyApi* | [**create_sod_policy**](sailpoint/beta/docs/SODPolicyApi.md#create_sod_policy) | **POST** /sod-policies | Create SOD policy
@@ -466,7 +467,7 @@ Class | Method | HTTP request | Description
 *TaggedObjectsApi* | [**delete_tags_to_many_object**](sailpoint/beta/docs/TaggedObjectsApi.md#delete_tags_to_many_object) | **POST** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsApi* | [**get_tagged_object**](sailpoint/beta/docs/TaggedObjectsApi.md#get_tagged_object) | **GET** /tagged-objects/{type}/{id} | Get Tagged Object
 *TaggedObjectsApi* | [**list_tagged_objects**](sailpoint/beta/docs/TaggedObjectsApi.md#list_tagged_objects) | **GET** /tagged-objects | List Tagged Objects
-*TaggedObjectsApi* | [**list_tagged_objects_by_type**](sailpoint/beta/docs/TaggedObjectsApi.md#list_tagged_objects_by_type) | **GET** /tagged-objects/{type} | List Tagged Objects
+*TaggedObjectsApi* | [**list_tagged_objects_by_type**](sailpoint/beta/docs/TaggedObjectsApi.md#list_tagged_objects_by_type) | **GET** /tagged-objects/{type} | List Tagged Objects by Type
 *TaggedObjectsApi* | [**put_tagged_object**](sailpoint/beta/docs/TaggedObjectsApi.md#put_tagged_object) | **PUT** /tagged-objects/{type}/{id} | Update Tagged Object
 *TaggedObjectsApi* | [**set_tag_to_object**](sailpoint/beta/docs/TaggedObjectsApi.md#set_tag_to_object) | **POST** /tagged-objects | Add Tag to Object
 *TaggedObjectsApi* | [**set_tags_to_many_objects**](sailpoint/beta/docs/TaggedObjectsApi.md#set_tags_to_many_objects) | **POST** /tagged-objects/bulk-add | Tag Multiple Objects
@@ -852,7 +853,6 @@ Class | Method | HTTP request | Description
  - [IdentityOwnershipAssociationDetailsAssociationDetailsInner](sailpoint/beta/docs/IdentityOwnershipAssociationDetailsAssociationDetailsInner.md)
  - [IdentityPreviewRequest](sailpoint/beta/docs/IdentityPreviewRequest.md)
  - [IdentityPreviewResponse](sailpoint/beta/docs/IdentityPreviewResponse.md)
- - [IdentityPreviewResponseIdentity](sailpoint/beta/docs/IdentityPreviewResponseIdentity.md)
  - [IdentityProfile](sailpoint/beta/docs/IdentityProfile.md)
  - [IdentityProfile1](sailpoint/beta/docs/IdentityProfile1.md)
  - [IdentityProfile1AllOfAuthoritativeSource](sailpoint/beta/docs/IdentityProfile1AllOfAuthoritativeSource.md)
@@ -981,6 +981,7 @@ Class | Method | HTTP request | Description
  - [PasswordSyncGroup](sailpoint/beta/docs/PasswordSyncGroup.md)
  - [PatOwner](sailpoint/beta/docs/PatOwner.md)
  - [PatchPotentialRoleRequestInner](sailpoint/beta/docs/PatchPotentialRoleRequestInner.md)
+ - [PatchServiceDeskIntegrationRequest](sailpoint/beta/docs/PatchServiceDeskIntegrationRequest.md)
  - [PeerGroupMember](sailpoint/beta/docs/PeerGroupMember.md)
  - [PendingApproval](sailpoint/beta/docs/PendingApproval.md)
  - [PendingApprovalAction](sailpoint/beta/docs/PendingApprovalAction.md)
@@ -1009,6 +1010,7 @@ Class | Method | HTTP request | Description
  - [ProvisioningState](sailpoint/beta/docs/ProvisioningState.md)
  - [PublicIdentityAttributeConfig](sailpoint/beta/docs/PublicIdentityAttributeConfig.md)
  - [PublicIdentityConfig](sailpoint/beta/docs/PublicIdentityConfig.md)
+ - [PutPasswordDictionaryRequest](sailpoint/beta/docs/PutPasswordDictionaryRequest.md)
  - [QueuedCheckConfigDetails](sailpoint/beta/docs/QueuedCheckConfigDetails.md)
  - [ReassignReference](sailpoint/beta/docs/ReassignReference.md)
  - [Reassignment](sailpoint/beta/docs/Reassignment.md)
@@ -1114,6 +1116,9 @@ Class | Method | HTTP request | Description
  - [SendTokenRequest](sailpoint/beta/docs/SendTokenRequest.md)
  - [SendTokenResponse](sailpoint/beta/docs/SendTokenResponse.md)
  - [ServiceDeskIntegrationDto](sailpoint/beta/docs/ServiceDeskIntegrationDto.md)
+ - [ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule](sailpoint/beta/docs/ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.md)
+ - [ServiceDeskIntegrationDtoAllOfClusterRef](sailpoint/beta/docs/ServiceDeskIntegrationDtoAllOfClusterRef.md)
+ - [ServiceDeskIntegrationDtoAllOfOwnerRef](sailpoint/beta/docs/ServiceDeskIntegrationDtoAllOfOwnerRef.md)
  - [ServiceDeskIntegrationTemplateDto](sailpoint/beta/docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](sailpoint/beta/docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](sailpoint/beta/docs/ServiceDeskSource.md)
@@ -1214,7 +1219,6 @@ Class | Method | HTTP request | Description
  - [TriggerExampleInput](sailpoint/beta/docs/TriggerExampleInput.md)
  - [TriggerExampleOutput](sailpoint/beta/docs/TriggerExampleOutput.md)
  - [TriggerType](sailpoint/beta/docs/TriggerType.md)
- - [UpdatePasswordDictionaryRequest](sailpoint/beta/docs/UpdatePasswordDictionaryRequest.md)
  - [UsageType](sailpoint/beta/docs/UsageType.md)
  - [V3ConnectorDto](sailpoint/beta/docs/V3ConnectorDto.md)
  - [VAClusterStatusChangeEvent](sailpoint/beta/docs/VAClusterStatusChangeEvent.md)
@@ -1279,7 +1283,7 @@ Authentication schemes defined for the API:
 
 - **Type**: OAuth
 - **Flow**: accessCode
-- **Authorization URL**: https://tenant.identitynow.com/oauth/authorize
+- **Authorization URL**: https://tenant.login.sailpoint.com/oauth/authorize
 - **Scopes**: 
  - **sp:scopes:default**: default scope
  - **sp:scopes:all**: access to all scopes

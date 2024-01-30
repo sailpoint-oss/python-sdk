@@ -3,6 +3,7 @@
 The owner of the scheduled search
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of object being referenced | 

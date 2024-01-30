@@ -3,6 +3,7 @@
 Insights into account activity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_id** | **str** | UUID of the account | [optional] 

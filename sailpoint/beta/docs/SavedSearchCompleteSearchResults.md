@@ -3,6 +3,7 @@
 A preview of the search results for each object type. This includes a count as well as headers, and the first several rows of data, per object type.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account** | [**SavedSearchCompleteSearchResultsAccount**](SavedSearchCompleteSearchResultsAccount.md) |  | [optional] 

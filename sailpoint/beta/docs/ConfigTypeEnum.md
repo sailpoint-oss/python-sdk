@@ -3,6 +3,7 @@
 Enum list of valid work types that can be selected for a Reassignment Configuration
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

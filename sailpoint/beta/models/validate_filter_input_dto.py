@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -31,7 +31,7 @@ class ValidateFilterInputDto(BaseModel):
     """
 
   # noqa: E501
-    input: Union[str, Any] = Field(
+    input: Dict[str, Any] = Field(
         description="Mock input to evaluate filter expression against.")
     filter: StrictStr = Field(
         description=
@@ -39,7 +39,11 @@ class ValidateFilterInputDto(BaseModel):
     )
     __properties: ClassVar[List[str]] = ["input", "filter"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

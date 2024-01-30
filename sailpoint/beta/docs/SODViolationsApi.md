@@ -18,6 +18,7 @@ This API is used to check if granting some additional accesses would cause the s
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -61,6 +62,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identity_with_new_access** | [**IdentityWithNewAccess**](IdentityWithNewAccess.md)|  | 
@@ -79,6 +81,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Violation Contexts |  -  |

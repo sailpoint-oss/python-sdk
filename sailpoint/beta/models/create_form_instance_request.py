@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.beta.models.form_instance_created_by import FormInstanceCreatedBy
@@ -39,7 +39,7 @@ class CreateFormInstanceRequest(BaseModel):
         description=
         "FormDefinitionID is the id of the form definition that created this form",
         alias="formDefinitionId")
-    form_input: Optional[Dict[str, Union[str, Any]]] = Field(
+    form_input: Optional[Dict[str, Dict[str, Any]]] = Field(
         default=None,
         description="FormInput is an object of form input labels to value",
         alias="formInput")
@@ -78,7 +78,11 @@ class CreateFormInstanceRequest(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

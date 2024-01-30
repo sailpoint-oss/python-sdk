@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -35,8 +35,8 @@ class VAClusterStatusChangeEventHealthCheckResult(BaseModel):
         description="Detailed message of the result of the health check.")
     result_type: StrictStr = Field(
         description="The type of the health check result.", alias="resultType")
-    status: Union[str,
-                  Any] = Field(description="The status of the health check.")
+    status: Dict[str,
+                 Any] = Field(description="The status of the health check.")
     __properties: ClassVar[List[str]] = ["message", "resultType", "status"]
 
     @field_validator('status')
@@ -47,7 +47,11 @@ class VAClusterStatusChangeEventHealthCheckResult(BaseModel):
                 "must be one of enum values ('Succeeded', 'Failed')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

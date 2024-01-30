@@ -3,6 +3,7 @@
 Simplified DTO for the Permission objects stored in SailPoint's database. The data is aggregated from customer systems and is free-form, so its appearance can vary largely between different clients/customers.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **rights** | **List[str]** | All the rights (e.g. actions) that this permission allows on the target | [optional] [readonly] 

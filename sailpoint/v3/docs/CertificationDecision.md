@@ -3,6 +3,7 @@
 The decision to approve or revoke the review item
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

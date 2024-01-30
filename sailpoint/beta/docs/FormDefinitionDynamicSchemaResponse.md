@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **output_schema** | **Dict[str, object]** | OutputSchema holds a JSON schema generated dynamically | [optional] 

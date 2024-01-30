@@ -3,6 +3,7 @@
 Details of up to 5 Identity attributes that will be publicly accessible for all Identities to anyone in the org.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attributes** | [**List[PublicIdentityAttributeConfig]**](PublicIdentityAttributeConfig.md) | Up to 5 identity attributes that will be available to everyone in the org for all users in the org. | [optional] 

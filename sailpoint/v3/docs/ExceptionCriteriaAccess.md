@@ -3,6 +3,7 @@
 Access reference with addition of boolean existing flag to indicate whether the access was extant
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**DtoType**](DtoType.md) |  | [optional] 

@@ -3,6 +3,7 @@
 The bucket to group the results of the aggregation query by.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The name of the bucket aggregate to be included in the result. | 

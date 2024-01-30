@@ -26,6 +26,7 @@ This API exports a list of ignored outliers to a CSV as well as list of non-igno
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -67,6 +68,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **str**| Type of the identity outliers snapshot to filter on | [optional] 
@@ -85,6 +87,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/zip, application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns zip of 2 CSVs to download. 1 CSV for ignored outliers and 1 for non-ignored outliers |  -  |
@@ -107,6 +110,7 @@ This API receives a summary containing: the number of identities that customer h
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -153,6 +157,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
@@ -175,6 +180,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns list of objects. Each object is a summary to give high level statistics/counts of outliers |  * X-Total-Count - The total result count. <br>  |
@@ -198,6 +204,7 @@ This API receives a list of outliers, containing data such as: identityId, outli
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -245,6 +252,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
@@ -268,6 +276,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns list of objects. Each object contains information about outliers |  * X-Total-Count - The total result count. <br>  |
@@ -290,6 +299,7 @@ This API returns a most recent snapshot of each outlier type, each containing: t
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -332,6 +342,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **str**| Type of the identity outliers snapshot to filter on | [optional] 
@@ -350,6 +361,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns list of objects. Each object is a summary to give high level statistics/counts of outliers |  -  |
@@ -373,6 +385,7 @@ This API returns a summary of a contributing feature for an identity outlier. Th
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -415,6 +428,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outlier_feature_id** | **str**| Contributing feature id | 
@@ -433,6 +447,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns selected contributing feature summary for an outlier |  * accept-language - The locale to use for translations <br>  |
@@ -456,6 +471,7 @@ This API returns a list of contributing feature objects for a single outlier. Th
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -503,6 +519,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outlier_id** | **str**| The outlier id | 
@@ -526,6 +543,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Succeeded. Returns list of objects. Each object contains a feature and metadata about that feature |  * X-Total-Count - The total result count. <br>  * accept-language - The locale to use for translations <br>  |
@@ -549,6 +567,7 @@ This API receives a list of IdentityIDs in the request, changes the outliers to 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -588,6 +607,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **request_body** | [**List[str]**](str.md)|  | 
@@ -606,6 +626,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
@@ -628,6 +649,7 @@ This API returns a list of the enriched access items associated with each featur
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -676,6 +698,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **outlier_id** | **str**| The outlier id | 
@@ -700,6 +723,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The list of access items. |  -  |
@@ -723,6 +747,7 @@ This API receives a list of IdentityIDs in the request, changes the outliers to 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -762,6 +787,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **request_body** | [**List[str]**](str.md)|  | 
@@ -780,6 +806,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |

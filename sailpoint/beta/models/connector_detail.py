@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 try:
@@ -54,7 +54,7 @@ class ConnectorDetail(BaseModel):
         default=None,
         description="List of uploaded file strings for the connector",
         alias="uploadedFiles")
-    connector_metadata: Optional[Union[str, Any]] = Field(
+    connector_metadata: Optional[Dict[str, Any]] = Field(
         default=None,
         description="Object containing metadata pertinent to the UI to be used",
         alias="connectorMetadata")
@@ -63,7 +63,11 @@ class ConnectorDetail(BaseModel):
         "fileUpload", "uploadedFiles", "connectorMetadata"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

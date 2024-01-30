@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **var_from** | [**CertificationReference**](CertificationReference.md) |  | [optional] 

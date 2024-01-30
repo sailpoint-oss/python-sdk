@@ -3,6 +3,7 @@
 Representation of the object which is returned from source connectors.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instance** | **str** | Identifier of the specific instance where this object resides. | [optional] [readonly] 

@@ -3,6 +3,7 @@
 Response model for configuration test of a given MFA method
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **state** | **str** | The configuration test result. | [optional] [readonly] 

@@ -3,6 +3,7 @@
 Client Runtime Logging Configuration
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **client_id** | **str** | Log configuration&#39;s client ID | [optional] 

@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.beta.models.campaign_alert import CampaignAlert
@@ -70,7 +70,7 @@ class Fullcampaign(BaseModel):
         alias="recommendationsEnabled")
     status: Optional[StrictStr] = Field(
         default=None, description="The campaign's current status.")
-    correlated_status: Optional[Union[str, Any]] = Field(
+    correlated_status: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).",
@@ -174,7 +174,11 @@ class Fullcampaign(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

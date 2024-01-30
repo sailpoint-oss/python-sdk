@@ -3,6 +3,7 @@
 Message model for Config Import/Export.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **str** | Message key. | 

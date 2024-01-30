@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **detail_code** | **str** | Fine-grained error code providing more detail of the error. | [optional] 

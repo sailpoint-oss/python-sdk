@@ -3,6 +3,7 @@
 Identity who created the source.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of identity who created the source. | 

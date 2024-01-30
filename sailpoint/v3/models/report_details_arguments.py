@@ -68,7 +68,10 @@ class ReportDetailsArguments(BaseModel):
         "IdentityProfileIdentityErrorReportArguments",
         "OrphanUncorrelatedReportArguments", "SearchExportReportArguments"]
 
-    model_config = {"validate_assignment": True}
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:

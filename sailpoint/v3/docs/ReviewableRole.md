@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The id for the Role | [optional] 
@@ -12,6 +13,7 @@ Name | Type | Description | Notes
 **revocable** | **bool** | Indicates whether the Role can be revoked or requested | [optional] 
 **end_date** | **datetime** | The date when a user&#39;s access expires. | [optional] 
 **access_profiles** | [**List[ReviewableAccessProfile]**](ReviewableAccessProfile.md) | The list of Access Profiles associated with this Role | [optional] 
+**entitlements** | [**List[ReviewableEntitlement]**](ReviewableEntitlement.md) | The list of entitlements associated with this Role | [optional] 
 
 ## Example
 

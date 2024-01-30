@@ -3,6 +3,7 @@
 Reference to the associated Cluster
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of object being referenced | 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | [**ConnectedObject**](ConnectedObject.md) |  | [optional] 

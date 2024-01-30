@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 from typing_extensions import Annotated
@@ -42,7 +42,7 @@ class ConnectorRuleResponse(BaseModel):
     type: StrictStr = Field(description="the type of rule")
     signature: Optional[ConnectorRuleCreateRequestSignature] = None
     source_code: SourceCode = Field(alias="sourceCode")
-    attributes: Optional[Union[str, Any]] = Field(
+    attributes: Optional[Dict[str, Any]] = Field(
         default=None, description="a map of string to objects")
     id: StrictStr = Field(description="the ID of the rule")
     created: StrictStr = Field(
@@ -78,7 +78,11 @@ class ConnectorRuleResponse(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

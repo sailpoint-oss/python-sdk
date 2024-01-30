@@ -97,7 +97,7 @@ class PasswordConfigurationApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -163,7 +163,7 @@ class PasswordConfigurationApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -229,7 +229,7 @@ class PasswordConfigurationApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -346,7 +346,7 @@ class PasswordConfigurationApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -408,7 +408,7 @@ class PasswordConfigurationApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -470,7 +470,7 @@ class PasswordConfigurationApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -578,7 +578,7 @@ class PasswordConfigurationApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -644,7 +644,7 @@ class PasswordConfigurationApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -710,7 +710,7 @@ class PasswordConfigurationApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)

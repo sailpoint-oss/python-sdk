@@ -3,6 +3,7 @@
 Personal access token owner's identity.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Personal access token owner&#39;s DTO type. | [optional] 

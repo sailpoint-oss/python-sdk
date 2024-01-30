@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comments** | [**List[ApprovalComment]**](ApprovalComment.md) |  | [optional] 

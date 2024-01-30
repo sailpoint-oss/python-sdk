@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**delete_tags_to_many_object**](TaggedObjectsApi.md#delete_tags_to_many_object) | **POST** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 [**get_tagged_object**](TaggedObjectsApi.md#get_tagged_object) | **GET** /tagged-objects/{type}/{id} | Get Tagged Object
 [**list_tagged_objects**](TaggedObjectsApi.md#list_tagged_objects) | **GET** /tagged-objects | List Tagged Objects
-[**list_tagged_objects_by_type**](TaggedObjectsApi.md#list_tagged_objects_by_type) | **GET** /tagged-objects/{type} | List Tagged Objects
+[**list_tagged_objects_by_type**](TaggedObjectsApi.md#list_tagged_objects_by_type) | **GET** /tagged-objects/{type} | List Tagged Objects by Type
 [**put_tagged_object**](TaggedObjectsApi.md#put_tagged_object) | **PUT** /tagged-objects/{type}/{id} | Update Tagged Object
 [**set_tag_to_object**](TaggedObjectsApi.md#set_tag_to_object) | **POST** /tagged-objects | Add Tag to Object
 [**set_tags_to_many_objects**](TaggedObjectsApi.md#set_tags_to_many_objects) | **POST** /tagged-objects/bulk-add | Tag Multiple Objects
@@ -25,6 +25,7 @@ This deletes a tagged object for the specified type.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -65,6 +66,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **str**| The type of tagged object to delete. | 
@@ -84,6 +86,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content. |  -  |
@@ -106,6 +109,7 @@ This API removes tags from multiple objects.  A token with API, CERT_ADMIN, ORG_
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -146,6 +150,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bulk_tagged_object** | [**BulkTaggedObject**](BulkTaggedObject.md)| Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
@@ -164,6 +169,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No content - indicates the request was successful but there is no content to be returned in the response. |  -  |
@@ -186,6 +192,7 @@ This gets a tagged object for the specified type.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -229,6 +236,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **str**| The type of tagged object to retrieve. | 
@@ -248,6 +256,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Tagged object by type and ID. |  -  |
@@ -270,6 +279,7 @@ This API returns a list of all tagged objects.  Any authenticated token may be u
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -315,6 +325,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**| Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 250]
@@ -336,6 +347,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of all tagged objects. |  -  |
@@ -350,7 +362,7 @@ Name | Type | Description  | Notes
 # **list_tagged_objects_by_type**
 > List[TaggedObject] list_tagged_objects_by_type(type, limit=limit, offset=offset, count=count, filters=filters)
 
-List Tagged Objects
+List Tagged Objects by Type
 
 This API returns a list of all tagged objects by type.  Any authenticated token may be used to call this API.
 
@@ -358,6 +370,7 @@ This API returns a list of all tagged objects by type.  Any authenticated token 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -392,7 +405,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     filters = 'objectRef.id eq \"2c91808568c529c60168cca6f90c1313\"' # str | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq*  **objectRef.type**: *eq* (optional)
 
     try:
-        # List Tagged Objects
+        # List Tagged Objects by Type
         api_response = api_instance.list_tagged_objects_by_type(type, limit=limit, offset=offset, count=count, filters=filters)
         print("The response of TaggedObjectsApi->list_tagged_objects_by_type:\n")
         pprint(api_response)
@@ -403,6 +416,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -426,6 +440,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of all tagged objects for specified type. |  -  |
@@ -448,6 +463,7 @@ This updates a tagged object for the specified type.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -492,6 +508,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **str**| The type of tagged object to update. | 
@@ -512,6 +529,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Tagged object by type and ID. |  -  |
@@ -534,6 +552,7 @@ This adds a tag to an object.  Any authenticated token may be used to call this 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -574,6 +593,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tagged_object** | [**TaggedObject**](TaggedObject.md)|  | 
@@ -592,6 +612,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created. |  -  |
@@ -614,6 +635,7 @@ This API adds tags to multiple objects.  A token with API, CERT_ADMIN, ORG_ADMIN
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -656,6 +678,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bulk_tagged_object** | [**BulkTaggedObject**](BulkTaggedObject.md)| Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
@@ -674,6 +697,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Request succeeded. |  -  |

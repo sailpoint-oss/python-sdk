@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **allow_request_on_behalf_of_anyone_by_anyone** | **bool** | If anyone can request access for anyone. | [optional] 

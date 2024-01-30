@@ -3,6 +3,7 @@
 Provides additional details about provisioning for this request.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ordered_sub_phase_references** | **str** | Ordered CSV of sub phase references to objects that contain more information about provisioning. For example, this can contain \&quot;manualWorkItemDetails\&quot; which indicate that there is further information in that object for this phase. | [optional] 

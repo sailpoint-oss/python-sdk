@@ -3,6 +3,7 @@
 Arbitrary map containing a configuration based on the EffectType.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **default_value_label** | **str** | Effect type&#39;s label. | [optional] 

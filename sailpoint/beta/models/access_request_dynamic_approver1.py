@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -39,8 +39,8 @@ class AccessRequestDynamicApprover1(BaseModel):
         description=
         "The name of the identity to add to the approver list for the access request."
     )
-    type: Union[str, Any] = Field(
-        description="The type of object being referenced.")
+    type: Dict[str,
+               Any] = Field(description="The type of object being referenced.")
     __properties: ClassVar[List[str]] = ["id", "name", "type"]
 
     @field_validator('type')
@@ -51,7 +51,11 @@ class AccessRequestDynamicApprover1(BaseModel):
                 "must be one of enum values ('IDENTITY', 'GOVERNANCE_GROUP')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -3,6 +3,7 @@
 Access item requester's identity.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Access item requester&#39;s DTO type. | [optional] 

@@ -3,6 +3,7 @@
 Owner's identity.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Owner&#39;s DTO type. | [optional] 

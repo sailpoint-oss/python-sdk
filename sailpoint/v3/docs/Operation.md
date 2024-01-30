@@ -3,6 +3,7 @@
 Operation on a specific criteria
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

@@ -3,6 +3,7 @@
 Must be set only if the campaign type is SOURCE_OWNER.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **source_ids** | **List[str]** | The list of sources to be included in the campaign. | [optional] 

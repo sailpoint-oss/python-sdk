@@ -3,6 +3,7 @@
 Maps an Identity's attribute key to a list of preferred notification mediums.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **str** | The template notification key. | [optional] 

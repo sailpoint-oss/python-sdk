@@ -20,6 +20,7 @@ from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from pydantic import Field
+from sailpoint.v3.models.access_profile_role import AccessProfileRole
 from sailpoint.v3.models.document_type import DocumentType
 from sailpoint.v3.models.owner import Owner
 from sailpoint.v3.models.reference import Reference
@@ -61,13 +62,24 @@ class RoleDocument(BaseModel):
     access_profile_count: Optional[StrictInt] = Field(
         default=None, alias="accessProfileCount")
     tags: Optional[List[StrictStr]] = None
+    segments: Optional[List[Reference]] = None
+    segment_count: Optional[StrictInt] = Field(default=None,
+                                               alias="segmentCount")
+    entitlements: Optional[List[AccessProfileRole]] = None
+    entitlement_count: Optional[StrictInt] = Field(default=None,
+                                                   alias="entitlementCount")
     __properties: ClassVar[List[str]] = [
         "id", "name", "_type", "description", "created", "modified", "synced",
         "enabled", "requestable", "requestCommentsRequired", "owner",
-        "accessProfiles", "accessProfileCount", "tags"
+        "accessProfiles", "accessProfileCount", "tags", "segments",
+        "segmentCount", "entitlements", "entitlementCount"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -108,6 +120,20 @@ class RoleDocument(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['accessProfiles'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in segments (list)
+        _items = []
+        if self.segments:
+            for _item in self.segments:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['segments'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in entitlements (list)
+        _items = []
+        if self.entitlements:
+            for _item in self.entitlements:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['entitlements'] = _items
         # set to None if created (nullable) is None
         # and model_fields_set contains the field
         if self.created is None and "created" in self.model_fields_set:
@@ -165,6 +191,17 @@ class RoleDocument(BaseModel):
             "accessProfileCount":
             obj.get("accessProfileCount"),
             "tags":
-            obj.get("tags")
+            obj.get("tags"),
+            "segments":
+            [Reference.from_dict(_item) for _item in obj.get("segments")]
+            if obj.get("segments") is not None else None,
+            "segmentCount":
+            obj.get("segmentCount"),
+            "entitlements": [
+                AccessProfileRole.from_dict(_item)
+                for _item in obj.get("entitlements")
+            ] if obj.get("entitlements") is not None else None,
+            "entitlementCount":
+            obj.get("entitlementCount")
         })
         return _obj

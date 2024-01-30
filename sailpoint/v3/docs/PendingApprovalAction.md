@@ -3,6 +3,7 @@
 Enum represents action that is being processed on an approval.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

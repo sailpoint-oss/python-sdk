@@ -45,7 +45,10 @@ class AccountAttributesChangedChangesInnerNewValue(BaseModel):
     actual_instance: Optional[Union[List[str], bool, str]] = None
     one_of_schemas: List[str] = Literal["List[str]", "bool", "str"]
 
-    model_config = {"validate_assignment": True}
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:

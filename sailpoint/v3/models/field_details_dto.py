@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 try:
@@ -33,9 +33,9 @@ class FieldDetailsDto(BaseModel):
   # noqa: E501
     name: Optional[StrictStr] = Field(default=None,
                                       description="The name of the attribute.")
-    transform: Optional[Union[str, Any]] = Field(
+    transform: Optional[Dict[str, Any]] = Field(
         default=None, description="The transform to apply to the field")
-    attributes: Optional[Union[str, Any]] = Field(
+    attributes: Optional[Dict[str, Any]] = Field(
         default=None, description="Attributes required for the transform")
     is_required: Optional[StrictBool] = Field(
         default=False,
@@ -53,7 +53,11 @@ class FieldDetailsDto(BaseModel):
         "isMultiValued"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, field_validator
 from pydantic import Field
 from sailpoint.beta.models.va_cluster_status_change_event_application import VAClusterStatusChangeEventApplication
@@ -37,7 +37,7 @@ class VAClusterStatusChangeEvent(BaseModel):
   # noqa: E501
     created: datetime = Field(
         description="The date and time the status change occurred.")
-    type: Union[str, Any] = Field(
+    type: Dict[str, Any] = Field(
         description="The type of the object that initiated this event.")
     application: VAClusterStatusChangeEventApplication
     health_check_result: VAClusterStatusChangeEventHealthCheckResult = Field(
@@ -57,7 +57,11 @@ class VAClusterStatusChangeEvent(BaseModel):
                 "must be one of enum values ('SOURCE', 'CLUSTER')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

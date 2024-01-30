@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **approved** | **int** | The number of approved non-employee approval requests. | [optional] 

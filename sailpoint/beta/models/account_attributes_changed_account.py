@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -38,7 +38,7 @@ class AccountAttributesChangedAccount(BaseModel):
     native_identity: StrictStr = Field(
         description="Unique ID of the account on the source.",
         alias="nativeIdentity")
-    type: Union[str, Any] = Field(description="The type of the account")
+    type: Dict[str, Any] = Field(description="The type of the account")
     __properties: ClassVar[List[str]] = [
         "id", "uuid", "name", "nativeIdentity", "type"
     ]
@@ -50,7 +50,11 @@ class AccountAttributesChangedAccount(BaseModel):
             raise ValueError("must be one of enum values ('ACCOUNT')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

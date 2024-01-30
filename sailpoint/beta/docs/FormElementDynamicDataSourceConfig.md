@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **aggregation_bucket_field** | **str** | AggregationBucketField is the aggregation bucket field name | [optional] 

@@ -8,6 +8,7 @@ from sailpoint.v3.api.account_activities_api import AccountActivitiesApi
 from sailpoint.v3.api.account_usages_api import AccountUsagesApi
 from sailpoint.v3.api.accounts_api import AccountsApi
 from sailpoint.v3.api.auth_user_api import AuthUserApi
+from sailpoint.v3.api.branding_api import BrandingApi
 from sailpoint.v3.api.certification_campaign_filters_api import CertificationCampaignFiltersApi
 from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.v3.api.certification_summaries_api import CertificationSummariesApi

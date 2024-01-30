@@ -26,7 +26,7 @@ from pydantic import Field
 from typing_extensions import Annotated
 from pydantic import StrictBool, StrictStr
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional
 
 from sailpoint.beta.models.common_access_id_status import CommonAccessIDStatus
 from sailpoint.beta.models.common_access_item_request import CommonAccessItemRequest
@@ -106,7 +106,7 @@ class IAICommonAccessApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -172,7 +172,7 @@ class IAICommonAccessApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -238,7 +238,7 @@ class IAICommonAccessApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -398,7 +398,7 @@ class IAICommonAccessApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -503,7 +503,7 @@ class IAICommonAccessApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -608,7 +608,7 @@ class IAICommonAccessApi:
             '400': "ErrorResponseDto",
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -746,7 +746,7 @@ class IAICommonAccessApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -817,7 +817,7 @@ class IAICommonAccessApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -888,7 +888,7 @@ class IAICommonAccessApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)

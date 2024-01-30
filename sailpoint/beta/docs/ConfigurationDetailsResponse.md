@@ -3,6 +3,7 @@
 The request body of Reassignment Configuration Details for a specific identity and config type
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **config_type** | [**ConfigTypeEnum**](ConfigTypeEnum.md) |  | [optional] 

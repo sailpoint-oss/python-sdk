@@ -3,6 +3,7 @@
 ConnectorRuleValidationResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **state** | **str** |  | 
