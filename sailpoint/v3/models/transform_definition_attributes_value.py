@@ -17,7 +17,7 @@ import json
 import pprint
 import re  # noqa: F401
 
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr, ValidationError, field_validator
 from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal
@@ -38,7 +38,7 @@ class TransformDefinitionAttributesValue(BaseModel):
     # data type: str
     anyof_schema_1_validator: Optional[StrictStr] = None
     # data type: object
-    anyof_schema_2_validator: Optional[Union[str, Any]] = None
+    anyof_schema_2_validator: Optional[Dict[str, Any]] = None
     if TYPE_CHECKING:
         actual_instance: Optional[Union[object, str]] = None
     else:
@@ -46,7 +46,10 @@ class TransformDefinitionAttributesValue(BaseModel):
     any_of_schemas: List[str] = Literal[
         TRANSFORMDEFINITIONATTRIBUTESVALUE_ANY_OF_SCHEMAS]
 
-    model_config = {"validate_assignment": True}
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:

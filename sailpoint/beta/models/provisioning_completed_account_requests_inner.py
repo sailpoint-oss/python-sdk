@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.beta.models.provisioning_completed_account_requests_inner_attribute_requests_inner import ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
@@ -42,7 +42,7 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
         description=
         "The provisioning operation; typically Create, Modify, Enable, Disable, Unlock, or Delete.",
         alias="accountOperation")
-    provisioning_result: Union[str, Any] = Field(
+    provisioning_result: Dict[str, Any] = Field(
         description=
         "The overall result of the provisioning transaction; this could be success, pending, failed, etc.",
         alias="provisioningResult")
@@ -74,7 +74,11 @@ class ProvisioningCompletedAccountRequestsInner(BaseModel):
                 "must be one of enum values ('SUCCESS', 'PENDING', 'FAILED')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

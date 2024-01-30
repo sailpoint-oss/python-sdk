@@ -3,6 +3,7 @@
 Represents an operation in an account activity item
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

@@ -139,7 +139,10 @@ class TriggerExampleInput(BaseModel):
         "SourceCreated", "SourceDeleted", "SourceUpdated",
         "VAClusterStatusChangeEvent"]
 
-    model_config = {"validate_assignment": True}
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:

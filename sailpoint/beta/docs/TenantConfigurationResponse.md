@@ -3,6 +3,7 @@
 Tenant-wide Reassignment Configuration settings
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **audit_details** | [**AuditDetails**](AuditDetails.md) |  | [optional] 

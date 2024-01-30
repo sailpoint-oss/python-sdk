@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **answers** | [**List[KbaAnswerRequestItem]**](KbaAnswerRequestItem.md) | Kba answers | 

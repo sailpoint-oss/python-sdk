@@ -3,6 +3,7 @@
 Identity who approved the access item request.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of identity who approved the access item request. | [optional] 

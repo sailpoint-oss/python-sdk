@@ -3,6 +3,7 @@
 State of common access item.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

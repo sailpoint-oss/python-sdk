@@ -3,6 +3,7 @@
 Provides additional details about the pre-approval trigger for this request.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **str** | Comment left for the pre-approval decision | [optional] 

@@ -3,6 +3,7 @@
 Details about a public identity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Identity id | [optional] 

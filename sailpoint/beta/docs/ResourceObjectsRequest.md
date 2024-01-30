@@ -3,6 +3,7 @@
 Request model for peek resource objects from source connectors.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object_type** | **str** | The type of resource objects to iterate over. | [optional] [default to 'account']

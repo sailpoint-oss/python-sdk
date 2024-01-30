@@ -26,7 +26,7 @@ from pydantic import Field
 from typing_extensions import Annotated
 from pydantic import StrictBool, StrictStr, field_validator
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional
 
 from sailpoint.beta.models.activate_campaign_options import ActivateCampaignOptions
 from sailpoint.beta.models.admin_review_reassign import AdminReviewReassign
@@ -130,7 +130,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -209,7 +209,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -288,7 +288,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -412,7 +412,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -478,7 +478,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -544,7 +544,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -667,7 +667,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -735,7 +735,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -803,7 +803,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -923,7 +923,15 @@ class CertificationCampaignsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -987,7 +995,15 @@ class CertificationCampaignsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -1051,7 +1067,15 @@ class CertificationCampaignsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         return response_data.response
@@ -1163,7 +1187,15 @@ class CertificationCampaignsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -1230,7 +1262,15 @@ class CertificationCampaignsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -1297,7 +1337,15 @@ class CertificationCampaignsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         return response_data.response
@@ -1412,7 +1460,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1483,7 +1531,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1554,7 +1602,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1726,7 +1774,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1843,7 +1891,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1960,7 +2008,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2101,7 +2149,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2170,7 +2218,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2239,7 +2287,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2357,7 +2405,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2430,7 +2478,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2503,7 +2551,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2612,7 +2660,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2676,7 +2724,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2740,7 +2788,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2853,7 +2901,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2924,7 +2972,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2995,7 +3043,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3114,7 +3162,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3188,7 +3236,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3262,7 +3310,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3416,7 +3464,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3525,7 +3573,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3634,7 +3682,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3775,7 +3823,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3849,7 +3897,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -3923,7 +3971,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4062,7 +4110,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4143,7 +4191,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4224,7 +4272,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4354,7 +4402,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4424,7 +4472,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4494,7 +4542,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4619,7 +4667,15 @@ class CertificationCampaignsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '400': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -4688,7 +4744,15 @@ class CertificationCampaignsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '400': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -4757,7 +4821,15 @@ class CertificationCampaignsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '400': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         return response_data.response
@@ -4893,7 +4965,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -4972,7 +5044,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5051,7 +5123,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5184,7 +5256,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5259,7 +5331,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5334,7 +5406,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5456,7 +5528,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5533,7 +5605,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5610,7 +5682,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5729,7 +5801,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5800,7 +5872,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5871,7 +5943,7 @@ class CertificationCampaignsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -5934,7 +6006,7 @@ class CertificationCampaignsApi:
             Field(description="The ID of the campaign template being modified."
                   )],
         request_body: Annotated[
-            List[Union[str, Any]],
+            List[Dict[str, Any]],
             Field(
                 description=
                 "A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline "
@@ -5996,7 +6068,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -6014,7 +6086,7 @@ class CertificationCampaignsApi:
             Field(description="The ID of the campaign template being modified."
                   )],
         request_body: Annotated[
-            List[Union[str, Any]],
+            List[Dict[str, Any]],
             Field(
                 description=
                 "A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline "
@@ -6076,7 +6148,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -6094,7 +6166,7 @@ class CertificationCampaignsApi:
             Field(description="The ID of the campaign template being modified."
                   )],
         request_body: Annotated[
-            List[Union[str, Any]],
+            List[Dict[str, Any]],
             Field(
                 description=
                 "A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline "
@@ -6156,7 +6228,7 @@ class CertificationCampaignsApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)

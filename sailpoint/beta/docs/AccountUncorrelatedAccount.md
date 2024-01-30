@@ -3,6 +3,7 @@
 Uncorrelated account.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **object** | Uncorrelated account&#39;s DTO type. | 

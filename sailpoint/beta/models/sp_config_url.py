@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -31,12 +31,16 @@ class SpConfigUrl(BaseModel):
     """ # noqa: E501
     url: Optional[StrictStr] = Field(
         default=None, description="URL for the target object endpoint.")
-    query: Optional[Union[str, Any]] = Field(
+    query: Optional[Dict[str, Any]] = Field(
         default=None,
         description="Any query parameters that are needed for the URL.")
     __properties: ClassVar[List[str]] = ["url", "query"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

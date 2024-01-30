@@ -3,6 +3,7 @@
 Standard Log4j log level
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

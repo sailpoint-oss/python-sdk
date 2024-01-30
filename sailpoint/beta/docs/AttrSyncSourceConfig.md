@@ -3,6 +3,7 @@
 Specification of attribute sync configuration for a source
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **source** | [**AttrSyncSource**](AttrSyncSource.md) |  | 

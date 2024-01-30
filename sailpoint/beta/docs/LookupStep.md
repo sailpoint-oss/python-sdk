@@ -3,6 +3,7 @@
 The definition of an Identity according to the Reassignment Configuration service
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reassigned_to_id** | **str** | The ID of the Identity who work is reassigned to | [optional] 

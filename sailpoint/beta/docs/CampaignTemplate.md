@@ -3,6 +3,7 @@
 Campaign Template
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Id of the campaign template | [optional] 

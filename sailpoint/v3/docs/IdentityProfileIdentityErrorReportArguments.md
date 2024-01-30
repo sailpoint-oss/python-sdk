@@ -3,6 +3,7 @@
 Arguments for Identity Profile Identity Error report (IDENTITY_PROFILE_IDENTITY_ERROR)
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **authoritative_source** | **str** | Source Id to be checked on errors of identity profiles aggregation | 

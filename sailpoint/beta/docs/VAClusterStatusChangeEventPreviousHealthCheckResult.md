@@ -3,6 +3,7 @@
 The results of the last health check.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **str** | Detailed message of the result of the health check. | 

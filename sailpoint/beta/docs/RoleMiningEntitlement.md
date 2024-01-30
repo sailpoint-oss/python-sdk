@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **entitlement_ref** | [**RoleMiningEntitlementRef**](RoleMiningEntitlementRef.md) |  | [optional] 

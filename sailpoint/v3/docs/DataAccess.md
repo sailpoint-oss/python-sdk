@@ -3,6 +3,7 @@
 DAS data for the entitlement
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **policies** | [**List[DataAccessPoliciesInner]**](DataAccessPoliciesInner.md) | List of classification policies that apply to resources the entitlement \\ groups has access to | [optional] 

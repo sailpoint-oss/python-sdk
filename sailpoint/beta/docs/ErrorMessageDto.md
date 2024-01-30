@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **locale** | **str** | The locale for the message text, a BCP 47 language tag. | [optional] 

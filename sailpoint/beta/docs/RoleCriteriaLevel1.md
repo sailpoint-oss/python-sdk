@@ -3,6 +3,7 @@
 Defines STANDARD type Role membership
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **operation** | [**RoleCriteriaOperation**](RoleCriteriaOperation.md) |  | [optional] 

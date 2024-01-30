@@ -3,6 +3,7 @@
 When present, specifies that the Role is to be granted to Identities which either satisfy specific criteria or which are members of a given list of Identities.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**RoleMembershipSelectorType**](RoleMembershipSelectorType.md) |  | [optional] 

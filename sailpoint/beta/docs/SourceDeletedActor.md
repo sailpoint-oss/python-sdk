@@ -3,6 +3,7 @@
 Identity who deleted the source.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of identity who deleted the source. | 

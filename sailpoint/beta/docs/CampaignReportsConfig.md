@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identity_attribute_columns** | **List[str]** | list of identity attribute columns | [optional] 

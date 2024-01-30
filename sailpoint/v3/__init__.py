@@ -23,6 +23,7 @@ from sailpoint.v3.api.account_activities_api import AccountActivitiesApi
 from sailpoint.v3.api.account_usages_api import AccountUsagesApi
 from sailpoint.v3.api.accounts_api import AccountsApi
 from sailpoint.v3.api.auth_user_api import AuthUserApi
+from sailpoint.v3.api.branding_api import BrandingApi
 from sailpoint.v3.api.certification_campaign_filters_api import CertificationCampaignFiltersApi
 from sailpoint.v3.api.certification_campaigns_api import CertificationCampaignsApi
 from sailpoint.v3.api.certification_summaries_api import CertificationSummariesApi
@@ -150,6 +151,8 @@ from sailpoint.v3.models.base_entitlement import BaseEntitlement
 from sailpoint.v3.models.base_reference_dto import BaseReferenceDto
 from sailpoint.v3.models.before_provisioning_rule_dto import BeforeProvisioningRuleDto
 from sailpoint.v3.models.bound import Bound
+from sailpoint.v3.models.branding_item import BrandingItem
+from sailpoint.v3.models.branding_item_create import BrandingItemCreate
 from sailpoint.v3.models.bucket_aggregation import BucketAggregation
 from sailpoint.v3.models.bucket_type import BucketType
 from sailpoint.v3.models.bulk_tagged_object import BulkTaggedObject
@@ -260,7 +263,6 @@ from sailpoint.v3.models.import_non_employee_records_in_bulk_request import Impo
 from sailpoint.v3.models.import_object import ImportObject
 from sailpoint.v3.models.index import Index
 from sailpoint.v3.models.inner_hit import InnerHit
-from sailpoint.v3.models.json_patch import JsonPatch
 from sailpoint.v3.models.json_patch_operation import JsonPatchOperation
 from sailpoint.v3.models.json_patch_operation_value import JsonPatchOperationValue
 from sailpoint.v3.models.lifecycle_state import LifecycleState
@@ -324,6 +326,7 @@ from sailpoint.v3.models.password_org_config import PasswordOrgConfig
 from sailpoint.v3.models.password_status import PasswordStatus
 from sailpoint.v3.models.password_sync_group import PasswordSyncGroup
 from sailpoint.v3.models.pat_owner import PatOwner
+from sailpoint.v3.models.patch_service_desk_integration_request import PatchServiceDeskIntegrationRequest
 from sailpoint.v3.models.pending_approval import PendingApproval
 from sailpoint.v3.models.pending_approval_action import PendingApprovalAction
 from sailpoint.v3.models.pending_approval_owner import PendingApprovalOwner
@@ -343,6 +346,7 @@ from sailpoint.v3.models.provisioning_state import ProvisioningState
 from sailpoint.v3.models.public_identity import PublicIdentity
 from sailpoint.v3.models.public_identity_attribute_config import PublicIdentityAttributeConfig
 from sailpoint.v3.models.public_identity_config import PublicIdentityConfig
+from sailpoint.v3.models.put_password_dictionary_request import PutPasswordDictionaryRequest
 from sailpoint.v3.models.query import Query
 from sailpoint.v3.models.query_result_filter import QueryResultFilter
 from sailpoint.v3.models.query_type import QueryType
@@ -423,6 +427,9 @@ from sailpoint.v3.models.segment import Segment
 from sailpoint.v3.models.selector import Selector
 from sailpoint.v3.models.selector_type import SelectorType
 from sailpoint.v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto
+from sailpoint.v3.models.service_desk_integration_dto_all_of_before_provisioning_rule import ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule
+from sailpoint.v3.models.service_desk_integration_dto_all_of_cluster_ref import ServiceDeskIntegrationDtoAllOfClusterRef
+from sailpoint.v3.models.service_desk_integration_dto_all_of_owner_ref import ServiceDeskIntegrationDtoAllOfOwnerRef
 from sailpoint.v3.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
 from sailpoint.v3.models.service_desk_integration_template_type import ServiceDeskIntegrationTemplateType
 from sailpoint.v3.models.service_desk_source import ServiceDeskSource
@@ -473,7 +480,6 @@ from sailpoint.v3.models.transform_definition_attributes_value import TransformD
 from sailpoint.v3.models.transform_read import TransformRead
 from sailpoint.v3.models.type_ahead_query import TypeAheadQuery
 from sailpoint.v3.models.typed_reference import TypedReference
-from sailpoint.v3.models.update_password_dictionary_request import UpdatePasswordDictionaryRequest
 from sailpoint.v3.models.usage_type import UsageType
 from sailpoint.v3.models.value import Value
 from sailpoint.v3.models.violation_context import ViolationContext

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **previous_owner** | **str** | The ID of previous owner identity. | [optional] 

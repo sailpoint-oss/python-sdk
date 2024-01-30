@@ -3,6 +3,7 @@
 A typed reference to the object. 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**DtoType**](DtoType.md) |  | 

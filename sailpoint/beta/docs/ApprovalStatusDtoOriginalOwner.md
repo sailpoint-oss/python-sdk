@@ -3,6 +3,7 @@
 Identity of orginal approval owner.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of original approval owner&#39;s identity. | [optional] 

@@ -27,6 +27,7 @@ Create a new Service Desk Integrations.  A token with Org Admin or Service Desk 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -69,6 +70,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_desk_integration_dto** | [**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)| The specifics of a new integration to create | 
@@ -87,6 +89,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | details of the created integration |  -  |
@@ -110,6 +113,7 @@ Delete an existing Service Desk integration by ID.  A token with Org Admin or Se
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -149,6 +153,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of Service Desk integration to delete | 
@@ -167,6 +172,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Service Desk integration with the given ID successfully deleted |  -  |
@@ -190,6 +196,7 @@ Get an existing Service Desk integration by ID.  A token with Org Admin or Servi
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -232,6 +239,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the Service Desk integration to get | 
@@ -250,6 +258,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | ServiceDeskIntegrationDto with the given ID |  -  |
@@ -273,6 +282,7 @@ Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations. 
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -319,6 +329,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **offset** | **int**| Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [optional] [default to 0]
@@ -341,6 +352,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | List of ServiceDeskIntegrationDto |  -  |
@@ -364,6 +376,7 @@ This API endpoint returns an existing Service Desk integration template by scrip
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -406,6 +419,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **script_name** | **str**| The scriptName value of the Service Desk integration template to get | 
@@ -424,6 +438,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Responds with the ServiceDeskIntegrationTemplateDto with the specified scriptName. |  -  |
@@ -447,6 +462,7 @@ This API endpoint returns the current list of supported Service Desk integration
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -487,6 +503,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -503,6 +520,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Responds with an array of the currently supported Service Desk integration types. |  -  |
@@ -526,6 +544,7 @@ Get the time check configuration of queued SDIM tickets.  A token with Org Admin
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -566,6 +585,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -582,6 +602,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | QueuedCheckConfigDetails containing the configured values |  -  |
@@ -595,7 +616,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_service_desk_integration**
-> ServiceDeskIntegrationDto patch_service_desk_integration(id, json_patch)
+> ServiceDeskIntegrationDto patch_service_desk_integration(id, patch_service_desk_integration_request)
 
 Service Desk Integration Update PATCH
 
@@ -605,11 +626,12 @@ Update an existing ServiceDeskIntegration by ID with a PATCH request.
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
 import sailpoint.beta
-from sailpoint.beta.models.json_patch import JsonPatch
+from sailpoint.beta.models.patch_service_desk_integration_request import PatchServiceDeskIntegrationRequest
 from sailpoint.beta.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.beta.rest import ApiException
 from pprint import pprint
@@ -634,11 +656,21 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sailpoint.beta.ServiceDeskIntegrationApi(api_client)
     id = 'anId' # str | ID of the Service Desk integration to update
-    json_patch = [{op=replace, path=/ownerRef, value={id=2c9180867d05b227017d09921a205b4d, type=IDENTITY, name=Angelo2 tester}}] # JsonPatch | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. 
+    patch_service_desk_integration_request = [
+  {
+      "op": "replace",
+      "path": "/ownerRef",
+      "value": {
+          "id": "2c9180867d05b227017d09921a205b4d",
+          "type": "IDENTITY",
+          "name": "Angelo2 tester"
+      }
+  }
+] # PatchServiceDeskIntegrationRequest | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. 
 
     try:
         # Service Desk Integration Update PATCH
-        api_response = api_instance.patch_service_desk_integration(id, json_patch)
+        api_response = api_instance.patch_service_desk_integration(id, patch_service_desk_integration_request)
         print("The response of ServiceDeskIntegrationApi->patch_service_desk_integration:\n")
         pprint(api_response)
     except Exception as e:
@@ -649,10 +681,11 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the Service Desk integration to update | 
- **json_patch** | [**JsonPatch**](JsonPatch.md)| A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * &#x60;beforeProvisioningRule&#x60;   * &#x60;description&#x60;   * &#x60;ownerRef&#x60;  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed.  | 
+ **patch_service_desk_integration_request** | [**PatchServiceDeskIntegrationRequest**](PatchServiceDeskIntegrationRequest.md)| A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  | 
 
 ### Return type
 
@@ -668,6 +701,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | ServiceDeskIntegrationDto as updated |  -  |
@@ -691,6 +725,7 @@ Update an existing Service Desk integration by ID with updated value in JSON for
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -734,6 +769,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| ID of the Service Desk integration to update | 
@@ -753,6 +789,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | ServiceDeskIntegrationDto as updated |  -  |
@@ -776,6 +813,7 @@ Update the time check configuration of queued SDIM tickets.  A token with Org Ad
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -818,6 +856,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **queued_check_config_details** | [**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md)| the modified time check configuration | 
@@ -836,6 +875,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | QueuedCheckConfigDetails as updated |  -  |

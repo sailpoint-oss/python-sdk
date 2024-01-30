@@ -3,6 +3,7 @@
 Query parameters used to construct an Elasticsearch text query object.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **terms** | **List[str]** | Words or characters that specify a particular thing to be searched for. | 

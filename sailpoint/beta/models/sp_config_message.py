@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -33,11 +33,15 @@ class SpConfigMessage(BaseModel):
   # noqa: E501
     key: StrictStr = Field(description="Message key.")
     text: StrictStr = Field(description="Message text.")
-    details: Dict[str, Union[str, Any]] = Field(
+    details: Dict[str, Dict[str, Any]] = Field(
         description="Message details if any, in key:value pairs.")
     __properties: ClassVar[List[str]] = ["key", "text", "details"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

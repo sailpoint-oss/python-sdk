@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **forwarded** | **bool** | True if the request for this item was forwarded from one owner to another. | [optional] 

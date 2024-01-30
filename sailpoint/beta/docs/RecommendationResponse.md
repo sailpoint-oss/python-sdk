@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **request** | [**RecommendationRequest**](RecommendationRequest.md) |  | [optional] 

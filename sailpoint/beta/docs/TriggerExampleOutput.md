@@ -3,6 +3,7 @@
 An example of the JSON payload that will be sent by the subscribed service to the trigger in response to an event.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The unique ID of the identity to add to the approver list for the access request. | 

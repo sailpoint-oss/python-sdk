@@ -3,6 +3,7 @@
 The object which contains the left and right hand side of the entitlements that got violated according to the policy.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **left_criteria** | [**SodViolationContextConflictingAccessCriteriaLeftCriteria**](SodViolationContextConflictingAccessCriteriaLeftCriteria.md) |  | [optional] 

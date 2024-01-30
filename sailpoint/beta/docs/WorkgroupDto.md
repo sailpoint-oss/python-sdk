@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **owner** | [**OwnerDto**](OwnerDto.md) |  | [optional] 

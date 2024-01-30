@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 try:
@@ -46,7 +46,7 @@ class V3ConnectorDto(BaseModel):
         default=False,
         description="true if the source is a direct connect source",
         alias="directConnect")
-    connector_metadata: Optional[Union[str, Any]] = Field(
+    connector_metadata: Optional[Dict[str, Any]] = Field(
         default=None,
         description="Object containing metadata pertinent to the UI to be used",
         alias="connectorMetadata")
@@ -57,7 +57,11 @@ class V3ConnectorDto(BaseModel):
         "connectorMetadata", "status"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

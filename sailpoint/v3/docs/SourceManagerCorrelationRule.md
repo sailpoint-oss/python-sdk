@@ -3,6 +3,7 @@
 Reference to the ManagerCorrelationRule, only used when a simple filter isn't sufficient.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of object being referenced | [optional] 

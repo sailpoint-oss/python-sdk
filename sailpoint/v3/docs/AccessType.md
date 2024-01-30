@@ -3,6 +3,7 @@
 Access type of API Client indicating online or offline use
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

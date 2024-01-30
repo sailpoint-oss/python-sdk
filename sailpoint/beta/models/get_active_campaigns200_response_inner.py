@@ -45,7 +45,10 @@ class GetActiveCampaigns200ResponseInner(BaseModel):
     actual_instance: Optional[Union[Campaign, Slimcampaign]] = None
     one_of_schemas: List[str] = Literal["Campaign", "Slimcampaign"]
 
-    model_config = {"validate_assignment": True}
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         if args:

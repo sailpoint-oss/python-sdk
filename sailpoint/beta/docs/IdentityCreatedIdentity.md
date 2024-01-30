@@ -3,6 +3,7 @@
 Created identity.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Created identity&#39;s DTO type. | 

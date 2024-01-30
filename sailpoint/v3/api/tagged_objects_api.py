@@ -106,7 +106,14 @@ class TaggedObjectsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -173,7 +180,14 @@ class TaggedObjectsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -240,7 +254,14 @@ class TaggedObjectsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         return response_data.response
@@ -352,7 +373,14 @@ class TaggedObjectsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -416,7 +444,14 @@ class TaggedObjectsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -480,7 +515,14 @@ class TaggedObjectsApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         return response_data.response
@@ -607,7 +649,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -680,7 +722,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -753,7 +795,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -899,7 +941,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -997,7 +1039,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1095,7 +1137,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1208,7 +1250,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[TaggedObject]:
-        """List Tagged Objects
+        """List Tagged Objects by Type
 
         This API returns a list of all tagged objects by type.  Any authenticated token may be used to call this API.
 
@@ -1261,7 +1303,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1312,7 +1354,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[TaggedObject]]:
-        """List Tagged Objects
+        """List Tagged Objects by Type
 
         This API returns a list of all tagged objects by type.  Any authenticated token may be used to call this API.
 
@@ -1365,7 +1407,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1416,7 +1458,7 @@ class TaggedObjectsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """List Tagged Objects
+        """List Tagged Objects by Type
 
         This API returns a list of all tagged objects by type.  Any authenticated token may be used to call this API.
 
@@ -1469,7 +1511,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1611,7 +1653,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1688,7 +1730,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1765,7 +1807,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1885,7 +1927,14 @@ class TaggedObjectsApi:
                                                    _headers=_headers,
                                                    _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -1943,7 +1992,14 @@ class TaggedObjectsApi:
                                                    _headers=_headers,
                                                    _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -2001,7 +2057,14 @@ class TaggedObjectsApi:
                                                    _headers=_headers,
                                                    _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '201': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         return response_data.response
@@ -2126,7 +2189,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2197,7 +2260,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2268,7 +2331,7 @@ class TaggedObjectsApi:
             '401': "ListAccessProfiles401Response",
             '403': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)

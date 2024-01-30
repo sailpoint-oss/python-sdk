@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Type of the attribute. Only type &#39;TEXT&#39; is supported for custom attributes. | 

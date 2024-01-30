@@ -28,7 +28,7 @@ from pydantic import StrictBool, StrictStr
 
 from typing import List, Optional
 
-from sailpoint.v3.models.json_patch import JsonPatch
+from sailpoint.v3.models.patch_service_desk_integration_request import PatchServiceDeskIntegrationRequest
 from sailpoint.v3.models.queued_check_config_details import QueuedCheckConfigDetails
 from sailpoint.v3.models.service_desk_integration_dto import ServiceDeskIntegrationDto
 from sailpoint.v3.models.service_desk_integration_template_dto import ServiceDeskIntegrationTemplateDto
@@ -110,7 +110,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -179,7 +179,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -248,7 +248,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -365,7 +365,15 @@ class ServiceDeskIntegrationApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -426,7 +434,15 @@ class ServiceDeskIntegrationApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -487,7 +503,15 @@ class ServiceDeskIntegrationApi:
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         return response_data.response
@@ -600,7 +624,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -669,7 +693,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -738,7 +762,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -855,7 +879,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -927,7 +951,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -999,7 +1023,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1107,7 +1131,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1170,7 +1194,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1233,7 +1257,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1383,7 +1407,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1491,7 +1515,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1599,7 +1623,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1729,7 +1753,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1792,7 +1816,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1855,7 +1879,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1914,11 +1938,11 @@ class ServiceDeskIntegrationApi:
         id: Annotated[
             StrictStr,
             Field(description="ID of the Service Desk integration to update")],
-        json_patch: Annotated[
-            JsonPatch,
+        patch_service_desk_integration_request: Annotated[
+            PatchServiceDeskIntegrationRequest,
             Field(
                 description=
-                "A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. "
+                "A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. "
             )],
         _request_timeout: Union[None, Annotated[StrictFloat,
                                                 Field(gt=0)],
@@ -1937,8 +1961,8 @@ class ServiceDeskIntegrationApi:
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param json_patch: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed.  (required)
-        :type json_patch: JsonPatch
+        :param patch_service_desk_integration_request: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  (required)
+        :type patch_service_desk_integration_request: PatchServiceDeskIntegrationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1963,7 +1987,8 @@ class ServiceDeskIntegrationApi:
 
         _param = self._patch_service_desk_integration_serialize(
             id=id,
-            json_patch=json_patch,
+            patch_service_desk_integration_request=
+            patch_service_desk_integration_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1976,7 +2001,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -1992,11 +2017,11 @@ class ServiceDeskIntegrationApi:
         id: Annotated[
             StrictStr,
             Field(description="ID of the Service Desk integration to update")],
-        json_patch: Annotated[
-            JsonPatch,
+        patch_service_desk_integration_request: Annotated[
+            PatchServiceDeskIntegrationRequest,
             Field(
                 description=
-                "A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. "
+                "A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. "
             )],
         _request_timeout: Union[None, Annotated[StrictFloat,
                                                 Field(gt=0)],
@@ -2015,8 +2040,8 @@ class ServiceDeskIntegrationApi:
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param json_patch: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed.  (required)
-        :type json_patch: JsonPatch
+        :param patch_service_desk_integration_request: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  (required)
+        :type patch_service_desk_integration_request: PatchServiceDeskIntegrationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2041,7 +2066,8 @@ class ServiceDeskIntegrationApi:
 
         _param = self._patch_service_desk_integration_serialize(
             id=id,
-            json_patch=json_patch,
+            patch_service_desk_integration_request=
+            patch_service_desk_integration_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2054,7 +2080,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2070,11 +2096,11 @@ class ServiceDeskIntegrationApi:
         id: Annotated[
             StrictStr,
             Field(description="ID of the Service Desk integration to update")],
-        json_patch: Annotated[
-            JsonPatch,
+        patch_service_desk_integration_request: Annotated[
+            PatchServiceDeskIntegrationRequest,
             Field(
                 description=
-                "A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. "
+                "A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. "
             )],
         _request_timeout: Union[None, Annotated[StrictFloat,
                                                 Field(gt=0)],
@@ -2093,8 +2119,8 @@ class ServiceDeskIntegrationApi:
 
         :param id: ID of the Service Desk integration to update (required)
         :type id: str
-        :param json_patch: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed.  (required)
-        :type json_patch: JsonPatch
+        :param patch_service_desk_integration_request: A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  (required)
+        :type patch_service_desk_integration_request: PatchServiceDeskIntegrationRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2119,7 +2145,8 @@ class ServiceDeskIntegrationApi:
 
         _param = self._patch_service_desk_integration_serialize(
             id=id,
-            json_patch=json_patch,
+            patch_service_desk_integration_request=
+            patch_service_desk_integration_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2132,7 +2159,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2141,7 +2168,7 @@ class ServiceDeskIntegrationApi:
     def _patch_service_desk_integration_serialize(
         self,
         id,
-        json_patch,
+        patch_service_desk_integration_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2166,8 +2193,8 @@ class ServiceDeskIntegrationApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if json_patch is not None:
-            _body_params = json_patch
+        if patch_service_desk_integration_request is not None:
+            _body_params = patch_service_desk_integration_request
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -2265,7 +2292,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2340,7 +2367,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2415,7 +2442,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2542,7 +2569,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2611,7 +2638,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -2680,7 +2707,7 @@ class ServiceDeskIntegrationApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)

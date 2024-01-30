@@ -3,6 +3,7 @@
 Identity of workgroup member.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Workgroup member identity DTO type. | [optional] 

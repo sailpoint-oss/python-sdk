@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.outlier_feature_summary_outlier_feature_display_values_inner import OutlierFeatureSummaryOutlierFeatureDisplayValuesInner
@@ -59,7 +59,7 @@ class OutlierFeatureSummary(BaseModel):
         default=None,
         description="outlier's peer identity id",
         alias="peerIdentityId")
-    access_item_reference: Optional[Union[str, Any]] = Field(
+    access_item_reference: Optional[Dict[str, Any]] = Field(
         default=None,
         description="Access Item reference",
         alias="accessItemReference")
@@ -70,7 +70,11 @@ class OutlierFeatureSummary(BaseModel):
         "accessItemReference"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

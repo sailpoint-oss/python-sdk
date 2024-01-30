@@ -3,6 +3,7 @@
 Reference to an Account Correlation Config object
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of object being referenced | [optional] 

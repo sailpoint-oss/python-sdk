@@ -3,6 +3,7 @@
 Deleted lifecycle state.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Deleted lifecycle state&#39;s DTO type. | [optional] 

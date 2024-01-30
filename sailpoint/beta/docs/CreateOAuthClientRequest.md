@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **business_name** | **str** | The name of the business the API Client should belong to | [optional] 

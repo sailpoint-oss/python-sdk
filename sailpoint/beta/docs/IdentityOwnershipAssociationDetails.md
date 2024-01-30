@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **association_details** | [**List[IdentityOwnershipAssociationDetailsAssociationDetailsInner]**](IdentityOwnershipAssociationDetailsAssociationDetailsInner.md) | list of all the resource associations for the identity | [optional] 

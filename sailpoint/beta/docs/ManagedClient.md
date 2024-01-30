@@ -3,6 +3,7 @@
 Managed Client
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | ManagedClient ID | [optional] [readonly] 

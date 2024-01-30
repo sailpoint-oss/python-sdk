@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from pydantic import Field
 try:
@@ -31,11 +31,15 @@ class PostExternalExecuteWorkflowRequest(BaseModel):
     """
 
   # noqa: E501
-    input: Optional[Union[str, Any]] = Field(
+    input: Optional[Dict[str, Any]] = Field(
         default=None, description="The input for the workflow")
     __properties: ClassVar[List[str]] = ["input"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

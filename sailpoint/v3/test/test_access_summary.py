@@ -208,6 +208,24 @@ class TestAccessSummary(unittest.TestCase):
                                 ], 
                             created = '2021-01-01T22:32:58.104Z', 
                             modified = '2021-02-01T22:32:58.104Z', )
+                        ], 
+                    entitlements = [
+                        sailpoint.v3.models.reviewable_entitlement.ReviewableEntitlement(
+                            id = '2c918085718230600171993742c63558', 
+                            name = 'CN=entitlement.bbb7c650', 
+                            description = 'Gives read/write access to the company database', 
+                            privileged = False, 
+                            attribute_name = 'memberOf', 
+                            attribute_value = 'CN=entitlement.bbb7c650', 
+                            source_schema_object_type = 'groups', 
+                            source_name = 'ODS-AD-Source', 
+                            source_type = 'Active Directory - Direct', 
+                            source_id = '78ca6be511cb41fbb86dba2fcca7780c', 
+                            has_permissions = False, 
+                            is_permission = False, 
+                            revocable = True, 
+                            cloud_governed = False, 
+                            contains_data_access = True, )
                         ], )
             )
         else:

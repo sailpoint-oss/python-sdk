@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **scope** | [**RoleMiningSessionScope**](RoleMiningSessionScope.md) |  | [optional] 

@@ -3,6 +3,7 @@
 Enum representing the currently supported metric aggregation types. Additional values may be added in the future without notice.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

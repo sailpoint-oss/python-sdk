@@ -3,6 +3,7 @@
 Response model for peek resource objects from source connectors.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | ID of the source | [optional] [readonly] 

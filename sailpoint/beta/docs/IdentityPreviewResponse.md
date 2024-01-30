@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**identity** | [**IdentityPreviewResponseIdentity**](IdentityPreviewResponseIdentity.md) |  | [optional] 
+**identity** | [**IdentityDtoManagerRef**](IdentityDtoManagerRef.md) |  | [optional] 
 **preview_attributes** | [**List[IdentityAttributePreview]**](IdentityAttributePreview.md) |  | [optional] 
 
 ## Example

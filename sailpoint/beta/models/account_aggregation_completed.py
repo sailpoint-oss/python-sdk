@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.beta.models.account_aggregation_completed_source import AccountAggregationCompletedSource
@@ -35,7 +35,7 @@ class AccountAggregationCompleted(BaseModel):
 
   # noqa: E501
     source: AccountAggregationCompletedSource
-    status: Union[str, Any] = Field(
+    status: Dict[str, Any] = Field(
         description="The overall status of the aggregation.")
     started: datetime = Field(
         description="The date and time when the account aggregation started.")
@@ -60,7 +60,11 @@ class AccountAggregationCompleted(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

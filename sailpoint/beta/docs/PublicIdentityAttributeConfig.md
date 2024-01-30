@@ -3,6 +3,7 @@
 Used to map an attribute key for an Identity to its display name.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **str** | the key of the attribute | [optional] 

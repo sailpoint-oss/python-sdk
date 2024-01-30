@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -32,8 +32,8 @@ class WorkflowTrigger(BaseModel):
 
   # noqa: E501
     type: StrictStr = Field(description="The trigger type")
-    attributes: Union[str,
-                      Any] = Field(description="Workflow Trigger Attributes.")
+    attributes: Dict[str,
+                     Any] = Field(description="Workflow Trigger Attributes.")
     __properties: ClassVar[List[str]] = ["type", "attributes"]
 
     @field_validator('type')
@@ -45,7 +45,11 @@ class WorkflowTrigger(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

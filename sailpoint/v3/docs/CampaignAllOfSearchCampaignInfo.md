@@ -3,6 +3,7 @@
 Must be set only if the campaign type is SEARCH.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of search campaign represented. | 

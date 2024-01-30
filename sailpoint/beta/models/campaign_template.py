@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.campaign_template_owner_ref import CampaignTemplateOwnerRef
@@ -55,7 +55,7 @@ class CampaignTemplate(BaseModel):
         description=
         "The time period during which the campaign should be completed, formatted as an ISO-8601 Duration. When this template generates a campaign, the campaign's deadline will be the current date plus this duration. For example, if generation occurred on 2020-01-01 and this field was \"P2W\" (two weeks), the resulting campaign's deadline would be 2020-01-15 (the current date plus 14 days).",
         alias="deadlineDuration")
-    campaign: Union[str, Any] = Field(
+    campaign: Dict[str, Any] = Field(
         description=
         "This will hold campaign related information like name, description etc."
     )
@@ -64,7 +64,11 @@ class CampaignTemplate(BaseModel):
         "ownerRef", "deadlineDuration", "campaign"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

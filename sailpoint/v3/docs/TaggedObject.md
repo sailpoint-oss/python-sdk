@@ -3,6 +3,7 @@
 Tagged object.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object_ref** | [**TaggedObjectDto**](TaggedObjectDto.md) |  | [optional] 

@@ -3,6 +3,7 @@
 Config required if BASIC_AUTH is used.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_name** | **str** | The username to authenticate. | [optional] 

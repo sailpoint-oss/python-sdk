@@ -3,6 +3,7 @@
 An enumeration of the types of Objects associated with a Governance Group. Supported object types are ACCESS_PROFILE, ROLE, SOD_POLICY and SOURCE.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

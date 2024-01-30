@@ -2,18 +2,19 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Service Desk integration&#39;s name. The name must be unique. | 
 **description** | **str** | Service Desk integration&#39;s description. | 
 **type** | **str** | Service Desk integration types:  - ServiceNowSDIM - ServiceNow  | [default to 'ServiceNowSDIM']
-**owner_ref** | [**OwnerDto**](OwnerDto.md) |  | [optional] 
-**cluster_ref** | [**SourceClusterDto**](SourceClusterDto.md) |  | [optional] 
+**owner_ref** | [**ServiceDeskIntegrationDtoAllOfOwnerRef**](ServiceDeskIntegrationDtoAllOfOwnerRef.md) |  | [optional] 
+**cluster_ref** | [**ServiceDeskIntegrationDtoAllOfClusterRef**](ServiceDeskIntegrationDtoAllOfClusterRef.md) |  | [optional] 
 **cluster** | **str** | Cluster ID for the Service Desk integration (replaced by clusterRef, retained for backward compatibility). | [optional] 
 **managed_sources** | **List[str]** | Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs, but retained here for backward compatibility). | [optional] 
 **provisioning_config** | [**ProvisioningConfig**](ProvisioningConfig.md) |  | [optional] 
 **attributes** | **Dict[str, object]** | Service Desk integration&#39;s attributes. Validation constraints enforced by the implementation. | 
-**before_provisioning_rule** | [**BeforeProvisioningRuleDto**](BeforeProvisioningRuleDto.md) |  | [optional] 
+**before_provisioning_rule** | [**ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule**](ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.md) |  | [optional] 
 
 ## Example
 

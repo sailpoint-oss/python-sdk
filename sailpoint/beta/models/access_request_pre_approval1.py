@@ -41,7 +41,11 @@ class AccessRequestPreApproval1(BaseModel):
         "The name of the entity that approved or denied the request.")
     __properties: ClassVar[List[str]] = ["approved", "comment", "approver"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

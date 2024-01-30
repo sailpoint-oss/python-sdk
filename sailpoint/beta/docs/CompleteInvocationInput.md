@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **localized_error** | [**LocalizedMessage**](LocalizedMessage.md) |  | [optional] 

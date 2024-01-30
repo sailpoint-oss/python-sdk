@@ -3,6 +3,7 @@
 Tenant-wide Reassignment Configuration settings
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **config_details** | [**TenantConfigurationDetails**](TenantConfigurationDetails.md) |  | [optional] 

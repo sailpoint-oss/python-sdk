@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **kba_auth_response_items** | [**List[KbaAuthResponseItem]**](KbaAuthResponseItem.md) |  | [optional] 

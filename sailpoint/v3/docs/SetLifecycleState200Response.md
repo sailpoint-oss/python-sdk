@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_activity_id** | **str** | The ID of the IdentityRequest object that was generated when the workflow launches | [optional] 

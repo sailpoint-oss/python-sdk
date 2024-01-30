@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **nested** | [**NestedAggregation**](NestedAggregation.md) |  | [optional] 

@@ -3,6 +3,7 @@
 Domain status DTO containing everything required to verify via DKIM
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | New UUID associated with domain to be verified | [optional] 

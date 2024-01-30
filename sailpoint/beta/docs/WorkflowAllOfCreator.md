@@ -3,6 +3,7 @@
 Workflow creator's identity.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Workflow creator&#39;s DTO type. | [optional] 

@@ -36,7 +36,11 @@ class AccessRecommendationMessage(BaseModel):
         description="Information about why the access item was recommended.")
     __properties: ClassVar[List[str]] = ["interpretation"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from pydantic import Field
 try:
@@ -32,7 +32,7 @@ class NotificationTemplateContext(BaseModel):
     """
 
   # noqa: E501
-    attributes: Optional[Union[str, Any]] = Field(
+    attributes: Optional[Dict[str, Any]] = Field(
         default=None, description="A JSON object that stores the context.")
     created: Optional[datetime] = Field(
         default=None, description="When the global context was created")
@@ -40,7 +40,11 @@ class NotificationTemplateContext(BaseModel):
         default=None, description="When the global context was last modified")
     __properties: ClassVar[List[str]] = ["attributes", "created", "modified"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

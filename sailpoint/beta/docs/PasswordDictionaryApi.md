@@ -5,7 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_password_dictionary**](PasswordDictionaryApi.md#get_password_dictionary) | **GET** /password-dictionary | Get Password Dictionary
-[**update_password_dictionary**](PasswordDictionaryApi.md#update_password_dictionary) | **PUT** /password-dictionary | Update Password Dictionary
+[**put_password_dictionary**](PasswordDictionaryApi.md#put_password_dictionary) | **PUT** /password-dictionary | Update Password Dictionary
 
 
 # **get_password_dictionary**
@@ -13,12 +13,13 @@ Method | HTTP request | Description
 
 Get Password Dictionary
 
-This gets password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API.
+This gets password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API. The password dictionary file can contain lines that are: 1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing 2. empty lines 3. locale line - the first line that starts with \"locale=\" is considered to be locale line, the rest are treated as normal content lines 4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;         maximum length of the line is 128 Unicode codepoints   Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).   Password dict file must contain UTF-8 characters only.  # Sample password text file  ```  # Password dictionary small test file  locale=en_US  # Password dictionary prohibited words  qwerty abcd aaaaa password qazxsws  ```
 
 ### Example
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -58,6 +59,7 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -74,9 +76,10 @@ This endpoint does not need any parameter.
  - **Accept**: text/plain, application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  The password dictionary file can contain lines that are: 1. comment lines - the first character is &#39;#&#39;, can be 128 Unicode codepoints in length, and are ignored during processing 2. empty lines 3. locale line - the first line that starts with \&quot;locale&#x3D;\&quot; is considered to be locale line, the rest are treated as normal content lines 4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;         maximum length of the line is 128 Unicode codepoints   Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).  Password dict file must contain UTF-8 characters only.  # Sample password text file  &#x60;&#x60;&#x60;  # Password dictionary small test file  locale&#x3D;en_US  # Password dictionary prohibited words  qwerty abcd aaaaa password qazxsws  &#x60;&#x60;&#x60; |  -  |
+**200** | A password dictionary response |  -  |
 **400** | Client Error - Returned if the request body is invalid. |  -  |
 **401** | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. |  -  |
 **403** | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. |  -  |
@@ -86,17 +89,18 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_password_dictionary**
-> update_password_dictionary(file=file)
+# **put_password_dictionary**
+> put_password_dictionary(file=file)
 
 Update Password Dictionary
 
-This updates password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API.
+This updates password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API. The password dictionary file can contain lines that are: 1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing 2. empty lines 3. locale line - the first line that starts with \"locale=\" is considered to be locale line, the rest are treated as normal content lines 4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;         maximum length of the line is 128 Unicode codepoints   Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).   Password dict file must contain UTF-8 characters only.  # Sample password text file  ```  # Password dictionary small test file  locale=en_US  # Password dictionary prohibited words  qwerty abcd aaaaa password qazxsws  ```
 
 ### Example
 
 * OAuth Authentication (UserContextAuth):
 * OAuth Authentication (UserContextAuth):
+
 ```python
 import time
 import os
@@ -127,14 +131,15 @@ with sailpoint.beta.ApiClient(configuration) as api_client:
 
     try:
         # Update Password Dictionary
-        api_instance.update_password_dictionary(file=file)
+        api_instance.put_password_dictionary(file=file)
     except Exception as e:
-        print("Exception when calling PasswordDictionaryApi->update_password_dictionary: %s\n" % e)
+        print("Exception when calling PasswordDictionaryApi->put_password_dictionary: %s\n" % e)
 ```
 
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -154,6 +159,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successfully updated. |  -  |

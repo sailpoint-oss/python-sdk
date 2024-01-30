@@ -16,7 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from datetime import datetime
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.manager_correlation_mapping import ManagerCorrelationMapping
@@ -81,7 +82,7 @@ class Source(BaseModel):
         description=
         "The fully qualified name of the Java class that implements the connector interface.",
         alias="connectorClass")
-    connector_attributes: Optional[Union[str, Any]] = Field(
+    connector_attributes: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "Connector specific configuration; will differ from type to type.",
@@ -123,6 +124,11 @@ class Source(BaseModel):
         default=None,
         description="The connector implementation id",
         alias="connectorImplementationId")
+    created: Optional[datetime] = Field(
+        default=None, description="The date-time when the source was created")
+    modified: Optional[datetime] = Field(
+        default=None,
+        description="The date-time when the source was last modified")
     __properties: ClassVar[List[str]] = [
         "id", "name", "description", "owner", "cluster",
         "accountCorrelationConfig", "accountCorrelationRule",
@@ -131,10 +137,14 @@ class Source(BaseModel):
         "type", "connector", "connectorClass", "connectorAttributes",
         "deleteThreshold", "authoritative", "managementWorkgroup", "healthy",
         "status", "since", "connectorId", "connectorName", "connectionType",
-        "connectorImplementationId"
+        "connectorImplementationId", "created", "modified"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -299,6 +309,10 @@ class Source(BaseModel):
             "connectionType":
             obj.get("connectionType"),
             "connectorImplementationId":
-            obj.get("connectorImplementationId")
+            obj.get("connectorImplementationId"),
+            "created":
+            obj.get("created"),
+            "modified":
+            obj.get("modified")
         })
         return _obj

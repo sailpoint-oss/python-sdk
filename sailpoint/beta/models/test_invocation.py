@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -32,12 +32,12 @@ class TestInvocation(BaseModel):
 
   # noqa: E501
     trigger_id: StrictStr = Field(description="Trigger ID", alias="triggerId")
-    input: Optional[Union[str, Any]] = Field(
+    input: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "Mock input to use for test invocation.  This must adhere to the input schema defined in the trigger being invoked.  If this property is omitted, then the default trigger sample payload will be sent."
     )
-    content_json: Union[str, Any] = Field(
+    content_json: Dict[str, Any] = Field(
         description="JSON map of invocation metadata.", alias="contentJson")
     subscription_ids: Optional[List[StrictStr]] = Field(
         default=None,
@@ -48,7 +48,11 @@ class TestInvocation(BaseModel):
         "triggerId", "input", "contentJson", "subscriptionIds"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

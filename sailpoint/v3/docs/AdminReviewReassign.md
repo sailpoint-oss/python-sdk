@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **certification_ids** | **List[str]** | List of certification IDs to reassign | [optional] 

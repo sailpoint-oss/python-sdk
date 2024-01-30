@@ -3,6 +3,7 @@
 Source configuration information for Native Change Detection that is read and used by account aggregation process.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enabled** | **bool** | A flag indicating if Native Change Detection is enabled for a source. | [optional] [default to False]

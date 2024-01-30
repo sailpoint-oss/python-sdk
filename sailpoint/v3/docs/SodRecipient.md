@@ -3,6 +3,7 @@
 SOD policy recipient.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | SOD policy recipient DTO type. | [optional] 

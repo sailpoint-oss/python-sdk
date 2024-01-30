@@ -3,6 +3,7 @@
 The contextual information of the violated criteria
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **policy** | [**SodPolicyDto**](SodPolicyDto.md) |  | [optional] 

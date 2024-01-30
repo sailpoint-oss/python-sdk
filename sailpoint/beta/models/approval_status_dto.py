@@ -67,7 +67,11 @@ class ApprovalStatusDto(BaseModel):
         "scheme", "errorMessages", "comment", "removeDate"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

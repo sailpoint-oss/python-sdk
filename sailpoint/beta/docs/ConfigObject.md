@@ -3,6 +3,7 @@
 Config export and import format for individual object configurations.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **version** | **int** | Current version of configuration object. | [optional] 

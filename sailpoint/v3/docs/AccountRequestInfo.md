@@ -3,6 +3,7 @@
 If an account activity item is associated with an access request, captures details of that request.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **requested_object_id** | **str** | Id of requested object | [optional] 

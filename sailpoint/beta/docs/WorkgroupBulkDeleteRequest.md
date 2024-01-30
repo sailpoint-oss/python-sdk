@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ids** | **List[str]** | List of IDs of Governance Groups to be deleted. | [optional] 

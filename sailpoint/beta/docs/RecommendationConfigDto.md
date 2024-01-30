@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **recommender_features** | **List[str]** | List of identity attributes to use for calculating certification recommendations | [optional] 

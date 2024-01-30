@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from pydantic import Field
 from sailpoint.beta.models.managed_client_status_enum import ManagedClientStatusEnum
@@ -34,15 +34,19 @@ class ManagedClientStatusAggResponse(BaseModel):
     """
 
   # noqa: E501
-    body: Union[str, Any] = Field(
-        description="ManagedClientStatus body information")
+    body: Dict[str,
+               Any] = Field(description="ManagedClientStatus body information")
     status: ManagedClientStatusEnum
     type: Optional[ManagedClientType]
     timestamp: datetime = Field(
         description="timestamp on the Client Status update")
     __properties: ClassVar[List[str]] = ["body", "status", "type", "timestamp"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

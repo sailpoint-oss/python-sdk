@@ -3,6 +3,7 @@
 Response model for connection check, configuration test and ping of source connectors.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | ID of the source | [optional] [readonly] 

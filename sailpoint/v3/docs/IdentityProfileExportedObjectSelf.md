@@ -3,6 +3,7 @@
 Self block for exported object.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Exported object&#39;s DTO type. | [optional] 

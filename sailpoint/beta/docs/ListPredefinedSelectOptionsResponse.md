@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **results** | **List[str]** | Results holds a list of PreDefinedSelectOption items | [optional] 

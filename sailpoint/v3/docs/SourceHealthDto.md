@@ -3,6 +3,7 @@
 Dto for source health data
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | the id of the Source | [optional] [readonly] 

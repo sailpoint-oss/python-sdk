@@ -3,6 +3,7 @@
 Configuration of maximum number days and interval for checking Service Desk integration queue status
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **provisioning_status_check_interval_minutes** | **str** | interval in minutes between status checks | 

@@ -3,6 +3,7 @@
 SOD policy.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | SOD policy DTO type. | [optional] 

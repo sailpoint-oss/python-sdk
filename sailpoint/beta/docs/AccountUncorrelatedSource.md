@@ -3,6 +3,7 @@
 The source the accounts are uncorrelated from.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The DTO type of the source the accounts are uncorrelated from. | 

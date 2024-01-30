@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **target_owner_id** | **str** | The ID of the identity to forward this work item to. | 

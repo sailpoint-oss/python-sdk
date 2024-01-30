@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.beta.models.form_condition import FormCondition
@@ -52,7 +52,7 @@ class FormInstanceResponse(BaseModel):
         description=
         "FormConditions is the conditional logic that modify the form dynamically modify the form as the recipient is interacting out the form",
         alias="formConditions")
-    form_data: Optional[Dict[str, Union[str, Any]]] = Field(
+    form_data: Optional[Dict[str, Dict[str, Any]]] = Field(
         default=None,
         description=
         "FormData is the data provided by the form on submit. The data is in a key -> value map",
@@ -72,7 +72,7 @@ class FormInstanceResponse(BaseModel):
         description=
         "FormErrors is an array of form validation errors from the last time the form instance was transitioned to the SUBMITTED state. If the form instance had validation errors then it would be moved to the IN PROGRESS state where the client can retrieve these errors",
         alias="formErrors")
-    form_input: Optional[Dict[str, Union[str, Any]]] = Field(
+    form_input: Optional[Dict[str, Dict[str, Any]]] = Field(
         default=None,
         description="FormInput is an object of form input labels to value",
         alias="formInput")
@@ -123,7 +123,11 @@ class FormInstanceResponse(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -3,6 +3,7 @@
 The identity whose account attributes were updated.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of the identity whose account attributes were updated. | 

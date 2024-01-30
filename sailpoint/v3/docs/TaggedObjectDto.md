@@ -2,11 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type | [optional] 
-**id** | **str** | ID of the object to which this reference applies | [optional] 
-**name** | **str** | Human-readable display name of the object to which this reference applies | [optional] 
+**id** | **str** | ID of the object this reference applies to | [optional] 
+**name** | **str** | Human-readable display name of the object this reference applies to | [optional] 
 
 ## Example
 

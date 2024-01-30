@@ -3,6 +3,7 @@
 Describes the individual or group that is responsible for an approval step.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

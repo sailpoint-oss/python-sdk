@@ -3,6 +3,7 @@
 Bulk response object.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Identifier of bulk request item. | [optional] 

@@ -3,6 +3,7 @@
 The scoping method used in the current role mining session.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

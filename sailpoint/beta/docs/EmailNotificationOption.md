@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **notify_managers** | **bool** | If true, then the manager is notified of the lifecycle state change. | [optional] 

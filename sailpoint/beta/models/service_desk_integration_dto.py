@@ -19,10 +19,10 @@ import json
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
-from sailpoint.beta.models.before_provisioning_rule_dto import BeforeProvisioningRuleDto
-from sailpoint.beta.models.owner_dto import OwnerDto
 from sailpoint.beta.models.provisioning_config import ProvisioningConfig
-from sailpoint.beta.models.source_cluster_dto import SourceClusterDto
+from sailpoint.beta.models.service_desk_integration_dto_all_of_before_provisioning_rule import ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule
+from sailpoint.beta.models.service_desk_integration_dto_all_of_cluster_ref import ServiceDeskIntegrationDtoAllOfClusterRef
+from sailpoint.beta.models.service_desk_integration_dto_all_of_owner_ref import ServiceDeskIntegrationDtoAllOfOwnerRef
 try:
     from typing import Self
 except ImportError:
@@ -43,9 +43,10 @@ class ServiceDeskIntegrationDto(BaseModel):
     type: StrictStr = Field(
         description=
         "Service Desk integration types:  - ServiceNowSDIM - ServiceNow ")
-    owner_ref: Optional[OwnerDto] = Field(default=None, alias="ownerRef")
-    cluster_ref: Optional[SourceClusterDto] = Field(default=None,
-                                                    alias="clusterRef")
+    owner_ref: Optional[ServiceDeskIntegrationDtoAllOfOwnerRef] = Field(
+        default=None, alias="ownerRef")
+    cluster_ref: Optional[ServiceDeskIntegrationDtoAllOfClusterRef] = Field(
+        default=None, alias="clusterRef")
     cluster: Optional[StrictStr] = Field(
         default=None,
         description=
@@ -62,15 +63,20 @@ class ServiceDeskIntegrationDto(BaseModel):
         description=
         "Service Desk integration's attributes. Validation constraints enforced by the implementation."
     )
-    before_provisioning_rule: Optional[BeforeProvisioningRuleDto] = Field(
-        default=None, alias="beforeProvisioningRule")
+    before_provisioning_rule: Optional[
+        ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule] = Field(
+            default=None, alias="beforeProvisioningRule")
     __properties: ClassVar[List[str]] = [
         "name", "description", "type", "ownerRef", "clusterRef", "cluster",
         "managedSources", "provisioningConfig", "attributes",
         "beforeProvisioningRule"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -135,10 +141,12 @@ class ServiceDeskIntegrationDto(BaseModel):
             obj.get("type")
             if obj.get("type") is not None else 'ServiceNowSDIM',
             "ownerRef":
-            OwnerDto.from_dict(obj.get("ownerRef"))
+            ServiceDeskIntegrationDtoAllOfOwnerRef.from_dict(
+                obj.get("ownerRef"))
             if obj.get("ownerRef") is not None else None,
             "clusterRef":
-            SourceClusterDto.from_dict(obj.get("clusterRef"))
+            ServiceDeskIntegrationDtoAllOfClusterRef.from_dict(
+                obj.get("clusterRef"))
             if obj.get("clusterRef") is not None else None,
             "cluster":
             obj.get("cluster"),
@@ -150,7 +158,7 @@ class ServiceDeskIntegrationDto(BaseModel):
             "attributes":
             obj.get("attributes"),
             "beforeProvisioningRule":
-            BeforeProvisioningRuleDto.from_dict(
+            ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.from_dict(
                 obj.get("beforeProvisioningRule"))
             if obj.get("beforeProvisioningRule") is not None else None
         })

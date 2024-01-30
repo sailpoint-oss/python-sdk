@@ -3,6 +3,7 @@
 An object holding the access that is being reviewed
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access** | [**AccessSummaryAccess**](AccessSummaryAccess.md) |  | [optional] 

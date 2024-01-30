@@ -3,6 +3,7 @@
 The request body for creation or update of a Reassignment Configuration for a single identity and work type
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reassigned_from_id** | **str** | The identity id to reassign an item from | [optional] 

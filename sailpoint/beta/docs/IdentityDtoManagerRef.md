@@ -3,6 +3,7 @@
 Identity's manager.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of identity&#39;s manager. | [optional] 

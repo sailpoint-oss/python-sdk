@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr
 from pydantic import Field
 from sailpoint.v3.models.aggregation_type import AggregationType
@@ -48,7 +48,7 @@ class Search(BaseModel):
     query_type: Optional[QueryType] = Field(default=None, alias="queryType")
     query_version: Optional[Any] = Field(default=None, alias="queryVersion")
     query: Optional[Query] = None
-    query_dsl: Optional[Union[str, Any]] = Field(
+    query_dsl: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax.",
@@ -67,7 +67,7 @@ class Search(BaseModel):
         default=None, alias="aggregationType")
     aggregations_version: Optional[Any] = Field(default=None,
                                                 alias="aggregationsVersion")
-    aggregations_dsl: Optional[Union[str, Any]] = Field(
+    aggregations_dsl: Optional[Dict[str, Any]] = Field(
         default=None,
         description=
         "The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) syntax.",
@@ -93,7 +93,11 @@ class Search(BaseModel):
         "aggregations", "sort", "searchAfter", "filters"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

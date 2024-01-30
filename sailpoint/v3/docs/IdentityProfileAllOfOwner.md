@@ -3,6 +3,7 @@
 The owner of the Identity Profile.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Type of the object to which this reference applies | [optional] 

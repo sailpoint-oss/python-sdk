@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_profile_id** | **str** | ID of the Access Profile that is in use | [optional] 

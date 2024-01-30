@@ -3,6 +3,7 @@
 DTO class for OrgConfig data accessible by customer external org admin (\"ORG_ADMIN\") users
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **org_name** | **str** | The name of the org. | [optional] 

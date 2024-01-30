@@ -3,6 +3,7 @@
 Task return details
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Display name of the TaskReturnDetails | 

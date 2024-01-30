@@ -3,6 +3,7 @@
 Provides additional details about this access request phase.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **started** | **datetime** | The time that this phase started. | [optional] 

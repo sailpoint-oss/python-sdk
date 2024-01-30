@@ -39,14 +39,8 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
                 name = 'Service Desk Integration Name',
                 description = 'A very nice Service Desk integration',
                 type = 'ServiceNowSDIM',
-                owner_ref = sailpoint.beta.models.owner_dto.OwnerDto(
-                    type = 'IDENTITY', 
-                    id = '2c9180a46faadee4016fb4e018c20639', 
-                    name = 'Support', ),
-                cluster_ref = sailpoint.beta.models.source_cluster_dto.SourceClusterDto(
-                    type = 'CLUSTER', 
-                    id = '2c9180847a7fccdd017aa5896f9f4f6f', 
-                    name = 'Training VA', ),
+                owner_ref = None,
+                cluster_ref = None,
                 cluster = 'xyzzy999',
                 managed_sources = [2c9180835d191a86015d28455b4a2329, 2c5680835d191a85765d28455b4a9823],
                 provisioning_config = sailpoint.beta.models.provisioning_config.ProvisioningConfig(
@@ -58,10 +52,7 @@ class TestServiceDeskIntegrationDto(unittest.TestCase):
                     no_provisioning_requests = True, 
                     provisioning_request_expiration = 7, ),
                 attributes = {property=value, key=value},
-                before_provisioning_rule = sailpoint.beta.models.before_provisioning_rule_dto.BeforeProvisioningRuleDto(
-                    type = 'RULE', 
-                    id = '048eb3d55c5a4758bd07dccb87741c78', 
-                    name = 'Before Provisioning Airtable Rule', )
+                before_provisioning_rule = None
             )
         else:
             return ServiceDeskIntegrationDto(

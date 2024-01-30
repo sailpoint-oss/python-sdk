@@ -3,6 +3,7 @@
 Provisioning recpient.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Provisioning recipient DTO type. | 

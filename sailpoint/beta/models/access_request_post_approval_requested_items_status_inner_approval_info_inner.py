@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.beta.models.access_request_post_approval_requested_items_status_inner_approval_info_inner_approver import AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover
@@ -35,7 +35,7 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
         default=None,
         description="A comment left by the approver.",
         alias="approvalComment")
-    approval_decision: Union[str, Any] = Field(
+    approval_decision: Dict[str, Any] = Field(
         description="The final decision of the approver.",
         alias="approvalDecision")
     approver_name: StrictStr = Field(description="The name of the approver",
@@ -53,7 +53,11 @@ class AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(
                 "must be one of enum values ('APPROVED', 'DENIED')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

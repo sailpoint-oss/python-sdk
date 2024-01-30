@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -34,7 +34,7 @@ class DomainStatusDto(BaseModel):
         description="New UUID associated with domain to be verified")
     domain: Optional[StrictStr] = Field(default=None,
                                         description="A domain address")
-    dkim_enabled: Optional[Union[str, Any]] = Field(
+    dkim_enabled: Optional[Dict[str, Any]] = Field(
         default=None,
         description="DKIM is enabled for this domain",
         alias="dkimEnabled")
@@ -50,7 +50,11 @@ class DomainStatusDto(BaseModel):
         "id", "domain", "dkimEnabled", "dkimTokens", "dkimVerificationStatus"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

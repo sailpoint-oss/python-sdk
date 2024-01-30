@@ -59,7 +59,7 @@ class PasswordDictionaryApi:
     ) -> str:
         """Get Password Dictionary
 
-        This gets password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API.
+        This gets password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API. The password dictionary file can contain lines that are: 1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing 2. empty lines 3. locale line - the first line that starts with \"locale=\" is considered to be locale line, the rest are treated as normal content lines 4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;         maximum length of the line is 128 Unicode codepoints   Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).   Password dict file must contain UTF-8 characters only.  # Sample password text file  ```  # Password dictionary small test file  locale=en_US  # Password dictionary prohibited words  qwerty abcd aaaaa password qazxsws  ```
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -96,7 +96,7 @@ class PasswordDictionaryApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -122,7 +122,7 @@ class PasswordDictionaryApi:
     ) -> ApiResponse[str]:
         """Get Password Dictionary
 
-        This gets password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API.
+        This gets password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API. The password dictionary file can contain lines that are: 1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing 2. empty lines 3. locale line - the first line that starts with \"locale=\" is considered to be locale line, the rest are treated as normal content lines 4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;         maximum length of the line is 128 Unicode codepoints   Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).   Password dict file must contain UTF-8 characters only.  # Sample password text file  ```  # Password dictionary small test file  locale=en_US  # Password dictionary prohibited words  qwerty abcd aaaaa password qazxsws  ```
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -159,7 +159,7 @@ class PasswordDictionaryApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -185,7 +185,7 @@ class PasswordDictionaryApi:
     ) -> RESTResponseType:
         """Get Password Dictionary
 
-        This gets password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API.
+        This gets password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API. The password dictionary file can contain lines that are: 1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing 2. empty lines 3. locale line - the first line that starts with \"locale=\" is considered to be locale line, the rest are treated as normal content lines 4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;         maximum length of the line is 128 Unicode codepoints   Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).   Password dict file must contain UTF-8 characters only.  # Sample password text file  ```  # Password dictionary small test file  locale=en_US  # Password dictionary prohibited words  qwerty abcd aaaaa password qazxsws  ```
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -222,7 +222,7 @@ class PasswordDictionaryApi:
             '403': "ErrorResponseDto",
             '404': "ErrorResponseDto",
             '429': "ListAccessProfiles429Response",
-            '500': "ErrorResponseDto"
+            '500': "ErrorResponseDto",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
@@ -275,7 +275,7 @@ class PasswordDictionaryApi:
             _request_auth=_request_auth)
 
     @validate_call
-    def update_password_dictionary(
+    def put_password_dictionary(
         self,
         file: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[None, Annotated[StrictFloat,
@@ -291,7 +291,7 @@ class PasswordDictionaryApi:
     ) -> None:
         """Update Password Dictionary
 
-        This updates password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API.
+        This updates password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API. The password dictionary file can contain lines that are: 1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing 2. empty lines 3. locale line - the first line that starts with \"locale=\" is considered to be locale line, the rest are treated as normal content lines 4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;         maximum length of the line is 128 Unicode codepoints   Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).   Password dict file must contain UTF-8 characters only.  # Sample password text file  ```  # Password dictionary small test file  locale=en_US  # Password dictionary prohibited words  qwerty abcd aaaaa password qazxsws  ```
 
         :param file:
         :type file: bytearray
@@ -317,14 +317,23 @@ class PasswordDictionaryApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_password_dictionary_serialize(
+        _param = self._put_password_dictionary_serialize(
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '201': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -334,7 +343,7 @@ class PasswordDictionaryApi:
         ).data
 
     @validate_call
-    def update_password_dictionary_with_http_info(
+    def put_password_dictionary_with_http_info(
         self,
         file: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[None, Annotated[StrictFloat,
@@ -350,7 +359,7 @@ class PasswordDictionaryApi:
     ) -> ApiResponse[None]:
         """Update Password Dictionary
 
-        This updates password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API.
+        This updates password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API. The password dictionary file can contain lines that are: 1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing 2. empty lines 3. locale line - the first line that starts with \"locale=\" is considered to be locale line, the rest are treated as normal content lines 4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;         maximum length of the line is 128 Unicode codepoints   Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).   Password dict file must contain UTF-8 characters only.  # Sample password text file  ```  # Password dictionary small test file  locale=en_US  # Password dictionary prohibited words  qwerty abcd aaaaa password qazxsws  ```
 
         :param file:
         :type file: bytearray
@@ -376,14 +385,23 @@ class PasswordDictionaryApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_password_dictionary_serialize(
+        _param = self._put_password_dictionary_serialize(
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '201': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         response_data.read()
@@ -393,7 +411,7 @@ class PasswordDictionaryApi:
         )
 
     @validate_call
-    def update_password_dictionary_without_preload_content(
+    def put_password_dictionary_without_preload_content(
         self,
         file: Optional[Union[StrictBytes, StrictStr]] = None,
         _request_timeout: Union[None, Annotated[StrictFloat,
@@ -409,7 +427,7 @@ class PasswordDictionaryApi:
     ) -> RESTResponseType:
         """Update Password Dictionary
 
-        This updates password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API.
+        This updates password dictionary for the organization. A token with ORG_ADMIN authority is required to call this API. The password dictionary file can contain lines that are: 1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing 2. empty lines 3. locale line - the first line that starts with \"locale=\" is considered to be locale line, the rest are treated as normal content lines 4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;         maximum length of the line is 128 Unicode codepoints   Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).   Password dict file must contain UTF-8 characters only.  # Sample password text file  ```  # Password dictionary small test file  locale=en_US  # Password dictionary prohibited words  qwerty abcd aaaaa password qazxsws  ```
 
         :param file:
         :type file: bytearray
@@ -435,19 +453,28 @@ class PasswordDictionaryApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._update_password_dictionary_serialize(
+        _param = self._put_password_dictionary_serialize(
             file=file,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
             _host_index=_host_index)
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': None,
+            '201': None,
+            '400': "ErrorResponseDto",
+            '401': "ListAccessProfiles401Response",
+            '403': "ErrorResponseDto",
+            '404': "ErrorResponseDto",
+            '429': "ListAccessProfiles429Response",
+            '500': "ErrorResponseDto",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout)
         return response_data.response
 
-    def _update_password_dictionary_serialize(
+    def _put_password_dictionary_serialize(
         self,
         file,
         _request_auth,

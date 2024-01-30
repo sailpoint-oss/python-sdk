@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, field_validator
 from pydantic import Field
 try:
@@ -32,11 +32,11 @@ class WorkflowExecutionEvent(BaseModel):
     """
 
   # noqa: E501
-    type: Optional[Union[str, Any]] = Field(default=None,
-                                            description="The type of event")
+    type: Optional[Dict[str, Any]] = Field(default=None,
+                                           description="The type of event")
     timestamp: Optional[datetime] = Field(
         default=None, description="The date-time when the event occurred")
-    attributes: Optional[Union[str, Any]] = Field(
+    attributes: Optional[Dict[str, Any]] = Field(
         default=None,
         description="Additional attributes associated with the event")
     __properties: ClassVar[List[str]] = ["type", "timestamp", "attributes"]
@@ -60,7 +60,11 @@ class WorkflowExecutionEvent(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

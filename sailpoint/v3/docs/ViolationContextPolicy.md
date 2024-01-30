@@ -3,6 +3,7 @@
 The types of objects supported for SOD violations
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **object** | The type of object that is referenced | [optional] 

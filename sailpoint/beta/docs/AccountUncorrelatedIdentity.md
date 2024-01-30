@@ -3,6 +3,7 @@
 Identity the account is uncorrelated with.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of the identity the account is uncorrelated with. | 

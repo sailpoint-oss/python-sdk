@@ -3,6 +3,7 @@
 The state of a work item
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

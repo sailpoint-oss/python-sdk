@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **role_ids** | **List[str]** | List of IDs of Roles to be deleted. | 

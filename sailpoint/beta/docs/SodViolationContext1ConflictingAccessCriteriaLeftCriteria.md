@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **criteria_list** | [**List[SodExemptCriteria1]**](SodExemptCriteria1.md) |  | [optional] 

@@ -3,6 +3,7 @@
 Arguments for Account Export (ACCOUNTS)
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **application** | **str** | Id of the authoritative source to export related accounts e.g. identities | 

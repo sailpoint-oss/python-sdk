@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **old_approver_name** | **str** | Display name of approver from whom the approval was forwarded. | [optional] 

@@ -3,6 +3,7 @@
 Simplified DTO for the owner object of the entitlement
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The owner id for the entitlement | [optional] 

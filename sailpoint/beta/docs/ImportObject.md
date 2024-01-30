@@ -3,6 +3,7 @@
 Object created or updated by import.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of object created or updated by import. | [optional] 

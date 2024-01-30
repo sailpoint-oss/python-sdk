@@ -3,6 +3,7 @@
 Accounts async response containing details on started async process
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | id of the task | 

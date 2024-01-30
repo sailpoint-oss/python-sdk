@@ -3,6 +3,7 @@
 Overall statistics about the account collection.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **scanned** | **int** | The number of accounts which were scanned / iterated over. | 

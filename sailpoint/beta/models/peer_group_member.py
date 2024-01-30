@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -38,7 +38,7 @@ class PeerGroupMember(BaseModel):
         default=None, description="The type of the peer group member.")
     peer_group_id: Optional[StrictStr] = Field(
         default=None, description="The ID of the peer group.")
-    attributes: Optional[Dict[str, Union[str, Any]]] = Field(
+    attributes: Optional[Dict[str, Dict[str, Any]]] = Field(
         default=None,
         description=
         "Arbitrary key-value pairs, belonging to the peer group member.")
@@ -46,7 +46,11 @@ class PeerGroupMember(BaseModel):
         "id", "type", "peer_group_id", "attributes"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

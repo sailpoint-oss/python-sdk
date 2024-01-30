@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **left_criteria** | [**ExceptionCriteria**](ExceptionCriteria.md) |  | [optional] 

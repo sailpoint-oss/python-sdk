@@ -3,6 +3,7 @@
 Type which indicates how a particular Identity obtained a particular Role
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

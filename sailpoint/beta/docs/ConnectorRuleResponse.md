@@ -3,6 +3,7 @@
 ConnectorRuleResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | the name of the rule | 

@@ -3,6 +3,7 @@
 Defines matching criteria for an Account to be provisioned with a specific Access Profile
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **operation** | [**ProvisioningCriteriaOperation**](ProvisioningCriteriaOperation.md) |  | [optional] 

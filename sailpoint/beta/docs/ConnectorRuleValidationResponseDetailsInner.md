@@ -3,6 +3,7 @@
 CodeErrorDetail
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **line** | **int** | The line number where the issue occurred | 

@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 from sailpoint.beta.models.error_message import ErrorMessage
@@ -37,11 +37,15 @@ class FormError(BaseModel):
     messages: Optional[List[ErrorMessage]] = Field(
         default=None,
         description="Messages is a list of web.ErrorMessage items")
-    value: Optional[Union[str, Any]] = Field(
+    value: Optional[Dict[str, Any]] = Field(
         default=None, description="Value is the value associated with a Key")
     __properties: ClassVar[List[str]] = ["key", "messages", "value"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

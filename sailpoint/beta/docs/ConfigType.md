@@ -3,6 +3,7 @@
 Type of Reassignment Configuration.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **internal_name** | [**ConfigTypeEnum**](ConfigTypeEnum.md) |  | [optional] 

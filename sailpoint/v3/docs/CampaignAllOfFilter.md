@@ -3,6 +3,7 @@
 Determines which items will be included in this campaign. The default campaign filter is used if this field is left blank.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The ID of whatever type of filter is being used. | [optional] 

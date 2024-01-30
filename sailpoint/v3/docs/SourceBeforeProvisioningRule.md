@@ -3,6 +3,7 @@
 Rule that runs on the CCG and allows for customization of provisioning plans before the connector is called.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of object being referenced | [optional] 

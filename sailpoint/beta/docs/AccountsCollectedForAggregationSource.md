@@ -3,6 +3,7 @@
 Reference to the source that has been aggregated.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | ID of the object to which this reference applies | 

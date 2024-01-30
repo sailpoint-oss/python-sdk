@@ -3,6 +3,7 @@
 An object containing a listing of the SOD violation reasons detected by this check.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **violation_contexts** | [**List[ViolationContext]**](ViolationContext.md) | List of Violation Contexts | [optional] 

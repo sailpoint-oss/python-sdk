@@ -3,6 +3,7 @@
 The range of values to be filtered.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **lower** | [**Bound**](Bound.md) |  | [optional] 

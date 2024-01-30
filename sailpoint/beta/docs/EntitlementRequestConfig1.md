@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **allow_entitlement_request** | **bool** | Flag for allowing entitlement request. | [optional] 

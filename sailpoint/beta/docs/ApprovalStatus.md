@@ -3,6 +3,7 @@
 Enum representing the non-employee request approval status
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

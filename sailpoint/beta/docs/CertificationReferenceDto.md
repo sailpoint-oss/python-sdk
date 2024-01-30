@@ -3,6 +3,7 @@
 Certification for review.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of certification for review. | [optional] 

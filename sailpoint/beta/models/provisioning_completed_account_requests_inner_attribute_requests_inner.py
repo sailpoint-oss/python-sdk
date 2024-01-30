@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -37,7 +37,7 @@ class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
         default=None,
         description="The value of the attribute being provisioned.",
         alias="attributeValue")
-    operation: Union[str, Any] = Field(
+    operation: Dict[str, Any] = Field(
         description="The operation to handle the attribute.")
     __properties: ClassVar[List[str]] = [
         "attributeName", "attributeValue", "operation"
@@ -51,7 +51,11 @@ class ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner(
                 "must be one of enum values ('Add', 'Set', 'Remove')")
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

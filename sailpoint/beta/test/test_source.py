@@ -85,7 +85,9 @@ class TestSource(unittest.TestCase):
                 connector_id = 'active-directory',
                 connector_name = 'Active Directory',
                 connection_type = 'file',
-                connector_implementation_id = 'delimited-file'
+                connector_implementation_id = 'delimited-file',
+                created = '2022-02-08T14:50:03.827Z',
+                modified = '2024-01-23T18:08:50.897Z'
             )
         else:
             return Source(

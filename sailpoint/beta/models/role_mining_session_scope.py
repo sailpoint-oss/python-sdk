@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -40,7 +40,7 @@ class RoleMiningSessionScope(BaseModel):
         description=
         "The \"search\" criteria that produces the list of identities for this role mining session."
     )
-    attribute_filter_criteria: Optional[List[Union[str, Any]]] = Field(
+    attribute_filter_criteria: Optional[List[Dict[str, Any]]] = Field(
         default=None,
         description="The filter criteria for this role mining session.",
         alias="attributeFilterCriteria")
@@ -48,7 +48,11 @@ class RoleMiningSessionScope(BaseModel):
         "identityIds", "criteria", "attributeFilterCriteria"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

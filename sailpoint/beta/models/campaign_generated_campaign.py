@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.beta.models.campaign_generated_campaign_campaign_owner import CampaignGeneratedCampaignCampaignOwner
@@ -43,11 +43,11 @@ class CampaignGeneratedCampaign(BaseModel):
     deadline: Optional[StrictStr] = Field(
         default=None,
         description="The date and time when the campaign must be finished by.")
-    type: Union[str, Any] = Field(
+    type: Dict[str, Any] = Field(
         description="The type of campaign that was generated.")
     campaign_owner: CampaignGeneratedCampaignCampaignOwner = Field(
         alias="campaignOwner")
-    status: Union[str, Any] = Field(
+    status: Dict[str, Any] = Field(
         description="The current status of the campaign.")
     __properties: ClassVar[List[str]] = [
         "id", "name", "description", "created", "modified", "deadline", "type",
@@ -73,7 +73,11 @@ class CampaignGeneratedCampaign(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

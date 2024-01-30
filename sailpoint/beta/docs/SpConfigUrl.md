@@ -3,6 +3,7 @@
 Format of resolver URLs for Object Configurations
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **str** | URL for the target object endpoint. | [optional] 

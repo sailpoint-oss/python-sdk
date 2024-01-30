@@ -3,6 +3,7 @@
 Reference to Management Workgroup for this Source
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of object being referenced | [optional] 

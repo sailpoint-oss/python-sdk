@@ -3,6 +3,7 @@
 Details of the Entitlement criteria
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **existing** | **bool** | If the entitlement already belonged to the user or not. | [optional] 

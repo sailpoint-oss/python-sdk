@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_summary** | [**AccessSummary**](AccessSummary.md) |  | [optional] 

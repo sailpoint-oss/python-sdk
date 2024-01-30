@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_alias** | **str** | User alias from table spt_identity field named &#39;name&#39; | 

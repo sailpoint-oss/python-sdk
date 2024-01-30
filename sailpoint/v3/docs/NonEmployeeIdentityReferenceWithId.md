@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**NonEmployeeIdentityDtoType**](NonEmployeeIdentityDtoType.md) |  | [optional] 

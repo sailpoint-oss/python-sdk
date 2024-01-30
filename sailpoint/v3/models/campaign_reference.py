@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -40,7 +40,7 @@ class CampaignReference(BaseModel):
     description: Optional[StrictStr] = Field(
         description=
         "The description of the campaign set by the admin who created it.")
-    correlated_status: Union[str, Any] = Field(
+    correlated_status: Dict[str, Any] = Field(
         description=
         "The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).",
         alias="correlatedStatus")
@@ -87,7 +87,11 @@ class CampaignReference(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

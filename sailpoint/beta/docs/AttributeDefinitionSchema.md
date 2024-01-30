@@ -3,6 +3,7 @@
 A reference to the schema on the source to the attribute values map to.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of object being referenced | [optional] 

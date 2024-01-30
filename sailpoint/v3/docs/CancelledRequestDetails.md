@@ -3,6 +3,7 @@
 Provides additional details for a request that has been cancelled.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **str** | Comment made by the owner when cancelling the associated request. | [optional] 

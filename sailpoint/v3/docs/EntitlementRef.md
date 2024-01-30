@@ -3,6 +3,7 @@
 Entitlement including a specific set of access.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Entitlement&#39;s DTO type. | [optional] 

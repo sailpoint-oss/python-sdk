@@ -3,6 +3,7 @@
 The value of the identity attribute before it changed.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

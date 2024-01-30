@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **confirmed_ids** | **List[str]** | List of confirmed common access ids. | [optional] 

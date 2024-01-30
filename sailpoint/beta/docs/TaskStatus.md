@@ -3,6 +3,7 @@
 Details and current status of a specific task
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | System-generated unique ID of the task this TaskStatus represents | 

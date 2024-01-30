@@ -3,6 +3,7 @@
 This represents a Service Desk Integration template type.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | This is the name of the type. | [optional] 

@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **changes** | [**List[AttributeChange]**](AttributeChange.md) |  | [optional] 

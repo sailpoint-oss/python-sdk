@@ -3,6 +3,7 @@
 A subset of the fields of an Identity which is a member of a Role.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The ID of the Identity | [optional] 

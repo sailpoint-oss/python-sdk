@@ -3,6 +3,7 @@
 Indicates whether the associated criteria represents an expression on identity attributes, account attributes, or entitlements, respectively.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

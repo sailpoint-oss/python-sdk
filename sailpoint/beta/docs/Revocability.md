@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **approval_schemes** | [**List[AccessProfileApprovalScheme]**](AccessProfileApprovalScheme.md) | List describing the steps in approving the revocation request | [optional] 

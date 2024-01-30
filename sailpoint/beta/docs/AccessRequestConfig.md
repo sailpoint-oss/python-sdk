@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **approvals_must_be_external** | **bool** | If true, then approvals must be processed by external system. | [optional] 

@@ -3,6 +3,7 @@
 Role
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The unique ID of the referenced object. | [optional] 

@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, field_validator
 from pydantic import Field
 try:
@@ -39,12 +39,12 @@ class FormElement(BaseModel):
         "FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns",
         alias="elementType")
     config: Optional[Dict[str,
-                          Union[str,
-                                Any]]] = Field(default=None,
-                                               description="Config object.")
+                          Dict[str,
+                               Any]]] = Field(default=None,
+                                              description="Config object.")
     key: Optional[StrictStr] = Field(default=None,
                                      description="Technical key.")
-    validations: Optional[Union[str, Any]] = Field(
+    validations: Optional[Dict[str, Any]] = Field(
         default=None, description="Set of FormElementValidation items.")
     __properties: ClassVar[List[str]] = [
         "id", "elementType", "config", "key", "validations"
@@ -63,7 +63,11 @@ class FormElement(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

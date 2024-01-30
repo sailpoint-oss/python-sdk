@@ -3,6 +3,7 @@
 Access item owner's identity.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Access item owner&#39;s DTO type. | [optional] 

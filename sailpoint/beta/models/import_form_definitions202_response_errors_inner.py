@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 try:
     from typing import Self
@@ -30,12 +30,16 @@ class ImportFormDefinitions202ResponseErrorsInner(BaseModel):
     """
 
   # noqa: E501
-    detail: Optional[Dict[str, Union[str, Any]]] = None
+    detail: Optional[Dict[str, Dict[str, Any]]] = None
     key: Optional[StrictStr] = None
     text: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["detail", "key", "text"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

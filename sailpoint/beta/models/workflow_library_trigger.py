@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
 from pydantic import Field
 from sailpoint.beta.models.workflow_library_form_fields import WorkflowLibraryFormFields
@@ -36,8 +36,8 @@ class WorkflowLibraryTrigger(BaseModel):
         default=None,
         description=
         "Trigger ID. This is a static namespaced ID for the trigger.")
-    type: Optional[Union[str, Any]] = Field(default=None,
-                                            description="Trigger type")
+    type: Optional[Dict[str, Any]] = Field(default=None,
+                                           description="Trigger type")
     name: Optional[StrictStr] = Field(default=None, description="Trigger Name")
     description: Optional[StrictStr] = Field(default=None,
                                              description="Trigger Description")
@@ -46,7 +46,7 @@ class WorkflowLibraryTrigger(BaseModel):
         description=
         "Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.",
         alias="isDynamicSchema")
-    input_example: Optional[Union[str, Any]] = Field(
+    input_example: Optional[Dict[str, Any]] = Field(
         default=None,
         description="Example trigger payload if applicable",
         alias="inputExample")
@@ -71,7 +71,11 @@ class WorkflowLibraryTrigger(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

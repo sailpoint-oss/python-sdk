@@ -3,6 +3,7 @@
 The session created by details
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | ID of the creator | [optional] 

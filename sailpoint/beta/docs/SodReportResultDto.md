@@ -3,6 +3,7 @@
 SOD policy violation report result.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | SOD policy violation report result DTO type. | [optional] 

@@ -3,6 +3,7 @@
 Identity who updated the source.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of identity who updated the source. | 

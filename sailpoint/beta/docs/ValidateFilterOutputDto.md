@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **is_valid** | **bool** | When this field is true, the filter expression is valid against the input. | [optional] [default to False]

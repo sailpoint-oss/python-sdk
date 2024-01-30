@@ -3,6 +3,7 @@
 Details of the reviewer for certification.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The reviewer&#39;s DTO type. | 

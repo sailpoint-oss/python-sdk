@@ -3,6 +3,7 @@
 Enum represents completed approval object's state.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

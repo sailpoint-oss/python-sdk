@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictStr, field_validator
 from pydantic import Field
 from typing_extensions import Annotated
@@ -36,7 +36,7 @@ class TransformRead(BaseModel):
                     Field(min_length=1, strict=True, max_length=50)] = Field(
                         description="Unique name of this transform")
     type: StrictStr = Field(description="The type of transform operation")
-    attributes: Optional[Union[str, Any]] = Field(
+    attributes: Optional[Dict[str, Any]] = Field(
         description=
         "Meta-data about the transform. Values in this list are specific to the type of transform to be executed."
     )
@@ -66,7 +66,11 @@ class TransformRead(BaseModel):
             )
         return value
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 from pydantic import Field
 try:
@@ -31,13 +31,17 @@ class FormDefinitionDynamicSchemaResponse(BaseModel):
     """
 
   # noqa: E501
-    output_schema: Optional[Dict[str, Union[str, Any]]] = Field(
+    output_schema: Optional[Dict[str, Dict[str, Any]]] = Field(
         default=None,
         description="OutputSchema holds a JSON schema generated dynamically",
         alias="outputSchema")
     __properties: ClassVar[List[str]] = ["outputSchema"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -3,6 +3,7 @@
 The response body for Evaluate Reassignment Configuration
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reassign_to_id** | **str** | The Identity ID which should be the recipient of any work items sent to a specific identity &amp; work type | [optional] 

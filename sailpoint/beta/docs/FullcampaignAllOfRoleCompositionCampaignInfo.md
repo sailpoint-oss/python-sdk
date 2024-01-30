@@ -3,6 +3,7 @@
 Optional configuration options for role composition campaigns.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reviewer** | [**FullcampaignAllOfSearchCampaignInfoReviewer**](FullcampaignAllOfSearchCampaignInfoReviewer.md) |  | [optional] 

@@ -3,6 +3,7 @@
 The schedule information.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**ScheduleType**](ScheduleType.md) |  | 

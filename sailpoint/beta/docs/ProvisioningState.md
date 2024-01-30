@@ -3,6 +3,7 @@
 Provisioning state of an account activity item
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

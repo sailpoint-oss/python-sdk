@@ -3,6 +3,7 @@
 Identity the access item is requested for.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | DTO type of identity the access item is requested for. | [optional] 

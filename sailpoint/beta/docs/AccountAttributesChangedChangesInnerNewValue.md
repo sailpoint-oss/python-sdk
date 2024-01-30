@@ -3,6 +3,7 @@
 The new value of the attribute.
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

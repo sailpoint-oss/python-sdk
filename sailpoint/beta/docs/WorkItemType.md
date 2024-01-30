@@ -3,6 +3,7 @@
 The type of the work item
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

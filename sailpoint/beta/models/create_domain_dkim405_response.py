@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
 from pydantic import Field
 try:
@@ -31,11 +31,11 @@ class CreateDomainDkim405Response(BaseModel):
     """
 
   # noqa: E501
-    error_name: Optional[Union[str, Any]] = Field(
+    error_name: Optional[Dict[str, Any]] = Field(
         default=None,
         description="A message describing the error",
         alias="errorName")
-    error_message: Optional[Union[str, Any]] = Field(
+    error_message: Optional[Dict[str, Any]] = Field(
         default=None,
         description="Description of the error",
         alias="errorMessage")
@@ -47,7 +47,11 @@ class CreateDomainDkim405Response(BaseModel):
         "errorName", "errorMessage", "trackingId"
     ]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

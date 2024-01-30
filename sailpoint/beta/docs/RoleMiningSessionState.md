@@ -3,6 +3,7 @@
 Role mining session status
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

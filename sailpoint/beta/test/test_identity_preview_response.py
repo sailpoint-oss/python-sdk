@@ -36,7 +36,7 @@ class TestIdentityPreviewResponse(unittest.TestCase):
         model = IdentityPreviewResponse()
         if include_optional:
             return IdentityPreviewResponse(
-                identity = sailpoint.beta.models.identity_preview_response_identity.IdentityPreviewResponse_identity(
+                identity = sailpoint.beta.models.identity_dto_manager_ref.IdentityDto_managerRef(
                     type = 'IDENTITY', 
                     id = '2c4180a46faadee4016fb4e018c20626', 
                     name = 'Robert Robinson', ),
