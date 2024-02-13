@@ -29,9 +29,9 @@ class Configuration:
             self.client_secret = configurationParams.client_secret
             self.token_url = configurationParams.token_url
 
-            url = f"{self.token_url}?grant_type=client_credentials&client_id={self.client_id}&client_secret={self.client_secret}"
+            url = f"{self.token_url}"
             if self.access_token == None:
-                self.access_token = self.get_access_token(url)
+                self.access_token = self.get_access_token(url, self.client_id, self.client_secret)
 
         self.temp_folder_path = None
         """Temp file folder for downloading files
@@ -166,10 +166,10 @@ class Configuration:
                 return config
 
     @classmethod
-    def get_access_token(self, url: str) -> str:
+    def get_access_token(self, url: str, client_id: str, client_secret: str) -> str:
         try:
             http = urllib3.PoolManager()
-            response = http.request("POST", url)
+            response = http.request_encode_body("POST", url, encode_multipart=False, fields={"grant_type": "client_credentials", "client_id": client_id, "client_secret": client_secret})
             data = json.loads(response.data)
             if response.status == 200:
                 return data["access_token"]

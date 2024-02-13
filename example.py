@@ -56,6 +56,8 @@ with sailpoint.v3.ApiClient(configuration) as api_client:
         print(account.name)
 
 
+with sailpoint.beta.ApiClient(configuration) as api_client:
+
     workgroups = sailpoint.beta.GovernanceGroupsApi(api_client).list_workgroups()
     for workgroup in workgroups:
         print(workgroup.name)
