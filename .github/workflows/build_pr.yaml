@@ -59,7 +59,7 @@ jobs:
           node sdk-resources/postscript.js ./sailpoint/beta
 
       - name: After SDK Build
-        if: steps.buildCC.outcome == 'success'
+        if: steps.buildV3.outcome == 'success'
         run: |
           pip install -r requirements.txt
           pip install -e .
